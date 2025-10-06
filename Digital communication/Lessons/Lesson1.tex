@@ -1,8 +1,8 @@
-\section*{Transforms}
+\section{Transforms}
 
-\subsection*{Fourier Transforms}
+\subsection{Fourier Transforms}
 
-\subsubsection*{Continuous-Time Fourier Transform}
+\subsubsection{Continuous-Time Fourier Transform}
 
 A well-behaved continuous-time function $x(t)$ and its Fourier transform $X(f)$ are related by the \textit{analysis} and \textit{synthesis} equations:
 
@@ -13,7 +13,7 @@ x(t) &= \int_{-\infty}^{+\infty} X(f)e^{j 2\pi f t}\,df
 \quad &&\text{(inverse transform)} \tag{A.2}
 \end{align}
 
-\subsubsection*{Continuous-Time Fourier Series}
+\subsubsection{Continuous-Time Fourier Series}
 
 Periodic functions do not fall under the umbrella of well-behaved functions. Yet they are very important in the analysis of communication signals. We can side-step this problem by using the definition of the Fourier series and by invoking the \textit{Dirac delta function} $\delta(t)$.
 
@@ -26,7 +26,7 @@ x(t) &= \sum_{n} X[n]e^{j\frac{2\pi n t}{T}}
 \quad &&\text{(synthesis)} \tag{A.4}
 \end{align}
 
-\subsubsection*{Table A.1: Continuous-Time Fourier Transform Properties}
+\subsubsection{Table A.1: Continuous-Time Fourier Transform Properties}
 
 \begin{center}
 \begin{tabular}{@{}lll@{}}
@@ -47,7 +47,7 @@ Duality & $x(t) \longleftrightarrow X(f)$ & $X(t) \longleftrightarrow x(-f)$ \\[
 \end{tabular}
 \end{center}
 
-\subsubsection*{Table A.2: Continuous-Time Fourier Transform Pairs}
+\subsubsection{Table A.2: Continuous-Time Fourier Transform Pairs}
 
 \begin{center}
 \begin{tabular}{@{}lll@{}}
@@ -59,7 +59,13 @@ Complex exponential & $e^{j 2\pi f_0 t}$ & $\delta(f - f_0)$ \\
 Cosine & $\cos(2\pi f_0 t + \theta)$ & $\tfrac{1}{2}\big[e^{j\theta}\delta(f - f_0) + e^{-j\theta}\delta(f + f_0)\big]$ \\
 Sine & $\sin(2\pi f_0 t + \theta)$ & $\tfrac{1}{2j}\big[e^{j\theta}\delta(f - f_0) - e^{-j\theta}\delta(f + f_0)\big]$ \\
 Impulse train & $\sum\limits_k \delta(t - kT)$ & $\tfrac{1}{T} \sum\limits_n \delta(f - \tfrac{n}{T})$ \\
-Rectangular pulse & $\operatorname{rect}\!\left(\tfrac{t}{T}\right)$ & $T \, \operatorname{sinc}(fT) = T \, \tfrac{\sin(\pi f T)}{\pi f}$ \\
+Rectangular pulse & $\operatorname{rect}\!\left(\tfrac{t}{T}\right)$ =
+$\left\{
+\begin{array}{ll}
+1, & |t| \leq \tfrac{T}{2} \\[4pt]
+0, & \text{else}
+\end{array}
+\right.$ & $T \, \operatorname{sinc}(fT) = T \, \tfrac{\sin(\pi f T)}{\pi f}$ \\
 Bandlimited pulse & $W \, \operatorname{sinc}^2(fW)$ & --- \\
 Sinc pulse & $\operatorname{sinc}(Wt) = \tfrac{\sin(\pi W t)}{\pi W t}$ & $\tfrac{1}{W}\operatorname{rect}\!\left(\tfrac{f}{W}\right)$ \\ 
 \bottomrule
@@ -79,7 +85,7 @@ where the unboundedness of (A.1) is circumvented by means of $\delta(f)$.
 
 \textit{Dato che un segnale periodico ha durata infinita, le sue trasformate non sono funzioni ordinarie, ma distribuzioni formate da impulsi di Dirac.}
 
-\subsection*{Discrete-Time Fourier Transform}
+\subsection{Discrete-Time Fourier Transform}
 
 Consider now a well-behaved discrete-time signal $x[n]$.  
 Its discrete-time Fourier transform analysis and synthesis relationships are:
@@ -91,7 +97,7 @@ x[n] &= \int_{-1/2}^{1/2} X(\nu)\,e^{j 2\pi n \nu}\,d\nu \tag{A.8}
 
 where the frequency $\nu$ is defined on any finite interval of unit length, typically $[-\tfrac{1}{2}, \tfrac{1}{2}]$.
 
-\subsection*{Discrete Fourier Transform}
+\subsection{Discrete Fourier Transform}
 
 While the discrete-time Fourier transform offers a sound analytical framework for discrete-time signals, it is inconvenient due to its continuous frequency.
 
@@ -121,7 +127,7 @@ $x[n]$ real & $X[k] = X^*[((-k))_N]$ \\
 \end{tabular}
 \end{center}
 
-\subsection*{Z-Transform}
+\subsection{Z-Transform}
 
 The Z-transform converts a function of a discrete real variable to a function of a complex variable $z$.  
 This converts difference equations into algebraic equations and convolution into products.
@@ -134,9 +140,9 @@ X(z) = \sum_{n=0}^{\infty} x[n]\,z^{-n} \tag{A.13}
 
 while the inversion of $X(z)$ back onto $x[n]$ requires an integration on the complex plane.
 
-\section*{Matrix Algebra}
+\section{Matrix Algebra}
 
-\subsection*{Column Space, Row Space, Null Spaces}
+\subsection{Column Space, Row Space, Null Spaces}
 
 The \textbf{column space} of an $N \times M$ matrix $A$ is the set of all linear combinations of its column vectors.  
 It is therefore a subspace (whose dimension is at most $M$) of the $N$-dimensional vector space.
@@ -155,7 +161,7 @@ x_{M-1}
 \tag{B.1}
 \end{equation}
 
-\subsubsection*{Example B.1}
+\subsubsection{Example B.1}
 
 The column space of
 \begin{equation}
@@ -182,7 +188,7 @@ x_1
 These vectors satisfy $y_0 = 3y_2$, which defines a subspace of dimension $M = 2$ (that is, a plane)  
 on a vector space of dimension $N = 3$.
 
-\subsubsection*{Example B.2}
+\subsubsection{Example B.2}
 
 The \textbf{row space} of $A$ in (B.2), in turn, is the set of vectors $\mathbf{y}$ having the form
 \begin{align}
@@ -210,9 +216,9 @@ In addition, we have also two additional subspaces:
     \item \textbf{Orthogonal complement of column space} (null space of $A^T$): with dimension $N - \operatorname{rank}(A)$.
 \end{itemize}
 
-\section*{Special Matrices}
+\section{Special Matrices}
 
-\subsection*{Hermitian Matrices}
+\subsection{Hermitian Matrices}
 
 A complex matrix $A$ is said to be \textbf{Hermitian} if $A^* = A$.
 
@@ -232,7 +238,7 @@ A =
 \end{bmatrix}
 \end{equation*}
 
-\subsection*{Unitary Matrices}
+\subsection{Unitary Matrices}
 
 A complex matrix $U$ is said to be \textbf{unitary} if $U^* U = U U^* = I$.
 
@@ -243,7 +249,7 @@ A complex matrix $U$ is said to be \textbf{unitary} if $U^* U = U U^* = I$.
     Thus, $\mathbf{y}$ is a rotated version of $\mathbf{x}$, and $U$ embodies that rotation.
 \end{itemize}
 
-\subsection*{Fourier Matrices}
+\subsection{Fourier Matrices}
 
 An $N \times N$ \textbf{Fourier matrix} $U$ is a unitary matrix whose $(i,j)$th entry equals $e^{j 2\pi i j / N}$.  
 It follows that the $j$th column, for $j = 0, \ldots, N-1$, is given by
@@ -275,7 +281,7 @@ and the \textbf{IDFT} is
 
 Indeed, by interpreting the entries of $\mathbf{x}$ and $\mathbf{X}$ as sequences, (B.8) and (B.9) are scaled versions of the $\text{DFT}_N\{\cdot\}$ and $\text{IDFT}_N\{\cdot\}$ transforms in (A.9) and (A.10).
 
-\subsection*{Toeplitz and Circulant Matrices}
+\subsection{Toeplitz and Circulant Matrices}
 
 A \textbf{Toeplitz matrix} is constant along each of its diagonals.
 

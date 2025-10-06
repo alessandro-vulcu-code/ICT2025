@@ -1,2 +1,20 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Transforms}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Fourier Transforms}{3}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Continuous-Time Fourier Transform}{3}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Continuous-Time Fourier Series}{3}{subsubsection.1.1.2}%
+\contentsline {subsubsection}{\numberline {1.1.3}Table A.1: Continuous-Time Fourier Transform Properties}{3}{subsubsection.1.1.3}%
+\contentsline {subsubsection}{\numberline {1.1.4}Table A.2: Continuous-Time Fourier Transform Pairs}{4}{subsubsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.2}Discrete-Time Fourier Transform}{4}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Discrete Fourier Transform}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Z-Transform}{5}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Matrix Algebra}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Column Space, Row Space, Null Spaces}{5}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Example B.1}{6}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Example B.2}{6}{subsubsection.2.1.2}%
+\contentsline {section}{\numberline {3}Special Matrices}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Hermitian Matrices}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Unitary Matrices}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Fourier Matrices}{7}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Toeplitz and Circulant Matrices}{7}{subsection.3.4}%
