@@ -1,0 +1,309 @@
+\section*{Transforms}
+
+\subsection*{Fourier Transforms}
+
+\subsubsection*{Continuous-Time Fourier Transform}
+
+A well-behaved continuous-time function $x(t)$ and its Fourier transform $X(f)$ are related by the \textit{analysis} and \textit{synthesis} equations:
+
+\begin{align}
+X(f) &= \int_{-\infty}^{+\infty} x(t)e^{-j 2\pi f t}\,dt 
+\quad &&\text{(transform)} \tag{A.1} \\[8pt]
+x(t) &= \int_{-\infty}^{+\infty} X(f)e^{j 2\pi f t}\,df 
+\quad &&\text{(inverse transform)} \tag{A.2}
+\end{align}
+
+\subsubsection*{Continuous-Time Fourier Series}
+
+Periodic functions do not fall under the umbrella of well-behaved functions. Yet they are very important in the analysis of communication signals. We can side-step this problem by using the definition of the Fourier series and by invoking the \textit{Dirac delta function} $\delta(t)$.
+
+Consider a periodic signal $x(t)$ whose period $T > 0$ is the smallest real number such that $x(t) = x(t + T)$. The continuous-time Fourier series of such signal is defined as:
+
+\begin{align}
+X[n] &= \frac{1}{T} \int_{0}^{T} x(t)e^{-j\frac{2\pi n t}{T}}\,dt 
+\quad &&\text{(analysis)} \tag{A.3} \\[8pt]
+x(t) &= \sum_{n} X[n]e^{j\frac{2\pi n t}{T}} 
+\quad &&\text{(synthesis)} \tag{A.4}
+\end{align}
+
+\subsubsection*{Table A.1: Continuous-Time Fourier Transform Properties}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Property} & \textbf{Aperiodic Signal} & \textbf{Fourier Transform} \\ \midrule
+Linearity & $a x(t) + b y(t)$ & $a X(f) + b Y(f)$ \\
+Time shift & $x(t - t_0)$ & $e^{-j 2 \pi f t_0} X(f)$ \\
+Conjugation & $x^*(t)$ & $X^*(-f)$ \\
+Time reversal & $x(-t)$ & $X(-f)$ \\
+Time scaling & $x(at)$ & $\frac{1}{|a|} X\!\left(\frac{f}{a}\right)$ \\
+Convolution & $x(t) * y(t) = \int x(\tau) y(t - \tau)\,d\tau$ & $X(f) Y(f)$ \\
+Autocorrelation & $x(t) * x^*(-t)$ & $|X(f)|^2$ \\
+Modulation & $x(t)e^{j 2 \pi f_0 t}$ & $X(f - f_0)$ \\
+Conjugate symmetry & $x(t)$ real & $X(f) = X^*(-f)$ \\
+Duality & $x(t) \longleftrightarrow X(f)$ & $X(t) \longleftrightarrow x(-f)$ \\[4pt]
+\textbf{Parseval's theorem} & $\displaystyle \int x(t)y^*(t)\,dt$ & $\displaystyle \int X(f)Y^*(f)\,df$ \\ 
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection*{Table A.2: Continuous-Time Fourier Transform Pairs}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Function} & \textbf{Time-domain} & \textbf{Frequency-domain} \\ \midrule
+Impulse & $\delta(t)$ & $1$ \\
+Constant function & $1$ & $\delta(f)$ \\
+Complex exponential & $e^{j 2\pi f_0 t}$ & $\delta(f - f_0)$ \\
+Cosine & $\cos(2\pi f_0 t + \theta)$ & $\tfrac{1}{2}\big[e^{j\theta}\delta(f - f_0) + e^{-j\theta}\delta(f + f_0)\big]$ \\
+Sine & $\sin(2\pi f_0 t + \theta)$ & $\tfrac{1}{2j}\big[e^{j\theta}\delta(f - f_0) - e^{-j\theta}\delta(f + f_0)\big]$ \\
+Impulse train & $\sum\limits_k \delta(t - kT)$ & $\tfrac{1}{T} \sum\limits_n \delta(f - \tfrac{n}{T})$ \\
+Rectangular pulse & $\operatorname{rect}\!\left(\tfrac{t}{T}\right)$ & $T \, \operatorname{sinc}(fT) = T \, \tfrac{\sin(\pi f T)}{\pi f}$ \\
+Bandlimited pulse & $W \, \operatorname{sinc}^2(fW)$ & --- \\
+Sinc pulse & $\operatorname{sinc}(Wt) = \tfrac{\sin(\pi W t)}{\pi W t}$ & $\tfrac{1}{W}\operatorname{rect}\!\left(\tfrac{f}{W}\right)$ \\ 
+\bottomrule
+\end{tabular}
+\end{center}
+
+The continuous-time Fourier series creates as an output a weighting (ponderazione, quanto peso) of the fundamental frequency of the signal $e^{j \frac{2\pi t}{T}}$ and its harmonics.
+
+We can express the Fourier transform of a periodic signal as:
+
+\begin{align}
+X(f) &= \sum_{n} X[n]\,\delta\!\left(f - \frac{n}{T}\right) \tag{A.5} \\[6pt]
+x(t) &= \int_{-\infty}^{+\infty} X(f)\,e^{j 2\pi f t}\,df \tag{A.6}
+\end{align}
+
+where the unboundedness of (A.1) is circumvented by means of $\delta(f)$.
+
+\textit{Dato che un segnale periodico ha durata infinita, le sue trasformate non sono funzioni ordinarie, ma distribuzioni formate da impulsi di Dirac.}
+
+\subsection*{Discrete-Time Fourier Transform}
+
+Consider now a well-behaved discrete-time signal $x[n]$.  
+Its discrete-time Fourier transform analysis and synthesis relationships are:
+
+\begin{align}
+X(\nu) &= \sum_{n} x[n]\,e^{-j 2\pi n \nu} \tag{A.7} \\[6pt]
+x[n] &= \int_{-1/2}^{1/2} X(\nu)\,e^{j 2\pi n \nu}\,d\nu \tag{A.8}
+\end{align}
+
+where the frequency $\nu$ is defined on any finite interval of unit length, typically $[-\tfrac{1}{2}, \tfrac{1}{2}]$.
+
+\subsection*{Discrete Fourier Transform}
+
+While the discrete-time Fourier transform offers a sound analytical framework for discrete-time signals, it is inconvenient due to its continuous frequency.
+
+So an alternative is the \textbf{DFT} and the \textbf{Fast Fourier Transform (FFT)}.
+
+The DFT is extremely important in digital signal processing and communications.
+
+It applies to finite-length discrete-time signals and, since any finite-length signal can be repeated to form a periodic discrete-time signal, the DFT can also be interpreted as applying to periodic signals.
+
+\begin{align}
+X[k] &= \sum_{n=0}^{N-1} x[n]\,e^{-j\frac{2\pi}{N}kn}, \quad && k = 0, \ldots, N-1 \tag{A.9} \\[6pt]
+x[n] &= \frac{1}{N} \sum_{k=0}^{N-1} X[k]\,e^{j\frac{2\pi}{N}kn}, \quad && n = 0, \ldots, N-1 \tag{A.10}
+\end{align}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Length-$N$ sequence} & \textbf{$N$-point DFT} \\ \midrule
+$x[n]$ & $X[k]$ \\
+$a x[n] + b y[n]$ & $a X[k] + b Y[k]$ \\
+$x[n]$ & $N X[((-k))_N]$ \\
+$x[(n - m))_N]$ & $e^{j 2\pi k m / N} X[k]$ \\
+$\sum\limits_m x[m] y[((n - m))_N]$ & $X[k] Y[k]$ \\
+$x^*[n]$ & $X^*[((-k))_N]$ \\
+$x[n]$ real & $X[k] = X^*[((-k))_N]$ \\ 
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Z-Transform}
+
+The Z-transform converts a function of a discrete real variable to a function of a complex variable $z$.  
+This converts difference equations into algebraic equations and convolution into products.
+
+The Z-transform of a causal function $x[n]$ is:
+
+\begin{equation}
+X(z) = \sum_{n=0}^{\infty} x[n]\,z^{-n} \tag{A.13}
+\end{equation}
+
+while the inversion of $X(z)$ back onto $x[n]$ requires an integration on the complex plane.
+
+\section*{Matrix Algebra}
+
+\subsection*{Column Space, Row Space, Null Spaces}
+
+The \textbf{column space} of an $N \times M$ matrix $A$ is the set of all linear combinations of its column vectors.  
+It is therefore a subspace (whose dimension is at most $M$) of the $N$-dimensional vector space.
+
+We can write the linear combination as the product of $A$ with the vector 
+$\mathbf{x} = [x_0, \ldots, x_{M-1}]^T$:
+
+\begin{equation}
+A
+\begin{bmatrix}
+x_0 \\
+\vdots \\
+x_{M-1}
+\end{bmatrix}
+= \mathbf{y} = A\mathbf{x}
+\tag{B.1}
+\end{equation}
+
+\subsubsection*{Example B.1}
+
+The column space of
+\begin{equation}
+A =
+\begin{bmatrix}
+0 & 3 \\
+2 & 0 \\
+0 & 1
+\end{bmatrix}
+\tag{B.2}
+\end{equation}
+is the set of vectors $\mathbf{y} = [y_0\ y_1\ y_2]^T$ having the form
+\begin{align}
+\mathbf{y} &= A\mathbf{x} \tag{B.3} \\
+&=
+\begin{bmatrix}
+3x_1 \\
+2x_0 \\
+x_1
+\end{bmatrix}.
+\tag{B.4}
+\end{align}
+
+These vectors satisfy $y_0 = 3y_2$, which defines a subspace of dimension $M = 2$ (that is, a plane)  
+on a vector space of dimension $N = 3$.
+
+\subsubsection*{Example B.2}
+
+The \textbf{row space} of $A$ in (B.2), in turn, is the set of vectors $\mathbf{y}$ having the form
+\begin{align}
+\mathbf{y} &= A^T \mathbf{x} \tag{B.5} \\[6pt]
+&=
+\begin{bmatrix}
+2x_1 \\
+3x_0 + x_2
+\end{bmatrix},
+\tag{B.6}
+\end{align}
+which defines the entire vector space of dimension $M = 2$.
+
+\medskip
+
+\textit{The column rank and row rank correspond to the dimensions of the column space and row space, respectively.}
+
+The fact that the column and row ranks coincide in this case is not a coincidence.  
+The row and column ranks always coincide, giving the \textbf{rank of a matrix}.
+
+In addition, we have also two additional subspaces:
+
+\begin{itemize}
+    \item \textbf{Orthogonal complement of row space} (null space of $A$): all vectors satisfying $A\mathbf{x} = 0$, which has dimension $M - \operatorname{rank}(A)$.
+    \item \textbf{Orthogonal complement of column space} (null space of $A^T$): with dimension $N - \operatorname{rank}(A)$.
+\end{itemize}
+
+\section*{Special Matrices}
+
+\subsection*{Hermitian Matrices}
+
+A complex matrix $A$ is said to be \textbf{Hermitian} if $A^* = A$.
+
+\begin{itemize}
+    \item They are quadratic.  
+    \item They have real elements on the diagonal.  
+    \item Off-diagonal elements are complex conjugates of each other.  
+    \item Eigenvalues are always real.
+\end{itemize}
+
+\begin{equation*}
+A =
+\begin{bmatrix}
+2 & 1+i & 4 \\
+1-i & 3 & 0 \\
+4 & 0 & 5
+\end{bmatrix}
+\end{equation*}
+
+\subsection*{Unitary Matrices}
+
+A complex matrix $U$ is said to be \textbf{unitary} if $U^* U = U U^* = I$.
+
+\begin{itemize}
+    \item $U$ is nonsingular, and $U^* = U^{-1}$.  
+    \item The columns of $U$ form an orthonormal set, as do the rows of $U$.  
+    \item For any complex vector $\mathbf{x}$, the vector $\mathbf{y} = U \mathbf{x}$ satisfies $|\mathbf{y}| = |\mathbf{x}|$.  
+    Thus, $\mathbf{y}$ is a rotated version of $\mathbf{x}$, and $U$ embodies that rotation.
+\end{itemize}
+
+\subsection*{Fourier Matrices}
+
+An $N \times N$ \textbf{Fourier matrix} $U$ is a unitary matrix whose $(i,j)$th entry equals $e^{j 2\pi i j / N}$.  
+It follows that the $j$th column, for $j = 0, \ldots, N-1$, is given by
+
+\begin{equation}
+U_j = \frac{1}{\sqrt{N}}
+\begin{bmatrix}
+1 \\
+e^{j 2\pi j / N} \\
+\vdots \\
+e^{j 2\pi (N-1) j / N}
+\end{bmatrix}
+\tag{B.7}
+\end{equation}
+
+The \textbf{DFT} of a vector $\mathbf{x}$ is
+
+\begin{equation}
+\mathbf{X} = \sqrt{N} \, U^* \mathbf{x}
+\tag{B.8}
+\end{equation}
+
+and the \textbf{IDFT} is
+
+\begin{equation}
+\mathbf{x} = \frac{1}{\sqrt{N}} \, U \mathbf{X}
+\tag{B.9}
+\end{equation}
+
+Indeed, by interpreting the entries of $\mathbf{x}$ and $\mathbf{X}$ as sequences, (B.8) and (B.9) are scaled versions of the $\text{DFT}_N\{\cdot\}$ and $\text{IDFT}_N\{\cdot\}$ transforms in (A.9) and (A.10).
+
+\subsection*{Toeplitz and Circulant Matrices}
+
+A \textbf{Toeplitz matrix} is constant along each of its diagonals.
+
+A \textbf{Toeplitz circular matrix} is completely described by any of its rows,  
+of which the other rows are just circular shifts with offsets to the row indices:
+
+\begin{equation}
+A =
+\begin{bmatrix}
+2 & 5 & 1 \\
+4 & 2 & 5 \\
+3 & 4 & 2
+\end{bmatrix}
+,\qquad
+B =
+\begin{bmatrix}
+2 & 5 & 1 \\
+1 & 2 & 5 \\
+5 & 1 & 2
+\end{bmatrix}.
+\tag{B.10}
+\end{equation}
+
+If $A$ is an $N \times N$ \textbf{circulant matrix}, then the following holds:
+
+\begin{itemize}
+    \item The eigenvectors of $A$ equal the columns of the Fourier matrix $U$ in (B.7).
+    \item The eigenvalues of $A$ equal the entries of $U^* \mathbf{a}$, where $\mathbf{a}$ is any column of $A$.
+\end{itemize}
+
+Hence, the eigenvalues of a circulant matrix are directly the DFT of any o
