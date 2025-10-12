@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.9.29)  10 OCT 2025 11:57
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.9.29)  12 OCT 2025 16:26
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -344,7 +344,8 @@ Package fontspec Info:
 (fontspec)             <->"Times New
 (fontspec)             Roman/BI/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
 
- (./Cryptography.aux)
+
+No file Cryptography.aux.
 \openout1 = `Cryptography.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
@@ -368,10 +369,11 @@ LaTeX Font Info:    ... okay on input line 22.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 22.
 LaTeX Font Info:    ... okay on input line 22.
 Package hyperref Info: Link coloring OFF on input line 22.
- (./Cryptography.out) (./Cryptography.out)
 \@outlinefile=\write3
 \openout3 = `Cryptography.out'.
 
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -453,86 +455,4 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/b/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 22.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 22.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/b/n on input line 22.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/TimesNewRoman(0)/b/it on input line 22.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 22.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 22.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
-(/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
- (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-[1
-
-] (./Cryptography.toc)
-\tf@toc=\write4
-\openout4 = `Cryptography.toc'.
-
-
-
-[2] (./Lessons/Chapter1.tex
-File: Pictures/encrypt example.png Graphic file (type bmp)
-<Pictures/encrypt example.png>
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-
-[3]
-
-[4]
-Overfull \hbox (10.5321pt too wide) in paragraph at lines 123--123
-[]\TU/lmtt/m/n/12 LIVITCSWPIYVEWHEVSRIQMXLEYVEOIEWHRXEXIPFEMVEWHKVSTYLXZIXLIKIIXPIJVSZEYPE...[] 
- []
-
-
-
-[5]
-
-[6]
-
-[7]
-Overfull \hbox (3.30902pt too wide) detected at line 266
-[][] \OMS/cmsy/m/n/12 ! [] ! [] ! [] ! [] ! [] ! []
- []
-
-
-
-[8]
-
-[9]
-
-[10]
-
-[11])
-
-[12] (./Cryptography.aux)
- ***********
-LaTeX2e <2024-11-01> patch level 2
-L3 programming layer <2025-01-18>
- ***********
-Package rerunfilecheck Info: File `Cryptography.out' has not changed.
-(rerunfilecheck)             Checksum: 0C7F9D69677671F6BA6D65C484A76428;8229.
- ) 
-Here is how much of TeX's memory you used:
- 13548 strings out of 475269
- 260746 string characters out of 5762101
- 721287 words of memory out of 5000000
- 36333 multiletter control sequences out of 15000+600000
- 569656 words of font info for 94 fonts, out of 8000000 for 9000
- 350 hyphenation exceptions out of 8191
- 79i,9n,93p,553b,354s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-Output written on Cryptography.pdf (12 pages).
+(Font)                  OT1/cmss/m/n -->

@@ -1,24 +1,38 @@
-\documentclass[12pt]{article}
+\documentclass[a4paper,12pt]{book}
 
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage{amsmath}    % Per gli ambienti matematici come bmatrix
-\usepackage{amssymb}    % Per simboli matematici aggiuntivi
-\usepackage{bm}         % Per vettori in grassetto
-\usepackage{physics}
+\usepackage{geometry}
+\usepackage{fontspec}
+\usepackage{booktabs}
 
-\title{Chapter 1: Introduction to Fiber Optics}
-\author{}
-\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}        % per vettori in grassetto: \mathbf o \bm
+\usepackage{physics}   % per \nabla, \Re, \Im, \dv, ecc.
+\usepackage{siunitx}   % per unità fisiche [V/m], [A/m], ecc.
+
+\geometry{margin=2.5cm}
+\setmainfont{Times New Roman}
+
+\geometry{a4paper, margin=1in}
+
+\title{Fiber Optics Notes}
+\author{Alessandro Vulcu}
+\date{\today}
 
 \begin{document}
 
 \maketitle
+\newpage
+\tableofcontents
+\newpage
 
 \input{Chapters/Chapter1.tex}
-
-
 
 \end{document}

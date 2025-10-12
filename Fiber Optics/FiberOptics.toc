@@ -1,0 +1,23 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {chapter}{\numberline {1}Basics of Electromagnetic Waves}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Constitutive relations}{7}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Helmholtz’s equations}{7}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Boundary conditions}{8}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Poynting vector}{9}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Polarization}{9}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Polarization ellipse}{10}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Jones vector representation}{10}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Types of polarization}{11}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Stokes vectors}{11}{section.1.9}%
+\contentsline {section}{\numberline {1.10}Unit Stokes vectors}{12}{section.1.10}%
+\contentsline {section}{\numberline {1.11}Poincaré sphere}{12}{section.1.11}%
+\contentsline {section}{\numberline {1.12}Role of amplitude and phase}{13}{section.1.12}%
+\contentsline {section}{\numberline {1.13}Degree of polarization (DOP)}{13}{section.1.13}%
+\contentsline {section}{\numberline {1.14}Pauli matrices}{14}{section.1.14}%
+\contentsline {section}{\numberline {1.15}Coherence matrix}{14}{section.1.15}%
+\contentsline {section}{\numberline {1.16}Summary about polarization}{14}{section.1.16}%
+\contentsline {section}{\numberline {1.17}Complex envelope}{15}{section.1.17}%
+\contentsline {section}{\numberline {1.18}Analogies with sinusoidal fields}{15}{section.1.18}%
+\contentsline {section}{\numberline {1.19}Maxwell’s equations for complex envelopes}{16}{section.1.19}%
+\contentsline {section}{\numberline {1.20}Maxwell’s equations in the frequency domain}{16}{section.1.20}%
