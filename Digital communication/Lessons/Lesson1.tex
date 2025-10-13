@@ -313,3 +313,419 @@ If $A$ is an $N \times N$ \textbf{circulant matrix}, then the following holds:
 \end{itemize}
 
 Hence, the eigenvalues of a circulant matrix are directly the DFT of any o
+
+\section{Matrix Decompositions}
+\subsection{Eigenvalue Decomposition}
+
+Any $N \times N$ Hermitian matrix $A$ can be decomposed as:
+\[
+A = U \Lambda U^* = \sum_{i=0}^{N-1} \lambda_i(A)\, \mathbf{u}_i \mathbf{u}_i^*, \tag{B.12, B.13}
+\]
+where:
+\begin{itemize}
+    \item $U = [\,\mathbf{u}_0 \ \cdots \ \mathbf{u}_{N-1}\,]$ is a unitary matrix whose columns are the eigenvectors of $A$.
+    \item $\Lambda = \text{diag}(\lambda_0(A), \ldots, \lambda_{N-1}(A))$ is a diagonal matrix containing the eigenvalues of $A$.
+\end{itemize}
+
+Each eigenvector $\mathbf{u}_i$ satisfies:
+\[
+A \mathbf{u}_i = \lambda_i(A) \mathbf{u}_i, \quad i = 0, \ldots, N-1.\tag{B.14}
+\]
+
+
+The eigenvalues of a Hermitian matrix are always real. A Hermitian matrix $A$ is:
+\begin{itemize}
+    \item \textbf{Positive semidefinite} if, for every nonzero complex vector $\mathbf{x}$,
+    \[
+    \mathbf{x}^* A \mathbf{x} \geq 0. \tag{B.15}
+    \]
+    \item \textbf{Positive definite} if the inequality is strict.
+\end{itemize}
+
+If $A$ has full rank ($\text{rank}(A) = N$), it is invertible, and the eigenvectors of $A$ and $A^{-1}$ coincide. The inverse is given by:
+\[
+A^{-1} = U \Lambda^{-1} U^* = U \, \text{diag}\!\left(\frac{1}{\lambda_0(A)}, \ldots, \frac{1}{\lambda_{N-1}(A)}\right) U^*. \tag{B.16, B.17}
+\]
+
+Eigenvectors are defined up to phase rotations; that is, $e^{j\phi}\mathbf{u}_i$ is also a valid eigenvector corresponding to the same eigenvalue.
+
+\subsection{Singular-Value Decomposition (SVD)}
+
+For any matrix \(A \in \mathbb{C}^{N\times M}\) (or \(\mathbb{R}^{N\times M}\)), there exists a factorization:
+\[
+A = U\,\Sigma\,V^{*}, \tag{B.18}
+\]
+where \(U \in \mathbb{C}^{N\times N}\) and \(V \in \mathbb{C}^{M\times M}\) are unitary (orthogonal if real), and
+\(\Sigma \in \mathbb{R}^{N\times M}\) is a diagonal matrix with non-negative entries
+\(\sigma_0 \ge \sigma_1 \ge \cdots \ge 0\), called the \textbf{singular values} of \(A\).
+
+\paragraph{Singular vectors.}
+Let \(u_j\) and \(v_j\) denote the \(j\)-th left and right singular vectors, respectively.
+Then:
+\[
+A\,v_j = \sigma_j\,u_j, \qquad A^{*}\,u_j = \sigma_j\,v_j, \qquad j = 0, \ldots, \min(N,M) - 1. \tag{B.19, B.20}
+\]
+
+\paragraph{Relationship with eigenvalue decomposition.}
+\begin{itemize}
+  \item The \emph{squared singular values} of \(A\) are the nonzero eigenvalues of \(A^{*}A\) and \(AA^{*}\):
+  \[
+  A^{*}A = V\,\Sigma^{*}\Sigma\,V^{*}, \qquad
+  AA^{*} = U\,\Sigma\Sigma^{*}\,U^{*}, \qquad
+  \lambda_j(A^{*}A) = \sigma_j^2.
+  \]
+  \item The right singular vectors \(v_j\) are the eigenvectors of \(A^{*}A\).
+  \item The left singular vectors \(u_j\) are the eigenvectors of \(AA^{*}\).
+\end{itemize}
+
+\paragraph{Rank and fundamental subspaces.}
+If \(r = \operatorname{rank}(A)\) is the number of nonzero singular values, then:
+\[
+\dim \mathcal{R}(A) = \dim \mathcal{R}(A^{*}) = r, \qquad
+\dim \mathcal{N}(A) = M - r, \qquad
+\dim \mathcal{N}(A^{*}) = N - r.
+\]
+
+\begin{center}
+\begin{tabular}{lcl}
+\multicolumn{3}{c}{\textbf{Table B.1 — Bases of the column, row, and null spaces via SVD}}\\
+\hline
+\textbf{Subspace} & \textbf{Dimension} & \textbf{Basis (from SVD)} \\
+\hline
+Column space \(\mathcal{R}(A)\) & \(r\) & First \(r\) columns of \(U\) \\
+Row space \(\mathcal{R}(A^{*})\) & \(r\) & First \(r\) columns of \(V\) \\
+Null space of \(A^{*}\) & \(N-r\) & Last \(N-r\) columns of \(U\) \\
+Null space of \(A\) & \(M-r\) & Last \(M-r\) columns of \(V\) \\
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph{Notes.}
+\begin{itemize}
+  \item The SVD provides orthonormal bases for the column, row, and null spaces of \(A\).
+  \item Each singular value \(\sigma_j\) measures how much \(A\) stretches the vector \(v_j\) along direction \(u_j\).
+\end{itemize}
+
+\subsection{QR Decomposition}
+
+Given \( N \ge M \), any \( N \times M \) matrix \( A \) can be factored as
+\[
+A = Q R, \tag{B.21}
+\]
+where \( Q \) is an \( N \times N \) unitary (orthogonal if real) matrix, and \( R \) is an \( N \times M \) upper-triangular matrix whose last \( (N - M) \) rows are zero.
+
+This factorization is particularly useful for solving least-squares problems and for numerical stability in matrix computations.
+
+
+\subsection{Trace and Determinant}
+
+The \textbf{trace} of a square matrix equals the sum of the entries on its main diagonal, and also the sum of its eigenvalues:
+\[
+\mathrm{tr}(A) = \sum_i a_{ii} = \sum_i \lambda_i.
+\]
+It is a linear operation invariant under change of basis and under pre- or post-multiplication by unitary matrices.
+
+The \textbf{determinant} of a square matrix equals the product of its eigenvalues, each counted with its algebraic multiplicity.  
+If the determinant is nonzero, the matrix is invertible; otherwise, it is singular.  
+For an invertible matrix:
+\[
+\det(A^{-1}) = \frac{1}{\det(A)}.\tag{B.22}
+\]
+
+\paragraph{Useful determinant properties.}
+For properly dimensioned matrices \(A\) and \(B\):
+\[
+\det(I + AB) = \det(I + BA),\tag{B.23}
+\]
+where \(I\) denotes the identity matrix of suitable size.  
+Also,
+\[
+\det(AB) = \det(BA) = \det(A)\,\det(B).\tag{B.24, B.25}
+\]
+
+\paragraph{Trace properties.}
+The trace satisfies the cyclic property:
+\[
+\mathrm{tr}(AB) = \mathrm{tr}(BA), \tag{B.26}
+\]
+and, more generally, is invariant under cyclic permutations of factors.
+
+\paragraph{Summary.}
+\begin{itemize}
+  \item \(\mathrm{tr}(A)\) is the sum of eigenvalues of \(A\).
+  \item \(\det(A)\) is the product of eigenvalues of \(A\).
+  \item Both quantities are invariant under unitary transformations.
+\end{itemize}
+
+\subsection{Frobenius Norm}
+
+The Frobenius norm of an \( N \times M \) matrix \( A \) equals
+\begin{equation}
+\|A\|_F = \sqrt{\mathrm{tr}(A A^{*})},
+\tag{B.27}
+\end{equation}
+which can also be written as
+\begin{equation}
+\|A\|_F = \sqrt{\mathrm{tr}(A^{*} A)}.
+\tag{B.28}
+\end{equation}
+
+Expanding the argument of the square root, one obtains
+\begin{equation}
+\|A\|_F = 
+\sqrt{
+\sum_{i=0}^{N-1}
+\sum_{j=0}^{M-1}
+|A_{i,j}|^2
+}.
+\tag{B.29}
+\end{equation}
+
+In the special case where \(A\) is a vector, this reduces to the standard Euclidean norm.  
+Unless otherwise stated, this is the norm definition used throughout the text.  
+The distance between two vectors is the norm of their difference, unless otherwise stated as Euclidean distance.
+
+
+\subsection{Moore–Penrose Pseudoinverse}
+
+The pseudoinverse generalizes the concept of a matrix inverse.  
+For an \( N \times M \) rectangular matrix \(A\), the \textbf{Moore–Penrose pseudoinverse} \(A^{\dagger}\) is the unique matrix satisfying:
+\begin{align}
+A A^{\dagger} A &= A, \tag{B.30} \\
+A^{\dagger} A A^{\dagger} &= A^{\dagger}, \tag{B.31}
+\end{align}
+and such that both \(A A^{\dagger}\) and \(A^{\dagger} A\) are Hermitian.
+
+\paragraph{Special cases.}
+\begin{itemize}
+  \item If \(A^{*}A\) is invertible, it is easily verified that
+  \begin{equation}
+  A^{\dagger} = (A^{*}A)^{-1}A^{*},
+  \tag{B.32}
+  \end{equation}
+  which satisfies \(A^{\dagger}A = I\).  
+  This may be the case when \(N \ge M\).
+
+  \item If \(A A^{*}\) is invertible, then
+  \begin{equation}
+  A^{\dagger} = A^{*}(A A^{*})^{-1},
+  \tag{B.33}
+  \end{equation}
+  which satisfies \(A A^{\dagger} = I\).  
+  This may occur when \(N \le M\).
+
+  \item If \(A\) is square and invertible, both formulas coincide, and the pseudoinverse reduces to the regular inverse:
+  \[
+  A^{\dagger} = A^{-1}.
+  \]
+\end{itemize}
+
+\subsection{Matrix Inversion Lemma}
+
+An identity that is often useful in many derivations is the \textbf{matrix inversion lemma}, which states that:
+\begin{equation}
+(A + B C D)^{-1}
+= A^{-1} - A^{-1} B \left(C^{-1} + D A^{-1} B \right)^{-1} D A^{-1}.
+\tag{B.34}
+\end{equation}
+
+This formula, also known as the \textbf{Woodbury matrix identity}, allows computing the inverse of the linear operator on the left-hand side whenever the inverses of its two main components, \(A\) and \(C\), are known.
+
+
+\subsection{Kronecker Product}
+
+The \textbf{Kronecker product} extends the outer product of vectors to matrices.  
+Given an \( N_A \times M_A \) matrix \(A\) and an \( N_B \times M_B \) matrix \(B\), their Kronecker product is the \( (N_A N_B) \times (M_A M_B) \) matrix defined as:
+\begin{equation}
+A \otimes B =
+\begin{bmatrix}
+[A]_{0,0} B & \cdots & [A]_{0,M_A-1} B \\
+\vdots & \ddots & \vdots \\
+[A]_{N_A-1,0} B & \cdots & [A]_{N_A-1,M_A-1} B
+\end{bmatrix}.
+\tag{B.35}
+\end{equation}
+
+Like the regular matrix product, the Kronecker product is noncommutative, linear, and associative.  
+In addition, the following properties hold:
+\begin{equation}
+(A \otimes B)^{*} = A^{*} \otimes B^{*},
+\tag{B.36}
+\end{equation}
+and, if both \(A\) and \(B\) are invertible,
+\begin{equation}
+(A \otimes B)^{-1} = A^{-1} \otimes B^{-1}.
+\tag{B.37}
+\end{equation}
+
+Finally, if \(A\) and \(B\) have \(r_A\) and \(r_B\) nonzero singular values, respectively, then \(A \otimes B\) has \(r_A r_B\) nonzero singular values given by all the cross-products of those singular values.
+
+\section{Random Variables and Processes}
+
+\subsection{Random Variables}
+
+The random variables in this section are regarded as continuous unless otherwise indicated, yet most of the concepts extend to discrete distributions with a probability mass function (PMF) in place of the probability density function (PDF), and with a proper replacement of integrals by summations.
+
+
+\subsubsection{Bayes' Theorem}
+
+Given two random variables \(x\) and \(y\) with joint PDF \( f_{xy}(\cdot, \cdot) \) and with marginals \( f_x(\cdot) \) and \( f_y(\cdot) \),  
+the respective conditional distributions are obtained as:
+\begin{align}
+f_{y|x}(y|x) &= \frac{f_{xy}(x, y)}{f_x(x)}, \tag{C.1} \\
+f_{x|y}(x|y) &= \frac{f_{xy}(x, y)}{f_y(y)}, \tag{C.2}
+\end{align}
+respectively for \( f_x(x) > 0 \) and \( f_y(y) > 0 \).
+
+Bayes’ theorem then states:
+\begin{equation}
+f_{x|y}(x|y) = \frac{f_{y|x}(y|x) \, f_x(x)}{f_y(y)}.
+\tag{C.3}
+\end{equation}
+
+Bayes’ theorem has been said to play a role similar to that of Pythagoras’ theorem in geometry — a comparison that seems appropriate given its importance and the triangular relationship it establishes between the joint distribution and the two conditionals.
+
+\subsection{Expectation}
+
+Given a real scalar \( x \) with PDF \( f_x(\cdot) \), the expected value (also called the \textbf{mean} or \textbf{average}) of \( x \) can be obtained directly from \( f_x(x) \) as:
+\begin{equation}
+\mathbb{E}[x] = \int_{-\infty}^{\infty} x \, f_x(x) \, dx.
+\tag{C.4}
+\end{equation}
+
+It can also be expressed in terms of the cumulative distribution function (CDF) \( F_x(\cdot) \), where
+\[
+F_x(x) = \int_{-\infty}^{x} f_x(\lambda) \, d\lambda, \quad \text{and} \quad f_x(x) = \frac{dF_x(x)}{dx},
+\]
+through the relationship:
+\begin{equation}
+\mathbb{E}[x] = \int_{0}^{\infty} \big(1 - F_x(x)\big) \, dx - \int_{-\infty}^{0} F_x(x) \, dx.
+\tag{C.5}
+\end{equation}
+
+This latter form is often useful when working with the CDF directly, since it avoids differentiating \( F_x(x) \).  
+If \( x \) is complex, the expression in (C.4) applies with integration over the complex plane.  
+When integration limits are not explicitly indicated, they are to be understood as covering the support of the random variable — the region where its probability is nonzero.
+
+
+\subsection{Correlation}
+
+The covariance between two random scalars \( x \) and \( y \), with respective means \( \mu_x = \mathbb{E}[x] \) and \( \mu_y = \mathbb{E}[y] \), is given by:
+\begin{equation}
+R_{xy} = \mathbb{E}\big[(x - \mu_x)(y - \mu_y)^{*}\big].
+\tag{C.6}
+\end{equation}
+
+When \( x = y \), this reduces to the variance:
+\[
+\mathrm{var}[x] = \sigma_x^2 = R_{xx}.
+\]
+In signal processing and communications, the term \emph{correlation} is often used interchangeably with \emph{covariance}.  
+In statistics, however, the term \emph{correlation} usually refers to the \emph{correlation coefficient}, obtained by scaling:
+\[
+\rho_{xy} = \frac{R_{xy}}{\sigma_x \sigma_y},
+\]
+which ensures \( \rho_{xy} \in [-1, 1] \).
+
+For random vectors \( \mathbf{x} \) and \( \mathbf{y} \), the covariance (or correlation) matrix is defined as:
+\begin{equation}
+R_{xy} = \mathbb{E}\big[(\mathbf{x} - \mu_x)(\mathbf{y} - \mu_y)^{*}\big].
+\tag{C.7}
+\end{equation}
+
+If \( \mathbf{x} = \mathbf{y} \), this reduces to the covariance (or correlation) matrix of \( \mathbf{x} \), denoted \( R_{xx} \).  
+Properly scaling the entries of \( R_{xx} \) yields a matrix of correlation coefficients.
+
+A concept frequently used in MIMO systems is that of \textbf{uncorrelatedness}:  
+two variables \( x \) and \( y \) are said to be uncorrelated if \( R_{xy} = 0 \).  
+If two random variables are independent, then they are also uncorrelated because:
+\begin{align}
+R_{xy} &= \mathbb{E}\big[(x - \mu_x)(y - \mu_y)^{*}\big] \notag \\
+       &= \mathbb{E}[x - \mu_x] \, \mathbb{E}[y^{*} - \mu_y^{*}] \notag \\
+       &= 0.
+\tag{C.8–C.10}
+\end{align}
+
+However, note that the converse is not necessarily true:  
+two uncorrelated variables need not be independent.
+
+\[
+\text{Independence:} \quad f_{xy}(x,y) = f_x(x) \, f_y(y).
+\]
+
+\subsection{Properness}
+
+Another important notion that distinguishes a relevant class of signals is \textbf{properness}.  
+A complex random scalar \( x \) is said to be \emph{proper complex} if
+\[
+\mathbb{E}[x^2] = \mathbb{E}[|x|^2].
+\]
+Properness requires that the real and imaginary parts of \(x\), denoted \(\Re\{x\}\) and \(\Im\{x\}\), be \textbf{uncorrelated and have the same variance}.  
+
+This concept generalizes naturally to vectors:  
+a complex random vector \( \mathbf{x} \) is proper if
+\[
+\mathbb{E}[\mathbf{x} \mathbf{x}^{\mathrm{T}}] = \mathbb{E}[\mathbf{x}] \, \mathbb{E}[\mathbf{x}^{\mathrm{T}}].
+\]
+In other words, \( \Re\{\mathbf{x}\} \) and \( \Im\{\mathbf{x}\} \) have identical covariance matrices, and their cross-covariance is zero.  
+
+Any subvector of a proper complex vector is also proper.  
+For instance, if \( \mathbf{x} = [x_0, x_1]^{\mathrm{T}} \) is proper, then both \( x_0 \) and \( x_1 \) are proper complex random variables.  
+However, the converse is not necessarily true: two individually proper variables need not be jointly proper.
+
+Properness is preserved under \textbf{affine transformations}.  
+That is, if \(x\) is proper complex, then
+\[
+y = A x + b
+\]
+is also proper complex for any constant matrix \(A\) and vector \(b\).
+
+
+\subsection{Circular Symmetry}
+
+A random scalar \( x \) is said to be \textbf{circularly symmetric} if its distribution remains unchanged when \(x\) is rotated about its mean by an arbitrary angle \( \phi \), i.e.,
+\[
+\text{the distribution of } (x - \mathbb{E}[x]) e^{j\phi}
+\]
+is identical to that of \( (x - \mathbb{E}[x]) \) for any arbitrary \( \phi \).  
+
+This property generalizes directly to random vectors and is preserved under affine transformations.  
+For matrices, circular symmetry generalizes into the concept of \textbf{unitary invariance}, described below.
+
+
+\subsection{Unitary Invariance}
+
+A random matrix \( \mathbf{X} \) is said to be \textbf{left unitarily invariant} if its distribution is identical to that of \( \mathbf{U} \mathbf{X} \) for any unitary matrix \( \mathbf{U} \) independent of \( \mathbf{X} \).  
+
+Similarly, \( \mathbf{X} \) is \textbf{right unitarily invariant} if its distribution equals that of \( \mathbf{X} \mathbf{V}^{*} \) for any unitary matrix \( \mathbf{V} \) independent of \( \mathbf{X} \).  
+If \( \mathbf{X} \) is both left and right unitarily invariant, it is said to be \textbf{bi-unitarily invariant}.
+
+
+\subsection{Linear Transformations}
+
+If \( \mathbf{x} \) is a complex random vector with PDF \( f_{\mathbf{x}}(\cdot) \) and \( A \) is a nonsingular matrix, then the PDF of \( \mathbf{y} = A \mathbf{x} \) is given by:
+\begin{equation}
+f_{\mathbf{y}}(y) = \frac{f_{\mathbf{x}}(A^{-1} y)}{|\det(A)|^2}.
+\tag{C.11}
+\end{equation}
+
+
+\subsection{Kurtosis}
+
+The relationship between the fourth- and second-order moments can be expressed in different ways.  
+The definition adopted for the kurtosis of a real scalar \( x \) is:
+\begin{equation}
+\kappa(x) = \frac{\mathbb{E}[x^{4}]}{\mathbb{E}^{2}[x^{2}]},
+\tag{C.12}
+\end{equation}
+which satisfies \( \kappa(x) \ge 1 \), with equality holding if \( x \) is nonrandom.
+
+If \( x \) is a zero-mean variable, this definition coincides with the common one used in statistics, where the fourth- and second-order moments are centered on the mean:
+\[
+\kappa(x) = \frac{\mathbb{E}[(x - \mu)^4]}{\mathbb{E}^2[(x - \mu)^2]}.
+\]
+This form is particularly suitable for analyzing transmit signals, which are typically zero-mean.  
+However, for fading channels, the uncentered definition in (C.12) is often more convenient.
+
+As an additional variant, the kurtosis can be adjusted so that it equals zero for a Gaussian variable.  
+This adjusted version is known in signal processing as the \textbf{excess kurtosis}.
