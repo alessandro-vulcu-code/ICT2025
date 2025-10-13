@@ -1,0 +1,324 @@
+% === Theorem Environments ===
+
+
+% =======================================================
+\section{Divisions}
+% =======================================================
+
+\subsection{Divisibility}
+
+\paragraph{Naturals and Integers.}
+\[
+\mathbb{N} = \{0, 1, 2, 3, \ldots\}, \quad
+\mathbb{Z} = \{\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots\}
+\]
+
+\paragraph{Definition.}
+Let \( a, b \in \mathbb{Z} \) with \( b \neq 0 \).  
+We say that **\( b \) divides \( a \)** (and write \( b \mid a \)) if there exists \( c \in \mathbb{Z} \) such that:
+\[
+a = bc.
+\]
+
+\paragraph{Example.}
+\[
+2 \mid 4 \quad \text{but} \quad 2 \nmid 5.
+\]
+
+---
+
+\subsubsection{Even and Odd Numbers}
+
+\paragraph{Definition.}
+An integer is **even** if it is divisible by 2, otherwise it is **odd**.
+
+\paragraph{Examples.}
+\[
+-4 \text{ is even}, \quad 13 \text{ is odd.}
+\]
+By convention, the divisors of a natural number are its positive divisors.  
+\[
+\text{Example: divisors of } 6 \text{ are } 1, 2, 3, 6.
+\]
+
+---
+
+\subsection{Euclidean Division}
+
+\begin{proposition}[Euclidean Division]
+Let \( a, b \in \mathbb{N} \) with \( b > 0 \).  
+Then there exist unique integers \( q \) (quotient) and \( r \) (remainder) such that:
+\[
+a = bq + r, \qquad 0 \leq r < b.
+\]
+\end{proposition}
+
+\paragraph{Example.}
+\[
+a = 27, \ b = 7 \Rightarrow q = 3, \ r = 6, \quad \text{since } 27 = 7 \cdot 3 + 6.
+\]
+
+\paragraph{Observation.}
+\(b\) divides \(a\) if and only if \(r = 0\).
+
+\paragraph{Another Example.}
+\[
+a = 7 \times 4 - 5 = 7 \times 3 + 2,
+\]
+so \(q = 3\) and \(r = 2\).
+
+---
+
+\subsection{Euclidean Division in Practice}
+
+\[
+a = bq + r, \quad 0 \leq r < b
+\quad \Longleftrightarrow \quad
+\frac{a}{b} = q + \frac{r}{b}, \quad 0 \leq \frac{r}{b} < 1.
+\]
+
+Hence:
+\[
+q = \left\lfloor \frac{a}{b} \right\rfloor, \quad
+r = a - b \left\lfloor \frac{a}{b} \right\rfloor.
+\]
+
+\paragraph{Example.}
+\[
+a = 15476, \quad b = 137 \Rightarrow
+q = \left\lfloor \frac{15476}{137} \right\rfloor, \quad
+r = 15476 - 137q.
+\]
+
+---
+
+\subsection{Binary Representation}
+
+\paragraph{Example.}
+Every natural number \( m \) can be expressed in binary form:
+\[
+112 = (1110000)_2 = 1 \times 2^6 + 1 \times 2^5 + 1 \times 2^4 + 0 \times 2^3 + 0 \times 2^2 + 0 \times 2^1 + 0 \times 2^0.
+\]
+
+\paragraph{Definition.}
+Let \( m \in \mathbb{N} \).  
+We write:
+\[
+m = (m_{B-1} \ldots m_1 m_0)_2
+\]
+if
+\[
+m = m_0 + m_1 2 + \cdots + m_{B-1} 2^{B-1}, \quad m_i \in \{0, 1\}.
+\]
+Each \(m_i\) is called a **bit**.
+
+---
+
+\subsection{Binary Representation and Euclidean Division}
+
+Binary representation arises naturally from repeated division by \(2\):
+\[
+a = 2q + r, \quad r \in \{0,1\}, \quad q = \left\lfloor \frac{a}{2} \right\rfloor.
+\]
+Applying division recursively gives:
+\[
+a = (r_{B-1} \ldots r_1 r_0)_2,
+\]
+where the \(r_i\) are remainders.
+
+\paragraph{Example.}
+\[
+\begin{aligned}
+112 &= 2 \times 56 + 0 \\
+56  &= 2 \times 28 + 0 \\
+28  &= 2 \times 14 + 0 \\
+14  &= 2 \times 7  + 0 \\
+7   &= 2 \times 3  + 1 \\
+3   &= 2 \times 1  + 1 \\
+1   &= 2 \times 0  + 1
+\end{aligned}
+\]
+Hence \(112 = (1110000)_2.\)
+
+---
+
+\begin{remark}
+If \(m = (m_{B-1} \ldots m_1 m_0)_2\), then \(m < 2^B\).  
+Indeed:
+\[
+m = m_0 + m_1 2 + \cdots + m_{B-1} 2^{B-1} \le 1 + 2 + \cdots + 2^{B-1} = 2^B - 1.
+\]
+\end{remark}
+
+---
+
+\begin{proposition}[Binary Expansion]
+Let \(m < 2^B\). Consider the divisions:
+\[
+\begin{aligned}
+m &= 2q_0 + m_0, & 0 \le m_0 < 2, \\
+q_0 &= 2q_1 + m_1, & 0 \le m_1 < 2, \\
+q_1 &= 2q_2 + m_2, & 0 \le m_2 < 2, \\
+&\ \vdots \\
+q_{B-2} &= 2q_{B-1} + m_{B-1}, & 0 \le m_{B-1} < 2.
+\end{aligned}
+\]
+Then \(q_{B-1} = 0\) and
+\[
+m = \sum_{i=0}^{B-1} 2^i m_i.
+\]
+\end{proposition}
+
+\begin{proof}
+By substitution:
+\[
+m = 2q_0 + m_0 = 2(2q_1 + m_1) + m_0 = \cdots = 2^{B-1} m_{B-1} + \cdots + 2m_1 + m_0.
+\]
+\hfill\(\square\)
+\end{proof}
+
+---
+
+\begin{corollary}[Number of Bits]
+A natural number \(m\) has a binary representation with \(B \ge 1\) bits
+\[
+m = (m_{B-1}\ldots m_1 m_0)_2 \quad \text{and} \quad m_{B-1} = 1
+\]
+if and only if
+\[
+2^{B-1} \le m < 2^B.
+\]
+In particular,
+\[
+B = \lfloor \log_2 m \rfloor + 1.
+\]
+\end{corollary}
+
+\begin{proof}
+If \(m < 2^B\), at most \(B\) bits are needed.  
+If \(B-1\) bits were enough, then \(m < 2^{B-1}\), contradiction.  
+\hfill\(\square\)
+\end{proof}
+
+---
+
+\subsection{Example}
+\[
+\log_2(368{,}932) = 18.4 \Rightarrow B = \lfloor 18.4 \rfloor + 1 = 19.
+\]
+Hence \(368{,}932\) requires 19 bits:
+\[
+368{,}932 = (1011000001000100100)_2.
+\]
+
+% =======================================================
+\section{Greatest Common Divisor (GCD)}
+% =======================================================
+
+\subsection{Definition}
+
+\paragraph{Example.}
+The divisors of \(12\) are \(1, 2, 3, 4, 6, 12\).  
+The divisors of \(18\) are \(1, 2, 3, 6, 9\).  
+Their common divisors are \(\{1,2,3,6\}\), whose largest is 6:
+\[
+6 := \gcd(18, 12).
+\]
+
+\begin{remark}
+When we write \(\gcd(a,b)\), we assume \(a\) or \(b\) is nonzero.
+\end{remark}
+
+\paragraph{Definition.}
+Let \(a,b \in \mathbb{Z}\), not both zero.  
+The set of common divisors of \(a,b\) has a largest element \(d\), called the **greatest common divisor** of \(a,b\):
+\[
+d = \gcd(a,b).
+\]
+
+\paragraph{Examples.}
+\[
+\gcd(12,0)=12, \qquad \gcd(0,12)=12.
+\]
+
+---
+
+\subsection{The Euclidean Algorithm}
+
+\paragraph{Example.}
+Find \(\gcd(119,259)\):
+\[
+259 = 2\cdot119 + 21, \quad 119 = 5\cdot21 + 14, \quad 21 = 1\cdot14 + 7, \quad 14 = 2\cdot7 + 0.
+\]
+The last nonzero remainder is 7:
+\[
+\boxed{\gcd(119,259)=7.}
+\]
+
+\begin{theorem}[Euclidean Algorithm]
+Let \(a,b>0\) with \(a\ge b\).  
+Then \(\gcd(a,b)\) is found by:
+\[
+r_0=a, \ r_1=b, \quad r_{i-1}=r_i q_i + r_{i+1}, \ 0\le r_{i+1}<r_i.
+\]
+If \(r_{i+1}=0\), then \(r_i=\gcd(a,b)\).
+\end{theorem}
+
+\begin{proof}
+The sequence \(r_0>r_1>\cdots\ge0\) terminates.  
+Let \(d=r_{n+1}\) be the last nonzero remainder.  
+Then \(d\mid r_i\) for all \(i\), so \(d\mid a,b\).  
+If \(c\mid a,b\), then \(c\mid d\).  
+Hence \(d=\gcd(a,b)\).  
+\hfill\(\square\)
+\end{proof}
+
+---
+
+\section{The Extended Euclidean Algorithm}
+
+\paragraph{Example.}
+Compute \(\gcd(a,b)\) as a linear combination:
+\[
+a=259,\ b=119
+\]
+\[
+\begin{aligned}
+259 &= 2\cdot119 + 21,\\
+119 &= 5\cdot21 + 14,\\
+21  &= 1\cdot14 + 7,\\
+14  &= 2\cdot7 + 0.
+\end{aligned}
+\]
+Expressing each remainder:
+\[
+\begin{aligned}
+21 &= a - 2b,\\
+14 &= b - 5(a-2b) = -5a + 11b,\\
+7  &= (a-2b) - (-5a+11b) = 6a - 13b.
+\end{aligned}
+\]
+Thus:
+\[
+\boxed{\gcd(a,b)=7=6a-13b.}
+\]
+
+\begin{proposition}[Extended Euclidean Algorithm]
+If \(d=\gcd(a,b)\), then there exist \(u,v\in\mathbb{Z}\) such that
+\[
+\boxed{d=au+bv.}
+\]
+\end{proposition}
+
+\begin{proof}
+From the recursive divisions:
+\[
+r_{i-1}=r_i q_i + r_{i+1},
+\]
+each remainder is a linear combination of \(a,b\).  
+By recursion, the final nonzero remainder \(r_n=d\) satisfies
+\[
+d = a u + b v.
+\]
+\hfill\(\square\)
+\end{proof}
