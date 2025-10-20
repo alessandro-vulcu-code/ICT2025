@@ -1,0 +1,411 @@
+Memory management in C++
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  Topic: how C++ handles memory and resources.
+-  Focus on:
+
+   #. Program memory layout.
+   #. ``new`` and ``delete`` operators.
+   #. Common issues in manual memory management.
+   #. RAII (Resource Acquisition Is Initialization) as a safer
+      alternative.
+
+--------------
+
+C++ program memory
+~~~~~~~~~~~~~~~~~~
+
+C++ divides program memory into different areas with distinct purposes:
+
+#. **Const data area**
+
+   -  Holds data known at compile time.
+   -  Contains only built-in types.
+   -  Available for the entire program lifetime.
+   -  Read-only memory segment.
+
+#. **Stack**
+
+   -  Used for *automatic* (local) variables within functions.
+   -  Memory is allocated sequentially before an object is created and
+      deallocated sequentially when it goes out of scope (*stack
+      unwinding*).
+   -  Direct manipulation of this area is not allowed.
+
+--------------
+
+C++ program memory (continued)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3. **Free store / Heap**
+
+   -  Allocated via ``new``, released via ``delete``.
+   -  Object lifetime may differ from allocation time.
+   -  Can be accessed through ``void*`` pointers, but object members and
+      methods are not directly accessible that way.
+
+4. **Global / Static memory**
+
+   -  Used for global and ``static`` variables.
+   -  Initialized the first time the program execution flow encounters
+      them.
+
+--------------
+
+Operators new and delete
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The heap memory (free store) is managed via:
+
+-  **``new`` operator**
+
+   #. Allocates and initializes memory.
+   #. Returns a pointer to the allocated area.
+
+-  **``delete`` operator**
+
+   #. Calls the object’s destructor (if applicable).
+   #. Frees the memory.
+
+**Example:**
+
+.. code:: language-cpp
+
+   void f() {
+     int* a {new int{10}};
+     // some code
+     delete a;
+   }
+
+..
+
+   Prefer ``{}`` or ``()`` when initializing with ``new``.
+
+--------------
+
+new and delete for arrays
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  Arrays of objects can also be created using ``new[]``, and
+   deallocated using ``delete[]``.
+-  Using plain ``delete`` instead of ``delete[]`` only deallocates a
+   single object, not the whole array.
+-  ``delete`` needs to know the size of the object or array it must
+   release — therefore, **heap allocations** performed with ``new``
+   carry a small **memory overhead** to store this size information.
+
+**Example:**
+
+.. code:: language-cpp
+
+   int* a = new int[5];
+   delete[] a;  // Correct way to free arrays
+
+--------------
+
+new and delete implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Core implementations:**
+
+.. code:: language-cpp
+
+   void* operator new(size_t) throw(std::bad_alloc); 
+   void operator delete(void* p);
+
+   void* operator new[](size_t) throw(std::bad_alloc);
+   void operator delete[](void* p);
+
+-  ``operator new()`` allocates raw, uninitialized memory (it does not
+   call constructors).
+-  The ``new`` operator:
+
+   #. Calls ``operator new()`` to allocate memory.
+   #. Then calls the object’s constructor.
+
+If there is not enough memory available, an exception
+(``std::bad_alloc``) is raised.
+
+--------------
+
+-  Declared in ``<new>`` header, but the header is not required when
+   using the standard ``new`` operator.
+-  **Custom behavior:**
+   Both ``new`` and ``delete`` can be overloaded, allowing custom memory
+   management.
+-  **Placement new:**
+   Allows constructing an object in a pre-allocated memory region.
+
+**Example:**
+
+.. code:: language-cpp
+
+   char *buf = new char[sizeof(std::string)]; // pre-allocated buffer
+   std::string *p = new (buf) std::string("hi"); // placement new
+   std::string *q = new std::string("hi");      // normal allocation
+
+--------------
+
+Key distinction
+~~~~~~~~~~~~~~~
+
+-  ``operator new()`` → allocates memory only.
+-  ``new`` → allocates memory *and* constructs an object.
+   This sequence ensures both memory allocation and proper
+   initialization.
+
+--------------
+
+**Memory management issues**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Manual memory management with ``new`` and ``delete`` can lead to several
+issues because the program must explicitly track the state of each
+allocated object.
+
+1. Memory leaks
+^^^^^^^^^^^^^^^
+
+-  Occur when ``new`` is called but ``delete`` is never executed.
+-  If this happens repeatedly, the system may eventually run out of
+   memory.
+
+**Example:**
+
+.. code:: language-cpp
+
+   int f() {
+     int* a {new int{10}};
+     if (*a == 10) {
+       return 4;  // delete a is never reached
+     }
+     delete a;
+     return 5;
+   }
+
+In this case, if the ``if`` condition is true, the function exits before
+releasing memory — resulting in a **leak**.
+
+--------------
+
+**Memory management issues (continued)**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2. Premature deletion (dangling pointer)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+-  Happens when ``delete`` is called and the pointer is used afterward.
+-  Leads to invalid memory access or data corruption.
+
+**Example:**
+
+.. code:: language-cpp
+
+   int f() {
+     int* a {new int{10}};
+     if (*a == 10) {
+       delete a;
+     }
+     *a = 5;  // invalid: a points to freed memory
+   }
+
+After deletion, the memory may be reassigned to something else, making
+any further use of ``a`` unsafe.
+
+--------------
+
+.. _memory-management-issues-continued-1:
+
+**Memory management issues (continued)**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3. Double deletion
+^^^^^^^^^^^^^^^^^^
+
+-  Occurs when ``delete`` is called twice on the same pointer.
+-  Leads to **memory corruption** and undefined behavior.
+
+**Example:**
+
+.. code:: language-cpp
+
+   int f() {
+     int* a {new int{10}};
+     if (*a == 10) {
+       delete a;
+     }
+     delete a;  // second deletion → invalid
+   }
+
+The second ``delete`` tries to free memory that has already been
+released, which corrupts the heap.
+
+--------------
+
+**Resource management**
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The problems described for memory (leaks, dangling pointers, double
+deletions) also apply to **resources** in general.
+
+-  A **resource** is anything obtained from the operating system that
+   must later be released back to it.
+-  Examples:
+
+   -  Memory (heap)
+   -  Files (via file descriptors)
+   -  Locks (for concurrency)
+   -  Sockets (network connections)
+
+While the focus is on memory, the same management strategies can be
+extended to all of these resources.
+
+--------------
+
+**Efficient memory management**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  **Do not use ``new`` for local objects.**
+   Local variables should be placed on the stack, which handles
+   automatic cleanup.
+
+.. code:: language-cpp
+
+       int x = 10;  // stack allocation (no need for delete)
+
+-  **Avoid using “naked” ``new`` and ``delete``.**
+   Instead, use **handle classes** or resource-management objects to
+   automatically acquire and release memory.
+
+This improves safety, readability, and efficiency, reducing the risk of
+leaks or corruption.
+
+--------------
+
+**Resource Acquisition Is Initialization (RAII)**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| The **RAII paradigm** uses objects (handle classes) to manage
+  resources safely.
+| **Key ideas:**
+
+#. The constructor acquires the resource (e.g., allocates memory with
+   ``new``).
+#. Ownership is immediately passed to a resource-managing object.
+#. The destructor releases the resource (e.g., calls ``delete``)
+   automatically when the object goes out of scope.
+
+-  RAII ensures deterministic cleanup — the destructor is *guaranteed*
+   to be called.
+-  The resource is tied to the lifetime of the object that owns it.
+
+--------------
+
+**Simple handle class for int\***
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+An example of an RAII-based handle:
+
+.. code:: language-cpp
+
+   class Handle {
+     int* p;  // pointer to int
+   public:
+     Handle(int* pp) : p{pp} { }
+     int& operator*() { return *p; }
+     ~Handle() { delete p; }
+   };
+
+   void f() {
+     Handle obj_handle {new int{10}};
+     std::cout << *obj_handle;
+   }  // obj_handle goes out of scope → destructor deletes p
+
+-  The ``*`` operator is overloaded to dereference the handle directly.
+-  When ``obj_handle`` goes out of scope, the destructor automatically
+   releases the memory, preventing leaks.
+
+--------------
+
+**Copy semantics and handle classes**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| When using handle (RAII) classes, the **default copy behavior** may
+  not work as expected.
+| If multiple handles share ownership of the same resource, a shallow
+  copy can cause double deletions or undefined behavior.
+
+**Possible strategies:**
+
+#. **Prohibit copying**
+
+   -  Use ``=delete`` or make the copy constructor private.
+   -  Useful when it does not make sense to copy a resource (e.g., a
+      file handle).
+
+.. code:: language-cpp
+
+       Handle(const Handle&) = delete;
+       Handle& operator=(const Handle&) = delete;
+
+2. **Reference counting**
+
+   -  Keep track of how many RAII objects share the same resource.
+   -  Increase the counter when copying and release the resource only
+      when the counter reaches zero.
+   -  Basis for smart pointers like ``std::shared_ptr``.
+
+3. **Transfer ownership**
+
+   -  Implement **move semantics** so that ownership of the resource
+      passes from one object to another.
+   -  Similar to ``std::unique_ptr``.
+
+4. **Deep copy**
+
+   -  Allocate a completely new resource and copy its contents.
+   -  Ensures each object manages its own memory safely.
+
+--------------
+
+**Access to resources from handles**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+While RAII objects encapsulate resources, sometimes it’s necessary to
+access the underlying resource directly (for example, when interfacing
+with an API that expects a raw pointer or file descriptor).
+
+Two common approaches:
+
+#. **Explicit getter methods**
+
+   -  Provide a function like ``get()`` to return the resource.
+
+.. code:: language-cpp
+
+       int* get() const { return p; }
+
+2. **Implicit conversion**
+
+   -  Overload operators such as ``*`` or ``->`` to allow transparent
+      access.
+   -  Example: ``*obj_handle`` returns the underlying value of the
+      resource.
+
+Although this slightly breaks encapsulation, it is often acceptable for
+practical interoperability.
+
+--------------
+
+✅ **Summary conclusion:**
+
+-  Manual memory management using ``new`` and ``delete`` is error-prone.
+-  Using RAII and handle classes guarantees safe resource release and
+   prevents leaks, dangling pointers, and double deletions.
+-  RAII is a general and powerful design principle applicable to all
+   types of resources — not just memory.
+
+--------------
+
+Lesson example
+^^^^^^^^^^^^^^
