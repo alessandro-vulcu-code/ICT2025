@@ -11,12 +11,14 @@
             "id": "a7fc465a578815e7",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Internet of Things and Smart Cities/Images/Pasted image 20251021094457.png"
+                "file": "Cryptography/Quizzes/Quiz 4.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20251021094457"
+              "icon": "lucide-file",
+              "title": "Quiz 4"
             }
           }
         ]
@@ -164,24 +166,33 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "771881e3e2ec399c",
+  "active": "a7fc465a578815e7",
   "lastOpenFiles": [
-    "Internet of Things and Smart Cities/06. IEEE 802.15.4 technologies.md",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251021100429.png",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251021090022.png",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251021095218.png",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251021094457.png",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251021094151.png",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251021094257.png",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251021094139.png",
-    "Internet of Things and Smart Cities/05.Bluetooth (Low Energy).md",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251021092446.png",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251021091451.png",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251021085628.png",
+    "Cryptography/Pictures/Senza titolo.png",
+    "Cryptography/Quizzes/Quiz 4.md",
+    "Cryptography/Pictures/Senza titolo 7.png",
+    "Cryptography/Pictures/Senza titolo 6.png",
+    "Cryptography/Pictures/Senza titolo 5.png",
+    "Cryptography/Pictures/Senza titolo 4.png",
+    "Cryptography/Pictures/Senza titolo 3.png",
+    "Cryptography/Pictures/Senza titolo 2.png",
+    "Cryptography/Pictures/Senza titolo 1.png",
+    "Cryptography/Pictures/unnamed.png",
+    "Other material/Untitled.md",
+    "Cryptography/Quizzes",
     "Internet of Things and Smart Cities/IoT Chatgpt Prompt.md",
+    "Other material",
+    "Other material/Untitled 1.md",
+    "Other material/Untitled 2.md",
+    "Other material/Untitled 3.md",
+    "Other material/Untitled 4.md",
+    "Internet of Things and Smart Cities/Images/Pasted image 20251021094457.png",
+    "Internet of Things and Smart Cities/06. IEEE 802.15.4 technologies.md",
+    "Internet of Things and Smart Cities/05.Bluetooth (Low Energy).md",
     "Internet of Things and Smart Cities/03. Radio Frequency IDentification (RFID).md",
     "Modern CPP for Internet and Multimedia/Modern CPP/Pictures",
     "Modern CPP for Internet and Multimedia/Modern CPP/11. Autotools.md",
@@ -197,8 +208,6 @@
     "Fiber Optics/FiberOptics.synctex.gz",
     "Fiber Optics/FiberOptics.tex",
     "Fiber Optics/FiberOptics.log",
-    "Fiber Optics/FiberOptics.pdf",
-    "Fiber Optics/FiberOptics.aux",
     "CPS and IoT Security/03. Autonomous Vehicles.md",
     "CPS and IoT Security/02. Keyless Cars Security.md",
     "CPS and IoT Security/01. In-Vehicle Security.md",

@@ -13,3 +13,6 @@ ad esempio, se su più slide il titolo è RFID e poi per ogni slide il sottotito
   ## Sottotitolo slide2
 
 e così via
+
+$\rho_S$ 
+
