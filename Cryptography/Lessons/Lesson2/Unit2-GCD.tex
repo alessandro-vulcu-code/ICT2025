@@ -1,0 +1,14 @@
+\section{The Greatest Common Divisor (GCD)}
+
+\subsection{Definition of the GCD}
+While divisibility focuses on a single divisor-dividend pair, the concept of the Greatest Common Divisor (GCD) analyzes the shared properties of divisibility between two or more integers. It is a concept of paramount importance in number theory, with applications ranging from simplifying fractions to modern cryptography.
+
+\subsubsection*{Definition}
+Let $a$ and $b$ be integers, not both zero. The set of their common divisors has a largest element $d$, called the greatest common divisor of $a$ and $b$. We write $d = \gcd(a, b)$.
+To find $\gcd(18, 12)$, we can list the divisors of each number:
+\begin{itemize}
+    \item Divisors of 12: $\{1, 2, 3, 4, 6, 12\}$
+    \item Divisors of 18: $\{1, 2, 3, 6, 9, 18\}$
+\end{itemize}
+The set of common divisors is $\{1, 2, 3, 6\}$. The largest element in this set is $6$, so $\gcd(18, 12) = 6$.
+While listing all divisors is feasible for small numbers, it is impractical for large integers. A far more powerful and efficient method is the Euclidean Algorithm.

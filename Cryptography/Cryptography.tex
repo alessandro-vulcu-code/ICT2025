@@ -12,6 +12,7 @@
 \usepackage{booktabs}
 \usepackage{amsthm}
 \usepackage{enumitem}
+\usepackage{caption}
 
 
 \geometry{margin=2.5cm}
@@ -23,6 +24,11 @@
 \author{Alessandro Vulcu}
 \date{\today}
 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem*{remark}{Remark}
+
 \begin{document}
 
 \maketitle
@@ -30,9 +36,43 @@
 \tableofcontents
 \newpage
 
-\input{Lessons/Chapter1.tex}
+%\input{Lessons/Introduction.tex}
+%\newpage
+
+%\input{Lessons/Chapter2.tex}
+%\newpage
+
+%====================Lesson 2=========================%
+\input{Lessons/Lesson2/Unit1-Divisibility.tex}
+
+\newpage
+\input{Lessons/Lesson2/Unit2-GCD.tex}
+
+\newpage
+\input{Lessons/Lesson2/Unit3-EEA.tex}
+
+\newpage
+\input{Lessons/Lesson2/Unit4-Coprime numbers.tex}
+
+%====================Lesson 3=========================%
+
+\newpage
+\input{Lessons/Lesson3/Unit1-Classes modulo m.tex}
+
+\newpage
+\input{Lessons/Lesson3/Unit2-Invertibility modulo m.tex}
+
+\newpage
+\input{Lessons/Lesson3/Unit3-Linear congruences.tex}
+
+\newpage
+\input{Lessons/Lesson3/Unit4-Chinese remainder theorem.tex}
+
+\newpage
+\input{Lessons/Lesson3/Unit5-Euler's phi.tex}
+
 \newpage
 
-\input{Lessons/Chapter2.tex}
+
 
 \end{document}

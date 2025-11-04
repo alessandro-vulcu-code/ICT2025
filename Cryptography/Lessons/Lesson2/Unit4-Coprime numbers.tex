@@ -1,0 +1,68 @@
+\section{Coprime Integers}
+
+\subsection{Definition and Characterization}
+Coprime (or relatively prime) integers are those that share no common divisors other than $1$ and $-1$. This relationship is central to many theorems in number theory, including those related to prime numbers and factorization.
+
+\subsubsection*{Definition}
+Two integers $a, b$ are relatively prime (or coprime) if $\gcd(a, b) = 1$.
+For example, $32$ and $15$ are relatively prime. The divisors of $32$ are $\{1, 2, 4, 8, 16, 32\}$ and the divisors of $15$ are $\{1, 3, 5, 15\}$. Their only common positive divisor is $1$.
+
+\begin{proposition}[Characterisation of Coprime Numbers]
+Integers $a$ and $b$ are relatively prime if and only if there exist integers $u, v$ such that $au + bv = 1$.
+\end{proposition}
+
+\begin{center}
+\line(1,0){400}
+\end{center}
+
+\begin{proof}
+\begin{itemize}
+    \item[($\Rightarrow$)] This is a direct consequence of the Extended Euclidean Algorithm. If $\gcd(a, b) = 1$, then the algorithm guarantees the existence of integers $u, v$ such that $au + bv = 1$.
+    \item[($\Leftarrow$)] Conversely, assume there are integers $u, v$ such that $au + bv = 1$. Let $d = \gcd(a, b)$. Since $d \mid a$ and $d \mid b$, it must divide their linear combination $au + bv$. Therefore, $d \mid 1$. The only positive integer that divides $1$ is $1$, so $d = 1$.
+\end{itemize}
+\end{proof}
+
+\begin{center}
+\line(1,0){400}
+\end{center}
+
+This characterization leads directly to an essential property regarding prime numbers.
+
+\subsection{The Prime Divisor Property}
+
+\begin{corollary}
+Let $p$ be a prime number and $m$ be an integer. If $p$ does not divide $m$, then $p$ and $m$ are coprime.
+\end{corollary}
+
+\begin{proof}
+The divisors of a prime number $p$ are only $\{1, p\}$. If $p$ does not divide $m$, then $p$ is not a common divisor. Therefore, the only common divisor of $p$ and $m$ is $1$, which means $\gcd(p, m) = 1$.
+\end{proof}
+
+\begin{center}
+\line(1,0){400}
+\end{center}
+
+This corollary is the key to proving the following critical proposition, which is commonly known as Euclid's Lemma.
+
+\begin{proposition}[Prime Divisor Property]
+Let $p$ be a prime and $a, b$ be integers. If $p \mid ab$, then $p \mid a$ or $p \mid b$.
+\end{proposition}
+
+\begin{proof}
+Assume $p \mid ab$. If $p \mid a$, the proposition is true. If $p$ does not divide $a$, then by the corollary above, $\gcd(p, a) = 1$. By the characterization of coprime numbers, there exist integers $u, v$ such that $pu + av = 1$. Multiplying this equation by $b$ gives $pub + abv = b$.
+\begin{itemize}
+    \item We know $p$ divides $pub$.
+    \item We are given that $p$ divides $ab$, so it must also divide $abv$.
+\end{itemize}
+Since $p$ divides both terms on the left side, it must divide their sum. Therefore, $p \mid b$.
+\end{proof}
+
+\begin{center}
+\line(1,0){400}
+\end{center}
+
+This property is unique to prime numbers. For a non-prime (composite) number, this does not hold. For example, $4 \mid 2 \times 6$ (since $4 \mid 12$), but $4$ does not divide $2$ and $4$ does not divide $6$. This unique property of primes is the cornerstone of the most important theorem in elementary number theory.
+
+\section{Conclusion: The Fundamental Theorem of Arithmetic}
+This report has traced a logical path from the elementary definition of divisibility to the profound and unique properties of prime numbers. We began by establishing the rules of integer division, which we generalized with the Euclidean Division theorem. This theorem, in turn, provided a practical algorithm not only for finding quotients and remainders---enabling number system conversions like binary representation---but also for efficiently computing the greatest common divisor. By extending the Euclidean algorithm, we established that the GCD can be expressed as a linear combination, a result that unlocked the solution to linear Diophantine equations and provided a powerful characterization for coprime integers.
+The culmination of this journey is the Prime Divisor Property, which states that if a prime divides a product, it must divide one of the factors. This property, which we proved does not hold for composite numbers, is the essential lemma required to prove the Fundamental Theorem of Arithmetic. This theorem asserts that every integer greater than $1$ is either a prime number itself or can be represented as a unique product of prime numbers, cementing the role of primes as the fundamental building blocks of the integers.

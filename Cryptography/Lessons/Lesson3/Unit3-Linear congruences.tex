@@ -1,0 +1,61 @@
+\section{Application I: Solving Linear Congruences}
+The algebraic theory provides a framework for solving linear congruences of the form $ax \equiv b \pmod{m}$.
+
+\subsection{The General Condition for Solutions}
+\begin{proposition}
+The linear congruence $ax \equiv b \pmod{m}$ has at least one integer solution for $x$ if and only if $d = \gcd(a, m)$ divides $b$.
+\end{proposition}
+\begin{proof}
+The congruence is equivalent to the linear Diophantine equation $ax + mv = b$. This equation is solvable if and only if $\gcd(a, m)$ divides $b$.
+\end{proof}
+
+\subsection{Case 1: Unique Solution ($\gcd(a,m) = 1$)}
+When $\gcd(a, m) = 1$, the unique solution modulo $m$ is found by multiplying by the inverse $a^{-1}$:
+$$ x \equiv a^{-1}b \pmod{m} $$
+\begin{itemize}
+    \item \textbf{Example:} To solve $245x \equiv 24 \pmod{677}$, since $677$ is prime, $245^{-1} \equiv 572 \pmod{677}$.
+    $$ x \equiv 572 \cdot 24 \equiv 13728 \equiv 188 \pmod{677} $$
+\end{itemize}
+
+\subsection{Case 2: Multiple or No Solutions ($\gcd(a,m) = d > 1$)}
+If $d = \gcd(a, m)$ does not divide $b$, there are no solutions.
+\begin{proposition}
+If $d \mid b$, the congruence $ax \equiv b \pmod{m}$ has exactly $d$ distinct solutions modulo $m$.
+\end{proposition}
+The method is:
+\begin{enumerate}
+    \item \textbf{Reduce:} Divide by $d$: $\frac{a}{d}x \equiv \frac{b}{d} \pmod{\frac{m}{d}}$.
+    \item \textbf{Solve:} Find the unique solution $x_0$ to the reduced congruence.
+    \item \textbf{Generate Solutions:} The complete set of $d$ solutions is:
+    $$ x_k = x_0 + k\left(\frac{m}{d}\right) \quad \text{for } k = 0, 1, \dots, d-1 $$
+\end{enumerate}
+\begin{itemize}
+    \item \textbf{Example: $9x \equiv 6 \pmod{15}$.}
+    \begin{enumerate}
+        \item $d = \gcd(9, 15) = 3$. Since $3 \mid 6$, there are 3 solutions.
+        \item \textbf{Reduced Congruence:} $3x \equiv 2 \pmod{5}$. Solution $x_0 = 4$.
+        \item \textbf{Solutions:} $m/d = 5$. Solutions are $x_0=4$, $x_1=4+5=9$, $x_2=4+10=14$.
+    \end{enumerate}
+\end{itemize}
+
+\section{Application II: Shamir's Secret Sharing Scheme}
+Shamir's Secret Sharing is an elegant application of modular arithmetic and linear algebra for secure information distribution.
+
+\subsection{The Premise and Analogy}
+The scheme relies on the principle that $t$ distinct points uniquely determine a polynomial of degree $t-1$. The secret is encoded as a coefficient (e.g., the y-intercept $a_0$) of a polynomial $P(x)$, and each person receives a point $(x_i, P(x_i))$ on the curve. All calculations are performed in a finite field $\mathbb{F}_p$.
+
+\subsection{A Worked Example}
+\begin{itemize}
+    \item \textbf{Information:} Friend A: $(23, 401)$; Friend B: $(58, 368)$.
+    \item \textbf{Public Parameter:} Modulus $p = 941$.
+    \item \textbf{Task:} Calculate the secret slope $m$ (the secret) of the line passing through the points: $m = (y_2 - y_1) \cdot (x_2 - x_1)^{-1} \pmod{941}$.
+\end{itemize}
+\subsubsection*{Calculation}
+\begin{enumerate}
+    \item \textbf{Differences:} $y_2 - y_1 = -33$; $x_2 - x_1 = 35$.
+    \item \textbf{Inverse:} Using the Extended Euclidean Algorithm, $35^{-1} \equiv 242 \pmod{941}$.
+    \item \textbf{Solve:} $m \equiv (-33) \cdot 242 \equiv -7986 \pmod{941}$.
+    \item \textbf{Reduce:} $-7986 = -9 \times 941 + 483$.
+    $$ m \equiv 483 \pmod{941} $$
+\end{enumerate}
+The calculated secret slope is $m = 483$.

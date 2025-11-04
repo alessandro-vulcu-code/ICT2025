@@ -1,0 +1,189 @@
+\section{Divisibility}
+\title{Technical Report on Divisibility, Euclidean Division, and Number Representation}
+
+\subsection{Introduction to Divisibility}
+Divisibility is a fundamental pillar of number theory, providing the essential language for describing the relationships between integers. This concept serves as the bedrock upon which more advanced topics are built, including the computation of greatest common divisors via the Euclidean algorithm, the unique factorization of integers into primes, and the representation of numbers in different bases. This section formally defines this core relationship and explores its most immediate and essential properties.
+
+\begin{center}
+\line(1,0){400}
+\end{center}
+
+\subsubsection*{Definition of Divisibility}
+The relationship of divisibility is formally defined as follows:
+Let $a, b$ be integers, with $b \neq 0$. We say that $b$ divides $a$ (written as $b \mid a$) if there exists an integer $c$ such that $a = bc$.
+For instance, we can state that $2 \mid 4$ because $4 = 2 \times 2$. Conversely, $2$ does not divide $5$, as there is no integer $c$ for which $5 = 2c$.
+It is critical to note that the definition explicitly prohibits division by zero; the divisor $b$ must be a non-zero integer. This leads to a foundational question: ``Does $1$ divide any integer?'' Based on the definition, the answer is yes. For any integer $a$, we can write $a = 1 \times a$, satisfying the condition with $c = a$. These elementary definitions give rise to several essential properties that govern the arithmetic of integers.
+
+\subsection{Fundamental Properties and Proof}
+The formal definition of divisibility leads directly to a set of properties that are instrumental in number theory.
+
+\begin{proposition}
+Let $a, b$, and $c$ be integers. The following properties hold:
+\begin{enumerate}
+    \item If $a \mid 1$, then $a = \pm 1$.
+    \item If $a$ and $b$ are non-zero integers such that $a \mid b$ and $b \mid a$, then $a = \pm b$.
+    \item If $a \mid b$ and $b \mid c$, then $a \mid c$ (Transitivity).
+\end{enumerate}
+\end{proposition}
+
+\begin{center}
+\line(1,0){400}
+\end{center}
+
+\begin{proof}
+\begin{enumerate}
+    \item If $a \mid 1$: By definition, there is an integer $c$ such that $1 = ac$. Since $a$ and $c$ are integers, the only possible integer solutions are $(a=1, c=1)$ or $(a=-1, c=-1)$. Therefore, $a = \pm 1$.
+    \item If $a \mid b$ and $b \mid a$: By definition, there exist integers $c_1$ and $c_2$ such that $b = ac_1$ and $a = bc_2$. Substituting the first equation into the second gives $a = (ac_1)c_2 = a(c_1c_2)$. Since $a \neq 0$, we can divide by $a$ to get $1 = c_1c_2$. As $c_1$ and $c_2$ are integers, the only solutions are $(c_1=1, c_2=1)$ or $(c_1=-1, c_2=-1)$.
+    \begin{itemize}
+        \item If $c_1 = 1$, then $b = a \times 1 = a$.
+        \item If $c_1 = -1$, then $b = a \times (-1) = -a$.
+    \end{itemize}
+    Thus, $a = \pm b$.
+    \item If $a \mid b$ and $b \mid c$: By definition, there exist integers $c_1$ and $c_2$ such that $b = ac_1$ and $c = bc_2$. Substituting the first equation into the second gives $c = (ac_1)c_2 = a(c_1c_2)$. Since $c_1c_2$ is an integer, this satisfies the definition of divisibility, so $a \mid c$.
+\end{enumerate}
+\end{proof}
+
+\begin{center}
+\line(1,0){400}
+\end{center}
+
+This demonstrates the transitive nature of the divisibility relation. A particularly common instance of divisibility is divisibility by $2$, which gives rise to its own specific terminology.
+
+\subsection{Even and Odd Integers}
+An even number is an integer that is divisible by $2$; an integer that is not divisible by $2$ is an odd number. For example, $-4$ is even because $-4 = 2 \times (-2)$, whereas $13$ is odd.
+By convention, when we refer to the ``divisors'' of a natural number, we are typically referring to its positive divisors. For example, while it is true that $-2 \mid 6$, the set of divisors of $6$ is conventionally listed as $\{1, 2, 3, 6\}$.
+When an integer does not divide another perfectly, the concept of a remainder becomes crucial. This idea is formalized by the Euclidean division algorithm.
+
+\section{The Euclidean Division Algorithm}
+
+\subsection{The Division Theorem}
+Euclidean division is a cornerstone of number theory that generalizes the concept of divisibility. It provides a formal and precise description of the outcome of integer division, asserting that dividing any integer $a$ by a positive integer $b$ yields a unique integer quotient $q$ and a unique integer remainder $r$.
+
+\begin{proposition}[Euclidean Division]
+Let $a$ and $b$ be natural numbers with $b > 0$. Then there exist unique integers $q$ (the quotient) and $r$ (the remainder) such that $a = bq + r$, with $0 \leq r < b$.
+\end{proposition}
+A direct and important consequence of this theorem is that $b$ divides $a$ if and only if the remainder $r = 0$.
+For example, if $a = 27$ and $b = 7$, we can write $27 = 7 \times 3 + 6$. Here, the quotient $q$ is $3$ and the remainder $r$ is $6$, which satisfies the condition $0 \leq 6 < 7$. While the theorem guarantees the existence and uniqueness of $q$ and $r$, the next section details the practical method for their calculation.
+
+\subsection{Practical Computation of Quotient and Remainder}
+The quotient and remainder from Euclidean division can be computed directly using standard arithmetic operations. Starting with the identity $a/b = q + r/b$, we know from the theorem that $0 \leq r < b$, which implies $0 \leq r/b < 1$. This leads to the conclusion that the quotient $q$ is the integer part of the fraction $a/b$. This is formally expressed using the floor function:
+$$ \text{Quotient: } q = \lfloor a/b \rfloor $$
+Once the quotient is found, the remainder can be derived from the original equation $a = bq + r$:
+$$ \text{Remainder: } r = a - bq = a - b \times \lfloor a/b \rfloor $$
+To illustrate, let $a = 15476$ and $b = 137$.
+\begin{itemize}
+    \item Calculate the ratio: $15476 / 137 \approx 112.96\dots$
+    \item The quotient is the floor of this value: $q = \lfloor 112.96\dots \rfloor = 112$.
+    \item The remainder is then: $r = 15476 - 137 \times 112 = 15476 - 15344 = 132$.
+\end{itemize}
+The repeated application of this division process is the key to representing numbers in different bases, most notably in the binary system.
+
+\section{Binary Representation of Natural Numbers}
+
+\subsection{Definition and Process}
+Binary representation is a system for expressing any natural number as a sum of powers of $2$, using only the digits $0$ and $1$. This base-$2$ system is foundational to all modern digital computing. The algorithm to convert a number to its binary form is a direct application of the principles of Euclidean division.
+
+\subsubsection*{Definition}
+Let $m \in \mathbb{N}$. We write $m = (m_{B-1}\dots m_1m_0)_2$ if $m = m_0 + m_1 \times 2 + \dots + m_{B-1}2^{B-1}$ and $m_i \in \{0, 1\}$. The values $m_i$ are known as bits.
+The process for converting a number to binary involves repeatedly dividing the number by $2$ and recording the remainders. The remainders, read in reverse order of their calculation, form the binary representation.
+
+\begin{center}
+\captionof{table}{Conversion of Decimal 112 to Binary}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Number ($m$)} & \textbf{Quotient ($q$)} & \textbf{Remainder ($r$) = Bit} \\
+\hline
+$112 \div 2$ & 56 & 0 ($m_0$) \\
+\hline
+$56 \div 2$ & 28 & 0 ($m_1$) \\
+\hline
+$28 \div 2$ & 14 & 0 ($m_2$) \\
+\hline
+$14 \div 2$ & 7 & 0 ($m_3$) \\
+\hline
+$7 \div 2$ & 3 & 1 ($m_4$) \\
+\hline
+$3 \div 2$ & 1 & 1 ($m_5$) \\
+\hline
+$1 \div 2$ & 0 & 1 ($m_6$) \\
+\hline
+\end{tabular}
+\end{center}
+Reading the remainders from bottom to top, we find that $112$ in decimal is $(1110000)_2$ in binary. This algorithmic process is guaranteed to terminate and provides a unique representation for any natural number, as established by the following theorem.
+
+\subsection{Theorem on Binary Representation and Proof}
+
+\begin{proposition}
+Let $m \in \mathbb{N}$, with $m < 2^B$. The repeated division-by-2 process:
+\begin{align*}
+m &= 2q_0 + m_0 \\
+q_0 &= 2q_1 + m_1 \\
+q_1 &= 2q_2 + m_2 \\
+\dots
+\end{align*}
+terminates with $q_{B-1} = 0$, and $m = m_0 + 2m_1 + \dots + 2^{B-1}m_{B-1}$.
+\end{proposition}
+
+\begin{center}
+\line(1,0){400}
+\end{center}
+
+\begin{proof}
+The proof consists of two parts: demonstrating the polynomial form and proving that the process terminates.
+
+\subsubsection*{Polynomial Form}
+We can show the relationship by algebraic substitution.
+\begin{align*}
+m &= 2q_0 + m_0 \\
+\intertext{Substitute $q_0 = 2q_1 + m_1$:}
+m &= 2(2q_1 + m_1) + m_0 = 2^2q_1 + 2m_1 + m_0 \\
+\intertext{Substitute $q_1 = 2q_2 + m_2$:}
+m &= 2^2(2q_2 + m_2) + 2m_1 + m_0 = 2^3q_2 + 2^2m_2 + 2m_1 + m_0
+\end{align*}
+Continuing this process until the final step where $q_{B-2} = 2q_{B-1} + m_{B-1}$, we arrive at the final form: $m = m_0 + 2m_1 + 2^2m_2 + \dots + 2^{B-1}m_{B-1}$.
+
+\subsubsection*{Termination}
+The process is guaranteed to terminate because the sequence of quotients is strictly decreasing and bounded.
+\begin{itemize}
+    \item Since $m < 2^B$, the first division $m = 2q_0 + m_0$ implies $2q_0 \leq m < 2^B$, so $q_0 < 2^{B-1}$.
+    \item Similarly, $q_0 < 2^{B-1}$ implies $2q_1 \leq q_0 < 2^{B-1}$, so $q_1 < 2^{B-2}$.
+\end{itemize}
+This pattern continues: $q_i < 2^{B-1-i}$.
+For the final quotient $q_{B-1}$, we have $q_{B-1} < 2^{B-1-(B-1)} = 2^0 = 1$. Since $q_{B-1}$ is a non-negative integer, the only possibility is $q_{B-1} = 0$. The process terminates when the quotient becomes zero.
+\end{proof}
+
+\begin{center}
+\line(1,0){400}
+\end{center}
+
+This theorem also establishes a direct relationship between a number's magnitude and the number of bits required to represent it.
+
+\subsection{Properties of Binary Representation}
+
+\begin{remark}
+If $m$ has $B$ bits in its binary representation, i.e., $m = (m_{B-1}\dots m_0)_2$, then $m < 2^B$.
+\end{remark}
+
+\begin{proof}
+The largest possible value for a $B$-bit number occurs when all bits are $1$. This value can be calculated by summing the geometric series:
+$$ m \leq 1 + 2 + 4 + \dots + 2^{B-1} = \frac{2^B - 1}{2 - 1} = 2^B - 1 $$
+Therefore, $m < 2^B$.
+\end{proof}
+
+\begin{center}
+\line(1,0){400}
+\end{center}
+
+This leads to a corollary that precisely characterizes the number of bits required for a given integer.
+
+\begin{corollary}
+A natural number $m$ has a binary representation with $B$ bits (where the most significant bit $m_{B-1} = 1$) if and only if $2^{B-1} \leq m < 2^B$.
+\end{corollary}
+This relationship provides a practical formula for finding the required number of bits, $B$, for any number $m$ using logarithms:
+$$ B = \lfloor \log_2 m \rfloor + 1 $$
+For example, to find the number of bits required to represent the number $368932$:
+\begin{itemize}
+    \item Calculate the base-2 logarithm: $\log_2(368932) \approx 18.4\dots$
+    \item Apply the formula: $B = \lfloor 18.4\dots \rfloor + 1 = 18 + 1 = 19$. It requires $19$ bits.
+\end{itemize}
+The Euclidean division algorithm is not only useful for number representation but is also the most efficient method for finding the greatest common divisor of two integers.

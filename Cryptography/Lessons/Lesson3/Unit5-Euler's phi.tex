@@ -1,0 +1,144 @@
+\section{A Comprehensive Treatise on Euler's Totient Function}
+
+\section{Introduction and Formal Definition}
+Within the field of number theory, certain functions serve as foundational pillars, providing deep insights into the structure of the integers. Among these, \textbf{Euler's totient function}, often denoted by the Greek letter phi ($\varphi$), holds a distinguished place. Its primary role is to quantify the multiplicative structure of integers modulo $m$, providing a precise measure of the elements that possess multiplicative inverses. This function, therefore, serves as a direct bridge between the factorization of an integer and the algebraic properties of its corresponding modular system.
+Formally, for any natural number $m \geq 1$, Euler's totient function, $\varphi(m)$, can be defined in two equivalent ways:
+
+\begin{enumerate}
+    \item \textbf{Algebraic Definition:} $\varphi(m)$ is the number of elements in the multiplicative group of integers modulo $m$, denoted $(\mathbb{Z}/m\mathbb{Z})^*$. In other words, it counts the number of invertible elements in the ring $\mathbb{Z}/m\mathbb{Z}$.
+    \item \textbf{Combinatorial Definition:} $\varphi(m)$ is the number of positive integers $a$ such that $1 \leq a \leq m$ which are coprime to $m$. That is:
+    $$ \varphi(m) = \left|\{a \in \mathbb{Z} \mid 1 \leq a \leq m, \gcd(a, m) = 1\}\right| $$
+\end{enumerate}
+To illustrate this definition, we consider two examples.
+\begin{itemize}
+    \item $\varphi(1) = 1$, since $\gcd(1, 1) = 1$.
+    \item $\varphi(14) = 6$, since the set of coprime integers is $\{1, 3, 5, 9, 11, 13\}$.
+\end{itemize}
+
+\section{Fundamental Properties and Characterization of Primes}
+Before deriving a general formula for $\varphi(m)$, it is instructive to analyze the function's behavior for the special case of prime numbers.
+
+\begin{theorem}
+\label{thm:totient_prime}
+The Totient of a Prime Number: If $m \geq 2$ is a prime number, then $\varphi(m) = m - 1$.
+\end{theorem}
+
+\begin{theorem}
+\label{thm:primality_test}
+A Primality Test via the Totient Function: For an integer $m \geq 2$, $\varphi(m) = m - 1$ if and only if $m$ is a prime number.
+\end{theorem}
+
+\begin{proof}
+\begin{itemize}
+    \item[($\Rightarrow$)] \textbf{(``Only if'' direction)}: We prove the contrapositive. Assume $m$ is not prime. By definition, $m$ must have a non-trivial divisor $p$ such that $1 < p < m$. Since $p$ divides $m$, $\gcd(p, m) = p > 1$. Thus, $p$ is not coprime to $m$. Since $p$ is an integer between $1$ and $m-1$ that is excluded from the count, the total count $\varphi(m)$ must be strictly less than $m-1$. More precisely, $\varphi(m) \leq m - 2$. This shows that the equality $\varphi(m) = m - 1$ can only hold if $m$ is prime.
+    \item[($\Leftarrow$)] \textbf{(``If'' direction)}: If $m$ is prime, then $\varphi(m) = m - 1$, as established in Theorem \ref{thm:totient_prime}.
+\end{itemize}
+\end{proof}
+
+\section{A Formula for Powers of Primes}
+The formula for calculating the totient of a prime power is the essential building block for constructing the general computational formula for any integer $n$.
+
+\begin{proposition}
+\label{prop:prime_power_formula}
+For any prime $p$ and any integer $\alpha \geq 1$:
+$$ \varphi(p^\alpha) = p^\alpha - p^{\alpha-1} $$
+\end{proposition}
+
+\begin{proof}
+The proof proceeds by counting the complement. An integer $a$ in the range $[1, p^\alpha]$ is \textbf{not} coprime to $p^\alpha$ if and only if $p$ divides $a$. We count the number of multiples of $p$ in the range $[1, p^\alpha]$.
+These multiples are of the form $k \cdot p$, where $k$ is a positive integer.
+The condition $1 \leq k \cdot p \leq p^\alpha$ implies $1 \leq k \leq p^{\alpha-1}$.
+Thus, there are exactly $p^{\alpha-1}$ such multiples of $p$ in the specified range.
+Subtracting this count from the total number of integers, $p^\alpha$, yields:
+$$ \varphi(p^\alpha) = (\text{Total Integers}) - (\text{Non-Coprime Integers}) = p^\alpha - p^{\alpha-1} $$
+\end{proof}
+\begin{itemize}
+    \item \textbf{Example:} $\varphi(8) = \varphi(2^3) = 2^3 - 2^{3-1} = 8 - 4 = 4$. (The coprime integers are $\{1, 3, 5, 7\}$).
+\end{itemize}
+
+\section{The Multiplicative Property of the Phi Function}
+The central theorem governing the computation of Euler's totient function is its multiplicative property. An arithmetic function $f$ is said to be multiplicative if $f(mn) = f(m)f(n)$ whenever $m$ and $n$ are coprime.
+
+\begin{theorem}
+\label{thm:multiplicativity}
+Multiplicativity of Euler's Totient Function: If $m$ and $n$ are coprime integers ($\gcd(m, n) = 1$), then $\varphi(mn) = \varphi(m)\varphi(n)$.
+\end{theorem}
+
+\begin{itemize}
+    \item \textbf{Important Caveat:} The property fails if $m$ and $n$ are not coprime. For $m=4$ and $n=6$, $\varphi(4)\varphi(6) = 2 \cdot 2 = 4$, but $\varphi(4 \cdot 6) = \varphi(24) = 8$. Thus, $8 \neq 4$.
+\end{itemize}
+
+\section{Proofs of the Multiplicative Property}
+
+\subsection{First Proof: A Combinatorial Approach via Inclusion-Exclusion}
+This proof demonstrates multiplicativity for $n = p^\alpha q^\beta$ (where $p, q$ are distinct primes) by counting its complement using the Principle of Inclusion-Exclusion.
+\begin{enumerate}
+    \item \textbf{Strategy:} Count integers $k \in [1, n]$ that are a multiple of $p$ ($\mathcal{A}_p$) OR a multiple of $q$ ($\mathcal{A}_q$). The size of this set is $|\mathcal{A}_p \cup \mathcal{A}_q| = |\mathcal{A}_p| + |\mathcal{A}_q| - |\mathcal{A}_p \cap \mathcal{A}_q|$.
+    \item \textbf{Cardinality Calculation:}
+    \begin{itemize}
+        \item $|\mathcal{A}_p| = n/p = p^{\alpha-1}q^\beta$.
+        \item $|\mathcal{A}_q| = n/q = p^\alpha q^{\beta-1}$.
+        \item $|\mathcal{A}_p \cap \mathcal{A}_q|$ (multiples of $pq$) $= n/(pq) = p^{\alpha-1}q^{\beta-1}$.
+    \end{itemize}
+    \item \textbf{Derivation:}
+    $$ \varphi(n) = n - (|\mathcal{A}_p| + |\mathcal{A}_q| - |\mathcal{A}_p \cap \mathcal{A}_q|) $$
+    $$ \varphi(n) = p^\alpha q^\beta - (p^{\alpha-1}q^\beta + p^\alpha q^{\beta-1} - p^{\alpha-1}q^{\beta-1}) $$
+    \item \textbf{Conclusion (Factoring):}
+    $$ \varphi(n) = (p^\alpha - p^{\alpha-1}) \cdot (q^\beta - q^{\beta-1}) = \varphi(p^\alpha) \cdot \varphi(q^\beta) $$
+\end{enumerate}
+This final expression confirms $\varphi(n) = \varphi(p^\alpha) \cdot \varphi(q^\beta)$, completing the combinatorial proof.
+
+\subsection{Second Proof: An Algebraic Approach via the Remainder Map}
+This proof uses the algebraic structure of rings and the Chinese Remainder Theorem (CRT).
+
+\subsubsection{The Remainder Map}
+We define the remainder map $r$:
+$$ r: \mathbb{Z}/(mn)\mathbb{Z} \to (\mathbb{Z}/m\mathbb{Z}) \times (\mathbb{Z}/n\mathbb{Z}) $$
+$$ r([a]_{mn}) := ([a]_m, [a]_n) $$
+This map is well-defined.
+
+\subsubsection{Bijectivity and the Chinese Remainder Theorem}
+\begin{theorem}
+The remainder map $r$ is a bijection if and only if $m$ and $n$ are coprime.
+\end{theorem}
+\begin{itemize}
+    \item \textbf{Surjectivity} (Existence): Guaranteed by the CRT, as every pair of remainders $([a]_m, [b]_n)$ corresponds to an integer $x$ (a solution).
+    \item \textbf{Injectivity} (Uniqueness): Guaranteed by the CRT, as the solution $x$ is unique modulo $mn$.
+\end{itemize}
+
+\subsubsection{Mapping Invertible Elements (Units)}
+An integer $a$ is coprime to the product $mn$ if and only if $a$ is coprime to $m$ and $a$ is coprime to $n$.
+This means the bijective map $r$ restricts to a bijection between the set of units:
+$$ (\mathbb{Z}/(mn)\mathbb{Z})^* \quad \longleftrightarrow \quad (\mathbb{Z}/m\mathbb{Z})^* \times (\mathbb{Z}/n\mathbb{Z})^* $$
+
+\subsubsection{Final Derivation}
+Since there is a one-to-one correspondence (bijection) between the sets of units, their cardinalities must be equal:
+$$ \left|(\mathbb{Z}/(mn)\mathbb{Z})^*\right| = \left|(\mathbb{Z}/m\mathbb{Z})^*\right| \times \left|(\mathbb{Z}/n\mathbb{Z})^*\right| $$
+By the algebraic definition of the $\varphi$ function, this proves:
+$$ \varphi(mn) = \varphi(m)\varphi(n) $$
+
+\section{The General Formula and Conclusion}
+The findings can be synthesized into a single, powerful method for computing Euler's totient function for any integer. Given $n$ with its unique prime factorization $n = p_1^{\alpha_1} \cdot p_2^{\alpha_2} \cdot \dots \cdot p_m^{\alpha_m}$:
+
+\begin{enumerate}
+    \item \textbf{Product of Prime Powers:} Apply the multiplicative property repeatedly:
+    $$ \varphi(n) = \varphi(p_1^{\alpha_1}) \cdot \varphi(p_2^{\alpha_2}) \cdot \dots \cdot \varphi(p_m^{\alpha_m}) $$
+    \item \textbf{General Computational Formula (Two Forms):} Substituting the formula from Proposition \ref{prop:prime_power_formula} yields:
+    \begin{align*}
+    \varphi(n) &= \prod_{i=1}^{m} (p_i^{\alpha_i} - p_i^{\alpha_i-1}) \\
+    \varphi(n) &= n \cdot \prod_{i=1}^{m} \left(1 - \frac{1}{p_i}\right)
+    \end{align*}
+\end{enumerate}
+
+\subsubsection*{Examples of Application}
+\begin{itemize}
+    \item \textbf{Compute $\varphi(3456)$:} Factorization $3456 = 2^7 \cdot 3^3$.
+    \begin{align*}
+    \varphi(3456) &= \varphi(2^7) \cdot \varphi(3^3) \\
+    &= (2^7 - 2^6) \cdot (3^3 - 3^2) \\
+    &= (128 - 64) \cdot (27 - 9) \\
+    &= 64 \cdot 18 = 1152
+    \end{align*}
+\end{itemize}
+
+In conclusion, Euler's totient function is a fundamental tool in number theory, providing a direct and computable link between the prime factorization of an integer and the size of its multiplicative group of residues. Its properties, particularly its characterization of primes and its multiplicativity, make it indispensable in the study of modular arithmetic and abstract algebra.
