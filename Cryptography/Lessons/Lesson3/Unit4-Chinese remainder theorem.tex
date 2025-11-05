@@ -1,141 +1,45 @@
-\section{An Exposition on the Chinese Remainder Theorem}
-
-\section{Introduction: An Ancient Problem with Modern Relevance}
-The \textbf{Chinese Remainder Theorem (CRT)} is a cornerstone of number theory with a history as rich as its modern applications are diverse. Its origins can be traced to a problem of enumeration found in the 3rd to 5th century Chinese mathematical text, \textit{Sun Tze Suan Ching}. The text poses a now-famous puzzle:
-\begin{quote}
-If we count them by threes we have two left over. If we count them by fives we have three left over. If we count them by sevens we have two left over.
-\end{quote}
-This ancient riddle of remainders lays the groundwork for a profound mathematical principle. Centuries later, this principle has found new life as a foundational tool in modern applied mathematics, most notably in the field of cryptography. The theorem provides a powerful framework for solving systems of simultaneous congruences, a task central to the design and implementation of various cryptographic algorithms. This document provides a comprehensive, formal, and academic exploration of the Chinese Remainder Theorem, detailing its formal statement, rigorous proofs, practical solution methodologies, and critical extensions.
-
-\section{The System of Congruences: Formalizing the Problem}
-The first step in transforming an abstract puzzle into a solvable mathematical problem is to translate its language into a formal system. This act of formalization is crucial, as it allows us to move beyond a specific case and develop a general, repeatable methodology for all problems of a similar structure.
-The classic problem described by Sun Tze can be stated as follows:
-\begin{itemize}
-    \item If we count them by threes we have two left over.
-    \item If we count them by fives we have three left over.
-    \item If we count them by sevens we have two left over.
-\end{itemize}
-In the language of modular arithmetic, this puzzle translates directly into a system of three linear congruences with a single unknown variable, $x$:
-\begin{align*}
-x &\equiv 2 \pmod{3} \\
-x &\equiv 3 \pmod{5} \\
-x &\equiv 2 \pmod{7}
-\end{align*}
-This formal system is the precise mathematical expression of the original problem. The Chinese Remainder Theorem provides the theoretical framework that guarantees a solution to such a system exists and offers a clear path to finding it.
-
-\section{The Chinese Remainder Theorem: A Formal Statement}
-The Chinese Remainder Theorem offers a powerful and elegant guarantee regarding the solution of systems of linear congruences. It asserts that under a specific but critical condition---that the moduli are pairwise relatively prime---a solution not only exists but is also unique within a well-defined modular range.
+\section{Chinese Remainder Theorem (CRT)}
 
 \begin{theorem}[Chinese Remainder Theorem]
-Let $m_1, m_2, \dots, m_k$ be \textbf{pairwise relatively prime} integers. Let $a_1, a_2, \dots, a_k$ be arbitrary integers.
+Let $m_1, m_2, \dots, m_k \in \mathbb{N}$ be pairwise relatively prime integers (i.e., $\forall i \neq j, \gcd(m_i, m_j) = 1$). Let $a_1, a_2, \dots, a_k \in \mathbb{Z}$ be arbitrary integers.
 The system of congruences:
-$$ x \equiv a_i \pmod{m_i} \quad \text{for } i = 1 \dots k $$
+$$ x \equiv a_i \pmod{m_i} \quad \forall i \in \{1, \dots, k\} $$
 has a solution, and the complete set of solutions is congruent modulo the product $M = m_1 \cdot m_2 \cdot \dots \cdot m_k$.
 \end{theorem}
-The theorem makes two fundamental promises. The first is \textbf{existence}: a solution to the system is guaranteed to exist. The second is \textbf{uniqueness}: while there is an infinite set of solutions, they are all congruent to one another modulo $M$. This means there is exactly one solution within the range from $0$ to $M-1$.
 
-\section{Solution Methodologies}
-While the theorem guarantees a solution, several practical methods can be employed to find it. These approaches range from an intuitive, iterative process suitable for smaller systems to a more systematic and scalable algorithm derived directly from the theorem's constructive proof.
+\begin{center}
+    \line(1,0){450}
+\end{center}
 
-\subsection{Method 1: Iterative Substitution (``By Hands'')}
-This intuitive method, suitable for smaller systems, involves solving the first congruence, substituting the resulting expression into the next congruence, and systematically solving for the introduced parameters.
-
-\subsubsection*{Example 1: A 2x2 System}
-Consider the system:
-\begin{align*}
-x &\equiv 3 \pmod{11} \\
-x &\equiv 2 \pmod{7}
-\end{align*}
-\begin{enumerate}
-    \item \textbf{Express $x$:} $x = 3 + 11k$.
-    \item \textbf{Substitute:} $3 + 11k \equiv 2 \pmod{7}$.
-    \item \textbf{Solve for $k$:} $4k \equiv -1 \equiv 6 \pmod{7}$. The inverse of $4$ modulo $7$ is $2$. Multiplying by $2$ yields $k \equiv 2 \cdot 6 \equiv 12 \equiv 5 \pmod{7}$.
-    \item \textbf{Express $k$:} $k = 5 + 7L$.
-    \item \textbf{Substitute back:} $x = 3 + 11(5 + 7L) = 58 + 77L$.
-\end{enumerate}
-Thus, the solution is $x \equiv 58 \pmod{77}$.
-
-\subsubsection*{Example 2: The Sun Tze Problem}
-\begin{align*}
-x &\equiv 2 \pmod{3} \\
-x &\equiv 3 \pmod{5} \\
-x &\equiv 2 \pmod{7}
-\end{align*}
-\begin{enumerate}
-    \item $x = 2 + 3k$. Substitute into second: $3k \equiv 1 \pmod{5}$. Inverse of 3 is 2, so $k \equiv 2 \pmod{5}$.
-    \item $k = 2 + 5m$. Substitute back into $x$: $x = 2 + 3(2 + 5m) = 8 + 15m$.
-    \item Substitute into third: $8 + 15m \equiv 2 \pmod{7}$. Since $15 \equiv 1$ and $8 \equiv 1 \pmod{7}$, we get $1 + m \equiv 2 \implies m \equiv 1 \pmod{7}$.
-    \item $m = 1 + 7L$. Substitute back: $x = 8 + 15(1 + 7L) = 23 + 105L$.
-\end{enumerate}
-The smallest positive solution is $x = 23$.
-
-\subsection{Method 2: The Constructive Algorithm}
-This algorithm, derived from the theorem's constructive proof, is more robust and scalable for larger systems.
-\begin{enumerate}
-    \item \textbf{Step 1:} Define the moduli $m_i$ and calculate their product $M = m_1 \cdot \dots \cdot m_k$.
-    \item \textbf{Step 2:} For each $i$, calculate $N_i = M / m_i$.
-    \item \textbf{Step 3:} Find the modular multiplicative inverse $v_i$ of $N_i$ modulo $m_i$, such that $v_iN_i \equiv 1 \pmod{m_i}$. This is guaranteed by $\gcd(N_i, m_i) = 1$.
-    \item \textbf{Step 4 (Solution):} The final solution $x$ is constructed by the sum:
-    $$ x = \sum_{i=1}^{k} a_iv_iN_i $$
-\end{enumerate}
-
-\subsubsection*{Worked Example}
-Solve the system:
-\begin{align*}
-x &\equiv 2 \pmod{3} \\
-x &\equiv 3 \pmod{7} \\
-x &\equiv 4 \pmod{16}
-\end{align*}
-$a_i: 2, 3, 4$. $m_i: 3, 7, 16$. $M = 3 \cdot 7 \cdot 16 = 336$.
-\begin{enumerate}
-    \item \textbf{Calculate $N_i$:} $N_1 = 112$, $N_2 = 48$, $N_3 = 21$.
-    \item \textbf{Find Inverses $v_i$:}
-    \begin{itemize}
-        \item $112v_1 \equiv 1 \pmod{3} \implies 1v_1 \equiv 1 \implies v_1 = 1$.
-        \item $48v_2 \equiv 1 \pmod{7} \implies 6v_2 \equiv 1 \implies v_2 = -1 \equiv 6$.
-        \item $21v_3 \equiv 1 \pmod{16} \implies 5v_3 \equiv 1 \implies v_3 = -3 \equiv 13$.
-    \end{itemize}
-    \item \textbf{Construct Solution:}
-    \begin{align*}
-    x &= 2(1)(112) + 3(6)(48) + 4(13)(21) \\
-    x &= 224 + 864 + 1092 = 2180
-    \end{align*}
-    \item \textbf{Reduce:} $x \equiv 2180 \equiv 164 \pmod{336}$.
-\end{enumerate}
-The smallest positive solution is $x = 164$.
-
-\section{Formal Proof of the Chinese Remainder Theorem}
+\begin{proof}[Proof of the Chinese Remainder Theorem]
 The proof is divided into two parts: Existence (constructive) and Uniqueness (based on coprimality).
 
 \subsection{Proof of Existence}
-We must show that $x = \sum a_j v_j N_j$ is a solution. We verify that $x \equiv a_i \pmod{m_i}$ for an arbitrary $i$.
-The argument hinges on the fact that for any $j \neq i$, the term $N_j$ contains $m_i$ as a factor, leading to:
-$$ a_j v_j N_j \equiv 0 \pmod{m_i} \quad \text{for } j \neq i $$
-Thus, when $x$ is taken modulo $m_i$, all terms vanish except the $i$-th term:
+We define the solution constructively as $x = \sum_{j=1}^{k} a_j v_j N_j$.
+For this construction, let $M = \prod_{i=1}^{k} m_i$. We define $N_j = M/m_j$.
+Since the $m_i$ are pairwise coprime, $\gcd(N_j, m_j) = 1$. $\implies \exists v_j \in \mathbb{Z} : v_j N_j \equiv 1 \pmod{m_j}$ (the multiplicative inverse of $N_j$ modulo $m_j$).
+We must show that $x \equiv a_i \pmod{m_i}$ for an arbitrary index $i \in \{1, \dots, k\}$.
+\par
+The core argument is that $\forall j \neq i$, the term $N_j$ contains $m_i$ as a factor (since $m_i$ is a factor of $M$ but not $m_j$).
+$$ \forall j \neq i, \quad m_i \mid N_j \quad \implies a_j v_j N_j \equiv 0 \pmod{m_i} $$
+Thus, when $x$ is taken modulo $m_i$, all terms in the sum vanish except the $i$-th term ($j=i$):
+$$ x \equiv a_i v_i N_i + \sum_{j \neq i} (0) \pmod{m_i} $$
 $$ x \equiv a_i v_i N_i \pmod{m_i} $$
 Since $v_i N_i \equiv 1 \pmod{m_i}$ by construction, the proof concludes:
 $$ x \equiv a_i(1) \equiv a_i \pmod{m_i} $$
-This confirms the existence of a solution.
+This confirms the existence of a solution $x$ that satisfies the system.
 
 \subsection{Proof of Uniqueness}
 \begin{enumerate}
     \item \textbf{Assume Two Solutions:} Let $x$ and $x'$ both solve the system.
-    \item \textbf{Relationship:} For every $i$, $x \equiv a_i \pmod{m_i}$ and $x' \equiv a_i \pmod{m_i}$, implying $x - x' \equiv 0 \pmod{m_i}$. Thus, $m_i$ divides $(x - x')$.
-    \item \textbf{Use Co-prime Condition:} Since all $m_i$ are pairwise co-prime and each divides $(x - x')$, their product $M = m_1 \cdot \dots \cdot m_k$ must also divide $(x - x')$.
-    \item \textbf{Conclusion:} By definition, $M \mid (x - x')$ means $x \equiv x' \pmod{M}$.
+    \item \textbf{Relationship:} $\forall i \in \{1, \dots, k\}$, $x \equiv a_i \pmod{m_i}$ and $x' \equiv a_i \pmod{m_i}$. $\implies x - x' \equiv 0 \pmod{m_i}$.
+    This means that $\forall i$, $m_i \mid (x - x')$.
+    \item \textbf{Use Co-prime Condition:} Since the moduli $m_1, \dots, m_k$ are pairwise co-prime and each divides the difference $(x - x')$, their product $M = \prod_{i=1}^{k} m_i$ must also divide the difference.
+    \item \textbf{Conclusion:} $M \mid (x - x')$ means $x \equiv x' \pmod{M}$.
 \end{enumerate}
-This confirms that the solution is unique modulo $M$.
+This confirms that the solution is unique modulo $M$. \qedhere
+\end{proof}
 
-\section{An Important Extension: The Case of Non-Co-prime Moduli}
-The powerful guarantees of the CRT rely entirely on the condition that the moduli are pairwise co-prime. When this fails, a solution is not guaranteed.
-
-\subsubsection*{Example of No Solution}
-The system $x \equiv 0 \pmod{4}$ and $x \equiv 1 \pmod{6}$ has no solution because $x$ must be both even (from $x \equiv 0 \pmod{4}$) and odd (from $x \equiv 1 \pmod{6}$), a contradiction.
-
-\subsubsection*{Compatibility Condition}
-For a system of congruences with non-co-prime moduli, a solution exists \textbf{if and only if} the following compatibility condition is met for every pair of equations:
-$$ a_i \equiv a_j \pmod{\gcd(m_i, m_j)} \quad \text{for every pair } i, j $$
-If this condition holds, a unique solution exists modulo the \textbf{least common multiple} (LCM) of the moduli.
-
-\section{Conclusion}
-The Chinese Remainder Theorem is a profound result in number theory that provides a powerful bridge between modular arithmetic with large composite numbers and systems of simpler congruences. Its core function is to transform a complex problem into a manageable set of smaller, independent problems. This ``divide and conquer'' approach, rooted in an ancient counting puzzle, has become an indispensable tool in modern fields. In cryptography, for example, algorithms like RSA leverage the CRT to dramatically speed up computations involving large moduli. By breaking a single, computationally expensive exponentiation into several smaller ones that can be executed in parallel, the CRT demonstrates its enduring relevance, transforming an elegant piece of ancient mathematics into a cornerstone of modern computational security.
+\begin{center}
+    \line(1,0){450}
+\end{center}

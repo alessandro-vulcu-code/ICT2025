@@ -1,123 +1,70 @@
-\subsection{The Euclidean Algorithm}
-The Euclidean Algorithm is a systematic and highly efficient procedure for computing the GCD of two positive integers by using repeated Euclidean division.
+\section{The Euclidean Algorithm}
 
 \begin{theorem}[Euclidean Algorithm]
-Let $a, b > 0$ with $a \geq b$. The following algorithm computes $\gcd(a, b)$ in a finite number of steps:
+Let $a, b \in \mathbb{N} : a > 0, b > 0 \text{ and } a \geq b$. The following algorithm computes $\gcd(a, b)$ in a finite number of steps:
 \begin{enumerate}
-    \item Let $r_0 := a, r_1 := b$.
+    \item Let $r_0 := a \text{ and } r_1 := b$.
     \item Set $i = 1$.
-    \item Divide $r_{i-1}$ by $r_i$ to get a quotient $q_i$ and remainder $r_{i+1}$: $r_{i-1} = r_i q_i + r_{i+1}$.
+    \item Divide $r_{i-1}$ by $r_i$ to obtain a quotient $q_i$ and remainder $r_{i+1}$: $r_{i-1} = r_i q_i + r_{i+1}$.
     \item If $r_{i+1} = 0$, then $r_i = \gcd(a, b)$. The algorithm terminates.
-    \item Otherwise, increment $i$ and return to Step 3.
+    \item Otherwise, increment $i \rightarrow i+1$ and return to Step 3.
 \end{enumerate}
 \end{theorem}
-Let's apply the algorithm to find $\gcd(259, 119)$:
-\begin{align*}
-259 &= 119 \times 2 + 21 \quad (r_2 = 21) \\
-119 &= 21 \times 5 + 14 \quad (r_3 = 14) \\
-21 &= 14 \times 1 + 7 \quad (r_4 = 7) \\
-14 &= 7 \times 2 + 0 \quad (r_5 = 0)
-\end{align*}
-The last non-zero remainder is $7$. Therefore, $\gcd(259, 119) = 7$.
+\begin{proof}
+Let the sequence of remainders be $r_0, r_1, \dots, r_n, r_{n+1}$ where $d = r_n$ is the last non-zero remainder and $r_{n+1} = 0$. We must demonstrate two facts: that $d$ is a common divisor of $a$ and $b$, and that it is the greatest common divisor.
 
-\begin{center}
-\line(1,0){400}
-\end{center}
-
-\begin{proof}[Proof of Correctness]
-Let the sequence of remainders be $r_0, r_1, \dots, r_n, r_{n+1}$ where $d = r_n$ is the last non-zero remainder and $r_{n+1} = 0$. The proof must show two things: that $d$ is a common divisor of $a$ and $b$, and that it is the greatest common divisor.
-
-\subsubsection*{a. $d$ divides $a$ and $b$}
+\subsubsection*{a. $d \mid a$ and $d \mid b$}
 We proceed by working backward from the end of the algorithm.
 \begin{itemize}
-    \item The final division step is $r_{n-1} = r_n q_n + r_{n+1}$. Since $r_{n+1} = 0$ and $d = r_n$, this equation becomes $r_{n-1} = dq_n$. This demonstrates that $d \mid r_{n-1}$.
-    \item The preceding step is $r_{n-2} = r_{n-1} q_{n-1} + r_n$. We know $d \mid r_n$ (trivially) and we have just shown that $d \mid r_{n-1}$. Therefore, $d$ must divide their linear combination, so $d \mid r_{n-2}$.
+    \item The final division step is $r_{n-1} = r_n q_n + r_{n+1}$. Since $r_{n+1} = 0$ and $d = r_n$, this equation becomes $r_{n-1} = d q_n$. This demonstrates $d \mid r_{n-1}$.
+    \item The preceding step is $r_{n-2} = r_{n-1} q_{n-1} + r_n$. Since $d \mid r_n$ and we have shown $d \mid r_{n-1}$, it follows that $d$ must divide their linear combination, $d \mid r_{n-2}$.
 \end{itemize}
-Continuing this process of backward induction, we establish that $d$ divides every preceding remainder, until we conclude that $d$ divides $r_1$ (which is $b$) and $r_0$ (which is $a$). Thus, $d$ is a common divisor.
+Continuing this backward induction process, we establish that $d$ divides every preceding remainder. This concludes that $d \mid r_1$ (where $r_1 = b$) and $d \mid r_0$ (where $r_0 = a$). Thus, $d$ is a common divisor.
 
-\subsubsection*{b. $d$ is the greatest common divisor}
-Now let $c$ be any common divisor of $a$ and $b$. We work forward down the chain of remainders.
+\subsubsection*{b. $d$ is the Greatest Common Divisor}
+Let $c \in \mathbb{Z}$ be any common divisor of $a$ and $b$. We work forward down the chain of remainders.
 \begin{itemize}
-    \item Since $c \mid a$ ($r_0$) and $c \mid b$ ($r_1$), it must divide the first remainder $r_2 = r_0 - r_1q_1$.
-    \item Since $c \mid r_1$ and $c \mid r_2$, it must divide their remainder $r_3 = r_1 - r_2q_2$.
+    \item Since $c \mid a$ ($r_0$) and $c \mid b$ ($r_1$), and $r_2 = r_0 - r_1q_1$, it must be that $c \mid r_2$.
+    \item Since $c \mid r_1$ and $c \mid r_2$, and $r_3 = r_1 - r_2q_2$, it must be that $c \mid r_3$.
 \end{itemize}
-Continuing this process, we eventually find that $c$ must divide the last non-zero remainder, $r_n$, which is $d$.
-Since $c$ divides $d$, it must be that $c \leq d$. This holds for any common divisor $c$, proving that $d$ is the greatest common divisor.
+Continuing this process, we eventually find that $c$ must divide the last non-zero remainder, $r_n$, so $c \mid d$.
+Since $c \mid d$, it is a consequence of divisibility that $c \leq d$. This holds $\forall c$ common divisor, proving that $d$ is the greatest common divisor. \qedhere
 \end{proof}
 
 \begin{center}
-\line(1,0){400}
+    \line(1,0){450}
 \end{center}
-
-This powerful algorithm can be extended not just to find the GCD, but also to express it as a specific integer combination of the original numbers.
-
-\section{The Extended Euclidean Algorithm and Diophantine Equations}
-
-\subsection{Theorem and Application}
-The Extended Euclidean Algorithm is a crucial enhancement of the standard algorithm. It demonstrates that the GCD of two integers can always be expressed as a linear combination of those integers. This property is fundamental to number theory and is the key to solving linear Diophantine equations.
 
 \begin{proposition}[Extended Euclidean Algorithm]
-Let $a$ and $b$ be natural numbers, not both zero. If $d = \gcd(a, b)$, then there exist integers $u, v$ such that $d = au + bv$.
-\end{proposition}
-To find these coefficients $u$ and $v$, we work backward through the steps of the standard Euclidean algorithm, substituting for the remainders at each stage. Using our previous result $\gcd(259, 119) = 7$ (let $a=259, b=119$):
-\begin{align*}
-\text{From } 21 &= 14 \times 1 + 7, \text{ we isolate the remainder: } 7 = 21 - 14 \\
-\text{From } 119 &= 21 \times 5 + 14, \text{ we have } 14 = 119 - 21 \times 5. \text{ Substitute this:} \\
-7 &= 21 - (119 - 21 \times 5) = 21 - 119 + 5 \times 21 = 6 \times 21 - 119 \\
-\text{From } 259 &= 119 \times 2 + 21, \text{ we have } 21 = 259 - 119 \times 2. \text{ Substitute this final expression:} \\
-7 &= 6 \times (259 - 119 \times 2) - 119 \\
-7 &= 6 \times 259 - 12 \times 119 - 119 \\
-7 &= 6 \times 259 - 13 \times 119
-\end{align*}
-Thus, we have found $7 = 6a - 13b$, where $u = 6$ and $v = -13$.
-It is important to note that these coefficients $u$ and $v$ are not unique. Let $(u, v)$ be one such pair of coefficients. Now, for any integer $k$, define $u' = u + k(b/d)$ and $v' = v - k(a/d)$. (The original text uses $u' = u + kb$ and $v' = v - ka$, which is correct only if $d=1$, but the more general form is needed here). Let's use the general form $u' = u + k \frac{b}{\gcd(a,b)}$ and $v' = v - k \frac{a}{\gcd(a,b)}$.
-Substituting these into the linear combination yields:
-\begin{align*}
-au' + bv' &= a \left(u + k \frac{b}{d}\right) + b \left(v - k \frac{a}{d}\right) \\
-&= au + a k \frac{b}{d} + bv - b k \frac{a}{d} \\
-&= au + bv + k \left(\frac{ab}{d} - \frac{ab}{d}\right) \\
-&= au + bv = d
-\end{align*}
-This demonstrates that there are infinitely many pairs of coefficients. This theorem is the key to analyzing and solving a general class of equations known as linear Diophantine equations.
-
-\subsection{Solving Linear Diophantine Equations}
-A linear Diophantine equation is an equation of the form $au + bv = c$, where $a, b, c$ are known integers and $u, v$ are the integer variables to be solved for.
-
-\begin{proposition}[Solvability Condition]
-The equation $au + bv = c$ has integer solutions $u, v$ if and only if $\gcd(a, b) \mid c$.
+Let $a, b \in \mathbb{N}$ such that $a \neq 0$ or $b \neq 0$. If $d = \gcd(a, b)$, then $\exists u, v \in \mathbb{Z} : d = au + bv$.
 \end{proposition}
 
 \begin{center}
-\line(1,0){400}
+    \line(1,0){450}
 \end{center}
 
+\begin{proposition}[Solvability Condition]
+The linear Diophantine equation $au + bv = c$ has integer solutions $u, v$ $\iff \gcd(a, b) \mid c$.
+\end{proposition}
 \begin{proof}
 \begin{itemize}
-    \item[($\Rightarrow$)] Assume integer solutions $u, v$ exist. Let $d = \gcd(a, b)$. By definition, $d \mid a$ and $d \mid b$. Therefore, $d$ must divide any linear combination of $a$ and $b$, so $d \mid (au + bv)$. Since $au + bv = c$, it follows that $d \mid c$.
-    \item[($\Leftarrow$)] Assume $\gcd(a, b) \mid c$. Let $d = \gcd(a, b)$. Then $c = kd$ for some integer $k$. From the Extended Euclidean Algorithm, we know there exist integers $u_0, v_0$ such that $au_0 + bv_0 = d$. Multiplying by $k$, we get $a(ku_0) + b(kv_0) = kd = c$. Thus, a solution exists with $u = ku_0$ and $v = kv_0$.
+    \item[($\Rightarrow$)] Assume integer solutions $u, v$ exist. Let $d = \gcd(a, b)$. By definition, $d \mid a$ and $d \mid b$. $\implies d \mid (au + bv)$, $\implies d \mid c$ because $au + bv = c$.
+    \item[($\Leftarrow$)] Assume $d = \gcd(a, b)$ and $d \mid c$. Then $\exists k \in \mathbb{Z} : c = kd$. From the Extended Euclidean Algorithm, we know $\exists u_0, v_0 \in \mathbb{Z} : a u_0 + b v_0 = d$. Multiplying by $k$, we get $a(k u_0) + b(k v_0) = k d = c$. Thus, a solution exists with $u = k u_0$ and $v = k v_0$. \qedhere
 \end{itemize}
 \end{proof}
 
-\subsubsection*{General Solution Methodology}
-To find all integer solutions to $au + bv = c$:
-\begin{enumerate}
-    \item Calculate $d = \gcd(a, b)$ using the Euclidean Algorithm. If $d$ does not divide $c$, there are no integer solutions.
-    \item If $d \mid c$, divide the entire equation by $d$ to get a simplified equation $a'u + b'v = c'$, where $a' = a/d$, $b' = b/d$, and $c' = c/d$. Note that $\gcd(a', b') = 1$.
-    \item Use the Extended Euclidean Algorithm to find a particular solution $(u_*, v_*)$ for the equation $a'u + b'v = 1$.
-    \item A particular solution $(u_p, v_p)$ for the simplified equation from step 2 is then given by $(u_*c', v_*c')$. This provides a particular solution to the original equation as well.
-    \item The complete set of solutions is given by the general formula described below, using the particular solution $(u_p, v_p)$ and the coprime values $a'$ and $b'$.
-\end{enumerate}
+\begin{center}
+    \line(1,0){450}
+\end{center}
 
 \begin{proposition}[Form of All Solutions]
-If $(u_p, v_p)$ is a particular solution to $au + bv = c$ and $d = \gcd(a,b)$, let $a'=a/d$ and $b'=b/d$. Then all integer solutions are given by:
-$$ u = u_p + k b' \quad \text{and} \quad v = v_p - k a' $$
-for any integer $k$.
+If $(u_p, v_p)$ is a particular solution to $au + bv = c$ and $d = \gcd(a,b)$, let $a'=a/d$ and $b'=b/d$. Then $\forall (u, v)$ integer solutions, $u = u_p + k b' \text{ and } v = v_p - k a'$ for any $k \in \mathbb{Z}$.
 \end{proposition}
-
 \begin{proof}
-We have already shown that any pair $(u, v)$ of this form is a solution (using $a' = b/d$ and $b' = a/d$ in the substitution check in section 5.1). Now, assume $(u', v')$ is another solution, so $au' + bv' = c$. We also have $au_p + bv_p = c$. Subtracting the two equations gives $a(u' - u_p) + b(v' - v_p) = 0$, or $a(u' - u_p) = b(v_p - v')$.
+Assume $(u', v')$ is an arbitrary integer solution, so $a u' + b v' = c$. We also have $a u_p + b v_p = c$. Subtracting the two equations gives $a(u' - u_p) + b(v' - v_p) = 0$, so $a(u' - u_p) = b(v_p - v')$.
 Dividing by $d$: $a'(u' - u_p) = b'(v_p - v')$.
-Since $\gcd(a', b') = 1$, and $a'$ divides the right-hand side $b'(v_p - v')$, it must be that $a' \mid (v_p - v')$. Therefore, $v_p - v' = ka'$ for some integer $k$, which means $v' = v_p - ka'$. Substituting this back gives $a'(u' - u_p) = b'(ka')$, which simplifies to $u' - u_p = kb'$, or $u' = u_p + kb'$. This shows that any other solution must be of the specified form.
+Since $\gcd(a', b') = 1$, and $a' \mid b'(v_p - v')$, it must be that $a' \mid (v_p - v')$.
+$\implies \exists k \in \mathbb{Z} : v_p - v' = k a'$, which gives $v' = v_p - k a'$.
+Substituting this back yields $a'(u' - u_p) = b'(k a')$, which simplifies to $u' - u_p = k b'$, or $u' = u_p + k b'$.
+This demonstrates that any other solution must be of the specified form. \qedhere
 \end{proof}
-The special case where $\gcd(a, b) = 1$ is of particular importance in number theory and has its own terminology.
-

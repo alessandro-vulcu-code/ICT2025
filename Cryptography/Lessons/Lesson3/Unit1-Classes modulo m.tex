@@ -1,150 +1,54 @@
-\section{Modular Arithmetic: Divisibility, Congruence, and Equivalence Classes}
+\section{Classes Modulo \texorpdfstring{$m$}{m}}
 
-\subsection*{Introduction}
-Modular arithmetic is a system of arithmetic for integers where numbers ``wrap around'' after reaching a certain value, known as the \textbf{modulus}. This concept is intuitively understood through the analogy of ``clock arithmetic.'' On a standard 12-hour clock, the hours cycle from 1 to 12. If it is 9 o'clock, adding 6 hours results in 3 o'clock, not 15 o'clock. Similarly, 3 hours before 2 o'clock is 11 o'clock. In this system, the number 12 effectively plays the role of zero. Modular arithmetic formalizes this intuitive idea, creating a powerful mathematical structure. This document provides a formal, academic exploration of its foundational principles, rigorously defining divisibility, the Euclidean division algorithm, and congruence. This progression will culminate in an analysis of equivalence classes and partitions, which form the structural backbone of this essential mathematical system.
-
-\hrule
-
-\section{The Principle of Divisibility and Its Relation to Congruence}
-The concept of divisibility is the bedrock upon which modular arithmetic is built. Understanding the conditions under which one integer can be perfectly divided by another is the first and most critical step toward comprehending the structure of congruences. It allows us to define a baseline---a ``zero point''---within any given modulus.
-
-\subsection{Formal Definition of Divisibility}
-An integer $m$ is said to divide an integer $a$, denoted $m \mid a$, if there exists an integer $k$ such that $a = km$.
-A direct and fundamental consequence of this definition is its relationship to congruence. An integer $a$ is divisible by $m$ if and only if $a$ is congruent to zero modulo $m$.
-$$ m \mid a \quad \text{is equivalent to the statement} \quad a \equiv 0 \pmod{m} $$
-This equivalence establishes that all multiples of the modulus $m$ are considered equivalent to zero within that modular system.
-
-\subsection{Illustrative Examples}
-\begin{itemize}
-    \item \textbf{Clock Arithmetic:} In a $\bmod 12$ system, the number 12 plays the role of zero. This is formally expressed as $12 \equiv 0 \pmod{12}$, which is true because the difference $12 - 0 = 12$ is a multiple of 12.
-    \item \textbf{General Multiples:} The concept extends to any modulus $m$. All integer multiples of $m$ (e.g., $m, 2m, -m$, etc.) are congruent to $0 \pmod{m}$.
-\end{itemize}
-The case of exact divisibility, where the remainder is zero, is a specific instance of a more general principle. The next logical step is to consider the outcome of division when the remainder is not zero, which is formally described by the Euclidean Division Algorithm.
-
-\hrule
-
-\section{The Euclidean Division Algorithm}
-The \textbf{Euclidean Division Algorithm} is the essential mechanism for determining the relationship between any two integers within a given modulus. Its true power lies in its guarantee that for any integer $a$ and modulus $m$, there exists a unique remainder $r$ in the set $\{0, 1, \dots, m-1\}$. This uniqueness is the linchpin that allows every integer to be mapped to a canonical representative, which is the foundational operation of modular arithmetic.
-
-\subsection{The Division Theorem}
 \begin{proposition}
-For any integer $a$ (the dividend) and any positive integer $m > 1$ (the modulus or divisor), there exist unique integers $q$ (the quotient) and $r$ (the remainder) such that:
-$$ a = mq + r $$
-where the remainder $r$ is constrained by the condition:
-$$ 0 \leq r < m $$
+\label{prop:euclidean-division-unique-remainder}
+$\forall a \in \mathbb{Z}$ (the dividend) and $\forall m \in \mathbb{N}$ so that $m > 1$ (the modulus), $\exists! q, r \in \mathbb{Z} : a = mq + r$, with $0 \leq r < m$.
 \end{proposition}
 
-\subsection{Components of the Equation}
 \begin{center}
-\begin{tabular}{|l|l|}
-\hline
-\textbf{Term} & \textbf{Description} \\
-\hline
-$a$ & The dividend (the integer being divided). \\
-\hline
-$m$ & The divisor (the modulus). \\
-\hline
-$q$ & The quotient. \\
-\hline
-$r$ & The remainder. \\
-\hline
-\end{tabular}
+    \line(1,0){450}
 \end{center}
-The primary implication of this algorithm is that for any integers $a$ and $m$ (with $m > 1$), there exists a unique remainder $r$ that is an element of the set $\{0, 1, \dots, m-1\}$. This unique remainder is fundamentally linked to the original integer $a$ through the concept of congruence, which will be detailed next.
-
-\hrule
-
-\section{The Theory of Congruence}
-Congruence is a powerful generalization of equality that forms the operational basis of modular arithmetic. It provides a systematic way to classify all integers based on their remainders with respect to a given modulus $m$. Two numbers are considered congruent if they are ``the same'' within that modulus, even if their absolute values are different.
-
-\subsection{Formal Definition of Congruence}
-Two integers $a$ and $b$ are \textbf{congruent modulo $m$} if their difference, $a - b$, is divisible by $m$. This is expressed with the notation:
-$$ a \equiv b \pmod{m} $$
-This definition is entirely equivalent to the statement that $a$ and $b$ have the same remainder upon division by $m$. This equivalence can be formally shown:
-\begin{itemize}
-    \item[($\Rightarrow$)] Assume $a \equiv b \pmod{m}$. Then $a - b = km$ for some integer $k$. By the Division Algorithm, $a = mq_1 + r_1$ and $b = mq_2 + r_2$, where $0 \leq r_1, r_2 < m$. Subtracting gives $a - b = m(q_1 - q_2) + (r_1 - r_2)$. Substituting $km$ yields $r_1 - r_2 = m(k - q_1 + q_2)$. Since $-m < r_1 - r_2 < m$, the only integer multiple of $m$ in this range is $0$. Thus, $r_1 - r_2 = 0$, implying $r_1 = r_2$.
-    \item[($\Leftarrow$)] Assume $a$ and $b$ have the same remainder $r$. Then $a = mq_1 + r$ and $b = mq_2 + r$. Subtracting gives $a - b = m(q_1 - q_2)$. By definition, $m \mid (a - b)$, and thus $a \equiv b \pmod{m}$.
-\end{itemize}
 
 \begin{theorem}[Existence of a Unique Remainder]
-For any integer $a$ and modulus $m > 1$, there exists a unique integer $r$ in the set $\{0, 1, \dots, m-1\}$ such that $a \equiv r \pmod{m}$.
+$\forall a \in \mathbb{Z}$ and $\forall m \in \mathbb{N} : m > 1$, $\exists! r \in \{0, 1, \dots, m-1\} : a \equiv r \pmod{m}$.
 \end{theorem}
 \begin{proof}
-Begin with the Euclidean Division Algorithm: $a = mq + r$, where $0 \leq r < m$. Rearrange: $a - r = mq$. By the formal definition of divisibility, $m \mid (a - r)$. By the formal definition of congruence, this directly implies $a \equiv r \pmod{m}$.
+By Proposition \ref{prop:euclidean-division-unique-remainder} (Euclidean Division), we have $\exists! q, r \in \mathbb{Z} : a = mq + r$, where $0 \leq r < m$.
+Rearranging this equation gives $a - r = mq$.
+By the formal definition of divisibility, $m \mid (a - r)$.
+By the formal definition of congruence, this directly implies $a \equiv r \pmod{m}$. The uniqueness of $r$ is guaranteed by the Euclidean Division Theorem. \qedhere
 \end{proof}
 
-\subsection{Illustrative Examples}
-\begin{itemize}
-    \item \textbf{Clock Arithmetic ($\bmod 12$):}
-    \begin{itemize}
-        \item $15 \equiv 3 \pmod{12}$ is true because $15 - 3 = 12$, which is a multiple of 12.
-        \item $-1 \equiv 11 \pmod{12}$ is true because $-1 - 11 = -12$, which is a multiple of 12.
-    \end{itemize}
-    \item \textbf{Numerical Example 1:} $17 \equiv 7 \pmod{10}$ is true because $17 - 7 = 10$, which is a multiple of 10.
-    \item \textbf{Numerical Example 2:} $17 \equiv 3 \pmod{7}$ is true because $17 - 3 = 14$, and $14 = 2 \times 7$.
-\end{itemize}
-The properties of congruence are not arbitrary; they conform to a precise mathematical structure known as an equivalence relation, which ensures that congruence behaves logically like equality. 
-
-\hrule
-
-\section{Congruence as an Equivalence Relation}
-The formal classification of congruence as an \textbf{equivalence relation} is of paramount importance. This classification is critical because it formally proves that congruence behaves with the same logical consistency as equality (\textit{reflexivity}, \textit{symmetry}, \textit{transitivity}), which is the prerequisite for partitioning a set into meaningful classes.
-
-\subsection{Definition of an Equivalence Relation}
-An equivalence relation, denoted $\sim$, on a set $X$ is a relation that satisfies the following three properties:
-\begin{enumerate}
-    \item \textbf{Reflexive:} For all $a \in X$, $a \sim a$.
-    \item \textbf{Symmetric:} For all $a, b \in X$, if $a \sim b$ then $b \sim a$.
-    \item \textbf{Transitive:} For all $a, b, c \in X$, if $a \sim b$ and $b \sim c$, then $a \sim c$.
-\end{enumerate}
+\begin{center}
+    \line(1,0){450}
+\end{center}
 
 \begin{theorem}[Congruence is an Equivalence Relation]
-The relation of congruence modulo $m$ is an equivalence relation on the set of integers $\mathbb{Z}$.
+The relation of congruence modulo $m$ (denoted by $\equiv \pmod{m}$) is an equivalence relation on the set of integers $\mathbb{Z}$.
 \end{theorem}
-
 \begin{proof}
-We must demonstrate that congruence modulo $m$ satisfies all three properties.
+We must demonstrate that congruence modulo $m$ satisfies reflexivity, symmetry, and transitivity.
 \begin{itemize}
-    \item \textbf{Proof of Reflexivity} For any integer $a$, $a - a = 0$. Since $m \mid 0$, $a \equiv a \pmod{m}$. The relation is reflexive.
-    \item \textbf{Proof of Symmetry} Assume $a \equiv b \pmod{m}$. Then $m \mid (a - b)$, so $a - b = km$. Multiplying by $-1$ gives $b - a = (-k)m$. Since $m \mid (b - a)$, $b \equiv a \pmod{m}$. The relation is symmetric.
-    \item \textbf{Proof of Transitivity} Assume $a \equiv b \pmod{m}$ and $b \equiv c \pmod{m}$. Then $a - b = k_1m$ and $b - c = k_2m$. Adding the equations yields:
-    $$ (a - b) + (b - c) = k_1m + k_2m $$
-    $$ a - c = (k_1 + k_2)m $$
-    Since $k_1 + k_2$ is an integer, $m \mid (a - c)$, which implies $a \equiv c \pmod{m}$. The relation is transitive.
+    \item \textbf{Reflexivity:} $\forall a \in \mathbb{Z}$, $a - a = 0$. Since $m \mid 0$, $a \equiv a \pmod{m}$. The relation is reflexive.
+    \item \textbf{Symmetry:} Assume $a \equiv b \pmod{m}$. $\implies m \mid (a - b)$, so $\exists k \in \mathbb{Z} : a - b = k m$.
+    Multiplying by $-1$ yields $b - a = (-k) m$. Since $-k \in \mathbb{Z}$, $\implies m \mid (b - a)$, so $b \equiv a \pmod{m}$. The relation is symmetric.
+    \item \textbf{Transitivity:} Assume $a \equiv b \pmod{m}$ and $b \equiv c \pmod{m}$.
+    $\implies \exists k_1, k_2 \in \mathbb{Z} : a - b = k_1 m \text{ and } b - c = k_2 m$.
+    Adding the equations:
+    $$ (a - b) + (b - c) = k_1 m + k_2 m $$
+    $$ a - c = (k_1 + k_2) m $$
+    Since $k_1 + k_2 \in \mathbb{Z}$, $\implies m \mid (a - c)$, so $a \equiv c \pmod{m}$. The relation is transitive. \qedhere
 \end{itemize}
-Having satisfied all three properties, the proof that congruence modulo $m$ is an equivalence relation is complete.
 \end{proof}
 
-\hrule
-
-\section{Equivalence Classes and Partitions}
-The ultimate consequence of an equivalence relation is the partitioning of a set into disjoint subsets, known as \textbf{equivalence classes}. These classes are fundamental because they group all elements that are considered ``the same'' with respect to the relation. In modular arithmetic, these classes group all integers that share the same remainder when divided by the modulus $m$.
-
-\subsection*{Formal Definitions}
-\begin{itemize}
-    \item \textbf{The equivalence class} of an element $a$ in a set $X$, denoted $[a]$, is the set of all elements $b$ in $X$ that are related to $a$:
-    $$ [a] := \{b \in X : b \sim a\} $$
-    \item \textbf{The quotient set}, denoted $X/\sim$, is the set of all equivalence classes.
-\end{itemize}
-
-\subsection{Illustrative Examples}
-\begin{itemize}
-    \item \textbf{Same Parity (Integers Modulo 2):} This equivalence relation on $\mathbb{Z}$ produces exactly two equivalence classes:
-    \begin{itemize}
-        \item $[0] = \{\dots, -4, -2, 0, 2, 4, \dots\}$ (The set of all even numbers)
-        \item $[1] = \{\dots, -3, -1, 1, 3, 5, \dots\}$ (The set of all odd numbers)
-    \end{itemize}
-    \item \textbf{Human Beings with the Same Parents:} The class $[Ed]$ is the set of all human beings who have both of Ed's biological parents (Ed and all of their full siblings).
-\end{itemize}
+\begin{center}
+    \line(1,0){450}
+\end{center}
 
 \begin{proposition}[Equivalence Classes Form a Partition]
 Let $\sim$ be an equivalence relation on a set $X$. The set of equivalence classes, $X/\sim$, forms a partition of $X$.
 \end{proposition}
-For a collection of subsets to be a partition, two conditions must be met:
-\begin{enumerate}
-    \item The union of all equivalence classes is equal to the original set $X$.
-    \item Any two distinct equivalence classes are disjoint (their intersection is the empty set).
-\end{enumerate}
 
-\section{Conclusion}
-The principles of modular arithmetic unfold in a sequence of remarkable logical dependency. We began with the primitive notion of integer divisibility, which served as the cornerstone for the Euclidean Division Algorithm. This algorithm's guarantee of a unique remainder, in turn, allowed for the rigorous definition of congruence---a powerful generalization of equality. Finally, by proving that congruence satisfies the properties of an equivalence relation, we unlocked its ultimate structural consequence: the partitioning of the infinite set of integers into a finite, manageable collection of residue classes. These foundational principles are not only elegant but are essential for further study in abstract algebra, number theory, and computer science.
+\begin{center}
+    \line(1,0){450}
+\end{center}

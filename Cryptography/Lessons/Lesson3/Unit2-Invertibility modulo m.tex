@@ -1,163 +1,103 @@
-\section{A Comprehensive Treatise on Modular Arithmetic and Linear Congruences}
-\newtheorem{definition}{Definition}[section]
-Modular arithmetic is a system of arithmetic for integers where numbers ``wrap around'' upon reaching a certain value---the modulus. This elegant branch of number theory simplifies problems involving large or infinite sets of integers by transforming them into a finite, manageable system. Its strategic importance is profound, providing the foundational mathematics for fields as diverse as cryptography, computer science, and abstract algebra, where it allows for the analysis of complex structures through their finite analogues.
-
-\section{The Foundation: Integers Modulo $m$ ($\mathbb{Z}/m\mathbb{Z}$)}
-The cornerstone of modular arithmetic is the concept of congruence, which formalizes the notion of numbers being ``the same'' with respect to a modulus.
-
-\subsection{The Congruence Relation}
-\begin{definition}
-Let $m$ be an integer greater than $1$. Two integers, $a$ and $b$, are said to be \textbf{congruent modulo $m$} if their difference $(a - b)$ is divisible by $m$. This relationship is denoted as:
-$$ a \equiv b \pmod{m} \quad \text{which is formally defined as} \quad m \mid (a - b) $$
-\end{definition}
-This congruence relation is an equivalence relation on the set of integers, $\mathbb{Z}$, meaning it partitions the entire set of integers into disjoint subsets, known as equivalence classes. An equivalence relation must satisfy three fundamental properties:
-\begin{enumerate}
-    \item \textbf{Reflexivity:} $a \equiv a \pmod{m}$ for any integer $a$.
-    \item \textbf{Symmetry:} If $a \equiv b \pmod{m}$, then $b \equiv a \pmod{m}$.
-    \item \textbf{Transitivity:} If $a \equiv b \pmod{m}$ and $b \equiv c \pmod{m}$, then $a \equiv c \pmod{m}$.
-\end{enumerate}
-
-\subsection{Constructing the Quotient Set $\mathbb{Z}/m\mathbb{Z}$}
-The congruence relation partitions the set of integers $\mathbb{Z}$ into distinct equivalence classes.
-\begin{itemize}
-    \item An \textbf{equivalence class} $[a]$ is the set of all integers congruent to $a$ modulo $m$:
-    $$ [a] = \{b \in \mathbb{Z} \mid b \equiv a \pmod{m}\} $$
-    \item The \textbf{quotient set}, denoted $\mathbb{Z}/m\mathbb{Z}$, is the set of all such equivalence classes modulo $m$.
-\end{itemize}
-Critically, the set $\mathbb{Z}/m\mathbb{Z}$ contains exactly $m$ distinct elements. Any integer is congruent to its remainder upon division by $m$, which must be a value from $0$ to $m-1$. Consequently, the $m$ distinct classes are $[0], [1], [2], \dots, [m-1]$.
-For notational simplicity, it is common practice to represent these classes by the integers themselves: $\mathbb{Z}/m\mathbb{Z} = \{0, 1, \dots, m-1\}$.
-It is crucial to remember that while these symbols look like integers, each represents an entire infinite set of numbers. For example, in $\mathbb{Z}/12\mathbb{Z}$ (the arithmetic of a clock), the element $2$ represents the equivalence class $[2]$, which is the set $\{\dots, -22, -10, 2, 14, 26, \dots\}$. It is crucial to remember that we are about to define arithmetic not on numbers, but on these infinite sets. The fact that these operations can be defined consistently is a cornerstone of this entire structure and requires rigorous proof.
-
-\subsection{Operations in $\mathbb{Z}/m\mathbb{Z}$}
-We can define arithmetic operations on these equivalence classes. For any $[a], [b] \in \mathbb{Z}/m\mathbb{Z}$, we define addition and multiplication as follows:
-\begin{itemize}
-    \item \textbf{Addition:} $[a] + [b] := [a + b]$
-    \item \textbf{Multiplication:} $[a] \cdot [b] := [a \cdot b]$
-\end{itemize}
-A potential issue arises: the result of an operation seems to depend on the specific representatives ($a$ and $b$) chosen from the classes. The following proposition asserts that this is not the case; the operations are \textbf{well-defined}.
+\section{Invertibility Modulo \texorpdfstring{$m$}{m}}
 
 \begin{proposition}[Compatibility]
-Let $a_1 \equiv a_2 \pmod{m}$ and $b_1 \equiv b_2 \pmod{m}$. Then:
+Let $a_1, a_2, b_1, b_2 \in \mathbb{Z}$. If $a_1 \equiv a_2 \pmod{m}$ and $b_1 \equiv b_2 \pmod{m}$, then:
 \begin{enumerate}
     \item $a_1 + b_1 \equiv a_2 + b_2 \pmod{m}$
     \item $a_1b_1 \equiv a_2b_2 \pmod{m}$
 \end{enumerate}
 \end{proposition}
-This means the result of an operation is independent of the representatives chosen.
-
 \begin{proof}
 \begin{itemize}
-    \item \textbf{Addition:} We are given $a_2 - a_1 = k_1m$ and $b_2 - b_1 = k_2m$ for some integers $k_1, k_2$. Adding these equations yields $(a_2 - a_1) + (b_2 - b_1) = (k_1 + k_2)m$. Rearranging the terms, we get $(a_2 + b_2) - (a_1 + b_1) = (k_1 + k_2)m$. This shows $m \mid ((a_2 + b_2) - (a_1 + b_1))$, so $[a_1 + b_1] = [a_2 + b_2]$. Thus, addition is well-defined.
-    \item \textbf{Multiplication:} We can write $a_2 = a_1 + k_1m$ and $b_2 = b_1 + k_2m$. Multiplying these gives:
-    $$ a_2b_2 = (a_1 + k_1m)(b_1 + k_2m) = a_1b_1 + a_1k_2m + b_1k_1m + k_1k_2m^2 $$
-    Factoring out $m$ yields $a_2b_2 = a_1b_1 + m(a_1k_2 + b_1k_1 + k_1k_2m)$. This shows that $a_2b_2 - a_1b_1$ is a multiple of $m$, so $[a_1b_1] = [a_2b_2]$. Thus, multiplication is well-defined.
+    \item \textbf{Addition:} Given $a_2 \equiv a_1 \pmod{m}$ and $b_2 \equiv b_1 \pmod{m}$, $\implies \exists k_1, k_2 \in \mathbb{Z} : a_2 - a_1 = k_1 m \text{ and } b_2 - b_1 = k_2 m$.
+    Adding the equations yields $(a_2 - a_1) + (b_2 - b_1) = (k_1 + k_2) m$.
+    Rearranging the terms: $(a_2 + b_2) - (a_1 + b_1) = (k_1 + k_2) m$.
+    Since $k_1 + k_2 \in \mathbb{Z}$, this shows $m \mid ((a_2 + b_2) - (a_1 + b_1))$, so $a_1 + b_1 \equiv a_2 + b_2 \pmod{m}$.
+    \item \textbf{Multiplication:} We express $a_2 = a_1 + k_1 m$ and $b_2 = b_1 + k_2 m$.
+    Multiplying them gives:
+    $$ a_2b_2 = (a_1 + k_1 m)(b_1 + k_2 m) = a_1b_1 + a_1 k_2 m + b_1 k_1 m + k_1 k_2 m^2 $$
+    Factoring out $m$: $a_2b_2 - a_1b_1 = m(a_1 k_2 + b_1 k_1 + k_1 k_2 m)$.
+    Let $K = a_1 k_2 + b_1 k_1 + k_1 k_2 m$. Since $K \in \mathbb{Z}$, $m \mid (a_2b_2 - a_1b_1)$, so $a_1b_1 \equiv a_2b_2 \pmod{m}$. \qedhere
 \end{itemize}
 \end{proof}
-With these well-defined operations, we can now examine the algebraic structures they create.
 
-\section{The Algebraic Landscape of $\mathbb{Z}/m\mathbb{Z}$}
-The operations of addition and multiplication endow the set $\mathbb{Z}/m\mathbb{Z}$ with a rich algebraic structure. By employing the language of abstract algebra---specifically, the concepts of groups and rings---we can precisely classify its properties and understand its behavior.
+\begin{center}
+    \line(1,0){450}
+\end{center}
 
-\subsection{The Additive Group $(\mathbb{Z}/m\mathbb{Z}, +)$}
 \begin{proposition}
-The set of integers modulo $m$ under the operation of addition, denoted $(\mathbb{Z}/m\mathbb{Z}, +)$, forms a \textbf{commutative group}.
+The set of integers modulo $m$ under addition, $(\mathbb{Z}/m\mathbb{Z}, +)$, forms a \textbf{commutative group}.
 \end{proposition}
-This structure adheres to the following defining properties:
-\begin{itemize}
-    \item \textbf{Commutativity:} $[a] + [b] = [a+b] = [b+a] = [b] + [a]$.
-    \item \textbf{Associativity:} $([a] + [b]) + [c] = [a] + ([b] + [c])$.
-    \item \textbf{Neutral Element:} The class $[0]$ is the identity element.
-    \item \textbf{Additive Inverse:} For every element $[a]$, the opposite element is $[-a]$, such that $[a] + [-a] = [0]$.
-\end{itemize}
 
-\subsection{The Commutative Ring $(\mathbb{Z}/m\mathbb{Z}, +, \cdot)$}
-When we consider both addition and multiplication together, $(\mathbb{Z}/m\mathbb{Z}, +, \cdot)$ forms a \textbf{commutative ring}. This means that $(\mathbb{Z}/m\mathbb{Z}, +)$ is a commutative group, and the multiplication operation satisfies:
-\begin{itemize}
-    \item \textbf{Commutativity}
-    \item \textbf{Associativity}
-    \item \textbf{Multiplicative Neutral Element:} The class $[1]$ is the identity.
-    \item The Distributive Property holds.
-\end{itemize}
-However, $\mathbb{Z}/m\mathbb{Z}$ is not always a \textbf{field}. A key distinction of a field is that every non-zero element must have a multiplicative inverse. For example, consider the element $[2]$ in $\mathbb{Z}/4\mathbb{Z}$. Testing all possible products, we find no inverse:
-\begin{align*}
-[2] \cdot [0] &= [0] \\
-[2] \cdot [1] &= [2] \\
-[2] \cdot [2] &= [0] \\
-[2] \cdot [3] &= [2]
-\end{align*}
-None of these products yield the multiplicative identity $[1]$. Therefore, $[2]$ has no multiplicative inverse in $\mathbb{Z}/4\mathbb{Z}$, which motivates a rigorous investigation into which elements possess this crucial property of invertibility.
+\begin{center}
+    \line(1,0){450}
+\end{center}
 
-\section{Multiplicative Inverses and the Group of Units $(\mathbb{Z}/m\mathbb{Z})^*$}
-The existence of a multiplicative inverse is a pivotal property in any algebraic system. It is what permits the operation of division and enables the straightforward solution of linear equations, making it a central concept in modular arithmetic.
+\begin{proposition}
+When considering both addition and multiplication, $(\mathbb{Z}/m\mathbb{Z}, +, \cdot)$ forms a \textbf{commutative ring}.
+\end{proposition}
 
-\subsection{Defining and Characterizing Invertibility}
-\begin{definition}
-An element $[a']$ is the \textbf{multiplicative inverse} of $[a]$ in $\mathbb{Z}/m\mathbb{Z}$ if their product is the multiplicative identity: $[a] \cdot [a'] = [1]$. The inverse is often denoted $[a]^{-1}$.
-\end{definition}
+\begin{center}
+    \line(1,0){450}
+\end{center}
 
 \begin{theorem}
 If an inverse exists, it is unique.
 \end{theorem}
 \begin{proof}
-Assume an element $[a]$ has two inverses, $[a']$ and $[a'']$. By definition, $[a] \cdot [a'] = [1]$ and $[a] \cdot [a''] = [1]$. This implies $[a] \cdot [a'] = [a] \cdot [a'']$. The proof can be completed by showing that this requires $[a'] = [a'']$.
+Assume an element $[a]$ has two inverses, $[a']$ and $[a'']$. By definition, $[a] \cdot [a'] = [1]$ and $[a] \cdot [a''] = [1]$. Since multiplication is associative and $[1]$ is the identity element, we can write:
+$$ [a'] = [a'] \cdot [1] = [a'] \cdot ([a] \cdot [a'']) $$
+$$ [a'] = ([a'] \cdot [a]) \cdot [a''] = [1] \cdot [a''] = [a''] $$
+Therefore, $[a'] = [a'']$, $\implies$ the inverse is unique.
 \end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
 
 \begin{theorem}[Characterization of Invertibility]
-An element $a \in \mathbb{Z}/m\mathbb{Z}$ is invertible if and only if the greatest common divisor of $a$ and $m$ is $1$: $\gcd(a, m) = 1$.
+An element $[a] \in \mathbb{Z}/m\mathbb{Z}$ is invertible $\iff \gcd(a, m) = 1$.
 \end{theorem}
 \begin{proof}
-An element $[a]$ is invertible if and only if there exists an integer $u$ such that $au \equiv 1 \pmod{m}$. This congruence is equivalent to the linear Diophantine equation $au + mv = 1$ (where $v = -k$). By \textbf{Bézout's identity}, this equation has an integer solution if and only if $\gcd(a, m)$ divides $1$, which implies $\gcd(a, m) = 1$.
+An element $[a]$ is invertible $\iff \exists u \in \mathbb{Z} : a u \equiv 1 \pmod{m}$.
+This congruence is equivalent to the linear Diophantine equation $a u - 1 = -m v$ for some $v \in \mathbb{Z}$, which can be rewritten as $a u + m v = 1$.
+By Bézout's Identity, this equation has an integer solution $\iff \gcd(a, m) \mid 1$.
+Since $\gcd(a, m) \in \mathbb{N}$, this condition is satisfied $\iff \gcd(a, m) = 1$. \qedhere
 \end{proof}
 
-\subsection{Finding the Inverse}
-The proof of the characterization theorem points directly to the \textbf{Extended Euclidean Algorithm} as the method for finding the inverse $u$ by solving $au + mv = 1$.
-
-\subsubsection*{Example: Calculate $5^{-1}$ in $\mathbb{Z}/7\mathbb{Z}$.}
-We solve $5u + 7v = 1$.
-\begin{enumerate}
-    \item \textbf{Euclidean Algorithm:} $7 = 5 \cdot 1 + 2$; $5 = 2 \cdot 2 + 1$.
-    \item \textbf{Back-Substitution:}
-    \begin{align*}
-    1 &= 5 - 2 \cdot 2 \\
-    1 &= 5 - 2 \cdot (7 - 5 \cdot 1) \\
-    1 &= 3 \cdot 5 - 2 \cdot 7
-    \end{align*}
-\end{enumerate}
-The equation $(3) \cdot 5 + (-2) \cdot 7 = 1$ yields $u=3$. Therefore, $5^{-1} \equiv 3 \pmod{7}$.
-
-\subsection{The Group of Units $(\mathbb{Z}/m\mathbb{Z})^*$}
-\begin{definition}
-The set of all invertible elements (units) in $\mathbb{Z}/m\mathbb{Z}$ is denoted $(\mathbb{Z}/m\mathbb{Z})^*$. Formally:
-$$ (\mathbb{Z}/m\mathbb{Z})^* = \{a \in \mathbb{Z}/m\mathbb{Z} : \gcd(a, m) = 1\} $$
-\end{definition}
+\begin{center}
+    \line(1,0){450}
+\end{center}
 
 \begin{proposition}
-The set of units under multiplication, $((\mathbb{Z}/m\mathbb{Z})^*, \cdot)$, forms a \textbf{commutative group} (the group of units modulo $m$).
+The set of units under multiplication, $(\mathbb{Z}/m\mathbb{Z})^*$, forms a \textbf{commutative group} (the group of units modulo $m$).
 \end{proposition}
-\begin{itemize}
-    \item For $m=5$ (prime), $(\mathbb{Z}/5\mathbb{Z})^* = \{1, 2, 3, 4\}$.
-    \item For $m=12$, $(\mathbb{Z}/12\mathbb{Z})^* = \{1, 5, 7, 11\}$. 
-\end{itemize}
 
-\section{The Special Case of Prime Moduli: The Field $\mathbb{F}_p$}
-When the modulus $m$ is a prime number $p$, the algebraic structure $\mathbb{Z}/p\mathbb{Z}$ simplifies significantly, becoming a \textbf{field}, where division is universally possible (except by zero).
+\begin{center}
+    \line(1,0){450}
+\end{center}
 
-\subsection{Definition and Properties of a Field}
 \begin{proposition}
-For a prime number $p$, the commutative ring $(\mathbb{Z}/p\mathbb{Z}, +, \cdot)$ is a \textbf{field}, commonly denoted $\mathbb{F}_p$.
+$\forall p$ prime number, the commutative ring $(\mathbb{Z}/p\mathbb{Z}, +, \cdot)$ is a \textbf{field}, commonly denoted $\mathbb{F}_p$.
 \end{proposition}
-This is because $\gcd(a, p) = 1$ for all non-zero elements $a$, ensuring every element is invertible. The properties of $\mathbb{F}_p$ include:
-\begin{itemize}
-    \item $(\mathbb{F}_p, +)$ is a commutative group.
-    \item $(\mathbb{F}_p \setminus \{0\}, \cdot)$ is a commutative group (the group of units).
-    \item The distributive property holds.
-\end{itemize}
 
-\subsection{A Key Property of Fields}
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
 \begin{corollary}
-Let $p > 2$ be a prime. The equation $x^2 = 1$ in $\mathbb{F}_p$ has exactly two distinct solutions: $x = 1$ and $x = p-1$ (i.e., $x \equiv -1 \pmod{p}$).
+Let $p \in \mathbb{N}$ be a prime so that $p > 2$. The equation $x^2 \equiv 1 \pmod{p}$ in $\mathbb{F}_p$ has exactly two distinct solutions: $x \equiv 1 \pmod{p}$ and $x \equiv p-1 \pmod{p}$ (i.e., $x \equiv -1 \pmod{p}$).
 \end{corollary}
 \begin{proof}
-The equation $x^2 \equiv 1 \pmod{p}$ is equivalent to $p \mid (x^2 - 1)$, or $p \mid (x - 1)(x + 1)$. Since $p$ is prime, by Euclid's Lemma, either $p \mid (x - 1)$ (implying $x \equiv 1$) or $p \mid (x + 1)$ (implying $x \equiv -1 \equiv p-1$). These two solutions are distinct for $p > 2$.
+The equation $x^2 \equiv 1 \pmod{p}$ is equivalent to $p \mid (x^2 - 1)$, or $p \mid (x - 1)(x + 1)$.
+Since $p$ is prime, by the Prime Divisor Property:
+\begin{itemize}
+    \item Either $p \mid (x - 1)$, which implies $x \equiv 1 \pmod{p}$.
+    \item Or $p \mid (x + 1)$, which implies $x \equiv -1 \equiv p-1 \pmod{p}$.
+\end{itemize}
+These two solutions are distinct because $1 \not\equiv -1 \pmod{p}$ for $p > 2$. \qedhere
 \end{proof}
 
+\begin{center}
+    \line(1,0){450}
+\end{center}
