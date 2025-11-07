@@ -1,0 +1,113 @@
+\section{The fast powering algorithm}
+
+\subsection{Theorem: Existence of Solutions for a System of Two Linear Congruences}
+
+\begin{theorem}[Existence of Solutions for Two Linear Congruences]
+Let $m$ and $n$ be positive integers, and let $a$ and $b$ be any integers. The system of linear congruences:
+$$
+\begin{cases}
+x \equiv a \pmod{m} \\
+x \equiv b \pmod{n}
+\end{cases}
+$$
+has a solution if and only if $\gcd(m, n) \mid (a - b)$.
+\end{theorem}
+\begin{proof}[ 1: Constructive Proof by Cases (Alessandra's Method)]
+We prove the biconditional nature by demonstrating necessity ($\implies$) and sufficiency ($\impliedby$) separately.
+
+\textbf{1. Necessity ($\implies$)}: We assume a solution exists $\rightarrow$ $\exists x_0 \in \mathbb{Z}$ : $x_0 \equiv a \pmod{m}$ and $x_0 \equiv b \pmod{n}$.
+This implies:
+$$
+x_0 - a = mk \quad \text{for some } k \in \mathbb{Z}
+$$
+$$
+x_0 - b = nl \quad \text{for some } l \in \mathbb{Z}
+$$
+Thus, $x_0 = a + mk$ and $x_0 = b + nl$. Equating the two expressions for $x_0$ yields $a + mk = b + nl$.
+Rearranging the terms: $a - b = nl - mk$.
+Let $d = \gcd(m, n)$. By definition, $d \mid m$ and $d \mid n$. Therefore, $d$ must divide any integer linear combination of $m$ and $n$, $\forall k, l \in \mathbb{Z}$.
+Since $a - b = nl - mk$, we conclude that $d \mid (a - b)$.
+
+\textbf{2. Sufficiency ($\impliedby$)}: We assume $\gcd(m, n) \mid (a - b)$.
+Let $d = \gcd(m, n)$. Since $d \mid (a - b)$, we have $a - b = kd$ for some integer $k \in \mathbb{Z}$.
+By Bezout's identity, $\exists u, v \in \mathbb{Z}$ : $d = mu + nv$.
+Substituting the expression for $d$: $a - b = k(mu + nv) \rightarrow a - b = kmu + knv$.
+Rearranging the equation: $a - kmu = b + knv$.
+Let $x_0 = a - kmu$. By construction:
+$x_0 = a - kmu \rightarrow x_0 - a = (-ku)m$. Since $-ku \in \mathbb{Z}$, $x_0 \equiv a \pmod{m}$.
+Also, $x_0 = b + knv \rightarrow x_0 - b = (kv)n$. Since $kv \in \mathbb{Z}$, $x_0 \equiv b \pmod{n}$.
+Since $x_0$ satisfies both congruences, a solution exists.
+\end{proof}
+
+\begin{proof}[2: Direct Proof via Reduction (Professor's Method)]
+The first congruence $x \equiv a \pmod{m}$ can be rewritten as $x = a + km$ for some integer $k \in \mathbb{Z}$.
+Substituting this into the second congruence yields:
+$$
+a + km \equiv b \pmod{n}
+$$
+Rearranging the terms, we obtain a single linear congruence for the unknown $k$:
+$$
+km \equiv b - a \pmod{n}
+$$
+A solution for this linear congruence exists if and only if $\gcd(m, n) \mid (b - a)$.
+Since $\gcd(m, n) = \gcd(m, n)$ and $\gcd(m, n) \mid (b - a)$ is equivalent to $\gcd(m, n) \mid (a - b)$, the original system has a solution if and only if the condition holds.
+\end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\begin{proposition}[Generalization for $n$-Congruence Systems]
+A system of congruences $x \equiv a_i \pmod{m_i}$ for $i \in \{1, 2, \ldots, n\}$ has a solution if and only if for every pair of indices $i \neq j$, the condition $\gcd(m_i, m_j) \mid (a_j - a_i)$ holds.
+\end{proposition}
+
+\bigskip
+
+\subsection{The Fast Powering Algorithm}
+\begin{remark}[Computational Problem]
+The algorithm is designed to efficiently calculate the value of $g^A \pmod{N}$, given integers $g > 1, A > 1,$ and $N > 1$. The challenge arises when the exponent $A$ is very large, $\forall A \in \mathbb{N} : A \gg 1$. The naive method requires $\mathcal{O}(A)$ multiplications, which is computationally infeasible for large $A$.
+\end{remark}
+
+\begin{remark}[: Fast Powering Method Principle]
+The Fast Powering Algorithm leverages the binary representation of the exponent $A$. Let the binary expansion be $A = \sum_{i=0}^r A_i 2^i$, where $A_i \in \{0, 1\}$.
+The exponentiation property allows us to write:
+$$
+g^A = g^{\sum_{i=0}^r A_i 2^i} = \prod_{i=0}^r (g^{2^i})^{A_i} \pmod{N}
+$$
+The core idea is **Successive Squaring**: the terms $g^{2^i} \pmod{N}$ are computed efficiently by starting with $g^1$ and repeatedly squaring the previous result, $\forall i \in \{1, \ldots, r\}$ : $g^{2^i} = (g^{2^{i-1}})^2 \pmod{N}$.
+The final result is the product of only those terms $g^{2^i} \pmod{N}$ for which the corresponding binary coefficient $A_i = 1$.
+\end{remark}
+
+\begin{remark}[Re 2.4: Complexity Analysis]
+The Fast Powering Algorithm significantly reduces complexity from $\mathcal{O}(A)$ (naive method) to $\mathcal{O}(\log_2(A))$.
+This is due to the three phases:
+\begin{itemize}
+    \item Binary Conversion: $\sim \log_2(A)$ divisions.
+    \item Successive Squaring: $\sim \log_2(A)$ squarings.
+    \item Final Product: at most $\sim \log_2(A)$ multiplications.
+\end{itemize}
+The total number of operations $\sim 3 \log_2(A)$, providing immense efficiency gain, $\forall A \in \mathbb{N} : A \approx 2^{1000} \rightarrow \text{Operations} \approx 3000$.
+\end{remark}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\subsection{Fermat's Little Theorem}
+\begin{theorem}[Th 3.1: Fermat's Little Theorem - Primary Form]
+Let $p$ be a prime number. For any integer $a \in \mathbb{Z}$ so that $p$ does not divide $a$, we have:
+$$
+a^{p-1} \equiv 1 \pmod{p}
+$$
+\end{theorem}
+
+\begin{theorem}[Th 3.1: Fermat's Little Theorem - Alternative Form]
+Let $p$ be a prime number. For any integer $a \in \mathbb{Z}$, we have:
+$$
+a^p \equiv a \pmod{p}
+$$
+\end{theorem}
+
+\begin{remark}[Re 3.2: Conditions for Application]
+The theorem is generally false for composite moduli. The primary condition is that the modulus $p$ must be a prime number.
+\end{remark}

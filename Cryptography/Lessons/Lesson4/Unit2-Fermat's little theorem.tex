@@ -1,0 +1,113 @@
+\section{A Compendium of Theorems in Modular Arithmetic}
+
+\subsection{Fermat's Little Theorem and Its Applications}
+
+\begin{theorem}[Fermat's Little Theorem]
+Let $p$ be a prime. If $a \in (\mathbb{Z}/p\mathbb{Z})^*$, then $a^{p-1} = 1$.
+Equivalently, if $p$ is a prime and $a$ is an integer so that $p$ does not divide $a$, then $a^{p-1} \equiv 1 \pmod{p}$.
+\end{theorem}
+\begin{proof}
+The proof employs a technique involving the set of invertible elements modulo $p$.
+
+\textbf{Step 1: Construct the Set}
+Let $a \in (\mathbb{Z}/p\mathbb{Z})^*$. Consider the set $S$ formed by multiplying $a$ by each of the $p-1$ invertible elements of $\mathbb{Z}/p\mathbb{Z}$, which are $I = \{1, 2, \ldots, p-1\}$.
+$$
+S = \{ a \cdot i \pmod{p} \mid \forall i \in I \}
+$$
+
+\textbf{Step 2: Prove Non-Zero Property}
+We claim that $a \cdot i \not\equiv 0 \pmod{p}$ for all $i \in I$.
+Assume for contradiction that $a \cdot i \equiv 0 \pmod{p}$. This implies $p \mid (a \cdot i)$. Since $p$ is prime, $p \mid a$ or $p \mid i$.
+By premise, $a \in (\mathbb{Z}/p\mathbb{Z})^*$, so $p \nmid a$.
+Since $1 \le i \le p-1$, $\gcd(i, p) = 1$, so $p \nmid i$.
+This is a contradiction, so $\forall i \in I$, $a \cdot i \not\equiv 0 \pmod{p}$.
+
+\textbf{Step 3: Prove Distinctness}
+We claim that all $p-1$ elements in $S$ are distinct.
+Assume for contradiction that $\exists i, j \in I$ so that $i \ne j$ and $a \cdot i \equiv a \cdot j \pmod{p}$.
+This implies $a \cdot (i-j) \equiv 0 \pmod{p}$. Since $p \nmid a$, we must have $p \mid (i-j)$.
+However, since $i, j \in \{1, \ldots, p-1\}$ and $i \ne j$, the difference $i-j$ satisfies $0 < |i-j| < p$. Such an integer cannot be a multiple of $p$.
+This contradiction proves that all elements in $S$ are distinct.
+
+\textbf{Step 4: Equate Sets}
+Since $S$ contains $p-1$ distinct, non-zero elements modulo $p$, and the set of all non-zero elements is $(\mathbb{Z}/p\mathbb{Z})^* = I = \{1, 2, \ldots, p-1\}$, the two sets must be identical, $\forall i \in I : S = I$.
+
+\textbf{Step 5: The Trick (Multiplication)}
+The product of the elements in $S$ must equal the product of the elements in $I$:
+$$
+\prod_{i=1}^{p-1} (a \cdot i) \equiv \prod_{i=1}^{p-1} i \pmod{p}
+$$
+
+\textbf{Step 6: Simplify and Conclude}
+Factoring the left-hand side yields:
+$$
+a^{p-1} \cdot (p-1)! \equiv (p-1)! \pmod{p}
+$$
+Since $p$ is prime, $(p-1)!$ is invertible modulo $p$ (by Wilson's Theorem, or simply because $\forall i \in \{1, \ldots, p-1\}$, $\gcd(i, p)=1$). We can safely cancel $(p-1)!$ from both sides:
+$$
+a^{p-1} \equiv 1 \pmod{p}
+$$
+\end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\begin{corollary}[Modular Exponentiation]
+Let $p$ be a prime, and $a \in \mathbb{Z}$. If $\forall x, y \in \mathbb{N} \setminus \{0\}$ so that $x \equiv y \pmod{p-1}$, then $a^x \equiv a^y \pmod{p}$.
+\end{corollary}
+\begin{proof}
+We consider two distinct cases for the integer $a$.
+
+\textbf{Case 1: $p$ divides $a$}
+If $p \mid a$, then $a \equiv 0 \pmod{p}$. Since $x \ge 1$ and $y \ge 1$, we have $a^x \equiv 0 \pmod{p}$ and $a^y \equiv 0 \pmod{p}$.
+Thus, $a^x \equiv a^y \pmod{p}$ holds trivially.
+
+\textbf{Case 2: $p$ does not divide $a$}
+The congruence $x \equiv y \pmod{p-1}$ means $y = x + k(p-1)$ for some $k \in \mathbb{Z}$.
+Substituting this into $a^y$:
+$$
+a^y = a^{x + k(p-1)} = a^x \cdot a^{k(p-1)} = a^x \cdot (a^{p-1})^k
+$$
+By Fermat's Little Theorem, $a^{p-1} \equiv 1 \pmod{p}$. Therefore:
+$$
+a^y \equiv a^x \cdot (1)^k \pmod{p} \rightarrow a^y \equiv a^x \pmod{p}
+$$
+\end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\begin{corollary}[Finding Modular Inverses]
+Let $p$ be a prime and $a \in (\mathbb{Z}/p\mathbb{Z})^*$. Then the inverse of $a$ modulo $p$ is $a^{p-2}$.
+\end{corollary}
+\begin{proof}
+We must show that $a \cdot a^{p-2} \equiv 1 \pmod{p}$.
+$$
+a \cdot a^{p-2} = a^{1 + p-2} = a^{p-1}
+$$
+By Fermat's Little Theorem, $\forall a \in \mathbb{Z}$ so that $p \nmid a$, we have $a^{p-1} \equiv 1 \pmod{p}$.
+Therefore:
+$$
+a \cdot a^{p-2} \equiv 1 \pmod{p}
+$$
+This confirms that $a^{p-2}$ is the multiplicative inverse of $a$ modulo $p$.
+\end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\begin{corollary}[Fermat Primality Test]
+Let $p$ be an integer so that $p \ge 2$, and let $a$ be an integer so that $p$ does not divide $a$. If $a^{p-1} \not\equiv 1 \pmod{p}$, then $p$ is not a prime number.
+\end{corollary}
+\begin{proof}
+This statement is the contrapositive of Fermat's Little Theorem:
+$(\neg \text{THEN}) \implies (\neg \text{IF})$.
+The original theorem states: $\text{IF } p \text{ is prime, THEN } a^{p-1} \equiv 1 \pmod{p}$.
+The contrapositive is: $\text{IF } a^{p-1} \not\equiv 1 \pmod{p}, \text{ THEN } p \text{ is not prime}$.
+This conclusion is logically sound.
+\end{proof}
+
+\bigskip

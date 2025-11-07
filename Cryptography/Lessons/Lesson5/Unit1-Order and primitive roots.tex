@@ -1,0 +1,76 @@
+\subsection{The Order of an Element and Primitive Roots}
+
+\begin{definition}
+Let $p$ be a prime and $a \in \mathbb{Z}$ so that $p$ does not divide $a$. The order of $a$ modulo $p$, denoted $\text{ord}_p(a)$, is the minimum positive integer $n \in \mathbb{N} \setminus \{0\}$ so that $a^n \equiv 1 \pmod{p}$.
+\end{definition}
+
+\begin{proposition}
+Let $p$ be a prime, $a \in \mathbb{Z}$ so that $p$ does not divide $a$, and $n \ge 1$. Then $a^n \equiv 1 \pmod{p}$ if and only if $\text{ord}_p(a)$ divides $n$.
+\end{proposition}
+\begin{proof}
+We demonstrate both directions of the biconditional.
+
+\textbf{First Direction ($\impliedby$)}: Assume $\text{ord}_p(a) \mid n$.
+$\rightarrow \exists k \in \mathbb{Z}$ so that $n = k \cdot \text{ord}_p(a)$.
+Then:
+$$
+a^n = a^{k \cdot \text{ord}_p(a)} = (a^{\text{ord}_p(a)})^k
+$$
+By definition of the order, $a^{\text{ord}_p(a)} \equiv 1 \pmod{p}$. Therefore:
+$$
+a^n \equiv (1)^k \equiv 1 \pmod{p}
+$$
+
+\textbf{Second Direction ($\implies$)}: Assume $a^n \equiv 1 \pmod{p}$.
+By the division algorithm, $\exists q, r \in \mathbb{Z}$ so that $n = q \cdot \text{ord}_p(a) + r$, where $0 \le r < \text{ord}_p(a)$.
+We evaluate $a^n$:
+$$
+a^n = a^{q \cdot \text{ord}_p(a) + r} = (a^{\text{ord}_p(a)})^q \cdot a^r
+$$
+Substituting the assumed and known congruences:
+$$
+1 \equiv (1)^q \cdot a^r \pmod{p} \rightarrow a^r \equiv 1 \pmod{p}
+$$
+Since $\text{ord}_p(a)$ is the *minimum* positive integer for which this holds, and $0 \le r < \text{ord}_p(a)$, the only possibility is that $r = 0$.
+$\rightarrow \text{ord}_p(a)$ divides $n$.
+\end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\begin{proposition}[Condition for Equality of Powers]
+Let $p$ be a prime and $g \in (\mathbb{Z}/p\mathbb{Z})^*$. Then $g^x = g^y$ if and only if $x \equiv y \pmod{\text{ord}_p(g)}$.
+\end{proposition}
+\begin{proof}
+Since $g \in (\mathbb{Z}/p\mathbb{Z})^*$, $g$ is invertible.
+$$
+g^x = g^y \iff g^x \cdot g^{-y} = 1 \iff g^{x-y} = 1
+$$
+Applying the proposition from the previous section (2.1), $g^n = 1$ if and only if $\text{ord}_p(g) \mid n$.
+Let $n = x-y$. We conclude:
+$$
+g^{x-y} = 1 \iff \text{ord}_p(g) \mid (x-y)
+$$
+By the definition of modular congruence, this is equivalent to: $x \equiv y \pmod{\text{ord}_p(g)}$.
+\end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\begin{definition}[Primitive Root]
+An element $g \in (\mathbb{Z}/p\mathbb{Z})^*$ is a primitive root if its powers generate all the elements of $(\mathbb{Z}/p\mathbb{Z})^*$. That is, the set $\{ g^1, g^2, \ldots, g^{p-1} \}$ is equal to the set $\{ 1, 2, \ldots, p-1 \}$.
+\end{definition}
+
+\begin{theorem}[Primitive Root Property]
+An element $g \in (\mathbb{Z}/p\mathbb{Z})^*$ is a primitive root if and only if $\text{ord}_p(g) = p-1$.
+\end{theorem}
+\begin{proof}[Proof Outline]
+For $g$ to be a primitive root, the $p-1$ powers $\{ g^1, g^2, \ldots, g^{p-1} \}$ must all be distinct.
+By the Proposition on the Condition for Equality of Powers, $g^i = g^j$ if and only if $i \equiv j \pmod{\text{ord}_p(g)}$.
+For the powers to be distinct for all $1 \le i < j \le p-1$, we must ensure that $g^{j-i} \ne 1$ for any exponent $j-i$ where $1 \le j-i < p-1$.
+This means that the smallest positive exponent $k$ so that $g^k = 1$ must be $p-1$.
+By definition, $\text{ord}_p(g) = k$.
+Therefore, $g$ is a primitive root if and only if $\text{ord}_p(g) = p-1$.
+\end{proof}
