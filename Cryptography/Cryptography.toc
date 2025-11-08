@@ -12,7 +12,7 @@
 \contentsline {section}{\numberline {9}The fast powering algorithm}{15}{section.9}%
 \contentsline {subsection}{\numberline {9.1}Theorem: Existence of Solutions for a System of Two Linear Congruences}{15}{subsection.9.1}%
 \contentsline {subsection}{\numberline {9.2}The Fast Powering Algorithm}{16}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}Fermat's Little Theorem}{16}{subsection.9.3}%
-\contentsline {section}{\numberline {10}A Compendium of Theorems in Modular Arithmetic}{17}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Fermat's Little Theorem and Its Applications}{17}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}The Order of an Element and Primitive Roots}{19}{subsection.10.2}%
+\contentsline {subsection}{\numberline {9.3}Fermat's Little Theorem}{17}{subsection.9.3}%
+\contentsline {section}{\numberline {10}A Compendium of Theorems in Modular Arithmetic}{18}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Fermat's Little Theorem and Its Applications}{18}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}The Order of an Element and Primitive Roots}{20}{subsection.10.2}%
