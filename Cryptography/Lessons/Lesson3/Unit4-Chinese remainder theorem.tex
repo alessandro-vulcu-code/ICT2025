@@ -7,14 +7,10 @@ $$ x \equiv a_i \pmod{m_i} \quad \forall i \in \{1, \dots, k\} $$
 has a solution, and the complete set of solutions is congruent modulo the product $M = m_1 \cdot m_2 \cdot \dots \cdot m_k$.
 \end{theorem}
 
-\begin{center}
-    \line(1,0){450}
-\end{center}
-
 \begin{proof}[Proof of the Chinese Remainder Theorem]
 The proof is divided into two parts: Existence (constructive) and Uniqueness (based on coprimality).
 
-\subsection{Proof of Existence}
+\subsection*{Proof of Existence}
 We define the solution constructively as $x = \sum_{j=1}^{k} a_j v_j N_j$.
 For this construction, let $M = \prod_{i=1}^{k} m_i$. We define $N_j = M/m_j$.
 Since the $m_i$ are pairwise coprime, $\gcd(N_j, m_j) = 1$. $\implies \exists v_j \in \mathbb{Z} : v_j N_j \equiv 1 \pmod{m_j}$ (the multiplicative inverse of $N_j$ modulo $m_j$).
@@ -29,7 +25,7 @@ Since $v_i N_i \equiv 1 \pmod{m_i}$ by construction, the proof concludes:
 $$ x \equiv a_i(1) \equiv a_i \pmod{m_i} $$
 This confirms the existence of a solution $x$ that satisfies the system.
 
-\subsection{Proof of Uniqueness}
+\subsection*{Proof of Uniqueness}
 \begin{enumerate}
     \item \textbf{Assume Two Solutions:} Let $x$ and $x'$ both solve the system.
     \item \textbf{Relationship:} $\forall i \in \{1, \dots, k\}$, $x \equiv a_i \pmod{m_i}$ and $x' \equiv a_i \pmod{m_i}$. $\implies x - x' \equiv 0 \pmod{m_i}$.

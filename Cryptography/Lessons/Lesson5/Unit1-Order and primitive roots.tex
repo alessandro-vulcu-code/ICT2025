@@ -1,10 +1,16 @@
-\subsection{The Order of an Element and Primitive Roots}
+\section{The Order of an Element and Primitive Roots}
 
-\begin{definition}
+\begin{definition}[Order of an Element]
 Let $p$ be a prime and $a \in \mathbb{Z}$ so that $p$ does not divide $a$. The order of $a$ modulo $p$, denoted $\text{ord}_p(a)$, is the minimum positive integer $n \in \mathbb{N} \setminus \{0\}$ so that $a^n \equiv 1 \pmod{p}$.
 \end{definition}
 
-\begin{proposition}
+\begin{center}
+    \vspace{10pt}
+    \line(1,0){450}
+    \vspace{25pt}
+\end{center}
+
+\begin{proposition}[Order Divisibility Property]
 Let $p$ be a prime, $a \in \mathbb{Z}$ so that $p$ does not divide $a$, and $n \ge 1$. Then $a^n \equiv 1 \pmod{p}$ if and only if $\text{ord}_p(a)$ divides $n$.
 \end{proposition}
 \begin{proof}
@@ -36,10 +42,12 @@ $\rightarrow \text{ord}_p(a)$ divides $n$.
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
-\begin{proposition}[Condition for Equality of Powers]
+\begin{proposition}[Equality of Powers]
 Let $p$ be a prime and $g \in (\mathbb{Z}/p\mathbb{Z})^*$. Then $g^x = g^y$ if and only if $x \equiv y \pmod{\text{ord}_p(g)}$.
 \end{proposition}
 \begin{proof}
@@ -56,14 +64,22 @@ By the definition of modular congruence, this is equivalent to: $x \equiv y \pmo
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
 \begin{definition}[Primitive Root]
 An element $g \in (\mathbb{Z}/p\mathbb{Z})^*$ is a primitive root if its powers generate all the elements of $(\mathbb{Z}/p\mathbb{Z})^*$. That is, the set $\{ g^1, g^2, \ldots, g^{p-1} \}$ is equal to the set $\{ 1, 2, \ldots, p-1 \}$.
 \end{definition}
 
-\begin{theorem}[Primitive Root Property]
+\begin{center}
+    \vspace{10pt}
+    \line(1,0){450}
+    \vspace{25pt}
+\end{center}
+
+\begin{theorem}[Primitive Root Condition]
 An element $g \in (\mathbb{Z}/p\mathbb{Z})^*$ is a primitive root if and only if $\text{ord}_p(g) = p-1$.
 \end{theorem}
 \begin{proof}[Proof Outline]

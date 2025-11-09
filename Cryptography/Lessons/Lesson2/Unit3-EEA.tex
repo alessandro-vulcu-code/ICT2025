@@ -32,7 +32,9 @@ Since $c \mid d$, it is a consequence of divisibility that $c \leq d$. This hold
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
 \begin{proposition}[Extended Euclidean Algorithm]
@@ -40,21 +42,28 @@ Let $a, b \in \mathbb{N}$ such that $a \neq 0$ or $b \neq 0$. If $d = \gcd(a, b)
 \end{proposition}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
+\newpage
 \begin{proposition}[Solvability Condition]
 The linear Diophantine equation $au + bv = c$ has integer solutions $u, v$ $\iff \gcd(a, b) \mid c$.
 \end{proposition}
+
 \begin{proof}
-\begin{itemize}
+    \leavevmode
+    \begin{itemize}
     \item[($\Rightarrow$)] Assume integer solutions $u, v$ exist. Let $d = \gcd(a, b)$. By definition, $d \mid a$ and $d \mid b$. $\implies d \mid (au + bv)$, $\implies d \mid c$ because $au + bv = c$.
     \item[($\Leftarrow$)] Assume $d = \gcd(a, b)$ and $d \mid c$. Then $\exists k \in \mathbb{Z} : c = kd$. From the Extended Euclidean Algorithm, we know $\exists u_0, v_0 \in \mathbb{Z} : a u_0 + b v_0 = d$. Multiplying by $k$, we get $a(k u_0) + b(k v_0) = k d = c$. Thus, a solution exists with $u = k u_0$ and $v = k v_0$. \qedhere
 \end{itemize}
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
 \begin{proposition}[Form of All Solutions]

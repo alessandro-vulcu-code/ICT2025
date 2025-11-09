@@ -13,6 +13,7 @@
 \usepackage{amsthm}
 \usepackage{enumitem}
 \usepackage{caption}
+\usepackage{thmtools}
 
 % --- PACCHETTI AGGIUNTI PER LA FORMATTAZIONE ---
 \usepackage{parskip}  % Aggiunge spazio tra i paragrafi (stile "blocco")
@@ -42,8 +43,22 @@
 
 % --- DEFINIZIONI TEOREMI ---
 % (Questa parte è cruciale per la tua struttura)
+\newtheoremstyle{mythmstyle}%
+    {}%
+    {}%
+    {\itshape}% % Ho corretto in \itshape per il corpo del testo (funziona meglio di \it)
+    {}%
+    {\bfseries}% % Ho corretto in \bfseries per il titolo (funziona meglio di \bf)
+    {}%
+    { }%
+    {\thmname{#1}\thmnumber{ #2}%
+    \thmnote{: #3\addcontentsline{toc}{subsubsection}{{\itshape#1}: #3}}. }
+
+% 2. Imposta questo stile come quello ATTUALE
+\theoremstyle{mythmstyle}
+
 \newtheorem{theorem}{Th}[section]
-\newtheorem{definition}{Def}[section]
+\newtheorem{definition}{Def}[section] % Anche questo userà mythmstyle e quindi \addcontentsline
 \newtheorem{proposition}{Prop}[section]
 \newtheorem{corollary}{Cor}[section]
 \newtheorem{algorithm}{Alg}[section]

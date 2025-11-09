@@ -1,5 +1,5 @@
 \section{Divisibility}
-\begin{proposition}
+\begin{proposition}[Properties of Divisibility]
 Let $a, b, c \in \mathbb{Z}$. The following properties hold:
 \begin{enumerate}
     \item If $a \mid 1$, then $a = \pm 1$.
@@ -8,6 +8,7 @@ Let $a, b, c \in \mathbb{Z}$. The following properties hold:
 \end{enumerate}
 \end{proposition}
 \begin{proof}
+    \leavevmode
 \begin{enumerate}
     \item If $a \mid 1$: By definition, $\exists c \in \mathbb{Z} : 1 = ac$. Since $a, c \in \mathbb{Z}$, the only possible integer solutions are $(a=1, c=1)$ or $(a=-1, c=-1)$. Therefore, $a = \pm 1$.
     \item If $a \mid b$ and $b \mid a$: By definition, $\exists c_1, c_2 \in \mathbb{Z} : b = ac_1$ and $a = bc_2$. Substituting the first equation into the second gives $a = (ac_1)c_2 = a(c_1c_2)$. Since $a \neq 0$, we can divide by $a$ to get $1 = c_1c_2$. As $c_1, c_2 \in \mathbb{Z}$, the only solutions are $(c_1=1, c_2=1)$ or $(c_1=-1, c_2=-1)$.
@@ -21,7 +22,9 @@ Let $a, b, c \in \mathbb{Z}$. The following properties hold:
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
 \begin{proposition}[Euclidean Division]
@@ -29,10 +32,12 @@ Let $a \in \mathbb{N}$ and $b \in \mathbb{N}$ with $b > 0$. Then $\exists! q, r 
 \end{proposition}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
-\begin{proposition}
+\begin{proposition}[Binary Representation from Repeated Division]
 Let $m \in \mathbb{N}$, with $m < 2^B$. The repeated division-by-2 process:
 \begin{align*}
 m &= 2q_0 + m_0 \\
@@ -49,9 +54,13 @@ The proof consists of two parts: demonstrating the polynomial form and proving t
 We can show the relationship by algebraic substitution.
 \begin{align*}
 m &= 2q_0 + m_0 \\
-\intertext{Substitute $q_0 = 2q_1 + m_1$:}
+\end{align*}
+Substitute $q_0 = 2q_1 + m_1$:
+\begin{align*}
 m &= 2(2q_1 + m_1) + m_0 = 2^2q_1 + 2m_1 + m_0 \\
-\intertext{Substitute $q_1 = 2q_2 + m_2$:}
+\end{align*}
+Substitute $q_1 = 2q_2 + m_2$:
+\begin{align*}
 m &= 2^2(2q_2 + m_2) + 2m_1 + m_0 = 2^3q_2 + 2^2m_2 + 2m_1 + m_0
 \end{align*}
 Continuing this process until the final step where $q_{B-2} = 2q_{B-1} + m_{B-1}$, we arrive at the final form: $m = m_0 + 2m_1 + 2^2m_2 + \dots + 2^{B-1}m_{B-1}$.
@@ -67,10 +76,12 @@ For the final quotient $q_{B-1}$, we have $q_{B-1} < 2^{B-1-(B-1)} = 2^0 = 1$. S
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
-\begin{remark}
+\begin{remark}[Upper Bound of a B-bit Number]
 If $m$ has $B$ bits in its binary representation, i.e., $m = (m_{B-1}\dots m_0)_2$, then $m < 2^B$.
 \end{remark}
 \begin{proof}
@@ -80,10 +91,12 @@ Therefore, $m < 2^B$.
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
-\begin{corollary}
+\begin{corollary}[Range of a B-bit Number]
 A natural number $m \in \mathbb{N}$ has a binary representation with $B$ bits (where the most significant bit $m_{B-1} = 1$) $\iff 2^{B-1} \leq m < 2^B$.
 \end{corollary}
 \bigskip

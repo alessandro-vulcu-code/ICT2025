@@ -1,19 +1,22 @@
 \section{Euler's \texorpdfstring{$\phi$}{phi} Function}
 
-\begin{theorem}
+\begin{theorem}[Totient of a Prime Number]
 \label{thm:totient_prime}
 The Totient of a Prime Number: If $m \in \mathbb{N}$ so that $m$ is prime, then $\varphi(m) = m - 1$.
 \end{theorem}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
-\begin{theorem}
+\begin{theorem}[Primality Test via the Totient Function]
 \label{thm:primality_test}
 A Primality Test via the Totient Function: $\forall m \in \mathbb{N} : m \geq 2$, $\varphi(m) = m - 1 \iff m$ is a prime number.
 \end{theorem}
 \begin{proof}
+    \leavevmode
 \begin{itemize}
     \item[($\Rightarrow$)] \textbf{(``Only if'' direction)}: We prove the contrapositive. Assume $m$ is composite (not prime). $\implies \exists p \in \mathbb{N} : 1 < p < m \text{ and } p \mid m$.
     Since $p \mid m$, $\gcd(p, m) = p > 1$. Thus, $p$ is not coprime to $m$. Since $p \in \{1, \dots, m-1\}$ is excluded from the count, the total count $\varphi(m)$ must be strictly less than $m-1$. More precisely, $\varphi(m) \leq m - 2$. This shows that the equality $\varphi(m) = m - 1$ holds $\implies m$ is prime.
@@ -22,10 +25,12 @@ A Primality Test via the Totient Function: $\forall m \in \mathbb{N} : m \geq 2$
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
-\begin{proposition}
+\begin{proposition}[Totient of a Prime Power]
 \label{prop:prime_power_formula}
 $\forall p$ prime and $\forall \alpha \in \mathbb{N} : \alpha \geq 1$:
 $$ \varphi(p^\alpha) = p^\alpha - p^{\alpha-1} $$
@@ -41,10 +46,12 @@ $$ \varphi(p^\alpha) = p^\alpha - p^{\alpha-1} = p^{\alpha-1} (p - 1) $$ \qedher
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
-\begin{theorem}
+\begin{theorem}[Multiplicativity of Euler's Totient Function]
 \label{thm:multiplicativity}
 Multiplicativity of Euler's Totient Function: If $m, n \in \mathbb{N}$ are coprime integers ($\gcd(m, n) = 1$), then $\varphi(m n) = \varphi(m) \varphi(n)$.
 \end{theorem}

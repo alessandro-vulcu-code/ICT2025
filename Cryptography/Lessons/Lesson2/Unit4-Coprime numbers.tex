@@ -1,7 +1,9 @@
+\section{Coprime numbers}
 \begin{proposition}[Characterisation of Coprime Numbers]
     Integers $a, b \in \mathbb{Z}$ are relatively prime $\iff \exists u, v \in \mathbb{Z} : a u + b v = 1$.
     \end{proposition}
     \begin{proof}
+        \leavevmode
     \begin{itemize}
         \item[($\Rightarrow$)] This is a direct consequence of the Extended Euclidean Algorithm. If $\gcd(a, b) = 1$, then the algorithm guarantees $\exists u, v \in \mathbb{Z} : a u + b v = 1$.
         \item[($\Leftarrow$)] Conversely, assume $\exists u, v \in \mathbb{Z} : a u + b v = 1$. Let $d = \gcd(a, b)$. Since $d \mid a$ and $d \mid b$, it must divide their linear combination $a u + b v$. Therefore, $d \mid 1$. The only $d \in \mathbb{N}$ so that $d \mid 1$ is $d = 1$. \qedhere
@@ -9,7 +11,9 @@
     \end{proof}
     
     \begin{center}
+        \vspace{10pt}
         \line(1,0){450}
+        \vspace{25pt}
     \end{center}
     
     \begin{corollary}
@@ -20,7 +24,9 @@
     \end{proof}
     
     \begin{center}
+        \vspace{10pt}
         \line(1,0){450}
+        \vspace{25pt}
     \end{center}
     
     \begin{proposition}[Prime Divisor Property]
@@ -36,7 +42,9 @@
     \end{proof}
     
     \begin{center}
+        \vspace{10pt}
         \line(1,0){450}
+        \vspace{25pt}
     \end{center}
     
     \begin{theorem}[Fundamental Theorem of Arithmetic]
@@ -44,9 +52,12 @@
     The factorization into primes is unique modulo rearrangements of the order of the factors.
     \end{theorem}
     
-    \begin{center}
-        \line(1,0){450}
-    \end{center}
+\begin{center}
+    \vspace{10pt}
+    \line(1,0){450}
+    \vspace{25pt}
+\end{center}
+\newpage
     
     \begin{remark}
     The exponent $e_i = \text{mult}_{p_i}(a)$ is the multiplicity of $p_i$ in $a$.
@@ -54,7 +65,3 @@
     $$ a = \prod_{p \text{ prime}} p^{\text{mult}_p(a)} $$
     where $\text{mult}_p(a) := 0$ if $p$ is not a prime factor of $a$.
     \end{remark}
-    
-    \begin{center}
-        \line(1,0){450}
-    \end{center}
