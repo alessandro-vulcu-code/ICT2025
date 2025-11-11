@@ -1,0 +1,100 @@
+\section{Number of Primitive Roots}
+
+\begin{theorem}[Characterization of Powers as Primitive Roots]
+    Let $p$ be a prime and $g$ be a primitive root of $\mathbb{F}_{p}$. For any $i \in \{1, \dots, p-2\}$, we have:
+    \begin{enumerate}
+        \item $g^{i}$ is a primitive root of $\mathbb{F}_{p}$ $\iff \gcd(i, p-1) = 1$.
+        \item $\mathbb{F}_{p}$ has exactly $\phi(p-1)$ primitive roots.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}[Proof of 1]
+    Let $p-1 = p_{1}^{a_{1}} \cdots p_{m}^{a_{m}}$ with $p_{j}$ distinct primes and $a_{j} \geq 1$.
+    By the effective test for a primitive root (Lemma from Lesson 5), $g^{i}$ is not a primitive root $\iff$ $(g^{i})^{(p-1)/p_{j}} \equiv 1 \pmod{p}$ for some $j$.
+    We analyze the condition $(g^{i})^{(p-1)/p_{j}} \equiv 1 \pmod{p}$:
+    $$ (g^{i})^{(p-1)/p_{j}} \equiv 1 \pmod{p} \iff ord_{p}(g) \mid \frac{i(p-1)}{p_{j}} \quad \text{since } g \text{ is a primitive root, } ord_{p}(g) = p-1 $$
+    $$ \iff p-1 \mid \frac{i(p-1)}{p_{j}} $$
+    $$ \iff p_{j} \mid i $$
+    Thus, $g^{i}$ is not a primitive root $\iff p_{j} \mid i$ for some $j$.
+    Since the $p_{j}$ are the distinct prime factors of $p-1$, the condition "$p_{j} \mid i$ for some $j$" is equivalent to $\gcd(i, p-1) > 1$.
+    Therefore, $g^{i}$ is a primitive root $\iff \gcd(i, p-1) = 1$.
+\end{proof}
+\begin{proof}[Proof of 2]
+    Since $g$ is a primitive root, the elements of $\mathbb{F}_{p}^{*}$ are given by the distinct powers $\{1, g, \dots, g^{p-2}\}$.
+    From part 1, the other primitive roots are the powers $g^{i}$ such that $1 \leq i \leq p-2$ and $\gcd(i, p-1) = 1$.
+    The number of such integers $i$ in the range $\{1, \dots, p-2\}$ (or $\{1, \dots, p-1\}$) that are relatively prime to $p-1$ is exactly $\phi(p-1)$, where $\phi$ is Euler's totient function.
+    Therefore, $\mathbb{F}_{p}$ has $\phi(p-1)$ primitive roots.
+\end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\begin{lemma}
+    Let $a, b, c \in \mathbb{Z}$ with $a \ne 0$. Then $a \mid bc \iff \frac{a}{\gcd(a, b)} \mid c$.
+\end{lemma}
+\begin{proof}
+    Let $d = \gcd(a, b)$. We set $a = a'd$ and $b = b'd$, where $\gcd(a', b') = 1$.
+    The statement $a \mid bc$ is equivalent to $a'd \mid b'dc$.
+    Since $d \ne 0$, we can cancel $d$: $a' \mid b'c$.
+    Because $\gcd(a', b') = 1$, by Euclid's Lemma, $a' \mid b'c$ $\iff a' \mid c$.
+    Substituting back $a' = \frac{a}{d} = \frac{a}{\gcd(a, b)}$, we get the equivalence: $a \mid bc \iff \frac{a}{\gcd(a, b)} \mid c$.
+\end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\begin{proposition}[The Order of a Power]
+    Let $p$ be a prime, $g$ be a primitive root in $\mathbb{F}_{p}$, and $i \in \{1, \dots, p-2\}$.
+    Then $ord_{p}(g^{i}) = \frac{p-1}{\gcd(p-1, i)}$.
+\end{proposition}
+\begin{proof}
+    The order $ord_{p}(g^{i})$ is defined as $m = \min\{n \in \mathbb{N} : n \geq 1 \text{ so that } (g^{i})^{n} \equiv 1 \pmod{p}\}$.
+    The congruence $(g^{i})^{n} \equiv 1 \pmod{p}$, or $g^{in} \equiv 1 \pmod{p}$, is equivalent to $ord_{p}(g) \mid in$.
+    Since $g$ is a primitive root, $ord_{p}(g) = p-1$. Thus, we are looking for:
+    $$ ord_{p}(g^{i}) = \min\{n \in \mathbb{N} : n \geq 1 \text{ so that } (p-1) \mid in\} $$
+    Using the preceding Lemma with $a = p-1$, $b = i$, and $c = n$, the condition $(p-1) \mid in$ is equivalent to $\frac{p-1}{\gcd(p-1, i)} \mid n$.
+    The minimum positive integer $n$ such that $\frac{p-1}{\gcd(p-1, i)} \mid n$ is $n = \frac{p-1}{\gcd(p-1, i)}$.
+    Therefore, $ord_{p}(g^{i}) = \frac{p-1}{\gcd(p-1, i)}$.
+\end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\begin{corollary}[Alternative Proof]
+    Let $g$ be a primitive root in $\mathbb{F}_{p}$. Then $g^{i}$ is a primitive root $\iff \gcd(p-1, i) = 1$.
+\end{corollary}
+\begin{proof}
+    By the Characterization Theorem, $g^{i}$ is a primitive root $\iff ord_{p}(g^{i}) = p-1$.
+    Using the Proposition on the order of a power:
+    $$ ord_{p}(g^{i}) = p-1 \iff \frac{p-1}{\gcd(p-1, i)} = p-1 $$
+    $$ \iff \gcd(p-1, i) = 1 $$
+\end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\subsection*{Artin's Conjecture}
+
+\begin{remark}
+    If $g \in \mathbb{N}$ is a perfect square, there is no prime $p$ such that $p > g$ and $g$ is a primitive root in $\mathbb{F}_{p}$.
+\end{remark}
+
+\bigskip
+
+\begin{theorem}[Artin's Conjecture (Hooley, 1967 - under GRH)]
+    If $g \geq 2$ is not a perfect square, the set of primes $p$ for which $g$ is a primitive root in $\mathbb{F}_{p}$ has a positive density.
+    $$ \lim_{x \rightarrow +\infty}\frac{\#\{p \leq x : p \text{ is prime and } g \text{ is a primitive root in }\mathbb{F}_{p}\}}{\#\{p : p \text{ is prime, } p \leq x\}} = C_{g} > 0 $$
+    For $g=2$, the constant is $C_{2} \approx 0.3739558\dots$
+\end{theorem}
+
+\bigskip
+
+\begin{theorem}[Roger-Heath-Brown, 1985 - unconditional]
+    There are at most two primes that are not primitive roots for infinitely many primes.
+\end{theorem}
+\begin{remark}
+    This theorem implies that among the first few primes, like 2, 3, and 5, at least one of them must be a primitive root for infinitely many primes.
+\end{remark}

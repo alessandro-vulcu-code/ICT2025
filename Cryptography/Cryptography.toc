@@ -56,3 +56,13 @@
 \contentsline {subsubsection}{{\itshape Prop}: Equality of Powers}{23}{proposition.2}%
 \contentsline {subsubsection}{{\itshape Def}: Primitive Root}{24}{definition.2}%
 \contentsline {subsubsection}{{\itshape Th}: Primitive Root Condition}{24}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Th}: Characterization of the Primitive Roots}{25}{theorem.2}%
+\contentsline {subsubsection}{{\itshape Th}: Existence of Primitive Roots}{25}{theorem.3}%
+\contentsline {subsubsection}{{\itshape lemma}: Effective Test for a Primitive Root Candidate}{25}{lemma.1}%
+\contentsline {subsubsection}{{\itshape Alg}: Finding a Primitive Root}{26}{algorithm.1}%
+\contentsline {section}{\numberline {12}Number of Primitive Roots}{27}{section.12}%
+\contentsline {subsubsection}{{\itshape Th}: Characterization of Powers as Primitive Roots}{27}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Prop}: The Order of a Power}{27}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Cor}: Alternative Proof}{28}{corollary.1}%
+\contentsline {subsubsection}{{\itshape Th}: Artin's Conjecture (Hooley, 1967 - under GRH)}{28}{theorem.2}%
+\contentsline {subsubsection}{{\itshape Th}: Roger-Heath-Brown, 1985 - unconditional}{28}{theorem.3}%
