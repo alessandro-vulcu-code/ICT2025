@@ -1,24 +1,81 @@
 \section{Divisibility}
-\begin{proposition}[Properties of Divisibility]
-Let $a, b, c \in \mathbb{Z}$. The following properties hold:
-\begin{enumerate}
-    \item If $a \mid 1$, then $a = \pm 1$.
-    \item If $a \mid b$ and $b \mid a$, and $a \neq 0, b \neq 0$, then $a = \pm b$.
-    \item If $a \mid b$ and $b \mid c$, then $a \mid c$ (Transitivity).
-\end{enumerate}
-\end{proposition}
+\begin{definition}
+Let $a, b \in \mathbb{Z}$ with $b \neq 0$. We say that $b$ divides $a$, denoted by $b \mid a$, if there exists an integer $c \in \mathbb{Z}$ such that $a = b \cdot c$.
+\end{definition}
+
+\bigskip
+
+\begin{theorem}[Transitivity of Divisibility]
+    Let $a, b, c \in \mathbb{Z}$.
+    If $a \mid b$ and $b \mid c$, $\rightarrow a \mid c$.
+\end{theorem}
+
 \begin{proof}
-    \leavevmode
-\begin{enumerate}
-    \item If $a \mid 1$: By definition, $\exists c \in \mathbb{Z} : 1 = ac$. Since $a, c \in \mathbb{Z}$, the only possible integer solutions are $(a=1, c=1)$ or $(a=-1, c=-1)$. Therefore, $a = \pm 1$.
-    \item If $a \mid b$ and $b \mid a$: By definition, $\exists c_1, c_2 \in \mathbb{Z} : b = ac_1$ and $a = bc_2$. Substituting the first equation into the second gives $a = (ac_1)c_2 = a(c_1c_2)$. Since $a \neq 0$, we can divide by $a$ to get $1 = c_1c_2$. As $c_1, c_2 \in \mathbb{Z}$, the only solutions are $(c_1=1, c_2=1)$ or $(c_1=-1, c_2=-1)$.
-    \begin{itemize}
-        \item If $c_1 = 1$, then $b = a \cdot 1 = a$.
-        \item If $c_1 = -1$, then $b = a \cdot (-1) = -a$.
-    \end{itemize}
-    Thus, $a = \pm b$.
-    \item If $a \mid b$ and $b \mid c$: By definition, $\exists c_1, c_2 \in \mathbb{Z} : b = ac_1$ and $c = bc_2$. Substituting the first equation into the second gives $c = (ac_1)c_2 = a(c_1c_2)$. Since $c_1c_2 \in \mathbb{Z}$, this satisfies the definition of divisibility, so $a \mid c$. \qedhere
-\end{enumerate}
+    Assume $a \mid b$. Since $a, b \in \mathbb{Z}$ and $a \neq 0$, $\exists c_1 \in \mathbb{Z}$ : $b = a \cdot c_1$.
+    Assume $b \mid c$. Since $b, c \in \mathbb{Z}$ and $b \neq 0$, $\exists c_2 \in \mathbb{Z}$ : $c = b \cdot c_2$.
+    
+    Substituting the first equation into the second yields:
+    $$c = (a \cdot c_1) \cdot c_2 = a \cdot (c_1 c_2)$$
+    Since $c_1, c_2 \in \mathbb{Z}$, their product $c_1 c_2$ is also an integer. Let $k = c_1 c_2 \in \mathbb{Z}$.
+    Thus, $c = a \cdot k$.
+    By the definition of divisibility, we conclude that $a \mid c$.
+\end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\begin{proposition}[Equality from Mutual Divisibility]
+    Let $a, b \in \mathbb{Z}$, with $a \neq 0$ and $b \neq 0$.
+    If $a \mid b$ and $b \mid a$, $\rightarrow a = \pm b$.
+\end{proposition}
+
+\begin{proof}
+    Assume $a \mid b$. Since $a \neq 0$, $\exists c_1 \in \mathbb{Z}$ : $b = a \cdot c_1$.
+    Assume $b \mid a$. Since $b \neq 0$, $\exists c_2 \in \mathbb{Z}$ : $a = b \cdot c_2$.
+    
+    Substitute the expression for $b$ from the first equation into the second:
+    $$a = (a \cdot c_1) \cdot c_2 = a \cdot (c_1 c_2)$$
+    Since $a \neq 0$, we can divide both sides by $a$, which gives:
+    $$1 = c_1 c_2$$
+    Since $c_1$ and $c_2$ are integers, the only possible pairs for $(c_1, c_2)$ are $(1, 1)$ or $(-1, -1)$.
+    
+    Case 1: $c_1 = 1$. Substituting into $b = a \cdot c_1$ gives $b = a \cdot 1 = a$.
+    Case 2: $c_1 = -1$. Substituting into $b = a \cdot c_1$ gives $b = a \cdot (-1) = -a$.
+    
+    Therefore, we conclude that $a = \pm b$.
+\end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}
+
+\begin{theorem}[Linearity Property of Divisibility]
+    Let $a, b, c \in \mathbb{Z}$, with $a \neq 0$.
+    If $a \mid b$ and $a \mid c$, $\rightarrow a \mid (b+c)$ and $a \mid (b-c)$.
+\end{theorem}
+
+\begin{proof}
+    Assume $a \mid b$. Since $a \neq 0$, $\exists k_1 \in \mathbb{Z}$ : $b = a \cdot k_1$.
+    Assume $a \mid c$. Since $a \neq 0$, $\exists k_2 \in \mathbb{Z}$ : $c = a \cdot k_2$.
+    
+    \textbf{Demonstration for the Sum ($a \mid (b+c)$):}
+    Summing the two equations:
+    $$b + c = a \cdot k_1 + a \cdot k_2$$
+    Factoring out $a$:
+    $$b + c = a \cdot (k_1 + k_2)$$
+    Since $k_1, k_2 \in \mathbb{Z}$, their sum $(k_1 + k_2)$ is also an integer. Let $k_s = k_1 + k_2 \in \mathbb{Z}$.
+    Thus, $b+c = a \cdot k_s$.
+    By the definition of divisibility, we have $a \mid (b+c)$.
+    
+    \textbf{Demonstration for the Difference ($a \mid (b-c)$):}
+    Subtracting the second equation from the first:
+    $$b - c = a \cdot k_1 - a \cdot k_2$$
+    Factoring out $a$:
+    $$b - c = a \cdot (k_1 - k_2)$$
+    Since $k_1, k_2 \in \mathbb{Z}$, their difference $(k_1 - k_2)$ is also an integer. Let $k_d = k_1 - k_2 \in \mathbb{Z}$.
+    Thus, $b-c = a \cdot k_d$.
+    By the definition of divisibility, we have $a \mid (b-c)$.
 \end{proof}
 
 \begin{center}

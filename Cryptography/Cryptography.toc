@@ -1,68 +1,78 @@
 \babel@toc {english}{}\relax 
 \contentsline {section}{\numberline {1}Divisibility}{4}{section.1}%
-\contentsline {subsubsection}{{\itshape Prop}: Properties of Divisibility}{4}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Prop}: Euclidean Division}{4}{proposition.2}%
-\contentsline {subsubsection}{{\itshape Prop}: Binary Representation from Repeated Division}{4}{proposition.3}%
-\contentsline {subsubsection}{{\itshape Rem}: Upper Bound of a B-bit Number}{5}{thmt@dummyctr.dummy.4}%
-\contentsline {subsubsection}{{\itshape Cor}: Range of a B-bit Number}{5}{corollary.1}%
-\contentsline {section}{\numberline {2}The Greatest Common Divisor (GCD)}{6}{section.2}%
-\contentsline {subsubsection}{{\itshape Def}: Greatest Common Divisor}{6}{definition.1}%
-\contentsline {subsubsection}{{\itshape Rem}: Example of GCD}{6}{thmt@dummyctr.dummy.7}%
-\contentsline {section}{\numberline {3}The Euclidean Algorithm}{7}{section.3}%
-\contentsline {subsubsection}{{\itshape Th}: Euclidean Algorithm}{7}{theorem.1}%
-\contentsline {subsubsection}{{\itshape Prop}: Extended Euclidean Algorithm}{7}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Prop}: Solvability Condition}{8}{proposition.2}%
-\contentsline {subsubsection}{{\itshape Prop}: Form of All Solutions}{8}{proposition.3}%
-\contentsline {section}{\numberline {4}Coprime numbers}{9}{section.4}%
-\contentsline {subsubsection}{{\itshape Prop}: Characterisation of Coprime Numbers}{9}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Prop}: Prime Divisor Property}{9}{proposition.2}%
-\contentsline {subsubsection}{{\itshape Th}: Fundamental Theorem of Arithmetic}{9}{theorem.1}%
-\contentsline {section}{\numberline {5}Classes Modulo $m$}{11}{section.5}%
-\contentsline {subsubsection}{{\itshape Th}: Existence of a Unique Remainder}{11}{theorem.1}%
-\contentsline {subsubsection}{{\itshape Th}: Congruence is an Equivalence Relation}{11}{theorem.2}%
-\contentsline {subsubsection}{{\itshape Prop}: Equivalence Classes Form a Partition}{11}{proposition.2}%
-\contentsline {section}{\numberline {6}Invertibility Modulo $m$}{12}{section.6}%
-\contentsline {subsubsection}{{\itshape Prop}: Compatibility}{12}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Th}: Characterization of Invertibility}{13}{theorem.2}%
-\contentsline {section}{\numberline {7}Solving Linear Congruences}{14}{section.7}%
-\contentsline {subsubsection}{{\itshape Prop}: Solvability Condition}{14}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Prop}: Number of Solutions}{14}{proposition.2}%
-\contentsline {section}{\numberline {8}Chinese Remainder Theorem (CRT)}{15}{section.8}%
-\contentsline {subsubsection}{{\itshape Th}: Chinese Remainder Theorem}{15}{theorem.1}%
-\contentsline {section}{\numberline {9}Euler's $\phi $ Function}{16}{section.9}%
-\contentsline {subsubsection}{{\itshape Th}: Totient of a Prime Number}{16}{theorem.1}%
-\contentsline {subsubsection}{{\itshape Th}: Primality Test via the Totient Function}{16}{theorem.2}%
-\contentsline {subsubsection}{{\itshape Prop}: Totient of a Prime Power}{16}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Th}: Multiplicativity of Euler's Totient Function}{16}{theorem.3}%
-\contentsline {section}{\numberline {10}The fast powering algorithm}{17}{section.10}%
-\contentsline {subsubsection}{{\itshape Th}: Solvability of a System of Two Linear Congruences}{17}{theorem.1}%
-\contentsline {subsubsection}{{\itshape Prop}: General Solvability Condition}{17}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Alg}: Fast Powering Algorithm}{18}{algorithm.1}%
-\contentsline {subsubsection}{{\itshape Rem}: Complexity of the Fast Powering Algorithm}{18}{thmt@dummyctr.dummy.39}%
-\contentsline {subsubsection}{{\itshape Prop}: Efficiency Comparison}{19}{proposition.2}%
-\contentsline {subsubsection}{{\itshape Rem}: Problem Statement}{19}{thmt@dummyctr.dummy.41}%
-\contentsline {subsubsection}{{\itshape Rem}: Method Principle}{19}{thmt@dummyctr.dummy.42}%
-\contentsline {subsubsection}{{\itshape Rem}: Complexity Analysis}{19}{thmt@dummyctr.dummy.43}%
-\contentsline {subsubsection}{{\itshape Th}: Fermat's Little Theorem - Primary Form}{19}{theorem.2}%
-\contentsline {subsubsection}{{\itshape Th}: Fermat's Little Theorem - Alternative Form}{20}{theorem.3}%
-\contentsline {subsubsection}{{\itshape Rem}: Conditions for Application}{20}{thmt@dummyctr.dummy.46}%
-\contentsline {subsubsection}{{\itshape Th}: Fermat's Little Theorem}{21}{theorem.4}%
-\contentsline {subsubsection}{{\itshape Cor}: Modular Exponentiation}{21}{corollary.1}%
-\contentsline {subsubsection}{{\itshape Cor}: Finding Modular Inverses}{22}{corollary.2}%
-\contentsline {subsubsection}{{\itshape Cor}: Fermat Primality Test}{22}{corollary.3}%
-\contentsline {section}{\numberline {11}The Order of an Element and Primitive Roots}{23}{section.11}%
-\contentsline {subsubsection}{{\itshape Def}: Order of an Element}{23}{definition.1}%
-\contentsline {subsubsection}{{\itshape Prop}: Order Divisibility Property}{23}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Prop}: Equality of Powers}{23}{proposition.2}%
-\contentsline {subsubsection}{{\itshape Def}: Primitive Root}{24}{definition.2}%
-\contentsline {subsubsection}{{\itshape Th}: Primitive Root Condition}{24}{theorem.1}%
-\contentsline {subsubsection}{{\itshape Th}: Characterization of the Primitive Roots}{25}{theorem.2}%
-\contentsline {subsubsection}{{\itshape Th}: Existence of Primitive Roots}{25}{theorem.3}%
-\contentsline {subsubsection}{{\itshape lemma}: Effective Test for a Primitive Root Candidate}{25}{lemma.1}%
-\contentsline {subsubsection}{{\itshape Alg}: Finding a Primitive Root}{26}{algorithm.1}%
-\contentsline {section}{\numberline {12}Number of Primitive Roots}{27}{section.12}%
-\contentsline {subsubsection}{{\itshape Th}: Characterization of Powers as Primitive Roots}{27}{theorem.1}%
-\contentsline {subsubsection}{{\itshape Prop}: The Order of a Power}{27}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Cor}: Alternative Proof}{28}{corollary.1}%
-\contentsline {subsubsection}{{\itshape Th}: Artin's Conjecture (Hooley, 1967 - under GRH)}{28}{theorem.2}%
-\contentsline {subsubsection}{{\itshape Th}: Roger-Heath-Brown, 1985 - unconditional}{28}{theorem.3}%
+\contentsline {subsubsection}{{\itshape Th}: Transitivity of Divisibility}{4}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Prop}: Equality from Mutual Divisibility}{4}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Th}: Linearity Property of Divisibility}{4}{theorem.2}%
+\contentsline {subsubsection}{{\itshape Prop}: Euclidean Division}{5}{proposition.2}%
+\contentsline {subsubsection}{{\itshape Prop}: Binary Representation from Repeated Division}{5}{proposition.3}%
+\contentsline {subsubsection}{{\itshape Rem}: Upper Bound of a B-bit Number}{6}{thmt@dummyctr.dummy.7}%
+\contentsline {subsubsection}{{\itshape Cor}: Range of a B-bit Number}{6}{corollary.1}%
+\contentsline {section}{\numberline {2}The Greatest Common Divisor (GCD)}{7}{section.2}%
+\contentsline {subsubsection}{{\itshape Def}: Greatest Common Divisor}{7}{definition.1}%
+\contentsline {subsubsection}{{\itshape Rem}: Example of GCD}{7}{thmt@dummyctr.dummy.10}%
+\contentsline {section}{\numberline {3}The Euclidean Algorithm}{8}{section.3}%
+\contentsline {subsubsection}{{\itshape Th}: Euclidean Algorithm}{8}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Prop}: Extended Euclidean Algorithm}{8}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Prop}: Solvability Condition}{10}{proposition.2}%
+\contentsline {subsubsection}{{\itshape Prop}: Form of All Solutions}{10}{proposition.3}%
+\contentsline {section}{\numberline {4}Coprime numbers}{11}{section.4}%
+\contentsline {subsubsection}{{\itshape Def}: Prime Number}{11}{definition.1}%
+\contentsline {subsubsection}{{\itshape Th}: Euclid}{11}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Prop}: Divisors of Composite Numbers}{11}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Prop}: Characterisation of Coprime Numbers}{12}{proposition.2}%
+\contentsline {subsubsection}{{\itshape Prop}: Prime Divisor Property}{12}{proposition.3}%
+\contentsline {subsubsection}{{\itshape Th}: Fundamental Theorem of Arithmetic}{13}{theorem.2}%
+\contentsline {section}{\numberline {5}Classes Modulo $m$}{15}{section.5}%
+\contentsline {subsubsection}{{\itshape Th}: Existence of a Unique Remainder}{15}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Th}: Congruence is an Equivalence Relation}{15}{theorem.2}%
+\contentsline {subsubsection}{{\itshape Prop}: Equivalence Classes Form a Partition}{15}{proposition.2}%
+\contentsline {section}{\numberline {6}Invertibility Modulo $m$}{16}{section.6}%
+\contentsline {subsubsection}{{\itshape Prop}: Compatibility}{16}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Th}: Characterization of Invertibility}{17}{theorem.2}%
+\contentsline {section}{\numberline {7}Solving Linear Congruences}{18}{section.7}%
+\contentsline {subsubsection}{{\itshape Prop}: Solvability Condition}{18}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Prop}: Number of Solutions}{18}{proposition.2}%
+\contentsline {section}{\numberline {8}Chinese Remainder Theorem (CRT)}{19}{section.8}%
+\contentsline {subsubsection}{{\itshape Th}: Chinese Remainder Theorem}{19}{theorem.1}%
+\contentsline {section}{\numberline {9}Euler's $\phi $ Function}{20}{section.9}%
+\contentsline {subsubsection}{{\itshape Def}: Euler's Totient Function, $\phi $}{20}{definition.1}%
+\contentsline {subsubsection}{{\itshape Def}: Remainder Map}{20}{definition.2}%
+\contentsline {subsubsection}{{\itshape Prop}: Remainder Map is Well-Defined}{20}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Th}: Bijectivity of the Remainder Map with Coprime Factors}{21}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Th}: Totient of a Prime Number}{22}{theorem.2}%
+\contentsline {subsubsection}{{\itshape Th}: Primality Test via the Totient Function}{22}{theorem.3}%
+\contentsline {subsubsection}{{\itshape Prop}: Totient of a Prime Power}{22}{proposition.2}%
+\contentsline {subsubsection}{{\itshape Th}: Multiplicativity of Euler's Totient Function}{22}{theorem.4}%
+\contentsline {section}{\numberline {10}The fast powering algorithm}{23}{section.10}%
+\contentsline {subsubsection}{{\itshape Th}: Solvability of a System of Two Linear Congruences}{23}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Prop}: General Solvability Condition}{23}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Alg}: Fast Powering Algorithm}{24}{algorithm.1}%
+\contentsline {subsubsection}{{\itshape Rem}: Complexity of the Fast Powering Algorithm}{24}{thmt@dummyctr.dummy.49}%
+\contentsline {subsubsection}{{\itshape Prop}: Efficiency Comparison}{25}{proposition.2}%
+\contentsline {subsubsection}{{\itshape Rem}: Problem Statement}{25}{thmt@dummyctr.dummy.51}%
+\contentsline {subsubsection}{{\itshape Rem}: Method Principle}{25}{thmt@dummyctr.dummy.52}%
+\contentsline {subsubsection}{{\itshape Rem}: Complexity Analysis}{25}{thmt@dummyctr.dummy.53}%
+\contentsline {subsubsection}{{\itshape Th}: Fermat's Little Theorem - Primary Form}{25}{theorem.2}%
+\contentsline {subsubsection}{{\itshape Th}: Fermat's Little Theorem - Alternative Form}{26}{theorem.3}%
+\contentsline {subsubsection}{{\itshape Rem}: Conditions for Application}{26}{thmt@dummyctr.dummy.56}%
+\contentsline {section}{\numberline {11}Fermat's little theorem}{27}{section.11}%
+\contentsline {subsubsection}{{\itshape Th}: Fermat's Little Theorem}{27}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Cor}: Modular Exponentiation}{27}{corollary.1}%
+\contentsline {subsubsection}{{\itshape Cor}: Finding Modular Inverses}{28}{corollary.2}%
+\contentsline {subsubsection}{{\itshape Cor}: Fermat Primality Test}{28}{corollary.3}%
+\contentsline {section}{\numberline {12}The Order of an Element and Primitive Roots}{29}{section.12}%
+\contentsline {subsubsection}{{\itshape Def}: Order of an Element}{29}{definition.1}%
+\contentsline {subsubsection}{{\itshape Prop}: Order Divisibility Property}{29}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Prop}: Equality of Powers}{29}{proposition.2}%
+\contentsline {subsubsection}{{\itshape Def}: Primitive Root}{30}{definition.2}%
+\contentsline {subsubsection}{{\itshape Th}: Primitive Root Condition}{30}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Th}: Characterization of the Primitive Roots}{31}{theorem.2}%
+\contentsline {subsubsection}{{\itshape Th}: Existence of Primitive Roots}{31}{theorem.3}%
+\contentsline {subsubsection}{{\itshape lemma}: Effective Test for a Primitive Root Candidate}{31}{lemma.1}%
+\contentsline {subsubsection}{{\itshape Alg}: Finding a Primitive Root}{32}{algorithm.1}%
+\contentsline {section}{\numberline {13}Number of Primitive Roots}{33}{section.13}%
+\contentsline {subsubsection}{{\itshape Th}: Characterization of Powers as Primitive Roots}{33}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Prop}: The Order of a Power}{33}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Cor}: Alternative Proof}{34}{corollary.1}%
+\contentsline {subsubsection}{{\itshape Th}: Artin's Conjecture (Hooley, 1967 - under GRH)}{34}{theorem.2}%
+\contentsline {subsubsection}{{\itshape Th}: Roger-Heath-Brown, 1985 - unconditional}{34}{theorem.3}%

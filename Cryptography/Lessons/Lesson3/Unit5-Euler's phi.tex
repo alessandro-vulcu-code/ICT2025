@@ -1,4 +1,111 @@
 \section{Euler's \texorpdfstring{$\phi$}{phi} Function}
+\begin{definition}[Euler's Totient Function, $\phi$]
+    Let $m \in \mathbb{N}$ such that $m \ge 1$. The **Euler's totient function**, denoted by $\phi(m)$, is the number of elements in the multiplicative group of integers modulo $m$, which is $\left(\mathbb{Z}/m\mathbb{Z}\right)^*$.
+    
+    In other words, $\phi(m)$ is the number of integers $k$ such that $1 \le k \le m$ so that $\gcd(k, m) = 1$.
+\end{definition}
+
+\begin{center}
+    \vspace{10pt}
+    \line(1,0){450}
+    \vspace{25pt}
+\end{center}
+
+\begin{definition}[Remainder Map]
+    Let $m, n \in \mathbb{N}$ be integers. The **remainder map** $r$ is a function:
+    $$r: \mathbb{Z}/(mn)\mathbb{Z} \longrightarrow (\mathbb{Z}/m\mathbb{Z}) \times (\mathbb{Z}/n\mathbb{Z})$$
+    
+    It is defined $\forall a \in \{0, \dots, mn - 1\}$ as:
+    $$r([a]_{mn}) := ([a]_m, [a]_n)$$
+    where $[a]_k$ denotes the residue class of $a$ modulo $k$.
+\end{definition}
+
+\begin{center}
+    \vspace{10pt}
+    \line(1,0){450}
+    \vspace{25pt}
+\end{center}
+
+\bigskip
+
+\begin{proposition}[Remainder Map is Well-Defined]
+    The remainder map $r$ is well-defined. That is, the result of the map is independent of the choice of the representative of the residue class:
+    $$[a]_{mn} = [b]_{mn} \implies r([a]_{mn}) = r([b]_{mn})$$
+    which means $([a]_m, [a]_n) = ([b]_m, [b]_n)$.
+\end{proposition}
+
+\begin{proof}
+    We assume the antecedent: $[a]_{mn} = [b]_{mn}$.
+    
+    By the definition of equality of residue classes, this means $mn$ divides the difference $(b - a)$:
+    $$[a]_{mn} = [b]_{mn} \implies mn \mid (b - a)$$
+    
+    Since $mn \mid (b - a)$, it must be that both $m$ and $n$ individually divide the difference $(b - a)$:
+    $$mn \mid (b - a) \implies \begin{cases} m \mid (b - a) \\ n \mid (b - a) \end{cases}$$
+    
+    By the definition of congruence and residue classes, this translates back into the desired equalities:
+    $$\begin{cases} m \mid (b - a) \implies [a]_m = [b]_m \\ n \mid (b - a) \implies [a]_n = [b]_n \end{cases}$$
+    
+    Since both components are equal, the ordered pairs are equal:
+    $$([a]_m, [a]_n) = ([b]_m, [b]_n)$$
+    
+    Thus, $r([a]_{mn}) = r([b]_{mn})$, and the map is well-defined.
+\end{proof}
+
+\begin{center}
+    \vspace{10pt}
+    \line(1,0){450}
+    \vspace{25pt}
+\end{center}
+
+
+\begin{theorem}[Bijectivity of the Remainder Map with Coprime Factors]
+    Let $m, n \in \mathbb{N}$ be integers such that $m, n \ge 1$, and assume $m$ and $n$ are **pairwise coprime** (i.e., $\gcd(m, n) = 1$).
+    
+    The remainder map $r$:
+    $$r: \mathbb{Z}/(mn)\mathbb{Z} \longrightarrow (\mathbb{Z}/m\mathbb{Z}) \times (\mathbb{Z}/n\mathbb{Z})$$
+    is a **bijection** (one-to-one and onto).
+\end{theorem}
+
+\begin{proof}
+    The proof establishes bijectivity by demonstrating both **Surjectivity** (the map is onto) and **Injectivity** (the map is one-to-one).
+
+    \subsection*{Surjectivity (Onto)}
+    Let $([a]_m, [b]_n) \in (\mathbb{Z}/m\mathbb{Z}) \times (\mathbb{Z}/n\mathbb{Z})$ be an arbitrary element in the codomain.
+    
+    We seek to show $\exists x \in \mathbb{Z}$ so that $r([x]_{mn}) = ([a]_m, [b]_n)$.
+    
+    This is equivalent to finding an integer $x$ that simultaneously solves the system of congruences:
+    $$\begin{cases} x \equiv a \pmod{m} \\ x \equiv b \pmod{n} \end{cases}$$
+    
+    Since we are given that $\gcd(m, n) = 1$, the **Chinese Remainder Theorem** guarantees that a solution $x$ always exists for any pair of residues $(a, b)$.
+    
+    Therefore, $\forall$ element in the codomain, there is a corresponding pre-image in the domain, proving that the map $r$ is **surjective**.
+    
+    \subsection*{Injectivity (One-to-One)}
+    We can establish injectivity by counting the elements (since the sets are finite):
+    
+    \begin{enumerate}
+        \item **Count the Domain:** The number of elements in the domain is the modulus:
+        $$|\mathbb{Z}/(mn)\mathbb{Z}| = mn$$
+        
+        \item **Count the Codomain:** The number of elements in the codomain (a Cartesian product) is the product of the sizes of the factors:
+        $$|(\mathbb{Z}/m\mathbb{Z}) \times (\mathbb{Z}/n\mathbb{Z})| = |\mathbb{Z}/m\mathbb{Z}| \cdot |\mathbb{Z}/n\mathbb{Z}| = m \cdot n = mn$$
+        
+        \item **Conclusion:** Since the domain and codomain are finite sets and have the **same number of elements** ($mn = mn$), and we have already proven the map $r$ is **surjective**, it must automatically be **injective** as well.
+        
+        $$\text{Surjectivity} \land (|\text{Domain}| = |\text{Codomain}|) \implies \text{Injectivity}$$
+    \end{enumerate}
+    
+    Since $r$ is both surjective and injective, it is a **bijection**.
+\end{proof}
+
+\begin{center}
+    \vspace{10pt}
+    \line(1,0){450}
+    \vspace{25pt}
+\end{center}
+
 
 \begin{theorem}[Totient of a Prime Number]
 \label{thm:totient_prime}

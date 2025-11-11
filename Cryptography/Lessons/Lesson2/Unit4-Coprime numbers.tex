@@ -1,4 +1,87 @@
 \section{Coprime numbers}
+\begin{definition}[Prime Number]
+    A natural number $p \in \mathbb{N}$ such that $p \ge 2$ is called **prime** if $\forall$ divisors $d \in \mathbb{N}$ of $p$, we have $d=1$ or $d=p$.
+\end{definition}
+
+    \begin{center}
+        \vspace{10pt}
+        \line(1,0){450}
+        \vspace{25pt}
+    \end{center}
+
+\begin{theorem}[Euclid]
+    There are infinitely many prime numbers.
+\end{theorem}
+
+\begin{proof}
+    We proceed by contradiction.
+    
+    Assume the contrary: that the set of all prime numbers is finite.
+    
+    Let $N \in \mathbb{N}$ be the largest prime number so that $\forall$ prime number $p$, we have $p \le N$.
+    
+    Consider the natural number $M = N! + 1$.
+    
+    Since $N \ge 2$, we have $M = N! + 1 > N$. Since $M$ is greater than the largest assumed prime $N$, it follows that **$M$ is not prime**.
+    
+    Therefore, $M$ must have a prime divisor. Let $p \in \mathbb{N}$ be any prime divisor of $M$.
+    
+    Since $p$ is a prime number and we assumed $N$ is the largest prime, it must be that $\forall$ prime divisor $p$ of $M$, we have $p \le N$.
+    
+    Since $p \le N$, it follows that $p$ is one of the factors in the factorial $N! = 1 \cdot 2 \cdot 3 \cdots N$.
+    
+    $$\implies p \mid N!$$
+    
+    Since we defined $p$ as a divisor of $M$, we also have:
+    
+    $$\implies p \mid (N! + 1)$$
+    
+    Since $p$ divides both $N! + 1$ and $N!$, $p$ must divide their difference:
+    
+    $$p \mid ((N! + 1) - N!)$$
+    $$p \mid 1$$
+    
+    This is a \textbf{contradiction}, because a prime number $p \ge 2$ cannot divide $1$.
+    
+    Therefore, the initial assumption that there exists a largest prime $N$ must be false.
+    
+    Thus, there must exist a prime number $p > N$. Since $N$ was assumed to be the largest prime, the existence of a larger prime $p$ proves that the set of prime numbers is **infinite**.
+\end{proof}
+
+    \begin{center}
+        \vspace{10pt}
+        \line(1,0){450}
+        \vspace{25pt}
+    \end{center}
+
+\begin{proposition}[Divisors of Composite Numbers]
+    If a natural number $n \in \mathbb{N}$ is not prime (i.e., composite), then $n$ has a divisor $a \in \mathbb{N}$ such that $1 < a \le \sqrt{n}$.
+\end{proposition}
+
+\begin{proof}
+    If $n$ is not prime (composite), then $n$ must be the product of two integer factors $a$ and $b$, both greater than $1$. So, there exist $a, b \in \mathbb{N}$ such that $a > 1$, $b > 1$, and $n = ab$.
+    
+    We proceed by contradiction on the size of the factors. Assume the contrary: that $\forall$ factors $a$ and $b$ of $n$, we have both $a > \sqrt{n}$ and $b > \sqrt{n}$.
+    
+    If $a > \sqrt{n}$ and $b > \sqrt{n}$, then multiplying these two inequalities yields:
+    
+    $$n = ab > (\sqrt{n}) \cdot (\sqrt{n})$$
+    $$n > (\sqrt{n})^2$$
+    $$n > n$$
+    
+    This is a **contradiction**, as $n$ cannot be strictly greater than itself.
+    
+    Therefore, the assumption that both factors $a$ and $b$ are greater than $\sqrt{n}$ must be false. This means that at least one of the factors must be less than or equal to $\sqrt{n}$.
+    
+    Let $a$ be the smaller of the two factors. We have $1 < a$ (by definition of a composite number) and $a \le \sqrt{n}$. Thus, $n$ has a divisor $a$ such that $1 < a \le \sqrt{n}$.
+\end{proof}
+
+    \begin{center}
+        \vspace{10pt}
+        \line(1,0){450}
+        \vspace{25pt}
+    \end{center}
+
 \begin{proposition}[Characterisation of Coprime Numbers]
     Integers $a, b \in \mathbb{Z}$ are relatively prime $\iff \exists u, v \in \mathbb{Z} : a u + b v = 1$.
     \end{proposition}
