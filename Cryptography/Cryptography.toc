@@ -1,10 +1,10 @@
 \babel@toc {english}{}\relax 
 \contentsline {section}{\numberline {1}Divisibility}{4}{section.1}%
-\contentsline {subsubsection}{{\itshape Th}: Transitivity of Divisibility}{4}{theorem.1}%
-\contentsline {subsubsection}{{\itshape Prop}: Equality from Mutual Divisibility}{4}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Th}: Linearity Property of Divisibility}{4}{theorem.2}%
-\contentsline {subsubsection}{{\itshape Prop}: Euclidean Division}{5}{proposition.2}%
-\contentsline {subsubsection}{{\itshape Prop}: Binary Representation from Repeated Division}{5}{proposition.3}%
+\contentsline {subsubsection}{{\itshape Prop}: Transitivity of Divisibility}{4}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Prop}: Equality from Mutual Divisibility}{4}{proposition.2}%
+\contentsline {subsubsection}{{\itshape Prop}: Linearity Property of Divisibility}{4}{proposition.3}%
+\contentsline {subsubsection}{{\itshape Prop}: Euclidean Division}{5}{proposition.4}%
+\contentsline {subsubsection}{{\itshape Prop}: Binary Representation from Repeated Division}{5}{proposition.5}%
 \contentsline {subsubsection}{{\itshape Rem}: Upper Bound of a B-bit Number}{6}{thmt@dummyctr.dummy.7}%
 \contentsline {subsubsection}{{\itshape Cor}: Range of a B-bit Number}{6}{corollary.1}%
 \contentsline {section}{\numberline {2}The Greatest Common Divisor (GCD)}{7}{section.2}%
@@ -13,15 +13,15 @@
 \contentsline {section}{\numberline {3}The Euclidean Algorithm}{8}{section.3}%
 \contentsline {subsubsection}{{\itshape Th}: Euclidean Algorithm}{8}{theorem.1}%
 \contentsline {subsubsection}{{\itshape Prop}: Extended Euclidean Algorithm}{8}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Prop}: Solvability Condition}{10}{proposition.2}%
-\contentsline {subsubsection}{{\itshape Prop}: Form of All Solutions}{10}{proposition.3}%
-\contentsline {section}{\numberline {4}Coprime numbers}{11}{section.4}%
-\contentsline {subsubsection}{{\itshape Def}: Prime Number}{11}{definition.1}%
-\contentsline {subsubsection}{{\itshape Th}: Euclid}{11}{theorem.1}%
-\contentsline {subsubsection}{{\itshape Prop}: Divisors of Composite Numbers}{11}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Prop}: Characterisation of Coprime Numbers}{12}{proposition.2}%
-\contentsline {subsubsection}{{\itshape Prop}: Prime Divisor Property}{12}{proposition.3}%
-\contentsline {subsubsection}{{\itshape Th}: Fundamental Theorem of Arithmetic}{13}{theorem.2}%
+\contentsline {subsubsection}{{\itshape Prop}: Solvability of Linear Diophantine Equations}{10}{proposition.2}%
+\contentsline {subsubsection}{{\itshape Prop}: All Integer Solutions to $au+bv=c$}{10}{proposition.3}%
+\contentsline {section}{\numberline {4}Coprime numbers}{12}{section.4}%
+\contentsline {subsubsection}{{\itshape Def}: Prime Number}{12}{definition.1}%
+\contentsline {subsubsection}{{\itshape Th}: Euclid}{12}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Prop}: Divisors of Composite Numbers}{12}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Prop}: Characterisation of Coprime Numbers}{13}{proposition.2}%
+\contentsline {subsubsection}{{\itshape Prop}: Prime Divisor Property}{13}{proposition.3}%
+\contentsline {subsubsection}{{\itshape Th}: Fundamental Theorem of Arithmetic}{14}{theorem.2}%
 \contentsline {section}{\numberline {5}Classes Modulo $m$}{15}{section.5}%
 \contentsline {subsubsection}{{\itshape Th}: Existence of a Unique Remainder}{15}{theorem.1}%
 \contentsline {subsubsection}{{\itshape Th}: Congruence is an Equivalence Relation}{15}{theorem.2}%
@@ -68,11 +68,11 @@
 \contentsline {subsubsection}{{\itshape Th}: Primitive Root Condition}{30}{theorem.1}%
 \contentsline {subsubsection}{{\itshape Th}: Characterization of the Primitive Roots}{31}{theorem.2}%
 \contentsline {subsubsection}{{\itshape Th}: Existence of Primitive Roots}{31}{theorem.3}%
-\contentsline {subsubsection}{{\itshape lemma}: Effective Test for a Primitive Root Candidate}{31}{lemma.1}%
-\contentsline {subsubsection}{{\itshape Alg}: Finding a Primitive Root}{32}{algorithm.1}%
-\contentsline {section}{\numberline {13}Number of Primitive Roots}{33}{section.13}%
-\contentsline {subsubsection}{{\itshape Th}: Characterization of Powers as Primitive Roots}{33}{theorem.1}%
-\contentsline {subsubsection}{{\itshape Prop}: The Order of a Power}{33}{proposition.1}%
-\contentsline {subsubsection}{{\itshape Cor}: Alternative Proof}{34}{corollary.1}%
-\contentsline {subsubsection}{{\itshape Th}: Artin's Conjecture (Hooley, 1967 - under GRH)}{34}{theorem.2}%
-\contentsline {subsubsection}{{\itshape Th}: Roger-Heath-Brown, 1985 - unconditional}{34}{theorem.3}%
+\contentsline {subsubsection}{{\itshape Lemma}: Effective Test for a Primitive Root Candidate}{32}{lemma.1}%
+\contentsline {subsubsection}{{\itshape Alg}: Finding a Primitive Root}{33}{algorithm.1}%
+\contentsline {section}{\numberline {13}Number of Primitive Roots}{34}{section.13}%
+\contentsline {subsubsection}{{\itshape Th}: Characterization of Powers as Primitive Roots}{34}{theorem.1}%
+\contentsline {subsubsection}{{\itshape Prop}: The Order of a Power}{34}{proposition.1}%
+\contentsline {subsubsection}{{\itshape Cor}: Alternative Proof}{35}{corollary.1}%
+\contentsline {subsubsection}{{\itshape Th}: Artin's Conjecture (Hooley, 1967 - under GRH)}{35}{theorem.2}%
+\contentsline {subsubsection}{{\itshape Th}: Roger-Heath-Brown, 1985 - unconditional}{35}{theorem.3}%

@@ -1,39 +1,32 @@
 \section{Chinese Remainder Theorem (CRT)}
 
+\section*{Chinese Remainder Theorem (CRT)}
+
 \begin{theorem}[Chinese Remainder Theorem]
 Let $m_1, m_2, \dots, m_k \in \mathbb{N}$ be pairwise relatively prime integers (i.e., $\forall i \neq j, \gcd(m_i, m_j) = 1$). Let $a_1, a_2, \dots, a_k \in \mathbb{Z}$ be arbitrary integers.
 The system of congruences:
 $$ x \equiv a_i \pmod{m_i} \quad \forall i \in \{1, \dots, k\} $$
-has a solution, and the complete set of solutions is congruent modulo the product $M = m_1 \cdot m_2 \cdot \dots \cdot m_k$.
+has a solution, and this solution is unique modulo $M = \prod_{i=1}^{k} m_i$.
 \end{theorem}
 
-\begin{proof}[Proof of the Chinese Remainder Theorem]
-The proof is divided into two parts: Existence (constructive) and Uniqueness (based on coprimality).
+\begin{proof}
+The proof is constructive for existence and uses coprimality for uniqueness. Let $M = \prod_{i=1}^{k} m_i$ and $N_j = M/m_j$.
 
-\subsection*{Proof of Existence}
-We define the solution constructively as $x = \sum_{j=1}^{k} a_j v_j N_j$.
-For this construction, let $M = \prod_{i=1}^{k} m_i$. We define $N_j = M/m_j$.
-Since the $m_i$ are pairwise coprime, $\gcd(N_j, m_j) = 1$. $\implies \exists v_j \in \mathbb{Z} : v_j N_j \equiv 1 \pmod{m_j}$ (the multiplicative inverse of $N_j$ modulo $m_j$).
-We must show that $x \equiv a_i \pmod{m_i}$ for an arbitrary index $i \in \{1, \dots, k\}$.
-\par
-The core argument is that $\forall j \neq i$, the term $N_j$ contains $m_i$ as a factor (since $m_i$ is a factor of $M$ but not $m_j$).
-$$ \forall j \neq i, \quad m_i \mid N_j \quad \implies a_j v_j N_j \equiv 0 \pmod{m_i} $$
-Thus, when $x$ is taken modulo $m_i$, all terms in the sum vanish except the $i$-th term ($j=i$):
-$$ x \equiv a_i v_i N_i + \sum_{j \neq i} (0) \pmod{m_i} $$
-$$ x \equiv a_i v_i N_i \pmod{m_i} $$
-Since $v_i N_i \equiv 1 \pmod{m_i}$ by construction, the proof concludes:
-$$ x \equiv a_i(1) \equiv a_i \pmod{m_i} $$
-This confirms the existence of a solution $x$ that satisfies the system.
+\subsection*{Existence (Construction)}
+Since $\gcd(N_j, m_j) = 1$, $\exists v_j \in \mathbb{Z}$ so that $v_j N_j \equiv 1 \pmod{m_j}$.
+We construct the solution $x$:
+$$ x = \sum_{j=1}^{k} a_j v_j N_j $$
+For an arbitrary index $i$, consider $x \pmod{m_i}$. $\forall j \neq i$, $m_i \mid N_j \implies N_j \equiv 0 \pmod{m_i}$.
+Thus, all terms $j \neq i$ vanish modulo $m_i$:
+$$ x \equiv a_i v_i N_i + \sum_{j \neq i} (0) \equiv a_i (1) \equiv a_i \pmod{m_i} $$
+A solution $x$ exists.
 
-\subsection*{Proof of Uniqueness}
-\begin{enumerate}
-    \item \textbf{Assume Two Solutions:} Let $x$ and $x'$ both solve the system.
-    \item \textbf{Relationship:} $\forall i \in \{1, \dots, k\}$, $x \equiv a_i \pmod{m_i}$ and $x' \equiv a_i \pmod{m_i}$. $\implies x - x' \equiv 0 \pmod{m_i}$.
-    This means that $\forall i$, $m_i \mid (x - x')$.
-    \item \textbf{Use Co-prime Condition:} Since the moduli $m_1, \dots, m_k$ are pairwise co-prime and each divides the difference $(x - x')$, their product $M = \prod_{i=1}^{k} m_i$ must also divide the difference.
-    \item \textbf{Conclusion:} $M \mid (x - x')$ means $x \equiv x' \pmod{M}$.
-\end{enumerate}
-This confirms that the solution is unique modulo $M$. \qedhere
+\subsection*{Uniqueness (Modulo $M$)}
+Assume $x$ and $x'$ are two solutions.
+Since $x \equiv a_i \pmod{m_i}$ and $x' \equiv a_i \pmod{m_i}$ for all $i$, we have $x - x' \equiv 0 \pmod{m_i}$, meaning $m_i \mid (x - x')$ $\forall i$.
+Since the $m_i$ are pairwise coprime, their product $M = \prod m_i$ must also divide the difference:
+$$ M \mid (x - x') \implies x \equiv x' \pmod{M} $$
+The solution is unique modulo $M$. \qedhere
 \end{proof}
 
 \begin{center}

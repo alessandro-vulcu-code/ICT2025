@@ -1,6 +1,6 @@
 \section{Euler's \texorpdfstring{$\phi$}{phi} Function}
 \begin{definition}[Euler's Totient Function, $\phi$]
-    Let $m \in \mathbb{N}$ such that $m \ge 1$. The **Euler's totient function**, denoted by $\phi(m)$, is the number of elements in the multiplicative group of integers modulo $m$, which is $\left(\mathbb{Z}/m\mathbb{Z}\right)^*$.
+    Let $m \in \mathbb{N}$ such that $m \ge 1$. The \textbf{Euler's totient function}, denoted by $\phi(m)$, is the number of elements in the multiplicative group of integers modulo $m$, which is $\left(\mathbb{Z}/m\mathbb{Z}\right)^*$.
     
     In other words, $\phi(m)$ is the number of integers $k$ such that $1 \le k \le m$ so that $\gcd(k, m) = 1$.
 \end{definition}
@@ -12,7 +12,7 @@
 \end{center}
 
 \begin{definition}[Remainder Map]
-    Let $m, n \in \mathbb{N}$ be integers. The **remainder map** $r$ is a function:
+    Let $m, n \in \mathbb{N}$ be integers. The \textbf{remainder map} $r$ is a function:
     $$r: \mathbb{Z}/(mn)\mathbb{Z} \longrightarrow (\mathbb{Z}/m\mathbb{Z}) \times (\mathbb{Z}/n\mathbb{Z})$$
     
     It is defined $\forall a \in \{0, \dots, mn - 1\}$ as:
@@ -60,15 +60,15 @@
 
 
 \begin{theorem}[Bijectivity of the Remainder Map with Coprime Factors]
-    Let $m, n \in \mathbb{N}$ be integers such that $m, n \ge 1$, and assume $m$ and $n$ are **pairwise coprime** (i.e., $\gcd(m, n) = 1$).
+    Let $m, n \in \mathbb{N}$ be integers such that $m, n \ge 1$, and assume $m$ and $n$ are \textbf{pairwise coprime} (i.e., $\gcd(m, n) = 1$).
     
     The remainder map $r$:
     $$r: \mathbb{Z}/(mn)\mathbb{Z} \longrightarrow (\mathbb{Z}/m\mathbb{Z}) \times (\mathbb{Z}/n\mathbb{Z})$$
-    is a **bijection** (one-to-one and onto).
+    is a \textbf{bijection} (one-to-one and onto).
 \end{theorem}
 
 \begin{proof}
-    The proof establishes bijectivity by demonstrating both **Surjectivity** (the map is onto) and **Injectivity** (the map is one-to-one).
+    The proof establishes bijectivity by demonstrating both \textbf{Surjectivity} (the map is onto) and \textbf{Injectivity} (the map is one-to-one).
 
     \subsection*{Surjectivity (Onto)}
     Let $([a]_m, [b]_n) \in (\mathbb{Z}/m\mathbb{Z}) \times (\mathbb{Z}/n\mathbb{Z})$ be an arbitrary element in the codomain.
@@ -78,26 +78,26 @@
     This is equivalent to finding an integer $x$ that simultaneously solves the system of congruences:
     $$\begin{cases} x \equiv a \pmod{m} \\ x \equiv b \pmod{n} \end{cases}$$
     
-    Since we are given that $\gcd(m, n) = 1$, the **Chinese Remainder Theorem** guarantees that a solution $x$ always exists for any pair of residues $(a, b)$.
+    Since we are given that $\gcd(m, n) = 1$, the \textbf{Chinese Remainder Theorem} guarantees that a solution $x$ always exists for any pair of residues $(a, b)$.
     
-    Therefore, $\forall$ element in the codomain, there is a corresponding pre-image in the domain, proving that the map $r$ is **surjective**.
+    Therefore, $\forall$ element in the codomain, there is a corresponding pre-image in the domain, proving that the map $r$ is \textbf{surjective}.
     
     \subsection*{Injectivity (One-to-One)}
     We can establish injectivity by counting the elements (since the sets are finite):
     
     \begin{enumerate}
-        \item **Count the Domain:** The number of elements in the domain is the modulus:
+        \item \textbf{Count the Domain:} The number of elements in the domain is the modulus:
         $$|\mathbb{Z}/(mn)\mathbb{Z}| = mn$$
         
-        \item **Count the Codomain:** The number of elements in the codomain (a Cartesian product) is the product of the sizes of the factors:
+        \item \textbf{Count the Codomain:} The number of elements in the codomain (a Cartesian product) is the product of the sizes of the factors:
         $$|(\mathbb{Z}/m\mathbb{Z}) \times (\mathbb{Z}/n\mathbb{Z})| = |\mathbb{Z}/m\mathbb{Z}| \cdot |\mathbb{Z}/n\mathbb{Z}| = m \cdot n = mn$$
         
-        \item **Conclusion:** Since the domain and codomain are finite sets and have the **same number of elements** ($mn = mn$), and we have already proven the map $r$ is **surjective**, it must automatically be **injective** as well.
+        \item \textbf{Conclusion:} Since the domain and codomain are finite sets and have the \textbf{same number of elements} ($mn = mn$), and we have already proven the map $r$ is \textbf{surjective}, it must automatically be \textbf{injective} as well.
         
         $$\text{Surjectivity} \land (|\text{Domain}| = |\text{Codomain}|) \implies \text{Injectivity}$$
     \end{enumerate}
     
-    Since $r$ is both surjective and injective, it is a **bijection**.
+    Since $r$ is both surjective and injective, it is a \textbf{bijection}.
 \end{proof}
 
 \begin{center}

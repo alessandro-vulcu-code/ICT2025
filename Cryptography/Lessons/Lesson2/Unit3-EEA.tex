@@ -74,16 +74,24 @@ Let $a, b \in \mathbb{N}$ such that $a \neq 0$ or $b \neq 0$. If $d = \gcd(a, b)
 \end{center}
 
 \newpage
-\begin{proposition}[Solvability Condition]
-The linear Diophantine equation $au + bv = c$ has integer solutions $u, v$ $\iff \gcd(a, b) \mid c$.
+\begin{proposition}[Solvability of Linear Diophantine Equations]
+    Let $a, b \in \mathbb{Z}$ be integers, not both zero. The equation $au + bv = c$ has integer solutions $u, v \in \mathbb{Z}$ if and only if $\gcd(a, b) \mid c$.
 \end{proposition}
 
 \begin{proof}
-    \leavevmode
-    \begin{itemize}
-    \item[($\Rightarrow$)] Assume integer solutions $u, v$ exist. Let $d = \gcd(a, b)$. By definition, $d \mid a$ and $d \mid b$. $\implies d \mid (au + bv)$, $\implies d \mid c$ because $au + bv = c$.
-    \item[($\Leftarrow$)] Assume $d = \gcd(a, b)$ and $d \mid c$. Then $\exists k \in \mathbb{Z} : c = kd$. From the Extended Euclidean Algorithm, we know $\exists u_0, v_0 \in \mathbb{Z} : a u_0 + b v_0 = d$. Multiplying by $k$, we get $a(k u_0) + b(k v_0) = k d = c$. Thus, a solution exists with $u = k u_0$ and $v = k v_0$. \qedhere
-\end{itemize}
+    \textbf{$(\impliedby)$ If $\gcd(a, b) \mid c$, solutions exist} \\
+    Assume $c = k \cdot \gcd(a, b)$ for some $k \in \mathbb{Z}$. By Bézout's Identity, $\exists u_0, v_0 \in \mathbb{Z}$ so that $au_0 + bv_0 = \gcd(a, b)$.
+    
+    Multiplying by $k$ yields:
+    $$k(au_0 + bv_0) = k \cdot \gcd(a, b) \implies a(ku_0) + b(kv_0) = c$$
+    
+    Thus, $u = ku_0$ and $v = kv_0$ are integer solutions.
+
+    \textbf{$(\implies)$ If solutions exist, then $\gcd(a, b) \mid c$} \\
+    Assume $au + bv = c$ has integer solutions $u, v \in \mathbb{Z}$.
+    
+    Let $d = \gcd(a, b)$. Since $d \mid a$ and $d \mid b$, $d$ must divide any linear combination of $a$ and $b$:
+    $$d \mid (au + bv) \implies d \mid c$$
 \end{proof}
 
 \begin{center}
@@ -91,15 +99,47 @@ The linear Diophantine equation $au + bv = c$ has integer solutions $u, v$ $\iff
     \line(1,0){450}
     \vspace{25pt}
 \end{center}
-
-\begin{proposition}[Form of All Solutions]
-If $(u_p, v_p)$ is a particular solution to $au + bv = c$ and $d = \gcd(a,b)$, let $a'=a/d$ and $b'=b/d$. Then $\forall (u, v)$ integer solutions, $u = u_p + k b' \text{ and } v = v_p - k a'$ for any $k \in \mathbb{Z}$.
+\begin{proposition}[All Integer Solutions to $au+bv=c$]
+    Let $a, b \in \mathbb{Z}$ be relatively prime (i.e., $\gcd(a, b) = 1$), and let $u_0, v_0 \in \mathbb{Z}$ be a particular solution so that $au_0 + bv_0 = c$. Then, all integer solutions $(u, v)$ to $au + bv = c$ are of the form:
+    $$u = u_0 + kb \quad \text{and} \quad v = v_0 - ka$$
+    for any $k \in \mathbb{Z}$.
 \end{proposition}
+
 \begin{proof}
-Assume $(u', v')$ is an arbitrary integer solution, so $a u' + b v' = c$. We also have $a u_p + b v_p = c$. Subtracting the two equations gives $a(u' - u_p) + b(v' - v_p) = 0$, so $a(u' - u_p) = b(v_p - v')$.
-Dividing by $d$: $a'(u' - u_p) = b'(v_p - v')$.
-Since $\gcd(a', b') = 1$, and $a' \mid b'(v_p - v')$, it must be that $a' \mid (v_p - v')$.
-$\implies \exists k \in \mathbb{Z} : v_p - v' = k a'$, which gives $v' = v_p - k a'$.
-Substituting this back yields $a'(u' - u_p) = b'(k a')$, which simplifies to $u' - u_p = k b'$, or $u' = u_p + k b'$.
-This demonstrates that any other solution must be of the specified form. \qedhere
+    \textbf{Part 1: Verification (The form gives solutions)} \\
+    Substituting the general form into the equation:
+    \begin{align*}
+        a(u_0 + kb) + b(v_0 - ka) &= au_0 + akb + bv_0 - bka \\
+        &= (au_0 + bv_0) + (akb - bka) \\
+        &= c + 0 \\
+        &= c
+    \end{align*}
+    Thus, $\forall k \in \mathbb{Z}$, the formula yields a solution.
+
+    \textbf{Part 2: Completeness (All solutions must be of this form)} \\
+    Assume $(u, v)$ is any arbitrary solution, so $au + bv = c$. We also have the particular solution $au_0 + bv_0 = c$.
+    
+    Subtracting the two equations gives:
+    $$a(u - u_0) + b(v - v_0) = 0 \implies a(u - u_0) = -b(v - v_0) \implies a(u - u_0) = b(v_0 - v)$$
+    
+    Since $a \mid b(v_0 - v)$ and we are given $\gcd(a, b) = 1$, by Euclid's Lemma, it must be that $a$ divides the other factor, $(v_0 - v)$:
+    $$a \mid (v_0 - v)$$
+    
+    Let $k \in \mathbb{Z}$ be the integer so that $v_0 - v = ka$. Rearranging this gives the form for $v$:
+    $$v = v_0 - ka$$
+    
+    Substituting $v_0 - v = ka$ back into the equality $a(u - u_0) = b(v_0 - v)$:
+    $$a(u - u_0) = b(ka) = a(kb)$$
+    
+    Since $a \ne 0$, we can divide by $a$ to get:
+    $$u - u_0 = kb$$
+    
+    Rearranging this gives the form for $u$:
+    $$u = u_0 + kb$$
+    
+    Hence, all solutions are of the specified form.
 \end{proof}
+
+\begin{center}
+    \line(1,0){450}
+\end{center}

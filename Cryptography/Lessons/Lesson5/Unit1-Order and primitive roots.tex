@@ -99,22 +99,31 @@ Therefore, $g$ is a primitive root if and only if $\text{ord}_p(g) = p-1$.
 
 \bigskip
 \begin{proposition}
-    Let $p$ be a prime, $a \in \mathbb{Z}$ such that $p \nmid a$ and $n \geq 1$.
-    Then $a^{n} \equiv 1 \pmod{p} \iff ord_{p}(a) \mid n$. In particular, $ord_{p}(a) \mid p-1$ (Fermat's Little Theorem).
+    Let $p$ be a prime, $a \in \mathbb{Z}$ such that $p \nmid a$, and $n \ge 1$.
+    Then $a^{n} \equiv 1 \pmod{p}$ if and only if the order of $a$ modulo $p$, denoted $\text{ord}_{p}(a)$, divides $n$.
+    In particular, $\text{ord}_{p}(a) \mid (p-1)$ (a consequence of Fermat's Little Theorem).
 \end{proposition}
-\begin{proof}
-    ($\Rightarrow$) Assume $a^{n} \equiv 1 \pmod{p}$.
-    Dividing $n$ by $ord_{p}(a)$, we have $n = q \cdot ord_{p}(a) + r$, where $0 \leq r < ord_{p}(a)$.
-    Now, $1 \equiv a^{n} \equiv a^{q \cdot ord_{p}(a) + r} \equiv a^{q \cdot ord_{p}(a)} \cdot a^{r} \equiv (a^{ord_{p}(a)})^{q} \cdot a^{r} \equiv 1^{q} \cdot a^{r} \equiv a^{r} \pmod{p}$.
-    So, $a^{r} \equiv 1 \pmod{p}$. Since $ord_{p}(a)$ is the minimum positive exponent such that $a^{n} \equiv 1 \pmod{p}$, and $r < ord_{p}(a)$, it must be that $r=0$.
-    Thus, $n = q \cdot ord_{p}(a)$, so $ord_{p}(a) \mid n$.
 
-    ($\Leftarrow$) If $n = q \cdot ord_{p}(a)$ for some $q \in \mathbb{Z}$, then
-    $a^{n} = a^{q \cdot ord_{p}(a)} = (a^{ord_{p}(a)})^{q} \equiv 1^{q} \equiv 1 \pmod{p}$.
+\begin{proof}
+    Let $k = \text{ord}_{p}(a)$.
+    
+    \textbf{$(\Rightarrow)$ If $a^{n} \equiv 1 \pmod{p}$, then $k \mid n$} \\
+    Use the Division Algorithm on $n$ by $k$: $n = qk + r$, where $0 \le r < k$.
+    
+    $$1 \equiv a^{n} \equiv a^{qk + r} \equiv (a^{k})^{q} \cdot a^{r} \equiv 1^{q} \cdot a^{r} \equiv a^{r} \pmod{p}$$
+    
+    Since $a^{r} \equiv 1 \pmod{p}$ and $k$ is the \textbf{minimum positive exponent} satisfying this property, and $r < k$, we must have $r=0$.
+    Thus, $n = qk$, which means $k \mid n$.
+
+    \textbf{$(\Leftarrow)$ If $k \mid n$, then $a^{n} \equiv 1 \pmod{p}$} \\
+    If $k \mid n$, then $n = qk$ for some $q \in \mathbb{Z}$.
+    $$a^{n} = a^{qk} = (a^{k})^{q} \equiv 1^{q} \equiv 1 \pmod{p}$$
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
 \begin{corollary}
@@ -124,7 +133,9 @@ Therefore, $g$ is a primitive root if and only if $\text{ord}_p(g) = p-1$.
 \end{corollary}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
 \begin{proposition}
@@ -140,7 +151,9 @@ Therefore, $g$ is a primitive root if and only if $\text{ord}_p(g) = p-1$.
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
 \begin{definition}
@@ -148,23 +161,36 @@ Therefore, $g$ is a primitive root if and only if $\text{ord}_p(g) = p-1$.
     A \textbf{primitive root} of $\mathbb{F}_{p}$ is any $g \in \mathbb{F}_{p}^{*}$ such that the powers of $g$ generate all the elements of $\mathbb{F}_{p}^{*}$, i.e., $\mathbb{F}_{p}^{*} = \{1, g, g^{2}, \dots, g^{p-2}\}$.
 \end{definition}
 
-\bigskip
+\begin{center}
+    \vspace{10pt}
+    \line(1,0){450}
+    \vspace{25pt}
+\end{center}
 
 \begin{theorem}[Characterization of the Primitive Roots]
     Let $p$ be a prime. $g \in \mathbb{F}_{p}^{*}$ is a primitive root if and only if $ord_{p}(g) = p-1$.
 \end{theorem}
 \begin{proof}
-    ($\Rightarrow$) Assume $g$ is a primitive root. By definition, $\mathbb{F}_{p}^{*} = \{1, g, \dots, g^{p-2}\}$, which means the elements $1, g, \dots, g^{p-2}$ are distinct, and there are $p-1$ of them.
-    If $ord_{p}(g) = m < p-1$, then $g^{m} \equiv 1 \pmod{p}$. This implies that the sequence of powers is periodic with period $m < p-1$, so $g^{m} = 1$ and $g^{p-1} = 1$ are not the first time the power is $1$, and the set $\{1, g, \dots, g^{p-2}\}$ would contain at most $m$ distinct elements, so its cardinality is $|\{1, g, \dots, g^{p-2}\}| \leq m < p-1 = |\mathbb{F}_{p}^{*}|$, a contradiction.
-    Thus, $ord_{p}(g) = p-1$.
+    The proof establishes the equivalence between $g$ generating the group $\mathbb{F}_{p}^{*}$ and $g$ having the maximum possible order. Note that $|\mathbb{F}_{p}^{*}| = p-1$.
 
-    ($\Leftarrow$) Suppose that $ord_{p}(g) = p-1$.
-    Claim: The powers $1, g, g^{2}, \dots, g^{p-2}$ are distinct.
-    If not, there exist $i, j \in \mathbb{Z}$ such that $0 \leq i < j \leq p-2$ and $g^{i} = g^{j}$ in $\mathbb{F}_{p}$.
+    \textbf{$(\Rightarrow)$ If $g$ is a primitive root, then $\text{ord}_{p}(g) = p-1$} \\
+    By definition, if $g$ is a primitive root, the set of its powers $\{1, g, \dots, g^{p-2}\}$ contains \textbf{all $p-1$ distinct elements} of $\mathbb{F}_{p}^{*}$.
+    
+    Let $m = \text{ord}_{p}(g)$. If we assume $m < p-1$, then the sequence of powers $1, g, g^2, \dots$ repeats with a period of $m$. This means the set of distinct powers $\langle g \rangle$ has size $|\langle g \rangle| = m$.
+    
+    Since $g$ is a primitive root, $\langle g \rangle = \mathbb{F}_{p}^{*}$, so $m = |\mathbb{F}_{p}^{*}| = p-1$.
+    The assumption $m < p-1$ leads to the contradiction $|\langle g \rangle| < |\mathbb{F}_{p}^{*}|$. Thus, $m = p-1$.
+
+    \textbf{$(\Leftarrow)$ If $\text{ord}_{p}(g) = p-1$, then $g$ is a primitive root} \\
+    Assume $\text{ord}_{p}(g) = p-1$. We must show the powers $1, g, \dots, g^{p-2}$ are all distinct.
+    
+    Suppose, for contradiction, that $g^{i} \equiv g^{j} \pmod{p}$ for $0 \le i < j \le p-2$.
     Since $g$ is invertible, $g^{j-i} \equiv 1 \pmod{p}$.
-    However, $0 < j-i < p-1$. Since $ord_{p}(g) = p-1$ is the minimum positive exponent such that $g^{k} \equiv 1 \pmod{p}$, this is a contradiction.
-    Thus, the $p-1$ elements $\{1, g, \dots, g^{p-2}\}$ are distinct in $\mathbb{F}_{p}^{*}$.
-    Since $|\mathbb{F}_{p}^{*}| = p-1$, it follows that $\{1, g, \dots, g^{p-2}\} = \mathbb{F}_{p}^{*}$, so $g$ is a primitive root.
+    
+    Let $k = j-i$. Then $0 < k < p-1$.
+    This implies that a power $g^k \equiv 1 \pmod{p}$ for an exponent $k$ smaller than $p-1$. This contradicts the assumption that $\text{ord}_{p}(g) = p-1$ is the \textbf{minimum} positive exponent that results in $1$.
+    
+    Thus, the $p-1$ powers $\{1, g, \dots, g^{p-2}\}$ are distinct. Since $\mathbb{F}_{p}^{*}$ has exactly $p-1$ elements, the powers must generate the entire group, meaning $g$ is a primitive root.
 \end{proof}
 
 \begin{center}
@@ -177,19 +203,38 @@ Therefore, $g$ is a primitive root if and only if $\text{ord}_p(g) = p-1$.
 
 \bigskip
 
-\begin{remark}
-    Let $p>2$ be a prime and $g$ be a primitive root in $\mathbb{F}_{p}$. Then $g^{\frac{p-1}{2}} = -1 \pmod{p}$.
-\end{remark}
 \begin{proof}
-    Set $x = g^{\frac{p-1}{2}}$. Then $x^{2} = (g^{\frac{p-1}{2}})^{2} = g^{p-1} \equiv 1 \pmod{p}$.
-    The solutions to $x^{2} \equiv 1 \pmod{p}$ in $\mathbb{F}_{p}$ are $x=1$ or $x=-1$.
-    If $x=1$, then $g^{\frac{p-1}{2}} \equiv 1 \pmod{p}$. This would imply that $ord_{p}(g) \mid \frac{p-1}{2}$.
-    However, $ord_{p}(g) = p-1$ because $g$ is a primitive root, and $p-1 \nmid \frac{p-1}{2}$.
-    Thus, $x \neq 1$, so $x = -1$, meaning $g^{\frac{p-1}{2}} \equiv -1 \pmod{p}$.
+    Let $x = g^{\frac{p-1}{2}}$. We first observe the square of $x$:
+    $$x^{2} = \left(g^{\frac{p-1}{2}}\right)^{2} = g^{p-1}$$
+    
+    By \textbf{Fermat's Little Theorem}, $g^{p-1} \equiv 1 \pmod{p}$, provided $p \nmid g$ (which is true since $g \in \mathbb{F}_p^*$).
+    Thus, $x$ satisfies the congruence:
+    $$x^{2} \equiv 1 \pmod{p}$$
+    
+    In the field $\mathbb{F}_{p}$, the only solutions to $x^{2} \equiv 1$ are $x=1$ and $x=-1$ (or $x \equiv p-1 \pmod{p}$).
+    
+    We must show that $x \neq 1$. We proceed by contradiction.
+    
+    Assume $x=1$, meaning:
+    $$g^{\frac{p-1}{2}} \equiv 1 \pmod{p}$$
+    
+    By the property of the order of an element, this would imply:
+    $$\text{ord}_{p}(g) \mid \frac{p-1}{2}$$
+    
+    However, since $g$ is a \textbf{primitive root}, we know by definition that $\text{ord}_{p}(g) = p-1$.
+    The divisibility condition becomes:
+    $$(p-1) \mid \frac{p-1}{2}$$
+    
+    Since $p>2$, this condition is false (a positive integer cannot divide a number half its size). This is a \textbf{contradiction}.
+    
+    Therefore, the only remaining possibility for the value of $x$ is $x=-1$.
+    $$g^{\frac{p-1}{2}} \equiv -1 \pmod{p}$$
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
 \begin{remark}
@@ -204,30 +249,49 @@ Therefore, $g$ is a primitive root if and only if $\text{ord}_p(g) = p-1$.
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
 \begin{lemma}[Effective Test for a Primitive Root Candidate]
-    Let $p>2$ be prime and $p-1 = \prod_{i=1}^{m}p_{i}^{a_{i}}$ be the prime factorization of $p-1$, with $p_{i}$ distinct primes and $a_{i} \geq 1$ for all $i=1, \dots, m$.
+    Let $p>2$ be prime and let $p-1 = \prod_{i=1}^{m}p_{i}^{a_{i}}$ be the prime factorization of $p-1$.
     Then $g \in \mathbb{F}_{p}^{*}$ is a primitive root if and only if $g^{(p-1)/p_{i}} \not\equiv 1 \pmod{p}$ for all $i=1, \dots, m$.
 \end{lemma}
-\begin{proof}
-    ($\Rightarrow$) If $g$ is a primitive root, then $ord_{p}(g) = p-1$.
-    If $g^{(p-1)/p_{i}} \equiv 1 \pmod{p}$ for some $i$, then $ord_{p}(g) \mid \frac{p-1}{p_{i}}$.
-    This means $p-1 \mid \frac{p-1}{p_{i}}$, which is only possible if $p_{i}=1$, but $p_{i}$ is a prime, a contradiction.
-    Thus, $g^{(p-1)/p_{i}} \not\equiv 1 \pmod{p}$ for all $i$.
 
-    ($\Leftarrow$) Assume $g^{(p-1)/p_{i}} \not\equiv 1 \pmod{p}$ for all $i=1, \dots, m$.
-    Let $m = ord_{p}(g)$. We know $m \mid p-1$.
-    We can write $m$ as $m = p_{1}^{f_{1}} \cdot \dots \cdot p_{m}^{f_{m}}$ where $0 \leq f_{i} \leq a_{i}$ for all $i$.
-    Suppose $m < p-1$. Then there must be at least one index $i$ such that $f_{i} < a_{i}$.
-    For this index $i$, we have $m \mid \frac{p-1}{p_{i}}$.
-    Since $m \mid \frac{p-1}{p_{i}}$, by the proposition on order, we must have $g^{(p-1)/p_{i}} \equiv 1 \pmod{p}$, which contradicts our assumption.
-    Therefore, it must be that $m = p-1$, so $ord_{p}(g) = p-1$, and $g$ is a primitive root.
+\begin{proof}
+    Let $k = \text{ord}_{p}(g)$. Recall that $g$ is a primitive root $\iff k = p-1$.
+    
+    \textbf{$(\Rightarrow)$ If $g$ is a primitive root, the test passes} \\
+    Assume $g$ is a primitive root, so $k = p-1$.
+    
+    Suppose, for contradiction, that $g^{(p-1)/p_{i}} \equiv 1 \pmod{p}$ for some prime factor $p_i$.
+    By the property of the order, $k$ must divide the exponent:
+    $$k \mid \frac{p-1}{p_{i}} \implies (p-1) \mid \frac{p-1}{p_{i}}$$
+    Since $p_i$ is a prime ($p_i \ge 2$), this divisibility is impossible.
+    Thus, $g^{(p-1)/p_{i}} \not\equiv 1 \pmod{p}$ must hold for all $i$.
+
+    \textbf{$(\Leftarrow)$ If the test passes, $g$ is a primitive root} \\
+    Assume $g^{(p-1)/p_{i}} \not\equiv 1 \pmod{p}$ for all $i$.
+    We know $k \mid p-1$, so $k$ is a divisor of $p-1$, and thus $k$ must be of the form $k = p_{1}^{f_{1}} \cdots p_{m}^{f_{m}}$ with $0 \le f_{i} \le a_{i}$.
+    
+    Suppose, for contradiction, that $k < p-1$. This means at least one exponent $f_i$ must be strictly less than $a_i$ (i.e., $f_i \le a_i - 1$).
+    
+    For such an index $i$, we can construct the exponent $\frac{p-1}{p_{i}}$. Since $p_i^{a_i}$ is a factor of $p-1$ and $p_i^{f_i}$ is a factor of $k$, the difference in the exponent is:
+    $$\frac{p-1}{p_{i}} = \frac{p_{1}^{a_{1}} \cdots p_{i}^{a_{i}-1} \cdots p_{m}^{a_{m}}}{p_{i}}$$
+    
+    Since $f_i \le a_i - 1$, we have $k \mid \frac{p-1}{p_{i}}$.
+    
+    By the property of the order, $k \mid \frac{p-1}{p_{i}}$ implies $g^{(p-1)/p_{i}} \equiv 1 \pmod{p}$.
+    This contradicts our initial assumption that $g^{(p-1)/p_{i}} \not\equiv 1 \pmod{p}$ for all $i$.
+    
+    Therefore, the assumption $k < p-1$ is false, meaning $k = p-1$. Hence, $g$ is a primitive root. \qedhere
 \end{proof}
 
 \begin{center}
+    \vspace{10pt}
     \line(1,0){450}
+    \vspace{25pt}
 \end{center}
 
 \begin{algorithm}[Finding a Primitive Root]
