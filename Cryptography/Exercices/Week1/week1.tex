@@ -1,0 +1,268 @@
+\section*{Week 1}
+
+\subsection*{Exercise 1.4}
+Let $a, b, c \in \mathbb{Z}$. Use the definition of divisibility to directly prove the following properties of divisibility (in each case, when the division is well-defined, i.e., the divisor is non-zero).
+
+\begin{enumerate}
+    \item If $a|b$ and $b|c$, then $a|c$.
+    \item If $a|b$ and $b|a$, then $a = \pm b$.
+    \item If $a|b$ and $a|c$, then $a|(b+c)$ and $a|(b-c)$.
+\end{enumerate}
+
+\begin{enumerate}
+    \item \textbf{Transitivity of Divisibility}
+    \begin{proof}
+        Assume $a|b$ and $b|c$. By the definition of divisibility, since $a|b$ and $a \ne 0$, there exists an integer $c_1 \in \mathbb{Z}$ such that $b = a \cdot c_1$ [Def: Divisibility].
+        Similarly, since $b|c$ and $b \ne 0$, there exists an integer $c_2 \in \mathbb{Z}$ such that $c = b \cdot c_2$ [Def: Divisibility].
+        
+        Substitute the first equation into the second:
+        $$c = (a \cdot c_1) \cdot c_2 = a \cdot (c_1 c_2)$$
+        Since $c_1, c_2 \in \mathbb{Z}$, their product $k = c_1 c_2$ is also an integer [Prop: Closure of $\mathbb{Z}$ under multiplication].
+        Thus, we have $c = a \cdot k$, which, by the definition of divisibility, means $a|c$ [Def: Divisibility].
+    \end{proof}
+
+    \item \textbf{Equality from Mutual Divisibility}
+    \begin{proof}
+        Assume $a|b$ and $b|a$, with $a \ne 0$ and $b \ne 0$.
+        By the definition of divisibility, we have:
+        \begin{align*}
+            b &= a \cdot c_1 \quad \text{for some } c_1 \in \mathbb{Z} \\
+            a &= b \cdot c_2 \quad \text{for some } c_2 \in \mathbb{Z}
+        \end{align*}
+        Substitute the expression for $b$ from the first equation into the second:
+        $$a = (a \cdot c_1) \cdot c_2 = a \cdot (c_1 c_2)$$
+        Since $a \ne 0$, we can divide both sides by $a$ [Prop: Division property of equality, since $a \ne 0$]:
+        $$1 = c_1 c_2$$
+        Since $c_1$ and $c_2$ are integers, the only possible pairs for $(c_1, c_2)$ are $(1, 1)$ or $(-1, -1)$ [Prop: Divisors of 1 in $\mathbb{Z}$].
+        \begin{itemize}
+            \item Case 1: If $c_1 = 1$, substituting into $b = a \cdot c_1$ gives $b = a \cdot 1 = a$.
+            \item Case 2: If $c_1 = -1$, substituting into $b = a \cdot c_1$ gives $b = a \cdot (-1) = -a$.
+        \end{itemize}
+        Therefore, we conclude that $a = \pm b$.
+    \end{proof}
+
+    \item \textbf{Linearity Property of Divisibility}
+    \begin{proof}
+        Assume $a|b$ and $a|c$, with $a \ne 0$.
+        By the definition of divisibility, we have:
+        \begin{align*}
+            b &= a \cdot k_1 \quad \text{for some } k_1 \in \mathbb{Z} \\
+            c &= a \cdot k_2 \quad \text{for some } k_2 \in \mathbb{Z}
+        \end{align*}
+        \textbf{Demonstration for the Sum ($a|(b+c)$):}
+        Summing the two equations:
+        $$b+c = a \cdot k_1 + a \cdot k_2 = a \cdot (k_1 + k_2) \quad [\text{Factoring}]$$
+        Let $k_s = k_1 + k_2$. Since $k_1, k_2 \in \mathbb{Z}$, $k_s \in \mathbb{Z}$ [Prop: Closure of $\mathbb{Z}$ under addition].
+        Thus, $b+c = a \cdot k_s$, which means $a|(b+c)$ [Def: Divisibility].
+        
+        \textbf{Demonstration for the Difference ($a|(b-c)$):}
+        Subtracting the second equation from the first:
+        $$b-c = a \cdot k_1 - a \cdot k_2 = a \cdot (k_1 - k_2) \quad [\text{Factoring}]$$
+        Let $k_d = k_1 - k_2$. Since $k_1, k_2 \in \mathbb{Z}$, $k_d \in \mathbb{Z}$ [Prop: Closure of $\mathbb{Z}$ under subtraction].
+        Thus, $b-c = a \cdot k_d$, which means $a|(b-c)$ [Def: Divisibility].
+    \end{proof}
+\end{enumerate}
+
+\subsection*{Exercise 1.5}
+Use a calculator and the method described in Lesson 2 to compute the following quotients and remainders:
+\begin{enumerate}
+    \item 34787 divided by 353.
+    \item 238792 divided by 7843.
+    \item 9829387493 divided by 873485.
+    \item 1498387487 divided by 76348.
+\end{enumerate}
+
+\begin{enumerate}
+    \item \textbf{34787 divided by 353}
+    $$
+    q = \lfloor \frac{34787}{353} \rfloor = \lfloor 98.5467... \rfloor = 98 \quad [\text{Def: Quotient, } q = \lfloor a/b \rfloor]
+    $$
+    $$
+    r = a - bq = 34787 - (353 \cdot 98) = 34787 - 34594 = 193 \quad [\text{Def: Remainder, } r = a - bq]
+    $$
+    \textbf{Result:} $34787 = 353 \cdot 98 + 193$. The quotient is 98 and the remainder is 193.
+
+    \item \textbf{238792 divided by 7843}
+    $$
+    q = \lfloor \frac{238792}{7843} \rfloor = \lfloor 30.4449... \rfloor = 30
+    $$
+    $$
+    r = 238792 - (7843 \cdot 30) = 238792 - 235290 = 3502
+    $$
+    \textbf{Result:} $238792 = 7843 \cdot 30 + 3502$. The quotient is 30 and the remainder is 3502.
+
+    \item \textbf{9829387493 divided by 873485}
+    $$
+    q = \lfloor \frac{9829387493}{873485} \rfloor = \lfloor 11253.1167... \rfloor = 11253
+    $$
+    $$
+    r = 9829387493 - (873485 \cdot 11253) = 9829387493 - 9828859005 = 528488
+    $$
+    \textbf{Result:} $9829387493 = 873485 \cdot 11253 + 528488$. The quotient is 11253 and the remainder is 528488.
+
+    \item \textbf{1498387487 divided by 76348}
+    $$
+    q = \lfloor \frac{1498387487}{76348} \rfloor = \lfloor 19626.5458... \rfloor = 19626
+    $$
+    $$
+    r = 1498387487 - (76348 \cdot 19626) = 1498387487 - 1498357048 = 30439
+    $$
+    \textbf{Result:} $1498387487 = 76348 \cdot 19626 + 30439$. The quotient is 19626 and the remainder is 30439.
+\end{enumerate}
+
+
+\subsection*{Exercise 1.6}
+Use the Euclidean algorithm to compute the following greatest common divisors:
+\begin{enumerate}
+    \item $\gcd(291, 252)$.
+    \item $\gcd(16261, 85652)$.
+    \item $\gcd(139024789, 93278890)$.
+    \item $\gcd(16534528044, 8332745927)$.
+\end{enumerate}
+
+\begin{enumerate}
+    \item \textbf{$\gcd(291, 252)$}
+    We apply the Euclidean Algorithm [Thm 3.1: Euclidean Algorithm]:
+    \begin{align*}
+        291 &= 252 \cdot 1 + 39 \\
+        252 &= 39 \cdot 6 + 18 \\
+        39 &= 18 \cdot 2 + 3 \\
+        18 &= 3 \cdot 6 + 0
+    \end{align*}
+    The last non-zero remainder is 3.
+    \textbf{Result:} $\gcd(291, 252) = 3$.
+
+    \item \textbf{$\gcd(16261, 85652)$}
+    We apply the Euclidean Algorithm [Thm 3.1: Euclidean Algorithm], setting $r_0 = 85652$ and $r_1 = 16261$.
+    \begin{align*}
+        85652 &= 16261 \cdot 5 + 4347 \\
+        16261 &= 4347 \cdot 3 + 3220 \\
+        4347 &= 3220 \cdot 1 + 1127 \\
+        3220 &= 1127 \cdot 2 + 966 \\
+        1127 &= 966 \cdot 1 + 161 \\
+        966 &= 161 \cdot 6 + 0
+    \end{align*}
+    The last non-zero remainder is 161.
+    \textbf{Result:} $\gcd(16261, 85652) = 161$.
+
+    \item \textbf{$\gcd(139024789, 93278890)$}
+    \begin{align*}
+        139024789 &= 93278890 \cdot 1 + 45745899 \\
+        93278890 &= 45745899 \cdot 2 + 1787092 \\
+        45745899 &= 1787092 \cdot 25 + 1098599 \\
+        1787092 &= 1098599 \cdot 1 + 688493 \\
+        1098599 &= 688493 \cdot 1 + 410106 \\
+        688493 &= 410106 \cdot 1 + 278387 \\
+        410106 &= 278387 \cdot 1 + 131719 \\
+        278387 &= 131719 \cdot 2 + 14949 \\
+        131719 &= 14949 \cdot 8 + 11995 \\
+        14949 &= 11995 \cdot 1 + 2954 \\
+        11995 &= 2954 \cdot 4 + 179 \\
+        2954 &= 179 \cdot 16 + 70 \\
+        179 &= 70 \cdot 2 + 39 \\
+        70 &= 39 \cdot 1 + 31 \\
+        39 &= 31 \cdot 1 + 8 \\
+        31 &= 8 \cdot 3 + 7 \\
+        8 &= 7 \cdot 1 + 1 \\
+        7 &= 1 \cdot 7 + 0
+    \end{align*}
+    The last non-zero remainder is 1.
+    \textbf{Result:} $\gcd(139024789, 93278890) = 1$.
+
+    \item \textbf{$\gcd(16534528044, 8332745927)$}
+    \begin{align*}
+        16534528044 &= 8332745927 \cdot 1 + 8201782117 \\
+        8332745927 &= 8201782117 \cdot 1 + 130963810 \\
+        8201782117 &= 130963810 \cdot 62 + 8459497 \\
+        130963810 &= 8459497 \cdot 15 + 4679365 \\
+        8459497 &= 4679365 \cdot 1 + 3780132 \\
+        4679365 &= 3780132 \cdot 1 + 899233 \\
+        3780132 &= 899233 \cdot 4 + 20320 \\
+        899233 &= 20320 \cdot 44 + 8153 \\
+        20320 &= 8153 \cdot 2 + 4014 \\
+        8153 &= 4014 \cdot 2 + 125 \\
+        4014 &= 125 \cdot 32 + 14 \\
+        125 &= 14 \cdot 8 + 13 \\
+        14 &= 13 \cdot 1 + 1 \\
+        13 &= 1 \cdot 13 + 0
+    \end{align*}
+    The last non-zero remainder is 1.
+    \textbf{Result:} $\gcd(16534528044, 8332745927) = 1$.
+\end{enumerate}
+
+\subsection*{Exercise 1.7}
+Find the smallest natural $B$ such that $345 < 2^B$. Predict the number of bits of 345 in the binary representation and find it.
+
+\begin{solution}
+The number of bits $B$ required to represent a natural number $m$ in binary is given by:
+$$B = \lfloor \log_2 m \rfloor + 1 \quad [\text{Cor 1.1: Range of a B-bit Number, or upper bound } m < 2^B]$$
+For $m=345$:
+$$B = \lfloor \log_2 345 \rfloor + 1$$
+Since $2^8 = 256$ and $2^9 = 512$, we have $256 \le 345 < 512$.
+$$\log_2 256 \le \log_2 345 < \log_2 512$$
+$$8 \le \log_2 345 < 9$$
+Therefore, $\lfloor \log_2 345 \rfloor = 8$.
+$$B = 8 + 1 = 9$$
+The smallest natural number $B$ such that $345 < 2^B$ is $B=9$. This is the number of bits required.
+
+To find the binary representation, we use the method of repeated division by 2 [Prop 1.5: Binary Representation from Repeated Division]:
+\begin{align*}
+    345 &= 2 \cdot 172 + 1 \quad (m_0) \\
+    172 &= 2 \cdot 86 + 0 \quad (m_1) \\
+    86 &= 2 \cdot 43 + 0 \quad (m_2) \\
+    43 &= 2 \cdot 21 + 1 \quad (m_3) \\
+    21 &= 2 \cdot 10 + 1 \quad (m_4) \\
+    10 &= 2 \cdot 5 + 0 \quad (m_5) \\
+    5 &= 2 \cdot 2 + 1 \quad (m_6) \\
+    2 &= 2 \cdot 1 + 0 \quad (m_7) \\
+    1 &= 2 \cdot 0 + 1 \quad (m_8)
+\end{align*}
+The binary representation is formed by the sequence of remainders, read from the last ($m_{B-1}$) to the first ($m_0$):
+$$345_{10} = (101011001)_2$$
+\textbf{Result:} The smallest $B$ is 9. The number of bits is 9. The binary representation is $(101011001)_2$.
+\end{solution}
+
+\subsection*{Exercise 1.8}
+Let $a \in \mathbb{N}$ and $a = 9q + 13$. What are the quotient and the remainder of the division of $a$ by 9?
+
+\begin{solution}
+The given expression for $a$ is:
+$$a = 9q + 13$$
+This is close to the Euclidean Division form $a = bq' + r$ with divisor $b=9$, but the condition on the remainder $0 \le r < 9$ is not satisfied since $13 \not< 9$.
+
+We must rewrite the remainder $r_{old} = 13$ by dividing it by the divisor $b=9$ [Prop 1.4: Euclidean Division]:
+$$13 = 9 \cdot 1 + 4$$
+Substitute this back into the expression for $a$:
+$$a = 9q + (9 \cdot 1 + 4)$$
+$$a = 9q + 9 \cdot 1 + 4$$
+$$a = 9(q + 1) + 4 \quad [\text{Factoring out } 9]$$
+Let the new quotient be $q' = q+1$ and the new remainder be $r' = 4$.
+The Euclidean Division is unique and requires $0 \le r' < 9$. Since $0 \le 4 < 9$, this condition is satisfied [Thm: Uniqueness of Quotient and Remainder].
+\textbf{Result:} The quotient is $q' = q+1$ and the remainder is $r' = 4$.
+\end{solution}
+
+\subsection*{Exercise 1.9}
+Let $m \in \mathbb{N}$ and $m < 2^4$. Show why and how $m$ can be represented in binary digits and how many?
+
+\begin{solution}
+Since $m \in \mathbb{N}$ and $m < 2^4$, the number $m$ must be represented using at most $B=4$ bits. The number of bits $B$ is uniquely determined by the smallest integer satisfying $m < 2^B$.
+
+\begin{enumerate}
+    \item \textbf{Number of Bits:}
+    The number of bits $B$ is $\lfloor \log_2 m \rfloor + 1$. Since the greatest possible value for $m$ is $2^4 - 1 = 15$, and $\lfloor \log_2 15 \rfloor + 1 = 3 + 1 = 4$, the maximum number of bits required is 4. In general, any natural number $m$ satisfying $m < 2^B$ can be represented with $B$ bits (where leading zeros are allowed) [Rem: Upper Bound of a B-bit Number, $m < 2^B$].
+
+    \item \textbf{How it is Represented:}
+    Every natural number $m$ can be uniquely represented in base 2 (binary) as a sum of powers of 2, where the coefficients are the bits $m_i \in \{0, 1\}$.
+    $$m = m_0 \cdot 2^0 + m_1 \cdot 2^1 + m_2 \cdot 2^2 + m_3 \cdot 2^3 + \dots$$
+    For $m < 2^4$, the representation is:
+    $$m = m_0 + 2m_1 + 4m_2 + 8m_3$$
+    The bits $(m_3 m_2 m_1 m_0)_2$ are found using the **Repeated Division by 2 Algorithm** [Prop 1.5: Binary Representation from Repeated Division]:
+    \begin{align*}
+        m &= 2q_0 + m_0 \quad (m_0 \text{ is the least significant bit}) \\
+        q_0 &= 2q_1 + m_1 \\
+        q_1 &= 2q_2 + m_2 \\
+        q_2 &= 2q_3 + m_3 \quad (q_3 \text{ must be 0 for } m < 2^4)
+    \end{align*}
+    The process is guaranteed to terminate because the sequence of quotients $q_i$ is strictly decreasing and non-negative, and for $B=4$, the final quotient $q_3$ must be 0 [Thm: Termination of Repeated Division].
+\end{enumerate}
+\end{solution}

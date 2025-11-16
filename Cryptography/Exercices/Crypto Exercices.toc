@@ -1,0 +1,72 @@
+\babel@toc {english}{}\relax 
+\contentsline {paragraph}{Step 1: Apply the Euclidean Algorithm to find $d = \gcd (291, 252)$}{10}{section*.11}%
+\contentsline {paragraph}{Step 2: Apply the Extended Euclidean Algorithm (Backward Substitution)}{10}{section*.12}%
+\contentsline {paragraph}{Step 1: Find $d = \gcd (15, 25)$}{10}{section*.14}%
+\contentsline {paragraph}{Step 2: Check Solvability and Reduce the Equation}{11}{section*.15}%
+\contentsline {paragraph}{Step 3: Find a Particular Solution to $3u+5v=9$}{11}{section*.16}%
+\contentsline {paragraph}{Step 4: Find all Integer Solutions}{11}{section*.17}%
+\contentsline {paragraph}{Step 5: Find all Natural Solutions ($\mathbb {N} \cup \{0\}$)}{11}{section*.18}%
+\contentsline {paragraph}{Step 1: Check Solvability}{13}{section*.22}%
+\contentsline {paragraph}{Step 2: Find the Modular Inverse of $3 \pmod {11}$}{13}{section*.23}%
+\contentsline {paragraph}{Step 3: Solve the Congruence}{13}{section*.24}%
+\contentsline {paragraph}{Step 4: All Integer Solutions}{13}{section*.25}%
+\contentsline {paragraph}{Step 1: Check Solvability}{14}{section*.27}%
+\contentsline {paragraph}{Step 2: Find the Modular Inverse of $91 \pmod {121}$}{14}{section*.28}%
+\contentsline {paragraph}{Step 3: Solve the Congruence}{14}{section*.29}%
+\contentsline {paragraph}{Step 1: Check Solvability}{14}{section*.31}%
+\contentsline {paragraph}{Step 2: Find the Modular Inverse of $83 \pmod {100}$}{15}{section*.32}%
+\contentsline {paragraph}{Step 3: Solve the Congruence}{15}{section*.33}%
+\contentsline {paragraph}{Step 1: First multiplication}{15}{section*.35}%
+\contentsline {paragraph}{Step 2: Multiply by $7139$}{15}{section*.36}%
+\contentsline {paragraph}{Step 3: Multiply by $2187$}{16}{section*.37}%
+\contentsline {paragraph}{Step 4: Multiply by $5219$}{16}{section*.38}%
+\contentsline {paragraph}{Step 5: Multiply by $1873$}{16}{section*.39}%
+\contentsline {paragraph}{Step 1: Compute $373^2 \pmod {581}$}{16}{section*.41}%
+\contentsline {paragraph}{Step 2: Compute $373^4 \pmod {581}$}{16}{section*.42}%
+\contentsline {paragraph}{Step 3: Compute $373^6 \pmod {581}$}{17}{section*.43}%
+\contentsline {paragraph}{($\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$) If $[a]$ is invertible, then $\gcd (a, m)=1$}{17}{section*.45}%
+\contentsline {paragraph}{($\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Relbar \tmspace +\thickmuskip {.2777em}$) If $\gcd (a, m)=1$, then $[a]$ is invertible}{17}{section*.46}%
+\contentsline {paragraph}{Proof for Addition ($a_1+b_1 \equiv a_2+b_2 \pmod {m}$)}{18}{section*.48}%
+\contentsline {paragraph}{Proof for Multiplication ($a_1 \cdot b_1 \equiv a_2 \cdot b_2 \pmod {m}$)}{18}{section*.49}%
+\contentsline {paragraph}{Step 1: Determine the possible values of a perfect square modulo 4}{19}{section*.52}%
+\contentsline {paragraph}{Step 2: Determine the possible values of $2m+a^2$ modulo 4}{19}{section*.53}%
+\contentsline {paragraph}{Step 3: Conclusion}{20}{section*.54}%
+\contentsline {paragraph}{Step 1: Check Solvability}{20}{section*.56}%
+\contentsline {paragraph}{Step 2: Reduce the Congruence}{20}{section*.57}%
+\contentsline {paragraph}{Step 3: Find the Modular Inverse of $2 \pmod {15}$}{20}{section*.58}%
+\contentsline {paragraph}{Step 4: Solve the Reduced Congruence}{21}{section*.59}%
+\contentsline {paragraph}{Step 5: Find all Solutions Modulo $30$}{21}{section*.60}%
+\contentsline {paragraph}{Step 1: Check Solvability and Coprimality}{22}{section*.63}%
+\contentsline {paragraph}{Step 2: Substitution and Reduction}{22}{section*.64}%
+\contentsline {paragraph}{Step 3: Solve for $k$}{23}{section*.65}%
+\contentsline {paragraph}{Step 4: Final Solution for $x$}{23}{section*.66}%
+\contentsline {paragraph}{Step 1: Compute $M$ and $N_i$}{24}{section*.68}%
+\contentsline {paragraph}{Step 2: Find the Modular Inverses $y_i$ (Bézout coefficients)}{24}{section*.69}%
+\contentsline {paragraph}{Step 3: Construct the Solution $x_0$}{24}{section*.70}%
+\contentsline {paragraph}{Step 4: Find the Smallest Positive Solution}{24}{section*.71}%
+\contentsline {paragraph}{Step 1: Compute $M$ and $N_i$}{25}{section*.73}%
+\contentsline {paragraph}{Step 2: Find the Modular Inverses $y_i$}{25}{section*.74}%
+\contentsline {paragraph}{Step 3: Construct the Solution $x_0$}{25}{section*.75}%
+\contentsline {paragraph}{Step 4: Find the Smallest Positive Solution}{26}{section*.76}%
+\contentsline {paragraph}{Step 1: Reduce the Base Modulo 109}{27}{section*.79}%
+\contentsline {paragraph}{Step 2: Reduce the Exponent Modulo $\phi (109)=108$}{27}{section*.80}%
+\contentsline {paragraph}{Step 3: Compute the Final Result}{27}{section*.81}%
+\contentsline {paragraph}{Step 1: Binary Representation of the Exponent $A=50$}{27}{section*.83}%
+\contentsline {paragraph}{Step 2: Successive Squaring (Powers $7^{2^i} \pmod {47}$)}{28}{section*.84}%
+\contentsline {paragraph}{Step 3: Final Product (Multiplying terms where the bit $A_i=1$)}{28}{section*.85}%
+\contentsline {paragraph}{Step 1: Simplify the Exponent using FLT}{28}{section*.87}%
+\contentsline {paragraph}{Step 2: Reduce the Congruence}{28}{section*.88}%
+\contentsline {paragraph}{Step 3: Test Potential Solutions}{29}{section*.89}%
+\contentsline {paragraph}{Part 1: Show $m|n$}{29}{section*.91}%
+\contentsline {paragraph}{Part 2: Show $n|m$}{29}{section*.92}%
+\contentsline {paragraph}{Conclusion}{29}{section*.93}%
+\contentsline {paragraph}{Step 1: Prime Factorization of the Order}{30}{section*.96}%
+\contentsline {paragraph}{Step 2: Effective Test for Order}{30}{section*.97}%
+\contentsline {paragraph}{Step 3: Conclusion}{30}{section*.98}%
+\contentsline {paragraph}{Step 1: Use the Order of a Power Formula}{31}{section*.100}%
+\contentsline {paragraph}{Step 2: Find a suitable exponent $i$}{31}{section*.101}%
+\contentsline {paragraph}{Step 3: Find the element $x$}{31}{section*.102}%
+\contentsline {paragraph}{Step 1: Prime Factorization of $p-1$}{32}{section*.104}%
+\contentsline {paragraph}{Step 2: Test Candidate $g=3$}{32}{section*.105}%
+\contentsline {paragraph}{Step 3: Test Candidate $g=7$}{32}{section*.106}%
+\contentsline {paragraph}{Step 4: Test Candidate $g=10$}{32}{section*.107}%

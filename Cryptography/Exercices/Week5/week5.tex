@@ -1,0 +1,125 @@
+\section*{Week 5}
+\subsection*{Exercise 5.4}
+What is the remainder of the division of $221^{654}$ by $109$ ($109$ is prime)?
+
+\begin{solution}
+We want to compute $221^{654} \pmod{109}$. The modulus $p=109$ is prime.
+
+\paragraph{Step 1: Reduce the Base Modulo 109}
+$$ 221 = 2 \cdot 109 + 3 \implies 221 \equiv 3 \pmod{109} $$
+The expression becomes:
+$$ 221^{654} \equiv 3^{654} \pmod{109} $$
+
+\paragraph{Step 2: Reduce the Exponent Modulo $\phi(109)=108$}
+Since $109$ is prime and $109 \nmid 3$, we can use Fermat's Little Theorem (FLT): $3^{108} \equiv 1 \pmod{109}$.
+We reduce the exponent $654$ modulo $p-1 = 108$:
+$$ 654 = 108 \cdot 6 + 6 $$
+$$ 654 \equiv 6 \pmod{108} $$
+
+\paragraph{Step 3: Compute the Final Result}
+We apply the modular exponentiation property [Cor 11.1: Modular Exponentiation]:
+$$ 3^{654} \equiv 3^{108 \cdot 6 + 6} \equiv (3^{108})^6 \cdot 3^6 \pmod{109} $$
+$$ 3^{654} \equiv (1)^6 \cdot 3^6 \equiv 3^6 \pmod{109} $$
+Now we compute $3^6$:
+$$ 3^6 = 729 $$
+Finally, we reduce $729$ modulo $109$:
+$$ 729 = 6 \cdot 109 + 75 \implies 729 \equiv 75 \pmod{109} $$
+\textbf{Result:} The remainder of the division of $221^{654}$ by $109$ is $75$.
+\end{solution}
+
+---
+\subsection*{Exercise 5.6}
+Compute $7^{50} \pmod{47}$.
+
+\begin{solution}
+We compute $7^{50} \pmod{47}$. Since $47$ is prime, we use the Fast Powering Algorithm (FPA) combined with reduction techniques.
+
+\paragraph{Step 1: Binary Representation of the Exponent $A=50$}
+$$ 50_{10} = (110010)_2 $$
+Thus, $50 = 2^5 + 2^4 + 2^1$.
+
+\paragraph{Step 2: Successive Squaring (Powers $7^{2^i} \pmod{47}$)}
+We compute the required powers, reducing modulo $47$ at each step.
+\begin{align*}
+    7^{2^0} &\equiv 7 \pmod{47} \\
+    7^{2^1} &\equiv (7^1)^2 = 49 \equiv 2 \pmod{47} & [49 = 1 \cdot 47 + 2] \text{} \\
+    7^{2^2} &\equiv (2)^2 = 4 \pmod{47} & \text{} \\
+    7^{2^3} &\equiv (4)^2 = 16 \pmod{47} \\
+    7^{2^4} &\equiv (16)^2 = 256 \equiv 21 \pmod{47} & [256 = 5 \cdot 47 + 21] \text{} \\
+    7^{2^5} &\equiv (21)^2 = 441 \equiv 18 \pmod{47} & [441 = 9 \cdot 47 + 18] \text{}
+\end{align*}
+
+\paragraph{Step 3: Final Product (Multiplying terms where the bit $A_i=1$)}
+$$ 7^{50} \equiv 7^{2^5} \cdot 7^{2^4} \cdot 7^{2^1} \pmod{47} $$
+$$ 7^{50} \equiv 18 \cdot 21 \cdot 2 \pmod{47} $$
+We compute the product:
+\begin{align*}
+    18 \cdot 21 &= 378 \\
+    378 \cdot 2 &= 756
+\end{align*}
+Reduce the final product modulo $47$:
+$$ 756 = 16 \cdot 47 + 4 \implies 756 \equiv 4 \pmod{47} $$
+\textbf{Result:} $7^{50} \equiv 4 \pmod{47}$.
+\end{solution}
+
+---
+\subsection*{Exercise 5.7}
+Find all the solutions to $x^{1383} \equiv 5$ in $\mathbb{F}_{13}$.
+
+\begin{solution}
+We are solving the congruence $x^{1383} \equiv 5 \pmod{13}$. The modulus $p=13$ is prime.
+
+\paragraph{Step 1: Simplify the Exponent using FLT}
+Since $p=13$ is prime, Fermat's Little Theorem states $x^{12} \equiv 1 \pmod{13}$ for all $x \not\equiv 0 \pmod{13}$.
+We reduce the exponent $1383$ modulo $p-1 = 12$:
+$$ 1383 = 12 \cdot 115 + 3 $$
+$$ 1383 \equiv 3 \pmod{12} $$
+
+\paragraph{Step 2: Reduce the Congruence}
+Applying the modular exponentiation property [Cor 11.1: Modular Exponentiation]:
+$$ x^{1383} \equiv x^{12 \cdot 115 + 3} \equiv (x^{12})^{115} \cdot x^3 \equiv (1)^{115} \cdot x^3 \equiv x^3 \pmod{13} $$
+The original equation simplifies to a cubic congruence:
+$$ x^3 \equiv 5 \pmod{13} $$
+
+\paragraph{Step 3: Test Potential Solutions}
+We test values for $x \in \{0, 1, \dots, 12\}$ to find which ones satisfy $x^3 \equiv 5 \pmod{13}$.
+\begin{itemize}
+    \item $x=7$: $7^3 = 343 \equiv 5 \pmod{13}$ $\implies x \equiv 7$ is a solution.
+    \item $x=8$: $8^3 = 512 \equiv 5 \pmod{13}$ $\implies x \equiv 8$ is a solution.
+    \item $x=11$: $11^3 = 1331 \equiv 5 \pmod{13}$ $\implies x \equiv 11$ is a solution.
+    \item Other values are not solutions.
+\end{itemize}
+\textbf{Result:} The solutions are $x \in \{7, 8, 11\}$ in $\mathbb{F}_{13}$.
+\end{solution}
+
+---
+\subsection*{Exercise 5.10}
+Let $p$ be a prime, $b$ an integer, and $p \nmid b$. Show that $\mathrm{ord}_{p}(b^{-1}) = \mathrm{ord}_{p}(b)$.
+
+\begin{proof}
+Let $n = \mathrm{ord}_{p}(b)$ and $m = \mathrm{ord}_{p}(b^{-1})$. We aim to show that $n=m$.
+
+\paragraph{Part 1: Show $m|n$}
+Since $n = \mathrm{ord}_{p}(b)$, by the definition of the order:
+$$ b^n \equiv 1 \pmod{p} $$
+Multiply both sides by $(b^{-1})^n$:
+$$ b^n \cdot (b^{-1})^n \equiv 1 \cdot (b^{-1})^n \pmod{p} \quad [\text{Prop 6.1: Compatibility}] $$
+$$ (b \cdot b^{-1})^n \equiv (b^{-1})^n \pmod{p} \quad [\text{Exponent rules}] $$
+Since $b \cdot b^{-1} \equiv 1 \pmod{p}$:
+$$ 1^n \equiv (b^{-1})^n \pmod{p} \implies (b^{-1})^n \equiv 1 \pmod{p} $$
+Since $m = \mathrm{ord}_{p}(b^{-1})$ is the minimum positive integer for which this congruence holds, $m$ must divide $n$ [Prop 12.1: Order Divisibility Property].
+$$ m|n $$
+
+\paragraph{Part 2: Show $n|m$}
+The element $b$ is the inverse of $b^{-1}$, i.e., $b = (b^{-1})^{-1}$ [Cor 11.2: Modular Inverses property].
+Since $m = \mathrm{ord}_{p}(b^{-1})$, we have:
+$$ (b^{-1})^m \equiv 1 \pmod{p} $$
+Multiplying both sides by $b^m$:
+$$ (b^{-1})^m \cdot b^m \equiv 1 \cdot b^m \pmod{p} \implies 1 \equiv b^m \pmod{p} $$
+Since $n = \mathrm{ord}_{p}(b)$ is the minimum positive integer for which this congruence holds, $n$ must divide $m$ [Prop 12.1: Order Divisibility Property].
+$$ n|m $$
+
+\paragraph{Conclusion}
+Since $n|m$ and $m|n$, and both $n$ and $m$ are positive integers (by definition of the order), it must be that $n=m$.
+Thus, $\mathrm{ord}_{p}(b^{-1}) = \mathrm{ord}_{p}(b)$.
+\end{proof}

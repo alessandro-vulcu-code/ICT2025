@@ -1,0 +1,118 @@
+\section*{Week 6}
+\subsection*{Exercise 6.1}
+Find the order of $3$ modulo $127$.
+
+\begin{solution}
+The modulus $p=127$ is a prime number.
+The order of any element $a \in \mathbb{F}_p^*$ must divide $\phi(p) = p-1$ [Prop 12.3: Order Divisibility Property, consequence of FLT].
+$$ \phi(127) = 127 - 1 = 126 \quad [\text{Thm 9.2: Totient of a Prime Number}] $$
+
+\paragraph{Step 1: Prime Factorization of the Order}
+We find the prime factorization of $p-1 = 126$:
+$$ 126 = 2 \cdot 63 = 2 \cdot 3^2 \cdot 7 \quad [\text{Prime factors are } 2, 3, 7] \text{}$$
+The order of $3$, $\mathrm{ord}_{127}(3)$, must be a divisor of $126$. To check if the order is $126$, we use the effective test for primitive roots [Lemma 12.1].
+
+\paragraph{Step 2: Effective Test for Order}
+The order $n = \mathrm{ord}_{127}(3)$ is $126$ if and only if $3^{126/q_i} \not\equiv 1 \pmod{127}$ for all prime factors $q_i \in \{2, 3, 7\}$ of $126$.
+
+We compute the test powers:
+\begin{enumerate}
+    \item $q_1 = 2$: Exponent $E_1 = \frac{126}{2} = 63$
+    We compute $3^{63} \pmod{127}$ using FPA (since $63 = (111111)_2$):
+    $$ 3^{63} \equiv 126 \equiv -1 \pmod{127} \quad [\text{Computed value } 126 \not\equiv 1] \text{}$$
+    \item $q_2 = 3$: Exponent $E_2 = \frac{126}{3} = 42$
+    We compute $3^{42} \pmod{127}$:
+    $$ 3^{42} \equiv 107 \pmod{127} \quad [\text{Computed value } 107 \not\equiv 1] \text{}$$
+    \item $q_3 = 7$: Exponent $E_3 = \frac{126}{7} = 18$
+    We compute $3^{18} \pmod{127}$:
+    $$ 3^{18} \equiv 4 \pmod{127} \quad [\text{Computed value } 4 \not\equiv 1] \text{}$$
+\end{enumerate}
+
+\paragraph{Step 3: Conclusion}
+Since $3^{E_i} \not\equiv 1 \pmod{127}$ for all $E_i = 126/q_i$, the order of $3$ is not a proper divisor of $126$.
+Therefore, the order must be the maximum possible value [Lemma 12.1]:
+$$ \mathrm{ord}_{127}(3) = 126 \quad [\text{Max order } p-1] \text{} $$
+\end{solution}
+
+---
+
+\subsection*{Exercise 6.3}
+Given that $2$ is a primitive root $\pmod{101}$, find $x \in \mathbb{Z}/101\mathbb{Z}$ such that $\mathrm{ord}_{101}(x)=10$.
+
+\begin{solution}
+The modulus $p=101$ is a prime number, so $\phi(101) = p-1 = 100$.
+Let $g=2$ be the primitive root. Any element $x \in \mathbb{F}_{101}^*$ can be written as $x = g^i = 2^i$ for some exponent $i \in \{1, \dots, 100\}$ [Def 12.2: Primitive Root].
+
+\paragraph{Step 1: Use the Order of a Power Formula}
+The order of a power $g^i$ is given by the formula [Prop 13.1: The Order of a Power]:
+$$ \mathrm{ord}_{p}(g^i) = \frac{p-1}{\gcd(p-1, i)} $$
+We want $\mathrm{ord}_{101}(x) = 10$, so we set the formula equal to $10$:
+$$ 10 = \frac{100}{\gcd(100, i)} $$
+Solving for the $\gcd$:
+$$ \gcd(100, i) = \frac{100}{10} = 10 \quad [\text{Condition on the exponent } i] \text{}$$
+
+\paragraph{Step 2: Find a suitable exponent $i$}
+We need an integer $i$ such that $1 \le i \le 100$ and $\gcd(100, i) = 10$.
+Since $\gcd(100, i) = 10$, $i$ must be a multiple of $10$. Let $i = 10k$ for some integer $k$.
+Substitute this back into the $\gcd$ condition:
+$$ \gcd(100, 10k) = 10 $$
+$$ 10 \cdot \gcd(10, k) = 10 \quad [\text{Property of GCD: } \gcd(na, nb)=n\gcd(a, b)] $$
+$$ \gcd(10, k) = 1 \quad [\text{Condition on } k] \text{}$$
+We need to choose a value for $k$ that is coprime to $10$. The simplest choice is $k=1$.
+$$ k=1 \implies i = 10 \cdot 1 = 10 $$
+
+\paragraph{Step 3: Find the element $x$}
+We use the exponent $i=10$ to find the element $x=2^i$:
+$$ x = 2^{10} \pmod{101} $$
+$$ 2^{10} = 1024 \quad [\text{Computed value}] $$
+$$ 1024 = 10 \cdot 101 + 14 $$
+$$ x \equiv 14 \pmod{101} \quad [\text{Solution } x] \text{} $$
+\textbf{Result:} One element with order 10 is $x=14$. (Other solutions exist for $k=3, 7, 9$).
+\end{solution}
+
+---
+
+\subsection*{Exercise 6.5}
+Let $p=663797$. Which among $3, 7, 10$ are primitive roots of $\mathbb{F}_{p}$?
+
+\begin{solution}
+The modulus $p=663797$ is prime. For $g$ to be a primitive root, its order $\mathrm{ord}_{p}(g)$ must be equal to $p-1 = 663796$ [Thm 12.2: Characterization of the Primitive Roots].
+
+\paragraph{Step 1: Prime Factorization of $p-1$}
+$$ p-1 = 663796 $$
+$$ 663796 = 2^2 \cdot 7 \cdot 151 \cdot 157 \quad [\text{Prime factors are } 2, 7, 151, 157] \text{} $$
+We use the effective test [Lemma 12.1]: $g$ is a primitive root if $g^{(p-1)/q_i} \not\equiv 1 \pmod{p}$ for all prime factors $q_i$. The key exponents are:
+\begin{align*}
+    E_1 &= (p-1)/2 = 331898 \\
+    E_2 &= (p-1)/7 = 94828 \\
+    E_3 &= (p-1)/151 = 4396 \\
+    E_4 &= (p-1)/157 = 4228
+\end{align*}
+We check the candidates by computing $g^{E_1} \pmod{p}$, since this is the largest proper divisor and is often sufficient to show $g$ is not a primitive root (if $g^{E_1} \equiv 1 \pmod{p}$).
+
+\paragraph{Step 2: Test Candidate $g=3$}
+We check if $3^{E_i} \equiv 1 \pmod{p}$:
+\begin{itemize}
+    \item $3^{331898} \equiv 663796 \equiv -1 \pmod{p}$
+    \item $3^{94828} \equiv 109256 \not\equiv 1 \pmod{p}$
+    \item $3^{4396} \equiv 648796 \not\equiv 1 \pmod{p}$
+\end{itemize}
+Since none of the test powers are $1 \pmod{p}$, $3$ is a primitive root.
+
+\paragraph{Step 3: Test Candidate $g=7$}
+We check $7^{E_1} \pmod{p}$:
+\begin{itemize}
+    \item $7^{331898} \equiv 1 \pmod{p}$
+\end{itemize}
+Since $7^{(p-1)/2} \equiv 1 \pmod{p}$, $\mathrm{ord}_{p}(7)$ divides $(p-1)/2 = 331898$. Thus, $\mathrm{ord}_{p}(7) \le 331898 < p-1$.
+Therefore, $7$ is **not** a primitive root.
+
+\paragraph{Step 4: Test Candidate $g=10$}
+We check $10^{E_1} \pmod{p}$:
+\begin{itemize}
+    \item $10^{331898} \equiv 1 \pmod{p}$
+\end{itemize}
+Since $10^{(p-1)/2} \equiv 1 \pmod{p}$, $10$ is **not** a primitive root.
+
+\textbf{Result:} Only $3$ is a primitive root of $\mathbb{F}_{663797}$.
+\end{solution}

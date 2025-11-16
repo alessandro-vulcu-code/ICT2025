@@ -1,0 +1,367 @@
+\section*{Week 3}
+
+\subsection*{Exercise 3.1}
+Find all the solutions to $3x \equiv 8 \pmod{11}$.
+
+\begin{solution}
+The linear congruence $ax \equiv b \pmod{m}$ is equivalent to the linear Diophantine equation $ax + mv = b$. Here, $3x + 11v = 8$.
+
+\paragraph{Step 1: Check Solvability}
+We find $d = \gcd(a, m) = \gcd(3, 11)$.
+Since $11$ is a prime number and $3$ is not a multiple of $11$, $\gcd(3, 11) = 1$.
+$$ \gcd(3, 11) = 1 $$
+Since $d=1$ divides $b=8$, a unique solution modulo $m=11$ exists [Prop 7.1 \& 7.2: Solvability and Number of Solutions].
+
+\paragraph{Step 2: Find the Modular Inverse of $3 \pmod{11}$}
+We use the Extended Euclidean Algorithm to find $u$ and $v$ such that $3u + 11v = 1$.
+\begin{align*}
+    11 &= 3 \cdot 3 + 2 \\
+    3 &= 2 \cdot 1 + 1 \\
+    2 &= 1 \cdot 2 + 0
+\end{align*}
+Working backward for Bézout's identity:
+\begin{align*}
+    1 &= 3 - 2 \cdot 1 \\
+    1 &= 3 - (11 - 3 \cdot 3) \cdot 1 & [\text{Substitute } 2 = 11 - 3 \cdot 3] \\
+    1 &= 3 - 11 + 3 \cdot 3 \\
+    1 &= 3 \cdot (1 + 3) - 11 \cdot 1 \\
+    1 &= 3 \cdot 4 - 11 \cdot 1
+\end{align*}
+Thus, $3(4) \equiv 1 \pmod{11}$. The modular inverse is $a^{-1} = 4$.
+
+\paragraph{Step 3: Solve the Congruence}
+Multiply the original congruence by the inverse $4$:
+$$ 3x \equiv 8 \pmod{11} $$
+$$ 4 \cdot (3x) \equiv 4 \cdot 8 \pmod{11} $$
+$$ 12x \equiv 32 \pmod{11} $$
+Since $12 \equiv 1 \pmod{11}$ and $32 = 2 \cdot 11 + 10$, so $32 \equiv 10 \pmod{11}$:
+$$ x \equiv 10 \pmod{11} $$
+Since $10 \equiv -1 \pmod{11}$, the unique solution modulo $11$ is $x \equiv 10 \pmod{11}$.
+
+\paragraph{Step 4: All Integer Solutions}
+The set of all integer solutions is $x = 10 + 11k$, for $k \in \mathbb{Z}$.
+\textbf{Result:} $x \equiv 10 \pmod{11}$.
+\end{solution}
+
+\subsection*{Exercise 3.2}
+Find all the solutions to $91x \equiv 3 \pmod{121}$.
+
+\begin{solution}
+The linear congruence is $91x \equiv 3 \pmod{121}$, equivalent to $91x + 121v = 3$.
+
+\paragraph{Step 1: Check Solvability}
+We find $d = \gcd(91, 121)$ using the Euclidean Algorithm:
+\begin{align*}
+    121 &= 91 \cdot 1 + 30 \\
+    91 &= 30 \cdot 3 + 1 \\
+    30 &= 1 \cdot 30 + 0
+\end{align*}
+Thus, $d = \gcd(91, 121) = 1$.
+Since $d=1$ divides $b=3$, a unique solution modulo $121$ exists [Prop 7.1 \& 7.2].
+
+\paragraph{Step 2: Find the Modular Inverse of $91 \pmod{121}$}
+We use the Extended Euclidean Algorithm to find $u$ such that $91u \equiv 1 \pmod{121}$:
+\begin{align*}
+    1 &= 91 - 30 \cdot 3 & [\text{From the second equation}] \\
+    1 &= 91 - (121 - 91 \cdot 1) \cdot 3 & [\text{Substitute } 30 = 121 - 91 \cdot 1] \\
+    1 &= 91 - 121 \cdot 3 + 91 \cdot 3 \\
+    1 &= 91 \cdot (1 + 3) - 121 \cdot 3 \\
+    1 &= 91 \cdot 4 - 121 \cdot 3
+\end{align*}
+Thus, $91(4) \equiv 1 \pmod{121}$. The modular inverse is $a^{-1} = 4$.
+
+\paragraph{Step 3: Solve the Congruence}
+Multiply the original congruence by the inverse $4$:
+$$ 91x \equiv 3 \pmod{121} $$
+$$ 4 \cdot (91x) \equiv 4 \cdot 3 \pmod{121} $$
+$$ (91 \cdot 4) x \equiv 12 \pmod{121} $$
+Since $91 \cdot 4 \equiv 1 \pmod{121}$:
+$$ x \equiv 12 \pmod{121} $$
+\textbf{Result:} $x \equiv 12 \pmod{121}$.
+\end{solution}
+
+\subsection*{Exercise 3.3}
+Solve $83x \equiv 2 \pmod{100}$.
+
+\begin{solution}
+The linear congruence is $83x \equiv 2 \pmod{100}$, equivalent to $83x + 100v = 2$.
+
+\paragraph{Step 1: Check Solvability}
+We find $d = \gcd(83, 100)$:
+\begin{align*}
+    100 &= 83 \cdot 1 + 17 \\
+    83 &= 17 \cdot 4 + 15 \\
+    17 &= 15 \cdot 1 + 2 \\
+    15 &= 2 \cdot 7 + 1 \\
+    2 &= 1 \cdot 2 + 0
+\end{align*}
+Thus, $d = \gcd(83, 100) = 1$. Since $d=1$ divides $b=2$, a unique solution modulo $100$ exists.
+
+\paragraph{Step 2: Find the Modular Inverse of $83 \pmod{100}$}
+We use the Extended Euclidean Algorithm to express $1$ as a linear combination of $83$ and $100$:
+\begin{align*}
+    1 &= 15 - 2 \cdot 7 \\
+    1 &= 15 - (17 - 15 \cdot 1) \cdot 7 & [\text{Substitute } 2 = 17 - 15 \cdot 1] \\
+    1 &= 15 - 17 \cdot 7 + 15 \cdot 7 \\
+    1 &= 15 \cdot 8 - 17 \cdot 7 \\
+    1 &= (83 - 17 \cdot 4) \cdot 8 - 17 \cdot 7 & [\text{Substitute } 15 = 83 - 17 \cdot 4] \\
+    1 &= 83 \cdot 8 - 17 \cdot 32 - 17 \cdot 7 \\
+    1 &= 83 \cdot 8 - 17 \cdot 39 \\
+    1 &= 83 \cdot 8 - (100 - 83 \cdot 1) \cdot 39 & [\text{Substitute } 17 = 100 - 83 \cdot 1] \\
+    1 &= 83 \cdot 8 - 100 \cdot 39 + 83 \cdot 39 \\
+    1 &= 83 \cdot (8 + 39) - 100 \cdot 39 \\
+    1 &= 83 \cdot 47 - 100 \cdot 39
+\end{align*}
+Thus, $83(47) \equiv 1 \pmod{100}$. The inverse is $a^{-1} = 47$.
+
+\paragraph{Step 3: Solve the Congruence}
+Multiply the original congruence by the inverse $47$:
+$$ 83x \equiv 2 \pmod{100} $$
+$$ 47 \cdot (83x) \equiv 47 \cdot 2 \pmod{100} $$
+$$ (83 \cdot 47) x \equiv 94 \pmod{100} $$
+$$ x \equiv 94 \pmod{100} $$
+The solution in $\mathbb{Z}/100\mathbb{Z}$ is the residue class $[94]_{100}$.
+\textbf{Result:} $x \equiv 94 \pmod{100}$.
+\end{solution}
+
+\subsection*{Exercise 3.4}
+Find $5327 \cdot 6185 \cdot 7139 \cdot 2187 \cdot 5219 \cdot 1873 \pmod{8157}$.
+(Hint: After each multiplication, reduce modulo $8157$ before doing the next multiplication.)
+
+\begin{solution}
+We perform the chained multiplication, reducing the product modulo $m=8157$ at each step to manage the size of the numbers.
+
+\paragraph{Step 1: First multiplication}
+$$ 5327 \cdot 6185 = 32950195 $$
+$$ 32950195 \div 8157 = 4039.515263... $$
+$$ r_1 = 32950195 - 8157 \cdot 4039 = 32950195 - 32950143 = 52 $$
+$$ 5327 \cdot 6185 \equiv 52 \pmod{8157} $$
+
+\paragraph{Step 2: Multiply by $7139$}
+$$ 52 \cdot 7139 = 371228 $$
+$$ 371228 \div 8157 = 45.515263... $$
+$$ r_2 = 371228 - 8157 \cdot 45 = 371228 - 367065 = 4163 $$
+$$ 52 \cdot 7139 \equiv 4163 \pmod{8157} $$
+
+\paragraph{Step 3: Multiply by $2187$}
+$$ 4163 \cdot 2187 = 9104081 $$
+$$ 9104081 \div 8157 = 1116.096... $$
+$$ r_3 = 9104081 - 8157 \cdot 1116 = 9104081 - 9103812 = 269 $$
+$$ 4163 \cdot 2187 \equiv 269 \pmod{8157} $$
+
+\paragraph{Step 4: Multiply by $5219$}
+$$ 269 \cdot 5219 = 1403611 $$
+$$ 1403611 \div 8157 = 172.079... $$
+$$ r_4 = 1403611 - 8157 \cdot 172 = 1403611 - 1402904 = 707 $$
+$$ 269 \cdot 5219 \equiv 707 \pmod{8157} $$
+
+\paragraph{Step 5: Multiply by $1873$}
+$$ 707 \cdot 1873 = 1324151 $$
+$$ 1324151 \div 8157 = 162.338... $$
+$$ r_5 = 1324151 - 8157 \cdot 162 = 1324151 - 1321434 = 2717 $$
+$$ 707 \cdot 1873 \equiv 2717 \pmod{8157} $$
+
+\textbf{Result:} $5327 \cdot 6185 \cdot 7139 \cdot 2187 \cdot 5219 \cdot 1873 \equiv 2717 \pmod{8157}$.
+\end{solution}
+
+\subsection*{Exercise 3.5}
+Find $373^6 \pmod{581}$ (Hint: as above).
+
+\begin{solution}
+We use the **Fast Powering Algorithm** by successive squaring and reduction modulo $m=581$.
+Since $6 = (110)_2 = 2^2 + 2^1$, we need to compute $373^2$, $373^4$, and then $373^6 = 373^4 \cdot 373^2$.
+
+\paragraph{Step 1: Compute $373^2 \pmod{581}$}
+$$ 373^2 = 139129 $$
+$$ 139129 \div 581 = 239.4647... $$
+$$ r_1 = 139129 - 581 \cdot 239 = 139129 - 138959 = 170 $$
+$$ 373^2 \equiv 170 \pmod{581} $$
+
+\paragraph{Step 2: Compute $373^4 \pmod{581}$}
+$$ 373^4 \equiv (373^2)^2 \equiv 170^2 \pmod{581} $$
+$$ 170^2 = 28900 $$
+$$ 28900 \div 581 = 49.7418... $$
+$$ r_2 = 28900 - 581 \cdot 49 = 28900 - 28469 = 431 $$
+$$ 373^4 \equiv 431 \pmod{581} $$
+
+\paragraph{Step 3: Compute $373^6 \pmod{581}$}
+$$ 373^6 \equiv 373^4 \cdot 373^2 \equiv 431 \cdot 170 \pmod{581} $$
+$$ 431 \cdot 170 = 73270 $$
+$$ 73270 \div 581 = 126.1101... $$
+$$ r_3 = 73270 - 581 \cdot 126 = 73270 - 73150 = 120 $$
+$$ 373^6 \equiv 120 \pmod{581} $$
+
+\textbf{Result:} $373^6 \equiv 120 \pmod{581}$.
+\end{solution}
+
+\subsection*{Exercise 3.6}
+Prove that $a$ is invertible in $\mathbb{Z}/m\mathbb{Z}$ if and only if $\gcd(a,m)=1$.
+
+\begin{proof}
+We prove the biconditional statement by demonstrating both directions.
+
+\paragraph{($\implies$) If $[a]$ is invertible, then $\gcd(a, m)=1$}
+If the residue class $[a]$ is invertible in $\mathbb{Z}/m\mathbb{Z}$, then there exists an integer $u \in \mathbb{Z}$ (the inverse) such that:
+$$ au \equiv 1 \pmod{m} $$
+By the definition of modular congruence, this means that $m$ divides the difference $(au - 1)$.
+$$ m | (au - 1) $$
+This implies the existence of an integer $v \in \mathbb{Z}$ such that:
+$$ au - 1 = -mv $$
+Rearranging the terms gives the linear Diophantine equation:
+$$ au + mv = 1 $$
+Let $d = \gcd(a, m)$. By the property of divisibility, since $d$ divides $a$ and $d$ divides $m$, $d$ must divide any linear combination of $a$ and $m$:
+$$ d | (au + mv) \implies d | 1 $$
+Since $d$ is a positive integer, the only value satisfying $d|1$ is $d=1$.
+Thus, $\gcd(a, m) = 1$.
+
+\paragraph{($\impliedby$) If $\gcd(a, m)=1$, then $[a]$ is invertible}
+Assume $\gcd(a, m) = 1$. By Bézout's Identity, there exist integers $u, v \in \mathbb{Z}$ such that:
+$$ au + mv = 1 $$
+Rearranging the terms:
+$$ au - 1 = -mv $$
+By the definition of divisibility, since $-mv$ is a multiple of $m$, $m$ divides $(au - 1)$:
+$$ m | (au - 1) $$
+By the definition of modular congruence, this means:
+$$ au \equiv 1 \pmod{m} $$
+This shows that $u$ is the multiplicative inverse of $a$ modulo $m$, meaning the residue class $[a]$ is invertible in $\mathbb{Z}/m\mathbb{Z}$.
+\end{proof}
+
+\subsection*{Exercise 3.7}
+Let $m \ge 1$ be an integer and suppose that $a_1 \equiv a_2 \pmod{m}$ and $b_1 \equiv b_2 \pmod{m}$. Prove that $a_1+b_1 \equiv a_2+b_2 \pmod{m}$ and $a_1 \cdot b_1 \equiv a_2 \cdot b_2 \pmod{m}$.
+
+\begin{proof}
+The premise $a_1 \equiv a_2 \pmod{m}$ means $m | (a_1 - a_2)$, so $a_1 - a_2 = k_1 m$ for some $k_1 \in \mathbb{Z}$.
+Similarly, $b_1 \equiv b_2 \pmod{m}$ means $m | (b_1 - b_2)$, so $b_1 - b_2 = k_2 m$ for some $k_2 \in \mathbb{Z}$.
+
+\paragraph{Proof for Addition ($a_1+b_1 \equiv a_2+b_2 \pmod{m}$)}
+We want to show $m | ((a_1+b_1) - (a_2+b_2))$.
+$$ (a_1+b_1) - (a_2+b_2) = (a_1 - a_2) + (b_1 - b_2) \quad [\text{Rearranging terms}] $$
+Substituting the expressions from the premise:
+$$ (a_1 - a_2) + (b_1 - b_2) = k_1 m + k_2 m = m(k_1 + k_2) $$
+Since $k_1+k_2 \in \mathbb{Z}$, the difference is a multiple of $m$.
+Thus, $m | ((a_1+b_1) - (a_2+b_2))$, which means:
+$$ a_1+b_1 \equiv a_2+b_2 \pmod{m} $$
+
+\paragraph{Proof for Multiplication ($a_1 \cdot b_1 \equiv a_2 \cdot b_2 \pmod{m}$)}
+We use the definition of congruence to write $a_1$ and $b_1$ in terms of $a_2$ and $b_2$:
+$$ a_1 = a_2 + k_1 m \quad \text{and} \quad b_1 = b_2 + k_2 m $$
+Now compute the product $a_1 b_1$:
+\begin{align*}
+    a_1 b_1 &= (a_2 + k_1 m)(b_2 + k_2 m) \\
+    a_1 b_1 &= a_2 b_2 + a_2 k_2 m + b_2 k_1 m + k_1 k_2 m^2 \\
+    a_1 b_1 - a_2 b_2 &= m(a_2 k_2 + b_2 k_1 + k_1 k_2 m)
+\end{align*}
+Let $K = a_2 k_2 + b_2 k_1 + k_1 k_2 m$. Since $K \in \mathbb{Z}$, the difference $a_1 b_1 - a_2 b_2$ is a multiple of $m$.
+Thus, $m | (a_1 b_1 - a_2 b_2)$, which means:
+$$ a_1 \cdot b_1 \equiv a_2 \cdot b_2 \pmod{m} $$
+\end{proof}
+
+\subsection*{Exercise 3.8}
+\begin{enumerate}
+    \item Suppose $m$ is odd. Find $2^{-1}$ in $\mathbb{Z}/m\mathbb{Z}$.
+    \item More generally, suppose $m \equiv 1 \pmod{b}$ for some $b \ge 2$. Find $b^{-1}$ in $\mathbb{Z}/m\mathbb{Z}$.
+\end{enumerate}
+
+\begin{solution}
+\begin{enumerate}
+    \item \textbf{Find $2^{-1} \pmod{m}$ where $m$ is odd}
+    Since $m$ is odd, $\gcd(2, m) = 1$, so the inverse $2^{-1}$ exists [Thm 6.2: Characterization of Invertibility].
+    The inverse $x = 2^{-1}$ is the solution to the congruence $2x \equiv 1 \pmod{m}$, or the Diophantine equation $2x + mv = 1$.
+    We need $2x = 1 - mv$. Since $m$ is odd, we choose an odd multiple of $m$, $k m$, such that $km+1$ is even. The simplest choice is $k=1$.
+    Let $v = -1$ (i.e., we choose the multiple $m$):
+    $$ 2x = 1 + m \quad [\text{Since } m \equiv -1 \pmod{2}, 1+m \text{ is even}] $$
+    $$ x = \frac{m+1}{2} $$
+    Since $m$ is odd, $m+1$ is even, and $x$ is an integer.
+    \textbf{Result:} $2^{-1} \equiv \frac{m+1}{2} \pmod{m}$.
+    
+    \item \textbf{Find $b^{-1} \pmod{m}$ where $m \equiv 1 \pmod{b}$}
+    The condition $m \equiv 1 \pmod{b}$ means that $b$ divides $(m-1)$, so $m-1 = bq$ for some integer $q$.
+    $$ m = bq + 1 $$
+    From this equation, we can write $1$ as a linear combination of $b$ and $m$:
+    $$ b(-q) + m(1) = 1 \quad [\text{Bézout's Identity}] $$
+    This equation shows that $-q$ is the inverse of $b$ modulo $m$:
+    $$ b(-q) \equiv 1 \pmod{m} $$
+    Since $m = bq + 1$, we have $q = \frac{m-1}{b}$.
+    The inverse is $-q = -\frac{m-1}{b}$. To find the positive representative, we add $m$:
+    $$ b^{-1} \equiv -q + m \equiv -q \pmod{m} $$
+    \textbf{Result:} $b^{-1} \equiv -q \equiv -\frac{m-1}{b} \pmod{m}$. The positive residue is $m - \frac{m-1}{b}$.
+\end{enumerate}
+\end{solution}
+
+\subsection*{Exercise 3.9}
+Let $m$ be an odd integer and let $a$ be any integer. Prove that $2m+a^2$ can never be the square of an integer. (Hint: If a natural is a square, what are its possible values modulo 4?)
+
+\begin{proof}
+We use modular arithmetic modulo 4.
+
+\paragraph{Step 1: Determine the possible values of a perfect square modulo 4}
+Let $n \in \mathbb{Z}$. Since any integer $n$ is either even ($n \equiv 0, 2 \pmod{4}$) or odd ($n \equiv 1, 3 \pmod{4}$), we examine $n^2 \pmod{4}$:
+\begin{itemize}
+    \item If $n$ is even, $n \equiv 0 \pmod{2}$, so $n=2k$. $n^2 = 4k^2 \equiv 0 \pmod{4}$.
+    \item If $n$ is odd, $n \equiv 1 \pmod{2}$, so $n=2k+1$. $n^2 = 4k^2 + 4k + 1 \equiv 1 \pmod{4}$.
+\end{itemize}
+Therefore, any perfect square $n^2$ must be congruent to $0$ or $1$ modulo $4$.
+
+\paragraph{Step 2: Determine the possible values of $2m+a^2$ modulo 4}
+The term $2m+a^2$ has two parts:
+\begin{itemize}
+    \item **$2m \pmod{4}$:** Since $m$ is odd, $m \equiv 1 \pmod{2}$, so $m$ is of the form $2k+1$.
+    $$ 2m = 2(2k+1) = 4k + 2 \equiv 2 \pmod{4} $$
+    \item **$a^2 \pmod{4}$:** As shown in Step 1, $a^2 \equiv 0$ or $1 \pmod{4}$.
+\end{itemize}
+Now, we find the possible values for the sum $2m+a^2 \pmod{4}$:
+\begin{itemize}
+    \item Case 1: $a^2 \equiv 0 \pmod{4}$.
+    $$ 2m+a^2 \equiv 2 + 0 \equiv 2 \pmod{4} $$
+    \item Case 2: $a^2 \equiv 1 \pmod{4}$.
+    $$ 2m+a^2 \equiv 2 + 1 \equiv 3 \pmod{4} $$
+\end{itemize}
+Thus, $2m+a^2$ is congruent to $2$ or $3$ modulo $4$.
+
+\paragraph{Step 3: Conclusion}
+Since $2m+a^2$ is congruent to $2$ or $3 \pmod{4}$, and no perfect square is congruent to $2$ or $3 \pmod{4}$ (from Step 1), $2m+a^2$ cannot be a perfect square.
+\end{proof}
+
+\subsection*{Exercise 3.12}
+Find all the solutions (if any) to $4x \equiv 6 \pmod{30}$.
+
+\begin{solution}
+The linear congruence is $4x \equiv 6 \pmod{30}$, equivalent to the linear Diophantine equation $4x + 30v = 6$.
+
+\paragraph{Step 1: Check Solvability}
+We find $d = \gcd(4, 30)$:
+\begin{align*}
+    30 &= 4 \cdot 7 + 2 \\
+    4 &= 2 \cdot 2 + 0
+\end{align*}
+Thus, $d = \gcd(4, 30) = 2$.
+
+The equation is solvable if and only if $d$ divides $b=6$. Since $2|6$, solutions exist. The number of distinct solutions modulo $m=30$ is $d=2$ [Prop 7.2: Number of Solutions].
+
+\paragraph{Step 2: Reduce the Congruence}
+We divide the entire congruence by $d=2$:
+$$ \frac{4}{2}x \equiv \frac{6}{2} \pmod{\frac{30}{2}} $$
+$$ 2x \equiv 3 \pmod{15} $$
+This reduced congruence $2x \equiv 3 \pmod{15}$ has a unique solution modulo $15$, since $\gcd(2, 15)=1$.
+
+\paragraph{Step 3: Find the Modular Inverse of $2 \pmod{15}$}
+We need $2^{-1} \pmod{15}$. We look for a number $u$ such that $2u \equiv 1 \pmod{15}$.
+$$ 2u = 1 + 15k $$
+By inspection (or EEA): $2 \cdot 8 = 16 \equiv 1 \pmod{15}$.
+The inverse is $u = 8$.
+
+\paragraph{Step 4: Solve the Reduced Congruence}
+Multiply the reduced congruence by the inverse $8$:
+$$ 8 \cdot (2x) \equiv 8 \cdot 3 \pmod{15} $$
+$$ 16x \equiv 24 \pmod{15} $$
+Since $16 \equiv 1 \pmod{15}$ and $24 = 1 \cdot 15 + 9$, so $24 \equiv 9 \pmod{15}$:
+$$ x \equiv 9 \pmod{15} $$
+
+\paragraph{Step 5: Find all Solutions Modulo $30$}
+The solution is $x = 9 + 15k$ for $k \in \mathbb{Z}$. We need the solutions in the range $0 \le x < 30$:
+\begin{itemize}
+    \item For $k=0$: $x = 9 + 15(0) = 9$
+    \item For $k=1$: $x = 9 + 15(1) = 24$
+\end{itemize}
+\textbf{Result:} The two distinct solutions modulo $30$ are $x \equiv 9 \pmod{30}$ and $x \equiv 24 \pmod{30}$.
+\end{solution}

@@ -1,0 +1,126 @@
+\section*{Week 2}
+
+\subsection*{Exercise 2.1}
+Use the Extended Euclidean Algorithm (EEA) to find integers $u$ and $v$ such that $au+bv=\gcd(a,b)$.
+\begin{enumerate}
+    \item $\gcd(291, 252)$.
+    % \item $\gcd(16261, 85652)$. (Skipped, solution not fully provided in source)
+    % \item $\gcd(139024789, 93278890)$. (Skipped, solution not fully provided in source)
+    % \item $\gcd(16534528044, 8332745927)$. (Skipped, solution not fully provided in source)
+\end{enumerate}
+
+\begin{enumerate}
+    \item \textbf{$\gcd(291, 252)$}
+
+    \paragraph{Step 1: Apply the Euclidean Algorithm to find $d = \gcd(291, 252)$}
+    \begin{align*}
+        291 &= 252 \cdot 1 + 39 \\
+        252 &= 39 \cdot 6 + 18 \\
+        39 &= 18 \cdot 2 + 3 \\
+        18 &= 3 \cdot 6 + 0
+    \end{align*}
+    The greatest common divisor is $d=3$, the last non-zero remainder.
+
+    \paragraph{Step 2: Apply the Extended Euclidean Algorithm (Backward Substitution)}
+    We express the remainder $3$ as a linear combination of $291$ and $252$ by working backward through the division steps:
+    \begin{align*}
+        3 &= 39 - 18 \cdot 2 & [\text{From the third equation, isolating the remainder } 3] \\
+        3 &= 39 - (252 - 39 \cdot 6) \cdot 2 & [\text{Substitute for } 18 \text{ using the second equation}] \\
+        3 &= 39 - 252 \cdot 2 + 39 \cdot 12 & [\text{Distribute the multiplication by } 2] \\
+        3 &= 39 \cdot (1 + 12) - 252 \cdot 2 & [\text{Collect terms involving } 39] \\
+        3 &= 39 \cdot 13 - 252 \cdot 2 \\
+        3 &= (291 - 252 \cdot 1) \cdot 13 - 252 \cdot 2 & [\text{Substitute for } 39 \text{ using the first equation}] \\
+        3 &= 291 \cdot 13 - 252 \cdot 13 - 252 \cdot 2 & [\text{Distribute the multiplication by } 13] \\
+        3 &= 291 \cdot 13 - 252 \cdot (13 + 2) & [\text{Collect terms involving } 252] \\
+        3 &= 291 \cdot 13 - 252 \cdot 15 & [\text{Bézout's Identity: } au+bv=d]
+    \end{align*}
+    We have found integers $u=13$ and $v=-15$ such that $291u + 252v = 3$.
+    \textbf{Result:} $291(13) + 252(-15) = 3$.
+\end{enumerate}
+
+\subsection*{Exercise 2.2}
+Find all the integer solutions to $15u+25v=45$. Find also all natural solutions, if any.
+
+\begin{solution}
+The given linear Diophantine equation is $15u+25v=45$.
+
+\paragraph{Step 1: Find $d = \gcd(15, 25)$}
+We use the Euclidean Algorithm:
+\begin{align*}
+    25 &= 15 \cdot 1 + 10 \\
+    15 &= 10 \cdot 1 + 5 \\
+    10 &= 5 \cdot 2 + 0
+\end{align*}
+Thus, $d = \gcd(15, 25) = 5$.
+
+\paragraph{Step 2: Check Solvability and Reduce the Equation}
+The equation has integer solutions if and only if $d$ divides $c=45$.
+Since $5|45$ (as $45 = 5 \cdot 9$), integer solutions exist.
+We divide the entire equation by $d=5$ to simplify it:
+$$ \frac{15}{5}u + \frac{25}{5}v = \frac{45}{5} \implies 3u + 5v = 9 $$
+Let $a' = 3$, $b' = 5$, and $c' = 9$. Note that $\gcd(a', b') = \gcd(3, 5) = 1$.
+
+\paragraph{Step 3: Find a Particular Solution to $3u+5v=9$}
+We first find a solution $(u_*, v_*)$ for $3u+5v=1$ using the Extended Euclidean Algorithm on $(3, 5)$:
+\begin{align*}
+    5 &= 3 \cdot 1 + 2 \\
+    3 &= 2 \cdot 1 + 1 \\
+    2 &= 1 \cdot 2 + 0
+\end{align*}
+Working backward to express $1$:
+$$1 = 3 - 2 \cdot 1$$
+$$1 = 3 - (5 - 3 \cdot 1) \cdot 1$$
+$$1 = 3 - 5 + 3 \cdot 1 = 3(2) + 5(-1)$$
+So, a solution to $3u+5v=1$ is $u_*=2$ and $v_*=-1$.
+
+Since our equation is $3u+5v=9$, we multiply the solution by $c'=9$:
+$$ u_0 = u_* \cdot 9 = 2 \cdot 9 = 18$$
+$$ v_0 = v_* \cdot 9 = -1 \cdot 9 = -9$$
+Thus, $(u_0, v_0) = (18, -9)$ is a particular integer solution.
+
+\paragraph{Step 4: Find all Integer Solutions}
+Since $\gcd(3, 5)=1$, all integer solutions $(u, v)$ to the reduced equation $3u+5v=9$ are given by:
+$$ u = u_0 + k b' \quad \text{and} \quad v = v_0 - k a' \quad \text{for any } k \in \mathbb{Z}$$
+$$ u = 18 + 5k \quad \text{and} \quad v = -9 - 3k \quad \text{for any } k \in \mathbb{Z} \quad [\text{where } a'=3, b'=5] $$
+
+\paragraph{Step 5: Find all Natural Solutions ($\mathbb{N} \cup \{0\}$)}
+We need to find $k \in \mathbb{Z}$ such that $u \ge 0$ and $v \ge 0$:
+\begin{align*}
+    u \ge 0 &\implies 18 + 5k \ge 0 \implies 5k \ge -18 \implies k \ge -18/5 = -3.6 \\
+    v \ge 0 &\implies -9 - 3k \ge 0 \implies -9 \ge 3k \implies k \le -9/3 = -3
+\end{align*}
+Since $k$ must be an integer, we have $-3.6 \le k \le -3$. The only integer satisfying this condition is $k=-3$.
+
+Substituting $k=-3$ into the general solution:
+\begin{align*}
+    u &= 18 + 5(-3) = 18 - 15 = 3 \\
+    v &= -9 - 3(-3) = -9 + 9 = 0
+\end{align*}
+\textbf{Result:}
+\begin{itemize}
+    \item **All Integer Solutions:** $u = 18 + 5k$, $v = -9 - 3k$, where $k \in \mathbb{Z}$.
+    \item **All Natural Solutions:** The unique solution is $(u, v) = (3, 0)$.
+\end{itemize}
+\end{solution}
+
+\subsection*{Exercise 2.10}
+Let $p$ be a prime number. Without using the fundamental theorem of arithmetic, prove that if $m \in \mathbb{Z}$ and $p \nmid m$, then $p$ and $m$ are coprime.
+
+\begin{proof}
+Let $d = \gcd(p, m)$. By the definition of the greatest common divisor, $d$ must be a positive common divisor of $p$ and $m$.
+
+Since $p$ is a **prime number**, its only positive divisors are $1$ and $p$.
+Therefore, the greatest common divisor $d$ must be one of these two values: $d=1$ or $d=p$.
+
+We proceed by **contradiction**. Assume that $d \ne 1$, so we must have $d=p$.
+If $d=p$, then $p$ is a common divisor of $p$ and $m$.
+\begin{itemize}
+    \item Since $d$ divides $p$, $p|p$ (which is true).
+    \item Since $d$ divides $m$, $p|m$.
+\end{itemize}
+However, the initial hypothesis is that $p \nmid m$ ($p$ does not divide $m$).
+The conclusion $p|m$ contradicts the given hypothesis $p \nmid m$.
+
+Therefore, the assumption $d=p$ must be false. The only remaining possibility is $d=1$.
+Thus, $\gcd(p, m) = 1$, meaning $p$ and $m$ are coprime.
+\end{proof}
