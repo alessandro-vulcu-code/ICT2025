@@ -1,0 +1,85 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{thmtools}
+
+% --- PACCHETTI AGGIUNTI PER LA FORMATTAZIONE ---
+\usepackage{parskip}  % Aggiunge spazio tra i paragrafi (stile "blocco")
+\usepackage{fancyhdr} % Per intestazioni e piè di pagina personalizzati
+
+% --- IMPOSTAZIONI GEOMETRIA E FONT ---
+% \geometry{margin=2.5cm} % Questa riga è duplicata e sovrascritta
+\geometry{a4paper, margin=1in} % Manteniamo questa, come nell'esempio
+
+
+% Configura lo stile 'plain' (usato da \maketitle e \tableofcontents)
+% per essere coerente con il piè di pagina
+\fancypagestyle{plain}{
+    \fancyhf{} % Pulisce
+    \cfoot{\thepage} % Mette solo il numero di pagina
+    \renewcommand{\headrulewidth}{0pt} % Niente linea su queste pagine
+}
+
+
+\begin{document}
+
+\section*{Peer Review C3 - Problem 6.3}
+
+Given that $2$ is a primitive root modulo $101$, find $x \in \mathbb{Z}/101\mathbb{Z}$ such that $ord_{101}(x)=10$.
+
+---
+
+\section*{Solution}
+
+The modulus is $p=101$, which is a prime number.
+The primitive root (admitted) is $g=2$.
+
+The order of the multiplicative group $\mathbb{Z}/101\mathbb{Z}^{\times}$ is $\phi(101) = 101-1 = 100$.
+Every element $x \in \mathbb{Z}/101\mathbb{Z}^{\times}$ can be written as a power of the primitive root $g$, i.e., $x = g^i = 2^i$ for some integer $i$.
+
+The order of a power $g^i$ is given by the formula:
+$$ord_{p}(g^{i})=\frac{p-1}{\gcd(p-1,i)}$$
+
+In our case, we have $p=101$ and we require $ord_{101}(x)=10$. Substituting the known values:
+$$10 = \frac{100}{\gcd(100,i)}$$
+
+This implies that $\gcd(100,i)$ must be $10$:
+$$\gcd(100,i) = \frac{100}{10} = 10$$
+
+We seek an integer $i$ such that $\gcd(100, i) = 10$.
+Let $i = 10k$ for some integer $k$. Substituting this:
+$$\gcd(100, 10k) = 10$$
+Factoring out $10$:
+$$10 \cdot \gcd(10, k) = 10$$
+Dividing by $10$:
+$$\gcd(10, k) = 1$$
+
+We have to choose an integer $k$ such that $k$ is coprime to $10$. The easiest number we can choose is $k=1$, because $\gcd(10, 1) = 1$.
+
+Thus, we set $k=1$, which gives the exponent $i$:
+$$i = 10k = 10 \cdot 1 = 10$$
+
+The element $x$ we are looking for is $x = 2^i$:
+$$x = 2^{10} \pmod{101}$$
+
+We calculate the value:
+$$2^{10} = 1024$$
+Now, we find $1024 \pmod{101}$:
+$$1024 \equiv 14 \pmod{101}$$
+$$x=14$$
+
+The required value is $\mathbf{x=14}$.
+
+\end{document}
