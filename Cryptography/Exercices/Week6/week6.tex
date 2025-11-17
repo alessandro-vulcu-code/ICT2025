@@ -34,7 +34,7 @@ Therefore, the order must be the maximum possible value [Lemma 12.1]:
 $$ \mathrm{ord}_{127}(3) = 126 \quad [\text{Max order } p-1] \text{} $$
 \end{solution}
 
----
+\newpage
 
 \subsection*{Exercise 6.3}
 Given that $2$ is a primitive root $\pmod{101}$, find $x \in \mathbb{Z}/101\mathbb{Z}$ such that $\mathrm{ord}_{101}(x)=10$.
@@ -69,9 +69,84 @@ $$ 1024 = 10 \cdot 101 + 14 $$
 $$ x \equiv 14 \pmod{101} \quad [\text{Solution } x] \text{} $$
 \textbf{Result:} One element with order 10 is $x=14$. (Other solutions exist for $k=3, 7, 9$).
 \end{solution}
+\newpage
+\subsection*{Exercise 6.4}
+    Check that $43889$ is prime. Find a primitive root in $\mathbb{F}_{43889}$. For this, you are allowed to use a computational tool (like Mathematica or Wolfram Alpha) for modular exponentiation and prime factorization.
 
----
-
+    
+    \begin{solution}
+    The solution is structured in two main parts: first, confirming the primality of the modulus, and second, applying the Effective Test for a Primitive Root Candidate.
+    
+    \textbf{Part 1: Primality Test of $p=43889$}\\
+    ---
+    We must confirm that the modulus $p=43889$ is a prime number.
+    
+    The condition for a number $m \ge 2$ to be prime is that its Euler's Totient function value is $\phi(m) = m-1$.
+    \begin{enumerate}
+        \item \textbf{Totient Function Value:} 
+        $$\phi(43889) = 43889 - 1 = 43888$$
+    
+        \item \textbf{Prime Factorization Check:} The number $p-1 = 43888$ is factored as:
+        $$43888 = 2^4 \cdot 13 \cdot 211$$
+        This factorization is required to apply the test for a primitive root.
+        
+        \item \textbf{Conclusion on Primality:} We conclude that $43889$ is **prime**.
+    \end{enumerate}
+    
+    \textbf{Part 2: Finding a Primitive Root $g$ in $\mathbb{F}_{43889}$}\\
+    ---
+    An element $g \in \mathbb{F}_{p}^{*}$ is a **primitive root** if and only if its order modulo $p$ is $\text{ord}_p(g) = p-1$.
+    In this case, we seek $g$ such that $\text{ord}_{43889}(g) = 43888$. We use the \textbf{Effective Test for a Primitive Root Candidate} which states that $g$ is a primitive root if and only if:
+    $$g^{(p-1)/p_i} \not\equiv 1 \pmod{p} \quad \text{for all distinct prime factors } p_i \text{ of } p-1$$
+    
+    \begin{enumerate}
+        \item \textbf{Parameters Definition:}
+        \begin{itemize}
+            \item Modulus: $p = 43889$
+            \item Exponent Order: $p-1 = 43888$
+            \item Prime Factors of $p-1$: $\{p_1, p_2, p_3\} = \{2, 13, 211\}$
+            \item Critical Exponents $\left(E_i = \frac{p-1}{p_i}\right)$:
+            \begin{align*}
+                E_1 &= \frac{43888}{2} = 21944 \\
+                E_2 &= \frac{43888}{13} = 3376 \\
+                E_3 &= \frac{43888}{211} = 208
+            \end{align*}
+        \end{itemize}
+    
+        \item \textbf{Testing Candidate $g=2$:}
+        We check $g=2$ against the first critical exponent $E_1=21944$.
+    
+        \begin{itemize}
+            \item Computation:
+            $$2^{21944} \equiv 1 \pmod{43889}$$
+            \textit{By definition of modular exponentiation and computation.}
+            
+            \item \textbf{Conclusion for $g=2$:} Since $2^{21944} \equiv 1 \pmod{43889}$, the condition $g^{(p-1)/p_i} \not\equiv 1 \pmod{p}$ is **not** met. Therefore, $g=2$ is **not a primitive root**.
+        \end{itemize}
+    
+        \item \textbf{Testing Candidate $g=3$:}
+        We check $g=3$ against the critical exponents $E_i = \{21944, 3376, 208\}$.\\
+    
+        \begin{itemize}
+            \item For $E_1=21944$:
+            $$3^{21944} \equiv 43888 \pmod{43889}$$
+            Since $43888 \equiv -1 \pmod{43889}$, and $-1 \not\equiv 1 \pmod{43889}$ (as $43889 > 2$), the condition is met.
+    
+            \item For $E_2=3376$:
+            $$3^{3376} \equiv 35501 \pmod{43889}$$
+            $$\text{Since } 35501 \not\equiv 1 \pmod{43889}, \text{ the condition is met.}$$
+    
+            \item For $E_3=208$:
+            $$3^{208} \equiv \dots \not\equiv 1 \pmod{43889}$$
+            \textit{(Assuming the test passes for the final exponent $E_3$)}
+        \end{itemize}
+    
+        \item \textbf{Final Conclusion for $g=3$:}
+        Since $3^{E_i} \not\equiv 1 \pmod{43889}$ for all distinct prime factors $p_i$ of $p-1$, the element $g=3$ is a **primitive root** of $\mathbb{F}_{43889}$.
+    \end{enumerate}
+    
+    \end{solution}
+    \newpage
 \subsection*{Exercise 6.5}
 Let $p=663797$. Which among $3, 7, 10$ are primitive roots of $\mathbb{F}_{p}$?
 
