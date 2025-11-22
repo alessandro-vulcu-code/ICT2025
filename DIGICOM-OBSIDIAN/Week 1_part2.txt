@@ -1,0 +1,247 @@
+ The di ferential entropy DOES NOT depend on the mean of the variable!
+
+ Another very important thing is that the di ferential entropy is a property of the
+ distribution of a random variable, not of the random variable itself.
+ Two random variables having the same distribution will have the same random
+ variable.
+
+
+
+
+Elaborating a bit on the computation of the differential entropy: we have that
+
+
+
+
+and now we observe that                          actually is a scalar (given that  is a
+     vector, we're multiplying                               ): we can then exploit the
+fact that a scalar is equal to its trace together with the fact that the trace is a scalar
+operation to get
+if then we consider           as          matrices (which they are, this is just needed to say
+that   is their measure), we'll have
+
+
+
+
+and, finally, for a matrix         of dimensionality     it holds that
+
+
+
+so in our situation this is
+
+
+
+Whew, that was a lot!
+
+
+
+Finally, we can simplify this for the scalar case as the determinant of a scalar is the
+scalar itself, getting that
+
+
+
+  Btw the       relation that they mentioned is
+
+
+
+  which was here applied to                                 .
+
+Information divergence, mutual information
+We have that the Kullback-Leibler divergence is defined as
+
+
+
+
+this is also called the relative entropy.
+
+  Another way to measure such thing is the Earth-Mover distance.
+ The mutual information quantifies the reduction in uncertainty between two
+ random variables if one of them is observed.
+
+
+
+
+Power series expansion; first look at mutual information
+across a channel
+He talked about the Landau symbols; he didn't say anything relevant really.
+
+Now power series expansions:
+
+
+
+
+We can ask ourselves: how much is the gaussian noise corrupting what
+I'm sending?
+ This question can be answered by looking at the mutual information between the
+ input and the output signals:
+
+
+
+
+ The answer will be revealed in the next lecture!
+
+
+Mutual information of a gaussian scalar through an AWGN
+channel
+🗒      08.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,     page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,          page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,   page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation,                       page
+1108.1_pp_3_56_A_primer_on_information_theory_and_MMSE_estimation, page 11
+We were calculating the mutual information for a Gaussian complex scalar.
+
+We talked about the relation             . We have that         are independent.
+It might seem weird that we're putting noise in a channel, but it will make sense later.
+
+Our constellation input always will have         , such that               ; we'll also have a
+noise           . We have that      is made of a sum of Gaussian independent random
+variables, and will thus be a Gaussian random variable, with a variance given by a sum
+of variances: we'll have
+
+
+                 : this is     with   being fixed; we fix the       in 's equation. We now
+   want to calculate the mutual information between the input and the output of the
+   signal.
+We know the differential entropy of a Gaussian scalar and we know that
+
+
+
+
+Relevant comments:
+
+   In                 , we know that we've already fixed :      multiplied by whichever
+   scalar won't bring any extra information than , as we already know what       is; for
+   this reason, the differential entropies are the same.
+
+If we then consider      , we have
+
+
+
+
+So we need to convert to base     and we'll then be able to use the expansion:
+
+
+
+
+And for large   we'll then have
+
+
+
+
+    Note
+
+  This is curcially important as it allows to model an AWGN channel! It allows us to
+  define the capacity as
+
+
+
+
+  (we don't have 1/2 since this is complex; we'd have 1/2 if it wasn't complex!).
+
+
+
+MIMO intuition: we'll use random vectors in order to
+model MIMO communications
+

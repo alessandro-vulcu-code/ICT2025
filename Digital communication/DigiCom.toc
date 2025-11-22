@@ -1,1 +1,17 @@
-\babel@toc {english}{}\relax 
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {chapter}{\numberline {1}Week 13-19 October}{5}{chapter.1}%
+\contentsline {subsection}{\numberline {1.0.1}Introduction}{5}{subsection.1.0.1}%
+\contentsline {subsection}{\numberline {1.0.2}Primer}{5}{subsection.1.0.2}%
+\contentsline {subsubsection}{Complex symmetric random variables, $\infty $-modulations}{5}{section*.2}%
+\contentsline {subsubsection}{Discrete entropy (basic, joint, conditional), proper signals (+example with the entropy of a Bernoulli random variable)}{8}{section*.7}%
+\contentsline {section}{\numberline {1.1}Entropy}{8}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Entropy of a discrete-time random variable}{8}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Joint Entropy}{8}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Conditional Entropy}{8}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Entropy Connections}{8}{subsection.1.1.4}%
+\contentsline {section}{\numberline {1.2}Example: Entropy of a Bernoulli Random Variable}{9}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Proper Complex Signals}{9}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Definition of Properness}{10}{subsection.1.3.1}%
+\contentsline {section}{\numberline {1.4}Entropy Rate}{10}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Differential Entropy}{10}{section.1.5}%

@@ -1,0 +1,224 @@
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.10.11)  22 NOV 2025 12:11
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**common_preamble
+(./common_preamble.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+
+./common_preamble.tex:4: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4 \usepackage[T1]{
+                    fontenc}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./common_preamble.tex:5: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5 \usepackage[utf8]{
+                      inputenc}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./common_preamble.tex:6: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 \usepackage[italian]{
+                         babel}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./common_preamble.tex:7: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7 \usepackage{
+                geometry}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+./common_preamble.tex:8: Undefined control sequence.
+l.8 \geometry
+             {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./common_preamble.tex:9: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.9     a
+         4paper,
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no a ("61) in font nullfont!
+Missing character: There is no 4 ("34) in font nullfont!
+Missing character: There is no p ("70) in font nullfont!
+Missing character: There is no a ("61) in font nullfont!
+Missing character: There is no p ("70) in font nullfont!
+Missing character: There is no e ("65) in font nullfont!
+Missing character: There is no r ("72) in font nullfont!
+Missing character: There is no , ("2C) in font nullfont!
+Missing character: There is no t ("74) in font nullfont!
+Missing character: There is no o ("6F) in font nullfont!
+Missing character: There is no p ("70) in font nullfont!
+Missing character: There is no = ("3D) in font nullfont!
+Missing character: There is no 2 ("32) in font nullfont!
+Missing character: There is no . ("2E) in font nullfont!
+Missing character: There is no 5 ("35) in font nullfont!
+Missing character: There is no c ("63) in font nullfont!
+Missing character: There is no m ("6D) in font nullfont!
+Missing character: There is no , ("2C) in font nullfont!
+Missing character: There is no b ("62) in font nullfont!
+Missing character: There is no o ("6F) in font nullfont!
+Missing character: There is no t ("74) in font nullfont!
+Missing character: There is no t ("74) in font nullfont!
+Missing character: There is no o ("6F) in font nullfont!
+Missing character: There is no m ("6D) in font nullfont!
+Missing character: There is no = ("3D) in font nullfont!
+Missing character: There is no 2 ("32) in font nullfont!
+Missing character: There is no . ("2E) in font nullfont!
+Missing character: There is no 5 ("35) in font nullfont!
+Missing character: There is no c ("63) in font nullfont!
+Missing character: There is no m ("6D) in font nullfont!
+Missing character: There is no , ("2C) in font nullfont!
+Missing character: There is no l ("6C) in font nullfont!
+Missing character: There is no e ("65) in font nullfont!
+Missing character: There is no f ("66) in font nullfont!
+Missing character: There is no t ("74) in font nullfont!
+Missing character: There is no = ("3D) in font nullfont!
+Missing character: There is no 3 ("33) in font nullfont!
+Missing character: There is no c ("63) in font nullfont!
+Missing character: There is no m ("6D) in font nullfont!
+Missing character: There is no , ("2C) in font nullfont!
+Missing character: There is no r ("72) in font nullfont!
+Missing character: There is no i ("69) in font nullfont!
+Missing character: There is no g ("67) in font nullfont!
+Missing character: There is no h ("68) in font nullfont!
+Missing character: There is no t ("74) in font nullfont!
+Missing character: There is no = ("3D) in font nullfont!
+Missing character: There is no 2 ("32) in font nullfont!
+Missing character: There is no c ("63) in font nullfont!
+Missing character: There is no m ("6D) in font nullfont!
+Missing character: There is no , ("2C) in font nullfont!
+Missing character: There is no h ("68) in font nullfont!
+Missing character: There is no e ("65) in font nullfont!
+Missing character: There is no a ("61) in font nullfont!
+Missing character: There is no d ("64) in font nullfont!
+Missing character: There is no h ("68) in font nullfont!
+Missing character: There is no e ("65) in font nullfont!
+Missing character: There is no i ("69) in font nullfont!
+Missing character: There is no g ("67) in font nullfont!
+Missing character: There is no h ("68) in font nullfont!
+Missing character: There is no t ("74) in font nullfont!
+Missing character: There is no = ("3D) in font nullfont!
+Missing character: There is no 1 ("31) in font nullfont!
+Missing character: There is no 4 ("34) in font nullfont!
+Missing character: There is no p ("70) in font nullfont!
+Missing character: There is no t ("74) in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 9--16
+[]
+ []
+
+
+./common_preamble.tex:18: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 \usepackage{
+                 amsmath}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./common_preamble.tex:19: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 \usepackage{
+                 amsfonts}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./common_preamble.tex:20: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 \usepackage{
+                 amssymb}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./common_preamble.tex:21: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.21 \usepackage{
+                 graphicx}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./common_preamble.tex:22: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \usepackage{
+                 hyperref} % Utile per link e indice
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+)
+! Emergency stop.
+<*> common_preamble
+                   
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 15 strings out of 468389
+ 300 string characters out of 5417210
+ 426345 words of memory out of 5000000
+ 28624 multiletter control sequences out of 15000+600000
+ 627721 words of font info for 40 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 15i,0n,20p,68b,18s stack positions out of 10000i,1000n,20000p,200000b,200000s
+No pages of output.
