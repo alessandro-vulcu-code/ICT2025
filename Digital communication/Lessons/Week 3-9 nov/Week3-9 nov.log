@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.10)  23 NOV 2025 16:53
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.10)  23 NOV 2025 18:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**DigiCom
-(./DigiCom.tex
+**"Week3-9 nov"
+(./Week3-9 nov.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/share/texmf-dist/tex/latex/base/book.cls
@@ -24,7 +24,7 @@ File: bk12.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen141
-) (./common_preamble.tex (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
+) (../../common_preamble.tex (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks17
 \inpenc@posthook=\toks18
@@ -846,33 +846,69 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \c@corollary=\count346
 \c@algorithm=\count347
 \c@lemma=\count348
-) (./DigiCom.aux)
-\openout1 = `DigiCom.aux'.
+) (/usr/share/texmf-dist/tex/latex/xcolor/x11nam.def
+File: x11nam.def 2024/09/29 v3.02 Predefined colors according to Unix/X11 (UK)
+) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.code.tex
+File: tikzlibraryshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows.code.tex
+File: pgflibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.callouts.code.tex (/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.callouts.code.tex)) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
+File: tikzlibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
+File: pgflibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodepartlowerbox=\box86
+\pgfnodeparttwobox=\box87
+\pgfnodepartthreebox=\box88
+\pgfnodepartfourbox=\box89
+\pgfnodeparttwentybox=\box90
+\pgfnodepartnineteenbox=\box91
+\pgfnodeparteighteenbox=\box92
+\pgfnodepartseventeenbox=\box93
+\pgfnodepartsixteenbox=\box94
+\pgfnodepartfifteenbox=\box95
+\pgfnodepartfourteenbox=\box96
+\pgfnodepartthirteenbox=\box97
+\pgfnodeparttwelvebox=\box98
+\pgfnodepartelevenbox=\box99
+\pgfnodeparttenbox=\box100
+\pgfnodepartninebox=\box101
+\pgfnodeparteightbox=\box102
+\pgfnodepartsevenbox=\box103
+\pgfnodepartsixbox=\box104
+\pgfnodepartfivebox=\box105
+))) (./Week3-9 nov.aux)
+\openout1 = `"Week3-9 nov.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-Package hyperref Info: Link coloring OFF on input line 16.
- (./DigiCom.out) (./DigiCom.out)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+Package hyperref Info: Link coloring OFF on input line 7.
+ (./Week3-9 nov.out) (./Week3-9 nov.out)
 \@outlinefile=\write4
-\openout4 = `DigiCom.out'.
+\openout4 = `"Week3-9 nov.out"'.
 
 
 *geometry* driver: auto-detecting
@@ -912,11 +948,12 @@ Package hyperref Info: Link coloring OFF on input line 16.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 Couldn't patch \deferred@thm@head!
-LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
+Chapter 1.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 12.
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 12.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -926,20 +963,19 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 
-[2
 
-] (./DigiCom.toc
-Overfull \hbox (15.33333pt too wide) in paragraph at lines 22--22
- [][] [][]\T1/lmr/m/n/12 Capacity of a chan-nel, in-for-ma-tion sta-bil-ity, spec-tral ef-fi-ciency (+code- 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[2]
+Overfull \hbox (18.824pt too wide) in paragraph at lines 168--168
+[][]\T1/lmr/bx/n/17.28 MMSE es-ti-ma-tor for a Com-plex Gaus-sian scalar through
  []
 
-)
-\tf@toc=\write5
-\openout5 = `DigiCom.toc'.
 
-
-
-[3] (./Lessons/Week 13-19 oct/Week13-19oct.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -948,19 +984,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4
+[3]
 
 
-]
-Chapter 1.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Overfull \hbox (0.2383pt too wide) in paragraph at lines 13--16
-[]\T1/lmr/bx/n/12 Channel mod-els\T1/lmr/m/n/12 : tak-ing ra-dio com-mu-ni-ca-tions and mak-ing a math-e-mat-i-cal model
- []
+[4]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [5]
+Underfull \vbox (badness 1292) has occurred while \output is active []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -970,9 +1018,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [6]
-Underfull \vbox (badness 5711) has occurred while \output is active []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -982,6 +1027,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [7]
+Underfull \vbox (badness 3635) has occurred while \output is active []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1000,10 +1048,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [9]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 389.
- (/usr/share/texmf-dist/tex/latex/amsfonts/ueuf.fd
-File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-)
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1013,12 +1057,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [10]
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 469.
- (/usr/share/texmf-dist/tex/latex/lm/t1lmss.fd
-File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Overfull \hbox (63.23412pt too wide) in paragraph at lines 471--472
-[][] 
+
+LaTeX Font Warning: Command \huge invalid in math mode on input line 531.
+
+
+Overfull \hbox (11.35396pt too wide) in paragraph at lines 562--562
+[][]\T1/lmr/bx/n/17.28 Extension (from ran-dom vari-ables to ran-dom pro-cesses) 
  []
 
 
@@ -1040,11 +1084,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [12]
-Overfull \hbox (4.2387pt too wide) in paragraph at lines 634--645
-[][][][][][] 
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1053,62 +1092,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[13]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 748.
- (/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Overfull \hbox (66.35631pt too wide) in paragraph at lines 750--750
-[]\T1/lmtt/m/n/10.95 Out[11]= f[0] + f'[0]x + 1/2 f''[0]x^2 + O[x]^3[] 
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[14]
-Overfull \hbox (10.06703pt too wide) in paragraph at lines 849--849
-[]\T1/lmr/bx/n/14.4 Mutual in-for-ma-tion of a Gaus-sian scalar through an AWGN
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[15]
-Overfull \hbox (5.03868pt too wide) in paragraph at lines 923--924
-[][][][] 
- []
-
-) (./Lessons/Week 27 oct - 2 nov/Week 27 oct - 2 nov.tex
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[16]
-Chapter 2.
-
-Overfull \hbox (7.83322pt too wide) in paragraph at lines 21--22
-[][][][][][][] 
- []
-
-
-
-[17
+[13
 
 ]
 
@@ -1119,10 +1103,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[18]
-Underfull \vbox (badness 1400) has occurred while \output is active []
+[14
 
-
+]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1131,9 +1114,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[19]
-Overfull \hbox (8.5784pt too wide) in paragraph at lines 231--231
-[]\T1/lmr/bx/n/17.28 Gaussian mu-tual in-for-ma-tion for an ar-bi-trary con-
+[15]
+Underfull \hbox (badness 1009) in paragraph at lines 793--795
+[]\T1/lmr/m/n/12 There are ways to ex-trap-o-late $\OML/cmm/m/it/12 y[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )$ \T1/lmr/m/n/12 and $\OML/cmm/m/it/12 y[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )$ \T1/lmr/m/n/12 us-ing per-ti-nent low pass fil-
+ []
+
+
+Underfull \hbox (badness 1342) in paragraph at lines 793--795
+\T1/lmr/m/n/12 ters, which need to be re-al-ized while know-ing the \T1/lmr/bx/n/12 car-rier fre-quency $\OML/cmm/m/it/12 f[]$\T1/lmr/m/n/12 :
  []
 
 
@@ -1145,9 +1133,61 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[20]
-File: Lessons/Week 27 oct - 2 nov/Pictures/image.png Graphic file (type bmp)
-<Lessons/Week 27 oct - 2 nov/Pictures/image.png>
+[16
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[17
+
+]
+File: pictures/image.png Graphic file (type bmp)
+<pictures/image.png>
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[18]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[19
+
+]
+File: pictures/image copy.png Graphic file (type bmp)
+<pictures/image copy.png>
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[20
+
+]
+Overfull \hbox (15.40974pt too wide) in paragraph at lines 1063--1063
+[][]\T1/lmr/bx/n/17.28 Time dis-cretiza-tion: dis-crete rep-re-sen-ta-tion of the chan-
+ []
+
 
 
 
@@ -1166,88 +1206,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[22]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[23]
-Overfull \hbox (19.99005pt too wide) in paragraph at lines 420--421
-[]\T1/lmr/m/n/12 This re-la-tion is say-ing that the in-for-ma-tion con-veyed by $\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 [0]\OML/cmm/m/it/12 ; [] ; y\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 N \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 1]$ \T1/lmr/m/n/12 about $\OML/cmm/m/it/12 s\OT1/cmr/m/n/12 [0]\OML/cmm/m/it/12 ; [] ; s\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 N \OMS/cmsy/m/n/12 ^^@
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[24]
-Underfull \vbox (badness 1430) has occurred while \output is active []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.85004pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.85004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-15.85004pt}.
-
-[25]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.85004pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.85004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-15.85004pt}.
-
-[26]
-Overfull \hbox (14.27896pt too wide) in paragraph at lines 683--685
-\T1/lmr/bx/n/12 pers/soft demap-pers \T1/lmr/m/n/12 gives the so-called \T1/lmr/bx/n/12 Bit-Interleaved Coded Mod-u-la-tion (BICM)
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.85004pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.85004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-15.85004pt}.
-
-[27
+[22
 
 ]
-File: Lessons/Week 27 oct - 2 nov/Pictures/image copy.png Graphic file (type bmp)
-<Lessons/Week 27 oct - 2 nov/Pictures/image copy.png>
+Underfull \hbox (badness 10000) in paragraph at lines 1167--1168
+[]\T1/lmr/m/n/12 Possible def-i-ni-tions of $\OML/cmm/m/it/12 g\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^\\OT1/cmr/m/n/12 )$ \T1/lmr/m/n/12 can be found from
+ []
 
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.85004pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.85004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-15.85004pt}.
-
-[28]
+Underfull \hbox (badness 10000) in paragraph at lines 1167--1168
+[]\T1/lmr/m/n/12 08.2_pp_57_130_A_signal_processing_perspective, page 13[] to
+ []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.85004pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.85004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-15.85004pt}.
-
-[29])
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1256,21 +1227,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[30] (./DigiCom.aux)
+[23
+
+] (./Week3-9 nov.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
-Package rerunfilecheck Info: File `DigiCom.out' has not changed.
-(rerunfilecheck)             Checksum: 177BD6D942BBD680413D8AFA1DC642BB;5675.
+Package rerunfilecheck Info: File `"Week3-9 nov".out' has not changed.
+(rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 36185 strings out of 475269
- 746860 string characters out of 5762100
- 1201688 words of memory out of 5000000
- 58396 multiletter control sequences out of 15000+600000
- 635949 words of font info for 132 fonts, out of 8000000 for 9000
+ 36916 strings out of 475269
+ 771987 string characters out of 5762100
+ 1228006 words of memory out of 5000000
+ 59123 multiletter control sequences out of 15000+600000
+ 618140 words of font info for 104 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 103i,18n,108p,1229b,1425s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 103i,18n,108p,1237b,1029s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on DigiCom.pdf (30 pages).
+Output written on Week3-9 nov.pdf (23 pages).

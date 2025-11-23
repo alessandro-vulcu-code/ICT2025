@@ -766,27 +766,4 @@ From what I gathered, an \textbf{interleaver} is such to scrumble bits in order 
 
 \colorbox{yellow}{The rest: didn't get it at all :D}
 
-\section{Spectral efficiency for finite-length codewords}
-
-We can reach the Shannon bound only by pushing $N$ to infinity; only if we're sending a \textit{really} long codeword can we reach the capacity. We'd need to wait a long time (an \textit{infinite} amount of time, I think) to fill that codeword and then we'd have to wait lots of latency in order to receive such a large signal.
-
-We can show that by using small (non infinite!) $N$ values, we don't reach the capacity and we can indeed show to which spectral efficiency we actually get!
-
-\begin{equation}
-\frac{R}{B} = C - \sqrt{\frac{V}{N}} Q^{-1}(p_e) + \mathcal{O}\left(\frac{\log N}{N}\right) \text{.} \tag{1.143}
-\end{equation}
-
-\textit{How below} we stay depends on $N, V, p_e$; we don't need to remember the capacity, but we do need to remember the fact that \textbf{it's lower when compared to the capacity}.
-
-Takeaway points are:
-\begin{enumerate}[label=\textcolor{gray}{\arabic*.}]
-    \item If the \textbf{block length} $N$ \textbf{increases}, we get closer to the \textbf{ideal} capacity
-    \item If the \textbf{probability of error decreases}, we get closer to the \textbf{ideal} capacity (since $p_e \downarrow \implies Q \uparrow \implies (1/Q) \downarrow$)
-    \item If the \textbf{information density has a lower variance} (totally intuitively, i.e. if input/output are more related), we get closer to the \textbf{ideal} capacity
-\end{enumerate}
-
-$V$ is the variance of the information density, defined as
-\begin{equation}
-V = \text{var}[i(s;y)] \text{.} \tag{1.144}
-\end{equation}
 \end{document}

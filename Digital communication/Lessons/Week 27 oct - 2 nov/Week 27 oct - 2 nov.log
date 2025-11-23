@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.10)  23 NOV 2025 16:39
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.10)  23 NOV 2025 17:15
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/home/alessandrovulcu/Documenti/Università/ICT/ICT2025/Digital communication/Lessons/Week 27 oct - 2 nov/Week 27 oct - 2 nov"
-(/home/alessandrovulcu/Documenti/Università/ICT/ICT2025/Digital communication/Lessons/Week 27 oct - 2 nov/Week 27 oct - 2 nov.tex
+**"Week 27 oct - 2 nov"
+(./Week 27 oct - 2 nov.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/share/texmf-dist/tex/latex/base/book.cls
@@ -598,7 +598,7 @@ Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.4.1'
 Package: standalone 2025/02/22 v1.5a Package to include TeX sub-files with preambles
  (/usr/share/texmf-dist/tex/latex/tools/shellesc.sty
 Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
-Package shellesc Info: Unrestricted shell escape enabled on input line 75.
+Package shellesc Info: Restricted shell escape enabled on input line 77.
 ) (/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
  (/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
@@ -1039,21 +1039,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                Make it at least 25.89253pt, for example:
+(fancyhdr)                \setlength{\headheight}{25.89253pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-13.89253pt}.
 
-[12]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[13] (./Week 27 oct - 2 nov.aux)
+[12] (./Week 27 oct - 2 nov.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
@@ -1062,12 +1053,12 @@ Package rerunfilecheck Info: File `"Week 27 oct - 2 nov".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 35363 strings out of 475269
- 730073 string characters out of 5762100
- 1197473 words of memory out of 5000000
- 57594 multiletter control sequences out of 15000+600000
+ 35358 strings out of 475269
+ 729652 string characters out of 5762100
+ 1197480 words of memory out of 5000000
+ 57590 multiletter control sequences out of 15000+600000
  619592 words of font info for 115 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 103i,18n,108p,1350b,1362s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 103i,18n,108p,1245b,1362s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Week 27 oct - 2 nov.pdf (13 pages).
+Output written on Week 27 oct - 2 nov.pdf (12 pages).
