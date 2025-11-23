@@ -1,9 +1,10 @@
 \documentclass[a4paper, 12pt]{book}
 \input{../../common_preamble}
 \usepackage[x11names]{xcolor}
+\usepackage{tikz}
 \usetikzlibrary{shapes,fit}
 \begin{document}
-\chapter{Week 13-19 October}
+\chapter[ ]{Week 13-19 October}
 \section{Introduction}
 In most of the course we'll handle wireless communications, as they're much more
 difficult than wired communications. In this course we'll stay at the physical layer.
@@ -155,18 +156,16 @@ The book also has \textbf{inf-PSK} and \textbf{inf-QAM}: We take the \textbf{nor
 It's a useful way to see what happens in the \textbf{asymptotic regime}.
 Also, the \textbf{PDF of a complex Gaussian variable exists} (see notes). \tikz[overlay, remember picture] \node (here) at (1.5, -0.5) {};
 
-\newpage
-
 \noindent
 If $\sigma^2$ is the variance, the \textit{Standard deviation} is $\sqrt{\sigma^2} = \sigma$
 
-%\vspace{1em}
+\vspace{0.5em}
 \noindent
 \begin{tikzpicture}[overlay, remember picture]
-    \draw[->, very thick] (0.5, 0) -- (0.5, -0.8);
+    \draw[->, very thick] (0.5, 0.9) -- (0.5, -0.8);
 \end{tikzpicture}
 
-\vspace{1.5em}
+\vspace{0.5em}
 \noindent
 \textbf{\underline{NOT}} $\pm\sigma^2!$
 
@@ -317,12 +316,11 @@ Properness is preserved by affine transformations. An intuitive reason why we co
     
     % Punti "Impropri" (Blu)
     \filldraw[cyan] (1,1) circle (2pt) node[above right] {$(1,1)$};
-    % Nota: il punto (-1,-1) è citato nella pagina successiva, ma lo disegno qui per completezza visiva rispetto agli appunti completi
-    \filldraw[cyan] (-1,-1) circle (2pt); 
+    \filldraw[cyan] (-1,-1) circle (2pt) node[below left] {$(-1,-1)$}; 
 \end{tikzpicture}
 \end{center}
 
-\clearpage
+\bigskip
 
 % ---------------------------------------------------------
 % PAGINA 2: Testo Formale e Note (Destra)
@@ -330,9 +328,8 @@ Properness is preserved by affine transformations. An intuitive reason why we co
 
 % Nota manuscritta in alto
 \noindent
-\textcolor{cyan}{$(-1, -1)$} \textbf{This is a fake complex variable; we want to avoid these cases.}
-\\
-\textcolor{pink}{\textit{$\rightarrow$ These two are}}
+$(-1, -1)$ \textbf{This is a fake complex variable; we want to avoid these cases.}
+
 
 \noindent\rule{\textwidth}{0.4pt} % Linea orizzontale separatrice
 
@@ -345,7 +342,7 @@ To elaborate further:
 
 A random variable (or a random process/random vector) is said to be proper complex if it satisfies \textbf{Properness}:
 
-\vspace{0.5em}
+\newpage
 \textbf{Properness}
 
 \vspace{0.5em}
@@ -419,10 +416,6 @@ It's easy to prove that a \textbf{Gaussian distribution maximizes the differenti
 
 The differential entropy of a $b$ bit quantization of a random variable $x$ is $h(x)+b$
 (what happens if we quantize more and more finely?)
-
-\begin{flushright}
-    \tikz[baseline] \draw[->, blue!70] (0,0.5) to[out=-90, in=90] (0.5,0); $h(x)+b$
-\end{flushright}
 
 If we discretize a variable in $b$ bits, then what we obtain is another random variable. What if we want to compute the differential entropy of that random variable?
 
@@ -527,12 +520,10 @@ h(x) = \mathbb{E}\left[ \frac{|x-\mu|^2}{\sigma^2} \log_2 e + \log_2 (\pi \sigma
 = \log_2 (\pi e \sigma^2).
 \]
 \begin{center}
-    (Scalar result)
+    (Scalar result) \\
+    \textbf{Equivalent scalar result}
 \end{center}
 
-\begin{quote}
-    \textbf{Equivalent scalar result}
-\end{quote}
 
 \vspace{1em}
 \hrule
@@ -570,20 +561,18 @@ Another very important thing is that the differential entropy is a property of t
 Two random variables having the same distribution will have the same random variable.
 
 % --- Schema R.V. ---
-\vspace{1em}
 \begin{center}
-    \Large $R.V.$ is a map \quad $\Omega \xrightarrow{\quad \quad} \mathcal{S}$
-    
-    \vspace{-0.5em}
-    \hspace{2cm} \textcolor{blue!70}{\small \textit{events}} \hspace{1cm} \textcolor{blue!70}{\small \textit{probability}}
-    \vspace{0.5em}
-    \begin{tikzpicture}[overlay]
-        \draw[->, blue!70] (-1.8, 0.5) -- (-1.8, -0.2); % arrow to events
-        \draw[->, blue!70] (1.2, 0.5) -- (1.2, -0.2); % arrow to probability
+    \begin{tikzpicture}
+        \node (text) at (0,0) {\Large $R.V.$ is a map};
+        \node (omega) at (2.5,0) {\Large $\Omega$};
+        \draw[->, thick] (3.0,0) -- (4.5,0);
+        \node (S) at (5.0,0) {\Large $\mathcal{S}$};
+        
+        \draw[->, blue!70] (omega.south) -- ++(0,-0.5) node[below] {\small \textit{events}};
+        \draw[->, blue!70] (S.south) -- ++(0,-0.5) node[below] {\small \textit{probability}};
     \end{tikzpicture}
 \end{center}
 
-\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}} % Dashed line simulated
 
 \vspace{1em}
 
@@ -631,6 +620,9 @@ so in our situation this is
 \noindent
 Whew, that was a lot!
 
+%linea di separazione
+\noindent\makebox[\linewidth]{\rule{19cm}{0.4pt}} % Dashed line simulated
+
 \vspace{1em}
 \noindent
 Finally, we can simplify this for the scalar case as the determinant of a scalar is the scalar itself, getting that
@@ -651,7 +643,7 @@ h(x) = \log_2(\pi e \sigma^2).
     \end{minipage}
 }
 
-\subsection{Information divergence, mutual information}
+\section{Information divergence, mutual information}
 
 We have that the Kullback-Leibler divergence is defined as
 \begin{equation}
@@ -718,7 +710,7 @@ He talked about the \colorbox{cyan!30}{Landau symbols}; he didn't say anything r
 
 \vspace{1em}
 
-\section*{{Power series expansions}}
+\subsection{{Power series expansions}}
 
 \noindent
 Useful means to approximate functions especially low or high SNR.

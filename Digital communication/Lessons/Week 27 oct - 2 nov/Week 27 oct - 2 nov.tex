@@ -1,7 +1,792 @@
-\documentclass[a4paper, 11pt]{article}
+\documentclass[a4paper, 11pt]{book}
 \input{../../common_preamble}
 
 \begin{document}
-    \setcounter{section}{1}
+\setcounter{chapter}{1}
+\chapter[ ]{Chapter 2 Week 27 October - 2 November}
+
+\section{MIMO Intution}
+We'll use random vectors in order to model MIMO communications
+Our book is \textbf{MIMO}! For a long time we had a setup with a transmitter and a receiver.
+
+People asked: what can we do in order to increase the \textbf{spectral efficiency} of our signals? The spectral efficiency is how many \textbf{bit/s/Hz} we can squeeze.
+
+\noindent
+\begin{minipage}{\linewidth}
+\colorbox{green!20}{
+\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}
+The spectral efficiency we've reached is between \textbf{1 and 5 bit/s/Hz}; we generally have \textbf{4 bit/s/Hz}.\\
+$B \cdot \nu$ is how many bits we can send ($B=\text{bandwidth}$, $\nu=\text{spectral efficiency}$).
+\end{minipage}
+}
+\end{minipage}
+\vspace{0.5em}
+
+What if we have \textbf{two antennas} at the transmitter and \textbf{two at the receiver}? It's been shown that by doing such, \textbf{it's like having twice the bandwidth}: this is the whole concept of \textbf{MIMO}.\\
+Of course we have to pay \textbf{double}.\\
+With two antennas we're transmitting two symbols, aka a \textbf{vector}:
+
+$$
+\left[
+\begin{array}{c}
+T_x \\
+\hline
+S_1 \\
+S_2
+\end{array}
+\right]
+$$
+
+And the received signal vector is:
+
+$$
+\left[
+\begin{array}{c}
+L_{RC} \\
+\hline
+y_1 \\
+y_2
+\end{array}
+\right] = A \left[
+\begin{array}{c}
+S_1 \\
+S_2
+\end{array}
+\right] + \left[
+\begin{array}{c}
+z_1 \\
+z_2
+\end{array}
+\right]
+$$
+
+\vspace{0.5em}
+We thus need to use \textbf{vectors}, we can't stay with \textbf{scalars}!
+
+\section[Mutual information of a gaussian vector through an AWGN channel]{Mutual information of a gaussian vector through an AWGN channel (+figure of noise)}
+
+Let's say we have a vector $\mathbf{s}$ and a matrix $\mathbf{A}$ (which is needed since every signal is communicating with each antenna!): \textbf{we're now in the MIMO setting}.\\
+We have a \textbf{Gaussian vector} $\mathbf{s}$, a \textbf{matrix} $\mathbf{A}$ and a \textbf{noise Gaussian vector} $\mathbf{z}$; we'll have an output
+
+$$
+\mathbf{y} = \sqrt{P_A} \mathbf{s} + \mathbf{z}\text{,}
+$$
+
+where $\mathbf{A}$ is considered \textbf{deterministic} (we'll see it's not really true), $\mathbf{z}$ is the \textbf{noise}, which originates from \textbf{thermal noise}: \textbf{electrons are not still}; the more we increase the temperature, the more \textbf{electrons move}; we want to transmit a certain voltage, but we'll measure a certain fluctuating value added to our transmitted signal: the \textbf{fluctuating addition comes from thermal noise}!
+
+\subsection{Noise figure}
+
+\begin{tcolorbox}[colframe=cyan!80!blue, colback=white, boxrule=1pt, arc=2pt]
+\textbf{$\bm{\nabla}$ Noise figure}
+
+What about \textbf{noise figure}?
+When we amplify a signal, do we pay a price? We're amplifying the noise as well, but we might amplify the noise more: the amplifier will add its own noise to the noise, which is $F$, the noise figure:
+\end{tcolorbox}
+\vspace{1em}
+
+% Conversione del disegno a mano in TikZ
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[>=latex, thick]
+        % Definizioni stili
+        \tikzstyle{amp} = [draw, regular polygon, regular polygon sides=3, rotate=-90, minimum height=1.5cm, fill=white]
+        
+        % --- Parte Sinistra (Input) ---
+        % Testo
+        \node[align=center] (in_text) at (0, 1) {\Large $x(t) + n(t)$};
+        % Onda piccola (segnale debole)
+        \draw[decorate, decoration={snake, amplitude=1.5mm, segment length=5mm, post length=2mm}] (-1.5, 0) -- (1.5, 0);
+        % Linea verso l'amplificatore
+        \draw[->] (1.5, 0) -- (2.5, 0);
+
+        % --- Parte Centrale (Amplificatore) ---
+        \node[amp] (A) at (3.5, 0) {\Large \rotatebox{90}{$A$}};
+
+        % --- Parte Destra (Output) ---
+        % Linea dall'amplificatore
+        \draw (4.5, 0) -- (5.5, 0);
+        
+        % Testo Output con F cerchiato
+        \node[align=center] (out_text) at (8, 1.5) {\Large $Ax(t) +$ \tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt] (char) {$F$};}$n(t)$};
+        
+        % Onda Grande (segnale amplificato) - Disegnata manualmente con curve di Bezier per simulare l'ampiezza maggiore
+        \draw[thick] (5.5,0) sin (6.25, 1) cos (7,0) sin (7.75,-1) cos (8.5,0) sin (9.25, 1) cos (10,0);
+
+    \end{tikzpicture}
+\end{figure}
+
+
+We now want to calculate the mutual information between source and output; the idea is the same, only with matrices and vectors; we have
+
+\begin{align}
+\mathcal{I}(\rho) &= I(\bm{s}; \sqrt{\rho}\bm{A}\bm{s} + \bm{z}) \tag{1.74} \\
+&= h(\sqrt{\rho}\bm{A}\bm{s} + \bm{z}) - h(\sqrt{\rho}\bm{A}\bm{s} + \bm{z} | \bm{s}) \tag{1.75} \\
+&= h(\sqrt{\rho}\bm{A}\bm{s} + \bm{z}) - h(\bm{z}) \tag{1.76} \\
+&= \log_2 \det(\pi e (\rho\bm{A}\bm{R}_s\bm{A}^* + \bm{R}_z)) - \log_2 \det(\pi e \bm{R}_z) \tag{1.77} \\
+&= \log_2 \det(\bm{I} + \rho\bm{A}\bm{R}_s\bm{A}^*\bm{R}_z^{-1}) \; , \tag{1.78}
+\end{align}
+
+with (1.77) following from the definition of \textcolor{green!60!black}{differential entropy of a gaussian vector}.
+The correlation matrix of $\sqrt{\rho}\bm{A}\bm{s}$ is $\rho\bm{A}\bm{R}_s\bm{A}^*$; we then have a sum, so we'll have $\bm{R}_z$.
+The fact that in the last passage (1.78) we have $\bm{R}_z$ at the denominator, means we'll be multiplying by $\bm{R}_z^{-1}$; this follows from the fact that
+
+$$
+\frac{\det(\bm{A})}{\det(\bm{B})} = \det(\bm{A}\bm{B}^{-1}) \; ,
+$$
+
+here applied with $\bm{A} = \rho\bm{A}\bm{R}_s\bm{A}^* + \bm{R}_z$ and $\bm{B} = \bm{R}_z$.
+% --- PRIMO RIQUADRO (VIOLA) ---
+\begin{tcolorbox}[colframe=violet!80!white, colback=white, boxrule=1pt, arc=2pt]
+    \textcolor{violet}{\textbf{\large $\boxtimes$ How do we know that $\sqrt{\rho}\bm{A}\bm{s} + \bm{z}$ is Gaussian?}}
+
+    I think the idea is that we can consider $\sqrt{\rho}\bm{A}\bm{s} + \bm{z}$ as a multiplication between the matrix
     
+    $$
+    [\sqrt{\rho}\bm{A} \quad 1]
+    $$
+    
+    and the vector
+    
+    $$
+    \begin{bmatrix}
+    \bm{s} \\
+    \bm{z}
+    \end{bmatrix},
+    $$
+    
+    which will result in a random vector with distribution
+    
+    $$
+    \sim \mathcal{N}_{\mathbb{C}} \left( [\sqrt{\rho}\bm{A} \quad 1] \cdot \begin{bmatrix} 0 \\ 0 \end{bmatrix}, [\sqrt{\rho}\bm{A} \quad 1] \cdot \begin{bmatrix} \bm{R}_s & 0 \\ 0 & \bm{R}_z \end{bmatrix} \cdot \begin{bmatrix} \sqrt{\rho}\bm{A}^* \\ 1 \end{bmatrix} \right),
+    $$
+    
+    according to
+    
+    % Sotto-sezione con linea verticale verde
+    \begin{tcolorbox}[frame empty, sharp corners, boxrule=0pt, leftrule=2pt, colframe=green!60!black, colback=white, left=5pt, top=0pt, bottom=0pt]
+        {\Large \textbf{Transformation of a Gaussian vector}}
+        
+        If we have:
+        \begin{itemize}[label=\textcolor{gray}{\textbullet}, leftmargin=*]
+            \item A Gaussian vector $\bm{x} \sim \mathcal{N}_{\mathbb{C}}(\bm{\mu}, \bm{\Sigma})$ of dimensions $N \times 1$,
+            \item a matrix $\bm{A}$ of dimensions $M \times N$
+            \item a vector $\bm{b}$ of dimensions $M \times 1$
+        \end{itemize}
+        
+        we have that the vector
+        
+        $$
+        \bm{y} = \bm{A}\bm{x} + \bm{b}
+        $$
+        
+        will be distributed according to
+        
+        $$
+        \bm{y} \sim \mathcal{N}_{\mathbb{C}}(\bm{A}\bm{\mu} + \bm{b}, \ \bm{A}\bm{\Sigma}\bm{A}^*)\text{.}
+        $$
+        
+        \vspace{0.5em}
+        \textcolor{red}{\small $\blacktriangleright$} Extension of \textcolor{green!60!black}{Uni generale}.
+    \end{tcolorbox}
+\end{tcolorbox}
+
+\vspace{1em}
+
+% --- SECONDO RIQUADRO (CIANO/TEAL) ---
+\begin{tcolorbox}[colframe=cyan, colback=white, boxrule=1pt, arc=2pt]
+    \textcolor{cyan}{\textbf{\large  \ Derivative of logarithm of determinant}} % Se non hai fontawesome usa un simbolo generico
+
+    In order to go on, we consider the following relations:
+    
+    \begin{align*}
+        \frac{\partial}{\partial \rho} \log_e \det(\bm{I} + \rho\bm{B}) \bigg|_{\rho=0} &= \text{tr}(\bm{B}) \\
+        \frac{\partial^2}{\partial \rho^2} \log_e \det(\bm{I} + \rho\bm{B}) \bigg|_{\rho=0} &= -\text{tr}(\bm{B}^2)
+    \end{align*}
+\end{tcolorbox}
+
+We can then apply some linear algebra: we'll get that for $\rho \to 0$ follows
+$$
+\mathcal{I}(\rho) = \left[ \text{tr}(\bm{A}\bm{R}_{\bm{s}}\bm{A}^*\bm{R}_{\bm{z}}^{-1})\rho - \frac{1}{2} \text{tr}((\bm{A}\bm{R}_{\bm{s}}\bm{A}^*\bm{R}_{\bm{z}}^{-1})^2)\rho^2 \right] \log_2 e + o(\rho^2)
+$$
+
+About this passage: it all depends on the fact that $\log \det$ is a \textbf{convex function}! We know the derivative of $\log \det$ and we're applying it to the fact that we're summing the eigenvalues: that's how we get the \textbf{trace}!
+
+% Riquadro verde per la nota/riferimento
+\begin{tcolorbox}[frame empty, sharp corners, boxrule=0pt, leftrule=2pt, colframe=green!60!black, colback=green!10, left=5pt, top=3pt, bottom=3pt]
+    Page \textbf{74} of a linear algebra book he recommended
+\end{tcolorbox}
+
+This is a very useful result!
+
+If $N_{\bm{s}}, N_{\bm{y}}$ are the dimensions of the vectors, for $\rho \to +\infty$ we get the result
+$$
+\mathcal{I}(\rho) = \min(N_{\bm{s}}, N_{\bm{y}}) \log_2 \rho + \log_2 \det(\bm{A}\bm{R}_{\bm{s}}\bm{A}^*\bm{R}_{\bm{z}}^{-1}) + O\left(\frac{1}{\rho}\right)
+$$
+
+% Riquadro verde per la nota del Professore
+\begin{tcolorbox}[frame empty, sharp corners, boxrule=0pt, leftrule=2pt, colframe=green!60!black, colback=green!10, left=5pt, top=3pt, bottom=3pt]
+    Professor said that this equation has a minor detail which is \textbf{wrong}, proceeded into not telling us what it was :D
+\end{tcolorbox}
+
+\section[Gaussian mutual info arbitrary const.]{Gaussian mutual information for an arbitrary constellation}
+
+Let's see the Gaussian mutual information for an arbitrary constellation.
+
+Let $\bm{s}$ be a zero-mean unit-variance discrete random variable taking values in $\bm{s}_0, \ldots, \bm{s}_{M-1}$ with probabilities $p_0, \ldots, p_{M-1}$. This subsumes \textbf{$M$-PSK}, \textbf{$M$-QAM}, and any other discrete constellation. The PDF of $\bm{y} = \sqrt{\rho}\bm{s} + \bm{z}$ equals
+\begin{align}
+f_{\bm{y}}(y) = \frac{1}{\sqrt{2\pi}} \sum_{m=0}^{M-1} p_m e^{-|y-\sqrt{\rho}\bm{s}_m|^2} \tag{1.65v}
+\end{align}
+
+whereas $y|\bm{s} \sim \mathcal{N}_{\mathbb{C}}( \sqrt{\rho}\bm{s}, 1)$. Thus,
+
+\begin{align}
+\mathcal{I}^{\text{aw}}(\rho) &= I(\bm{s}; \sqrt{\rho}\bm{s} + \bm{z}) \tag{1.66} \\
+&= -\int f_{\bm{y}}(y) \log_2 f_{\bm{y}}(y) \, \mathrm{d}y - \log_2(\pi e) \tag{1.67}
+\end{align}
+with integration over the complex plane.
+
+$$
+\mathcal{I}^{\text{aw}}_{\text{aw}}(\rho) = \log_2 M - \epsilon
+\quad
+\colorbox{green!40}{
+\begin{minipage}{3.5cm}
+\centering
+\small \textbf{Large a first order expansion}
+\end{minipage}}
+\quad
+\log_2 e = \frac{d^2_{\min}}{4} \rho + o(\rho)
+$$
+dove
+$$
+d_{\min} = \min_{k \neq l} |\bm{s}_k - \bm{s}_l|
+$$
+
+\vspace{1em}
+\textbf{Comments:}
+\begin{itemize}
+    \item In order to obtain (1.65) we used
+    $$
+    f_{\bm{y}}(y) = \sum_{m=0}^{M-1} f_{\bm{y}| \bm{s}}(y | \bm{s}_m) p_{\bm{s}}(\bm{s}_m)\text{,}
+    $$
+    with $p_{\bm{s}}(\bm{s}_m) = p_m$.
+    \item (1.67) is just $h(\bm{y}) - h(\bm{y}|\bm{s})$, considering that $\bm{y}|\bm{s}$ is a \textbf{Gaussian RV with variance 1} and thus $h(\bm{y}|\bm{s}) = h(\bm{z}) = \log_2(\pi e)$.
+    \item We don't see $\sigma^2$ since it's $\sigma^2_{\bm{z}} = 1$!
+    \item $\epsilon$ is first defined here
+\end{itemize}
+
+(1.66) is the definition of mutual information. Solving the integral is pretty difficult.
+
+What professor wants us to remember though is that
+$$
+\mathcal{I}^{\text{aw-ary}}(\rho) \xrightarrow{\rho \to +\infty} \log_2(M) - \epsilon\text{,}
+$$
+with
+$$
+\log_2(\epsilon) = \frac{d^2_{\min}}{4} \rho + o(\rho)
+$$
+intuitively, a constellation with $M$ points asymptotically gives $\log_2(M)$ bits of information per channel use; of course this is not the case and we need to lower that term using $\epsilon$, which brings us from the \textbf{best case scenario} to a more realistic case.
+
+\section{Mutual information of an encoded word}
+
+\subsection{\texorpdfstring{Theoretical treatment: results for generic $\bm{s}, \bm{\tilde{y}}$ (+for iid values and for a stationary channel)}{Theoretical treatment: results for generic s, y (for iid values and for a stationary channel)}}
+
+We have an abstraction of the communication link:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Pictures/image.png}
+    \caption{Abstraction of the communication link}
+    \label{fig:communication_link}
+\end{figure}
+
+We have an encoder, which maps a signal to a codebook with $2^{N_{\text{bits}}}$ words.
+We send a codeword of $N$ bits $x[n], n \in [0, N-1]$.
+We then send our signal through the channel, which is characterized by \textbf{noise}, \textbf{amplification}, \ldots; we'll receive a whole word $\bm{y}[n], n \in [0, N-1]$.
+If we want to calculate the \textbf{mutual information between input words and output words}, we need to use the \textbf{conditioned information function}, not the joint one: we know the probability of receiving a certain message $\bm{y} = [y[0], \ldots, y[N-1]]$ (as it is $f_{\bm{y}}$) when sending a certain $\bm{s} = [s[0], \ldots, s[N-1]]$ and we need to work with that!
+
+If we assume that the various symbols are \textbf{equiprobable}, we find that
+$$
+f_{\bm{y}}(\bm{Y}) = \sum_{m=0}^{2^{N_{\text{bits}}}-1} f_{\bm{y}|\bm{s}}(\bm{Y} | \bm{s}_m) p_{\bm{s}}(\bm{s}_m) \stackrel{\text{equiprobable } \bm{s}_m}{=} \sum_{m=0}^{2^{N_{\text{bits}}}-1} f_{\bm{y}|\bm{s}}(\bm{Y} | \bm{s}_m) \frac{1}{2^{N_{\text{bits}}}}
+$$
+and this enables us to write
+\begin{align}
+I(\bm{s}; \bm{y}) &= \mathcal{H}(\bm{y}) - \mathcal{H}(\bm{y}|\bm{s}) \tag{1.88} \\
+&= \mathbb{E}\left[ \log_2 \left( \frac{f_{\bm{y}|\bm{s}}(\bm{y}|\bm{s})}{f_{\bm{y}}(\bm{y})} \right) \right] \nonumber \\
+&= \mathbb{E}\left[ \log_2 \left( \frac{f_{\bm{y}|\bm{s}}(\bm{y}|\bm{s})}{\frac{1}{2^{N_{\text{bits}}}} \sum_{m=0}^{2^{N_{\text{bits}}}-1} f_{\bm{y}|\bm{s}}(\bm{Y}|\bm{s}_m)} \right) \right]\text{.} \tag{1.89}
+\end{align}
+
+If the channel is \textbf{memory-less} (which might not be true: $y[1]$ might depend on $y[0]$ etc etc), the mutual information of input and output is the \textbf{sum of mutual information of every couple of input and output}: we don't have vectors anymore (and we like this!).
+
+If this is the case, the channel law will factor out as
+$$
+f_{\bm{y}|\bm{s}}(\bm{y}|\bm{s}) = \prod_{n=0}^{N-1} f_{y[n]|s[n]}(y[n]|s[n])\text{.}
+$$
+
+with
+\begin{equation}
+I(s[n]; y[n]) = \mathbb{E}\left[ \log_2 \frac{f_{y[n]|s[n]}(y[n]|s[n])}{f_{y[n]}(y[n])} \right] \text{.} \tag{1.93}
+\end{equation}
+
+% Riquadro "Hidden message"
+\begin{tcolorbox}[colframe=teal!70!white, colback=white, boxrule=1pt, arc=2pt]
+    \textcolor{teal!70!white}{\textbf{ \ Hidden message}}
+    
+    Looks like one hidden message is that if the conditioned probability factorizes, we can easily rewrite the mutual information as a summation.
+    This follows from the fact that if the single elements are iid, then the expected value factorizes as well.
+\end{tcolorbox}
+
+\vspace{1em}
+
+If the channel is also \textcolor{green!60!black}{stationary}, we can simplify further, as all the symbols will have the same statistics: $s \equiv s[n] \ \forall n$ and $y \equiv y[n] \ \forall n$ will hold, and can write (1.93) as
+
+\begin{align}
+I(s; y) &= \mathbb{E}\left[ \log_2 \frac{f_{y|s}(y|s)}{f_y(y)} \right] \tag{1.94} \\
+&= \mathbb{E}\left[ \log_2 \frac{f_{y|s}(y|s)}{\sum_{m=0}^{M-1} f_{y|s}(y|s_m)p_m} \right] \text{,} \tag{1.95}
+\end{align}
+
+with $p_m$ being the probability that a symbol $s$ is $s_m$; we can of course further simplify this writing if we assume equiprobability, $p_m = 1/M$.
+
+% Riquadro Nota con linea laterale verde
+\begin{tcolorbox}[frame empty, sharp corners, boxrule=0pt, leftrule=2pt, colframe=green!60!black, colback=green!5, left=5pt, top=5pt, bottom=5pt]
+    This comes from the fact that any output does not store any information about any input other than the one which corresponds to it:
+    $$
+    I(s[k]; y[n]) = 
+    \begin{cases} 
+    0 & k \neq n \\
+    \text{Something} & \text{otherwise}
+    \end{cases} \text{.}
+    $$
+\end{tcolorbox}
+
+\section{Memoryless channel law with Gaussian noise}
+
+Let's see an example; if our output is defined as
+\begin{equation}
+y[n] = \sqrt{\rho}s[n] + z[n] \qquad n=0, \ldots, N-1 \tag{1.96}
+\end{equation}
+and we have that $z[0], \ldots, z[N-1]$ are IID with $z \sim \mathcal{N}_{\mathbb{C}}(0,1)$ the channel law will be the same as $z$, now centered in mean in the same value as the transmitted $s$:
+\begin{equation}
+f_{y|s}(y|s) = \frac{1}{\pi} e^{-|y-\sqrt{\rho}s|^2} \text{.} \tag{1.97}
+\end{equation}
+The channel law is the probability that we receive $y$ when we're transmitting $s$.
+
+\subsection{Capacity of a channel, information stability, spectral efficiency (+codeword error, information density)}
+
+We come to an extra important concept: \textbf{capacity}.
+We can express it in different ways; we'll see \textbf{bit/s}; when we'll put the symbols one after the other.
+% Riquadro verde in alto (continuazione o nota)
+\begin{tcolorbox}[frame empty, sharp corners, boxrule=0pt, leftrule=2pt, colframe=green!60!black, colback=green!5, left=5pt, top=3pt, bottom=3pt]
+Ideally we must study the book, in order to fully grasp these concepts
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+The \textbf{codeword error} probability for equiprobable words of length $N$ is
+$$
+p_e = \frac{1}{2^N} \sum_{m=0}^{2^N-1} P[\hat{w} \neq m | w=m] \;,
+$$
+where $w$ is the transmitted word and $\hat{w}$ is the received word.
+
+% Riquadro Blu: Capacity
+\begin{tcolorbox}[colframe=cyan!80!blue, colback=white, boxrule=1pt, arc=2pt]
+    \textcolor{cyan!80!blue}{\textbf{ Capacity (bits/symbol)}}
+
+    The capacity $C$ in bits per symbol is the highest rate that can be achieved such that for large values of $N$ we have
+    $$
+    p_e \stackrel{N \to +\infty}{\to} 0 \;.
+    $$
+\end{tcolorbox}
+
+\vspace{1em}
+
+The \textbf{information density} between an input word $\bar{\bm{s}}$ and an output word $\bar{\bm{y}}$ is defined as
+$$
+i(\bar{\bm{s}}; \bar{\bm{y}}) = \log_2 \left( \frac{f_{\bar{\bm{s}}, \bar{\bm{y}}}(\bar{\bm{S}}, \bar{\bm{Y}})}{f_{\bar{\bm{s}}}(\bar{\bm{S}}) f_{\bar{\bm{y}}}(\bar{\bm{Y}})} \right) \;.
+$$
+
+If the \textbf{channel} is \textbf{information stable}, then we have that
+$$
+\lim_{N \to +\infty} \frac{1}{N} i(\bar{\bm{s}}, \bar{\bm{y}}) = \lim_{N \to +\infty} \frac{1}{N} \mathbb{E}[i(\bar{\bm{s}}, \bar{\bm{y}})] \stackrel{*}{=} \lim_{N \to +\infty} \frac{1}{N} I(\bar{\bm{s}}, \bar{\bm{y}}) \;.
+$$
+
+% Riquadro Blu: Professor's definition
+\begin{tcolorbox}[colframe=blue!60!cyan, colback=white, boxrule=1pt, arc=2pt]
+    \textcolor{blue!80!cyan}{\textbf{ \ Professor's definition of information stable}}
+
+    A channel is information stable if the mutual information does not vary if we jump in the future or past; it's not taking the first symbols and conveying less information than the symbols coming in later.
+\end{tcolorbox}
+
+\vspace{1em}
+
+This relation is saying that the information conveyed by $y[0], \dots, y[N-1]$ about $s[0], \dots, s[N-1]$ is invariant, provided that $N$ is large enough
+
+$*$: note that, by \textcolor{green!60!black}{definition},
+$$
+\mathbb{E}[i(s;y)] = I(s;y) \;.
+$$
+
+\begin{tcolorbox}[colframe=cyan!80!blue, colback=white, boxrule=1pt, arc=2pt]
+    \textbf{Sufficient condition for information stability}
+
+    A sufficient condition for a channel to be information stable is that \textbf{the channel is stationary and ergodic} \textcolor{green!60!black}{(ref)}
+
+    \vspace{0.5em}
+
+    % Box Annidato
+    \begin{tcolorbox}[colframe=blue!60!cyan, colback=white, boxrule=1pt, arc=2pt]
+        \textbf{Ergodicity in mean}
+
+        We have a random process $x(n)$ and we know that $\mathbb{E}[x(n)] = B$.
+
+        A signal is \textbf{ergodic in mean} if
+        
+        $$
+        \lim_{N \to +\infty} \sum_{n=0}^{N-1} \frac{x(n)}{N} = B :
+        $$
+        
+        the average in time is the same as the average taken in the probability space
+    \end{tcolorbox}
+\end{tcolorbox}
+
+If the channel is stationary and ergodic, then
+$$
+C = \max_{\text{signal constraints}} \left( \lim_{N \to +\infty} \frac{1}{N} I(\bar{\bm{s}}, \bar{\bm{y}}) \right) \text{.}
+$$
+
+\begin{tcolorbox}[frame empty, sharp corners, boxrule=0pt, leftrule=2pt, colframe=green!60!black, colback=green!5, left=5pt, top=3pt, bottom=3pt]
+    The maximization is over the joint distribution of the unit-power codeword symbols $s[0], \dots, s[N-1]$.
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[colframe=cyan!80!blue, colback=white, boxrule=1pt, arc=2pt]
+    \textcolor{cyan!80!blue}{\textbf{Zero mean signals}}
+
+    The mean has no influence over the mutual information (and thus the capacity), but it does influence the average power spent for the transmission; for this reason, from now onwards, we'll only consider zero-mean signals.
+\end{tcolorbox}
+
+\vspace{1em}
+
+We want the codeword error probability to go to zero for long words.
+We define an \textbf{information stable channel}; we then have the information density: if it's information stable, the information density must become the mutual information for large Ns.
+The capacity is the \textbf{maximum mutual information which we can achieve by changing the distribution of the input signal}.
+We have very long codewords and we want the probability of error on the codeword to be as low as we want.
+
+\begin{tcolorbox}[frame empty, sharp corners, boxrule=0pt, leftrule=2pt, colframe=green!60!black, colback=green!5, left=5pt, top=3pt, bottom=3pt]
+    If we have a pipe, the capacity is how much water we can push through without losing any water
+\end{tcolorbox}
+
+In order to reach the capacity, what we can do is changing the input distribution of the symbols.
+
+If the channel is \textbf{static, memoryless and ergodic}, then we simply have
+$$
+C = \max_{\text{signal constraints}} I(s; y) \text{.}
+$$
+
+The bitrate $R$ at which we can reliably communicate with a period $T$ satisfies $R \le C/T$.
+From the sampling theorem we have $1/T \le B$, where $B$ is the passband bandwidth of our transmission. By joining the two conditions, we obtain that
+$$
+\underset{\nu, \text{ spectral efficiency}}{\frac{R}{B}} \le C \leftrightarrow \nu \le C \text{,}
+$$
+where $C$ uses the alternative measure bit/s/Hz and where the equality is reached asymptotically.
+
+\begin{tcolorbox}[frame empty, sharp corners, boxrule=0pt, leftrule=2pt, colframe=green!60!black, colback=green!5, left=5pt, top=3pt, bottom=3pt]
+    This is telling us that the capacity is not only the maximum bitrate, but also the maximum spectral capacity which we can reach.
+\end{tcolorbox}
+
+\vspace{0.2em}
+
+\begin{tcolorbox}[frame empty, sharp corners, boxrule=0pt, leftrule=2pt, colframe=green!60!black, colback=green!5, left=5pt, top=3pt, bottom=3pt]
+    The capacity involves searching in all the possible distributions, we'll always stay underneath it, and that's something we always need to take into account!
+\end{tcolorbox}
+
+\section{BICM architecture (actually: Information loss when assuming bit independence, interleavers, soft decoding)}
+
+From the book:
+In paragraphs \textbf{before 1.5.4}, the book showed that using \textbf{binary encoding} and \textbf{constellation mapping} together yields no loss of optimality. We can ask ourselves whether this also holds when we combine \textbf{soft demapping} and \textbf{binary decoding}.
+In order to investigate this, we consider a stationary and memoryless channel as well as an $M$-point equiprobable constellation.
+
+% Riquadro Giallo
+\begin{tcolorbox}[colframe=yellow!80!black, colback=yellow!10, boxrule=1pt, arc=2pt]
+   % \textbf{\faBook \ 08\_1\_p0\_3\_56\_A\_primer\_on\_information\_theory\_and\_MMSE\_estimation, page 28}
+
+    In this setting, codewords with IID entries are optimum and thus bits mapped to distinct symbols can be taken to be independent. However, \textbf{the channel does introduce dependencies among same-symbol bits}. Even with the coded bits produced by the binary encoder being statistically independent (as we know from \textit{past paragraphs}), after demapping at the receiver dependencies do exist among the soft values for bits that traveled on the same symbol. Unaware, a binary decoder designed for IID bits ignores these dependencies and regards the channel as being memoryless, not only at a symbol level but further at a bit level [91]. Let us see \textbf{how much information can be recovered under this premise}.
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+First of all, we look at the decoder counterpart of (1.94), (1.95),
+if the channel is also stationary, we can simplify further, as all the symbols will have the same statistics: $s \equiv s[n] \ \forall n$ and $y \equiv y[n] \ \forall n$ will hold, and can write (1.93) as
+\begin{align}
+I(s; y) &= \mathbb{E}\left[ \log_2 \frac{f_{y|s}(y|s)}{f_y(y)} \right] \tag{1.94} \\
+&= \mathbb{E}\left[ \log_2 \frac{f_{y|s}(y|s)}{\sum_{m=0}^{M-1} f_{y|s}(y|s_m)p_m} \right] \tag{1.95}
+\end{align}
+with $p_m$ being the probability that a symbol $s$ is $s_m$; we can of course further simplify this writing if we assume equiprobability, $p_m = 1/M$.
+, which is
+$$
+I^{\text{BICM}}_{\text{aw}} = \sum_{k=0}^{m_k-1} I(\bm{b}_k; \bm{y})
+$$
+after much hard work, we find that it is
+\begin{align}
+I^{\text{BICM}}_{\text{aw}} = \mathbb{E}_{\bm{y}} \left[ \sum_{k=1}^{m_k} \mathbb{E}_{\bm{s}} \left[ \log_2 \frac{\sum_{i=0}^{2^{m_k}-1} \mathbb{E}_{\bm{s}_{\setminus k}} [f_{\bm{y}|\bm{s}}(\bm{y}|\bm{s}_{i})]}{\sum_{i=0}^{2^{m_k}-1} f_{\bm{y}|\bm{s}}(\bm{y}|\bm{s}_i)} \right] \right] \tag{1.137}
+\end{align}
+---
+\clearpage % Forza l'inizio della seconda colonna/pagina per chiarezza
+
+where $\bm{s}[k]$ are the subsets of constellation points where $k$-th bit is either 0 or 1; just to give an example:
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        scale=0.6, 
+        >=latex,
+        dot/.style={circle, fill=black, inner sep=1.5pt} % Stile per i punti della costellazione
+    ]
+
+    % --- DEFINIZIONE COORDINATE 16-QAM ---
+    % Le coordinate standard sono +/-1, +/-3. Scaliamo per adattare al grafico.
+    % Definiamo macro per disegnare assi e punti specifici
+
+    % --- RIGA 1 ---
+    
+    % S_0^0 (Middle Horizontal Rows)
+    \begin{scope}[shift={(0,0)}]
+        \draw[->, gray] (-2.5,0) -- (2.5,0);
+        \draw[->, gray] (0,-2.5) -- (0,2.5);
+        \node at (0,-3) {$\mathcal{S}_0^0$};
+        % Punti: y = +/- 1 (righe centrali)
+        \foreach \x in {-1.5, -0.5, 0.5, 1.5} {
+            \foreach \y in {-0.5, 0.5} {
+                \node[dot] at (\x,\y) {};
+            }
+        }
+    \end{scope}
+
+    % S_1^0 (Outer Horizontal Rows)
+    \begin{scope}[shift={(5.5,0)}]
+        \draw[->, gray] (-2.5,0) -- (2.5,0);
+        \draw[->, gray] (0,-2.5) -- (0,2.5);
+        \node at (0,-3) {$\mathcal{S}_1^0$};
+        % Punti: y = +/- 3 (righe esterne)
+        \foreach \x in {-1.5, -0.5, 0.5, 1.5} {
+            \foreach \y in {-1.5, 1.5} {
+                \node[dot] at (\x,\y) {};
+            }
+        }
+    \end{scope}
+
+    % S_0^1 (Top Half)
+    \begin{scope}[shift={(11,0)}]
+        \draw[->, gray] (-2.5,0) -- (2.5,0);
+        \draw[->, gray] (0,-2.5) -- (0,2.5);
+        \node at (0,-3) {$\mathcal{S}_0^1$};
+        % Punti: y > 0
+        \foreach \x in {-1.5, -0.5, 0.5, 1.5} {
+            \foreach \y in {0.5, 1.5} {
+                \node[dot] at (\x,\y) {};
+            }
+        }
+    \end{scope}
+
+    % S_1^1 (Bottom Half)
+    \begin{scope}[shift={(16.5,0)}]
+        \draw[->, gray] (-2.5,0) -- (2.5,0);
+        \draw[->, gray] (0,-2.5) -- (0,2.5);
+        \node at (0,-3) {$\mathcal{S}_1^1$};
+        % Punti: y < 0
+        \foreach \x in {-1.5, -0.5, 0.5, 1.5} {
+            \foreach \y in {-0.5, -1.5} {
+                \node[dot] at (\x,\y) {};
+            }
+        }
+    \end{scope}
+
+
+    % --- RIGA 2 (Shift verticale -6.5) ---
+
+    % S_0^2 (Middle Vertical Columns)
+    \begin{scope}[shift={(0,-6.5)}]
+        \draw[->, gray] (-2.5,0) -- (2.5,0);
+        \draw[->, gray] (0,-2.5) -- (0,2.5);
+        \node at (0,-3) {$\mathcal{S}_0^2$};
+        % Punti: x = +/- 1 (colonne centrali)
+        \foreach \x in {-0.5, 0.5} {
+            \foreach \y in {-1.5, -0.5, 0.5, 1.5} {
+                \node[dot] at (\x,\y) {};
+            }
+        }
+    \end{scope}
+
+    % S_1^2 (Outer Vertical Columns)
+    \begin{scope}[shift={(5.5,-6.5)}]
+        \draw[->, gray] (-2.5,0) -- (2.5,0);
+        \draw[->, gray] (0,-2.5) -- (0,2.5);
+        \node at (0,-3) {$\mathcal{S}_1^2$};
+        % Punti: x = +/- 3 (colonne esterne)
+        \foreach \x in {-1.5, 1.5} {
+            \foreach \y in {-1.5, -0.5, 0.5, 1.5} {
+                \node[dot] at (\x,\y) {};
+            }
+        }
+    \end{scope}
+
+    % S_0^3 (Right Half) - Nota: Nel testo solitamente MSB definisce il quadrante, qui seguiamo l'immagine
+    \begin{scope}[shift={(11,-6.5)}]
+        \draw[->, gray] (-2.5,0) -- (2.5,0);
+        \draw[->, gray] (0,-2.5) -- (0,2.5);
+        \node at (0,-3) {$\mathcal{S}_0^3$};
+        % Punti: x > 0 (destra - nota: nell'immagine sono a destra)
+        \foreach \x in {0.5, 1.5} {
+            \foreach \y in {-1.5, -0.5, 0.5, 1.5} {
+                \node[dot] at (\x,\y) {};
+            }
+        }
+    \end{scope}
+
+    % S_1^3 (Left Half)
+    \begin{scope}[shift={(16.5,-6.5)}]
+        \draw[->, gray] (-2.5,0) -- (2.5,0);
+        \draw[->, gray] (0,-2.5) -- (0,2.5);
+        \node at (0,-3) {$\mathcal{S}_1^3$};
+        % Punti: x < 0 (sinistra)
+        \foreach \x in {-1.5, -0.5} {
+            \foreach \y in {-1.5, -0.5, 0.5, 1.5} {
+                \node[dot] at (\x,\y) {};
+            }
+        }
+    \end{scope}
+
+    \end{tikzpicture}
+    
+    \caption{Above, 16-QAM constellation with Gray mapping. Below, subsets $\mathcal{S}_0^\ell$ and $\mathcal{S}_1^\ell$ for $\ell=0,1,2,3$ with the bits ordered from right to left.}
+    \label{fig:16qam_subsets}
+\end{figure}
+With constellations such as BPSK and QPSK, where a single coded bit is mapped to the in-phase and quadrature dimensions of the constellation and thus \textbf{no dependencies among same-symbol coded bits}, we have that $\sum_k I(b_k; y) = I(\bm{s}; \bm{y})$, since the binary decoder is not disregarding information.
+Instead, \textbf{if the decoder disregards information} (acquiring information about other bits in the same symbol), the binary coding yields $\sum_k I(b_k; y) < I(\bm{s}; \bm{y})$.
+
+% Riquadro Skipped
+\begin{tcolorbox}[sharp corners, boxrule=0pt, leftrule=2pt, colframe=gray!60!black, colback=gray!10, left=5pt, top=3pt, bottom=3pt]
+    \textbf{Skipped}
+    
+    Several examples have been skipped: 1.20, 1.21, 1.22, 1.23
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+Anyhow, it's true that the difference between $\sum_k I(b_k; y)$ and $I(\bm{s}; \bm{y})$ is generally tiny, if the mapping of coded bits to constellation points is chosen wisely. An example of wise choice is \textbf{Gray mapping}, where neighboring constellation points only differ of one bit.
+
+\vspace{1em}
+
+There's just one missing thing in order to have a full information-theory representation of modern transmission systems, which is \textbf{interleaving}, which generally concerns shuffling either symbols or bits in an invertible manner.
+Although symbol-level interleaving would suffice to break off bursts of poor channel conditions, bit-level interleaving has the added advantage of shuffling also the bits contained in a given symbol; if the interleaving were deep enough to push any bit dependencies beyond the confines of each codeword, then the gap between $\sum_k \mathcal{I}(b_k; y|\bm{s})$ would be closed.
+It's true that interleaving has no effect when $N \to \infty$ and will thus have no effect on the mutual information calculations, but it's also true that it will improve the performance of actual codes with finite $N$.
+
+The usage of \textbf{binary coding/decoding}, \textbf{bit-level interleaving}, \textbf{constellation mappers/soft demappers} gives the so-called \textbf{Bit-Interleaved Coded Modulation (BICM)} architecture.
+BICM is information-theoretically equivalent to signal-space coding for BPSK and Gray-Mapped QPSK. For higher-order constellations, even if the dependencies among same symbol bits are not fully eradicated by interleaving and the receiver ignores them, it is only slightly inferior.
+
+\section*{In class:}
+
+What we usually do is that we have the input bits and we do \textbf{channel coding}; normally, channel coding is a \textbf{binary coding}.
+
+\begin{figure}[!h]
+    \centering
+        \includegraphics{Pictures/image copy.png}
+        \caption{Top: BICM Transmitter Chain. Bottom: BICM Receiver Chain with Soft Demapper and Decoder.}
+\end{figure}
+
+\vspace{1em}
+
+\textbf{Interleaver}: sometimes the channel does errors in bursts, (it might be in a bad condition, \ldots); in that situation, the decoder cannot work as we'd have a long string of errors.
+What we do is to scramble the bits; if we have a matrix of memory, we write the values in rows
+
+$$
+\begin{bmatrix}
+1 & 2 & 3 & 4 \\
+5 & 6 & 7 & 8 \\
+9 & 10 & 11 & 12 \\
+13 & 14 & 15 & 16
+\end{bmatrix}
+$$
+
+We read:
+\begin{align*}
+\xrightarrow{\hspace{2cm}} \quad & 1, 2, 3, 4, \\
+\xleftarrow{\hspace{2cm}} \quad & 8, 7, 6, 5, \\
+\xrightarrow{\hspace{2cm}} \quad & 9, 10, 11, 12, \\
+\xleftarrow{\hspace{2cm}} \quad & 16, 15, 14, 13
+\end{align*}
+
+And then:
+\begin{align*}
+\downarrow \quad & 1, 5, 9, 13, \\
+\downarrow \quad & 2, 6, 10, 14, \\
+\downarrow \quad & 3, 7, 11, 15, \\
+\downarrow \quad & 4, 8, 12, 16
+\end{align*}
+
+\vspace{0.5em}
+
+This way, bits which were close are now far apart, avoiding many consecutive errors; this is a simple interleaver!
+Then of course we'll do the reverse in the output.
+
+There are many ways to implement interleavers, of course.
+
+% Riquadro Giallo - L-value
+\begin{tcolorbox}[colframe=yellow!80!black, colback=yellow!10, boxrule=1pt, arc=2pt]
+
+    A positive \textbf{L-value} indicates that the bit in question is more likely to be a 1 than a 0, and vice versa for a negative value, with the magnitude indicating the confidence of the decision.
+
+    For a certain bit $b$, we define the \textbf{L-value} as
+    $$
+    L(b) = \log \frac{P(b=1)}{P(b=0)}
+    $$
+    such that if $L(b) > 0$, it's more likely that we have $b=1$ and if $L(b) < 0$ it's more likely that we have $b=0$.
+    The bigger the magnitude, the more certain we are about our result.
+\end{tcolorbox}
+
+At page 25 of the book, this concept is applied to an actual message, in the form of a \textbf{soft decoder}.
+
+This thing we've just described (together with many other much more complex things handled from page 25 to page 30) is what is called an "A Posteriori Probability" decoder or "\textbf{APP}" decoder for short.
+
+\begin{tcolorbox}[colframe=yellow!90!orange, colback=white, boxrule=1pt, arc=2pt]
+    \textcolor{green!60!black}{\small \textbf{page 28}}
+
+    \begin{tcolorbox}[frame empty, sharp corners, boxrule=0pt, leftrule=2pt, colframe=green!60!black, colback=green!5, left=5pt, top=3pt, bottom=3pt]
+    Whichever the type of code, the sign of the L-values generated by an APP decoder for the message bits directly gives the MAP decisions
+    \end{tcolorbox}
+    
+    \small APP decoders are indeed really cool.
+\end{tcolorbox}
+
+Let's say we transmit bits; we have a system which gives us values between -1 and 1; the closer we are to 1, the more we're sure that the value will be 1; the closer we are to -1, the more we're sure the value will be 0.
+We then use the sign function and we have back the binary values.
+
+\begin{tcolorbox}[frame hidden, sharp corners, boxrule=0pt, leftrule=2pt, colframe=green!60!black, colback=green!5, left=5pt, top=3pt, bottom=3pt]
+From what I gathered, an \textbf{interleaver} is such to scrumble bits in order to remove dependency between bits.
+\end{tcolorbox}
+
+\colorbox{yellow}{The rest: didn't get it at all :D}
+
+\section{Spectral efficiency for finite-length codewords}
+
+We can reach the Shannon bound only by pushing $N$ to infinity; only if we're sending a \textit{really} long codeword can we reach the capacity. We'd need to wait a long time (an \textit{infinite} amount of time, I think) to fill that codeword and then we'd have to wait lots of latency in order to receive such a large signal.
+
+We can show that by using small (non infinite!) $N$ values, we don't reach the capacity and we can indeed show to which spectral efficiency we actually get!
+
+\begin{equation}
+\frac{R}{B} = C - \sqrt{\frac{V}{N}} Q^{-1}(p_e) + \mathcal{O}\left(\frac{\log N}{N}\right) \text{.} \tag{1.143}
+\end{equation}
+
+\textit{How below} we stay depends on $N, V, p_e$; we don't need to remember the capacity, but we do need to remember the fact that \textbf{it's lower when compared to the capacity}.
+
+Takeaway points are:
+\begin{enumerate}[label=\textcolor{gray}{\arabic*.}]
+    \item If the \textbf{block length} $N$ \textbf{increases}, we get closer to the \textbf{ideal} capacity
+    \item If the \textbf{probability of error decreases}, we get closer to the \textbf{ideal} capacity (since $p_e \downarrow \implies Q \uparrow \implies (1/Q) \downarrow$)
+    \item If the \textbf{information density has a lower variance} (totally intuitively, i.e. if input/output are more related), we get closer to the \textbf{ideal} capacity
+\end{enumerate}
+
+$V$ is the variance of the information density, defined as
+\begin{equation}
+V = \text{var}[i(s;y)] \text{.} \tag{1.144}
+\end{equation}
 \end{document}

@@ -5,24 +5,28 @@
 \usepackage[english]{babel} % Ho cambiato in italian, supponendo che la maggior parte del testo sia in italiano
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{bm} % For bold math symbols (\bm command)
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{geometry}
-\usepackage{fontspec} % Utile per Xetex/LuaLaTeX ma mantenuto
+% \usepackage{fontspec} % Utile per Xetex/LuaLaTeX ma mantenuto - COMMENTED OUT: only works with XeLaTeX/LuaLaTeX
 \usepackage{booktabs}
 \usepackage{amsthm}
 \usepackage{enumitem}
 \usepackage{caption}
 \usepackage{thmtools}
+\usepackage[skins]{tcolorbox} % For colored boxes
 \usepackage{standalone} % Già presente nel tuo elenco
-\usepackage{tkz-euclide}
+\usepackage{tkz-euclide} % Questo carica TikZ
+\usetikzlibrary{fit} % Necessaria per l'opzione fit
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.pathmorphing} % For snake decoration used in TikZ
 \usepackage{graphicx}
 \usepackage[T1]{fontenc}
-\usepackage{wesa}
-
 % --- PACCHETTI AGGIUNTI PER LA FORMATTAZIONE ---
 \usepackage{parskip}  % Aggiunge spazio tra i paragrafi (stile "blocco")
 \usepackage{fancyhdr} % Per intestazioni e piè di pagina personalizzati
+
 
 % --- IMPOSTAZIONI GEOMETRIA E FONT ---
 \geometry{a4paper, margin=1in}
