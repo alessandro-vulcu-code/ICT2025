@@ -4,8 +4,10 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,fit}
 \usepackage{amsmath} % Required for align environment
-\begin{document}
 
+
+\begin{document}
+\setcounter{chapter}{2}
 \chapter[ ]{Week 13-19 October}
 \section{Spectral efficiency for finite-length codewords}
 
@@ -40,7 +42,7 @@ This is a really cool result, as it allows us to understand how far away we are 
     The sections published on the website are the program for the exam.
 \end{tcolorbox}
 
-\section*{MMSE estimation}
+\section{MMSE estimation}
 
 \noindent
 \textcolor{green!60!black}{Ref: \hfill Chapter\_1\_EE\_381S\_Spg\_2019,}\\
@@ -53,7 +55,7 @@ This is a really cool result, as it allows us to understand how far away we are 
     18th, 19th of 20th of November (and even more), professor will be in Paris. We'll have 3 extra dates, probably wed 16:30-18:30. We'll be able to find all the information about this on elearning.
 \end{tcolorbox}
 
-\subsection*{Intro to MMSE estimation, scalar estimator (and the properties an estimator should have)}
+\subsection{Intro to MMSE estimation, scalar estimator (and the properties an estimator should have)}
 
 Today we'll do Minimum Mean Squared Error Estimation: MMSE estimation.
 This is something between telecommunications and control engineering.
@@ -165,7 +167,7 @@ And what actually is the MMSE (until now we've only seen the estimator!)? It's t
 \end{equation}
 In this equation it's important to look at the fact that the MMSE is only dependent on $\rho$.
 
-\section*{MMSE estimator for a Complex Gaussian scalar through a channel}
+\subsection{MMSE estimator for a Complex Gaussian scalar through a channel}
 
 Let's say we have $y = \sqrt{\rho}s + z$ with
 $$
@@ -309,7 +311,7 @@ This means that if $\rho$ is big, the error becomes smaller, which is what we ex
 If we have low noise, we expect to have no error.
 With a SNR of 0 (no signal, all error), we have an error of 1.
 
-\section*{Vectorial estimator}
+\subsection{Vectorial estimator}
 
 Let's reformulate for vectors:
 \begin{equation}
@@ -334,7 +336,7 @@ We have another assumption, that the SNR is the same for every signal in our vec
 
 The matrix $\bm{E}$ is a matrix which in the main diagonal will have for a vector $\bm{s} = (s_1, s_2, \dots, s_n)$ that the $j,j$ element will give $\bm{E}_{jj} = \text{MSE}(s_j)$.
 
-\section*{MMSE estimator for a Complex Gaussian vector representing a channel}
+\subsection{MMSE estimator for a Complex Gaussian vector representing a channel}
 
 Example of estimation of a vector Gaussian: we have $\bm{s} \sim \mathcal{N}_{\mathbb{C}}(\bm{0}, \bm{R}_{\bm{s}})$ and $\bm{z} \sim \mathcal{N}_{\mathbb{C}}(\bm{0}, \bm{I})$, for a channel expressed as $\bm{y} = \sqrt{\rho}\bm{A}\bm{s} + \bm{z}$.
 
@@ -390,7 +392,7 @@ Thanks to the matrix inversion lemma, we find something which is pretty similar 
     Wrt the book, we're only missing the expansion of the error matrix for low-SNR.
 \end{tcolorbox}
 
-\section*{I-MMSE relationship in Gaussian noise}
+\section{I-MMSE relationship in Gaussian noise}
 
 A relation has been found around 20 years ago between information theory (I) and estimation theory (MMSE)!
 
@@ -446,7 +448,7 @@ which indeed equals $\rho \bm{A} \bm{E}$ with $\bm{E} = (\bm{R}_{\bm{s}}^{-1} + 
 
 We can conclude that the expression also works for vectors!
 
-\section*{LMMSE for random variables}
+\section{LMMSE for random variables}
 
 % Riquadro Viola: Disclaimer
 \begin{tcolorbox}[colframe=violet!60!white, colback=white, boxrule=1pt, arc=2pt]
@@ -559,7 +561,7 @@ with (1.243) following from the facts that:
     \end{align}
 \end{itemize}
 
-\section*{Extension (from random variables to random processes)}
+\section{Extension (from random variables to random processes)}
 
 If we extend this to random processes, the relation in that case is
 $$
@@ -660,11 +662,11 @@ we've thus proven the orthogonality principle.
 \vspace{0.5em}
 \noindent \textbf{\large Chapter 2}
 
-\section*{Signal processing}
+\section{Signal processing}
 
 \textcolor{green!60!black}{Book reference: 08.2\_pp\_57\_138\_A\_signal\_processing\_perspective.}
 
-\subsection*{Introduction}
+\subsection{Introduction}
 
 We'll look at chapter two, which looks at the DSP perspective; until now we've only looked at information theory and MSE theory; we also saw that the two theories can be related: these are the foundations!
 
@@ -684,7 +686,7 @@ Highlights:
 
 We'll see that channels are estimated using what we'll call \textit{pilots}.
 
-\section*{Passband signal, in-phase/in-quadrature components}
+\section{Passband signal, in-phase/in-quadrature components}
 
 We normally transmit waveforms characterized by a signal of voltage $x_p(t)$, applied to the antenna. This signal is generally passband, in the sense that in the frequency domain most of its energy is concentrated around a \textbf{carrier frequency} $f_c$.
 
@@ -806,7 +808,7 @@ Wireless communications systems send and receive passband signals; those signals
 
 What we generally do is to take signals in baseband and then we scale them.
 
-\section*{Random digression on why radio doesn't transmit on baseband and on ADSL}
+\subsection{Random digression on why radio doesn't transmit on baseband and on ADSL}
 
 \begin{tcolorbox}[frame hidden, sharp corners, boxrule=0pt, leftrule=2pt, colframe=green!60!black, colback=green!5, left=5pt, top=3pt, bottom=3pt]
     Why are radio signals not transmitted in baseband?
@@ -835,7 +837,7 @@ The telephone hybrid allows us to go from 2 to 4 wires.
 
 With ADSL we have something like FDMA; we have frequencies up to 4KHz and such (this generally applies to voices; instruments and such will have higher frequencies but we don't really care lol).
 
-\section*{Random digression on FDD (Frequency Division Duplex) and TDD (Time Divison Duplex)}
+\subsection{Random digression on FDD (Frequency Division Duplex) and TDD (Time Divison Duplex)}
 
 FDD and TDD.
 When we're transmitting with a radio in SISO, we have an antenna transmitting and an antenna receiving.
@@ -898,7 +900,7 @@ The problem is that the received signal is much smaller than the transmitted; it
 
 Full duplex is now being researched: with full duplex, we use the same frequencies and we transmit in the same time slot.
 
-\section*{Complex baseband channel response}The channel for wireless transmission can be modeled as a LTI channel.
+\section{Complex baseband channel response}The channel for wireless transmission can be modeled as a LTI channel.
 
 If we have a description of the response of the channel to a passband signal, we denote it as
 $$
@@ -1006,7 +1008,7 @@ The figure shows filtering with passband signals:
 response}
 \end{figure}
 
-\section*{Q paths complex baseband equivalent}
+\section{Q paths complex baseband equivalent}
 
 Let's look at an example in which we have an antenna and a phone; we'll experience different delays $\tau_q$ and different gains $A_q$ for each path followed by the signal:
 
@@ -1060,7 +1062,7 @@ We can obtain the complex baseband channel response from the complex pseudo-base
 c_b(\tau) = [g_{B/2} * c](\tau) \;. \tag{2.25}
 \end{equation}
 
-\section*{Time discretization: discrete representation of the channel $c[\ell]$ (+critical sampling)}
+\section[Time discretization]{Time discretization: discrete representation of the channel $c[\ell]$ (+critical sampling)}
 
 Since the channels are bandlimited, we can sample with a period $T \le 1/B$ (equality is what we'll call \textit{critical sampling}) and discretize the input and the channel.
 
@@ -1126,7 +1128,7 @@ What's important here is that we'll forget about the continuous time domain and 
     Commercial systems also feature analog-to-digital and digital-to-analog converters with finite precision. Normally, perfect conversion is assumed in the design stages and then the required tolerances are investigated after the fact via simulation. Quantization and reconstruction errors are not part of the models in this text.
 \end{tcolorbox}
 
-\section*{Idea of pulse shaping: from a digital signal $x[n]$ to an analog signal}
+\section[Pulse shaping: from digital signal to an analog]{Idea of pulse shaping: from a digital signal $x[n]$ to an analog signal}
 
 Pulse shaping: the book mentions it, but it's not really important.
 
@@ -1169,7 +1171,7 @@ g(\tau) = [g_{tx} * g_{rx}](\tau) \;. \tag{2.42}
     \hfill \textcolor{red}{\Large Week 17 Nov - 23 Nov} % O semplicemente textcolor{red}{Week 17 Nov...} se non hai font speciali
 \end{tcolorbox}
 
-\section*{Channel models (frequency selective, FIR, flat channel); channel normalization and average symbol energy; vector representation of a SISO FIR channel}
+\section[Channel models]{Channel models (frequency selective, FIR, flat channel); channel normalization and average symbol energy; vector representation of a SISO FIR channel}
 
 An important thing is the normalization of the channel; people normally make lots of mistakes about this.
 
