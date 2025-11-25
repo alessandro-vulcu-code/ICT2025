@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  24 NOV 2025 16:00
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  25 NOV 2025 13:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1131,7 +1131,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [18]
-Underfull \vbox (badness 1400) has occurred while \output is active []
+Underfull \vbox (badness 1616) has occurred while \output is active []
 
 
 
@@ -1207,65 +1207,72 @@ Underfull \vbox (badness 1430) has occurred while \output is active []
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.85004pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.85004pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-15.85004pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [25]
 
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.85004pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.85004pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-15.85004pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [26]
-Overfull \hbox (14.27896pt too wide) in paragraph at lines 683--685
+Overfull \hbox (14.27896pt too wide) in paragraph at lines 681--683
 \T1/lmr/bx/n/12 pers/soft demap-pers \T1/lmr/m/n/12 gives the so-called \T1/lmr/bx/n/12 Bit-Interleaved Coded Mod-u-la-tion (BICM)
  []
 
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.85004pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.85004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-15.85004pt}.
-
-[27
-
-]
 File: Lessons/Week 27 oct - 2 nov/Pictures/image copy.png Graphic file (type bmp)
 <Lessons/Week 27 oct - 2 nov/Pictures/image copy.png>
 
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.85004pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.85004pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-15.85004pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[27]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [28]) (./Lessons/Week 3-9 nov/Week3-9 nov.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.85004pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.85004pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-15.85004pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [29]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.85004pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.85004pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-15.85004pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [30
 
@@ -1740,7 +1747,7 @@ Overfull \hbox (2.2481pt too wide) in paragraph at lines 930--930
  []
 
 
-Underfull \vbox (badness 2689) has occurred while \output is active []
+Underfull \vbox (badness 2452) has occurred while \output is active []
 
 
 
@@ -1850,15 +1857,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
-Package rerunfilecheck Info: File `DigiCom.out' has not changed.
-(rerunfilecheck)             Checksum: E1C83712A0640CC35CBDAED2989E0AAB;13212.
+
+
+Package rerunfilecheck Warning: File `DigiCom.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `DigiCom.out':
+(rerunfilecheck)             Before: E1C83712A0640CC35CBDAED2989E0AAB;13212
+(rerunfilecheck)             After:  022A2768842A54C6064E6925AE25AEC4;12731.
  ) 
 Here is how much of TeX's memory you used:
- 39682 strings out of 475269
- 807184 string characters out of 5762100
- 1255132 words of memory out of 5000000
- 61836 multiletter control sequences out of 15000+600000
- 650852 words of font info for 139 fonts, out of 8000000 for 9000
+ 39690 strings out of 475269
+ 807304 string characters out of 5762100
+ 1255138 words of memory out of 5000000
+ 61837 multiletter control sequences out of 15000+600000
+ 650860 words of font info for 140 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  103i,18n,108p,1229b,1425s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
