@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.10)  23 NOV 2025 16:33
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  25 NOV 2025 13:09
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/home/alessandrovulcu/Documenti/Università/ICT/ICT2025/Digital communication/Lessons/Week 13-19 oct/Week13-19oct"
-(/home/alessandrovulcu/Documenti/Università/ICT/ICT2025/Digital communication/Lessons/Week 13-19 oct/Week13-19oct.tex
+**Week13-19oct
+(./Week13-19oct.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/share/texmf-dist/tex/latex/base/book.cls
@@ -598,7 +598,7 @@ Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.4.1'
 Package: standalone 2025/02/22 v1.5a Package to include TeX sub-files with preambles
  (/usr/share/texmf-dist/tex/latex/tools/shellesc.sty
 Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
-Package shellesc Info: Unrestricted shell escape enabled on input line 75.
+Package shellesc Info: Restricted shell escape enabled on input line 77.
 ) (/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
  (/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
@@ -839,7 +839,16 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthC=\skip71
 \f@nch@widthR=\skip72
 \@temptokenb=\toks53
-)
+) (/usr/share/texmf-dist/tex/latex/fontawesome5/fontawesome5.sty
+Package: fontawesome5 2022/05/02 v5.15.4 Font Awesome 5
+ (/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
+) (/usr/share/texmf-dist/tex/latex/fontawesome5/fontawesome5-utex-helper.sty
+Package: fontawesome5-utex-helper 2022/05/02 v5.15.4 uTeX helper for fontawesome5
+LaTeX Font Info:    Trying to load font information for TU+fontawesomefree on input line 69.
+ (/usr/share/texmf-dist/tex/latex/fontawesome5/tufontawesomefree.fd)
+LaTeX Font Info:    Trying to load font information for TU+fontawesomebrands on input line 70.
+ (/usr/share/texmf-dist/tex/latex/fontawesome5/tufontawesomebrands.fd)))
 \c@theorem=\count343
 \c@definition=\count344
 \c@proposition=\count345
@@ -1114,12 +1123,12 @@ Package rerunfilecheck Info: File `Week13-19oct.out' has not changed.
 (rerunfilecheck)             Checksum: B954D4B8D6830A5E8411B07FF9AAE305;2069.
  ) 
 Here is how much of TeX's memory you used:
- 37490 strings out of 475269
- 784309 string characters out of 5762100
- 1224910 words of memory out of 5000000
- 59684 multiletter control sequences out of 15000+600000
- 632934 words of font info for 131 fonts, out of 8000000 for 9000
+ 39108 strings out of 475269
+ 805118 string characters out of 5762100
+ 1249062 words of memory out of 5000000
+ 61279 multiletter control sequences out of 15000+600000
+ 632958 words of font info for 134 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 103i,15n,108p,1338b,860s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 103i,15n,108p,1236b,860s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on Week13-19oct.pdf (12 pages).

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.10)  23 NOV 2025 17:15
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  25 NOV 2025 13:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -839,7 +839,16 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthC=\skip71
 \f@nch@widthR=\skip72
 \@temptokenb=\toks53
-)
+) (/usr/share/texmf-dist/tex/latex/fontawesome5/fontawesome5.sty
+Package: fontawesome5 2022/05/02 v5.15.4 Font Awesome 5
+ (/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
+) (/usr/share/texmf-dist/tex/latex/fontawesome5/fontawesome5-utex-helper.sty
+Package: fontawesome5-utex-helper 2022/05/02 v5.15.4 uTeX helper for fontawesome5
+LaTeX Font Info:    Trying to load font information for TU+fontawesomefree on input line 69.
+ (/usr/share/texmf-dist/tex/latex/fontawesome5/tufontawesomefree.fd)
+LaTeX Font Info:    Trying to load font information for TU+fontawesomebrands on input line 70.
+ (/usr/share/texmf-dist/tex/latex/fontawesome5/tufontawesomebrands.fd)))
 \c@theorem=\count343
 \c@definition=\count344
 \c@proposition=\count345
@@ -1003,13 +1012,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 25.89253pt, for example:
-(fancyhdr)                \setlength{\headheight}{25.89253pt}.
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-13.89253pt}.
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [9]
-Overfull \hbox (6.906pt too wide) in paragraph at lines 683--685
+Overfull \hbox (6.906pt too wide) in paragraph at lines 681--683
 []\T1/lmr/m/n/10.95 The us-age of \T1/lmr/bx/n/10.95 bi-nary cod-ing/decoding\T1/lmr/m/n/10.95 , \T1/lmr/bx/n/10.95 bit-level in-ter-leav-ing\T1/lmr/m/n/10.95 , \T1/lmr/bx/n/10.95 con-stel-la-tion map-pers/soft
  []
 
@@ -1019,30 +1028,28 @@ File: Pictures/image copy.png Graphic file (type bmp)
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 25.89253pt, for example:
-(fancyhdr)                \setlength{\headheight}{25.89253pt}.
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-13.89253pt}.
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[10
-
-]
+[10]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 25.89253pt, for example:
-(fancyhdr)                \setlength{\headheight}{25.89253pt}.
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-13.89253pt}.
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [11]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 25.89253pt, for example:
-(fancyhdr)                \setlength{\headheight}{25.89253pt}.
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-13.89253pt}.
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [12] (./Week 27 oct - 2 nov.aux)
  ***********
@@ -1053,11 +1060,11 @@ Package rerunfilecheck Info: File `"Week 27 oct - 2 nov".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 35358 strings out of 475269
- 729652 string characters out of 5762100
- 1197480 words of memory out of 5000000
- 57590 multiletter control sequences out of 15000+600000
- 619592 words of font info for 115 fonts, out of 8000000 for 9000
+ 36981 strings out of 475269
+ 750795 string characters out of 5762100
+ 1219739 words of memory out of 5000000
+ 59185 multiletter control sequences out of 15000+600000
+ 619616 words of font info for 118 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  103i,18n,108p,1245b,1362s stack positions out of 10000i,1000n,20000p,200000b,200000s
 

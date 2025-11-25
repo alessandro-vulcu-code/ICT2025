@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  24 NOV 2025 15:59
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  25 NOV 2025 08:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1173,7 +1173,7 @@ Overfull \hbox (2.2481pt too wide) in paragraph at lines 930--930
  []
 
 
-Underfull \vbox (badness 2689) has occurred while \output is active []
+Underfull \vbox (badness 2452) has occurred while \output is active []
 
 
 
@@ -1287,8 +1287,8 @@ Package rerunfilecheck Info: File `"Week17-23 Nov".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 40273 strings out of 475269
- 828585 string characters out of 5762100
+ 40275 strings out of 475269
+ 828595 string characters out of 5762100
  1316959 words of memory out of 5000000
  62449 multiletter control sequences out of 15000+600000
  633335 words of font info for 123 fonts, out of 8000000 for 9000

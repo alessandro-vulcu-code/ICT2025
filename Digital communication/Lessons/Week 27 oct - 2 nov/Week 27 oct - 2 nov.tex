@@ -77,7 +77,7 @@ where $\mathbf{A}$ is considered \textbf{deterministic} (we'll see it's not real
 \subsection{Noise figure}
 
 \begin{tcolorbox}[colframe=cyan!80!blue, colback=white, boxrule=1pt, arc=2pt]
-\textbf{$\bm{\nabla}$ Noise figure}
+\textbf{\small \faIcon{pen} Noise figure}
 
 What about \textbf{noise figure}?
 When we amplify a signal, do we pay a price? We're amplifying the noise as well, but we might amplify the noise more: the amplifier will add its own noise to the noise, which is $F$, the noise figure:
@@ -137,7 +137,7 @@ $$
 here applied with $\bm{A} = \rho\bm{A}\bm{R}_s\bm{A}^* + \bm{R}_z$ and $\bm{B} = \bm{R}_z$.
 % --- PRIMO RIQUADRO (VIOLA) ---
 \begin{tcolorbox}[colframe=violet!80!white, colback=white, boxrule=1pt, arc=2pt]
-    \textcolor{violet}{\textbf{\large $\boxtimes$ How do we know that $\sqrt{\rho}\bm{A}\bm{s} + \bm{z}$ is Gaussian?}}
+    \textcolor{violet}{\textbf{\small \faIcon{book} How do we know that $\sqrt{\rho}\bm{A}\bm{s} + \bm{z}$ is Gaussian?}}
 
     I think the idea is that we can consider $\sqrt{\rho}\bm{A}\bm{s} + \bm{z}$ as a multiplication between the matrix
     
@@ -194,7 +194,7 @@ here applied with $\bm{A} = \rho\bm{A}\bm{R}_s\bm{A}^* + \bm{R}_z$ and $\bm{B} =
 
 % --- SECONDO RIQUADRO (CIANO/TEAL) ---
 \begin{tcolorbox}[colframe=cyan, colback=white, boxrule=1pt, arc=2pt]
-    \textcolor{cyan}{\textbf{\large  \ Derivative of logarithm of determinant}} % Se non hai fontawesome usa un simbolo generico
+    \textcolor{cyan}{\textbf{\small \faIcon{tasks} Derivative of logarithm of determinant}} % Se non hai fontawesome usa un simbolo generico
 
     In order to go on, we consider the following relations:
     
@@ -328,7 +328,7 @@ I(s[n]; y[n]) = \mathbb{E}\left[ \log_2 \frac{f_{y[n]|s[n]}(y[n]|s[n])}{f_{y[n]}
 
 % Riquadro "Hidden message"
 \begin{tcolorbox}[colframe=teal!70!white, colback=white, boxrule=1pt, arc=2pt]
-    \textcolor{teal!70!white}{\textbf{ \ Hidden message}}
+    \textcolor{teal!70!white}{\textbf{\faIcon{bookmark} Hidden message}}
     
     Looks like one hidden message is that if the conditioned probability factorizes, we can easily rewrite the mutual information as a summation.
     This follows from the fact that if the single elements are iid, then the expected value factorizes as well.
@@ -388,7 +388,7 @@ where $w$ is the transmitted word and $\hat{w}$ is the received word.
 
 % Riquadro Blu: Capacity
 \begin{tcolorbox}[colframe=cyan!80!blue, colback=white, boxrule=1pt, arc=2pt]
-    \textcolor{cyan!80!blue}{\textbf{ Capacity (bits/symbol)}}
+    \textcolor{cyan!80!blue}{\textbf{\faIcon{atom} Capacity (bits/symbol)}}
 
     The capacity $C$ in bits per symbol is the highest rate that can be achieved such that for large values of $N$ we have
     $$
@@ -410,7 +410,7 @@ $$
 
 % Riquadro Blu: Professor's definition
 \begin{tcolorbox}[colframe=blue!60!cyan, colback=white, boxrule=1pt, arc=2pt]
-    \textcolor{blue!80!cyan}{\textbf{ \ Professor's definition of information stable}}
+    \textcolor{blue!80!cyan}{\textbf{\small \faIcon{chalkboard-teacher} Professor's definition of information stable}}
 
     A channel is information stable if the mutual information does not vary if we jump in the future or past; it's not taking the first symbols and conveying less information than the symbols coming in later.
 \end{tcolorbox}
@@ -425,7 +425,7 @@ $$
 $$
 
 \begin{tcolorbox}[colframe=cyan!80!blue, colback=white, boxrule=1pt, arc=2pt]
-    \textbf{Sufficient condition for information stability}
+    \textbf{\small \faIcon{atom} Sufficient condition for information stability}
 
     A sufficient condition for a channel to be information stable is that \textbf{the channel is stationary and ergodic} \textcolor{green!60!black}{(ref)}
 
@@ -433,7 +433,7 @@ $$
 
     % Box Annidato
     \begin{tcolorbox}[colframe=blue!60!cyan, colback=white, boxrule=1pt, arc=2pt]
-        \textbf{Ergodicity in mean}
+        \textbf{\small \faIcon{pen} Ergodicity in mean}
 
         We have a random process $x(n)$ and we know that $\mathbb{E}[x(n)] = B$.
 
@@ -459,7 +459,7 @@ $$
 \vspace{0.5em}
 
 \begin{tcolorbox}[colframe=cyan!80!blue, colback=white, boxrule=1pt, arc=2pt]
-    \textcolor{cyan!80!blue}{\textbf{Zero mean signals}}
+    \textcolor{cyan!80!blue}{\textbf{\small \faIcon{pen} Zero mean signals}}
 
     The mean has no influence over the mutual information (and thus the capacity), but it does influence the average power spent for the transmission; for this reason, from now onwards, we'll only consider zero-mean signals.
 \end{tcolorbox}
@@ -499,7 +499,7 @@ where $C$ uses the alternative measure bit/s/Hz and where the equality is reache
     The capacity involves searching in all the possible distributions, we'll always stay underneath it, and that's something we always need to take into account!
 \end{tcolorbox}
 
-\section{BICM architecture (actually: Information loss when assuming bit independence, interleavers, soft decoding)}
+\section[BICM architecture]{BICM architecture (actually: Information loss when assuming bit independence, interleavers, soft decoding)}
 
 From the book:
 In paragraphs \textbf{before 1.5.4}, the book showed that using \textbf{binary encoding} and \textbf{constellation mapping} together yields no loss of optimality. We can ask ourselves whether this also holds when we combine \textbf{soft demapping} and \textbf{binary decoding}.
@@ -507,7 +507,7 @@ In order to investigate this, we consider a stationary and memoryless channel as
 
 % Riquadro Giallo
 \begin{tcolorbox}[colframe=yellow!80!black, colback=yellow!10, boxrule=1pt, arc=2pt]
-   % \textbf{\faBook \ 08\_1\_p0\_3\_56\_A\_primer\_on\_information\_theory\_and\_MMSE\_estimation, page 28}
+    \textbf{\faIcon{marker} A primer on information theory and MMSE estimation (pp. 3-56), p. 28}
 
     In this setting, codewords with IID entries are optimum and thus bits mapped to distinct symbols can be taken to be independent. However, \textbf{the channel does introduce dependencies among same-symbol bits}. Even with the coded bits produced by the binary encoder being statistically independent (as we know from \textit{past paragraphs}), after demapping at the receiver dependencies do exist among the soft values for bits that traveled on the same symbol. Unaware, a binary decoder designed for IID bits ignores these dependencies and regards the channel as being memoryless, not only at a symbol level but further at a bit level [91]. Let us see \textbf{how much information can be recovered under this premise}.
 \end{tcolorbox}
@@ -529,8 +529,6 @@ after much hard work, we find that it is
 \begin{align}
 I^{\text{BICM}}_{\text{aw}} = \mathbb{E}_{\bm{y}} \left[ \sum_{k=1}^{m_k} \mathbb{E}_{\bm{s}} \left[ \log_2 \frac{\sum_{i=0}^{2^{m_k}-1} \mathbb{E}_{\bm{s}_{\setminus k}} [f_{\bm{y}|\bm{s}}(\bm{y}|\bm{s}_{i})]}{\sum_{i=0}^{2^{m_k}-1} f_{\bm{y}|\bm{s}}(\bm{y}|\bm{s}_i)} \right] \right] \tag{1.137}
 \end{align}
----
-\clearpage % Forza l'inizio della seconda colonna/pagina per chiarezza
 
 where $\bm{s}[k]$ are the subsets of constellation points where $k$-th bit is either 0 or 1; just to give an example:
 
