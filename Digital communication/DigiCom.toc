@@ -56,3 +56,12 @@
 \contentsline {section}{\numberline {4.8}Applying precoding}{67}{section.4.8}%
 \contentsline {section}{\numberline {4.9}Signal power constraints}{69}{section.4.9}%
 \contentsline {section}{\numberline {4.10}Vectorizing the channel}{70}{section.4.10}%
+\contentsline {chapter}{\numberline {5} }{73}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Linear channel equalization}{73}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Introduction: super basic block scheme}{73}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Feedback equalizer}{73}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Linear zero forcing equalization}{74}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Moore-Penrose pseudo-inverse}{78}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Actually finding the MIMO zero forcing equalizer}{79}{section.5.3}%
+\contentsline {section}{\numberline {5.4}MIMO Degrees of Freedom and ZF Equalization}{83}{section.5.4}%
+\contentsline {section}{\numberline {5.5}LMMSE equalization}{84}{section.5.5}%
