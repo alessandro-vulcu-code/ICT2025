@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  26 NOV 2025 12:23
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  26 NOV 2025 15:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -848,7 +848,9 @@ Package: fontawesome5-utex-helper 2022/05/02 v5.15.4 uTeX helper for fontawesome
 LaTeX Font Info:    Trying to load font information for TU+fontawesomefree on input line 69.
  (/usr/share/texmf-dist/tex/latex/fontawesome5/tufontawesomefree.fd)
 LaTeX Font Info:    Trying to load font information for TU+fontawesomebrands on input line 70.
- (/usr/share/texmf-dist/tex/latex/fontawesome5/tufontawesomebrands.fd)))
+ (/usr/share/texmf-dist/tex/latex/fontawesome5/tufontawesomebrands.fd))) (/usr/share/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+)
 \c@theorem=\count343
 \c@definition=\count344
 \c@proposition=\count345
@@ -1286,14 +1288,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `"Lesson 25-11-2025".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 38936 strings out of 475269
- 798908 string characters out of 5762100
- 1256705 words of memory out of 5000000
- 61091 multiletter control sequences out of 15000+600000
+ 38974 strings out of 475269
+ 799735 string characters out of 5762100
+ 1256094 words of memory out of 5000000
+ 61126 multiletter control sequences out of 15000+600000
  630606 words of font info for 128 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  103i,23n,108p,1243b,1380s stack positions out of 10000i,1000n,20000p,200000b,200000s

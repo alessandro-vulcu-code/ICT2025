@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  26 NOV 2025 12:23
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  26 NOV 2025 15:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -848,7 +848,9 @@ Package: fontawesome5-utex-helper 2022/05/02 v5.15.4 uTeX helper for fontawesome
 LaTeX Font Info:    Trying to load font information for TU+fontawesomefree on input line 69.
  (/usr/share/texmf-dist/tex/latex/fontawesome5/tufontawesomefree.fd)
 LaTeX Font Info:    Trying to load font information for TU+fontawesomebrands on input line 70.
- (/usr/share/texmf-dist/tex/latex/fontawesome5/tufontawesomebrands.fd)))
+ (/usr/share/texmf-dist/tex/latex/fontawesome5/tufontawesomebrands.fd))) (/usr/share/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+)
 \c@theorem=\count343
 \c@definition=\count344
 \c@proposition=\count345
@@ -1414,9 +1416,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[44
-
-]
+[44]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1426,17 +1426,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [45]
-Underfull \hbox (badness 1009) in paragraph at lines 795--797
+Underfull \hbox (badness 1009) in paragraph at lines 786--788
 []\T1/lmr/m/n/12 There are ways to ex-trap-o-late $\OML/cmm/m/it/12 y[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )$ \T1/lmr/m/n/12 and $\OML/cmm/m/it/12 y[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )$ \T1/lmr/m/n/12 us-ing per-ti-nent low pass fil-
  []
 
 
-Underfull \hbox (badness 1342) in paragraph at lines 795--797
+Underfull \hbox (badness 1342) in paragraph at lines 786--788
 \T1/lmr/m/n/12 ters, which need to be re-al-ized while know-ing the \T1/lmr/bx/n/12 car-rier fre-quency $\OML/cmm/m/it/12 f[]$\T1/lmr/m/n/12 :
  []
 
 
-Overfull \hbox (1.64182pt too wide) in paragraph at lines 811--811
+Overfull \hbox (1.64182pt too wide) in paragraph at lines 802--802
 []\T1/lmr/bx/n/14.4 Random di-gres-sion on why ra-dio doesn't trans-mit on base-
  []
 
@@ -1520,17 +1520,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [52
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1169--1170
+Underfull \hbox (badness 10000) in paragraph at lines 1160--1161
 []\T1/lmr/m/n/12 Possible def-i-ni-tions of $\OML/cmm/m/it/12 g\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^\\OT1/cmr/m/n/12 )$ \T1/lmr/m/n/12 can be found from
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1169--1170
+Underfull \hbox (badness 10000) in paragraph at lines 1160--1161
 []\T1/lmr/m/n/12 08.2_pp_57_130_A_signal_processing_perspective, page 13[] to
  []
 
 
-Overfull \hbox (16.37166pt too wide) in paragraph at lines 1174--1174
+Overfull \hbox (16.37166pt too wide) in paragraph at lines 1165--1165
 \T1/lmr/bx/n/17.28 chan-nel); chan-nel nor-mal-iza-tion and av-er-age sym-
  []
 
@@ -2157,10 +2157,10 @@ Package rerunfilecheck Info: File `DigiCom.out' has not changed.
 (rerunfilecheck)             Checksum: 818F4589975CFE4D7156C7A99968C1B0;14576.
  ) 
 Here is how much of TeX's memory you used:
- 40026 strings out of 475269
- 812878 string characters out of 5762100
- 1256382 words of memory out of 5000000
- 62143 multiletter control sequences out of 15000+600000
+ 40063 strings out of 475269
+ 813701 string characters out of 5762100
+ 1256758 words of memory out of 5000000
+ 62178 multiletter control sequences out of 15000+600000
  659355 words of font info for 156 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  103i,22n,108p,1229b,1461s stack positions out of 10000i,1000n,20000p,200000b,200000s

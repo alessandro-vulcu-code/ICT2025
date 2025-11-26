@@ -116,7 +116,7 @@ This is the feedback equalizer:
     % Nodi
     \node [block] (eq) {EQ};
     \node [block, right of=eq, node distance=2cm] (dec) {dec};
-    \node [right of=dec, node distance=1.5cm] (out) {$\hat{x}(0), \hat{x}(1)$};
+    \node [right of=dec, node distance=2cm] (out) {$\hat{x}(0), \hat{x}(1)$};
 
     % Collegamenti
     \draw [->] (eq) -- (dec);
@@ -497,9 +497,9 @@ Taking the already known concept of inversion, we have that:
     \[ \boldsymbol{A}^{\dagger} = \boldsymbol{A}^{-1} \,. \]
 \end{itemize}
 
-\faExclamationTriangle\ The right inverse and the left inverse are not the same!\\
-\faExclamationTriangle\ This only holds if the matrix is \textbf{full-rank} (which is then the reason why we ask that the $\boldsymbol{H}$ matrix is full-rank).\\
-We'll use this a lot in the course.
+\textcolor{red}{\faExclamationTriangle\ The right inverse and the left inverse are not the same!}\\
+\textcolor{red}{\faExclamationTriangle\ This only holds if the matrix is \textbf{full-rank} (which is then the reason why we ask that the $\boldsymbol{H}$ matrix is full-rank).}\\
+\textcolor{red}{We'll use this a lot in the course.}
 
 Another point is that if we remember the \textbf{singular value decomposition}, then we have
 \begin{align*}
@@ -730,7 +730,7 @@ One important thing which was overlooked (until here) is that this comes as a so
 \noindent
 \colorbox{obsidianBlue}{%
     \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
-    \textcolor{obsidianTextBlue}{\textbf{\faCogs\ $\mathbf{W}^{ZF}$}}
+    \textcolor{obsidianTextBlue}{\textbf{\faAtom\ $\mathbf{W}^{ZF}$}}
     
     The $\mathbf{W}^{ZF}$ matrix is defined as
     \[ \mathbf{W}^{ZF} = [\bar{\mathbf{w}}_0^{ZF} \quad \dots \quad \bar{\mathbf{w}}_{N_t-1}^{ZF}] \,, \]
@@ -743,7 +743,7 @@ One important thing which was overlooked (until here) is that this comes as a so
 \noindent
 \colorbox{obsidianBlue}{%
     \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
-    \textcolor{obsidianTextBlue}{\textbf{\faCube\ $\bar{\mathbf{D}}$}}
+    \textcolor{obsidianTextBlue}{\textbf{\faAtom $\bar{\mathbf{D}}$}}
     
     Matrix $\bar{\mathbf{D}}$ is defined as
     \[ \bar{\mathbf{D}} = [\bar{\mathbf{d}}_0 \quad \dots \quad \bar{\mathbf{d}}_{N_t-1}] \,, \]

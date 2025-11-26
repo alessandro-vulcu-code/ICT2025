@@ -8,7 +8,7 @@
 
 \begin{document}
 \setcounter{chapter}{2}
-\chapter[ ]{Week 13-19 October}
+\chapter[ ]{Week 3-9 November}
 \section{Spectral efficiency for finite-length codewords}
 
 We can reach the Shannon bound only by pushing $N$ to infinity; only if we're sending a \textit{really} long codeword can we reach the capacity. We'd need to wait a long time (an \textit{infinite} amount of time, I think) to fill that codeword and then we'd have to wait lots of latency in order to receive such a large signal.
@@ -649,18 +649,9 @@ $$
 = \underbrace{\mathbb{E}\left[ |s - \mathbb{E}[s|y]|^2 \right]}_{\text{Cannot change this}} + \underbrace{\mathbb{E}\left[ |\mathbb{E}[s|y] - \hat{s}(y)|^2 \right]}_{\ge 0 \text{ iff } \hat{s}(y) = \mathbb{E}[s|y]}
 $$
 
-We can play on $\hat{s}(y)$ in order to minimize the MMSE: this...
-
-\clearpage % --- PAGINA 3 ---
-
-...happens for $\hat{s}(y) = \mathbb{E}[s|y]$, as this gets us only to be zero for the part in green (the second term).
+We can play on $\hat{s}(y)$ in order to minimize the MMSE: this happens for $\hat{s}(y) = \mathbb{E}[s|y]$, as this gets us only to be zero for the part in green (the second term).
 
 we've thus proven the orthogonality principle.
-
-\vspace{1em}
-\hrule
-\vspace{0.5em}
-\noindent \textbf{\large Chapter 2}
 
 \section{Signal processing}
 
