@@ -65,3 +65,9 @@
 \contentsline {section}{\numberline {5.3}Actually finding the MIMO zero forcing equalizer}{79}{section.5.3}%
 \contentsline {section}{\numberline {5.4}MIMO Degrees of Freedom and ZF Equalization}{83}{section.5.4}%
 \contentsline {section}{\numberline {5.5}LMMSE equalization}{84}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Digression on Circular Convolution}{91}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Circular Convolution}{91}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Cyclic Prefix \& Fourier Taxonomy}{92}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Graphical Representation: SC-FDE}{93}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Receiver Structure Notes}{93}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Noise Variance Derivation}{93}{subsection.6.3.2}%
