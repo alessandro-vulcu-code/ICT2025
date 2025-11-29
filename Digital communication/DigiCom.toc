@@ -30,7 +30,7 @@
 \contentsline {subsection}{\numberline {3.2.4}MMSE estimator for a Complex Gaussian vector representing a channel}{39}{subsection.3.2.4}%
 \contentsline {section}{\numberline {3.3}I-MMSE relationship in Gaussian noise}{40}{section.3.3}%
 \contentsline {section}{\numberline {3.4}LMMSE for random variables}{41}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Extension (from random variables to random processes)}{44}{section.3.5}%
+\contentsline {section}{\numberline {3.5}Extension (from random variables to random processes)}{43}{section.3.5}%
 \contentsline {section}{\numberline {3.6}Signal processing}{45}{section.3.6}%
 \contentsline {subsection}{\numberline {3.6.1}Introduction}{45}{subsection.3.6.1}%
 \contentsline {section}{\numberline {3.7}Passband signal, in-phase/in-quadrature components}{46}{section.3.7}%
@@ -39,8 +39,8 @@
 \contentsline {section}{\numberline {3.8}Complex baseband channel response}{49}{section.3.8}%
 \contentsline {section}{\numberline {3.9}Q paths complex baseband equivalent}{52}{section.3.9}%
 \contentsline {section}{\numberline {3.10}Time discretization}{53}{section.3.10}%
-\contentsline {section}{\numberline {3.11}Pulse shaping: from digital signal to an analog}{55}{section.3.11}%
-\contentsline {section}{\numberline {3.12}Channel models}{56}{section.3.12}%
+\contentsline {section}{\numberline {3.11}Pulse shaping: from digital signal to an analog}{54}{section.3.11}%
+\contentsline {section}{\numberline {3.12}Channel models}{55}{section.3.12}%
 \contentsline {chapter}{\numberline {4} }{57}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Channel models}{57}{section.4.1}%
 \contentsline {subsubsection}{{\itshape Rem}: This makes perfect sense}{58}{thmt@dummyctr.dummy.1}%
