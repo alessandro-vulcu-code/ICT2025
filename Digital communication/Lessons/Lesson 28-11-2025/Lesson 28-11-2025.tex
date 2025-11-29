@@ -1,0 +1,151 @@
+\documentclass[a4paper, 12pt]{book}
+\input{../../common_preamble}
+\usepackage[x11names]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes,fit}
+\usepackage{amsmath} % Required for align environment
+
+
+\begin{document}
+\setcounter{chapter}{6}
+\chapter{Lesson 28-11-2025}
+\section{Orthogonal Frequency Division Multiplexing (OFDM)}
+
+\subsection{OFDM Transmitter}
+
+\subsubsection{Notation Change and "Blockization"}
+In OFDM, we change the standard notation compared to single-carrier systems. Usually, input symbols are indicated as $x[n]$ in the time domain.
+In OFDM, we denote the input symbols as $x[k]$. The $k$ represents the index in the \textbf{frequency domain}, since these symbols will be transmitted on different subcarriers.
+
+The input symbols are grouped ("packed") into blocks of size $K$.
+\begin{align}
+\mathbf{x} = [x[0], x[1], \dots, x[K-1]]
+\end{align}
+These symbols may belong to a complex constellation, for example, 256-QAM.
+
+\noindent\colorbox{yellow!25}{
+    \parbox{\dimexpr\linewidth-2\fboxsep}{
+        \textbf{\faQuestionCircle\ Student Q\&A: Block Stretching} \\
+        \small
+        \textbf{Q:} What is meant by "stretching" the blocks? \\
+        \textbf{A:} During the lecture, a student asked for clarification on "lengthening" the blocks. The professor explained that to transmit a block of $K$ symbols, if one wants to maintain the same input rate, time or bandwidth must be increased. However, in the OFDM perspective, the key concept is that we take $K$ symbols and transmit them \textit{in parallel} over a longer time period compared to a single symbol, occupying a bandwidth $B \approx K/T$ (where $T$ is the block time). Technically, in the context of the explanation, "stretch" referred to the insertion of the Cyclic Prefix, which physically lengthens the duration of the transmitted block from $K$ to $K+L$ samples.
+    }
+}
+
+\subsubsection{IDFT (Inverse Discrete Fourier Transform)}
+The fundamental operation at the transmitter is the IDFT applied to each block of $K$ symbols. This step brings the symbols from the frequency domain to the time domain.
+The formula to generate the signal in the time domain $x[n]$ is:
+\begin{align}
+x[n] = \frac{1}{K} \sum_{k=0}^{K-1} x[k] e^{j \frac{2\pi}{K} nk} \quad \text{for } n=0, \dots, K-1
+\end{align}
+
+\subsubsection{Cyclic Prefix (CP) Insertion}
+To mitigate multipath channel effects, a Cyclic Prefix is inserted. If the length of the channel impulse response is $L$, we insert a prefix of length $L$ (or greater) at the beginning of the block.
+The extended vector $\overline{x}$ will have dimension $K+L$. The operation consists of copying the last $L$ samples of the block $x[n]$ and placing them at the beginning:
+\begin{align}
+\overline{x} = [\underbrace{x[K-L], \dots, x[K-1]}_{\text{Cyclic Prefix (copy)}}, \underbrace{x[0], x[1], \dots, x[K-1]}_{\text{Original Block}}]
+\end{align}
+Formally, the negative indices in the prefix correspond to the final indices of the original block: $x[-1] \leftarrow x[K-1]$, $x[-2] \leftarrow x[K-2]$, and so on.
+
+\textbf{Cyclic Property:}
+The insertion of the CP makes the signal "circular" with respect to the block length $K$. Mathematically, thanks to the periodicity of the complex exponential, the following relationship holds:
+\begin{align}
+x[-1] = x[K-1]
+\end{align}
+In fact, $e^{j\frac{2\pi}{K}(-1)k} = e^{j\frac{2\pi}{K}(K-1)k}$.
+
+\section{The Channel}
+
+The transmitted signal passes through a channel modeled as a Finite Impulse Response (FIR) filter with coefficients $h[l]$ of length $L+1$ ($l=0 \dots L$).
+The channel output $y[n]$ is given by the linear convolution between the transmitted signal (including the CP) and the channel response:
+\begin{align}
+y[n] = \sqrt{G} \sum_{l=0}^{L} h[l] \overline{x}[n-l]
+\end{align}
+
+\textbf{Inter-Block Interference (IBI):}
+For indices corresponding to the cyclic prefix (e.g., $n = -1, \dots, -L$), the convolution "picks up" symbols from the previous transmitted block. For example, for $y[-1]$, the summation involves $\overline{x}[-1-L]$, which belongs to the previous block.
+
+\noindent\colorbox{yellow!25}{
+    \parbox{\dimexpr\linewidth-2\fboxsep}{
+        \textbf{\faQuestionCircle\ Student Q\&A: CP Constraints} \\
+        \small
+        \textbf{Q:} Is there a constraint on the length of the Cyclic Prefix? \\
+        \textbf{A:} Yes. The length of the Cyclic Prefix ($L$) must be greater than or equal to the length of the channel impulse response. This ensures that all Inter-Block Interference (IBI) falls within the cyclic prefix, which is then discarded at the receiver, leaving the data block "clean".
+    }
+}
+
+\section{The OFDM Receiver}
+
+The receiver must recover the original symbols $x[k]$. The operations are specular to those of the transmitter.
+
+\subsection{Cyclic Prefix Removal}
+The first $L$ received samples ($y[-L], \dots, y[-1]$) are contaminated by interference from the previous block. The solution is simple: discard the cyclic prefix.
+We consider only the vector $y$ of length $K$:
+\begin{align}
+y = [y[0], y[1], \dots, y[K-1]]
+\end{align}
+
+\subsection{DFT (Discrete Fourier Transform)}
+On the vector cleaned of the cyclic prefix, we apply the DFT:
+\begin{align}
+\tilde{y}[n] = \sum_{p=0}^{K-1} y[p] e^{-j \frac{2\pi}{K} np}
+\end{align}
+Here $n$ represents the subcarrier index at reception.
+
+\section{Mathematical Proof [The "Heart" of OFDM]}
+
+Let us see why OFDM works by substituting the channel expression into the DFT formula.
+
+\subsection{Step 1: Expansion of $\tilde{y}[n]$}
+Substitute $y[p]$ with the channel convolution:
+\begin{align}
+\tilde{y}[n] = \sum_{p=0}^{K-1} \left( \sqrt{G} \sum_{l=0}^{L} h[l] \overline{x}[p-l] \right) e^{-j \frac{2\pi}{K} np}
+\end{align}
+
+\subsection{Step 2: Substitution of $x$ (IDFT)}
+Substitute $\overline{x}[p-l]$ with its IDFT definition (the original input $x[k]$):
+\begin{align}
+\tilde{y}[n] = \sum_{p=0}^{K-1} \sqrt{G} \sum_{l=0}^{L} h[l] \left( \frac{1}{K} \sum_{k=0}^{K-1} x[k] e^{j \frac{2\pi}{K} (p-l)k} \right) e^{-j \frac{2\pi}{K} np}
+\end{align}
+\textit{Note:} Thanks to the cyclic prefix, the time shift $p-l$ in the linear convolution acts as a circular shift, allowing the use of the IDFT complex exponentials.
+
+\subsection{Step 3: Rearrangement of Summations}
+We bring out the constants and group the terms:
+\begin{align}
+\tilde{y}[n] = \frac{\sqrt{G}}{K} \sum_{k=0}^{K-1} x[k] \left( \sum_{l=0}^{L} h[l] e^{-j \frac{2\pi}{K} lk} \right) \left( \sum_{p=0}^{K-1} e^{j \frac{2\pi}{K} p(k-n)} \right)
+\end{align}
+
+Let us analyze the two terms in parentheses:
+\begin{enumerate}
+    \item \textbf{Channel DFT ($\tilde{h}[k]$):} The term $\sum_{l=0}^{L} h[l] e^{-j \frac{2\pi}{K} lk}$ is exactly the frequency response of the channel at frequency $k$, which we call $\tilde{h}[k]$. We assume $h[l]=0$ for $l>L$.
+    \item \textbf{Orthogonality:} The term $\sum_{p=0}^{K-1} e^{j \frac{2\pi}{K} p(k-n)}$ sums complex exponentials. This sum is non-zero only if $k=n$.
+    \begin{align}
+    \sum_{p=0}^{K-1} e^{j \frac{2\pi}{K} p(k-n)} = K \cdot \delta(k-n)
+    \end{align}
+    where $\delta(x) = 1$ if $x=0$, otherwise $0$.
+\end{enumerate}
+
+\subsection{Final Result}
+Thanks to the Dirac delta $\delta(k-n)$, the summation over $k$ "survives" only for the term where $k=n$. The factor $K$ in the numerator cancels with $1/K$. We obtain:
+\begin{align}
+\tilde{y}[n] = \sqrt{G} \cdot \tilde{h}[n] \cdot x[n]
+\end{align}
+
+\noindent\colorbox{yellow!25}{
+    \parbox{\dimexpr\linewidth-2\fboxsep}{
+        \textbf{\faQuestionCircle\ Student Q\&A: Notation Confusion} \\
+        \small
+        \textbf{Q:} Confusion regarding $n$ vs $k$ notation in the final proof. \\
+        \textbf{A:} Some ambiguity was noted in the use of indices. In the final formula, $n$ is used as the output subcarrier index ($\tilde{y}(n)$). The formula proves that the output at index $n$ depends \textit{only} on the input at the same index $n$ ($x[n]$), scaled by the channel $h[n]$. This confirms the absence of Inter-Carrier Interference (ICI).
+    }
+}
+
+\subsection{Interpretation and Equalization}
+The result $\tilde{y}[n] = \sqrt{G} \tilde{h}[n] x[n]$ is fundamental. It means that, in the frequency domain, there is no interference between symbols or subcarriers. The symbol transmitted on frequency $n$ ($x[n]$) is merely scaled by a complex coefficient $\tilde{h}[n]$ (the channel response at that frequency).
+
+\textbf{One-Tap Equalization:}
+To recover the transmitted symbol $\hat{x}[n]$, a simple division (Zero-Forcing) is sufficient, assuming the channel is known:
+\begin{align}
+\hat{x}[n] = \frac{\tilde{y}[n]}{\sqrt{G} \cdot \tilde{h}[n]}
+\end{align}
+\end{document}

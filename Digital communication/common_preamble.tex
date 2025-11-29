@@ -5,7 +5,7 @@
 \usepackage[english]{babel} % Ho cambiato in italian, supponendo che la maggior parte del testo sia in italiano
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{bm} % For bold math symbols (\bm command)
+% \usepackage{bm} % COMMENTED: incompatible with unicode-math - use \symbf instead
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{geometry}
@@ -29,6 +29,25 @@
 \usepackage{fontawesome5}
 \usepackage{xcolor}       % Per colorare le icone
 \usepackage{setspace}
+
+\usepackage{fontspec}
+\usepackage{unicode-math} % Necessario per xelatex/lualatex
+\setmainfont{Fira Sans}[
+    % Imposta la variante "Light" come la variante principale (Regular/Medium)
+    % Quando usi \setmainfont senza specificare 'Path', cerca il nome completo del font.
+    UprightFont = Fira Sans Light,
+    % Quando usi \textbf{}, userà questa variante (Bold)
+    BoldFont = Fira Sans Regular, 
+    % Quando usi \textit{}, userà questa variante (Light Italic)
+    %ItalicFont = Fira Sans Light Italic,
+    % Quando usi \textbf\textit{}, userà questa variante (Bold Italic)
+    %BoldItalicFont = Fira Sans Bold Italic,
+]
+\setsansfont{Fira Sans}
+\setmathfont{Fira Math}
+
+% Compatibility: define \bm to use unicode-math's \symbf
+\newcommand{\bm}[1]{\symbf{#1}}
 
 % --- IMPOSTAZIONI GEOMETRIA E FONT ---
 \geometry{a4paper, margin=1in}

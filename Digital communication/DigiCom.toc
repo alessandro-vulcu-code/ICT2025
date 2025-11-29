@@ -1,73 +1,89 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{\numberline {1} }{5}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Introduction}{5}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Primer}{5}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Complex symmetric random variables, $\infty $-modulations}{5}{subsection.1.2.1}%
-\contentsline {section}{\numberline {1.3}Discrete entropy, proper signals}{8}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Entropy}{8}{subsection.1.3.1}%
-\contentsline {subsubsection}{Proper complex}{9}{section*.6}%
-\contentsline {subsection}{\numberline {1.3.2}Entropy rate}{10}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Differential entropy}{10}{subsection.1.3.3}%
-\contentsline {section}{\numberline {1.4}Information divergence, mutual information}{13}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}{Power series expansions}}{14}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Mutual information of a Gaussian scalar through an AWGN channel}{15}{subsection.1.4.2}%
-\contentsline {chapter}{\numberline {2} }{17}{chapter.2}%
-\contentsline {section}{\numberline {2.1}MIMO Intution}{17}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Mutual information of a gaussian vector through an AWGN channel}{18}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Noise figure}{18}{subsection.2.2.1}%
-\contentsline {section}{\numberline {2.3}Gaussian mutual info arbitrary const.}{20}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Mutual information of an encoded word}{21}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Theoretical treatment: results for generic $\bm {s}, \bm {\tilde {y}}$ (+for iid values and for a stationary channel)}{21}{subsection.2.4.1}%
-\contentsline {section}{\numberline {2.5}Memoryless channel law with Gaussian noise}{23}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Capacity of a channel, information stability, spectral efficiency (+codeword error, information density)}{23}{subsection.2.5.1}%
-\contentsline {section}{\numberline {2.6}BICM architecture}{25}{section.2.6}%
-\contentsline {chapter}{\numberline {3} }{31}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Spectral efficiency for finite-length codewords}{31}{section.3.1}%
-\contentsline {section}{\numberline {3.2}MMSE estimation}{32}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Intro to MMSE estimation, scalar estimator (and the properties an estimator should have)}{32}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}MMSE estimator for a Complex Gaussian scalar through a channel}{34}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Vectorial estimator}{37}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}MMSE estimator for a Complex Gaussian vector representing a channel}{37}{subsection.3.2.4}%
-\contentsline {section}{\numberline {3.3}I-MMSE relationship in Gaussian noise}{38}{section.3.3}%
-\contentsline {section}{\numberline {3.4}LMMSE for random variables}{39}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Extension (from random variables to random processes)}{41}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Signal processing}{43}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Introduction}{43}{subsection.3.6.1}%
-\contentsline {section}{\numberline {3.7}Passband signal, in-phase/in-quadrature components}{44}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}Random digression on why radio doesn't transmit on baseband and on ADSL}{46}{subsection.3.7.1}%
-\contentsline {subsection}{\numberline {3.7.2}Random digression on FDD (Frequency Division Duplex) and TDD (Time Divison Duplex)}{47}{subsection.3.7.2}%
-\contentsline {section}{\numberline {3.8}Complex baseband channel response}{47}{section.3.8}%
-\contentsline {section}{\numberline {3.9}Q paths complex baseband equivalent}{50}{section.3.9}%
-\contentsline {section}{\numberline {3.10}Time discretization}{51}{section.3.10}%
-\contentsline {section}{\numberline {3.11}Pulse shaping: from digital signal to an analog}{52}{section.3.11}%
-\contentsline {section}{\numberline {3.12}Channel models}{53}{section.3.12}%
-\contentsline {chapter}{\numberline {4} }{55}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Channel models}{55}{section.4.1}%
-\contentsline {subsubsection}{{\itshape Rem}: This makes perfect sense}{56}{thmt@dummyctr.dummy.1}%
-\contentsline {subsubsection}{{\itshape Def}: Frequency selective model}{56}{definition.1}%
-\contentsline {section}{\numberline {4.2}Organization detour (+mentions of SVD, Precoding)}{57}{section.4.2}%
-\contentsline {paragraph}{Lore of the course moment}{58}{section*.185}%
-\contentsline {section}{\numberline {4.3}Problems in discretization}{59}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Discretized Channel Model}{59}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Transitioning to MIMO}{61}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Precoding}{62}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Introduction (information theory writing of $x[n]$, matrix $F$; variation of precoded $x$)}{62}{subsection.4.6.1}%
-\contentsline {section}{\numberline {4.7}Recap of singular value decomposition}{65}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Applying precoding}{67}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Signal power constraints}{69}{section.4.9}%
-\contentsline {section}{\numberline {4.10}Vectorizing the channel}{70}{section.4.10}%
-\contentsline {chapter}{\numberline {5} }{73}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Linear channel equalization}{73}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Introduction: super basic block scheme}{73}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Feedback equalizer}{73}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Linear zero forcing equalization}{74}{subsection.5.1.3}%
-\contentsline {section}{\numberline {5.2}Moore-Penrose pseudo-inverse}{78}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Actually finding the MIMO zero forcing equalizer}{79}{section.5.3}%
-\contentsline {section}{\numberline {5.4}MIMO Degrees of Freedom and ZF Equalization}{83}{section.5.4}%
-\contentsline {section}{\numberline {5.5}LMMSE equalization}{84}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Digression on Circular Convolution}{91}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Circular Convolution}{91}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Cyclic Prefix \& Fourier Taxonomy}{92}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Graphical Representation: SC-FDE}{93}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Receiver Structure Notes}{93}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Noise Variance Derivation}{93}{subsection.6.3.2}%
+\contentsline {chapter}{\numberline {1} }{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Introduction}{7}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Primer}{7}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Complex symmetric random variables, $\infty $-modulations}{8}{subsection.1.2.1}%
+\contentsline {section}{\numberline {1.3}Discrete entropy, proper signals}{9}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Entropy}{9}{subsection.1.3.1}%
+\contentsline {subsubsection}{Proper complex}{11}{section*.6}%
+\contentsline {subsection}{\numberline {1.3.2}Entropy rate}{12}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Differential entropy}{12}{subsection.1.3.3}%
+\contentsline {section}{\numberline {1.4}Information divergence, mutual information}{16}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}{Power series expansions}}{16}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Mutual information of a Gaussian scalar through an AWGN channel}{17}{subsection.1.4.2}%
+\contentsline {chapter}{\numberline {2} }{19}{chapter.2}%
+\contentsline {section}{\numberline {2.1}MIMO Intution}{19}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Mutual information of a gaussian vector through an AWGN channel}{20}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Noise figure}{20}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}Gaussian mutual info arbitrary const.}{22}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Mutual information of an encoded word}{23}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Theoretical treatment: results for generic $\symbf {s}, \symbf {\tilde {y}}$ (+for iid values and for a stationary channel)}{23}{subsection.2.4.1}%
+\contentsline {section}{\numberline {2.5}Memoryless channel law with Gaussian noise}{25}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Capacity of a channel, information stability, spectral efficiency (+codeword error, information density)}{25}{subsection.2.5.1}%
+\contentsline {section}{\numberline {2.6}BICM architecture}{28}{section.2.6}%
+\contentsline {chapter}{\numberline {3} }{33}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Spectral efficiency for finite-length codewords}{33}{section.3.1}%
+\contentsline {section}{\numberline {3.2}MMSE estimation}{34}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Intro to MMSE estimation, scalar estimator (and the properties an estimator should have)}{34}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}MMSE estimator for a Complex Gaussian scalar through a channel}{36}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Vectorial estimator}{39}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}MMSE estimator for a Complex Gaussian vector representing a channel}{39}{subsection.3.2.4}%
+\contentsline {section}{\numberline {3.3}I-MMSE relationship in Gaussian noise}{40}{section.3.3}%
+\contentsline {section}{\numberline {3.4}LMMSE for random variables}{41}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Extension (from random variables to random processes)}{44}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Signal processing}{45}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Introduction}{45}{subsection.3.6.1}%
+\contentsline {section}{\numberline {3.7}Passband signal, in-phase/in-quadrature components}{46}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Random digression on why radio doesn't transmit on baseband and on ADSL}{48}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Random digression on FDD (Frequency Division Duplex) and TDD (Time Divison Duplex)}{49}{subsection.3.7.2}%
+\contentsline {section}{\numberline {3.8}Complex baseband channel response}{49}{section.3.8}%
+\contentsline {section}{\numberline {3.9}Q paths complex baseband equivalent}{52}{section.3.9}%
+\contentsline {section}{\numberline {3.10}Time discretization}{53}{section.3.10}%
+\contentsline {section}{\numberline {3.11}Pulse shaping: from digital signal to an analog}{55}{section.3.11}%
+\contentsline {section}{\numberline {3.12}Channel models}{56}{section.3.12}%
+\contentsline {chapter}{\numberline {4} }{57}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Channel models}{57}{section.4.1}%
+\contentsline {subsubsection}{{\itshape Rem}: This makes perfect sense}{58}{thmt@dummyctr.dummy.1}%
+\contentsline {subsubsection}{{\itshape Def}: Frequency selective model}{58}{definition.1}%
+\contentsline {section}{\numberline {4.2}Organization detour (+mentions of SVD, Precoding)}{59}{section.4.2}%
+\contentsline {paragraph}{Lore of the course moment}{60}{section*.185}%
+\contentsline {section}{\numberline {4.3}Problems in discretization}{61}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Discretized Channel Model}{61}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Transitioning to MIMO}{63}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Precoding}{64}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Introduction (information theory writing of $x[n]$, matrix $F$; variation of precoded $x$)}{64}{subsection.4.6.1}%
+\contentsline {section}{\numberline {4.7}Recap of singular value decomposition}{67}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Applying precoding}{69}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Signal power constraints}{72}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Vectorizing the channel}{73}{section.4.10}%
+\contentsline {chapter}{\numberline {5} }{77}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Linear channel equalization}{77}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Introduction: super basic block scheme}{77}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Feedback equalizer}{77}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Linear zero forcing equalization}{78}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Moore-Penrose pseudo-inverse}{82}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Actually finding the MIMO zero forcing equalizer}{83}{section.5.3}%
+\contentsline {section}{\numberline {5.4}MIMO Degrees of Freedom and ZF Equalization}{87}{section.5.4}%
+\contentsline {section}{\numberline {5.5}LMMSE equalization}{88}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Digression on Circular Convolution}{95}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Circular Convolution}{95}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Cyclic Prefix \& Fourier Taxonomy}{96}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Graphical Representation: SC-FDE}{97}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Receiver Structure Notes}{97}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Noise Variance Derivation}{97}{subsection.6.3.2}%
+\contentsline {chapter}{\numberline {7}Lesson 28-11-2025}{99}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Orthogonal Frequency Division Multiplexing (OFDM)}{99}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}OFDM Transmitter}{99}{subsection.7.1.1}%
+\contentsline {subsubsection}{Notation Change and "Blockization"}{99}{section*.282}%
+\contentsline {subsubsection}{IDFT (Inverse Discrete Fourier Transform)}{99}{section*.283}%
+\contentsline {subsubsection}{Cyclic Prefix (CP) Insertion}{100}{section*.284}%
+\contentsline {section}{\numberline {7.2}The Channel}{100}{section.7.2}%
+\contentsline {section}{\numberline {7.3}The OFDM Receiver}{100}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Cyclic Prefix Removal}{101}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}DFT (Discrete Fourier Transform)}{101}{subsection.7.3.2}%
+\contentsline {section}{\numberline {7.4}Mathematical Proof [The "Heart" of OFDM]}{101}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Step 1: Expansion of $\tilde {y}[n]$}{101}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}Step 2: Substitution of $x$ (IDFT)}{101}{subsection.7.4.2}%
+\contentsline {subsection}{\numberline {7.4.3}Step 3: Rearrangement of Summations}{101}{subsection.7.4.3}%
+\contentsline {subsection}{\numberline {7.4.4}Final Result}{102}{subsection.7.4.4}%
+\contentsline {subsection}{\numberline {7.4.5}Interpretation and Equalization}{102}{subsection.7.4.5}%
