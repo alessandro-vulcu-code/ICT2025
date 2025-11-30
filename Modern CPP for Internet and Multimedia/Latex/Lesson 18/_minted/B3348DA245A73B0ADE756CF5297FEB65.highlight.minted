@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}fstream\PYGZgt{}}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{ofstream}\PYG{+w}{ }\PYG{n}{fout}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}packet\PYGZus{}data.bin\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{ios}\PYG{o}{::}\PYG{n}{binary}\PYG{p}{);}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{ifstream}\PYG{+w}{ }\PYG{n}{fin}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}packet\PYGZus{}data.bin\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{ios}\PYG{o}{::}\PYG{n}{binary}\PYG{p}{);}
+\end{MintedVerbatim}

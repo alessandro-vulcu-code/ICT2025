@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{c+c1}{// Create a smart pointer to a std::array buffer}
+\PYG{k}{auto}\PYG{+w}{ }\PYG{n}{b1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{make\PYGZus{}shared}\PYG{o}{\PYGZlt{}}\PYG{n}{std}\PYG{o}{::}\PYG{n}{array}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{char}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{256}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{p}{();}
+
+\PYG{c+c1}{// The \PYGZhy{}\PYGZgt{}data() member function provides the raw char* needed by socket calls}
+\PYG{c+c1}{// e.g., recv(sckfd, b1\PYGZhy{}\PYGZgt{}data(), b1\PYGZhy{}\PYGZgt{}size(), 0);}
+\end{MintedVerbatim}

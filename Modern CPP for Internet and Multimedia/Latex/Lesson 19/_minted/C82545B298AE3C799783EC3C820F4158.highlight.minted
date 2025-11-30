@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{c+c1}{// Modern approach: convert string to network address using inet\PYGZus{}pton}
+\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{inet\PYGZus{}pton}\PYG{p}{(}\PYG{n}{AF\PYGZus{}INET}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}192.168.100.1\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{dest\PYGZus{}addr}\PYG{p}{.}\PYG{n}{sin\PYGZus{}addr}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Error handling: conversion failed}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Convert network address back to a string}
+\PYG{k+kt}{char}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{ip\PYGZus{}str}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{inet\PYGZus{}ntoa}\PYG{p}{(}\PYG{n}{dest\PYGZus{}addr}\PYG{p}{.}\PYG{n}{sin\PYGZus{}addr}\PYG{p}{);}
+\end{MintedVerbatim}

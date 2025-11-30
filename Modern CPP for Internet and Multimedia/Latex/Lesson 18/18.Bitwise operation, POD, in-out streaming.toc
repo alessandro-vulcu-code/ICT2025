@@ -1,0 +1,17 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Evaluation of Bitwise Operations vs. Plain Old Data (POD) for Efficient Packet Header Serialization in C++}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Purpose and Scope}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Manual Serialization via Bitwise Operations}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Foundational Operators}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Implementation Strategy for Buffer Manipulation}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Case Study: MacHdr Serialization}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Analysis of the Bitwise Method}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Serialization using Plain Old Data (POD) Structures with Bitfields}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The POD (Plain Old Data) Bitfield Declaration}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Implementation via \texttt {memcpy}}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Analysis of the POD Method}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Comparative Evaluation and Recommendations}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Recommendations}{6}{subsection.4.1}%
+\contentsline {section}{\numberline {5}C++ I/O Streams for Data Persistence}{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Overview and Binary Mode Operation}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Reading and Writing Binary Buffers}{7}{subsection.5.2}%

@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{struct}\PYG{+w}{ }\PYG{n+nc}{MacHdr}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{uint\PYGZus{}fast8\PYGZus{}t}\PYG{+w}{ }\PYG{n}{sn}\PYG{+w}{  }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{7}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// 7 bits}
+\PYG{+w}{    }\PYG{k+kt}{uint\PYGZus{}fast8\PYGZus{}t}\PYG{+w}{ }\PYG{n}{src}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{6}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// 6 bits}
+\PYG{+w}{    }\PYG{k+kt}{uint\PYGZus{}fast8\PYGZus{}t}\PYG{+w}{ }\PYG{n}{dest}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{6}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// 6 bits}
+\PYG{p}{\PYGZcb{};}
+\end{MintedVerbatim}

@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{option}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{// Set option to true}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{res}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{setsockopt}\PYG{p}{(}\PYG{n}{socketfd}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{SOL\PYGZus{}SOCKET}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{SO\PYGZus{}REUSEADDR}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{char}\PYG{o}{*}\PYG{p}{)}\PYG{o}{\PYGZam{}}\PYG{n}{option}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{option}\PYG{p}{));}
+\end{MintedVerbatim}

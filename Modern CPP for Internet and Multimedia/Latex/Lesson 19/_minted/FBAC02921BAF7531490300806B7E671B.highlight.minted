@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{c+c1}{// This setup is typically run once when the application starts}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}signal.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}cstring\PYGZgt{}}
+
+\PYG{k}{struct}\PYG{+w}{ }\PYG{n+nc}{sigaction}\PYG{+w}{ }\PYG{n}{act}\PYG{p}{;}
+\PYG{n}{memset}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{act}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}\PYGZbs{}0\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{act}\PYG{p}{));}
+\PYG{n}{act}\PYG{p}{.}\PYG{n}{sa\PYGZus{}handler}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{SIG\PYGZus{}IGN}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Set the handler to ignore the signal}
+\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sigaction}\PYG{p}{(}\PYG{n}{SIGPIPE}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{act}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nb}{NULL}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Error setting signal handler}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

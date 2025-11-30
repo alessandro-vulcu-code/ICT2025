@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}string.h\PYGZgt{}}
+
+\PYG{c+c1}{// Assume buffer and hdr1/hdr2 instances are defined}
+\PYG{n}{MacHdr}\PYG{+w}{ }\PYG{n}{hdr1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{\PYGZcb{};}
+\PYG{n}{MacHdr}\PYG{+w}{ }\PYG{n}{hdr2}\PYG{p}{;}
+\PYG{k+kt}{char}\PYG{+w}{ }\PYG{n}{buffer}\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{];}
+\PYG{k+kt}{size\PYGZus{}t}\PYG{+w}{ }\PYG{n}{offset1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k+kt}{size\PYGZus{}t}\PYG{+w}{ }\PYG{n}{offset2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+
+\PYG{c+c1}{// To serialize hdr1 into the buffer:}
+\PYG{n}{memcpy}\PYG{p}{(}\PYG{n}{buffer}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{offset1}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{hdr1}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{hdr1}\PYG{p}{));}
+\PYG{n}{offset1}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{hdr1}\PYG{p}{);}
+
+\PYG{c+c1}{// To deserialize from the buffer into hdr2:}
+\PYG{n}{memcpy}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{hdr2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{buffer}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{offset2}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{hdr2}\PYG{p}{));}
+\end{MintedVerbatim}

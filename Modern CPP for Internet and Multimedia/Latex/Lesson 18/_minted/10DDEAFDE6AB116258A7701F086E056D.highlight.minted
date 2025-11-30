@@ -1,0 +1,24 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n+nf}{MacHdr::serialize}\PYG{p}{(}\PYG{k+kt}{char}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{buffer}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{size\PYGZus{}t}\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{offset}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Helper lambda to serialize a single value}
+\PYG{+w}{    }\PYG{k}{auto}\PYG{+w}{ }\PYG{n}{serialize\PYGZus{}field}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{o}{\PYGZam{}}\PYG{p}{](}\PYG{k+kt}{uint\PYGZus{}fast8\PYGZus{}t}\PYG{+w}{ }\PYG{n}{value}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{size\PYGZus{}t}\PYG{+w}{ }\PYG{n}{num\PYGZus{}bits}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{num\PYGZus{}bits}\PYG{p}{;}\PYG{+w}{ }\PYG{o}{++}\PYG{n}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Extract the i\PYGZhy{}th bit from left\PYGZhy{}to\PYGZhy{}right (MSB\PYGZhy{}first)}
+\PYG{+w}{            }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{bit\PYGZus{}is\PYGZus{}set}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{value}\PYG{+w}{ }\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{num\PYGZus{}bits}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{))}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{bit\PYGZus{}is\PYGZus{}set}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Set the corresponding bit in the buffer}
+\PYG{+w}{                }\PYG{n}{buffer}\PYG{p}{[(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{floor}\PYG{p}{(}\PYG{n}{offset}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{l+m+mi}{8}\PYG{p}{)]}\PYG{+w}{ }\PYG{o}{|=}\PYG{+w}{ }\PYG{l+m+mi}{1U}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{7}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{offset}\PYG{+w}{ }\PYG{o}{\PYGZpc{}}\PYG{+w}{ }\PYG{l+m+mi}{8}\PYG{p}{);}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{c+c1}{// A \PYGZsq{}clear bit\PYGZsq{} operation would be needed if buffer isn\PYGZsq{}t zero\PYGZhy{}initialized}
+\PYG{+w}{            }\PYG{n}{offset}\PYG{o}{++}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{};}
+
+\PYG{+w}{    }\PYG{n}{serialize\PYGZus{}field}\PYG{p}{(}\PYG{n}{sn}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sn\PYGZus{}size}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{serialize\PYGZus{}field}\PYG{p}{(}\PYG{n}{src}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{addr\PYGZus{}size}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{serialize\PYGZus{}field}\PYG{p}{(}\PYG{n}{dest}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{addr\PYGZus{}size}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nb}{true}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

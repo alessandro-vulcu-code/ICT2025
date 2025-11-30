@@ -1,0 +1,22 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{struct}\PYG{+w}{ }\PYG{n+nc}{SimpleTcpHeader}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{source\PYGZus{}port}\PYG{+w}{         }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{16}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{destination\PYGZus{}port}\PYG{+w}{    }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{16}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{sequence\PYGZus{}number}\PYG{+w}{     }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{32}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{ack\PYGZus{}number}\PYG{+w}{          }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{32}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{n}{data\PYGZus{}offset}\PYG{+w}{        }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n+nl}{char}\PYG{+w}{                    }\PYG{p}{:}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// 3 unused bits}
+\PYG{+w}{    }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{ns}\PYG{+w}{                 }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{crw}\PYG{+w}{                }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{ece}\PYG{+w}{                }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{urg}\PYG{+w}{                }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{ack}\PYG{+w}{                }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{psh}\PYG{+w}{                }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{rst}\PYG{+w}{                }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{syn}\PYG{+w}{                }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{fin}\PYG{+w}{                }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{window\PYGZus{}size}\PYG{+w}{         }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{16}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{checksum}\PYG{+w}{            }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{16}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{urgent\PYGZus{}pointer}\PYG{+w}{      }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{16}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+\end{MintedVerbatim}

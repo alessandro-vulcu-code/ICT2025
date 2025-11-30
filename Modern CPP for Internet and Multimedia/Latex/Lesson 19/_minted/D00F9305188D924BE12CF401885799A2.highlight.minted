@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}signal.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}cstring\PYGZgt{}}
+
+\PYG{c+c1}{// A custom function to handle the signal}
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{handleIt}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{sig\PYGZus{}id}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Logic to handle the broken pipe, e.g., logging}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Register the custom handler at application startup}
+\PYG{k}{struct}\PYG{+w}{ }\PYG{n+nc}{sigaction}\PYG{+w}{ }\PYG{n}{act}\PYG{p}{;}
+\PYG{n}{memset}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{act}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}\PYGZbs{}0\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{act}\PYG{p}{));}
+\PYG{n}{act}\PYG{p}{.}\PYG{n}{sa\PYGZus{}handler}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{handleIt}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Point to our custom function}
+\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sigaction}\PYG{p}{(}\PYG{n}{SIGPIPE}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{act}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nb}{NULL}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Error setting signal handler}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

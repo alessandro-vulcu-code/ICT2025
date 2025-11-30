@@ -1,0 +1,553 @@
+\documentclass{article}
+
+\input{../common_preamble}
+
+\title{Socket}
+
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction: Understanding Network Communication}
+
+Socket programming is the fundamental mechanism for enabling communication between programs over a network. \textbf{Sockets} provide a standardized application programming interface (API) that allows processes, whether on the same machine or across the world, to exchange data. This guide will serve as a detailed set of university-level notes, breaking down the core concepts of sockets, the primary communication protocols they facilitate (UDP and TCP), and the practical C++ implementation of client-server applications.
+
+This document is structured to build a strong foundational understanding. We will begin with the theoretical underpinnings of what a socket is and its role in the network stack. From there, we will explore the different types of sockets and their specific use cases. We will then detail the essential C++ functions and libraries required for network programming, provide complete code examples for both UDP and TCP applications, and conclude with advanced topics such as error handling, socket configuration, and best practices for building robust network code.
+
+---
+
+\section[The Fundamentals of Sockets]{The Fundamentals of Sockets}
+
+Before writing any network code, it is essential to have a solid understanding of what a socket is, its role within the layered network model, and the client-server architecture it enables. This section establishes the conceptual framework necessary for practical application.
+
+A socket is best understood through the Unix philosophy: ``everything is a file.'' In this context, a socket is a special type of \textbf{file descriptor}---an integer that represents an open file---used for inter-process communication. Just as you would read from or write to a file on disk, your program can use a socket file descriptor to send and receive data over a network connection.
+
+\subsection{The Role of Sockets in the Network Stack}
+
+Sockets operate at the \textbf{transport layer} of the network stack, facilitating communication between specific processes. This is a critical distinction from the network layer's role.
+
+
+\begin{itemize}
+    \item \textbf{Network Layer}: Responsible for \textit{host-to-host} communication. It ensures that a message is delivered from one machine to the correct destination machine on the network.
+    \item \textbf{Transport Layer}: Responsible for \textit{process-to-process} communication. Once a message arrives at the correct host, the transport layer delivers it to the specific application or service (i.e., the process) that is intended to receive it. \textbf{Sockets are the mechanism that makes this possible.}
+\end{itemize}
+
+\subsection{Socket Addresses: IP and Port}
+
+Every socket is defined by a unique combination of an \textbf{IP address} and a \textbf{port number}.
+
+\begin{itemize}
+    \item \texttt{ip\_address}: The unique address of the host machine on the network.
+    \item \texttt{port}: An integer that identifies the specific process or service on that host.
+\end{itemize}
+
+It is a standard convention to use port numbers greater than $1024$ for custom applications. Lower-numbered ports are reserved for well-known services, such as FTP (port 21), SSH (port 22), and HTTP (port 80), to avoid conflicts.
+
+\subsection{Core System Calls}
+
+Communication through sockets is managed by a set of C-language system routines. The most basic of these are:
+
+\begin{itemize}
+    \item \texttt{socket()}: Creates a new socket file descriptor.
+    \item \texttt{send()}: Transmits data through the socket.
+    \item \texttt{recv()}: Receives data from the socket.
+\end{itemize}
+
+\subsection{The Client-Server Architecture}
+
+Socket programming typically follows a \textbf{client-server model}. It is crucial to remember that ``client'' and ``server'' refer to programs, not physical machines.
+
+\begin{itemize}
+    \item \textbf{Server}: A program that listens on a known IP address and port, waiting for incoming connection requests.
+    \item \textbf{Client}: A program that initiates a connection to a server by specifying the server's known IP address and port.
+\end{itemize}
+
+A single host can run many client and server programs simultaneously. Now that we understand the basic components, we must recognize that sockets can be configured in different ways to support different communication protocols.
+
+---
+
+\section[A Comparison of Socket Types]{A Comparison of Socket Types: UDP vs. TCP}
+
+The choice between socket types fundamentally dictates the behavior and reliability of your network communication. The two most common types used in internet applications are Datagram sockets, which use the \textbf{User Datagram Protocol (UDP)}, and Stream sockets, which use the \textbf{Transmission Control Protocol (TCP)}.
+
+
+\begin{table}[h]
+\centering
+\caption{Comparison of Socket Types}
+\label{tab:socket_comparison}
+\begin{tabularx}{\textwidth}{l l X}
+\toprule
+\textbf{Socket Type (Macro)} & \textbf{Protocol} & \textbf{Key Characteristics \& Use Cases} \\
+\midrule
+\texttt{SOCK\_DGRAM} & UDP & \textbf{Characteristics:} Connectionless, fast, and \textbf{unreliable}. Packets (datagrams) can arrive out of order, but if a packet does arrive, its contents are correct. \\
+& & \textbf{Use Cases:} Audio/video streams, multiplayer games. \\
+\midrule
+\texttt{SOCK\_STREAM} & TCP & \textbf{Characteristics:} Provides two-way, \textbf{connected} communication streams. It is \textbf{reliable}, handling packet reordering, retransmissions, and ensuring data is error-free. \\
+& & \textbf{Use Cases:} File transfer (FTP), HTTP, SSH. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Another type, RAW sockets, provides very powerful, low-level network access but is beyond the scope of these introductory notes. To implement either UDP or TCP sockets, we must first include and understand the specific libraries and functions provided by the system.
+
+---
+
+\section[The C/C++ Socket Programming Toolkit]{The C/C++ Socket Programming Toolkit}
+
+This section serves as a reference for the essential C and C++ header files and foundational functions required to create, configure, and manage sockets before any data can be exchanged.
+
+The following standard C library headers provide the core structures and functions for socket programming:
+
+\begin{itemize}
+    \item \texttt{<sys/socket.h>}: Provides the fundamental \texttt{socketaddr} struct and macros for socket types, such as \texttt{SOCK\_DGRAM} and \texttt{SOCK\_STREAM}.
+    \item \texttt{<netinet/in.h>}: Contains the \texttt{socketaddr\_in} struct, which is used specifically for storing internet protocol (IPv4) addresses.
+    \item \texttt{<arpa/inet.h>}: Includes the \texttt{in\_addr} struct and provides crucial functions for converting addresses between text and binary formats (e.g., \texttt{htonl}, \texttt{inet\_pton}).
+    \item \texttt{<unistd.h>}: Provides POSIX operating system API wrappers for standard I/O operations, including \texttt{read}, \texttt{write}, and \texttt{close}.
+    \item \texttt{<string.h>}: Includes memory manipulation functions, such as \texttt{memset}, which are essential for initializing data structures.
+    \item \texttt{<netinet/tcp.h>}: Defines the \texttt{tcphdr} struct and TCP-specific macros.
+\end{itemize}
+
+\subsection{Core Functions}
+
+\subsubsection[socket() function]{\texttt{socket()}}
+
+This function creates a socket and returns a file descriptor. It takes three parameters: \texttt{family} (e.g., \texttt{AF\_INET} for IPv4), \texttt{type} (e.g., \texttt{SOCK\_DGRAM} or \texttt{SOCK\_STREAM}), and \texttt{protocol} (typically set to $0$ to use the default protocol for the chosen type).
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+// Create a UDP socket
+int udp_socket_fd = socket(AF_INET, SOCK_DGRAM, 0);
+
+// Create a TCP socket
+int tcp_socket_fd = socket(AF_INET, SOCK_STREAM, 0);
+\end{minted}
+
+\subsubsection[bind() function]{\texttt{bind()}}
+
+This function associates a socket with a local address and port number. A server uses \texttt{bind()} to specify which port it will listen on. Using the constant \texttt{INADDR\_ANY} allows the socket to accept connections on all available network interfaces (e.g., Wi-Fi, Ethernet).
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+int sckfd = socket(AF_INET, SOCK_STREAM, 0);
+struct sockaddr_in my_addr = {0}; // Initialize struct to all zeros
+my_addr.sin_family = AF_INET; // Family IPv4
+my_addr.sin_port = htons(recv_port); // Set socket port
+my_addr.sin_addr.s_addr = htonl(INADDR_ANY); // Bind to all interfaces
+
+// Bind the socket and check for errors
+if (bind(sckfd, (struct sockaddr*) &my_addr, sizeof(my_addr)) < 0) {
+    // ERROR: bind failed, exit or handle error
+}
+\end{minted}
+
+In this example, \texttt{(struct sockaddr*) \&my\_addr} is a crucial type cast. The \texttt{bind()} function expects a pointer to a generic \texttt{sockaddr} struct, but we are providing a more specific \texttt{sockaddr\_in} struct for IPv4. The cast allows our specific struct to be used by the generic function. The \texttt{if} statement checks the return value of \texttt{bind()}; a negative value indicates an error, which is common if the port is already in use.
+
+\subsubsection[close() and shutdown() functions]{\texttt{close()} and \texttt{shutdown()}}
+
+These functions are used to terminate a connection, but they behave differently.
+
+\begin{itemize}
+    \item \texttt{close()}: Immediately destroys the socket file descriptor. Any pending data that has not been sent or received is lost.
+    \item \texttt{shutdown()}: Offers a more graceful way to close a connection by providing granular control. It takes a flag to specify which communication channels to close:
+    \begin{itemize}
+        \item \texttt{SHUT\_RD}: Disables further receives.
+        \item \texttt{SHUT\_WR}: Disables further sends.
+        \item \texttt{SHUT\_RDWR}: Disables both sends and receives. This allows a program to signal that it will send no more data (\texttt{SHUT\_WR}) while still being able to receive pending data already sent by the peer before the socket is fully closed.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Address and Byte Order Manipulation}
+
+The \texttt{sockaddr\_in} struct is used to handle internet addresses. Proper manipulation requires converting between the computer's native byte order (``host byte order'') and a standardized \textbf{network byte order}. Different computer architectures (e.g., Intel's little-endian vs. ARM's big-endian) store multi-byte integers differently. Network protocols mandate a single standard---network byte order, which is \textbf{big-endian}---to ensure all machines can interpret data correctly.
+
+\begin{itemize}
+    \item \textbf{Byte-Order Conversion}: The functions \texttt{htonl()} (host-to-network-long), \texttt{htons()} (host-to-network-short), \texttt{ntohl()} (network-to-host-long), and \texttt{ntohs()} (network-to-host-short) are used to perform these critical conversions.
+    \item \textbf{String/Address Conversion}: Functions are also needed to convert between human-readable IP address strings (e.g., ``192.168.100.1'') and their binary representation.
+    \begin{itemize}
+        \item \texttt{inet\_pton()}: The modern, preferred function that converts a string to a network address. It supports both IPv4 and IPv6.
+        \item \texttt{inet\_ntoa()}: Converts a network address back into a string.
+        \item \texttt{inet\_addr()}: An older function similar to \texttt{inet\_pton} but only for IPv4.
+    \end{itemize}
+\end{itemize}
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+// Modern approach: convert string to network address using inet_pton
+if (inet_pton(AF_INET, "192.168.100.1", &dest_addr.sin_addr) <= 0) {
+    // Error handling: conversion failed
+}
+
+// Convert network address back to a string
+char* ip_str = inet_ntoa(dest_addr.sin_addr);
+\end{minted}
+
+With these general tools understood, we can now apply them to implement a UDP client and server.
+
+---
+
+\section[Implementing UDP Sockets]{Implementing UDP Sockets (The Datagram Model)}
+
+This section demonstrates the \textbf{connectionless} nature of UDP through a step-by-step breakdown of a simple client-server application. In the UDP model, data is sent in discrete packets, or \textbf{datagrams}, without establishing a persistent connection.
+
+\subsection{Key UDP Communication Functions}
+
+\begin{itemize}
+    \item \texttt{recvfrom()}: This function is used to receive data from a UDP socket. It blocks until a datagram arrives. Crucially, it also populates a \texttt{sockaddr} struct (\texttt{srcaddr}) with the IP address and port of the sender, allowing the server to know who sent the message.
+    \item \texttt{sendto()}: This function sends data to a specific destination. Because UDP is connectionless, the destination address and port (\texttt{dest\_addr}) must be provided with every \texttt{sendto()} call.
+\end{itemize}
+
+\subsection{UDP Server Implementation}
+
+The server's role is to create a socket, bind it to a well-known port, and then enter a loop to receive and process incoming datagrams.
+
+\subsubsection{Server Setup}
+
+The server creates a \texttt{SOCK\_DGRAM} socket and binds it to a specific port on all available network interfaces (\texttt{INADDR\_ANY}). The \texttt{setsockopt} call with \texttt{SO\_REUSEADDR} is a good practice to allow the port to be reused immediately after the server is shut down.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+int sckfd = socket(AF_INET, SOCK_DGRAM, 0);
+int option = 1;
+if (sckfd < 0){ /*ERR*/}
+setsockopt(sckfd, SOL_SOCKET, SO_REUSEADDR, (char*)&option, sizeof(option));
+
+struct sockaddr_in my_addr = {0};
+struct sockaddr_in srcaddr;
+socklen_t addrlen = sizeof(srcaddr);
+
+my_addr.sin_family = AF_INET;
+my_addr.sin_port = htons(recv_port);
+my_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+
+// Bind the socket to the address and port
+if (bind(sckfd, (struct sockaddr*) &my_addr, sizeof(my_addr)) < 0) {
+    // Error handling
+}
+\end{minted}
+
+\subsubsection{Data Exchange Loop}
+
+This \texttt{while} loop is the heart of the server. It continuously waits for a message using \texttt{recvfrom()}. When a message arrives, it prints the content and then uses \texttt{sendto()} to echo the same message back to the original sender, whose address was captured in the \texttt{srcaddr} struct by the \texttt{recvfrom} call.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+char buffer[256] = {0};
+size_t max_size = 256;
+int size = 0;
+while((size = recvfrom(sckfd, buffer, max_size, 0, (struct sockaddr *) &srcaddr, &addrlen)) > 0) {
+  std::cout << buffer << std::endl; // Print what was received
+  // Echo the data back to the sender
+  if(sendto(sckfd, buffer, size, 0, (struct sockaddr*) &srcaddr, addrlen) < 0)
+  { break; } // If error in send, exit the while
+  memset(buffer, 0, max_size); // Clear the buffer for the next message
+}
+\end{minted}
+
+\subsection{UDP Client Implementation}
+
+The client creates a socket but does not need to bind it. Its primary task is to construct a \texttt{sockaddr\_in} struct containing the server's IP address and port and then use it to send data.
+
+\subsubsection{Client Setup}
+
+The client creates a \texttt{SOCK\_DGRAM} socket and prepares a \texttt{dest\_addr} struct with the server's information. The \texttt{inet\_pton} function is used to convert the server's IP address from a string to the required network format.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+int sckfd = socket(AF_INET, SOCK_DGRAM, 0);
+if (sckfd < 0){ /*ERR*/}
+int option(1);
+setsockopt(sckfd, SOL_SOCKET, SO_REUSEADDR, (char*)&option, sizeof(option));
+
+struct sockaddr_in dest_addr = {0};
+dest_addr.sin_family = AF_INET;
+const char* dest_ip = "192.168.100.12";
+int dest_port = 55555;
+dest_addr.sin_port = htons(dest_port);
+
+if (inet_pton(AF_INET, dest_ip, &dest_addr.sin_addr) <= 0) {
+  /* Conversion of host_ip to AF_ADDRESS FAILED */
+}
+\end{minted}
+
+\subsubsection{Data Exchange Loop}
+
+The client sends an initial message to the server using \texttt{sendto()}. It then blocks on \texttt{recvfrom()} to receive the echo reply from the server before printing it and repeating the loop.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+char buffer[256] = "ciao";
+size_t max_size = 256;
+while(sendto(sckfd, buffer, max_size, 0, (struct sockaddr*) &dest_addr, sizeof(dest_addr )) > 0) {
+  memset(buffer, 0, max_size); // Clear buffer to prepare for receiving
+  socklen_t addrlen = sizeof(dest_addr);
+  // Wait to receive the echo from the server
+  if(recvfrom(sckfd, buffer, max_size, 0, (struct sockaddr *) &dest_addr, &addrlen) < 0)
+    { break; } // If error in receive, exit the while
+  std::cout << buffer << std::endl; // Print the received echo
+}
+\end{minted}
+
+UDP's simplicity contrasts sharply with the more complex, stateful nature of TCP, which guarantees reliable, in-order delivery of data.
+
+---
+
+\section[Implementing TCP Sockets]{Implementing TCP Sockets (The Stream Model)}
+
+Unlike UDP, TCP is a \textbf{connection-oriented} protocol. This requires an explicit setup process where a server listens for connections and a client actively connects to it. Once this connection is established, data can be exchanged reliably as a continuous stream.
+
+\subsection{Key TCP Communication Functions}
+
+The sequence of operations for TCP is more structured than for UDP.
+
+\subsubsection{Server-Side Sequence}
+
+\begin{enumerate}
+    \item \texttt{listen()}: After a socket is created and bound, \texttt{listen()} marks it as a passive listening socket. This function also sets a limit on the queue for pending incoming connections.
+    \item \texttt{accept()}: This is a blocking call that waits for a client to initiate a connection. When a client connects, \texttt{accept()} creates and returns a \textbf{new} socket file descriptor (\texttt{sockfd}). This new socket is dedicated exclusively to communication with that specific client, allowing the original listening socket to continue accepting other connections.
+\end{enumerate}
+
+\subsubsection{Client-Side Function}
+
+\begin{enumerate}
+    \item \texttt{connect()}: The client uses this function to initiate a connection to the server's listening socket.
+\end{enumerate}
+
+\subsubsection{Data Transfer Functions}
+
+Both \texttt{recv}/\texttt{send} and \texttt{read}/\texttt{write} can be used for TCP data transfer. While \texttt{read} and \texttt{write} are general-purpose POSIX I/O functions, \texttt{recv} and \texttt{send} are socket-specific. They offer more control via a \texttt{flags} parameter, though for basic stream communication they are functionally equivalent.
+
+\begin{itemize}
+    \item \texttt{recv()} / \texttt{read()}: Used to receive data from a connected TCP socket.
+    \item \texttt{send()} / \texttt{write()}: Used to send data over a connected TCP socket.
+\end{itemize}
+
+\subsection{TCP Server Implementation}
+
+The TCP server is responsible for setting up a listening socket and then accepting client connections.
+
+\subsubsection{Setup Listening Socket}
+
+The server creates a \texttt{SOCK\_STREAM} socket, binds it to a port, and prepares it for incoming connections.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+int scklist = socket(AF_INET, SOCK_STREAM, 0);
+if (scklist < 0){ /*ERR*/}
+int option(1);
+setsockopt(scklist, SOL_SOCKET, SO_REUSEADDR, (char*)&option, sizeof(option));
+
+struct sockaddr_in my_addr = {0};
+my_addr.sin_family = AF_INET;
+int listen_port = 55555;
+my_addr.sin_port = htons(listen_port);
+my_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+
+if (bind(scklist, (struct sockaddr*)&my_addr, sizeof(my_addr)) < 0) { /*err*/}
+\end{minted}
+
+\subsubsection{Listen and Accept Connection}
+
+This is the most critical part of TCP server logic. The server calls \texttt{listen()} to start waiting for clients. The \texttt{accept()} call blocks until a client connects. Upon connection, it creates a \textit{\textbf{new socket}} (\texttt{sockfd}) just for this client's conversation. The original socket (\texttt{scklist}) remains open and continues listening for other clients.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+// Set the socket to listen for incoming connections, with a queue limit of 5
+if (listen(scklist, 5) < 0) {
+  //ERR
+}
+
+struct sockaddr_in client_addr;
+socklen_t addr_l = sizeof(client_addr);
+// Block and wait for a client to connect, creating a new socket for communication
+int sockfd = accept(scklist, (struct sockaddr*) &client_addr, &addr_l);
+if(sockfd < 0) {
+  /*ERROR! CLOSE AND EXIT*/
+}
+
+// At this point, `scklist` is for listening, `sockfd` is for communicating
+std::cout << "Connection from " << inet_ntoa(client_addr.sin_addr) << std::endl;
+\end{minted}
+
+\subsubsection{Data Exchange and Closure}
+
+Data is exchanged using \texttt{recv()} and \texttt{send()} on the new \texttt{sockfd}. Once communication is complete, \textit{both} the client-specific socket (\texttt{sockfd}) and the original listening socket (\texttt{scklist}) must be closed.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+char buf[256] = {0};
+size_t max_size = 256;
+int rcv_size = recv(sockfd, buf, max_size, 0);
+if(rcv_size < 0) {
+   /*ERROR! CLOSE AND EXIT!!!*/
+}
+
+std::cout << buf << std::endl;
+int sent_size = send(sockfd, buf, rcv_size, 0);
+if(sent_size < 0) {
+  /*ERROR: CLOSE AND EXIT!*/
+}
+
+close(sockfd);  // Close the communication socket
+close(scklist); // Close the listening socket
+\end{minted}
+
+\subsection{TCP Client Implementation}
+
+The TCP client creates a socket and actively connects to the server before any data can be exchanged.
+
+\subsubsection{Client Setup}
+
+The client creates a \texttt{SOCK\_STREAM} socket and populates a \texttt{dest\_addr} struct with the server's IP and port, similar to the UDP client.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+int sckfd = socket(AF_INET, SOCK_STREAM, 0);
+if (sckfd < 0){ /*ERR*/}
+int option(1);
+setsockopt(sckfd, SOL_SOCKET, SO_REUSEADDR, (char*)&option, sizeof(option));
+
+struct sockaddr_in dest_addr = {0};
+dest_addr.sin_family = AF_INET;
+const char* dest_ip = "192.168.100.12";
+int dest_port = 55555;
+dest_addr.sin_port = htons(dest_port);
+
+if (inet_pton(AF_INET, dest_ip, &dest_addr.sin_addr) <= 0) {
+  /* Conversion host_ip to AF_ADDRESS FAILED */
+}
+\end{minted}
+
+\subsubsection{Connect and Exchange Data}
+
+The client calls \texttt{connect()} to establish the connection. If successful, it can immediately use \texttt{send()} and \texttt{recv()} to communicate with the server over the established stream.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+if (connect(sckfd, (struct sockaddr*) &dest_addr, sizeof(dest_addr)) < 0) { /*ERROR: CLOSE AND EXIT*/}
+
+char buf[512] = "data to tx";
+size_t data_size = 10;
+int sent_size = send(sckfd, buf, data_size, 0);
+if(sent_size < 0) {/*ERROR: CLOSE AND EXIT*/}
+
+memset(buf, 0, 512); // Clear buffer for receiving
+int rcv_size = recv(sckfd, buf, 512, 0);
+if(rcv_size < 0) {/*ERR!!!*/}
+
+std::cout << buf << std::endl;
+close(sckfd);
+\end{minted}
+
+Building upon these implementations, we now turn to topics relevant to both TCP and UDP programming, such as robust error handling and proper buffer management.
+
+---
+
+\section[Advanced Topics and Best Practices]{Advanced Topics \& Best Practices}
+
+Writing functional network code is only the first step. This section covers a collection of crucial, real-world considerations for creating robust, efficient, and stable network applications, including buffer management, socket configuration, and critical signal handling.
+
+\subsection{Buffer Management}
+
+Buffers are required for both sending and receiving data through sockets. While traditional C-style arrays (\texttt{char buffer[SIZE]}) are simple, modern C++ offers safer solutions that prevent common memory errors. The best approach is to use \textbf{smart pointers} with \texttt{std::array}. This is superior because it provides automatic memory management (preventing leaks common with \texttt{new char[]}) while still offering direct, C-style array access via the \texttt{.data()} member function, which is required by the C-based socket APIs.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+// Create a smart pointer to a std::array buffer
+auto b1 = std::make_shared<std::array<char, 256>>();
+
+// The ->data() member function provides the raw char* needed by socket calls
+// e.g., recv(sckfd, b1->data(), b1->size(), 0);
+\end{minted}
+
+\subsection{Configuring Socket Options}
+
+The \texttt{setsockopt()} function allows you to modify the default behavior of a socket. A common and practical example is setting the \texttt{SO\_REUSEADDR} option. After a TCP socket closes, the operating system keeps its port in a \texttt{TIME\_WAIT} state for a few minutes to ensure any stray packets are handled correctly. This can prevent a server from restarting quickly on the same port. \texttt{SO\_REUSEADDR} allows the kernel to reuse the port immediately, which is extremely useful during development.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+int option(1); // Set option to true
+int res = setsockopt(socketfd, SOL_SOCKET, SO_REUSEADDR, (char*)&option, sizeof(option));
+\end{minted}
+
+\subsection{Handling the SIGPIPE Signal}
+
+\subsubsection{The Problem}
+
+The \texttt{SIGPIPE} signal is an asynchronous notification sent to a process when it attempts to write to a pipe or socket that is no longer readable (e.g., the remote peer has closed the connection). The default behavior for a process that receives \texttt{SIGPIPE} is to \textbf{terminate immediately}. For a server, this is catastrophic, as a single client disconnection could crash the entire service.
+
+\subsubsection{Solution 1: Ignoring the Signal}
+
+The simplest solution is to instruct the operating system to ignore \texttt{SIGPIPE}. This is typically done once during application initialization. When the signal is ignored, the \texttt{send()} or \texttt{write()} call that triggered the condition will fail gracefully, returning \texttt{-1}, and the global \texttt{errno} variable will be set to \texttt{EPIPE}. Your code can then check for this error and handle the disconnected client appropriately without crashing.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+// This setup is typically run once when the application starts
+#include <signal.h>
+#include <cstring>
+
+struct sigaction act;
+memset(&act, '\0', sizeof(act));
+act.sa_handler = SIG_IGN; // Set the handler to ignore the signal
+if (sigaction(SIGPIPE, &act, NULL) < 0) {
+    // Error setting signal handler
+}
+\end{minted}
+
+\subsubsection{Solution 2: Using a Custom Handler}
+
+A more flexible approach is to register a custom signal handler function. This allows the program to perform specific cleanup actions, log the event, or manage client connections in a more sophisticated way when a \texttt{SIGPIPE} is caught.
+
+\begin{minted}[mathescape, tabsize=4, frame=lines, linenos, style=colorful]{cpp}
+#include <signal.h>
+#include <cstring>
+
+// A custom function to handle the signal
+void handleIt(int sig_id) {
+    // Logic to handle the broken pipe, e.g., logging
+}
+
+// Register the custom handler at application startup
+struct sigaction act;
+memset(&act, '\0', sizeof(act));
+act.sa_handler = &handleIt; // Point to our custom function
+if (sigaction(SIGPIPE, &act, NULL) < 0) {
+    // Error setting signal handler
+}
+\end{minted}
+
+Finally, to complement code-based debugging, we will review some practical command-line tools for testing network connectivity.
+
+---
+
+\section[Practical Networking Utilities]{Practical Networking Utilities}
+
+Command-line tools are invaluable for debugging and testing socket-based applications without needing to write a full client or server program each time.
+
+\subsection{\texttt{ping}}
+
+The \texttt{ping} utility is used to check the reachability of a host on a network and measure the round-trip time for messages. It is the most basic tool for confirming that a remote machine is online and responsive.
+
+\begin{verbatim}
+ping 147.162.97.5
+\end{verbatim}
+
+\subsection{\texttt{netcat} (\texttt{nc})}
+
+\texttt{netcat} is a versatile utility for reading from and writing to network connections using either TCP or UDP. It can act as both a client and a server, making it an excellent tool for quick tests.
+
+Key command flags include:
+
+\begin{itemize}
+    \item \texttt{-l}: Listen mode (act as a server).
+    \item \texttt{-u}: Use UDP protocol (default is TCP).
+\end{itemize}
+
+\textbf{Examples:}
+
+\begin{verbatim}
+# UDP Server listening on port 55556
+nc -lu 55556
+
+# UDP Client connecting to 147.162.97.6 on port 55556
+nc -u 147.162.97.6 55556
+
+# TCP Server listening on port 55555
+nc -l 55555
+
+# TCP Client connecting to 147.162.97.6 on port 55555
+nc 147.162.97.6 55555
+\end{verbatim}
+
+\textbf{A Note on Firewalls:} When testing network code, be aware that local or network \textbf{firewalls} may block traffic on arbitrary ports. For lab or educational environments, specific ports (like 55555 in our examples) may be explicitly opened for testing. If you experience connection issues, always check for firewall rules on both the client and server machines.
+
+\end{document}

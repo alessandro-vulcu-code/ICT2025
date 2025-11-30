@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kt}{char}\PYG{+w}{ }\PYG{n}{buffer}\PYG{p}{[}\PYG{l+m+mi}{256}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}ciao\PYGZdq{}}\PYG{p}{;}
+\PYG{k+kt}{size\PYGZus{}t}\PYG{+w}{ }\PYG{n}{max\PYGZus{}size}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{256}\PYG{p}{;}
+\PYG{k}{while}\PYG{p}{(}\PYG{n}{sendto}\PYG{p}{(}\PYG{n}{sckfd}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{buffer}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{max\PYGZus{}size}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{(}\PYG{k}{struct}\PYG{+w}{ }\PYG{n+nc}{sockaddr}\PYG{o}{*}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{dest\PYGZus{}addr}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{dest\PYGZus{}addr}\PYG{+w}{ }\PYG{p}{))}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{memset}\PYG{p}{(}\PYG{n}{buffer}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{max\PYGZus{}size}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{// Clear buffer to prepare for receiving}
+\PYG{+w}{  }\PYG{k+kt}{socklen\PYGZus{}t}\PYG{+w}{ }\PYG{n}{addrlen}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{dest\PYGZus{}addr}\PYG{p}{);}
+\PYG{+w}{  }\PYG{c+c1}{// Wait to receive the echo from the server}
+\PYG{+w}{  }\PYG{k}{if}\PYG{p}{(}\PYG{n}{recvfrom}\PYG{p}{(}\PYG{n}{sckfd}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{buffer}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{max\PYGZus{}size}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{(}\PYG{k}{struct}\PYG{+w}{ }\PYG{n+nc}{sockaddr}\PYG{+w}{ }\PYG{o}{*}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{dest\PYGZus{}addr}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{addrlen}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{break}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{c+c1}{// If error in receive, exit the while}
+\PYG{+w}{  }\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{buffer}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Print the received echo}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
