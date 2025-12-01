@@ -1,90 +1,93 @@
 % preamble.tex
 
+% --- ENCODING AND LANGUAGE ---
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[english]{babel} % Ho cambiato in italian, supponendo che la maggior parte del testo sia in italiano
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{bm} % For bold math symbols (\bm command)
-\usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage[english]{babel}
+
+% --- GEOMETRY AND PAGE LAYOUT ---
 \usepackage{geometry}
-% \usepackage{fontspec} % Utile per Xetex/LuaLaTeX ma mantenuto - COMMENTED OUT: only works with XeLaTeX/LuaLaTeX
-\usepackage{booktabs}
-\usepackage{amsthm}
-\usepackage{enumitem}
-\usepackage{caption}
-\usepackage{thmtools}
-\usepackage[skins]{tcolorbox} % For colored boxes
-\usepackage{standalone} % Già presente nel tuo elenco
-\usepackage{tkz-euclide} % Questo carica TikZ
-\usetikzlibrary{fit} % Necessaria per l'opzione fit
+\geometry{a4paper, margin=1in}
+\usepackage{parskip}  % Adds space between paragraphs (block style)
+\usepackage{setspace}
+%\onehalfspacing % Uncomment to enable 1.5 line spacing
+
+% --- FONT PACKAGES AND CONFIGURATION ---
+\usepackage{fontspec}    % For custom fonts (required for \newfontfamily)
+\usepackage{amsmath}     % For advanced math environments
+\usepackage{unicode-math} % Necessary for xelatex/lualatex (loads after amsmath)
+% Note: unicode-math provides all symbols from amssymb and amsfonts, so they are not needed
+\usepackage{bm}          % For bold math symbols (\bm command)
+
+% Set math font immediately after loading unicode-math
+\setmathfont{Libertinus Math}
+
+% Set text fonts
+\setmainfont{Fira Sans}[
+    UprightFont = Fira Sans Light,
+    BoldFont = Fira Sans Regular,
+]
+\setsansfont{Fira Sans}
+
+% --- GRAPHICS AND FIGURES ---
+\usepackage{graphicx}
+\usepackage{caption} % For customizing captions
+\usepackage{standalone} % For compiling parts of documents independently
+\usepackage{tkz-euclide} % This loads TikZ
+\usetikzlibrary{fit} % Needed for the fit option
 \usetikzlibrary{shapes.geometric}
 \usetikzlibrary{decorations.pathmorphing} % For snake decoration used in TikZ
-\usepackage{graphicx}
-\usepackage[T1]{fontenc}
-% --- PACCHETTI AGGIUNTI PER LA FORMATTAZIONE ---
-\usepackage{parskip}  % Aggiunge spazio tra i paragrafi (stile "blocco")
-\usepackage{fancyhdr} % Per intestazioni e piè di pagina personalizzati
-\usepackage{fontawesome5}
-\usepackage{xcolor}       % Per colorare le icone
-\usepackage{setspace}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsfonts} % For blackboard bold and other math fonts
+
+% --- TABLES ---
+\usepackage{booktabs} % For professional tables
+\usepackage{tabularx}
+\renewcommand{\arraystretch}{1.4} % Increases vertical spacing between table rows
+
+% --- HYPERLINKS AND REFERENCES ---
+\usepackage{hyperref}
+
+% --- THEOREMS AND BOXES ---
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[skins]{tcolorbox} % For colored boxes
+
+% --- LISTS ---
+\usepackage{enumitem}
+
+% --- UTILITIES AND COLORS ---
+\usepackage{xcolor}       % For coloring text and elements
+\usepackage{fontawesome5} % For icons
+
+% --- CODE LISTINGS (MINTED) ---
 \usepackage{minted}   % For colored C++ code (requires Pygments and -shell-escape)
+\setmonofont{Fira Code} % Set Fira Code as the monospace font
 \setminted{
     fontsize=\small, % Makes the font slightly smaller
 }
 \usepackage{etoolbox} % For hooks to modify environments
 \BeforeBeginEnvironment{minted}{\begin{center}}
 \AfterEndEnvironment{minted}{\end{center}}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{booktabs} % For professional tables
-\usepackage{tabularx}
-\renewcommand{\arraystretch}{1.4} % Aumenta la spaziatura verticale tra le righe delle tabelle
 
+% --- HEADER AND FOOTER CONFIGURATION ---
+\usepackage{fancyhdr} % For custom headers and footers
 
-% --- IMPOSTAZIONI GEOMETRIA E FONT ---
-\geometry{a4paper, margin=1in}
-%\onehalfspacing
-% Configura lo stile 'plain' (usato da \maketitle e \tableofcontents)
-% per essere coerente con il piè di pagina
+% Configure 'plain' style (used by \maketitle and \tableofcontents)
+% to be consistent with the footer
 \fancypagestyle{plain}{
-    \fancyhf{} % Pulisce
-    \cfoot{\thepage} % Mette solo il numero di pagina
-    \renewcommand{\headrulewidth}{0pt} % Niente linea su queste pagine
+    \fancyhf{} % Clears header and footer
+    \cfoot{\thepage} % Puts only the page number at the center footer
+    \renewcommand{\headrulewidth}{0pt} % No rule on these pages
 }
 
-\usepackage{fontspec}
-\usepackage{unicode-math} % Necessario per xelatex/lualatex
-\setmainfont{Fira Sans}[
-    % Imposta la variante "Light" come la variante principale (Regular/Medium)
-    % Quando usi \setmainfont senza specificare 'Path', cerca il nome completo del font.
-    UprightFont = Fira Sans Light,
-    % Quando usi \textbf{}, userà questa variante (Bold)
-    BoldFont = Fira Sans Regular, 
-    % Quando usi \textit{}, userà questa variante (Light Italic)
-    %ItalicFont = Fira Sans Light Italic,
-    % Quando usi \textbf\textit{}, userà questa variante (Bold Italic)
-    %BoldItalicFont = Fira Sans Bold Italic,
-]
-\setsansfont{Fira Sans}
-\setmathfont{Libertinus Math}
-
-% Configurazione Header/Footer per le altre pagine
+% Configure Header/Footer for other pages
 \pagestyle{fancy}
-\fancyhead{} % Pulisce l'intestazione
-\fancyfoot{} % Pulisce il piè di pagina
-\fancyhead[L]{\nouppercase{\rightmark}} % Nome Sezione a sinistra (o Chapter)
-\fancyhead[R]{\nouppercase{\leftmark}}  % Nome Capitolo a destra (o Sezione)
-\fancyfoot[C]{\thepage} % Numero di pagina al centro
+\fancyhead{} % Clears the header
+\fancyfoot{} % Clears the footer
+\fancyhead[L]{\nouppercase{\rightmark}} % Section name on the left (or Chapter)
+\fancyhead[R]{\nouppercase{\leftmark}}  % Chapter name on the right (or Section)
+\fancyfoot[C]{\thepage} % Page number in the center
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
-
-
-% Definizioni utili per il Main file
-\newcommand{\inputlesson}[1]{\clearpage\input{#1}\clearpage} % Comando per input lezione
-
+% --- CUSTOM COMMANDS ---
+\newcommand{\inputlesson}[1]{\clearpage\input{#1}\clearpage} % Command to input a lesson

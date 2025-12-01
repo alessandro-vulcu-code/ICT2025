@@ -38,7 +38,7 @@
 \contentsline {subsection}{\numberline {7.3}Handling the SIGPIPE Signal}{11}{subsection.7.3}%
 \contentsline {subsubsection}{\numberline {7.3.1}The Problem}{11}{subsubsection.7.3.1}%
 \contentsline {subsubsection}{\numberline {7.3.2}Solution 1: Ignoring the Signal}{11}{subsubsection.7.3.2}%
-\contentsline {subsubsection}{\numberline {7.3.3}Solution 2: Using a Custom Handler}{11}{subsubsection.7.3.3}%
+\contentsline {subsubsection}{\numberline {7.3.3}Solution 2: Using a Custom Handler}{12}{subsubsection.7.3.3}%
 \contentsline {section}{\numberline {8}Practical Networking Utilities}{12}{section.8}%
 \contentsline {subsection}{\numberline {8.1}\texttt {ping}}{12}{subsection.8.1}%
 \contentsline {subsection}{\numberline {8.2}\texttt {netcat} (\texttt {nc})}{12}{subsection.8.2}%

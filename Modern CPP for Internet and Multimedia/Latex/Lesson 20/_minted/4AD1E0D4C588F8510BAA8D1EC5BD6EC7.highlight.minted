@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+AC\PYGZus{}CHECK\PYGZus{}LIB\PYG{o}{(}pthread,\PYG{+w}{ }pthread\PYGZus{}create,\PYG{+w}{ }\PYG{o}{[}\PYG{n+nv}{LIBS}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}LIBS}\PYG{l+s+s2}{ \PYGZhy{}lpthread}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{]}\PYG{o}{)}
+\end{MintedVerbatim}

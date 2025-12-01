@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Thread 1: read from standard input and send to socket}
+\PYG{k}{while}\PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{getline}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{std}\PYG{o}{:}\PYG{o}{:}\PYG{n}{cin}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{write}\PYG{p}{(}\PYG{n}{sk\PYGZus{}fd}\PYG{p}{,}\PYG{n}{data}\PYG{p}{,}\PYG{n}{data}\PYG{p}{.}\PYG{n}{size}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Thread 2: read from socket and print to standard output}
+\PYG{k}{while}\PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{read}\PYG{p}{(}\PYG{n}{sk\PYGZus{}fd}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rx\PYGZus{}data}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MAX\PYGZus{}SIZE}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{std}\PYG{o}{:}\PYG{o}{:}\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{rx\PYGZus{}data}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{:}\PYG{o}{:}\PYG{n}{endl}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
