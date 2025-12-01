@@ -27,7 +27,16 @@ These symbols may belong to a complex constellation, for example, 256-QAM.
     \parbox{\dimexpr\linewidth-2\fboxsep}{
         \textbf{\faQuestionCircle\ Student Q\&A: Block Stretching} \\
         \small
-        \textbf{Q:} What is meant by "stretching" the blocks? \\
+        \textbf{Q:} What is meant by "stretching" the blocks?
+    }
+}
+
+\vspace{0.5em} % Add a small vertical space between the question and answer
+
+\noindent\colorbox{green!15}{
+    \parbox{\dimexpr\linewidth-2\fboxsep}{
+        \textbf{\faCheck\ Answer: Block Stretching} \\
+        \small
         \textbf{A:} During the lecture, a student asked for clarification on "lengthening" the blocks. The professor explained that to transmit a block of $K$ symbols, if one wants to maintain the same input rate, time or bandwidth must be increased. However, in the OFDM perspective, the key concept is that we take $K$ symbols and transmit them \textit{in parallel} over a longer time period compared to a single symbol, occupying a bandwidth $B \approx K/T$ (where $T$ is the block time). Technically, in the context of the explanation, "stretch" referred to the insertion of the Cyclic Prefix, which physically lengthens the duration of the transmitted block from $K$ to $K+L$ samples.
     }
 }
@@ -69,8 +78,17 @@ For indices corresponding to the cyclic prefix (e.g., $n = -1, \dots, -L$), the 
     \parbox{\dimexpr\linewidth-2\fboxsep}{
         \textbf{\faQuestionCircle\ Student Q\&A: CP Constraints} \\
         \small
-        \textbf{Q:} Is there a constraint on the length of the Cyclic Prefix? \\
-        \textbf{A:} Yes. The length of the Cyclic Prefix ($L$) must be greater than or equal to the length of the channel impulse response. This ensures that all Inter-Block Interference (IBI) falls within the cyclic prefix, which is then discarded at the receiver, leaving the data block "clean".
+        Is there a constraint on the length of the Cyclic Prefix? \\
+    }
+}
+
+\vspace{0.5em} % Add a small vertical space between the question and answer
+
+\noindent\colorbox{green!15}{
+    \parbox{\dimexpr\linewidth-2\fboxsep}{
+        \textbf{\faCheck\ Answer: CP Constraints} \\
+        \small
+        Yes. The length of the Cyclic Prefix ($L$) must be greater than or equal to the length of the channel impulse response. This ensures that all Inter-Block Interference (IBI) falls within the cyclic prefix, which is then discarded at the receiver, leaving the data block "clean".
     }
 }
 
@@ -135,8 +153,16 @@ Thanks to the Dirac delta $\delta(k-n)$, the summation over $k$ "survives" only 
     \parbox{\dimexpr\linewidth-2\fboxsep}{
         \textbf{\faQuestionCircle\ Student Q\&A: Notation Confusion} \\
         \small
-        \textbf{Q:} Confusion regarding $n$ vs $k$ notation in the final proof. \\
-        \textbf{A:} Some ambiguity was noted in the use of indices. In the final formula, $n$ is used as the output subcarrier index ($\tilde{y}(n)$). The formula proves that the output at index $n$ depends \textit{only} on the input at the same index $n$ ($x[n]$), scaled by the channel $h[n]$. This confirms the absence of Inter-Carrier Interference (ICI).
+        Confusion regarding $n$ vs $k$ notation in the final proof. \\
+    }
+}
+
+\vspace{0.5em}
+\noindent\colorbox{green!15}{
+    \parbox{\dimexpr\linewidth-2\fboxsep}{
+        \textbf{\faCheck\ Answer: Notation Confusion} \\
+        \small
+        Some ambiguity was noted in the use of indices. In the final formula, $n$ is used as the output subcarrier index ($\tilde{y}(n)$). The formula proves that the output at index $n$ depends \textit{only} on the input at the same index $n$ ($x[n]$), scaled by the channel $h[n]$. This confirms the absence of Inter-Carrier Interference (ICI).
     }
 }
 

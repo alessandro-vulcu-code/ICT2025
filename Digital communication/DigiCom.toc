@@ -1,4 +1,5 @@
-\babel@toc {english}{}\relax 
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
 \contentsline {chapter}{\numberline {1} }{7}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Introduction}{7}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Primer}{7}{section.1.2}%
@@ -20,7 +21,7 @@
 \contentsline {subsection}{\numberline {2.4.1}Theoretical treatment: results for generic $\symbf {s}, \symbf {\tilde {y}}$ (+for iid values and for a stationary channel)}{23}{subsection.2.4.1}%
 \contentsline {section}{\numberline {2.5}Memoryless channel law with Gaussian noise}{25}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}Capacity of a channel, information stability, spectral efficiency (+codeword error, information density)}{25}{subsection.2.5.1}%
-\contentsline {section}{\numberline {2.6}BICM architecture}{28}{section.2.6}%
+\contentsline {section}{\numberline {2.6}BICM architecture}{27}{section.2.6}%
 \contentsline {chapter}{\numberline {3} }{33}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Spectral efficiency for finite-length codewords}{33}{section.3.1}%
 \contentsline {section}{\numberline {3.2}MMSE estimation}{34}{section.3.2}%
@@ -78,12 +79,12 @@
 \contentsline {subsubsection}{IDFT (Inverse Discrete Fourier Transform)}{99}{section*.283}%
 \contentsline {subsubsection}{Cyclic Prefix (CP) Insertion}{100}{section*.284}%
 \contentsline {section}{\numberline {7.2}The Channel}{100}{section.7.2}%
-\contentsline {section}{\numberline {7.3}The OFDM Receiver}{100}{section.7.3}%
+\contentsline {section}{\numberline {7.3}The OFDM Receiver}{101}{section.7.3}%
 \contentsline {subsection}{\numberline {7.3.1}Cyclic Prefix Removal}{101}{subsection.7.3.1}%
 \contentsline {subsection}{\numberline {7.3.2}DFT (Discrete Fourier Transform)}{101}{subsection.7.3.2}%
 \contentsline {section}{\numberline {7.4}Mathematical Proof [The "Heart" of OFDM]}{101}{section.7.4}%
 \contentsline {subsection}{\numberline {7.4.1}Step 1: Expansion of $\tilde {y}[n]$}{101}{subsection.7.4.1}%
 \contentsline {subsection}{\numberline {7.4.2}Step 2: Substitution of $x$ (IDFT)}{101}{subsection.7.4.2}%
-\contentsline {subsection}{\numberline {7.4.3}Step 3: Rearrangement of Summations}{101}{subsection.7.4.3}%
+\contentsline {subsection}{\numberline {7.4.3}Step 3: Rearrangement of Summations}{102}{subsection.7.4.3}%
 \contentsline {subsection}{\numberline {7.4.4}Final Result}{102}{subsection.7.4.4}%
 \contentsline {subsection}{\numberline {7.4.5}Interpretation and Equalization}{102}{subsection.7.4.5}%

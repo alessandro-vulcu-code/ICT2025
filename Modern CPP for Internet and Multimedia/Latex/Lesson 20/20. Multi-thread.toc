@@ -1,17 +1,17 @@
 \babel@toc {english}{}\relax 
-\contentsline {section}{\numberline {1}The Imperative for Parallel Programming}{2}{section.1}%
-\contentsline {section}{\numberline {2}Foundational Models of Concurrency}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}The Process Model}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Process State Transitions}{3}{subsection.2.2}%
-\contentsline {section}{\numberline {3}Threads vs. Processes}{3}{section.3}%
-\contentsline {section}{\numberline {4}Implementing and Managing Threads in C++11}{4}{section.4}%
-\contentsline {subsection}{\numberline {4.1}The \texttt {std::thread} Class and Compilation}{4}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Critical Lifecycle Operations: \texttt {join()} vs. \texttt {detach()}}{4}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Thread Identification and Safe Management}{4}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Defining Tasks and Passing Data to C++ Threads}{5}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Task Types}{5}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Parameter Passing Semantics}{6}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Leveraging Lambda Functions in Multi-Threading}{6}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Anatomy of a Lambda Function}{6}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}The Capture Clause Explained}{7}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Lambdas in Action with Threads}{7}{subsection.6.3}%
+\contentsline {section}{\numberline {1}The Imperative for Parallel Programming}{3}{section.1}%
+\contentsline {section}{\numberline {2}Foundational Models of Concurrency}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The Process Model}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Process State Transitions}{4}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Threads vs. Processes}{4}{section.3}%
+\contentsline {section}{\numberline {4}Implementing and Managing Threads in C++11}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The \texttt {std::thread} Class and Compilation}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Critical Lifecycle Operations: \texttt {join()} vs. \texttt {detach()}}{5}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Thread Identification and Safe Management}{5}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Defining Tasks and Passing Data to C++ Threads}{6}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Task Types}{6}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Parameter Passing Semantics}{7}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Leveraging Lambda Functions in Multi-Threading}{7}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Anatomy of a Lambda Function}{7}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The Capture Clause Explained}{8}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Lambdas in Action with Threads}{8}{subsection.6.3}%

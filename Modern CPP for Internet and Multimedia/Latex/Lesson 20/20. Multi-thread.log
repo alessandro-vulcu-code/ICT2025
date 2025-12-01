@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  1 DEC 2025 11:57
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  1 DEC 2025 13:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1426,7 +1426,11 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 7.99915pt on input line 12.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 5.99936pt on input line 12.
- (./20. Multi-thread.toc
+
+
+[1
+
+] (./20. Multi-thread.toc
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
 (Font)              scaled to size 10.00107pt on input line 4.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
@@ -1445,16 +1449,14 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 
 
-[1
-
-]
+[2]
 \pydata@fh@_0762F9BE384FA2DC6BD942FFFD704842.data.minted=\write7
 \openout7 = `_0762F9BE384FA2DC6BD942FFFD704842.data.minted'.
 
-runsystem(latexminted config  --timestamp 20251201115724 0762F9BE384FA2DC6BD942FFFD704842)...executed safely (allowed).
+runsystem(latexminted config  --timestamp 20251201131256 0762F9BE384FA2DC6BD942FFFD704842)...executed safely (allowed).
 
  (./_0762F9BE384FA2DC6BD942FFFD704842.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20251201115724 0762F9BE384FA2DC6BD942FFFD704842)...executed safely (allowed).
+runsystem(latexminted cleanconfig  --timestamp 20251201131256 0762F9BE384FA2DC6BD942FFFD704842)...executed safely (allowed).
 
  (./_minted/default.style.minted) (./_minted/2625D2B478544200146D2C08A24225E9.highlight.minted
 
@@ -1467,59 +1469,59 @@ LaTeX Font Warning: Font shape `TU/FiraCode(0)/b/n' undefined
 
 )
 
-[2]
-Underfull \hbox (badness 4193) in paragraph at lines 94--94
+[3]
+Underfull \hbox (badness 4193) in paragraph at lines 95--95
 \TU/FiraSans(0)/m/n/10 between them compared to inter-process
  []
 
 
-Underfull \hbox (badness 1009) in paragraph at lines 94--95
+Underfull \hbox (badness 1009) in paragraph at lines 95--96
 []|\TU/FiraSans(0)/b/n/10 Single Point of Failure: \TU/FiraSans(0)/m/n/10 If a single thread
  []
 
 
-Underfull \hbox (badness 1377) in paragraph at lines 94--95
+Underfull \hbox (badness 1377) in paragraph at lines 95--96
 \TU/FiraSans(0)/m/n/10 encounters a critical error and crashes, it
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 96--96
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
 []|\TU/FiraSans(0)/b/n/10 Lower Overhead: \TU/FiraSans(0)/m/n/10 Threads are more
  []
 
 
-Underfull \hbox (badness 6608) in paragraph at lines 96--96
+Underfull \hbox (badness 6608) in paragraph at lines 97--97
 \TU/FiraSans(0)/m/n/10 ”lightweight” than processes. They are
  []
 
 
-Underfull \hbox (badness 1122) in paragraph at lines 96--96
+Underfull \hbox (badness 1122) in paragraph at lines 97--97
 \TU/FiraSans(0)/m/n/10 they do not require duplicating the entire
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 98--98
+Underfull \hbox (badness 1648) in paragraph at lines 99--99
 []|\TU/FiraSans(0)/b/n/10 Efficient Context Switching: \TU/FiraSans(0)/m/n/10 Switching be-
  []
 
 
 
-[3]
-Overfull \hbox (32.19249pt too wide) in paragraph at lines 109--112
+[4]
+Overfull \hbox (32.19249pt too wide) in paragraph at lines 110--113
 \TU/FiraSans(0)/m/n/10 task to be executed and any arguments that task requires. The constructor signature is: \TU/FiraCode(0)/b/n/10 thread(Function&&
  []
 
 (./_minted/4AD1E0D4C588F8510BAA8D1EC5BD6EC7.highlight.minted) (./_minted/5C868E438DA6D22C4CE086FDCDA809EF.highlight.minted)
 
-[4] (./_minted/57EA7BCCA78026D102FA87A2E528E52E.highlight.minted) (./_minted/F80E5B0BD8D851062B48984BDFA22986.highlight.minted)
+[5] (./_minted/57EA7BCCA78026D102FA87A2E528E52E.highlight.minted) (./_minted/F80E5B0BD8D851062B48984BDFA22986.highlight.minted)
 
-[5] (./_minted/052D076EAEC6AF3B6DC517F1EA83AB6C.highlight.minted) (./_minted/0F16714330A2D53105393B5695AEBF9C.highlight.minted)
+[6] (./_minted/052D076EAEC6AF3B6DC517F1EA83AB6C.highlight.minted) (./_minted/0F16714330A2D53105393B5695AEBF9C.highlight.minted)
 
-[6] (./_minted/5C55468D94DFDA3125522D0841B6A66D.highlight.minted
+[7] (./_minted/5C55468D94DFDA3125522D0841B6A66D.highlight.minted
 
-[7])
+[8])
 
-[8] (./20. Multi-thread.aux)
+[9] (./20. Multi-thread.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
@@ -1540,4 +1542,4 @@ Here is how much of TeX's memory you used:
  350 hyphenation exceptions out of 8191
  107i,11n,110p,1236b,1041s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on 20. Multi-thread.pdf (8 pages).
+Output written on 20. Multi-thread.pdf (9 pages).
