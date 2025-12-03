@@ -13,12 +13,24 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Modern CPP for Internet and Multimedia/Modern CPP/11. Autotools.md",
+                "file": "Internet of Things and Smart Cities/13. Wired IoT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "11. Autotools"
+              "title": "13. Wired IoT"
+            }
+          },
+          {
+            "id": "9055ad0a9c85d69d",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2025-12-03 08.59.51.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2025-12-03 08.59.51.excalidraw"
             }
           }
         ]
@@ -98,12 +110,12 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "Modern CPP for Internet and Multimedia/Modern CPP/11. Autotools.md",
+            "file": "Internet of Things and Smart Cities/13. Wired IoT.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
-            "showSearch": false,
-            "searchQuery": "",
+            "showSearch": true,
+            "searchQuery": "Daisy",
             "backlinkCollapsed": false,
             "unlinkedCollapsed": true
           },
@@ -145,17 +157,32 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-git:Open Git source control": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-excalidraw-plugin:New drawing": false
     }
   },
   "active": "8e4b85eaec79ae67",
   "lastOpenFiles": [
-    "Cryptography/Cryptography.pdf"
+    "Excalidraw/Drawing 2025-12-03 08.59.51.excalidraw.md",
+    "Internet of Things and Smart Cities/13. Wired IoT.md",
+    "Excalidraw",
+    "Modern CPP for Internet and Multimedia/Modern CPP/11. Autotools.md",
+    "Modern CPP for Internet and Multimedia/Latex/Lesson 19/_minted/2C023DD72378629C4310371917831040.highlight.minted",
+    "Digital communication/frontespizio.aux",
+    "Modern CPP for Internet and Multimedia/Latex/Lesson 19/_minted/CB4766ECCB2BE82467D6409C19633534.highlight.minted",
+    "Digital communication/frontespizio.tex",
+    "Modern CPP for Internet and Multimedia/Latex/Lesson 19/_minted/4F1D7858126BD47045FC99CBACB3B66D.highlight.minted",
+    "Modern CPP for Internet and Multimedia/Latex/Lesson 19/_minted/18E8DB29A8353DB696632038192B2122.highlight.minted",
+    "Digital communication/frontespizio.pdf",
+    "Digital communication/frontespizio.log",
+    "Modern CPP for Internet and Multimedia/Latex/Lesson 19/_minted/93E1B40DFD5A8B364FF9A6BAE553BC90.highlight.minted",
+    "/Internet of Things and Smart Cities/13. Wired IoT.md"
   ]
 }
