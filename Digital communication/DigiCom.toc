@@ -88,3 +88,7 @@
 \contentsline {subsection}{\numberline {7.4.3}Step 3: Rearrangement of Summations}{102}{subsection.7.4.3}%
 \contentsline {subsection}{\numberline {7.4.4}Final Result}{102}{subsection.7.4.4}%
 \contentsline {subsection}{\numberline {7.4.5}Interpretation and Equalization}{102}{subsection.7.4.5}%
+\contentsline {chapter}{\numberline {8}Lesson 2-12-2025}{103}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Mathematical representation of OFDM}{103}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Subcarrier spacing, spectral efficiency penalty}{106}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Examples of small exercises}{109}{section.8.3}%
