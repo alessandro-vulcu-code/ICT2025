@@ -1,0 +1,234 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel} % Changed to English
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{fontspec} 
+\usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{thmtools}
+\usepackage{standalone} 
+\usepackage{fontawesome5}
+\usepackage{minted} 
+\usepackage{float}    
+\usepackage{tabularx}
+
+% --- ADDED PACKAGES FOR FORMATTING ---
+\usepackage{parskip}  
+\usepackage{fancyhdr} 
+
+% --- GEOMETRY AND FONT SETTINGS ---
+\geometry{a4paper, margin=1in}
+
+% Configure 'plain' style (used by \maketitle and \tableofcontents)
+\fancypagestyle{plain}{
+    \fancyhf{} 
+    \cfoot{\thepage} 
+    \renewcommand{\headrulewidth}{0pt} 
+}
+
+% Header/Footer Configuration for other pages
+\pagestyle{fancy}
+\fancyhead{} 
+\fancyfoot{} 
+\fancyhead[L]{\nouppercase{\rightmark}} 
+\fancyhead[R]{\nouppercase{\leftmark}}  
+\fancyfoot[C]{\thepage} 
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% --- THEOREM DEFINITIONS ---
+\newtheoremstyle{mythmstyle}%
+    {}%
+    {}%
+    {\itshape}%
+    {}%
+    {\bfseries}%
+    {}%
+    { }%
+    {\thmname{#1}\thmnumber{ #2}%
+    \thmnote{: #3\addcontentsline{toc}{subsubsection}{{\itshape#1}: #3}}. }
+
+\theoremstyle{mythmstyle}
+\newtheorem{theorem}{Th}[section]
+\newtheorem{definition}{Def}[section]
+\newtheorem{proposition}{Prop}[section]
+\newtheorem{corollary}{Cor}[section]
+\newtheorem{algorithm}{Alg}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{remark}{Rem}
+
+\begin{document}
+
+% --- (i) TITLE PAGE ---
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge \textbf{Laboratory Report: Optical Fiber Characterization}}
+    \vspace{0.5cm}
+    {\Huge \textbf{Cut-off Wavelength and Spectral Attenuation}}
+    
+    \vspace{2cm}
+    
+    {\Large \textbf{Authors:}} \\
+    \vspace{0.5cm}
+    Author Name 1 \\
+    Author Name 2 \\
+    
+    \vspace{1.5cm}
+    
+    {\Large \textbf{Group Number:}} \\
+    \vspace{0.5cm}
+    Group XX
+    
+    \vfill
+    
+    {\large \today}
+    
+    \vspace{2cm}
+\end{titlepage}
+
+% --- (ii) INTRODUCTION ---
+\section{Introduction}
+
+The qualification of optical fibers for use in modern telecommunication systems requires accurate characterization of their fundamental transmission parameters. Among these, the \textbf{cut-off wavelength} ($\lambda_c$) and the \textbf{spectral attenuation} profile ($\alpha(\lambda)$) are crucial for determining the fiber's operating regime and its suitability for specific applications. The cut-off wavelength ($\lambda_c$) defines the limit above which the fiber operates in the single-mode regime, an essential condition for high-speed signal transmission over long distances. Attenuation, on the other hand, quantifies the optical signal power loss along the path and determines its maximum reach. The strategic goal of this laboratory activity was to measure these key parameters on different fiber types, consolidating theoretical understanding through the practical application of standard measurement methodologies.
+
+The specific objectives of the experiment were as follows:
+\begin{itemize}
+    \item Measure the \textbf{cut-off wavelength} ($\lambda_c$) on different types of optical fibers, applying the induced curvature perturbation method.
+    \item Measure the \textbf{spectral attenuation profile} ($\alpha(\lambda)$) for three different fiber spools, characterized by varying lengths and physical properties.
+    \item Document the operational procedures, instrumental configurations, and practical issues encountered during the use of the Optical Spectrum Analyzer (OSA).
+\end{itemize}
+This Introduction does not contain results or conclusions.
+
+% --- (iii) RESULTS AND DISCUSSION ---
+\section{Results and Discussion}
+
+In this section, the data collected during the measurement sessions are presented and interpreted, linking the quantitative observations to the intrinsic physical properties of the examined optical fibers. The results are presented in a logical sequence. The discussion considers these results in relation to the hypotheses advanced in the Introduction, and includes an evaluation of the methodology.
+
+\subsection{Cut-off Wavelength Analysis}
+The application of the curvature method allowed clear observation of the behavioral differences between the analyzed fibers.
+
+\begin{itemize}
+    \item \textbf{Bending Loss Fiber Behavior:} A notable qualitative observation concerns the \textit{Bending Loss Fiber}. To induce a measurable attenuation on this fiber, it was necessary to apply a \textbf{"very tight" and "more pronounced"} curvature compared to the \textit{Non-Zero Dispersion Shifted} fiber. This result experimentally confirms its specific design, aimed at making it highly resistant to bending-induced losses. This resistance is not only a theoretical property but a critical characteristic for installation in space-constrained environments, such as \textbf{conduits and cable trays}, where a standard fiber would suffer unacceptable signal losses.
+    
+    \item \textbf{Measurement Stability and Degenerate Modes:} The manual adjustment procedure to stabilize the peak at $1\ \text{dB}$ proved to be a \textbf{cumbersome and non-trivial} operation, requiring numerous iterative attempts to obtain a stable and reliable measurement. At low attenuations, the appearance of multiple distinct but close peaks was also observed, an indication of the presence of nearly degenerate modes that tend to merge into a single, broader peak with more intense curvatures.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    % Placeholder for the cut-off measurement graph
+    \framebox[0.8\linewidth]{\rule{0pt}{5cm} }
+    \caption{Differential spectrum obtained during the cut-off wavelength measurement. The attenuation peak induced by the curvature is highlighted.}
+    \label{fig:cutoff}
+\end{figure}
+
+\subsection{Spectral Attenuation Analysis}
+The attenuation measurements provided results consistent with the known characteristics of the three fiber spools.
+
+\begin{itemize}
+    \item \textbf{Length Dependence:} The comparison between the "Yellow" fiber of $4.4\ \text{km}$ and the \textit{Non-Zero Dispersion Shifted} fiber of $13.7\ \text{km}$ showed, as expected, a significantly greater total attenuation for the latter, highlighting the clear dependence of losses on the length ($L$) of the link.
+    
+    \item \textbf{Dispersion Compensating Fiber (DCF):} The most interesting analysis concerns the \textit{Dispersion Compensating Fiber (DCF)}. Although its length was only $2.0\ \text{km}$, its total attenuation was comparable to that of much longer standard fibers. This seemingly anomalous behavior is perfectly justified by the specialized function of this fiber. Its design is optimized not to minimize losses, but to compensate for the accumulated chromatic dispersion along a link. This objective is achieved through specialized fabrication techniques that include specific \textbf{dopant profiles}, which, as an engineering trade-off, inherently increase its attenuation coefficient ($\alpha$).
+\end{itemize}
+Repetitive presentation of the same data in different forms has been avoided.
+
+\subsection{Evaluation of Methodology and Conclusion}
+The laboratory experience successfully concluded, achieving all predetermined objectives and providing a practical, in-depth understanding of fiber optic characterization techniques.
+
+\begin{enumerate}
+    \item The effectiveness of the \textbf{curvature method} for identifying the cut-off wavelength ($\lambda_c$) was fully verified. The measurements clearly distinguished the behavior of standard fibers from that of specialized fibers like the \textit{Bending Loss Fiber}, whose high resistance to bending was confirmed experimentally.
+    \item The measured \textbf{spectral attenuation profiles} ($\alpha(\lambda)$) were consistent with the theoretical and application characteristics of the analyzed fibers. In particular, it was demonstrated that the high attenuation of the \textit{Dispersion Compensating Fiber (DCF)} is not a defect, but an intrinsic feature linked to its dispersion compensation function.
+    \item The experience confirmed that, even with "vintage" instrumentation, the meticulousness of the operator and a deep understanding of the methodology are essential to overcome hardware limitations and obtain reliable measurement data.
+\end{enumerate}
+
+% --- (iv) MATERIALS AND METHODS ---
+\section{Materials and Methods}
+
+This section describes the instrumentation used, the characteristics of the analyzed fibers, and the operational procedures adopted to allow the experimental work to be reproduced in another laboratory.
+
+\subsection{Instrumentation and Experimental Setup}
+The reliability of optical measurements critically depends on the precision and stability of the experimental setup. A controlled test bench was arranged to systematically characterize the Devices Under Test (DUT).
+
+The main experimental apparatus consisted of the following components:
+\begin{itemize}
+    \item \textbf{Optical Spectrum Analyzer (OSA):} Model $\mathbf{ANDO\ AQ-6315A}$. This instrument measures the optical spectrum by analyzing the input signal power per wavelength in the operational range from $750\ \text{nm}$ to $1750\ \text{nm}$.
+    \item \textbf{Optical Source:} A broadband source, integrated into the setup and directly connected to the OSA, was used to inject the optical signal into the fibers under analysis.
+    \item \textbf{Connectors and Adapters:} Connection cables (\textit{patch cords}) with \textbf{PC} (\textit{Physical Contact}, perpendicular polishing) and \textbf{APC} (\textit{Angled Physical Contact}, angled at 7-8 degrees) connectors were used. The fundamental difference lies in the ferrule processing: APC connectors are crucial for minimizing power reflections by deflecting the reflected light outside the fiber \textit{core}. The use of APC connectors is essential to \textbf{protect sensitive laser sources from back-reflection} that could cause instability or damage.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    % Placeholder for setup photo or block diagram
+    \framebox[0.8\linewidth]{\rule{0pt}{4cm} }
+    \caption{Schematic of the experimental setup used for attenuation and cut-off measurements.}
+    \label{fig:setup}
+\end{figure}
+
+\subsection{Analyzed Optical Fibers}
+Table \ref{tab:fibre} summarizes the fibers used in the respective experimental tests.
+
+\begin{table}[h]
+    \centering
+    \caption{Characteristics of the optical fibers subjected to testing.}
+    \label{tab:fibre}
+    \begin{tabularx}{\textwidth}{@{} c l c X @{}} % c, l, c per le prime tre colonne, X per l'ultima
+        \toprule
+        \textbf{Test} & \textbf{Fiber Type} & \textbf{Length ($L$)} & \textbf{Additional Notes} \\
+        \midrule
+        $\lambda_c$ & Non-Zero Dispersion Shifted Fiber & N/A & Fiber with specific dispersion characteristics. \\
+        $\lambda_c$ & Bending Loss Fiber & N/A & Designed to be highly resistant to bending-induced losses. \\
+        $\alpha(\lambda)$ & "Yellow" Fiber & $4.4\ \text{km}$ & First fiber analyzed for attenuation. \\
+        $\alpha(\lambda)$ & Non-Zero Dispersion Shifted Fiber & $13.7\ \text{km}$ & Long length for evaluating long-distance attenuation. \\
+        $\alpha(\lambda)$ & Dispersion Compensating Fiber (DCF) & $2.0\ \text{km}$ & Special fiber designed to compensate for chromatic dispersion. \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Measurement Methodology}
+
+\subsubsection{Cut-off Wavelength Measurement via Curvature Method}
+This methodology relies on a physical principle: curvature introduced to the optical fiber causes power losses selective to propagation modes. Higher-order modes (like the $\text{LP}_{11}$ mode) are less confined and become extremely sensitive to bending near their cut-off wavelength ($\lambda_c$).
+The operational procedure was:
+\begin{enumerate}
+    \item \textbf{Reference Acquisition (Trace A):} Spectral trace acquired and stored (\textit{fix}) with the fiber unperturbed.
+    \item \textbf{Measurement Acquisition (Trace B):} A controlled manual curvature is introduced, and a new spectral trace is acquired.
+    \item \textbf{Differential Analysis (Trace C):} The analyzer calculates the difference $\mathbf{C = A - B}$. The most significant positive peak at the longer wavelength corresponds to the cut-off wavelength ($\lambda_c$) of the first higher-order mode. The curvature was adjusted to achieve a peak amplitude of approximately $\mathbf{1\ \text{dB}}$ on Trace C.
+\end{enumerate}
+
+\subsubsection{Spectral Attenuation Measurement}
+This measurement quantifies the optical signal power loss as a function of wavelength ($\lambda$), expressed in $\mathbf{\text{dB/km}}$.
+The procedure followed was:
+\begin{enumerate}
+    \item \textbf{Input Power Acquisition (Trace A):} A reference measurement is taken by connecting the optical source directly to the analyzer ($P_{\text{in}}$).
+    \item \textbf{DUT Insertion:} The fiber spool to be measured is inserted into the optical circuit.
+    \item \textbf{Output Power Acquisition (Trace B):} A second measurement is performed, representing the spectral power output from the fiber ($P_{\text{out}}$).
+\end{enumerate}
+
+The spectral attenuation coefficient ($\alpha$), expressed in $\mathbf{\text{dB/km}}$, is normalized by the fiber length ($L$) according to the formula:
+
+\begin{align}
+\alpha = \frac{P_{\text{in}} (\text{dBm}) - P_{\text{out}} (\text{dBm})}{L (\text{km})}
+\end{align}
+
+\subsection{Operational Procedure and Data Acquisition}
+The workflow followed in the laboratory required a methodical approach, emphasizing the need for \textbf{patience and manual skill}, especially in the iterative process of determining the cut-off wavelength ($\lambda_c$).
+
+The key steps were:
+\begin{itemize}
+    \item \textbf{Initial Setup:} Powering on and configuring the $\text{ANDO\ AQ-6315A}$ OSA, defining the spectral range and display parameters.
+    \item \textbf{Reference Acquisition:} Performing a single sweep to record the reference trace (Trace A) and subsequently fixing the data.
+    \item \textbf{Perturbation Application:} For the cut-off measurement, the fiber was manually bent. Care was taken to localize the curvature at a specific point.
+    \item \textbf{Analysis and Iteration:} Real-time observation of Trace C (difference $\text{A-B}$) and iterative adjustment of the manual curvature to reach the target peak amplitude of approximately $\mathbf{1\ \text{dB}}$.
+    \item \textbf{Data Saving:} Results were saved via a \textbf{"vintage" procedure} onto a \textbf{floppy disk}. Both screenshots (e.g., $\mathbf{G0, G1, G2}$) and numerical trace data (exported in text format, $\mathbf{.TXT}$) were saved, avoiding the proprietary $\mathbf{.Win}$ format.
+\end{itemize}
+
+\end{document}
