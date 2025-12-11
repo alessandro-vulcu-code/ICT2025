@@ -82,49 +82,427 @@ In the book the difference between least square and MMSE is not made clear.
     \end{align*}
 \end{minipage}
 
-\section*{How the \textit{H} matrices represent the delay}
+\begin{tcolorbox}[colframe=cyan!80!blue, colback=white, sharp corners, boxrule=1pt]
+
+\textcolor{cyan!80!blue}{\faPen} \textbf{\textcolor{cyan!80!blue}{How the $\boldsymbol{H}$ matrices represent the delay}}
 
 Let's suppose we have 2 transmit and 2 receive antennas and all the signals arrive without any delay at the receiver:
 
-\begin{figure}[h]
-    \centering
-    % Diagramma MIMO 2x2 flat (frecce nere dirette)
-    \includegraphics[width=0.4\textwidth]{Pictures/Schermata_20251209_184043.png}
-    \caption*{2x2 MIMO with no delay}
-\end{figure}
+\begin{center}
+\begin{tikzpicture}[scale=1.2, >=to]
+    % Nodi TX
+    \node[circle, draw, thick, inner sep=1.5pt] (t1) at (0, 2) {};
+    \node[circle, draw, thick, inner sep=1.5pt] (t2) at (0, 0) {};
+    
+    % Nodi RX
+    \node[circle, draw, thick, inner sep=1.5pt] (r1) at (3, 2) {};
+    \node[circle, draw, thick, inner sep=1.5pt] (r2) at (3, 0) {};
+    
+    % Frecce nere
+    \draw[->, thick, darkgray] (t1) -- (r1);
+    \draw[->, thick, darkgray] (t1) -- (r2);
+    \draw[->, thick, darkgray] (t2) -- (r1);
+    \draw[->, thick, darkgray] (t2) -- (r2);
+    
+    % Scarabocchi interni ai nodi (simulazione handwriting)
+    \draw[darkgray, thin] (t1.center) ++(-0.02,0) to[out=90,in=270] ++(0.04,0);
+    \draw[darkgray, thin] (r2.center) ++(-0.02,0) to[out=90,in=270] ++(0.04,0);
+\end{tikzpicture}
+\end{center}
 
 We'll use a matrix such as
 \begin{align*}
     \boldsymbol{H} = \begin{bmatrix} h_{00} & h_{01} \\ h_{10} & h_{11} \end{bmatrix}
 \end{align*}
 to characterize the channel.
-
 Even in this case, there could be other paths, with different delays!
 
-\begin{figure}[h]
-    \centering
-    % Diagramma MIMO 2x2 con percorsi diretti (0) e riflessi (1, frecce blu)
-    \includegraphics[width=0.4\textwidth]{Pictures/Schermata_20251209_184057.png}
-    \caption*{MIMO paths with different delays (blue arrows arrive at time 1)}
-\end{figure}
+\begin{center}
+\begin{tikzpicture}[scale=1.2, >=to]
+    % Nodi TX
+    \node[circle, draw, thick, inner sep=1.5pt] (t1) at (0, 2) {};
+    \node[circle, draw, thick, inner sep=1.5pt] (t2) at (0, 0) {};
+    
+    % Nodi RX
+    \node[circle, draw, thick, inner sep=1.5pt] (r1) at (3, 2) {};
+    \node[circle, draw, thick, inner sep=1.5pt] (r2) at (3, 0) {};
+    
+    % Frecce nere con label 0
+    \draw[->, thick, darkgray] (t1) -- node[above, pos=0.2] {0} (r1);
+    \draw[->, thick, darkgray] (t1) -- node[below, pos=0.2] {0} (r2);
+    \draw[->, thick, darkgray] (t2) -- node[above, pos=0.2] {0} (r1);
+    \draw[->, thick, darkgray] (t2) -- node[below, pos=0.2] {0} (r2);
+
+    % Frecce blu curve (ritardo 1)
+    \draw[->, thick, cyan!80!blue] (t1) to[out=45, in=135] node[midway, above] {1} (r1);
+    \draw[->, thick, cyan!80!blue] (t2) to[out=-45, in=-135] node[midway, below] {1} (r2);
+
+\end{tikzpicture}
+\end{center}
 
 Here the channel won't be flat anymore (the arrows in blue arrive at time 1): the one before will be
-
 \begin{align*}
     \boldsymbol{H}(0) = \begin{bmatrix} h_{00}(0) & h_{01}(0) \\ h_{10}(0) & h_{11}(0) \end{bmatrix}
 \end{align*}
 
 and we'd also have
-
 \begin{align*}
-    \boldsymbol{H}(1) = \begin{bmatrix} h_{00}(1) & 0 \\ 0 & h_{11}(1) \end{bmatrix}:
+    \boldsymbol{H}(1) = \begin{bmatrix} h_{00}(1) & 0 \\ 0 & h_{11}(1) \end{bmatrix};
 \end{align*}
-
 we have some form of reflection which makes the signal arrive later at the receiver.
-Of course if we were to have reflections between 0,1 and 1,0, we'd have
+\end{tcolorbox}
 
+\begin{tcolorbox}[colframe=cyan!80!blue, colback=white, sharp corners, boxrule=1pt]
+Of course if we were to have reflections between 0,1 and 1,0, we'd have
 \begin{align*}
     \boldsymbol{H}(1) = \begin{bmatrix} h_{00}(1) & h_{01}(1) \\ h_{10}(1) & h_{11}(1) \end{bmatrix}.
 \end{align*}
+\end{tcolorbox}
+It's similar to what we had in the SISO case:
+\begin{align}
+y[n] = \sum_{\ell=0}^{L} h[\ell]x[n-\ell];
+\end{align}
+this is why we wrote the channel as
+\begin{align}
+y[n] = \sqrt{G} \sum_{\ell=0}^{L} \boldsymbol{H}[\ell]\boldsymbol{x}[n-\ell] + \boldsymbol{v}[n].
+\end{align}
+
+Previous symbols interfere with current symbols!
+
+This is the IO relationship. If we want to estimate the channel, what do we want to do?
+We don't transmit an unknown symbol $\boldsymbol{x}$, but rather some \textbf{known symbols}; this is indicated with $\boldsymbol{p}$, which stands for \textit{pilots}.
+
+\noindent\rule{\textwidth}{0.4pt}
+
+Before diving further, let's address the values which they'll use.
+We are indeed sending $N_p$ pilots, but since the channel has $L$ taps, all received symbols up until the $L-1$th will have \textbf{contributions which we don't want.}
+In order to remove such contributions \textbf{we only consider the received signals from $L$ to $N_p-1$.}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+Specifically, we have the synthesized form
+\begin{align}
+[\boldsymbol{y}[L] \quad \dots \quad \boldsymbol{y}[N_p-1]] &= \notag \\
+= \sqrt{G} [\boldsymbol{H}[0] \quad \boldsymbol{H}[1] \quad \dots \quad \boldsymbol{H}[L]]
+&\begin{bmatrix}
+\boldsymbol{p}[L] & \boldsymbol{p}[L+1] & \dots & \boldsymbol{p}[N_p-1] \\
+\boldsymbol{p}[L-1] & \boldsymbol{p}[L] & \dots & \boldsymbol{p}[N_p-2] \\
+\vdots & \reflectbox{$\ddots$} & \reflectbox{$\ddots$} & \vdots \\
+\boldsymbol{p}[0] & \boldsymbol{p}[1] & \dots & \boldsymbol{p}[N_p-L-1]
+\end{bmatrix} + \bar{\boldsymbol{V}} \notag \\
+\leftrightarrow \bar{\boldsymbol{Y}} = \sqrt{G}\bar{\boldsymbol{H}}\bar{\boldsymbol{P}} + \bar{\boldsymbol{V}}.
+\end{align}
+
+Where:
+\begin{itemize}
+    \item since each pilot is a $N_t \times 1$ vector, the $\bar{\boldsymbol{P}}$ matrix will be a $N_t(L+1) \times (N_p - L)$ matrix.
+    \item Since each $\boldsymbol{H}[\ell]$ matrix is a $N_r \times N_t$ matrix, the $\bar{\boldsymbol{H}}$ matrix will be a $N_r \times N_t(L+1)$ matrix.
+    \item Both $\bar{\boldsymbol{Y}}, \bar{\boldsymbol{V}}$ will be $N_r \times (N_p - L)$ as a result of the product $\bar{\boldsymbol{H}}\bar{\boldsymbol{P}}$.
+\end{itemize}
+
+$N_p$ is the number of pilots we transmit and it's up to us to decide its value.
+If we transmit too many pilots, we can't transmit the information symbols.
+We need to transmit some pilots (generally a vector of all pilots) and then some pilots scattered around the time and frequency domains.
+
+\noindent\rule{\textwidth}{0.4pt}
+
+The book, in order to make the notation more compact, uses the \textcolor{green}{Kronecker product} of two matrices.
+
+\begin{quote}
+    \color{gray}\vline\hspace{0.5em}\color{black} Of course in order to actually understand this, we need to explode this notation.
+\end{quote}
+
+We also have the \textcolor{green}{vec operator}. We have a specific property we'll use:
+
+\subsection*{Relation with the Kronecker product}
+We have that
+\begin{align}
+\text{vec}(\boldsymbol{ABC}) = (\boldsymbol{C}^T \otimes \boldsymbol{A})\text{vec}(\boldsymbol{B}),
+\end{align}
+
+% Conversione della nota manoscritta a lato
+\begin{align*}
+\text{vec} : \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} a \\ c \\ b \\ d \end{bmatrix}
+\end{align*}
+where $\otimes$ represents the \textcolor{green}{Kronecker product}.
+
+Even for SISO, we used to make a compact notation by using matrices which imply time dependance.
+
+\begin{quote}
+    \color{green}\vline\hspace{0.5em}\color{black} This is similar to how with OFDM we use a matrix for representing the transform
+\end{quote}
+
+\begin{quote}
+    \color{green}\vline\hspace{0.5em}\color{black} If we look at exercise 20, we'll end up with 2 matrices representing the channel
+\end{quote}
+
+After going to our matrix notation, we further progress to a vector notation, knowing that if we were to stack one on the other all the values of $\bar{\boldsymbol{Y}}$, we'd get
+\begin{align}
+\text{vec}(\bar{\boldsymbol{Y}}) &= \sqrt{G} \, \text{vec}(\bar{\boldsymbol{H}}\bar{\boldsymbol{P}}) + \text{vec}(\bar{\boldsymbol{V}}) \notag \\
+&= \sqrt{G}(\bar{\boldsymbol{P}}^T \otimes \boldsymbol{I}_{N_r})\text{vec}(\bar{\boldsymbol{H}}) + \text{vec}(\bar{\boldsymbol{V}}) \notag \\
+&= \sqrt{G}\boldsymbol{P}_{\otimes} \, \text{vec}(\boldsymbol{H}) + \text{vec}(\bar{\boldsymbol{V}}). \tag{2.229}
+\end{align}
+We can apply the forementioned property; in applying it, we use $\boldsymbol{A} = \boldsymbol{I}_{N_r}$, we can develop like it's written above here.
+Question is: what's $\boldsymbol{P}_{\otimes}$? It's just $\bar{\boldsymbol{P}}^T \otimes \boldsymbol{I}_{N_t}$.
+
+\section{Linear estimation for a MIMO AWGN channel}
+
+Now we estimate, either with ML or LS.
+
+In this estimation, \textbf{we assume that we know the conditional distribution of the received signal given the channel.} In other words, we know that our transmit receive relation will follow (2.229) and that our noise $\bar{\boldsymbol{V}}$ will be AWGN.
+Thanks to the fact that we can choose our pilots to be \textcolor{green}{IID}, we know that the \textbf{ML estimator will be equivalent to the MAP estimator.}
+
+Considering (2.229), we have that $\boldsymbol{P}_{\otimes}$ is known and that the observation given by a certain channel realization $\mathbf{h}$ (which realizes the distribution of $\text{vec}(\bar{\boldsymbol{H}})$) is complex Gaussian with mean
+\begin{align}
+\mathbb{E}[\text{vec}(\bar{\boldsymbol{Y}})] = \mathbb{E}[\sqrt{G}\bar{\boldsymbol{P}}_{\otimes}\underbrace{\mathbf{h}}_{\text{realization}} + \text{vec}(\bar{\boldsymbol{V}})] = \sqrt{G}\bar{\boldsymbol{P}}_{\otimes}\mathbf{h} + 0
+\end{align}
+and covariance
+\begin{align}
+\mathbb{E}[(\text{vec}(\bar{\boldsymbol{Y}}) - \boldsymbol{\mu}_{\text{vec}(\bar{\boldsymbol{Y}})})(\text{vec}(\bar{\boldsymbol{Y}}) - \boldsymbol{\mu}_{\text{vec}(\bar{\boldsymbol{Y}})})^*] &= \mathbb{E}[\text{vec}(\bar{\boldsymbol{V}})\text{vec}^*(\bar{\boldsymbol{V}})] \notag \\
+&= N_0 \boldsymbol{I}.
+\end{align}
+
+We'll thus have that, given a certain realization of the channel, $\text{vec}(\bar{\boldsymbol{Y}})$ is Gaussian with PDF (according to \textit{\textcolor{green}{Uni Generale/Digital Communications/Complex Gaussian distribution > 57a95e}})
+\begin{align}
+f_{\text{vec}(\bar{\boldsymbol{Y}})|\text{vec}(\bar{\boldsymbol{H}})}(\boldsymbol{y}|\mathbf{h}) = \frac{1}{(\pi N_0)^{(N_p-L)N_r}} \exp \left( - \frac{\| \boldsymbol{y} - \sqrt{G}\bar{\boldsymbol{P}}_{\otimes}\mathbf{h} \|^2}{N_0} \right), \tag{2.230}
+\end{align}
+which, thanks to the monotonicity of the exponential, is equivalent to minimizing $-\log f_{\text{vec}(\bar{\boldsymbol{Y}})|\text{vec}(\bar{\boldsymbol{H}})}(\cdot)$, ultimately giving
+\begin{align}
+\text{vec}(\hat{\bar{\boldsymbol{H}}})(\mathbf{y}) = \arg \min_{\mathbf{h}} \| \boldsymbol{y} - \sqrt{G}\bar{\boldsymbol{P}}_{\otimes}\mathbf{h} \|^2. \tag{2.232}
+\end{align}
+This is identical to the deduction of the zero forcing equalizer \textcolor{green}{we already discussed} (equations (2.145), (2.146)), ultimately giving
+\begin{align}
+\text{vec}(\hat{\bar{\boldsymbol{H}}})(\mathbf{y}) = \underbrace{\frac{1}{\sqrt{G}}(\bar{\boldsymbol{P}}_{\otimes}^*\bar{\boldsymbol{P}}_{\otimes})^{-1}\bar{\boldsymbol{P}}_{\otimes}^*}_{\boldsymbol{W}^{\text{LS}*}}\boldsymbol{y}, \tag{2.233}
+\end{align}
+and thus the linear \textbf{least squares estimator}
+\begin{align}
+\boldsymbol{W}^{\text{LS}} = \frac{1}{\sqrt{G}}\bar{\boldsymbol{P}}_{\otimes}(\bar{\boldsymbol{P}}_{\otimes}^*\bar{\boldsymbol{P}}_{\otimes})^{-1} \tag{2.233+}
+\end{align}
+to the observation (we have $^{-1}$ and not $^{\dagger}$ since we know that $\bar{\boldsymbol{P}}_{\otimes}^*\bar{\boldsymbol{P}}_{\otimes}$ is a square matrix).
+
+\vspace{1em}
+\noindent\color{purple}\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{
+\textbf{\faGhost\ How does this tie together with the ZF filters?}
+\color{black} % Inizio del testo in nero all'interno del riquadro
+
+For ZF, we were trying to minimize
+\begin{align}
+\| \sqrt{G}\bar{\boldsymbol{w}}_j^* \bar{\boldsymbol{T}} - \bar{\boldsymbol{d}}_j^* \|^2. \tag{2.138-ish}
+\end{align}
+
+and we got to
+\begin{align}
+\bar{\boldsymbol{w}}_j^{\text{ZF}} &= \frac{1}{\sqrt{G}}(\bar{\boldsymbol{T}}^*)^{\dagger}\bar{\boldsymbol{d}}_j \quad \text{time domain} \tag{2.145} \\
+\bar{\boldsymbol{W}}^{\text{ZF}} &= \frac{1}{\sqrt{G}}(\bar{\boldsymbol{T}}^*)^{\dagger}\bar{\boldsymbol{D}}. \quad \text{z domain} \tag{2.146}
+\end{align}
+
+we know that the Moore-Penrose pseudoinverse for a tall matrix $\boldsymbol{A}$ is
+\begin{align*}
+\boldsymbol{A}^{\dagger} = (\boldsymbol{A}^*\boldsymbol{A})^{-1}\boldsymbol{A}^*
+\end{align*}
+if we then consider the complex conjugate of the argument of (2.232), we get
+\begin{align*}
+\| \boldsymbol{y}^* - \sqrt{G}\mathbf{h}^*\bar{\boldsymbol{P}}_{\otimes}^* \|,
+\end{align*}
+which fits neatly in (2.138-ish), to give (from 2.145)
+\begin{align*}
+\mathbf{h} = \frac{1}{\sqrt{G}}(\bar{\boldsymbol{P}}_{\otimes})^{\dagger}\boldsymbol{y},
+\end{align*}
+which finally leads to (2.233).
+}}\color{black}
+\vspace{1em}
+
+\begin{quote}
+    \color{green}\vline\hspace{0.5em}\color{black} Professor would like of us to remember the reasoning and that we introduced $\otimes$ and $\text{vec}$ only for the reasons of having vectors, since with vectors we know the joint probability distribution of a Gaussian vector.
+\end{quote}
+
+\vspace{1em}
+\noindent\color{purple}\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{
+\textbf{\faGhost\ Sorry... which type of estimator are we talking about?}
+}}\color{black}
+\vspace{1em}
+
+We have that this estimator is both the ML, MAP and LS estimator!
+
+\noindent{\color{teal}\vrule width 2pt\hspace{5pt}\parbox{\dimexpr\linewidth-10pt}{Note though that this is NOT the LMMSE estimator!!}}
+
+Due to the discussion we made about zero forcing equalizers, \textbf{we need to ensure that $\bar{\boldsymbol{P}}_{\otimes}$ is square or tall}, requiring to check that
+\begin{align}
+N_p \ge (L+1)N_t + L \tag{2.234}
+\end{align}
+and also that $\bar{\boldsymbol{P}}_{\otimes}$ is full rank (which requires $\bar{\boldsymbol{P}}$ to be full rank).
+
+\noindent\color{purple}\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{
+\textbf{\faBook\ About the monotonicity}
+\color{black}
+
+While the book explains this passage using the monotonicity of the exponential, this is nothing else than putting into play the equivalence between ML and MD criteria when we have AWGN noise.
+}}\color{black}
+
+Through the derivation which can be found from A signal processing perspective (pp. 57-130), page 57 to A signal processing perspective (pp. 57-130), page 58, we find that through the linear estimator we found we'll have
+\begin{align}
+\boldsymbol{E}^{\text{LS}} &= \frac{N_0}{G}(\bar{\boldsymbol{P}}_{\otimes}^*\bar{\boldsymbol{P}}_{\otimes})^{-1} \tag{2.239} \\
+\hat{\boldsymbol{H}}^{\text{LS}} &= \frac{1}{\sqrt{G}}\bar{\boldsymbol{Y}}\bar{\boldsymbol{P}}^*(\bar{\boldsymbol{P}}\bar{\boldsymbol{P}}^*)^{-1}, \tag{2.247}
+\end{align}
+where (2.239) expresses the Mean-Square Error Matrix while (2.247) expresses the best estimation of the channel.
+The advantage of this equation with respect to (2.233) is that it entails less operations and also that since $\bar{\boldsymbol{P}}$ is known, we can consider $\bar{\boldsymbol{P}}^*(\bar{\boldsymbol{P}}\bar{\boldsymbol{P}}^*)^{-1}$ as already known.
+
+\noindent\color{purple}\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{
+\textbf{\faGhost\ Hmmmm}
+\color{black}
+
+I'm sure there are more complicated and accurate reasons behind the procedure which gets us to (2.247), but for the time being I'd just observe that it seems as if we just switch $\bar{\boldsymbol{P}}_{\otimes}$ and $\boldsymbol{y}$ and then replace $\bar{\boldsymbol{P}}_{\otimes} \to \bar{\boldsymbol{P}}^*$
+}}\color{black}
+
+\noindent\color{orange}\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{
+\textbf{\faPen\ A signal processing perspective (pp. 57-130), page 58}
+\color{black}
+
+\noindent{\color{teal}\vrule width 2pt\hspace{5pt}\parbox{\dimexpr\linewidth-10pt}{Also notice that the ith row of $\bar{\boldsymbol{H}}$ corresponds to the channel coefficients between the $N_t$ transmit and the ith receive antenna, while the ith row of $\bar{\boldsymbol{Y}}$ corresponds to the observation at the ith receive antenna}}
+
+Due to how we defined $\bar{\boldsymbol{H}}$, it doesn't look like this is true\dots we have that the $i$th row will contain coefficients such as $h_{00}[0], h_{01}[0], h_{00}[1], h_{01}[1]$, aka the coefficients of transmission from antenna 0 to all other antennas.
+}}\color{black}
+
+
+\noindent\color{gray}\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{
+\textbf{\faQuoteLeft\ Skip}
+\color{black}
+
+From page A signal processing perspective (pp. 57-130), page 58 to page A signal processing perspective (pp. 57-130), page 59 we find a brief discussion of sensible values for the pilots.
+
+We can find the discussion of a LMMSE estimator at A signal processing perspective (pp. 57-130), page 61.
+}}\color{black}
+
+ML is one of the criteria!
+I know I received the joint probability distribution of all elements in the vector.
+What we want to do is to find the minimum of the probability density distribution while \textit{playing} with our values.
+This is a pretty well known problem and has the solution we see in the slides.
+If the noise is Gaussian, at the end of the day we forget everything and minimize the distance we see.
+MAP requires to know the distribution of the input; we know that \textbf{if the input are equiprobable and independent, we'll have $\text{MAP} \equiv \text{ML}$. If the noise is Gaussian, we have $\text{ML} \equiv \text{MD}$.} This is why we're using the MD criterium. If we're doing minimum distance we can use LS and the solution is the one in the slides.
+
+It's invertible if it's tall and we chose the pilots in an appropriate manner.
+There are indeed recipes to select the pilots; we should remember the line of reasoning; it \textbf{should not be taken for granted that stuff is invertible}.
+If we have to estimate at least four numbers and we're in the OFDM setting and we have $K=256$, we need to make 256 estimates; the minimum is that we only need 8 numbers of $H[\text{numbers}]$.
+
+\begin{itemize}[label={}, leftmargin=0pt]
+    \item[{\color{green}\faCheckSquare}] I did not understand why. Like at all. \quad {\color{orange}\faArrowUp} \faPlus\ 2024-11-09 \quad {\color{orange}\faHourglassHalf}\ 2024-11-13
+    \item[{\color{green}\faCheckSquare}] Should we look into LMMSE estimation? \quad {\color{orange}\faArrowUp} \faPlus\ 2024-11-10 \quad {\color{orange}\faHourglassHalf}\ 2024-11-13
+\end{itemize}
+
+The numbers in time domain are much less! We don't need to have 256 pilots, but we can't have less than 8 pilots. With less than 8 known variables we cannot estimate the 8 numbers in the matrices.
+
+How do we distribute the pilots? We're going to distribute them evenly, otherwise we won't be able to get all the numbers.
+
+\noindent\color{cyan}\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{
+\textbf{\faPen\ In class}
+\color{black}
+
+Derivation to simplify the LS estimator:
+
+\vspace{5cm} % Spazio vuoto lasciato come nel documento originale
+}}\color{black}
+\noindent{\color{blue}\vrule width 2pt\hspace{5pt}\parbox{\dimexpr\linewidth-10pt}{
+\begin{itemize}[label={\color{red}\tiny$\blacksquare$}]
+    \item Exploiting the fact that
+    \begin{align*}
+    (\bar{\boldsymbol{P}}_{\otimes}^*\bar{\boldsymbol{P}}_{\otimes})^{-1}\bar{\boldsymbol{P}}_{\otimes}^* &= ((\bar{\boldsymbol{P}}^* \otimes \boldsymbol{I})^*(\bar{\boldsymbol{P}}^T \otimes \boldsymbol{I}))^{-1}(\bar{\boldsymbol{P}}^* \otimes \boldsymbol{I})^* \\
+    &= ((\boldsymbol{P} \otimes \boldsymbol{I})(\bar{\boldsymbol{P}}^T \otimes \boldsymbol{I}))^{-1}(\bar{\boldsymbol{P}} \otimes \boldsymbol{I}) \\
+    &= ((\boldsymbol{P}\bar{\boldsymbol{P}}^T) \otimes \boldsymbol{I})^{-1}(\bar{\boldsymbol{P}} \otimes \boldsymbol{I}) \\
+    &= (\boldsymbol{P}\bar{\boldsymbol{P}}^T)^{-1}\bar{\boldsymbol{P}} \otimes \boldsymbol{I},
+    \end{align*}
+    
+    \item Gives
+    \begin{align*}
+    \text{vec}(\hat{\boldsymbol{H}}) = \frac{1}{\sqrt{G}}((\bar{\boldsymbol{P}}\bar{\boldsymbol{P}}^* )^{-1}\bar{\boldsymbol{P}}^* \otimes \boldsymbol{I})\text{vec}(\bar{\boldsymbol{Y}})
+    \end{align*}
+    
+    \item Exploiting $\text{vec}(\boldsymbol{ABC}) = (\boldsymbol{C}^T \otimes \boldsymbol{A})\text{vec}(\boldsymbol{B})$ in reverse
+    
+    \vspace{0.2cm}
+    \colorbox{gray!20}{\parbox{0.4\linewidth}{
+    \begin{align*}
+    \hat{\boldsymbol{H}} &= \frac{1}{\sqrt{G}}\bar{\boldsymbol{Y}}((\bar{\boldsymbol{P}}^*\bar{\boldsymbol{P}}^T)^{-1}\bar{\boldsymbol{P}}^*)^T \\
+    &= \frac{1}{\sqrt{G}}\bar{\boldsymbol{Y}}\bar{\boldsymbol{P}}^*(\bar{\boldsymbol{P}}\bar{\boldsymbol{P}}^*)^{-1},
+    \end{align*}
+    }}
+\end{itemize}
+}}
+
+We're not required to remember all of this, but it's recommended to go and check that.
+
+\hrule
+
+Suppose we made all of our calculations and we have $\hat{H}$ and we're using OFDM; we know OFDM works with MIMO. If we know that the prefix is $L$, it means that we won't have more than $L$ numbers in the input's response.
+A brutal technique is: suppose we are in the SISO setting and we have the $\hat{h}$ with 256 carriers. If $L=16$, what should I expect? We should expect that the vector $\hat{H}$ should be nonzero from the element 0 to element 15.
+
+From this we do IDFT and we have 256 elements:
+\begin{align*}
+h = \begin{bmatrix}
+\text{stuff}_0 \\
+\vdots \\
+\text{stuff}_{15} \\
+0 \\
+\vdots \\
+0
+\end{bmatrix} \updownarrow 256
+\end{align*}
+
+If we don't have zero, it means we have noise; we then just replace everything with zeros and we to the DFT: we have $H^*$, a better version of $\hat{H}$.
+
+Assuming we haven't made a wrong decision on $L$ (we thus must have $L < K$), we can cut everything after $L$, which will be noise.
+This is what we mean by saying \textit{we can work in the time domain}.
+
+\clearpage
+
+% Rappresentazione del diagramma manoscritto
+\begin{center}
+\begin{tabular}{c c c c c}
+$\hat{H} = \left[\begin{array}{c} \phantom{.} \\ \phantom{.} \\ \phantom{.} \end{array}\right] \updownarrow 256$ & 
+$\xrightarrow[\text{IDFT}]{}$ & 
+$\hat{h} = \left[\begin{array}{c} \updownarrow L \\ \rightsquigarrow \\ \text{noise} \end{array}\right]$ & 
+$\xrightarrow{\text{cut}}$ & 
+$\left[\begin{array}{c} \updownarrow L \\ 0 \\ \vdots \\ 0 \end{array}\right] \xrightarrow[\text{DFT}]{} H^*$ 
+\end{tabular}
+\end{center}
+
+\noindent\color{teal}\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{
+The figure is showing that we can go in the time domain, cut everything after $L$ (since it's noise) and then go back to the frequency domain, having a better signal.
+}}\color{black}
+
+\section{Zero forcing equalizer for MIMO OFDM}
+
+We'd like to somehow adapt
+\noindent{\color{teal}\vrule width 2pt\hspace{5pt}\parbox{\dimexpr\linewidth-10pt}{to the observation (we have $^{-1}$ and not $^{\dagger}$ since we know that $\bar{\boldsymbol{P}}_{\otimes}^*\bar{\boldsymbol{P}}_{\otimes}$ is a square matrix).}}
+
+so to estimate an OFDM transmission.
+
+We can indeed extend what we saw to OFDM, considering that our objective is to distribute the various pilots in an even manner across the $K$ subcarriers (A signal processing perspective (pp. 57-130), page 65), also considering that now our channel is defined as
+\begin{align}
+\mathbf{y}[k] &= \sqrt{G}\mathbf{H}[k]\mathbf{p}[k] + \mathbf{v}[k] \tag{2.288} \\
+&= \sqrt{G}\left( \sum_{\ell=0}^{L} \boldsymbol{H}[\ell]e^{-j\frac{2\pi}{K}\ell k} \right) \mathbf{p}[k] + \mathbf{v}[k] \quad k=k_0, \dots, k_{N_p-1}, \tag{2.289}
+\end{align}
+
+which, in terms of $\bar{\boldsymbol{H}} = [\boldsymbol{H}[0] \dots \boldsymbol{H}[L]]$, gives
+\begin{align}
+\mathbf{y}[k] &= \sqrt{G}\bar{\boldsymbol{H}}
+\begin{bmatrix}
+\boldsymbol{I}_{N_t} \\
+e^{-j\frac{2\pi}{K}k}\boldsymbol{I}_{N_t} \\
+\vdots \\
+e^{-j\frac{2\pi}{K}kL}\boldsymbol{I}_{N_t}
+\end{bmatrix} \mathbf{p}[k] + \mathbf{v}[k] \tag{2.290} \\
+&= \sqrt{G}\bar{\boldsymbol{H}}
+\begin{bmatrix}
+\mathbf{p}[k] \\
+e^{-j\frac{2\pi}{K}k}\mathbf{p}[k] \\
+\vdots \\
+e^{-j\frac{2\pi}{K}kL}\mathbf{p}[k]
+\end{bmatrix} + \mathbf{v}[k]. \tag{2.291}
+\end{align}
+
+By defining
+\begin{align}
+\mathbf{u}[k] = \begin{bmatrix} 1 & e^{-j\frac{2\pi}{K}k} & e^{-j\frac{2\pi}{K}k2} & \dots & e^{-j\frac{2\pi}{K}kL} \end{bmatrix}^T \tag{2.292}
+\end{align}
 
 \end{document}

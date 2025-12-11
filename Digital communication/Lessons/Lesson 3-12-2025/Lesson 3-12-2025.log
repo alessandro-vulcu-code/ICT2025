@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.7)  9 DEC 2025 19:00
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.7)  11 DEC 2025 11:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1495,29 +1495,24 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 6.99925pt on input line 78.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line 78.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 12.00128pt on input line 87.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 8.40088pt on input line 87.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 6.00064pt on input line 87.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 11.99872pt on input line 87.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 8.3991pt on input line 87.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 5.99936pt on input line 87.
 [1
 
 
 ]
-File: Pictures/Schermata_20251209_184043.png Graphic file (type bmp)
-<Pictures/Schermata_20251209_184043.png>
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 12.00128pt on input line 99.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 8.40088pt on input line 99.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 6.00064pt on input line 99.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 11.99872pt on input line 99.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 8.3991pt on input line 99.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 5.99936pt on input line 99.
-File: Pictures/Schermata_20251209_184057.png Graphic file (type bmp)
-<Pictures/Schermata_20251209_184057.png>
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1534,7 +1529,80 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3] (./Lesson 3-12-2025.aux)
+[3]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[4]
+Underfull \vbox (badness 1142) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[5]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[6]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[7]
+Overfull \hbox (2.0pt too wide) in paragraph at lines 396--430
+[][][][]|
+ []
+
+
+Underfull \vbox (badness 3612) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[8]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[9]
+Overfull \hbox (145.52406pt too wide) in paragraph at lines 474--476
+\TU/FiraSans(0)/m/n/12 We’d like to somehow adapt []| $[]$[] 
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[10
+
+] (./Lesson 3-12-2025.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
@@ -1543,12 +1611,12 @@ Package rerunfilecheck Info: File `"Lesson 3-12-2025".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 44337 strings out of 468179
- 942138 string characters out of 5407503
- 1543837 words of memory out of 5000000
- 72166 multiletter control sequences out of 15000+600000
- 639793 words of font info for 151 fonts, out of 8000000 for 9000
+ 44488 strings out of 468179
+ 945188 string characters out of 5407503
+ 1555386 words of memory out of 5000000
+ 72307 multiletter control sequences out of 15000+600000
+ 639841 words of font info for 157 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 103i,14n,121p,1242b,451s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 103i,18n,121p,1242b,1060s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Lesson 3-12-2025.pdf (3 pages).
+Output written on Lesson 3-12-2025.pdf (10 pages).
