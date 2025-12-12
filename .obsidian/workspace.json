@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Modern CPP for Internet and Multimedia/Modern CPP/15. Class hierarchies and run-time polymorphism.md",
+                "file": "Modern CPP for Internet and Multimedia/Modern CPP/20. Threads.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "15. Class hierarchies and run-time polymorphism"
+              "title": "20. Threads"
             }
           }
         ]
@@ -173,6 +173,8 @@
   },
   "active": "161d782512cec518",
   "lastOpenFiles": [
+    "Modern CPP for Internet and Multimedia/Modern CPP/15. Class hierarchies and run-time polymorphism.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/20. Threads.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/18. Bitwise operation, POD, in-out streaming.md",
     "Cryptography/Quizzes/Quiz 4.md",
     "Internet of Things and Smart Cities/03. Radio Frequency IDentification (RFID).md",
@@ -210,9 +212,7 @@
     "Other material/Untitled 3.md",
     "Other material/Untitled 4.md",
     "Internet of Things and Smart Cities/06. IEEE 802.15.4 technologies.md",
-    "Internet of Things and Smart Cities/05.Bluetooth (Low Energy).md",
     "Modern CPP for Internet and Multimedia/Modern CPP/Pictures",
-    "Modern CPP for Internet and Multimedia/Modern CPP/11. Autotools.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/09. Memory management.rst",
     "Fiber Optics/Chapters/Chapter1.tex",
     "Fiber Optics/Pictures",

@@ -92,3 +92,8 @@
 \contentsline {section}{\numberline {8.1}Mathematical representation of OFDM}{103}{section.8.1}%
 \contentsline {section}{\numberline {8.2}Subcarrier spacing, spectral efficiency penalty}{106}{section.8.2}%
 \contentsline {section}{\numberline {8.3}Examples of small exercises}{109}{section.8.3}%
+\contentsline {chapter}{\numberline {9}Lesson 3-12-2025}{115}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Channel estimation \hfill \small 3 Dec 2025}{115}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Linear estimation for a MIMO AWGN channel}{118}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Zero forcing equalizer for MIMO OFDM}{123}{section.9.3}%
+\contentsline {section}{\numberline {9.4}A signal processing perspective}{123}{section.9.4}%

@@ -7,6 +7,7 @@
 \usepackage{caption} % Required for \captionof outside float environments
 
 
+
 \begin{document}
 \setcounter{chapter}{8}
 \chapter{Lesson 3-12-2025}
@@ -318,13 +319,14 @@ which finally leads to (2.233).
 
 \vspace{1em}
 \noindent\color{purple}\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{
-\textbf{\faGhost\ Sorry... which type of estimator are we talking about?}
-}}\color{black}
-\vspace{1em}
-
+\textbf{\faGhost\ Sorry... which type of estimator are we talking about?}\\
+\color{black}
 We have that this estimator is both the ML, MAP and LS estimator!
 
 \noindent{\color{teal}\vrule width 2pt\hspace{5pt}\parbox{\dimexpr\linewidth-10pt}{Note though that this is NOT the LMMSE estimator!!}}
+}}\color{black}
+
+\vspace{1em}
 
 Due to the discussion we made about zero forcing equalizers, \textbf{we need to ensure that $\bar{\boldsymbol{P}}_{\otimes}$ is square or tall}, requiring to check that
 \begin{align}
@@ -384,11 +386,6 @@ It's invertible if it's tall and we chose the pilots in an appropriate manner.
 There are indeed recipes to select the pilots; we should remember the line of reasoning; it \textbf{should not be taken for granted that stuff is invertible}.
 If we have to estimate at least four numbers and we're in the OFDM setting and we have $K=256$, we need to make 256 estimates; the minimum is that we only need 8 numbers of $H[\text{numbers}]$.
 
-\begin{itemize}[label={}, leftmargin=0pt]
-    \item[{\color{green}\faCheckSquare}] I did not understand why. Like at all. \quad {\color{orange}\faArrowUp} \faPlus\ 2024-11-09 \quad {\color{orange}\faHourglassHalf}\ 2024-11-13
-    \item[{\color{green}\faCheckSquare}] Should we look into LMMSE estimation? \quad {\color{orange}\faArrowUp} \faPlus\ 2024-11-10 \quad {\color{orange}\faHourglassHalf}\ 2024-11-13
-\end{itemize}
-
 The numbers in time domain are much less! We don't need to have 256 pilots, but we can't have less than 8 pilots. With less than 8 known variables we cannot estimate the 8 numbers in the matrices.
 
 How do we distribute the pilots? We're going to distribute them evenly, otherwise we won't be able to get all the numbers.
@@ -398,10 +395,6 @@ How do we distribute the pilots? We're going to distribute them evenly, otherwis
 \color{black}
 
 Derivation to simplify the LS estimator:
-
-\vspace{5cm} % Spazio vuoto lasciato come nel documento originale
-}}\color{black}
-\noindent{\color{blue}\vrule width 2pt\hspace{5pt}\parbox{\dimexpr\linewidth-10pt}{
 \begin{itemize}[label={\color{red}\tiny$\blacksquare$}]
     \item Exploiting the fact that
     \begin{align*}
@@ -426,9 +419,10 @@ Derivation to simplify the LS estimator:
     \end{align*}
     }}
 \end{itemize}
-}}
-
 We're not required to remember all of this, but it's recommended to go and check that.
+}}\color{black}
+
+
 
 \hrule
 
@@ -471,7 +465,7 @@ The figure is showing that we can go in the time domain, cut everything after $L
 
 \section{Zero forcing equalizer for MIMO OFDM}
 
-We'd like to somehow adapt
+We'd like to somehow adapt \\
 \noindent{\color{teal}\vrule width 2pt\hspace{5pt}\parbox{\dimexpr\linewidth-10pt}{to the observation (we have $^{-1}$ and not $^{\dagger}$ since we know that $\bar{\boldsymbol{P}}_{\otimes}^*\bar{\boldsymbol{P}}_{\otimes}$ is a square matrix).}}
 
 so to estimate an OFDM transmission.
@@ -504,5 +498,302 @@ By defining
 \begin{align}
 \mathbf{u}[k] = \begin{bmatrix} 1 & e^{-j\frac{2\pi}{K}k} & e^{-j\frac{2\pi}{K}k2} & \dots & e^{-j\frac{2\pi}{K}kL} \end{bmatrix}^T \tag{2.292}
 \end{align}
+
+\section{A signal processing perspective}
+
+and through the derivation at A signal processing perspective (pp. 57-130), page 65 we see that
+
+\begin{align}
+\mathbf{y}[k] = \sqrt{G}(\mathbf{u}[k] \otimes \mathbf{p}[k]) + \mathbf{v}[k] \tag{2.293}
+\end{align}
+
+and we eventually get to
+
+\begin{align}
+\underbrace{\begin{bmatrix}
+\mathbf{y}[k_0] \\
+\mathbf{y}[k_1] \\
+\vdots \\
+\mathbf{y}[k_{N_p-1}]
+\end{bmatrix}}_{\bar{\mathbf{y}}}
+= \sqrt{G}
+\underbrace{\begin{bmatrix}
+\mathbf{u}[k_0]^T \otimes \mathbf{p}[k_0]^T \otimes \mathbf{I}_{N_r} \\
+\mathbf{u}[k_1]^T \otimes \mathbf{p}[k_1]^T \otimes \mathbf{I}_{N_r} \\
+\vdots \\
+\mathbf{u}[k_{N_p-1}]^T \otimes \mathbf{p}[k_{N_p-1}]^T \otimes \mathbf{I}_{N_r}
+\end{bmatrix}}_{\bar{\mathbf{P}}_{\otimes}}
+\text{vec}(\bar{\boldsymbol{H}}) +
+\underbrace{\begin{bmatrix}
+\mathbf{v}[k_0] \\
+\mathbf{v}[k_1] \\
+\vdots \\
+\mathbf{v}[k_{N_p-1}]
+\end{bmatrix}}_{\bar{\mathbf{v}}} \tag{2.296}
+\end{align}
+
+We need to ensure that $\bar{\mathbf{P}}_{\otimes}$ is tall, which requires
+
+\begin{align}
+N_p \geq (L+1)N_t \nonumber
+\end{align}
+
+\begin{center}
+\fbox{\begin{minipage}{0.9\textwidth}
+\color{red} % Assumendo xcolor, rende il testo rosso come nell'immagine
+\textbf{\faBook\ Elaborating a lil bit...}
+
+\begin{itemize}[label=\textbullet]
+    \item $\mathbf{u}$ is $(L+1) \times 1$, $\mathbf{p}$ is $N_t \times 1$;
+    \item $\mathbf{u} \otimes \mathbf{p}$ is thus $(L+1)N_t \times 1$;
+    \item Then we must have that $\mathbf{u}^T \otimes \mathbf{p}^T \otimes \mathbf{I}_{N_r}$ is $N_r \times N_r N_t(L+1)$;
+    \item Finally, we stack a bunch of those ($N_p$) on top of one another, getting $N_r N_p \times N_r N_t(L+1)$.
+\end{itemize}
+
+We can now see that
+\begin{align*}
+N_r N_p \geq N_r N_t(L+1) \implies N_p \geq N_t(L+1).
+\end{align*}
+\end{minipage}}
+\end{center}
+
+The number of pilots is equal to the one of frequency flat channels and is lower of $L$ when compared with frequency selective channels.
+
+We could also have frequency domain estimation, see brief discussion at A signal processing perspective (pp. 57-130), page 66.
+
+\section*{Examples (2.24, 2.30, 2.31)}
+
+\subsection*{Example 2.24: Least-square estimator for a frequency-flat SISO channel}
+
+Normally our estimator is
+
+Through the derivation which can be found from A signal processing perspective (pp. 57-130), page 57 to page 58, we find that through the linear estimator we found we'll have
+
+\begin{align}
+\boldsymbol{E}^{LS} &= \frac{N_0}{G}(\bar{\boldsymbol{P}}_{\otimes}^* \bar{\boldsymbol{P}}_{\otimes})^{-1} \tag{2.239} \\
+\hat{\boldsymbol{H}}^{LS} &= \frac{1}{\sqrt{G}} \bar{\boldsymbol{Y}} \bar{\boldsymbol{P}}^* (\bar{\boldsymbol{P}}\bar{\boldsymbol{P}}^*)^{-1}, \tag{2.247}
+\end{align}
+
+where (2.239) expresses the Mean-Square Error Matrix while (2.247) expresses the best estimation of the channel.
+
+\newpage
+
+The advantage of this equation with respect to (2.233) is that it entails less operations and also that since $\bar{\boldsymbol{P}}$ is known, we can consider $\bar{\boldsymbol{P}}^*(\bar{\boldsymbol{P}}\bar{\boldsymbol{P}}^*)^{-1}$ as already known.
+
+Here though we have both that $L=0$ (meaning that $\bar{\boldsymbol{H}} \to \boldsymbol{H}$) and that $N_t = N_r = 1$, meaning that we're in a SISO case, such that $\boldsymbol{H} \to h$ and that our $\bar{\boldsymbol{P}}$ matrix will reduce to a horizontal vector containing input pilots for $p[0], \dots, p[N_p - 1]$.
+
+In order to have
+
+Due to the discussion we made about zero forcing equalizers, \textbf{we need to ensure that $\bar{\mathbf{P}}_{\otimes}$ is square or tall}, requiring to check that
+
+\begin{align}
+N_p \geq (L+1)N_t + L \tag{2.234}
+\end{align}
+
+and also that $\bar{\mathbf{P}}_{\otimes}$ is full rank (which requires $\bar{\boldsymbol{P}}$ to be full rank).
+
+To be satisfied, we require that $N_p \geq 1$ so we just choose $N_p = 1$, implying that $\bar{\boldsymbol{P}} \to p[0] = \sqrt{E_s}e^{j\phi}$.
+
+The rest follows quite easily:
+
+\subsection*{Example 2.24 (Least-squares estimator for a frequency-flat SISO channel)}
+
+Let $L=0$ and $N_t = N_r = 1$. For this simplest of settings, a single scalar pilot suffices. With such a pilot being $\sqrt{E_s}e^{j\phi}$ where $\phi$ is an arbitrary phase, (2.247) reduces to
+
+\begin{align}
+\hat{h} = \frac{e^{-j\phi}}{\sqrt{G}E_s} y \tag{2.249}
+\end{align}
+
+while $\boldsymbol{E}$ in (2.239) reduces to
+
+\begin{align}
+\text{MMSE} &= \frac{N_0}{G E_s} \tag{2.250} \\
+&= \frac{1}{\text{SNR}}, \tag{2.251}
+\end{align}
+
+which does not depend on $\phi$; the pilot's phase can thus be set to zero.
+
+For $N_p > 1$, $\bar{\boldsymbol{P}}$ becomes a row vector and the pilot sequence requires no special structure: in this setting, $\bar{\boldsymbol{P}}\bar{\boldsymbol{P}}^*$ is always a scalar, even if the same pilot symbol is simply repeated. It is easy to verify that
+
+\begin{align}
+\text{MMSE} = \frac{1}{N_p \text{SNR}}, \tag{2.252}
+\end{align}
+
+indicating that the accrual of energy over multiple pilots has the same effect as increasing the energy of a single pilot.
+
+\hrulefill
+
+\subsubsection*{\faPen\ Professor's comments (Hz 616 ex 2.29)}
+
+We have $h[\ell] \neq 0$ only for $\ell=0$: this is what \textit{frequency flat} means.
+
+\textbf{Approximation Logic:}
+Consider the term $\frac{1}{1+x}$:
+\begin{itemize}
+    \item For $x \gg 0 \implies \approx \frac{1}{x}$
+    \item For $x > 0$ (small) $\implies \approx 1-x$
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.2]
+    % Amplifier (Triangle)
+    \draw[thick] (0,0.5) -- (0,-0.5) -- (1,0) -- cycle;
+    \node at (0.5, 0.8) {\Large $h(0)$};
+    
+    % Input line
+    \draw[thick, ->] (-1,0) -- (0,0);
+    
+    % Connection to adder
+    \draw[thick, ->] (1,0) -- (2.5,0);
+    
+    % Adder (Circle with +)
+    \node[draw, circle, thick, inner sep=2pt] (plus) at (3,0) {\Large $+$};
+    
+    % Noise input (from bottom)
+    \draw[thick, ->] (3,-1.5) -- (plus.south);
+    
+    % Output line
+    \draw[thick, ->] (plus.east) -- (4.5,0);
+\end{tikzpicture}
+\end{center}
+
+We only need $h(0)$ in order to have an estimate of the channel.
+We just take the output and we divide it by what we had transmitted.
+The error we get is 1 over the SNR. If the noise goes to zero, we have infinite error and infinite SNR$\to$no error.
+
+What we can do is to send several symbols one after the other; of course we're paying in the fact that we're sending multiple symbols.
+
+If we use $N_p$ pilots, the power of the noise is divided by $N_p$: \textbf{we can gain much in this sense but of course nothing comes for free and while we get this, we're also not sending information}: we loose in the bitrate but we gain in the accuracy detection.
+
+\vspace{0.5cm}
+
+% --- Blue Box Page 13 ---
+\noindent\colorbox{white}{%
+    \setlength{\fboxrule}{1.5pt}%
+    \setlength{\fboxsep}{10pt}%
+    \fcolorbox{cyan}{white}{%
+        \begin{minipage}{0.95\textwidth}
+            \color{black}
+            \textbf{\textcolor{cyan}{\faPen} Example 2.30 (LMMSE estimator for a vec channel)}
+            
+            \vspace{0.3cm}
+            Here we're instead asked to find the LMMSE estimator, which we know to be defined as
+            
+            The estimator is simply
+            \begin{align}
+                \boldsymbol{W}^{\text{MMSE}} = \boldsymbol{R}_{\boldsymbol{y}}^{-1} \boldsymbol{R}_{\boldsymbol{y}s}. \tag{1.224}
+            \end{align}
+            ; since we have IID and unit-vector values in $\bar{\boldsymbol{H}}$, we have that
+            
+            \begin{align*}
+                \boldsymbol{R}_{\text{vec}(\boldsymbol{Y})} &= \mathbb{E}[G \bar{\boldsymbol{P}}_{\otimes} \text{vec}(\bar{\boldsymbol{H}}) \text{vec}^*(\bar{\boldsymbol{H}}) \bar{\boldsymbol{P}}_{\otimes}^* + \underbrace{0 + 0}_{\text{Indep.}} + \text{vec}(\bar{\boldsymbol{H}}) \text{vec}^*(\bar{\boldsymbol{H}})] \\
+                &= G \bar{\boldsymbol{P}}_{\otimes} \bar{\boldsymbol{P}}_{\otimes}^* + N_0 \boldsymbol{I}
+            \end{align*}
+            
+            and also that
+            
+            \begin{align*}
+                \boldsymbol{R}_{\text{vec}(\bar{\boldsymbol{Y}})\text{vec}(\bar{\boldsymbol{H}})} = \mathbb{E}[\sqrt{G} \bar{\boldsymbol{P}}_{\otimes} \text{vec}(\bar{\boldsymbol{H}}) \text{vec}^*(\bar{\boldsymbol{H}})] = \sqrt{G} \bar{\boldsymbol{P}}_{\otimes},
+            \end{align*}
+            
+            in which btw we used $\bar{\boldsymbol{H}}$ instead of the supposed signal because here we're trying to estimate $\bar{\boldsymbol{H}}$, not the channel.
+            From this, it follows that
+        \end{minipage}
+    }
+}
+
+\newpage
+
+\section*{Example 2.30 (LMMSE estimation for an IID MIMO channel)}
+
+Let the entries of $\bar{\boldsymbol{H}}$ be IID and, by normalization, of unit variance. Then, $\boldsymbol{R}_{\text{vec}(\boldsymbol{H})} = \boldsymbol{I}$ and
+
+\begin{align}
+\boldsymbol{W}^{\text{MMSE}} = \sqrt{G} \bar{\boldsymbol{P}}_{\otimes} (N_0 + G \bar{\boldsymbol{P}}_{\otimes}^* \bar{\boldsymbol{P}}_{\otimes})^{-1}, \tag{2.270}
+\end{align}
+
+from which
+
+\begin{align}
+\text{vec}(\hat{\boldsymbol{H}}) = \sqrt{G} \left( G \bar{\boldsymbol{P}}_{\otimes}^* \bar{\boldsymbol{P}}_{\otimes} + N_0 \boldsymbol{I}_{(L+1)N_t N_r} \right)^{-1} \bar{\boldsymbol{P}}_{\otimes}^* \text{vec}(\bar{\boldsymbol{Y}}), \tag{2.271}
+\end{align}
+
+while the MMSE matrix in (2.262) specializes to
+
+\begin{align}
+\boldsymbol{E} = \boldsymbol{I} - G \bar{\boldsymbol{P}}_{\otimes}^* (G \bar{\boldsymbol{P}}_{\otimes} \bar{\boldsymbol{P}}_{\otimes}^* + N_0 \boldsymbol{I})^{-1} \bar{\boldsymbol{P}}_{\otimes}. \tag{2.272}
+\end{align}
+
+In the foregoing expression for $\text{vec}(\hat{\boldsymbol{H}})$, the dimensionality of the identity matrix has been noted explicitly to set the stage for the decomposition $N_0 \boldsymbol{I}_{(L+1)N_t N_r} = N_0 \boldsymbol{I}_{(L+1)N_t} \otimes \boldsymbol{I}_{N_r}$. Recalling that $\bar{\boldsymbol{P}}_{\otimes} = \bar{\boldsymbol{P}}^T \otimes \boldsymbol{I}_{N_r}$, we can then write
+
+\begin{align}
+\text{vec}(\hat{\boldsymbol{H}}) &= \sqrt{G} \left( G \bar{\boldsymbol{P}}^c \bar{\boldsymbol{P}}^T \otimes \boldsymbol{I}_{N_r} + N_0 \boldsymbol{I}_{(L+1)N_t} \otimes \boldsymbol{I}_{N_r} \right)^{-1} (\bar{\boldsymbol{P}}^c \otimes \boldsymbol{I}_{N_r}) \text{vec}(\bar{\boldsymbol{Y}}) \tag{2.273} \\
+&= \left[ \sqrt{G} (G \bar{\boldsymbol{P}}^c \bar{\boldsymbol{P}}^T + N_0 \boldsymbol{I}_{(L+1)N_t})^{-1} \bar{\boldsymbol{P}}^c \otimes \boldsymbol{I}_{N_r} \right] \text{vec}(\bar{\boldsymbol{Y}}) \tag{2.274}
+\end{align}
+
+and, resorting once more to the identity $\text{vec}(\boldsymbol{A}\boldsymbol{B}\boldsymbol{C}) = (\boldsymbol{C}^T \otimes \boldsymbol{A}) \text{vec}(\boldsymbol{B})$, what ensues is
+
+\begin{align}
+\hat{\bar{\boldsymbol{H}}} = \sqrt{G} \bar{\boldsymbol{Y}} \bar{\boldsymbol{P}}^* (G \bar{\boldsymbol{P}} \bar{\boldsymbol{P}}^* + N_0 \boldsymbol{I})^{-1}, \tag{2.275}
+\end{align}
+
+which coincides with its least-squares counterpart in (2.247), save for the argument of the inverse being regularized in proportion to the noise strength. This similarity is consistent with the fact that the channel statistics, which differentiate the least-squares and LMMSE estimators, are trivial when the entries of $\bar{\boldsymbol{H}}$ are IID; an SNR-dependent regularization suffices to optimally bias the estimate of each realization. The possibility of unvectorizing the estimate in the form (2.275) is also a consequence of the receive antennas being uncorrelated, as then the LMMSE estimate of each row of $\bar{\boldsymbol{H}}$ can be produced separately, based only on the corresponding row of $\bar{\boldsymbol{Y}}$.
+
+\subsubsection*{\faItalic\ Professor's comments.}
+Entries are random: we're dealing with a stochastic channel! We want to estimate this channel.
+If we want to estimate a random variable, we want to estimate the probability density function of the random variable or some other complete description of that variable.
+We expect the channel is random but we need to deal with the realization.
+
+\vspace{0.5cm}
+
+% --- Blue Box Realization (Page 14 & 15) ---
+\noindent\colorbox{white}{%
+    \setlength{\fboxrule}{1.5pt}%
+    \setlength{\fboxsep}{10pt}%
+    \fcolorbox{cyan}{white}{%
+        \begin{minipage}{0.95\textwidth}
+            \color{black}
+            \textbf{\textcolor{cyan}{\faPen} Realization}
+            
+            \vspace{0.3cm}
+            If I have a Bernoulli, before throwing the coin we have a random variable; when we're looking at the result, we have the realization of that random variable.
+            If we take many realization we expect to have half heads and half tails (This of course is the frequentistic approach).
+            We can only estimate a realization of random variable!
+        \end{minipage}
+    }
+}
+
+\vspace{0.5cm}
+
+We have the realization, we do the calculation and again we have a noise term to the minus one. It's what is called a regularization term, which ensures the matrix is always invertible (refer to \colorbox{yellow!30}{pag 46 slide}).
+
+There's a nice example.
+
+We have
+
+\begin{align*}
+\begin{bmatrix}
+1 & -1 \\
+\rho & -1
+\end{bmatrix}
+\end{align*}
+
+for which we see what's up when $\rho$ changes between $-1$ and $1$. \textbf{The matrix will become singular when $\rho \to 1$. If we use the same noise and we have $\rho = 1$, we'll see that the noise of zero forcing will escalate while the MS will stay still} (the zero forcing tries to invert a singular matrix!).
+
+% --- Green Box ---
+\vspace{0.5cm}
+\noindent\colorbox{white}{%
+    \setlength{\fboxrule}{0pt}%
+    \setlength{\fboxsep}{0pt}%
+    \fcolorbox{white}{green!10}{%
+        \begin{minipage}{\textwidth}
+            \leftbar[color=green!50!black]
+             Random: we need to check for consistency when we look at our results.
+            \endleftbar
+        \end{minipage}
+    }
+}
+% Nota: Se \leftbar non è definito nel tuo preambolo (thmtools/framed), puoi usare questa alternativa semplice per la barra laterale verde:
+% \noindent{\color{green!50!black}\rule{2pt}{1.2em}}\hspace{5pt} Random: we need to check for consistency when we look at our results.
 
 \end{document}
