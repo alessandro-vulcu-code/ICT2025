@@ -300,5 +300,373 @@ We have a factor modulating the straight path and the other paths; the average o
 
 Space selectivity; we need somehow to have this. the two locations could be the
 \end{bluebox}
+% --- INIZIO PAGINA NOTE MANOSCRITTE (Space Selectivity) ---
+\newpage
+
+locations of the two antennas; let's say we have a wave which is hitting the two antennas:
+
+\begin{figure}[h]
+    \centering
+    % [IMAGE PLACEHOLDER: Diagram of Transmitter, Scatterer, Diffraction, Reflection, Receiver 0/1]
+    \includegraphics[width=0.8\textwidth]{Pictures/image copy 2.png}
+\end{figure}
+
+We know that if we go far the curvature is almost null.
+
+\begin{center}
+\begin{tikzpicture}
+    % Source point
+    \fill (0,0) circle (2pt);
+    
+    % Expanding waves
+    \foreach \r in {1, 1.5, 2, 2.5} {
+        \draw[thick] (20:\r) arc (20:-20:\r);
+    }
+    
+\end{tikzpicture}
+\end{center}
+
+There is a difference of length at various points: this will also mean we have a difference in phase.
+This difference matters a lot; this means that \textbf{selectivity stays not in frequency, but in space}.
+In the previous drawing we might have a phase perfect and a non-in-phase signal: we can't just sum them, otherwise we'd have a problem.
+We might have scattering clusters, if we don't do anything.
+There are many resons to have space selectivity. We also have a PAS, but we'll see it next week.
+We know the spectrum of the signal tells us how the power is distributed on the various frequencies.
+If we talk about Power Angle, we talk about distribution depending on the angulation of transmission. This is what PAS means.
+
+In the previous drawing we were in a 2-d setting; we live in a 3-d setting; we should consider not only the azimuth but also the elevation.
+Generally we don't have influence in the elevation, while we have a lot of influence if we change the azimuth.
+
+% --- FINE NOTE MANOSCRITTE / INIZIO PAGINA 08 ---
+\newpage
+
+\section{PAS $\to$ Power Angle Spectrum}
+
+\textbf{What's the PAS?}
+\begin{align*}
+\text{PAS}(\theta) &\to \text{function} \\
+\text{TX func} &\to \text{RX func} \\
+\text{RX power} &= \text{PAS}(\theta) \times \text{Tx power}
+\end{align*}
+
+\begin{greenbar}
+\textbf{From the book:}
+The \textbf{phase shifts} between different locations we referred to in equations such as (3.21), are governed, at least \textbf{in the local neighborhood}, by the angle between the propagation paths and the segment connecting those locations, as can be seen in the figure (which shows the segment connecting two locations with a propagation path at an angle $\theta$):
+\end{greenbar}
+
+\begin{figure}[h]
+    \centering
+    % [IMAGE PLACEHOLDER: Diagram of Transmitter, Scatterer, Diffraction, Reflection, Receiver 0/1]
+    \includegraphics[width=0.9\textwidth]{Pictures/image.png}
+\end{figure}
+
+The change of path length between the two is simple given by $\Delta_D \cos(\theta)$, aka by projecting the segment on the path direction.
+
+\begin{bluebox}[\faPen\ Power Angle Spectrum (PAS)]
+Since \textbf{the projection depends on $\theta$}, it is \colorbox{yellow!30}{crucial to have a function which establishes} the \textbf{angular distribution of paths}; this function is the PAS (Power Angle Spectrum), which \colorbox{yellow!30}{expresses the received signal power as a function of angle when acting as a} \colorbox{yellow!30}{receiver}; instead, when we're acting as a transmitter, instead, the PA expresses the transmitted signal power that reaches the receiver at the other end of the link as a function of the angle of departure.
+\end{bluebox}
+
+\begin{yellowbox}
+\faBook\ \textit{Channel modeling (pp. 131-208), page 16}
+
+The PAS is a continuous function of angle, \textbf{normalized so it can be interpreted as a PDF}, which is a definition consistent with the unit-power normalization of the small-scale fading.
+\end{yellowbox}
+
+The standard deviation of the PAS, viewed as a distribution, gives the root-mean-square (RMS) \textbf{angle spread}.
+
+\begin{yellowbox}
+\faBook\ \textit{Channel modeling (pp. 131-208), page 16}
+
+Although, in principle, the definition of the PAS as a continuous function of angle models a diffuse propagation scenario, it does not preclude modeling \textbf{situations where}
+
+\textbf{power is received only from a finite number of discrete angles}; these situations can be accommodated by constructing the PAS on the basis of discrete delta functions. Formally, the PAS is a function of both azimuth and elevation. However, empirical measurements have indicated that in most outdoor wireless systems the dependence on elevation plays only a secondary role [224]. Historically then, the focus has been on characterizing the marginal PAS on the azimuth plane—in fact, PAS can also be taken to stand for power azimuth spectrum—yet the elevation dimension should not be carelessly dismissed in other types of deployment, e.g., indoors or in vertical urban picocells. We return to this aspect at the end of the chapter. Several functions have been proposed and applied to model the marginal PAS in azimuth, which in this text is denoted by $\mathcal{P}(\cdot)$.
+\end{yellowbox}
+
+\begin{greenbar}
+\textbf{In class:} \\
+Last lesson, we were talking about space selectivity. We talk about it because we may have 2 (or more) antennas: a part of the signal might be traveling a larger distance; in our case, it is $\Delta_D \cos(\theta)$.
+
+\begin{center}
+    % [IMAGE PLACEHOLDER: Diagram of Transmitter, Scatterer, Diffraction, Reflection, Receiver 0/1]
+    \includegraphics[width=0.5\textwidth]{Pictures/image copy.png}
+\end{center}
+
+Normally, this is not so big that the strength of signal goes down, but the phase may change. If we apply a phase shift on location 1, it's like as if we made the signal \textit{start late}. We can steer the wave with different angles by changing the phase of a certain amount. This is the intuition behind what happens when a certain wave is hitting the two antennas. If we have multiple antennas, we just apply the same principle.
+We can thus make the antenna sensitive to a certain direction: even if we have an omnidirectional antenna, the Power Angle Spectrum is modeling the fact that if we have an antenna, we might have waves coming from multiple directions
+\end{greenbar}
+
+% --- INIZIO PAGINA 10 (HANDWRITTEN NOTES) ---
+\newpage
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Central dot
+    \filldraw (0,0) circle (3pt);
+    \draw[thick] (0,0) circle (0.5cm);
+    
+    % Arrows pointing inwards
+    \foreach \angle in {45, 135, 225, 315} {
+        \draw[thick, ->] (\angle:2cm) -- (\angle:0.7cm);
+    }
+    \draw[thick, ->] (90:2cm) -- (90:0.7cm);
+\end{tikzpicture}
+\end{center}
+
+What do we do in such a situation? The PAS is a probability distribution which tells where it's most likely that the signal is arriving.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+    % Axes
+    \draw[thick] (0,0) -- (4,0);
+    \draw[thick] (0,0) -- (0,1);
+    \draw[thick] (4,0) -- (4,1);
+    
+    % Ticks
+    \node[below] at (0,0) {0};
+    \node[below] at (2,0) {$\pi$};
+    \node[below] at (4,0) {$2\pi$};
+    \draw[thick] (2, 0.1) -- (2, -0.1);
+    
+    % Curve
+    \draw[thick] (0, 0.5) to[out=20, in=180] (2, 1.2) to[out=0, in=160] (4, 0.5);
+    
+    % Hatching
+    \fill[pattern=north east lines, pattern color=black] (0,0.5) to[out=20, in=180] (2, 1.2) to[out=0, in=160] (4, 0.5) -- (4,0) -- (0,0) -- cycle;
+\end{tikzpicture}
+\end{center}
+
+We don't need to confuse the word \textit{spectrum} being used here: we're not talking about frequencies!
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm]
+    % Block diagram
+    \node (input) {$x(t)$};
+    \node[draw, minimum width=1cm, minimum height=1cm, right of=input] (sys) {$g(\cdot)$};
+    \node[right of=sys] (output) {$y(t)$};
+    
+    \draw[->, thick] (input) -- (sys);
+    \draw[->, thick] (sys) -- (output);
+    
+    % Circular arrow on output?
+    \draw[->] (2.8, 0) arc (180:-150:0.3);
+\end{tikzpicture}
+\end{center}
+
+\begin{align*}
+P_y(f) = |G(f)|^2 P_x(f)
+\end{align*}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Curve small
+    \draw[thick] (0,0) -- (4,0);
+    \draw[thick] (0, 0.2) to[out=10, in=180] (2, 0.8) to[out=0, in=170] (4, 0.2);
+    \fill[pattern=north east lines] (1,0) -- (1, 0.6) to[out=20, in=160] (3, 0.6) -- (3,0) -- cycle;
+\end{tikzpicture}
+\end{center}
+
+This allows us to understand where we can capture more energy. The PAS tells where we have more power depending on the angle.
+
+% --- FINE PAGINA 10 / INIZIO PAGINA 11 ---
+\begin{figure}[h]
+    \centering
+    % [IMAGE PLACEHOLDER: Diagram of Transmitter, Scatterer, Diffraction, Reflection, Receiver 0/1]
+    \includegraphics[width=0.5\textwidth]{Pictures/image copy 3.png}
+\end{figure}
+
+Antennas are generally 30m high and have a tilting on their top of a few degrees:
+
+\begin{center}
+\begin{tikzpicture}
+    % Tower
+    \draw[thick] (0,0) -- (0.5, 2) -- (1,0) -- cycle;
+    \draw[thick] (0.5, 0) -- (0.5, 2.5); % Pole
+    
+    % Antenna element
+    \draw[thick, rotate around={-10:(0.5, 2.2)}] (0.5, 2.2) rectangle (0.7, 2.8);
+    
+    % Beam lobe
+    \draw[blue, thick] (0.6, 2.3) to[out=-20, in=90] (3, 0.5) to[out=-90, in=-40] (0.6, 2.3);
+    
+    \node[left] at (0, 1.5) {30m};
+    \draw[<->] (-0.2, 0) -- (-0.2, 2.5);
+\end{tikzpicture}
+\end{center}
+
+we need to decide the tilting depending on the application we want to have.
+
+If we have a motor wave we have a central base station and then smaller others. If a network sees we're jumping, it will assign us to an umbrella base station: the probability that the calls drop is lower.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0, transform shape]
+    % 1. Cerchio esterno (Macrocella)
+    \draw[thick] (0,0) circle (2.5cm);
+
+    % 2. Linee divisorie orizzontali (Banda centrale)
+    \draw[thick] (-2.35, 0.8) -- (2.35, 0.8);
+    \draw[thick] (-2.35, -0.8) -- (2.35, -0.8);
+
+    % 3. Testo "umbrella"
+    % Uso il corsivo e una dimensione adeguata
+    \node[font=\fontsize{30}{40}\selectfont\itshape] at (0, 0) {umbrella};
+
+    % 4. Cerchi superiori (Microcelle) - INTERNI
+    % Ho abbassato la Y e stretto la X per farli stare dentro
+    \draw[thick] (-1.5, 1.5) circle (0.45cm);
+    \draw[thick] (-0.5, 1.7) circle (0.45cm);
+    \draw[thick] (0.5, 1.7) circle (0.45cm);
+    \draw[thick] (1.5, 1.5) circle (0.45cm);
+
+    % 5. Cerchi inferiori (Microcelle) - INTERNI
+    % Speculari a quelli sopra
+    \draw[thick] (-1.5, -1.5) circle (0.45cm);
+    \draw[thick] (-0.5, -1.7) circle (0.45cm);
+    \draw[thick] (0.5, -1.7) circle (0.45cm);
+    \draw[thick] (1.5, -1.5) circle (0.45cm);
+
+\end{tikzpicture}
+\end{center}
+
+\textbf{Clarke-Jakes PAS} $\to$ take it as example.
+
+We have various examples of PAS; Clarke-Jakes' is a uniform one:
+
+\textcolor{red}{Possible question: what is a PAS?}
+
+% --- FINE PAGINA 11 / INIZIO PAGINA 12 ---
+
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Clarke-Jakes Starburst
+    \foreach \angle in {15, 30, ..., 360} {
+        \draw[->] (\angle:3cm) -- (\angle:1cm);
+    }
+    
+    % Two dots
+    \filldraw (130:0.5cm) circle (2pt);
+    \filldraw (-50:0.5cm) circle (2pt);
+    
+    % Dashed line
+    \draw[dashed] (130:0.5cm) -- (-50:0.5cm);
+    
+\end{tikzpicture}
+\end{center}
+
+With
+\begin{align}
+\mathcal{P}(\theta) = \frac{1}{2\pi} \quad \theta \in [-\pi, \pi) \tag{3.27}
+\end{align}
+
+\begin{yellowbox}
+\faBook\ \textit{Channel modeling (pp. 131-208), page 16}
+
+It fits surprisingly well the behavior observed at mobile users, capturing the essence of multipath propagation in a manner that is friendly to analysis. Such friendliness, however, drops markedly as soon as the angular range is reduced below $2\pi$ and more convenient alternatives exist if directional preference (particularly important in transceivers located above the clutter, e.g., elevated base stations) is to be introduced.
+\end{yellowbox}
+
+The \colorbox{yellow!30}{Clarke-Jakes PAS is widely used}. There are other spectrums related to this one, but it shall not be confused with stuff about the delay.
+
+\section{Truncated Laplacian}
+
+We may use another $\mathcal{P}(\theta)$, the Truncated Laplacian.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+    % Axes
+    \draw[thick] (-4,0) -- (4,0);
+    \draw[thick] (-3,0) -- (-3, 0.1); % tick
+    \draw[thick] (3,0) -- (3, 0.1); % tick
+    \draw[thick] (0,0) -- (0, 3.5);
+    
+    % Ticks labels
+    \node[below] at (-3,0) {-150};
+    \node[below] at (-2,0) {-100};
+    \node[below] at (-1,0) {-50};
+    \node[below] at (0,0) {0};
+    \node[below] at (1,0) {50};
+    \node[below] at (2,0) {100};
+    \node[below] at (3,0) {150};
+    \node[below] at (0,-0.5) {$\theta$ (degrees)};
+    
+    % Y Axis
+    \node[left] at (0, 3.5) {1.5};
+    \draw (0, 3.5) -- (-0.1, 3.5);
+    \node[left] at (0, 2.3) {1};
+    \draw (0, 2.3) -- (-0.1, 2.3);
+    \node[left] at (0, 1.15) {0.5};
+    \draw (0, 1.15) -- (-0.1, 1.15);
+    \node[left] at (0,0) {0};
+    
+    \node[rotate=90] at (-0.8, 1.75) {$\mathcal{P}(\theta)$};
+    
+    % Laplacian Curve (Approx)
+    \draw[thick, darkgray] plot[domain=-3.5:3.5, samples=100] (\x, {3.5 * exp(-2*abs(\x))});
+
+\end{tikzpicture}
+\end{center}
+
+% --- INSERIMENTO FORMULE TRUNCATED LAPLACIAN (da immagine.png) ---
+
+With
+\begin{align}
+\mathcal{P}(\theta) = \frac{K_L}{\sqrt{2}\sigma_\theta} \exp \left( - \left| \frac{\sqrt{2}(\theta - \mu_\theta)}{\sigma_\theta} \right| \right) \,, \quad \theta \in [\mu_\theta - \pi, \mu_\theta + \pi) \tag{3.32}
+\end{align}
+
+where $K_L$ is a factor which makes the integral be 1, thus defined as
+
+\begin{align}
+K_L = \frac{1}{1 - \exp(-\sqrt{2}\pi/\sigma_\theta)} \,. \tag{3.33}
+\end{align}
+
+\vspace{2em}
+\noindent\rule{\textwidth}{1pt}
+\vspace{2em}
+
+% --- INSERIMENTO NOTE PAGINA 01 (Small-scale fading notes) ---
+
+\section{Small-scale fading}
+
+\subsection{Multipath propagation (+Rayleigh and Rice fading)}
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=1cm and 1cm,
+    box/.style={rectangle, draw=blue!30, rounded corners, align=center, minimum height=1.5cm, font=\footnotesize, thick, fill=blue!5},
+    highlight/.style={rectangle, draw=yellow!80!orange, fill=yellow!10, inner sep=0.3cm, rounded corners},
+    arrow/.style={-Latex, thick, color=black!70}
+]
+    % Flowchart reconstruction
+    \node[highlight] (step1) {
+        \begin{minipage}{3.5cm}
+        \centering
+        \textbf{Now}\\
+        Initial writing of the multipath gain; simplification to multiplicative term
+        \end{minipage}
+    };
+    \node[box, right=of step1, text width=3.5cm] (step2) {Writing of the magnitude as Rayleigh fading};
+    \node[box, right=of step2, text width=3.5cm] (step3) {Generalization to Rice fading};
+    
+    \draw[arrow] (step1) -- (step2);
+    \draw[arrow] (step2) -- (step3);
+\end{tikzpicture}
+\end{center}
+
+\begin{yellowbox}
+\faBook\ \textit{Channel modeling (pp. 131-208), page 13}
+
+Let us now zoom in and enter the small-scale realm. When dealing with continuous-time representations, we use the complex \textcolor{green!60!black}{pseudo-baseband channel response}. We also recall from Section 2.2.3 that, \textcolor{green!60!black}{to discretize this representation}, lowpass filtering is in general required before sampling, although in those cases when the discretization returns a singletap response and the effect is only multiplicative, the complex gain of the pseudo-baseband channel can be borrowed directly.
+\end{yellowbox}
+
+\begin{purplebox}[\faQuestionCircle\ My questions]
+\textbf{Question:} why we like to work in pseudo baseband? \\
+\textbf{Refers to:} \textit{pseudo-complex baseband} $\to$ (what is this?)
+\end{purplebox}
+
+Due to the various NLOS effects, what the receiver observes is a superposition of a number of replicas of the transmitted signal; the overall channel response is a sum of all these various contributions.
+
+Each path can be described using the attenuation $A_q$ and the delay $\tau_q$, under the form
+\begin{align*}
+A_q \delta(\tau - \tau_q) e^{-j 2\pi f_c \tau_q} \,.
+\end{align*}
 
 \end{document}

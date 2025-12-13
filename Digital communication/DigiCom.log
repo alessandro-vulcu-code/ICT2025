@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.7)  13 DEC 2025 12:25
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.7)  13 DEC 2025 18:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -798,6 +798,32 @@ Local configuration file tkz-euclide.cfg found and used
 2025/09/17 5.11c tkz-obj-eu-show.tex
 ) (/opt/texlive/2025/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-protractor.tex
 2025/09/17 5.11c tkz-obj-eu-protractor.tex
+)) (/opt/texlive/2025/texmf-dist/tex/latex/pgfplots/pgfplots.sty (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2025/08/14 v1.18.2 Data Visualization (1.18.2)
+ (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+\t@pgfplots@toka=\toks54
+\t@pgfplots@tokb=\toks55
+\t@pgfplots@tokc=\toks56
+\pgfplots@tmpa=\dimen340
+\c@pgfplots@coordindex=\count359
+\c@pgfplots@scanlineindex=\count360
+ (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
+\c@pgfplotsarray@tmp=\count361
+) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
+\c@pgfplotstable@counta=\count362
+\t@pgfplotstable@a=\toks57
+) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
+\c@pgfplotslibrarysurf@no=\count363
+ (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-xetex.def (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-dvipdfmx.def
+\c@pgfplotslibrarysurf@streamlen=\count364
+)))) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (/opt/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
+\pgfplots@numplots=\count365
+\pgfplots@xmin@reg=\dimen341
+\pgfplots@xmax@reg=\dimen342
+\pgfplots@ymin@reg=\dimen343
+\pgfplots@ymax@reg=\dimen344
+\pgfplots@zmin@reg=\dimen345
+\pgfplots@zmax@reg=\dimen346
 )) (/opt/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex
 File: tikzlibraryfit.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (/opt/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
@@ -814,7 +840,11 @@ Package pdfcol Info: pdfTeX's color stacks are not available.
 \tcb@testbox=\box86
 \tcb@totalupperbox=\box87
 \tcb@totallowerbox=\box88
-) (/opt/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
+) (/opt/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
+File: tikzlibrarypatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+ (/opt/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
+File: pgflibrarypatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)) (/opt/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 ) (/opt/texlive/2025/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
@@ -834,7 +864,7 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthL=\skip70
 \f@nch@widthC=\skip71
 \f@nch@widthR=\skip72
-\@temptokenb=\toks54
+\@temptokenb=\toks58
 ) (/opt/texlive/2025/texmf-dist/tex/latex/fontawesome5/fontawesome5.sty
 Package: fontawesome5 2022/05/02 v5.15.4 Font Awesome 5
  (/opt/texlive/2025/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
@@ -852,44 +882,44 @@ File: svgnam.def 2024/09/29 v3.02 Predefined colors according to SVG 1.1 (UK)
 Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
  (/opt/texlive/2025/texmf-dist/tex/latex/tools/array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
-\col@sep=\dimen340
+\col@sep=\dimen347
 \ar@mcellbox=\box89
-\extrarowheight=\dimen341
-\NC@list=\toks55
+\extrarowheight=\dimen348
+\NC@list=\toks59
 \extratabsurround=\skip73
 \backup@length=\skip74
 \ar@cellbox=\box90
 )
-\everycr=\toks56
+\everycr=\toks60
 \minrowclearance=\skip75
-\rownum=\count359
+\rownum=\count366
 ) (/opt/texlive/2025/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 ) (/opt/texlive/2025/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip76
-\fb@frw=\dimen342
-\fb@frh=\dimen343
-\FrameRule=\dimen344
-\FrameSep=\dimen345
+\fb@frw=\dimen349
+\fb@frh=\dimen350
+\FrameRule=\dimen351
+\FrameSep=\dimen352
 ) (/opt/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec.sty
 Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
  (/opt/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
 Package: fontspec-xetex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
-\l__fontspec_script_int=\count360
-\l__fontspec_language_int=\count361
-\l__fontspec_strnum_int=\count362
-\l__fontspec_tmp_int=\count363
-\l__fontspec_tmpa_int=\count364
-\l__fontspec_tmpb_int=\count365
-\l__fontspec_tmpc_int=\count366
-\l__fontspec_em_int=\count367
-\l__fontspec_emdef_int=\count368
-\l__fontspec_strong_int=\count369
-\l__fontspec_strongdef_int=\count370
-\l__fontspec_tmpa_dim=\dimen346
-\l__fontspec_tmpb_dim=\dimen347
-\l__fontspec_tmpc_dim=\dimen348
+\l__fontspec_script_int=\count367
+\l__fontspec_language_int=\count368
+\l__fontspec_strnum_int=\count369
+\l__fontspec_tmp_int=\count370
+\l__fontspec_tmpa_int=\count371
+\l__fontspec_tmpb_int=\count372
+\l__fontspec_tmpc_int=\count373
+\l__fontspec_em_int=\count374
+\l__fontspec_emdef_int=\count375
+\l__fontspec_strong_int=\count376
+\l__fontspec_strongdef_int=\count377
+\l__fontspec_tmpa_dim=\dimen353
+\l__fontspec_tmpb_dim=\dimen354
+\l__fontspec_tmpc_dim=\dimen355
  (/opt/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 ) (/opt/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/opt/texlive/2025/texmf-dist/tex/latex/unicode-math/unicode-math.sty
@@ -1029,9 +1059,9 @@ LaTeX Encoding Info:    Redeclaring text symbol \texteuro (encoding TS1) on inpu
 LaTeX Encoding Info:    Redeclaring text symbol \texttimes (encoding TS1) on input line 193.
 LaTeX Encoding Info:    Redeclaring text symbol \textdiv (encoding TS1) on input line 194.
 ))
-\g__um_fam_int=\count371
-\g__um_fonts_used_int=\count372
-\l__um_primecount_int=\count373
+\g__um_fam_int=\count378
+\g__um_fonts_used_int=\count379
+\l__um_primecount_int=\count380
 \g__um_primekern_muskip=\muskip19
  (/opt/texlive/2025/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex)))
 
@@ -1092,11 +1122,11 @@ Package fontspec Info:
 (fontspec)             Regular/I/OT:script=latn;language=dflt;+smcp;"
 
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/FiraSans(1)/m/n on input line 48.
+(Font)                  OT1/cmr/m/n --> TU/FiraSans(1)/m/n on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/FiraSans(1)/m/it on input line 48.
+(Font)                  OT1/cmr/m/it --> TU/FiraSans(1)/m/it on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/FiraSans(1)/b/n on input line 48.
+(Font)                  OT1/cmr/bx/n --> TU/FiraSans(1)/b/n on input line 51.
 
 Package fontspec Info: 
 (fontspec)             Font family 'FiraSans(2)' created for font 'Fira Sans'
@@ -1150,9 +1180,9 @@ Package fontspec Info:
 (fontspec)             <->"Fira Sans/BI/OT:script=latn;language=dflt;+smcp;"
 
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/FiraSans(3)/m/n on input line 50.
+(Font)                  OT1/cmss/m/n --> TU/FiraSans(3)/m/n on input line 53.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/FiraSans(3)/b/n on input line 50.
+(Font)                  OT1/cmss/bx/n --> TU/FiraSans(3)/b/n on input line 53.
 
 Package fontspec Info: 
 (fontspec)             Script 'Math' not explicitly supported within font
@@ -1215,19 +1245,19 @@ Package fontspec Info:
 (fontspec)             Math/OT:script=math;language=dflt;+ssty=1;"
 
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 51.
+(Font)              `operators' in the math version `normal' on input line 54.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/LibertinusMath(1)/m/n on input line 51.
+(Font)                  OT1/cmr/m/n --> TU/LibertinusMath(1)/m/n on input line 54.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 51.
+(Font)              `operators' in the math version `bold' on input line 54.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/LibertinusMath(1)/b/n on input line 51.
-\c@theorem=\count374
-\c@definition=\count375
-\c@proposition=\count376
-\c@corollary=\count377
-\c@algorithm=\count378
-\c@lemma=\count379
+(Font)                  OT1/cmr/bx/n --> TU/LibertinusMath(1)/b/n on input line 54.
+\c@theorem=\count381
+\c@definition=\count382
+\c@proposition=\count383
+\c@corollary=\count384
+\c@algorithm=\count385
+\c@lemma=\count386
 ) (/opt/texlive/2025/texmf-dist/tex/latex/import/import.sty
 Package: import 2020/04/01  v 6.2
 ) (./DigiCom.aux
@@ -1302,6 +1332,8 @@ Package hyperref Info: Link coloring OFF on input line 14.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
+Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
+
 Couldn't patch \deferred@thm@head!
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 14.
@@ -1475,7 +1507,14 @@ Overfull \hbox (2.19943pt too wide) in paragraph at lines 105--105
  [][] [][]\TU/FiraSans(0)/m/n/12 Modeling approaches (deterministic, stochastic); elements of the 
  []
 
-)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[5])
 \tf@toc=\write5
 \openout5 = `DigiCom.toc'.
 
@@ -1487,18 +1526,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5] (./Lessons/Week 13-19 oct/Week13-19oct.tex
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[6
-
-
-]
+[6] (./Lessons/Week 13-19 oct/Week13-19oct.tex
 Capitolo 1.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
 (Font)              scaled to size 14.40152pt on input line 38.
@@ -1515,7 +1543,10 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 Underfull \vbox (badness 1320) has occurred while \output is active []
 
- [7]
+ [7
+
+
+]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -3270,7 +3301,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[145])
+[145]) (./Lessons/Lesson 9-12-2025/Lesson 9-12-2025.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3278,7 +3309,298 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[146] (./DigiCom.aux)
+[146]
+Capitolo 11.
+
+Underfull \hbox (badness 1087) in paragraph at lines 51--52
+[]\TU/FiraSans(0)/m/n/12 Let us now zoom in and enter the small-scale realm. When dealing with
+ []
+
+[147
+
+]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[148]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[149]
+Overfull \hbox (84.0743pt too wide) in paragraph at lines 217--218
+[]\TU/FiraSans(0)/m/n/12 A more tractable distribution is the Nakagami-m distribution, see []08.3_pp_131_208_Channel_modeling,
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[150]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[151]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[152]
+File: Lessons/Lesson 9-12-2025/Pictures/image copy 2.png Graphic file (type bmp)
+<Lessons/Lesson 9-12-2025/Pictures/image copy 2.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[153]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 343.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\to' on input line 343.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 343.
+
+File: Lessons/Lesson 9-12-2025/Pictures/image.png Graphic file (type bmp)
+<Lessons/Lesson 9-12-2025/Pictures/image.png>
+
+Overfull \hbox (23.85208pt too wide) in paragraph at lines 366--367
+[]\TU/FiraSans(0)/m/n/12 Since \TU/FiraSans(2)/m/n/12 the projection depends on $[]$\TU/FiraSans(0)/m/n/12 , it is [][][][][][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 366--367
+\TU/FiraSans(0)/m/n/12 the \TU/FiraSans(2)/m/n/12 angular distribution of paths\TU/FiraSans(0)/m/n/12 ; this func-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 366--367
+\TU/FiraSans(0)/m/n/12 tion is the PAS (Power Angle Spectrum), which
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 366--367
+[][][][][][]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[154]
+File: Lessons/Lesson 9-12-2025/Pictures/image copy.png Graphic file (type bmp)
+<Lessons/Lesson 9-12-2025/Pictures/image copy.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[155]
+File: Lessons/Lesson 9-12-2025/Pictures/image copy 3.png Graphic file (type bmp)
+<Lessons/Lesson 9-12-2025/Pictures/image copy 3.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[156]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[157]
+Underfull \hbox (badness 1087) in paragraph at lines 657--658
+[]\TU/FiraSans(0)/m/n/12 Let us now zoom in and enter the small-scale realm. When dealing with
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[158]) (./Lessons/Lesson 10-12-2025/Lesson 10-12-2025.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[159]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[160
+
+]
+Capitolo 12.
+[161]
+File: Lessons/Lesson 10-12-2025/Pictures/immagine-000.png Graphic file (type bmp)
+<Lessons/Lesson 10-12-2025/Pictures/immagine-000.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[162]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[163]
+File: Lessons/Lesson 10-12-2025/Pictures/immagine-001.png Graphic file (type bmp)
+<Lessons/Lesson 10-12-2025/Pictures/immagine-001.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[164]
+File: Lessons/Lesson 10-12-2025/Pictures/image.png Graphic file (type bmp)
+<Lessons/Lesson 10-12-2025/Pictures/image.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[165]
+File: Lessons/Lesson 10-12-2025/Pictures/immagine-002.png Graphic file (type bmp)
+<Lessons/Lesson 10-12-2025/Pictures/immagine-002.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[166]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[167]
+File: Lessons/Lesson 10-12-2025/Pictures/immagine-003.png Graphic file (type bmp)
+<Lessons/Lesson 10-12-2025/Pictures/immagine-003.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[168]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[169]
+File: Lessons/Lesson 10-12-2025/Pictures/image copy.png Graphic file (type bmp)
+<Lessons/Lesson 10-12-2025/Pictures/image copy.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[170]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[171]
+Underfull \vbox (badness 3536) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[172])
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[173] (./DigiCom.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
@@ -3287,22 +3609,16 @@ L3 programming layer <2020/03/25>
 
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `DigiCom.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `DigiCom.out':
-(rerunfilecheck)             Before: 4EC31078635AB2125ACA93D4F81C0A1E;24614
-(rerunfilecheck)             After:  E40F358EFBB2DD47D50C8E89366AD55A;23935.
+Package rerunfilecheck Info: File `DigiCom.out' has not changed.
+(rerunfilecheck)             Checksum: EF55C6FBBD972958AD834C1313AE6186;28794.
  ) 
 Here is how much of TeX's memory you used:
- 47583 strings out of 468179
- 1004898 string characters out of 5407503
- 1612985 words of memory out of 5000000
- 75243 multiletter control sequences out of 15000+600000
- 644764 words of font info for 207 fonts, out of 8000000 for 9000
+ 57500 strings out of 468179
+ 1341145 string characters out of 5407503
+ 2042752 words of memory out of 5000000
+ 85018 multiletter control sequences out of 15000+600000
+ 644788 words of font info for 210 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 103i,21n,121p,1591b,1495s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 103i,21n,121p,1591b,2499s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on DigiCom.pdf (146 pages).
+Output written on DigiCom.pdf (173 pages).
