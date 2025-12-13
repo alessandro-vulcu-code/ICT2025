@@ -1,0 +1,304 @@
+\documentclass[a4paper, 12pt]{book}
+\input{../../common_preamble}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,fit}
+\usepackage{amsmath} % Required for align environment
+\usepackage{caption} % Required for \captionof outside float environments
+
+
+
+\begin{document}
+\setcounter{chapter}{10}
+\chapter{Lesson 9-12-2025}
+\section{Picocell and indoor models}
+
+Generally we have a path loss like (3.8), with $\eta=3.5$.
+The shadow fading is usually ranging between 3 and 6dB.
+
+\section{Small-scale fading}
+
+\subsection{Multipath propagation (+Rayleigh and Rice fading)}
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=1cm and 1cm,
+    box/.style={rectangle, draw=blue!30, rounded corners, align=center, minimum height=1.5cm, font=\footnotesize, thick},
+    yellowbox/.style={box, fill=yellow!10},
+    purplebox/.style={box, fill=blue!5},
+    arrow/.style={-Latex, thick, color=black!70}
+]
+
+    % Nodes
+    \node[yellowbox, text width=4cm] (start) {Initial writing of the multipath gain; simplification to multiplicative term};
+    \node[purplebox, right=of start, text width=3.5cm] (middle) {Writing of the magnitude as Rayleigh fading};
+    \node[purplebox, right=of middle, text width=3.5cm] (end) {Generalization to Rice fading};
+    
+    % Label "Now"
+    \node[above=0.1cm of start, font=\scriptsize, color=gray] {Now};
+    \draw[gray!50, thin] ($(start.north west)+(-0.2,0.4)$) rectangle ($(start.south east)+(0.2,-0.2)$);
+
+    % Arrows
+    \draw[arrow] (start) -- (middle);
+    \draw[arrow] (middle) -- (end);
+
+\end{tikzpicture}
+\end{center}
+
+\begin{yellowbox}
+\faBook\ \textit{Channel modeling (pp. 131-208), page 13}
+
+Let us now zoom in and enter the small-scale realm. When dealing with continuous-time representations, we use the complex \textcolor{green!60!black}{pseudo-baseband channel response}. We also recall from Section 2.2.3 that, \textcolor{green!60!black}{to discretize this representation}, lowpass filtering is in general required before sampling, although in those cases when the discretization returns a singletap response and the effect is only multiplicative, the complex gain of the pseudo-baseband channel can be borrowed directly.
+\end{yellowbox}
+
+Due to the various NLOS effects, what the receiver observes is a superposition of a number of replicas of the transmitted signal; the overall channel response is a sum of all these various contributions.
+
+Each path can be described using the attenuation $A_q$ and the delay $\tau_q$, under the form
+\begin{align*}
+A_q \delta(\tau - \tau_q) e^{-j 2\pi f_c \tau_q} \,.
+\end{align*}
+
+\begin{yellowbox}
+\faBook\ \textit{Channel modeling (pp. 131-208), page 13}
+
+Since they stem from objects within the local neighborhoods, all the relevant paths can be assumed to be subject to similar pathloss and shadow fading, suitably modified by the local reflection/diffraction/scattering, and thus \textbf{the complex gains $\{A_q\}$ may not exhibit major differences}. However, because at carrier frequencies of
+\end{yellowbox}
+
+interest the phase $2\pi f_c \tau_q$ shifts radically with the slightest variation in $\tau_q$, the differences in path delays are always sufficient to regard the path phases as independent random variables.
+
+\begin{yellowbox}
+\faBook\ \textit{Channel modeling (pp. 131-208), page 13}
+
+Suppose for now that the transmit signal $x(t)$ corresponds to a passband sinusoid at frequency $f_c$. \textbf{Since the effect of a delay on such a signal is merely a phase shift, we can absorb each delay $\tau_q$ as a shift} $2\pi f_c \tau_q$ in the phase of $A_q$. Then, the overall channel impulse response can be written as
+
+\begin{align}
+\underbrace{\left( \sum_q A_q e^{-j 2\pi f_c \tau_q} \right)}_{\text{Gain} = \sqrt{G} \cdot h} \delta(\tau) \,, \tag{3.21}
+\end{align}
+
+which is only possible if we eliminate the delay by transforming
+\[
+\delta(\tau - \tau_q) \to \delta(\tau) \,,
+\]
+while actually considering only the phase shift caused by the complex exponential.
+\end{yellowbox}
+
+\begin{bluebox}[\faPen\ In class]
+If we're in the narrowband case (we have a narrow band signal), this means that the symbol duration is much larger than the inverse of the bandwidth.
+This means that we have a large symbol, then a delay, the symbols are more or less aligned:
+
+\begin{center}
+\begin{tikzpicture}
+    % Stacked rectangles
+    \draw[thick] (0, 0.5) rectangle (4, 0.8);
+    \draw[thick] (0.2, 0) rectangle (4.2, 0.3);
+    
+    % Labels
+    \node[text=blue, font=\Large] at (2, 1.2) {$e^{j\varphi_1}$};
+    \node[text=blue, font=\Large] at (2, -0.4) {$e^{j\varphi_2}$};
+\end{tikzpicture}
+\end{center}
+
+We can use the same coefficient but they might have a different phase (blue).
+We thus assume we have just one delta and that's where the second summation (the one on the right) comes from.
+In this case we have a one tap channel with a gain of $\sqrt{G} \cdot h$. We know $h$ is random but must be either modulus one or variance 1.
+This is modeled due to the Central Limit Theorem like a complex Gaussian with $\sigma^2 = 1$. We have that such a random variable is irrotational. The phase varies randomly between 0 and $2\pi$.
+\end{bluebox}
+
+% --- FINE PAGINA 15 / INIZIO PAGINA 16 ---
+\newpage
+
+The signal reaching the receiver will thus be
+\[
+y(t) = \sqrt{G} h \cdot x(t) \,.
+\]
+
+\begin{yellowbox}
+\faBook\ \textit{Channel modeling (pp. 131-208), page 14}
+
+Thus, upon a sinusoid the channel does have \textbf{only a multiplicative effect}, i.e., a complex gain. Furthermore, the preceding consideration on the path phases suggests modeling this gain as a sum of IID random variables; if the number of paths is large enough and some mild conditions are satisfied [221], application of the central limit theorem leads to a complex Gaussian distribution. The result of the sum in (3.21) changes rapidly with the position of both transmitter and receiver: a mere displacement on the order of a wavelength alters the path lengths, and thus the delays thereon, by an amount that shifts the path phases drastically, causing major swings in the sum. Put differently, the paths can add constructively or destructively depending on their relative phases, which are completely modified by small changes in position. The same effect transpires if, instead of a change in position, there is a change in frequency that shifts the phases substantially.
+\end{yellowbox}
+
+\begin{yellowbox}
+\faBook\ \textit{Channel modeling (pp. 131-208), page 14}
+
+The picture that emerges is thus as follows: the large-scale channel features (pathloss and shadow fading) determine the average channel conditions within the local neighborhood while the small-scale fading determines, subject to that local-average, the instantaneous channel conditions at each position and frequency. This invites decoupling the complex gain in (3.21), namely $\sqrt{G} \cdot h$ where $\sqrt{G}$ determines the local-average received power, $P_r$, as per (3.5), whereas the small-scale fading $h$ is normalized to have unit power. This largely achieves the desired separation between large-scale and small-scale features, yet a mild coupling remains in that certain other parameters of the local small-scale fading, e.g., the Rice factor, may depend on (or be correlated with) the large-scale gain. Ideally, the value of the large-scale features should be taken into account when setting those smallscale parameters, or else there is a danger that the hugely convenient decoupling between large- and small-scale gains entails a loss of relevant information.
+\end{yellowbox}
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=1cm and 1cm,
+    box/.style={rectangle, draw=blue!30, rounded corners, align=center, minimum height=1.5cm, font=\footnotesize, thick},
+    yellowbox/.style={box, fill=yellow!10},
+    purplebox/.style={box, fill=blue!5},
+    arrow/.style={-Latex, thick, color=black!70}
+]
+
+    % Nodes
+    \node[purplebox, text width=4cm] (start) {Initial writing of the multipath gain; simplification to multiplicative term};
+    \node[yellowbox, right=of start, text width=3.5cm] (middle) {Writing of the magnitude as Rayleigh fading};
+    \node[purplebox, right=of middle, text width=3.5cm] (end) {Generalization to Rice fading};
+    
+    % Label "Now" moved to the second box
+    \node[above=0.1cm of middle, font=\scriptsize, color=gray] {Now};
+    \draw[gray!50, thin] ($(middle.north west)+(-0.2,0.4)$) rectangle ($(middle.south east)+(0.2,-0.2)$);
+
+    % Arrows
+    \draw[arrow] (start) -- (middle);
+    \draw[arrow] (middle) -- (end);
+
+\end{tikzpicture}
+\end{center}
+
+The \textbf{small-scale fading is locally modeled as a stationary random process}, in principle zero-mean and complex Gaussian, normalized to have unit variance. At a given position and frequency, then, it is $h \sim \mathcal{N}_{\mathbb{C}}(0,1)$ with \textbf{uniformly distributed phase and with a magnitude that abides by the Rayleigh distribution} (see Appendix C.1.9), hence the popular designation of small-scale fading as simply \textit{Rayleigh fading}. Precisely,
+
+\begin{align}
+f_{|h|}(\xi) = \xi e^{-\frac{1}{2}\xi^2} \,, \tag{3.22}
+\end{align}
+
+while the power $|h|^2$ follows the exponential distribution
+
+\begin{align}
+f_{|h|^2}(\xi) = e^{-\xi} \,, \tag{3.23}
+\end{align}
+
+which of course is only defined for $\xi \ge 0$.
+
+\vspace{1em}
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=1cm and 1cm,
+    box/.style={rectangle, draw=blue!30, rounded corners, align=center, minimum height=1.5cm, font=\footnotesize, thick, fill=blue!5},
+    highlight/.style={rectangle, draw=yellow!80!orange, fill=yellow!10, inner sep=0.3cm, rounded corners},
+    arrow/.style={-Latex, thick, color=black!70}
+]
+
+    % Nodes
+    \node[box, text width=3.5cm] (step1) {Initial writing of the multipath gain; simplification to multiplicative term};
+    \node[box, right=of step1, text width=3.5cm] (step2) {Writing of the magnitude as Rayleigh fading};
+    \node[box, right=of step2, text width=3.5cm] (step3) {Generalization to Rice fading};
+    
+    % Yellow highlight box for the "Now" step (Step 3)
+    \node[highlight, fit=(step3)] (hl) {};
+    \node[above=0.0cm of hl, font=\scriptsize, color=gray] {Now};
+
+    % Redraw step3 on top to ensure text is visible
+    \node[box, text width=3.5cm] at (step3) {Generalization to Rice fading};
+
+    % Arrows
+    \draw[arrow] (step1) -- (step2);
+    \draw[arrow] (step2) -- (step3);
+
+\end{tikzpicture}
+\end{center}
+
+If a multipath term dominates over the rest, e.g., because it propagates through LOS and it is subject to a distinct pathloss, then the receiver can lock onto that signal component and render it \textbf{unfaded}. It follows that $h \sim \mathcal{N}_{\mathbb{C}}(\mu_h, \sigma_h^2)$ with mean $\mu_h \neq 0$ and with variance $\sigma_h^2 = 1 - |\mu_h|^2$. For this \textbf{so-called Rice fading}, we have
+
+\begin{align}
+f_{|h|}(\xi) = 2(K+1)\xi e^{-(K+1)\xi^2 - K} I_0 \left( 2\sqrt{K(K+1)}\xi \right) \,, \tag{3.24}
+\end{align}
+
+where $K = |\mu_h|^2 / \sigma_h^2$ is the \textbf{Rice factor} while $I_0(\cdot)$ is the zero-order modified Bessel function of the first kind.
+
+\begin{bluebox}[\faPen\ In class]
+The K factor is the ratio between the mean signal strength and the variance of a random component.
+\end{bluebox}
+
+\textbf{For $K=0$, Rice fading reverts to Rayleigh fading}; for $K \to \infty$, the \textbf{fading vanishes as the value of $h$ becomes deterministic}. Thus, the Rice distribution bridges these extremes and allows, through K, to regulate the severity of the fading. Analytically speaking, however, the PDF in (3.24) is not particularly friendly because of the presence of $I_0(\cdot)$.
+
+\begin{greenbar}
+We can't calculate the Bessel functions!
+\end{greenbar}
+
+\begin{purplebox}[\faStickyNote\ Mynote]
+As it is clear, the distribution of the modulus of the channel $|h|$ is described by (3.24).
+\end{purplebox}
+
+A more tractable distribution is the Nakagami-m distribution, see \textcolor{green!60!black}{08.3\_pp\_131\_208\_Channel\_modeling, page 15}.
+
+There are other magnitude distribution; generally Ricean is used when we don't have a direct line of sight.
+
+% --- FINE PAGINA FADING / INIZIO PAGINA DIGRESSIONE ---
+\newpage
+
+\section[Importance of channel modeling]{Digression on the importance of channel modeling, standardization institutions}
+
+\begin{greenbar}
+We were talking about the channel models; a few words before the actual lecture: tomorrow we'll have a regular lecture.
+\end{greenbar}
+
+\textbf{About this chapter}: in general there's not a well-shaped channel modeling theory; if we feel we're confused, it's normal at the first approach. At the beginning we said we're trying to make a mathematical model for a really complicated environment: to make a deterministic model for such a situation would be too difficult by far.
+We resorted to models which should mimic reality. Unfortunately, we don't have an agreed model; for the noise, we know that we have WGN. Here we have a confusing situation: what we want to design depends on our purpose; we have models which are useful in certain situations, other models which are useful in certain others.
+Specifically, we're looking for the limits of our systems; when we know what the ultimate limit is, we know how far we are from that ultimate limit.
+If we are at 3dB from the ultimate performance, there's room for improvement: our effort can pay off. If we're 0.01dB from the limit, our work is done from an engineering perspective; even if we improve, we're really close to the theoretical limit.
+
+When we approach this chapter, we know we have many different models; some are useful (e.g.: a model has gaussian variables as an input of the system). In specific cases we don't have gaussian values, though.
+
+\noindent\rule{\textwidth}{0.4pt}
+
+Important point is that we have very different models depending on what we're doing.
+In this chapter we also find practical stuff btw. When we talk about LTE and 5G, who defines what those are?
+\textbf{Standardization} is really complicated; internet standards is handled by the IETF (Internet Engineering Task Force): it establishes protocols. Other things standardized are how the wireless network is done and how different networks can communicate; what most interests us is the communication interface: there must be a precise standard to allow communication between different towers etc etc; this is called \textit{radio interface}.
+There must be a document saying how we transmit every single bit; we want to have a competitive market, in which multiple brands can improve on the communication.
+
+\begin{greenbar}
+In the past, mobile phones were chosen depending on reception capabilities; now we have a field so high that it's very easy to receive signal.
+\end{greenbar}
+
+We need to have specifications about sending bits from the central tower to a mobile device and vice versa.
+There is not a specification on how the mobile phone should be made, but rather only on how the phone should communicate.
+
+If we know how bits are sent downlink, we might think to use ZF or even better, LMMSE; it must be specified how bits are sending data to the base stations.
+We can make base stations however we want: we're the ones deciding the compromise between cost and performance.
+
+% --- FINE PAGINA DIGRESSIONE / INIZIO CONTINUAZIONE DIGRESSIONE E SPACE SELECTIVITY ---
+\newpage
+
+For cellular standards we have 3GPP, which is third generation \colorbox{yellow!40}{??} program. How can we participate in specification of 3GPP? We can't do that easily: it's made by several regional standard organizations; here in Europe we have ETSI (European Telecommunications Standard Institute). In Japan we have ARIB, \dots
+Who is member of those partners can send standards to 3GPP; we can be members if we pay a fee, which depends on turnover of company, \dots; in the 3GPP is dealing with radio access networks. How do they decide if we use OFDM or whatever?
+
+\begin{greenbar}
+3: why? 1: analog, 2: GSM, 3: after GSM, 4: LTE, 5G, 6G, \dots
+\end{greenbar}
+
+2G was specified by ETSI and adopted by other countries. For 3G they wanted to have global roaming; that's how 3GPP was formed.
+It was decided that 3G would use WCDMA (Wideband CDMA). Let's suppose we have different technologies.
+Today we have OTFS, which is a way to transmit bits; how do we decide in a group which of the various options we have is better? What happens is that we do theoretical simulations; in all of this exercise there is a critical point: which channel model do we use? Depending on the model, it might happen that a technology is better than another; an initial debate was in fact on which channel model should have been used. The first thing we need to do when developing standards is agreeing on the channel model.
+
+\begin{greenbar}
+In section 3.8 we'll find MIMO in standards.
+\end{greenbar}
+
+Different groups adapt different models; there are researches being made on identifying good and representative channel models.
+
+Professor advises us to go through the chapter and then go back and redo it, since the picture will be much clearer. We cannot forget reality; at the same time, we're doing something inspired by reality.
+
+\section{Space selectivity}
+
+\begin{bluebox}[\faPen\ In class]
+We have a factor modulating the straight path and the other paths; the average of the sum is given by the straight, while the average of the power is given by considering all.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    % Vectors
+    \draw[thick, ->] (0,0) -- (1.5,0) node[midway, below=0.3cm, text=blue] {mean};
+    \draw[thick, ->] (0,0) -- (0,1);
+    
+    % Wiggly line for variance
+    \draw[thick, ->, rounded corners] (2.5,0) -- (3.5,0);
+    \draw[thick, ->, rounded corners] (2.5,0) -- (3,0.5) -- (3.5,0.2);
+    
+    % Labels (Blue handwriting style)
+    \node[text=blue] at (1.5, 1) {variance};
+    \draw[blue, ->] (1.2, 0.8) to[out=270, in=90] (0.8, 0.2); % Arrow pointing to vertical component
+    \draw[blue, ->] (1.8, 0.8) to[out=270, in=90] (2.8, 0.4); % Arrow pointing to random component
+    
+    \node[text=blue] at (0.5, -0.8) {mean};
+    \draw[blue, ->] (0.5, -0.6) -- (0.5, -0.1);
+\end{tikzpicture}
+\end{center}
+
+Space selectivity; we need somehow to have this. the two locations could be the
+\end{bluebox}
+
+\end{document}

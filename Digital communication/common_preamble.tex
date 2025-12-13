@@ -21,13 +21,15 @@
 \usetikzlibrary{fit} % Necessaria per l'opzione fit
 \usetikzlibrary{shapes.geometric}
 \usetikzlibrary{decorations.pathmorphing} % For snake decoration used in TikZ
+\tcbuselibrary{skins, breakable}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
 \usepackage{graphicx}
 \usepackage[T1]{fontenc}
 % --- PACCHETTI AGGIUNTI PER LA FORMATTAZIONE ---
 \usepackage{parskip}  % Aggiunge spazio tra i paragrafi (stile "blocco")
 \usepackage{fancyhdr} % Per intestazioni e piè di pagina personalizzati
 \usepackage{fontawesome5}
-\usepackage{xcolor}       % Per colorare le icone
+\usepackage[x11names,svgnames,table]{xcolor}
 \usepackage{setspace}
 \usepackage{framed}
 
@@ -120,3 +122,95 @@
 \definecolor{obsidianPurple}{HTML}{F3EAFA}
 \definecolor{obsidianTextPurple}{HTML}{7E3F9D}
 \definecolor{obsidianGreen}{HTML}{F0F9F8}
+
+\newtcolorbox{greenbar}{
+    breakable,
+    enhanced,
+    colback=white,
+    colframe=white,
+    leftrule=2pt,
+    colframe=ForestGreen, % O un colore simile
+    sharp corners,
+    boxsep=2pt,
+    left=5pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt
+}
+
+% Stile per il box blu (Friis Equation)
+\newtcolorbox{bluebox}[1][]{
+    breakable,
+    enhanced,
+    colback=white,
+    colframe=RoyalBlue,
+    coltitle=RoyalBlue,
+    boxrule=1pt,
+    sharp corners,
+    title=#1,
+    fonttitle=\bfseries\large,
+    colbacktitle=white,
+    attach boxed title to top left={yshift=-2mm, xshift=2mm},
+    boxed title style={colback=white, frame hidden}
+}
+
+% Stile per il box grigio (In-class stuff)
+\newtcolorbox{greybox}[1][]{
+    breakable,
+    enhanced,
+    colback=gray!10,
+    colframe=gray!10,
+    title=#1,
+    coltitle=gray!50!black,
+    fonttitle=\bfseries,
+    sharp corners,
+    left=5pt,
+    right=5pt,
+    top=5pt,
+    bottom=5pt
+}
+
+% Definizione box giallo per i riferimenti (se non presente nel preambolo)
+\newtcolorbox{yellowbox}[1][]{
+    breakable,
+    enhanced,
+    colback=white,
+    colframe=yellow!80!orange, % Colore giallo/arancio
+    boxrule=1pt,
+    sharp corners,
+    left=5pt,
+    right=5pt,
+    top=5pt,
+    bottom=5pt
+}
+
+\newtcolorbox{greenbox}[1][]{
+    breakable,
+    enhanced,
+    colback=white,
+    colframe=ForestGreen,
+    coltitle=ForestGreen,
+    boxrule=1pt,
+    sharp corners,
+    title=#1,
+    fonttitle=\bfseries\large,
+    colbacktitle=white,
+    attach boxed title to top left={yshift=-2mm, xshift=2mm},
+    boxed title style={colback=white, frame hidden}
+}
+
+% Definizione box viola per le "Mynote"
+\newtcolorbox{purplebox}[1][]{
+    breakable,
+    enhanced,
+    colback=white,
+    colframe=violet!80!white,
+    coltitle=violet!80!white,
+    boxrule=1pt,
+    sharp corners,
+    title=#1,
+    fonttitle=\bfseries\large,
+    colbacktitle=white,
+    attach boxed title to top left={yshift=-2mm, xshift=2mm},
+    boxed title style={colback=white, frame hidden}
+}
