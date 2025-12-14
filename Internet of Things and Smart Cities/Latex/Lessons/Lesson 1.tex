@@ -1,0 +1,297 @@
+\chapter{02. Introduction}
+\section{Internet of Things (IoT)}
+
+The \textbf{Internet of Things (IoT)} refers to the integration of information about physical objects into the Internet. In other words, even trivial everyday items---such as thermometers, parking spots, or watches---can now connect and interact online.
+
+The key idea is to make computing \textbf{ubiquitous and invisible to users}: IoT devices work without requiring explicit user actions. Instead, they rely on sensing, rules, and automated responses to environmental conditions.
+
+A well-known definition by Kevin Ashton, who coined the term \textit{Internet of Things}, captures the essence:
+
+\begin{quote}
+\textit{In the twentieth century, computers were brains without senses -- they only knew what we told them.\\
+In the twenty-first century, because of the Internet of Things, computers can sense things for themselves.}
+\end{quote}
+
+\subsection{Definitions of IoT}
+
+Several organizations provide complementary definitions:
+
+\begin{itemize}
+    \item \textbf{General definition}: ``A global infrastructure for the information society, enabling advanced services by interconnecting physical and virtual things based on interoperable communication technologies''.
+    
+    \item \textbf{IEEE}: ``A network of items --- each embedded with sensors --- which are connected to the Internet''.
+    
+    \item \textbf{ITU}: ``Available anywhere, anytime, by anything and anyone''.
+    
+    \item \textbf{IETF}: IoT connects electronic, electrical, and even non-electrical objects to provide contextual services, enabled by technologies such as RFID, sensors, and actuators.
+    
+    \item \textbf{NIST}: Defines IoT as a form of \textbf{Cyber-Physical Systems (CPS)}, connecting smart devices in sectors like transport, energy, manufacturing, and healthcare.
+    
+    \item \textbf{W3C}: Stresses the role of web technologies in the \textit{Web of Things}, where physical objects and their virtual counterparts can interact via HTTP, REST, and JavaScript APIs.
+\end{itemize}
+
+A more \textbf{formal and precise definition} emphasizes that:
+
+\begin{itemize}
+    \item \textit{No IP means no IoT.} Devices must be addressable through IP, ideally IPv6.
+    
+    \item IoT is the paradigm in which every ``thing'' (real or virtual) is assigned an IP address and can be reached via the standard Internet Protocol stack.
+\end{itemize}
+
+\subsection{Functional Overview of IoT}
+
+IoT systems can be described in terms of four main functions:
+
+\begin{enumerate}
+    \item \textbf{Sensing (Data Collection)}
+    
+    \begin{itemize}
+        \item Sensors act as the interface between the physical and digital world, producing data.
+        
+        \item Collection modes include:
+        
+        \begin{itemize}
+            \item \textbf{Periodic} (regular sampling),
+            
+            \item \textbf{On-demand} (upon request),
+            
+            \item \textbf{Event-driven} (alerts when conditions are met).
+        \end{itemize}
+        
+        \item Data must be enriched with \textbf{metadata} (type, location, context, structural relationships).
+    \end{itemize}
+    
+    \item \textbf{Processing and Visualization}
+    
+    \begin{itemize}
+        \item Processing can be:
+        
+        \begin{itemize}
+            \item \textbf{Control loops} (simple, real-time adjustments to reach a setpoint),
+            
+            \item \textbf{Analytics \& machine learning} (based on historical data and patterns).
+        \end{itemize}
+        
+        \item Typical processing steps: sampling, aliasing, quantization, hysteresis, calibration, error propagation, optimization, and prediction.
+        
+        \item Results are often presented in \textbf{dashboards} or as a \textbf{digital twin} of the system.
+    \end{itemize}
+    
+    \item \textbf{Acting}
+    
+    \begin{itemize}
+        \item The ultimate goal of IoT is action: applying insights to the physical world.
+        
+        \item Actions may be:
+        
+        \begin{itemize}
+            \item Direct (automatic actuation, e.g., switch on AC if temperature $>$ threshold),
+            
+            \item Indirect (recommendations to operators, process optimization).
+        \end{itemize}
+        
+        \item IoT also helps identify anomalies and trigger corrective actions.
+    \end{itemize}
+    
+    \item \textbf{System Overview}\\
+    IoT architecture is typically layered:
+    
+    \begin{itemize}
+        \item \textbf{Sensors} $\rightarrow$ collect data
+        
+        \item \textbf{Gateways (Edge/Fog nodes)} $\rightarrow$ aggregate, filter, and connect to the wider Internet (via Wi-Fi, Bluetooth, LoRa, NB-IoT, etc.)
+        
+        \item \textbf{Cloud} $\rightarrow$ large-scale processing, ML/AI, visualization, and storage
+        
+        \item \textbf{Applications} $\rightarrow$ services improving quality of life in multiple domains.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Applications of IoT}
+
+IoT improves life quality across many sectors:
+
+\begin{itemize}
+    \item \textbf{Industry 4.0 (Industrial IoT)}:
+    
+    \begin{itemize}
+        \item Safety improvements, predictive maintenance, energy management, supply chain optimization, and data-driven decision-making.
+        
+        \item Examples:
+        
+        \begin{itemize}
+            \item \textit{Tenaris}: smart sensors for real-time motor monitoring
+            
+            \item \textit{Unilever}: digital twins of production facilities
+            
+            \item \textit{Volkswagen}: Industrial Cloud integrating 120+ factory sites
+        \end{itemize}
+    \end{itemize}
+    
+    \item \textbf{Smart Retail}:
+    
+    \begin{itemize}
+        \item Self-checkout, store layout optimization, marketing personalization, inventory management, supply chain monitoring.
+        
+        \item Examples: \textit{AmazonGo} (cashierless shopping), \textit{Kroger} (smart shelves), \textit{Rebecca Minkoff} (smart mirrors).
+    \end{itemize}
+    
+    \item \textbf{Healthcare}:
+    
+    \begin{itemize}
+        \item Remote patient monitoring, medical alert systems, diagnostics, continuous glucose monitoring, cardiac sensors.
+    \end{itemize}
+    
+    \item \textbf{Smart Cities \& Homes}:
+    
+    \begin{itemize}
+        \item Smart lighting, HVAC, security cameras, air quality monitors, parking, appliances like \textit{Philips Hue} or \textit{Gardena irrigation}.
+    \end{itemize}
+    
+    \item \textbf{Transportation \& Automotive}:
+    
+    \begin{itemize}
+        \item Autonomous driving, predictive vehicle maintenance, fleet management, usage-based insurance. Examples: \textit{Waymo}, \textit{Tesla Autopilot}, \textit{BMW remote parking}.
+    \end{itemize}
+\end{itemize}
+
+\section{IoT Sensors}
+\begin{itemize}
+    \item Sensors can measure some quality in the environment
+    \item Actuators can perform actions in the environment
+    \item Some sensors are capable of \textbf{local operations} (the sensor elaborates the data, real time commands for example)
+    \item Some devices connect directly to the internet and communicate with cloud applications
+    \begin{itemize}
+        \item Energy constraints may require external computation platform (because they are battery-powered)
+        \item \textit{Examples: security cameras, fire sensors, thermostats, appliances, power meters.}
+    \end{itemize}
+    \item Trade-offs include \textbf{security, latency, computational capacity, and energy consumption}.
+\end{itemize}
+
+\section{Gateways}
+\begin{itemize}
+    \item Sensors usually connect to the Internet via \textbf{intermediaries} such as gateways.
+    \item They are more powerful devices
+    \item \textit{Typical connections: ZigBee, IEEE 802.15.4 variants, Bluetooth, low-power Wi-Fi, LoRa, NB-IoT.}
+    \item Gatways provide:
+    \begin{itemize}
+        \item Wide-area connectivity
+        \item Edge processing like \textit{protocol conversion, data storage/filtering, event processing, analytics}
+    \end{itemize}
+\end{itemize}
+
+\section{Communication Layers}
+
+\begin{itemize}
+    \item Enable edge devices and things to exchange messages with each other and the Internet.
+    
+    \item Use a mix of \textbf{wireless and wired links}, spanning local and long-haul connections.
+    
+    \item Composed of \textbf{links, bridges, and routers} to deliver payloads from local segments to global endpoints.
+\end{itemize}
+
+\section{The Cloud}
+\begin{itemize}
+    \item The ``back-end'' for IoT processing.
+    \item Not mandatory
+    \item Aggregates data from diverse sources for \textbf{optimization and discovery of global trends}.
+    \item Processing options:
+    \begin{itemize}
+        \item \textbf{In flight} (stream processing)
+        \item Stored (post-processing, archivial)
+    \end{itemize}
+    \item Provides services such as:
+    \begin{itemize}
+        \item Large-scale storage
+        \item Anlytics engines
+        \item Data visualization and graphing
+        \item Security and provisioning
+    \end{itemize}
+    \item ML and AI are typically run in the cloud, leveraging (sfruttando) large datasets.
+\end{itemize}
+
+\section{Control Plane}
+
+\begin{itemize}
+    \item \textbf{Data plane / user plane}: collect, process, and act on data.
+    \item \textbf{Control plane}: ensures infrastructure functionality and security.
+    \begin{itemize}
+        \item Service configuration \& aggregation
+        \item Problem management
+        \item Quality management
+        \item Resource provisioning
+        \item Trouble \& anomaly management (security)
+        \item Performance management
+    \end{itemize}
+\end{itemize}
+
+\subsection{Why IoT Today?}
+
+\begin{itemize}
+    \item A convergence of technological and infrastructure factors:
+    \begin{itemize}
+        \item Industry 4.0 and digitalization
+        \item Affordable and diverse sensors
+        \item Miniaturization and mass production of multi-sensors
+        \item Smartphones as sensors, gateways, and UI devices
+        \item Global Internet infrastructure
+        \item Pervasive connectivity (mobile always online)
+        \item Cloud computing with on-demand scalability
+        \item AI \& ML providing actionable insights from IoT data
+    \end{itemize}
+    \item Internet is used to provide data, IoT is used to process data
+\end{itemize}
+
+\section{Main Problems in IoT}
+
+\subsection{Energy Problem}
+
+\begin{itemize}
+    \item Sensors often in \textbf{hard-to-reach locations} $\rightarrow$ battery-powered for months/years.
+    \item Possible use of solar panels or energy harvesting (size/cost limitations).
+    \item Energy affects communication, computation, sensing, actuators.
+    \item Optimizations include:
+    \begin{itemize}
+        \item Fewer transmissions (duty cycle, decided by law)
+        \item Reducing transmitted bytes
+        \item Minimizing on-board processing
+        \item Energy-saving mechanisms (sleep, idle, discontinuous reception).
+    \end{itemize}
+\end{itemize}
+
+\subsection{Security Problem}
+
+\begin{itemize}
+    \item IoT devices are simple $\rightarrow$ hard to secure.
+    \item Challenges:
+    \begin{itemize}
+        \item Strong cryptography infeasible (energy constraints).
+        \item Difficult to patch/update vulnerabilities.
+        \item Connected by design to the open Internet.
+        \item Often managed by non-IT users.
+    \end{itemize}
+    \item Privacy concerns:
+    \begin{itemize}
+        \item Location data = movement/activity tracking
+        \item Home automation reveals daily habits
+    \end{itemize}
+    \item Breaches can harm \textbf{reputation and financial stability}.
+\end{itemize}
+
+\subsection{Scalability Problem}
+\begin{itemize}
+    \item Traditional cellular/wireless networks designed for \textbf{few devices with high data needs}.
+    \item IoT requires support for \textbf{millions of devices with small data flows} (congestion).
+    \item New IoT-specific technologies and protocols are needed.
+\end{itemize}
+
+\subsection{Reliability Problem}
+\begin{itemize}
+    \item Key in industrial and safety-critical systems.
+    \item Issues:
+    \begin{itemize}
+        \item Identifying anomalous/hazardous situations
+        \item Handling anomalies across single or multiple sensors
+        \item Trusting anomaly detection when sensors are unreliable
+    \end{itemize}
+\end{itemize}
