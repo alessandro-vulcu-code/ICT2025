@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  15 DEC 2025 14:04
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  15 DEC 2025 15:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1447,13 +1447,23 @@ Overfull \hbox (0.92831pt too wide) in paragraph at lines 141--141
  []
 
 
-Overfull \hbox (0.34796pt too wide) detected at line 154
+Overfull \hbox (0.34796pt too wide) detected at line 148
  []\TU/FiraSans(0)/m/n/12 200
  []
 
 
-Overfull \hbox (0.34796pt too wide) detected at line 155
- []\TU/FiraSans(0)/m/n/12 200
+Overfull \hbox (0.20396pt too wide) detected at line 165
+ []\TU/FiraSans(0)/m/n/12 208
+ []
+
+
+Overfull \hbox (0.20396pt too wide) detected at line 166
+ []\TU/FiraSans(0)/m/n/12 208
+ []
+
+
+Overfull \hbox (0.20396pt too wide) detected at line 167
+ []\TU/FiraSans(0)/m/n/12 208
  []
 
 
@@ -1465,17 +1475,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6]
-Overfull \hbox (0.20396pt too wide) detected at line 172
- []\TU/FiraSans(0)/m/n/12 208
- []
-
-
-Overfull \hbox (0.20396pt too wide) detected at line 173
- []\TU/FiraSans(0)/m/n/12 208
- []
-
-)
+[6])
 \tf@toc=\write5
 \openout5 = `DigiCom.toc'.
 
@@ -4415,7 +4415,7 @@ Package rerunfilecheck Info: File `DigiCom.out' has not changed.
 Here is how much of TeX's memory you used:
  59108 strings out of 475269
  1384455 string characters out of 5762100
- 2084661 words of memory out of 5000000
+ 2084662 words of memory out of 5000000
  80832 multiletter control sequences out of 15000+600000
  575888 words of font info for 204 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
