@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  15 DEC 2025 15:06
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.11.24)  15 DEC 2025 16:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -946,24 +946,106 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \fb@frh=\dimen343
 \FrameRule=\dimen344
 \FrameSep=\dimen345
+) (/usr/share/texmf-dist/tex/latex/minted/minted.sty
+Package: minted 2025/03/06 v3.6.0 Yet another Pygments shim for LaTeX
+ (/usr/share/texmf-dist/tex/generic/catchfile/catchfile.sty
+Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
+ (/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)) (/usr/share/texmf-dist/tex/latex/fvextra/fvextra.sty
+Package: fvextra 2025/03/04 v1.12.0 fvextra - extensions and patches for fancyvrb
+ (/usr/share/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
+\FV@CodeLineNo=\count351
+\FV@InFile=\read5
+\FV@TabBox=\box111
+\c@FancyVerbLine=\count352
+\FV@StepNumber=\count353
+\FV@OutFile=\write4
+) (/usr/share/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
+ (/usr/share/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+)) (/usr/share/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2025/01/29 line numbers on paragraphs v5.4
+\linenopenalty=\count354
+\output=\toks63
+\linenoprevgraf=\count355
+\linenumbersep=\dimen346
+\linenumberwidth=\dimen347
+\c@linenumber=\count356
+\c@pagewiselinenumber=\count357
+\c@LN@truepage=\count358
+\c@internallinenumber=\count359
+\c@internallinenumbers=\count360
+\quotelinenumbersep=\dimen348
+\bframerule=\dimen349
+\bframesep=\dimen350
+\bframebox=\box112
+\@LN@amsmath@ams@eqpen=\count361
+LaTeX Info: Redefining \\ on input line 3187.
+)
+\c@FancyVerbWriteLine=\count362
+\c@FancyVerbBufferLine=\count363
+\c@FV@TrueTabGroupLevel=\count364
+\c@FV@TrueTabCounter=\count365
+\FV@TabBox@Group=\box113
+\FV@bgcolorstructbox=\box114
+\FV@TmpLength=\skip77
+\c@FV@HighlightLinesStart=\count366
+\c@FV@HighlightLinesStop=\count367
+\FV@LoopCount=\count368
+\FV@NCharsBox=\box115
+\FV@BreakIndent=\dimen351
+\FV@BreakIndentNChars=\count369
+\FV@BreakSymbolSepLeft=\dimen352
+\FV@BreakSymbolSepLeftNChars=\count370
+\FV@BreakSymbolSepRight=\dimen353
+\FV@BreakSymbolSepRightNChars=\count371
+\FV@BreakSymbolIndentLeft=\dimen354
+\FV@BreakSymbolIndentLeftNChars=\count372
+\FV@BreakSymbolIndentRight=\dimen355
+\FV@BreakSymbolIndentRightNChars=\count373
+\c@FancyVerbLineBreakLast=\count374
+\FV@LineBox=\box116
+\FV@LineIndentBox=\box117
+\c@FV@BreakBufferDepth=\count375
+\FV@LineWidth=\dimen356
+) (/usr/share/texmf-dist/tex/latex/latex2pydata/latex2pydata.sty
+Package: latex2pydata 2025/03/03 v0.5.0 latex2pydata - write data to file in Python literal format
+) (/usr/share/texmf-dist/tex/latex/pgfopts/pgfopts.sty
+Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
+\pgfopts@list@add@a@toks=\toks64
+\pgfopts@list@add@b@toks=\toks65
+) (/usr/share/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count376
+\float@exts=\toks66
+\float@box=\box118
+\@float@everytoks=\toks67
+\@floatcapt=\box119
+)
+\c@minted@FancyVerbLineTemp=\count377
+\@float@every@listing=\toks68
+\c@listing=\count378
 ) (/usr/share/texmf-dist/tex/latex/fontspec/fontspec.sty
 Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
  (/usr/share/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
 Package: fontspec-xetex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
-\l__fontspec_script_int=\count351
-\l__fontspec_language_int=\count352
-\l__fontspec_strnum_int=\count353
-\l__fontspec_tmp_int=\count354
-\l__fontspec_tmpa_int=\count355
-\l__fontspec_tmpb_int=\count356
-\l__fontspec_tmpc_int=\count357
-\l__fontspec_em_int=\count358
-\l__fontspec_emdef_int=\count359
-\l__fontspec_strong_int=\count360
-\l__fontspec_strongdef_int=\count361
-\l__fontspec_tmpa_dim=\dimen346
-\l__fontspec_tmpb_dim=\dimen347
-\l__fontspec_tmpc_dim=\dimen348
+\l__fontspec_script_int=\count379
+\l__fontspec_language_int=\count380
+\l__fontspec_strnum_int=\count381
+\l__fontspec_tmp_int=\count382
+\l__fontspec_tmpa_int=\count383
+\l__fontspec_tmpb_int=\count384
+\l__fontspec_tmpc_int=\count385
+\l__fontspec_em_int=\count386
+\l__fontspec_emdef_int=\count387
+\l__fontspec_strong_int=\count388
+\l__fontspec_strongdef_int=\count389
+\l__fontspec_tmpa_dim=\dimen357
+\l__fontspec_tmpb_dim=\dimen358
+\l__fontspec_tmpc_dim=\dimen359
  (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 ) (/usr/share/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/usr/share/texmf-dist/tex/latex/unicode-math/unicode-math.sty
@@ -976,9 +1058,9 @@ Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 ))
-\g__um_fam_int=\count362
-\g__um_fonts_used_int=\count363
-\l__um_primecount_int=\count364
+\g__um_fam_int=\count390
+\g__um_fonts_used_int=\count391
+\l__um_primecount_int=\count392
 \g__um_primekern_muskip=\muskip19
  (/usr/share/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex)))
 
@@ -1170,12 +1252,13 @@ LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
 (Font)              `operators' in the math version `bold' on input line 58.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> TU/LibertinusMath(1)/b/n on input line 58.
-\c@theorem=\count365
-\c@definition=\count366
-\c@proposition=\count367
-\c@corollary=\count368
-\c@algorithm=\count369
-\c@lemma=\count370
+\c@theorem=\count393
+\c@definition=\count394
+\c@proposition=\count395
+\c@corollary=\count396
+\c@algorithm=\count397
+\c@lemma=\count398
+\c@example=\count399
 ) (/usr/share/texmf-dist/tex/latex/import/import.sty
 Package: import 2020/04/01  v 6.2
 ) (./DigiCom.aux
@@ -1210,8 +1293,8 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 Package hyperref Info: Link coloring OFF on input line 14.
  (./DigiCom.out) (./DigiCom.out)
-\@outlinefile=\write4
-\openout4 = `DigiCom.out'.
+\@outlinefile=\write5
+\openout5 = `DigiCom.out'.
 
 
 *geometry* driver: auto-detecting
@@ -1249,6 +1332,7 @@ Package hyperref Info: Link coloring OFF on input line 14.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
@@ -1428,7 +1512,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [4]
-Overfull \hbox (2.19943pt too wide) in paragraph at lines 104--104
+Overfull \hbox (2.19943pt too wide) in paragraph at lines 109--109
  [][] [][]\TU/FiraSans(0)/m/n/12 Modeling approaches (deterministic, stochastic); elements of the 
  []
 
@@ -1442,27 +1526,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [5]
-Overfull \hbox (0.92831pt too wide) in paragraph at lines 141--141
+Overfull \hbox (0.92831pt too wide) in paragraph at lines 146--146
  [][] [][]\TU/FiraSans(0)/m/n/12 Introduction: capacity of AWGN channel, plotting $[][]$, various writ- 
  []
 
 
-Overfull \hbox (0.34796pt too wide) detected at line 148
+Overfull \hbox (0.34796pt too wide) detected at line 153
  []\TU/FiraSans(0)/m/n/12 200
  []
 
 
-Overfull \hbox (0.20396pt too wide) detected at line 165
+Overfull \hbox (0.20396pt too wide) detected at line 170
  []\TU/FiraSans(0)/m/n/12 208
  []
 
 
-Overfull \hbox (0.20396pt too wide) detected at line 166
- []\TU/FiraSans(0)/m/n/12 208
- []
-
-
-Overfull \hbox (0.20396pt too wide) detected at line 167
+Overfull \hbox (0.20396pt too wide) detected at line 171
  []\TU/FiraSans(0)/m/n/12 208
  []
 
@@ -1475,9 +1554,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6])
-\tf@toc=\write5
-\openout5 = `DigiCom.toc'.
+[6]
+Overfull \hbox (0.20396pt too wide) detected at line 172
+ []\TU/FiraSans(0)/m/n/12 208
+ []
+
+)
+\tf@toc=\write6
+\openout6 = `DigiCom.toc'.
 
 
 
@@ -1503,30 +1587,32 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 ]
 Chapter 1.
 
-Overfull \hbox (7.48619pt too wide) in paragraph at lines 13--16
+Overfull \hbox (7.48619pt too wide) in paragraph at lines 13--14
 []\TU/FiraSans(0)/b/n/12 Channel models\TU/FiraSans(0)/m/n/12 : taking radio communications and making a mathematical model
  []
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.40152pt on input line 38.
+(Font)              scaled to size 14.40152pt on input line 30.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00107pt on input line 38.
+(Font)              scaled to size 10.00107pt on input line 30.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00075pt on input line 38.
+(Font)              scaled to size 7.00075pt on input line 30.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 38.
+(Font)              scaled to size 14.39845pt on input line 30.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 38.
+(Font)              scaled to size 9.99893pt on input line 30.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 38.
-
-Underfull \vbox (badness 1320) has occurred while \output is active []
-
+(Font)              scaled to size 6.99925pt on input line 30.
 
 
 [9]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (6.13019pt too wide) in paragraph at lines 100--101
+[]\TU/FiraSans(0)/m/n/12 In the book they always keep the \TU/FiraSans(0)/b/n/12 same variance of the constellation\TU/FiraSans(0)/m/n/12 : the book squeezes
+ []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1544,6 +1630,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [10]
+Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 156.
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1553,6 +1641,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [11]
+Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 196.
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1562,29 +1652,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [12]
+Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 263.
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[13]
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 12.00128pt on input line 361.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 8.40088pt on input line 361.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 6.00064pt on input line 361.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 11.99872pt on input line 361.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 8.3991pt on input line 361.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 5.99936pt on input line 361.
-
-Overfull \hbox (4.06163pt too wide) in paragraph at lines 368--370
+Overfull \hbox (4.06163pt too wide) in paragraph at lines 268--270
 \TU/FiraSans(0)/m/n/12 Let’s say we have a sequence of discrete random variables indexed by time, $[][][] [] [] [][]$.
  []
 
@@ -1597,8 +1667,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[14]
-Overfull \hbox (77.11pt too wide) in paragraph at lines 471--472
+[13]
+Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 301.
+
+Overfull \hbox (54.46022pt too wide) in paragraph at lines 334--335
 [][] 
  []
 
@@ -1611,30 +1683,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[15]
+[14]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 17.28183pt on input line 566.
+(Font)              scaled to size 17.28183pt on input line 389.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 17.27815pt on input line 566.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.95116pt on input line 582.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00085pt on input line 582.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.94882pt on input line 582.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 582.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 10.95116pt on input line 588.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 8.00085pt on input line 588.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 10.94882pt on input line 588.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 7.99915pt on input line 588.
-
-Underfull \vbox (badness 3758) has occurred while \output is active []
-
+(Font)              scaled to size 17.27815pt on input line 389.
 
 
 
@@ -1644,12 +1697,26 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[15]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
 [16]
-Overfull \hbox (3.04881pt too wide) in paragraph at lines 634--645
-[][][][][][] 
- []
+\pydata@fh@_D282BF6A0E58F50C7767D75D95992164.data.minted=\write7
+\openout7 = `_D282BF6A0E58F50C7767D75D95992164.data.minted'.
 
+runsystem(latexminted config  --timestamp 20251215165551 D282BF6A0E58F50C7767D75D95992164)...executed safely (allowed).
 
+ (./_D282BF6A0E58F50C7767D75D95992164.config.minted)
+runsystem(latexminted cleanconfig  --timestamp 20251215165551 D282BF6A0E58F50C7767D75D95992164)...executed safely (allowed).
+
+\minted@intempfile=\read6
+ (./Lessons/Week 13-19 oct/_minted/default.style.minted) (./Lessons/Week 13-19 oct/_minted/8D326316DFBC8625DECA7B8C27632B81.highlight.minted)
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1667,12 +1734,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[18]
-Overfull \hbox (66.35703pt too wide) in paragraph at lines 750--750
-[]\TU/lmtt/m/n/10.95 Out[11]= f[0] + f'[0]x + 1/2 f''[0]x^2 + O[x]^3[] 
- []
-
-
+[18]) (./Lessons/Week 27 oct - 2 nov/Week 27 oct - 2 nov.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1682,11 +1744,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [19]
-Overfull \hbox (3.8488pt too wide) in paragraph at lines 923--924
-[][][][] 
- []
-
-) (./Lessons/Week 27 oct - 2 nov/Week 27 oct - 2 nov.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1695,7 +1752,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[20]
+[20
+
+]
 Chapter 2.
 
 Overfull \hbox (6.69601pt too wide) in paragraph at lines 21--22
@@ -1704,9 +1763,7 @@ Overfull \hbox (6.69601pt too wide) in paragraph at lines 21--22
 
 
 
-[21
-
-]
+[21]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1716,6 +1773,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [22]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.95116pt on input line 140.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.00085pt on input line 140.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.94882pt on input line 140.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.99915pt on input line 140.
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2144,12 +2210,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 Chapter 4.
-Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 47.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 12.00128pt on input line 50.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 8.40088pt on input line 50.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 6.00064pt on input line 50.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 11.99872pt on input line 50.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 8.3991pt on input line 50.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 5.99936pt on input line 50.
 
 
 [59]
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 56.
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2485,39 +2560,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [81]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00053pt on input line 346.
+(Font)              scaled to size 5.00053pt on input line 265.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 346.
-
-Underfull \hbox (badness 10000) in paragraph at lines 349--350
-[]\TU/FiraSans(0)/m/n/12 If we have 1 transmit antenna and 2 receive antennas; in general we might
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 394--397
-[]\TU/FiraSans(0)/m/n/12 We then need to decide what to do; \TU/FiraSans(2)/m/n/12 we might think about selecting the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 394--397
-\TU/FiraSans(2)/m/n/12 stronger signal\TU/FiraSans(0)/m/n/12 ; one might have a reflection and such; this is called \TU/FiraSans(2)/m/n/12 antenna
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 394--397
-\TU/FiraSans(2)/m/n/12 It’s easy to measure the amplitude of a signal, but we can’t know whether
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 394--397
-\TU/FiraSans(0)/m/n/12 Someone came up with something called \TU/FiraSans(2)/m/n/12 MRC (Max Ratio Combining): we
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 394--397
-\TU/FiraSans(2)/m/n/12 weight each signal with the complex conjugate\TU/FiraSans(0)/m/n/12 ; this allows us \TU/FiraSans(2)/m/n/12 to have the
- []
-
+(Font)              scaled to size 4.99947pt on input line 265.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -2540,21 +2585,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [83]
-Underfull \hbox (badness 10000) in paragraph at lines 443--446
-\TU/FiraSans(0)/m/n/12 polynomials have a common root, which is $[][]$; we don’t have full rank only if
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 443--446
-\TU/FiraSans(0)/m/n/12 If those polyomials are coprime (they don’t share a common root!), then it’s
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 460--460
-[]\TU/FiraSans(0)/m/n/12 We care so much about the full rank since a left inverse only exists if $[][][][]$
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2575,9 +2605,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [85]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2587,9 +2614,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [86]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2608,9 +2632,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [88]
-Overfull \hbox (2.23201pt too wide) in paragraph at lines 785--804
- [][][]
- []
+Underfull \vbox (badness 1082) has occurred while \output is active []
 
 
 
@@ -2622,11 +2644,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [89]
-Overfull \hbox (2.23201pt too wide) in paragraph at lines 813--833
- [][][]
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2636,11 +2653,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [90]
-Overfull \hbox (2.23201pt too wide) in paragraph at lines 874--884
- [][][]
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2650,21 +2662,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [91]
-Overfull \hbox (2.23201pt too wide) in paragraph at lines 943--951
- [][][]
- []
-
-
-Overfull \hbox (2.23201pt too wide) in paragraph at lines 953--963
- [][][]
- []
-
-
-Overfull \hbox (2.23201pt too wide) in paragraph at lines 965--975
- [][][]
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2674,16 +2671,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [92]
-Overfull \hbox (6.0pt too wide) in paragraph at lines 1062--1062
-[][][]
- []
-
-
-Overfull \hbox (2.23201pt too wide) in paragraph at lines 1028--1064
- [][][]
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -2695,17 +2682,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[93]
-Overfull \hbox (2.23201pt too wide) in paragraph at lines 1082--1089
- [][][]
- []
-
-
-Overfull \hbox (2.23201pt too wide) in paragraph at lines 1091--1129
- [][][]
- []
-
-
+[93])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -2717,22 +2694,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[94]
-Overfull \hbox (2.23201pt too wide) in paragraph at lines 1131--1154
- [][][] 
- []
-
-File: Lessons/Lesson 25-11-2025/Pictures/image.png Graphic file (type bmp)
-<Lessons/Lesson 25-11-2025/Pictures/image.png>
-
-Overfull \hbox (2.23201pt too wide) in paragraph at lines 1156--1191
- [][][]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
+[94] (./Lessons/Lesson 26-11-2025/Lesson26-11-2025.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2741,7 +2703,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[95]) (./Lessons/Lesson 26-11-2025/Lesson26-11-2025.tex
+[95]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2750,13 +2712,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[96]
+[96
+
+]
 Chapter 6.
 
 
-[97
-
-]
+[97]
 File: Lessons/Lesson 26-11-2025/Pictures/image.png Graphic file (type bmp)
 <Lessons/Lesson 26-11-2025/Pictures/image.png>
 
@@ -4400,7 +4362,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[228] (./DigiCom.aux)
+[228]
+\openout7 = `_D282BF6A0E58F50C7767D75D95992164.data.minted'.
+
+runsystem(latexminted batch  --timestamp 20251215165551 D282BF6A0E58F50C7767D75D95992164)...executed safely (allowed).
+
+ (./DigiCom.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
@@ -4409,16 +4376,22 @@ L3 programming layer <2020/03/25>
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `DigiCom.out' has not changed.
-(rerunfilecheck)             Checksum: 23F94D4CD7AF0E1C1EA5280A1C82A4EB;40688.
+
+Package rerunfilecheck Warning: File `DigiCom.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `DigiCom.out':
+(rerunfilecheck)             Before: DAA59F1DCE98368A23C20AE15C2EA97A;40892
+(rerunfilecheck)             After:  9C74EA15F7675851931BF8B3A6ED2923;40972.
  ) 
 Here is how much of TeX's memory you used:
- 59108 strings out of 475269
- 1384455 string characters out of 5762100
- 2084662 words of memory out of 5000000
- 80832 multiletter control sequences out of 15000+600000
- 575888 words of font info for 204 fonts, out of 8000000 for 9000
+ 63051 strings out of 475269
+ 1495086 string characters out of 5762100
+ 2296605 words of memory out of 5000000
+ 84727 multiletter control sequences out of 15000+600000
+ 574969 words of font info for 198 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 103i,21n,108p,1591b,2501s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 103i,20n,108p,1591b,2503s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on DigiCom.pdf (228 pages).

@@ -4,46 +4,38 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,fit}
 \begin{document}
-\chapter[ ]{Week 13-19 October}
+\chapter[Week 13-19 Oct]{Week 13-19 October}
+
 \section{Introduction}
-In most of the course we'll handle wireless communications, as they're much more
-difficult than wired communications. In this course we'll stay at the physical layer.
+In most of the course we'll handle wireless communications, as they're much more difficult than wired communications. In this course we'll stay at the physical layer.
 We'll see:
 \begin{itemize}
-    \item \textbf{Channel models}: taking radio communications and making a mathematical model for
-    them. We'll find an accurate model and then we'll apply a tradeoff to it, simplifying
-    it so that it is manageable.
+    \item \textbf{Channel models}: taking radio communications and making a mathematical model for them. We'll find an accurate model and then we'll apply a tradeoff to it, simplifying it so that it is manageable.
     \item \textbf{OFDM}: Orthogonal Frequency Division Multiplexing.
-    \item \textbf{MIMO}: we have multiple antennas at the transmitter and multiple antennas at the
-    receiver; we'd like to see how much this improves communications. The book he
-    selected this year handles fundamentals of MIMO communications. MIMO is the latest
-    and greatest achievement, he chose a book which goes from the basics. We might
-    have single user MIMO or even multiple user MIMO: we're communicating to multiple
-    phones through multiple antennas.
-
+    \item \textbf{MIMO}: we have multiple antennas at the transmitter and multiple antennas at the receiver; we'd like to see how much this improves communications. The book he selected this year handles fundamentals of MIMO communications. MIMO is the latest and greatest achievement, he chose a book which goes from the basics. We might have single user MIMO or even multiple user MIMO: we're communicating to multiple phones through multiple antennas.
 \end{itemize}
-We can ask ourselves: what is the best that we can do? This is what our approach will
-be, so that we can know the boundaries.
+
+We can ask ourselves: what is the best that we can do? This is what our approach will be, so that we can know the boundaries.
 We'll follow the slides from the author of the book, hopefully they'll be good.
-We'll also have exercises with solutions: we can look at them from cambridge.org ,
-specifically from the page of the book.
+We'll also have exercises with solutions: we can look at them from \href{https://cambridge.org}{cambridge.org}, specifically from the page of the book.
 
 \section{Primer}
-The first chapter is a primer in information theory and MSE estimation; we'll go fast as
-it should summarize stuff we know, as mutual information between two variables.
-!!: the signals are always complex-valued and the constellations are always normalized
-to have unit power.
-$\infty$-QAM: we increase the number of points making them denser inside a specific set.
+The first chapter is a primer in information theory and MSE estimation; we'll go fast as it should summarize stuff we know, as mutual information between two variables.
+
+\begin{purplebox}[Note]
+    The signals are always complex-valued and the constellations are always normalized to have unit power.
+    $\infty$-QAM: we increase the number of points making them denser inside a specific set.
+\end{purplebox}
 
 \subsection{Complex symmetric random variables, \texorpdfstring{$\infty$}{infinity}-modulations}
-We'll start from chapter 1 of the book ($000$): \textit{primer of information theory and MSE}.
+We'll start from chapter 1 of the book: \textit{A primer on information theory and MSE}.
 
 We should already know this stuff, but we'll cover it in order to have a common starting ground.
 
-$*$Prof's backstory moment$*$: In the end, he studies \textbf{physical layer} and that's it.
+\textit{*Prof's backstory moment*}: In the end, he studies \textbf{physical layer} and that's it.
 
 We ask ourselves: ``\textbf{what is information}? When can we say that someone is giving us information?''.
-$*$Professor begins ranting about information$*$: information is related to \textbf{probability}! The more unlikely something is, the more informative it is!
+\textit{*Professor begins ranting about information*}: information is related to \textbf{probability}! The more unlikely something is, the more informative it is!
 
 Today we'll talk about \textbf{mutual information} between two random variables: the information a variable can supply to another variable.
 
@@ -60,8 +52,6 @@ Normally \textbf{complex random variables} are \textbf{complexly symmetric}:
     \centering
     \begin{tikzpicture}[scale=1.5]
         % Assi Re (orizzontale) e Im (verticale)
-        % Uso `\wesa Re` e `\wesa Im` solo se si usa il pacchetto wesa, altrimenti Re e Im.
-        % Per una compatibilità standard, uso Re e Im:
         \draw[->, very thick] (-1.5, 0) -- (1.5, 0) node[right] {Re};
         \draw[->, very thick] (0, -1.5) -- (0, 1.5) node[above] {Im};
         
@@ -71,20 +61,17 @@ Normally \textbf{complex random variables} are \textbf{complexly symmetric}:
         % Freccia di rotazione (arco curvo)
         \draw[->, very thick] (0.7, 0.1) arc (10:80:0.7);
         
-        % Annotazione dell'origine (il + nell'immagine originale)
+        % Annotazione dell'origine
         \draw[thick] (0, 0.05) -- (0, -0.05);
         \draw[thick] (0.05, 0) -- (-0.05, 0);
-
     \end{tikzpicture}
     \caption{Rappresentazione del piano Im-Re con una PFD simmetrica centrale e freccia di rotazione.}
 \end{figure}
 
-About \textbf{M-PSK} and \textbf{M-QAM}: $M$ is usually a \textbf{power of 2}.
+About \textbf{M-PSK} and \textbf{M-QAM}: $M$ is usually a \textbf{power of 2}. Let's see \textbf{16-QAM}:
 
-Let's see \textbf{16-QAM}:
 \begin{figure}[h]
     \centering
-    % Grafico 1: 16-QAM (con punti evidenziati per potenza)
     \begin{tikzpicture}[scale=0.8]
         \draw[->] (-2.5, 0) -- (2.5, 0);
         \draw[->] (0, -2.5) -- (0, 2.5);
@@ -107,15 +94,13 @@ Let's see \textbf{16-QAM}:
             }
         }
     \end{tikzpicture}
-    %\caption{Costellazione QAM con punti interni evidenziati in blu.}
+    \caption*{The power of the ones in blue is lower than the power of the other signals.}
 \end{figure}
 
-The power of the ones in blue is lower than the power of the other signals.
 In the book they always keep the \textbf{same variance of the constellation}: the book squeezes the values so that the \textbf{power stays constant}.
 
 \begin{figure}[h]
     \centering
-    % Grafico 2: Assi vuoti con costellazione stretta (indicativa)
     \begin{tikzpicture}[scale=0.8]
         \draw[->] (-2.5, 0) -- (2.5, 0);
         \draw[->] (0, -2.5) -- (0, 2.5);
@@ -129,85 +114,62 @@ In the book they always keep the \textbf{same variance of the constellation}: th
             }
         }
     \end{tikzpicture}
-    %\caption{Esempio di costellazione stretta per mantenere la varianza costante.}
 \end{figure}
 
 The book also has \textbf{inf-PSK} and \textbf{inf-QAM}: We take the \textbf{normal constellation} and we keep \textbf{adding points}.
 
 \begin{figure}[h]
     \centering
-    % Grafico 3: Costellazione Infinito-PSK
     \begin{tikzpicture}[scale=0.8]
         \draw[->] (-2.5, 0) -- (2.5, 0);
         \draw[->] (0, -2.5) -- (0, 2.5);
-        
         \draw[thick] (0, 0) circle (2);
-        
         \node at (0, -3) {$\mathbf{\infty - PSK}$};
-        
         % Punti sulla circonferenza (simulazione)
-        \foreach \angle in {0, 30, 60, ..., 330} {
+        \foreach \angle in {0, 10, ..., 350} {
             \filldraw[black] (\angle:2) circle (1pt);
         }
     \end{tikzpicture}
-    %\caption{Rappresentazione della costellazione $\infty$-PSK.}
 \end{figure}
 
 It's a useful way to see what happens in the \textbf{asymptotic regime}.
-Also, the \textbf{PDF of a complex Gaussian variable exists} (see notes). \tikz[overlay, remember picture] \node (here) at (1.5, -0.5) {};
+Also, the \textbf{PDF of a complex Gaussian variable exists} (see notes).
 
-\noindent
-If $\sigma^2$ is the variance, the \textit{Standard deviation} is $\sqrt{\sigma^2} = \sigma$
-
-\vspace{0.5em}
-\noindent
-\begin{tikzpicture}[overlay, remember picture]
-    \draw[->, very thick] (0.5, 0.9) -- (0.5, -0.8);
-\end{tikzpicture}
-
-\vspace{0.5em}
-\noindent
-\textbf{\underline{NOT}} $\pm\sigma^2!$
+If $\sigma^2$ is the variance, the \textit{Standard deviation} is $\sqrt{\sigma^2} = \sigma$.
+\begin{center}
+    \textbf{\underline{NOT}} $\pm\sigma^2!$
+\end{center}
 
 We'll try and be as precise as possible: there is no \textbf{negative standard deviation}!
 As an example:
-\begin{center}
-    \begin{minipage}{0.9\linewidth}
-        \begin{align*}
-        & f(x) = \sqrt{x} \in \mathbb{R} \text{ is def. only for } x \geq 0 \\
-        & x^2 = 16 \text{ has two sol.}
-        \end{align*}
-    \end{minipage}
-\end{center}
+\begin{align*}
+    & f(x) = \sqrt{x} \in \mathbb{R} \text{ is def. only for } x \geq 0 \\
+    & x^2 = 16 \text{ has two sol.}
+\end{align*}
 
-What about information? There have been many results, dating back to \textbf{Shannon}!
-(See pag 7 of the slides btw)
-\section{Discrete entropy, proper
-signals}
+What about information? There have been many results, dating back to \textbf{Shannon}! (See pag 7 of the slides btw).
+
+\section{Discrete entropy, proper signals}
 
 \subsection{Entropy}
 
-\textbf{Entropy of a discrete-time random variable}
-\begin{equation*}
-\begin{aligned}
+\begin{definition}[Entropy of a discrete-time random variable]
+\begin{align*}
     \mathcal{H}(x) &= -\sum_{x} p_x(x) \log_2 p_x(x) \\
-                   &= -\mathbb{E}[\log_2 p_x(x)].
-\end{aligned}
-\end{equation*}
+                   &= -\mathbb{E}[\log_2 p_x(x)]
+\end{align*}
+\end{definition}
 
-\textbf{Joint entropy}
-\begin{equation*}
-\begin{aligned}
+\begin{definition}[Joint entropy]
+\begin{align*}
     \mathcal{H}(x_0, x_1) &= -\sum_{x_0}\sum_{x_1} p_{x_0 x_1}(x_0, x_1) \log_2 p_{x_0 x_1}(x_0, x_1) \\
-                          &= -\mathbb{E}[\log_2 p_{x_0 x_1}(x_0, x_1)].
-\end{aligned}
-\end{equation*}
+                          &= -\mathbb{E}[\log_2 p_{x_0 x_1}(x_0, x_1)]
+\end{align*}
+\end{definition}
 
-\begin{quote}
+\begin{greenbar}
     \textbf{Nonnegative function that quantifies the amount of uncertainty in discrete valued RV x}
-\end{quote}
-
-\vspace{1em}
+\end{greenbar}
 
 \textbf{Conditional entropy}
 \begin{equation*}
@@ -219,91 +181,52 @@ signals}
     \mathcal{H}(x,y) = \mathcal{H}(x) + \mathcal{H}(y|x).
 \end{equation*}
 
-\vspace{0.5cm}
 The entropy is used in statistical physics.
 
-\textbf{Joint entropy:}
-\[
-H(x_0, x_1) = \sum_{x_0} \sum_{x_1} p_{x_0, x_1}(x_0, x_1) \log_{1/2} p_{x_0, x_1}(x_0, x_1)
-\]
-% Nota: Nella formula manoscritta la base è 1/2, il che rimuove il segno meno.
-
-\textbf{$\triangle$ Diff. inform. \underline{can} be negative}
-
-\vspace{1em}
-
-\textbf{Conditional entropy:}
-
-% Nota: Trascrizione letterale della formula manoscritta.
-% L'autore ha scritto H(x,y) a sinistra (invece di H(x|y)) e log_2 a destra senza segno meno esplicito.
-\[
-H(x,y) = \sum_{x} \sum_{y} p_{x,y}(x,y) \log_2 (p_{x|y}(x|y))
-\]
+\begin{purplebox}[Differential information]
+    $\triangle$ Diff. inform. \underline{can} be negative.
+\end{purplebox}
 
 From this, we can use the Bayes theorem to derive:
-
 \begin{align*}
     H(x,y) &= H(x|y) + H(y) \\
            &= H(y|x) + H(x)
 \end{align*}
 
-\vspace{1em}
-
-% Riquadro Esempio
-\textbf{Example:} We have a Bernoulli variable
-% ---------------------------------------------------------
-% PAGINA 1: Appunti Manoscritti (Sinistra)
-% ---------------------------------------------------------
-
-\noindent
-% Titolo/Definizione insiemistica
-\[
-X = \{ 0, 1 \} \qquad P = \{ p, 1-p \}
-\]
-
-% Testo manoscritto
-\noindent
-$H(X)$ will be $\leq 1$, where the equality holds if $p=1/2$.
-
-\noindent
-If we plot it, we get:
-
-% Grafico Entropia (TikZ)
-\begin{center}
-\begin{tikzpicture}[scale=1.5]
-    % Assi
-    \draw[->] (-0.2,0) -- (1.5,0) node[right] {$p$};
-    \draw[->] (0,-0.2) -- (0,1.5) node[above] {$H(x)$};
+\begin{example}[Bernoulli Variable]
+    We have a Bernoulli variable:
+    \[ X = \{ 0, 1 \} \qquad P = \{ p, 1-p \} \]
+    $H(X)$ will be $\leq 1$, where the equality holds if $p=1/2$.
     
-    % Ticks
-    \draw (0.5, 0.05) -- (0.5, -0.05) node[below] {$\frac{1}{2}$};
-    \draw (1.0, 0.05) -- (1.0, -0.05) node[below] {$1$};
+    If we plot it, we get:
+    \begin{center}
+    \begin{tikzpicture}[scale=1.5]
+        % Assi
+        \draw[->] (-0.2,0) -- (1.5,0) node[right] {$p$};
+        \draw[->] (0,-0.2) -- (0,1.5) node[above] {$H(x)$};
+        
+        % Ticks
+        \draw (0.5, 0.05) -- (0.5, -0.05) node[below] {$\frac{1}{2}$};
+        \draw (1.0, 0.05) -- (1.0, -0.05) node[below] {$1$};
+        
+        % Curva Entropia
+        \draw[thick, blue] plot[domain=0.001:0.999, samples=100] (\x, { -(\x*log2(\x) + (1-\x)*log2(1-\x)) });
+        
+        % Linea tratteggiata per il massimo
+        \draw[dashed] (0.5,0) -- (0.5,1);
+    \end{tikzpicture}
+    \end{center}
     
-    % Curva Entropia
-    \draw[thick] plot[domain=0.001:0.999, samples=100] (\x, { -(\x*log2(\x) + (1-\x)*log2(1-\x)) });
-    
-    % Linea tratteggiata per il massimo
-    \draw[dashed] (0.5,0) -- (0.5,1);
-\end{tikzpicture}
-\end{center}
+    We get maximum information when we flip a \textbf{*fair*} coin!
+    If the coin always flips heads or tails, we get no information!
+\end{example}
 
-\noindent
-We get maximum information when we flip a \textbf{*fair*} coin!\\
-If the coin always flips heads or tails, we get no information!
-
-\vspace{1em}
-\noindent
 We could say that the messier the information, the most we get out of it.
 
-\vspace{1em}
-\noindent
-Prof forgot stuff about signals: we're always talking about ``proper'' signals; the real and imaginary part of those numers are uncorrelated!
+Prof forgot stuff about signals: we're always talking about ``proper'' signals; the real and imaginary part of those numbers are uncorrelated!
 
-\vspace{1em}
-\noindent
 Properness is preserved by affine transformations. An intuitive reason why we consider only proper complex numbers is that if we have real and imaginary parts of a random variable:
 
-% Grafico Piano Complesso (TikZ)
 \begin{center}
 \begin{tikzpicture}[scale=1.2]
     % Assi
@@ -320,247 +243,147 @@ Properness is preserved by affine transformations. An intuitive reason why we co
 \end{tikzpicture}
 \end{center}
 
-\bigskip
+$(-1, -1)$: \textbf{This is a fake complex variable; we want to avoid these cases.}
 
-% ---------------------------------------------------------
-% PAGINA 2: Testo Formale e Note (Destra)
-% ---------------------------------------------------------
-
-% Nota manuscritta in alto
-\noindent
-$(-1, -1)$ \textbf{This is a fake complex variable; we want to avoid these cases.}
-
-
-\noindent\rule{\textwidth}{0.4pt} % Linea orizzontale separatrice
-
-\vspace{1em}
-
-\noindent
-To elaborate further:
-
-\subsubsection{Proper complex}
+\subsection{Proper complex}
 
 A random variable (or a random process/random vector) is said to be proper complex if it satisfies \textbf{Properness}:
 
-\newpage
-\textbf{Properness}
+\begin{definition}[Properness]
+    A complex random variable is said to be \textbf{proper} if
+    \[ E[x^2] = E[x]^2 \]
+    holds. Properness requires $\mathrm{Re}[x], \mathrm{Im}[x]$ to be uncorrelated and have the same variance.
 
-\vspace{0.5em}
-A complex random variable is said to be \textbf{proper} if
-\[
-E[x^2] = E[x]^2
-\]
-holds.
-Properness requires $\mathrm{Re}[x], \mathrm{Im}[x]$ to be uncorrelated and have the same variance.
+    A complex random vector is said to be \textbf{proper} if
+    \[ E[\bm{x}\bm{x}^T] = E[\bm{x}]E[\bm{x}]^T \]
+    holds, which is equal to asking that $\mathrm{Re}[\bm{x}], \mathrm{Im}[\bm{x}]$ have identical Covariance matrices and cross-covariance equal to 0.
+\end{definition}
 
-\vspace{0.8em}
-A complex random vector is said to be \textbf{proper} if
-\[
-E[\mathbf{x}\mathbf{x}^T] = E[\mathbf{x}]E[\mathbf{x}]^T
-\]
-holds, which is equal to asking that $\mathrm{Re}[\boldsymbol{x}], \mathrm{Im}[\boldsymbol{x}]$ have identical Covariance matrices and cross-covariance equal to 0.
-
-\vspace{0.8em}
-Properness is preserved in affine transformations!
+\begin{remark}
+    Properness is preserved in affine transformations!
+\end{remark}
 
 \subsection{Entropy rate}
 
 Let's say we have a sequence of discrete random variables indexed by time, $x_0, \dots, x_{N-1}$.
 If they are \textbf{IID}, then the entropy of the whole process grows linearly with $N$ at a rate $\mathcal{H}(x_0)$.
 
-\vspace{0.5em}
-\noindent
 \textbf{In general}, a process grows according to the so-called \textit{entropy rate}
 \begin{equation}
     \mathcal{H} = \lim_{N \to +\infty} \frac{1}{N} \mathcal{H}(x_0, \dots, x_{N-1}). \tag{1.32}
 \end{equation}
 
-\noindent
 If the process is \textbf{stationary}, we can show that the entropy rate is equal to
 \begin{equation}
     \mathcal{H} = \lim_{N \to +\infty} \mathcal{H}(x_N | x_0, \dots, x_{N-1}). \tag{1.33}
 \end{equation}
 
-\noindent
 All of this can be extended for continuous processes to differential entropy.
 
-\vspace{0.5em}
-\noindent
 A process is said to be \textbf{nonregular} if its present value is perfectly predictable from noiseless observations of the entire past, while the process is \textbf{regular} (which happens if $\mathfrak{h} > -\infty$) if its present value cannot be perfectly predicted from noiseless observations of the entire past.
 
 \subsection{Differential entropy}
 
-\textit{Differential entropy:}
-\begin{equation*}
-    h(x) = \int f_x(x) \log_{1/2} f_x(x) \, dx = \mathbb{E}\left[\log_{1/2} f_x(x)\right]
-\end{equation*}
-
-\textit{For vectors:}
-\begin{equation*}
-    h(\underline{x}) = \mathbb{E}\left[\log_{1/2} f_{\underline{x}}(\underline{x})\right]
-\end{equation*}
+\begin{definition}[Differential entropy]
+    \[ h(x) = \int f_x(x) \log_{1/2} f_x(x) \, dx = \mathbb{E}\left[\log_{1/2} f_x(x)\right] \]
+    \textit{For vectors:}
+    \[ h(\underline{x}) = \mathbb{E}\left[\log_{1/2} f_{\underline{x}}(\underline{x})\right] \]
+\end{definition}
 
 The differential entropy rate does not measure the information contained in a random variable.
 If we only have a random variable, we only have a shot. In order to consider a \textbf{rate}, we consider a \textbf{random process}: in this case, we have a random variable every certain amount of time: we can say that we have a certain amount of information per second!
 
 A binary random process with $p=0.5$ which gives a value every second, gives 1 bit/s.
-
 So the rate does not measure the information contained in a random variable.
 We also need to keep in mind that the differential entropy can be negative.
 
-\noindent\rule{\textwidth}{0.4pt}
+\begin{theorem}
+    A \textbf{Gaussian distribution maximizes the differential entropy}, for a fixed variance.
+\end{theorem}
 
-It's easy to prove that a \textbf{Gaussian distribution maximizes the differential entropy}, for a fixed variance.
-
-\noindent\rule{\textwidth}{0.4pt}
-
-The differential entropy of a $b$ bit quantization of a random variable $x$ is $h(x)+b$
+The differential entropy of a $b$ bit quantization of a random variable $x$ is $h(x)+b$.
 (what happens if we quantize more and more finely?)
 
 If we discretize a variable in $b$ bits, then what we obtain is another random variable. What if we want to compute the differential entropy of that random variable?
-
 Why do we use differential entropy even though we discretized? We just elongate it:
 
-% ---------------------------------------------------------
-% PAGINA 1
-% ---------------------------------------------------------
-
-\noindent
-% --- Grafico Manoscritto (TikZ) ---
-\begin{minipage}{0.4\textwidth}
-\begin{tikzpicture}[>=Stealth, thick, scale=0.8] % <-- Valore scale ridotto
-
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+\begin{tikzpicture}[>=Stealth, thick, scale=0.8]
     % 1. Definizione della funzione matematica (Simil-Gaussiana)
-    % Modifica questa formula per cambiare la forma della curva
     \def\func(#1){1.0 + 3.0*exp(-0.15*(#1-3.5)^2)}
 
     % 2. Assi Cartesiani
     \draw[->] (-0.5,0) -- (8,0); % Asse X
     \draw[->] (0,-0.5) -- (0,5); % Asse Y
 
-    % 3. Somme di Riemann (I rettangoli)
-    % Il ciclo disegna un rettangolo per ogni step
-    % \x è la coordinata x sinistra del rettangolo
+    % 3. Somme di Riemann
     \foreach \x in {0.5, 1.0, 1.5, 2.0, 2.5, 3.0} {
-        % Calcoliamo l'altezza y usando la funzione definita sopra: y = f(x)
-        % Questo è un "Left Riemann Sum" (l'angolo sinistro tocca la curva)
-        % Per un "Right Sum" useresti \func(\x+0.5)
         \pgfmathsetmacro{\height}{\func(\x)}
-        
-        % Disegna il rettangolo
-        % (x, 0) rectangle (x + larghezza, altezza)
         \draw[fill=white] (\x,0) rectangle (\x+0.5, \height);
     }
 
     % 4. La curva continua
-    % Disegnata SOPRA i rettangoli per essere ben visibile
-    % domain definisce l'intervallo della curva
     \draw[line width=1.5pt] plot[domain=0:7, samples=100, smooth] (\x, {\func(\x)});
 
-    % 5. Annotazioni in Blu (Cerchio e Testo)
-    % Ellisse ruotata che racchiude i rettangoli
+    % 5. Annotazioni
     \draw[blue, line width=1.2pt, rotate around={15:(2.2, 3.0)}] 
         (2.2, 3.0) ellipse (2.5cm and 1.3cm);
-
-    % Freccia curva
     \draw[->, blue, line width=1.2pt] (4.0, 4.5) to[out=30, in=180] (5.2, 4.8);
-
-    % Testo
     \node[blue, right] at (5.2, 4.8) {\large \textsf{Continuous values}};
-
 \end{tikzpicture}
 \end{minipage}
 \hfill
-\begin{minipage}{0.55\textwidth}
-    If we push b to inf, it diverges!\\
-    Btw if we want a reference for information theory, we can use the book "Cover \& Thomas" (this is at page 247).
+\begin{minipage}{0.45\textwidth}
+    If we push $b \to \infty$, it diverges!\\
+    Btw if we want a reference for information theory, we can use the book "Cover \& Thomas" (p. 247).
 \end{minipage}
+\end{center}
 
 \vspace{1em}
-\noindent
 \textsf{Pag 10 of the slides: how to calculate the differential entropy of a Gaussian complex vector.}
 
-\vspace{0.5em}
-\hrule
-\vspace{0.5em}
-
-% --- Esempio 1.6 (Snippet Slide) ---
-\noindent
-\textbf{Example 1.6 (Differential entropy of a complex Gaussian vector)}
-
-\noindent
-Let $\mathbf{x} \sim \mathcal{N}_{\mathcal{C}}(\boldsymbol{\mu}, \boldsymbol{R})$. From (C.15) and (1.22).
+\begin{greybox}[Example 1.6: Differential entropy of a complex Gaussian vector]
+Let $\bm{x} \sim \mathcal{N}_{\mathcal{C}}(\bm{\mu}, \bm{R})$. From (C.15) and (1.22).
 \begin{flalign*}
-    h(\mathbf{x}) &= -\mathbb{E}[\log_2 f_{\mathbf{x}}(\mathbf{x})] & (1.23) \\
-    &= \log_2 \det(\pi \boldsymbol{R}) + \mathbb{E}[(\mathbf{x} - \boldsymbol{\mu})^* \boldsymbol{R}^{-1} (\mathbf{x} - \boldsymbol{\mu})] \log_2 e & (1.24) \\
-    &= \log_2 \det(\pi \boldsymbol{R}) + \text{tr}(\mathbb{E}[(\mathbf{x} - \boldsymbol{\mu})^* \boldsymbol{R}^{-1} (\mathbf{x} - \boldsymbol{\mu})]) \log_2 e & (1.25) \\
-    &= \log_2 \det(\pi \boldsymbol{R}) + \text{tr}(\mathbb{E}[\boldsymbol{R}^{-1}(\mathbf{x} - \boldsymbol{\mu})(\mathbf{x} - \boldsymbol{\mu})^*]) \log_2 e & (1.26) \\
-    &= \log_2 \det(\pi \boldsymbol{R}) + \text{tr}(\boldsymbol{R}^{-1}\underbrace{\mathbb{E}[(\mathbf{x} - \boldsymbol{\mu})(\mathbf{x} - \boldsymbol{\mu})^*]}_{\boldsymbol{R}}) \log_2 e & (1.27) \\
-    &= \log_2 \det(\pi \boldsymbol{R}) + \text{tr}(\boldsymbol{I}) \log_2 e & (1.28) \\
-    &= \log_2 \det(\pi e \boldsymbol{R}), & (1.29)
+    h(\bm{x}) &= -\mathbb{E}[\log_2 f_{\bm{x}}(\bm{x})] & (1.23) \\
+    &= \log_2 \det(\pi \bm{R}) + \mathbb{E}[(\bm{x} - \bm{\mu})^* \bm{R}^{-1} (\bm{x} - \bm{\mu})] \log_2 e & (1.24) \\
+    &= \log_2 \det(\pi \bm{R}) + \text{tr}(\mathbb{E}[(\bm{x} - \bm{\mu})^* \bm{R}^{-1} (\bm{x} - \bm{\mu})]) \log_2 e & (1.25) \\
+    &= \log_2 \det(\pi \bm{R}) + \text{tr}(\mathbb{E}[\bm{R}^{-1}(\bm{x} - \bm{\mu})(\bm{x} - \bm{\mu})^*]) \log_2 e & (1.26) \\
+    &= \log_2 \det(\pi \bm{R}) + \text{tr}(\bm{R}^{-1}\underbrace{\mathbb{E}[(\bm{x} - \bm{\mu})(\bm{x} - \bm{\mu})^*]}_{\bm{R}}) \log_2 e & (1.27) \\
+    &= \log_2 \det(\pi \bm{R}) + \text{tr}(\bm{I}) \log_2 e & (1.28) \\
+    &= \log_2 \det(\pi e \bm{R}), & (1.29)
 \end{flalign*}
+Where in (1.25) we used the fact that a \underline{scalar equals its trace}, while in (1.26) we invoked the commutative property in (B.26).
+\tcblower
+\textbf{Note:} $\det(\exp(\bm{A})) = \exp(\text{tr}(\bm{A}))$
+\end{greybox}
 
-\noindent
-where in (1.25) we used the fact that a \underline{scalar equals its trace}, while in (1.26) we invoked the commutative property in (B.26).
-
-% Nota rossa a margine
-\begin{flushright}
-    \fcolorbox{red}{white}{\textcolor{red}{\textbf{Note:}} $\det(\exp(\mathbf{A})) = \exp(\text{tr}(\mathbf{A}))$}
-\end{flushright}
-
-% --- Esempio 1.5 (Snippet Slide) ---
-\vspace{1em}
-\noindent
-\textbf{Example 1.5 (Differential entropy of a complex Gaussian scalar)}
-
-\noindent
+\begin{greybox}[Example 1.5: Differential entropy of a complex Gaussian scalar]
 Let $x \sim \mathcal{N}_{\mathcal{C}}(\mu, \sigma^2)$. Invoking the PDF in (C.14),
 \[
 h(x) = \mathbb{E}\left[ \frac{|x-\mu|^2}{\sigma^2} \log_2 e + \log_2 (\pi \sigma^2) \right]
 = \log_2 (\pi e \sigma^2).
 \]
-\begin{center}
-    (Scalar result) \\
-    \textbf{Equivalent scalar result}
-\end{center}
+\textbf{Equivalent scalar result}
+\end{greybox}
 
-
-\vspace{1em}
-\hrule
-\vspace{1em}
-
-\noindent
 Professor freaks out over the fact that we don't know what the trace function is.
 The trace of a matrix is the sum of the diagonals.
 If we want to compute the sum of the eigenvalues, we can just compute the trace of a matrix.
 
-\noindent
-btw \quad $\det(\exp(\underline{A})) = \exp(\text{tr}(\underline{A}))$
-
-\vspace{1em}
-\noindent
-So we have that
-
-\begin{equation*}
-    h(\underline{x}) = \log_2 (\det (\pi e \underline{R}))
-\end{equation*}
-\begin{equation*}
-    h(x) = \log_2 (\pi e \sigma^2)
-\end{equation*}
+So we have that:
+\begin{align*}
+    h(\underline{x}) &= \log_2 (\det (\pi e \underline{R})) \\
+    h(x) &= \log_2 (\pi e \sigma^2)
+\end{align*}
 
 \textit{At least not for a Gaussian R.V.!}
 
-\vspace{1em}
-
-\noindent
 The differential entropy DOES NOT depend on the mean of the variable!
-
-\vspace{0.5em}
-\noindent
 Another very important thing is that the differential entropy is a property of the distribution of a random variable, not of the random variable itself.
 Two random variables having the same distribution will have the same random variable.
 
-% --- Schema R.V. ---
 \begin{center}
     \begin{tikzpicture}
         \node (text) at (0,0) {\Large $R.V.$ is a map};
@@ -573,79 +396,46 @@ Two random variables having the same distribution will have the same random vari
     \end{tikzpicture}
 \end{center}
 
-
-\vspace{1em}
-
-\noindent
-\small
 Elaborating a bit on the computation of the differential entropy: we have that
 \begin{align*}
-    h(\boldsymbol{x}) &= -\mathbb{E}[\log_2 f_{\boldsymbol{X}}(\boldsymbol{x})] \tag{1.23} \\
-    &= -\mathbb{E}\left[ \log_2 \left( \frac{1}{\det(\pi \boldsymbol{R}_x)} \exp(-(\boldsymbol{X} - \boldsymbol{\mu}_x)^* \boldsymbol{R}_x^{-1} (\boldsymbol{X} - \boldsymbol{\mu}_x)) \right) \right] \\
-    &= \log_2(\det(\pi \boldsymbol{R}_x)) - \mathbb{E}\left[ \frac{\ln(\exp(-(\boldsymbol{X} - \boldsymbol{\mu}_x)^* \boldsymbol{R}_x^{-1} (\boldsymbol{X} - \boldsymbol{\mu}_x)))}{\ln 2} \right] \\
-    &= \log_2(\det(\pi \boldsymbol{R}_x)) - \mathbb{E}\left[ \frac{-(\boldsymbol{X} - \boldsymbol{\mu}_x)^* \boldsymbol{R}_x^{-1} (\boldsymbol{X} - \boldsymbol{\mu}_x)}{\ln 2} \right] \\
-    &= \log_2(\det(\pi \boldsymbol{R}_x)) + \mathbb{E}\left[ (\boldsymbol{X} - \boldsymbol{\mu}_x)^* \boldsymbol{R}_x^{-1} (\boldsymbol{X} - \boldsymbol{\mu}_x) \right] \log_2 e \tag{1.24}
+    h(\bm{x}) &= -\mathbb{E}[\log_2 f_{\bm{X}}(\bm{x})] \tag{1.23} \\
+    &= -\mathbb{E}\left[ \log_2 \left( \frac{1}{\det(\pi \bm{R}_x)} \exp(-(\bm{X} - \bm{\mu}_x)^* \bm{R}_x^{-1} (\bm{X} - \bm{\mu}_x)) \right) \right] \\
+    &= \log_2(\det(\pi \bm{R}_x)) - \mathbb{E}\left[ \frac{\ln(\exp(-(\bm{X} - \bm{\mu}_x)^* \bm{R}_x^{-1} (\bm{X} - \bm{\mu}_x)))}{\ln 2} \right] \\
+    &= \log_2(\det(\pi \bm{R}_x)) + \mathbb{E}\left[ (\bm{X} - \bm{\mu}_x)^* \bm{R}_x^{-1} (\bm{X} - \bm{\mu}_x) \right] \log_2 e \tag{1.24}
 \end{align*}
+and now we observe that $(\bm{X} - \bm{\mu}_x)^* \bm{R}_x^{-1} (\bm{X} - \bm{\mu}_x)$ actually is a scalar. We can then exploit the fact that a scalar is equal to its trace:
 
-\noindent
-and now we observe that $(\boldsymbol{X} - \boldsymbol{\mu}_x)^* \boldsymbol{R}_x^{-1} (\boldsymbol{X} - \boldsymbol{\mu}_x)$ actually is a scalar (given that $\boldsymbol{x}$ is a $N \times 1$ vector, we're multiplying $(1 \times N) \cdot (N \times N) \cdot (N \times 1) \rightarrow 1$): we can then exploit the fact that a scalar is equal to its trace together with the fact that the trace is a scalar operation to get
-% ---------------------------------------------------------
-% PAGINA 1: Dimostrazione Matematica e Definizioni
-% ---------------------------------------------------------
-
-\noindent
 \begin{align}
-    &= \log_2(\det(\pi \boldsymbol{R}_x)) + \text{Tr}\left[ \mathbb{E}\left[ (\boldsymbol{X} - \boldsymbol{\mu}_x)^* \boldsymbol{R}_x^{-1} (\boldsymbol{X} - \boldsymbol{\mu}_x) \right] \right] \log_2 e \tag{1.25} \\
-    &= \log_2(\det(\pi \boldsymbol{R}_x)) + \mathbb{E}\left[ \text{Tr}\left[ (\boldsymbol{X} - \boldsymbol{\mu}_x)^* \boldsymbol{R}_x^{-1} (\boldsymbol{X} - \boldsymbol{\mu}_x) \right] \right] \log_2 e \qquad \text{Linearity} \nonumber \\
-    &= \log_2(\det(\pi \boldsymbol{R}_x)) + \mathbb{E}\left[ \text{Tr}\left[ \boldsymbol{R}_x^{-1} (\boldsymbol{X} - \boldsymbol{\mu}_x)(\boldsymbol{X} - \boldsymbol{\mu}_x)^* \right] \right] \log_2 e \qquad \text{Ciclicity} \nonumber \\
-    &= \log_2(\det(\pi \boldsymbol{R}_x)) + \text{Tr}\left[ \boldsymbol{R}_x^{-1} \boldsymbol{R}_x \right] \log_2 e \nonumber \\
-    &= \log_2(\det(\pi \boldsymbol{R}_x)) + \text{Tr}\left[ \boldsymbol{I} \right] \log_2 e \tag{1.28}
+    &= \log_2(\det(\pi \bm{R}_x)) + \text{Tr}\left[ \mathbb{E}\left[ (\bm{X} - \bm{\mu}_x)^* \bm{R}_x^{-1} (\bm{X} - \bm{\mu}_x) \right] \right] \log_2 e \tag{1.25} \\
+    &= \log_2(\det(\pi \bm{R}_x)) + \mathbb{E}\left[ \text{Tr}\left[ (\bm{X} - \bm{\mu}_x)^* \bm{R}_x^{-1} (\bm{X} - \bm{\mu}_x) \right] \right] \log_2 e \qquad \text{Linearity} \nonumber \\
+    &= \log_2(\det(\pi \bm{R}_x)) + \mathbb{E}\left[ \text{Tr}\left[ \bm{R}_x^{-1} (\bm{X} - \bm{\mu}_x)(\bm{X} - \bm{\mu}_x)^* \right] \right] \log_2 e \qquad \text{Ciclicity} \nonumber \\
+    &= \log_2(\det(\pi \bm{R}_x)) + \text{Tr}\left[ \bm{R}_x^{-1} \bm{R}_x \right] \log_2 e \nonumber \\
+    &= \log_2(\det(\pi \bm{R}_x)) + \text{Tr}\left[ \bm{I} \right] \log_2 e \tag{1.28}
 \end{align}
-
-\noindent
-if then we consider $\boldsymbol{R}_x, \boldsymbol{I}$ as $N \times N$ matrices (which they are, this is just needed to say that $N$ is their measure), we'll have
+if then we consider $\bm{R}_x, \bm{I}$ as $N \times N$ matrices, we'll have
 \begin{align*}
-    &= \log_2(\det(\pi \boldsymbol{R}_x)) + N \log_2 e \\
-    &= \log_2(e^N \det(\pi \boldsymbol{R}_x))
+    &= \log_2(\det(\pi \bm{R}_x)) + N \log_2 e \\
+    &= \log_2(e^N \det(\pi \bm{R}_x))
 \end{align*}
-and, finally, for a matrix $\boldsymbol{A}$ of dimensionality $N \times N$ it holds that
-\[
-a^N \det(\boldsymbol{A}) = \det(a\boldsymbol{A}),
-\]
-so in our situation this is
+and, finally, for a matrix $\bm{A}$ of dimensionality $N \times N$ it holds that $a^N \det(\bm{A}) = \det(a\bm{A})$, so:
 \begin{equation}
-    = \log_2(\det(\pi e \boldsymbol{R}_x)). \tag{1.29}
+    h(\bm{x}) = \log_2(\det(\pi e \bm{R}_x)). \tag{1.29}
 \end{equation}
 
-\noindent
-Whew, that was a lot!
+Finally, we can simplify this for the scalar case as the determinant of a scalar is the scalar itself, getting that:
+\[ h(x) = \log_2(\pi e \sigma^2). \]
 
-%linea di separazione
-\noindent\makebox[\linewidth]{\rule{19cm}{0.4pt}} % Dashed line simulated
-
-\vspace{1em}
-\noindent
-Finally, we can simplify this for the scalar case as the determinant of a scalar is the scalar itself, getting that
-\[
-h(x) = \log_2(\pi e \sigma^2).
-\]
-
-% Riquadro Verde Chiaro (Nota B.26)
-\noindent
-\colorbox{teal!10}{
-    \begin{minipage}{0.98\textwidth}
-        \small
-        \textbf{\textcolor{teal!50!green}{|}} \quad Btw the B.26 relation that they mentioned is
-        \begin{equation}
-            \text{tr}(\boldsymbol{AB}) = \text{tr}(\boldsymbol{BA}), \tag{B.26}
-        \end{equation}
-        which was here applied to $\boldsymbol{A} = (\boldsymbol{x} - \boldsymbol{\mu})^* \boldsymbol{R}^{-1}, \boldsymbol{B} = (\boldsymbol{x} - \boldsymbol{\mu})$.
-    \end{minipage}
-}
+\begin{greenbox}
+    \textbf{\faIcon{pen} Note:} Btw the B.26 relation that they mentioned is
+    \begin{equation}
+        \text{tr}(\bm{AB}) = \text{tr}(\bm{BA}), \tag{B.26}
+    \end{equation}
+    which was here applied to $\bm{A} = (\bm{x} - \bm{\mu})^* \bm{R}^{-1}, \bm{B} = (\bm{x} - \bm{\mu})$.
+\end{greenbox}
 
 \section{Information divergence, mutual information}
 
-We have that the Kullback-Leibler divergence is defined as
+We have that the Kullback-Leibler divergence is defined as:
 \begin{equation}
     \mathcal{D}(p||q) = 
     \begin{cases}
@@ -654,15 +444,8 @@ We have that the Kullback-Leibler divergence is defined as
     \end{cases}
     \tag{1.34+1.36}
 \end{equation}
-this is also called the \textit{relative entropy}.
+this is also called the \textit{relative entropy}. Another way to measure such thing is the Earth-Mover distance.
 
-Another way to measure such thing is the Earth-Mover distance.
-
-% ---------------------------------------------------------
-% PAGINA 2: Appunti Mutual Information e Diagramma
-% ---------------------------------------------------------
-
-\noindent
 \begin{center}
 \begin{tikzpicture}[node distance=2cm, auto, thick]
     % Nodi
@@ -676,194 +459,112 @@ Another way to measure such thing is the Earth-Mover distance.
 \end{tikzpicture}
 \end{center}
 
-\noindent
 The mutual information quantifies the reduction in uncertainty between two random variables if one of them is observed.
 
-\vspace{1em}
-
-% Sezione DISCRETE
-\noindent
-\textbf{\Large Discrete:}
-
+\textbf{Discrete:}
 \begin{align*}
-    \text{\Large I}(s;y) &= H(s) - H(s|y) = H(y) - H(y|s) \\
-    & \hspace{-1cm} \tikz[baseline] \draw[->, blue!70] (0,0.5) to[out=-90, in=90] (0.5,-0.5) node[right, black] {Between $s$ and $y$}; \\
+    \text{I}(s;y) &= H(s) - H(s|y) = H(y) - H(y|s) \\
     &= D(p_{sy} || p_s p_y) \\
     &= \sum_s \sum_y p_{sy}(s,y) \log_2 \left( \frac{p_{sy}(s,y)}{p_s(s)p_y(y)} \right)
 \end{align*}
 
-
-% Sezione CONTINUOUS (Cont)
-\noindent
-\colorbox{white}{\textbf{\Large Cont:}} % Titolo simulato manoscritto
+\textbf{Continuous:}
 \begin{align*}
     &= \mathbb{E}[\text{information density}] \equiv \mathbb{E}[i(s;y)] \\
-    \text{\Large I}(s;y) &= h(s) - h(s|y) = h(y) - h(y|s) \\
+    \text{I}(s;y) &= h(s) - h(s|y) = h(y) - h(y|s) \\
     &= D(f_{sy} || f_s f_y) \\
     &= \iint f_{sy}(s,y) \log_2 \left( \frac{f_{sy}(s,y)}{f_s(s)f_y(y)} \right) \, ds \, dy
 \end{align*}
 
-% --- Inizio del contenuto convertito ---
-
-\noindent
 He talked about the \colorbox{cyan!30}{Landau symbols}; he didn't say anything relevant really.
 
-\vspace{1em}
-
-\subsection{{Power series expansions}}
-
-\noindent
+\subsection{Power series expansions}
 Useful means to approximate functions especially low or high SNR.
 
-\vspace{1em}
+\begin{tcolorbox}[colback=white, colframe=blue, sharp corners]
+    \textbf{Zero order expansion about 0}
+    \[ f(x) = f(0) + \mathcal{O}(x) \]
+\end{tcolorbox}
 
-% Blocco formule allineate e ordinate
-\noindent
-\begin{minipage}{\textwidth}
-    \begin{itemize}
-        \item \textbf{Zero order expansion about 0}
-        \begin{equation*}
-            \fcolorbox{blue}{white}{$\displaystyle f(x) = f(0) + \mathcal{O}(x)$}
-        \end{equation*}
-        
-        \item \textbf{First order expansion about 0}
-        \begin{equation*}
-            \fcolorbox{blue}{white}{$\displaystyle f(x) = f(0) + f'(0)x + \mathcal{O}(x^2)$}
-        \end{equation*}
+\begin{tcolorbox}[colback=white, colframe=blue, sharp corners]
+    \textbf{First order expansion about 0}
+    \[ f(x) = f(0) + f'(0)x + \mathcal{O}(x^2) \]
+\end{tcolorbox}
 
-        \item \textbf{First order expansion about Infinity}
-        \begin{equation*}
-            \fcolorbox{blue}{white}{$\displaystyle f(1/x) = f(0) + \frac{f'(0)}{x} + \mathcal{O}\left(\frac{1}{x^2}\right)$}
-        \end{equation*}
-        % Freccia rossa di annotazione (conservata ma resa più pulita)
-    \end{itemize}
-\end{minipage}
+\begin{tcolorbox}[colback=white, colframe=blue, sharp corners]
+    \textbf{First order expansion about Infinity}
+    \[ f(1/x) = f(0) + \frac{f'(0)}{x} + \mathcal{O}\left(\frac{1}{x^2}\right) \]
+\end{tcolorbox}
 
-\vspace{1.5em}
-
-% Blocco Mathematica e Nota
-\noindent
-\begin{minipage}[t]{0.45\textwidth}
-    \textbf{\footnotesize Mathematica snippet:}
-    \begin{verbatim}
+\begin{center}
+    \begin{minipage}{0.8\linewidth} 
+        \begin{minted}{mathematica}
 In[11]:= Series[f[x], {x, 0, 2}]
 Out[11]= f[0] + f'[0]x + 1/2 f''[0]x^2 + O[x]^3
-    \end{verbatim}
-\end{minipage}%
-\hfill
-
-
-\vspace{0.5cm}
-\hrule
-\vspace{0.5cm}
-
-% --- SEZIONE APPUNTI (Riorganizzata) ---
-
-\noindent
-\textbf{\Large Important! $\rightarrow$ SL. \fbox{16}}
+        \end{minted}
+    \end{minipage}
+\end{center}
 
 \vspace{1em}
+\noindent
+\textbf{Important! $\rightarrow$ SL. \fbox{16}}
 
-% Diagramma a blocchi (Ordinato)
 \begin{center}
 \begin{tikzpicture}[>=latex, auto, node distance=1.5cm]
-
     % --- Componenti Principali ---
-
     % 1. Segnale S
     \node (s) {$s$};
-
     % 2. Amplificatore (Triangolo Blu)
     \node[isosceles triangle,
-          isosceles triangle apex angle=100, % Angolo più ampio per una forma più piatta/larga
-          draw=blue, ultra thick, % Linea molto spessa come nell'originale
+          isosceles triangle apex angle=60,
+          draw=blue, ultra thick,
           shape border rotate=0,
           right of=s, node distance=1.5cm,
           inner sep=4pt] (amp) {};
     % La rho sotto l'amplificatore
     \node[below=0.1cm of amp, text=blue] {$\rho$};
-
     % 3. Sommatore
     \node[draw, circle, thick, inner sep=0pt, minimum size=0.6cm, right of=amp, node distance=2cm] (sum) {\large $+$};
-
-    % 4. Equazione Output (Costruita a pezzi per ancoraggio preciso)
-    \node[right of=sum, node distance=2cm, anchor=west] (eq_y) {$y = $};
-    \node[right=0pt of eq_y] (eq_term) {$s\sqrt{\rho}$};
-    \node[right=0pt of eq_term] (eq_plus) {$+$};
-    \node[right=2pt of eq_plus] (eq_z) {$z$};
-    
-    % Riquadro rosso arrotondato attorno a z
-    \node[draw=purple!80!red, fit=(eq_z), inner sep=2pt, rounded corners=3pt, thick] (z_box) {};
+    % 4. Equazione Output
+    \node[right of=sum, node distance=2cm, anchor=west] (eq_y) {$y = s\sqrt{\rho} + $};
+    \node[draw=purple!80!red, inner sep=2pt, rounded corners=3pt, thick, right=0pt of eq_y] (z_box) {$z$};
 
     % 5. Rumore (Noise) in basso
-    \node[below of=sum, node distance=2.5cm, align=center, text width=3cm] (noise_label) {
-        $z =$ gaussian\\noise
-    };
+    \node[below of=sum, node distance=2.5cm, align=center, text width=3cm] (noise_label) {$z =$ gaussian\\noise};
 
-    % --- Collegamenti del Circuito ---
+    % --- Collegamenti ---
     \draw[->, thick] (s) -- (amp);
     \draw[->, thick] (amp) -- (sum);
     \draw[->, thick] (sum) -- (eq_y);
     \draw[->, thick] (noise_label.north) -- (sum.south);
 
-    % --- Annotazioni e Frecce Colorate ---
-
-    % 1. Freccia Blu Amplificatore
+    % --- Annotazioni ---
     \node[above right=0.3cm and 0.1cm of amp, text=blue] (amp_text) {Amplifier};
     \draw[->, draw=blue, thick] (amp.north) to[out=90, in=180] (amp_text.west);
-
-    % 2. Freccia Rossa Amplified Signal
-    % Disegno la parentesi quadra aperta verso l'alto sotto il termine s\sqrt{\rho}
-    \draw[purple!80!red, thick] 
-        ($(eq_term.south west)+(-0.05,-0.1)$) -- 
-        ($(eq_term.south west)+(-0.05,-0.2)$) -- 
-        ($(eq_term.south east)+(0.05,-0.2)$) -- 
-        ($(eq_term.south east)+(0.05,-0.1)$);
     
-    \node[below=0.8cm of eq_term, text=purple!80!red, align=center] (amp_sig_text) {Amplified\\signal};
-    \draw[->, purple!80!red, thick] ($(eq_term.south)+(0,-0.2)$) -- (amp_sig_text.north);
-
-    % 3. Freccia Rossa da z a Gaussian Noise
-    \draw[->, purple!80!red, thick] (z_box.south) to[out=-90, in=0] (noise_label.east);
-
+    \node[below=0.8cm of sum, text=purple!80!red, align=center, xshift=1cm] (amp_sig_text) {Amplified\\signal};
+    \draw[->, purple!80!red, thick] (2.8, -0.2) -- (amp_sig_text.north); % Approx pos
 \end{tikzpicture}
 \end{center}
 
-\vspace{1em}
+We can ask ourselves: \colorbox{yellow!60}{how much is the gaussian noise corrupting what I'm sending?}
 
-% Testo conclusivo formattato come paragrafo
-\noindent
-{We can ask ourselves: \colorbox{yellow!60}{how much is the gaussian noise corrupting what}}
-{\colorbox{yellow!60}{I'm sending?}}
-
-\vspace{1.5em}
-
-\noindent
-We amplify $\rho$ (which is $\sqrt{\rho}$ in power) $\Rightarrow$  we get an ampl. of $\sqrt{\rho}$ on power!
-
-% --- Fine del contenuto convertito ---
-
-
-\vspace{1cm}
+We amplify $\rho$ (which is $\sqrt{\rho}$ in power) $\Rightarrow$ we get an ampl. of $\sqrt{\rho}$ on power!
 
 \subsection{Mutual information of a Gaussian scalar through an AWGN channel}
 We were calculating the \textbf{mutual information} for a Gaussian complex scalar.
 
-\vspace{0.5em}
-\noindent
 We talked about the relation $y = \sqrt{\rho}s + z$. We have that $s, z$ are \textbf{independent}.
 It might seem weird that we're putting noise in a channel, but it will make sense later.
 
-\vspace{0.5em}
-\noindent
 Our constellation input always will have $\sigma^2 = 1$, such that $s \sim \mathcal{N}_{\mathcal{C}}(0, 1)$; we'll also have a noise $z \sim \mathcal{N}_{\mathcal{C}}(0, 1)$. We have that $y$ is made of a sum of Gaussian independent random variables, and will thus be a Gaussian random variable, with a variance given by a sum of variances: we'll have
 
 \begin{itemize}
     \item $y \sim \mathcal{N}_{\mathcal{C}}(0, 1 + \rho)$
-    \item $y|s \sim \mathcal{N}_{\mathcal{C}}(\sqrt{\rho}s, 1)$: this is $y$ with $s$ being fixed; we fix the $\sqrt{\rho}s$ in $y$'s equation. We now want to calculate the mutual information between the input and the output of the signal.
+    \item $y|s \sim \mathcal{N}_{\mathcal{C}}(\sqrt{\rho}s, 1)$: this is $y$ with $s$ being fixed. We now want to calculate the mutual information between the input and the output of the signal.
 \end{itemize}
-\noindent
-We know the differential entropy of a Gaussian scalar and we know that
+
+We know the differential entropy of a Gaussian scalar and we know that:
 \begin{flalign}
     \mathcal{I}(\rho) &= I(s; \sqrt{\rho}s + z) \nonumber \\
     &= h(\sqrt{\rho}s + z) - h(\sqrt{\rho}s + z | s) \nonumber \\
@@ -872,54 +573,20 @@ We know the differential entropy of a Gaussian scalar and we know that
     &= \log_2(1 + \rho). \tag{1.51}
 \end{flalign}
 
-\noindent
-\textbf{Relevant comments:}
-\begin{itemize}
-    \item In $h(\sqrt{\rho}s + z|s) = h(z)$, we know that we've already \textbf{fixed $s$}; $s$ multiplied by whichever scalar won't bring any extra information than $z$, as we already know what $s$ is; for this reason, the differential entropies are the same.
-\end{itemize}
+\textbf{Relevant comments:} In $h(\sqrt{\rho}s + z|s) = h(z)$, we know that we've already \textbf{fixed $s$}; $s$ multiplied by whichever scalar won't bring any extra information than $z$, as we already know what $s$ is; for this reason, the differential entropies are the same.
 
-\vspace{0.5em}
-\noindent
-\textbf{If we then consider $\rho \to 0$}, we have
-
-% Formula manoscritta per espansione di Taylor di log(1+x)
-\vspace{1em}
-\begin{center}
-    $\log_e(1+x) \xrightarrow{x \to 0} x - \frac{1}{2} x^2 + \mathcal{O}(x^3)$
-\end{center}
-\vspace{1em}
-
-\noindent
+\textbf{If we then consider $\rho \to 0$}, we have:
+\[ \log_e(1+x) \xrightarrow{x \to 0} x - \frac{1}{2} x^2 + \mathcal{O}(x^3) \]
 So we need to \textbf{convert to base $e$} and we'll then be able to use the expansion:
+\[ \log_2(1 + \rho) = \left(\rho - \frac{1}{2} \rho^2\right) \log_2 e + \mathcal{O}(\rho^3) \]
+And \textbf{for large $\rho$} we'll then have:
+\[ \log_2(1 + \rho) \xrightarrow{\rho \to \infty} \log_2(\rho) + \mathcal{O}(1/\rho) \]
 
-% Formula manoscritta per l'espansione in base 2
-\vspace{1em}
-\begin{center}
-    $\log_2(1 + \rho) = \left(\rho - \frac{1}{2} \rho^2\right) \log_2 e + \mathcal{O}(\rho^3)$
-\end{center}
-\vspace{1em}
-
-\noindent
-And \textbf{for large $\rho$} we'll then have
-
-% Formula manoscritta per l'approssimazione a infinito
-\vspace{1em}
-\begin{center}
-     $\log_2(1 + \rho) \xrightarrow{\rho \to \infty} \log_2(\rho) + \mathcal{O}(1/\rho)$
-\end{center}
-\vspace{1em}
-
-\fcolorbox{blue!50}{blue!5}{
-    \begin{minipage}{0.98\textwidth}
-        \textbf{\textcolor{blue!70}{\small \faIcon{pen} Note}}
-        
-        \vspace{0.2em}
-        This is \textbf{crucially important} as it allows to model an AWGN channel! It allows us to define the \textbf{capacity} as
-        \[
-        \frac{1}{2} \log(1 + \text{SNR})
-        \]
-        (we don't have $1/2$ since this is complex; we'd have $1/2$ if it wasn't complex!).
-    \end{minipage}
-}
+\begin{bluebox}
+    \textbf{\faIcon{pen} Note:}
+    This is \textbf{crucially important} as it allows to model an AWGN channel! It allows us to define the \textbf{capacity} as
+    \[ \frac{1}{2} \log(1 + \text{SNR}) \]
+    (we don't have $1/2$ since this is complex; we'd have $1/2$ if it wasn't complex!).
+\end{bluebox}
 
 \end{document}

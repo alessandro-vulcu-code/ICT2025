@@ -207,13 +207,13 @@ We need to transmit some pilots (generally a vector of all pilots) and then some
 
 \noindent\rule{\textwidth}{0.4pt}
 
-The book, in order to make the notation more compact, uses the \textcolor{green}{Kronecker product} of two matrices.
+The book, in order to make the notation more compact, uses the \textcolor{ForestGreen}{Kronecker product} of two matrices.
 
 \begin{quote}
     \color{gray}\vline\hspace{0.5em}\color{black} Of course in order to actually understand this, we need to explode this notation.
 \end{quote}
 
-We also have the \textcolor{green}{vec operator}. We have a specific property we'll use:
+We also have the \textcolor{ForestGreen}{vec operator}. We have a specific property we'll use:
 
 \subsection*{Relation with the Kronecker product}
 We have that
@@ -225,16 +225,16 @@ We have that
 \begin{align*}
 \text{vec} : \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} a \\ c \\ b \\ d \end{bmatrix}
 \end{align*}
-where $\otimes$ represents the \textcolor{green}{Kronecker product}.
+where $\otimes$ represents the \textcolor{ForestGreen}{Kronecker product}.
 
 Even for SISO, we used to make a compact notation by using matrices which imply time dependance.
 
 \begin{quote}
-    \color{green}\vline\hspace{0.5em}\color{black} This is similar to how with OFDM we use a matrix for representing the transform
+    \color{ForestGreen}\vline\hspace{0.5em}\color{black} This is similar to how with OFDM we use a matrix for representing the transform
 \end{quote}
 
 \begin{quote}
-    \color{green}\vline\hspace{0.5em}\color{black} If we look at exercise 20, we'll end up with 2 matrices representing the channel
+    \color{ForestGreen}\vline\hspace{0.5em}\color{black} If we look at exercise 20, we'll end up with 2 matrices representing the channel
 \end{quote}
 
 After going to our matrix notation, we further progress to a vector notation, knowing that if we were to stack one on the other all the values of $\bar{\boldsymbol{Y}}$, we'd get
@@ -251,7 +251,7 @@ Question is: what's $\boldsymbol{P}_{\otimes}$? It's just $\bar{\boldsymbol{P}}^
 Now we estimate, either with ML or LS.
 
 In this estimation, \textbf{we assume that we know the conditional distribution of the received signal given the channel.} In other words, we know that our transmit receive relation will follow (2.229) and that our noise $\bar{\boldsymbol{V}}$ will be AWGN.
-Thanks to the fact that we can choose our pilots to be \textcolor{green}{IID}, we know that the \textbf{ML estimator will be equivalent to the MAP estimator.}
+Thanks to the fact that we can choose our pilots to be \textcolor{ForestGreen}{IID}, we know that the \textbf{ML estimator will be equivalent to the MAP estimator.}
 
 Considering (2.229), we have that $\boldsymbol{P}_{\otimes}$ is known and that the observation given by a certain channel realization $\mathbf{h}$ (which realizes the distribution of $\text{vec}(\bar{\boldsymbol{H}})$) is complex Gaussian with mean
 \begin{align}
@@ -263,7 +263,7 @@ and covariance
 &= N_0 \boldsymbol{I}.
 \end{align}
 
-We'll thus have that, given a certain realization of the channel, $\text{vec}(\bar{\boldsymbol{Y}})$ is Gaussian with PDF (according to \textit{\textcolor{green}{Uni Generale/Digital Communications/Complex Gaussian distribution > 57a95e}})
+We'll thus have that, given a certain realization of the channel, $\text{vec}(\bar{\boldsymbol{Y}})$ is Gaussian with PDF (according to \textit{\textcolor{ForestGreen}{Uni Generale/Digital Communications/Complex Gaussian distribution > 57a95e}})
 \begin{align}
 f_{\text{vec}(\bar{\boldsymbol{Y}})|\text{vec}(\bar{\boldsymbol{H}})}(\boldsymbol{y}|\mathbf{h}) = \frac{1}{(\pi N_0)^{(N_p-L)N_r}} \exp \left( - \frac{\| \boldsymbol{y} - \sqrt{G}\bar{\boldsymbol{P}}_{\otimes}\mathbf{h} \|^2}{N_0} \right), \tag{2.230}
 \end{align}
@@ -271,7 +271,7 @@ which, thanks to the monotonicity of the exponential, is equivalent to minimizin
 \begin{align}
 \text{vec}(\hat{\bar{\boldsymbol{H}}})(\mathbf{y}) = \arg \min_{\mathbf{h}} \| \boldsymbol{y} - \sqrt{G}\bar{\boldsymbol{P}}_{\otimes}\mathbf{h} \|^2. \tag{2.232}
 \end{align}
-This is identical to the deduction of the zero forcing equalizer \textcolor{green}{we already discussed} (equations (2.145), (2.146)), ultimately giving
+This is identical to the deduction of the zero forcing equalizer \textcolor{ForestGreen}{we already discussed} (equations (2.145), (2.146)), ultimately giving
 \begin{align}
 \text{vec}(\hat{\bar{\boldsymbol{H}}})(\mathbf{y}) = \underbrace{\frac{1}{\sqrt{G}}(\bar{\boldsymbol{P}}_{\otimes}^*\bar{\boldsymbol{P}}_{\otimes})^{-1}\bar{\boldsymbol{P}}_{\otimes}^*}_{\boldsymbol{W}^{\text{LS}*}}\boldsymbol{y}, \tag{2.233}
 \end{align}
@@ -314,7 +314,7 @@ which finally leads to (2.233).
 \vspace{1em}
 
 \begin{quote}
-    \color{green}\vline\hspace{0.5em}\color{black} Professor would like of us to remember the reasoning and that we introduced $\otimes$ and $\text{vec}$ only for the reasons of having vectors, since with vectors we know the joint probability distribution of a Gaussian vector.
+    \color{ForestGreen}\vline\hspace{0.5em}\color{black} Professor would like of us to remember the reasoning and that we introduced $\otimes$ and $\text{vec}$ only for the reasons of having vectors, since with vectors we know the joint probability distribution of a Gaussian vector.
 \end{quote}
 
 \vspace{1em}
@@ -780,20 +780,20 @@ We have
 
 for which we see what's up when $\rho$ changes between $-1$ and $1$. \textbf{The matrix will become singular when $\rho \to 1$. If we use the same noise and we have $\rho = 1$, we'll see that the noise of zero forcing will escalate while the MS will stay still} (the zero forcing tries to invert a singular matrix!).
 
-% --- Green Box ---
+% --- ForestGreen Box ---
 \vspace{0.5cm}
 \noindent\colorbox{white}{%
     \setlength{\fboxrule}{0pt}%
     \setlength{\fboxsep}{0pt}%
-    \fcolorbox{white}{green!10}{%
+    \fcolorbox{white}{ForestGreen!10}{%
         \begin{minipage}{\textwidth}
-            \leftbar[color=green!50!black]
+            \leftbar[color=ForestGreen!50!black]
              Random: we need to check for consistency when we look at our results.
             \endleftbar
         \end{minipage}
     }
 }
 % Nota: Se \leftbar non è definito nel tuo preambolo (thmtools/framed), puoi usare questa alternativa semplice per la barra laterale verde:
-% \noindent{\color{green!50!black}\rule{2pt}{1.2em}}\hspace{5pt} Random: we need to check for consistency when we look at our results.
+% \noindent{\color{ForestGreen!50!black}\rule{2pt}{1.2em}}\hspace{5pt} Random: we need to check for consistency when we look at our results.
 
 \end{document}
