@@ -2,7 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[italian]{babel} % Ho cambiato in italian, supponendo che la maggior parte del testo sia in italiano
+\usepackage[english]{babel} % Ho cambiato in italian, supponendo che la maggior parte del testo sia in italiano
 \usepackage{amsmath}
 \usepackage{amssymb}
 % \usepackage{bm} % COMMENTED: incompatible with unicode-math - use \symbf instead
@@ -26,6 +26,10 @@
 \tcbuselibrary{skins, breakable}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning}
 \usetikzlibrary{patterns}
+\usetikzlibrary{shapes,fit,positioning}
+% Define input/output styles for block diagrams
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
 \usepackage{graphicx}
 \usepackage[T1]{fontenc}
 % --- PACCHETTI AGGIUNTI PER LA FORMATTAZIONE ---
@@ -45,7 +49,7 @@
     % Quando usi \textbf{}, userà questa variante (Bold)
     BoldFont = Fira Sans Regular, 
     % Quando usi \textit{}, userà questa variante (Light Italic)
-    %ItalicFont = Fira Sans Light Italic,
+    ItalicFont = Fira Sans Italic,
     % Quando usi \textbf\textit{}, userà questa variante (Bold Italic)
     %BoldItalicFont = Fira Sans Bold Italic,
 ]
