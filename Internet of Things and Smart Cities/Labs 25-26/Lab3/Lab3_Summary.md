@@ -49,6 +49,89 @@ L'obiettivo è simulare l'interazione tra uno smartphone (Client) e uno smartwat
 
 ---
 
+## Come funziona la simulazione
+Questo codice Python è uno script educativo molto ben strutturato che simula l'intera interazione Bluetooth Low Energy (BLE) tra due dispositivi.
+
+Non utilizza l'hardware Bluetooth fisico del tuo computer. Invece, utilizza una libreria chiamata **Bumble** per creare un ambiente virtuale in cui i pacchetti vengono scambiati direttamente in memoria.
+
+Ecco i meccanismi principali con cui avviene la simulazione:
+
+### 1. Il "Cavo Virtuale" (LocalLink)
+
+Il cuore della simulazione si trova nella funzione `step_1_power_on_server`.
+Il codice crea un oggetto `LocalLink()`:
+
+```python
+link = LocalLink()
+```
+
+Questo oggetto agisce come l'etere (l'aria) in cui viaggiano le onde radio. Invece di trasmettere segnali reali, i due dispositivi simulati sono collegati a questo stesso oggetto `link`. Quando un dispositivo "trasmette", passa semplicemente i dati a questo oggetto, che li consegna istantaneamente all'altro dispositivo.
+
+### 2. Creazione dello Stack Virtuale
+
+Il codice costruisce un intero stack Bluetooth software per due dispositivi distinti:
+
+* **Controller:** Simula il chip fisico Bluetooth.
+* `server_controller = Controller("server", link=link)`
+* `client_controller = Controller("client", link=link)`
+* Nota che entrambi sono collegati allo stesso `link`.
+
+
+* **Host:** Simula il driver o il sistema operativo che gestisce il controller.
+* **Device:** L'astrazione di alto livello che rappresenta il dispositivo (es. un fitness tracker o uno smartphone).
+
+### 3. Simulazione dei Ruoli (GAP)
+
+Lo script divide chiaramente i ruoli secondo il profilo **GAP (Generic Access Profile)**:
+
+* **Server (Peripheral):** Viene configurato per fare **Advertising**.
+* Definisce i dati di advertising (nome "Bumble Server", flag).
+* Usa comandi HCI (Host Controller Interface) simulati come `LE Set Advertising Parameters` per iniziare a trasmettere la sua presenza sul `link`.
+
+
+* **Client (Central):** Viene configurato per fare **Scanning**.
+* Si mette in ascolto sul `link`.
+* Quando il `link` trasporta il pacchetto di advertising del server, il client attiva l'evento `on_advertisement`.
+
+
+
+### 4. Simulazione dello Scambio Dati (GATT)
+
+Una volta connessi (fase `step_5_connection`), il codice passa al livello **GATT (Generic Attribute Profile)**. Qui simula la struttura dati interna di un dispositivo BLE:
+
+* **Servizi e Caratteristiche:**
+Il codice definisce manualmente i servizi, come se fosse il firmware di un vero dispositivo:
+```python
+# Esempio dal codice: Creazione del servizio Battito Cardiaco
+heart_rate_measurement = Characteristic(...)
+heart_rate_service = Service(GATT_HEART_RATE_SERVICE, [heart_rate_measurement])
+server_device.add_service(heart_rate_service)
+
+```
+
+
+* **Protocollo ATT:**
+Quando l'utente sceglie di leggere un dato (es. il battito cardiaco), lo script invia un vero pacchetto **ATT Read Request** attraverso il `link`. Il server virtuale riceve la richiesta, cerca il valore nella sua memoria e risponde con un **ATT Read Response**.
+
+### 5. Interfaccia Educativa (HCI e Log)
+
+La parte più interessante per l'apprendimento è come il codice "verbalizza" ciò che accade.
+Usa funzioni come `print_protocol_message` per mostrarti cosa accadrebbe "sotto il cofano":
+
+* **HCI (Host Controller Interface):** Mostra i comandi che la CPU invierebbe al chip Bluetooth (es. "Accenditi", "Scansiona").
+* **ATT (Attribute Protocol):** Mostra i messaggi di richiesta/risposta dati (es. "Dammi il valore dell'handle 0x0012").
+
+### Riassunto del Flusso
+
+1. **Setup:** Crea due dispositivi virtuali in RAM.
+2. **Discovery:** Il Server scrive dati nel `LocalLink`, il Client li legge (simulazione radio).
+3. **Connection:** Si stabilisce un canale diretto logico.
+4. **Interaction:** Il Client invia richieste di lettura byte, il Server risponde con byte predefiniti (es. `bytes([0x00, 75])` per 75 bpm).
+
+È un eccellente esempio di come simulare protocolli di rete complessi in un ambiente controllato senza bisogno di hardware esterno o sniffer di pacchetti.
+
+---
+
 ## Parte 2: MQTT (Message Queuing Telemetry Transport)
 
 ### Cos'è MQTT?
@@ -96,3 +179,4 @@ Si sperimentano diversi livelli di QoS e l'uso di caratteri jolly (wildcard) nei
 **Osservazioni:**
 *   I messaggi con QoS più alto hanno priorità.
 *   I subscriber con wildcard `#` ricevono tutto il traffico che corrisponde al pattern, utile per il debugging o il logging globale.
+![[Pasted image 20251218152336.png]]
