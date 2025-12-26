@@ -1,5 +1,10 @@
 {
   "baseFontSizeAction": true,
   "baseFontSize": 22,
-  "cssTheme": "Velocity"
+  "cssTheme": "Blue Topaz",
+  "textFontFamily": "Fira Sans",
+  "monospaceFontFamily": "Source Code Pro",
+  "enabledCssSnippets": [
+    "custom-width"
+  ]
 }

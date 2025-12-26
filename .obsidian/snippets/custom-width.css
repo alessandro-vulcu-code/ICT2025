@@ -1,0 +1,6 @@
+/* Regola la larghezza massima del testo */
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
+.markdown-rendered.is-readable-line-width .markdown-preview-sizer {
+    max-width: 85%; /* Puoi cambiare 85% con 1000px o il valore che preferisci */
+    margin: auto;
+}
