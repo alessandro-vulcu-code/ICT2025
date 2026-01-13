@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Modern CPP for Internet and Multimedia/Modern CPP/05. Functions.md",
-                "mode": "preview",
+                "file": "Cryptography/Lectures/Lecture 24.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "05. Functions"
+              "title": "Lecture 24"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "978958ee6b3e5956",
@@ -174,23 +173,34 @@
   },
   "active": "118c3729db172975",
   "lastOpenFiles": [
+    "Cryptography/Lectures/Lecture 23.md",
+    "Cryptography/Lectures/Lecture 22.md",
+    "Cryptography/Lectures/Lecture 21.md",
+    "Cryptography/Lectures/Lecture 20.md",
+    "Cryptography/Lectures/Lecture 19.md",
+    "Cryptography/Lectures/Lecture 18.md",
+    "Cryptography/Lectures/Lecture 17.md",
+    "Cryptography/Lectures/Lecture 16.md",
+    "Cryptography/Lectures/Lecture 15.md",
+    "Cryptography/Lectures/Lecture 14.md",
+    "Cryptography/Lectures/Lecture 24.md",
+    "Cryptography/Lectures/Lecture 22 part 2.md",
+    "Cryptography/Lectures/Lecture 20 part 2.md",
+    "Cryptography/Lectures/Lecture 20 part 3.md",
+    "Fiber Optics/Lab/Lab3 FO.md",
+    "Cryptography/Lectures",
+    "Fiber Optics/Lab/Lab4 FO.md",
+    "Fiber Optics/Lab/Lab2 FO.md",
+    "Fiber Optics/Lab/How to do the report.md",
+    "Fiber Optics/Lab/Lab1 FO.md",
+    "Fiber Optics/FiberOptics.pdf",
+    "Modern CPP for Internet and Multimedia/Modern CPP/05. Functions.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/03. Struct.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/04. Statements.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/02. Pointers, Reference, Arrays.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/07. Classes.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/12. Derived classes and class hierarchies.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/10. Compiler.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/09. Memory management.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/08. Construction, destrucion.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/21. Inter-thread communication.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/20. Threads.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/15. Class hierarchies and run-time polymorphism.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/18. Bitwise operation, POD, in-out streaming.md",
-    "Cryptography/Quizzes/Quiz 4.md",
-    "Internet of Things and Smart Cities/03. Radio Frequency IDentification (RFID).md",
-    "Internet of Things and Smart Cities/02. IoT Architecture.md",
-    "Internet of Things and Smart Cities/01. Introduction.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/13. Operators overloading.md",
     "Internet of Things and Smart Cities/Images/Pasted image 20251029090949.png",
     "Internet of Things and Smart Cities/Images/Pasted image 20251028095854.png",
     "Internet of Things and Smart Cities/Images/Pasted image 20251022095130.png",
@@ -200,15 +210,6 @@
     "Internet of Things and Smart Cities/Images/Pasted image 20251022084949.png",
     "Internet of Things and Smart Cities/Images/Pasted image 20251022084615.png",
     "Internet of Things and Smart Cities/Images/Pasted image 20251022084550.png",
-    "Internet of Things and Smart Cities/08.  LoRa (important for lab).md",
-    "Internet of Things and Smart Cities/07. Sigfox.md",
-    "Internet of Things and Smart Cities/04. Radio Frequency IDentification (RFID).md",
-    "Internet of Things and Smart Cities/03. IoT Architecture.md",
-    "Internet of Things and Smart Cities/02. Introduction.md",
-    "Cryptography/Untitled.md",
-    "CPS and IoT Security/Summaries/04. Drones security - Summary.md",
-    "CPS and IoT Security/Summaries/03. Autonomous Vehicles - Summary.md",
-    "CPS and IoT Security/Summaries/01. Can Bus - Summary.md",
     "CPS and IoT Security/Summaries",
     "CPS and IoT Security/Pictures/Pasted image 20251029145206.png",
     "Cryptography/Quizzes",
@@ -217,8 +218,6 @@
     "Modern CPP for Internet and Multimedia/Modern CPP/09. Memory management.rst",
     "Fiber Optics/Chapters/Chapter1.tex",
     "Fiber Optics/Pictures",
-    "Fiber Optics/FiberOptics.toc",
-    "Fiber Optics/FiberOptics.synctex.gz",
-    "Fiber Optics/FiberOptics.tex"
+    "Fiber Optics/FiberOptics.toc"
   ]
 }

@@ -1,0 +1,9 @@
+# Escludi il plugin che ha causato il blocco
+.obsidian/plugins/remotely-save/
+
+# Escludi file di layout temporanei che cambiano continuamente
+.obsidian/workspace.json
+.obsidian/last-update.json
+
+# Se vuoi essere ancora più sicuro, ignora tutti i file JS dei plugin
+.obsidian/plugins/**/*.js
