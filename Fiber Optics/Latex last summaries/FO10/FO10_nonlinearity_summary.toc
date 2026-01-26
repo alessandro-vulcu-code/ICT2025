@@ -1,0 +1,50 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduction to Nonlinearity}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}The Linear Regime and Its Limitations}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Why Nonlinearity Matters}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}From Linear to Nonlinear: The Mechanical Oscillator Model}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The Classical Harmonic Oscillator}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Introducing Nonlinearity: Anharmonic Terms}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}From Displacement to Polarization}{6}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Susceptibility Tensors and Their Physical Meaning}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The Tensor Nature of Susceptibility}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Frequency Dependence and Resonances}{7}{subsection.3.2}%
+\contentsline {section}{\numberline {4}The Kerr Effect and Intensity-Dependent Refractive Index}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Derivation of the Kerr Effect}{8}{subsection.4.1}%
+\contentsline {section}{\numberline {5}Derivation of the Nonlinear Schrödinger Equation}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Starting Point: The Helmholtz Equation}{9}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}The Slowly Varying Envelope Approximation (SVEA)}{9}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Including Dispersion and Nonlinearity}{10}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}The Nonlinear Schrödinger Equation (NLSE)}{10}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Moving to the Retarded Time Frame}{11}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Effective Mode Area and Nonlinear Coefficient}{12}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Definition of Effective Area}{12}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The Nonlinear Coefficient $\gamma $}{12}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Self-Phase Modulation (SPM)}{13}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Physical Origin of SPM}{13}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}SPM in the Absence of Dispersion and Loss}{13}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Frequency Chirp and Spectral Broadening}{14}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}SPM with Dispersion: Pulse Compression and Broadening}{15}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Cross-Phase Modulation (XPM)}{15}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Physical Origin of XPM}{15}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Two-Wave Interaction}{16}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Coupled NLSE for XPM}{16}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}XPM in WDM Systems}{16}{subsection.8.4}%
+\contentsline {section}{\numberline {9}Four-Wave Mixing (FWM)}{17}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Phase-Matched Nonlinear Interactions}{17}{subsection.9.1}%
+\contentsline {section}{\numberline {10}Optical Solitons}{18}{section.10}%
+\contentsline {subsection}{\numberline {10.1}The Concept of Solitons}{18}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}The Fundamental Soliton}{18}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Higher-Order Solitons}{20}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Soliton Perturbations and Stability}{20}{subsection.10.4}%
+\contentsline {section}{\numberline {11}Modulation Instability (MI)}{20}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Physical Origin of MI}{20}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Linear Stability Analysis}{21}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Dispersion Relation and Gain Spectrum}{21}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}MI Sidebands and Pulse Formation}{23}{subsection.11.4}%
+\contentsline {section}{\numberline {12}Polarization Effects in Nonlinear Propagation}{24}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Polarization-Dependent Nonlinearity}{24}{subsection.12.1}%
+\contentsline {section}{\numberline {13}Summary and Conclusions}{25}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Key Concepts}{25}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Practical Design Considerations}{26}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Future Directions}{26}{subsection.13.3}%
