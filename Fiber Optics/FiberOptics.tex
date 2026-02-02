@@ -73,7 +73,18 @@
   \hrule             % Linea orizzontale di separazione
   \vspace{0.5em}     % Spazio dopo la linea
 }
-
+\newcommand{\subjname}{Fiber Optics}
+\newcommand{\sr}[2]{\overset{#1}{\underset{#2}{\sum}}}
+\newcommand{\pr}[2]{\overset{#1}{\underset{#2}{\prod}}}
+\newcommand{\vrs}{\vec{\mathcal{U}}}
+\newcommand{\w}{\omega}
+\newcommand{\rot}[1]{\vec{\nabla} \times {#1}}
+\newcommand{\divg}[1]{\vec{\nabla} \cdot {#1}}
+\newcommand{\lapl}{\nabla^2}
+\newcommand{\conj}[1]{{#1}^\star}
+\newcommand{\stokes}{\vrs_{s}}
+\newcommand{\derp}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\mat}[1]{\underline{\mathbf{#1}}}
 \begin{document}
 \chapter*{Basic of EM waves}
 \begin{question}
@@ -448,10 +459,553 @@
 \end{answer}
 
 \begin{question}
-    From S
+    Estimate modal dispersion in a step-index fiber.
 \end{question}
 
 \begin{answer}
+    \begin{align}
+        % 1. Definizione delle lunghezze dei percorsi
+        T_1               & = L \quad (\text{fiber length})                                                                                                                              \\
+        T_2               & = \frac{L}{\cos \beta_l}                                                                                                                                     \\
+        % 2. Velocità di propagazione nel core
+        v                 & = \frac{c}{n_1} \quad (\text{speed of propagation})                                                                                                          \\
+        % 3. Differenza di ritardo temporale (Delay spread)
+        \Delta \tau       & = \frac{\Delta L}{v} = L \left( \frac{1}{\cos \beta_l} - 1 \right) \frac{n_1}{c}                                                                             \\
+        % 4. Vincolo per la riflessione totale interna
+                          & \text{Nonetheless, it must be: } \cos \beta_l \geq \frac{n_2}{n_1}                                                                                           \\
+        % 5. Ritardo massimo (Worst-case scenario)
+        \Delta \tau       & = \frac{\Delta L}{v} = L \left( \frac{1}{\cos \beta_l} - 1 \right) \frac{n_1}{c} \leq L \left( \frac{n_1}{n_2} - 1 \right) \frac{n_1}{c} = \Delta \tau_{max} \\
+        % 6. Approssimazione per fibre a debole guida (n1 \approx n2)
+                          & \text{If we assume that } n_1 \approx n_2 \implies NA^2 \approx 2n_1(n_1 - n_2)                                                                              \\
+        % 7. Formula finale per il ritardo massimo
+        \Delta \tau_{max} & \approx L \frac{NA^2}{2 n_2 c} \quad \text{(max delay the signal can experience)}
+    \end{align}
+\end{answer}
+
+\begin{question}
+    What is Graded-Index Fiber?
+\end{question}
+
+\begin{answer}
+    A graded-index (GRIN) fiber is a type of optical fiber, typically multimode, designed specifically to reduce intermodal dispersion by managing how light rays travel through the core.\\
+    The refractive index $n(r)$ varies radially. It is highest at the fiber axis ($n_1$) and lowest at the core-cladding interface ($n_2$). This variation is often modeled by a power law (the $\alpha$-profile), which is typically parabolic ($\alpha \approx 2$):
+    $$
+        n^{2}(r)=n_{1}^{2}\left[1-2 \Delta\left(\frac{r}{a}\right)^{g}\right]
+    $$
+    where:
+    \begin{itemize}
+        \item $n_1$ is the refractive index at the fiber axis;
+        \item $n_2$ is the refractive index of the cladding;
+        \item $\Delta = \frac{n_1 - n_2}{n_1}$ is the relative refractive index difference;
+        \item $a$ is the radius of the core;
+        \item $g$ is the profile parameter (typically $g \approx 2$ for parabolic profile).
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    What are the rays type?
+\end{question}
+
+\begin{answer}
+    \begin{itemize}
+        \item Ray Type 1: shortest path, highest refractive index, lowest propagation speed
+        \item Ray Type 2: longest path, lowest refractive index, average propagation speed
+        \item Ray Type 3: helical path, lowest refractive index, highest propagation speed
+    \end{itemize}
+\end{answer}
+
+Also, when $g=2$ we can calculate the maximum intermodal dispersion, that is:
+\begin{equation}
+    \Delta \tau_{max} \approx \frac{L}{32 c n_2} \dot {NA}^4
+\end{equation}
+which for a small NA (less than 1), we have a smaller intermodal dispersion.
+
+\begin{question}
+    Describe Guided modes and radiation modes.
+\end{question}
+
+\begin{answer}
+    \begin{itemize}
+        \item \textbf{Guided Modes}: These are field structures that are confined within the fiber's core and guided by it. They are the desired modes for transmitting power.
+        \item \textbf{Radiation Modes}: These are field structures that are not confined by the guiding structure of the fiber. Their excitation represents a loss of power and should be avoided.
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    Step index fiber propagation modes.
+\end{question}
+
+\begin{answer}
+    General modes:
+    \begin{itemize}
+        \item Transverse electric ($TE_{0,p}$)
+        \item Transverse magnetic ($TM_{0,p}$)
+        \item Hybrid electric ($HE_{m,p}$)
+        \item Hybrid magnetic ($HM_{m,p}$)
+    \end{itemize}
+    Fundamental mode: $HE_{1,1}$ which cut-off freq is zero.\\
+    First higher order mode: $TE_{0,1}$ and $TM_{0,1}$\\
+    Weak guide approximation: $n_{core} \approx n_{cladding}$ \\
+    LP modes: Linearly polarized modes
+\end{answer}
+
+\begin{question}
+    Modal theory
+\end{question}
+
+\begin{answer}
+    EM field decomposed into \textbf{transverse and longitudinal components}
+    \begin{equation*}
+        \boxed{
+            \begin{cases}
+                \bar{E}(x,y,z) = \left\{ \bar{E}_t(x,y) + E_z(x,y)\hat{z} \right\} e^{-j\beta z} \\
+                \bar{H}(x,y,z) = \left\{ \bar{H}_t(x,y) + H_z(x,y)\hat{z} \right\} e^{-j\beta z}
+            \end{cases}
+        }
+    \end{equation*}
+    \begin{itemize}
+        \item Propagation constant $\Rightarrow \beta$ unknown
+    \end{itemize}
+
+    \vspace{1em}
+    \noindent If we insert the previous expressions in Maxwell's eq. we have:
+
+    \begin{itemize}
+        \item[\textbf{[1]}] $\nabla_t^2 \bar{E}_t - (\beta^2 - k^2) \bar{E}_t = 0 \Rightarrow$ Helmholtz eq. for transverse component of $E_t$
+
+        \item[\textbf{[2]}] $j \beta E_z = \nabla \cdot \bar{E}_t \Rightarrow$ This connects the longitudinal component of the electric field ($E_z$) to the divergence of transversal component of e.f. ($\nabla \cdot \bar{E}_t$)
+
+        \item[\textbf{[3a]}] $j \omega \mu_o \bar{H}_t = \hat{z} \times (\nabla E_z + j \beta \bar{E}_t) \Rightarrow$ relation between transverse comp. of $H_t$ with electric field components and their derivatives
+
+        \item[\textbf{[3b]}] $j \beta H_z = \nabla \cdot \bar{H}_t \Rightarrow$ relation between long. component of $H_z$ and the divergence of transv. component of magnetic field ($\nabla \cdot \bar{H}_t$)
+    \end{itemize}
+    where:
+    \begin{equation*}
+        k^2 =
+        \begin{cases}
+            \omega^2 \mu_0 \varepsilon_{co} = k_{co}^2 & \text{in the core}     \\
+            \omega^2 \mu_0 \varepsilon_{cl} = k_{cl}^2 & \text{in the cladding}
+        \end{cases}
+    \end{equation*}
+    Also, the eigenvalue are defined as:
+    \begin{align*}
+        \chi_{co}^2 & = k_{co}^2 - \beta^2 = \omega^2 \mu_0 \epsilon_{co} - \beta^2 \\
+        \chi_{cl}^2 & = k_{cl}^2 - \beta^2 = \omega^2 \mu_0 \epsilon_{cl} - \beta^2
+    \end{align*}
+    \noindent It can be shown that the propagation constant must fulfill the following important constraint:
+    \begin{equation*}
+        k_{cl} = \omega \sqrt{\mu_0 \epsilon_{cl}} < \beta < \omega \sqrt{\mu_0 \epsilon_{co}} = k_{co}
+    \end{equation*}
+
+    \noindent therefore $\chi_{co}^2 \geq 0$ and $\chi_{cl}^2 \leq 0$.
+
+    \vspace{1em}
+    \noindent It is convenient to define the following real quantities:
+    \begin{equation*}
+        \chi_{co} = \sqrt{k_{co}^2 - \beta^2}, \quad \quad \tilde{\chi}_{cl} = \sqrt{\beta^2 - k_{cl}^2}
+    \end{equation*}
+
+    \noindent Notice that:
+    \begin{equation*}
+        \chi_{co}^2 - \chi_{cl}^2 = \chi_{co}^2 + \tilde{\chi}_{cl}^2 = \left( \frac{2\pi}{\lambda} \right)^2 \text{NA}^2
+    \end{equation*}
+
+    we can also say that $\chi_\text{core}^2 \geq 0, \chi_\text{cladding}^2 \leq 0 \Rightarrow \chi_\text{cladding} \in \mathbb{C}$\\
+    Now we have to solve the Helmholtz equation:
+    $$\nabla^2\vec{E_t} + \chi^2\vec{E_t} = 0 \qquad \vec{E_t} = \left[\begin{matrix}
+                E_x \\
+                E_y \\
+                0
+            \end{matrix}\right]$$
+    Here comes the LP assumption $\Rightarrow$ polarization stays the same everywhere on the cross section, hence:
+    $$\text{Y-polarization} \qquad \Rightarrow \qquad E_x = 0 \qquad \Rightarrow \qquad \vec{E_t} = \left[\begin{matrix}
+                0   \\
+                E_y \\
+                0
+            \end{matrix}\right]$$
+\end{answer}
+
+\begin{question}
+    Explain briefly effective refractive index
+\end{question}
+
+\begin{answer}
+    The effective refractive index ($n_{\text{eff}}$ or $\bar{n}$) is a parameter that quantifies the phase velocity of a specific mode propagating within an optical fiber. It connects the propagation constant $\beta$ of the mode to the frequency of light $\omega$ and the speed of light $c$.
+
+    \begin{itemize}
+        \item \textbf{Definition:} It is defined by the relationship:
+              \begin{equation*}
+                  \beta = \frac{\omega}{c} n_{\text{eff}} \quad \left( \text{or equivalently } n_{\text{eff}} = \frac{\beta}{k_0} \right)
+              \end{equation*}
+
+        \item \textbf{Physical Interpretation:} It can be interpreted as the average refractive index ``seen'' by the optical field of a guided mode as it propagates. Since the optical field extends across both the core and the cladding, $n_{\text{eff}}$ represents a weighted average of the refractive indices of these two regions.
+
+        \item \textbf{Range:} For a guided mode, the effective refractive index is always bounded between the refractive index of the cladding ($n_{\text{cl}}$ or $n_2$) and the core ($n_{\text{co}}$ or $n_1$):
+              \begin{equation*}
+                  n_{\text{cl}} < n_{\text{eff}} < n_{\text{co}}
+              \end{equation*}
+
+        \item \textbf{Cut-off Condition:} $n_{\text{eff}}$ depends on the frequency (wavelength); if $n_{\text{eff}}$ decreases until it equals $n_{\text{cl}}$, the mode ceases to be guided and is radiated into the cladding (cut-off condition).
+
+        \item \textbf{Normalization:} It is often expressed via the normalized propagation constant $b$, where:
+              \begin{equation*}
+                  b \approx \frac{n_{\text{eff}} - n_{\text{cl}}}{n_{\text{co}} - n_{\text{cl}}}
+              \end{equation*}
+              which ranges from 0 to 1.
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    Explain LP approximation
+\end{question}
+
+\begin{answer}
+
+    The \textbf{Weakly Guiding Approximation} assumes the refractive index difference between core and cladding is very small:
+    \begin{equation}
+        \Delta \approx \frac{(NA)^2}{2n_{cl}^2} \ll 1 \implies n_{co} \approx n_{cl}
+    \end{equation}
+
+    Under these conditions, the transverse components of the electric field ($E_x, E_y$) satisfy the scalar Helmholtz equation in cylindrical coordinates $\{r, \phi, z\}$:
+    \begin{equation}
+        \left[ \frac{\partial^2}{\partial r^2} + \frac{1}{r}\frac{\partial}{\partial r} + \frac{1}{r^2}\frac{\partial^2}{\partial \phi^2} + (\omega^2\mu\epsilon - \beta^2) \right] \vec{E}_t = 0
+    \end{equation}
+
+    \noindent Using separation of variables ($E_t = f(r)g(\phi)$), the solutions are expressed via Bessel functions of order $n$:
+    \begin{itemize}
+        \item \textbf{Core ($r < a$):} $E_{y,co} = q \frac{J_n(\chi_{co}r)}{J_n(\chi_{co}a)} \cos(n\phi + \phi_0)$ (Oscillatory)
+        \item \textbf{Cladding ($r \geq a$):} $E_{y,cl} = q \frac{K_n(\tilde{\chi}_{cl}r)}{K_n(\tilde{\chi}_{cl}a)} \cos(n\phi + \phi_0)$ (Evanescent)
+    \end{itemize}
+    where $\chi_{co} = \sqrt{k_0^2 n_{co}^2 - \beta^2}$ and $\tilde{\chi}_{cl} = \sqrt{\beta^2 - k_0^2 n_{cl}^2}$.
+
+    \noindent Applying boundary conditions at $r=a$ yields the eigenvalue equation for $LP_{n,p}$ modes:
+    \begin{equation}
+        (\chi_{co} a) \frac{J_{n+1}(\chi_{co}a)}{J_{n}(\chi_{co}a)} = (\tilde{\chi}_{cl} a) \frac{K_{n+1}(\tilde{\chi}_{cl}a)}{K_{n}(\tilde{\chi}_{cl}a)}
+    \end{equation}
+
+    \textbf{Physical Constraints:}
+    \begin{itemize}
+        \item \textbf{Guidance Condition:} $n_{cl} < n_{eff} < n_{co}$ (where $n_{eff} = \beta/k_0$).
+        \item \textbf{Cut-off:} Occurs when $\beta \to k_0 n_{cl}$ ($\tilde{\chi}_{cl} \to 0$). At this point, the mode is no longer confined to the core and leaks into the cladding.
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    What is the cut-off frequency?
+\end{question}
+
+\begin{answer}
+    The cut-off frequency is the lowest frequency at which a mode can propagate in a fiber.
+    The condition is:
+    $$\beta = k_{cl} \qquad \Rightarrow \qquad \begin{cases}
+            \chi_{co} = \sqrt{k^2_{co} -\beta^2} = \dots = \frac{2\pi}{\lambda_0}NA \\
+            \tilde{\chi}_{cl} \to 0
+        \end{cases}$$
+
+    Knowing the limit $\lim\limits_{u \to 0}\frac{uk_{n+1}(u)}{k_{n}(u)} = 2n$:
+    $$\omega \text{ cut-off frequency } \qquad :\qquad \frac{\omega a}{c_0}(NA)\frac{J_{n+1}\left(\frac{\omega a}{c_0}(NA)\right)}{J_{n}\left(\frac{\omega a}{c_0}(NA)\right)} = 2n$$
+    Which are the first solutions?
+    $$LP_{0,1} =\begin{cases}
+            n=0 \\
+            \omega_c = 0
+        \end{cases}\qquad \qquad LP_{1,1} = \begin{cases}
+            n=1 \\
+            \omega_{1,1}\approxeq\frac{2.405 c_0}{a(NA)}
+        \end{cases}$$
+    With Cut-off frequency we block propagation of other modes except $LP_{0,1}$.
+\end{answer}
+
+\begin{question}
+    How can you verify the cutoff experimentally?
+\end{question}
+
+\begin{answer}
+    The cutoff wavelength is experimentally verified using the **bend-loss method**.
+
+    The principle of this method is that the modes closer to the cut-off are more sensitive to bend losses.
+
+    By measuring the spectrum difference between a straight and a bent fiber, one can observe loss peaks. These peaks correspond to the wavelengths at which specific mode groups (like LP$_{11}$, LP$_{02}$, LP$_{21}$, etc.) are "stripped away" by the bend.
+
+\end{answer}
+
+\begin{question}
+    Describe the properties and degeneracy of LP modes.
+\end{question}
+
+\begin{answer}
+    Mode degeneracy occurs when multiple modes share the same propagation constant ($\beta$), which results from the fiber's cylindrical symmetry. The LP modes exhibit two types of degeneracy:
+
+    \begin{enumerate}
+        \item Polarization Degeneracy: Every $\text{LP}_{n,p}$ mode has two orthogonal polarization states that share the same $\beta$, resulting in a two-fold degeneracy.
+        \item Polarization Degeneracy: Every $\text{LP}_{n,p}$ mode has two orthogonal polarization states that share the same $\beta$, resulting in a two-fold degeneracy.
+    \end{enumerate}
+
+    So at the end:
+    \begin{itemize}
+        \item $\text{LP}_{0,p}$ modes (where $n=0$) are two-fold degenerate (polarization only).
+        \item $\text{LP}_{n,p}$ modes (where $n \geq 1$) are four-fold degenerate (polarization and azimuthal).
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    What is attenuation?
+\end{question}
+
+\begin{answer}
+    Attenuation, or gradual loss of signal strenght,stands as a critical limiting factor for fiber optic communication systems. In linear regime, losses can be described by a \textit{coefficient of attenuation}. Let $P(z)$ be the power flowing along the fiber. After an infinitersimally long section the power would be reduced by any amount proportional to it, according to:
+    $$P(z+\Delta z) = P(z) - \alpha(z)\Delta zP(z)$$
+    This leads to the fundamental relationship describing power loss:
+
+    $$\frac{dP}{dz}=-\alpha(z)P(z)$$
+    Solving this equation yields the general form of the Beer-Lambert Law:
+
+    $$P(z)=P(0) e^{-\int_{0}^{z}\alpha(z')dz'}$$
+
+    In the common case where the attenuation coefficient ($\alpha$) is constant (linear attenuation), the equation simplifies to its familiar exponential decay form:
+
+    $$P(z)=P(0) e^{-\alpha z}$$
+
+    Where:
+    \begin{itemize}
+        \item $P(z)$: Power at distance $z$ along the fiber.
+        \item $P(0)$: Initial power at the fiber's start ($z=0$).
+        \item $\alpha$: Attenuation coefficient (constant).
+        \item $z$: Distance along the fiber.
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    What are the two types of attenuation?
+\end{question}
+
+\begin{answer}
+    Intrinsic Attenuation and Extrinsic Attenuation.
+    Intrinsic Attenuation originates from the fundamental properties of pure silica glass and represents the theoretical minimum loss achievable. It includes:
+    \begin{itemize}
+        \item \textbf{Electronic Transitions (UV Absorption)}: High-energy photons excite electronic transitions within silica molecules, causing strong absorption in the UV region.
+        \item \textbf{Molecular Vibrations (IR Absorption)}: In the infrared region (around 1650 nm), light resonates with the natural vibrational states of silica molecules, leading to strong absorption.
+        \item \textbf{Rayleigh Scattering}: The most important contribution to loss in the primary transmission windows, caused by microscopic, random fluctuations in the refractive index. Its magnitude has an inverse dependence on the fourth power of the wavelength ($\alpha_{\text{Rayleigh}} \propto 1/\lambda^4$).
+    \end{itemize}
+
+    Extrinsic Attenuation arises from impurities introduced during the manufacturing process and can be minimized through purification. It includes:
+    \begin{itemize}
+        \item \textbf{Hydroxide Ion ($\text{OH}^-$)}: The most significant contaminant, causing strong absorption peaks due to molecular vibrations. Key absorption peaks are around $1.24\ \mu\text{m}$ and $1.38\ \mu\text{m}$.
+        \item \textbf{Molecular Hydrogen ($\text{H}_2$)}: Diffuses into the silica matrix, causing broad attenuation across all transmission, although this process is reversible.
+        \item \textbf{Bending Losses}: Caused by physical curvature of the fiber, leading to the leak of light into the cladding. This is categorized into:
+
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    Discuss about bending losses.
+\end{question}
+
+\begin{answer}
+    Bending losses are caused by physical curvature of the fiber, leading to the leak of light into the cladding. This is categorized into:
+    \begin{itemize}
+        \item \textbf{Macro-bending losses}: These occur when there is a discernible radius of curvature ($R$). A mode-based model identifies a critical distance ($X_c$) from the fiber's axis where the mode is "locally" at cut-off, causing the light to be radiated. The attenuation coefficient ($\alpha_{\text{bending}}$) has a severe exponential dependence on the bending radius ($R$).
+        \item \textbf{Micro-bending losses}: This attenuation is caused by a continuous series of small, random bends. The physical mechanism involves the coupling of power from guided modes into random modes.
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    How we describe the trasmission of a signal through a fiber? Frequency and Time domain.
+\end{question}
+
+\begin{answer}
+    In frequency domain, we have a signal:
+    $$\vec{E}(x,y,z,\omega) = A(\omega)\sum_{n=1}^{M}c_n \vec{E}_n(x,y)\exp\left\{-jz\beta_n(\omega)\right\}$$
+    Since we want to work with the baseband signal, we have to work in $\omega + \omega_0$:
+    $$\vec{E}(x,y,z,\omega) = A(\omega)\sum_{n=1}^{M}c_n \vec{E}_n(x,y)\exp\left\{-jz\beta_n(\omega + \omega_0)\right\}$$
+
+    How do we get back to time domain? We have to Taylor-expand $\beta$ around $\omega_0$:
+    $$\beta_n(\omega+\omega_0) \approx \beta_n(\omega_0) + \frac{dB_n}{d\omega}\big|_{\omega_0}\omega = \beta_{n,0} + \beta_{0,1}\omega$$
+\end{answer}
+
+\begin{question}
+    What is group velocity?
+\end{question}
+
+\begin{answer}
+    Defining \textbf{Group Velocity} as speed at which information is transmitted: $v_f = 1/\frac{dB}{d\w}$,\\ and \textbf{Group Delay} $\tau_g = z\beta_{n,1}$ as delay signal accumulates during propagation, we can state:
+    $$e(t) = \sr{}{n}c_n E_n(x,y)a(t - \tau_g)e^{-j\beta_{n,0}z} \qquad \qquad \text{no more } \omega \text{ dependency}$$
+\end{answer}
+
+\begin{question}
+    Describe chromatic dispersion and a method to measure it
+\end{question}
+
+\begin{answer}
+    Chromatic dispersion (CD) is a phenomenon that causes signal distortion in optical fibers. It arises because the propagation constant ($\beta$) is a function of the signal's angular frequency ($\omega$).
+
+    For signals with a non-negligible bandwidth, $\beta(\omega)$ can be approximated using a Taylor series around the carrier frequency ($\omega_0$):
+
+    $$\beta(\omega) \approx \beta_0 + \omega\beta_1 + \frac{1}{2}\omega^2\beta_2$$
+    Where:
+    \begin{itemize}
+        \item $\beta_0$: phase constant at the carrier frequency.
+        \item $\beta_1$: The inverse Group velocity dispersion parameter.
+        \item $\beta_2$: The chromatic dispersion coefficient.
+    \end{itemize}
+
+    The physical origin of chromatic dispersion is the frequency-dependent group velocity ($V_g$), meaning $V_g$ changes with frequency if $\beta_2 \neq 0$.
+
+    CD is categorized into two regimes:
+    \begin{itemize}
+        \item Normal dispersion: $\beta_2 \geq 0$; group velocity decreases as frequency increases.
+        \item Anomalous dispersion: $\beta_2 < 0$; group velocity increases as frequency increases.
+    \end{itemize}
+    CD is alternatively described by the D parameter (Dispersion):
+
+    $$D = \frac{d}{d\lambda}\left(\frac{d\beta}{d\omega}\right) = \frac{d}{d\lambda}\left(\frac{1}{V_g}\right)$$
+
+    The D parameter and $\beta_2$ are related by the equation: $D = -\frac{2\pi c_0}{\lambda^2}\beta_2$.\\
+    Chromatic Dispersion (CD) can be measured by measuring the propagation time for different optical wavelengths. This is based on the relationship $D L = \frac{d\tau_g}{d\lambda}$, where $D$ is the dispersion, $L$ is the fiber length, and $\tau_g$ is the group delay.
+\end{answer}
+
+\begin{question}
+    What is a method to compensate chromatic dispersion?
+\end{question}
+
+\begin{answer}
+    A method to compensate chromatic dispersion (CD) involves connecting fibers with opposite chromatic dispersion coefficients ($\beta_2$ or D parameter).
+
+    This technique is called fibers concatenation.
+    The process is:
+    \begin{itemize}
+        \item If the first fiber (A) has normal dispersion ($\beta_{A,2} > 0$), the spectral components that travel faster in fiber A are slowed down in the second fiber (B), which must have anomalous dispersion ($\beta_{B,2} < 0$).
+        \item Conversely, the components that were slowed down in the first fiber are accelerated in the second fiber, equalizing the different frequency travel times.
+        \item The overall chromatic dispersion of the concatenated link is determined by the sum of the $\beta_2 L$ products of each fiber. Complete compensation occurs when the condition $\beta_{A,2} L_A + \beta_{B,2} L_B \approx 0$ is met.
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    What are chirps and CPA?
+\end{question}
+
+\begin{answer}
+    A pulse is said to be chirped if its carrier frequency changes with time.
+    Chirped Pulse Amplification (CPA) is a technique that manages high-energy pulses by using chirping to lower the peak power before amplification.\\
+    Four steps:
+    \begin{itemize}
+        \item Oscillator: Generates a short pulse with low energy.
+        \item Stretcher: Takes the short, low-energy pulse and turns it into a long pulse with low energy, creating a strong chirp.
+        \item Amplifier: Amplifies the long, low-energy pulse to a long pulse with high energy. The strong chirp lowers the pulse peak power, which prevents damage to the optical amplifier when amplifying to very high energy levels.
+        \item Compressor: Takes the long, high-energy pulse and uses the reverse chirp to compress the pulse back to an ultra-short duration with high peak power.
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    Describe origins, effects and main parameters of PMD.
+\end{question}
+
+\begin{answer}
+    Polarization Mode Dispersion (PMD) is a signal distortion phenomenon caused by the fact that standard optical fibers are not perfectly cylindrically symmetric. In perfectly symmetric fibers, the two orthogonal polarization states of the fundamental mode would have equal propagation constants.
+    PMD is caused by factors that introduce asymmetries or stresses into the fiber, breaking the cylindrical symmetry.
+    The main effect of PMD is Differential Group Delay (DGD).
+    \begin{itemize}
+        \item The fiber supports two orthogonal polarization states, called the Principal States of Polarization (PSP), which propagate without distortion.
+        \item These two states travel at different group velocities, resulting in two replicas of the input signal arriving at different times.
+        \item These two states travel at different group velocities, resulting in two replicas of the input signal arriving at different times.
+        \item DGD is a random variable and is proportional to the square root of the fiber length (DGD $\propto \sqrt{L}$).
+    \end{itemize}
+    PMD is also characterized by the PMD matrix (Q), which summarizes the effect of polarization on propagation.
+
+    \begin{itemize}
+        \item The eigenvalues ($\tau_k$) of the PMD matrix correspond to the differential group delays.
+        \item The eigenvectors ($\hat{v}_k$) of the PMD matrix correspond to the PSPs.
+    \end{itemize}
+    PMD is also represented by the PMD vector ($\overline{\Omega}$) on the Poincaré sphere.
+\end{answer}
+
+\begin{question}
+    What is Polarization Mantaining Fiber (PMF)?
+\end{question}
+
+\begin{answer}
+    A Polarization Maintaining Fiber (PMF) is a special type of optical fiber where the cylindrical symmetry is deliberately and uniformly broken along the fiber's length.
+
+    This deliberate asymmetry allows for the definition of two distinct eigenstates, or principal states of polarization (PSP), which can propagate through the fiber unchanged.
+
+    In this type of fiber, the magnitude of the PMD vector ($\overline{\Omega}$) is proportional to the fiber length ($L$) ($\overline{\Omega} \propto L$), unlike standard fibers where DGD is proportional to $\sqrt{L}$.
+\end{answer}
+
+\begin{question}
+    What are some types of optical amplifiers?
+\end{question}
+
+\begin{answer}
+    \begin{itemize}
+        \item Erbium Doped Fiber Amplifiers (EDFA): These use fiber doped with Erbium (Er), which is a rare earth material;
+        \item Parametric amplifiers: These are noted as being "not mature" but yield the least noise products.
+        \item Stimulated scattering amplifiers: These exploit scattering phenomena that are intrinsic to the silica material.
+        \item Semiconductors amplifiers: These use light from some of the III-IV semiconductors, such as gallium arsenide.
+        \item Invasion population amplifier: This is a type of amplifier that uses fiber doped with Erbium (Er).
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    Describe the light-matter interactions in an EDFA.
+\end{question}
+
+\begin{answer}
+    Light is made of photons, which carries energy $E = h\nu$. Atoms can have some levels of energy so electrons can jump from one layer to another.
+    We can analyze three types of interactions:
+    \begin{itemize}
+        \item Stimulated absorption: atom may absorb a photon and jumps to a higher energy state. The population changes according to:
+              $$\frac{dN_2}{dt} = \sigma_{1,2}\Phi N_1 \qquad \text{with }\begin{cases}
+                      \sigma_{1,2} = \text{cross section}                         \\
+                      \Phi = \text{flux: }\left[(\#\text{photons} / s)/m^2\right] \\
+                      N_1 = \text{population of bottom layer}
+                  \end{cases}$$
+        \item Spontaneous emission: electrons from the top layer decay generating a photon of energy $h\nu = E_2 - E_1$.\\
+              It is the source of noise in amplification.
+              $$\frac{dN_2}{dt} = -\frac{1}{\tau_{sp}}N_2$$
+        \item Stimulated emission: basically electrons decay generating duplicating the entering photons. In general $\sigma_{1,2} \neq \sigma_{2,1}$
+              $$\frac{dN_2}{dt} = -\sigma_{2,1}\Phi N_2 \qquad \text{with }\begin{cases}
+                      \sigma_{2,1} = \text{cross section}                         \\
+                      \Phi = \text{flux: }\left[(\#\text{photons} / s)/m^2\right] \\
+                      N_2 = \text{population of top layer}
+                  \end{cases}$$
+
+
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    Explain the three-level system.
+\end{question}
+
+\begin{answer}
+    Assume we have 3 levels, with many electrons that can move between the levels (given by doping material).
+    \begin{itemize}
+        \item From L3 (top) $\to$ L2 (middle): L3 instable, we have a quick decay to L2
+        \item L2: Metastable, we need a sufficiently large $\tau_{sp}$ to store the electrons there
+        \item Pump-photon: $h\nu = E_3 - E_1$, they promote electrons from L1 to L3
+    \end{itemize}
+    If we pump fast enough we make L2 full of electrons, and we reach a condition of \textbf{Population Inversion}, so there is amplification by stimulated emissions.\\
+\end{answer}
+
+\begin{question}
+    Explain what are the rate equations.
+\end{question}
+
+\begin{answer}
+    rate equations are needed to analyze the performance of the EDFA.\\
+    What does it mean `to pump fast enough'? Suppose we have an infinitesimal cylindre of fiber:
+    \begin{itemize}
+        \item surface $s$
+        \item length $\Delta z$
+        \item in-flux $\Phi(z,t)$
+        \item out-flux $\Phi(z+\Delta z, t + \Delta t (=\frac{\Delta z}{c}))$
+    \end{itemize}
+    So a first rate equation is given by \textbf{known in-flux} + \textbf{contribute of stimulated emissions} - \textbf{contribute of stimulated absorption} - \textbf{expected out-flux} = 0
+    $$s\Delta t\left(\phi_s\left(z,t\right) - \phi_s\left(z + \Delta z, t + \frac{\Delta z}{c}\right)\right) + \left(s\Delta z\right)\Delta t\left[\sigma_s \phi_s\left(z,t\right)\left(N_2\left(z,t\right) - N_1\left(z,t\right)\right)\right] = 0$$
+    At the end, after Taylor expansions, and knowing that $I_\square = h\nu_\square\phi_\square$:
+    $$\text{Pump} : \frac{\partial I_p}{\partial z} + \frac{1}{c}\frac{\partial I_p}{\partial t} =- \sigma N_1I_p$$
+    $$\frac{\partial I_s}{\partial z} + \frac{1}{c}\frac{\partial I_s}{\partial t} = \sigma(N_2 - N_1)I_s$$
+    \textbf{Balance of population density}, we need to consider also spontaneous emissions. Since $N_{tot} = N_1 + N_2$:
+    $$\frac{\partial N_2}{\partial t} = \frac{\sigma_p I_p}{h\nu_p}N_1 - \frac{\sigma_s I_s}{h \nu_s}(N_2 - N_1) - \frac{1}{\tau_{sp}}N_p$$
 
 \end{answer}
 
