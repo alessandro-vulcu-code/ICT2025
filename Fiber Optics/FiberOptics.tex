@@ -656,7 +656,7 @@ which for a small NA (less than 1), we have a smaller intermodal dispersion.
 \end{answer}
 
 \begin{question}
-    Explain LP approximation
+    Sketch the way in which LP modes can be calculated
 \end{question}
 
 \begin{answer}
@@ -747,6 +747,7 @@ which for a small NA (less than 1), we have a smaller intermodal dispersion.
     \end{itemize}
 \end{answer}
 
+\chapter*{Attenuation}
 \begin{question}
     What is attenuation?
 \end{question}
@@ -831,6 +832,7 @@ which for a small NA (less than 1), we have a smaller intermodal dispersion.
     $$e(t) = \sr{}{n}c_n E_n(x,y)a(t - \tau_g)e^{-j\beta_{n,0}z} \qquad \qquad \text{no more } \omega \text{ dependency}$$
 \end{answer}
 
+\chapter*{Chromatic Dispersion}
 \begin{question}
     Describe chromatic dispersion and a method to measure it
 \end{question}
@@ -895,6 +897,7 @@ which for a small NA (less than 1), we have a smaller intermodal dispersion.
     \end{itemize}
 \end{answer}
 
+\chapter*{Polarization Mode Dispersion}
 \begin{question}
     Describe origins, effects and main parameters of PMD.
 \end{question}
@@ -930,6 +933,7 @@ which for a small NA (less than 1), we have a smaller intermodal dispersion.
     In this type of fiber, the magnitude of the PMD vector ($\overline{\Omega}$) is proportional to the fiber length ($L$) ($\overline{\Omega} \propto L$), unlike standard fibers where DGD is proportional to $\sqrt{L}$.
 \end{answer}
 
+\chapter*{Optical Amplifiers - EDFA}
 \begin{question}
     What are some types of optical amplifiers?
 \end{question}
@@ -1007,6 +1011,215 @@ which for a small NA (less than 1), we have a smaller intermodal dispersion.
     \textbf{Balance of population density}, we need to consider also spontaneous emissions. Since $N_{tot} = N_1 + N_2$:
     $$\frac{\partial N_2}{\partial t} = \frac{\sigma_p I_p}{h\nu_p}N_1 - \frac{\sigma_s I_s}{h \nu_s}(N_2 - N_1) - \frac{1}{\tau_{sp}}N_p$$
 
+\end{answer}
+
+\begin{question}
+    Explain what are the rate equations for 3-level system.
+\end{question}
+
+\begin{answer}
+    The rate equations for a 3-level system are used to analyze the performance of an Erbium Doped Fiber Amplifier (EDFA).
+
+    When neglecting the time dependence, the rate equations for the signal intensity ($I_S$) and pump intensity ($I_P$) in the stationary regime are:
+
+    Signal Intensity: $\frac{\partial I_S}{\partial z} = \sigma_S (N_2 - N_1)I_S$
+    Pump Intensity: $\frac{\partial I_P}{\partial z} = -\sigma_p N_1 I_P$
+
+    The population densities of the two levels, $N_1$ and $N_2$, are related to the total population density ($N_{tot}$) by the constraint $N_1(z, t) + N_2(z, t) = N_{tot}(z)$.
+
+    In the stationary regime, the population density equation is set to zero ($\frac{\partial N_2}{\partial t} = 0$) and can be written as:
+
+    $$0 = \frac{\sigma_p I_p}{h\nu_p}N_1 - \frac{\sigma_S I_S}{h\nu_S}(N_2 - N_1) - \frac{1}{\tau_{Sp}}N_2$$
+
+    When these expressions for $N_1$ and $N_2$ are substituted back into the intensity equations, the rate equations in the stationary regime can be derived as:
+
+    $$\frac{dI_p}{dz} = -\sigma_p N_{tot}I_p \frac{1 + \frac{I_S}{I_{S,Sat}}}{1 + \frac{I_p}{I_{p,Sat}} + 2 \frac{I_S}{I_{S,Sat}}}$$
+
+    $$\frac{dI_S}{dz} = \sigma_S N_{tot}I_S \frac{\frac{I_p}{I_{p,Sat}} - 1}{1 + \frac{I_p}{I_{p,Sat}} + 2 \frac{I_S}{I_{S,Sat}}}$$
+\end{answer}
+
+\begin{question}
+    What are the main Erbium parameters to check the performance of an EDFA?
+\end{question}
+
+\begin{answer}
+    The main Erbium parameters related to the performance of an Erbium Doped Fiber Amplifier (EDFA) are:
+    \begin{itemize}
+        \item Gain ($G$): This is the ratio of the output signal power ($P_{out}(\nu_s)$) to the input signal power ($P_{in}(\nu_s)$).
+        \item Power Conversion Efficiency ($PCE$): This is the ratio of the difference between the output and input signal power to the input pump power. The maximum theoretical value for PCE is $\frac{\nu_S}{\nu_P} = \frac{\lambda_P}{\lambda_S}$.
+        \item Saturation Input Power ($P_{in}^{sat}$): This is the input signal power at which the EDFA gain decreases by 3 dB with respect to its maximum gain ($G_{max}$).
+        \item Saturation Output Power ($P_{out}^{sat}$): This is the output signal power at which the EDFA gain decreases by 3 dB with respect to its maximum gain.
+        \item Bandwidth: shape due to $\omega_s$, kind of a mountain shape on a wavelength-over-gain chart. It is the range of frequencies over which the gain is at least $G_{max} - 3 dB$.
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    What is ASE (Amplified Spontaneous Emission)?
+\end{question}
+
+\begin{answer}
+    Amplified Spontaneous Emission (ASE) is a source of noise in an Erbium Doped Fiber Amplifier (EDFA).
+
+    The equation that describes the average number of photons at signal frequency ($\langle n_S \rangle$), including both the signal and ASE, is:
+
+    $$\frac{d\langle n_S\rangle}{dz}=\sigma_S(N_2-N_1)\langle n_S\rangle+2\sigma_S N_2$$
+
+    where:
+    \begin{itemize}
+        \item $\sigma_S(N_2-N_1)\langle n_S\rangle$ is the average number of photons generated, per unit length, by stimulated emission at the signal frequency, minus the average number of photons absorbed, per unit length, by stimulated absorption at the signal frequency.
+        \item $2\sigma_S N_2$ is the forcing term that generates ASE. This term qualitatively corresponds to the average number of photons generated, per unit length, by the emission stimulated by 2 spontaneous photons. The factor of 2 stems from the fact that a single-mode fiber has 2 degenerate modes.
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    What is the noise figure of an EDFA?
+\end{question}
+
+\begin{answer}
+    The noise figure ($\text{NF}$) of an Erbium Doped Fiber Amplifier (EDFA) is a parameter used to quantify the degradation of the Optical Signal-to-Noise Ratio ($\text{OSNR}$) caused by the amplifier.
+
+    The noise figure is defined as the ratio of the input OSNR to the output OSNR:
+    $$\text{NF} = \frac{\text{OSNR}_{\text{in}}}{\text{OSNR}_{\text{out}}} > 1 \text{}$$
+
+    In decibels ($\text{dB}$), the noise figure is expressed as $\text{NF}_{\text{dB}} > 3 \text{ dB}$, because for an EDFA, the noise figure is $\text{NF} > 2$, which represents the minimum possible noise (quantum noise).
+
+    For an amplifier with gain $G \gg 1$, the noise figure can be approximated as:
+    $$\text{NF} \approx 2 \cdot n_{\text{sp}} \text{}$$
+    where $n_{\text{sp}} = \frac{N_2}{N_2 - N_1} \approx 1$ is the spontaneous emission factor.
+
+    Generally, a higher gain amplifier has a lower noise figure. However, when the amplifier operates in the saturation regime, the gain is lower, and the noise figure is higher.
+
+\end{answer}
+
+\begin{question}
+    How can EDFA be used for?
+\end{question}
+
+\begin{answer}
+    \begin{itemize}
+        \item As a \textbf{line amplifier} along the link or \textbf{pre-amplifier} before the receiver. The low power input signal is strongly amplified with minimal degradation of the OSNR.
+        \item As a \textbf{booster amplifier} at the transmitter to increase the launch power into the fiber. Both NF and OSNR are high, so there is margin for degradation.
+    \end{itemize}
+\end{answer}
+
+\chapter*{Optical Fibers Production and Non Linear Effects}
+
+\begin{question}
+    Describe the production of optical fibers.
+\end{question}
+
+\begin{answer}
+    The production of an optical fiber cable consists of three main phases:
+
+    \subsection*{1. Preform Production}
+    The preform is a silica cylinder that is a larger-scale reproduction of the desired refractive index profile. It is typically about 1 meter long and ranges from a few up to a few tens of centimeters in diameter. A single preform can produce up to several hundreds of kilometers of optical fiber.
+
+    \subsubsection*{Preform Production Techniques}
+    There are two main techniques for producing the preform:
+    \begin{itemize}
+        \item \textbf{Chemical Vapor Deposition (CVD):} Silica is obtained by synthesis from a vapor phase. This is the most widely used system and enables the production of extremely pure silica with tight control over dopant concentration. Examples of CVD techniques include Inside Vapour Phase Oxidation (IVPO) processes like Modified Chemical Vapour Deposition (MCVD) and Plasma Chemical Vapour Deposition (PCVD), and Outside Vapour Phase Oxidation (OVPO) processes like Outside Vapour Deposition (OVD) and Vapour Axial Deposition (VAD).
+        \item \textbf{Sol-Gel (Wet Phase):} Silica is produced from a wet phase. Silica and other constituents are initially held in a gel matrix and then sintered into the final preform. This is effective for obtaining silica with high levels of dopants or strong heterogeneity, and it has a higher yield than CVD techniques, though the final silica quality is lower.
+    \end{itemize}
+
+    \subsection*{2. Fiber Drawing}
+    The preform is heated to its viscous state and then drawn into a fiber. This occurs in a special drawing tower, which is several meters tall.
+    \begin{itemize}
+        \item The preform is hung on a support and slowly enters a furnace, where it is heated near the silica melting temperature (about 2000°C).
+        \item As the preform softens, a drop of silica begins to fall due to gravity, and the drawing process starts.
+        \item The drawn fiber is cooled by passing it through cooling tubes with flows of inert gasses (like helium).
+        \item The fiber diameter is a critical parameter that is constantly monitored to maintain the design range. Fiber diameter ($d_f$) is controlled by the drawing speed ($v_f$) based on the mass conservation equation:
+              \begin{equation}
+                  D_p^{2}V_{p}=d_{f}^{2}v_{f}
+              \end{equation}
+              where $D_p$ is the preform diameter and $V_p$ is the preform entry speed.
+        \item The fiber is then coated with an acrylic layer (coating) to protect it from scratches. Standard telecommunication fibers have two coating layers: a soft inner layer for mechanical isolation and easy removal, and a hard outer layer for mechanical protection and low friction. The final outer diameter for standard telecom fibers is $250 \mu m$.
+        \item The drawing speed for telecom fibers can be as high as several tens of meters per second.
+    \end{itemize}
+
+    \subsection*{3. Cabling}
+    The coated optical fiber, with a standard outer diameter of 0.250 mm, requires further mechanical protection before installation.
+    \begin{itemize}
+        \item The structure of the cable varies greatly depending on the final application.
+        \item The bare fiber is often protected by a $900 \mu m$ buffer layer of Teflon.
+        \item Fibers can be grouped into flat ribbons for multi-fiber cables.
+        \item In multi-fiber cables, the fibers are housed in tubes or slots carved into a supporting central dielectric rod, which also helps contrast thermal expansion.
+        \item Cables often include a layer of water-swellable tape that expands upon contact with water to prevent infiltration.
+        \item Metallic armoring can be used for protection against accidental hits and rodents.
+        \item Submarine cables are heavily armored to withstand installation, high seabed pressure, and accidental impacts from anchors.
+    \end{itemize}
+\end{answer}
+
+\begin{question}
+    Describe the origins of main effects of nonlinearity in optical fibers
+\end{question}
+
+\begin{answer}
+    The origins and main effects of nonlinearity in optical fibers can be described by examining the medium's polarization response to a strong electric field, which is often modeled using a mechanical oscillator approach.
+
+    \subsection*{1. Origin of Nonlinearity}
+
+    In a medium, when the intensity of the electric field becomes large enough, the standard approximation of a linear medium is no longer valid, and nonlinear terms must be accounted for.
+
+    The total medium polarization ($\overline{p}$) is generally a function of the electric field ($\overline{e}(t)$). For small nonlinearities, this expression can be expanded in a Taylor series, where the medium polarization is given by:
+
+    \begin{equation}
+        \overline{p}=\epsilon_{0}(\chi^{(1)}\overline{e}+\chi^{(2)}:\overline{e}\overline{e}+\chi^{(3)}:\overline{e}\overline{e}\overline{e}+\cdots)
+    \end{equation}
+
+    The terms $\chi^{(n)}$ are the susceptibilities of the medium, with $\chi^{(1)}$ being the linear susceptibility. The $\chi^{(2)}$ and $\chi^{(3)}$ terms represent the quadratic and cubic nonlinear responses, respectively.
+
+    \subsection*{2. Main Nonlinear Effects}
+
+    The presence of the second-order ($\chi^{(2)}$) and third-order ($\chi^{(3)}$) susceptibilities gives rise to different nonlinear effects:
+
+    \subsubsection*{A. Quadratic Term ($\chi^{(2)}$)}
+    \begin{itemize}
+        \item \textbf{Presence:} This term is present only in crystalline media, as it is zero in centro-symmetric media like glasses (silica fiber).
+        \item \textbf{Effects:} The main effects due to the quadratic term are:
+              \begin{itemize}
+                  \item Second Harmonic Generation
+                  \item Sum and Difference of Frequencies
+                  \item Parametric Amplification
+              \end{itemize}
+    \end{itemize}
+
+    \subsubsection*{B. Cubic Term ($\chi^{(3)}$)}
+    \begin{itemize}
+        \item \textbf{Presence:} This term is present in all media, including silica glass, which is the material for optical fibers.
+        \item \textbf{Effects:} The main effects due to the cubic term are:
+              \begin{itemize}
+                  \item Third Harmonic Generation (though often inefficiently generated in fibers due to phase mismatch).
+                  \item Self-Phase Modulation (SPM).
+                  \item Cross-Phase Modulation (XPM).
+                  \item Parametric Amplification and Wavelength Conversion.
+                  \item Raman Scattering.
+              \end{itemize}
+    \end{itemize}
+
+    \subsection*{3. Detailed Effects of Cubic Nonlinearity in Fibers}
+
+    The cubic nonlinearity is the most relevant in standard optical fibers (which are centro-symmetric and made of silica glass).
+
+    \paragraph{Self-Phase Modulation (SPM):}
+    \begin{itemize}
+        \item \textbf{Origin:} The term in the polarization oscillating at the same input frequency ($\omega_0$). The effect is that the nonlinear term does not modify the amplitude of the wave but only its phase.
+        \item \textbf{Description:} The instantaneous frequency of the pulse varies (the pulse is "chirped"), and this chirp grows linearly with propagation distance ($z$). This effect is described by the time- and power-dependent nonlinear phase:
+              \begin{equation}
+                  \Phi_{NL}(z,t)=-\gamma P(t)z
+              \end{equation}
+    \end{itemize}
+
+    \paragraph{Cross-Phase Modulation (XPM):}
+    \begin{itemize}
+        \item \textbf{Origin:} When two or more waves at different frequencies interact, the powerful wave can induce a nonlinear refractive index variation that is experienced by the other waves.
+        \item \textbf{Description:} The nonlinear refractive index variation at a given frequency depends on the power of the wave at that frequency (SPM) and is twice as intense due to the power of the other wave (XPM). This effect is particularly important in Wavelength Division Multiplexing (WDM) systems.
+    \end{itemize}
+
+    \paragraph{Modulation Instability (MI):}
+    \begin{itemize}
+        \item \textbf{Origin:} An instability of a continuous wave (CW) solution to the Nonlinear Schrödinger Equation (NLSE) when a small perturbation is introduced.
+        \item \textbf{Description:} For anomalous dispersion ($\beta_2 < 0$) and perturbation frequencies ($\omega$) below a critical frequency ($\omega_c$), the perturbation grows exponentially along the fiber. This growth is due to a nonlinear gain $g(\omega)$. This effect amplifies small perturbations like quantum noise, making the wave unstable.
+    \end{itemize}
 \end{answer}
 
 \end{document}
