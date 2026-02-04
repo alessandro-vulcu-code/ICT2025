@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "e39d04f1a38a09f5",
+        "id": "22f3af1398d2b11d",
         "type": "tabs",
         "children": [
           {
-            "id": "118c3729db172975",
+            "id": "eefb2b2ce3e9e93d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Digital communication/Formulas.md",
+                "file": "Modern CPP for Internet and Multimedia/Modern CPP/Questions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Formulas"
+              "title": "Questions"
             }
           }
         ]
@@ -172,10 +172,23 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "771881e3e2ec399c",
+  "active": "eefb2b2ce3e9e93d",
   "lastOpenFiles": [
-    "The Erbium-Doped Fiber Amplifier (EDFA).md",
+    "Pasted image 20260204145434.png",
+    "Modern CPP for Internet and Multimedia/Modern CPP/09. Memory management.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/Questions.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/10. Compiler.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/08. Construction, destrucion.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/07. Classes.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/06. Namespaces.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/05. Functions.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/04. Statements.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/03. Struct.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/02. Pointers, Reference, Arrays.md",
+    "Digital communication/DigiCom.pdf",
+    "Digital communication/frontespizio.pdf",
     "Digital communication/Formulas.md",
+    "The Erbium-Doped Fiber Amplifier (EDFA).md",
     "Fiber Optics/Untitled.md",
     "Internet of Things and Smart Cities/06. IEEE 802.15.4 technologies.md",
     "Internet of Things and Smart Cities/IoT A Lot of Questions.md",
@@ -195,18 +208,7 @@
     "Cryptography/Lectures/Lecture 23.md",
     "Cryptography/Lectures/Lecture 22.md",
     "Cryptography/Lectures/Lecture 21.md",
-    "Cryptography/Lectures/Lecture 20.md",
-    "Cryptography/Lectures/Lecture 19.md",
-    "Cryptography/Lectures/Lecture 18.md",
-    "Cryptography/Lectures/Lecture 17.md",
-    "Cryptography/Lectures/Lecture 16.md",
-    "Cryptography/Lectures/Lecture 15.md",
-    "Cryptography/Lectures/Lecture 14.md",
-    "Cryptography/Lectures/Lecture 22 part 2.md",
-    "Cryptography/Lectures/Lecture 20 part 2.md",
-    "Cryptography/Lectures/Lecture 20 part 3.md",
     "Cryptography/Lectures",
-    "Fiber Optics/Lab/Lab2 FO.md",
     "Fiber Optics/FiberOptics.pdf",
     "Internet of Things and Smart Cities/Images/Pasted image 20251029090949.png",
     "Internet of Things and Smart Cities/Images/Pasted image 20251028095854.png",
@@ -217,8 +219,6 @@
     "Internet of Things and Smart Cities/Images/Pasted image 20251022084949.png",
     "Internet of Things and Smart Cities/Images/Pasted image 20251022084615.png",
     "Internet of Things and Smart Cities/Images/Pasted image 20251022084550.png",
-    "CPS and IoT Security/Summaries",
-    "CPS and IoT Security/Pictures/Pasted image 20251029145206.png",
-    "Cryptography/Quizzes"
+    "CPS and IoT Security/Pictures/Pasted image 20251029145206.png"
   ]
 }
