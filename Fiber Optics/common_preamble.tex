@@ -1,0 +1,224 @@
+% preamble.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel} % Ho cambiato in italian, supponendo che la maggior parte del testo sia in italiano
+\usepackage{amsmath}
+\usepackage{amssymb}
+% \usepackage{bm} % COMMENTED: incompatible with unicode-math - use \symbf instead
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+% \usepackage{fontspec} % Utile per Xetex/LuaLaTeX ma mantenuto - COMMENTED OUT: only works with XeLaTeX/LuaLaTeX
+\usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{thmtools}
+\usepackage[skins]{tcolorbox} % For colored boxes
+\usepackage{standalone} % Già presente nel tuo elenco
+\usepackage{tkz-euclide} % Questo carica TikZ
+\usepackage{pgfplots} % Per grafici con \addplot e ambiente axis
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{fit} % Necessaria per l'opzione fit
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.pathmorphing} % For snake decoration used in TikZ
+\tcbuselibrary{skins, breakable}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shapes,fit,positioning}
+% Define input/output styles for block diagrams
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+% --- PACCHETTI AGGIUNTI PER LA FORMATTAZIONE ---
+\usepackage{parskip}  % Aggiunge spazio tra i paragrafi (stile "blocco")
+\usepackage{fancyhdr} % Per intestazioni e piè di pagina personalizzati
+\usepackage{fontawesome5}
+\usepackage[x11names,svgnames,table]{xcolor}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage{minted}
+\usepackage{fontspec}
+\usepackage{unicode-math} % Necessario per xelatex/lualatex
+\setmainfont{Fira Sans}[
+    % Imposta la variante "Light" come la variante principale (Regular/Medium)
+    % Quando usi \setmainfont senza specificare 'Path', cerca il nome completo del font.
+    UprightFont = Fira Sans Light,
+    % Quando usi \textbf{}, userà questa variante (Bold)
+    BoldFont = Fira Sans Regular, 
+    % Quando usi \textit{}, userà questa variante (Light Italic)
+    ItalicFont = Fira Sans Italic,
+    % Quando usi \textbf\textit{}, userà questa variante (Bold Italic)
+    %BoldItalicFont = Fira Sans Bold Italic,
+]
+\setsansfont{Fira Sans}
+\setmathfont{Libertinus Math}
+
+% Compatibility: define \bm to use unicode-math's \symbf
+\newcommand{\bm}[1]{\symbf{#1}}
+
+% --- IMPOSTAZIONI GEOMETRIA E FONT ---
+\geometry{a4paper, margin=1in}
+%\onehalfspacing
+% Configura lo stile 'plain' (usato da \maketitle e \tableofcontents)
+% per essere coerente con il piè di pagina
+\fancypagestyle{plain}{
+    \fancyhf{} % Pulisce
+    \cfoot{\thepage} % Mette solo il numero di pagina
+    \renewcommand{\headrulewidth}{0pt} % Niente linea su queste pagine
+}
+
+% Configurazione Header/Footer per le altre pagine
+\pagestyle{fancy}
+\fancyhead{} % Pulisce l'intestazione
+\fancyfoot{} % Pulisce il piè di pagina
+\fancyhead[L]{\nouppercase{\rightmark}} % Nome Sezione a sinistra (o Chapter)
+\fancyhead[R]{\nouppercase{\leftmark}}  % Nome Capitolo a destra (o Sezione)
+\fancyfoot[C]{\thepage} % Numero di pagina al centro
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+% --- DEFINIZIONI TEOREMI ---
+% (Questa parte è cruciale per la tua struttura)
+\newtheoremstyle{mythmstyle}%
+    {}%
+    {}%
+    {\itshape}%
+    {}%
+    {\bfseries}%
+    {}%
+    { }%
+    {\thmname{#1}\thmnumber{ #2}%
+    \thmnote{: #3\addcontentsline{toc}{subsubsection}{{\itshape#1}: #3}}. }
+
+% 2. Imposta questo stile come quello ATTUALE
+\theoremstyle{mythmstyle}
+
+\newtheorem{theorem}{Th}[section]
+\newtheorem{definition}{Def}[section]
+\newtheorem{proposition}{Prop}[section]
+\newtheorem{corollary}{Cor}[section]
+\newtheorem{algorithm}{Alg}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{remark}{Rem}
+\newtheorem{example}{Example}[section]
+
+% Definizioni utili per il Main file
+\newcommand{\inputlesson}[1]{\clearpage\input{#1}\clearpage} % Comando per input lezione
+
+\definecolor{obsidianGreen}{HTML}{E8F6F3} % Colore simile allo sfondo dei box
+\definecolor{obsidianBorder}{HTML}{5AB5A7} % Colore della barra laterale (opzionale)
+\definecolor{obsidianBlue}{HTML}{E8F4F8}
+\definecolor{obsidianPurple}{HTML}{F3EAFA}
+\definecolor{obsidianYellow}{HTML}{FFFBEA}
+\definecolor{obsidianTextBlue}{HTML}{2D7CA3}
+\definecolor{obsidianTextPurple}{HTML}{7E3F9D}
+\definecolor{obsidianTextYellow}{HTML}{8A6D3B}
+\definecolor{obsidianPurple}{HTML}{F3EAFA}
+\definecolor{obsidianTextPurple}{HTML}{7E3F9D}
+\definecolor{obsidianGreen}{HTML}{F0F9F8}
+\definecolor{obsidianBorderPurple}{HTML}{9E74C4}
+\definecolor{obsidianGreen}{HTML}{F0F9F8}
+\definecolor{obsidianGreen}{HTML}{F0F9F8}
+\definecolor{obsidianBlue}{HTML}{E8F4F8}
+\definecolor{obsidianTextBlue}{HTML}{2D7CA3}
+\definecolor{obsidianBlue}{HTML}{E8F4F8}
+\definecolor{obsidianTextBlue}{HTML}{2D7CA3}
+\definecolor{obsidianPurple}{HTML}{F3EAFA}
+\definecolor{obsidianTextPurple}{HTML}{7E3F9D}
+\definecolor{obsidianGreen}{HTML}{F0F9F8}
+
+\newtcolorbox{greenbar}{
+    breakable,
+    enhanced,
+    colback=white,
+    colframe=white,
+    leftrule=2pt,
+    colframe=ForestGreen, % O un colore simile
+    sharp corners,
+    boxsep=2pt,
+    left=5pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt
+}
+
+% Stile per il box blu (Friis Equation)
+\newtcolorbox{bluebox}[1][]{
+    breakable,
+    enhanced,
+    colback=white,
+    colframe=RoyalBlue,
+    coltitle=RoyalBlue,
+    boxrule=1pt,
+    sharp corners,
+    title=#1,
+    fonttitle=\bfseries\large,
+    colbacktitle=white,
+    attach boxed title to top left={yshift=-2mm, xshift=2mm},
+    boxed title style={colback=white, frame hidden}
+}
+
+% Stile per il box grigio (In-class stuff)
+\newtcolorbox{greybox}[1][]{
+    breakable,
+    enhanced,
+    colback=gray!10,
+    colframe=gray!10,
+    title=#1,
+    coltitle=gray!50!black,
+    fonttitle=\bfseries,
+    sharp corners,
+    left=5pt,
+    right=5pt,
+    top=5pt,
+    bottom=5pt
+}
+
+% Definizione box giallo per i riferimenti (se non presente nel preambolo)
+\newtcolorbox{yellowbox}[1][]{
+    breakable,
+    enhanced,
+    colback=white,
+    colframe=yellow!80!orange, % Colore giallo/arancio
+    boxrule=1pt,
+    sharp corners,
+    left=5pt,
+    right=5pt,
+    top=5pt,
+    bottom=5pt
+}
+
+\newtcolorbox{greenbox}[1][]{
+    breakable,
+    enhanced,
+    colback=white,
+    colframe=ForestGreen,
+    coltitle=ForestGreen,
+    boxrule=1pt,
+    sharp corners,
+    title=#1,
+    fonttitle=\bfseries\large,
+    colbacktitle=white,
+    attach boxed title to top left={yshift=-2mm, xshift=2mm},
+    boxed title style={colback=white, frame hidden}
+}
+
+% Definizione box viola per le "Mynote"
+\newtcolorbox{purplebox}[1][]{
+    breakable,
+    enhanced,
+    colback=white,
+    colframe=violet!80!white,
+    coltitle=violet!80!white,
+    boxrule=1pt,
+    sharp corners,
+    title=#1,
+    fonttitle=\bfseries\large,
+    colbacktitle=white,
+    attach boxed title to top left={yshift=-2mm, xshift=2mm},
+    boxed title style={colback=white, frame hidden}
+}
