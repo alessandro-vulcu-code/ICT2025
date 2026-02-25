@@ -1,0 +1,135 @@
+
+\chapter{Basic of EM Waves}
+
+\section{Maxwell's Equations}
+
+\section{In Time Domain}
+
+Electromagnetic phenomena described by \textbf{Maxwell equations}.
+
+\begin{align*}
+\nabla \times \bar{e} &= - \frac{\partial \bar{b}}{\partial t} & \nabla \cdot \bar{d} &= \rho \\[1em]
+\nabla \times \bar{h} &= \bar{J} + \frac{\partial \bar{d}}{\partial t} & \nabla \cdot \bar{b} &= 0
+\end{align*}
+
+where:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{l l l l}
+$\bar{e}(\bar{r}, t)$ & is & \textbf{ELECTRIC FIELD} & $[V/m]$ \\
+$\bar{d}(\bar{r}, t)$ & is & the electric flux density & $[C/m^2]$ \\
+$\bar{h}(\bar{r}, t)$ & is & \textbf{MAGNETIC FIELD} & $[A/m]$ \\
+$\bar{b}(\bar{r}, t)$ & is & \textbf{MAGNETIC FLUX DENSITY} & $[T = Wb/m^2]$ \\
+$\rho(\bar{r}, t)$ & is & \textbf{CHARGE DENSITY} & $[C/m^3]$ \\
+$\bar{J}(\bar{r}, t)$ & is & \textbf{ELECTRIC CURRENT DENSITY} & $[A/m^2]$ \\
+$\bar{r} = (x, y, z)$ & & & \\
+\end{tabular}
+\end{center}
+
+\section{Algebra Remainder}
+
+\begin{equation*}
+\nabla \quad \text{is \textbf{NABLA}} \implies \nabla = 
+\begin{bmatrix}
+\frac{d}{dx} \\[0.5em]
+\frac{d}{dy} \\[0.5em]
+\frac{d}{dz}
+\end{bmatrix}
+\end{equation*}
+
+Linear product:
+\begin{align*}
+\bar{a} \cdot \bar{b} &= a_x b_x + a_y c_y + a_z c_z \\
+\nabla \cdot d &= \frac{\partial d_x}{\partial x} + \frac{\partial d_y}{\partial y} + \frac{\partial d_z}{\partial z}
+\end{align*}
+
+
+% PAGINA 06
+% Uso un box con bordo rosso ma testo nero per la sezione "Important"
+\begin{tcolorbox}[enhanced, colback=white, colframe=red, title=\textbf{Important:}, coltitle=red, sharp corners]
+\textbf{$\nabla \cdot (\nabla \times \bar{A}) = 0$, the curl of a vector field is by definition Solenoidal (no divergence)}
+
+Same applies when $\bar{a} \cdot (\bar{a} \times \bar{b}) = 0$ (\textit{\small ORTHOGONAL!})
+\end{tcolorbox}
+
+\section{Harmonic Domain}
+
+\begin{itemize}
+    \item In many cases, we can limit the study of EM fields to sinusoidal (or harmonic) signals.
+    \item Convenient to represent fields by their phasor using the so called \textbf{complex Steinmetz vectors}.
+\end{itemize}
+
+\begin{equation*}
+\bar{e}(\bar{r}, t) = \text{Re}\left[ \bar{E}(\bar{r}) \exp(j\omega t) \right]
+\end{equation*}
+
+In this course: \textbf{NO ELECTRIC CHARGES} or \textbf{ELECTRIC CURRENTS}.
+
+\begin{align*}
+\nabla \times \bar{E} &= -j \omega \bar{B} & \nabla \cdot \bar{D} &= 0 \\[1em]
+\nabla \times \bar{H} &= j \omega \bar{D} & \nabla \cdot \bar{B} &= 0
+\end{align*}
+
+\section{Constitutive Relations}
+
+The relations between fields and flux densities depend on the medium (mezzo) where the magnetic field is present.
+
+3 media types: \textbf{LINEAR}, \textbf{ISOTROPIC}, \textbf{PIECEWISE HOMOGENEOUS}.
+
+The constitutive relations are:
+\begin{equation*}
+\bar{D} = \varepsilon \bar{E} \quad \quad \bar{B} = \mu \bar{H}
+\end{equation*}
+
+where:
+\begin{itemize}
+    \item $\varepsilon(\omega)$ is the electric permeability $[F/m]$ (Farad/m)
+    \item $\mu(\omega)$ is the magnetic permeability $[H/m]$ (Henry/m)
+\end{itemize}
+
+
+% PAGINA 07
+In vacuum: parameters related to speed of light $\implies$ constant by definition.
+
+\begin{align*}
+c_0 &= 299\,792\,458 \ m/s & \mu_0 &= 4\pi \times 10^{-7} \ H/m
+\end{align*}
+
+\begin{equation*}
+c_0 = \frac{1}{\sqrt{\mu_0 \varepsilon_0}} \implies \varepsilon_0 = \frac{1}{\mu_0 c_0^2} \approx 8,85 \cdot 10^{-12} \ F/m
+\end{equation*}
+
+For generic medium: reflective index defined as $n = \sqrt{\frac{\mu \varepsilon}{\mu_0 \varepsilon_0}}$.
+
+\section{Helmholtz Equations}
+
+In a linear, isotropic piecewise homogeneous medium without electric charges and currents, Maxwell's equations read:
+
+\begin{align*}
+\nabla \times \bar{E} &= -j\omega \mu \bar{H} & \nabla \cdot \bar{E} &= 0 \\[1em]
+\nabla \times \bar{H} &= j\omega \varepsilon \bar{E} & \nabla \cdot \bar{H} &= 0
+\end{align*}
+
+% Derivation steps
+\begin{align*}
+1) \quad & \nabla \times (\nabla \times \bar{E}) = \nabla \times (-j\omega \mu \bar{H}) \\
+2) \quad & \nabla \times (\nabla \times \bar{E}) = -j\omega \mu (\nabla \times \bar{H}) \\
+3) \quad & \nabla \times (\nabla \times \bar{E}) = -j\omega \mu (j\omega \varepsilon \bar{E}) \\
+4) \quad & \nabla \times (\nabla \times \bar{E}) = \omega^2 \mu \varepsilon \bar{E} \\
+5) \quad & \nabla \times \nabla \times \bar{E} = \nabla(\nabla \cdot \bar{E}) - \nabla^2 E \quad (\textit{Note: } \nabla \cdot \bar{E} = 0) \\
+6) \quad & \nabla \times \nabla \times \bar{E} = \nabla(0) - \nabla^2 E = - \nabla^2 E \\
+7) \quad & -\nabla^2 E = \omega^2 \mu \varepsilon E \implies \nabla^2 E + \omega^2 \mu \varepsilon E = 0
+\end{align*}
+
+% Risultato finale evidenziato in un box giallo come nell'originale
+\begin{yellowbox}
+\begin{equation*}
+\nabla^2 \bar{E} + k^2 \bar{E} = 0 \quad \quad \nabla^2 \bar{H} + k^2 \bar{H} = 0
+\end{equation*}
+\end{yellowbox}
+
+where
+\begin{equation*}
+k = \omega \sqrt{\varepsilon \mu}
+\end{equation*}

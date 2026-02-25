@@ -117,9 +117,7 @@ Which is the value of `c`?
         thr.join();
     }
 ```
-- Case A: Since a is passed by reference to the thread, it will be modified accordingly, so `a==1` after the join
-- Case B: Since a is passed as an integer parameter to the thread function, it won't be modified after the join
-- Case C: a is passed by value, but there is the `mutable` keyword, so after the join `a==1`
+
 # Other questions
 1. If no copy or move constructors are declared, what does the compiler do, and how can you explicitly prevent their creation?
     - NO copy/move constructors? Default ones are used, as well as copy and move assignments
@@ -212,16 +210,3 @@ Why does `func(b)` result in a compiler error, while `func(std::move(b))` is acc
         - `cv.notify()` and `cv.notify_all()` unblocks one or all threads in waiting for cv
 
 21. Write a short C++ code snippet that implements a `switch-case` statement.
-    - See 5 min question nr. 2
-
-22. What is memory leak?
-    - See 5 min question nr. 8
-
-23. What is a dangling pointer? And double deletion? 
-    - Dangling pointer is a pointer that references a memory area no longer in use/already free'd or deleted/we don't have access to. Double deletion happens when we try to delete the memory area referenced by dangling pointers. 
-
-24. What is slicing in terms of derived class?
-    - See "other question" nr.4
-
-25. What is a dynamic cast?
-    - A Dynamic cast is an operator that allows safely cast pointers/references from a base class to derived classes or viceversa using Run-Time Type Information (RTTI) to check whether a conversion is possible. If cast is not valid it returns `nullptr`. 

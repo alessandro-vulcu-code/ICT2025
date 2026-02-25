@@ -1,0 +1,20 @@
+% main.tex
+
+\documentclass[a4paper, 12pt]{book} % Oppure article/book a seconda della struttura
+
+% --- INCLUSIONE DEL PREAMBOLO ESTERNO ---
+\input{common_preamble.tex}
+\usepackage{import}
+
+
+\begin{document}
+    \input{frontespizio.tex}
+    \thispagestyle{empty} % Pagina del titolo senza numero
+
+    \tableofcontents % Genera la Tabella dei Contenuti
+    \clearpage
+
+    \input{Lessons/Lesson1.tex}
+
+    
+\end{document}
