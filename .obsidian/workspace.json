@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "22f3af1398d2b11d",
+        "id": "ef317239f9417430",
         "type": "tabs",
         "children": [
           {
-            "id": "eefb2b2ce3e9e93d",
+            "id": "ef70ea8769bd7a82",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Modern CPP for Internet and Multimedia/Modern CPP/Questions.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Questions"
+              "title": "New tab"
             }
           }
         ]
@@ -172,42 +168,43 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "eefb2b2ce3e9e93d",
+  "active": "ef70ea8769bd7a82",
   "lastOpenFiles": [
-    "Pasted image 20260204145434.png",
-    "Modern CPP for Internet and Multimedia/Modern CPP/09. Memory management.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/Questions.md",
+    "Untitled.md",
+    "Modern CPP for Internet and Multimedia/LdP/Appunti/Lezione 3.md",
+    "Modern CPP for Internet and Multimedia/LdP/Appunti/Lezione 4.md",
+    "Modern CPP for Internet and Multimedia/LdP/Appunti/Lezione 5.md",
+    "Modern CPP for Internet and Multimedia/LdP/Appunti/Lezione 1.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/09. Memory management.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/Lab/Lab2.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/10. Compiler.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/02. Pointers, Reference, Arrays.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/04. Statements.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/05. Functions.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/21. Inter-thread communication.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/20. Threads.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/19. Socket.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/18. Bitwise operation, POD, in-out streaming.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/17. Smart Pointers.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/16. Templates.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/15. Class hierarchies and run-time polymorphism.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/14. Standard Library.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/12. Derived classes and class hierarchies.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/13. Operators overloading.md",
+    "Modern CPP for Internet and Multimedia/Modern CPP/11. Autotools.md",
+    "Pasted image 20260204145434.png",
     "Modern CPP for Internet and Multimedia/Modern CPP/08. Construction, destrucion.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/07. Classes.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/06. Namespaces.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/05. Functions.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/04. Statements.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/03. Struct.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/02. Pointers, Reference, Arrays.md",
     "Digital communication/DigiCom.pdf",
     "Digital communication/frontespizio.pdf",
-    "Digital communication/Formulas.md",
-    "The Erbium-Doped Fiber Amplifier (EDFA).md",
-    "Fiber Optics/Untitled.md",
-    "Internet of Things and Smart Cities/06. IEEE 802.15.4 technologies.md",
-    "Internet of Things and Smart Cities/IoT A Lot of Questions.md",
-    "Intro.md",
-    "Fiber Optics/Lab/Lab3 FO.md",
-    "Fiber Optics/Lab/Lab4 FO.md",
-    "Fiber Optics/Lab/Lab1 FO.md",
     "Fiber Optics/Lab reports/Lab1/Report Lab1.pdf",
-    "Internet of Things and Smart Cities/13. Wired IoT.md",
-    "Cryptography/Lectures/Lecture 24.md",
     "logseq/custom.css",
-    "pages/contents.md",
     "pages",
     "logseq/config.edn",
     "journals",
     "logseq",
-    "Cryptography/Lectures/Lecture 23.md",
-    "Cryptography/Lectures/Lecture 22.md",
-    "Cryptography/Lectures/Lecture 21.md",
     "Cryptography/Lectures",
     "Fiber Optics/FiberOptics.pdf",
     "Internet of Things and Smart Cities/Images/Pasted image 20251029090949.png",
@@ -218,7 +215,6 @@
     "Internet of Things and Smart Cities/Images/Pasted image 20251022091212.png",
     "Internet of Things and Smart Cities/Images/Pasted image 20251022084949.png",
     "Internet of Things and Smart Cities/Images/Pasted image 20251022084615.png",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251022084550.png",
-    "CPS and IoT Security/Pictures/Pasted image 20251029145206.png"
+    "Internet of Things and Smart Cities/Images/Pasted image 20251022084550.png"
   ]
 }
