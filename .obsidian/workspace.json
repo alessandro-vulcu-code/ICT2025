@@ -4,17 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "ef317239f9417430",
+        "id": "8e20ea1ca362f083",
         "type": "tabs",
         "children": [
           {
-            "id": "ef70ea8769bd7a82",
+            "id": "8cdd97b1af3b9fd0",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "type": "image",
+              "state": {
+                "file": "Big Data Computing/Pics/Pasted image 20260303170205.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260303170205"
             }
           }
         ]
@@ -40,7 +42,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Esplora risorse"
             }
           },
           {
@@ -74,7 +76,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "978958ee6b3e5956",
@@ -156,20 +159,36 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "switcher:Apri selezione rapida": false,
+      "graph:Apri vista grafo": false,
+      "canvas:Crea nuova lavagna": false,
+      "daily-notes:Apri nota del giorno": false,
+      "templates:Inserisci modello": false,
+      "command-palette:Apri riquadro comandi": false,
+      "bases:Crea nuova Base": false,
       "remotely-save:Remotely Save": false,
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false,
       "obsidian-git:Open Git source control": false,
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "771881e3e2ec399c",
+  "active": "8cdd97b1af3b9fd0",
   "lastOpenFiles": [
+    "Big Data Computing/Notes/1.MapReduce.md",
+    "Big Data Computing/Pics/Pasted image 20260303172328.png",
+    "Big Data Computing/Pics/Pasted image 20260303172317.png",
+    "Big Data Computing/Pics/Pasted image 20260303171134.png",
+    "Big Data Computing/Pics/Pasted image 20260303170205.png",
+    "Big Data Computing/Pics/Pasted image 20260303170144.png",
+    "test/conversion_1772446250829_27ad1d64/document.md",
+    "Multimedia Communications/Slides/0.intro_part_1.pdf",
+    "Multimedia Communications/Pics/Pasted image 20260227121129.png",
+    "Multimedia Communications/Pics/Pasted image 20260227120751.png",
+    "Multimedia Communications/Pics/Pasted image 20260227115353.png",
+    "Multimedia Communications/Pics/Pasted image 20260227113938.png",
+    "Multimedia Communications/Pics/Pasted image 20260227113104.png",
+    "Multimedia Communications/Pics",
+    "test/conversion_1772446250829_27ad1d64",
+    "test",
     "Other material/Untitled 4.md",
     "Other material/Untitled 3.md",
     "Other material/Untitled 2.md",
@@ -184,25 +203,13 @@
     "Multimedia Communications/Slides/6.QoE.pdf",
     "Multimedia Communications/Slides/5.Modern video compression.pdf",
     "Multimedia Communications/Slides/4.Video compression.pdf",
-    "Multimedia Communications/Slides/3.Motion Estimation Notes.pdf",
-    "Multimedia Communications/Slides/2.Transform coding and JPEG.pdf",
-    "Multimedia Communications/Slides/1.Motion estimation.pdf",
     "Multimedia Communications/Notes/1. Motion estimation.md",
-    "Multimedia Communications/Slides",
-    "Modern CPP for Internet and Multimedia/Pasted image 20260204145434.png",
     "Modern CPP for Internet and Multimedia/Modern CPP/Threads.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/Socket Lab.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/Smart Pointers.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/Questions Reordered.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/Mutex.md",
     "CPS and IoT Security/Questions.md",
-    "Big Data Computing/Pics/Pasted image 20260225095048.png",
-    "Big Data Computing/Pics/Pasted image 20260225092317.png",
-    "Big Data Computing/Pics/Pasted image 20260225091313.png",
-    "Big Data Computing/Pics/Pasted image 20260225085635.png",
-    "Big Data Computing/Pics/Pasted image 20260225085606.png",
-    "Big Data Computing/Pics/Pasted image 20260225085017.png",
-    "Big Data Computing/Notes/1.MapReduce.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/Questions.md",
     "Modern CPP for Internet and Multimedia/LdP/Appunti/Lezione 3.md",
     "Modern CPP for Internet and Multimedia/LdP/Appunti/Lezione 4.md",
@@ -210,11 +217,6 @@
     "Modern CPP for Internet and Multimedia/LdP/Appunti/Lezione 1.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/09. Memory management.md",
     "Modern CPP for Internet and Multimedia/Modern CPP/Lab/Lab2.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/10. Compiler.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/02. Pointers, Reference, Arrays.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/04. Statements.md",
-    "Pasted image 20260204145434.png",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251029090949.png",
-    "Internet of Things and Smart Cities/Images/Pasted image 20251028095854.png"
+    "Modern CPP for Internet and Multimedia/Modern CPP/10. Compiler.md"
   ]
 }
