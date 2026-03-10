@@ -1,0 +1,14 @@
+# Configurazione stile LaTeX
+variables:
+  documentclass: book
+  fontsize: 11pt
+  geometry: "margin=2.5cm, a4paper"
+  colorlinks: true
+  linkcolor: blue
+
+header-includes: |
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \fancyhead[L]{Appunti di Lezione}
+  \fancyhead[R]{\today}
+  \usepackage{amsmath, amssymb} # Fondamentale per le formule
