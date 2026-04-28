@@ -41,6 +41,7 @@ Usa link interni Obsidian (`[[#anchor|label]]`). Genera anchor dal titolo della 
 > **Dimostrazione (sketch):** ...  ← solo se presente nel testo
 > **Intuizione:** spiegazione semplice per studente.
 ```
+IMPORTANTE: i teoremi, le definizioni e le rispettive dimostrazioni che sono scritte a mano, sono FONDAMENTALI per l'esame in quanto verranno chieste. Pertanto, vanno riportate per intero. Puoi riformulare o sistemare le frasi, ma il contenuto deve assolutamente essere riportato per intero dalla trascrizione al riassunto.
 
 Usa questo callout per: teoremi, lemmi, corollari, definizioni fondamentali, bound importanti.
 

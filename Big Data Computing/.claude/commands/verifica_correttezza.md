@@ -1,3 +1,5 @@
+> /trascrivi <trascrizione> <riassunto>
+
 Sei un esperto di Big Data Computing. Ti vengono forniti due documenti ($ARGUMENTS):
 1. La **trascrizione fedele** del documento originale del corso
 2. Il **riassunto** prodotto dalla trascrizione
@@ -14,6 +16,7 @@ Confronta trascrizione e riassunto controllando:
 - **Fedeltà delle formule:** ogni formula nel riassunto corrisponde esattamente a quella nella trascrizione? Correggi eventuali errori LaTeX o trascrizioni imprecise.
 - **Chiarezza:** ci sono sezioni del riassunto ambigue, incomplete o che presuppongono conoscenze non introdotte? Espandile quel tanto che basta per renderle autosufficenti, senza aggiungere contenuto non presente nella trascrizione.
 - **Struttura:** la gerarchia di heading, i callout `[!Important]` e `[!Example]`, la tabella riassuntiva e il Table of Contents riflettono correttamente la struttura della trascrizione?
+- **Dimostrazioni:** IMPORTANTE: i teoremi, le definizioni e le rispettive dimostrazioni che sono scritte a mano, sono FONDAMENTALI per l'esame in quanto verranno chieste. Pertanto, vanno riportate per intero. Puoi riformulare o sistemare le frasi, ma il contenuto deve assolutamente essere riportato per intero dalla trascrizione al riassunto. In caso non fosse così, devi scrivere la dimostrazione completa ove mancasse.
 
 ---
 
