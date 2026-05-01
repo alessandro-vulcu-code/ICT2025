@@ -8,35 +8,35 @@
         "type": "tabs",
         "children": [
           {
-            "id": "62a6017d276d989f",
+            "id": "f4f838703917e7b6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Big Data Computing/Notes/6. Streaming2526-1.md",
+                "file": "Multimedia Communications/Summaries/4. Transform coding.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "6. Streaming2526-1"
+              "title": "4. Transform coding"
             }
           }
         ]
       },
       {
-        "id": "648714461aa05bcb",
+        "id": "85cddbd612615e64",
         "type": "tabs",
         "children": [
           {
-            "id": "020f37c4c9f4a1b6",
+            "id": "60f49b3ceee2ec80",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "image",
               "state": {
-                "file": "Big Data Computing/Slides/6. Streaming2526-1.pdf"
+                "file": "Multimedia Communications/Pics/Lossless Coding/Pasted image 20260501174916.png"
               },
-              "icon": "lucide-file-text",
-              "title": "6. Streaming2526-1"
+              "icon": "lucide-image",
+              "title": "Pasted image 20260501174916"
             }
           }
         ]
@@ -192,51 +192,50 @@
   },
   "active": "771881e3e2ec399c",
   "lastOpenFiles": [
-    "Big Data Computing/Pics/streaming-002.png",
-    "Big Data Computing/Slides/6. Streaming2526-1.pdf",
-    "Big Data Computing/Notes/6. Streaming2526-1.md",
-    "AGENTS.md",
-    "Big Data Computing/Pics/streaming-000.jpg",
-    "Big Data Computing/Pics/streaming-001.jpg",
-    "Big Data Computing/Notes/1.MapReduce.md",
-    "Big Data Computing/Notes/2.Apache Spark.md",
-    "Big Data Computing/Notes/3.Word Count Example in Spark.md",
-    "Big Data Computing/Notes/4.Coreset Part 1.md",
-    "Big Data Computing/Notes/5. Coreset Part 2.md",
-    "Big Data Computing/Notes/6. Streaming2526-1.md.tmp.61676.1777197608511",
-    "Big Data Computing/ToSummarize/6. Streaming2526-1.md",
-    "Big Data Computing/Notes/6. Streaming2526-1.md.tmp.61676.1777197437817",
-    "Stochastic Processes/Stochastic_Processes_2020_output/Stochastic_Processes_2020_output_clean.md",
-    "Big Data Computing/ToSummarize/6. Streaming2526-1.md.tmp.54972.1777196715599",
-    "Big Data Computing/ToSummarize/6. Streaming2526-1.md.tmp.54972.1777196398656",
-    "Big Data Computing/ToSummarize/6. Streaming2526-1.md.tmp.49866.1777196051025",
-    "Stochastic Processes/Chapter 1 - Probability and Statistics.md",
-    "Stochastic Processes/Chapter 2 - Markov Chains.md",
-    "Stochastic Processes/Stochastic_Processes_2020_output/Stochastic_Processes_2020_output_clean.md.tmp.34912.1776593749222",
-    "Stochastic Processes/Stochastic_Processes_2020_output/Stochastic_Processes_2020_output_clean.md.tmp.34912.1776593249564",
-    "Stochastic Processes/Stochastic_Processes_2020_output/Stochastic_Processes_2020_output.md",
-    "Multimedia Communications/merge/Transform_part2.pdf",
-    "Stochastic Processes/Stochastic_Processes_2020_output/images/Stochastic_Processes_2020_p54_img14.jpeg",
-    "Stochastic Processes/Stochastic_Processes_2020_output/images/Stochastic_Processes_2020_p171_img60.jpeg",
-    "Stochastic Processes/Stochastic_Processes_2020_output/images/Stochastic_Processes_2020_p112_img31.jpeg",
-    "Stochastic Processes/Stochastic_Processes_2020_output/images/Stochastic_Processes_2020_p169_img57.jpeg",
-    "Stochastic Processes/Stochastic_Processes_2020_output/images/Stochastic_Processes_2020_p217_img79.jpeg",
-    "Stochastic Processes/Stochastic_Processes_2020_output/images/Stochastic_Processes_2020_p88_img25.jpeg",
-    "Stochastic Processes/Stochastic_Processes_2020_output/images/Stochastic_Processes_2020_p132_img35.jpeg",
-    "Stochastic Processes/Stochastic_Processes_2020_output/images/Stochastic_Processes_2020_p133_img38.jpeg",
-    "Stochastic Processes/Stochastic_Processes_2020_output/ocr_response.json",
-    "Multimedia Communications/Notes/5. Learned Image Compression.md",
-    "Multimedia Communications/Notes/4. Wavelet-based Image Compression.md",
-    "Multimedia Communications/Notes/3. Transform Coding and JPEG.md",
-    "Modern CPP for Internet and Multimedia/CPP_COURSE_STUDY_GUIDE.md",
-    "Multimedia Communications/merge/3. Transform Coding and JPEG.md",
-    "Multimedia Communications/Notes/test.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/1. Types and declarations.md",
-    "test/conversion_1772446250829_27ad1d64/document.md",
-    "Other material/Untitled 4.md",
-    "Other material/Untitled 3.md",
-    "Other material/Untitled 2.md",
-    "Other material/Untitled 1.md",
-    "Other material/Untitled.md"
+    "Multimedia Communications/Pics/Transform coding/Pasted image 20260501180944.png",
+    "Multimedia Communications/Pics/Lossless Coding",
+    "Multimedia Communications/Pics/Lossless Coding/Pasted image 20260501180316.png",
+    "Multimedia Communications/Pics/Transform coding/Pasted image 20260501181043.png",
+    "Multimedia Communications/Pics/Lossless Coding/Pasted image 20260501180238.png",
+    "Multimedia Communications/Pics/Lossless Coding/Pasted image 20260501180155.png",
+    "Multimedia Communications/Pics/Lossless Coding/Pasted image 20260501175241.png",
+    "Multimedia Communications/Pics/Transform coding/Pasted image 20260501181202.png",
+    "Multimedia Communications/Pics/Transform coding/Pasted image 20260501181646.png",
+    "Multimedia Communications/Slides/4. Transform coding.pdf",
+    "Multimedia Communications/Pics/Transform coding",
+    "Multimedia Communications/Pics/Transform coding/Pasted image 20260501182154.png",
+    "Multimedia Communications/Summaries/4. Transform coding.md",
+    "Multimedia Communications/Pics/Transform coding/Pasted image 20260501182720.png",
+    "Multimedia Communications/Summaries/5. Wavelet analysis.md",
+    "Multimedia Communications/Summaries/6. Learned Image Compression.md",
+    "Multimedia Communications/Slides/6. Learned Image Coding.pdf",
+    "Multimedia Communications/Slides/3. Lossless coding.pdf",
+    "Multimedia Communications/Summaries/3. Lossless coding.md",
+    "PLACEHOLDER_Fig_7 — LZW encoding step-by-step example.md",
+    "Multimedia Communications/Slides/7. Motion estimation.pdf",
+    "Multimedia Communications/Slides/2. Scalar and Predictive Quantization.pdf",
+    "Multimedia Communications/Summaries/2. Scalar and Predictive Quantization.md",
+    "Multimedia Communications/Pics/Scalar and Predictive Quantization",
+    "Multimedia Communications/Pics/Senza nome.md",
+    "Multimedia Communications/Summaries/1. Introduction to Multimedia Compression.md",
+    "Multimedia Communications/Slides/1. Introduction to Multimedia Compression.pdf",
+    "PLACEHOLDER_Fig_12 — color photo decomposed into R, G, B grayscale channels.md",
+    "Multimedia Communications/Pics/Introduction",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/5. Wavelet analysis.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_145.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_144.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_143.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_142.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_141.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_140.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_139.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_138.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_137.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_136.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_135.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_134.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_133.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_132.md",
+    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_131.md"
   ]
 }
