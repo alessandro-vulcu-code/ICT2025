@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Multimedia Communications/Summaries/4. Transform coding.md",
+                "file": "Modern CPP for Internet and Multimedia/MD Lessons/Slides 1 types and declarations/Slides 1 types and declarations.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4. Transform coding"
+              "title": "Slides 1 types and declarations"
             }
           }
         ]
@@ -190,8 +190,9 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "771881e3e2ec399c",
+  "active": "f4f838703917e7b6",
   "lastOpenFiles": [
+    "Multimedia Communications/Summaries/4. Transform coding.md",
     "Multimedia Communications/Pics/Transform coding/Pasted image 20260501180944.png",
     "Multimedia Communications/Pics/Lossless Coding",
     "Multimedia Communications/Pics/Lossless Coding/Pasted image 20260501180316.png",
@@ -204,7 +205,6 @@
     "Multimedia Communications/Slides/4. Transform coding.pdf",
     "Multimedia Communications/Pics/Transform coding",
     "Multimedia Communications/Pics/Transform coding/Pasted image 20260501182154.png",
-    "Multimedia Communications/Summaries/4. Transform coding.md",
     "Multimedia Communications/Pics/Transform coding/Pasted image 20260501182720.png",
     "Multimedia Communications/Summaries/5. Wavelet analysis.md",
     "Multimedia Communications/Summaries/6. Learned Image Compression.md",
