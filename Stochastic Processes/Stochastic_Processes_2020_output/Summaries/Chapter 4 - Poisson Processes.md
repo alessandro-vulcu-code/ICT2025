@@ -1,473 +1,676 @@
 # Chapter 4 — Poisson Processes
 
-Poisson processes occupy a special role in stochastic modelling: they describe the accumulation of rare, independent events over time, arise as universal limits of many different processes (Law of Rare Events), and admit remarkably clean closed-form results. This chapter develops their theory from the ground up.
+## Table of Contents
+
+- [[#The Poisson Distribution|The Poisson Distribution]]
+  - [[#Theorem 4.1.1 — Sum of Poisson Variables|Theorem 4.1.1 — Sum of Poisson Variables]]
+  - [[#Theorem 4.1.2 — Poisson Composed with Binomial|Theorem 4.1.2 — Poisson Composed with Binomial]]
+- [[#The Poisson Process|The Poisson Process]]
+  - [[#Definition 1 — Poisson Process|Definition 1 — Poisson Process]]
+  - [[#Examples|Examples]]
+  - [[#Non-Homogeneous Poisson Process|Non-Homogeneous Poisson Process]]
+- [[#The Law of Rare Events|The Law of Rare Events]]
+- [[#Properties of Poisson Processes|Properties of Poisson Processes]]
+  - [[#Theorem 4.4.1 — Superposition|Theorem 4.4.1 — Superposition]]
+  - [[#Theorem 4.4.2 — Splitting (Thinning)|Theorem 4.4.2 — Splitting (Thinning)]]
+- [[#Other Distributions from a Poisson Process|Other Distributions from a Poisson Process]]
+  - [[#Theorem 4.5.1 — Inter-Arrival Times|Theorem 4.5.1 — Inter-Arrival Times]]
+  - [[#Theorem 4.5.2 — Waiting Time Distribution|Theorem 4.5.2 — Waiting Time Distribution]]
+  - [[#Ordered Uniform Points|Ordered Uniform Points]]
+  - [[#Theorem 4.5.3 — Conditional Arrival Times|Theorem 4.5.3 — Conditional Arrival Times]]
+  - [[#Theorem 4.5.4 — Conditional Count is Binomial|Theorem 4.5.4 — Conditional Count is Binomial]]
+  - [[#Theorem 4.5.5 — Competition Theorem|Theorem 4.5.5 — Competition Theorem]]
+  - [[#Corollary 4.5.6 — Competition with Sub-Interval|Corollary 4.5.6 — Competition with Sub-Interval]]
+  - [[#M/G/∞ Queue|M/G/∞ Queue]]
+  - [[#Shot Noise Process|Shot Noise Process]]
+- [[#Binomial Theorem and Dual Version|Binomial Theorem and Dual Version]]
+  - [[#Theorem 4.6.1 — Binomial Theorem (Direct Proof)|Theorem 4.6.1 — Binomial Theorem (Direct Proof)]]
+  - [[#Dual Version|Dual Version]]
+  - [[#Exercises|Exercises]]
+- [[#P.A.S.T.A. Property|P.A.S.T.A. Property]]
+  - [[#PASTA Theorem|PASTA Theorem]]
+  - [[#Counter-Examples|Counter-Examples]]
+  - [[#Departures See Same Distribution as Arrivals|Departures See Same Distribution as Arrivals]]
+  - [[#Periodic Class — Limit Existence Condition|Periodic Class — Limit Existence Condition]]
+- [[#Summary Table|Summary Table]]
 
 ---
 
-## 4.1 The Poisson Distribution
+## The Poisson Distribution
 
-**Definition.** The **Poisson distribution** with parameter $\mu > 0$ has probability mass function:
-$$p_k \equiv \mathbb{P}[X = k] = \frac{e^{-\mu}\mu^k}{k!}, \qquad k = 0, 1, 2, \ldots \tag{4.1}$$
-
-Its mean and variance are both equal to $\mu$:
-$$\mathbb{E}[X] = \mu, \qquad \mathrm{Var}[X] = \mu$$
-
-The coincidence of mean and variance is a distinctive signature of the Poisson distribution and is often used in practice to test whether data follows it.
-
----
-
-> **Theorem 4.1.1 (Sum of Poisson variables is Poisson).** Let $X \sim \mathrm{Poisson}(\mu)$ and $Y \sim \mathrm{Poisson}(\nu)$ be independent. Then $X + Y \sim \mathrm{Poisson}(\mu + \nu)$.
-
-**Proof.** We compute $\mathbb{P}[X + Y = n]$ directly. The event $\{X + Y = n\}$ decomposes into mutually exclusive events $\{X = k, Y = n-k\}$ for $k = 0, 1, \ldots, n$. By the law of total probability and independence:
-
-$$\mathbb{P}[X + Y = n] = \sum_{k=0}^{n} \mathbb{P}[X=k]\,\mathbb{P}[Y=n-k] = \sum_{k=0}^{n} \frac{\mu^k e^{-\mu}}{k!}\,\frac{\nu^{n-k}e^{-\nu}}{(n-k)!}$$
-
-Factoring $e^{-(\mu+\nu)}$ and multiplying/dividing by $n!$ to expose the binomial theorem:
-
-$$= \frac{e^{-(\mu+\nu)}}{n!} \underbrace{\sum_{k=0}^{n} \binom{n}{k} \mu^k \nu^{n-k}}_{(\mu+\nu)^n} = \frac{e^{-(\mu+\nu)}(\mu+\nu)^n}{n!} \tag{4.2}$$
-
-which is $\mathrm{Poisson}(\mu + \nu)$. $\square$
-
-**Corollary.** By induction, the sum of $m$ independent Poisson random variables with parameters $\mu_1, \ldots, \mu_m$ is $\mathrm{Poisson}(\mu_1 + \cdots + \mu_m)$.
-
----
-
-> **Theorem 4.1.2 (Binomial thinning of a Poisson).** Let $N \sim \mathrm{Poisson}(\mu)$ and, conditional on $N$, let $M \sim \mathrm{Binomial}(N, p)$. Then the marginal distribution of $M$ is $\mathrm{Poisson}(\mu p)$.
-
-**Intuition.** Take $N$ Poisson-distributed objects and keep each independently with probability $p$. The number retained, $M$, is again Poisson — with the effective rate reduced by the factor $p$. The binomial thinning acts as a "filter" that scales the rate without changing the distributional form.
-
-*(Proof: this is Exercise 1.6.1. The argument uses the law of total probability to sum over all values of $N$, applying the binomial pmf and the Poisson pmf for $N$, and recognising the resulting series as a Poisson pmf.)*
-
----
-
-## 4.2 The Poisson Process
-
-A **Poisson process** formalises the intuition of counting rare, memoryless events accumulating over time.
-
-> **Definition 1 (Poisson process).** A Poisson process of rate $\lambda > 0$ is an integer-valued stochastic process $\{X(t) : t \geq 0\}$ satisfying:
+> [!Important] Definition — Poisson Distribution
+> The **Poisson distribution** with parameter $\mu>0$:
+> $$p_k \equiv \mathbb{P}[X=k] = \frac{e^{-\mu}\mu^k}{k!} \qquad k=0,1,2,\ldots \tag{4.1}$$
 >
-> 1. **Initial condition:** $X(0) = 0$.
-> 2. **Independent and stationary increments:** For any $0 = t_0 < t_1 < \cdots < t_n$, the increments $X(t_1)-X(t_0),\, X(t_2)-X(t_1),\, \ldots,\, X(t_n)-X(t_{n-1})$ are mutually independent random variables, and the distribution of $X(t_{i+1})-X(t_i)$ depends only on the interval length $t_{i+1}-t_i$.
-> 3. **Poisson increments:** For any $s \geq 0$ and $t > 0$:
-> $$\mathbb{P}[X(s+t) - X(s) = k] = \frac{(\lambda t)^k e^{-\lambda t}}{k!}, \qquad k = 0, 1, 2, \ldots$$
+> Mean and variance: $\mathbb{E}[X]=\mu$, $\operatorname{Var}[X]=\mu$.
 
-**Unpacking the axioms:**
-- **Independent increments:** the number of events in any interval is independent of events in any disjoint interval. The future does not depend on the past.
-- **Stationary increments:** the process is in its "steady state" — the event rate $\lambda$ is constant over time, and the count distribution depends only on interval length, not position.
-- **Poisson increments:** each count follows a Poisson distribution with mean $\lambda t$ (rate times duration).
+### Theorem 4.1.1 — Sum of Poisson Variables
 
-Immediate consequences:
-$$\mathbb{E}[X(t)] = \lambda t, \qquad \mathrm{Var}[X(t)] = \lambda t$$
+> [!Important] Theorem 4.1.1 — Sum of Independent Poisson Variables
+> **Statement:** Let $X\sim\mathrm{Poisson}(\mu)$ and $Y\sim\mathrm{Poisson}(\nu)$ be independent. Then $X+Y\sim\mathrm{Poisson}(\mu+\nu)$.
+>
+> **Proof:**
+> By the law of total probability (events $\{X=k, Y=n-k\}$ are mutually exclusive):
+> $$\mathbb{P}[X+Y=n] = \sum_{k=0}^n\mathbb{P}[X=k]\mathbb{P}[Y=n-k]$$
+> Substituting (4.1) and factoring $e^{-(\mu+\nu)}$:
+> $$= \sum_{k=0}^n\frac{\mu^k e^{-\mu}}{k!}\frac{\nu^{n-k}e^{-\nu}}{(n-k)!} = \frac{e^{-(\mu+\nu)}}{n!}\underbrace{\sum_{k=0}^n\binom{n}{k}\mu^k\nu^{n-k}}_{(\mu+\nu)^n}$$
+> Therefore:
+> $$\mathbb{P}[X+Y=n] = \frac{e^{-(\mu+\nu)}(\mu+\nu)^n}{n!} \tag{4.2}$$
+> which is $\mathrm{Poisson}(\mu+\nu)$. $\square$
+>
+> **Intuition:** The binomial sum $\sum_k\binom{n}{k}\mu^k\nu^{n-k}=(\mu+\nu)^n$ collapses the double sum into a single Poisson. The two sources combine with additive rates.
 
----
+### Theorem 4.1.2 — Poisson Composed with Binomial
 
-**Example 1 — Undersea cable defects.** Defects occur at rate $\lambda = 0.1$ per mile.
-
-- $\mathbb{P}[\text{no defects in first 2 miles}] = \mathbb{P}[X(2)=0] = e^{-0.2} \approx 0.819$
-- By independent increments, the conditional probability of no defects in miles 2–3, *given* no defects in miles 0–2, equals the unconditional probability:
-  $\mathbb{P}[X(3)-X(2)=0] = e^{-0.1} \approx 0.905$
-
-**Example 2 — Customer arrivals.** Customers arrive at rate $\lambda = 4$/hour. The store opens at 9:00 AM (set as $t=0$).
-
-$$\mathbb{P}[X({\textstyle\frac{1}{2}})=1,\, X({\textstyle\frac{5}{2}})=5] = \mathbb{P}[X({\textstyle\frac{1}{2}})=1]\cdot\mathbb{P}[X({\textstyle\frac{5}{2}})-X({\textstyle\frac{1}{2}})=4]$$
-
-Using independent increments to factorise, then computing each Poisson probability:
-$$= \frac{e^{-2} \cdot 2^1}{1!} \cdot \frac{e^{-8}\cdot 8^4}{4!} = 2e^{-2}\cdot\frac{512}{3}e^{-8} \approx 0.0155$$
-
-**Non-homogeneous Poisson process.** Relaxing stationarity, let the rate be a function of time $\lambda(t)$. In an infinitesimal interval $[t, t+h]$:
-$$\mathbb{P}[X(t+h)-X(t) = 1] = \lambda(t)h + o(h), \qquad \mathbb{P}[X(t+h)-X(t) \geq 2] = o(h)$$
-
-The expected number of events in $(s, s+t]$ becomes $\int_s^{s+t} \lambda(\tau)\,\mathrm{d}\tau$ rather than $\lambda t$.
+> [!Important] Theorem 4.1.2 — Poisson Filtered by Binomial
+> **Statement:** Let $N\sim\mathrm{Poisson}(\mu)$. Conditional on $N$, let $M\sim\mathrm{Binomial}(N,p)$. Then the unconditional distribution of $M$ is $\mathrm{Poisson}(\mu p)$.
+>
+> **Proof:** Referred to Exercise 1.6.1 (Chapter 1).
+>
+> **Intuition:** Picking $N\sim\mathrm{Poisson}(\mu)$ objects and keeping each with probability $p$ yields $\mathrm{Poisson}(\mu p)$ objects. A binomial filter reduces the effective rate without changing the distributional form.
 
 ---
 
-## 4.3 The Law of Rare Events
+## The Poisson Process
 
-The Poisson distribution is the discrete analogue of the Gaussian distribution. Just as the Central Limit Theorem guarantees that the sum of many i.i.d. continuous random variables converges to a Gaussian, the **Law of Rare Events** guarantees that the count of many independent, individually-unlikely events converges to a Poisson distribution.
+### Definition 1 — Poisson Process
 
-**Simple form.** Consider $N$ independent Bernoulli trials, each succeeding with probability $p \ll 1$, with the total expected successes $\mu = Np$ held fixed. As $N \to \infty$ and $p \to 0$:
-$$\mathbb{P}[X_{N,p} = k] = \binom{N}{k}p^k(1-p)^{N-k} \xrightarrow{N\to\infty} \frac{e^{-\mu}\mu^k}{k!}$$
+> [!Important] Definition 1 — Poisson Process
+> A **Poisson process** of rate $\lambda>0$ is an integer-valued stochastic process $\{X(t):t\geq 0\}$ satisfying:
+>
+> 1. **Independent and stationary increments:** For any $0=t_0<t_1<\cdots<t_n$, the increments $X(t_1)-X(t_0),\,X(t_2)-X(t_1),\ldots,X(t_n)-X(t_{n-1})$ are independent and each depends only on the length of the corresponding interval (not on the absolute time).
+>
+> 2. **Poisson-distributed increments:** For $s\geq 0$, $t>0$:
+> $$\mathbb{P}[X(s+t)-X(s)=k] = \frac{(\lambda t)^k e^{-\lambda t}}{k!} \qquad k=0,1,2,\ldots$$
+>
+> 3. **Zero initial count:** $X(0)=0$.
+>
+> Consequently: $\mathbb{E}[X(t)]=\lambda t$ and $\operatorname{Var}[X(t)]=\lambda t$.
+>
+> **Intuition:** $\lambda$ is the constant rate of arrivals. Stationarity means the process is in its stationary state — no dependence on absolute time, only on interval length. Independent increments: what happened before has no effect on future counts.
 
-**General form.** The result holds even when the success probabilities vary across trials:
+### Examples
 
-> **Theorem 4.3.1 (Law of Rare Events).** Let $\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n$ be independent Bernoulli random variables with $\mathbb{P}[\varepsilon_i = 1] = p_i$. Let $S_n = \varepsilon_1 + \cdots + \varepsilon_n$ and $\mu = p_1 + \cdots + p_n$. Then the distribution of $S_n$ differs from $\mathrm{Poisson}(\mu)$ by at most:
-> $$\left|\mathbb{P}[S_n = k] - \frac{\mu^k e^{-\mu}}{k!}\right| \leq \sum_{i=1}^{n} p_i^2 \tag{4.4}$$
+> [!Example] Example — Defects on Undersea Cable
+> **Problem:** Defects along a cable follow a Poisson process with rate $\lambda=0.1$ per mile.
+>
+> *(a)* $\mathbb{P}[X(2)=0]$ = ?
+>
+> *(b)* $\mathbb{P}[X(3)-X(2)=0 \mid X(2)=0]$ = ?
+>
+> **Solution:**
+>
+> *(a)* $X(2)\sim\mathrm{Poisson}(0.2)$:
+> $$\mathbb{P}[X(2)=0]=e^{-0.2}=0.8187$$
+>
+> *(b)* By **independent increments**, $X(3)-X(2)$ is independent of $X(2)$:
+> $$\mathbb{P}[X(3)-X(2)=0]=\mathbb{P}[X(1)=0]=e^{-0.1}=0.9048$$
+>
+> **Takeaway:** Independent increments → conditioning on non-overlapping intervals is irrelevant.
 
-The bound (4.4) vanishes when all $p_i$ are small — the Poisson approximation becomes exact. If $p_i \equiv p$ and $Np = \mu$, then $\sum p_i^2 = Np^2 = \mu p = \mu^2/N \to 0$.
+> [!Example] Example — Customer Arrivals
+> **Problem:** Customers arrive at rate $\lambda=4$/hour (time unit = 1 hour from 9:00 AM).
+>
+> Find $\mathbb{P}[X(1/2)=1,\,X(5/2)=5]$.
+>
+> **Solution:** Rewrite using independent increments:
+> $$\mathbb{P}[X(1/2)=1,\,X(5/2)-X(1/2)=4]$$
+> $$= \frac{e^{-4(1/2)}[4(1/2)]^1}{1!}\cdot\frac{e^{-4(2)}[4(2)]^4}{4!} = (2e^{-2})\left(\frac{512}{3}e^{-8}\right) = 0.0155$$
+>
+> **Takeaway:** Use independence + stationarity to factor joint probabilities into products of Poisson probabilities.
 
-**Extension to stochastic processes.** The Law of Rare Events extends to processes: the superposition of many independent, low-rate processes (not necessarily Poisson themselves) converges to a Poisson process as the number of contributing processes grows. This justifies using a single Poisson model to describe aggregate arrivals from many heterogeneous sources — even if none of the individual sources is Poisson.
+### Non-Homogeneous Poisson Process
 
----
+A **non-homogeneous Poisson process** relaxes stationarity by allowing $\lambda=\lambda(t)$ (time-varying rate). The probability of a single event in an infinitesimal interval $h$:
 
-## 4.4 Properties of Poisson Processes
+$$\mathbb{P}[X(t+h)-X(t)=1] = \lambda(t)\,h + o(h)$$
 
-The two main operations — **superposition** (merging processes) and **thinning** (splitting) — preserve the Poisson property.
+The distribution of counts in $(s, s+t]$:
 
-### Superposition
+$$\mathbb{P}[X(t+s)-X(s)=k] = \frac{1}{k}\int_s^{t+s}(\lambda(t)t)^k e^{-\lambda(t)t}$$
 
-> **Theorem 4.4.1 (Superposition).** Let $X_1(t)$ and $X_2(t)$ be independent Poisson processes with rates $\lambda_1$ and $\lambda_2$. Then $X(t) = X_1(t) + X_2(t)$ is a Poisson process with rate $\lambda_1 + \lambda_2$.
-
-![[Stochastic_Processes_2020_p131_img34.jpeg]]
-*Figure 4.1 — Two merged Poisson processes form a single Poisson process with combined rate $\lambda_1 + \lambda_2$.*
-
-**Proof.** We verify all three axioms of Definition 1:
-1. $X(0) = X_1(0) + X_2(0) = 0 + 0 = 0$. $\checkmark$
-2. Since $X_1$ and $X_2$ each have independent stationary increments, their sum $X$ inherits both properties. $\checkmark$
-3. $X_1(t) \sim \mathrm{Poisson}(\lambda_1 t)$ and $X_2(t) \sim \mathrm{Poisson}(\lambda_2 t)$ are independent, so by Theorem 4.1.1: $X(t) \sim \mathrm{Poisson}((\lambda_1 + \lambda_2)t)$. $\checkmark$ $\square$
-
----
-
-### Thinning (Splitting)
-
-> **Theorem 4.4.2 (Thinning).** Let $X(t)$ be a Poisson process with rate $\lambda$. Independently classify each event as type 1 (with probability $p$) or type 2 (with probability $1-p$). Let $X_1(t)$ and $X_2(t)$ count type-1 and type-2 events. Then $X_1(t)$ and $X_2(t)$ are **independent** Poisson processes with rates $\lambda p$ and $\lambda(1-p)$.
-
-![[Stochastic_Processes_2020_p132_img35.jpeg]]
-*Figure 4.2 — Each event in a Poisson process is independently classified; the two sub-streams are themselves independent Poisson processes.*
-
-**Proof.** Axioms 1 and 2 are inherited from $X$ (since independent thinning preserves stationarity and independence of increments). For axiom 3, compute the **joint distribution** of $X_1(t)$ and $X_2(t)$:
-
-$$\mathbb{P}[X_1(t)=n,\, X_2(t)=m] = \mathbb{P}[X_1(t)=n \mid X(t)=n+m]\,\mathbb{P}[X(t)=n+m]$$
-
-Given $X(t) = n+m$ total events, the number of type-1 events is $\mathrm{Binomial}(n+m, p)$:
-
-$$= \binom{n+m}{n}p^n(1-p)^m \cdot \frac{e^{-\lambda t}(\lambda t)^{n+m}}{(n+m)!}$$
-
-Expanding and regrouping:
-
-$$= \frac{(\lambda pt)^n e^{-\lambda pt}}{n!} \cdot \frac{(\lambda(1-p)t)^m e^{-\lambda(1-p)t}}{m!}$$
-
-This factorises as the product of two independent Poisson pmfs with rates $\lambda pt$ and $\lambda(1-p)t$. $\checkmark$
-
-**Independence of increments on overlapping intervals.** To complete the proof that $X_1$ and $X_2$ are independent processes (not just independent at any fixed time $t$), we show that increments $X_1(t_3)-X_1(t_1)$ and $X_2(t_4)-X_2(t_2)$ are independent for all choices of intervals $[t_1,t_3]$ and $[t_2,t_4]$.
-
-There are three cases:
-
-![[Stochastic_Processes_2020_p133_img36.jpeg]]
-*(a) — Partially overlapping: $[t_1,t_3]$ and $[t_2,t_4]$ share $[t_2,t_3]$.*
-
-![[Stochastic_Processes_2020_p133_img37.jpeg]]
-*(b) — One interval fully inside the other.*
-
-![[Stochastic_Processes_2020_p133_img38.jpeg]]
-*(c) — Disjoint intervals.*
-
-*Figure 4.3 — All possible overlaps of two intervals.*
-
-**Case (a): Partial overlap $t_1 < t_2 < t_3 < t_4$.** Decompose:
-$$X_1(t_3) - X_1(t_1) = \underbrace{[X_1(t_3)-X_1(t_2)]}_{\text{overlap}} + \underbrace{[X_1(t_2)-X_1(t_1)]}_{\text{non-overlap}}$$
-$$X_2(t_4) - X_2(t_2) = \underbrace{[X_2(t_3)-X_2(t_2)]}_{\text{overlap}} + \underbrace{[X_2(t_4)-X_2(t_3)]}_{\text{non-overlap}}$$
-
-On the overlap $[t_2,t_3]$: $X_1$ and $X_2$ increments are independent (shown above). On non-overlapping intervals, Poisson increments are always independent. Sums of pairwise-independent terms are independent. $\checkmark$
-
-**Cases (b) and (c)** follow by similar decomposition. $\square$
+*(Note: the source formula above is reproduced as-is — the factor $1/k$ may be a transcription artifact; the standard formula integrates $\lambda(u)$ over the interval.)*
 
 ---
 
-## 4.5 Distributions Associated with a Poisson Process
+## The Law of Rare Events
 
-A Poisson process carries a rich family of associated distributions, depending on which aspect we focus on.
+The Poisson distribution is the **discrete analog of the Normal**: just as the Normal arises as the limit of sums of many continuous r.v.s (CLT), the Poisson arises as the limit of sums of many rare discrete events.
 
-**Definitions:**
-- **Arrival times (waiting times)** $W_n$: the time at which the $n$-th event occurs.
-- **Inter-arrival times (sojourn times)** $S_i = W_{i+1} - W_i$: time between consecutive events.
+**Fixed probability case:** $N$ independent Bernoulli trials with fixed probability $p\ll 1$, total successes $X_{N,p}\sim\mathrm{Binomial}(N,p)$. In the limit $p\to 0$, $N\to\infty$, $Np\equiv\mu$:
+
+$$\mathbb{P}[X_{N,p}=k] \to \frac{e^{-\mu}\mu^k}{k!}$$
+
+> [!Important] Theorem — Law of Rare Events (General)
+> **Statement:** Let $\epsilon_1,\epsilon_2,\ldots$ be independent Bernoulli r.v.s with $\mathbb{P}[\epsilon_i=1]=p_i$, $S_n=\epsilon_1+\cdots+\epsilon_n$, $\mu=p_1+\cdots+p_n$. Then:
+> $$\left|\mathbb{P}[S_n=k]-\frac{\mu^k e^{-\mu}}{k!}\right|\leq\sum_{i=1}^n p_i^2 \tag{4.4}$$
+>
+> **Corollary:** If all $p_i\equiv p$ and $Np=\mu$ is fixed, then as $N\to\infty$, $p\to 0$ and the RHS $\to 0$: $S_n$ converges in distribution to $\mathrm{Poisson}(\mu)$.
+>
+> **Intuition:** Even with heterogeneous $p_i$, the bound $\sum p_i^2$ vanishes when individual $p_i$ are small (hence "rare"). The Poisson is universal for counts of rare events.
+
+**Applied to processes:** The combination of many independent processes (not necessarily Poisson) generating events at random times converges in the limit $M\to\infty$ to a single Poisson process. This makes the Poisson model universally applicable even when individual underlying processes are not Poisson.
+
+---
+
+## Properties of Poisson Processes
+
+### Theorem 4.4.1 — Superposition
+
+> [!Important] Theorem 4.4.1 — Superposition of Poisson Processes
+> **Statement:** Let $X_1(t)$ and $X_2(t)$ be independent Poisson processes with rates $\lambda_1$, $\lambda_2$. Then $X(t)=X_1(t)+X_2(t)$ is a Poisson process with rate $\lambda=\lambda_1+\lambda_2$.
+>
+> ![[Stochastic_Processes_2020_p131_img34.jpeg]]
+> *Figure 4.1 — Two independent Poisson processes combined into a single Poisson process with rate $\lambda_1+\lambda_2$.*
+>
+> **Proof:** Verify the three requirements of Definition 1:
+>
+> 1. $X(0)=X_1(0)+X_2(0)=0$. ✓
+> 2. Since $X_1$, $X_2$ each have stationary and independent increments, so does $X=X_1+X_2$. ✓
+> 3. $X_1(t)\sim\mathrm{Poisson}(\lambda_1 t)$ and $X_2(t)\sim\mathrm{Poisson}(\lambda_2 t)$ independently → by Theorem 4.1.1, $X(t)\sim\mathrm{Poisson}((\lambda_1+\lambda_2)t)$. ✓ $\square$
+
+### Theorem 4.4.2 — Splitting (Thinning)
+
+> [!Important] Theorem 4.4.2 — Splitting of a Poisson Process
+> **Statement:** Let $X(t)$ be a Poisson process with rate $\lambda$. Each event is independently marked type 1 (probability $p$) or type 2 (probability $1-p$). Then the type-1 events form a Poisson process with rate $\lambda p$, the type-2 events form an independent Poisson process with rate $\lambda(1-p)$.
+>
+> ![[Stochastic_Processes_2020_p132_img35.jpeg]]
+> *Figure 4.2 — A Poisson process split into two independent Poisson sub-processes.*
+>
+> **Proof:** Verify the three requirements:
+>
+> 1. $X_1(0)=X_2(0)=0$. ✓
+> 2. $X_1$, $X_2$ inherit stationary and independent increments from $X$ (marking is independent). ✓
+> 3. Joint distribution at time $t$ (noting $X_2(t)=X(t)-n$ if $X_1(t)=n$):
+> $$\mathbb{P}[X_1(t)=n,\,X_2(t)=m] = \mathbb{P}[X_1(t)=n\mid X(t)=n+m]\,\mathbb{P}[X(t)=n+m]$$
+> The conditional factor is $\mathrm{Binomial}(n+m,p)$:
+> $$= \binom{n+m}{n}p^n(1-p)^m\cdot\frac{e^{-\lambda t}(\lambda t)^{n+m}}{(n+m)!}$$
+> $$= \frac{(\lambda pt)^n e^{-\lambda pt}}{n!}\cdot\frac{(\lambda(1-p)t)^m e^{-\lambda(1-p)t}}{m!}$$
+> This is the product of two independent Poisson distributions: $X_1(t)\sim\mathrm{Poisson}(\lambda pt)$ and $X_2(t)\sim\mathrm{Poisson}(\lambda(1-p)t)$, independent. ✓
+>
+> **Independence of increments over arbitrary intervals** — three cases (fig 4.3):
+>
+> - **Partial overlap** $[t_1,t_3]\cap[t_2,t_4]=[t_2,t_3]$: split into non-overlapping $[t_1,t_2]$, overlap $[t_2,t_3]$, and $[t_3,t_4]$. On the overlap, $X_1$ and $X_2$ increments are independent (proved above). On disjoint parts, increments of the same Poisson process are independent by definition. Sums of pairwise independent r.v.s are independent. ✓
+> - **One contained in the other** $t_1<t_2<t_4<t_3$: split into $[t_1,t_2]$, $[t_2,t_4]$, $[t_4,t_3]$; same argument. ✓
+> - **Disjoint intervals**: trivial. ✓ $\square$
+>
+> ![[Stochastic_Processes_2020_p133_img36.jpeg]]
+> *(a) — Partial overlap $[t_2,t_3]$.*
+>
+> ![[Stochastic_Processes_2020_p133_img37.jpeg]]
+> *(b) — One interval contained in the other.*
+>
+> ![[Stochastic_Processes_2020_p133_img38.jpeg]]
+> *(c) — Disjoint intervals.*
+>
+> *Figure 4.3 — All possible overlaps of two intervals $[t_1,t_3]$ and $[t_2,t_4]$.*
+
+---
+
+## Other Distributions from a Poisson Process
+
+Let $W_i$ denote the **arrival times** (times of the $i$-th event). Define the **inter-arrival times** (sojourn times):
+
+$$S_i \equiv W_{i+1}-W_i \qquad\text{so that}\qquad W_i = \sum_{k=0}^{i-1}S_k$$
 
 ![[Stochastic_Processes_2020_p134_img39.jpeg]]
-*Figure 4.4 — A sample path of a Poisson process showing waiting times $W_i$ (absolute) and sojourn times $S_n$ (between events).*
+*Figure 4.4 — Typical sample path of a Poisson process: arrival times $W_i$ and sojourn times $S_i$.*
 
-Clearly $W_n = \sum_{k=0}^{n-1} S_k$.
+### Theorem 4.5.1 — Inter-Arrival Times
 
----
+> [!Important] Theorem 4.5.1 — Inter-Arrival Times are i.i.d. Exponential
+> **Statement:** The inter-arrival times $S_i$ are i.i.d. $\mathrm{Exp}(\lambda)$ random variables.
+>
+> **Proof:** Referred to Theorem 2.2.1 (Chapter 2, page 33).
+>
+> **Intuition:** Memorylessness of the Poisson process → each waiting period starts fresh → exponential sojourn times.
 
-> **Theorem 4.5.1 (Inter-arrival times are exponential).** The sojourn times $S_i$ are i.i.d. $\mathrm{Exp}(\lambda)$.
+### Theorem 4.5.2 — Waiting Time Distribution
 
-**Proof.** See the proof of Theorem 2.2.1 (Chapter 2). For completeness: $\mathbb{P}[S_0 > t] = \mathbb{P}[0 \text{ events in } [0,t]] = e^{-\lambda t}$, so $S_0 \sim \mathrm{Exp}(\lambda)$. By independent and stationary increments, the same calculation applies to each $S_n$ conditioned on any history, yielding independence. $\square$
+> [!Important] Theorem 4.5.2 — Waiting Time $W_n\sim\mathrm{Gamma}(n,\lambda)$
+> **Statement:** The waiting time for the $n$-th event has the Gamma distribution:
+> $$f_{W_n}(t) = \frac{\lambda^n t^{n-1}}{(n-1)!}e^{-\lambda t} \qquad n=1,2,\ldots,\quad t\geq 0$$
+>
+> **Proof:** $W_n=\sum_{i=0}^{n-1}S_i$ is the sum of $n$ i.i.d. $\mathrm{Exp}(\lambda)$ r.v.s, which by definition is a $\mathrm{Gamma}(n,\lambda)$ distribution. $\square$
 
----
+### Ordered Uniform Points
 
-> **Theorem 4.5.2 (Waiting times are Gamma-distributed).** The time $W_n$ of the $n$-th event has the Gamma distribution:
-> $$f_{W_n}(t) = \frac{\lambda^n t^{n-1}}{(n-1)!}\,e^{-\lambda t}, \qquad t \geq 0, \quad n = 1, 2, \ldots$$
+Suppose $n$ points $U_i$ are chosen independently and uniformly in $(0,t)$. Their joint pdf is:
 
-**Proof.** Since $W_n = S_0 + S_1 + \cdots + S_{n-1}$ is the sum of $n$ i.i.d. $\mathrm{Exp}(\lambda)$ random variables, and the Gamma distribution with parameters $(n, \lambda)$ is by definition the distribution of such a sum (Section 1.5.4), the result follows immediately. $\square$
+$$f_{U_1,\ldots,U_n}(w_1,\ldots,w_n) = t^{-n} \qquad\text{for all }(w_1,\ldots,w_n)\in(0,t)^n$$
 
----
+Let $\{W_i\}$ be the **ordered** version $0\leq W_1<W_2<\cdots<W_n\leq t$. The $W_i$ are not independent (ordering constraint). For $n=2$:
 
-### Uniform Conditional Distribution of Arrival Times
+$$f_{W_1,W_2}(w_1,w_2) = 2t^{-2}$$
 
-Given that exactly $n$ events occurred in $(0, t]$, where are they located?
+The factor 2 counts the two permutations of $\{U_1,U_2\}$. Generalizing to $n$ points: $n!$ permutations yield:
 
-**Setup.** Draw $n$ points $U_1, \ldots, U_n$ independently and uniformly on $(0, t)$. Their joint pdf is:
-$$f_{U_1,\ldots,U_n}(u_1,\ldots,u_n) = t^{-n}, \qquad (u_1,\ldots,u_n) \in (0,t)^n$$
-
-Now let $W_1 < W_2 < \cdots < W_n$ be the same points in ascending order. The ordered statistics are not independent (the ordering constraint couples them). Their joint pdf is:
-$$f_{W_1,\ldots,W_n}(w_1,\ldots,w_n) = n!\,t^{-n}, \qquad 0 < w_1 < w_2 < \cdots < w_n \leq t \tag{4.8}$$
-
-The factor $n!$ accounts for the $n!$ permutations of $\{U_i\}$ that all produce the same ordered sequence $\{W_i\}$.
+$$f_{W_1,\ldots,W_n}(w_1,\ldots,w_n) = n!\,t^{-n} \qquad\text{for }0<w_1<\cdots<w_n\leq t$$
 
 ![[Stochastic_Processes_2020_p135_img40.jpeg]]
-*Figure 4.5 — $n$ uniform points $U_i$ on $(0,t)$, and their ordered version $W_i$.*
+*Figure 4.5 — $n$ uniform points $U_i$ in $(0,t)$ and their ordered version $W_i$.*
 
 ![[Stochastic_Processes_2020_p135_img41.jpeg]]
-*Figure 4.6 — For $n=2$: either $U_1$ or $U_2$ can fall in $[w_1, w_1+\Delta w_1]$; both permutations contribute.*
+*Figure 4.6 — Two points and their small intervals $[w_i,w_i+\Delta w_i]$. Each permutation of $\{U_1,U_2\}$ contributes equally.*
 
-**Derivation for $n=2$.** The probability that $W_1 \in [w_1, w_1+\Delta w_1]$ and $W_2 \in [w_2, w_2+\Delta w_2]$ equals the probability that $U_1$ or $U_2$ occupies the first interval and the other occupies the second (both permutations are possible and mutually exclusive):
+### Theorem 4.5.3 — Conditional Arrival Times
 
-$$f_{W_1,W_2}(w_1,w_2)\,\Delta w_1\,\Delta w_2 = 2 \cdot \frac{\Delta w_1}{t}\cdot\frac{\Delta w_2}{t}$$
+> [!Important] Theorem 4.5.3 — Given $X(t)=n$, Arrival Times are Ordered Uniform
+> **Statement:** Let $W_1,W_2,\ldots$ be ordered arrival times of a Poisson process with rate $\lambda$. Conditioned on $X(t)=n$:
+> $$f_{W_1,\ldots,W_n\mid X(t)=n}(w_1,\ldots,w_n) = n!\,t^{-n} \qquad 0<w_1<\cdots<w_n\leq t$$
+> i.e., the $n$ arrival times are distributed as the order statistics of $n$ i.i.d. $\mathrm{Uniform}(0,t)$ r.v.s.
+>
+> **Proof:**
+> Assume all $w_i$ are distinct (simultaneous arrivals have probability zero in a Poisson process). Choose disjoint intervals $[w_i,w_i+\Delta w_i]$. Compute the probability that exactly one arrival falls in each interval $[w_i,w_i+\Delta w_i]$ and zero arrivals fall everywhere else in $[0,t]$, given $X(t)=n$:
+>
+> $$\mathbb{P}[w_i\leq W_i\leq w_i+\Delta w_i,\,i=1,\ldots,n\mid X(t)=n]$$
+>
+> Numerator (disjoint intervals → independent Poisson increments):
+> $$\prod_{i=1}^n\lambda\Delta w_i e^{-\lambda\Delta w_i}\cdot e^{-\lambda(t-\sum_i\Delta w_i)}$$
+>
+> Denominator (probability of $n$ events in $[0,t]$):
+> $$\frac{e^{-\lambda t}(\lambda t)^n}{n!}$$
+>
+> The exponentials $e^{-\lambda\Delta w_1}\cdots e^{-\lambda\Delta w_n}\cdot e^{-\lambda(t-\sum\Delta w_i)}=e^{-\lambda t}$ cancel with the denominator's $e^{-\lambda t}$, and $\lambda^n$ cancels. The ratio equals:
+> $$n!\,t^{-n}\,\Delta w_1\cdots\Delta w_n$$
+>
+> ![[Stochastic_Processes_2020_p137_img42.jpeg]]
+> *Figure 4.7 — Each interval $[w_i,w_i+\Delta w_i]$ must contain exactly one arrival; disjoint intervals are independent.*
+>
+> Dividing by $\prod\Delta w_i$ and taking $\Delta w_i\to 0$:
+> $$f_{W_1,\ldots,W_n\mid X(t)=n}(w_1,\ldots,w_n) = n!\,t^{-n} \qquad\square$$
+>
+> **Intuition:** Given their count, arrivals have no memory of the Poisson rate — they are just $n$ points scattered uniformly at random in $[0,t]$.
 
-Dividing by $\Delta w_1\,\Delta w_2$ and taking the limit: $f_{W_1,W_2}(w_1,w_2) = 2t^{-2} = 2!\,t^{-2}$. Generalising to $n$ points gives (4.8). $\square$
+### Theorem 4.5.4 — Conditional Count is Binomial
 
----
+> [!Important] Theorem 4.5.4 — $X(u)\mid X(t)=n \sim \mathrm{Binomial}(n,u/t)$
+> **Statement:** For a Poisson process with rate $\lambda$, given $X(t)=n$, the number of arrivals in $(0,u)$ with $0<u<t$ satisfies:
+> $$\mathbb{P}[X(u)=k\mid X(t)=n] = \binom{n}{k}\left(\frac{u}{t}\right)^k\left(1-\frac{u}{t}\right)^{n-k} \qquad 0\leq k\leq n$$
+>
+> ![[Stochastic_Processes_2020_p138_img43.jpeg]]
+> *Figure 4.8 — Given $n$ events uniform in $(0,t)$, each falls in $(0,u)$ with probability $p=u/t$, so $X(u)\sim\mathrm{Binomial}(n,u/t)$.*
+>
+> **Proof:** By Theorem 4.5.3, given $X(t)=n$, each of the $n$ arrival times is i.i.d. $\mathrm{Uniform}(0,t)$. Each independently falls in $[0,u]$ with probability $u/t$. Hence $X(u)\mid X(t)=n \sim\mathrm{Binomial}(n,u/t)$. $\square$
 
-> **Theorem 4.5.3 (Conditional uniform distribution of arrival times).** Given $X(t) = n$, the joint pdf of the $n$ arrival times $W_1 < W_2 < \cdots < W_n$ is:
-> $$f_{W_1,\ldots,W_n|X(t)=n}(w_1,\ldots,w_n) = n!\,t^{-n}, \qquad 0 < w_1 < \cdots < w_n \leq t \tag{4.9}$$
-> Equivalently: given their count, the arrival times are distributed as $n$ independent uniform random variables on $(0,t)$, sorted in order.
+### Theorem 4.5.5 — Competition Theorem
 
-**Proof.** Choose disjoint intervals $[w_i, w_i + \Delta w_i]$ (possible since all $w_i$ are distinct; simultaneous events are negligible in a Poisson process). Compute the probability that the $i$-th arrival falls in $[w_i, w_i+\Delta w_i]$ and no arrivals occur elsewhere:
+> [!Important] Theorem 4.5.5 — Competition Between Two Poisson Processes
+> **Statement:** Let $X_1(t)$, $X_2(t)$ be independent Poisson processes with rates $\lambda_1$, $\lambda_2$. Given $X_1(t)+X_2(t)=n$:
+> $$\mathbb{P}[X_1(t)=k\mid X_1(t)+X_2(t)=n] = \binom{n}{k}\left(\frac{\lambda_1}{\lambda_1+\lambda_2}\right)^k\left(\frac{\lambda_2}{\lambda_1+\lambda_2}\right)^{n-k} \tag{4.12}$$
+>
+> **Proof:** Apply the definition of conditional probability:
+> $$= \frac{\mathbb{P}[X_1(t)=k]\mathbb{P}[X_2(t)=n-k]}{\mathbb{P}[X_1(t)+X_2(t)=n]}$$
+> $$= \frac{e^{-\lambda_1 t}(\lambda_1 t)^k}{k!}\cdot\frac{e^{-\lambda_2 t}(\lambda_2 t)^{n-k}}{(n-k)!}\cdot\frac{n!}{e^{-(\lambda_1+\lambda_2)t}[(\lambda_1+\lambda_2)t]^n}$$
+> $$= \binom{n}{k}\left(\frac{\lambda_1}{\lambda_1+\lambda_2}\right)^k\left(\frac{\lambda_2}{\lambda_1+\lambda_2}\right)^{n-k} \qquad\square$$
+>
+> **Intuition:** Each of the $n$ total arrivals independently belongs to process 1 with probability $p_1=\lambda_1/(\lambda_1+\lambda_2)$. If $\lambda_1=\lambda_2$, $p_1=1/2$.
 
-$$\mathbb{P}[\text{one arrival in each } [w_i,w_i+\Delta w_i],\, \text{zero elsewhere} \mid X(t)=n]$$
+### Corollary 4.5.6 — Competition with Sub-Interval
 
-![[Stochastic_Processes_2020_p137_img42.jpeg]]
-*Figure 4.7 — One arrival in each $[w_i, w_i+\Delta w_i]$, zero elsewhere. Increments over disjoint intervals are independent.*
-
-By independence of Poisson increments over disjoint intervals, the numerator factors:
-
-$$\text{Numerator} = \prod_{i=1}^n (\lambda\,\Delta w_i\,e^{-\lambda\Delta w_i})\cdot e^{-\lambda(t - \sum_i \Delta w_i)}$$
-
-$$= \lambda^n e^{-\lambda t}\prod_{i=1}^n \Delta w_i$$
-
-Dividing by $\mathbb{P}[X(t)=n] = e^{-\lambda t}(\lambda t)^n/n!$:
-
-$$f_{W_1,\ldots,W_n|X(t)=n}\,\Delta w_1\cdots\Delta w_n = \frac{\lambda^n e^{-\lambda t}\prod_i\Delta w_i}{e^{-\lambda t}(\lambda t)^n/n!} = n!\,t^{-n}\prod_i\Delta w_i$$
-
-Dividing by $\prod_i\Delta w_i$ and taking the limit gives (4.9). $\square$
-
----
-
-> **Theorem 4.5.4 (Binomial theorem — past interval).** Let $X(t)$ be a Poisson process and fix $0 < u < t$. Given $X(t) = n$, the number of arrivals in $(0, u)$ follows:
-> $$\mathbb{P}[X(u) = k \mid X(t) = n] = \binom{n}{k}\left(\frac{u}{t}\right)^k\left(1-\frac{u}{t}\right)^{n-k}, \qquad k = 0, 1, \ldots, n$$
-
-**Proof.** By Theorem 4.5.3, given $X(t)=n$, each of the $n$ arrival times is uniformly distributed in $(0,t)$ and independent. Each falls in $(0,u)$ with probability $u/t$. The number falling in $(0,u)$ is therefore $\mathrm{Binomial}(n, u/t)$. $\square$
-
-![[Stochastic_Processes_2020_p138_img43.jpeg]]
-*Figure 4.8 — Each of $n$ uniform arrival times falls in $(0,u)$ with probability $u/t$, giving a binomial count.*
-
-**Direct proof (without Theorem 4.5.3).** Using conditional probability and independence of increments on disjoint intervals $[0,u]$ and $(u,t]$:
-
-$$\mathbb{P}[X(u)=k \mid X(t)=n] = \frac{\mathbb{P}[X(u)=k,\, X(t)-X(u)=n-k]}{\mathbb{P}[X(t)=n]}$$
-
-$$= \frac{e^{-\lambda u}(\lambda u)^k/k! \cdot e^{-\lambda(t-u)}[\lambda(t-u)]^{n-k}/(n-k)!}{e^{-\lambda t}(\lambda t)^n/n!} = \binom{n}{k}\frac{u^k(t-u)^{n-k}}{t^n} \qquad \square$$
-
----
-
-> **Theorem 4.5.5 (Joint distribution for two processes).** Let $X_1(t), X_2(t)$ be independent Poisson processes with rates $\lambda_1, \lambda_2$. Given $X_1(t)+X_2(t)=n$:
-> $$\mathbb{P}[X_1(t)=k \mid X_1(t)+X_2(t)=n] = \binom{n}{k}\left(\frac{\lambda_1}{\lambda_1+\lambda_2}\right)^k\left(\frac{\lambda_2}{\lambda_1+\lambda_2}\right)^{n-k} \tag{4.12}$$
-
-**Intuition.** Each of the $n$ combined events independently belongs to process 1 with probability $p_1 = \lambda_1/(\lambda_1+\lambda_2)$ — the fraction of the total rate contributed by process 1. So $X_1(t) \mid X_1(t)+X_2(t)=n$ is $\mathrm{Binomial}(n, p_1)$.
-
-**Proof.** Apply the definition of conditional probability:
-
-$$\mathbb{P}[X_1(t)=k \mid X_1(t)+X_2(t)=n] = \frac{\mathbb{P}[X_1(t)=k,\, X_2(t)=n-k]}{\mathbb{P}[X_1(t)+X_2(t)=n]}$$
-
-$$= \frac{e^{-\lambda_1 t}(\lambda_1 t)^k/k! \cdot e^{-\lambda_2 t}(\lambda_2 t)^{n-k}/(n-k)!}{e^{-(\lambda_1+\lambda_2)t}[(\lambda_1+\lambda_2)t]^n/n!} = \binom{n}{k}\left(\frac{\lambda_1}{\lambda_1+\lambda_2}\right)^k\left(\frac{\lambda_2}{\lambda_1+\lambda_2}\right)^{n-k} \qquad \square$$
-
----
-
-> **Theorem 4.5.6 (Combined theorem — two processes, sub-interval).** Let $X_1(t), X_2(t)$ be independent Poisson processes with rates $\lambda_1, \lambda_2$. Fix $0 < s < t$. Given $X_1(t)+X_2(t)=n$:
-> $$\mathbb{P}[X_1(s)=k \mid X_1(t)+X_2(t)=n] = \binom{n}{k}\left(\frac{\lambda_1 s}{(\lambda_1+\lambda_2)t}\right)^k\left(\frac{\lambda_1(t-s)+\lambda_2 t}{(\lambda_1+\lambda_2)t}\right)^{n-k}$$
+> [!Important] Corollary 4.5.6 — Combined Competition and Sub-Interval
+> **Statement:** Let $X_1(t)$, $X_2(t)$ be independent Poisson processes in $(0,t)$ with rates $\lambda_1$, $\lambda_2$. For $0<s<t$, given $X_1(t)+X_2(t)=n$:
+> $$\mathbb{P}[X_1(s)=k\mid X_1(t)+X_2(t)=n]=\frac{n!}{k!(n-k)!}\left(\frac{\lambda_1 s}{(\lambda_1+\lambda_2)t}\right)^k\left(\frac{\lambda_1(t-s)+\lambda_2 t}{(\lambda_1+\lambda_2)t}\right)^{n-k}$$
+>
+> **Proof:**
+> $$\mathbb{P}[X_1(s)=k\mid X_1(t)+X_2(t)=n] = \frac{\mathbb{P}[X_1(s)=k,\,X_1(t)+X_2(t)=n]}{\mathbb{P}[X_1(t)+X_2(t)=n]}$$
+> The event $\{X_1(t)+X_2(t)=n,\,X_1(s)=k\}$ is equivalent to $\{X_1(s)=k,\,X_1(t)-X_1(s)+X_2(t)=n-k\}$. All three r.v.s are independent (disjoint or independent processes). Factorizing and simplifying gives the stated formula. $\square$
+>
+> **Geometric interpretation:** The probability is proportional to the ratio of areas in a rectangle where one axis is the rate and the other is the time interval. The term $\lambda_1 s/[(\lambda_1+\lambda_2)t]$ is the ratio of the small area (process 1 in $(0,s)$) to the total area.
 
 ![[Stochastic_Processes_2020_p140_img44.jpeg]]
+
 ![[Stochastic_Processes_2020_p140_img45.jpeg]]
-*Figure 4.9 — Geometric interpretation: the parameter $\left(\frac{\lambda_1 s}{(\lambda_1+\lambda_2)t}\right)^k$ is the ratio of the small rectangle's area (the event of interest) to the large rectangle's area (the conditioning event).*
-
-**Proof.** Apply the definition of conditional probability:
-
-$$\mathbb{P}[X_1(s)=k \mid X_1(t)+X_2(t)=n] = \frac{\mathbb{P}[X_1(s)=k,\, X_1(t)+X_2(t)=n]}{\mathbb{P}[X_1(t)+X_2(t)=n]}$$
-
-If $X_1(s)=k$ and $X_1(t)+X_2(t)=n$, then the remaining $n-k$ events come from $X_1(t)-X_1(s)$ (process 1 after time $s$) plus $X_2(t)$ (all of process 2). These are independent of $X_1(s)$ (disjoint intervals for process 1, fully independent for process 2), so:
-
-$$\mathbb{P}[X_1(s)=k,\, X_1(t)-X_1(s)+X_2(t)=n-k]$$
-
-All pieces are independent Poisson increments:
-- $X_1(s) \sim \mathrm{Poisson}(\lambda_1 s)$
-- $X_1(t)-X_1(s) \sim \mathrm{Poisson}(\lambda_1(t-s))$
-- $X_2(t) \sim \mathrm{Poisson}(\lambda_2 t)$
-
-The denominator is $\mathrm{Poisson}((\lambda_1+\lambda_2)t)$. Computing the ratio and simplifying yields the binomial formula above. $\square$
+*Figure 4.9 — Geometric interpretation: the conditional probability is the ratio of the small rectangle (process 1 in $(0,s)$) to the total rectangle (both processes in $(0,t)$).*
 
 ---
 
-### 4.5.1 M/G/$\infty$ Queue — Radioactive Decay Example
+### M/G/∞ Queue
 
-Consider alpha particles appearing according to a Poisson process of rate $\lambda$. Each particle $k$ arrives at time $W_k$ and exists for a random duration $Y_k$, with $\{Y_k\}$ i.i.d. with distribution $G$. Let $M(t)$ = number of particles existing at time $t$.
+**Setting:** Alpha particles appear according to a Poisson process of rate $\lambda$. Each particle $k$ lives for a random duration $Y_k$ with CDF $G(y)=\Pr\{Y_k\leq y\}$, independent of all others. $M(t)$ = number of particles alive at time $t$; $X(t)$ = total particles created up to $t$; $M(0)=0$.
 
 ![[Stochastic_Processes_2020_p141_img46.jpeg]]
-*Figure 4.10 — Particle $k$ (created at $W_k \leq t$) still exists at time $t$ iff $W_k + Y_k \geq t$.*
+*Figure 4.10 — Particle $k$, created at $W_k\leq t$, still exists at time $t$ iff $W_k+Y_k\geq t$.*
 
-**Goal:** find the distribution of $M(t)$.
+Particle $k$ exists at time $t$ iff $W_k+Y_k\geq t$, indicated by $\mathbf{1}\{W_k+Y_k\geq t\}$.
 
-**Step 1 — Condition on $X(t) = n$.** Particle $k$ still exists at $t$ iff $W_k + Y_k \geq t$. The count $M(t)$ is the sum of indicator variables:
-$$M(t) = \sum_{k=1}^{n} \mathbf{1}\{W_k + Y_k \geq t\}$$
+**Conditional distribution** given $X(t)=n$: Since $\{W_k+Y_k\geq t\}$ is symmetric in the $W_k$'s, Theorem 4.5.3 allows replacing $W_k$ with i.i.d. $U_k\sim\mathrm{Uniform}(0,t)$:
 
-**Step 2 — Replace $W_k$ with $U_k$.** The expression $\mathbf{1}\{W_k + Y_k \geq t\}$ is symmetric in $k$ (does not depend on the ordering of arrival times). By Theorem 4.5.3, we can replace the ordered $W_k$ with i.i.d. uniforms $U_k \sim \mathrm{Uniform}(0,t)$:
+$$\Pr\{M(t)=m\mid X(t)=n\} = \Pr\left\{\sum_{k=1}^n\mathbf{1}\{U_k+Y_k\geq t\}=m\right\} = \binom{n}{m}p^m(1-p)^{n-m}$$
 
-$$\mathbb{P}[M(t)=m \mid X(t)=n] = \mathbb{P}\!\left[\sum_{k=1}^n \mathbf{1}\{U_k + Y_k \geq t\} = m\right]$$
+where $p=\Pr\{U_k+Y_k\geq t\}$:
 
-**Step 3 — Identify as Binomial.** Each indicator $\mathbf{1}\{U_k + Y_k \geq t\}$ is i.i.d. Bernoulli with success probability:
+$$p = \frac{1}{t}\int_0^t(1-G(t-u))\,du = \frac{1}{t}\int_0^t[1-G(z)]\,dz$$
 
-$$p = \mathbb{P}[U_k + Y_k \geq t] = \frac{1}{t}\int_0^t \mathbb{P}[Y_k \geq t - u]\,\mathrm{d}u = \frac{1}{t}\int_0^t [1-G(t-u)]\,\mathrm{d}u = \frac{1}{t}\int_0^t [1-G(z)]\,\mathrm{d}z$$
+**Unconditional distribution** — marginalize over $X(t)\sim\mathrm{Poisson}(\lambda t)$ (binomial $\times$ Poisson = Poisson by Theorem 4.1.2):
 
-The sum of $n$ i.i.d. Bernoulli$(p)$ indicators is $\mathrm{Binomial}(n, p)$:
-$$\mathbb{P}[M(t)=m \mid X(t)=n] = \binom{n}{m}p^m(1-p)^{n-m}$$
+$$\Pr\{M(t)=m\} = \frac{e^{-\lambda pt}(\lambda pt)^m}{m!} \qquad m=0,1,\ldots \tag{4.14}$$
 
-**Step 4 — Remove the conditioning.** Marginalise over $X(t) \sim \mathrm{Poisson}(\lambda t)$. Since a Binomial$(N, p)$ where $N \sim \mathrm{Poisson}(\lambda t)$ yields $\mathrm{Poisson}(\lambda t \cdot p)$ (Theorem 4.1.2):
+so $M(t)\sim\mathrm{Poisson}(\lambda pt)$ with mean:
 
-$$\mathbb{P}[M(t)=m] = \sum_{n=m}^{\infty}\binom{n}{m}p^m(1-p)^{n-m}\frac{(\lambda t)^n e^{-\lambda t}}{n!} = \frac{e^{-\lambda p t}(\lambda p t)^m}{m!}$$
+$$\lambda pt = \lambda\int_0^t[1-G(y)]\,dy$$
 
-So $M(t) \sim \mathrm{Poisson}(\lambda p t)$ with mean:
+**Long-run behaviour** ($t\to\infty$): The integral converges to the mean service time $1/\mu=\mathbb{E}[Y]$, so:
 
-$$\lambda pt = \lambda\int_0^t [1-G(z)]\,\mathrm{d}z$$
+$$\lim_{t\to\infty}\lambda pt = \lambda\int_0^\infty[1-G(y)]\,dy = \frac{\lambda}{\mu}$$
 
-**Long-run behaviour.** As $t \to \infty$:
-$$\lambda pt \to \lambda\int_0^{\infty}[1-G(z)]\,\mathrm{d}z = \frac{\lambda}{\mu}$$
-
-where $\mu = \mathbb{E}[Y_k]$ is the mean lifetime (using $\mathbb{E}[Y] = \int_0^\infty \mathbb{P}[Y > z]\,\mathrm{d}z = \int_0^\infty [1-G(z)]\,\mathrm{d}z$). The stationary mean number of particles is $\lambda/\mu$ — consistent with Little's Law.
+The asymptotic mean depends only on $\mathbb{E}[Y]$, not on the shape of $G$.
 
 ---
 
-### 4.5.2 Shot Noise Process
+### Shot Noise Process
 
-**Model.** Electrons arrive at an anode according to a Poisson process $\{X(t)\}$ of rate $\lambda$. Each electron $k$ (arriving at $W_k$) produces a current pulse with impulse response $h(\cdot)$. The total current at time $t$ is:
-$$I(t) = \sum_{k=1}^{X(t)} h(t - W_k)$$
+**Setting:** Electrons arrive at an anode according to a Poisson process $\{X(t)\}$ with rate $\lambda$. Each electron arriving at time $W_k$ produces a current pulse with impulse response $h(x)$. The total current at time $t$:
+
+$$I(t) = \sum_{k=1}^{X(t)}h(t-W_k)$$
 
 ![[Stochastic_Processes_2020_p144_img47.jpeg]]
-*Figure 4.11 — Total current = superposition of shifted pulse responses, one per electron arrival.*
+*Figure 4.11 — Pulses $h(t-W_k)$ superimposed: $I(t)=\sum_{k=1}^{X(t)}h(t-W_k)$.*
 
-**Computing $\mathbb{P}[I(t) \leq x]$.** Condition on $X(t) = n$, apply Theorem 4.5.3 to replace ordered $W_k$ with i.i.d. uniforms $U_k$ (valid since $h(t-W_k)$ is symmetric in $k$), then collect back into a random sum:
+By Theorem 4.5.3 (symmetry of the sum), replacing $W_k$ with $U_k\sim\mathrm{Uniform}(0,t)$:
 
-$$\mathbb{P}[I(t) \leq x] = \mathbb{P}\!\left[\sum_{k=1}^{X(t)} h(U_k) \leq x\right]$$
+$$\Pr\{I(t)\leq x\} = \Pr\left\{\sum_{k=1}^{X(t)}h(U_k)\leq x\right\}$$
 
-where $U_k \overset{\text{i.i.d.}}{\sim} \mathrm{Uniform}(0,t)$ and $X(t) \sim \mathrm{Poisson}(\lambda t)$ are independent.
+The sum has a **random number of i.i.d. terms** (compound Poisson). Using the formulas for mean and variance of a random sum:
 
-**Mean.** Using the formula $\mathbb{E}[\text{random sum}] = \mathbb{E}[N]\cdot\mathbb{E}[\text{term}]$:
+$$\mathbb{E}[I(t)] = \mathbb{E}[X(t)]\,\mathbb{E}[h(U_k)] = \lambda t\cdot\frac{1}{t}\int_0^t h(u)\,du = \lambda\int_0^t h(u)\,du$$
 
-$$\mathbb{E}[I(t)] = \mathbb{E}[X(t)]\cdot\mathbb{E}[h(U_k)] = \lambda t \cdot \frac{1}{t}\int_0^t h(u)\,\mathrm{d}u = \lambda\int_0^t h(u)\,\mathrm{d}u$$
+$$\operatorname{Var}(I(t)) = \lambda t\left(\operatorname{Var}(h(U_k))+\mathbb{E}[h(U_k)]^2\right) = \lambda t\,\mathbb{E}[(h(U_k))^2] = \lambda\int_0^t h^2(u)\,du$$
 
-**Variance.** Using $\mathrm{Var}[\text{random sum}] = \mathbb{E}[N]\cdot\mathrm{Var}[\text{term}] + \mathrm{Var}[N]\cdot(\mathbb{E}[\text{term}])^2$ and the fact that $\mathbb{E}[N] = \mathrm{Var}[N] = \lambda t$ (Poisson):
+*(Used $\operatorname{Var}(X)=\mathbb{E}[X^2]-\mathbb{E}[X]^2$ inverted: $\mathbb{E}[X^2]=\operatorname{Var}(X)+\mathbb{E}[X]^2$.)*
 
-$$\mathrm{Var}[I(t)] = \lambda t\,\mathrm{Var}[h(U_k)] + \lambda t\,(\mathbb{E}[h(U_k)])^2 = \lambda t\,\mathbb{E}[(h(U_k))^2] = \lambda\int_0^t h^2(u)\,\mathrm{d}u$$
-
-**Long-run behaviour.** As $t \to \infty$ (integrating beyond the pulse duration), only the total area under each pulse matters: $\mathbb{E}[I] \to \lambda\int_0^\infty h(u)\,\mathrm{d}u$ and similarly for the variance. Different pulse shapes with the same area produce the same long-run mean current.
+**Long-run** ($t\to\infty$): both $\mathbb{E}[I]$ and $\operatorname{Var}(I)$ depend only on $\int_0^\infty h(u)\,du$ and $\int_0^\infty h^2(u)\,du$ — the pulse shape matters only through its area and squared area.
 
 ---
 
-## 4.6 Binomial Theorem — Direct Proof and Dual Version
+## Binomial Theorem and Dual Version
 
-### Direct Proof
+### Theorem 4.6.1 — Binomial Theorem (Direct Proof)
 
-> **Theorem 4.6.1 (Binomial theorem).** For a Poisson process of rate $\lambda$, $0 < u < t$, $0 \leq k \leq n$:
-> $$\mathbb{P}[X(u)=k \mid X(t)=n] = \binom{n}{k}\left(\frac{u}{t}\right)^k\left(1-\frac{u}{t}\right)^{n-k}$$
+> [!Important] Theorem 4.6.1 — Binomial Theorem for Poisson Process
+> **Statement:** For a Poisson process of rate $\lambda>0$, $0<u<t$, $0\leq k\leq n$:
+> $$\Pr\{X(u)=k\mid X(t)=n\} = \binom{n}{k}\left(\frac{u}{t}\right)^k\left(1-\frac{u}{t}\right)^{n-k}$$
+>
+> **Proof (direct):**
+> $$\Pr\{X(u)=k\mid X(t)=n\} = \frac{\Pr\{X(u)=k,\,X(t)-X(u)=n-k\}}{\Pr\{X(t)=n\}}$$
+> The increments $X(u)$ and $X(t)-X(u)$ are independent (disjoint intervals). By stationarity, $X(t)-X(u)$ has the same distribution as $X(t-u)$. *(Caution: the replacement $X(t)-X(u)\to X(t-u)$ must be done only after factorizing — $X(t)$ and $X(t-u)$ refer to overlapping intervals and are not independent.)* Therefore:
+> $$= \frac{\{e^{-\lambda u}(\lambda u)^k/k!\}\{e^{-\lambda(t-u)}[\lambda(t-u)]^{n-k}/(n-k)!\}}{e^{-\lambda t}(\lambda t)^n/n!} = \frac{n!}{k!(n-k)!}\frac{u^k(t-u)^{n-k}}{t^n} \qquad\square$$
+>
+> ![[Stochastic_Processes_2020_p146_img48.jpeg]]
+> *Figure 4.12 — $(0,u)$ and $(u,t)$ are disjoint → independent increments. $(0,u)$ and $(0,t-u)$ overlap → not independent despite same statistics.*
 
-This is the same as Theorem 4.5.4, but the direct proof below is important for exam purposes.
+### Dual Version
 
-**Proof.** By definition of conditional probability, using the event $X(t) = n \Leftrightarrow X(u) = k \text{ and } X(t)-X(u) = n-k$:
-
-$$\mathbb{P}[X(u)=k \mid X(t)=n] = \frac{\mathbb{P}[X(u)=k,\, X(t)-X(u)=n-k]}{\mathbb{P}[X(t)=n]}$$
-
-![[Stochastic_Processes_2020_p146_img48.jpeg]]
-*Figure 4.12 — Intervals $(0,u)$ and $(u,t)$ are disjoint (increments independent), but $(0,u)$ and $(0,t-u)$ overlap — stationarity allows us to substitute $X(t)-X(u)$ with $X(t-u)$ only after factorising.*
-
-**Critical subtlety:** $X(t)-X(u)$ and $X(u)$ refer to disjoint intervals, so they are **independent**. After factorising, we use stationarity to identify $X(t)-X(u) \overset{d}{=} X(t-u)$. We must factorise *before* applying stationarity — $X(u)$ and $X(t-u)$ overlap and are not independent.
-
-$$= \frac{\mathbb{P}[X(u)=k]\cdot\mathbb{P}[X(t)-X(u)=n-k]}{\mathbb{P}[X(t)=n]} = \frac{e^{-\lambda u}(\lambda u)^k/k!\cdot e^{-\lambda(t-u)}[\lambda(t-u)]^{n-k}/(n-k)!}{e^{-\lambda t}(\lambda t)^n/n!}$$
-
-$$= \binom{n}{k}\frac{u^k(t-u)^{n-k}}{t^n} \qquad \square$$
-
----
-
-### Dual Version (Future Interval)
-
-Now condition on the *past* and ask about the *future*: $\mathbb{P}[X(s)=k \mid X(t)=n]$ where $0 < t < s$ and $k \geq n$.
-
-This asks: given $n$ arrivals by time $t$, what is the probability of $k$ arrivals by the later time $s$?
-
-$$\mathbb{P}[X(s)=k \mid X(t)=n] = \frac{\mathbb{P}[X(t)=n,\, X(s)-X(t)=k-n]}{\mathbb{P}[X(t)=n]}$$
-
-Since $(0,t)$ and $(t,s)$ are disjoint, $X(t)$ and $X(s)-X(t)$ are independent. Cancelling $\mathbb{P}[X(t)=n]$:
-
-$$= \mathbb{P}[X(s)-X(t)=k-n] \overset{\text{stationary}}{=} \mathbb{P}[X(s-t)=k-n] = \frac{e^{-\lambda(s-t)}[\lambda(s-t)]^{k-n}}{(k-n)!}$$
-
-**Interpretation:** Given $n$ arrivals by time $t$, the additional arrivals in $(t,s]$ are independent of the history and follow $\mathrm{Poisson}(\lambda(s-t))$ — a direct consequence of the memoryless (Markov) property of the Poisson process.
+> [!Important] Dual Binomial Theorem
+> **Statement:** For $0<t<s$ and $0\leq n\leq k$:
+> $$\Pr\{X(s)=k\mid X(t)=n\} = \frac{e^{-\lambda(s-t)}[\lambda(s-t)]^{k-n}}{(k-n)!}$$
+>
+> **Proof:**
+> $$\frac{\Pr\{X(t)=n,\,X(s)-X(t)=k-n\}}{\Pr\{X(t)=n\}} = \Pr\{X(s)-X(t)=k-n\} = \Pr\{X(s-t)=k-n\}$$
+> since $X(t)$ and $X(s)-X(t)$ are independent (disjoint intervals), and stationarity applies after factorizing. $\square$
 
 ---
 
-## Exercises
+### Exercises
 
-### Exercise 4.6.1 (Exam — June 27, 2016)
+> [!Example] Exercise 4.6.1 — Written Test June 27, 2016
+> **Problem:** Two independent Poisson processes $X_1(t)$, $X_2(t)$ with rates $\lambda_1=0.5$ and $\lambda_2=1$.
+>
+> 1. Compute $P[X_1(2)=1\mid X_1(3)=2]$ and $P[X_1(3)=2\mid X_1(2)=1]$.
+> 2. Compute $P[X_1(1)=1\mid X_1(2)+X_2(2)=3]$ and $P[X_1(2)+X_2(2)=3\mid X_1(1)=1]$.
+> 3. Compute $P[X_1(2)+X_2(2)=3\mid X_1(3)=0]$ and $P[X_1(2)+X_2(2)=3\mid X_1(3)=1]$.
+>
+> **Solutions:**
+>
+> **Part 1:**
+>
+> $X_1(2)$ given $X_1(3)=2$: Theorem 4.6.1 with $u=2$, $t=3$, $n=2$, $k=1$, $p=2/3$:
+> $$P[X_1(2)=1\mid X_1(3)=2]=\binom{2}{1}\left(\frac{2}{3}\right)^1\left(\frac{1}{3}\right)^1=\frac{4}{9}\approx 0.44$$
+>
+> Dual: $X_1(3)$ given $X_1(2)=1$: must have $X_1(3)-X_1(2)=1$ in interval of length 1:
+> $$P[X_1(3)=2\mid X_1(2)=1]=P[X_1(1)=1]=\lambda_1 e^{-\lambda_1}=0.5\,e^{-0.5}\approx 0.303$$
+>
+> **Part 2:**
+>
+> $X_1(1)$ given total $X(2)=X_1(2)+X_2(2)=3$: Theorem 4.5.5 combined with 4.5.4. Total rate $\lambda_1+\lambda_2=1.5$. Rectangle argument: $p=\lambda_1\cdot 1/[(\lambda_1+\lambda_2)\cdot 2]=0.5/(1.5\cdot 2)=1/6$. Binomial$(3,1/6)$:
+> $$P[X_1(1)=1\mid X(2)=3]=\binom{3}{1}\left(\frac{1}{6}\right)^1\left(\frac{5}{6}\right)^2=\frac{25}{72}\approx 0.347$$
+>
+> Dual: $X(2)=3$ given $X_1(1)=1$: the remaining arrivals must come from the complement region (area = $\lambda_1\cdot 1+\lambda_2\cdot 2=2.5$):
+> $$P[X(2)=3\mid X_1(1)=1]=P[X_2(2)+X_1(2)-X_1(1)=2]=\frac{(2.5)^2 e^{-2.5}}{2!}\approx 0.2565$$
+>
+> **Part 3:**
+>
+> Case $X_1(3)=0$: no arrivals from process 1 anywhere in $[0,3]$ → all 3 arrivals must come from $X_2$ in $[0,2]$:
+> $$P[X_1(2)+X_2(2)=3\mid X_1(3)=0]=P[X_2(2)=3]=\frac{2^3 e^{-2}}{3!}=\frac{4}{3}e^{-2}\cdot\frac{1}{2}\approx 0.06$$
+>
+> *(Note: $\frac{4}{3}e^{-2}/2 = \frac{2^3}{6}e^{-2}=\frac{4}{3}e^{-2}/2$; numerical value $\approx0.0601$.)*
+>
+> Case $X_1(3)=1$: the single $X_1$-arrival can fall in $[0,2]$ (prob 2/3) or $[2,3]$ (prob 1/3). Use total probability over $X_1(2)\in\{0,1\}$:
+> $$\sum_{i=0}^1 P[X_2(2)=3-i]\cdot P[X_1(2)=i\mid X_1(3)=1]$$
+> $$= P[X_2(2)=3]\cdot\frac{1}{3}+P[X_2(2)=2]\cdot\frac{2}{3}$$
+> $$= \frac{2^3 e^{-2}}{3!}\cdot\frac{1}{3}+\frac{2^2 e^{-2}}{2!}\cdot\frac{2}{3} = \frac{4}{9}e^{-2}+\frac{4}{3}e^{-2}=\frac{16}{9}e^{-2}\approx 0.24$$
+>
+> ![[Stochastic_Processes_2020_p150_img49.jpeg]]
+> *Figure 4.13 — Geometry for part (c) of Exercise 4.6.1.*
 
-Two independent Poisson processes: $X_1(t)$ with $\lambda_1 = 0.5$/unit time, $X_2(t)$ with $\lambda_2 = 1$/unit time.
+> [!Example] Exercise 4.6.2 — Finite α-Chain
+> **Problem:** A Markov chain has transition matrix:
+>
+> | State | 0 | 1 | 2 | 3 | 4 | 5 |
+> |---|---|---|---|---|---|---|
+> | 0 | $\alpha_1$ | $\alpha_2$ | $\alpha_3$ | $\alpha_4$ | $\alpha_5$ | $\alpha_6$ |
+> | 1 | 1 | 0 | 0 | 0 | 0 | 0 |
+> | 2 | 0 | 1 | 0 | 0 | 0 | 0 |
+> | 3 | 0 | 0 | 1 | 0 | 0 | 0 |
+> | 4 | 0 | 0 | 0 | 1 | 0 | 0 |
+> | 5 | 0 | 0 | 0 | 0 | 1 | 0 |
+>
+> with $\alpha_i\geq 0$, $\sum_{i=1}^6\alpha_i=1$. Find the limiting probability $\pi_0$.
+>
+> ![[Stochastic_Processes_2020_p151_img50.jpeg]]
+> *Figure 4.14 — Transition diagram: from state 0, jump to state $i$ with prob $\alpha_{i+1}$; from state $i>0$, step down to $i-1$ deterministically.*
+>
+> **Solution:** Stationarity equations $\boldsymbol{\pi}=\boldsymbol{\pi}\mathbf{P}$:
+>
+> | Eq. | Stationary equation |
+> |---|---|
+> | $\pi_0=\pi_0\alpha_1+\pi_1$ | → $\pi_1=\pi_0(1-\alpha_1)$ |
+> | $\pi_1=\pi_0\alpha_2+\pi_2$ | → $\pi_2=\pi_0(1-\alpha_1-\alpha_2)$ |
+> | $\pi_2=\pi_0\alpha_3+\pi_3$ | → $\pi_3=\pi_0(1-\alpha_1-\alpha_2-\alpha_3)$ |
+> | $\pi_3=\pi_0\alpha_4+\pi_4$ | → $\pi_4=\pi_0(\alpha_5+\alpha_6)$ |
+> | $\pi_4=\pi_0\alpha_5+\pi_5$ | → $\pi_5=\pi_0\alpha_6$ |
+>
+> General pattern: $\pi_k=\pi_0\sum_{j=k+1}^6\alpha_j$ for $k=1,\ldots,5$.
+>
+> Normalization $\sum_{k=0}^5\pi_k=\left(\sum_{k=1}^6 k\alpha_k\right)\pi_0=1$:
+> $$\pi_0 = \frac{1}{\sum_{k=1}^6 k\alpha_k} = \frac{1}{\mathbb{E}[\text{return time to }0]}$$
+>
+> **Interpretation:** From state 0, with probability $\alpha_k$ the chain goes to state $k-1$ and takes exactly $k$ steps to return to 0 (stepping down one per step). The mean return time is $\sum_{k=1}^6 k\alpha_k$, confirming $\pi_0=1/m_0$.
 
-**Part 1: $P[X_1(2)=1 \mid X_1(3)=2]$ and $P[X_1(3)=2 \mid X_1(2)=1]$**
+> [!Example] Exercise 4.6.3 — Infinite α-Chain
+> **Problem:** Same structure as 4.6.2 but infinite: $\{\alpha_i:i=1,2,\ldots\}$ is a probability distribution. $\alpha_1>0$, $\alpha_2>0$ (aperiodic). Find the condition for a limiting distribution to exist, and what it is.
+>
+> **Solution:**
+> Solve recursively: $\pi_n=\left(\sum_{k=n+1}^\infty\alpha_k\right)\pi_0 = \mathbb{P}[X>n]\,\pi_0$.
+>
+> Normalization:
+> $$\sum_{n=0}^\infty\pi_n = \pi_0\sum_{n=0}^\infty\mathbb{P}[X>n] = \pi_0\,\mathbb{E}[X] = 1$$
+>
+> **Condition:** A limiting distribution exists iff $\mathbb{E}[X]=\sum_{n=0}^\infty\mathbb{P}[X>n]<\infty$, i.e. the $\alpha$ distribution has finite mean. Then:
+> $$\pi_0 = \frac{1}{\mathbb{E}[X]}, \qquad \pi_n = \frac{\mathbb{P}[X>n]}{\mathbb{E}[X]}$$
 
-*Forward (large given small)*: By Theorem 4.6.1, given 2 arrivals in $(0,3)$, the number in the smaller interval $(0,2)$ is $\mathrm{Binomial}(2, 2/3)$:
-$$P[X_1(2)=1 \mid X_1(3)=2] = \binom{2}{1}\left(\frac{2}{3}\right)^1\left(\frac{1}{3}\right)^1 = \frac{4}{9} \approx 0.44$$
+> [!Example] Exercise 4.6.4 — Fraction of Transitions $k\to m$
+> **Problem:** In a finite regular Markov chain with transition matrix $\mathbf{P}$ and limiting distribution $\boldsymbol{\pi}$, what fraction of transitions go from state $k$ to state $m$?
+>
+> **Solution:** In the long run, the fraction of time in state $k$ is $\pi_k$; from state $k$ the next step goes to $m$ with probability $P_{km}$:
+> $$\lim_{n\to\infty}\Pr\{X_n=k,\,X_{n+1}=m\} = \pi_k P_{km}$$
 
-*Backward (small given large)*: By the dual version, given 1 arrival in $(0,2)$, arrivals in $(2,3)$ are independent $\mathrm{Poisson}(\lambda_1 \cdot 1) = \mathrm{Poisson}(0.5)$:
-$$P[X_1(3)=2 \mid X_1(2)=1] = P[X_1(3)-X_1(2)=1] = P[X_1(1)=1] = 0.5\,e^{-0.5} \approx 0.303$$
+> [!Example] Exercise 4.6.5 — Limits for Regular Markov Chain
+> **Problem:** For a finite regular Markov chain $\{X_n\}$ with $\mathbf{P}$, $\boldsymbol{\pi}$, find:
+> 1. $\lim_{n\to\infty}P[X_{n+1}=j\mid X_0=i]$
+> 2. $\lim_{n\to\infty}P[X_n=k,X_{n+1}=j\mid X_0=i]$
+> 3. $\lim_{n\to\infty}P[X_{n-1}=k,X_n=j\mid X_0=i]$
+>
+> **Solution:**
+> 1. $\lim_{n\to\infty}P[X_{n+1}=j\mid X_0=i]=\pi_j$ (regular chain, independent of $i$).
+> 2. Use $P[X_n=k,X_{n+1}=j\mid X_0=i]=P[X_{n+1}=j\mid X_n=k]P[X_n=k\mid X_0=i]\to P_{kj}\pi_k$.
+> 3. Time-shift of (2): same limit $\pi_k P_{kj}$.
 
-**Part 2: $P[X_1(1)=1 \mid X_1(2)+X_2(2)=3]$ and $P[X_1(2)+X_2(2)=3 \mid X_1(1)=1]$**
+> [!Example] Exercise 4.6.6 — Backward Probability
+> **Problem:** Transition matrix:
+> $$\mathbf{P}=\begin{pmatrix}0.4&0.4&0.2\\0.6&0.2&0.2\\0.4&0.2&0.4\end{pmatrix}$$
+> Find $\lim_{n\to\infty}P[X_{n-1}=2\mid X_n=1]$.
+>
+> **Solution:** Apply Bayes:
+> $$P[X_{n-1}=2\mid X_n=1]=P_{21}\frac{P[X_{n-1}=2]}{P[X_n=1]}\xrightarrow{n\to\infty}P_{21}\frac{\pi_2}{\pi_1}$$
+> Compute $\boldsymbol{\pi}$ from $\boldsymbol{\pi}=\boldsymbol{\pi}\mathbf{P}$, $\sum\pi_i=1$, then:
+> $$\lim_{n\to\infty}P[X_{n-1}=2\mid X_n=1]=P_{21}\frac{\pi_2}{\pi_1}=0.2\cdot\frac{\pi_2}{\pi_1}=\frac{6}{35}\approx 0.1714$$
 
-*Forward*: By Theorem 4.5.6 (geometric interpretation: ratio of area $\lambda_1 \cdot 1 = 0.5$ to total area $(\lambda_1+\lambda_2)\cdot 2 = 3$, so $p = 0.5/3 = 1/6$):
-$$P[X_1(1)=1 \mid X_1(2)+X_2(2)=3] = \binom{3}{1}\left(\frac{1}{6}\right)^1\left(\frac{5}{6}\right)^2 = \frac{25}{72} \approx 0.347$$
-
-*Backward*: Given $X_1(1)=1$, the remaining arrivals $\{X_2(2) + (X_1(2)-X_1(1))\}$ come from a Poisson with parameter $\lambda_2 \cdot 2 + \lambda_1 \cdot 1 = 2 + 0.5 = 2.5$:
-$$P[X_1(2)+X_2(2)=3 \mid X_1(1)=1] = P[X_2(2)+X_1(2)-X_1(1)=2] = \frac{(2.5)^2 e^{-2.5}}{2!} \approx 0.257$$
-
-**Part 3: $P[X_1(2)+X_2(2)=3 \mid X_1(3)=0]$ and $P[X_1(2)+X_2(2)=3 \mid X_1(3)=1]$**
-
-*Condition $X_1(3)=0$*: Process 1 has no arrivals in $(0,3)$ — in particular none in $(0,2)$. All 3 arrivals must come from $X_2(2) \sim \mathrm{Poisson}(2)$:
-$$P[X_1(2)+X_2(2)=3 \mid X_1(3)=0] = P[X_2(2)=3] = \frac{2^3 e^{-2}}{6} = \frac{4}{9}e^{-2} \approx 0.060$$
-
-*Condition $X_1(3)=1$*: The single $X_1$ arrival can be in $(0,2)$ or $(2,3)$. Condition on $X_1(2) \in \{0,1\}$ (the only possible values), using the binomial theorem ($p=2/3$):
-
-![[Stochastic_Processes_2020_p150_img49.jpeg]]
-*Figure 4.13 — Graph for point (c) of Exercise 4.6.1.*
-
-$$P[X_1(2)+X_2(2)=3 \mid X_1(3)=1] = \sum_{i=0}^{1} P[X_2(2)=3-i]\cdot P[X_1(2)=i \mid X_1(3)=1]$$
-
-$$= P[X_2(2)=3]\cdot\frac{1}{3} + P[X_2(2)=2]\cdot\frac{2}{3}$$
-
-$$= \frac{2^3 e^{-2}}{6}\cdot\frac{1}{3} + \frac{2^2 e^{-2}}{2}\cdot\frac{2}{3} = \frac{4}{9}e^{-2} + \frac{4}{3}e^{-2} = \frac{16}{9}e^{-2} \approx 0.24$$
+> [!Example] Exercise 4.6.7 — Man Walking in Rain (1 and 2 cars)
+> **Problem:** A man commutes by car or walking. He drives only when it rains (prob $p$ each trip) and the car is where he is. States: $X_n=1$ (car available), $X_n=0$ (car not available). What fraction of days does he walk in the rain?
+>
+> **Solution (1 car):** Transition matrix:
+> $$\mathbf{P}=\begin{pmatrix}0&1\\1-p&p\end{pmatrix}$$
+> Limiting distribution: $\pi_0=\frac{1-p}{2-p}$, $\pi_1=\frac{1}{2-p}$.
+>
+> Probability of walking in rain per trip:
+> $$\pi_0 p + \pi_1(1-p)p = \frac{(1-p)p}{2-p}+\frac{(1-p)p}{2-p} = \frac{2p(1-p)}{2-p}$$
+>
+> **Solution (2 cars):** States $X_n=0,1,2$ (number of cars at man's location). Transition matrix:
+> $$\mathbf{P}=\begin{pmatrix}0&0&1\\0&1-p&p\\1-p&p&0\end{pmatrix}$$
+> Limiting: $\pi_0=\frac{1-p}{3-p}$, $\pi_1=\pi_2=\frac{1}{3-p}$.
+>
+> Probability of walking in rain:
+> $$\pi_0 p + \pi_2(1-p)p = \frac{2p(1-p)}{3-p}$$
 
 ---
 
-### Exercise 4.6.2 — Cyclic Markov Chain
+## P.A.S.T.A. Property
 
-A Markov chain on states $\{0,1,2,3,4,5\}$ has transition matrix:
+> [!Important] Definition — $p_n(t)$ and $a_n(t)$
+> For a queueing system with $N(t)$ users at time $t$:
+> $$p_n(t) = \Pr\{N(t)=n\}$$
+> $$a_n(t) = \Pr\{N(t)=n \mid \text{an arrival occurred just after time }t\}$$
+>
+> $p_n$ = distribution seen by **external observer**; $a_n$ = distribution seen by **arriving user**.
 
-| | 0 | 1 | 2 | 3 | 4 | 5 |
-|---|---|---|---|---|---|---|
-| 0 | $\alpha_1$ | $\alpha_2$ | $\alpha_3$ | $\alpha_4$ | $\alpha_5$ | $\alpha_6$ |
-| 1 | 1 | 0 | 0 | 0 | 0 | 0 |
-| 2 | 0 | 1 | 0 | 0 | 0 | 0 |
-| 3 | 0 | 0 | 1 | 0 | 0 | 0 |
-| 4 | 0 | 0 | 0 | 1 | 0 | 0 |
-| 5 | 0 | 0 | 0 | 0 | 1 | 0 |
+### PASTA Theorem
 
-with $\alpha_i \geq 0$ and $\sum_{i=1}^6 \alpha_i = 1$.
+> [!Important] P.A.S.T.A. — Poisson Arrivals See Time Averages
+> **Statement:** If arrivals are Poisson and service times are independent of future arrival times, then:
+> $$\lim_{t\to\infty}p_n(t) = \lim_{t\to\infty}a_n(t) \qquad n=0,1,\ldots$$
+>
+> ![[Stochastic_Processes_2020_p158_img51.jpeg]]
+> *Figure 4.16 — $N(t)$ depends on arrivals and departures up to $t$; the arrival at $t^+$ must be independent of $N(t)$.*
+>
+> **Proof:**
+> $N(t)$ depends on arrivals and departures up to time $t$. The arrival at $t^+$ must be independent of $N(t)$, which requires:
+>
+> 1. **Arrival independence:** Poisson increments on disjoint intervals are independent → $N(t)$ does not affect future arrivals. ✓
+> 2. **Service independence:** Departure times depend on service times, so service times must be independent of future arrivals. ✓ (Reasonable assumption.)
+>
+> Under these conditions the two events in $a_n(t)$ are independent:
+> $$a_n(t) = \Pr\{N(t)=n\}\cdot\Pr\{\text{arrival just after }t\}$$
+> Taking $t\to\infty$: $\lim p_n(t) = \lim a_n(t)$. $\square$
+>
+> **Interpretation:** Poisson arrivals do not "see" a biased view of the system — they see the same long-run statistics as an external observer.
 
-![[Stochastic_Processes_2020_p151_img50.jpeg]]
-*Figure 4.14 — Transition diagram for Exercise 4.6.2. The chain cycles: state $k$ always moves to $k-1$, and state 0 jumps to state $j$ with probability $\alpha_{j+1}$.*
+### Counter-Examples
 
-**Find the limiting probability $\pi_0$.**
+> [!Example] Counter-Example 1 — Non-Poisson Arrivals
+> **Problem:** Inter-arrival times $\sim\mathrm{Uniform}[2,4]$s; service time = 1s exactly.
+>
+> ![[Stochastic_Processes_2020_p159_img52.jpeg]]
+> *Figure 4.17 — Each arriving customer finds system empty (service finishes before next arrival).*
+>
+> **Analysis:** Since minimum inter-arrival time (2s) > service time (1s), every arriving customer finds the system empty: $a_0=1$, $a_i=0$ for $i>0$.
+>
+> External observer: system is busy for 1s and empty for $\mathrm{Uniform}[1,3]$s on average 2s. Mean cycle = 3s, so $p_1=1/3$, $p_0=2/3$.
+>
+> **Conclusion:** $a_0=1\neq p_0=2/3$. PASTA fails because arrivals are **not Poisson**.
 
-The chain is irreducible (all states communicate through state 0). The period of state 0 is $d(0) = 1$ if $\alpha_1 > 0$ (the chain can return in 1 step), or we must analyse further.
+> [!Example] Counter-Example 2 — Arrival-Service Dependence
+> **Problem:** Arrivals are Poisson but service time of the $n$-th customer equals half the interarrival time to the $(n+1)$-th customer.
+>
+> **Analysis:** Service time = half next interarrival → system always empty when next customer arrives: $a_0=1$.
+>
+> External observer: system is busy half the time → $p_0=p_1=1/2$.
+>
+> **Conclusion:** $a_0=1\neq p_0=1/2$. PASTA fails because service times and future arrivals are **correlated**.
 
-Using the Basic Limit Theorem: $\pi_0 = 1/m_0$ where $m_0$ is the mean return time to state 0.
+### Departures See Same Distribution as Arrivals
 
-Starting from state 0, the chain must visit exactly $j$ states before returning ($j = 0$ if it returns to 0 directly, i.e. with probability $\alpha_1$; $j=1$ if it goes $0 \to 1 \to 0$ in 2 steps with probability $\alpha_2$; etc.). The return time is $T = j + 1$ with probability $\alpha_{j+1}$.
+Define $d_n(t)=\Pr\{N(t)=n\mid\text{departure just before }t\}$. Under stability and unit-step changes in $N(t)$:
 
-$$m_0 = \mathbb{E}[T] = \sum_{j=0}^{5}(j+1)\alpha_{j+1} = 1\cdot\alpha_1 + 2\cdot\alpha_2 + 3\cdot\alpha_3 + 4\cdot\alpha_4 + 5\cdot\alpha_5 + 6\cdot\alpha_6$$
+> [!Important] Theorem — $d_n=a_n$
+> **Statement:** For a stable system with unit-step changes in $N(t)$:
+> $$d_n = a_n \qquad n=0,1,\ldots$$
+>
+> **Proof:**
+> Fix a level $n$. For each upward transition $n\to n+1$ (arrival finds $N=n$) there is exactly one downward transition $n+1\to n$ (departure leaves $N=n$), because the system is stable (returns to 0 infinitely often) and transitions are unit steps.
+>
+> ![[Stochastic_Processes_2020_p162_img53.jpeg]]
+> *Figure 4.19 — For a stable system, upward and downward transitions across level $n$ balance in the long run.*
+>
+> In the long run:
+> $$\lim_{t\to\infty}\frac{\#\{n\to n+1\text{ transitions in }[0,t]\}}{\#\{\text{all arrivals in }[0,t]\}} = \lim_{t\to\infty}\frac{\#\{n+1\to n\text{ transitions in }[0,t]\}}{\#\{\text{all departures in }[0,t]\}}$$
+>
+> since the difference between numerators is at most 1 (finite), while both denominators $\to\infty$ (stability). Therefore $d_n=a_n$. $\square$
+>
+> **Consequence for M/G/1:** The embedded Markov chain sampled at departure epochs is representative of the overall long-run distribution, justifying the M/G/1 analysis from Chapter 2.
 
-Therefore:
-$$\boxed{\pi_0 = \frac{1}{m_0} = \frac{1}{\sum_{j=1}^{6} j\,\alpha_j}}$$
+### Periodic Class — Limit Existence Condition
 
-The stationary probabilities of the other states can be found similarly: state $k$ is only reachable from state $k+1$ (for $k < 5$) or directly from state 0 (for state $j$ with probability $\alpha_{j+1}$), and the stationary equations give $\pi_k = \pi_0 \sum_{j=k}^5 \alpha_{j+1}$ for $k \geq 1$.
+Consider a reducible chain with block structure:
+$$\mathbf{P} = \begin{Vmatrix}\mathbf{Q}&\mathbf{R}_1&\mathbf{R}_2\\0&\mathbf{A}&0\\0&0&\mathbf{1}\end{Vmatrix}, \qquad \mathbf{A}=\begin{Vmatrix}0&1\\1&0\end{Vmatrix}, \qquad \mathbf{A}^n=\begin{cases}\mathbf{A}&n\text{ odd}\\\mathbf{I}&n\text{ even}\end{cases}$$
+
+$\mathbf{Q}$ = transient class, $\mathbf{A}$ = periodic class (period 2), $\mathbf{1}$ = absorbing state.
+
+![[Stochastic_Processes_2020_p163_img54.jpeg]]
+*Figure 4.20 — Chain structure: transient block $\mathbf{Q}$ connects to periodic class $\mathbf{A}$ via $\mathbf{R}_1$ and to absorbing state via $\mathbf{R}_2$.*
+
+Computing $\mathbf{P}^n$ by induction:
+$$\mathbf{P}^{n+1} = \begin{Vmatrix}\mathbf{Q}^{n+1}&\sum_{i=0}^n\mathbf{Q}^i\mathbf{R}_1\mathbf{A}^{n-i}&\left(\sum_{i=0}^n\mathbf{Q}^i\right)\mathbf{R}_2\\0&\mathbf{A}^{n+1}&0\\0&0&\mathbf{1}\end{Vmatrix}$$
+
+The question is whether $\lim_{n\to\infty}\sum_{i=0}^n\mathbf{Q}^i\mathbf{R}_1\mathbf{A}^{n-i}$ exists. Splitting even and odd $n$:
+
+For $n=2k$: $\xrightarrow{k\to\infty}[\mathbf{I}-\mathbf{Q}^2]^{-1}(\mathbf{R}_1+\mathbf{Q}\mathbf{R}_1\mathbf{A})$
+
+For $n=2k+1$: $\xrightarrow{k\to\infty}[\mathbf{I}-\mathbf{Q}^2]^{-1}(\mathbf{R}_1\mathbf{A}+\mathbf{Q}\mathbf{R}_1)$
+
+(geometric series in $\mathbf{Q}^2$ converges since $\mathbf{Q}$ is transient).
+
+The two limits coincide iff:
+$$\mathbf{R}_1+\mathbf{Q}\mathbf{R}_1\mathbf{A}=\mathbf{R}_1\mathbf{A}+\mathbf{Q}\mathbf{R}_1 \implies (\mathbf{I}-\mathbf{Q})\mathbf{R}_1=(\mathbf{I}-\mathbf{Q})\mathbf{R}_1\mathbf{A}$$
+
+Since $(\mathbf{I}-\mathbf{Q})$ is invertible (transient $\mathbf{Q}$):
+
+> [!Important] Condition for General Limit to Exist
+> $$\mathbf{R}_1 = \mathbf{R}_1\mathbf{A}$$
+> Since $\mathbf{R}_1\mathbf{A}$ is $\mathbf{R}_1$ with columns switched, this means **the two columns of $\mathbf{R}_1$ are identical** — i.e., the system enters the periodic class uniformly regardless of which state it will be in. Probabilistically: entering a periodic class from a transient state must occur with equal probability for both states of the class.
+
+---
+
+## Summary Table
+
+| Concept | Definition / Formula | Conditions / Notes |
+|---|---|---|
+| Poisson distribution | $p_k=e^{-\mu}\mu^k/k!$ | $\mu>0$; mean = variance = $\mu$ |
+| Sum of Poisson | $X+Y\sim\mathrm{Poisson}(\mu+\nu)$ | $X,Y$ independent (Thm 4.1.1) |
+| Poisson+Binomial filter | $M\mid N\sim\mathrm{Bin}(N,p)\Rightarrow M\sim\mathrm{Poisson}(\mu p)$ | Thm 4.1.2 |
+| Poisson process | $X(t+s)-X(s)\sim\mathrm{Poisson}(\lambda t)$; indep. stationary incr.; $X(0)=0$ | Rate $\lambda>0$ constant |
+| Mean/variance | $\mathbb{E}[X(t)]=\operatorname{Var}[X(t)]=\lambda t$ | — |
+| Law of Rare Events | $\|P[S_n=k]-\mathrm{Poisson}(\mu)_k\|\leq\sum p_i^2$ | Poisson = discrete CLT |
+| Superposition | $X_1+X_2\sim\mathrm{Poisson}(\lambda_1+\lambda_2)$ | Independent processes (Thm 4.4.1) |
+| Thinning | Each event type-1 w.p. $p$: $X_1\sim\mathrm{Poisson}(\lambda p)$, $X_2\sim\mathrm{Poisson}(\lambda(1-p))$, independent | Thm 4.4.2 |
+| Inter-arrival | $S_i\sim\mathrm{Exp}(\lambda)$ i.i.d. | Thm 4.5.1 |
+| Waiting time | $W_n\sim\mathrm{Gamma}(n,\lambda)$ | $W_n=\sum_{i=0}^{n-1}S_i$ (Thm 4.5.2) |
+| Conditional arrival times | $f_{W_1,\ldots,W_n\mid X(t)=n}=n!\,t^{-n}$ | Ordered Uniform$(0,t)$ (Thm 4.5.3) |
+| Binomial theorem | $X(u)\mid X(t)=n\sim\mathrm{Bin}(n,u/t)$ | $0<u<t$ (Thm 4.5.4, 4.6.1) |
+| Competition theorem | $X_1(t)\mid X_1+X_2=n\sim\mathrm{Bin}(n,\lambda_1/(\lambda_1+\lambda_2))$ | Thm 4.5.5 |
+| Dual binomial | $X(s)\mid X(t)=n\Rightarrow\mathrm{Poisson}(\lambda(s-t))$ for the excess | $0<t<s$ |
+| M/G/∞ | $M(t)\sim\mathrm{Poisson}(\lambda pt)$; $p=(1/t)\int_0^t[1-G(z)]dz$ | Steady state: $\lambda/\mu$ |
+| Shot noise | $\mathbb{E}[I]=\lambda\int h$; $\operatorname{Var}[I]=\lambda\int h^2$ | Compound Poisson sum |
+| PASTA | $\lim p_n=\lim a_n$ if arrivals Poisson and indep. of service | Poisson Arrivals See Time Averages |
+| $d_n=a_n$ | Arrivals and departures see same steady-state | Requires stability + unit-step transitions |
+| Periodic limit condition | $\mathbf{R}_1=\mathbf{R}_1\mathbf{A}$ (equal columns of $\mathbf{R}_1$) | General limit exists iff uniform entry into periodic class |
