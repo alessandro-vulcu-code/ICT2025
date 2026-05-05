@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rewrite Stochastic Notes"
+  short_description: "Rewrite Stochastic Processes notes faithfully"
+  default_prompt: "Use $rewrite-stochastic-notes to rewrite a Stochastic Processes chapter into Rewritten/."
