@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rewrite Multimedia Notes"
+  short_description: "Rewrite PDF-converted Multimedia Communications notes"
+  default_prompt: "Use $rewrite-multimedia-notes to rewrite a Multimedia Communications Markdown note from PDF into a clean Obsidian note with figure placeholders."
