@@ -1,0 +1,225 @@
+# Class Hierarchies and Run-Time Polymorphism
+
+## Outline
+- [Class Hierarchies](#class-hierarchies)
+  - [Upcast Downcast and Crosscast](#upcast-downcast-and-crosscast)
+- [dynamic_cast](#dynamiccast)
+  - [Run-Time Type Information](#run-time-type-information)
+  - [Pointer Casts](#pointer-casts)
+  - [Reference Casts](#reference-casts)
+  - [bad_cast](#badcast)
+  - [Multiple Inheritance](#multiple-inheritance)
+- [Misuses of RTTI](#misuses-of-rtti)
+  - [Wrong Approach](#wrong-approach)
+  - [Virtual Function Approach](#virtual-function-approach)
+- [Other Casts](#other-casts)
+  - [static_cast](#staticcast)
+  - [reinterpret_cast and const_cast](#reinterpretcast-and-constcast)
+  - [Cast Recap](#cast-recap)
+
+## Study Notes
+
+This lesson follows **[c++pl] Chapter 22** and focuses on navigating class hierarchies at run time, especially through `dynamic_cast` and RTTI.
+
+### Class Hierarchies
+
+In complex class hierarchies, a pointer or reference to a base class may refer to objects of many derived types. For example, an `A*` might point to an object of actual type `D`, `E`, or `F`. The static type of the pointer is not enough to know the dynamic type of the object.
+
+Recall that a base pointer or reference can refer to a derived object. This is essential for polymorphism, but it also creates the question: *what is the actual object type at runtime?*
+
+#### Upcast Downcast and Crosscast
+
+The source distinguishes three conversions:
+
+- **upcast**: cast from derived to base, such as `E` to `C`; this is always accepted by the compiler when the inheritance relation is valid.
+- **downcast**: cast from base to derived, such as `C` to `E`; the compiler may not know whether it is correct.
+- **crosscast**: cast across branches of a hierarchy, such as `F` to `D`; the compiler may not know whether it is correct.
+
+Downcasts and crosscasts are where runtime checks may be needed.
+
+### dynamic_cast
+
+`dynamic_cast` is a typed conversion operation for polymorphic class hierarchies. It checks the actual runtime type of the object.
+
+```cpp
+void f(B* ptr)
+{
+    D* der_ptr {dynamic_cast<D*>(ptr)};
+}
+
+if ptr points to an object of type D, der_ptr is valid,
+otherwise is a nullptr
+```
+
+The explanatory lines after the function are slide text. If `ptr` points to an actual `D`, the cast succeeds. Otherwise, `der_ptr` becomes `nullptr`.
+
+#### Run-Time Type Information
+
+`dynamic_cast<T*>()` is used when the compiler cannot check statically whether a conversion is correct. It works from **polymorphic types**, meaning base classes with virtual methods. The target type can be a concrete class with no virtual methods.
+
+The compiler associates runtime information with polymorphic objects. This is **RTTI**, or run-time type information. `dynamic_cast` uses RTTI to decide whether a conversion is valid.
+
+#### Pointer Casts
+
+For pointers, `dynamic_cast<T*>(p)` is a question: *is the object pointed to by `p` of type `T`?* If yes, it returns a valid pointer. If no, it returns `nullptr`. The programmer must check the result before using it.
+
+```cpp
+void f(Base* p)
+{
+    Der* p_dev {dynamic_cast<Der*>(p);
+    if (p_dev != nullptr)
+    {
+        // some code using p_dev
+    }
+    else { // cannot use p_dev! }
+}
+```
+
+The source has two conversion issues: the initializer is missing a closing `}` or `)`, and it used a non-ASCII not-equal sign. The intended test is `p_dev != nullptr`. The important rule is that the result must be checked.
+
+#### Reference Casts
+
+`dynamic_cast` also works with references. A reference must always refer to an object, and there is no `nullptr` equivalent for a reference.
+
+For references, `dynamic_cast<T&>(r)` is an assertion: *the object referred to by `r` is of type `T`*. If the assertion is false, the cast throws `std::bad_cast`. In general, the source recommends using pointers for polymorphism when failure is expected and should be handled by checking.
+
+#### bad_cast
+
+Exceptions are raised when runtime errors occur. `bad_cast` is raised when a `dynamic_cast` to a reference type fails.
+
+```cpp
+void f(B& r) {
+    try {
+        D& der_ref {dynamic_cast<D&>(r)};
+        // other operations
+    } catch (bad_cast) {
+        // handle the error
+    }
+}
+```
+
+The source omits `std::` before `bad_cast`; the standard type is `std::bad_cast`. The `try` block attempts the reference cast; the `catch` block handles failure.
+
+#### Multiple Inheritance
+
+With multiple inheritance, a cast may be ambiguous. The source describes a hierarchy where both `rx` and `tx` inherit from `component`, and `radio` inherits from both. In that case, a conversion from `radio` to `storable` may be valid, while a conversion from `radio` to `component` may be ambiguous because the `radio` object contains two `component` subobjects.
+
+In such cases, `dynamic_cast` can return `nullptr` for pointer casts that cannot identify a unique valid target.
+
+### Misuses of RTTI
+
+Do not use `dynamic_cast` in a constructor: the information about the object being constructed is not complete yet.
+
+Use RTTI only when necessary. Compile-time type checking is safer and has less runtime overhead. When possible, prefer interfaces and virtual functions.
+
+#### Wrong Approach
+
+The source shows this as the wrong approach:
+
+```cpp
+void rotate(Shape* r) {
+    if (dynamic_cast<Circle*>(r)) {
+        // do nothing
+    }
+    else if (dynamic_cast<Triangle*>(r)) {
+        // ... rotate triangle ...
+    }
+    else if (dynamic_cast<Square*>(r)) {
+        // ... rotate square ...
+    }
+}
+```
+
+This code inspects the runtime type manually and branches on it. It is brittle: every new shape requires changing this function, and the behavior is spread outside the class hierarchy.
+
+#### Virtual Function Approach
+
+The correct approach is to declare a virtual function in the base class and override it in derived classes.
+
+```cpp
+class Shape {
+public:
+    virtual void
+rotate() = 0;
+    // ...
+}
+
+class Circle : public
+Shape{
+public:
+    void rotate();
+    // ...
+}
+
+class Triangle : public
+Shape{
+public:
+    void rotate();
+    // ...
+}
+
+class Square : public
+Shape{
+public:
+    void rotate();
+    // ...
+}
+```
+
+The source tagged this as Java and the class declarations are missing final semicolons, but the idea is C++. `Shape::rotate()` is pure virtual, and each derived class implements its own rotation behavior.
+
+Then client code can call the virtual function:
+
+```cpp
+Shape* ptr_triangle {new Triangle{}};
+
+// ...
+
+ptr_triangle->rotate();
+// the rotate() implementation of the class
+// triangle will be used
+```
+
+The source used a non-ASCII arrow; valid C++ uses `->`. Dynamic dispatch chooses `Triangle::rotate()` because the actual object is a `Triangle`.
+
+### Other Casts
+
+#### static_cast
+
+```cpp
+static_cast<T>()
+```
+
+`static_cast` converts between related types:
+
+- pointers in hierarchies;
+- integral values to enumerators;
+- floating-point types to integral types and vice versa.
+
+It does not inspect the actual object at runtime. Therefore it has no runtime checking cost, but it is unsafe for downcasts in polymorphic hierarchies when the dynamic type is uncertain. `dynamic_cast` does not work with `void*` because the compiler cannot infer the object type from raw memory.
+
+#### reinterpret_cast and const_cast
+
+`reinterpret_cast<T>()` converts between unrelated types, such as integer and pointer types. It changes how the bit pattern in memory is interpreted and is the most disruptive cast.
+
+`const_cast<T>()` removes constness from pointers and references that point to something that is not actually const. Using it to modify a truly const object is undefined behavior.
+
+#### Cast Recap
+
+Use `static_cast` first for conversions between related types and from `void*`, but avoid it for unchecked downcasts in polymorphic hierarchies.
+
+Use `dynamic_cast` for downcasting or crosscasting polymorphic types when runtime type checking is needed.
+
+Use `const_cast` only to remove constness from pointers or references to non-const objects.
+
+Use `reinterpret_cast` only for very low-level conversions between unrelated types, because it is the most dangerous cast.
+
+## 5 Mins Questions
+
+No 5 mins questions are present in the source material.
+
+## Final Summary
+
+Runtime polymorphism lets code manipulate derived objects through base pointers or references. `dynamic_cast` uses RTTI to check whether a downcast or crosscast is valid at runtime. Pointer casts return `nullptr` on failure, while reference casts throw `std::bad_cast`.
+
+RTTI should be used sparingly. If behavior depends on the actual derived type, a virtual function is usually the better design. Other casts have narrower roles: `static_cast` for related checked-at-compile-time conversions, `const_cast` for carefully removing constness, and `reinterpret_cast` for low-level reinterpretation of unrelated bit patterns.

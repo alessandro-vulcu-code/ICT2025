@@ -1,0 +1,267 @@
+# Structures and Enumerators
+
+## Outline
+- [Primitive User-Defined Types](#primitive-user-defined-types)
+- [Structures](#structures)
+  - [Declaration and Definition](#declaration-and-definition)
+  - [Initialization](#initialization)
+  - [Member Access](#member-access)
+  - [Layout and Alignment](#layout-and-alignment)
+  - [Declarations and Forward Declarations](#declarations-and-forward-declarations)
+  - [Constructors and Invariants](#constructors-and-invariants)
+  - [Plain Old Data](#plain-old-data)
+  - [Bitfields](#bitfields)
+- [enum class](#enum-class)
+  - [Scoped and Strongly Typed Enumerators](#scoped-and-strongly-typed-enumerators)
+  - [Operators on enum class](#operators-on-enum-class)
+- [Plain enum](#plain-enum)
+
+## Study Notes
+
+This lesson follows **[c++pl] Chapter 8** and introduces primitive user-defined data types: `struct`, `enum class`, and plain `enum`.
+
+### Primitive User-Defined Types
+
+The source calls these **primitive user-defined types** because they come from C-style programming and are still useful in C++, with stronger modern alternatives.
+
+1. `struct`: a sequence of elements of arbitrary types.
+2. `enum`: a type with named constants that can be implicitly converted to an integer.
+3. `enum class`: a scoped enumeration without implicit conversion to integer.
+
+### Structures
+
+A **struct** is an aggregate of elements that may have different types. This contrasts with an array, which aggregates elements of the same type.
+
+#### Declaration and Definition
+
+```cpp
+struct Address {
+    const char* name;
+    int number;
+    const char* street;
+    const char* town;
+    char state[2];
+    const char* zip;
+};
+```
+
+This defines a type `Address` with several public members. By default, members of a `struct` are **public**. The semicolon after the closing brace is part of the struct definition syntax and must not be omitted.
+
+#### Initialization
+
+```cpp
+Address jd = {
+    "Jim Dandy",
+    61,
+    "South St",
+    "New Providence",
+    {'N','J'},
+    "07974"
+};
+```
+
+This aggregate initialization fills the members in declaration order. The `state` member is a two-character array initialized with `'N'` and `'J'`. Two structs with identical members are still different types if they are declared as different struct types.
+
+#### Member Access
+
+Individual members can be accessed through an object, a reference, or a pointer.
+
+```cpp
+Address jd;
+jd.name = "Jim Dandy";
+
+void f(Address &addr)
+{
+    addr.name = "Jim Dandy";
+}
+
+void f(Address *addr)
+{
+    addr->name = "Jim Dandy";
+    // or
+    (*addr).name = "Jim Dandy";
+}
+```
+
+`jd.name` accesses a member through an object. `addr.name` accesses through a reference. `addr->name` accesses through a pointer and is equivalent to `(*addr).name`; the parentheses are needed because `.` binds more tightly than `*`.
+
+#### Layout and Alignment
+
+Struct members are stored in memory in the order in which they are declared, but the compiler may insert **padding** between members to satisfy alignment requirements.
+
+```cpp
+struct Example {
+    char first_member;
+    int second_member;
+    char third_member
+};
+```
+
+The snippet is missing a semicolon after `third_member`. The nominal member sizes are at least `1 + 4 + 1 = 6`, but the actual struct size may be larger because some architectures require objects to be aligned at specific byte boundaries.
+
+```text
+1
+2
+3
+12
+```
+
+This appears to be extracted layout text from a slide diagram. The important point is that padding can make the total size larger than the sum of member sizes.
+
+#### Declarations and Forward Declarations
+
+Inside a struct definition, the type name is available immediately enough to declare pointers or references to the same type, because pointer size is fixed.
+
+```cpp
+struct Example {
+    Example* pointer_to_other; // correct: the size
+}; // of a pointer is fixed and defined
+```
+
+A struct cannot contain a direct object of its own incomplete type, because that would require knowing its full size before the definition is complete.
+
+```cpp
+struct Example {
+    Example other; // error: the size of example is
+}; // unknown
+```
+
+It is possible to declare a struct name and define it later with a **forward declaration**. The source also warns that struct type names can be overloaded by variable names, but this should be avoided because it hurts readability.
+
+#### Constructors and Invariants
+
+A struct is a simple version of a class and can have constructors.
+
+```cpp
+struct Points {
+    std::vector<int> elem;
+    Points (int n1, int n2) {
+        elem.push_back(n1);
+        elem.push_back(n2);
+    }
+};
+```
+
+The constructor initializes the logical state of `Points` by inserting two values into `elem`. If a constructor is explicitly declared, there is no implicitly available default constructor unless one is also declared or defaulted. Constructors are used to enforce **invariants**, meaning conditions that must remain true during the object's lifetime. They can also validate, reorder, or modify arguments before storing them.
+
+#### Plain Old Data
+
+**Plain Old Data (POD)** refers to simple types that can be copied or moved around in memory without special object-management risks, for example with `std::memcpy()`. The slide describes a POD as having:
+
+- no complex layout;
+- no user-defined copy;
+- a trivial default constructor, meaning non-user-provided.
+
+```cpp
+struct Trivial { // just a wrapper, actually useless
+  int a;
+  Trivial(int aa) : a(aa) { }
+  Trivial() = default; // use the compiler generated
+  // constructor
+};
+```
+
+This example wraps an `int`. `Trivial() = default;` requests a compiler-generated default constructor. The slide calls the wrapper "actually useless" because it does not add meaningful behavior beyond storing the integer.
+
+#### Bitfields
+
+A `bool` is at least as large as a `char`. When a program needs multiple flags, they can be packed as **bitfields** inside a struct.
+
+Bitfields are useful for matching an external binary layout, such as a packet header. They may reduce memory use, but they do not always improve performance; they can even increase compiled code size. Their syntax is:
+
+```text
+type variable : number_of_bits
+```
+
+The address of a bitfield cannot be taken because the field may not start at a byte boundary.
+
+```cpp
+struct SimpleTcpHeader {
+    int source_port : 16;
+    int destination_port : 16;
+    int sequence_number : 32;
+    int ack_number : 32;
+    char data_offset : 4; // 4 bit
+    char : 3; // these are not used
+    bool ns : 1;
+    bool crw : 1;
+    bool ece : 1;
+    bool urg : 1;
+    bool ack : 1;
+    bool psh : 1;
+    bool rst : 1;
+    bool syn : 1;
+    bool fin : 1;
+    int window_size : 16;
+    int checksum : 16;
+    int urgent_pointer : 16;
+};
+```
+
+This models fields of a simplified TCP header. The unnamed `char : 3;` reserves three unused bits. This kind of layout is low-level and implementation details such as packing and endianness must be handled carefully in real network code.
+
+### enum class
+
+#### Scoped and Strongly Typed Enumerators
+
+Enumerators define a set of named integer-like constants. In an **enum class**, enumerators are:
+
+- **scoped**, so they must be qualified with the enum class name;
+- **strongly typed**, so they do not implicitly convert to `int`.
+
+```cpp
+enum class TrafficLight {green, yellow, red};
+TrafficLight a = TrafficLight::red;
+int a2 = a; // compilation error
+bool a3 {a = 2}; // compilation error
+
+enum class Other {char {green, blue}; // no name clash!
+```
+
+The last line is corrupted by PDF conversion. The intended idea is that another enum class can reuse enumerator names such as `green` and `blue` without clashes, because the names are scoped. By default, the underlying type is `int`, but it can be changed explicitly.
+
+#### Operators on enum class
+
+Enumerators give human-readable semantics to values. It is also possible to assign explicit values, for example when using flags with bit operations.
+
+```cpp
+enum class Printer_flags { acknowledge=1, paper_empty=2,
+    busy=4, out_of_black=8, out_of_color=16};
+```
+
+The values are powers of two, so they can be combined as bit flags.
+
+```cpp
+constexpr Printer_flags operator|(
+    Printer_flags a, Printer_flags b) {
+    return static_cast<Printer_flags>(
+        static_cast<int>(a)|static_cast<int>(b));
+}
+```
+
+This overload defines `|` for `Printer_flags`. Because `enum class` does not convert implicitly to `int`, the operands are explicitly cast to `int`, combined with bitwise OR, and cast back to `Printer_flags`. Marking the operator `constexpr` allows compile-time evaluation when the inputs are constant expressions.
+
+### Plain enum
+
+A **plain enum** is not scoped and its enumerators can be converted to `int`. In general, prefer `enum class` because it gives better-defined behavior and avoids name clashes.
+
+```cpp
+enum TrafficLight {green, yellow, red};
+TrafficLight a = TrafficLight::red;
+int a2 = a; // ok!
+bool a3 {a == 2}; // ok!
+
+enum Other char {green, blue}; // error
+```
+
+This block contains source issues. In a plain enum, the enumerator `red` can normally be referred to as `red` rather than `TrafficLight::red`. The final declaration is malformed; the intended point is that another plain enum cannot reuse `green` and `blue` in the same scope without a name clash. This is why `enum class` is normally preferred.
+
+## 5 Mins Questions
+
+No 5 mins questions are present in the source material.
+
+## Final Summary
+
+`struct` lets C++ group heterogeneous data into a user-defined type. Structs have public members by default, can be aggregate-initialized, can define constructors, and can enforce invariants. Their memory layout follows member order but may include padding for alignment.
+
+`enum class` provides scoped, strongly typed named constants and is usually preferable to plain `enum`. Plain enums are less safe because their enumerators leak into the surrounding scope and convert implicitly to integers. Bitfields and explicit enum values are useful for low-level layouts, but they require careful reasoning about representation and portability.

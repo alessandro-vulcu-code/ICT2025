@@ -1,0 +1,155 @@
+# Namespaces and Code Modularization
+
+## Outline
+- [Modularity](#modularity)
+  - [Composition Problem](#composition-problem)
+  - [Need for Modularity](#need-for-modularity)
+- [Namespaces](#namespaces)
+  - [Namespace Purpose](#namespace-purpose)
+  - [Open Namespaces](#open-namespaces)
+- [Access to Namespace Members](#access-to-namespace-members)
+  - [Explicit Qualification](#explicit-qualification)
+  - [using Declarations](#using-declarations)
+  - [using Directives](#using-directives)
+  - [Argument-Dependent Lookup](#argument-dependent-lookup)
+- [Interfaces and Modular Code](#interfaces-and-modular-code)
+
+## Study Notes
+
+This lesson follows **[c++pl] Chapter 14** and explains how C++ programs can be organized into separate logical parts.
+
+### Modularity
+
+Any realistic program is composed of multiple separate parts: functions, classes, libraries, and modules. A good implementation should be based on **modularity**:
+
+- keep separate concepts and abstractions separate;
+- allow access only through a well-specified **interface**.
+
+C++ does not rely on a single language feature for modularity. It can be achieved by combining **namespaces**, **classes**, and **functions**.
+
+#### Composition Problem
+
+The source gives two libraries that accidentally use the same names:
+
+```cpp
+// a library for shapes
+class Shape { /* ... */ };
+class Line : public Shape { /* ... */ };
+class Poly_line: public Shape { /* ... */ };
+class Text : public Shape { /* ... */ };
+
+// a library for text
+class Glyph { /* ... */ };
+class Word { /* ... */ };
+class Line { /* ... */ };
+class Text { /* ... */ };
+```
+
+If a program uses both libraries in the same scope, it will not compile because `Line` and `Text` have multiple declarations. The problem is not that the names are bad individually; the problem is that unrelated libraries need independent naming spaces.
+
+#### Need for Modularity
+
+Modularity prevents accidental coupling. Each part of the program should expose what other parts need and hide implementation details. This makes code easier to change: if the implementation changes but the interface remains stable, the rest of the program does not need to be rewritten.
+
+### Namespaces
+
+#### Namespace Purpose
+
+A **namespace** represents a set of facilities that logically belong together, such as the code of a library. The members of a namespace are in the namespace's scope.
+
+```cpp
+namespace TextLibrary {
+  // a library for text
+  class Line { /* ... */ };
+  class Text { /* ... */ };
+}; // end of namespace TextLibrary
+```
+
+The source block used a non-C++ tag, but the code is C++. `TextLibrary::Line` and `TextLibrary::Text` no longer clash with unrelated global names such as `Line` or `Text` from another library.
+
+#### Open Namespaces
+
+Namespaces are **open**: members can be added to the same namespace from multiple files or locations. This is useful when a library has several classes and functions split across several files but still wants one logical namespace.
+
+### Access to Namespace Members
+
+#### Explicit Qualification
+
+The clearest way to access a namespace member is **explicit qualification** with `::`.
+
+```cpp
+TextLibrary::Line line_object {};
+
+// ::GlobalMemberName can be used to access
+// members from the global namespace, which
+// are otherwise shadowed by local variables
+
+// using declarations
+
+using std::string;
+
+string a_string {"hello"};
+// instead of std::string a_string
+```
+
+`TextLibrary::Line` names `Line` inside `TextLibrary`. A leading `::`, as in `::GlobalMemberName`, selects a name from the global namespace, which is useful if a local name shadows it.
+
+#### using Declarations
+
+A **using declaration** introduces one specific name into the current scope:
+
+```cpp
+using std::string;
+```
+
+After this, `string` can be written instead of `std::string`. This is more controlled than importing an entire namespace.
+
+#### using Directives
+
+A **using directive** imports all names from a namespace into the current lookup context.
+
+```cpp
+using namespace std;
+
+string a_string {"hello"};
+vector<string> vec {a_string}
+// instead of std::string a_string
+// and std::vector<std::string> vec
+```
+
+The source snippet is missing a semicolon after `vector<string> vec {a_string}`. `using namespace std;` is convenient but risky: it can reintroduce the same name clashes that namespaces were meant to avoid. In particular, do not place using directives in the global scope of a header file, because that header may be included anywhere.
+
+#### Argument-Dependent Lookup
+
+**Argument-dependent lookup (ADL)** searches for a function in namespaces associated with the function's arguments. It is especially useful for operators.
+
+The source gives these lookup rules:
+
+- If the argument is a class member, first check the class, then the namespace.
+- If the argument is a namespace member, first check that namespace, then enclosing namespaces up to the global namespace.
+- If the argument is built-in, such as `int`, `char`, or `bool`, there are no associated namespaces.
+
+ADL helps library functions and overloaded operators be found without always writing full qualification, but it also means name lookup can depend on argument types.
+
+### Interfaces and Modular Code
+
+A program combines separate parts, and each part may need functionality provided by another part. This should be done through **interfaces**.
+
+An interface should be the only supported way to access the functionality of a code part or module. Implementation details should be hidden. This is the **data-hiding principle** from data abstraction.
+
+Interfaces can be defined with:
+
+- namespaces, which can define libraries and modules;
+- classes and object-oriented programming.
+
+The source's modular TCP example describes a TCP module that interacts with interfaces while hiding implementation details such as congestion control, retransmissions, and header parsing. With this design, a TCP program can use different congestion control algorithms without changing the code that depends on the public interface.
+
+## 5 Mins Questions
+
+No 5 mins questions are present in the source material.
+
+## Final Summary
+
+Namespaces solve a practical modularity problem: different parts of a program may need the same natural names without clashing. They group logically related facilities, support code split across files, and allow controlled access through qualification or selected using declarations.
+
+Good modular design depends on clear **interfaces** and hidden implementation details. Namespaces, classes, and functions work together to keep abstractions separate while allowing the necessary parts of a program to interact safely.

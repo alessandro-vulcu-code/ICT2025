@@ -1,0 +1,536 @@
+# Inter-thread Communication with Shared Memory
+
+## Outline
+- [Memory Model](#memory-model)
+- [Race Conditions](#race-conditions)
+  - [Lost Updates](#lost-updates)
+- [Producer Consumer Problem](#producer-consumer-problem)
+- [Critical Regions](#critical-regions)
+- [Busy Waiting](#busy-waiting)
+- [Mutexes](#mutexes)
+  - [Manual Locking](#manual-locking)
+  - [RAII Locks](#raii-locks)
+  - [Starvation](#starvation)
+  - [Deadlock](#deadlock)
+- [Condition Variables](#condition-variables)
+  - [Consumer with Wait](#consumer-with-wait)
+  - [Producer with Notify](#producer-with-notify)
+- [Atomic Variables](#atomic-variables)
+- [Producer Consumer Final Solution](#producer-consumer-final-solution)
+  - [Final Consumer](#final-consumer)
+  - [Final Producer](#final-producer)
+- [Reference](#reference)
+
+## Study Notes
+
+### Memory Model
+
+When code modifies an object in memory, the processor does not usually operate directly on memory in one indivisible step. A typical operation is:
+
+1. load the value from memory into a CPU register;
+2. modify the register;
+3. write the register value back to memory.
+
+This matters because two threads can interleave these steps.
+
+```cpp
+int a = 0;
+void incr() {
+    a = a + 1;
+}
+main() {
+    incr();
+}
+```
+
+For one thread, `a = a + 1` looks simple. Internally, it can be understood as:
+
+```text
+T1: R1 = 0       # load a
+T2: R1 = 0 + 1   # modify
+T3: a = R1       # write back
+```
+
+The value evolution is:
+
+```text
+T1: a = 0
+T2: a = 0
+T3: a = 1
+```
+
+With only one thread, this is fine. With two threads, these internal steps can overlap in dangerous ways.
+
+### Race Conditions
+
+A **race condition** occurs when the outcome of a program depends on the relative ordering of operations performed by two or more threads.
+
+```cpp
+int a = 0;
+void incr() {
+  for (int i = 0; i < 100000; i++){
+    a = a + 1;
+    std::this_thread::sleep_for(
+      std::chrono::microseconds(1));
+  }
+}
+
+int main() {
+  std::thread thr1(incr);
+  std::thread thr2(incr);
+  thr2.join();
+  thr1.join();
+  std::cout << a;
+}
+```
+
+Intuitively, one might expect `a == 200000`, because two threads each increment `a` 100000 times. In reality, the result may be smaller and may change between runs.
+
+#### Lost Updates
+
+The classic failure is a **lost update**:
+
+| Time | a | thr1 | thr2 |
+| :--- | :--- | :--- | :--- |
+| T1 | a=10 | R1=a=10 | // |
+| T2 | a=10 | R1=10+1 | R2=a=10 |
+| T3 | a=11 | a=R1=11 | R2=10+1 |
+| T4 | a=11 | // | a=R2=11 |
+
+Both threads read `10`, both compute `11`, and both write `11`. Two increments happened logically, but the final value increased by only one.
+
+This is the key mental model: **`a = a + 1` is not atomic**. It is a read-modify-write sequence, and another thread can interfere between those steps.
+
+### Producer Consumer Problem
+
+The producer-consumer problem appears when one thread produces data and another thread consumes it.
+
+```cpp
+int main(){
+    std::queue<int> q;
+    std::thread trb([&](){
+        while(true){
+            if(q.size()>0) {
+                int val = q.front();
+                q.pop();
+                //use val somehow...
+            }}});
+
+        //some operations
+        q.push(17);
+        q.push(27);
+        ..}
+```
+
+Here the main thread produces values by pushing into `q`, while the worker thread consumes values by checking the queue, reading the front, and popping it.
+
+The shared resource is `q`. If both threads access it without synchronization, the program can race. For example, one thread might inspect the queue while another changes it.
+
+### Critical Regions
+
+A **critical region** or **critical section** is a sequence of statements that accesses shared resources and must appear to execute indivisibly.
+
+Race-condition example:
+
+```cpp
+//race-condition example
+void incr() {
+  for (int i = 0; i < 100000; i++){
+    a = a + 1;
+  }
+}
+int main() {
+  std::thread thr1(incr);
+  std::thread thr2(incr);
+  thr2.join();
+  thr1.join();
+}
+```
+
+The critical region is the increment of `a`.
+
+Producer-consumer example:
+
+```cpp
+//producer-consumer example
+std::thread trb([](){
+  while(true){
+    if(q.size()>0) {
+      int val = q.front();
+      q.pop();
+    }
+  });
+  //some operations
+  q.push(17);
+}
+```
+
+The critical region includes checking `q.size()`, reading `q.front()`, popping, and pushing. These operations must be protected because the queue is shared.
+
+### Busy Waiting
+
+The synchronization required to protect a critical region is called **mutual exclusion**.
+
+One bad solution is **busy waiting**, also called spinning: a thread repeatedly checks whether a condition is true.
+
+Example idea:
+
+```cpp
+while (q.empty()) {
+    // keep checking
+}
+```
+
+This wastes CPU because the thread does work even when no data is available. Adding sleep reduces CPU usage, but introduces a tradeoff:
+
+- short sleep: responsive but still heavy;
+- long sleep: lighter but slower to react.
+
+Busy waiting is used only in special low-level cases, such as hardware interaction. For normal C++ application code, use mutexes and condition variables.
+
+With multiple consumers, busy waiting can still race. One consumer may check that the queue is non-empty just before another consumer pops the only item.
+
+### Mutexes
+
+A **mutex** is a mutual exclusion object. It represents the exclusive right to access a shared resource.
+
+Only one thread can own a mutex at a time. To access a resource safely:
+
+1. acquire the mutex;
+2. access the critical region;
+3. release the mutex.
+
+Acquiring a mutex may block the current thread if another thread already owns it. Releasing a mutex can unblock a waiting thread.
+
+#### Manual Locking
+
+In C++, acquiring a mutex means locking it.
+
+```c
+std::mutex m_a;
+void useMutex() {
+    m_a.lock();
+    //do stuff
+    m_a.unlock();
+}
+```
+
+This works only if every path reaches `unlock()`. If the function returns early or throws an exception before `unlock()`, the mutex remains locked and other threads can block forever.
+
+#### RAII Locks
+
+C++11 provides RAII lock classes:
+
+- `std::lock_guard`;
+- `std::unique_lock`.
+
+Both lock the mutex in the constructor and unlock it in the destructor. `lock_guard` is lighter. `unique_lock` is more flexible and is needed with condition variables.
+
+```cpp
+#include <mutex> // std::mutex, std::unique_lock
+int a = 0; std::mutex m_a;
+
+void doIncr() {
+    std::unique_lock<std::mutex> lk_a(m_a);
+    a = a + 1;
+} // here lk_a goes out of scope, and unlocks the mutex
+
+void incr() {
+    for (int i = 0; i < 100000; i++){
+        doIncr();
+        std::this_thread::sleep_for(
+            std::chrono::microseconds(1));
+    }
+}
+
+int main() {
+    std::thread thr1(incr);
+    std::thread thr2(incr);
+    thr2.join();
+    thr1.join();
+    std::cout << a << std::endl;
+}
+```
+
+Here `doIncr()` protects the critical region `a = a + 1`. Only one thread at a time can execute that increment. After the function exits, `lk_a` is destroyed and automatically unlocks `m_a`.
+
+This is the basic safe pattern:
+
+```cpp
+{
+    std::unique_lock<std::mutex> lock(m);
+    // access shared data
+} // mutex released here
+```
+
+#### Starvation
+
+**Starvation** occurs when one or more threads wait indefinitely because the scheduler keeps allowing other threads to acquire the resource first. A scheduler does not necessarily guarantee fairness.
+
+The solution is to hold the mutex for the shortest reasonable time: lock only around the critical region, not around unrelated work.
+
+```c
+#include <mutex>
+std::mutex m_a;
+void useMutex1() {
+  while(true) {
+    std::unique_lock<
+      std::mutex> lk1(m_a);
+    //do stuff
+  }
+}
+```
+
+The source continues with a malformed code fence:
+
+```c
+int main() {
+  std::thread thr1(useMutex1());
+  while(true) {
+    std::unique_lock<std::mutex>
+      lk2(m_a);
+    ...//do other stuff
+  }
+  ... //do other stuff2
+}
+```
+
+The important lesson is that if a thread repeatedly locks a mutex and keeps it for too long, other threads may spend most of their time waiting.
+
+#### Deadlock
+
+A **deadlock** occurs when a thread waits for a mutex that will never be released. The slide describes it as a type of starvation.
+
+```cpp
+#include <mutex>
+std::mutex m_a;
+
+void useMutex1() {
+  std::unique_lock<std::mutex> lk(m_a);
+  //do stuff
+}
+
+void useMutex2() {
+  std::unique_lock<std::mutex> lk(m_a);
+  //do stuff
+  useMutex1();//it tries to lock again the same mutex
+  -> deadlock
+}
+```
+
+`useMutex2()` locks `m_a`, then calls `useMutex1()`, which tries to lock `m_a` again. A normal `std::mutex` is not recursive, so the thread waits for a mutex it already owns. Since it cannot progress to release it, the program deadlocks.
+
+### Condition Variables
+
+A **condition variable** lets a thread sleep until another thread signals that an event happened. It solves the producer-consumer problem without wasting CPU in busy waiting.
+
+Important methods:
+
+- `cv.wait(lck, pred)`;
+- `cv.wait_for(lck, max_time, pred)`;
+- `cv.notify_one()`;
+- `cv.notify_all()`.
+
+`cv.wait(lck, pred)` does three key things:
+
+1. it assumes `lck` owns a mutex;
+2. while `pred` is false, it unlocks the mutex and blocks the thread;
+3. when the thread wakes and `pred` is true, it locks the mutex again before returning.
+
+This is subtle but essential. The waiting thread must release the mutex while sleeping, otherwise the producer could not acquire the mutex to produce the data.
+
+`cv.wait_for(lck, max_time, pred)` is similar, but it also stops waiting after a timeout. `max_time` is a `std::chrono::duration`, such as `std::chrono::milliseconds`.
+
+`notify_one()` wakes one waiting thread. `notify_all()` wakes all waiting threads.
+
+#### Consumer with Wait
+
+The consumer logic:
+
+1. lock the mutex;
+2. wait, releasing the mutex while blocked;
+3. resume only when the predicate is true;
+4. automatically lock again after waiting;
+5. consume the resource;
+6. release the mutex when the lock goes out of scope.
+
+```cpp
+// all #includes..
+int main(){
+    std::queue<int> q; std::mutex m_a; std::condition_variable cv;
+
+    std::thread tr1([&](){
+        while(true){
+            std::unique_lock< std::mutex> lk1(m_a);//1.
+            cv.wait(lk1 /*2.a)*/, [&]()->bool{
+                return !q.empty(); //2.b)
+            }); //3.
+            q.pop(); //4.
+        }//5.
+    });
+
+    // producer code
+}
+```
+
+This is much better than busy waiting: the consumer sleeps until the queue is non-empty. The predicate `!q.empty()` is checked while the mutex is held, so checking and consuming are synchronized.
+
+#### Producer with Notify
+
+The producer logic:
+
+1. lock the mutex;
+2. produce the resource;
+3. unlock the mutex;
+4. notify a waiting consumer.
+
+```c
+#include <condition_variable>
+#include <mutex> //...all other includes (queue)
+int main(){
+    std::queue<int> q; std::mutex m_a;
+    std::condition_variable cv;
+    ... // consumer code
+
+    std::unique_lock< std::mutex> lk2(m_a); //1.
+    q.push(17); //2.
+    lk2.unlock(); //3.
+    cv.notify_one(); //4.
+    tr1.join();}
+```
+
+The producer unlocks before notifying. This lets the awakened consumer acquire the mutex immediately instead of waking up only to block again.
+
+### Atomic Variables
+
+The previous producer-consumer version is thread-safe for the queue, but it has two issues:
+
+- the consumer runs in `while(true)` and never ends;
+- if the consumer is waiting on the condition variable and no more data arrives, it may wait forever.
+
+An exit flag is needed, but a normal shared `bool` would also be shared memory and would need synchronization.
+
+C++11 provides **atomic variables**:
+
+```cpp
+std::atomic<bool> exit_flag;
+```
+
+An operation on an atomic object is performed without interference from other threads. Atomic variables are appropriate for simple shared flags or counters.
+
+Common methods:
+
+```cpp
+std::atomic<int> sn(0);   // initialization of an atomic integer variable
+int x = sn.load();        // get the value of sn atomically
+sn.store(5);              // set the value of sn atomically
+int old_sn = sn.exchange(3); // set the value and obtain the old value
+```
+
+Atomic operations are usually faster than lock-based operations because they are implemented by hardware for simple data types. Still, atomics should not be used to protect complex invariants like a queue; use a mutex for that.
+
+### Producer Consumer Final Solution
+
+The final design combines:
+
+- a queue protected by a mutex;
+- a condition variable to sleep/wake efficiently;
+- an atomic `exit_flag` to stop the consumer.
+
+#### Final Consumer
+
+```cpp
+//...all include statements, i.e: queue, mutex, atomic, condition_variable
+int main(){
+    std::queue<int> q; std::mutex m_a;
+    std::condition_variable cv;
+    std::atomic<bool> exit_flag(false);
+    std::thread tr1([&](){
+        while(!exit_flag.load()){ //1.
+            std::unique_lock<
+                std::mutex> lk1(m_a);//2.
+            cv.wait(lk1 , [&]()->bool{ //3.a)
+                return !q.empty() //3.b)
+                ||exit_flag.load(); //3.c
+            }); //4.
+            if(!q.empty()) {
+                q.pop(); //5.
+            }
+        } //6.
+    });
+    ...//code for the producer
+}
+```
+
+Consumer steps:
+
+1. continue while `exit_flag` is false;
+2. lock the mutex;
+3. wait until either the queue has data or the exit flag becomes true;
+4. automatically lock the mutex again after waiting;
+5. if data exists, consume it;
+6. unlock automatically when `lk1` goes out of scope.
+
+The condition variable predicate is the key:
+
+```cpp
+return !q.empty() || exit_flag.load();
+```
+
+This prevents the consumer from sleeping forever during shutdown. The producer can set `exit_flag` and notify the condition variable.
+
+#### Final Producer
+
+```cpp
+//..all include statements, i.e: queue, mutex, atomic, condition_variable
+int main(){
+    std::queue<int> q; std::mutex m_a;
+    std::condition_variable cv;
+    std::atomic<bool> exit_flag(false);
+    //..code for the consumer tr1
+    std::unique_lock <std::mutex> lk2(m_a); //1.
+    q.push(17); //2.
+    lk2.unlock(); //3.
+    cv.notify_one(); //4.
+    exit_flag.store(true); //5.
+    cv.notify_all(); //6.
+    tr1.join();
+}
+```
+
+Producer steps:
+
+1. lock the mutex;
+2. push data into the queue;
+3. unlock the mutex;
+4. notify one waiting consumer that data is ready;
+5. store `true` in the atomic exit flag;
+6. notify all waiting threads so they can re-check the predicate and exit.
+
+Clarifying timeline:
+
+```text
+Consumer: locks mutex, sees q empty, calls cv.wait(...)
+Consumer: wait unlocks mutex and sleeps
+Producer: locks mutex, pushes value, unlocks mutex
+Producer: calls notify_one()
+Consumer: wakes, locks mutex again, sees q non-empty, pops value
+Producer: later sets exit_flag true and calls notify_all()
+Consumer: wakes or loops, sees exit_flag true, exits
+```
+
+This is the central pattern for safe inter-thread communication with shared memory.
+
+### Reference
+
+The lesson refers to **Real-Time Embedded System**, I. Bertinotti and G. Manduchi, CRC Press, 1st edition, 2012.
+
+## 5 Mins Questions
+
+No 5 mins questions are present in the source material.
+
+## Final Summary
+
+Shared memory communication is powerful but dangerous because operations like `a = a + 1` are not atomic. A **race condition** happens when the result depends on thread scheduling. Protect shared data with **critical regions** guarded by mutexes, and use RAII locks such as `std::unique_lock` so the mutex is released automatically.
+
+Do not use busy waiting for normal producer-consumer logic. Use a **condition variable** so the consumer sleeps until data is available, and combine it with a predicate to handle wakeups correctly. Use **atomic variables** for simple shared flags or counters, such as an exit flag, but continue using mutexes for complex shared structures like queues.

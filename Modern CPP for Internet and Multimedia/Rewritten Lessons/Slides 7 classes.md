@@ -1,0 +1,440 @@
+# Classes
+
+## Outline
+- [Classes](#classes)
+  - [Class Basics](#class-basics)
+  - [Class Example](#class-example)
+- [Member Functions](#member-functions)
+  - [Inline and Out-of-Class Definitions](#inline-and-out-of-class-definitions)
+- [Access Control](#access-control)
+  - [public private and friend](#public-private-and-friend)
+  - [Structs and Classes](#structs-and-classes)
+- [Constructors](#constructors)
+  - [Explicit Constructors](#explicit-constructors)
+  - [In-Class Initializers](#in-class-initializers)
+- [Mutability](#mutability)
+  - [Constant Member Functions](#constant-member-functions)
+  - [Logical Constness](#logical-constness)
+  - [mutable Members and Indirection](#mutable-members-and-indirection)
+- [Self-Reference](#self-reference)
+- [Static Members](#static-members)
+- [Concrete Classes](#concrete-classes)
+
+## Study Notes
+
+This lesson follows **[c++pl] Chapter 16** and introduces classes as the main C++ tool for defining user-defined types with representation, behavior, invariants, and interfaces.
+
+### Classes
+
+A **class** introduces a user-defined type: a concrete representation of a concept. It lets the programmer separate implementation details from the public operations that external code may use.
+
+The class design should define:
+
+- which variables represent the object;
+- how functions interact with those variables;
+- which properties are essential for correct use;
+- which **interface** external users can use to manipulate objects.
+
+#### Class Basics
+
+A class is a user-defined type with **members**. Members can be data members, representing object state, or member functions, representing operations such as initialization, copying, moving, cleanup, and other behavior.
+
+Members can be **public** or **private**. Public members form the class interface. Private members hold implementation details. Member access uses `.` for objects and `->` for pointers to objects. Classes can also define operators such as `+`, `-`, and `[]`.
+
+A class should define **invariants**: properties that hold from object initialization to object destruction.
+
+#### Class Example
+
+```cpp
+class X {
+// the representation (implementation) is private
+private:
+    int m;
+public: // the user interface is public
+    X(int i = 0) :m{i} { } // constructor
+    // member function with definition
+    int mf(int i) {
+        int old = m;
+        m = i;
+        return old;
+    }
+};
+```
+
+`X` stores its representation in private member `m`. The constructor initializes `m`, and `mf` changes `m` while returning its old value. External code can call public functions but cannot directly access private data.
+
+```cpp
+X var {7};
+// a variable of type X, initialized to 7
+
+// a function that interacts with var
+int f(X var, X* ptr)
+{
+    int x = var.mf(7); // access using .
+    int y = ptr->mf(9); // access using ->
+    int z = var.m; // error: cannot access
+        // private member
+}
+```
+
+`var.mf(7)` uses object access, while `ptr->mf(9)` uses pointer access. `var.m` is illegal because `m` is private. The source used a non-ASCII arrow in the comment; valid C++ syntax is `->`.
+
+### Member Functions
+
+**Member functions** are functions declared inside a class. They are invoked on objects of the appropriate type and operate on that object's state.
+
+Member functions can be defined:
+
+- outside the class, usually in a `.cpp` file, with the class name qualified by `ClassName::`;
+- inside the class declaration, usually for small and rarely modified functions.
+
+Functions defined inside the class are **implicitly inline**. This can be efficient for small functions, but modifying such a function may force recompilation of code that includes the class definition.
+
+#### Inline and Out-of-Class Definitions
+
+```cpp
+class X {
+    ...
+    // member function with inlined definition
+    int mf(int i) {
+        int old = m;
+        m = i;
+        return old;
+    }
+    // member function with only declaration
+    int amf(int j);
+};
+```
+
+`mf` is defined inside the class. `amf` is only declared here.
+
+```cpp
+class X {
+    ...
+    int amf(int j);
+};
+
+// we need to define it elsewhere
+int
+X::amf(int j)
+{
+    return j + 2;
+}
+```
+
+The definition uses `X::amf` to state that `amf` belongs to class `X`.
+
+### Access Control
+
+Access control specifies which class members can be accessed from other code. It protects representation details and exposes only the supported public interface.
+
+This is useful because:
+
+- external code cannot arbitrarily break object invariants;
+- the class representation can change without changing user code;
+- users of the class only need to understand the public interface.
+
+The main labels are `public` and `private`. The `friend` label can declare exceptions.
+
+#### public private and friend
+
+```cpp
+class X {
+  // private unless after a public label
+  int m;
+  // it is possible to use a private label
+  private:
+    int m2;
+    int doSomething(double d);
+  // for public members, it is necessary to use a
+  // public label
+  public: // the user interface is public
+    X(int i =0) :m{i} { } // constructor
+};
+```
+
+In a class, members are private by default. `m`, `m2`, and `doSomething` are private. The constructor after `public:` is part of the public interface.
+
+```cpp
+class Y {
+    friend X;
+// class x can access both private and public
+// members and functions of y
+private:
+    int v;
+    int doSomething(double d);
+// for public members, it is necessary to use a
+// public label
+public: // the user interface is public
+    Y(int i =0) :v{i} { } // constructor
+};
+```
+
+`friend X;` means class `X` can access private and public members of `Y`. Friendship should be used carefully because it weakens encapsulation.
+
+#### Structs and Classes
+
+A **struct** is a class whose members are public by default. In general, use a `struct` for simple data aggregates and a `class` when the type must enforce invariants.
+
+A class is better for invariants because it can hide the representation and require all changes to go through public member functions.
+
+### Constructors
+
+**Constructors** are member functions whose explicit purpose is object initialization. They have the same name as the class and no return type.
+
+Objects can be initialized with `()` or `{}`:
+
+```text
+Date today = Date(22,2,1992);
+Date tmrw = Date{22,2,1992};
+```
+
+The brace form is usually more consistent with built-in types and makes initialization clearer. A class can have multiple constructors with different argument lists; normal function overloading rules apply.
+
+#### Explicit Constructors
+
+A single-argument constructor can be used for **implicit conversion** to the class type. This may create unexpected temporary objects.
+
+The `explicit` keyword prevents such implicit conversions.
+
+```cpp
+class Date {
+public:
+    explicit Date(int d);
+}
+
+// ...
+Date d = 15; // error
+Date d {15}; // ok,
+// {} considered explicit
+
+class Date {
+public:
+    Date(int d);
+}
+
+// ...
+Date d = 15; // ok, but
+// not very clear
+```
+
+The source tagged this as Java, but it is C++. It is good practice to make single-argument constructors `explicit`, except when implicit conversion is natural, such as `std::complex<double> c = 1;`.
+
+#### In-Class Initializers
+
+Classes may have many constructors, so it is useful to give data members default values directly in the class.
+
+```cpp
+class Date {
+  int d {22};
+  int m {02};          in-class initialization
+  int y {1992};
+public:
+  Date(int, int, int); // day, month, year
+  Date(int, int); // day, month, year is default
+  Date(int); // day, month and year are default
+  Date(); // default date, 22/02/1992
+  Date(const char*); // date in string representation
+  ...
+}
+```
+
+The text `in-class initialization` is a slide annotation embedded in the code. The idea is that `d`, `m`, and `y` have default member initializers, and constructors can override them when needed.
+
+### Mutability
+
+A name can refer to a mutable object or to an immutable, `const` object. Member functions often need to work on const objects, so C++ distinguishes const and non-const member functions.
+
+#### Constant Member Functions
+
+```cpp
+int getDay() const;
+```
+
+The trailing `const` is part of the member function type and must also appear in the out-of-class definition. A const member function promises not to modify the logical value of the object. Const member functions can be called on both const and non-const objects; non-const member functions cannot be called on const objects.
+
+#### Logical Constness
+
+Sometimes a const member function needs to update cached internal data without changing the logical value of the object. For example, a `Date` may cache a string representation.
+
+```cpp
+class Date {
+  int d {22};
+  int m {02};
+  int y {1992};
+  std::string string_cache;
+  bool valid_cache;
+
+  public:
+    std::string string_rep() const;
+}
+```
+
+`string_rep()` logically only observes the date, but it may need to update `string_cache` if the cache is invalid.
+
+#### mutable Members and Indirection
+
+One solution is to declare cache members **mutable**, allowing them to be changed even inside const member functions.
+
+```cpp
+class Date {
+  int d {22};
+  int m {02};
+  int y {1992};
+  mutable std::string string_cache;
+  mutable bool valid_cache;
+  ...
+public:
+    std::string string_rep() const;
+private:
+    void compute_cache_value() const;
+```
+
+The source snippet is incomplete, but it shows that `string_cache` and `valid_cache` are mutable while the public function remains `const`.
+
+```cpp
+class Date {
+    int d {22};
+    int m {02};
+    int y {1992};
+    mutable std::string string_cache;
+    mutable bool valid_cache;
+
+    ...
+public:
+        std::string string_rep() const;
+
+private:
+        void compute_cache_value() const;
+
+        string Date::string_rep() const
+        {
+            if (!valid_cache) {
+                // update string_cache
+                compute_cache_value();
+                valid_cache = true;
+            }
+            return string_cache;
+        }
+}
+```
+
+This preserves the source structure, but the definition of `Date::string_rep()` is incorrectly nested inside the class's private section. Conceptually, it checks the cache, computes it if needed, marks it valid, and returns the cached representation.
+
+Another solution is **mutability through indirection**. The mutable state is placed in another object, and the class stores a pointer or reference to it. `const` does not automatically make the pointed-to object const.
+
+```cpp
+struct cache { bool valid; string rep; };
+```
+
+```cpp
+class Date {
+    int d {22};
+    int m {02};
+    int y {1992};
+    cache* date_cache;
+    ...
+```
+
+```cpp
+    string Date::string_rep() const
+    {
+        if (!c->valid) {
+            // update
+            compute_cache_value();
+            c->valid = true;
+        }
+        return c->rep;
+    }
+}
+```
+
+The source uses both `date_cache` and `c`, so the snippet is inconsistent. The key point is that the cache object is modified through a pointer even from a const member function. This should be used carefully because it can hide mutation.
+
+### Self-Reference
+
+Inside a member function, `this` is a pointer to the object on which the function was called. For a non-const object of class `X`, `this` has type `X*`; for a const object, it has type `const X*`.
+
+Most uses are implicit: inside a member function, writing `m` is usually equivalent to `this->m`. Returning `*this` can support chained operations.
+
+```cpp
+Date& add_year(int year) { y += year; return *this; }
+Date& add_month(int month) { m += month; m = m % 12; return *this; }
+
+Date d {10, 05, 2003}
+d.add_year(3).add_month(3);
+```
+
+The source tagged this as Python, but it is C++. The declaration of `d` is missing a semicolon. Each function returns a reference to the same object, allowing chained calls.
+
+### Static Members
+
+A **static member** belongs to the class rather than to a particular object. There is exactly one copy of a static data member per program, and it must be defined before first use.
+
+Static member functions can be called without an object. Static members can introduce concurrency issues in multi-threaded programs because they represent shared state.
+
+```cpp
+class Date {
+    int d, m, y;
+    static Date default_date;
+public:
+    Date(int dd =0, int mm =0, int yy =0);
+    // ...
+    static void set_default(int dd, int mm, int yy);
+    // set default_date to Date(dd,mm,yy)
+}
+```
+
+The source tagged this as Java, but it is C++. The class declaration is missing a final semicolon.
+
+```cpp
+class Date {
+    int d, m, y;
+    static Date default_date;
+public:
+    Date(int dd =0, int mm =0, int yy =0);
+    // ...
+    static void set_default(int dd, int mm, int yy);
+    // set default_date to Date(dd,mm,yy)
+};
+
+// implementation (also in some other parts of the program)
+
+// definition of Date::default_date
+Date Date::default_date {16,12,1770};
+
+// definition of Date::set_default
+void Date::set_default(int d, int m, int y) {
+    // assign new value to default_date
+    default_date = {d,m,y};
+}
+```
+
+`Date::default_date` defines the single static object. `Date::set_default` changes it without needing a specific `Date` instance.
+
+### Concrete Classes
+
+A **concrete class** defines a small concrete type whose representation is part of the class definition. This contrasts with an abstract class, which provides an interface to multiple possible implementations.
+
+Concrete classes allow objects to be placed on the stack, allocated statically, stored inside other objects, copied, moved, and used as named variables rather than only through pointers and references. This is a **value-oriented** style, not classic object-oriented programming.
+
+Concrete classes typically have:
+
+- constructors;
+- const functions that examine an object;
+- modifying functions that do not expose representation;
+- error-reporting classes if needed;
+- helper functions, often in the same namespace rather than inside the class;
+- copy and move operations.
+
+The source refers to the `Course` class in the lesson code as an example.
+
+## 5 Mins Questions
+
+No 5 mins questions are present in the source material.
+
+## Final Summary
+
+Classes define user-defined types with representation, behavior, invariants, and interfaces. Public members expose supported operations, while private members hide implementation details and protect invariants. Member functions can be inline or defined separately, constructors initialize objects, and `explicit` prevents unwanted implicit conversions.
+
+Const member functions, logical constness, `mutable`, `this`, static members, and concrete classes are all tools for designing usable and efficient types. The central design goal is to expose a clear interface while keeping representation details under control.

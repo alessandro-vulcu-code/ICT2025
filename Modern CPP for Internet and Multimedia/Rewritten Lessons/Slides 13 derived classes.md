@@ -1,0 +1,415 @@
+# Derived Classes and Class Hierarchies
+
+## Outline
+- [Class Relationships](#class-relationships)
+  - [part of and extends](#part-of-and-extends)
+  - [Class Hierarchies](#class-hierarchies)
+- [Inheritance in C++](#inheritance-in-c)
+  - [Implementation and Interface Inheritance](#implementation-and-interface-inheritance)
+  - [Derived Class Example](#derived-class-example)
+  - [Using Derived Objects Through Base Types](#using-derived-objects-through-base-types)
+- [Members Constructors and Destructors](#members-constructors-and-destructors)
+  - [Member Access in Derived Classes](#member-access-in-derived-classes)
+  - [Construction and Destruction Order](#construction-and-destruction-order)
+  - [Slicing](#slicing)
+  - [Inheriting Constructors](#inheriting-constructors)
+- [Navigating Class Hierarchies](#navigating-class-hierarchies)
+  - [Single-Type Assumptions](#single-type-assumptions)
+  - [Type Fields](#type-fields)
+  - [Virtual Functions](#virtual-functions)
+  - [Runtime Polymorphism](#runtime-polymorphism)
+- [Override Control](#override-control)
+  - [virtual override final and pure virtual](#virtual-override-final-and-pure-virtual)
+- [Abstract Classes](#abstract-classes)
+- [Access Control](#access-control)
+  - [private protected and public](#private-protected-and-public)
+  - [Base-Class Access](#base-class-access)
+  - [Replication Issue and Virtual Base](#replication-issue-and-virtual-base)
+
+## Study Notes
+
+This lesson follows **[c++pl] Chapters 20 and 21** and explains how C++ represents relationships among classes through inheritance and class hierarchies.
+
+### Class Relationships
+
+Complex concepts often require relationships among classes. C++ distinguishes two important relationships:
+
+- **part of**: represented through data members;
+- **extends**: represented through class hierarchies.
+
+#### part of and extends
+
+A `Car` can have four private members of type `Wheel`; this is a **part of** relationship. The wheel is part of the car's representation.
+
+The **extends** relationship means that one type is a more specific version of another. This is the foundation of object-oriented programming in C++.
+
+#### Class Hierarchies
+
+In a class hierarchy, a **base** or **superclass** represents the general concept, while **derived** or **subclasses** represent more specific concepts.
+
+```cpp
+class Shape { ... };
+class Square : public Shape { ... };
+class Circle : public Shape { ... };
+```
+
+`Square` and `Circle` publicly derive from `Shape`, so they can be treated as specialized shapes.
+
+### Inheritance in C++
+
+#### Implementation and Interface Inheritance
+
+C++ supports class hierarchies through two mechanisms:
+
+1. **Implementation inheritance**: reuse facilities and implementation provided by a base class.
+2. **Interface inheritance**: use different derived classes interchangeably through a shared interface. This is also called **run-time polymorphism**.
+
+Implementation inheritance is about code reuse. Interface inheritance is about substitutability.
+
+#### Derived Class Example
+
+The source starts with an `Employee` base class:
+
+```cpp
+struct Employee { // this is used as base class
+    // it must be declared
+    string first_name, family_name;
+    char middle_initial;
+    Date hiring_date;
+    short department;
+}
+
+We now need to implement the class for a manager, which is a specific kind of employee
+
+We can re-use the base implementation of Employee and extends by adding manager-specific characteristics
+```
+
+The block mixes C++ and slide text, and the struct is missing a final semicolon. The idea is that `Employee` stores the common state.
+
+```cpp
+struct Employee { // this is used as base class
+    // it must be declared
+    string first_name, family_name;
+    char middle_initial;
+    Date hiring_date;
+    short department;
+}
+
+this expresses subclassing
+
+struct Manager : public Employee {
+    list<Employee*> group;
+    short level;
+}
+
+Manager has the same members of Employee
++ its own members!
+```
+
+This source block also mixes code and annotations. `Manager : public Employee` means that `Manager` has the `Employee` subobject plus its own members, `group` and `level`. The struct declarations need semicolons in valid C++.
+
+#### Using Derived Objects Through Base Types
+
+A `Manager` can be used wherever an `Employee` is acceptable through pointers or references.
+
+```cpp
+void f (Manager m1, Employee e1)
+{
+    std::vector<Employee*> vec {&m1, &e1};
+}
+```
+
+`&m1` is a `Manager*`, but it can be stored in `std::vector<Employee*>` because a `Manager*` is also an `Employee*`. Similarly, a `Manager&` can bind to an `Employee&`. The reverse is not generally true: an `Employee*` is not necessarily a `Manager*`.
+
+The source warns not to pass a `Manager` by value into an `Employee` parameter because that causes **slicing**.
+
+### Members Constructors and Destructors
+
+#### Member Access in Derived Classes
+
+A derived class can use public and protected members of the base as if they were declared in the derived class. It cannot access private base members directly.
+
+If a derived class redefines a function with the same name, it can explicitly call the base version with qualification:
+
+```cpp
+BaseClass::fun()
+```
+
+The qualifier prevents accidental recursion and clearly selects the base implementation.
+
+#### Construction and Destruction Order
+
+Constructor execution has a fixed order:
+
+1. The base-class constructor is called.
+2. Derived-class data members are constructed.
+3. The derived constructor body runs.
+
+Destruction happens in the reverse conceptual order:
+
+1. The derived destructor body runs.
+2. Derived-class data members are destroyed.
+3. The base-class destructor runs.
+
+If objects are deleted through base-class pointers, the base destructor should generally be **virtual**. Otherwise, the derived destructor may not run, and derived resources may leak.
+
+Each derived class can initialize the base and its own members, but it cannot directly initialize the base's members. It must call an appropriate base constructor.
+
+#### Slicing
+
+The default copy constructor and copy assignment perform member-wise copy. **Slicing** happens when a derived object is copied into a base object: only the base subobject is copied, and derived-specific state is lost.
+
+```cpp
+struct X {
+    int m_number;
+}
+
+struct Y : public X {
+    int m_second_number;
+}
+
+slicing example
+
+// some code
+void f(X *p)
+{
+    X h = *p; // if p points to a Y, only
+    // m_number is copied (slicing)
+}
+
+Y example {1, 2};
+f(&Y);
+```
+
+The source block is corrupted: the structs need semicolons, `slicing example` is slide text, and `f(&Y)` should likely pass `&example`. The important point is that copying through `X` loses `Y::m_second_number`.
+
+Possible solutions include deleting the copy constructor in the base class or making the base class private/protected where appropriate.
+
+#### Inheriting Constructors
+
+A derived class can inherit all constructors from a base class:
+
+```cpp
+class Y : public X {
+    using X::X;
+    // this inherits X constructors
+    ...
+}
+```
+
+The source tagged this as Java, but it is C++. If `Y` has additional data members, inherited constructors do not explicitly initialize them. Either define `Y` constructors manually or give additional members in-class initializers.
+
+### Navigating Class Hierarchies
+
+Given a `Base*`, the actual object may belong to several derived types. For example, an `Employee*` might point to an `Assistant`, `Temp`, `Manager`, or `Director`.
+
+The source lists four strategies:
+
+1. Use objects of a single type.
+2. Use type fields.
+3. Use virtual functions.
+4. Use abstract classes.
+
+#### Single-Type Assumptions
+
+One option is to ensure that a section of the program only points to one actual type, such as only `Assistant` objects. This can be useful for homogeneous containers, but the compiler does not enforce the assumption, so it can lead to errors.
+
+#### Type Fields
+
+A **type field** stores an object's kind as a data member.
+
+```cpp
+struct Employee {
+    enum class Empl_type {manager, employee};
+    Empl_type m_type;
+    ...
+    Employee() : m_type{Empl_type::employee} {}
+}
+
+struct Manager : public Employee {
+    Manager () { m_type = Empl_type::manager; }
+    ...
+}
+```
+
+The source snippets are missing semicolons. This technique is limited and error-prone: the compiler does not enforce consistency, and adding derived classes requires changes elsewhere.
+
+#### Virtual Functions
+
+A function declared **virtual** in a base class can be overridden in a derived class.
+
+Rules from the source:
+
+- the argument list must remain the same;
+- the return type must remain the same, except for some pointer/reference returns where covariant return types are allowed;
+- the compiler and linker ensure the correct function is called at runtime;
+- the function is defined in the base and overridden only where needed.
+
+```cpp
+struct Employee {
+    virtual void print() const;
+}
+
+void f (std::vector<Employee*> vec)
+{
+    for (Employee* elem : vec)
+    {
+        elem->print();
+    }
+}
+```
+
+The struct needs a semicolon. `elem->print()` dispatches to the correct implementation if `print` is virtual and `elem` points to a derived object.
+
+```cpp
+struct Employee {
+    virtual void print() const;
+    ...
+}
+
+void Employee::print() const
+{
+    std::cout << family_name << std::endl;
+}
+
+struct Manager : public Employee {
+    void print() const;
+    ...
+}
+
+void Manager::print() const
+{
+    Employee::print();
+    std::cout << level << std::endl;
+}
+```
+
+`Manager::print()` overrides `Employee::print()`. It explicitly calls `Employee::print()` first to reuse the base behavior, then prints `level`. The qualification avoids infinite recursion.
+
+#### Runtime Polymorphism
+
+Virtual functions enable **runtime polymorphism**: different implementations are selected according to the actual object type, not just the static pointer type.
+
+```cpp
+void f (std::vector<Employee*> vec)
+{
+    for (Employee* elem : vec)
+    {
+        elem->print();
+    }
+}
+```
+
+The vector stores `Employee*`, but each pointer may refer to a different derived type. The correct `print()` is selected for each object. Polymorphism requires manipulation through pointers or references; direct object manipulation already fixes the static type and leaves no room for runtime dispatch.
+
+### Override Control
+
+In complex hierarchies, it can be difficult to see what is actually overridden. A derived function with the same name but different parameters may **hide** the base function instead of overriding it.
+
+C++ provides tools for clearer inheritance design:
+
+- `virtual`;
+- `override`;
+- `final`;
+- `= 0` for pure virtual functions.
+
+#### virtual override final and pure virtual
+
+`virtual` means the function may be overridden.
+
+`override` is written at the end of a derived-class function declaration to state that the function is intended to override a virtual base function. If it does not actually override, the compiler reports an error. `override` is not part of the function type and should not be used outside the class declaration.
+
+`final` prevents further overriding of a virtual function. It can also be used after a class name to prevent deriving from the class.
+
+A pure virtual function has the form:
+
+```cpp
+virtual T pureVirtualFunction(U arg) = 0;
+```
+
+The source wrote this as a formula. A class with at least one pure virtual function is abstract.
+
+### Abstract Classes
+
+Some concepts, such as a generic `Shape`, are abstract: they define an interface, but no concrete object of exactly that type should exist. For example, a generic `area()` function may not have a meaningful implementation for every possible shape.
+
+An **abstract class** has at least one pure virtual function. Abstract classes are interfaces for polymorphic types. Objects of abstract class type cannot be created directly. A derived class becomes concrete only after overriding all pure virtual functions. If it does not, it remains abstract, which allows implementation to be built in stages.
+
+This is **interface inheritance**.
+
+### Access Control
+
+#### private protected and public
+
+Class members can be:
+
+- **`private`**: accessible only by member functions and friends of the declaring class;
+- **`protected`**: accessible by the declaring class, friends, and derived classes;
+- **`public`**: accessible by any function.
+
+`protected` is useful in hierarchies but can be abused.
+
+Protected data members are usually a design error because derived classes can corrupt shared state, and later refactoring becomes difficult. Protected functions are often more useful. A virtual protected function can be overridden while staying hidden from the public object interface.
+
+#### Base-Class Access
+
+Base-class inheritance itself can be `public`, `private`, or `protected`.
+
+```cpp
+class X : public B { ... }
+```
+
+Public inheritance means `X` is a kind of `B`; this is the normal form for runtime polymorphism.
+
+```cpp
+class Y : private B { ... }
+```
+
+Private inheritance means the derived class reuses implementation details while hiding the base interface from users. Only the derived class knows it inherits from `B`.
+
+```cpp
+class Z : protected B { ... }
+```
+
+Protected inheritance is similar to private inheritance, but further derived classes can still access the inherited base interface.
+
+If not specified, the default base-class access is private for `class` and public for `struct`.
+
+#### Replication Issue and Virtual Base
+
+A class can inherit from multiple bases. Public inheritance usually inherits interfaces; private or protected inheritance can reuse implementation details.
+
+Multiple inheritance can create a **replication issue**:
+
+```cpp
+class A : public B, public C { ... };
+class B : public D { ... };
+class C : public D { ... };
+class D { ... };
+
+A has two objects of type D
+- if D is not an abstract class and has data, A may have repeated members
+```
+
+`A` contains a `B` subobject and a `C` subobject. If both contain their own `D`, then `A` contains two `D` subobjects.
+
+The issue can be solved with a virtual base:
+
+```cpp
+class A : public B, public C { ... };
+class B : public virtual D { ... };
+class C : public virtual D { ... };
+class D { ... };
+```
+
+Virtual inheritance shares the `D` base subobject instead of duplicating it.
+
+## 5 Mins Questions
+
+No 5 mins questions are present in the source material.
+
+## Final Summary
+
+Derived classes express **is-a** relationships and allow both implementation reuse and interface inheritance. Public inheritance supports substitutability: a `Manager*` can be used as an `Employee*`, but copying derived objects into base objects causes slicing.
+
+Virtual functions provide runtime polymorphism through pointers and references. `override`, `final`, and pure virtual functions make complex hierarchies safer and clearer. Abstract classes define interfaces, while access control determines what base and derived classes may use. Multiple inheritance can duplicate base subobjects unless virtual base classes are used deliberately.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rewrite Big Data Notes"
+  short_description: "Rewrite Big Data notes into exam-ready Markdown"
+  default_prompt: "Use $rewrite-big-data-notes to rewrite a Big Data Computing Markdown note into a polished exam-ready Obsidian note."

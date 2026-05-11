@@ -1,0 +1,3 @@
+display_name: Rewrite Modern CPP Lessons
+short_description: Rewrite Modern C++ study notes
+default_prompt: Use $rewrite-modern-cpp-lessons to rewrite a Markdown lesson from MD Lessons into clear English oral-exam study notes.
