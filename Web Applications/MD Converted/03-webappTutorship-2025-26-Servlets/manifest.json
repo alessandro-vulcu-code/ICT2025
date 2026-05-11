@@ -1,0 +1,1333 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/03-webappTutorship-2025-26-Servlets.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Tutoring 03",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "General Information",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Equally Commit",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Remark on Tutorship Code",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "Project Structure",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "Browser and Server Architecture",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            0,
+            159,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            76.29739336492891,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Browser and Server Architecture",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            0,
+            159,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            76.29739336492891,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Project Structure",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            6,
+            215,
+            539,
+            560
+          ],
+          "bbox_pdf": [
+            2.88,
+            103.16943127962085,
+            258.71999999999997,
+            268.7203791469194
+          ]
+        },
+        {
+          "filename": "assets/slide-009-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "Project Structure: src",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            0,
+            142,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            68.13981042654028,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "Logs",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Why Logs?",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "Log4j",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "log4j.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            0,
+            159,
+            1500,
+            685
+          ],
+          "bbox_pdf": [
+            0.0,
+            76.29739336492891,
+            720.0,
+            328.7026066350711
+          ]
+        },
+        {
+          "filename": "assets/slide-014-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "log4j.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            0,
+            159,
+            1500,
+            685
+          ],
+          "bbox_pdf": [
+            0.0,
+            76.29739336492891,
+            720.0,
+            328.7026066350711
+          ]
+        },
+        {
+          "filename": "assets/slide-015-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "log4j.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            0,
+            159,
+            1500,
+            685
+          ],
+          "bbox_pdf": [
+            0.0,
+            76.29739336492891,
+            720.0,
+            328.7026066350711
+          ]
+        },
+        {
+          "filename": "assets/slide-016-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "log4j.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            0,
+            159,
+            1500,
+            685
+          ],
+          "bbox_pdf": [
+            0.0,
+            76.29739336492891,
+            720.0,
+            328.7026066350711
+          ]
+        },
+        {
+          "filename": "assets/slide-017-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "log4j.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            0,
+            159,
+            1500,
+            685
+          ],
+          "bbox_pdf": [
+            0.0,
+            76.29739336492891,
+            720.0,
+            328.7026066350711
+          ]
+        },
+        {
+          "filename": "assets/slide-018-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "log4j.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "Logging and docker",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            0,
+            247,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            118.52488151658767,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "Deploying the Web App",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "Deploying on Tomcat",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            64,
+            52,
+            1317,
+            541
+          ],
+          "bbox_pdf": [
+            30.72,
+            24.95260663507109,
+            632.16,
+            259.6030805687204
+          ]
+        },
+        {
+          "filename": "assets/slide-022-fig-02.jpg",
+          "bbox_px": [
+            0,
+            580,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            278.3175355450237,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "Deploying on Tomcat",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            38,
+            416,
+            1462,
+            619
+          ],
+          "bbox_pdf": [
+            18.24,
+            199.6208530805687,
+            701.76,
+            297.03199052132703
+          ]
+        },
+        {
+          "filename": "assets/slide-023-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "Tomcat on Docker",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            51,
+            164,
+            1343,
+            675
+          ],
+          "bbox_pdf": [
+            24.48,
+            78.69668246445498,
+            644.64,
+            323.90402843601896
+          ]
+        },
+        {
+          "filename": "assets/slide-024-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "Tomcat on Docker",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            0,
+            362,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            173.7085308056872,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Tomcat on Docker",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            0,
+            419,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            201.06042654028437,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Tomcat on Docker",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            0,
+            304,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            145.87677725118482,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "Tomcat on Docker",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "From DB to Servlets",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "Servlets: Recap",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "SIGIR WebApp - Users Functionalities",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            0,
+            158,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            75.81753554502369,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "SIGIR WebApp - Key Concepts",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "SIGIR WebApp - Resources",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "Resources",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "Connect to the DB",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "DAOs",
+      "figures": [
+        {
+          "filename": "assets/slide-036-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 37,
+      "title": "SIGIR WebApp - DAOs",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "DAO - Transactions",
+      "figures": [
+        {
+          "filename": "assets/slide-038-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 39,
+      "title": "SIGIR WebApp - Servlets",
+      "figures": [
+        {
+          "filename": "assets/slide-039-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 40,
+      "title": "List Users",
+      "figures": [
+        {
+          "filename": "assets/slide-040-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 41,
+      "title": "SIGIR Web App: GET Request",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            0,
+            194,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            93.09241706161137,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "LOGIN",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "SIGIR WebApp - Login and Signup",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "SIGIR WebApp - Login w/ GET",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            33,
+            183,
+            1374,
+            661
+          ],
+          "bbox_pdf": [
+            15.84,
+            87.81398104265402,
+            659.52,
+            317.18601895734594
+          ]
+        },
+        {
+          "filename": "assets/slide-044-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 45,
+      "title": "SIGIR WebApp - Login w/ GET",
+      "figures": []
+    },
+    {
+      "page_number": 46,
+      "title": "SIGIR WebApp - Login w/ POST",
+      "figures": [
+        {
+          "filename": "assets/slide-046-fig-01.jpg",
+          "bbox_px": [
+            33,
+            183,
+            941,
+            661
+          ],
+          "bbox_pdf": [
+            15.84,
+            87.81398104265402,
+            451.68,
+            317.18601895734594
+          ]
+        },
+        {
+          "filename": "assets/slide-046-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 47,
+      "title": "SIGIR WebApp - Login w/ POST",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            0,
+            183,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            87.81398104265402,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 48,
+      "title": "How can I choose between GET and POST?",
+      "figures": [
+        {
+          "filename": "assets/slide-048-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 49,
+      "title": "How can I choose between GET and POST?",
+      "figures": [
+        {
+          "filename": "assets/slide-049-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 50,
+      "title": "SIGIR WebApp - HTML Forms",
+      "figures": [
+        {
+          "filename": "assets/slide-050-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 51,
+      "title": "The User’s Inputs",
+      "figures": [
+        {
+          "filename": "assets/slide-051-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 52,
+      "title": "The User’s Inputs",
+      "figures": [
+        {
+          "filename": "assets/slide-052-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 53,
+      "title": "Useful Tips - CURL",
+      "figures": [
+        {
+          "filename": "assets/slide-053-fig-01.jpg",
+          "bbox_px": [
+            0,
+            398,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            190.9834123222749,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 54,
+      "title": "Final Remark on HW1",
+      "figures": [
+        {
+          "filename": "assets/slide-054-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 55,
+      "title": "HW1 - Presentation Layer",
+      "figures": [
+        {
+          "filename": "assets/slide-055-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    }
+  ]
+}

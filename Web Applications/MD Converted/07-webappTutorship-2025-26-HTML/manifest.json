@@ -1,0 +1,928 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/07-webappTutorship-2025-26-HTML.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Tutoring 07",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "General Information",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Frontend for HW2",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            0,
+            187,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            89.73341232227487,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "HTML",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            996,
+            187,
+            1348,
+            394
+          ],
+          "bbox_pdf": [
+            478.08,
+            89.73341232227487,
+            647.04,
+            189.06398104265404
+          ]
+        },
+        {
+          "filename": "assets/slide-005-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "CSS",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            996,
+            193,
+            1348,
+            388
+          ],
+          "bbox_pdf": [
+            478.08,
+            92.61255924170617,
+            647.04,
+            186.18483412322274
+          ]
+        },
+        {
+          "filename": "assets/slide-006-fig-02.jpg",
+          "bbox_px": [
+            0,
+            433,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            207.77843601895734,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "JavaScript",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            996,
+            192,
+            1348,
+            388
+          ],
+          "bbox_pdf": [
+            478.08,
+            92.13270142180095,
+            647.04,
+            186.18483412322274
+          ]
+        },
+        {
+          "filename": "assets/slide-007-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Deadlines",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "DOM",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "What is the DOM?",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            0,
+            162,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            77.73696682464455,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "What is the DOM?",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            0,
+            162,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            77.73696682464455,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "What is the DOM?",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            0,
+            162,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            77.73696682464455,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "What is the DOM?",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            0,
+            162,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            77.73696682464455,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "What is the DOM? Formalization",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            0,
+            566,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            271.5995260663507,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "DOM look alike…",
+      "figures": []
+    },
+    {
+      "page_number": 16,
+      "title": "DOM look alike…",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            0,
+            150,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.97867298578198,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "DOM look alike…",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            0,
+            156,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            74.85781990521326,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "Some JS on the DOM (see now, recap on Lecture 9)",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            7,
+            248,
+            734,
+            436
+          ],
+          "bbox_pdf": [
+            3.36,
+            119.00473933649289,
+            352.32,
+            209.21800947867297
+          ]
+        },
+        {
+          "filename": "assets/slide-018-fig-02.jpg",
+          "bbox_px": [
+            7,
+            480,
+            764,
+            659
+          ],
+          "bbox_pdf": [
+            3.36,
+            230.33175355450237,
+            366.71999999999997,
+            316.22630331753555
+          ]
+        },
+        {
+          "filename": "assets/slide-018-fig-03.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "Some JS on the DOM (see now, recap on Lecture 9)",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            18,
+            201,
+            1456,
+            374
+          ],
+          "bbox_pdf": [
+            8.64,
+            96.45142180094787,
+            698.88,
+            179.46682464454975
+          ]
+        },
+        {
+          "filename": "assets/slide-019-fig-02.jpg",
+          "bbox_px": [
+            24,
+            422,
+            1421,
+            597
+          ],
+          "bbox_pdf": [
+            11.52,
+            202.5,
+            682.0799999999999,
+            286.4751184834123
+          ]
+        },
+        {
+          "filename": "assets/slide-019-fig-03.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "Some JS on the DOM (see now, recap on Lecture 9)",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            18,
+            201,
+            1456,
+            374
+          ],
+          "bbox_pdf": [
+            8.64,
+            96.45142180094787,
+            698.88,
+            179.46682464454975
+          ]
+        },
+        {
+          "filename": "assets/slide-020-fig-02.jpg",
+          "bbox_px": [
+            24,
+            422,
+            1421,
+            597
+          ],
+          "bbox_pdf": [
+            11.52,
+            202.5,
+            682.0799999999999,
+            286.4751184834123
+          ]
+        },
+        {
+          "filename": "assets/slide-020-fig-03.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "Some JS on the DOM (see now, recap on Lecture 9)",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            0,
+            152,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            72.93838862559241,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "Be Aware on the Data Type!",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            0,
+            144,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            69.0995260663507,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "HTML",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "HTML - Recap theory",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "HTML Base Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            0,
+            174,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            83.49526066350711,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Meta Elements <meta>",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            41,
+            52,
+            1459,
+            398
+          ],
+          "bbox_pdf": [
+            19.68,
+            24.95260663507109,
+            700.3199999999999,
+            190.9834123222749
+          ]
+        },
+        {
+          "filename": "assets/slide-026-fig-02.jpg",
+          "bbox_px": [
+            0,
+            636,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            305.18957345971563,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "HTML main Tags",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            1026,
+            187,
+            1340,
+            623
+          ],
+          "bbox_pdf": [
+            492.47999999999996,
+            89.73341232227487,
+            643.1999999999999,
+            298.95142180094786
+          ]
+        },
+        {
+          "filename": "assets/slide-027-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "Texts",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "Navigation Bar <nav></nav>",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            0,
+            235,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            112.76658767772511,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "Buttons <button></button>",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "iframes <iframe></iframe>",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            0,
+            308,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            147.79620853080567,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "Video & Audio",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            277,
+            183,
+            1223,
+            582
+          ],
+          "bbox_pdf": [
+            132.96,
+            87.81398104265402,
+            587.04,
+            279.27725118483414
+          ]
+        },
+        {
+          "filename": "assets/slide-032-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "The Input tag",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "Wrap Up",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "Acknowledgments",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    }
+  ]
+}

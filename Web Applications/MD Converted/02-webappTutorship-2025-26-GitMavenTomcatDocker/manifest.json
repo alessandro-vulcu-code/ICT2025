@@ -1,0 +1,1268 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/02-webappTutorship-2025-26-GitMavenTomcatDocker.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Tutoring 02",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "General Information for HW1",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            48,
+            164,
+            687,
+            409
+          ],
+          "bbox_pdf": [
+            23.04,
+            78.69668246445498,
+            329.76,
+            196.26184834123222
+          ]
+        },
+        {
+          "filename": "assets/slide-003-fig-02.jpg",
+          "bbox_px": [
+            739,
+            164,
+            1359,
+            398
+          ],
+          "bbox_pdf": [
+            354.71999999999997,
+            78.69668246445498,
+            652.3199999999999,
+            190.9834123222749
+          ]
+        },
+        {
+          "filename": "assets/slide-003-fig-03.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Git",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "GIT",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            0,
+            278,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            133.4004739336493,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "Why GIT?",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "GIT & Bitbucket Repositories",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            0,
+            654,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            313.8270142180095,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Cloning the TA Web App Repository",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "GIT - commit",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "Git commit",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            51,
+            164,
+            1362,
+            684
+          ],
+          "bbox_pdf": [
+            24.48,
+            78.69668246445498,
+            653.76,
+            328.22274881516586
+          ]
+        },
+        {
+          "filename": "assets/slide-010-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "Branch",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Branch",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "Branch",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "Pull",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "Add",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Commit",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "Push",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "What you have to do for Web App Dev",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": ".gitignore",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            436,
+            146,
+            1063,
+            371
+          ],
+          "bbox_pdf": [
+            209.28,
+            70.05924170616113,
+            510.24,
+            178.0272511848341
+          ]
+        },
+        {
+          "filename": "assets/slide-019-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "Tips",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "Git on IDE (IntelliJ)",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            7,
+            149,
+            1493,
+            624
+          ],
+          "bbox_pdf": [
+            3.36,
+            71.49881516587678,
+            716.64,
+            299.43127962085305
+          ]
+        },
+        {
+          "filename": "assets/slide-021-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "Maven",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "Maven",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "Lifecycle",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "Lifecycle",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Dependencies",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            0,
+            368,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            176.58767772511848,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Before starting",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "pom.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            0,
+            615,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            295.11255924170615,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "Example",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "Setting Up Project in IntelliJ",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            0,
+            154,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            73.89810426540284,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "Usage",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            0,
+            247,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            118.52488151658767,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "Tomcat",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "Setup",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            51,
+            164,
+            1464,
+            661
+          ],
+          "bbox_pdf": [
+            24.48,
+            78.69668246445498,
+            702.72,
+            317.18601895734594
+          ]
+        },
+        {
+          "filename": "assets/slide-033-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "Setup",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "Setup",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "Setup",
+      "figures": [
+        {
+          "filename": "assets/slide-036-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 37,
+      "title": "If everything went ok",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            0,
+            247,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            118.52488151658767,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "After Logging…",
+      "figures": [
+        {
+          "filename": "assets/slide-038-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 39,
+      "title": "Docker",
+      "figures": [
+        {
+          "filename": "assets/slide-039-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 40,
+      "title": "Containerization",
+      "figures": [
+        {
+          "filename": "assets/slide-040-fig-01.jpg",
+          "bbox_px": [
+            0,
+            162,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            77.73696682464455,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 41,
+      "title": "Dockerﬁles & Images",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            0,
+            247,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            118.52488151658767,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "Docker Containers",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            0,
+            387,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            185.70497630331752,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "Docker Volumes",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "Download",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 45,
+      "title": "Docker - In Our Case",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            0,
+            157,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            75.33767772511848,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "Docker - In Our Case",
+      "figures": [
+        {
+          "filename": "assets/slide-046-fig-01.jpg",
+          "bbox_px": [
+            0,
+            149,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.49881516587678,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 47,
+      "title": "Docker - In Our Case",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            0,
+            157,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            75.33767772511848,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 48,
+      "title": "Docker - In Our Case",
+      "figures": [
+        {
+          "filename": "assets/slide-048-fig-01.jpg",
+          "bbox_px": [
+            35,
+            213,
+            1436,
+            579
+          ],
+          "bbox_pdf": [
+            16.8,
+            102.20971563981043,
+            689.28,
+            277.83767772511845
+          ]
+        },
+        {
+          "filename": "assets/slide-048-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 49,
+      "title": "Docker - In Our Case",
+      "figures": [
+        {
+          "filename": "assets/slide-049-fig-01.jpg",
+          "bbox_px": [
+            0,
+            235,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            112.76658767772511,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 50,
+      "title": "Docker - In Our Case",
+      "figures": [
+        {
+          "filename": "assets/slide-050-fig-01.jpg",
+          "bbox_px": [
+            0,
+            163,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            78.21682464454976,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 51,
+      "title": "Docker - In Our Case",
+      "figures": [
+        {
+          "filename": "assets/slide-051-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 52,
+      "title": "Docker Commands",
+      "figures": [
+        {
+          "filename": "assets/slide-052-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 53,
+      "title": "Final Remark on HW1",
+      "figures": [
+        {
+          "filename": "assets/slide-053-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 54,
+      "title": "README in the Group Repository",
+      "figures": [
+        {
+          "filename": "assets/slide-054-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    }
+  ]
+}

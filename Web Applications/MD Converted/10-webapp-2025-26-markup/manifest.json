@@ -1,0 +1,1363 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/10-webapp-2025-26-markup.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Markup Languages",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            19,
+            11,
+            1045,
+            323
+          ],
+          "bbox_pdf": [
+            9.117150890346768,
+            5.279999999999999,
+            501.4432989690722,
+            155.04
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            257,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            123.32146204311152,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "Markup Languages",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            266,
+            236,
+            1870,
+            563
+          ],
+          "bbox_pdf": [
+            127.64011246485474,
+            113.28,
+            897.319587628866,
+            270.24
+          ]
+        },
+        {
+          "filename": "assets/slide-004-fig-02.jpg",
+          "bbox_px": [
+            21,
+            943,
+            1614,
+            1511
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            452.64,
+            774.4779756326149,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            21,
+            236,
+            1870,
+            774
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            113.28,
+            897.319587628866,
+            371.52
+          ]
+        },
+        {
+          "filename": "assets/slide-005-fig-02.jpg",
+          "bbox_px": [
+            21,
+            943,
+            1614,
+            1511
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            452.64,
+            774.4779756326149,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            266,
+            236,
+            1870,
+            774
+          ],
+          "bbox_pdf": [
+            127.64011246485474,
+            113.28,
+            897.319587628866,
+            371.52
+          ]
+        },
+        {
+          "filename": "assets/slide-006-fig-02.jpg",
+          "bbox_px": [
+            21,
+            943,
+            1614,
+            1511
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            452.64,
+            774.4779756326149,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            266,
+            236,
+            2013,
+            774
+          ],
+          "bbox_pdf": [
+            127.64011246485474,
+            113.28,
+            965.9381443298969,
+            371.52
+          ]
+        },
+        {
+          "filename": "assets/slide-007-fig-02.jpg",
+          "bbox_px": [
+            21,
+            943,
+            1614,
+            1511
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            452.64,
+            774.4779756326149,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            266,
+            236,
+            1870,
+            933
+          ],
+          "bbox_pdf": [
+            127.64011246485474,
+            113.28,
+            897.319587628866,
+            447.84
+          ]
+        },
+        {
+          "filename": "assets/slide-008-fig-02.jpg",
+          "bbox_px": [
+            21,
+            943,
+            1614,
+            1511
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            452.64,
+            774.4779756326149,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            266,
+            236,
+            1870,
+            563
+          ],
+          "bbox_pdf": [
+            127.64011246485474,
+            113.28,
+            897.319587628866,
+            270.24
+          ]
+        },
+        {
+          "filename": "assets/slide-009-fig-02.jpg",
+          "bbox_px": [
+            21,
+            1015,
+            2042,
+            1511
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            487.2,
+            979.8537956888473,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "Examples of Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            104,
+            677,
+            1921,
+            1482
+          ],
+          "bbox_pdf": [
+            49.90440487347704,
+            324.96,
+            921.7919400187442,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "Examples of Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Examples of Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            626,
+            889,
+            1389,
+            1401
+          ],
+          "bbox_pdf": [
+            300.38612933458296,
+            426.71999999999997,
+            666.5117150890347,
+            672.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "Examples of Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "Examples of Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            179,
+            919,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            85.89315838800376,
+            441.12,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "Examples of Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            179,
+            911,
+            1977,
+            1482
+          ],
+          "bbox_pdf": [
+            85.89315838800376,
+            437.28,
+            948.6635426429241,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Examples of Markup",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            162,
+            825,
+            2059,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            396.0,
+            988.0112464854733,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "SGML",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "Standard Generalized Markup Language (SGML)",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            143,
+            820,
+            2041,
+            1217
+          ],
+          "bbox_pdf": [
+            68.61855670103093,
+            393.59999999999997,
+            979.3739456419869,
+            584.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "Example of SGML",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            13,
+            245,
+            1077,
+            1463
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            117.6,
+            516.7985004686036,
+            702.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "Example of SGML",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            13,
+            243,
+            2134,
+            1531
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            116.64,
+            1024.0,
+            734.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "HTML",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "HyperText Markup Language (HTML4)",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            163,
+            957,
+            2133,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            459.35999999999996,
+            1023.5201499531397,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "Example of HTML4",
+      "figures": []
+    },
+    {
+      "page_number": 24,
+      "title": "Problems of HTML4",
+      "figures": []
+    },
+    {
+      "page_number": 25,
+      "title": "Example of HTML4 with CSS",
+      "figures": []
+    },
+    {
+      "page_number": 26,
+      "title": "HTML5",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            134,
+            1067,
+            2133,
+            1512
+          ],
+          "bbox_pdf": [
+            64.29990627928773,
+            512.16,
+            1023.5201499531397,
+            725.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Example of HTML5",
+      "figures": []
+    },
+    {
+      "page_number": 28,
+      "title": "XML",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "eXtensible Markup Language (XML)",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            146,
+            809,
+            2134,
+            1511
+          ],
+          "bbox_pdf": [
+            70.058106841612,
+            388.32,
+            1024.0,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "Example of XML Document",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            29,
+            470,
+            2102,
+            1482
+          ],
+          "bbox_pdf": [
+            13.915651358950328,
+            225.6,
+            1008.6447985004686,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "Example of XML Document",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            29,
+            470,
+            2102,
+            1482
+          ],
+          "bbox_pdf": [
+            13.915651358950328,
+            225.6,
+            1008.6447985004686,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "RSS Feed: Visualisation in a Web Page",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            111,
+            226,
+            1890,
+            1447
+          ],
+          "bbox_pdf": [
+            53.263355201499536,
+            108.47999999999999,
+            906.9165885660731,
+            694.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "RSS Feed: Visualisation in a Web Page",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            111,
+            226,
+            1890,
+            1447
+          ],
+          "bbox_pdf": [
+            53.263355201499536,
+            108.47999999999999,
+            906.9165885660731,
+            694.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "RSS Feed: Subscription and Visualisation in a Browser",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            38,
+            205,
+            1540,
+            1516
+          ],
+          "bbox_pdf": [
+            18.234301780693535,
+            98.39999999999999,
+            738.9690721649484,
+            727.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "RSS Feed: Subscription and Visualisation in a Browser",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            38,
+            205,
+            1954,
+            1516
+          ],
+          "bbox_pdf": [
+            18.234301780693535,
+            98.39999999999999,
+            937.6269915651359,
+            727.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "RSS Feed: Visualisation in a Mail Client",
+      "figures": []
+    },
+    {
+      "page_number": 37,
+      "title": "XML Document Tree",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            0,
+            285,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            0.0,
+            136.79999999999998,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "Types of Node in XML",
+      "figures": [
+        {
+          "filename": "assets/slide-038-fig-01.jpg",
+          "bbox_px": [
+            158,
+            1113,
+            1789,
+            1482
+          ],
+          "bbox_pdf": [
+            75.81630740393628,
+            534.24,
+            858.4517338331772,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 39,
+      "title": "Textual Representation of XML Nodes",
+      "figures": [
+        {
+          "filename": "assets/slide-039-fig-01.jpg",
+          "bbox_px": [
+            133,
+            813,
+            2062,
+            1482
+          ],
+          "bbox_pdf": [
+            63.82005623242737,
+            390.24,
+            989.4507966260544,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 40,
+      "title": "Example of XML Nodes",
+      "figures": []
+    },
+    {
+      "page_number": 41,
+      "title": "Properties of an XML Document",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            243,
+            909,
+            1349,
+            1155
+          ],
+          "bbox_pdf": [
+            116.60356138706655,
+            436.32,
+            647.3177132146204,
+            554.4
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "Approaches to parse XML",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1162,
+            1988,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            557.76,
+            953.941893158388,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "DOM: Quick Overview",
+      "figures": []
+    },
+    {
+      "page_number": 44,
+      "title": "Comparison between DOM, SAX, StAX",
+      "figures": []
+    },
+    {
+      "page_number": 45,
+      "title": "DOM: Main Interfaces",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            938
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            450.24
+          ]
+        },
+        {
+          "filename": "assets/slide-045-fig-02.jpg",
+          "bbox_px": [
+            128,
+            1031,
+            1569,
+            1482
+          ],
+          "bbox_pdf": [
+            61.42080599812559,
+            494.88,
+            752.8847235238987,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "Java Binding of DOM",
+      "figures": [
+        {
+          "filename": "assets/slide-046-fig-01.jpg",
+          "bbox_px": [
+            255,
+            209,
+            1879,
+            1530
+          ],
+          "bbox_pdf": [
+            122.36176194939083,
+            100.32,
+            901.6382380506092,
+            734.4
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 47,
+      "title": "Java Binding of DOM",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            255,
+            196,
+            1879,
+            1537
+          ],
+          "bbox_pdf": [
+            122.36176194939083,
+            94.08,
+            901.6382380506092,
+            737.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 48,
+      "title": "Document Type Definition (DTD)",
+      "figures": []
+    },
+    {
+      "page_number": 49,
+      "title": "Document Type Definition (DTD)",
+      "figures": [
+        {
+          "filename": "assets/slide-049-fig-01.jpg",
+          "bbox_px": [
+            237,
+            1162,
+            1921,
+            1482
+          ],
+          "bbox_pdf": [
+            113.72446110590441,
+            557.76,
+            921.7919400187442,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 50,
+      "title": "Example of DTD",
+      "figures": [
+        {
+          "filename": "assets/slide-050-fig-01.jpg",
+          "bbox_px": [
+            48,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            23.032802249297095,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 51,
+      "title": "Example of DTD",
+      "figures": []
+    },
+    {
+      "page_number": 52,
+      "title": "Limitations of DTD",
+      "figures": [
+        {
+          "filename": "assets/slide-052-fig-01.jpg",
+          "bbox_px": [
+            162,
+            815,
+            2004,
+            1281
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            391.2,
+            961.6194939081537,
+            614.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 53,
+      "title": "What Happens When You Mix and Re-Use More Languages?",
+      "figures": [
+        {
+          "filename": "assets/slide-053-fig-01.jpg",
+          "bbox_px": [
+            83,
+            437,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            39.82755388940956,
+            209.76,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 54,
+      "title": "XML Namespace",
+      "figures": [
+        {
+          "filename": "assets/slide-054-fig-01.jpg",
+          "bbox_px": [
+            130,
+            1011,
+            2134,
+            1504
+          ],
+          "bbox_pdf": [
+            62.3805060918463,
+            485.28,
+            1024.0,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 55,
+      "title": "Example of Declaration and Use of a Namespace",
+      "figures": []
+    },
+    {
+      "page_number": 56,
+      "title": "XML Namespaces - the xmlns attribute",
+      "figures": [
+        {
+          "filename": "assets/slide-056-fig-01.jpg",
+          "bbox_px": [
+            115,
+            1190,
+            2110,
+            1482
+          ],
+          "bbox_pdf": [
+            55.182755388940954,
+            571.1999999999999,
+            1012.4835988753515,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 57,
+      "title": "XML Schema",
+      "figures": []
+    },
+    {
+      "page_number": 58,
+      "title": "Referencing a Schema in an XML Document",
+      "figures": []
+    },
+    {
+      "page_number": 59,
+      "title": "Example of XML Schema",
+      "figures": [
+        {
+          "filename": "assets/slide-059-fig-01.jpg",
+          "bbox_px": [
+            21,
+            875,
+            1428,
+            1497
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            420.0,
+            685.2258669165885,
+            718.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 60,
+      "title": "Example of XML Schema",
+      "figures": [
+        {
+          "filename": "assets/slide-060-fig-01.jpg",
+          "bbox_px": [
+            21,
+            216,
+            2122,
+            1497
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            103.67999999999999,
+            1018.2417994376757,
+            718.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 61,
+      "title": "JSON",
+      "figures": [
+        {
+          "filename": "assets/slide-061-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 62,
+      "title": "JSON",
+      "figures": [
+        {
+          "filename": "assets/slide-062-fig-01.jpg",
+          "bbox_px": [
+            163,
+            966,
+            2114,
+            1511
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            463.68,
+            1014.4029990627929,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 63,
+      "title": "JSON Structures",
+      "figures": [
+        {
+          "filename": "assets/slide-063-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            537
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            257.76
+          ]
+        },
+        {
+          "filename": "assets/slide-063-fig-02.jpg",
+          "bbox_px": [
+            446,
+            565,
+            1860,
+            1510
+          ],
+          "bbox_pdf": [
+            214.01312089971884,
+            271.2,
+            892.5210871602625,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 64,
+      "title": "Example of JSON (and XML)",
+      "figures": []
+    },
+    {
+      "page_number": 65,
+      "title": "JSON Schema",
+      "figures": []
+    },
+    {
+      "page_number": 66,
+      "title": "Processing JSON in Java",
+      "figures": [
+        {
+          "filename": "assets/slide-066-fig-01.jpg",
+          "bbox_px": [
+            252,
+            933,
+            1948,
+            1482
+          ],
+          "bbox_pdf": [
+            120.92221180880975,
+            447.84,
+            934.7478912839738,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 67,
+      "title": "JSON Processing with Jackson",
+      "figures": [
+        {
+          "filename": "assets/slide-067-fig-01.jpg",
+          "bbox_px": [
+            26,
+            217,
+            2122,
+            1522
+          ],
+          "bbox_pdf": [
+            12.47610121836926,
+            104.16,
+            1018.2417994376757,
+            730.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 68,
+      "title": "JSON Processing with Jackson",
+      "figures": [
+        {
+          "filename": "assets/slide-068-fig-01.jpg",
+          "bbox_px": [
+            26,
+            202,
+            2122,
+            1522
+          ],
+          "bbox_pdf": [
+            12.47610121836926,
+            96.96,
+            1018.2417994376757,
+            730.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 69,
+      "title": "JSON Processing with Jackson",
+      "figures": [
+        {
+          "filename": "assets/slide-069-fig-01.jpg",
+          "bbox_px": [
+            26,
+            202,
+            2122,
+            1522
+          ],
+          "bbox_pdf": [
+            12.47610121836926,
+            96.96,
+            1018.2417994376757,
+            730.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 70,
+      "title": "Slide 70",
+      "figures": []
+    }
+  ]
+}

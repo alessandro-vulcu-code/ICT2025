@@ -1,0 +1,599 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/15-webapp-2025-26-form-validation-ajax.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Form Validation and AJAX",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            13,
+            2,
+            1038,
+            317
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            0.96,
+            498.0843486410497,
+            152.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            162,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "Form Validation",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Form Validation Example",
+      "figures": []
+    },
+    {
+      "page_number": 5,
+      "title": "Different Types of Form Validation",
+      "figures": []
+    },
+    {
+      "page_number": 6,
+      "title": "HTML 5 Validation",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            138,
+            934,
+            2053,
+            1495
+          ],
+          "bbox_pdf": [
+            66.21930646672915,
+            448.32,
+            985.1321462043112,
+            717.6
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "Basic HTML5 Form Validation Example",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            810
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            388.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Customized Error Message",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            95,
+            1046,
+            2093,
+            1511
+          ],
+          "bbox_pdf": [
+            45.585754451733834,
+            502.08,
+            1004.3261480787254,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Validating Forms without a Built-in API",
+      "figures": []
+    },
+    {
+      "page_number": 10,
+      "title": "Validating Forms with Plain JavaScript",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            46,
+            294,
+            1876,
+            662
+          ],
+          "bbox_pdf": [
+            22.073102155576382,
+            141.12,
+            900.1986879100282,
+            317.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "Validating Forms with Plain JavaScript",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            73,
+            987,
+            1831,
+            1482
+          ],
+          "bbox_pdf": [
+            35.029053420806,
+            473.76,
+            878.6054358013121,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Validating Forms with Plain JavaScript",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            31,
+            931,
+            1429,
+            1482
+          ],
+          "bbox_pdf": [
+            14.87535145267104,
+            446.88,
+            685.7057169634489,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "AJAX - Scripted HTTP",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "AJAX Examples",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            487,
+            778,
+            1647,
+            1482
+          ],
+          "bbox_pdf": [
+            233.68697282099345,
+            373.44,
+            790.3130271790066,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "AJAX Examples",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            159,
+            1050,
+            1989,
+            1482
+          ],
+          "bbox_pdf": [
+            76.29615745079663,
+            504.0,
+            954.4217432052484,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Synchronous vs Asynchronous",
+      "figures": []
+    },
+    {
+      "page_number": 17,
+      "title": "AJAX",
+      "figures": []
+    },
+    {
+      "page_number": 18,
+      "title": "Using XMLHttpRequest",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            135,
+            945,
+            1849,
+            1482
+          ],
+          "bbox_pdf": [
+            64.77975632614807,
+            453.59999999999997,
+            887.2427366447985,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "Specifying the Request",
+      "figures": []
+    },
+    {
+      "page_number": 20,
+      "title": "Specifying the Request",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            141,
+            1168,
+            2045,
+            1482
+          ],
+          "bbox_pdf": [
+            67.65885660731021,
+            560.64,
+            981.2933458294283,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "Encoding the Request Body",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            50,
+            1120,
+            2062,
+            1442
+          ],
+          "bbox_pdf": [
+            23.992502343017808,
+            537.6,
+            989.4507966260544,
+            692.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "Cross Origin Resource Sharing",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            128,
+            924,
+            2027,
+            1299
+          ],
+          "bbox_pdf": [
+            61.42080599812559,
+            443.52,
+            972.6560449859419,
+            623.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "Retrieving the Response",
+      "figures": []
+    },
+    {
+      "page_number": 24,
+      "title": "Retrieving the Response",
+      "figures": []
+    },
+    {
+      "page_number": 25,
+      "title": "Example",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            61,
+            866,
+            1950,
+            1482
+          ],
+          "bbox_pdf": [
+            29.270852858481724,
+            415.68,
+            935.7075913776945,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Example",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            109,
+            550,
+            1990,
+            1482
+          ],
+          "bbox_pdf": [
+            52.30365510777882,
+            264.0,
+            954.9015932521087,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Types of receivable data",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            133,
+            887,
+            2039,
+            1453
+          ],
+          "bbox_pdf": [
+            63.82005623242737,
+            425.76,
+            978.4142455482662,
+            697.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "Loading JSON with AJAX",
+      "figures": []
+    },
+    {
+      "page_number": 29,
+      "title": "Example",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            270,
+            978,
+            1603,
+            1482
+          ],
+          "bbox_pdf": [
+            129.55951265229615,
+            469.44,
+            769.199625117151,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "Example",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            233,
+            957,
+            2067,
+            1482
+          ],
+          "bbox_pdf": [
+            111.80506091846298,
+            459.35999999999996,
+            991.8500468603562,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "Fetch",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            157,
+            862,
+            1992,
+            1392
+          ],
+          "bbox_pdf": [
+            75.33645735707591,
+            413.76,
+            955.8612933458295,
+            668.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "Fetch",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            243,
+            1247,
+            1667,
+            1482
+          ],
+          "bbox_pdf": [
+            116.60356138706655,
+            598.56,
+            799.9100281162137,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "Fetch",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            147,
+            943,
+            2058,
+            1343
+          ],
+          "bbox_pdf": [
+            70.53795688847235,
+            452.64,
+            987.531396438613,
+            644.64
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "Further Readings",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1062,
+            1908,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            509.76,
+            915.5538894095596,
+            711.36
+          ]
+        }
+      ]
+    }
+  ]
+}

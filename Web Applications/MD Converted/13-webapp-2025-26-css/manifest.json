@@ -1,0 +1,2963 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/13-webapp-2025-26-css.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "CSS",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            12,
+            0,
+            1038,
+            317
+          ],
+          "bbox_pdf": [
+            5.758200562324274,
+            0.0,
+            498.0843486410497,
+            152.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            163,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "Introduction to CSS",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "How to Make Web Pages Attractive",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            531,
+            791,
+            1578,
+            1482
+          ],
+          "bbox_pdf": [
+            254.80037488284913,
+            379.68,
+            757.203373945642,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Choose your Own Style",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "Choose your Own Style",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            0,
+            534,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            0.0,
+            256.32,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "Choose your Own Style",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            80,
+            385,
+            2053,
+            1482
+          ],
+          "bbox_pdf": [
+            38.388003748828496,
+            184.79999999999998,
+            985.1321462043112,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Choose your Own Style",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            80,
+            385,
+            2053,
+            1482
+          ],
+          "bbox_pdf": [
+            38.388003748828496,
+            184.79999999999998,
+            985.1321462043112,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Choose your Own Style",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            68,
+            311,
+            2065,
+            1482
+          ],
+          "bbox_pdf": [
+            32.62980318650422,
+            149.28,
+            990.8903467666355,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "Choose your Own Style",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            53,
+            302,
+            2081,
+            1482
+          ],
+          "bbox_pdf": [
+            25.432052483598877,
+            144.96,
+            998.5679475164011,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "The Benefits of CSS",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1188,
+            1531,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            570.24,
+            734.6504217432052,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "The Benefits of CSS",
+      "figures": []
+    },
+    {
+      "page_number": 13,
+      "title": "CSS History",
+      "figures": []
+    },
+    {
+      "page_number": 14,
+      "title": "Cascading Style Sheets 3",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            195,
+            267,
+            1939,
+            1487
+          ],
+          "bbox_pdf": [
+            93.57075913776944,
+            128.16,
+            930.4292408622306,
+            713.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "Thinking Inside the Box",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            142,
+            763,
+            1891,
+            1504
+          ],
+          "bbox_pdf": [
+            68.13870665417058,
+            366.24,
+            907.3964386129335,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Block & Inline Elements: a reminder",
+      "figures": []
+    },
+    {
+      "page_number": 17,
+      "title": "Document Structure: a reminder",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            126,
+            474,
+            2003,
+            1259
+          ],
+          "bbox_pdf": [
+            60.461105904404874,
+            227.51999999999998,
+            961.1396438612934,
+            604.3199999999999
+          ]
+        },
+        {
+          "filename": "assets/slide-017-fig-02.jpg",
+          "bbox_px": [
+            670,
+            1301,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            321.4995313964386,
+            624.48,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "CSS Recipe",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            74,
+            943,
+            2003,
+            1397
+          ],
+          "bbox_pdf": [
+            35.50890346766636,
+            452.64,
+            961.1396438612934,
+            670.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "Attaching the Style to the Document",
+      "figures": []
+    },
+    {
+      "page_number": 20,
+      "title": "Attaching the Style to the Document",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            1,
+            521,
+            2062,
+            929
+          ],
+          "bbox_pdf": [
+            0.47985004686035615,
+            250.07999999999998,
+            989.4507966260544,
+            445.91999999999996
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "Attaching the Style to the Document",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            1,
+            521,
+            2062,
+            929
+          ],
+          "bbox_pdf": [
+            0.47985004686035615,
+            250.07999999999998,
+            989.4507966260544,
+            445.91999999999996
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "External CSS",
+      "figures": []
+    },
+    {
+      "page_number": 23,
+      "title": "External CSS: Example",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            32,
+            791,
+            2083,
+            1482
+          ],
+          "bbox_pdf": [
+            15.355201499531397,
+            379.68,
+            999.5276476101219,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "Multiple Style Sheets",
+      "figures": []
+    },
+    {
+      "page_number": 25,
+      "title": "Multiple CSS Example 1",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            49,
+            454,
+            2064,
+            1482
+          ],
+          "bbox_pdf": [
+            23.51265229615745,
+            217.92,
+            990.4104967197751,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Multiple CSS Example 2",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            114,
+            896,
+            1793,
+            1437
+          ],
+          "bbox_pdf": [
+            54.7029053420806,
+            430.08,
+            860.3711340206186,
+            689.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Internal CSS",
+      "figures": []
+    },
+    {
+      "page_number": 28,
+      "title": "Internal CSS: Example",
+      "figures": []
+    },
+    {
+      "page_number": 29,
+      "title": "Inline Style",
+      "figures": []
+    },
+    {
+      "page_number": 30,
+      "title": "Write the Rules",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            0,
+            247,
+            2128,
+            1482
+          ],
+          "bbox_pdf": [
+            0.0,
+            118.56,
+            1021.1208997188379,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "Selector and Declaration",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            251,
+            765,
+            2037,
+            1422
+          ],
+          "bbox_pdf": [
+            120.4423617619494,
+            367.2,
+            977.4545454545455,
+            682.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "Selector",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            74,
+            977,
+            2051,
+            1482
+          ],
+          "bbox_pdf": [
+            35.50890346766636,
+            468.96,
+            984.1724461105905,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "Declarations",
+      "figures": []
+    },
+    {
+      "page_number": 34,
+      "title": "CSS Selectors Types",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            82,
+            309,
+            2058,
+            1521
+          ],
+          "bbox_pdf": [
+            39.3477038425492,
+            148.32,
+            987.531396438613,
+            730.0799999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "CSS Selectors Types",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            82,
+            357,
+            2052,
+            1482
+          ],
+          "bbox_pdf": [
+            39.3477038425492,
+            171.35999999999999,
+            984.6522961574508,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "CSS Selectors Types",
+      "figures": [
+        {
+          "filename": "assets/slide-036-fig-01.jpg",
+          "bbox_px": [
+            82,
+            357,
+            2052,
+            1482
+          ],
+          "bbox_pdf": [
+            39.3477038425492,
+            171.35999999999999,
+            984.6522961574508,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 37,
+      "title": "Pseudo Class Selector",
+      "figures": []
+    },
+    {
+      "page_number": 38,
+      "title": "Link Pseudo-Classes",
+      "figures": [
+        {
+          "filename": "assets/slide-038-fig-01.jpg",
+          "bbox_px": [
+            251,
+            1222,
+            2030,
+            1482
+          ],
+          "bbox_pdf": [
+            120.4423617619494,
+            586.56,
+            974.095595126523,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 39,
+      "title": "User Action Pseudo-Classes",
+      "figures": []
+    },
+    {
+      "page_number": 40,
+      "title": "Group Selectors",
+      "figures": [
+        {
+          "filename": "assets/slide-040-fig-01.jpg",
+          "bbox_px": [
+            58,
+            943,
+            2085,
+            1482
+          ],
+          "bbox_pdf": [
+            27.831302717900655,
+            452.64,
+            1000.4873477038426,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 41,
+      "title": "How CSS Rules Cascade",
+      "figures": []
+    },
+    {
+      "page_number": 42,
+      "title": "Inheritance Example",
+      "figures": []
+    },
+    {
+      "page_number": 43,
+      "title": "Inheritance Example",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            66,
+            272,
+            2068,
+            1462
+          ],
+          "bbox_pdf": [
+            31.670103092783506,
+            130.56,
+            992.3298969072165,
+            701.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "Inheritance Example",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            62,
+            272,
+            2072,
+            1462
+          ],
+          "bbox_pdf": [
+            29.75070290534208,
+            130.56,
+            994.2492970946579,
+            701.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 45,
+      "title": "CSS inheritance: Example",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            60,
+            263,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            28.791002811621368,
+            126.24,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "CSS inheritance: Example",
+      "figures": [
+        {
+          "filename": "assets/slide-046-fig-01.jpg",
+          "bbox_px": [
+            60,
+            263,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            28.791002811621368,
+            126.24,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 47,
+      "title": "CSS inheritance: Example",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1109,
+            2023,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            532.3199999999999,
+            970.7366447985005,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 48,
+      "title": "Style Sheet Hierarchy",
+      "figures": []
+    },
+    {
+      "page_number": 49,
+      "title": "Color",
+      "figures": [
+        {
+          "filename": "assets/slide-049-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 50,
+      "title": "Foreground Color",
+      "figures": [
+        {
+          "filename": "assets/slide-050-fig-01.jpg",
+          "bbox_px": [
+            654,
+            881,
+            1973,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            422.88,
+            946.7441424554827,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 51,
+      "title": "Background Color",
+      "figures": []
+    },
+    {
+      "page_number": 52,
+      "title": "Understanding Color",
+      "figures": [
+        {
+          "filename": "assets/slide-052-fig-01.jpg",
+          "bbox_px": [
+            114,
+            810,
+            2060,
+            1476
+          ],
+          "bbox_pdf": [
+            54.7029053420806,
+            388.8,
+            988.4910965323337,
+            708.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 53,
+      "title": "RGB",
+      "figures": [
+        {
+          "filename": "assets/slide-053-fig-01.jpg",
+          "bbox_px": [
+            163,
+            674,
+            1944,
+            1512
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            323.52,
+            932.8284910965324,
+            725.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 54,
+      "title": "RGB",
+      "figures": [
+        {
+          "filename": "assets/slide-054-fig-01.jpg",
+          "bbox_px": [
+            135,
+            766,
+            2093,
+            1510
+          ],
+          "bbox_pdf": [
+            64.77975632614807,
+            367.68,
+            1004.3261480787254,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 55,
+      "title": "RGB",
+      "figures": [
+        {
+          "filename": "assets/slide-055-fig-01.jpg",
+          "bbox_px": [
+            103,
+            489,
+            2031,
+            1482
+          ],
+          "bbox_pdf": [
+            49.424554826616685,
+            234.72,
+            974.5754451733833,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 56,
+      "title": "Color Names",
+      "figures": [
+        {
+          "filename": "assets/slide-056-fig-01.jpg",
+          "bbox_px": [
+            55,
+            368,
+            2079,
+            1482
+          ],
+          "bbox_pdf": [
+            26.39175257731959,
+            176.64,
+            997.6082474226804,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 57,
+      "title": "CSS3 Opacity",
+      "figures": []
+    },
+    {
+      "page_number": 58,
+      "title": "HEX",
+      "figures": [
+        {
+          "filename": "assets/slide-058-fig-01.jpg",
+          "bbox_px": [
+            38,
+            944,
+            2056,
+            1482
+          ],
+          "bbox_pdf": [
+            18.234301780693535,
+            453.12,
+            986.5716963448922,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 59,
+      "title": "HSL Colors",
+      "figures": []
+    },
+    {
+      "page_number": 60,
+      "title": "HSL Colors",
+      "figures": [
+        {
+          "filename": "assets/slide-060-fig-01.jpg",
+          "bbox_px": [
+            96,
+            249,
+            2038,
+            1439
+          ],
+          "bbox_pdf": [
+            46.06560449859419,
+            119.52,
+            977.9343955014058,
+            690.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 61,
+      "title": "HSL and HSLA",
+      "figures": [
+        {
+          "filename": "assets/slide-061-fig-01.jpg",
+          "bbox_px": [
+            75,
+            1037,
+            2015,
+            1482
+          ],
+          "bbox_pdf": [
+            35.988753514526714,
+            497.76,
+            966.8978444236177,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 62,
+      "title": "Contrast",
+      "figures": [
+        {
+          "filename": "assets/slide-062-fig-01.jpg",
+          "bbox_px": [
+            813,
+            295,
+            1322,
+            558
+          ],
+          "bbox_pdf": [
+            390.1180880974695,
+            141.6,
+            634.3617619493908,
+            267.84
+          ]
+        },
+        {
+          "filename": "assets/slide-062-fig-02.jpg",
+          "bbox_px": [
+            1375,
+            295,
+            1884,
+            558
+          ],
+          "bbox_pdf": [
+            659.7938144329897,
+            141.6,
+            904.037488284911,
+            267.84
+          ]
+        },
+        {
+          "filename": "assets/slide-062-fig-03.jpg",
+          "bbox_px": [
+            251,
+            296,
+            758,
+            558
+          ],
+          "bbox_pdf": [
+            120.4423617619494,
+            142.07999999999998,
+            363.72633552015,
+            267.84
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 63,
+      "title": "Colors - Useful Links",
+      "figures": [
+        {
+          "filename": "assets/slide-063-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1018,
+            1854,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            488.64,
+            889.6419868791003,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 64,
+      "title": "CSS and Text",
+      "figures": [
+        {
+          "filename": "assets/slide-064-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 65,
+      "title": "Typeface Terminology",
+      "figures": [
+        {
+          "filename": "assets/slide-065-fig-01.jpg",
+          "bbox_px": [
+            187,
+            943,
+            1891,
+            1483
+          ],
+          "bbox_pdf": [
+            89.7319587628866,
+            452.64,
+            907.3964386129335,
+            711.8399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 66,
+      "title": "Typeface Terminology",
+      "figures": [
+        {
+          "filename": "assets/slide-066-fig-01.jpg",
+          "bbox_px": [
+            305,
+            926,
+            1783,
+            1482
+          ],
+          "bbox_pdf": [
+            146.35426429240863,
+            444.47999999999996,
+            855.572633552015,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 67,
+      "title": "Typeface Terminology",
+      "figures": [
+        {
+          "filename": "assets/slide-067-fig-01.jpg",
+          "bbox_px": [
+            343,
+            943,
+            1947,
+            1482
+          ],
+          "bbox_pdf": [
+            164.58856607310216,
+            452.64,
+            934.2680412371134,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 68,
+      "title": "Typeface Terminology",
+      "figures": [
+        {
+          "filename": "assets/slide-068-fig-01.jpg",
+          "bbox_px": [
+            159,
+            243,
+            2053,
+            1510
+          ],
+          "bbox_pdf": [
+            76.29615745079663,
+            116.64,
+            985.1321462043112,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 69,
+      "title": "Typeface Terminology",
+      "figures": [
+        {
+          "filename": "assets/slide-069-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            748
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            359.03999999999996
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 70,
+      "title": "How to specify typefaces",
+      "figures": []
+    },
+    {
+      "page_number": 71,
+      "title": "How to specify typefaces",
+      "figures": [
+        {
+          "filename": "assets/slide-071-fig-01.jpg",
+          "bbox_px": [
+            10,
+            969,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            4.798500468603562,
+            465.12,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 72,
+      "title": "How to specify typefaces",
+      "figures": [
+        {
+          "filename": "assets/slide-072-fig-01.jpg",
+          "bbox_px": [
+            0,
+            219,
+            2134,
+            1439
+          ],
+          "bbox_pdf": [
+            0.0,
+            105.11999999999999,
+            1024.0,
+            690.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 73,
+      "title": "How to specify the size",
+      "figures": [
+        {
+          "filename": "assets/slide-073-fig-01.jpg",
+          "bbox_px": [
+            251,
+            1090,
+            2066,
+            1482
+          ],
+          "bbox_pdf": [
+            120.4423617619494,
+            523.1999999999999,
+            991.3701968134958,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 74,
+      "title": "Thinking Inside the Box",
+      "figures": [
+        {
+          "filename": "assets/slide-074-fig-01.jpg",
+          "bbox_px": [
+            492,
+            788,
+            1638,
+            1482
+          ],
+          "bbox_pdf": [
+            236.08622305529522,
+            378.24,
+            785.9943767572634,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 75,
+      "title": "The Box Model",
+      "figures": [
+        {
+          "filename": "assets/slide-075-fig-01.jpg",
+          "bbox_px": [
+            251,
+            939,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            120.4423617619494,
+            450.71999999999997,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 76,
+      "title": "The Element Box",
+      "figures": [
+        {
+          "filename": "assets/slide-076-fig-01.jpg",
+          "bbox_px": [
+            137,
+            255,
+            1997,
+            1482
+          ],
+          "bbox_pdf": [
+            65.73945641986879,
+            122.39999999999999,
+            958.2605435801312,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 77,
+      "title": "The Box Components",
+      "figures": []
+    },
+    {
+      "page_number": 78,
+      "title": "Sizing the Content Box",
+      "figures": [
+        {
+          "filename": "assets/slide-078-fig-01.jpg",
+          "bbox_px": [
+            162,
+            943,
+            1930,
+            1161
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            452.64,
+            926.1105904404874,
+            557.28
+          ]
+        },
+        {
+          "filename": "assets/slide-078-fig-02.jpg",
+          "bbox_px": [
+            74,
+            1188,
+            2058,
+            1482
+          ],
+          "bbox_pdf": [
+            35.50890346766636,
+            570.24,
+            987.531396438613,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 79,
+      "title": "Box Dimensions",
+      "figures": []
+    },
+    {
+      "page_number": 80,
+      "title": "Specifying Height",
+      "figures": []
+    },
+    {
+      "page_number": 81,
+      "title": "Padding",
+      "figures": []
+    },
+    {
+      "page_number": 82,
+      "title": "Borders",
+      "figures": [
+        {
+          "filename": "assets/slide-082-fig-01.jpg",
+          "bbox_px": [
+            251,
+            948,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            120.4423617619494,
+            455.03999999999996,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 83,
+      "title": "Border Width",
+      "figures": [
+        {
+          "filename": "assets/slide-083-fig-01.jpg",
+          "bbox_px": [
+            138,
+            934,
+            2011,
+            1429
+          ],
+          "bbox_pdf": [
+            66.21930646672915,
+            448.32,
+            964.9784442361762,
+            685.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 84,
+      "title": "Border Style",
+      "figures": [
+        {
+          "filename": "assets/slide-084-fig-01.jpg",
+          "bbox_px": [
+            136,
+            872,
+            2004,
+            1442
+          ],
+          "bbox_pdf": [
+            65.25960637300844,
+            418.56,
+            961.6194939081537,
+            692.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 85,
+      "title": "Border Color",
+      "figures": [
+        {
+          "filename": "assets/slide-085-fig-01.jpg",
+          "bbox_px": [
+            147,
+            943,
+            2070,
+            1453
+          ],
+          "bbox_pdf": [
+            70.53795688847235,
+            452.64,
+            993.2895970009372,
+            697.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 86,
+      "title": "Shorthand Border",
+      "figures": [
+        {
+          "filename": "assets/slide-086-fig-01.jpg",
+          "bbox_px": [
+            128,
+            943,
+            1867,
+            1482
+          ],
+          "bbox_pdf": [
+            61.42080599812559,
+            452.64,
+            895.880037488285,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 87,
+      "title": "Rounded Corners",
+      "figures": [
+        {
+          "filename": "assets/slide-087-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1134,
+            1970,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            544.3199999999999,
+            945.3045923149016,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 88,
+      "title": "Other CSS 3 Borders Properties",
+      "figures": []
+    },
+    {
+      "page_number": 89,
+      "title": "Margin",
+      "figures": [
+        {
+          "filename": "assets/slide-089-fig-01.jpg",
+          "bbox_px": [
+            140,
+            873,
+            2056,
+            1159
+          ],
+          "bbox_pdf": [
+            67.17900656044986,
+            419.03999999999996,
+            986.5716963448922,
+            556.3199999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 90,
+      "title": "Display Roles",
+      "figures": []
+    },
+    {
+      "page_number": 91,
+      "title": "Display Roles",
+      "figures": []
+    },
+    {
+      "page_number": 92,
+      "title": "Display Roles",
+      "figures": [
+        {
+          "filename": "assets/slide-092-fig-01.jpg",
+          "bbox_px": [
+            88,
+            877,
+            1928,
+            1215
+          ],
+          "bbox_pdf": [
+            42.22680412371134,
+            420.96,
+            925.1508903467667,
+            583.1999999999999
+          ]
+        },
+        {
+          "filename": "assets/slide-092-fig-02.jpg",
+          "bbox_px": [
+            88,
+            1314,
+            2044,
+            1482
+          ],
+          "bbox_pdf": [
+            42.22680412371134,
+            630.72,
+            980.813495782568,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 93,
+      "title": "Display Roles",
+      "figures": [
+        {
+          "filename": "assets/slide-093-fig-01.jpg",
+          "bbox_px": [
+            88,
+            877,
+            2044,
+            1482
+          ],
+          "bbox_pdf": [
+            42.22680412371134,
+            420.96,
+            980.813495782568,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 94,
+      "title": "Floating and Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-094-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 95,
+      "title": "Normal Flow",
+      "figures": []
+    },
+    {
+      "page_number": 96,
+      "title": "Normal Flow",
+      "figures": [
+        {
+          "filename": "assets/slide-096-fig-01.jpg",
+          "bbox_px": [
+            39,
+            473,
+            2071,
+            1456
+          ],
+          "bbox_pdf": [
+            18.71415182755389,
+            227.04,
+            993.7694470477976,
+            698.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 97,
+      "title": "Normal Flow",
+      "figures": [
+        {
+          "filename": "assets/slide-097-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1463,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            702.020618556701,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 98,
+      "title": "Relative Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-098-fig-01.jpg",
+          "bbox_px": [
+            144,
+            1131,
+            1465,
+            1482
+          ],
+          "bbox_pdf": [
+            69.09840674789129,
+            542.88,
+            702.9803186504217,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 99,
+      "title": "Relative Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-099-fig-01.jpg",
+          "bbox_px": [
+            534,
+            943,
+            1563,
+            1504
+          ],
+          "bbox_pdf": [
+            256.2399250234302,
+            452.64,
+            750.0056232427366,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 100,
+      "title": "Relative Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-100-fig-01.jpg",
+          "bbox_px": [
+            66,
+            209,
+            2120,
+            1504
+          ],
+          "bbox_pdf": [
+            31.670103092783506,
+            100.32,
+            1017.282099343955,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 101,
+      "title": "Absolute Positioning",
+      "figures": []
+    },
+    {
+      "page_number": 102,
+      "title": "Absolute Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-102-fig-01.jpg",
+          "bbox_px": [
+            34,
+            211,
+            2100,
+            1504
+          ],
+          "bbox_pdf": [
+            16.31490159325211,
+            101.28,
+            1007.6850984067479,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 103,
+      "title": "Absolute Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-103-fig-01.jpg",
+          "bbox_px": [
+            341,
+            679,
+            1745,
+            853
+          ],
+          "bbox_pdf": [
+            163.62886597938146,
+            325.92,
+            837.3383317713215,
+            409.44
+          ]
+        },
+        {
+          "filename": "assets/slide-103-fig-02.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 104,
+      "title": "Absolute Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-104-fig-01.jpg",
+          "bbox_px": [
+            46,
+            230,
+            705,
+            563
+          ],
+          "bbox_pdf": [
+            22.073102155576382,
+            110.39999999999999,
+            338.29428303655106,
+            270.24
+          ]
+        },
+        {
+          "filename": "assets/slide-104-fig-02.jpg",
+          "bbox_px": [
+            341,
+            679,
+            1745,
+            853
+          ],
+          "bbox_pdf": [
+            163.62886597938146,
+            325.92,
+            837.3383317713215,
+            409.44
+          ]
+        },
+        {
+          "filename": "assets/slide-104-fig-03.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 105,
+      "title": "Absolute Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-105-fig-01.jpg",
+          "bbox_px": [
+            46,
+            230,
+            705,
+            563
+          ],
+          "bbox_pdf": [
+            22.073102155576382,
+            110.39999999999999,
+            338.29428303655106,
+            270.24
+          ]
+        },
+        {
+          "filename": "assets/slide-105-fig-02.jpg",
+          "bbox_px": [
+            341,
+            679,
+            1745,
+            853
+          ],
+          "bbox_pdf": [
+            163.62886597938146,
+            325.92,
+            837.3383317713215,
+            409.44
+          ]
+        },
+        {
+          "filename": "assets/slide-105-fig-03.jpg",
+          "bbox_px": [
+            53,
+            906,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            25.432052483598877,
+            434.88,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 106,
+      "title": "Absolute Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-106-fig-01.jpg",
+          "bbox_px": [
+            1363,
+            229,
+            2097,
+            564
+          ],
+          "bbox_pdf": [
+            654.0356138706654,
+            109.92,
+            1006.2455482661668,
+            270.71999999999997
+          ]
+        },
+        {
+          "filename": "assets/slide-106-fig-02.jpg",
+          "bbox_px": [
+            46,
+            230,
+            705,
+            563
+          ],
+          "bbox_pdf": [
+            22.073102155576382,
+            110.39999999999999,
+            338.29428303655106,
+            270.24
+          ]
+        },
+        {
+          "filename": "assets/slide-106-fig-03.jpg",
+          "bbox_px": [
+            341,
+            679,
+            1745,
+            853
+          ],
+          "bbox_pdf": [
+            163.62886597938146,
+            325.92,
+            837.3383317713215,
+            409.44
+          ]
+        },
+        {
+          "filename": "assets/slide-106-fig-04.jpg",
+          "bbox_px": [
+            53,
+            906,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            25.432052483598877,
+            434.88,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 107,
+      "title": "Absolute Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-107-fig-01.jpg",
+          "bbox_px": [
+            1363,
+            229,
+            2097,
+            564
+          ],
+          "bbox_pdf": [
+            654.0356138706654,
+            109.92,
+            1006.2455482661668,
+            270.71999999999997
+          ]
+        },
+        {
+          "filename": "assets/slide-107-fig-02.jpg",
+          "bbox_px": [
+            46,
+            230,
+            705,
+            563
+          ],
+          "bbox_pdf": [
+            22.073102155576382,
+            110.39999999999999,
+            338.29428303655106,
+            270.24
+          ]
+        },
+        {
+          "filename": "assets/slide-107-fig-03.jpg",
+          "bbox_px": [
+            341,
+            679,
+            1745,
+            853
+          ],
+          "bbox_pdf": [
+            163.62886597938146,
+            325.92,
+            837.3383317713215,
+            409.44
+          ]
+        },
+        {
+          "filename": "assets/slide-107-fig-04.jpg",
+          "bbox_px": [
+            53,
+            906,
+            2094,
+            1482
+          ],
+          "bbox_pdf": [
+            25.432052483598877,
+            434.88,
+            1004.8059981255858,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 108,
+      "title": "Fixed Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-108-fig-01.jpg",
+          "bbox_px": [
+            162,
+            897,
+            2019,
+            1413
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            430.56,
+            968.8172446110591,
+            678.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 109,
+      "title": "Fixed Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-109-fig-01.jpg",
+          "bbox_px": [
+            27,
+            234,
+            2107,
+            1482
+          ],
+          "bbox_pdf": [
+            12.955951265229617,
+            112.32,
+            1011.0440487347704,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 110,
+      "title": "Fixed Positioning",
+      "figures": [
+        {
+          "filename": "assets/slide-110-fig-01.jpg",
+          "bbox_px": [
+            941,
+            247,
+            2092,
+            738
+          ],
+          "bbox_pdf": [
+            451.53889409559514,
+            118.56,
+            1003.8462980318651,
+            354.24
+          ]
+        },
+        {
+          "filename": "assets/slide-110-fig-02.jpg",
+          "bbox_px": [
+            258,
+            334,
+            855,
+            618
+          ],
+          "bbox_pdf": [
+            123.80131208997189,
+            160.32,
+            410.27179006560453,
+            296.64
+          ]
+        },
+        {
+          "filename": "assets/slide-110-fig-03.jpg",
+          "bbox_px": [
+            453,
+            755,
+            1683,
+            1512
+          ],
+          "bbox_pdf": [
+            217.37207122774134,
+            362.4,
+            807.5876288659794,
+            725.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 111,
+      "title": "Floating",
+      "figures": []
+    },
+    {
+      "page_number": 112,
+      "title": "Key Behaviors of Floating Elements",
+      "figures": []
+    },
+    {
+      "page_number": 113,
+      "title": "Key Behaviors of Floating Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-113-fig-01.jpg",
+          "bbox_px": [
+            161,
+            243,
+            2071,
+            1490
+          ],
+          "bbox_pdf": [
+            77.25585754451734,
+            116.64,
+            993.7694470477976,
+            715.1999999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 114,
+      "title": "Floating Block Elements",
+      "figures": []
+    },
+    {
+      "page_number": 115,
+      "title": "Side by Side Element",
+      "figures": []
+    },
+    {
+      "page_number": 116,
+      "title": "Side by Side Element",
+      "figures": [
+        {
+          "filename": "assets/slide-116-fig-01.jpg",
+          "bbox_px": [
+            57,
+            1230,
+            1673,
+            1482
+          ],
+          "bbox_pdf": [
+            27.3514526710403,
+            590.4,
+            802.7891283973759,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 117,
+      "title": "Side by Side Element",
+      "figures": [
+        {
+          "filename": "assets/slide-117-fig-01.jpg",
+          "bbox_px": [
+            57,
+            213,
+            1971,
+            1476
+          ],
+          "bbox_pdf": [
+            27.3514526710403,
+            102.24,
+            945.784442361762,
+            708.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 118,
+      "title": "Side by Side Element",
+      "figures": [
+        {
+          "filename": "assets/slide-118-fig-01.jpg",
+          "bbox_px": [
+            57,
+            213,
+            2126,
+            1519
+          ],
+          "bbox_pdf": [
+            27.3514526710403,
+            102.24,
+            1020.1611996251172,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 119,
+      "title": "Clearing Floated Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-119-fig-01.jpg",
+          "bbox_px": [
+            250,
+            1038,
+            1957,
+            1483
+          ],
+          "bbox_pdf": [
+            119.96251171508904,
+            498.24,
+            939.066541705717,
+            711.8399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 120,
+      "title": "Clearing Floated Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-120-fig-01.jpg",
+          "bbox_px": [
+            464,
+            1070,
+            1621,
+            1482
+          ],
+          "bbox_pdf": [
+            222.65042174320524,
+            513.6,
+            777.8369259606374,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 121,
+      "title": "Clearing Floated Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-121-fig-01.jpg",
+          "bbox_px": [
+            380,
+            224,
+            1923,
+            1484
+          ],
+          "bbox_pdf": [
+            182.34301780693534,
+            107.52,
+            922.7516401124649,
+            712.3199999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 122,
+      "title": "Clearing Floated Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-122-fig-01.jpg",
+          "bbox_px": [
+            57,
+            353,
+            635,
+            1247
+          ],
+          "bbox_pdf": [
+            27.3514526710403,
+            169.44,
+            304.70477975632616,
+            598.56
+          ]
+        },
+        {
+          "filename": "assets/slide-122-fig-02.jpg",
+          "bbox_px": [
+            656,
+            478,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            314.7816307403936,
+            229.44,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 123,
+      "title": "Clearing Floated Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-123-fig-01.jpg",
+          "bbox_px": [
+            57,
+            335,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            27.3514526710403,
+            160.79999999999998,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 124,
+      "title": "Parent of Floated Elements",
+      "figures": []
+    },
+    {
+      "page_number": 125,
+      "title": "Parent of Floated Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-125-fig-01.jpg",
+          "bbox_px": [
+            432,
+            1050,
+            1589,
+            1482
+          ],
+          "bbox_pdf": [
+            207.29522024367387,
+            504.0,
+            762.481724461106,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 126,
+      "title": "Parent of Floated Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-126-fig-01.jpg",
+          "bbox_px": [
+            276,
+            211,
+            1858,
+            1503
+          ],
+          "bbox_pdf": [
+            132.4386129334583,
+            101.28,
+            891.5613870665417,
+            721.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 127,
+      "title": "Fixed Width Layout",
+      "figures": [
+        {
+          "filename": "assets/slide-127-fig-01.jpg",
+          "bbox_px": [
+            154,
+            765,
+            2081,
+            1485
+          ],
+          "bbox_pdf": [
+            73.89690721649485,
+            367.2,
+            998.5679475164011,
+            712.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 128,
+      "title": "Liquid Layout",
+      "figures": [
+        {
+          "filename": "assets/slide-128-fig-01.jpg",
+          "bbox_px": [
+            142,
+            725,
+            2092,
+            1504
+          ],
+          "bbox_pdf": [
+            68.13870665417058,
+            348.0,
+            1003.8462980318651,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 129,
+      "title": "Flexbox Layout",
+      "figures": []
+    },
+    {
+      "page_number": 130,
+      "title": "Flexbox Example",
+      "figures": []
+    },
+    {
+      "page_number": 131,
+      "title": "Grid Layout",
+      "figures": []
+    },
+    {
+      "page_number": 132,
+      "title": "Grid Layout Example",
+      "figures": [
+        {
+          "filename": "assets/slide-132-fig-01.jpg",
+          "bbox_px": [
+            43,
+            661,
+            1518,
+            1502
+          ],
+          "bbox_pdf": [
+            20.633552014995313,
+            317.28,
+            728.4123711340206,
+            720.9599999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 133,
+      "title": "Grid Layout Example",
+      "figures": [
+        {
+          "filename": "assets/slide-133-fig-01.jpg",
+          "bbox_px": [
+            43,
+            335,
+            2091,
+            1502
+          ],
+          "bbox_pdf": [
+            20.633552014995313,
+            160.79999999999998,
+            1003.3664479850047,
+            720.9599999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 134,
+      "title": "Responsive Web Design",
+      "figures": [
+        {
+          "filename": "assets/slide-134-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 135,
+      "title": "History of Web Design",
+      "figures": []
+    },
+    {
+      "page_number": 136,
+      "title": "Introduction of Media Queries",
+      "figures": [
+        {
+          "filename": "assets/slide-136-fig-01.jpg",
+          "bbox_px": [
+            148,
+            785,
+            2134,
+            1067
+          ],
+          "bbox_pdf": [
+            71.01780693533271,
+            376.8,
+            1024.0,
+            512.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 137,
+      "title": "Introduction of Media Queries",
+      "figures": [
+        {
+          "filename": "assets/slide-137-fig-01.jpg",
+          "bbox_px": [
+            26,
+            462,
+            2108,
+            1463
+          ],
+          "bbox_pdf": [
+            12.47610121836926,
+            221.76,
+            1011.5238987816308,
+            702.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 138,
+      "title": "Introduction of Media Queries",
+      "figures": [
+        {
+          "filename": "assets/slide-138-fig-01.jpg",
+          "bbox_px": [
+            26,
+            462,
+            2134,
+            1463
+          ],
+          "bbox_pdf": [
+            12.47610121836926,
+            221.76,
+            1024.0,
+            702.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 139,
+      "title": "Why Responsive Design?",
+      "figures": [
+        {
+          "filename": "assets/slide-139-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1006,
+            1988,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            482.88,
+            953.941893158388,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 140,
+      "title": "Viewport",
+      "figures": []
+    },
+    {
+      "page_number": 141,
+      "title": "Viewport",
+      "figures": [
+        {
+          "filename": "assets/slide-141-fig-01.jpg",
+          "bbox_px": [
+            159,
+            250,
+            2078,
+            1482
+          ],
+          "bbox_pdf": [
+            76.29615745079663,
+            120.0,
+            997.1283973758201,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 142,
+      "title": "Viewport",
+      "figures": []
+    },
+    {
+      "page_number": 143,
+      "title": "Media Queries",
+      "figures": []
+    },
+    {
+      "page_number": 144,
+      "title": "Media Queries",
+      "figures": []
+    },
+    {
+      "page_number": 145,
+      "title": "Media Query Structure",
+      "figures": []
+    },
+    {
+      "page_number": 146,
+      "title": "Media Query Example",
+      "figures": [
+        {
+          "filename": "assets/slide-146-fig-01.jpg",
+          "bbox_px": [
+            239,
+            857,
+            2049,
+            1499
+          ],
+          "bbox_pdf": [
+            114.68416119962512,
+            411.35999999999996,
+            983.2127460168698,
+            719.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 147,
+      "title": "Media Types",
+      "figures": [
+        {
+          "filename": "assets/slide-147-fig-01.jpg",
+          "bbox_px": [
+            252,
+            1018,
+            1931,
+            1482
+          ],
+          "bbox_pdf": [
+            120.92221180880975,
+            488.64,
+            926.5904404873477,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 148,
+      "title": "Media Features",
+      "figures": [
+        {
+          "filename": "assets/slide-148-fig-01.jpg",
+          "bbox_px": [
+            240,
+            1033,
+            1856,
+            1482
+          ],
+          "bbox_pdf": [
+            115.16401124648547,
+            495.84,
+            890.601686972821,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 149,
+      "title": "Media Features",
+      "figures": [
+        {
+          "filename": "assets/slide-149-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1229,
+            1727,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            589.92,
+            828.7010309278351,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 150,
+      "title": "How to Use Media Queries",
+      "figures": [
+        {
+          "filename": "assets/slide-150-fig-01.jpg",
+          "bbox_px": [
+            275,
+            1211,
+            1888,
+            1482
+          ],
+          "bbox_pdf": [
+            131.95876288659795,
+            581.28,
+            905.9568884723524,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 151,
+      "title": "How to Use Media Queries",
+      "figures": [
+        {
+          "filename": "assets/slide-151-fig-01.jpg",
+          "bbox_px": [
+            275,
+            1211,
+            1888,
+            1482
+          ],
+          "bbox_pdf": [
+            131.95876288659795,
+            581.28,
+            905.9568884723524,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 152,
+      "title": "How to Use Media Queries",
+      "figures": [
+        {
+          "filename": "assets/slide-152-fig-01.jpg",
+          "bbox_px": [
+            58,
+            445,
+            2092,
+            882
+          ],
+          "bbox_pdf": [
+            27.831302717900655,
+            213.6,
+            1003.8462980318651,
+            423.35999999999996
+          ]
+        },
+        {
+          "filename": "assets/slide-152-fig-02.jpg",
+          "bbox_px": [
+            58,
+            943,
+            2075,
+            1482
+          ],
+          "bbox_pdf": [
+            27.831302717900655,
+            452.64,
+            995.688847235239,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 153,
+      "title": "How to Use Media Queries",
+      "figures": [
+        {
+          "filename": "assets/slide-153-fig-01.jpg",
+          "bbox_px": [
+            58,
+            445,
+            2092,
+            882
+          ],
+          "bbox_pdf": [
+            27.831302717900655,
+            213.6,
+            1003.8462980318651,
+            423.35999999999996
+          ]
+        },
+        {
+          "filename": "assets/slide-153-fig-02.jpg",
+          "bbox_px": [
+            58,
+            937,
+            2075,
+            1482
+          ],
+          "bbox_pdf": [
+            27.831302717900655,
+            449.76,
+            995.688847235239,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 154,
+      "title": "Breakpoints",
+      "figures": [
+        {
+          "filename": "assets/slide-154-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1039,
+            1988,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            498.71999999999997,
+            953.941893158388,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 155,
+      "title": "Breakpoints",
+      "figures": []
+    },
+    {
+      "page_number": 156,
+      "title": "Designing Responsively",
+      "figures": []
+    },
+    {
+      "page_number": 157,
+      "title": "Take Away",
+      "figures": [
+        {
+          "filename": "assets/slide-157-fig-01.jpg",
+          "bbox_px": [
+            162,
+            952,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            456.96,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 158,
+      "title": "Further Readings",
+      "figures": []
+    },
+    {
+      "page_number": 159,
+      "title": "Slide 159",
+      "figures": [
+        {
+          "filename": "assets/slide-159-fig-01.jpg",
+          "bbox_px": [
+            0,
+            217,
+            2134,
+            1383
+          ],
+          "bbox_pdf": [
+            0.0,
+            104.16,
+            1024.0,
+            663.84
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,594 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/06-Webapp-2025-26-servlet-database.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Java Servlets and",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            1815,
+            806
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            870.9278350515464,
+            386.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            159,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            76.29615745079663,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "Overall Architecture",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Application Functionalities: Create Employee",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            0,
+            202,
+            1694,
+            1335
+          ],
+          "bbox_pdf": [
+            0.0,
+            96.96,
+            812.8659793814434,
+            640.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Application Functionalities: Create Employee",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            0,
+            202,
+            2134,
+            1531
+          ],
+          "bbox_pdf": [
+            0.0,
+            96.96,
+            1024.0,
+            734.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "Application Functionalities: Create Employee",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            0,
+            202,
+            2134,
+            1531
+          ],
+          "bbox_pdf": [
+            0.0,
+            96.96,
+            1024.0,
+            734.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "Application Functionalities: Search Employee",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            17,
+            211,
+            2099,
+            1488
+          ],
+          "bbox_pdf": [
+            8.157450796626055,
+            101.28,
+            1007.2052483598876,
+            714.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Application Functionalities: Search Employee",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            13,
+            211,
+            2099,
+            1488
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            101.28,
+            1007.2052483598876,
+            714.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "The Full-Stack",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            17,
+            315,
+            2129,
+            1537
+          ],
+          "bbox_pdf": [
+            8.157450796626055,
+            151.2,
+            1021.6007497656982,
+            737.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "Employee Web Application Class Diagram",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            0,
+            274,
+            2134,
+            1414
+          ],
+          "bbox_pdf": [
+            0.0,
+            131.51999999999998,
+            1024.0,
+            678.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "Create Employee: Sequence Diagram",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            114,
+            204,
+            2020,
+            1510
+          ],
+          "bbox_pdf": [
+            54.7029053420806,
+            97.92,
+            969.2970946579194,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Search Employee: Sequence Diagram",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            177,
+            202,
+            1957,
+            1519
+          ],
+          "bbox_pdf": [
+            84.93345829428304,
+            96.96,
+            939.066541705717,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "The Data Logic Layer",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "The Employee Database",
+      "figures": []
+    },
+    {
+      "page_number": 15,
+      "title": "The Employee Class",
+      "figures": []
+    },
+    {
+      "page_number": 16,
+      "title": "The Message Class",
+      "figures": []
+    },
+    {
+      "page_number": 17,
+      "title": "The Data Access Object (DAO) Interface",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            11,
+            250,
+            2104,
+            1482
+          ],
+          "bbox_pdf": [
+            5.278350515463917,
+            120.0,
+            1009.6044985941893,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "The AbstractDAO class",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            64,
+            366,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            30.710402999062794,
+            175.68,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "The CreateEmployeeDatabase Class",
+      "figures": []
+    },
+    {
+      "page_number": 20,
+      "title": "The SearchEmployeeBySalaryDAO Class",
+      "figures": []
+    },
+    {
+      "page_number": 21,
+      "title": "Pool of Database Connections via Tomcat: context.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            25,
+            192,
+            2116,
+            1504
+          ],
+          "bbox_pdf": [
+            11.996251171508904,
+            92.16,
+            1015.3626991565136,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "Pool of Database Connections via Tomcat: context.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            25,
+            192,
+            2122,
+            1504
+          ],
+          "bbox_pdf": [
+            11.996251171508904,
+            92.16,
+            1018.2417994376757,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "Pool of Database Connections via Tomcat: context.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            25,
+            192,
+            2134,
+            1504
+          ],
+          "bbox_pdf": [
+            11.996251171508904,
+            92.16,
+            1024.0,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "Pool of Database Connections via Tomcat: context.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            25,
+            192,
+            2134,
+            1504
+          ],
+          "bbox_pdf": [
+            11.996251171508904,
+            92.16,
+            1024.0,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "Pool of Database Connections via Tomcat: context.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            25,
+            192,
+            2116,
+            1504
+          ],
+          "bbox_pdf": [
+            11.996251171508904,
+            92.16,
+            1015.3626991565136,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "The web.xml Configuration File",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            24,
+            279,
+            2049,
+            1508
+          ],
+          "bbox_pdf": [
+            11.516401124648548,
+            133.92,
+            983.2127460168698,
+            723.8399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Project Object Model (POM)",
+      "figures": []
+    },
+    {
+      "page_number": 28,
+      "title": "The Business&Interface",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            644,
+            788,
+            1559,
+            1482
+          ],
+          "bbox_pdf": [
+            309.02343017806936,
+            378.24,
+            748.0862230552952,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "The Create and Search Employee Forms",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            0,
+            543,
+            2119,
+            1482
+          ],
+          "bbox_pdf": [
+            0.0,
+            260.64,
+            1016.8022492970947,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "The AbstractDatabaseServlet Class",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            18,
+            197,
+            2134,
+            1600
+          ],
+          "bbox_pdf": [
+            8.637300843486411,
+            94.56,
+            1024.0,
+            768.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "The CreateEmployeeServlet Class",
+      "figures": []
+    },
+    {
+      "page_number": 32,
+      "title": "The SearchEmployeeBySalaryServlet Class",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            3,
+            226,
+            2134,
+            1506
+          ],
+          "bbox_pdf": [
+            1.4395501405810684,
+            108.47999999999999,
+            1024.0,
+            722.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "Slide 33",
+      "figures": []
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rewrite MD Notes"
+  short_description: "Clean Markdown notes while preserving images"
+  default_prompt: "Use $rewrite-md-notes to clean and rewrite a Markdown note while preserving images."

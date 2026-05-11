@@ -1,0 +1,1129 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/12-webapp-2025-26-WebSecurity.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Web Security",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            429,
+            103,
+            1010,
+            374
+          ],
+          "bbox_pdf": [
+            205.92,
+            49.425355450236964,
+            484.79999999999995,
+            179.46682464454975
+          ]
+        },
+        {
+          "filename": "assets/slide-001-fig-02.jpg",
+          "bbox_px": [
+            1038,
+            107,
+            1459,
+            235
+          ],
+          "bbox_pdf": [
+            498.24,
+            51.344786729857816,
+            700.3199999999999,
+            112.76658767772511
+          ]
+        },
+        {
+          "filename": "assets/slide-001-fig-03.jpg",
+          "bbox_px": [
+            501,
+            483,
+            1071,
+            741
+          ],
+          "bbox_pdf": [
+            240.48,
+            231.771327014218,
+            514.0799999999999,
+            355.57464454976304
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "~$ whoami",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            0,
+            406,
+            1500,
+            798
+          ],
+          "bbox_pdf": [
+            0.0,
+            194.8222748815166,
+            720.0,
+            382.92654028436016
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "Privacy Preserving Information Access",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            85,
+            308,
+            839,
+            639
+          ],
+          "bbox_pdf": [
+            40.8,
+            147.79620853080567,
+            402.71999999999997,
+            306.62914691943126
+          ]
+        },
+        {
+          "filename": "assets/slide-003-fig-02.jpg",
+          "bbox_px": [
+            1160,
+            317,
+            1431,
+            639
+          ],
+          "bbox_pdf": [
+            556.8,
+            152.1149289099526,
+            686.88,
+            306.62914691943126
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Overview",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            51,
+            56,
+            1346,
+            776
+          ],
+          "bbox_pdf": [
+            24.48,
+            26.872037914691944,
+            646.0799999999999,
+            372.3696682464455
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Material for the Hands-On labs",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            1018,
+            78,
+            1492,
+            246
+          ],
+          "bbox_pdf": [
+            488.64,
+            37.42890995260663,
+            716.16,
+            118.04502369668246
+          ]
+        },
+        {
+          "filename": "assets/slide-005-fig-02.jpg",
+          "bbox_px": [
+            51,
+            307,
+            493,
+            792
+          ],
+          "bbox_pdf": [
+            24.48,
+            147.31635071090048,
+            236.64,
+            380.0473933649289
+          ]
+        },
+        {
+          "filename": "assets/slide-005-fig-03.jpg",
+          "bbox_px": [
+            1042,
+            367,
+            1463,
+            792
+          ],
+          "bbox_pdf": [
+            500.15999999999997,
+            176.10781990521326,
+            702.24,
+            380.0473933649289
+          ]
+        },
+        {
+          "filename": "assets/slide-005-fig-04.jpg",
+          "bbox_px": [
+            613,
+            449,
+            923,
+            714
+          ],
+          "bbox_pdf": [
+            294.24,
+            215.45616113744074,
+            443.03999999999996,
+            342.6184834123223
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "Material for the Hands-On labs",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            1050,
+            273,
+            1467,
+            487
+          ],
+          "bbox_pdf": [
+            504.0,
+            131.00118483412322,
+            704.16,
+            233.69075829383885
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "Cybersecurity & Web",
+      "figures": []
+    },
+    {
+      "page_number": 8,
+      "title": "Slide 8",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            4,
+            59,
+            1496,
+            311
+          ],
+          "bbox_pdf": [
+            1.92,
+            28.311611374407583,
+            718.0799999999999,
+            149.23578199052133
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Slide 9",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            4,
+            59,
+            1496,
+            311
+          ],
+          "bbox_pdf": [
+            1.92,
+            28.311611374407583,
+            718.0799999999999,
+            149.23578199052133
+          ]
+        },
+        {
+          "filename": "assets/slide-009-fig-02.jpg",
+          "bbox_px": [
+            22,
+            326,
+            1478,
+            518
+          ],
+          "bbox_pdf": [
+            10.559999999999999,
+            156.43364928909952,
+            709.4399999999999,
+            248.56635071090048
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "Slide 10",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            4,
+            59,
+            1496,
+            311
+          ],
+          "bbox_pdf": [
+            1.92,
+            28.311611374407583,
+            718.0799999999999,
+            149.23578199052133
+          ]
+        },
+        {
+          "filename": "assets/slide-010-fig-02.jpg",
+          "bbox_px": [
+            0,
+            326,
+            1500,
+            749
+          ],
+          "bbox_pdf": [
+            0.0,
+            156.43364928909952,
+            720.0,
+            359.41350710900474
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "Cybersecurity objectives: CIA",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            51,
+            56,
+            1307,
+            808
+          ],
+          "bbox_pdf": [
+            24.48,
+            26.872037914691944,
+            627.36,
+            387.7251184834123
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Cybersecurity objectives: CIA",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            506,
+            252,
+            1084,
+            742
+          ],
+          "bbox_pdf": [
+            242.88,
+            120.92417061611374,
+            520.3199999999999,
+            356.0545023696682
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "Cybersecurity objectives: CIA",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            506,
+            252,
+            1084,
+            742
+          ],
+          "bbox_pdf": [
+            242.88,
+            120.92417061611374,
+            520.3199999999999,
+            356.0545023696682
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "Cybersecurity objectives: CIA",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            506,
+            252,
+            1084,
+            742
+          ],
+          "bbox_pdf": [
+            242.88,
+            120.92417061611374,
+            520.3199999999999,
+            356.0545023696682
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "Web Security",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            354,
+            353,
+            627,
+            626
+          ],
+          "bbox_pdf": [
+            169.92,
+            169.3898104265403,
+            300.96,
+            300.3909952606635
+          ]
+        },
+        {
+          "filename": "assets/slide-015-fig-02.jpg",
+          "bbox_px": [
+            904,
+            357,
+            1169,
+            622
+          ],
+          "bbox_pdf": [
+            433.91999999999996,
+            171.30924170616115,
+            561.12,
+            298.47156398104266
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Motives behind cyber attacks",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            33,
+            260,
+            356,
+            584
+          ],
+          "bbox_pdf": [
+            15.84,
+            124.76303317535545,
+            170.88,
+            280.2369668246445
+          ]
+        },
+        {
+          "filename": "assets/slide-016-fig-02.jpg",
+          "bbox_px": [
+            386,
+            260,
+            710,
+            584
+          ],
+          "bbox_pdf": [
+            185.28,
+            124.76303317535545,
+            340.8,
+            280.2369668246445
+          ]
+        },
+        {
+          "filename": "assets/slide-016-fig-03.jpg",
+          "bbox_px": [
+            763,
+            260,
+            1086,
+            584
+          ],
+          "bbox_pdf": [
+            366.24,
+            124.76303317535545,
+            521.28,
+            280.2369668246445
+          ]
+        },
+        {
+          "filename": "assets/slide-016-fig-04.jpg",
+          "bbox_px": [
+            1137,
+            260,
+            1465,
+            584
+          ],
+          "bbox_pdf": [
+            545.76,
+            124.76303317535545,
+            703.1999999999999,
+            280.2369668246445
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "OWASP Top Ten",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            64,
+            145,
+            1465,
+            798
+          ],
+          "bbox_pdf": [
+            30.72,
+            69.57938388625593,
+            703.1999999999999,
+            382.92654028436016
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "Possible attacks in Web Security",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            736,
+            217,
+            1464,
+            627
+          ],
+          "bbox_pdf": [
+            353.28,
+            104.12914691943128,
+            702.72,
+            300.87085308056874
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "Scenario",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            51,
+            56,
+            1442,
+            820
+          ],
+          "bbox_pdf": [
+            24.48,
+            26.872037914691944,
+            692.16,
+            393.4834123222749
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "SQL Injection",
+      "figures": []
+    },
+    {
+      "page_number": 21,
+      "title": "What is SQL Injection?",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            51,
+            113,
+            1307,
+            624
+          ],
+          "bbox_pdf": [
+            24.48,
+            54.2239336492891,
+            627.36,
+            299.43127962085305
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "SQL Injection",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            7,
+            234,
+            1489,
+            715
+          ],
+          "bbox_pdf": [
+            3.36,
+            112.2867298578199,
+            714.72,
+            343.0983412322275
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "SQL Injection",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            7,
+            234,
+            1493,
+            719
+          ],
+          "bbox_pdf": [
+            3.36,
+            112.2867298578199,
+            716.64,
+            345.0177725118483
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "SQL Basics for Injection",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            580,
+            204,
+            1469,
+            408
+          ],
+          "bbox_pdf": [
+            278.4,
+            97.8909952606635,
+            705.12,
+            195.781990521327
+          ]
+        },
+        {
+          "filename": "assets/slide-024-fig-02.jpg",
+          "bbox_px": [
+            132,
+            206,
+            518,
+            406
+          ],
+          "bbox_pdf": [
+            63.36,
+            98.85071090047393,
+            248.64,
+            194.8222748815166
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "A small example of SQL Injection",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            37,
+            186,
+            1463,
+            658
+          ],
+          "bbox_pdf": [
+            17.759999999999998,
+            89.25355450236967,
+            702.24,
+            315.7464454976303
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "A small example of SQL Injection",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            37,
+            186,
+            1463,
+            658
+          ],
+          "bbox_pdf": [
+            17.759999999999998,
+            89.25355450236967,
+            702.24,
+            315.7464454976303
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "A small example of SQL Injection",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            37,
+            186,
+            1463,
+            658
+          ],
+          "bbox_pdf": [
+            17.759999999999998,
+            89.25355450236967,
+            702.24,
+            315.7464454976303
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "A small example of SQL Injection",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            37,
+            186,
+            1463,
+            752
+          ],
+          "bbox_pdf": [
+            17.759999999999998,
+            89.25355450236967,
+            702.24,
+            360.8530805687204
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "SQL - Injection",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            732,
+            0,
+            1500,
+            790
+          ],
+          "bbox_pdf": [
+            351.36,
+            0.0,
+            720.0,
+            379.08767772511845
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "How to protect?",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            64,
+            202,
+            1384,
+            808
+          ],
+          "bbox_pdf": [
+            30.72,
+            96.93127962085308,
+            664.3199999999999,
+            387.7251184834123
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "Cross Site Scripting - XSS",
+      "figures": []
+    },
+    {
+      "page_number": 32,
+      "title": "What is XSS?",
+      "figures": []
+    },
+    {
+      "page_number": 33,
+      "title": "Stored XSS - the html/js version of SQL Injection",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            51,
+            56,
+            1392,
+            835
+          ],
+          "bbox_pdf": [
+            24.48,
+            26.872037914691944,
+            668.16,
+            400.68127962085305
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "Stored XSS - the html/js version of SQL Injection",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            51,
+            56,
+            1392,
+            835
+          ],
+          "bbox_pdf": [
+            24.48,
+            26.872037914691944,
+            668.16,
+            400.68127962085305
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "Stored XSS - the html/js version of SQL Injection",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            51,
+            56,
+            1469,
+            835
+          ],
+          "bbox_pdf": [
+            24.48,
+            26.872037914691944,
+            705.12,
+            400.68127962085305
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "A small example of XSS",
+      "figures": [
+        {
+          "filename": "assets/slide-036-fig-01.jpg",
+          "bbox_px": [
+            51,
+            56,
+            1258,
+            779
+          ],
+          "bbox_pdf": [
+            24.48,
+            26.872037914691944,
+            603.84,
+            373.8092417061611
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 37,
+      "title": "A small example of XSS",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            51,
+            56,
+            1258,
+            779
+          ],
+          "bbox_pdf": [
+            24.48,
+            26.872037914691944,
+            603.84,
+            373.8092417061611
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "XSS Attack",
+      "figures": [
+        {
+          "filename": "assets/slide-038-fig-01.jpg",
+          "bbox_px": [
+            732,
+            0,
+            1500,
+            790
+          ],
+          "bbox_pdf": [
+            351.36,
+            0.0,
+            720.0,
+            379.08767772511845
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 39,
+      "title": "How to protect?",
+      "figures": []
+    },
+    {
+      "page_number": 40,
+      "title": "Cross Site Request Forgery - CSRF",
+      "figures": []
+    },
+    {
+      "page_number": 41,
+      "title": "CSRF Schema 1",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            615,
+            77,
+            1404,
+            762
+          ],
+          "bbox_pdf": [
+            295.2,
+            36.94905213270142,
+            673.92,
+            365.6516587677725
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "CSRF Schema 2",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            51,
+            56,
+            1313,
+            809
+          ],
+          "bbox_pdf": [
+            24.48,
+            26.872037914691944,
+            630.24,
+            388.20497630331755
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "A small example of CSRF",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            51,
+            56,
+            1152,
+            836
+          ],
+          "bbox_pdf": [
+            24.48,
+            26.872037914691944,
+            552.96,
+            401.1611374407583
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "A small example of CSRF",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            51,
+            56,
+            1152,
+            836
+          ],
+          "bbox_pdf": [
+            24.48,
+            26.872037914691944,
+            552.96,
+            401.1611374407583
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 45,
+      "title": "CSRF Attack",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            732,
+            0,
+            1500,
+            790
+          ],
+          "bbox_pdf": [
+            351.36,
+            0.0,
+            720.0,
+            379.08767772511845
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "How to protect?",
+      "figures": []
+    },
+    {
+      "page_number": 47,
+      "title": "Web Security",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            429,
+            103,
+            1010,
+            374
+          ],
+          "bbox_pdf": [
+            205.92,
+            49.425355450236964,
+            484.79999999999995,
+            179.46682464454975
+          ]
+        },
+        {
+          "filename": "assets/slide-047-fig-02.jpg",
+          "bbox_px": [
+            1038,
+            107,
+            1459,
+            235
+          ],
+          "bbox_pdf": [
+            498.24,
+            51.344786729857816,
+            700.3199999999999,
+            112.76658767772511
+          ]
+        },
+        {
+          "filename": "assets/slide-047-fig-03.jpg",
+          "bbox_px": [
+            581,
+            517,
+            1071,
+            741
+          ],
+          "bbox_pdf": [
+            278.88,
+            248.08649289099526,
+            514.0799999999999,
+            355.57464454976304
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -4,39 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "8cab16d618ce0a11",
+        "id": "fb736e5e625099f3",
         "type": "tabs",
         "children": [
           {
-            "id": "f4f838703917e7b6",
+            "id": "6dd686f585e56b7e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Modern CPP for Internet and Multimedia/MD Lessons/Slides 1 types and declarations/Slides 1 types and declarations.md",
+                "file": "Web Applications/MD Converted/03-webapp-2025-26-git-maven/03-webapp-2025-26-git-maven.rewritten.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Slides 1 types and declarations"
-            }
-          }
-        ]
-      },
-      {
-        "id": "85cddbd612615e64",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "60f49b3ceee2ec80",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "Multimedia Communications/Pics/Lossless Coding/Pasted image 20260501174916.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260501174916"
+              "title": "03-webapp-2025-26-git-maven.rewritten"
             }
           }
         ]
@@ -185,57 +167,58 @@
       "templates:Inserisci modello": false,
       "command-palette:Apri riquadro comandi": false,
       "bases:Crea nuova Base": false,
-      "remotely-save:Remotely Save": false,
       "obsidian-git:Open Git source control": false,
-      "obsidian-excalidraw-plugin:New drawing": false
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "remotely-save:Remotely Save": false
     }
   },
-  "active": "f4f838703917e7b6",
+  "active": "6dd686f585e56b7e",
   "lastOpenFiles": [
-    "Multimedia Communications/Summaries/4. Transform coding.md",
-    "Multimedia Communications/Pics/Transform coding/Pasted image 20260501180944.png",
-    "Multimedia Communications/Pics/Lossless Coding",
-    "Multimedia Communications/Pics/Lossless Coding/Pasted image 20260501180316.png",
-    "Multimedia Communications/Pics/Transform coding/Pasted image 20260501181043.png",
-    "Multimedia Communications/Pics/Lossless Coding/Pasted image 20260501180238.png",
-    "Multimedia Communications/Pics/Lossless Coding/Pasted image 20260501180155.png",
-    "Multimedia Communications/Pics/Lossless Coding/Pasted image 20260501175241.png",
-    "Multimedia Communications/Pics/Transform coding/Pasted image 20260501181202.png",
-    "Multimedia Communications/Pics/Transform coding/Pasted image 20260501181646.png",
-    "Multimedia Communications/Slides/4. Transform coding.pdf",
-    "Multimedia Communications/Pics/Transform coding",
-    "Multimedia Communications/Pics/Transform coding/Pasted image 20260501182154.png",
-    "Multimedia Communications/Pics/Transform coding/Pasted image 20260501182720.png",
-    "Multimedia Communications/Summaries/5. Wavelet analysis.md",
-    "Multimedia Communications/Summaries/6. Learned Image Compression.md",
-    "Multimedia Communications/Slides/6. Learned Image Coding.pdf",
-    "Multimedia Communications/Slides/3. Lossless coding.pdf",
-    "Multimedia Communications/Summaries/3. Lossless coding.md",
-    "PLACEHOLDER_Fig_7 — LZW encoding step-by-step example.md",
-    "Multimedia Communications/Slides/7. Motion estimation.pdf",
-    "Multimedia Communications/Slides/2. Scalar and Predictive Quantization.pdf",
-    "Multimedia Communications/Summaries/2. Scalar and Predictive Quantization.md",
-    "Multimedia Communications/Pics/Scalar and Predictive Quantization",
-    "Multimedia Communications/Pics/Senza nome.md",
-    "Multimedia Communications/Summaries/1. Introduction to Multimedia Compression.md",
-    "Multimedia Communications/Slides/1. Introduction to Multimedia Compression.pdf",
-    "PLACEHOLDER_Fig_12 — color photo decomposed into R, G, B grayscale channels.md",
-    "Multimedia Communications/Pics/Introduction",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/5. Wavelet analysis.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_145.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_144.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_143.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_142.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_141.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_140.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_139.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_138.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_137.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_136.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_135.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_134.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_133.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_132.md",
-    "Multimedia Communications/ToSummarize/5. Wavelet analysis(1)/pagine/pagina_131.md"
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102524.png",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102504.png",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102423.png",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102346.png",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102320.png",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102038.png",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102016.png",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 8 compiler.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 7 constructors.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 7 classes.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 6 functions.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 5 Namespaces.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 4 statements.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 3 structures & enum.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 26 Inter-thread communication.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 24 threads and lambdas.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 22 socket.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 20 smart pointers.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 2 pointers, arrays and references.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 18 standard library.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 17 templates.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 16 runtime polymorphism.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 14 operator overloading.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 13 derived classes.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 12 memory management.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 1 types and declarations.md",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Images",
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons",
+    "Modern CPP for Internet and Multimedia/AGENTS.md",
+    "Big Data Computing/ToSummarize/7.Streaming2526-2.md",
+    "Big Data Computing/Slides/7.Streaming2526-2.pdf",
+    "Big Data Computing/Notes/7.Streaming2526-2.md",
+    "Big Data Computing/AGENTS.md",
+    "Web Applications/MD Converted/02-webapp-2025-26-introduction/02-webapp-2025-26-introduction.rewritten.md",
+    "Web Applications/MD Converted/03-webapp-2025-26-git-maven/03-webapp-2025-26-git-maven.rewritten.md",
+    "Web Applications/MD Converted/20260421-reply/manifest.json",
+    "Web Applications/MD Converted/15-webapp-2025-26-form-validation-ajax/manifest.json",
+    "Web Applications/MD Converted/14-webapp-2025-26-javascript/manifest.json",
+    "Web Applications/MD Converted/13-webapp-2025-26-css/manifest.json",
+    "Web Applications/MD Converted/12-webapp-2025-26-WebSecurity/manifest.json",
+    "Web Applications/MD Converted/11-webapp-2025-26-html5/manifest.json",
+    "Web Applications/MD Converted/10-webapp-2025-26-markup/manifest.json",
+    "Web Applications/MD Converted/15-webapp-2025-26-form-validation-ajax/assets/slide-001-fig-01.jpg",
+    "Web Applications/MD Converted/14-webapp-2025-26-javascript/assets/slide-001-fig-01.jpg",
+    "Web Applications/MD Converted/13-webapp-2025-26-css/assets/slide-001-fig-02.jpg",
+    "Web Applications/MD Converted/13-webapp-2025-26-css/assets/slide-001-fig-01.jpg"
   ]
 }

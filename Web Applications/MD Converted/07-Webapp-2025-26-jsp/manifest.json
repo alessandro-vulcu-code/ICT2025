@@ -1,0 +1,1159 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/07-Webapp-2025-26-jsp.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Introduction to",
+      "figures": []
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            162,
+            952,
+            1452,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            456.96,
+            696.7422680412371,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "JavaServer Pages",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "JavaServer Pages (JSP)",
+      "figures": []
+    },
+    {
+      "page_number": 5,
+      "title": "Execution of a JSP Page",
+      "figures": []
+    },
+    {
+      "page_number": 6,
+      "title": "Example of HelloWorld JSP Page",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            45,
+            233,
+            1923,
+            1490
+          ],
+          "bbox_pdf": [
+            21.593252108716026,
+            111.83999999999999,
+            922.7516401124649,
+            715.1999999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "Calling the HelloWorld JSP Page",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            68,
+            227,
+            2099,
+            1526
+          ],
+          "bbox_pdf": [
+            32.62980318650422,
+            108.96,
+            1007.2052483598876,
+            732.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Components of a JSP page",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            13,
+            889,
+            2134,
+            1520
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            426.71999999999997,
+            1024.0,
+            729.6
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "JavaBeans",
+      "figures": []
+    },
+    {
+      "page_number": 10,
+      "title": "(Some) Standard Actions",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            105,
+            211,
+            1494,
+            338
+          ],
+          "bbox_pdf": [
+            50.3842549203374,
+            101.28,
+            716.895970009372,
+            162.23999999999998
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "JSP Standard Tag Library (JSTL)",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            130,
+            211,
+            2125,
+            356
+          ],
+          "bbox_pdf": [
+            62.3805060918463,
+            101.28,
+            1019.6813495782568,
+            170.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "(Some) JSTL Core Actions",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            105,
+            211,
+            2028,
+            571
+          ],
+          "bbox_pdf": [
+            50.3842549203374,
+            101.28,
+            973.1358950328023,
+            274.08
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "(Some) JSTL Formatting Actions",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            105,
+            211,
+            1538,
+            338
+          ],
+          "bbox_pdf": [
+            50.3842549203374,
+            101.28,
+            738.0093720712277,
+            162.23999999999998
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "(Some) JSTL Functions Actions",
+      "figures": []
+    },
+    {
+      "page_number": 15,
+      "title": "Expression Language (EL): Operators",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            105,
+            211,
+            1524,
+            343
+          ],
+          "bbox_pdf": [
+            50.3842549203374,
+            101.28,
+            731.2914714151827,
+            164.64
+          ]
+        },
+        {
+          "filename": "assets/slide-015-fig-02.jpg",
+          "bbox_px": [
+            119,
+            1234,
+            2058,
+            1482
+          ],
+          "bbox_pdf": [
+            57.10215557638238,
+            592.3199999999999,
+            987.531396438613,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "(Some) Expression Language (EL) Implicit Variables",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            105,
+            211,
+            1692,
+            432
+          ],
+          "bbox_pdf": [
+            50.3842549203374,
+            101.28,
+            811.9062792877226,
+            207.35999999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "HelloWorld JSP",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            481,
+            605,
+            1703,
+            1482
+          ],
+          "bbox_pdf": [
+            230.8078725398313,
+            290.4,
+            817.1846298031866,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "Welcome Page: index.jsp",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            255,
+            205,
+            2048,
+            1534
+          ],
+          "bbox_pdf": [
+            122.36176194939083,
+            98.39999999999999,
+            982.7328959700094,
+            736.3199999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "Simple Hello World: hello-world.jsp",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            0,
+            296,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            0.0,
+            142.07999999999998,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "GET Form Hello World: get-form.jsp and",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            128,
+            211,
+            2076,
+            1517
+          ],
+          "bbox_pdf": [
+            61.42080599812559,
+            101.28,
+            996.1686972820994,
+            728.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "GET Form Hello World: get-form.jsp and",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            25,
+            202,
+            2134,
+            1517
+          ],
+          "bbox_pdf": [
+            11.996251171508904,
+            96.96,
+            1024.0,
+            728.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "GET Form Hello World: get-form.jsp and",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            0,
+            202,
+            2134,
+            1531
+          ],
+          "bbox_pdf": [
+            0.0,
+            96.96,
+            1024.0,
+            734.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "POST Form Hello World: post-form.jsp and",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            129,
+            228,
+            2076,
+            1493
+          ],
+          "bbox_pdf": [
+            61.90065604498594,
+            109.44,
+            996.1686972820994,
+            716.64
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "POST Form Hello World: post-form.jsp and",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            25,
+            202,
+            2134,
+            1493
+          ],
+          "bbox_pdf": [
+            11.996251171508904,
+            96.96,
+            1024.0,
+            716.64
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "POST Form Hello World: post-form.jsp and",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            0,
+            202,
+            2134,
+            1531
+          ],
+          "bbox_pdf": [
+            0.0,
+            96.96,
+            1024.0,
+            734.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "index.jsp",
+      "figures": []
+    },
+    {
+      "page_number": 27,
+      "title": "head.jsp and foot.jsp",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            654,
+            941,
+            2117,
+            1501
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            451.68,
+            1015.842549203374,
+            720.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "footer.jsp",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            32,
+            385,
+            1870,
+            1482
+          ],
+          "bbox_pdf": [
+            15.355201499531397,
+            184.79999999999998,
+            897.319587628866,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "get-form.jsp (post-form.jsp)",
+      "figures": []
+    },
+    {
+      "page_number": 30,
+      "title": "hello-world-param.jsp",
+      "figures": []
+    },
+    {
+      "page_number": 31,
+      "title": "hello-world-param.jsp",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            33,
+            286,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            15.835051546391753,
+            137.28,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "The web.xml Configuration File",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            252,
+            897,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            120.92221180880975,
+            430.56,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "Configuration of the Maven Project",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            0,
+            347,
+            2134,
+            1519
+          ],
+          "bbox_pdf": [
+            0.0,
+            166.56,
+            1024.0,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "Project Object Model (POM)",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            18,
+            370,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            8.637300843486411,
+            177.6,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "Model-View-Controller",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "Model-View-Controller (MVC) Paradigm",
+      "figures": []
+    },
+    {
+      "page_number": 37,
+      "title": "MVC and Java/Web Technologies",
+      "figures": []
+    },
+    {
+      "page_number": 38,
+      "title": "MVC and Distributed Application Layers",
+      "figures": [
+        {
+          "filename": "assets/slide-038-fig-01.jpg",
+          "bbox_px": [
+            592,
+            218,
+            1516,
+            807
+          ],
+          "bbox_pdf": [
+            284.07122774133086,
+            104.64,
+            727.4526710403,
+            387.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 39,
+      "title": "Accessing a database via",
+      "figures": [
+        {
+          "filename": "assets/slide-039-fig-01.jpg",
+          "bbox_px": [
+            239,
+            788,
+            1890,
+            1482
+          ],
+          "bbox_pdf": [
+            114.68416119962512,
+            378.24,
+            906.9165885660731,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 40,
+      "title": "Application Functionalities: Create Employee",
+      "figures": [
+        {
+          "filename": "assets/slide-040-fig-01.jpg",
+          "bbox_px": [
+            0,
+            211,
+            2134,
+            1266
+          ],
+          "bbox_pdf": [
+            0.0,
+            101.28,
+            1024.0,
+            607.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 41,
+      "title": "Application Functionalities: Create Employee",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            0,
+            211,
+            2134,
+            1510
+          ],
+          "bbox_pdf": [
+            0.0,
+            101.28,
+            1024.0,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "Application Functionalities: Search Employee",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            13,
+            211,
+            2122,
+            1519
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            101.28,
+            1018.2417994376757,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "MVC in the Employee Application",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            457,
+            409,
+            918,
+            682
+          ],
+          "bbox_pdf": [
+            219.29147141518277,
+            196.32,
+            440.50234301780694,
+            327.36
+          ]
+        },
+        {
+          "filename": "assets/slide-043-fig-02.jpg",
+          "bbox_px": [
+            1149,
+            463,
+            1610,
+            682
+          ],
+          "bbox_pdf": [
+            551.3477038425492,
+            222.23999999999998,
+            772.5585754451733,
+            327.36
+          ]
+        },
+        {
+          "filename": "assets/slide-043-fig-03.jpg",
+          "bbox_px": [
+            416,
+            713,
+            1286,
+            971
+          ],
+          "bbox_pdf": [
+            199.61761949390817,
+            342.24,
+            617.087160262418,
+            466.08
+          ]
+        },
+        {
+          "filename": "assets/slide-043-fig-04.jpg",
+          "bbox_px": [
+            813,
+            1012,
+            1274,
+            1231
+          ],
+          "bbox_pdf": [
+            390.1180880974695,
+            485.76,
+            611.3289597000937,
+            590.88
+          ]
+        },
+        {
+          "filename": "assets/slide-043-fig-05.jpg",
+          "bbox_px": [
+            796,
+            1291,
+            1290,
+            1511
+          ],
+          "bbox_pdf": [
+            381.9606373008435,
+            619.68,
+            619.0065604498594,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "MVC and Layers in the Employee Application",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            470,
+            206,
+            1824,
+            1482
+          ],
+          "bbox_pdf": [
+            225.5295220243674,
+            98.88,
+            875.2464854732896,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 45,
+      "title": "Employee Web Application Class Diagram",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            0,
+            274,
+            2134,
+            1414
+          ],
+          "bbox_pdf": [
+            0.0,
+            131.51999999999998,
+            1024.0,
+            678.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "Create Employee: Sequence Diagram",
+      "figures": [
+        {
+          "filename": "assets/slide-046-fig-01.jpg",
+          "bbox_px": [
+            126,
+            211,
+            2008,
+            1514
+          ],
+          "bbox_pdf": [
+            60.461105904404874,
+            101.28,
+            963.5388940955952,
+            726.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 47,
+      "title": "Search Employee: Sequence Diagram",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            291,
+            211,
+            1843,
+            1510
+          ],
+          "bbox_pdf": [
+            139.63636363636363,
+            101.28,
+            884.3636363636364,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 48,
+      "title": "The Create and Search Employee Forms in JSP",
+      "figures": []
+    },
+    {
+      "page_number": 49,
+      "title": "The Employee Class: Almost JavaBeans",
+      "figures": []
+    },
+    {
+      "page_number": 50,
+      "title": "The Message Class: Almost JavaBeans",
+      "figures": []
+    },
+    {
+      "page_number": 51,
+      "title": "The Data Access Object (DAO) Interface",
+      "figures": [
+        {
+          "filename": "assets/slide-051-fig-01.jpg",
+          "bbox_px": [
+            11,
+            235,
+            2125,
+            1483
+          ],
+          "bbox_pdf": [
+            5.278350515463917,
+            112.8,
+            1019.6813495782568,
+            711.8399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 52,
+      "title": "The AbstractDAO class",
+      "figures": [
+        {
+          "filename": "assets/slide-052-fig-01.jpg",
+          "bbox_px": [
+            125,
+            357,
+            2134,
+            1496
+          ],
+          "bbox_pdf": [
+            59.98125585754452,
+            171.35999999999999,
+            1024.0,
+            718.0799999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 53,
+      "title": "The CreateEmployeeDatabase Class",
+      "figures": []
+    },
+    {
+      "page_number": 54,
+      "title": "The SearchEmployeeBySalaryDAO Class",
+      "figures": []
+    },
+    {
+      "page_number": 55,
+      "title": "Pool of Database Connections via Tomcat: context.xml",
+      "figures": []
+    },
+    {
+      "page_number": 56,
+      "title": "The web.xml Configuration File",
+      "figures": [
+        {
+          "filename": "assets/slide-056-fig-01.jpg",
+          "bbox_px": [
+            44,
+            290,
+            2134,
+            877
+          ],
+          "bbox_pdf": [
+            21.11340206185567,
+            139.2,
+            1024.0,
+            420.96
+          ]
+        },
+        {
+          "filename": "assets/slide-056-fig-02.jpg",
+          "bbox_px": [
+            44,
+            886,
+            2090,
+            1508
+          ],
+          "bbox_pdf": [
+            21.11340206185567,
+            425.28,
+            1002.8865979381444,
+            723.8399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 57,
+      "title": "The AbstractDatabaseServlet Class",
+      "figures": [
+        {
+          "filename": "assets/slide-057-fig-01.jpg",
+          "bbox_px": [
+            18,
+            197,
+            2134,
+            1600
+          ],
+          "bbox_pdf": [
+            8.637300843486411,
+            94.56,
+            1024.0,
+            768.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 58,
+      "title": "The CreateEmployeeServlet Class",
+      "figures": [
+        {
+          "filename": "assets/slide-058-fig-01.jpg",
+          "bbox_px": [
+            33,
+            200,
+            2134,
+            1518
+          ],
+          "bbox_pdf": [
+            15.835051546391753,
+            96.0,
+            1024.0,
+            728.64
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 59,
+      "title": "The SearchEmployeeBySalaryServlet Class",
+      "figures": [
+        {
+          "filename": "assets/slide-059-fig-01.jpg",
+          "bbox_px": [
+            20,
+            207,
+            2134,
+            1513
+          ],
+          "bbox_pdf": [
+            9.597000937207124,
+            99.36,
+            1024.0,
+            726.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 60,
+      "title": "The create-employee-result JSP",
+      "figures": [
+        {
+          "filename": "assets/slide-060-fig-01.jpg",
+          "bbox_px": [
+            22,
+            192,
+            2134,
+            1550
+          ],
+          "bbox_pdf": [
+            10.556701030927835,
+            92.16,
+            1024.0,
+            744.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 61,
+      "title": "The show-message JSP",
+      "figures": []
+    },
+    {
+      "page_number": 62,
+      "title": "The search-employee-result JSP",
+      "figures": []
+    },
+    {
+      "page_number": 63,
+      "title": "Project Object Model (POM)",
+      "figures": [
+        {
+          "filename": "assets/slide-063-fig-01.jpg",
+          "bbox_px": [
+            15,
+            230,
+            2134,
+            1524
+          ],
+          "bbox_pdf": [
+            7.197750702905342,
+            110.39999999999999,
+            1024.0,
+            731.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 64,
+      "title": "Slide 64",
+      "figures": []
+    }
+  ]
+}

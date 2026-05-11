@@ -1,0 +1,974 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/08-Webapp-2025-26-REST.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "REST Web Services",
+      "figures": []
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            162,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "REST Web Services",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "REST: REpresentational State Transfer",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            162,
+            521,
+            2023,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            250.07999999999998,
+            970.7366447985005,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Resource",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            18,
+            240,
+            2118,
+            961
+          ],
+          "bbox_pdf": [
+            8.637300843486411,
+            115.19999999999999,
+            1016.3223992502343,
+            461.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "REST: Overview",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            225,
+            674,
+            1678,
+            1519
+          ],
+          "bbox_pdf": [
+            107.96626054358013,
+            323.52,
+            805.1883786316777,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "HTTP and REST",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            162,
+            943,
+            1981,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            452.64,
+            950.5829428303655,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "REST: Example of Resources and URIs",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            1285
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            616.8
+          ]
+        },
+        {
+          "filename": "assets/slide-008-fig-02.jpg",
+          "bbox_px": [
+            137,
+            1297,
+            1770,
+            1482
+          ],
+          "bbox_pdf": [
+            65.73945641986879,
+            622.56,
+            849.3345829428304,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "REST and HTTP Request Methods",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            873
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            419.03999999999996
+          ]
+        },
+        {
+          "filename": "assets/slide-009-fig-02.jpg",
+          "bbox_px": [
+            135,
+            1217,
+            2059,
+            1488
+          ],
+          "bbox_pdf": [
+            64.77975632614807,
+            584.16,
+            988.0112464854733,
+            714.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "Example of XML Representation",
+      "figures": []
+    },
+    {
+      "page_number": 11,
+      "title": "Example of JSON Representation",
+      "figures": []
+    },
+    {
+      "page_number": 12,
+      "title": "Example of JSON Representation",
+      "figures": []
+    },
+    {
+      "page_number": 13,
+      "title": "Example of HTML Representation",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            23,
+            428,
+            2134,
+            1527
+          ],
+          "bbox_pdf": [
+            11.036551077788191,
+            205.44,
+            1024.0,
+            732.9599999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "Example of HTML Representation",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            56,
+            812,
+            2070,
+            1512
+          ],
+          "bbox_pdf": [
+            26.871602624179943,
+            389.76,
+            993.2895970009372,
+            725.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "REST: Design Principles",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1078,
+            1825,
+            1447
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            517.4399999999999,
+            875.72633552015,
+            694.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Documenting a REST API",
+      "figures": []
+    },
+    {
+      "page_number": 17,
+      "title": "WADL: Web Application Description Language",
+      "figures": []
+    },
+    {
+      "page_number": 18,
+      "title": "OAI: OpenAPI Initiative",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            48,
+            194,
+            1996,
+            1460
+          ],
+          "bbox_pdf": [
+            23.032802249297095,
+            93.11999999999999,
+            957.7806935332709,
+            700.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "Accessing a database via",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            484,
+            788,
+            1646,
+            1482
+          ],
+          "bbox_pdf": [
+            232.24742268041237,
+            378.24,
+            789.8331771321463,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "REST API",
+      "figures": []
+    },
+    {
+      "page_number": 21,
+      "title": "JSON Resources",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            29,
+            221,
+            2126,
+            1483
+          ],
+          "bbox_pdf": [
+            13.915651358950328,
+            106.08,
+            1020.1611996251172,
+            711.8399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "Error Codes",
+      "figures": []
+    },
+    {
+      "page_number": 23,
+      "title": "Error Codes",
+      "figures": []
+    },
+    {
+      "page_number": 24,
+      "title": "Employee REST Web Service Class Diagram",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            465,
+            204,
+            1671,
+            1517
+          ],
+          "bbox_pdf": [
+            223.13027179006562,
+            97.92,
+            801.8294283036552,
+            728.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "Employee REST Web Service: CREATE Sequence Diagram",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            59,
+            226,
+            2133,
+            1495
+          ],
+          "bbox_pdf": [
+            28.31115276476101,
+            108.47999999999999,
+            1023.5201499531397,
+            717.6
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "The Resource Interface",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            28,
+            467,
+            2108,
+            1482
+          ],
+          "bbox_pdf": [
+            13.435801312089971,
+            224.16,
+            1011.5238987816308,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "The AbstractResource Class",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            96,
+            216,
+            2134,
+            1494
+          ],
+          "bbox_pdf": [
+            46.06560449859419,
+            103.67999999999999,
+            1024.0,
+            717.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "The Message Class",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            14,
+            211,
+            2134,
+            1542
+          ],
+          "bbox_pdf": [
+            6.717900656044986,
+            101.28,
+            1024.0,
+            740.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "The Employee Class",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            38,
+            215,
+            2134,
+            1537
+          ],
+          "bbox_pdf": [
+            18.234301780693535,
+            103.2,
+            1024.0,
+            737.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "The Employee Class",
+      "figures": []
+    },
+    {
+      "page_number": 31,
+      "title": "The ResourceList Class",
+      "figures": []
+    },
+    {
+      "page_number": 32,
+      "title": "The AbstractDatabaseServlet Class",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            18,
+            197,
+            2134,
+            1600
+          ],
+          "bbox_pdf": [
+            8.637300843486411,
+            94.56,
+            1024.0,
+            768.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "The RestDispatcherServlet Class",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            21,
+            205,
+            2134,
+            1539
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            98.39999999999999,
+            1024.0,
+            738.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "The RestDispatcherServlet Class",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            7,
+            211,
+            2134,
+            1552
+          ],
+          "bbox_pdf": [
+            3.358950328022493,
+            101.28,
+            1024.0,
+            744.9599999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "The RestResource Interface",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            99,
+            434,
+            2035,
+            1482
+          ],
+          "bbox_pdf": [
+            47.50515463917526,
+            208.32,
+            976.4948453608248,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "The AbstractRR Class",
+      "figures": []
+    },
+    {
+      "page_number": 37,
+      "title": "The AbstractRR Class",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            8,
+            497,
+            2134,
+            1541
+          ],
+          "bbox_pdf": [
+            3.838800374882849,
+            238.56,
+            1024.0,
+            739.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "The AbstractRR Class",
+      "figures": []
+    },
+    {
+      "page_number": 39,
+      "title": "The CreateEmployeeRR Class",
+      "figures": []
+    },
+    {
+      "page_number": 40,
+      "title": "The CreateEmployeeDAO Class",
+      "figures": [
+        {
+          "filename": "assets/slide-040-fig-01.jpg",
+          "bbox_px": [
+            20,
+            257,
+            2062,
+            1600
+          ],
+          "bbox_pdf": [
+            9.597000937207124,
+            123.36,
+            989.4507966260544,
+            768.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 41,
+      "title": "The web.xml Configuration File",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            28,
+            235,
+            2106,
+            1486
+          ],
+          "bbox_pdf": [
+            13.435801312089971,
+            112.8,
+            1010.5641986879101,
+            713.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "Project Object Model (POM)",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            22,
+            204,
+            2086,
+            1534
+          ],
+          "bbox_pdf": [
+            10.556701030927835,
+            97.92,
+            1000.9671977507029,
+            736.3199999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "Example of execution",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            0,
+            206,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            0.0,
+            98.88,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "Example of execution",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            0,
+            206,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            0.0,
+            98.88,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 45,
+      "title": "Example of execution",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            0,
+            211,
+            2134,
+            1542
+          ],
+          "bbox_pdf": [
+            0.0,
+            101.28,
+            1024.0,
+            740.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "Example of execution",
+      "figures": [
+        {
+          "filename": "assets/slide-046-fig-01.jpg",
+          "bbox_px": [
+            0,
+            211,
+            2134,
+            1542
+          ],
+          "bbox_pdf": [
+            0.0,
+            101.28,
+            1024.0,
+            740.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 47,
+      "title": "Example of execution",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            0,
+            211,
+            2134,
+            1549
+          ],
+          "bbox_pdf": [
+            0.0,
+            101.28,
+            1024.0,
+            743.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 48,
+      "title": "Example of execution",
+      "figures": [
+        {
+          "filename": "assets/slide-048-fig-01.jpg",
+          "bbox_px": [
+            0,
+            211,
+            2134,
+            1549
+          ],
+          "bbox_pdf": [
+            0.0,
+            101.28,
+            1024.0,
+            743.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 49,
+      "title": "Accessing a database via",
+      "figures": [
+        {
+          "filename": "assets/slide-049-fig-01.jpg",
+          "bbox_px": [
+            262,
+            788,
+            1868,
+            1482
+          ],
+          "bbox_pdf": [
+            125.72071227741331,
+            378.24,
+            896.3598875351453,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 50,
+      "title": "The Search-Employee-Form JSP Page",
+      "figures": [
+        {
+          "filename": "assets/slide-050-fig-01.jpg",
+          "bbox_px": [
+            28,
+            220,
+            2134,
+            1555
+          ],
+          "bbox_pdf": [
+            13.435801312089971,
+            105.6,
+            1024.0,
+            746.4
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 51,
+      "title": "The AJAX Employee JS Code",
+      "figures": [
+        {
+          "filename": "assets/slide-051-fig-01.jpg",
+          "bbox_px": [
+            55,
+            211,
+            2128,
+            1359
+          ],
+          "bbox_pdf": [
+            26.39175257731959,
+            101.28,
+            1021.1208997188379,
+            652.3199999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 52,
+      "title": "The AJAX Employee JS Code",
+      "figures": [
+        {
+          "filename": "assets/slide-052-fig-01.jpg",
+          "bbox_px": [
+            8,
+            196,
+            2134,
+            1526
+          ],
+          "bbox_pdf": [
+            3.838800374882849,
+            94.08,
+            1024.0,
+            732.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 53,
+      "title": "The AJAX Employee JS Code",
+      "figures": [
+        {
+          "filename": "assets/slide-053-fig-01.jpg",
+          "bbox_px": [
+            10,
+            212,
+            2123,
+            1520
+          ],
+          "bbox_pdf": [
+            4.798500468603562,
+            101.75999999999999,
+            1018.7216494845361,
+            729.6
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 54,
+      "title": "The AJAX Employee JS Code",
+      "figures": [
+        {
+          "filename": "assets/slide-054-fig-01.jpg",
+          "bbox_px": [
+            11,
+            202,
+            2095,
+            1528
+          ],
+          "bbox_pdf": [
+            5.278350515463917,
+            96.96,
+            1005.2858481724461,
+            733.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 55,
+      "title": "Slide 55",
+      "figures": []
+    }
+  ]
+}

@@ -1,0 +1,1414 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/05-webappTutorship-2025-26-MIME.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Tutoring 05",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "General Information",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "General Information",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Homework Tips",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "MIME",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "MIME",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "MIME",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Posters & Presentations for the Papers",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            0,
+            140,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            67.18009478672985,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "Desired outcome",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            7,
+            146,
+            1493,
+            453
+          ],
+          "bbox_pdf": [
+            3.36,
+            70.05924170616113,
+            716.64,
+            217.3755924170616
+          ]
+        },
+        {
+          "filename": "assets/slide-010-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "Desired outcome",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Desired outcome",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "Resources",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "Which DAOs?",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            64,
+            150,
+            1500,
+            272
+          ],
+          "bbox_pdf": [
+            30.72,
+            71.97867298578198,
+            720.0,
+            130.521327014218
+          ]
+        },
+        {
+          "filename": "assets/slide-014-fig-02.jpg",
+          "bbox_px": [
+            807,
+            314,
+            1364,
+            436
+          ],
+          "bbox_pdf": [
+            387.36,
+            150.67535545023696,
+            654.72,
+            209.21800947867297
+          ]
+        },
+        {
+          "filename": "assets/slide-014-fig-03.jpg",
+          "bbox_px": [
+            760,
+            490,
+            1248,
+            623
+          ],
+          "bbox_pdf": [
+            364.8,
+            235.1303317535545,
+            599.04,
+            298.95142180094786
+          ]
+        },
+        {
+          "filename": "assets/slide-014-fig-04.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "List all the Papers",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            103,
+            278,
+            1397,
+            566
+          ],
+          "bbox_pdf": [
+            49.44,
+            133.4004739336493,
+            670.56,
+            271.5995260663507
+          ]
+        },
+        {
+          "filename": "assets/slide-015-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Get the Paper and its Info",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            33,
+            306,
+            1467,
+            548
+          ],
+          "bbox_pdf": [
+            15.84,
+            146.83649289099526,
+            704.16,
+            262.9620853080569
+          ]
+        },
+        {
+          "filename": "assets/slide-016-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "Add/Modify the Poster",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            41,
+            294,
+            1459,
+            549
+          ],
+          "bbox_pdf": [
+            19.68,
+            141.0781990521327,
+            700.3199999999999,
+            263.4419431279621
+          ]
+        },
+        {
+          "filename": "assets/slide-017-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "Listing All The Papers - Servlet (PaperServlet)",
+      "figures": []
+    },
+    {
+      "page_number": 19,
+      "title": "Listing All The Papers - Servlet (PaperServlet)",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            102,
+            162,
+            1459,
+            645
+          ],
+          "bbox_pdf": [
+            48.96,
+            77.73696682464455,
+            700.3199999999999,
+            309.5082938388625
+          ]
+        },
+        {
+          "filename": "assets/slide-019-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "Listing All The Papers - JSP (show-paper.jsp)",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            51,
+            174,
+            1442,
+            662
+          ],
+          "bbox_pdf": [
+            24.48,
+            83.49526066350711,
+            692.16,
+            317.6658767772512
+          ]
+        },
+        {
+          "filename": "assets/slide-020-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "Listing All The Papers - JSP (show-paper.jsp)",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            51,
+            174,
+            1442,
+            604
+          ],
+          "bbox_pdf": [
+            24.48,
+            83.49526066350711,
+            692.16,
+            289.8341232227488
+          ]
+        },
+        {
+          "filename": "assets/slide-021-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "Listing All The Papers - Result",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            51,
+            226,
+            1431,
+            679
+          ],
+          "bbox_pdf": [
+            24.48,
+            108.4478672985782,
+            686.88,
+            325.8234597156398
+          ]
+        },
+        {
+          "filename": "assets/slide-022-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "Uploading The Poster - Servlet (ModifyPaperServlet)",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            0,
+            140,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            67.18009478672985,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "Uploading The Poster - Servlet (ModifyPaperServlet)",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "Uploading The Poster - Servlet (ModifyPaperServlet)",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Uploading The Poster - Servlet (ModifyPaperServlet)",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            64,
+            197,
+            768,
+            564
+          ],
+          "bbox_pdf": [
+            30.72,
+            94.53199052132702,
+            368.64,
+            270.6398104265403
+          ]
+        },
+        {
+          "filename": "assets/slide-026-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Uploading The Poster - Servlet (ModifyPaperServlet)",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "Uploading The Poster - Servlet (modify-paper.jsp)",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            0,
+            149,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.49881516587678,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "multipart/form-data",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "multipart/form-data",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            0,
+            144,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            69.0995260663507,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "multipart/form-data",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            56,
+            144,
+            1444,
+            666
+          ],
+          "bbox_pdf": [
+            26.88,
+            69.0995260663507,
+            693.12,
+            319.585308056872
+          ]
+        },
+        {
+          "filename": "assets/slide-031-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "Uploading The Poster - JSP (modify-paper.jsp)",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            7,
+            52,
+            1493,
+            685
+          ],
+          "bbox_pdf": [
+            3.36,
+            24.95260663507109,
+            716.64,
+            328.7026066350711
+          ]
+        },
+        {
+          "filename": "assets/slide-032-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "Uploading The Poster - JSP (modify-paper.jsp)",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            7,
+            52,
+            1493,
+            601
+          ],
+          "bbox_pdf": [
+            3.36,
+            24.95260663507109,
+            716.64,
+            288.3945497630332
+          ]
+        },
+        {
+          "filename": "assets/slide-033-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "Uploading The Poster - JSP (modify-paper.jsp)",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            7,
+            149,
+            1493,
+            579
+          ],
+          "bbox_pdf": [
+            3.36,
+            71.49881516587678,
+            716.64,
+            277.83767772511845
+          ]
+        },
+        {
+          "filename": "assets/slide-034-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "Uploading The Poster - JSP (modify-paper.jsp)",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            7,
+            52,
+            1493,
+            608
+          ],
+          "bbox_pdf": [
+            3.36,
+            24.95260663507109,
+            716.64,
+            291.75355450236964
+          ]
+        },
+        {
+          "filename": "assets/slide-035-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "Uploading The Poster - JSP (modify-paper.jsp)",
+      "figures": [
+        {
+          "filename": "assets/slide-036-fig-01.jpg",
+          "bbox_px": [
+            7,
+            52,
+            1493,
+            684
+          ],
+          "bbox_pdf": [
+            3.36,
+            24.95260663507109,
+            716.64,
+            328.22274881516586
+          ]
+        },
+        {
+          "filename": "assets/slide-036-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 37,
+      "title": "Uploading The Poster - Result",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            0,
+            150,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.97867298578198,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "Uploading The Poster - Servlet (web.xml)",
+      "figures": [
+        {
+          "filename": "assets/slide-038-fig-01.jpg",
+          "bbox_px": [
+            0,
+            164,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            78.69668246445498,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 39,
+      "title": "Uploading The Poster - Servlet (ModifyPaperServlet)",
+      "figures": [
+        {
+          "filename": "assets/slide-039-fig-01.jpg",
+          "bbox_px": [
+            0,
+            149,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.49881516587678,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 40,
+      "title": "Uploading The Poster - Servlet (ModifyPaperServlet)",
+      "figures": [
+        {
+          "filename": "assets/slide-040-fig-01.jpg",
+          "bbox_px": [
+            7,
+            149,
+            1435,
+            673
+          ],
+          "bbox_pdf": [
+            3.36,
+            71.49881516587678,
+            688.8,
+            322.9443127962085
+          ]
+        },
+        {
+          "filename": "assets/slide-040-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 41,
+      "title": "Uploading The Poster - Servlet (ModifyPaperServlet)",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            4,
+            164,
+            1417,
+            608
+          ],
+          "bbox_pdf": [
+            1.92,
+            78.69668246445498,
+            680.16,
+            291.75355450236964
+          ]
+        },
+        {
+          "filename": "assets/slide-041-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "Uploading The Poster - Servlet (ModifyPaperServlet)",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            0,
+            149,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.49881516587678,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "Uploading The Poster - Servlet (ModifyPaperServlet)",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            33,
+            146,
+            1145,
+            521
+          ],
+          "bbox_pdf": [
+            15.84,
+            70.05924170616113,
+            549.6,
+            250.0059241706161
+          ]
+        },
+        {
+          "filename": "assets/slide-043-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "Sessions & Filters",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 45,
+      "title": "Main Idea",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "Directory Structure",
+      "figures": [
+        {
+          "filename": "assets/slide-046-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 47,
+      "title": "Important distinction",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 48,
+      "title": "Filters",
+      "figures": [
+        {
+          "filename": "assets/slide-048-fig-01.jpg",
+          "bbox_px": [
+            0,
+            164,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            78.69668246445498,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 49,
+      "title": "Filters",
+      "figures": [
+        {
+          "filename": "assets/slide-049-fig-01.jpg",
+          "bbox_px": [
+            0,
+            164,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            78.69668246445498,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 50,
+      "title": "Filters",
+      "figures": [
+        {
+          "filename": "assets/slide-050-fig-01.jpg",
+          "bbox_px": [
+            0,
+            164,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            78.69668246445498,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 51,
+      "title": "Filters",
+      "figures": [
+        {
+          "filename": "assets/slide-051-fig-01.jpg",
+          "bbox_px": [
+            333,
+            327,
+            1167,
+            684
+          ],
+          "bbox_pdf": [
+            159.84,
+            156.91350710900474,
+            560.16,
+            328.22274881516586
+          ]
+        },
+        {
+          "filename": "assets/slide-051-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    }
+  ]
+}

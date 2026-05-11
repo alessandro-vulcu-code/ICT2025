@@ -1,0 +1,1596 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/05-webapp-2025-26-servlet.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Introduction to Java Servlet",
+      "figures": []
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            162,
+            941,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            451.68,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "Web Application",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            595,
+            788,
+            1535,
+            1482
+          ],
+          "bbox_pdf": [
+            285.5107778819119,
+            378.24,
+            736.5698219306466,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Browser and Server Architecture",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            19,
+            468,
+            2124,
+            1482
+          ],
+          "bbox_pdf": [
+            9.117150890346768,
+            224.64,
+            1019.2014995313965,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Some Technologies for Web Applications",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            770,
+            217,
+            1352,
+            411
+          ],
+          "bbox_pdf": [
+            369.4845360824742,
+            104.16,
+            648.7572633552015,
+            197.28
+          ]
+        },
+        {
+          "filename": "assets/slide-005-fig-02.jpg",
+          "bbox_px": [
+            328,
+            505,
+            1806,
+            691
+          ],
+          "bbox_pdf": [
+            157.3908153701968,
+            242.39999999999998,
+            866.6091846298032,
+            331.68
+          ]
+        },
+        {
+          "filename": "assets/slide-005-fig-03.jpg",
+          "bbox_px": [
+            1538,
+            910,
+            2134,
+            1437
+          ],
+          "bbox_pdf": [
+            738.0093720712277,
+            436.8,
+            1024.0,
+            689.76
+          ]
+        },
+        {
+          "filename": "assets/slide-005-fig-04.jpg",
+          "bbox_px": [
+            1180,
+            1172,
+            1462,
+            1520
+          ],
+          "bbox_pdf": [
+            566.2230552952202,
+            562.56,
+            701.5407685098407,
+            729.6
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "Java Servlet",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            649,
+            941,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            451.68,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "Jakarta Enterprise Edition",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            310,
+            720,
+            1811,
+            1482
+          ],
+          "bbox_pdf": [
+            148.7535145267104,
+            345.59999999999997,
+            869.008434864105,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Jakarta EE",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            184,
+            607,
+            2121,
+            1488
+          ],
+          "bbox_pdf": [
+            88.29240862230553,
+            291.36,
+            1017.7619493908154,
+            714.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Java EE: Multi-tiered Applications",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            429,
+            220,
+            1705,
+            1501
+          ],
+          "bbox_pdf": [
+            205.8556701030928,
+            105.6,
+            818.1443298969073,
+            720.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "Java Servlet",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            142,
+            704,
+            2047,
+            1247
+          ],
+          "bbox_pdf": [
+            68.13870665417058,
+            337.91999999999996,
+            982.253045923149,
+            598.56
+          ]
+        },
+        {
+          "filename": "assets/slide-010-fig-02.jpg",
+          "bbox_px": [
+            231,
+            1261,
+            2111,
+            1504
+          ],
+          "bbox_pdf": [
+            110.84536082474227,
+            605.28,
+            1012.9634489222118,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "Java Servlet UML Class Diagram",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            63,
+            202,
+            2071,
+            1519
+          ],
+          "bbox_pdf": [
+            30.230552952202437,
+            96.96,
+            993.7694470477976,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Java Servlet UML Class Diagram",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            0,
+            298,
+            2134,
+            1600
+          ],
+          "bbox_pdf": [
+            0.0,
+            143.04,
+            1024.0,
+            768.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "Java Servlet UML Class Diagram",
+      "figures": []
+    },
+    {
+      "page_number": 14,
+      "title": "Java Servlet UML Class Diagram",
+      "figures": []
+    },
+    {
+      "page_number": 15,
+      "title": "Java Servlet UML Class Diagram",
+      "figures": []
+    },
+    {
+      "page_number": 16,
+      "title": "Java Servlet UML Class Diagram",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            920
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            441.59999999999997
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "jakarta.servlet Main Classes",
+      "figures": []
+    },
+    {
+      "page_number": 18,
+      "title": "jakarta.servlet.http Main Classes",
+      "figures": []
+    },
+    {
+      "page_number": 19,
+      "title": "Servlet LifeCycle",
+      "figures": []
+    },
+    {
+      "page_number": 20,
+      "title": "Apache Tomcat",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            649,
+            941,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            451.68,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "Apache Tomcat",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            313,
+            218,
+            1989,
+            1519
+          ],
+          "bbox_pdf": [
+            150.19306466729148,
+            104.64,
+            954.4217432052484,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "Apache Tomcat Documentation",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            318,
+            325,
+            1812,
+            1496
+          ],
+          "bbox_pdf": [
+            152.59231490159326,
+            156.0,
+            869.4882849109654,
+            718.0799999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "Hello World HTML",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            649,
+            941,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            451.68,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "Hello World in HTML",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            175,
+            406,
+            2099,
+            1482
+          ],
+          "bbox_pdf": [
+            83.97375820056233,
+            194.88,
+            1007.2052483598876,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "Example of Hello World HTML Page",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            27,
+            505,
+            2094,
+            1494
+          ],
+          "bbox_pdf": [
+            12.955951265229617,
+            242.39999999999998,
+            1004.8059981255858,
+            717.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Setup the Project Directory Structure",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            141,
+            1083,
+            1846,
+            1462
+          ],
+          "bbox_pdf": [
+            67.65885660731021,
+            519.84,
+            885.8031865042175,
+            701.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "The web.xml Configuration File",
+      "figures": []
+    },
+    {
+      "page_number": 28,
+      "title": "Configuration of the Maven Project",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            13,
+            347,
+            2134,
+            1519
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            166.56,
+            1024.0,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "Project Object Model (POM)",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            56,
+            267,
+            1683,
+            1510
+          ],
+          "bbox_pdf": [
+            26.871602624179943,
+            128.16,
+            807.5876288659794,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "Project Object Model (POM)",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            68,
+            523,
+            2056,
+            1534
+          ],
+          "bbox_pdf": [
+            32.62980318650422,
+            251.04,
+            986.5716963448922,
+            736.3199999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "Cleaning, Compiling, Packaging",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            13,
+            209,
+            2134,
+            1531
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            100.32,
+            1024.0,
+            734.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "Deploying and Run the Web Application",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            129,
+            217,
+            2005,
+            1483
+          ],
+          "bbox_pdf": [
+            61.90065604498594,
+            104.16,
+            962.0993439550141,
+            711.8399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "Deploying and Run the Web Application",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            91,
+            202,
+            2043,
+            1519
+          ],
+          "bbox_pdf": [
+            43.66635426429241,
+            96.96,
+            980.3336457357076,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "Deploying and Run the Web Application",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            0,
+            217,
+            2050,
+            1543
+          ],
+          "bbox_pdf": [
+            0.0,
+            104.16,
+            983.6925960637301,
+            740.64
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "Deploying and Run the Web Application",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            68,
+            234,
+            2076,
+            1541
+          ],
+          "bbox_pdf": [
+            32.62980318650422,
+            112.32,
+            996.1686972820994,
+            739.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "Where is my Webapp?",
+      "figures": [
+        {
+          "filename": "assets/slide-036-fig-01.jpg",
+          "bbox_px": [
+            164,
+            302,
+            1965,
+            1482
+          ],
+          "bbox_pdf": [
+            78.6954076850984,
+            144.96,
+            942.9053420805998,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 37,
+      "title": "Where is my Webapp?",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            17,
+            211,
+            1900,
+            962
+          ],
+          "bbox_pdf": [
+            8.157450796626055,
+            101.28,
+            911.7150890346767,
+            461.76
+          ]
+        },
+        {
+          "filename": "assets/slide-037-fig-02.jpg",
+          "bbox_px": [
+            522,
+            992,
+            2125,
+            1493
+          ],
+          "bbox_pdf": [
+            250.4817244611059,
+            476.15999999999997,
+            1019.6813495782568,
+            716.64
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "HelloWorld Servlet",
+      "figures": [
+        {
+          "filename": "assets/slide-038-fig-01.jpg",
+          "bbox_px": [
+            649,
+            941,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            451.68,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 39,
+      "title": "The HelloWorld Servlet",
+      "figures": []
+    },
+    {
+      "page_number": 40,
+      "title": "Run the Web Application",
+      "figures": [
+        {
+          "filename": "assets/slide-040-fig-01.jpg",
+          "bbox_px": [
+            17,
+            211,
+            2099,
+            1523
+          ],
+          "bbox_pdf": [
+            8.157450796626055,
+            101.28,
+            1007.2052483598876,
+            731.04
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 41,
+      "title": "Calling the HelloWorld Servlet",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            17,
+            211,
+            2134,
+            1528
+          ],
+          "bbox_pdf": [
+            8.157450796626055,
+            101.28,
+            1024.0,
+            733.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "Getting Out More from the Browser",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            47,
+            400,
+            2103,
+            1482
+          ],
+          "bbox_pdf": [
+            22.55295220243674,
+            192.0,
+            1009.124648547329,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "Getting Out More from the Browser",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            129,
+            246,
+            2005,
+            1462
+          ],
+          "bbox_pdf": [
+            61.90065604498594,
+            118.08,
+            962.0993439550141,
+            701.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "Getting Out More from the Browser",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            134,
+            239,
+            2000,
+            1449
+          ],
+          "bbox_pdf": [
+            64.29990627928773,
+            114.72,
+            959.7000937207123,
+            695.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 45,
+      "title": "HelloWorld Servlet: What’s Going On? The Sequence Diagram",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            111,
+            207,
+            2023,
+            1510
+          ],
+          "bbox_pdf": [
+            53.263355201499536,
+            99.36,
+            970.7366447985005,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "Where are the logs?",
+      "figures": [
+        {
+          "filename": "assets/slide-046-fig-01.jpg",
+          "bbox_px": [
+            36,
+            511,
+            2094,
+            1482
+          ],
+          "bbox_pdf": [
+            17.274601686972822,
+            245.28,
+            1004.8059981255858,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 47,
+      "title": "Where are the logs?",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            9,
+            281,
+            2120,
+            1482
+          ],
+          "bbox_pdf": [
+            4.318650421743206,
+            134.88,
+            1017.282099343955,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 48,
+      "title": "Where are the logs?",
+      "figures": [
+        {
+          "filename": "assets/slide-048-fig-01.jpg",
+          "bbox_px": [
+            20,
+            572,
+            2076,
+            1482
+          ],
+          "bbox_pdf": [
+            9.597000937207124,
+            274.56,
+            996.1686972820994,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 49,
+      "title": "Setup the Project Directory Structure",
+      "figures": [
+        {
+          "filename": "assets/slide-049-fig-01.jpg",
+          "bbox_px": [
+            131,
+            1155,
+            1818,
+            1488
+          ],
+          "bbox_pdf": [
+            62.860356138706656,
+            554.4,
+            872.3673851921275,
+            714.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 50,
+      "title": "The web.xml Configuration File",
+      "figures": [
+        {
+          "filename": "assets/slide-050-fig-01.jpg",
+          "bbox_px": [
+            21,
+            302,
+            2134,
+            1543
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            144.96,
+            1024.0,
+            740.64
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 51,
+      "title": "Configuration of the Maven Project",
+      "figures": [
+        {
+          "filename": "assets/slide-051-fig-01.jpg",
+          "bbox_px": [
+            0,
+            347,
+            2134,
+            1562
+          ],
+          "bbox_pdf": [
+            0.0,
+            166.56,
+            1024.0,
+            749.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 52,
+      "title": "Project Object Model (POM)",
+      "figures": [
+        {
+          "filename": "assets/slide-052-fig-01.jpg",
+          "bbox_px": [
+            101,
+            363,
+            1768,
+            1512
+          ],
+          "bbox_pdf": [
+            48.46485473289597,
+            174.23999999999998,
+            848.3748828491097,
+            725.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 53,
+      "title": "Project Object Model (POM)",
+      "figures": [
+        {
+          "filename": "assets/slide-053-fig-01.jpg",
+          "bbox_px": [
+            35,
+            471,
+            2134,
+            1510
+          ],
+          "bbox_pdf": [
+            16.794751640112466,
+            226.07999999999998,
+            1024.0,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 54,
+      "title": "HelloWorld Servlet with",
+      "figures": [
+        {
+          "filename": "assets/slide-054-fig-01.jpg",
+          "bbox_px": [
+            649,
+            788,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            378.24,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 55,
+      "title": "More Serious Logging?",
+      "figures": [
+        {
+          "filename": "assets/slide-055-fig-01.jpg",
+          "bbox_px": [
+            27,
+            258,
+            2068,
+            1513
+          ],
+          "bbox_pdf": [
+            12.955951265229617,
+            123.83999999999999,
+            992.3298969072165,
+            726.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 56,
+      "title": "The Project Structure",
+      "figures": [
+        {
+          "filename": "assets/slide-056-fig-01.jpg",
+          "bbox_px": [
+            11,
+            198,
+            1939,
+            1493
+          ],
+          "bbox_pdf": [
+            5.278350515463917,
+            95.03999999999999,
+            930.4292408622306,
+            716.64
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 57,
+      "title": "The LogContext",
+      "figures": []
+    },
+    {
+      "page_number": 58,
+      "title": "The HelloWorld Servlet with Logging",
+      "figures": []
+    },
+    {
+      "page_number": 59,
+      "title": "The log4j2.xml Configuration File",
+      "figures": []
+    },
+    {
+      "page_number": 60,
+      "title": "The log4j2.xml Configuration File",
+      "figures": [
+        {
+          "filename": "assets/slide-060-fig-01.jpg",
+          "bbox_px": [
+            133,
+            944,
+            2036,
+            1450
+          ],
+          "bbox_pdf": [
+            63.82005623242737,
+            453.12,
+            976.9746954076851,
+            696.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 61,
+      "title": "Project Object Model (POM)",
+      "figures": [
+        {
+          "filename": "assets/slide-061-fig-01.jpg",
+          "bbox_px": [
+            12,
+            222,
+            2134,
+            1499
+          ],
+          "bbox_pdf": [
+            5.758200562324274,
+            106.56,
+            1024.0,
+            719.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 62,
+      "title": "Example of Logs",
+      "figures": [
+        {
+          "filename": "assets/slide-062-fig-01.jpg",
+          "bbox_px": [
+            287,
+            214,
+            1847,
+            1525
+          ],
+          "bbox_pdf": [
+            137.71696344892223,
+            102.72,
+            886.2830365510778,
+            732.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 63,
+      "title": "Example of Logs",
+      "figures": [
+        {
+          "filename": "assets/slide-063-fig-01.jpg",
+          "bbox_px": [
+            35,
+            493,
+            2094,
+            1482
+          ],
+          "bbox_pdf": [
+            16.794751640112466,
+            236.64,
+            1004.8059981255858,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 64,
+      "title": "HelloWorld Servlet",
+      "figures": [
+        {
+          "filename": "assets/slide-064-fig-01.jpg",
+          "bbox_px": [
+            649,
+            788,
+            1479,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            378.24,
+            709.6982193064667,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 65,
+      "title": "First Attempt: What’s Wrong?",
+      "figures": [
+        {
+          "filename": "assets/slide-065-fig-01.jpg",
+          "bbox_px": [
+            0,
+            209,
+            2134,
+            1531
+          ],
+          "bbox_pdf": [
+            0.0,
+            100.32,
+            1024.0,
+            734.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 66,
+      "title": "Second Attempt: What’s Wrong, again?",
+      "figures": [
+        {
+          "filename": "assets/slide-066-fig-01.jpg",
+          "bbox_px": [
+            13,
+            202,
+            2134,
+            1581
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            96.96,
+            1024.0,
+            758.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 67,
+      "title": "Final Attempt: Eventually Right",
+      "figures": [
+        {
+          "filename": "assets/slide-067-fig-01.jpg",
+          "bbox_px": [
+            13,
+            211,
+            2134,
+            1573
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            101.28,
+            1024.0,
+            755.04
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 68,
+      "title": "The HelloWorld Servlet Using Figlet",
+      "figures": []
+    },
+    {
+      "page_number": 69,
+      "title": "The web.xml Configuration File",
+      "figures": [
+        {
+          "filename": "assets/slide-069-fig-01.jpg",
+          "bbox_px": [
+            15,
+            637,
+            1951,
+            1482
+          ],
+          "bbox_pdf": [
+            7.197750702905342,
+            305.76,
+            936.1874414245549,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 70,
+      "title": "Project Object Model (POM)",
+      "figures": [
+        {
+          "filename": "assets/slide-070-fig-01.jpg",
+          "bbox_px": [
+            11,
+            836,
+            1915,
+            1482
+          ],
+          "bbox_pdf": [
+            5.278350515463917,
+            401.28,
+            918.912839737582,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 71,
+      "title": "HelloWorld Servlet with",
+      "figures": [
+        {
+          "filename": "assets/slide-071-fig-01.jpg",
+          "bbox_px": [
+            530,
+            788,
+            1600,
+            1482
+          ],
+          "bbox_pdf": [
+            254.32052483598875,
+            378.24,
+            767.7600749765699,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 72,
+      "title": "The GET and POST Forms",
+      "figures": []
+    },
+    {
+      "page_number": 73,
+      "title": "The GET and POST Servlets",
+      "figures": []
+    },
+    {
+      "page_number": 74,
+      "title": "The web.xml Configuration File",
+      "figures": []
+    },
+    {
+      "page_number": 75,
+      "title": "Running: The GET Form",
+      "figures": [
+        {
+          "filename": "assets/slide-075-fig-01.jpg",
+          "bbox_px": [
+            358,
+            473,
+            1776,
+            1482
+          ],
+          "bbox_pdf": [
+            171.7863167760075,
+            227.04,
+            852.2136832239926,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 76,
+      "title": "Running: The GET Form",
+      "figures": [
+        {
+          "filename": "assets/slide-076-fig-01.jpg",
+          "bbox_px": [
+            197,
+            211,
+            1908,
+            1501
+          ],
+          "bbox_pdf": [
+            94.53045923149016,
+            101.28,
+            915.5538894095596,
+            720.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 77,
+      "title": "Running: The GET Form",
+      "figures": [
+        {
+          "filename": "assets/slide-077-fig-01.jpg",
+          "bbox_px": [
+            43,
+            324,
+            2100,
+            1482
+          ],
+          "bbox_pdf": [
+            20.633552014995313,
+            155.51999999999998,
+            1007.6850984067479,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 78,
+      "title": "Running: The POST Form",
+      "figures": [
+        {
+          "filename": "assets/slide-078-fig-01.jpg",
+          "bbox_px": [
+            344,
+            435,
+            1790,
+            1482
+          ],
+          "bbox_pdf": [
+            165.0684161199625,
+            208.79999999999998,
+            858.9315838800375,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 79,
+      "title": "Running: The POST Form",
+      "figures": [
+        {
+          "filename": "assets/slide-079-fig-01.jpg",
+          "bbox_px": [
+            185,
+            199,
+            1945,
+            1522
+          ],
+          "bbox_pdf": [
+            88.7722586691659,
+            95.52,
+            933.3083411433927,
+            730.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 80,
+      "title": "Running: The POST Form",
+      "figures": [
+        {
+          "filename": "assets/slide-080-fig-01.jpg",
+          "bbox_px": [
+            166,
+            211,
+            1968,
+            1512
+          ],
+          "bbox_pdf": [
+            79.65510777881912,
+            101.28,
+            944.3448922211809,
+            725.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 81,
+      "title": "Can We Manage GET and POST Together?",
+      "figures": [
+        {
+          "filename": "assets/slide-081-fig-01.jpg",
+          "bbox_px": [
+            47,
+            597,
+            2114,
+            1493
+          ],
+          "bbox_pdf": [
+            22.55295220243674,
+            286.56,
+            1014.4029990627929,
+            716.64
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 82,
+      "title": "Exercise",
+      "figures": [
+        {
+          "filename": "assets/slide-082-fig-01.jpg",
+          "bbox_px": [
+            292,
+            880,
+            1838,
+            1482
+          ],
+          "bbox_pdf": [
+            140.116213683224,
+            422.4,
+            881.9643861293346,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 83,
+      "title": "The Application",
+      "figures": [
+        {
+          "filename": "assets/slide-083-fig-01.jpg",
+          "bbox_px": [
+            13,
+            211,
+            2134,
+            1519
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            101.28,
+            1024.0,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 84,
+      "title": "Slide 84",
+      "figures": []
+    }
+  ]
+}

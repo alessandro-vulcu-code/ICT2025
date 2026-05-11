@@ -1,0 +1,1359 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/04-webapp-2025-26-docker.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Containerize a web",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            19,
+            8,
+            1110,
+            342
+          ],
+          "bbox_pdf": [
+            9.117150890346768,
+            3.84,
+            532.6335520149953,
+            164.16
+          ]
+        },
+        {
+          "filename": "assets/slide-001-fig-02.jpg",
+          "bbox_px": [
+            630,
+            1030,
+            1515,
+            1472
+          ],
+          "bbox_pdf": [
+            302.30552952202436,
+            494.4,
+            726.9728209934395,
+            706.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Introduction",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "Web application development",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Web application architecture",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            1557,
+            584,
+            1946,
+            954
+          ],
+          "bbox_pdf": [
+            747.1265229615746,
+            280.32,
+            933.7881911902531,
+            457.91999999999996
+          ]
+        },
+        {
+          "filename": "assets/slide-004-fig-02.jpg",
+          "bbox_px": [
+            137,
+            602,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            65.73945641986879,
+            288.96,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Web application life cycle",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            56,
+            613,
+            2108,
+            1482
+          ],
+          "bbox_pdf": [
+            26.871602624179943,
+            294.24,
+            1011.5238987816308,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "Web application development",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            252,
+            849,
+            2065,
+            1482
+          ],
+          "bbox_pdf": [
+            120.92221180880975,
+            407.52,
+            990.8903467666355,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "Local deployment",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            37,
+            352,
+            2109,
+            706
+          ],
+          "bbox_pdf": [
+            17.75445173383318,
+            168.95999999999998,
+            1012.0037488284911,
+            338.88
+          ]
+        },
+        {
+          "filename": "assets/slide-007-fig-02.jpg",
+          "bbox_px": [
+            37,
+            747,
+            2126,
+            1482
+          ],
+          "bbox_pdf": [
+            17.75445173383318,
+            358.56,
+            1020.1611996251172,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Problem",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            108,
+            351,
+            2047,
+            1482
+          ],
+          "bbox_pdf": [
+            51.82380506091847,
+            168.48,
+            982.253045923149,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Problem",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            35,
+            489,
+            266,
+            712
+          ],
+          "bbox_pdf": [
+            16.794751640112466,
+            234.72,
+            127.64011246485474,
+            341.76
+          ]
+        },
+        {
+          "filename": "assets/slide-009-fig-02.jpg",
+          "bbox_px": [
+            39,
+            986,
+            262,
+            1217
+          ],
+          "bbox_pdf": [
+            18.71415182755389,
+            473.28,
+            125.72071227741331,
+            584.16
+          ]
+        },
+        {
+          "filename": "assets/slide-009-fig-03.jpg",
+          "bbox_px": [
+            281,
+            992,
+            2108,
+            1482
+          ],
+          "bbox_pdf": [
+            134.83786316776008,
+            476.15999999999997,
+            1011.5238987816308,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "Is Maven enough?",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            163,
+            922,
+            1959,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            442.56,
+            940.0262417994377,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "Containerization",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Containerization",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            163,
+            686,
+            2041,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            329.28,
+            979.3739456419869,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "Containerization",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            162,
+            704,
+            2022,
+            1450
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            337.91999999999996,
+            970.2567947516401,
+            696.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "Docker",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "What is Docker?",
+      "figures": []
+    },
+    {
+      "page_number": 16,
+      "title": "Docker: an overview",
+      "figures": []
+    },
+    {
+      "page_number": 17,
+      "title": "Docker: an overview",
+      "figures": []
+    },
+    {
+      "page_number": 18,
+      "title": "Docker: an overview",
+      "figures": []
+    },
+    {
+      "page_number": 19,
+      "title": "Containers vs VMs",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            1164,
+            244,
+            1994,
+            1084
+          ],
+          "bbox_pdf": [
+            558.5454545454545,
+            117.11999999999999,
+            956.8209934395502,
+            520.3199999999999
+          ]
+        },
+        {
+          "filename": "assets/slide-019-fig-02.jpg",
+          "bbox_px": [
+            84,
+            246,
+            918,
+            1088
+          ],
+          "bbox_pdf": [
+            40.307403936269914,
+            118.08,
+            440.50234301780694,
+            522.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "Docker main features",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            146,
+            918,
+            2067,
+            1421
+          ],
+          "bbox_pdf": [
+            70.058106841612,
+            440.64,
+            991.8500468603562,
+            682.0799999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "Docker — the most important components",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            153,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            73.41705716963449,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "Docker images",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            163,
+            1076,
+            2041,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            516.48,
+            979.3739456419869,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "Dockerfiles",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "Dockerfiles",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            163,
+            953,
+            2038,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            457.44,
+            977.9343955014058,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "Dockerfiles",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            262,
+            238,
+            1882,
+            1451
+          ],
+          "bbox_pdf": [
+            125.72071227741331,
+            114.24,
+            903.0777881911903,
+            696.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Docker container",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            163,
+            1119,
+            1837,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            537.12,
+            881.4845360824743,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Recap",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            0,
+            234,
+            2134,
+            999
+          ],
+          "bbox_pdf": [
+            0.0,
+            112.32,
+            1024.0,
+            479.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "Recap",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            0,
+            234,
+            2134,
+            999
+          ],
+          "bbox_pdf": [
+            0.0,
+            112.32,
+            1024.0,
+            479.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "Recap",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            0,
+            234,
+            2134,
+            999
+          ],
+          "bbox_pdf": [
+            0.0,
+            112.32,
+            1024.0,
+            479.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "Docker volumes",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            163,
+            953,
+            2033,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            457.44,
+            975.5351452671041,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "Docker volumes",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            163,
+            231,
+            1795,
+            1239
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            110.88,
+            861.3308341143393,
+            594.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "Your web application",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            1351,
+            382,
+            1715,
+            756
+          ],
+          "bbox_pdf": [
+            648.2774133083411,
+            183.35999999999999,
+            822.9428303655108,
+            362.88
+          ]
+        },
+        {
+          "filename": "assets/slide-032-fig-02.jpg",
+          "bbox_px": [
+            239,
+            389,
+            679,
+            713
+          ],
+          "bbox_pdf": [
+            114.68416119962512,
+            186.72,
+            325.8181818181818,
+            342.24
+          ]
+        },
+        {
+          "filename": "assets/slide-032-fig-03.jpg",
+          "bbox_px": [
+            294,
+            920,
+            1720,
+            1403
+          ],
+          "bbox_pdf": [
+            141.0759137769447,
+            441.59999999999997,
+            825.3420805998126,
+            673.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "Your web application",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            238,
+            382,
+            1733,
+            1482
+          ],
+          "bbox_pdf": [
+            114.20431115276476,
+            183.35999999999999,
+            831.5801312089972,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "Problem",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            163,
+            861,
+            2044,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            413.28,
+            980.813495782568,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "Docker services",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            163,
+            982,
+            1978,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            471.35999999999996,
+            949.1433926897845,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "Your web application",
+      "figures": [
+        {
+          "filename": "assets/slide-036-fig-01.jpg",
+          "bbox_px": [
+            238,
+            359,
+            1911,
+            867
+          ],
+          "bbox_pdf": [
+            114.20431115276476,
+            172.32,
+            916.9934395501406,
+            416.15999999999997
+          ]
+        },
+        {
+          "filename": "assets/slide-036-fig-02.jpg",
+          "bbox_px": [
+            294,
+            925,
+            1720,
+            1403
+          ],
+          "bbox_pdf": [
+            141.0759137769447,
+            444.0,
+            825.3420805998126,
+            673.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 37,
+      "title": "Docker networks",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            154,
+            956,
+            2010,
+            1482
+          ],
+          "bbox_pdf": [
+            73.89690721649485,
+            458.88,
+            964.4985941893159,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "Your web application",
+      "figures": [
+        {
+          "filename": "assets/slide-038-fig-01.jpg",
+          "bbox_px": [
+            238,
+            359,
+            1911,
+            867
+          ],
+          "bbox_pdf": [
+            114.20431115276476,
+            172.32,
+            916.9934395501406,
+            416.15999999999997
+          ]
+        },
+        {
+          "filename": "assets/slide-038-fig-02.jpg",
+          "bbox_px": [
+            294,
+            925,
+            1720,
+            1403
+          ],
+          "bbox_pdf": [
+            141.0759137769447,
+            444.0,
+            825.3420805998126,
+            673.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 39,
+      "title": "Docker compose",
+      "figures": [
+        {
+          "filename": "assets/slide-039-fig-01.jpg",
+          "bbox_px": [
+            163,
+            953,
+            2073,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            457.44,
+            994.7291471415183,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 40,
+      "title": "Your web application",
+      "figures": [
+        {
+          "filename": "assets/slide-040-fig-01.jpg",
+          "bbox_px": [
+            1,
+            189,
+            2121,
+            1517
+          ],
+          "bbox_pdf": [
+            0.47985004686035615,
+            90.72,
+            1017.7619493908154,
+            728.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 41,
+      "title": "Summing up",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            163,
+            943,
+            2070,
+            1398
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            452.64,
+            993.2895970009372,
+            671.04
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "Summing up",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            157,
+            1094,
+            2064,
+            1482
+          ],
+          "bbox_pdf": [
+            75.33645735707591,
+            525.12,
+            990.4104967197751,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "Hands on",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "Install",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            163,
+            911,
+            1550,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            437.28,
+            743.767572633552,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 45,
+      "title": "The docker compose file",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            450,
+            230,
+            1717,
+            1491
+          ],
+          "bbox_pdf": [
+            215.93252108716027,
+            110.39999999999999,
+            823.9025304592315,
+            715.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "The docker compose file",
+      "figures": []
+    },
+    {
+      "page_number": 47,
+      "title": "The docker compose file",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            424,
+            230,
+            1717,
+            1491
+          ],
+          "bbox_pdf": [
+            203.45641986879102,
+            110.39999999999999,
+            823.9025304592315,
+            715.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 48,
+      "title": "The docker compose file",
+      "figures": [
+        {
+          "filename": "assets/slide-048-fig-01.jpg",
+          "bbox_px": [
+            450,
+            230,
+            1821,
+            1491
+          ],
+          "bbox_pdf": [
+            215.93252108716027,
+            110.39999999999999,
+            873.8069353327086,
+            715.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 49,
+      "title": "The docker compose file",
+      "figures": [
+        {
+          "filename": "assets/slide-049-fig-01.jpg",
+          "bbox_px": [
+            450,
+            230,
+            2112,
+            1491
+          ],
+          "bbox_pdf": [
+            215.93252108716027,
+            110.39999999999999,
+            1013.4432989690722,
+            715.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 50,
+      "title": "The docker compose file",
+      "figures": [
+        {
+          "filename": "assets/slide-050-fig-01.jpg",
+          "bbox_px": [
+            450,
+            230,
+            1905,
+            1491
+          ],
+          "bbox_pdf": [
+            215.93252108716027,
+            110.39999999999999,
+            914.1143392689785,
+            715.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 51,
+      "title": "The docker compose file",
+      "figures": [
+        {
+          "filename": "assets/slide-051-fig-01.jpg",
+          "bbox_px": [
+            450,
+            230,
+            1989,
+            1514
+          ],
+          "bbox_pdf": [
+            215.93252108716027,
+            110.39999999999999,
+            954.4217432052484,
+            726.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 52,
+      "title": "The docker compose file",
+      "figures": [
+        {
+          "filename": "assets/slide-052-fig-01.jpg",
+          "bbox_px": [
+            450,
+            230,
+            2064,
+            1503
+          ],
+          "bbox_pdf": [
+            215.93252108716027,
+            110.39999999999999,
+            990.4104967197751,
+            721.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 53,
+      "title": "The docker compose file",
+      "figures": [
+        {
+          "filename": "assets/slide-053-fig-01.jpg",
+          "bbox_px": [
+            450,
+            230,
+            2051,
+            1491
+          ],
+          "bbox_pdf": [
+            215.93252108716027,
+            110.39999999999999,
+            984.1724461105905,
+            715.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 54,
+      "title": "The docker compose file",
+      "figures": [
+        {
+          "filename": "assets/slide-054-fig-01.jpg",
+          "bbox_px": [
+            450,
+            230,
+            2027,
+            1491
+          ],
+          "bbox_pdf": [
+            215.93252108716027,
+            110.39999999999999,
+            972.6560449859419,
+            715.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 55,
+      "title": "Running",
+      "figures": [
+        {
+          "filename": "assets/slide-055-fig-01.jpg",
+          "bbox_px": [
+            0,
+            254,
+            2134,
+            1451
+          ],
+          "bbox_pdf": [
+            0.0,
+            121.92,
+            1024.0,
+            696.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 56,
+      "title": "Running",
+      "figures": [
+        {
+          "filename": "assets/slide-056-fig-01.jpg",
+          "bbox_px": [
+            13,
+            221,
+            2098,
+            1486
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            106.08,
+            1006.7253983130272,
+            713.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 57,
+      "title": "Running",
+      "figures": [
+        {
+          "filename": "assets/slide-057-fig-01.jpg",
+          "bbox_px": [
+            0,
+            255,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            0.0,
+            122.39999999999999,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 58,
+      "title": "How to…",
+      "figures": [
+        {
+          "filename": "assets/slide-058-fig-01.jpg",
+          "bbox_px": [
+            163,
+            911,
+            2057,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            437.28,
+            987.0515463917526,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 59,
+      "title": "How to…",
+      "figures": [
+        {
+          "filename": "assets/slide-059-fig-01.jpg",
+          "bbox_px": [
+            252,
+            850,
+            2059,
+            1482
+          ],
+          "bbox_pdf": [
+            120.92221180880975,
+            408.0,
+            988.0112464854733,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 60,
+      "title": "How to…",
+      "figures": [
+        {
+          "filename": "assets/slide-060-fig-01.jpg",
+          "bbox_px": [
+            252,
+            870,
+            1917,
+            1482
+          ],
+          "bbox_pdf": [
+            120.92221180880975,
+            417.59999999999997,
+            919.8725398313028,
+            711.36
+          ]
+        }
+      ]
+    }
+  ]
+}

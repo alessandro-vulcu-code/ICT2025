@@ -1,0 +1,1069 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/04-webappTutorship-2025-26-JSPs.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Tutoring 04",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "General Information",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Reminders: Tutoring Lectures",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "General Information",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "DAOs",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "DAOs",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            0,
+            419,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            201.06042654028437,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Connect to the DB",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "DAOs",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "SIGIR WebApp - DAOs",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "DAO - Transactions",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Example: Adding a new user",
+      "figures": []
+    },
+    {
+      "page_number": 13,
+      "title": "JavaBeans & JSP",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "JavaBeans",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "Java Server Pages (JSP)",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Java Server Pages (JSP)",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "JSP Components",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "<@ include … @> VS <jsp:include>",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "<c:import>",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "Redirection",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "Redirection",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "RequestDispatcher - Forward",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "RequestDispatcher - Include",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "Forward, include or redirect?",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "Example from SIGIR25 WebApp",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Idea of a Conference Program",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            546,
+            164,
+            1067,
+            501
+          ],
+          "bbox_pdf": [
+            262.08,
+            78.69668246445498,
+            512.16,
+            240.40876777251185
+          ]
+        },
+        {
+          "filename": "assets/slide-026-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Idea of a Conference Program",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            0,
+            164,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            78.69668246445498,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "ER Schema",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            0,
+            158,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            75.81753554502369,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "ER Schema",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            0,
+            157,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            75.33767772511848,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "What Do We Need to do?",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "Expected Outcome",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            50,
+            211,
+            1450,
+            633
+          ],
+          "bbox_pdf": [
+            24.0,
+            101.25,
+            696.0,
+            303.75
+          ]
+        },
+        {
+          "filename": "assets/slide-031-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "Resources",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "Which DAOs?",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "List all the Slots",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "List all the Locations",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "List all the Tracks",
+      "figures": [
+        {
+          "filename": "assets/slide-036-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 37,
+      "title": "Insert data into DB",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            7,
+            263,
+            1493,
+            581
+          ],
+          "bbox_pdf": [
+            3.36,
+            126.20260663507109,
+            716.64,
+            278.7973933649289
+          ]
+        },
+        {
+          "filename": "assets/slide-037-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "Showing Slots, Location, Tracks (",
+      "figures": []
+    },
+    {
+      "page_number": 39,
+      "title": "Showing Slots, Location, Tracks (",
+      "figures": []
+    },
+    {
+      "page_number": 40,
+      "title": "Showing Slots, Location, Tracks (Servlet & JSP)",
+      "figures": []
+    },
+    {
+      "page_number": 41,
+      "title": "redirect function",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "show-mesage.jsp",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            0,
+            149,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.49881516587678,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "slot-for-location.jsp",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            0,
+            149,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.49881516587678,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "slot-for-location.jsp: Listing Slots",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 45,
+      "title": "slot-for-location.jsp: Adding Slots",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "slot-for-location.jsp: Adding Slots",
+      "figures": [
+        {
+          "filename": "assets/slide-046-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 47,
+      "title": "slot-for-location.jsp: Adding Slots",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 48,
+      "title": "Adding a new occurrence (LocationforSlotServlet.java)",
+      "figures": [
+        {
+          "filename": "assets/slide-048-fig-01.jpg",
+          "bbox_px": [
+            7,
+            164,
+            1441,
+            671
+          ],
+          "bbox_pdf": [
+            3.36,
+            78.69668246445498,
+            691.68,
+            321.9845971563981
+          ]
+        },
+        {
+          "filename": "assets/slide-048-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 49,
+      "title": "Adding a new occurrence (LocationforSlotServlet.java)",
+      "figures": [
+        {
+          "filename": "assets/slide-049-fig-01.jpg",
+          "bbox_px": [
+            7,
+            149,
+            1493,
+            596
+          ],
+          "bbox_pdf": [
+            3.36,
+            71.49881516587678,
+            716.64,
+            285.9952606635071
+          ]
+        },
+        {
+          "filename": "assets/slide-049-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    }
+  ]
+}

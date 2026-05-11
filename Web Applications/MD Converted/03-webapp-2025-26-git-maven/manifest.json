@@ -1,0 +1,1130 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/03-webapp-2025-26-git-maven.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Git and Maven",
+      "figures": []
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            162,
+            941,
+            1846,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            451.68,
+            885.8031865042175,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "Git",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            649,
+            941,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            451.68,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Git",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            410,
+            215,
+            1724,
+            1529
+          ],
+          "bbox_pdf": [
+            196.738519212746,
+            103.2,
+            827.261480787254,
+            733.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Source Code Management",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            88,
+            210,
+            2083,
+            1513
+          ],
+          "bbox_pdf": [
+            42.22680412371134,
+            100.8,
+            999.5276476101219,
+            726.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "Git: Creation of a New Repository",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1148,
+            1901,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            551.04,
+            912.1949390815371,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "Cloning an Empty Bitbucket Repository",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            17,
+            232,
+            1231,
+            1058
+          ],
+          "bbox_pdf": [
+            8.157450796626055,
+            111.36,
+            590.6954076850984,
+            507.84
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Cloning an Empty Bitbucket Repository",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            17,
+            221,
+            2125,
+            1510
+          ],
+          "bbox_pdf": [
+            8.157450796626055,
+            106.08,
+            1019.6813495782568,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Cloning an Empty Bitbucket Repository",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            0,
+            221,
+            2125,
+            1531
+          ],
+          "bbox_pdf": [
+            0.0,
+            106.08,
+            1019.6813495782568,
+            734.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "Workflow",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            1052
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            504.96
+          ]
+        },
+        {
+          "filename": "assets/slide-010-fig-02.jpg",
+          "bbox_px": [
+            141,
+            1066,
+            2053,
+            1482
+          ],
+          "bbox_pdf": [
+            67.65885660731021,
+            511.68,
+            985.1321462043112,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "Add and Commit",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            248,
+            1067,
+            2044,
+            1482
+          ],
+          "bbox_pdf": [
+            119.00281162136832,
+            512.16,
+            980.813495782568,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Branch",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            932
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            447.35999999999996
+          ]
+        },
+        {
+          "filename": "assets/slide-012-fig-02.jpg",
+          "bbox_px": [
+            144,
+            1256,
+            1828,
+            1482
+          ],
+          "bbox_pdf": [
+            69.09840674789129,
+            602.88,
+            877.1658856607311,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "Branch Management",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            160,
+            938,
+            1535,
+            1326
+          ],
+          "bbox_pdf": [
+            76.77600749765699,
+            450.24,
+            736.5698219306466,
+            636.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "Update and Merge",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            162,
+            950,
+            1809,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            456.0,
+            868.0487347703843,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "Pull Requests",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            148,
+            658,
+            2006,
+            1482
+          ],
+          "bbox_pdf": [
+            71.01780693533271,
+            315.84,
+            962.5791940018744,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "The .gitignore File",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            162,
+            948,
+            1831,
+            1419
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            455.03999999999996,
+            878.6054358013121,
+            681.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "Example of .gitignore File",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            649,
+            871,
+            1671,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            418.08,
+            801.8294283036552,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "The README File",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            39,
+            901,
+            2093,
+            1360
+          ],
+          "bbox_pdf": [
+            18.71415182755389,
+            432.47999999999996,
+            1004.3261480787254,
+            652.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "Examples of Code",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            163,
+            1010,
+            1805,
+            1482
+          ],
+          "bbox_pdf": [
+            78.21555763823805,
+            484.79999999999995,
+            866.1293345829429,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "Maven",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            649,
+            941,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            451.68,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "Maven",
+      "figures": []
+    },
+    {
+      "page_number": 22,
+      "title": "Maven Homepage",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            124,
+            219,
+            2025,
+            1348
+          ],
+          "bbox_pdf": [
+            59.50140581068416,
+            105.11999999999999,
+            971.6963448922212,
+            647.04
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "Maven: Main Concepts",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            12,
+            558,
+            2107,
+            1482
+          ],
+          "bbox_pdf": [
+            5.758200562324274,
+            267.84,
+            1011.0440487347704,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "Build Lifecycle",
+      "figures": []
+    },
+    {
+      "page_number": 25,
+      "title": "The Default Build LifeCycle",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            41,
+            886,
+            2120,
+            1482
+          ],
+          "bbox_pdf": [
+            19.6738519212746,
+            425.28,
+            1017.282099343955,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Default Build Lifecycle for JAR Packages",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            510,
+            1171,
+            764,
+            1425
+          ],
+          "bbox_pdf": [
+            244.72352389878165,
+            562.0799999999999,
+            366.6054358013121,
+            684.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Project Object Model (POM)",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            89,
+            412,
+            934,
+            948
+          ],
+          "bbox_pdf": [
+            42.706654170571696,
+            197.76,
+            448.17994376757264,
+            455.03999999999996
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "Maven Repositories",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            1504,
+            274,
+            1728,
+            598
+          ],
+          "bbox_pdf": [
+            721.6944704779756,
+            131.51999999999998,
+            829.1808809746955,
+            287.03999999999996
+          ]
+        },
+        {
+          "filename": "assets/slide-028-fig-02.jpg",
+          "bbox_px": [
+            1504,
+            668,
+            1728,
+            1040
+          ],
+          "bbox_pdf": [
+            721.6944704779756,
+            320.64,
+            829.1808809746955,
+            499.2
+          ]
+        },
+        {
+          "filename": "assets/slide-028-fig-03.jpg",
+          "bbox_px": [
+            356,
+            677,
+            703,
+            1081
+          ],
+          "bbox_pdf": [
+            170.82661668228678,
+            324.96,
+            337.33458294283037,
+            518.88
+          ]
+        },
+        {
+          "filename": "assets/slide-028-fig-04.jpg",
+          "bbox_px": [
+            1504,
+            1099,
+            1728,
+            1470
+          ],
+          "bbox_pdf": [
+            721.6944704779756,
+            527.52,
+            829.1808809746955,
+            705.6
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "Setting up Maven: the settings.xml file",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1085,
+            2016,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            520.8,
+            967.377694470478,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "Example of settings.xml",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            99,
+            871,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            47.50515463917526,
+            418.08,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "Running Maven",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            104,
+            828,
+            2010,
+            1399
+          ],
+          "bbox_pdf": [
+            49.90440487347704,
+            397.44,
+            964.4985941893159,
+            671.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "First Application without",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            649,
+            880,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            422.4,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "Main Steps",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            161,
+            882,
+            1976,
+            1499
+          ],
+          "bbox_pdf": [
+            77.25585754451734,
+            423.35999999999996,
+            948.1836925960638,
+            719.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "Setup the Project Directory Structure",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            162,
+            992,
+            2037,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            476.15999999999997,
+            977.4545454545455,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "Project Object Model (POM)",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            16,
+            260,
+            2134,
+            1517
+          ],
+          "bbox_pdf": [
+            7.677600749765698,
+            124.8,
+            1024.0,
+            728.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "Project Object Model (POM)",
+      "figures": []
+    },
+    {
+      "page_number": 37,
+      "title": "The HelloWorld Class",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            444,
+            785,
+            1861,
+            1495
+          ],
+          "bbox_pdf": [
+            213.05342080599814,
+            376.8,
+            893.0009372071228,
+            717.6
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "Cleaning, Compiling, Packaging, Documenting, and Running",
+      "figures": [
+        {
+          "filename": "assets/slide-038-fig-01.jpg",
+          "bbox_px": [
+            0,
+            216,
+            2134,
+            1505
+          ],
+          "bbox_pdf": [
+            0.0,
+            103.67999999999999,
+            1024.0,
+            722.4
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 39,
+      "title": "Cleaning, Compiling, Packaging, Documenting, and Running",
+      "figures": [
+        {
+          "filename": "assets/slide-039-fig-01.jpg",
+          "bbox_px": [
+            0,
+            222,
+            2134,
+            1510
+          ],
+          "bbox_pdf": [
+            0.0,
+            106.56,
+            1024.0,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 40,
+      "title": "Cleaning, Compiling, Packaging, Documenting, and Running",
+      "figures": [
+        {
+          "filename": "assets/slide-040-fig-01.jpg",
+          "bbox_px": [
+            0,
+            648,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            0.0,
+            311.03999999999996,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 41,
+      "title": "Cleaning, Compiling, Packaging, Documenting, and Running",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            0,
+            441,
+            2134,
+            1519
+          ],
+          "bbox_pdf": [
+            0.0,
+            211.67999999999998,
+            1024.0,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "First Application with",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            649,
+            880,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            422.4,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "JFigLet",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            263,
+            234,
+            1919,
+            1519
+          ],
+          "bbox_pdf": [
+            126.20056232427366,
+            112.32,
+            920.8322399250235,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "The HelloWorldFigLet Class",
+      "figures": []
+    },
+    {
+      "page_number": 45,
+      "title": "Looking for the JFiglet Library Dependency",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            14,
+            226,
+            2116,
+            1501
+          ],
+          "bbox_pdf": [
+            6.717900656044986,
+            108.47999999999999,
+            1015.3626991565136,
+            720.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "Looking for the JFiglet Library Dependency",
+      "figures": [
+        {
+          "filename": "assets/slide-046-fig-01.jpg",
+          "bbox_px": [
+            60,
+            226,
+            2071,
+            1482
+          ],
+          "bbox_pdf": [
+            28.791002811621368,
+            108.47999999999999,
+            993.7694470477976,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 47,
+      "title": "Looking for the JFiglet Library Dependency",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            24,
+            226,
+            2106,
+            1527
+          ],
+          "bbox_pdf": [
+            11.516401124648548,
+            108.47999999999999,
+            1010.5641986879101,
+            732.9599999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 48,
+      "title": "The Updated POM File",
+      "figures": []
+    },
+    {
+      "page_number": 49,
+      "title": "Cleaning, Compiling, Packaging, Documenting, and Running",
+      "figures": [
+        {
+          "filename": "assets/slide-049-fig-01.jpg",
+          "bbox_px": [
+            420,
+            206,
+            1714,
+            1514
+          ],
+          "bbox_pdf": [
+            201.5370196813496,
+            98.88,
+            822.4629803186505,
+            726.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 50,
+      "title": "Cleaning, Compiling, Packaging, Documenting, and Running",
+      "figures": [
+        {
+          "filename": "assets/slide-050-fig-01.jpg",
+          "bbox_px": [
+            78,
+            511,
+            2051,
+            1482
+          ],
+          "bbox_pdf": [
+            37.42830365510778,
+            245.28,
+            984.1724461105905,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 51,
+      "title": "Cleaning, Compiling, Packaging, Documenting, and Running",
+      "figures": [
+        {
+          "filename": "assets/slide-051-fig-01.jpg",
+          "bbox_px": [
+            654,
+            202,
+            1480,
+            1524
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            96.96,
+            710.1780693533271,
+            731.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 52,
+      "title": "Cleaning, Compiling, Packaging, Documenting, and Running",
+      "figures": [
+        {
+          "filename": "assets/slide-052-fig-01.jpg",
+          "bbox_px": [
+            108,
+            229,
+            2076,
+            554
+          ],
+          "bbox_pdf": [
+            51.82380506091847,
+            109.92,
+            996.1686972820994,
+            265.92
+          ]
+        },
+        {
+          "filename": "assets/slide-052-fig-02.jpg",
+          "bbox_px": [
+            108,
+            563,
+            2074,
+            1232
+          ],
+          "bbox_pdf": [
+            51.82380506091847,
+            270.24,
+            995.2089971883787,
+            591.36
+          ]
+        },
+        {
+          "filename": "assets/slide-052-fig-03.jpg",
+          "bbox_px": [
+            38,
+            1240,
+            2125,
+            1478
+          ],
+          "bbox_pdf": [
+            18.234301780693535,
+            595.1999999999999,
+            1019.6813495782568,
+            709.4399999999999
+          ]
+        }
+      ]
+    }
+  ]
+}

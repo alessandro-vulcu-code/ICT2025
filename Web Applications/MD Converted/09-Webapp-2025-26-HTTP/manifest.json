@@ -1,0 +1,1343 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/09-Webapp-2025-26-HTTP.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "HTTP",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            477,
+            0,
+            2134,
+            1269
+          ],
+          "bbox_pdf": [
+            228.8884723523899,
+            0.0,
+            1024.0,
+            609.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            248,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            119.00281162136832,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "Basic Web Technology",
+      "figures": []
+    },
+    {
+      "page_number": 4,
+      "title": "URL",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Resource Identification",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            556
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            266.88
+          ]
+        },
+        {
+          "filename": "assets/slide-005-fig-02.jpg",
+          "bbox_px": [
+            136,
+            1072,
+            2062,
+            1399
+          ],
+          "bbox_pdf": [
+            65.25960637300844,
+            514.56,
+            989.4507966260544,
+            671.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "URI, URL, URN, IRI",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            1,
+            943,
+            2134,
+            1494
+          ],
+          "bbox_pdf": [
+            0.47985004686035615,
+            452.64,
+            1024.0,
+            717.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "URI Syntax",
+      "figures": []
+    },
+    {
+      "page_number": 8,
+      "title": "Example of URI",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            146,
+            1002,
+            2057,
+            1437
+          ],
+          "bbox_pdf": [
+            70.058106841612,
+            480.96,
+            987.0515463917526,
+            689.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Character Encoding",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "The ASCII Character Encoding",
+      "figures": []
+    },
+    {
+      "page_number": 11,
+      "title": "X.3.4-1963: Cover and Code Table",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            63,
+            231,
+            1011,
+            1451
+          ],
+          "bbox_pdf": [
+            30.230552952202437,
+            110.88,
+            485.12839737582004,
+            696.48
+          ]
+        },
+        {
+          "filename": "assets/slide-011-fig-02.jpg",
+          "bbox_px": [
+            1115,
+            231,
+            2063,
+            1451
+          ],
+          "bbox_pdf": [
+            535.0328022492971,
+            110.88,
+            989.9306466729147,
+            696.48
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Extended ASCII",
+      "figures": []
+    },
+    {
+      "page_number": 13,
+      "title": "The Unicode Standard",
+      "figures": []
+    },
+    {
+      "page_number": 14,
+      "title": "Example of Extended ASCII and Unicode",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            1040,
+            315,
+            1760,
+            1497
+          ],
+          "bbox_pdf": [
+            499.0440487347704,
+            151.2,
+            844.5360824742269,
+            718.56
+          ]
+        },
+        {
+          "filename": "assets/slide-014-fig-02.jpg",
+          "bbox_px": [
+            462,
+            316,
+            870,
+            1496
+          ],
+          "bbox_pdf": [
+            221.69072164948454,
+            151.68,
+            417.46954076850983,
+            718.0799999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "Example of Unicode Tables",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            31,
+            284,
+            537,
+            1482
+          ],
+          "bbox_pdf": [
+            14.87535145267104,
+            136.32,
+            257.67947516401125,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Number of Unicode Symbols",
+      "figures": []
+    },
+    {
+      "page_number": 17,
+      "title": "Number of Unicode Symbols",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            13,
+            211,
+            2134,
+            1509
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            101.28,
+            1024.0,
+            724.3199999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "MIME",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "Content Media Type",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            556
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            266.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "(Some) MIME Headers",
+      "figures": []
+    },
+    {
+      "page_number": 21,
+      "title": "The MIME multipart Media Type",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            315,
+            846,
+            1986,
+            1374
+          ],
+          "bbox_pdf": [
+            151.15276476101218,
+            406.08,
+            952.9821930646673,
+            659.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "Up to Servlet 4.0: Apache Commons Email",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            0,
+            230,
+            2134,
+            1504
+          ],
+          "bbox_pdf": [
+            0.0,
+            110.39999999999999,
+            1024.0,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "Since Servlet 5.0: Jakarta Mail 2.1",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            81,
+            203,
+            2125,
+            1515
+          ],
+          "bbox_pdf": [
+            38.867853795688845,
+            97.44,
+            1019.6813495782568,
+            727.1999999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "Sending Web forms and Uploading Files",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            238,
+            1159,
+            2132,
+            1511
+          ],
+          "bbox_pdf": [
+            114.20431115276476,
+            556.3199999999999,
+            1023.0402999062793,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "multipart/form-data Example",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            697
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            334.56
+          ]
+        },
+        {
+          "filename": "assets/slide-025-fig-02.jpg",
+          "bbox_px": [
+            264,
+            1188,
+            1868,
+            1509
+          ],
+          "bbox_pdf": [
+            126.68041237113403,
+            570.24,
+            896.3598875351453,
+            724.3199999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "application/x-www-form-urlencoded Example",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            0,
+            0,
+            2134,
+            580
+          ],
+          "bbox_pdf": [
+            0.0,
+            0.0,
+            1024.0,
+            278.4
+          ]
+        },
+        {
+          "filename": "assets/slide-026-fig-02.jpg",
+          "bbox_px": [
+            377,
+            651,
+            1759,
+            1302
+          ],
+          "bbox_pdf": [
+            180.90346766635426,
+            312.47999999999996,
+            844.0562324273665,
+            624.9599999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Up to Servlet 4.0: Apache Commons FileUpload",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            20,
+            230,
+            2125,
+            1512
+          ],
+          "bbox_pdf": [
+            9.597000937207124,
+            110.39999999999999,
+            1019.6813495782568,
+            725.76
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "Up to Servlet 4.0: Apache Commons FileUpload",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            20,
+            230,
+            2134,
+            1521
+          ],
+          "bbox_pdf": [
+            9.597000937207124,
+            110.39999999999999,
+            1024.0,
+            730.0799999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "Up to Servlet 4.0: Apache Commons FileUpload",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            20,
+            230,
+            2134,
+            1519
+          ],
+          "bbox_pdf": [
+            9.597000937207124,
+            110.39999999999999,
+            1024.0,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "Since Servlet 5.0: Part Object",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            160,
+            979,
+            2018,
+            1444
+          ],
+          "bbox_pdf": [
+            76.77600749765699,
+            469.91999999999996,
+            968.3373945641987,
+            693.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "Accessing a database via JSP,",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            266,
+            863,
+            1863,
+            1482
+          ],
+          "bbox_pdf": [
+            127.64011246485474,
+            414.24,
+            893.9606373008435,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "The Employee Database Revisited",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            1192,
+            226,
+            2122,
+            894
+          ],
+          "bbox_pdf": [
+            571.9812558575445,
+            108.47999999999999,
+            1018.2417994376757,
+            429.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "Create Employee: Multipart & Mail",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            5,
+            211,
+            1493,
+            1040
+          ],
+          "bbox_pdf": [
+            2.399250234301781,
+            101.28,
+            716.4161199625117,
+            499.2
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "Create Employee: Multipart & Mail",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            5,
+            211,
+            2110,
+            1510
+          ],
+          "bbox_pdf": [
+            2.399250234301781,
+            101.28,
+            1012.4835988753515,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "Create Employee: Multipart & Mail",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            0,
+            211,
+            2110,
+            1510
+          ],
+          "bbox_pdf": [
+            0.0,
+            101.28,
+            1012.4835988753515,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "Employee Multipart & Mail",
+      "figures": [
+        {
+          "filename": "assets/slide-036-fig-01.jpg",
+          "bbox_px": [
+            7,
+            211,
+            2066,
+            1528
+          ],
+          "bbox_pdf": [
+            3.358950328022493,
+            101.28,
+            991.3701968134958,
+            733.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 37,
+      "title": "The Create Employee JSP Form",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            45,
+            268,
+            2134,
+            1486
+          ],
+          "bbox_pdf": [
+            21.593252108716026,
+            128.64,
+            1024.0,
+            713.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "The Create Employee Result JSP Page",
+      "figures": []
+    },
+    {
+      "page_number": 39,
+      "title": "The Employee Resource",
+      "figures": []
+    },
+    {
+      "page_number": 40,
+      "title": "Create Employee DAO",
+      "figures": [
+        {
+          "filename": "assets/slide-040-fig-01.jpg",
+          "bbox_px": [
+            8,
+            260,
+            2083,
+            1478
+          ],
+          "bbox_pdf": [
+            3.838800374882849,
+            124.8,
+            999.5276476101219,
+            709.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 41,
+      "title": "Load Employee Photo DAO",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            21,
+            213,
+            2134,
+            1514
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            102.24,
+            1024.0,
+            726.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "Create Employee Servlet",
+      "figures": []
+    },
+    {
+      "page_number": 43,
+      "title": "Create Employee Servlet",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            0,
+            199,
+            2129,
+            1600
+          ],
+          "bbox_pdf": [
+            0.0,
+            95.52,
+            1021.6007497656982,
+            768.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "Create Employee Servlet",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            6,
+            265,
+            2134,
+            1530
+          ],
+          "bbox_pdf": [
+            2.879100281162137,
+            127.19999999999999,
+            1024.0,
+            734.4
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 45,
+      "title": "Load Employee Photo Servlet",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            23,
+            245,
+            2134,
+            1594
+          ],
+          "bbox_pdf": [
+            11.036551077788191,
+            117.6,
+            1024.0,
+            765.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "The web.xml File",
+      "figures": [
+        {
+          "filename": "assets/slide-046-fig-01.jpg",
+          "bbox_px": [
+            31,
+            28,
+            2124,
+            1400
+          ],
+          "bbox_pdf": [
+            14.87535145267104,
+            13.44,
+            1019.2014995313965,
+            672.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 47,
+      "title": "The MailManager Class",
+      "figures": [
+        {
+          "filename": "assets/slide-047-fig-01.jpg",
+          "bbox_px": [
+            133,
+            211,
+            2086,
+            1497
+          ],
+          "bbox_pdf": [
+            63.82005623242737,
+            101.28,
+            1000.9671977507029,
+            718.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 48,
+      "title": "The MailManager Class",
+      "figures": [
+        {
+          "filename": "assets/slide-048-fig-01.jpg",
+          "bbox_px": [
+            122,
+            224,
+            2065,
+            1482
+          ],
+          "bbox_pdf": [
+            58.54170571696345,
+            107.52,
+            990.8903467666355,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 49,
+      "title": "The MailManager Class",
+      "figures": []
+    },
+    {
+      "page_number": 50,
+      "title": "The MailManager Class",
+      "figures": []
+    },
+    {
+      "page_number": 51,
+      "title": "HTTP 1.1",
+      "figures": [
+        {
+          "filename": "assets/slide-051-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 52,
+      "title": "Overview of HTTP",
+      "figures": [
+        {
+          "filename": "assets/slide-052-fig-01.jpg",
+          "bbox_px": [
+            26,
+            929,
+            1720,
+            1442
+          ],
+          "bbox_pdf": [
+            12.47610121836926,
+            445.91999999999996,
+            825.3420805998126,
+            692.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 53,
+      "title": "HTTP Request Methods",
+      "figures": []
+    },
+    {
+      "page_number": 54,
+      "title": "Properties of HTTP Methods",
+      "figures": []
+    },
+    {
+      "page_number": 55,
+      "title": "Summary on HTTP Methods",
+      "figures": []
+    },
+    {
+      "page_number": 56,
+      "title": "HTTP Response Status Codes",
+      "figures": [
+        {
+          "filename": "assets/slide-056-fig-01.jpg",
+          "bbox_px": [
+            138,
+            1043,
+            1864,
+            1482
+          ],
+          "bbox_pdf": [
+            66.21930646672915,
+            500.64,
+            894.4404873477039,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 57,
+      "title": "(Some) HTTP Request Headers",
+      "figures": []
+    },
+    {
+      "page_number": 58,
+      "title": "(Some) HTTP Response Headers",
+      "figures": [
+        {
+          "filename": "assets/slide-058-fig-01.jpg",
+          "bbox_px": [
+            73,
+            909,
+            2086,
+            1434
+          ],
+          "bbox_pdf": [
+            35.029053420806,
+            436.32,
+            1000.9671977507029,
+            688.3199999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 59,
+      "title": "Authentication and Authorization",
+      "figures": [
+        {
+          "filename": "assets/slide-059-fig-01.jpg",
+          "bbox_px": [
+            68,
+            916,
+            2123,
+            1407
+          ],
+          "bbox_pdf": [
+            32.62980318650422,
+            439.68,
+            1018.7216494845361,
+            675.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 60,
+      "title": "Accessing a database via",
+      "figures": [
+        {
+          "filename": "assets/slide-060-fig-01.jpg",
+          "bbox_px": [
+            654,
+            880,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            422.4,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 61,
+      "title": "Employee Session JDBC",
+      "figures": [
+        {
+          "filename": "assets/slide-061-fig-01.jpg",
+          "bbox_px": [
+            13,
+            210,
+            580,
+            1518
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            100.8,
+            278.31302717900655,
+            728.64
+          ]
+        },
+        {
+          "filename": "assets/slide-061-fig-02.jpg",
+          "bbox_px": [
+            820,
+            217,
+            2076,
+            1519
+          ],
+          "bbox_pdf": [
+            393.477038425492,
+            104.16,
+            996.1686972820994,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 62,
+      "title": "Employee Session JDBC: ProtectedResourceFilter",
+      "figures": [
+        {
+          "filename": "assets/slide-062-fig-01.jpg",
+          "bbox_px": [
+            48,
+            211,
+            2134,
+            1600
+          ],
+          "bbox_pdf": [
+            23.032802249297095,
+            101.28,
+            1024.0,
+            768.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 63,
+      "title": "Employee Session JDBC: AuthenticateUserDAO",
+      "figures": [
+        {
+          "filename": "assets/slide-063-fig-01.jpg",
+          "bbox_px": [
+            19,
+            218,
+            2112,
+            1502
+          ],
+          "bbox_pdf": [
+            9.117150890346768,
+            104.64,
+            1013.4432989690722,
+            720.9599999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 64,
+      "title": "Employee Session JDBC: ProtectedResourceFilter",
+      "figures": [
+        {
+          "filename": "assets/slide-064-fig-01.jpg",
+          "bbox_px": [
+            21,
+            259,
+            2092,
+            1494
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            124.32,
+            1003.8462980318651,
+            717.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 65,
+      "title": "Employee Session JDBC: ProtectedResourceFilter",
+      "figures": [
+        {
+          "filename": "assets/slide-065-fig-01.jpg",
+          "bbox_px": [
+            13,
+            218,
+            2134,
+            1503
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            104.64,
+            1024.0,
+            721.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 66,
+      "title": "Employee Session JDBC: ProtectedResourceFilter",
+      "figures": [
+        {
+          "filename": "assets/slide-066-fig-01.jpg",
+          "bbox_px": [
+            17,
+            200,
+            2134,
+            1539
+          ],
+          "bbox_pdf": [
+            8.157450796626055,
+            96.0,
+            1024.0,
+            738.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 67,
+      "title": "Employee Session JDBC: ProtectedResourceFilter",
+      "figures": [
+        {
+          "filename": "assets/slide-067-fig-01.jpg",
+          "bbox_px": [
+            9,
+            201,
+            2134,
+            1553
+          ],
+          "bbox_pdf": [
+            4.318650421743206,
+            96.47999999999999,
+            1024.0,
+            745.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 68,
+      "title": "Employee Session JDBC: ProtectedResourceFilter",
+      "figures": []
+    },
+    {
+      "page_number": 69,
+      "title": "Employee Session JDBC: ProtectedResourceFilter",
+      "figures": [
+        {
+          "filename": "assets/slide-069-fig-01.jpg",
+          "bbox_px": [
+            110,
+            317,
+            2071,
+            1496
+          ],
+          "bbox_pdf": [
+            52.78350515463918,
+            152.16,
+            993.7694470477976,
+            718.0799999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 70,
+      "title": "Employee Session JDBC: JSP pages",
+      "figures": [
+        {
+          "filename": "assets/slide-070-fig-01.jpg",
+          "bbox_px": [
+            460,
+            208,
+            2134,
+            1519
+          ],
+          "bbox_pdf": [
+            220.73102155576382,
+            99.84,
+            1024.0,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 71,
+      "title": "Employee Session JDBC: CreateEmployeeServlet",
+      "figures": [
+        {
+          "filename": "assets/slide-071-fig-01.jpg",
+          "bbox_px": [
+            21,
+            222,
+            2134,
+            1499
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            106.56,
+            1024.0,
+            719.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 72,
+      "title": "Slide 72",
+      "figures": []
+    }
+  ]
+}

@@ -1,0 +1,993 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/06-webappTutorship-2025-26-AJAX.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Tutoring 06",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "General Information",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "General Information",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Tips for the second part",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "Useful resources",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "AJAX",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Before AJAX",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Before AJAX",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "AJAX",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "AJAX - Developer’s dream",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Keep this concepts in mind (but separated)…",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            89,
+            143,
+            383,
+            436
+          ],
+          "bbox_pdf": [
+            42.72,
+            68.6196682464455,
+            183.84,
+            209.21800947867297
+          ]
+        },
+        {
+          "filename": "assets/slide-012-fig-02.jpg",
+          "bbox_px": [
+            599,
+            143,
+            901,
+            436
+          ],
+          "bbox_pdf": [
+            287.52,
+            68.6196682464455,
+            432.47999999999996,
+            209.21800947867297
+          ]
+        },
+        {
+          "filename": "assets/slide-012-fig-03.jpg",
+          "bbox_px": [
+            1117,
+            143,
+            1411,
+            441
+          ],
+          "bbox_pdf": [
+            536.16,
+            68.6196682464455,
+            677.28,
+            211.61729857819904
+          ]
+        },
+        {
+          "filename": "assets/slide-012-fig-04.jpg",
+          "bbox_px": [
+            0,
+            631,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            302.79028436018956,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "What you will need for AJAX",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "Technically AJAX works like this",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            87,
+            135,
+            342,
+            456
+          ],
+          "bbox_pdf": [
+            41.76,
+            64.7808056872038,
+            164.16,
+            218.81516587677726
+          ]
+        },
+        {
+          "filename": "assets/slide-014-fig-02.jpg",
+          "bbox_px": [
+            1158,
+            201,
+            1413,
+            456
+          ],
+          "bbox_pdf": [
+            555.84,
+            96.45142180094787,
+            678.24,
+            218.81516587677726
+          ]
+        },
+        {
+          "filename": "assets/slide-014-fig-03.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "Technically AJAX works like this",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            0,
+            135,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            64.7808056872038,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Some methods",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            0,
+            165,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            79.17654028436019,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "More on XHR",
+      "figures": []
+    },
+    {
+      "page_number": 18,
+      "title": "More on XHR",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            310,
+            150,
+            1190,
+            678
+          ],
+          "bbox_pdf": [
+            148.79999999999998,
+            71.97867298578198,
+            571.1999999999999,
+            325.3436018957346
+          ]
+        },
+        {
+          "filename": "assets/slide-018-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "SIGIR25 WebApp (ajax-demo.html)",
+      "figures": []
+    },
+    {
+      "page_number": 20,
+      "title": "SIGIR25 WebApp (ajax-demo.html)",
+      "figures": []
+    },
+    {
+      "page_number": 21,
+      "title": "SIGIR25 WebApp (ajax-demo.html)",
+      "figures": []
+    },
+    {
+      "page_number": 22,
+      "title": "SIGIR25 WebApp (ajax-demo.html)",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            0,
+            149,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.49881516587678,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "SIGIR25 WebApp (script.js)",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "SIGIR25 WebApp (script.js)",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "SIGIR25 WebApp (script.js)",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            0,
+            146,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            70.05924170616113,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Results",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            0,
+            150,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.97867298578198,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Loading a JSON ﬁle (script2.js)",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            0,
+            149,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.49881516587678,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "Loading a JSON ﬁle (script2.js)",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            0,
+            149,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.49881516587678,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "Loading a JSON ﬁle (script2.js)",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            0,
+            149,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.49881516587678,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "Loading a JSON ﬁle (script2.js)",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            33,
+            311,
+            1445,
+            663
+          ],
+          "bbox_pdf": [
+            15.84,
+            149.23578199052133,
+            693.6,
+            318.1457345971564
+          ]
+        },
+        {
+          "filename": "assets/slide-030-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "Results",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            0,
+            150,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            71.97867298578198,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "Debugging Console",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "How can I debug a Web Application?",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "General Tools",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            0,
+            191,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            91.65284360189573,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            0,
+            201,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            96.45142180094787,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "Switch between device views",
+      "figures": []
+    },
+    {
+      "page_number": 37,
+      "title": "More on Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            0,
+            201,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            96.45142180094787,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "Console",
+      "figures": [
+        {
+          "filename": "assets/slide-038-fig-01.jpg",
+          "bbox_px": [
+            0,
+            180,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            86.37440758293839,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 39,
+      "title": "Sources",
+      "figures": [
+        {
+          "filename": "assets/slide-039-fig-01.jpg",
+          "bbox_px": [
+            0,
+            415,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            199.1409952606635,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 40,
+      "title": "Network",
+      "figures": [
+        {
+          "filename": "assets/slide-040-fig-01.jpg",
+          "bbox_px": [
+            753,
+            199,
+            1490,
+            644
+          ],
+          "bbox_pdf": [
+            361.44,
+            95.49170616113744,
+            715.1999999999999,
+            309.02843601895734
+          ]
+        },
+        {
+          "filename": "assets/slide-040-fig-02.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 41,
+      "title": "Security & Privacy",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            0,
+            190,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            91.17298578199052,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "Wrap up",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "Wrap Up",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "Acknowledgments",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            0,
+            692,
+            1500,
+            844
+          ],
+          "bbox_pdf": [
+            0.0,
+            332.06161137440756,
+            720.0,
+            405.0
+          ]
+        }
+      ]
+    }
+  ]
+}

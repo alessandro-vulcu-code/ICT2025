@@ -1,0 +1,834 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/02-webapp-2025-26-introduction.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Introduction to Webapps",
+      "figures": []
+    },
+    {
+      "page_number": 2,
+      "title": "Outline",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            296,
+            915,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            142.03561387066543,
+            439.2,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "A bit of history",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            649,
+            941,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            451.68,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Vannevar Bush: The Memex (July 1945)",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            388,
+            211,
+            2127,
+            1511
+          ],
+          "bbox_pdf": [
+            186.1818181818182,
+            101.28,
+            1020.6410496719775,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Vannevar Bush: The Memex (July 1945)",
+      "figures": []
+    },
+    {
+      "page_number": 6,
+      "title": "Ted Nelson: Hypertext (1963/1965)",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            21,
+            217,
+            2099,
+            1504
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            104.16,
+            1007.2052483598876,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "Douglas Engelbart: NLS System (1962-1968)",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            21,
+            211,
+            2127,
+            1523
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            101.28,
+            1020.6410496719775,
+            731.04
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Halasz/Moran/Trigg: Notecards (1983-1987)",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            21,
+            244,
+            2115,
+            1511
+          ],
+          "bbox_pdf": [
+            10.076850984067478,
+            117.11999999999999,
+            1014.8828491096533,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Tim Berners-Lee: World Wide Web (1989-1991)",
+      "figures": []
+    },
+    {
+      "page_number": 10,
+      "title": "Browsers: Early Days",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            649,
+            941,
+            1449,
+            1482
+          ],
+          "bbox_pdf": [
+            311.42268041237116,
+            451.68,
+            695.302717900656,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "Browsers: Early Days",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            78,
+            211,
+            2134,
+            1241
+          ],
+          "bbox_pdf": [
+            37.42830365510778,
+            101.28,
+            1024.0,
+            595.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Browsers: Early Days",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            78,
+            222,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            37.42830365510778,
+            106.56,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "Browsers: Early Days",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            78,
+            522,
+            2134,
+            1519
+          ],
+          "bbox_pdf": [
+            37.42830365510778,
+            250.56,
+            1024.0,
+            729.12
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "Browsers: Early Days",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            872,
+            202,
+            2125,
+            1510
+          ],
+          "bbox_pdf": [
+            418.4292408622306,
+            96.96,
+            1019.6813495782568,
+            724.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "Browsers: Closer to Us",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            93,
+            299,
+            2134,
+            1504
+          ],
+          "bbox_pdf": [
+            44.62605435801312,
+            143.51999999999998,
+            1024.0,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Web 1.0: “Read Web” - Informative Web",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            162,
+            544,
+            2078,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            261.12,
+            997.1283973758201,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "Web 2.0: “Read/Write Web” - Participative Web",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            162,
+            469,
+            2076,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            225.12,
+            996.1686972820994,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "Web 3.0: “Web of Data” / “Semantic Web” - Intelligent Web",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            112,
+            276,
+            2125,
+            1482
+          ],
+          "bbox_pdf": [
+            53.743205248359885,
+            132.48,
+            1019.6813495782568,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "The Deep Web",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            95,
+            228,
+            2115,
+            1474
+          ],
+          "bbox_pdf": [
+            45.585754451733834,
+            109.44,
+            1014.8828491096533,
+            707.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "The Dark Web",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            1002,
+            211,
+            2099,
+            1513
+          ],
+          "bbox_pdf": [
+            480.80974695407684,
+            101.28,
+            1007.2052483598876,
+            726.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "Web3",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            164,
+            292,
+            2068,
+            1441
+          ],
+          "bbox_pdf": [
+            78.6954076850984,
+            140.16,
+            992.3298969072165,
+            691.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "Recap on",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            217,
+            605,
+            1913,
+            1482
+          ],
+          "bbox_pdf": [
+            104.12746016869728,
+            290.4,
+            917.9531396438613,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "Application Layers",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            9,
+            389,
+            1069,
+            689
+          ],
+          "bbox_pdf": [
+            4.318650421743206,
+            186.72,
+            512.9597000937207,
+            330.71999999999997
+          ]
+        },
+        {
+          "filename": "assets/slide-023-fig-02.jpg",
+          "bbox_px": [
+            9,
+            706,
+            2087,
+            1482
+          ],
+          "bbox_pdf": [
+            4.318650421743206,
+            338.88,
+            1001.4470477975633,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "Balancing of the Application Load",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            17,
+            367,
+            1959,
+            1482
+          ],
+          "bbox_pdf": [
+            8.157450796626055,
+            176.16,
+            940.0262417994377,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "Single-tier Architecture: Terminal/Mainframe",
+      "figures": []
+    },
+    {
+      "page_number": 26,
+      "title": "Single-tier Architecture: the example of DUO",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            262,
+            243,
+            1869,
+            1495
+          ],
+          "bbox_pdf": [
+            125.72071227741331,
+            116.64,
+            896.8397375820057,
+            717.6
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Single-tier Architecture: the example of DUO",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            259,
+            224,
+            1873,
+            1514
+          ],
+          "bbox_pdf": [
+            124.28116213683224,
+            107.52,
+            898.7591377694471,
+            726.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "Single-tier Architecture: the example of DUO",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            249,
+            208,
+            1884,
+            1515
+          ],
+          "bbox_pdf": [
+            119.48266166822869,
+            99.84,
+            904.037488284911,
+            727.1999999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "Single-tier Architecture: the example of DUO",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            255,
+            206,
+            1882,
+            1513
+          ],
+          "bbox_pdf": [
+            122.36176194939083,
+            98.88,
+            903.0777881911903,
+            726.24
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "Two-tiers Architecture: Fat Client/Server",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            1109,
+            248,
+            2111,
+            1008
+          ],
+          "bbox_pdf": [
+            532.153701968135,
+            119.03999999999999,
+            1012.9634489222118,
+            483.84
+          ]
+        },
+        {
+          "filename": "assets/slide-030-fig-02.jpg",
+          "bbox_px": [
+            139,
+            274,
+            949,
+            646
+          ],
+          "bbox_pdf": [
+            66.6991565135895,
+            131.51999999999998,
+            455.377694470478,
+            310.08
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "Two-tiers Architecture with Fat Client: the Example of Aleph",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            242,
+            217,
+            1892,
+            1508
+          ],
+          "bbox_pdf": [
+            116.12371134020619,
+            104.16,
+            907.8762886597939,
+            723.8399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "Two-tiers Architecture: Client/Fat Server",
+      "figures": [
+        {
+          "filename": "assets/slide-032-fig-01.jpg",
+          "bbox_px": [
+            1134,
+            259,
+            2133,
+            1038
+          ],
+          "bbox_pdf": [
+            544.1499531396439,
+            124.32,
+            1023.5201499531397,
+            498.24
+          ]
+        },
+        {
+          "filename": "assets/slide-032-fig-02.jpg",
+          "bbox_px": [
+            224,
+            312,
+            988,
+            682
+          ],
+          "bbox_pdf": [
+            107.48641049671977,
+            149.76,
+            474.0918462980319,
+            327.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 33,
+      "title": "Three-tiers Architecture: Client/Middleware/Server",
+      "figures": [
+        {
+          "filename": "assets/slide-033-fig-01.jpg",
+          "bbox_px": [
+            111,
+            240,
+            2098,
+            1499
+          ],
+          "bbox_pdf": [
+            53.263355201499536,
+            115.19999999999999,
+            1006.7253983130272,
+            719.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 34,
+      "title": "Web Applications",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            89,
+            379,
+            2125,
+            1493
+          ],
+          "bbox_pdf": [
+            42.706654170571696,
+            181.92,
+            1019.6813495782568,
+            716.64
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "Web Applications from a Computer Network Perspective",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            493,
+            224,
+            1819,
+            1453
+          ],
+          "bbox_pdf": [
+            236.56607310215557,
+            107.52,
+            872.8472352389879,
+            697.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "Web Applications: the Example of Aleph",
+      "figures": [
+        {
+          "filename": "assets/slide-036-fig-01.jpg",
+          "bbox_px": [
+            468,
+            200,
+            1835,
+            1521
+          ],
+          "bbox_pdf": [
+            224.56982193064667,
+            96.0,
+            880.5248359887536,
+            730.0799999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 37,
+      "title": "Web Applications: the Example of Aleph",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            0,
+            276,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            0.0,
+            132.48,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "Web Applications: the Example of Aleph",
+      "figures": [
+        {
+          "filename": "assets/slide-038-fig-01.jpg",
+          "bbox_px": [
+            0,
+            386,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            0.0,
+            185.28,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 39,
+      "title": "Web Applications: the Example of Aleph",
+      "figures": [
+        {
+          "filename": "assets/slide-039-fig-01.jpg",
+          "bbox_px": [
+            0,
+            436,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            0.0,
+            209.28,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 40,
+      "title": "Slide 40",
+      "figures": []
+    }
+  ]
+}
