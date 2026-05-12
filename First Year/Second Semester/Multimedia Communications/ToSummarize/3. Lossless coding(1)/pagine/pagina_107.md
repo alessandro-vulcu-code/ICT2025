@@ -1,0 +1,25 @@
+Dictionary-based coding: example (LZW)
+
+Input
+
+0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 1 0 0 0 1 0
+
+New 0 0 1
+
+Table
+
+0 1 2 3 4 5 6 7 8 9 A B C D E
+
+Output
+
+0
+
+0 1 0
+
+0
+
+---
+
+**Immagini estratte:**
+
+![Figura estratta 1](p107_img01.jpg)

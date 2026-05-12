@@ -1,0 +1,30 @@
+Dictionary-based decoding: example (LZW)
+
+Table
+```
+0 1 2 3 4 5 6 7 8 9 A B C D E
+0 1 0
+x
+```
+
+Input
+```
+0 2 1 2 2 0
+```
+
+New
+```
+3 0xy
+```
+
+Output
+```
+0x
+00xy
+```
+
+---
+
+**Immagini estratte:**
+
+![Figura estratta 1](p145_img01.jpg)

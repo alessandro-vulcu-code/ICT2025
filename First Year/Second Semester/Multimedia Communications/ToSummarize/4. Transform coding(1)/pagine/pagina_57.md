@@ -1,0 +1,17 @@
+KLT: 3D Visual Intuition
+
+Original Spatial Domain ($X_1, X_2, X_3$)
+
+Original domain: high 3D correlation
+
+KLT domain: aligned and decorrelated
+
+---
+
+**Immagini estratte:**
+
+![Figura estratta 1](images/p57_img03.jpg)
+
+![Figura estratta 2](First%20Year/Second%20Semester/Multimedia%20Communications/ToSummarize/4.%20Transform%20coding(1)/images/p57_img01.jpg)
+
+![Figura estratta 3](p57_img02.jpg)
