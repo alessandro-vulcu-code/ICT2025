@@ -29,6 +29,7 @@
 ---
 
 ## Git — Version Control System
+![[Pasted image 20260512202324.png|300]]
 
 **Git** is a distributed version control system (https://git-scm.com/). It manages versions (*revisions*) of files and directories, concurrent modification conflicts, and their resolution (**merge**).
 
@@ -216,7 +217,7 @@ Three predefined lifecycles:
 | **Deployment** | `verify` | Verifies package validity and quality |
 | | `install` | Installs the package in the local repository |
 | | `deploy` | Copies the package to the remote repository (release environment) |
-
+![[Pasted image 20260512202851.png]]
 ### Default Build Lifecycle for JAR
 
 ```

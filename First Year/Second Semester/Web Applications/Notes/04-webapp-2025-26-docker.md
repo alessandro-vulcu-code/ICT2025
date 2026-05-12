@@ -29,7 +29,7 @@ A web application is composed of multiple technologies (Java backend, HTML/CSS/J
 
 The standard life cycle is:
 
-![[docker-webapp-lifecycle.jpg]]
+![[Pasted image 20260512203729.png]]
 
 **Development → Maven (build) → WAR file → Web Server (Tomcat)**
 
@@ -68,7 +68,7 @@ Three-level architecture:
 1. **Host** — physical server with its own OS
 2. **Docker Engine** — container engine that creates, starts, stops, and manages containers on the host
 3. **Containers** — isolated applications, each with its own dependencies and libraries
-
+![[Pasted image 20260512204151.png]]
 ### Containers vs Virtual Machines
 
 | | Containers | Virtual Machines |
@@ -250,6 +250,7 @@ Key advantages:
 > **Insight:** without a healthcheck Tomcat would start while Postgres is still initializing → connection refused.
 
 `healthcheck` parameters:
+
 | Field | Description |
 |---|---|
 | `test` | Command to execute to verify the status (e.g. `pg_isready -U postgres`) |
