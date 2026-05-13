@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "First Year/Second Semester/Multimedia Communications/Summaries/10. Audio Coding.md",
-                "mode": "source",
+                "file": "First Year/Second Semester/Web Applications/Notes/02-webapp-2025-26-introduction.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "10. Audio Coding"
+              "title": "02-webapp-2025-26-introduction"
             }
           },
           {
@@ -92,7 +92,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.50806045532227
+    "width": 291.50806045532227,
+    "collapsed": true
   },
   "right": {
     "id": "978958ee6b3e5956",
@@ -187,9 +188,10 @@
   },
   "active": "07870a9ef96bf7e8",
   "lastOpenFiles": [
+    "First Year/Second Semester/Multimedia Communications/Summaries/10. Audio Coding.md",
+    "borders.scss.txt",
     "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513130347.png",
     "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding",
-    "First Year/Second Semester/Multimedia Communications/Summaries/10. Audio Coding.md",
     "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140733.png",
     "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140535.png",
     "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140328.png",
@@ -199,7 +201,6 @@
     "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140114.png",
     "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140052.png",
     "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140029.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513135642.png",
     "First Year/Second Semester/Multimedia Communications/Summaries/9. Modern Video Compression Standards.md",
     "First Year/Second Semester/Multimedia Communications/ToSummarize/10. audiocoding.md",
     "First Year/Second Semester/Multimedia Communications/ToSummarize/10. audiocoding.md.tmp.179722.73f0588eaea9",
@@ -231,7 +232,6 @@
     "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 18 standard library.md",
     "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 17 templates.md",
     "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 16 runtime polymorphism.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 14 operator overloading.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/Images"
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 14 operator overloading.md"
   ]
 }

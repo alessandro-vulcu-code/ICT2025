@@ -24,6 +24,7 @@
   - [[#Project Directory Structure|Project Directory Structure]]
   - [[#Complete POM — Project Without Dependencies|Complete POM — Project Without Dependencies]]
   - [[#POM with External Dependencies|POM with External Dependencies]]
+- [[#Complete Workflow — Maven + Git Project Setup|Complete Workflow — Maven + Git Project Setup]]
 - [[#Summary Table|Summary Table]]
 
 ---
@@ -150,17 +151,43 @@ It must be placed in the project's **root folder**. It specifies patterns of fil
 
 It must be placed in the **root folder**. It provides general information about the project, displayed on the repository web page. It uses **Markdown** syntax (`.md`).
 
+> [!Example] Example README.md
+> ```markdown
+> # Web Applications (webapp)
+>
+> This directory contains the source code distribution complementing the lectures.
+>
+> Web Applications lectures are held at:
+>
+> * Master Degree in Computer Engineering
+> * Master Degree in ICT for Internet and Multimedia
+> * Master Degree in Cybersecurity
+>
+> of the Department of Information Engineering, University of Padua, Italy
+>
+> Copyright and license information can be found in the file LICENSE.
+> Additional information can be found in the file NOTICE.
+> ```
+
+All code examples are available in the Bitbucket repository `https://bitbucket.org/frrncl/webapp-unipd`, which can be cloned and pulled as it gets updated.
+
 ---
 
 ## Maven — Build and Dependency Management
 
-**Maven** (from Yiddish: *accumulator of knowledge*) is a tool for managing Java software projects. It covers:
+**Maven** (from Yiddish: *accumulator of knowledge*) started as an attempt to simplify build processes in the Jakarta Turbine project, a servlet-based framework for secure web applications. Maven is a tool for managing Java software projects and tracking the status of a project. Homepage: `http://maven.apache.org/`.
+
+It covers:
 - **build** — compilation, packaging
 - **dependency management** — automatic library management
 - **deployment and packaging**
 - **collaboration and documentation**
 
-Advantages: *consistency*, *reuse*, *simplicity*, *maintainability*.
+Advantages:
+- **Coherence / consistency**: standardizes Java project management, increases transparency, and reduces the time needed to understand projects in an organization
+- **Reuse**: similar projects can reuse and extend the setup of previous projects
+- **Simplicity**: simplifies creation/integration of new components and sharing of packages and executables; reduces the learning curve for each project
+- **Maintenance**: reduces effort and resources needed to maintain build scripts and development/deployment environments
 
 ### Main Concepts
 
@@ -178,6 +205,8 @@ Advantages: *consistency*, *reuse*, *simplicity*, *maintainability*.
 
 ### Build Lifecycle
 
+A build lifecycle is needed to create, compile, integrate, test, and distribute a software project.
+
 Three predefined lifecycles:
 
 | Lifecycle | Purpose |
@@ -188,6 +217,7 @@ Three predefined lifecycles:
 
 > [!Important] Sequential execution of phases
 > Invoking a phase **executes all previous phases** of that lifecycle.
+> If you invoke the last phase, **all phases** of that lifecycle are executed.
 > Example: `mvn package` executes validate → compile → test → package.
 
 ### Default Build Lifecycle — Phases
@@ -241,14 +271,15 @@ process-resources  →  compile  →  process-test-resources  →  test-compile
 >   - `artifactId`: project name
 >   - `version`: project version
 >   - `packaging`: output format (`jar` for desktop, `war` for web)
-> - **Relationships**: project structure, dependencies, inheritance
-> - **Build Settings**: customizes the lifecycle (plugins, source directories, resources)
+> - **Relationships**: project structure through coordinates/modules, dependencies on other projects/libraries, and inheritance
+> - **General project information**: project name, website, organization, developers, licenses, and contributors
+> - **Build Settings**: customizes the lifecycle (build, directories, extensions, resources, plugins, reporting)
 > - **Build Environment**: profiles for different environments/OSs
 
 ### Maven Repositories
 
 > [!Important] Maven Repository
-> Maven downloads dependencies and plugins from **remote repositories** (Maven Central, Sonatype, etc.) and keeps them in a **local cache** (`~/.m2/repository`).
+> Maven downloads dependencies and plugins from **remote repositories** (Maven Central, Sonatype, other repositories) and keeps them in a **local cache** (`~/.m2/repository`).
 > If a dependency is not in the cache, Maven automatically downloads it from the configured remote repository.
 ![[Pasted image 20260512114820.png|500]]
 ### settings.xml Configuration
@@ -256,6 +287,8 @@ process-resources  →  compile  →  process-test-resources  →  test-compile
 The `~/.m2/settings.xml` file contains Maven's global configuration:
 - where to store the local cache
 - configuration of local repositories and access credentials
+
+It must be saved in the `.m2` folder in the user's home directory; if it does not exist, it has to be created.
 
 > [!Example] Minimal settings.xml example
 > ```xml
@@ -335,6 +368,7 @@ project/
 >       <id>nf</id>
 >       <name>Nicola Ferro</name>
 >       <email>ferro@dei.unipd.it</email>
+>       <url>http://www.dei.unipd.it/~ferro/</url>
 >     </developer>
 >   </developers>
 >
@@ -345,6 +379,11 @@ project/
 >       <distribution>repo</distribution>
 >     </license>
 >   </licenses>
+>
+>   <organization>
+>     <name>Department of Information Engineering (DEI), University of Padua, Italy</name>
+>     <url>http://www.dei.unipd.it/en/</url>
+>   </organization>
 >
 >   <properties>
 >     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -386,10 +425,48 @@ project/
 > ```
 > **Key notes:**
 > - `${basedir}` — Maven variable for the project root
+> - `<sourceDirectory>` and `<directory>` define the source-code folder and the generated-class/output folder; they can be omitted when the default Maven directory structure is used (**convention over configuration**)
+> - `<finalName>` defines the name of the generated JAR/WAR package file
 > - `<show>protected</show>` — Javadoc includes `protected` and `public` methods/fields
 > - `<defaultGoal>compile</defaultGoal>` — goal executed by `mvn` with no arguments
 
+> [!Example] HelloWorld class
+> ```java
+> package it.unipd.dei.webapp;
+>
+> /**
+>  * Sample class to say "Hello, world".
+>  *
+>  * @author Nicola Ferro (ferro@dei.unipd.it)
+>  * @version 1.0
+>  * @since 1.0
+>  */
+> public class HelloWorld {
+>
+>   /**
+>    * Main method of the class.
+>    *
+>    * Just prints "Hello, world!".
+>    *
+>    * @param args input arguments from the command line, if any.
+>    */
+>   public static void main(String[] args) {
+>     System.out.printf("Hello, world!%n");
+>   }
+> }
+> ```
+
 ### POM with External Dependencies
+
+JFiglet repository: `https://github.com/dtmo/jfiglet`. The dependency coordinates can be found through Maven Central Search: `http://search.maven.org/`.
+
+> [!Example] HelloWorldFiglet class behavior
+> The application:
+> - prints the list of available Figlet fonts and exits if no argument is provided;
+> - stores the selected Figlet font name;
+> - parses the command line by switching on the first argument after `trim().toLowerCase()`;
+> - throws `IllegalArgumentException` for an invalid Figlet font;
+> - creates a `FigletRenderer`, renders `"Hello, world!"`, and prints the ASCII-art output.
 
 > [!Example] pom.xml — adding JFiglet dependency + jar-with-dependencies
 > **Context:** add the JFiglet library (ASCII art) as a dependency and create a standalone JAR (fat jar) that includes all dependencies.

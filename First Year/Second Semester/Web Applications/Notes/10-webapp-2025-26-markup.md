@@ -9,6 +9,7 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 - [[#Markup — Definition and Types|Markup — Definition and Types]]
   - [[#Types of Markup|Types of Markup]]
 - [[#SGML|SGML]]
+  - [[#SGML Example|SGML Example]]
 - [[#HTML|HTML]]
   - [[#HTML4 — Problems|HTML4 — Problems]]
   - [[#HTML5|HTML5]]
@@ -19,6 +20,7 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
   - [[#Textual Representation of Nodes|Textual Representation of Nodes]]
   - [[#Well-Formed and Valid XML|Well-Formed and Valid XML]]
   - [[#Parsing XML — DOM SAX StAX|Parsing XML — DOM, SAX, StAX]]
+  - [[#Java Binding of DOM|Java Binding of DOM]]
   - [[#Document Type Definition DTD|Document Type Definition (DTD)]]
   - [[#XML Namespaces|XML Namespaces]]
   - [[#XML Schema|XML Schema]]
@@ -72,6 +74,31 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 > - Derives from **GML** (Generalized Markup Language), developed by Goldfarb, Mosher, and Lorie at IBM in 1974
 > - ANSI standard: 1983
 > - ISO standard: 1986
+
+### SGML Example
+
+> [!Example] PostgreSQL documentation source in SGML
+> PostgreSQL documentation is an example of real SGML usage. The source file
+> `doc/src/sgml/query.sgml` uses descriptive tags to structure the manual:
+>
+> ```sgml
+> <chapter id="queries">
+>  <title>Queries</title>
+>
+>  <sect1 id="queries-overview">
+>   <title>Overview</title>
+>   <para>
+>    The process of retrieving or the command to retrieve data from a
+>    database is called a <firstterm>query</firstterm>.
+>   </para>
+>  </sect1>
+> </chapter>
+> ```
+>
+> Tags such as `<chapter>`, `<sect1>`, `<para>`, `<xref>`, `<literal>`,
+> `<filename>`, `<application>`, `<screen>`, `<prompt>`, `<userinput>`, and
+> `<computeroutput>` describe the role of document fragments rather than their
+> final visual rendering.
 
 ---
 
@@ -224,9 +251,20 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 >    <guid isPermaLink="false">1234363309</guid>
 >    <description>The Terrier open source IR system will support CIRCO.</description>
 >   </item>
+>   <item>
+>    <title>Registration to Grid@CLEF 2009 opens</title>
+>    <pubDate>Wed, 4 Feb 2009 00:00:00 GMT</pubDate>
+>    <link>http://www.clef-campaign.org/</link>
+>    <guid isPermaLink="false">1233705600</guid>
+>    <description>Registration for Grid@CLEF 2009 opens today.</description>
+>   </item>
 >  </channel>
 > </rss>
 > ```
+>
+> The same RSS feed can be rendered in a Web page, opened by a browser/feed
+> reader, or subscribed to in a mail client. XML remains the source data; the
+> client decides how to present it.
 
 ### XML Node Types
 
@@ -306,6 +344,29 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 | `Text` | Node of type text |
 | `Comment` | Node of type comment |
 | `ProcessingInstruction` | Node of type processing instruction |
+
+### Java Binding of DOM
+
+> [!Important] DOM in Java
+> Java exposes the DOM API through the `org.w3c.dom` package. It provides Java
+> bindings for DOM Core interfaces, including DOM Level 2 Core, DOM Level 3
+> Core, and DOM Level 3 Load and Save.
+
+| Java DOM Interface | Meaning |
+|--------------------|---------|
+| `Document` | Represents the entire HTML/XML document |
+| `Element` | Represents an element in an HTML/XML document |
+| `Node` | Primary datatype for the whole DOM tree |
+
+Important `Node` methods:
+
+- `getAttributes()` returns the node attributes as a `NamedNodeMap` if the node is an `Element`; otherwise it returns `null`
+- `getChildNodes()` returns the node children as a `NodeList`
+- `getFirstChild()` / `getLastChild()` return the first or last child node
+- `getNextSibling()` returns the next sibling node
+- `getNodeName()`, `getNodeType()`, and `getNodeValue()` expose the node identity and value
+- `getOwnerDocument()` returns the associated `Document`
+- `getParentNode()` returns the parent node
 
 ### Document Type Definition (DTD)
 
@@ -431,7 +492,9 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 > <?xml version="1.0" encoding="UTF-8"?>
 > <xs:schema xmlns:rss="http://www.rssboard.org"
 >            xmlns:xs="http://www.w3.org/2001/XMLSchema"
->            targetNamespace="http://www.rssboard.org">
+>            targetNamespace="http://www.rssboard.org"
+>            elementFormDefault="unqualified"
+>            attributeFormDefault="unqualified">
 >
 >   <xs:element name="rss">
 >     <xs:complexType>
@@ -469,6 +532,9 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 >   <xs:element name="pubDate" type="xs:string"/>
 > </xs:schema>
 > ```
+>
+> References: W3C (2012), *XML Schema Definition Language (XSD) 1.1 Part 1:
+> Structures* and *Part 2: Datatypes*.
 
 ---
 
@@ -513,6 +579,20 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 >         <width>500</width>
 >         <height>500</height>
 >     </window>
+>     <image src="Images/Sun.png">
+>         <name>sun1</name>
+>         <hOffset>250</hOffset>
+>         <vOffset>250</vOffset>
+>         <alignment>center</alignment>
+>     </image>
+>     <text data="Click Here">
+>         <size>36</size>
+>         <style>bold</style>
+>         <name>text1</name>
+>         <hOffset>250</hOffset>
+>         <vOffset>100</vOffset>
+>         <alignment>center</alignment>
+>     </text>
 > </widget>
 > ```
 > ```json
@@ -523,6 +603,22 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 >         "name": "main_window",
 >         "width": 500,
 >         "height": 500
+>     },
+>     "image": {
+>         "src": "Images/Sun.png",
+>         "name": "sun1",
+>         "hOffset": 250,
+>         "vOffset": 250,
+>         "alignment": "center"
+>     },
+>     "text": {
+>         "data": "Click Here",
+>         "size": 36,
+>         "style": "bold",
+>         "name": "text1",
+>         "hOffset": 250,
+>         "vOffset": 100,
+>         "alignment": "center"
 >     }
 > }}
 > ```
@@ -564,6 +660,11 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 > Main Java libraries:
 > - **Jackson Project**: `com.fasterxml.jackson.core`
 > - **Jakarta JSON Processing 2.1 (JSON-P)** under Jakarta EE 10
+>
+> The `com.fasterxml.jackson.core` package is the core public streaming API:
+> `JsonFactory` configures and creates reader/parser and writer/generator
+> instances, while `JsonParser` and `JsonGenerator` perform token-based reading
+> and writing.
 
 ![[markup-jackson-core-api.jpg]]
 
@@ -579,6 +680,11 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 | `JsonParser` | Pull streaming API for **reading** JSON content |
 | `JsonGenerator` | Streaming API for **writing** JSON content |
 | `JsonToken` | Enum of token types: `START_OBJECT`, `END_OBJECT`, `FIELD_NAME`, `VALUE_STRING`, `VALUE_NUMBER_INT`, … |
+
+| API | Representative methods |
+|-----|------------------------|
+| `JsonParser` | `nextToken()`, `nextFieldName()`, `getValueAsInt(int def)`, `getValueAsString()`, `hasCurrentToken()`, `isClosed()` |
+| `JsonGenerator` | `writeStartObject()`, `writeFieldName(...)`, `writeArray(...)`, `writeBinary(...)`, `writeEndArray()`, `writeEndObject()` |
 
 > [!Example] Jackson JsonParser pattern (used in REST Employee example)
 > ```java
@@ -606,7 +712,7 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 
 | Technology | Type | Parent Standard | Key Feature | Schema Mechanism |
 |------------|------|-----------------|-------------|-----------------|
-| **SGML** | Meta-markup language | GML (IBM, 1974) | Defines DTD concept; parent of HTML and XML | DTD |
+| **SGML** | Meta-markup language | GML (IBM, 1974) | Defines DTD concept; parent of HTML and XML; used for structured manuals such as PostgreSQL docs | DTD |
 | **HTML4** | Markup application of SGML | SGML | Web pages; mixes content and presentation | none (loose) |
 | **HTML5** | Evolved HTML | SGML/HTML4 | Separates content from presentation; semantic tags | none (loose) |
 | **CSS** | Style language | W3C recommendation | Presentation rules decoupled from HTML structure | — |
@@ -614,12 +720,12 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 | **DTD** | Document type language | SGML | Validates XML structure; non-XML syntax; no data types | — |
 | **XML Schema (XSD)** | Document type language | W3C recommendation | Validates XML; XML syntax; rich data types; namespace support | — |
 | **XML Namespace** | XML mechanism | W3C recommendation | Prevents element name clashes when mixing languages | — |
-| **DOM** | XML/HTML API | W3C recommendation | In-memory tree; bi-directional; high memory use | — |
+| **DOM** | XML/HTML API | W3C recommendation | In-memory tree; bi-directional; Java binding in `org.w3c.dom` | — |
 | **SAX** | XML parsing API | Open source | Push streaming; callbacks; low memory | — |
 | **StAX** | XML parsing API | JSR-173 | Pull streaming; low memory; writable | — |
 | **JSON** | Data interchange format | ECMA-404, RFC 8259 | Lightweight; objects + arrays; browser-native | JSON Schema |
 | **JSON Schema** | Validation format | RFC draft | Structural validation of JSON | — |
-| **Jackson** | Java JSON library | FasterXML | `JsonFactory` → `JsonParser`/`JsonGenerator` | — |
+| **Jackson** | Java JSON library | FasterXML | Streaming pull API: `JsonFactory` → `JsonParser`/`JsonGenerator` | — |
 
 ## Questions
 

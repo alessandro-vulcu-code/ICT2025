@@ -24,6 +24,7 @@
   - [[#SearchEmployeeBySalaryServlet|SearchEmployeeBySalaryServlet]]
 - [[#Sequence Diagrams|Sequence Diagrams]]
 - [[#SQL Injection|SQL Injection]]
+- [[#Class Diagram|Class Diagram]]
 - [[#Summary Table|Summary Table]]
 
 ---
@@ -48,7 +49,7 @@ The architecture is split into three logical layers:
 2. **Data Logic Layer** — DAO classes encapsulate all SQL; no SQL outside DAO classes
 3. **Data Layer** — PostgreSQL DBMS
 
-![[PLACEHOLDER_Fig_1 — overall architecture layer diagram]]
+The class diagram later in this note shows how servlet classes, DAO classes, resource classes, and database-facing components implement these layers.
 
 The application demonstrates two features:
 - **Create Employee**: POST form → servlet → DAO → INSERT into DB
@@ -143,6 +144,16 @@ Sample data:
 | 4076  | Mori    | 45  | 50     |
 | 8123  | Lupi    | 46  | 60     |
 
+Sample management relationships:
+
+| Manager | Employee |
+|---------|----------|
+| 7309 | 5698 |
+| 5998 | 5698 |
+| 9553 | 4076 |
+| 5698 | 4076 |
+| 4076 | 8123 |
+
 ---
 
 ## The Data Access Object (DAO) Pattern
@@ -154,6 +165,8 @@ Sample data:
 > - All DAOs implement a **common interface** → uniform usage; enables automation via reflection
 >
 > **Intuition:** Servlets never write SQL. They instantiate a DAO, call `access()`, and get results via `getOutputParam()`.
+
+Reference: `https://www.oracle.com/java/technologies/dataaccessobject.html`.
 
 ### DataAccessObject Interface
 
@@ -305,6 +318,10 @@ public final class SearchEmployeeBySalaryDAO extends AbstractDAO<List<Employee>>
 >
 > **Intuition:** Pool = shared parking lot of DB connections. Servlet borrows one, uses it, returns it.
 
+References:
+- `https://tomcat.apache.org/tomcat-10.1-doc/jdbc-pool.html`
+- `https://tomcat.apache.org/tomcat-10.1-doc/jndi-resources-howto.html`
+
 ### context.xml Configuration
 
 `context.xml` is placed in `src/main/webapp/META-INF/` and is copied to the WAR's `META-INF/` folder by Maven.
@@ -421,6 +438,12 @@ Maven also copies `context.xml` to the WAR's `META-INF/`:
 
 ```xml
 <resource>
+  <targetPath>${basedir}/target/${project.artifactId}-${project.version}/html</targetPath>
+  <directory>${basedir}/src/main/webapp/html</directory>
+  <includes><include>**/*.*</include></includes>
+</resource>
+
+<resource>
   <targetPath>${basedir}/target/${project.artifactId}-${project.version}/META-INF</targetPath>
   <directory>${basedir}/src/main/webapp/META-INF</directory>
   <includes><include>**/*.*</include></includes>
@@ -477,6 +500,7 @@ public abstract class AbstractDatabaseServlet extends HttpServlet {
 
 **Key points:**
 - `init()` runs **once** at servlet startup — looks up the `DataSource` from JNDI
+- `InitialContext` is the JNDI directory used for lookup; it is not the same thing as `ServletContext`
 - `destroy()` runs **once** at shutdown — releases the `DataSource` reference
 - `getConnection()` called per-request — returns a pooled connection
 - The JNDI name prefix `java:/comp/env/` is **mandatory** at lookup time; it matches `jdbc/employee-ferro` declared in `web.xml`
@@ -642,12 +666,14 @@ public final class SearchEmployeeBySalaryServlet extends AbstractDatabaseServlet
   <input name="age"     type="text"/>
   <input name="salary"  type="text"/>
   <button type="submit">Submit</button>
+  <button type="reset">Reset the form</button>
 </form>
 
 <!-- Search Employee by Salary -->
 <form method="POST" action="../search-employee-by-salary">
   <input name="salary" type="text"/>
   <button type="submit">Submit</button>
+  <button type="reset">Reset the form</button>
 </form>
 ```
 
@@ -674,7 +700,7 @@ public final class SearchEmployeeBySalaryServlet extends AbstractDatabaseServlet
 
 ![[db-search-employee-sequence.jpg]]
 
-1. Browser: `POST /search-employee`
+1. Browser: `POST /search-employee-by-salary`
 2. Container instantiates `SearchEmployeeBySalaryServlet` (1.1–1.3)
 3. `doPost()` → parse salary param (1.4.1–1.4.2)
 4. `getConnection()` (1.4.2)

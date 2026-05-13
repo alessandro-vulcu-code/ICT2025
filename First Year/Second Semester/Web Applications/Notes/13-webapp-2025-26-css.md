@@ -5,10 +5,12 @@
 - [[#Introduction|Introduction]]
   - [[#History|History]]
   - [[#How CSS Works|How CSS Works]]
+  - [[#Benefits and CSS Recipe|Benefits and CSS Recipe]]
 - [[#Attaching CSS to HTML|Attaching CSS to HTML]]
   - [[#External Style Sheets|External Style Sheets]]
   - [[#Embedded Style Sheets|Embedded Style Sheets]]
   - [[#Inline Styles|Inline Styles]]
+  - [[#Multiple Style Sheets|Multiple Style Sheets]]
 - [[#CSS Rules|CSS Rules]]
   - [[#Anatomy of a Rule|Anatomy of a Rule]]
   - [[#Selectors|Selectors]]
@@ -40,6 +42,7 @@
   - [[#Viewport|Viewport]]
   - [[#Media Queries|Media Queries]]
   - [[#Breakpoints|Breakpoints]]
+  - [[#Take Away and Further Reading|Take Away and Further Reading]]
 - [[#Summary Table|Summary Table]]
 
 ---
@@ -63,6 +66,23 @@ Browser builds a **DOM tree** from HTML, then applies CSS rules to each node. Re
 
 ![[css-html-tree.jpg]]
 
+### Benefits and CSS Recipe
+
+CSS gives:
+
+- **Precise type and layout controls** — CSS can achieve print-like precision
+- **Less work** — changing one stylesheet can change the appearance of an entire site
+- **Reliable browser support** — every browser in current use supports CSS
+
+Example from the slides: `http://www.csszengarden.com/`, where the same HTML can be presented through different CSS designs.
+
+> [!Important] CSS Recipe
+> 1. Start with a document marked up in HTML.
+> 2. Write style rules for how selected elements should look.
+> 3. Attach the style rules to the document.
+>
+> When the browser displays the document, it follows those rules for rendering elements.
+
 ---
 
 ## Attaching CSS to HTML
@@ -76,6 +96,14 @@ Separate `.css` file linked from `<head>`:
 ```html
 <link rel="stylesheet" type="text/css" href="styles.css" />
 ```
+
+`<link>` is an empty element inside `<head>` and uses:
+
+| Attribute | Meaning |
+|-----------|---------|
+| `href` | Path to the CSS file, often in a `css/` or `styles/` folder |
+| `type` | Type of linked document; for CSS, `text/css` |
+| `rel` | Relationship with the HTML page; for CSS, `stylesheet` |
 
 Or imported inside another stylesheet:
 
@@ -107,6 +135,27 @@ Applies to the single HTML document only.
 ```
 
 Highest specificity; hardest to maintain; avoid except for dynamic overrides.
+
+### Multiple Style Sheets
+
+Large sites often split CSS by concern: typography, layout, forms, tables, or site subsections.
+
+Two ways to attach multiple stylesheets:
+
+1. Link one main stylesheet from HTML and use `@import` inside it:
+
+```css
+@import url("tables.css");
+@import url("typography.css");
+```
+
+2. Add multiple `<link>` elements in the HTML:
+
+```html
+<link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="stylesheet" type="text/css" href="css/tables.css" />
+<link rel="stylesheet" type="text/css" href="css/typography.css" />
+```
 
 ---
 
@@ -150,6 +199,16 @@ h1 {
 | **Descendant** | `p a {}` | Any descendant, not just direct children |
 | **Adjacent Sibling** | `h1+p {}` | First sibling immediately after `h1` |
 | **General Sibling** | `h1~p {}` | All `p` siblings after `h1` |
+
+CSS selectors are **case-sensitive**.
+
+Group selectors avoid repeating the same declaration block:
+
+```css
+h1, h2, p, em, img {
+    border: 1px solid blue;
+}
+```
 
 ### Pseudo-Class Selectors
 
@@ -238,6 +297,30 @@ Force inheritance with `inherit` keyword:
 
 `opacity` affects the **entire element** including children; `rgba`/`hsla` affect only the specific property.
 
+- `color` sets the **foreground text color**.
+- `background-color` sets the color of the element box background.
+- If no background color is specified, the background is transparent; browser windows are white by default in most browsers.
+
+RGB is an **additive** color model: red, green, and blue light are combined to represent colors on electronic displays. Each CSS `rgb(red, green, blue)` channel ranges from `0` to `255`.
+
+HSL represents color through:
+
+| Component | Meaning |
+|-----------|---------|
+| Hue | The color, represented as an angle on a color circle |
+| Saturation | Amount of gray in the color; `100%` means no gray, `0%` tends toward gray |
+| Lightness | Amount of white or black; `100%` is white, `0%` is black, `50%` is normal |
+
+> [!Important] Contrast
+> Foreground and background colors need enough contrast for text to be legible. Very low contrast makes text hard to read; for long passages, extremely high contrast can also be tiring, so slightly reduced contrast can improve readability.
+
+Useful color links from the slides:
+
+- `http://hslpicker.com/`
+- `http://colorbrewer2.org/`
+- `https://coolors.co/`
+- `https://www.w3schools.com/colors/colors_theory.asp`
+
 ---
 
 ## Text and Typefaces
@@ -245,10 +328,11 @@ Force inheritance with `inherit` keyword:
 ### Font Families
 
 Generic families (browser fallbacks):
-- `serif` — e.g., Georgia, Times New Roman
-- `sans-serif` — e.g., Arial, Verdana
-- `monospace` — e.g., Courier New
-- `cursive`, `fantasy`
+- `serif` — letters have extra details at stroke ends; traditionally used for long passages in print
+- `sans-serif` — cleaner straight stroke ends; often clearer on low-resolution screens, especially at small sizes
+- `monospace` — every letter has the same width; commonly used for code because columns align
+- `cursive` — handwriting-like joining strokes or cursive characteristics
+- `fantasy` — decorative fonts, usually for titles rather than long body text
 
 **Font stack** — ordered list with generic fallback:
 
@@ -301,8 +385,12 @@ left-margin + left-border + left-padding + width
 
 > [!Important] Box Model Width Formula
 > `width` property = content width only (not including padding/border/margin).
-> To include padding/border: `box-sizing: border-box;` makes `width` = content + padding + border.
-> **Intuition:** by default, adding padding makes the box *bigger* than `width`. `border-box` is often preferred for predictable layouts.
+> In the slide example, `width: 500px`, `padding: 20px`, `border: 2px`, and `margin: 20px` produce:
+>
+> `20px + 2px + 20px + 500px + 20px + 2px + 20px = 584px`
+>
+> The total visible box without margins is `544px`.
+> **Intuition:** adding padding, border, or margin makes the total occupied area larger than the declared content `width`.
 
 ### Box Dimensions
 
@@ -342,7 +430,7 @@ padding: 10px 20px;
 padding: 10px;
 ```
 
-Padding **not inherited**. Adds to total box size (unless `box-sizing: border-box`).
+Padding **not inherited**. Adds to the total space occupied by the element.
 
 ### Borders
 
@@ -386,7 +474,8 @@ margin: 20px auto;   /* top-bottom: 20px; left-right: auto → center block elem
 |-----------------|----------|
 | `block` | Starts on new line; takes full available width; can set width/height |
 | `inline` | Does not start new line; only as wide as content; width/height ignored |
-| `inline-block` | Inline flow but respects width/height |
+| `list-item` | Displays an element as a list item |
+| table display values | Display an element as a table, row, or cell |
 | `none` | **Removes element from layout entirely** — no space reserved |
 
 `visibility: hidden` — element invisible but **space preserved** in layout.
@@ -394,6 +483,14 @@ margin: 20px auto;   /* top-bottom: 20px; left-right: auto → center block elem
 > [!Important] display:none vs visibility:hidden
 > `display: none` collapses the space; `visibility: hidden` hides but keeps space.
 > **Intuition:** `display:none` is like deleting from layout; `visibility:hidden` is like painting it white.
+
+The W3C discourages random reassignment of display roles. A common controlled use is making list items inline for a horizontal navigation menu:
+
+```css
+li {
+    display: inline;
+}
+```
 
 ---
 
@@ -465,6 +562,13 @@ img { float: right; }
 ```
 
 Floated element moves to left or right of container; **surrounding content wraps around it**. Must specify `width` on block elements.
+
+Key behaviors from the slides:
+
+- A floated element is outside normal flow, but following content flows around it
+- A float stays inside the **content area** of its containing element; it does not extend into the padding area
+- Margins are maintained on all sides, so the whole element box floats from outer edge to outer edge
+- A floated block does not float higher than its reference point in the source; it stays below preceding block elements
 
 `clear` property stops wrap-around:
 
@@ -583,6 +687,14 @@ Web design evolution:
 
 **Progressive enhancement**: design for lowest capability first, then enhance. Mobile-first design: start with mobile CSS, add complexity for larger screens.
 
+Why responsive design:
+
+- Users get the right layout on each device instead of seeing a mobile site on desktop or a desktop site on mobile
+- Less work: one website, one design, one codebase, one content set
+- Better for search: separate mobile URLs can create search placement issues
+
+Media queries rearrange layout, but responsive design also needs flexible horizontal measurements: use `em` or `%` rather than fixed pixels where the layout must adapt.
+
 ### Viewport
 
 Without viewport meta tag, mobile browsers render at desktop width (~980px) then scale down.
@@ -679,9 +791,26 @@ Apply different CSS based on device/viewport characteristics.
 
 **Breakpoint** = viewport width at which layout changes via media query.
 
+**Design range** = range of screen sizes that share one variation of the design.
+
 Design principle: breakpoints should be determined by **content**, not device sizes. Layout should look good at *any* width — a breakpoint is needed when the design starts to break, not when a specific device appears.
 
 **Mobile-first** is easier: start with simple single-column layout, progressively add columns/features at wider breakpoints.
+
+### Take Away and Further Reading
+
+> [!Important] Take Away
+> - Keep structure and presentation separate.
+> - CSS gives powerful control over presentation.
+> - Cascading and inheritance rules determine which styles actually apply.
+
+Further readings from the slides:
+
+- Hart-Davis, G. (2023). *Teach Yourself VISUALLY HTML and CSS*, 2nd edition. John Wiley & Sons.
+- Duckett, J. (2011). *HTML and CSS: Design and Build Websites*. John Wiley & Sons.
+- Frain, B. (2012). *Responsive Web Design with HTML5 and CSS3*. Packt Publishing Ltd.
+- Peterson, C. (2014). *Learning Responsive Web Design: a Beginner's Guide*. O'Reilly Media.
+- Robbins, J. N. (2012). *Learning Web Design: A Beginner's Guide to HTML, CSS, JavaScript, and Web Graphics*. O'Reilly Media.
 
 ---
 
@@ -698,8 +827,8 @@ Design principle: breakpoints should be determined by **content**, not device si
 | **Sibling** | `h1+p {}` / `h1~p {}` | Adjacent / general |
 | **Cascade** | specificity > last-rule > `!important` | User `!important` beats author |
 | **Inheritance** | text props yes; box props no | Force with `inherit` |
-| **Colors** | `rgb()`, `#hex`, `hsl()`, `rgba()`, `hsla()` | RGBA/HSLA for transparency |
-| **Box model** | content + padding + border + margin | `box-sizing: border-box` simplifies |
+| **Colors** | `rgb()`, `#hex`, `hsl()`, `rgba()`, `hsla()` | Contrast matters; RGBA/HSLA add transparency |
+| **Box model** | content + padding + border + margin | Declared `width`/`height` apply to content box |
 | **Overflow** | `visible/hidden/scroll/auto` | `hidden` clips; `auto` adds scrollbar when needed |
 | **display: none** | removes from flow | vs `visibility: hidden` keeps space |
 | **position: relative** | offset from normal pos | space preserved |
@@ -709,7 +838,7 @@ Design principle: breakpoints should be determined by **content**, not device si
 | **Flexbox** | `display: flex` | 1D layout; row or column |
 | **Grid** | `display: grid` | 2D layout; `fr` unit |
 | **Viewport meta** | `width=device-width, initial-scale=1` | Required for mobile |
-| **Media query** | `@media only screen and (min-width: 40em)` | Mobile-first: min-width queries |
+| **Media query** | `@media only screen and (min-width: 40em)` | Works with flexible units and design ranges |
 
 ## Questions
 
@@ -723,10 +852,10 @@ Design principle: breakpoints should be determined by **content**, not device si
 8. Which CSS properties are inherited by default, which are not, and why does this distinction matter?
 9. How do `rgb`, `hex`, `hsl`, `rgba`, `hsla`, and `opacity` differ, especially for transparency?
 10. In the box model diagram, how do content, padding, border, and margin combine to determine the total space an element occupies?
-11. Why does `box-sizing: border-box` make layout calculations more predictable?
+11. Why does the declared `width` not equal the total occupied width of an element in the standard CSS box model?
 12. How do `display: none` and `visibility: hidden` differ in their effect on layout?
 13. How do static, relative, absolute, and fixed positioning change an element's relationship to normal flow and its containing block?
-14. What problems can floats cause, and how does `clear` or an overflow-based clearfix address them?
+14. What problems can floats cause, and how do `clear` or the `overflow: auto; width: 100%;` parent fix address them?
 15. When would you choose Flexbox, Grid, or a combination of both for page layout?
 16. Why does responsive design require the viewport meta tag, media queries, and content-driven breakpoints?
 17. How does a mobile-first approach change the structure of CSS compared with starting from a desktop layout?

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verifica Correttezza"
+  short_description: "Verifica trascrizione e riassunto Big Data"
+  default_prompt: "Use $verifica-correttezza for /verifica_correttezza with a transcription Markdown file and a summary Markdown file to verify and update the summary."

@@ -23,12 +23,14 @@
   - [[#Class Attribute|Class Attribute]]
   - [[#div and span|div and span]]
 - [[#HTML5 New Elements|HTML5 New Elements]]
+  - [[#New HTML5 Element List|New HTML5 Element List]]
   - [[#Semantic Layout Elements|Semantic Layout Elements]]
   - [[#HTML4 vs HTML5 Layout|HTML4 vs HTML5 Layout]]
   - [[#HTML5 APIs|HTML5 APIs]]
   - [[#Video|Video]]
   - [[#Audio|Audio]]
   - [[#Canvas|Canvas]]
+- [[#Take Away and Resources|Take Away and Resources]]
 - [[#Summary Table|Summary Table]]
 
 ---
@@ -286,6 +288,8 @@ Place a second `<ul>` or `<ol>` inside an `<li>`. Browser indents and changes bu
 <a href="http://www.imdb.com" target="_blank">IMDB</a>
 ```
 
+`target="_blank"` is typically used for links to another website so the user can return to the source page more easily. It should be used carefully: new windows/tabs may confuse some users or be perceived as an annoyance.
+
 #### Fragment Links (Intra-page)
 
 Two-part process:
@@ -427,6 +431,16 @@ Link to fragment in another page: `href="http://example.com/page.html#section-id
 <input type="image" src="button.jpg" />
 ```
 
+Radio buttons and checkboxes use the same basic attributes:
+
+| Attribute | Meaning |
+|-----------|---------|
+| `name` | Groups related controls and provides the variable name sent to the server |
+| `value` | Value sent to the server when that option is selected |
+| `checked="checked"` | Option selected when the page loads |
+
+For radio buttons, all options answering the same question share the same `name` and the user selects only one option. For checkboxes, the same `name` can identify a group where the user may select more than one option. In both cases, each option should have a distinct `value`.
+
 #### Multi-line Text Area
 
 ```html
@@ -446,6 +460,8 @@ Not an empty element. Default text between tags pre-fills the box.
   <option value="computer">Computer</option>
 </select>
 ```
+
+`<select>` contains two or more `<option>` elements. The text between `<option>` tags is shown to the user; the `value` attribute is what gets sent to the server together with the select control's `name`. The `selected` attribute marks the option selected when the page loads; otherwise the first option is shown.
 
 #### HTML5 Input Types
 
@@ -481,7 +497,7 @@ Provides suggested values (dropdown) while still allowing free-text input. `list
 | `id` | All HTML elements | Unique identifier; used by CSS and JavaScript |
 | `name` | Form controls | Variable name for name/value pair sent to server |
 
-All form controls (except submit) must have `name` — the server-side handler uses `name` to identify submitted values.
+All form controls (except submit) must have `name` — the server-side handler uses `name` to identify submitted values. `id` values must be unique in the page; `name` values do **not** have to be unique because groups such as radio buttons and checkboxes intentionally share the same variable name.
 
 ---
 
@@ -528,6 +544,18 @@ Neither carries semantic meaning — use with `id`/`class` for CSS/JS targeting.
 ---
 
 ## HTML5 New Elements
+
+### New HTML5 Element List
+
+The slides list the following HTML5 elements:
+
+| Category | Elements |
+|----------|----------|
+| Page structure | `<article>`, `<aside>`, `<footer>`, `<header>`, `<hgroup>`, `<nav>`, `<section>` |
+| Media and graphics | `<audio>`, `<canvas>`, `<embed>`, `<source>`, `<track>`, `<video>` |
+| Text and annotations | `<bdi>`, `<mark>`, `<rp>`, `<rt>`, `<ruby>`, `<time>`, `<wbr>` |
+| Interactive/data widgets | `<command>`, `<datalist>`, `<details>`, `<keygen>`, `<meter>`, `<output>`, `<progress>`, `<summary>` |
+| Figures | `<figure>`, `<figcaption>` |
 
 ### Semantic Layout Elements
 
@@ -676,6 +704,19 @@ ctx.fillRect(0, 0, 150, 75);
 
 ---
 
+## Take Away and Resources
+
+> [!Important] Take Away
+> Keep **structure** (`HTML`) separated from **presentation** (`CSS`) and **behaviour** (`JavaScript`). Use HTML elements properly: choose each element according to its semantic meaning, not because of its default visual appearance.
+
+Online resources from the slides:
+
+- HTML5 documentation: `https://html.spec.whatwg.org/multipage/`
+- W3C Tutorial: `https://www.w3schools.com/`
+- Mozilla Developer Network (MDN): `https://developer.mozilla.org/it/docs/Web/HTML`
+
+---
+
 ## Summary Table
 
 | Element/Concept | Type | Key Points |
@@ -692,10 +733,11 @@ ctx.fillRect(0, 0, 150, 75);
 | `<figure>` + `<figcaption>` | Block | HTML5 image+caption association |
 | `<table>` / `<tr>` / `<td>` / `<th>` | Block | `scope` for accessibility; `colspan`/`rowspan` for spanning |
 | `<form>` | Block | `action` required; `method` get/post |
-| `<input>` | Inline, Empty | Many types: text, password, radio, checkbox, file, submit, date, email, url, color |
+| `<input>` | Inline, Empty | Many types: text, password, radio, checkbox, file, submit, date, email, url, color; grouped choices use shared `name` and distinct `value` |
 | `<textarea>` | Block | Multi-line text; NOT empty element |
-| `<select>` + `<option>` | Inline | Drop-down list |
+| `<select>` + `<option>` | Inline | Drop-down list; option `value` is sent to server; `selected` sets initial choice |
 | `<datalist>` | — | HTML5 suggested-values list for text input |
+| `id` / `name` | Attributes | `id` unique in page; `name` identifies form name/value pairs and may be shared by control groups |
 | `<div>` / `<span>` | Block / Inline | Generic containers; no semantic meaning |
 | `<header>` / `<footer>` | Block, Semantic | HTML5 page/section header+footer |
 | `<nav>` | Block, Semantic | Major navigation block |
@@ -703,6 +745,7 @@ ctx.fillRect(0, 0, 150, 75);
 | `<aside>` | Block, Semantic | Related but non-essential content / sidebar |
 | `<video>` / `<audio>` | Block | HTML5 native media; use multiple `<source>` for compatibility |
 | `<canvas>` | Block | 2D drawing via JavaScript Canvas API |
+| HTML + CSS + JavaScript | Separation of concerns | HTML = structure, CSS = presentation, JavaScript = behaviour |
 
 ## Questions
 

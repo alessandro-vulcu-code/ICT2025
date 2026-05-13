@@ -30,6 +30,7 @@
   - [[#Servlet Controllers with JSP Forward|Servlet Controllers with JSP Forward]]
   - [[#JSP View Pages|JSP View Pages]]
   - [[#Sequence Diagrams|Sequence Diagrams]]
+  - [[#Class Diagram|Class Diagram]]
   - [[#Maven POM for JSTL|Maven POM for JSTL]]
 - [[#Summary Table|Summary Table]]
 
@@ -49,6 +50,8 @@ Creating HTML (CSS, JS) directly from servlets is **cumbersome**:
 1. **Template Data**: most of a page is static HTML — JSP handles this naturally
 2. **Addition of Dynamic Data**: simple mechanisms to embed runtime values
 3. **Encapsulation of Functionality**: via *JavaBeans* and *tag libraries* (JSTL)
+
+Official reference: Jakarta Server Pages 3.0 specification, `https://jakarta.ee/specifications/pages/3.0/jakarta-server-pages-spec-3.0.html`.
 
 ### JSP Execution Model
 
@@ -96,6 +99,8 @@ Flow: `hello.jsp` → (translation) → `hello_jsp.java` → (compilation) → `
 >
 > **Intuition:** `${employee.badge}` in EL calls `employee.getBadge()` — EL knows this from the `get` + capitalization convention.
 
+Reference specification: JavaBeans 1.01-A, `http://www.oracle.com/technetwork/java/javase/documentation/spec-136004.html`.
+
 ---
 
 ## Standard Actions
@@ -116,6 +121,8 @@ Flow: `hello.jsp` → (translation) → `hello_jsp.java` → (compilation) → `
 ## JSP Standard Tag Library (JSTL)
 
 **JSTL** is a standardized collection of custom tag libraries covering common needs.
+
+Official references: Jakarta Standard Tag Library 3.0.0, `https://projects.eclipse.org/projects/ee4j.jstl/releases/3.0.0`, and the JSTL API repository, `https://github.com/eclipse-ee4j/jstl-api`.
 
 | Area | Prefix | URI | Purpose |
 |------|--------|-----|---------|
@@ -168,6 +175,8 @@ Flow: `hello.jsp` → (translation) → `hello_jsp.java` → (compilation) → `
 
 ## Expression Language (EL)
 
+Official references: Jakarta Expression Language 4.0 specification, `https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html`, and the EL implementation repository, `https://github.com/jakartaee/expression-language`.
+
 ### EL Operators
 
 | Operator | Description |
@@ -201,6 +210,19 @@ Flow: `hello.jsp` → (translation) → `hello_jsp.java` → (compilation) → `
 ---
 
 ## JSP Examples
+
+> [!Example] `web.xml` Welcome Page
+> The basic JSP webapp maps the application welcome page to `jsp/index.jsp`:
+>
+> ```xml
+> <web-app id="hello-world-jsp-form" version="2.5" ...>
+>   <display-name>Basic Web Application with JavaServer Pages</display-name>
+>   <description>Example of use of minimal JSP to create a Web application.</description>
+>   <welcome-file-list>
+>     <welcome-file>jsp/index.jsp</welcome-file>
+>   </welcome-file-list>
+> </web-app>
+> ```
 
 ### Minimal JSP Page
 
@@ -512,12 +534,14 @@ They are **"almost JavaBeans"** — EL can call `getXXX()` methods via `${employ
 >   <input name="age"     type="text"/>
 >   <input name="salary"  type="text"/>
 >   <button type="submit">Submit</button>
+>   <button type="reset">Reset the form</button>
 > </form>
 >
 > <!-- Search Employee Form -->
 > <form method="POST" action="<c:url value="/search-employee-by-salary"/>">
 >   <input name="salary" type="text"/>
 >   <button type="submit">Submit</button>
+>   <button type="reset">Reset the form</button>
 > </form>
 > ```
 >
@@ -619,7 +643,7 @@ They are **"almost JavaBeans"** — EL can call `getXXX()` methods via `${employ
 ![[jsp-search-employee-sequence.jpg]]
 
 **Search Employee (MVC) steps:**
-1. Browser: `POST /search-employee`
+1. Browser: `POST /search-employee-by-salary`
 2. `doPost()` → parse salary → `SearchEmployeeBySalaryDAO.access().getOutputParam()` → SELECT → `List<Employee>`
 3. Create `Message`
 4. `req.setAttribute("employeeList", el)` + `req.setAttribute("message", m)` (1.4.9)
@@ -636,6 +660,8 @@ Same class structure as the servlet-only version (slide 06) — the key addition
 
 > [!Important] JSTL Scope Must NOT Be `provided`
 > Unlike the servlet API and Tomcat JDBC pool, **JSTL taglibs are not bundled with Tomcat**. They must be packaged into the WAR:
+>
+> The project is packaged as a WAR and uses the Maven WAR plugin; JSP/JSTL libraries must be available in the packaged webapp unless the container explicitly provides them.
 >
 > ```xml
 > <dependencies>
