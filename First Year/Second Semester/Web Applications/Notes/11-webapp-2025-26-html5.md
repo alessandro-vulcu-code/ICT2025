@@ -703,3 +703,21 @@ ctx.fillRect(0, 0, 150, 75);
 | `<aside>` | Block, Semantic | Related but non-essential content / sidebar |
 | `<video>` / `<audio>` | Block | HTML5 native media; use multiple `<source>` for compatibility |
 | `<canvas>` | Block | 2D drawing via JavaScript Canvas API |
+
+## Questions
+
+1. Why does an HTML document start with a `DOCTYPE`, and what makes the HTML5 declaration simpler than older declarations?
+2. What responsibilities belong to `<html>`, `<head>`, `<meta>`, `<title>`, and `<body>` in the base document structure?
+3. Why is `<meta charset="utf-8">` important, and how do other meta elements support browsers, search engines, and responsive design?
+4. How do structural markup and semantic markup differ, and why should tags be chosen for meaning rather than appearance?
+5. How do block and inline elements behave differently in normal document flow?
+6. Why are `<strong>` and `<em>` preferred over purely presentational tags such as `<b>` and `<i>`?
+7. How do ordered, unordered, description, and nested lists express different kinds of information?
+8. How do absolute URLs, relative URLs, `mailto:`, `tel:`, and fragment links serve different linking needs?
+9. Why are `src` and `alt` essential on images, and how do `<figure>` and `<figcaption>` improve image semantics?
+10. How do table elements such as `<tr>`, `<td>`, `<th>`, `<thead>`, `<tbody>`, `scope`, `colspan`, and `rowspan` improve structure and accessibility?
+11. How do the `action`, `method`, `name`, and `id` attributes determine how a form is submitted and processed?
+12. How do HTML5 input types and `<datalist>` improve forms compared with plain text fields?
+13. When should a developer use semantic HTML5 layout elements instead of generic `<div>` and `<span>` containers?
+14. What does the HTML4 versus HTML5 layout diagram show about readability, accessibility, and machine interpretation of page structure?
+15. How do native `<video>`, `<audio>`, and `<canvas>` reduce the need for plug-ins while still requiring attention to browser support and fallback content?

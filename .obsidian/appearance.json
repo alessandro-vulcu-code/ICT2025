@@ -1,7 +1,7 @@
 {
   "baseFontSizeAction": true,
   "baseFontSize": 19,
-  "cssTheme": "",
+  "cssTheme": "Cupertino",
   "textFontFamily": "Fira Sans",
   "monospaceFontFamily": "Source Code Pro",
   "enabledCssSnippets": [

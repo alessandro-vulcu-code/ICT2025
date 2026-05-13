@@ -667,3 +667,21 @@ web.xml for multiple servlets with distinct URL patterns:
 | **Log4J 2** | Logging framework: Loggers → Appenders → Layouts | `TRACE < DEBUG < INFO < WARN < ERROR < FATAL` |
 | **ThreadContext (MDC)** | Per-thread key-value store for log context | Set before processing, remove in `finally` |
 | **`Filter`** | Intercepts requests/responses before/after servlet | Used for auth, compression, logging |
+
+## Questions
+
+1. How do the browser and web server components cooperate to transform an HTTP request into a rendered response?
+2. What distinguishes server-side web technologies such as servlets and JSP from client-side technologies such as JavaScript?
+3. What is the role of Jakarta EE, and why is Tomcat considered an implementation of the web container part of that platform?
+4. Why does the package transition from `javax.*` to `jakarta.*` matter when choosing a Tomcat version and servlet API dependency?
+5. What makes a servlet a dynamic web component, and why is it not safe to store request-specific state in servlet instance variables?
+6. How do `Servlet`, `GenericServlet`, `HttpServlet`, `HttpServletRequest`, and `HttpServletResponse` relate in the servlet class model?
+7. What happens during the servlet lifecycle from first request through `init()`, repeated `service()` calls, and `destroy()`?
+8. How does the first request sequence differ from subsequent requests in the servlet sequence diagram?
+9. Why is `WEB-INF/` not directly accessible from the browser, and what kinds of files belong there?
+10. How does `web.xml` connect servlet classes to URL patterns, and why can one servlet have multiple mappings?
+11. Why must a servlet web application use WAR packaging, and how does Maven help produce the deployable archive?
+12. Why is the servlet API dependency marked as `provided`, while libraries such as Log4J or Figlet must be bundled in the WAR?
+13. What are the essential response-generation steps in the HelloWorld servlet, from setting the MIME type to closing the writer?
+14. How does Log4J ThreadContext improve request logging, and why must the context be cleared in a `finally` block?
+15. How do GET and POST forms differ in where parameters are sent, and why can `req.getParameter()` retrieve values for both?

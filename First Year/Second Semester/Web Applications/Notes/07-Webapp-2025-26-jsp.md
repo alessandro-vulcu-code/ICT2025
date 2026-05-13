@@ -681,3 +681,21 @@ Same class structure as the servlet-only version (slide 06) — the key addition
 | **MVC — View** | JSP pages | Presentation only; no business logic |
 | **MVC — Controller** | Servlets | Parse request, call model, forward to view |
 | **JSTL scope** | Maven: no `provided` | Must be bundled in WAR; Tomcat does not include it |
+
+## Questions
+
+1. Why does writing HTML directly with `PrintWriter` inside servlets become difficult to maintain as pages grow?
+2. How does the JSP execution model translate a `.jsp` file into a servlet class, and why is the first invocation different from later ones?
+3. What roles do template text, directives, standard actions, JSTL tags, scriptlets, expressions, declarations, and EL play inside a JSP page?
+4. Why are scriptlets discouraged, and how do EL and JSTL provide a cleaner alternative?
+5. How does the JavaBeans naming convention allow EL expressions such as `${employee.badge}` to access Java object properties?
+6. Why is `<c:out>` safer than writing a bare `${...}` expression when displaying user-controlled data?
+7. How do JSTL core tags such as `<c:if>`, `<c:choose>`, `<c:forEach>`, `<c:url>`, and `<c:import>` support view logic without raw Java code?
+8. How do EL implicit variables such as `param`, `requestScope`, `sessionScope`, and `cookie` help JSP pages access web application data?
+9. Why should a JSP validate parameters even when the corresponding HTML form uses `required` attributes?
+10. How does `<c:url>` solve context-path and URL-rewriting problems in JSP links, images, and form actions?
+11. How does MVC separate responsibilities among servlets, JSP pages, resource classes, and DAOs in the employee application?
+12. What changes when a servlet forwards to a JSP with `RequestDispatcher.forward()` instead of writing the whole HTML response itself?
+13. How do request attributes carry `Employee`, `Message`, or `employeeList` objects from the controller to the JSP view?
+14. In the MVC sequence diagrams, where are database access, request attribute setup, forwarding, and HTML rendering performed?
+15. Why must JSTL dependencies be bundled in the WAR instead of marked as `provided`?

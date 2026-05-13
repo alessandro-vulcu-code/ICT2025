@@ -360,3 +360,23 @@ Attacker creates a malicious page that automatically triggers cross-site request
 | **`SameSite=Strict` cookie** | CSRF | Block cookies on cross-site requests |
 | **CSRF token** | CSRF | Server-issued nonce validated per request |
 | **Modern frameworks** | XSS | Built-in escaping (React, Angular, Vue) |
+
+## Questions
+
+1. How do confidentiality, integrity, and availability define the main security goals of a web application?
+2. Why must an attacker understand the application's components and expected user interactions before exploiting it?
+3. What is the purpose of the OWASP Top Ten, and why do categories such as injection and broken access control remain important?
+4. In the attack scenario diagram, why does giving the attacker normal HTTP access create risk when input handling is weak?
+5. What is the root cause of SQL injection, and why does mixing untrusted user data with trusted SQL code confuse the database parser?
+6. How do characters such as `'`, `;`, `--`, and comments help attackers alter SQL query structure?
+7. How does the classic `' OR '1'='1' --` payload bypass authentication in a vulnerable query?
+8. Why do prepared statements prevent SQL injection more reliably than manual string filtering alone?
+9. How is XSS similar to SQL injection conceptually, and how is the target of the injected code different?
+10. How do stored, reflected, and DOM-based XSS differ in where the malicious script is stored or reflected?
+11. In the stored XSS flow, where should validation, sanitization, or encoding be applied to prevent the browser from executing attacker-controlled script?
+12. How does the Samy Worm style example use a victim's browser privileges and session tokens against a trusted site?
+13. Why is output encoding different from input validation, and why are both relevant for XSS defense?
+14. How does CSRF exploit the browser's automatic cookie sending behavior for cross-site requests?
+15. How does `SameSite=Strict` change browser cookie behavior, and why does that help block forged POST requests?
+16. Why are CSRF tokens still useful even when cookie protections exist?
+17. How would you combine prepared statements, output encoding, DOM sanitization, SameSite cookies, and CSRF tokens into a defense-in-depth strategy?

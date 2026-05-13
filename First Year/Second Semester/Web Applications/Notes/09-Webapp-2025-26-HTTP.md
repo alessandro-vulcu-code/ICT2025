@@ -809,3 +809,23 @@ The `employee-session-jdbc` project adds a **Servlet Filter** to protect resourc
 | `ProtectedResourceFilter` | Jakarta Filter | `implements Filter`; `doFilter()` chain pattern |
 | `HttpSession` | Jakarta Servlet | Key-value store per user session; `getSession(false)` |
 | `AuthenticateUserDAO` | DAO pattern | DB-backed credential check; `outputParam` boolean |
+
+## Questions
+
+1. How do HTML, HTTP, MIME, and URL work together as the four basic technologies of the Web?
+2. How would you distinguish URI, URL, URN, and IRI using examples?
+3. What information is encoded in the general URI syntax, and how do path, query, and fragment serve different purposes?
+4. Why is percent-encoding necessary, and how does it relate to reserved characters and non-ASCII text?
+5. How did the limitations of ASCII and Extended ASCII lead to Unicode and UTF-8?
+6. Why is UTF-8 backward-compatible with ASCII, and why is that useful for the Web?
+7. What does MIME add to HTTP and email communication, especially through `Content-Type`, `Content-Disposition`, and multipart bodies?
+8. How does `multipart/form-data` represent form fields and uploaded files differently from `application/x-www-form-urlencoded`?
+9. How does the Jakarta `Part` API expose uploaded files and form fields to a servlet?
+10. Why must uploaded file MIME types be validated server-side, even when an HTML form restricts accepted file types?
+11. How does the extended Employee example process a multipart request, store a photo, send a confirmation email, and later stream the photo back to the browser?
+12. Why is an email with an attachment represented as `multipart/mixed`, and how do `MimeMultipart` and `MimeBodyPart` model that structure?
+13. What does it mean for HTTP to be stateless, textual, and request-response based?
+14. How do safe, idempotent, and cacheable properties differ across HTTP methods?
+15. How should status code classes `2xx`, `3xx`, `4xx`, and `5xx` guide client and server behavior?
+16. Why is HTTP Basic Authentication unsafe without HTTPS, despite using Base64 encoding?
+17. How does `ProtectedResourceFilter` use `Authorization`, `WWW-Authenticate`, `HttpSession`, and `AuthenticateUserDAO` to protect `/protected/*` resources?

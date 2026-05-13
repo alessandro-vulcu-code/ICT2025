@@ -301,3 +301,21 @@ Two variants depending on where the "fat" side lives:
 | 1989–1991 | Tim Berners-Lee (CERN) | World Wide Web proposal + first website |
 | 1993 | UIUC | Mosaic browser — popularised the Web |
 | 2008 | Google | Chrome browser |
+
+## Questions
+
+1. How did early hypertext systems such as Memex, Project Xanadu, NLS, and NoteCards anticipate ideas that later became central to the Web?
+2. Why was Tim Berners-Lee's World Wide Web successful compared with earlier hypertext systems, especially in relation to the Internet?
+3. How did graphical browsers such as Mosaic change the adoption and usability of the Web?
+4. How would you compare Web 1.0, Web 2.0, Web 3.0, and Web3 in terms of technologies, users, and data ownership?
+5. What is the difference between the Semantic Web idea of Web 3.0 and the blockchain-based idea of Web3?
+6. How do the Deep Web and the Dark Web differ, and why is confusing them conceptually misleading?
+7. What responsibilities belong to presentation logic, application logic, and data logic in a distributed application?
+8. How does load distribution change when moving from single-tier to two-tier and then to three-tier architectures?
+9. Why does the fat client variant of two-tier architecture create maintenance problems compared with a thin client architecture?
+10. Why are web applications considered a specific case of three-tier architecture?
+11. What advantages does the browser provide as a universal thin client for web applications?
+12. How does the web application diagram map browsers, web/application servers, and database servers to the three logical layers?
+13. How does HTTP fit into the TCP/IP network stack, and why is it described as an application-layer protocol?
+14. If a web application becomes slow under load, which tier or layer would you investigate first, and what evidence would guide that decision?
+15. How do scalability and implementation complexity trade off across single-tier, two-tier, three-tier, and web application architectures?

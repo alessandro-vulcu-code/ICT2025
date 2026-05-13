@@ -787,3 +787,24 @@ b.addEventListener("click", function() { alert("Thanks again!"); });
 | **Remove event** | `target.removeEventListener("type", fn)` | Same type+fn reference required |
 | **Form submit cancel** | `onsubmit` handler returning `false` | Or `event.preventDefault()` |
 | **Node types** | Document=9, Element=1, Text=3 | `node.nodeType` |
+
+## Questions
+
+1. How do HTML, CSS, and JavaScript divide responsibilities in a web page?
+2. Why is JavaScript's relationship to Java mostly historical and marketing-based rather than technical?
+3. What can browser JavaScript do to the current page, and what restrictions protect other tabs, windows, and origins?
+4. Why are external scripts and placement near the end of `<body>` usually preferred?
+5. What problems can Automatic Semicolon Insertion create, and why is explicit semicolon use safer?
+6. How do primitive values, objects, arrays, and functions differ in JavaScript's type model?
+7. Why are JavaScript objects described as associative arrays, and when would bracket notation be more useful than dot notation?
+8. How do constructor functions and the `this` keyword work together to create reusable object instances?
+9. What makes JavaScript arrays dynamic and heterogeneous, and how do methods such as `push`, `pop`, `slice`, `sort`, and `forEach` support common operations?
+10. Why are functions considered first-class objects in JavaScript, and how does this support callbacks?
+11. How do `window`, `document`, `location`, `history`, timers, dialogs, `navigator`, `screen`, and `console` expose browser functionality?
+12. How does the DOM tree represent an HTML document, and what is the difference between `Node`, `Document`, `Element`, and `Text` nodes?
+13. How do DOM selection methods such as `getElementById`, `getElementsByClassName`, `querySelector`, and `querySelectorAll` differ?
+14. What steps are required to create, insert, remove, and replace DOM nodes programmatically?
+15. Why should `getAttribute()` and direct property access sometimes be treated differently?
+16. How do parsing, synchronous script execution, document completion, and the event-driven phase form the JavaScript execution timeline?
+17. Why is `addEventListener()` preferred over HTML event attributes or assigning `onclick` directly?
+18. How does `event.preventDefault()` or returning `false` from a submit handler stop an invalid form submission?

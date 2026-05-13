@@ -232,7 +232,7 @@ process-resources  →  compile  →  process-test-resources  →  test-compile
 
 ### Project Object Model (POM)
 
-![[Pasted image 20260512114735.png]]
+![[Pasted image 20260512114735.png|500]]
 *POM contains: Coordinates (groupId, artifactId, version), Relationships (Multi-Module, Inheritance, Dependencies), Build Settings (Directories, Extensions, Resources, Plugins, Reporting), General Project Info, Build Environment (Profiles).*
 
 > [!Important] POM — Main sections
@@ -485,3 +485,21 @@ project/
 | `<goal>` | Concrete operation (`plugin:goal`) |
 | POM | `pom.xml` — declarative XML file for the project |
 | settings.xml | `~/.m2/settings.xml` — global Maven configuration |
+
+## Questions
+
+1. How does Git's distributed model differ from a centralized version control system, and why does this difference matter for collaboration?
+2. In the Git workflow diagram, what roles do the working directory, the Index/Stage, and HEAD play, and how do `git add` and `git commit` move changes between them?
+3. How would you explain the difference between creating a new repository with `git init` and obtaining an existing one with `git clone`?
+4. What happens conceptually when a feature branch diverges from `master` and is later merged back, as shown in the branch diagrams?
+5. Why are branches useful for independent development, and what risks or conflicts can appear when merging them?
+6. How is a pull request different from the `git pull` command, and why is this distinction important in a team workflow?
+7. Why should generated files such as `target/`, `.class` files, and packaged archives usually be listed in `.gitignore` for a Java/Maven project?
+8. What information should a README provide in a repository, and how does it support collaboration or project reuse?
+9. How are Maven lifecycles, phases, goals, and plugins related to each other, and how does the POM coordinate them?
+10. Why does invoking a Maven phase such as `package` also execute previous phases, and what practical effect does this have on the build process?
+11. Looking at the default JAR lifecycle, how do phases such as `process-resources`, `compile`, `test`, `package`, `install`, and `deploy` form a complete build pipeline?
+12. What are Maven coordinates, and why are `groupId`, `artifactId`, `version`, and `packaging` necessary for identifying and producing a project artifact?
+13. How does Maven use local and remote repositories to resolve dependencies and plugins, and what role does the local `~/.m2/repository` cache play?
+14. How does Maven's standard project directory structure support the principle of convention over configuration?
+15. Why does a plain JAR fail when required external dependencies are missing at runtime, and how does `maven-assembly-plugin` with `jar-with-dependencies` address this problem?

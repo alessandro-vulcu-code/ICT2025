@@ -309,3 +309,21 @@ Key advantages:
 | `docker ps -a` | Lists all containers |
 | `docker exec <name> <cmd>` | Executes a command inside a container |
 | `docker build` | Builds an image from a Dockerfile |
+
+## Questions
+
+1. Why does building a WAR file with Maven not fully solve the deployment environment problem for a Java web application?
+2. How does containerization address the "it works on my machine" problem?
+3. What is the main architectural difference between a Docker container and a virtual machine, and how does it affect startup time and resource usage?
+4. How do Docker images, Dockerfiles, and containers relate to each other in the build-and-run workflow?
+5. Why are Docker images described as immutable and layered, and what practical benefits does this give during builds?
+6. What happens to data stored only in a container's writable layer when the container is removed, and how do volumes solve this problem?
+7. In the Docker Compose architecture diagram, how do the `web` and `db` services communicate with each other?
+8. Why can containers in the same Compose application use service names such as `db` as hostnames?
+9. How does port mapping such as `"8080:8080"` differ from communication between containers inside the Docker network?
+10. Why is mounting a WAR file into the Tomcat container different from copying it permanently into an image?
+11. What role does `/docker-entrypoint-initdb.d/` play in the PostgreSQL service, and why does it matter that scripts run at first initialization?
+12. Why is `depends_on` alone insufficient when Tomcat depends on PostgreSQL, and how does a healthcheck improve startup reliability?
+13. How would you use `docker-compose up`, `docker-compose down`, `docker ps`, and `docker exec` while debugging a multi-container web application?
+14. What are the tradeoffs between using a ready-made image such as `tomcat:10` and building a custom image from a Dockerfile?
+15. Which parts of the Tomcat + PostgreSQL example should be persistent, and which can safely be recreated from images or configuration?

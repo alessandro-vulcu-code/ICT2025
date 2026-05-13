@@ -1,0 +1,4 @@
+interface:
+  display_name: "Append Study Questions"
+  short_description: "Append open-ended study questions to Markdown notes"
+  default_prompt: "Use $append-study-questions to append English open-ended review questions to this Markdown note."

@@ -620,3 +620,21 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 | **JSON** | Data interchange format | ECMA-404, RFC 8259 | Lightweight; objects + arrays; browser-native | JSON Schema |
 | **JSON Schema** | Validation format | RFC draft | Structural validation of JSON | — |
 | **Jackson** | Java JSON library | FasterXML | `JsonFactory` → `JsonParser`/`JsonGenerator` | — |
+
+## Questions
+
+1. What does it mean to say that markup is not part of the text but tells us something about the text?
+2. How do punctuational, presentational, procedural, descriptive, referential, and meta-markup differ?
+3. Why is descriptive markup more reusable than procedural markup in web documents?
+4. How did SGML influence HTML and XML, and what role did DTDs play in that lineage?
+5. Which problems in HTML4 motivated the stronger separation between structure, presentation, and behavior in HTML5?
+6. How does CSS help solve the content-versus-presentation problem shown by tags such as `<font>`?
+7. How does the XML tree model represent elements, attributes, text, comments, processing instructions, and the root?
+8. What is the difference between a well-formed XML document and a valid XML document?
+9. How do DOM, SAX, and StAX differ in memory usage, direction of processing, and control flow?
+10. What does the DOM interface hierarchy reveal about the common structure of XML and HTML documents?
+11. How do DTD content model operators such as `,`, `|`, `?`, `*`, and `+` constrain XML structure?
+12. Why were XML Schema and namespaces introduced, and which limitations of DTDs do they address?
+13. How do JSON objects and arrays represent structured data more compactly than XML?
+14. What can JSON Schema specify about JSON data, and why is schema validation useful for web APIs?
+15. How does Jackson's pull parsing pattern resemble StAX, and why is it suitable for streaming JSON in Java?

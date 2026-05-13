@@ -758,3 +758,23 @@ processResponse(xhr):
 | WADL | XML format | REST API description | W3C submission 2009, not standardised |
 | OpenAPI (OAI) | YAML format | REST API description | Linux Foundation standard, de-facto |
 | `application/json` | MIME type | JSON media type | Required in `Accept` + `Content-Type` for POST/PUT |
+
+## Questions
+
+1. What does REST mean by treating application data as resources, and how do URIs identify those resources?
+2. How do HTTP methods such as `GET`, `POST`, `PUT`, and `DELETE` map to CRUD operations in a REST API?
+3. Why is statelessness important for REST services, and what information must each request carry because of it?
+4. How can the same resource have different representations such as XML, JSON, or HTML, and what role does the `Accept` header play?
+5. Why should REST URI design prefer nouns and resource paths rather than verb-based operation names?
+6. How do WADL and OpenAPI differ as ways to document REST APIs, and why is OpenAPI more relevant in modern practice?
+7. How do the Employee REST API endpoints distinguish collection resources, single resources, and filtered resources such as salary searches?
+8. What information is carried by the `Employee`, `Message`, and `ResourceList` JSON formats?
+9. How do client-side error codes such as `E4A1` to `E4A8` differ from server-side error codes such as `E5A1` to `E5A4`?
+10. Why does the `Resource` interface write JSON to an `OutputStream`, and why does `AbstractResource` disable auto-closing of streams?
+11. How does `Employee.fromJSON()` parse an incoming request body, and what kind of malformed input leads to `E4A8`?
+12. Why does `ResourceList` need to coordinate multiple resources writing JSON into a single array?
+13. What responsibilities does `AbstractRR` centralize before and after each concrete REST resource handles a request?
+14. How does `checkMethodMediaType()` enforce correct use of `Accept`, `Content-Type`, and HTTP methods?
+15. Why does `RestDispatcherServlet` override `service()` instead of only implementing `doGet()` or `doPost()`?
+16. How does PostgreSQL `RETURNING *` change the implementation of `CreateEmployeeDAO` compared with a plain insert?
+17. How does the AJAX example connect a browser event, an `XMLHttpRequest`, a REST endpoint, JSON parsing, and DOM updates?

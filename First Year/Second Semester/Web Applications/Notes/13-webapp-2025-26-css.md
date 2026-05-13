@@ -710,3 +710,23 @@ Design principle: breakpoints should be determined by **content**, not device si
 | **Grid** | `display: grid` | 2D layout; `fr` unit |
 | **Viewport meta** | `width=device-width, initial-scale=1` | Required for mobile |
 | **Media query** | `@media only screen and (min-width: 40em)` | Mobile-first: min-width queries |
+
+## Questions
+
+1. How does CSS separate document structure from presentation, and why is this separation important for maintainability?
+2. How does the browser use the DOM tree when applying CSS rules to an HTML document?
+3. What are the tradeoffs between external, embedded, and inline CSS, and why are external stylesheets usually preferred?
+4. How do selectors such as type, class, ID, child, descendant, adjacent sibling, and general sibling target different parts of the document?
+5. Why must link pseudo-classes be declared in LVFHA order, and what can break if the order is wrong?
+6. How do specificity, source order, and `!important` interact in the cascade?
+7. Why do user `!important` rules outrank author rules, and how does this support accessibility?
+8. Which CSS properties are inherited by default, which are not, and why does this distinction matter?
+9. How do `rgb`, `hex`, `hsl`, `rgba`, `hsla`, and `opacity` differ, especially for transparency?
+10. In the box model diagram, how do content, padding, border, and margin combine to determine the total space an element occupies?
+11. Why does `box-sizing: border-box` make layout calculations more predictable?
+12. How do `display: none` and `visibility: hidden` differ in their effect on layout?
+13. How do static, relative, absolute, and fixed positioning change an element's relationship to normal flow and its containing block?
+14. What problems can floats cause, and how does `clear` or an overflow-based clearfix address them?
+15. When would you choose Flexbox, Grid, or a combination of both for page layout?
+16. Why does responsive design require the viewport meta tag, media queries, and content-driven breakpoints?
+17. How does a mobile-first approach change the structure of CSS compared with starting from a desktop layout?

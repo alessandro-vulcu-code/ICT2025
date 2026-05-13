@@ -469,3 +469,24 @@ JSON flow:
 | `2` | Loaded | Response headers received |
 | `3` | Interactive | Response body downloading |
 | `4` | Complete | Full response ready — process here |
+
+## Questions
+
+1. Why is form validation necessary for data correctness, user account security, and application protection?
+2. How do client-side and server-side validation complement each other, and why is client-side validation not sufficient for security?
+3. When would HTML5 built-in validation be enough, and when would plain JavaScript validation be necessary?
+4. How do attributes such as `required`, `pattern`, `type`, `min`, `max`, `minlength`, and `maxlength` define browser-enforced constraints?
+5. How can CSS pseudo-classes such as `:valid` and `:invalid` improve validation feedback without JavaScript?
+6. How does the Constraint Validation API expose validation state through `validity`, and how does `setCustomValidity()` change the browser's error message?
+7. In the plain JavaScript email validation example, why are both `input` and `submit` event handlers used?
+8. Why does `event.preventDefault()` matter in the final validation gate before form submission?
+9. What does AJAX add to the normal HTTP request-response model of a web page?
+10. How does asynchronous communication improve user experience compared with synchronous blocking behavior?
+11. What are the four parts of an `XMLHttpRequest` request and the three main parts of its response?
+12. How do `open()`, `setRequestHeader()`, and `send()` cooperate to configure and dispatch an XHR request?
+13. How do URL-encoded and JSON-encoded POST request bodies differ, and why must the `Content-Type` header match the body format?
+14. How does the same-origin policy restrict AJAX calls, and how does CORS allow controlled cross-origin access?
+15. Why should a response handler check both `readyState === XMLHttpRequest.DONE` and a successful HTTP status before processing data?
+16. How do HTML, XML, and JSON differ as AJAX response formats in portability, processing effort, and security risk?
+17. How does the JSON loading example transform `responseText` into DOM content, and what risks come from using `innerHTML`?
+18. How does the Fetch API's Promise-based `async`/`await` pattern simplify the older XHR callback style?

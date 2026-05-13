@@ -1,6 +1,7 @@
 [
   "obsidian-excalidraw-plugin",
-  "reading-highlighter",
-  "remotely-save",
+  "obsidian-contextual-typography",
+  "obsidian-style-settings",
+  "obsidian-hider",
   "highlightr-plugin"
 ]

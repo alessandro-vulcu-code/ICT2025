@@ -749,3 +749,21 @@ Key relationships:
 | `PreparedStatement` | JDBC | Parameterized SQL — prevents SQL injection |
 | JNDI | Tomcat | Directory service for looking up the connection pool |
 | Connection Pool | Tomcat | Reuses DB connections; avoids per-request connection overhead |
+
+## Questions
+
+1. How do the client tier, web tier, API layer, database tier, and infrastructure components combine in the full-stack web application architecture?
+2. Why should SQL logic be isolated inside DAO classes instead of being written directly inside servlets?
+3. What makes the `Employee` and `Message` resource classes useful for passing domain data and structured outcomes through the application?
+4. Why are immutable resource classes with `final` fields and getters often safer than mutable objects in request processing?
+5. How does the generic `DataAccessObject<T>` interface support both commands with no output and queries returning values such as `List<Employee>`?
+6. What responsibilities does `AbstractDAO` centralize, and why are connection closing, rollback, and one-shot execution handled there?
+7. How does `CreateEmployeeDAO` use `PreparedStatement` placeholders to insert an employee safely?
+8. How does `SearchEmployeeBySalaryDAO` transform a `ResultSet` into a list of `Employee` objects?
+9. Why is opening a new database connection for every request expensive, and how does a Tomcat connection pool reduce that cost?
+10. How do `context.xml`, `web.xml`, JNDI, and `AbstractDatabaseServlet` work together to provide database connections to servlets?
+11. What is the purpose of pool parameters such as `testOnBorrow`, `validationQuery`, `maxActive`, `maxWait`, and `removeAbandoned`?
+12. How does the create-employee sequence move from an HTTP POST request to an inserted database row and an HTML response?
+13. How does the search-by-salary sequence use `access().getOutputParam()` to retrieve data for the response?
+14. How do the error codes `E100`, `E200`, and `E300` distinguish validation, unexpected SQL errors, and duplicate keys?
+15. Why does the DAO pattern make SQL injection protection easier to enforce across the application?

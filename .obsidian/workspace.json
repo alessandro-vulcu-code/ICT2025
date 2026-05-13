@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/1. Types And Declarations.md",
-                "mode": "source",
+                "file": "First Year/Second Semester/Web Applications/Notes/03-webapp-2025-26-git-maven.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. Types And Declarations"
+              "title": "03-webapp-2025-26-git-maven"
             }
           },
           {
@@ -92,7 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 381.5,
+    "width": 291.50806045532227,
     "collapsed": true
   },
   "right": {
@@ -182,14 +182,16 @@
       "templates:Inserisci modello": false,
       "command-palette:Apri riquadro comandi": false,
       "bases:Crea nuova Base": false,
-      "obsidian-git:Open Git source control": false,
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
   "active": "07870a9ef96bf7e8",
   "lastOpenFiles": [
-    "Senza nome.md",
+    "First Year/Second Semester/Stochastic Processes/Useful PDF/Esercizi Stochastic Miei_240701_142252.pdf",
+    "First Year/Second Semester/Stochastic Processes/Useful PDF/How To Stochastic Processes _240630_183444 (1).pdf",
+    "First Year/Second Semester/Stochastic Processes/Useful PDF",
     "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/1. Types And Declarations.md",
+    "Senza nome.md",
     "First Year/Second Semester/Web Applications/Notes/02-webapp-2025-26-introduction.md",
     "First Year/Second Semester",
     "First Year/First Semester",
@@ -226,11 +228,8 @@
     "First Year/First Semester/Modern CPP for Internet and Multimedia/AGENTS.md",
     "First Year/Second Semester/Big Data Computing/ToSummarize/7.Streaming2526-2.md",
     "First Year/Second Semester/Big Data Computing/Slides/7.Streaming2526-2.pdf",
-    "First Year/Second Semester/Big Data Computing/Notes/7.Streaming2526-2.md",
     "Web Applications/MD Converted/20260421-reply/manifest.json",
     "First Year/Second Semester/Web Applications/MD Converted/15-webapp-2025-26-form-validation-ajax/manifest.json",
-    "First Year/Second Semester/Web Applications/MD Converted/14-webapp-2025-26-javascript/manifest.json",
-    "First Year/Second Semester/Web Applications/MD Converted/13-webapp-2025-26-css/manifest.json",
     "First Year/Second Semester/Web Applications/MD Converted/15-webapp-2025-26-form-validation-ajax/assets/slide-001-fig-01.jpg",
     "First Year/Second Semester/Web Applications/MD Converted/14-webapp-2025-26-javascript/assets/slide-001-fig-01.jpg",
     "Web Applications/MD Converted/13-webapp-2025-26-css/assets/slide-001-fig-02.jpg"
