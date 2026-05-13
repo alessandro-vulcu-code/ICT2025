@@ -6,7 +6,7 @@
 .obsidian/last-update.json
 
 # Se vuoi essere ancora più sicuro, ignora tutti i file JS dei plugin
-.obsidian/plugins/**/*.js
+# .obsidian/plugins/**/*.js
 
 # Repository esterno rimosso come submodule locale
 /First Year/First Semester/Internet of Things and Smart Cities/Labs 25-26/Lab3/bumble_lab/bumble/
