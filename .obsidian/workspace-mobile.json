@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "First Year/Second Semester/Web Applications/Notes/05-webapp-2025-26-servlet.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -152,13 +152,12 @@
       "templates:Inserisci modello": false,
       "command-palette:Apri riquadro comandi": false,
       "bases:Crea nuova Base": false,
-      "reading-highlighter:Subrayar selección": false,
-      "obsidian-git:Open Git source control": false,
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
   "active": "8e4b85eaec79ae67",
   "lastOpenFiles": [
+    "borders.scss.txt",
     "First Year/Second Semester/Web Applications/Notes/04-webapp-2025-26-docker.md",
     "First Year/Second Semester/Web Applications/Notes/Figures/Pasted image 20260512204151.png",
     "First Year/Second Semester/Web Applications/Notes/Figures/Pasted image 20260512203729.png",

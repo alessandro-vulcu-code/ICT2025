@@ -111,8 +111,8 @@ Four tiers:
 ### Definition and Properties
 
 > [!Important] Java Servlet Definition
-> A **servlet** is a Java-based Web component, managed by a container, that generates dynamic content. Servlets are:
-> - Platform-independent Java classes compiled to bytecode
+> A **servlet** is a ==Java-based Web component, managed by a container, that generates dynamic content==. Servlets are:
+> - ==Platform-independent Java classes== compiled to bytecode
 > - Loaded dynamically into and run by a Java-enabled web server
 > - **Not thread-safe** — the container may send concurrent requests to a single servlet instance; developers must synchronize access to shared resources (files, network connections, instance variables)
 >
