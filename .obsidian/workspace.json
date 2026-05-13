@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "First Year/Second Semester/Web Applications/Notes/03-webapp-2025-26-git-maven.md",
-                "mode": "preview",
+                "file": "First Year/Second Semester/Multimedia Communications/Summaries/10. Audio Coding.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03-webapp-2025-26-git-maven"
+              "title": "10. Audio Coding"
             }
           },
           {
@@ -92,8 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.50806045532227,
-    "collapsed": true
+    "width": 291.50806045532227
   },
   "right": {
     "id": "978958ee6b3e5956",
@@ -182,11 +181,31 @@
       "templates:Inserisci modello": false,
       "command-palette:Apri riquadro comandi": false,
       "bases:Crea nuova Base": false,
-      "obsidian-excalidraw-plugin:New drawing": false
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "reader-highlighter-tags:Highlight Navigator": false
     }
   },
   "active": "07870a9ef96bf7e8",
   "lastOpenFiles": [
+    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513130347.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding",
+    "First Year/Second Semester/Multimedia Communications/Summaries/10. Audio Coding.md",
+    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140733.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140535.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140328.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140307.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140218.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140200.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140114.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140052.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140029.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513135642.png",
+    "First Year/Second Semester/Multimedia Communications/Summaries/9. Modern Video Compression Standards.md",
+    "First Year/Second Semester/Multimedia Communications/ToSummarize/10. audiocoding.md",
+    "First Year/Second Semester/Multimedia Communications/ToSummarize/10. audiocoding.md.tmp.179722.73f0588eaea9",
+    "First Year/Second Semester/Multimedia Communications/Slides/10. audiocoding.pdf",
+    "First Year/Second Semester/Multimedia Communications/Summaries/8. Video Coding Principles.md",
+    "First Year/Second Semester/Web Applications/Notes/03-webapp-2025-26-git-maven.md",
     "First Year/Second Semester/Stochastic Processes/Useful PDF/Esercizi Stochastic Miei_240701_142252.pdf",
     "First Year/Second Semester/Stochastic Processes/Useful PDF/How To Stochastic Processes _240630_183444 (1).pdf",
     "First Year/Second Semester/Stochastic Processes/Useful PDF",
@@ -197,13 +216,6 @@
     "First Year/First Semester",
     "First Year",
     "First Year/Second Semester/Web Applications/MD Converted/03-webapp-2025-26-git-maven/03-webapp-2025-26-git-maven.rewritten.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102524.png",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102504.png",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102423.png",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102346.png",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102320.png",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102038.png",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/Images/Pasted image 20260511102016.png",
     "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 8 compiler.md",
     "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 7 constructors.md",
     "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 7 classes.md",
@@ -220,18 +232,6 @@
     "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 17 templates.md",
     "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 16 runtime polymorphism.md",
     "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 14 operator overloading.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 13 derived classes.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 12 memory management.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 1 types and declarations.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/Images",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/AGENTS.md",
-    "First Year/Second Semester/Big Data Computing/ToSummarize/7.Streaming2526-2.md",
-    "First Year/Second Semester/Big Data Computing/Slides/7.Streaming2526-2.pdf",
-    "Web Applications/MD Converted/20260421-reply/manifest.json",
-    "First Year/Second Semester/Web Applications/MD Converted/15-webapp-2025-26-form-validation-ajax/manifest.json",
-    "First Year/Second Semester/Web Applications/MD Converted/15-webapp-2025-26-form-validation-ajax/assets/slide-001-fig-01.jpg",
-    "First Year/Second Semester/Web Applications/MD Converted/14-webapp-2025-26-javascript/assets/slide-001-fig-01.jpg",
-    "Web Applications/MD Converted/13-webapp-2025-26-css/assets/slide-001-fig-02.jpg"
+    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/Images"
   ]
 }
