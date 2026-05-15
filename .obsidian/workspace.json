@@ -11,12 +11,14 @@
             "id": "868ce3976ca29108",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515114654.png"
+                "file": "First Year/Second Semester/Web Applications/Notes/Web Applications 25-26 - Theory Summary.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260515114654"
+              "icon": "lucide-file",
+              "title": "Web Applications 25-26 - Theory Summary"
             }
           }
         ]
@@ -76,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.50806045532227
+    "width": 430.50806045532227
   },
   "right": {
     "id": "978958ee6b3e5956",
@@ -169,52 +171,53 @@
       "reader-highlighter-tags:Highlight Navigator": false
     }
   },
-  "active": "771881e3e2ec399c",
+  "active": "868ce3976ca29108",
   "lastOpenFiles": [
+    "First Year/Second Semester/Web Applications/Notes/Web Applications 25-26.md",
+    "First Year/Second Semester/Web Applications/Notes/Web Applications 25-26 - Theory Summary.md",
+    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/9.PNG",
+    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/8.PNG",
+    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/7.PNG",
+    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/6.PNG",
+    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/5.PNG",
+    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/4.PNG",
+    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/3.PNG",
+    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/24.PNG",
+    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/23.PNG",
+    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/22.PNG",
+    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer",
+    "First Year/Second Semester/Web Applications/Exam questions/WebApp - Questions.pdf",
+    "First Year/Second Semester/Web Applications/Exam questions/Exam_06-06-2024.zip",
+    "First Year/Second Semester/Web Applications/Exam questions/Exam Simulation - 2021.pdf",
+    "First Year/Second Semester/Web Applications/Exam questions/Multiple-exams - Questions.pdf",
+    "First Year/Second Semester/Web Applications/Exam questions/Exams 2018-19.pdf",
+    "First Year/Second Semester/Web Applications/Exam questions/Exam 23-06-2019.pdf",
+    "First Year/Second Semester/Web Applications/Exam questions/Exam 2021-05-24.pdf",
+    "First Year/Second Semester/Web Applications/Exam questions",
+    "First Year/Second Semester/Web Applications/Notes/15-webapp-2025-26-form-validation-ajax.md",
+    "First Year/Second Semester/Web Applications/Notes/WebApplications.pdf",
+    "First Year/Second Semester/Web Applications/Notes/05-webapp-2025-26-servlet.md",
     "First Year/Second Semester/Multimedia Communications/Summaries/11. Quality Assessment and Quality of Experience for Multimedia Services.md",
-    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115703.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115621.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115553.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115521.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115505.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115452.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115437.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115415.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115335.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115320.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services",
-    "First Year/Second Semester/Multimedia Communications/Slides/11. quality_no_results.pdf",
     "First Year/Second Semester/Multimedia Communications/ToSummarize/11. quality_no_results.md",
-    "First Year/Second Semester/Multimedia Communications/ToSummarize/11. quality_no_results.md.tmp.18464.8f68ed3b2de9",
     "First Year/Second Semester/Web Applications/Notes/10-webapp-2025-26-markup.md",
     "First Year/Second Semester/Web Applications/Notes/11-webapp-2025-26-html5.md",
     "First Year/Second Semester/Web Applications/Notes/12-webapp-2025-26-WebSecurity.md",
     "First Year/Second Semester/Web Applications/Notes/13-webapp-2025-26-css.md",
     "First Year/Second Semester/Web Applications/Notes/14-webapp-2025-26-javascript.md",
-    "First Year/Second Semester/Web Applications/Notes/15-webapp-2025-26-form-validation-ajax.md",
     "First Year/Second Semester/Web Applications/Notes/03-webapp-2025-26-git-maven.md",
-    "First Year/Second Semester/Web Applications/Notes/05-webapp-2025-26-servlet.md",
     "First Year/Second Semester/Web Applications/Notes/04-webapp-2025-26-docker.md",
     "First Year/Second Semester/Web Applications/Notes/02-webapp-2025-26-introduction.md",
-    "First Year/Second Semester/Stochastic Processes/Useful PDF/How To Stochastic Processes _240630_183444 (1).pdf",
     "First Year/Second Semester/Stochastic Processes/How To Stochastic Processes _240630_183444 (1).md",
     "First Year/Second Semester/Web Applications/Notes/06-Webapp-2025-26-servlet-database.md",
     "First Year/Second Semester/Stochastic Processes/Useful PDF/How To Stochastic Processes _240630_183444 (1).md",
     "First Year/Second Semester/Multimedia Communications/Summaries/10. Audio Coding.md",
-    "borders.scss.txt",
-    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding",
     "First Year/Second Semester/Multimedia Communications/Summaries/9. Modern Video Compression Standards.md",
     "First Year/Second Semester/Multimedia Communications/ToSummarize/10. audiocoding.md",
-    "First Year/Second Semester/Multimedia Communications/ToSummarize/10. audiocoding.md.tmp.179722.73f0588eaea9",
-    "First Year/Second Semester/Multimedia Communications/Slides/10. audiocoding.pdf",
     "First Year/Second Semester/Multimedia Communications/Summaries/8. Video Coding Principles.md",
-    "First Year/Second Semester/Stochastic Processes/Useful PDF/Esercizi Stochastic Miei_240701_142252.pdf",
-    "First Year/Second Semester/Stochastic Processes/Useful PDF",
     "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/1. Types And Declarations.md",
     "Senza nome.md",
     "First Year/Second Semester/Web Applications/MD Converted/03-webapp-2025-26-git-maven/03-webapp-2025-26-git-maven.rewritten.md",
     "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 8 compiler.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 7 constructors.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 7 classes.md"
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 7 constructors.md"
   ]
 }
