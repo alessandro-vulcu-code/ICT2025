@@ -4,35 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "db7f167c977cf451",
+        "id": "2b5a4e08a1b31826",
         "type": "tabs",
         "children": [
           {
-            "id": "07870a9ef96bf7e8",
+            "id": "868ce3976ca29108",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "First Year/Second Semester/Web Applications/Notes/02-webapp-2025-26-introduction.md",
-                "mode": "preview",
-                "source": false
+                "file": "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515114654.png"
               },
-              "icon": "lucide-file",
-              "title": "02-webapp-2025-26-introduction"
-            }
-          },
-          {
-            "id": "ac73a793a8944b70",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Senza nome.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Senza nome"
+              "icon": "lucide-image",
+              "title": "Pasted image 20260515114654"
             }
           }
         ]
@@ -92,8 +76,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.50806045532227,
-    "collapsed": true
+    "width": 291.50806045532227
   },
   "right": {
     "id": "978958ee6b3e5956",
@@ -186,52 +169,52 @@
       "reader-highlighter-tags:Highlight Navigator": false
     }
   },
-  "active": "07870a9ef96bf7e8",
+  "active": "771881e3e2ec399c",
   "lastOpenFiles": [
+    "First Year/Second Semester/Multimedia Communications/Summaries/11. Quality Assessment and Quality of Experience for Multimedia Services.md",
+    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115703.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115621.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115553.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115521.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115505.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115452.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115437.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115415.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115335.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services/Pasted image 20260515115320.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services",
+    "First Year/Second Semester/Multimedia Communications/Slides/11. quality_no_results.pdf",
+    "First Year/Second Semester/Multimedia Communications/ToSummarize/11. quality_no_results.md",
+    "First Year/Second Semester/Multimedia Communications/ToSummarize/11. quality_no_results.md.tmp.18464.8f68ed3b2de9",
+    "First Year/Second Semester/Web Applications/Notes/10-webapp-2025-26-markup.md",
+    "First Year/Second Semester/Web Applications/Notes/11-webapp-2025-26-html5.md",
+    "First Year/Second Semester/Web Applications/Notes/12-webapp-2025-26-WebSecurity.md",
+    "First Year/Second Semester/Web Applications/Notes/13-webapp-2025-26-css.md",
+    "First Year/Second Semester/Web Applications/Notes/14-webapp-2025-26-javascript.md",
+    "First Year/Second Semester/Web Applications/Notes/15-webapp-2025-26-form-validation-ajax.md",
+    "First Year/Second Semester/Web Applications/Notes/03-webapp-2025-26-git-maven.md",
+    "First Year/Second Semester/Web Applications/Notes/05-webapp-2025-26-servlet.md",
+    "First Year/Second Semester/Web Applications/Notes/04-webapp-2025-26-docker.md",
+    "First Year/Second Semester/Web Applications/Notes/02-webapp-2025-26-introduction.md",
+    "First Year/Second Semester/Stochastic Processes/Useful PDF/How To Stochastic Processes _240630_183444 (1).pdf",
+    "First Year/Second Semester/Stochastic Processes/How To Stochastic Processes _240630_183444 (1).md",
+    "First Year/Second Semester/Web Applications/Notes/06-Webapp-2025-26-servlet-database.md",
+    "First Year/Second Semester/Stochastic Processes/Useful PDF/How To Stochastic Processes _240630_183444 (1).md",
     "First Year/Second Semester/Multimedia Communications/Summaries/10. Audio Coding.md",
     "borders.scss.txt",
-    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513130347.png",
     "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding",
-    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140733.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140535.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140328.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140307.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140218.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140200.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140114.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140052.png",
-    "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513140029.png",
     "First Year/Second Semester/Multimedia Communications/Summaries/9. Modern Video Compression Standards.md",
     "First Year/Second Semester/Multimedia Communications/ToSummarize/10. audiocoding.md",
     "First Year/Second Semester/Multimedia Communications/ToSummarize/10. audiocoding.md.tmp.179722.73f0588eaea9",
     "First Year/Second Semester/Multimedia Communications/Slides/10. audiocoding.pdf",
     "First Year/Second Semester/Multimedia Communications/Summaries/8. Video Coding Principles.md",
-    "First Year/Second Semester/Web Applications/Notes/03-webapp-2025-26-git-maven.md",
     "First Year/Second Semester/Stochastic Processes/Useful PDF/Esercizi Stochastic Miei_240701_142252.pdf",
-    "First Year/Second Semester/Stochastic Processes/Useful PDF/How To Stochastic Processes _240630_183444 (1).pdf",
     "First Year/Second Semester/Stochastic Processes/Useful PDF",
     "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/1. Types And Declarations.md",
     "Senza nome.md",
-    "First Year/Second Semester/Web Applications/Notes/02-webapp-2025-26-introduction.md",
-    "First Year/Second Semester",
-    "First Year/First Semester",
-    "First Year",
     "First Year/Second Semester/Web Applications/MD Converted/03-webapp-2025-26-git-maven/03-webapp-2025-26-git-maven.rewritten.md",
     "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 8 compiler.md",
     "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 7 constructors.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 7 classes.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 6 functions.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 5 Namespaces.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 4 statements.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 3 structures & enum.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 26 Inter-thread communication.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 24 threads and lambdas.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 22 socket.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 20 smart pointers.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 2 pointers, arrays and references.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 18 standard library.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 17 templates.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 16 runtime polymorphism.md",
-    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 14 operator overloading.md"
+    "Modern CPP for Internet and Multimedia/Rewritten Lessons/Slides 7 classes.md"
   ]
 }
