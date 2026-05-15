@@ -78,7 +78,8 @@ Common attacker motives: espionage, extortion, theft, fun.
 
 **OWASP** (*Open Worldwide Application Security Project*) publishes the **Top 10** — a standard awareness document for developers and web security professionals. First step toward more secure software development.
 
-![[websec-owasp-top10.jpg]]
+![[websec-owasp-top10.jpg|520]]
+*Figure 1: Evolution of the OWASP Top 10 between 2017, 2021, and 2025*
 
 OWASP Top 10 evolution highlights (2017 → 2021 → 2025):
 - **Injection** (SQLi, XSS) — consistently in top 5
@@ -93,7 +94,8 @@ Attacks covered in this lecture:
 
 ### Attack Scenario
 
-![[websec-scenario.jpg]]
+![[websec-scenario.jpg|500]]
+*Figure 2: Attack surface of a web application with users, server, and database*
 
 Web application attack surface: users (legitimate and attacker) interact via HTTP with a Web Server, which executes SQL Queries against a Database. Attacker has same HTTP access as normal users — the vulnerability lies in how input is processed.
 
@@ -143,11 +145,13 @@ Key SQL operations exploitable via injection:
 
 ### How SQL Injection Works
 
-![[websec-sqli-mixing.jpg]]
+![[websec-sqli-mixing.jpg|580]]
+*Figure 3: SQL injection problem caused by mixing user input and SQL code*
 
 The core problem: user input and SQL code are mixed together to form a SQL statement.
 
-![[websec-sqli-flow.jpg]]
+![[websec-sqli-flow.jpg|580]]
+*Figure 4: Flow that sends untrusted data and SQL code to the database parser*
 
 Flow: **Untrusted User Data + Trusted SQL Code → Mixing → SQL Statement → SQL Parser → (Data + SQL Code) → Execution**
 
@@ -170,7 +174,8 @@ The SQL parser cannot distinguish injected SQL from intended SQL — it executes
 
 ### Vulnerable Code Example
 
-![[websec-sqli-vulnerable-code.jpg]]
+![[websec-sqli-vulnerable-code.jpg|580]]
+*Figure 5: Example of code vulnerable to SQL injection*
 
 ```php
 $conn = new mysqli("localhost", "root", "seedubuntu", "dbtest");
@@ -185,7 +190,8 @@ Problem: `$eid` and `$pwd` are inserted directly from user input into the SQL st
 
 ### Protection: Prepared Statements
 
-![[websec-sqli-prepared-stmt.jpg]]
+![[websec-sqli-prepared-stmt.jpg|500]]
+*Figure 6: Use of prepared statements to separate SQL code and parameters*
 
 > [!Important] Prepared Statements — Primary Defense
 > **Prepared statements** separate code from data: the SQL structure is compiled first with placeholders (`?`), then user data is bound separately. The database parser processes them as two distinct things.
@@ -228,7 +234,8 @@ Additional defense: **filter out / encode** special characters (`;`, `'`, `--`) 
 
 ### Stored XSS Flow
 
-![[websec-xss-stored-flow.jpg]]
+![[websec-xss-stored-flow.jpg|500]]
+*Figure 7: Flow of a stored XSS attack with payload persistence*
 
 **Attack flow:**
 1. Attacker submits form containing `<script>malicious code</script>`
@@ -242,7 +249,8 @@ The JS code executes when encountered during DOM construction.
 
 ### XSS Example Code
 
-![[websec-xss-example-code.jpg]]
+![[websec-xss-example-code.jpg|500]]
+*Figure 8: Example code and payload for a stored XSS attack*
 
 > [!Example] Stored XSS — Samy Worm pattern
 > **Contesto:** Attacker stores malicious JS in their profile on a social network.
@@ -298,19 +306,22 @@ The JS code executes when encountered during DOM construction.
 
 **Schema 1** — Normal cross-site request behavior:
 
-![[websec-csrf-schema1.jpg]]
+![[websec-csrf-schema1.jpg|440]]
+*Figure 9: CSRF scenario where cookies are automatically sent by the browser*
 
 Browser holds cookies for both Website A and Website B. A cross-site request from Website A to Website B automatically attaches Website B's cookies.
 
 **Schema 2** — Attacker exploits cross-site requests:
 
-![[websec-csrf-schema2.jpg]]
+![[websec-csrf-schema2.jpg|500]]
+*Figure 10: Malicious page that makes the browser send cross-site requests*
 
 Attacker creates a malicious page that automatically triggers cross-site requests to Website A and/or Website B. The browser attaches the victim's cookies → server accepts as authenticated request.
 
 ### CSRF Example Code
 
-![[websec-csrf-example.jpg]]
+![[websec-csrf-example.jpg|500]]
+*Figure 11: Example of a forged POST request in a CSRF attack*
 
 > [!Example] CSRF Forged POST Request
 > **Contesto:** Attacker's page automatically submits a profile-edit form to the victim's social network.

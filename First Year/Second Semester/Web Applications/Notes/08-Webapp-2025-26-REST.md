@@ -45,7 +45,9 @@ _Source: `08-Webapp-2025-26-REST.pdf` — Web Applications, Master Degree, A.Y. 
 > - Each link provides the **representation** of the next resource (new state)
 > - Features: **simplicity**, **statelessness**, **scalability**
 > **Intuition:** REST treats everything as a resource accessible via URL; HTTP methods are the only operations.
-![[Pasted image 20260512123223.png]]
+![[Pasted image 20260512123223.png|440]]
+*Figure 1: REST schema based on resources and representations*
+
 ### Resources and URIs
 
 > [!Important] Resource
@@ -53,7 +55,8 @@ _Source: `08-Webapp-2025-26-REST.pdf` — Web Applications, Master Degree, A.Y. 
 > - Resources have a **state** that can change over time
 > - Resources have a **URI** — unique and global identifier
 > - Resources can transfer a **representation** of their state upon request
-![[Pasted image 20260512123137.png]]
+![[Pasted image 20260512123137.png|620]]
+*Figure 2: Example of resource identification through URIs*
 
 > [!Important] URI Templates
 > REST uses URI templates to specify resource identification patterns:
@@ -293,19 +296,16 @@ Three JSON resource types used across the API:
 
 ## Implementation — Class Architecture
 
-![[rest-employee-class-diagram.jpg]]
+![[rest-employee-class-diagram.jpg|430]]
+*Figure 3: UML diagram of the Resource, RestResource, DAO, and RestDispatcherServlet hierarchy*
 
-*Figure: Full UML class diagram — Resource hierarchy, RR hierarchy, DAO hierarchy, RestDispatcherServlet.*
-
-![[rest-create-employee-sequence.jpg]]
-
-*Figure: CREATE sequence — `POST /rest/employee` → `RestDispatcherServlet` → `CreateEmployeeRR` → `CreateEmployeeDAO` → DB → JSON response.*
+![[rest-create-employee-sequence.jpg|560]]
+*Figure 4: Employee creation sequence through a REST endpoint*
 
 ### Resource Interface and AbstractResource
 
-![[rest-resource-interface.jpg]]
-
-*Figure: `Resource` interface — single method `void toJSON(OutputStream out) throws IOException`.*
+![[rest-resource-interface.jpg|560]]
+*Figure 5: Resource interface with the method used to serialize a resource to JSON*
 
 > [!Important] Resource Interface
 > ```java
@@ -453,9 +453,8 @@ Three JSON resource types used across the API:
 
 ### RestResource Interface and AbstractRR
 
-![[rest-restresource-interface.jpg]]
-
-*Figure: `RestResource` interface — single method `void serve() throws IOException`.*
+![[rest-restresource-interface.jpg|560]]
+*Figure 6: RestResource interface with the serve method used to handle a REST request*
 
 > [!Important] RestResource Interface
 > ```java
@@ -614,13 +613,11 @@ Three JSON resource types used across the API:
 
 ### RestDispatcherServlet
 
-![[rest-dispatcher-service-code.jpg]]
+![[rest-dispatcher-service-code.jpg|560]]
+*Figure 7: service method code in RestDispatcherServlet for dispatching HTTP requests*
 
-*Figure: `RestDispatcherServlet.service()` — overrides `service()` (not `doGet/doPost`) to handle all HTTP methods; routes to `processEmployee()`, or returns `E4A6` for unknown resources.*
-
-![[rest-process-employee-routing.jpg]]
-
-*Figure: `processEmployee()` — matches URI patterns against `/rest/employee` variants; delegates to the appropriate RR (e.g., `ListEmployeeRR`, `CreateEmployeeRR`). Returns if no pattern matched.*
+![[rest-process-employee-routing.jpg|560]]
+*Figure 8: processEmployee routing logic toward the correct REST resources*
 
 > [!Important] RestDispatcherServlet — design
 > - Extends `AbstractDatabaseServlet` (inherits JNDI connection pool)
@@ -773,24 +770,20 @@ processResponse(xhr):
 
 ### AJAX Employee JS Code
 
-![[rest-ajax-event-listener.jpg]]
+![[rest-ajax-event-listener.jpg|560]]
+*Figure 9: Event listener registration used to start the AJAX search*
 
-*Figure: Event listener registration — `document.getElementById("ajaxButton").addEventListener("click", searchEmployeeBySalary)`.*
-
-![[rest-ajax-xhr-request.jpg]]
-
-*Figure: `searchEmployeeBySalary()` — reads salary field, builds URL, creates `XMLHttpRequest`, sets `onreadystatechange`, calls `xhr.open()` + `xhr.send()`.*
+![[rest-ajax-xhr-request.jpg|560]]
+*Figure 10: Construction and sending of the XMLHttpRequest used to search employees*
 
 > [!Warning] Client-side Input Not Validated
 > Slide 52 explicitly notes `[not safe enough, validation!]` — salary value read from form is appended directly to the URL without sanitisation. Always validate/encode user input before constructing request URLs.
 
-![[rest-ajax-process-response.jpg]]
+![[rest-ajax-process-response.jpg|560]]
+*Figure 11: AJAX response handling and dynamic construction of the HTML table*
 
-*Figure: `processResponse(xhr)` — checks `readyState === DONE`, handles non-200 status, builds HTML table node-by-node.*
-
-![[rest-ajax-json-parse-dom.jpg]]
-
-*Figure: JSON parsing — `JSON.parse(xhr.responseText)["resource-list"]`; iteration over array with `resourceList[i].employee`; `createElement("td")` + `createTextNode(employee["badge"])` for each field.*
+![[rest-ajax-json-parse-dom.jpg|560]]
+*Figure 12: JSON response parsing and DOM element creation*
 
 > [!Example] Full AJAX JS skeleton
 > ```javascript

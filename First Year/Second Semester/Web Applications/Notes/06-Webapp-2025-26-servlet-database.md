@@ -170,7 +170,8 @@ Reference: `https://www.oracle.com/java/technologies/dataaccessobject.html`.
 
 ### DataAccessObject Interface
 
-![[db-dao-interface.jpg]]
+![[db-dao-interface.jpg|560]]
+*Figure 1: DAO interface used to separate data access from application logic*
 
 ```java
 public interface DataAccessObject<T> {
@@ -196,7 +197,8 @@ public interface DataAccessObject<T> {
 
 ### AbstractDAO Class
 
-![[db-abstract-dao.jpg]]
+![[db-abstract-dao.jpg|560]]
+*Figure 2: AbstractDAO class with common database operation handling*
 
 `AbstractDAO<T>` provides the base implementation:
 
@@ -683,7 +685,8 @@ public final class SearchEmployeeBySalaryServlet extends AbstractDatabaseServlet
 
 ### Create Employee
 
-![[db-create-employee-sequence.jpg]]
+![[db-create-employee-sequence.jpg|560]]
+*Figure 3: Employee creation sequence with servlet, DAO, and database*
 
 1. Browser: `POST /create-employee`
 2. Container instantiates `CreateEmployeeServlet` (1.1)
@@ -698,7 +701,8 @@ public final class SearchEmployeeBySalaryServlet extends AbstractDatabaseServlet
 
 ### Search Employee
 
-![[db-search-employee-sequence.jpg]]
+![[db-search-employee-sequence.jpg|520]]
+*Figure 4: Employee search sequence by salary*
 
 1. Browser: `POST /search-employee-by-salary`
 2. Container instantiates `SearchEmployeeBySalaryServlet` (1.1–1.3)
@@ -746,7 +750,8 @@ The DAO pattern enforces `PreparedStatement` usage by centralizing all SQL in DA
 
 ## Class Diagram
 
-![[db-employee-class-diagram.jpg]]
+![[db-employee-class-diagram.jpg|560]]
+*Figure 5: Class diagram of the servlet project with database access*
 
 Key relationships:
 - `CreateEmployeeServlet` and `SearchEmployeeBySalaryServlet` both extend `AbstractDatabaseServlet`

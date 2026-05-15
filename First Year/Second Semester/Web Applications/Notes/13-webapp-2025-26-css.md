@@ -64,7 +64,8 @@
 
 Browser builds a **DOM tree** from HTML, then applies CSS rules to each node. Resulting styled tree is rendered on screen.
 
-![[css-html-tree.jpg]]
+![[css-html-tree.jpg|580]]
+*Figure 1: HTML tree used to explain CSS selectors and rules*
 
 ### Benefits and CSS Recipe
 
@@ -183,11 +184,14 @@ h1 {
 
 ### Selectors
 
-![[css-selectors-1.jpg]]
+![[css-selectors-1.jpg|560]]
+*Figure 2: Examples of CSS selectors for elements, ids, and classes*
 
-![[css-selectors-2.jpg]]
+![[css-selectors-2.jpg|560]]
+*Figure 3: Examples of CSS selectors with combinators and element relationships*
 
-![[css-selectors-3.jpg]]
+![[css-selectors-3.jpg|560]]
+*Figure 4: Examples of advanced CSS selectors and pseudo-classes*
 
 | Selector | Syntax | Meaning |
 |----------|--------|---------|
@@ -375,7 +379,8 @@ Every HTML element is a rectangular **box** with four areas, from inside out:
 3. **Border** — line around padding+content
 4. **Margin** — transparent space outside border (between boxes)
 
-![[css-box-model.jpg]]
+![[css-box-model.jpg|520]]
+*Figure 5: CSS box model with content, padding, border, and margin*
 
 **Total occupied width:**
 ```
@@ -656,7 +661,8 @@ p {
 }
 ```
 
-![[css-grid-layout.jpg]]
+![[css-grid-layout.jpg|560]]
+*Figure 6: CSS Grid layout example with rows, columns, and fr units*
 
 **`fr` unit** = *fractional unit* — divides available space proportionally.
 

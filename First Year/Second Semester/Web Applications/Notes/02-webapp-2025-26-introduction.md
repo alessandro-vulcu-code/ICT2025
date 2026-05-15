@@ -108,7 +108,8 @@ The slide deck also references browser market shares for **January 2026** from W
 >
 > **Intuition:** One-way content flow — a WebMaster/Producer publishes content; Passive Consumers read it.
 
-![[intro-web10.jpg]]
+![[intro-web10.jpg|560]]
+*Figure 1: Diagram of Web 1.0 as an informative read-only web*
 
 ### Web 2.0 — Read/Write Web
 
@@ -184,7 +185,8 @@ The slide deck also references browser market shares for **January 2026** from W
 
 The three layers can be distributed across machines in different ways, giving rise to single-tier, two-tier, and three-tier architectures.
 
-![[intro-load-balancing.jpg]]
+![[intro-load-balancing.jpg|560]]
+*Figure 2: Example of load balancing between clients, load balancer, and servers*
 
 ### Single-tier Architecture
 
@@ -207,7 +209,8 @@ Two variants depending on where the "fat" side lives:
 - **Database server**: Data Logic on server
 - Client does most processing
 
-![[intro-two-tier-fat-client.jpg]]
+![[intro-two-tier-fat-client.jpg|500]]
+*Figure 3: Two-tier architecture with a fat client and database server*
 
 > [!Example] Aleph
 > The slides use **Aleph** as a visual example of the fat client/server variant.
@@ -216,7 +219,8 @@ Two variants depending on where the "fat" side lives:
 - **Client**: Presentation Logic only
 - **Database + Application server**: Application Logic + Data Logic on server
 
-![[intro-two-tier-fat-server.jpg]]
+![[intro-two-tier-fat-server.jpg|440]]
+*Figure 4: Two-tier architecture with a more central application server*
 
 | Pros | Cons |
 |------|------|
@@ -231,7 +235,8 @@ Two variants depending on where the "fat" side lives:
 - **Application server**: Application Logic (middleware)
 - **Database server(s)**: Data Logic
 
-![[intro-three-tier.jpg]]
+![[intro-three-tier.jpg|560]]
+*Figure 5: Three-tier architecture with presentation, application logic, and data layers*
 
 | Pros | Cons |
 |------|------|
@@ -258,7 +263,8 @@ Two variants depending on where the "fat" side lives:
 >
 > **Intuition:** The browser becomes the universal thin client — no installation, no updates on the user side.
 
-![[intro-webapp-three-tier.jpg]]
+![[intro-webapp-three-tier.jpg|560]]
+*Figure 6: Example of a web application organized across three tiers*
 
 > [!Example] Aleph as a Web Application
 > The slides also use **Aleph** to illustrate the web-application version of this architecture.
@@ -279,7 +285,8 @@ Two variants depending on where the "fat" side lives:
 >
 > **Intuition:** HTTP is just an application-layer protocol riding on top of TCP/IP — the same infrastructure used by all Internet services.
 
-![[intro-network-stack.jpg]]
+![[intro-network-stack.jpg|500]]
+*Figure 7: Network stack used by HTTP over TCP/IP*
 
 ---
 

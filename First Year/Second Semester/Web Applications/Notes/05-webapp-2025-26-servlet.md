@@ -32,7 +32,8 @@
 
 ### Browser and Server Architecture
 
-![[servlet-browser-server-architecture.jpg]]
+![[servlet-browser-server-architecture.jpg|560]]
+*Figure 1: Browser-server architecture for a servlet-based web application*
 
 **Web Browser** components:
 - **User Interface** — what user sees
@@ -54,7 +55,8 @@
 Communication uses **HTTP Request / HTTP Response** between browser and server.
 
 ### Technologies Overview
-![[Pasted image 20260512114912.png]]
+![[Pasted image 20260512114912.png|440]]
+*Figure 2: Comparison between client-side and server-side components*
 
 | Side | Programs | Scripts |
 |------|----------|---------|
@@ -98,7 +100,8 @@ Relevant version evolution (Servlet spec):
 
 ### Multi-tiered Architecture
 
-![[servlet-javaee-multitier-architecture.jpg]]
+![[servlet-javaee-multitier-architecture.jpg|500]]
+*Figure 3: Java EE multi-tier architecture with client, web, business, and data tiers*
 
 Four tiers:
 1. **Client Tier** — Web browser, applets, application clients
@@ -146,7 +149,8 @@ Packages: `jakarta.servlet` and `jakarta.servlet.http` (formerly `javax.*` up to
 
 ### UML Class Diagram
 
-![[servlet-uml-class-diagram.jpg]]
+![[servlet-uml-class-diagram.jpg|560]]
+*Figure 4: UML class diagram of the servlet project*
 
 Key relationships:
 - `HttpServlet` extends `GenericServlet` which implements `Servlet`
@@ -395,7 +399,8 @@ Maven lifecycle phases used: `resources` → `compile` → `test` → `package` 
 
 ### Servlet Sequence Diagram
 
-![[servlet-sequence-diagram.jpg]]
+![[servlet-sequence-diagram.jpg|560]]
+*Figure 5: Request-response sequence during the first servlet invocation*
 
 **First request flow:**
 1. Browser sends `GET /hello-world-servlet/hello`

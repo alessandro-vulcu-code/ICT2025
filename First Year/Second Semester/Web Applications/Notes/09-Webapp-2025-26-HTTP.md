@@ -319,13 +319,11 @@ The 16-bit limit (2¹⁶ = 65,536) was exceeded starting from Unicode 3.1 (2001,
 
 The Employee example is extended: database now stores `email`, `photo` (raw bytes), `photoMediaType`.
 
-![[http-create-employee-form.jpg]]
+![[http-create-employee-form.jpg|520]]
+*Figure 1: HTML form for creating an employee with email and photo upload*
 
-*Figure: Create Employee Form — badge, surname, age, salary, email fields + file upload for photo.*
-
-![[http-employee-mail-project-structure.jpg]]
-
-*Figure: Project structure (`employee-multipart-mail-jdbc`) + Maven dependencies — `jakarta.mail-api`, `angus-mail`, PostgreSQL, Tomcat JDBC.*
+![[http-employee-mail-project-structure.jpg|560]]
+*Figure 2: Structure of the employee multipart mail JDBC project and Maven dependencies*
 
 ### Create Employee JSP Form
 
@@ -610,7 +608,8 @@ The Employee example is extended: database now stores `email`, `photo` (raw byte
 
 ### Maven Dependencies — Jakarta Mail
 
-![[http-employee-mail-project-structure.jpg]]
+![[http-employee-mail-project-structure.jpg|560]]
+*Figure 3: Structure of the employee multipart mail JDBC project and Maven dependencies*
 
 ```xml
 <dependency>
@@ -638,9 +637,8 @@ The Employee example is extended: database now stores `email`, `photo` (raw byte
 >   - Simplifies implementation; improves scalability
 > - Supports **intermediaries / proxies**: typically for caching or security
 
-![[Pasted image 20260512120450.png]]
-
-*Figure: HTTP proxy chain — Browser → Proxy (gateway) → Proxy (firewall) → Web server. Each hop is an independent request-response.*
+![[Pasted image 20260512120450.png|440]]
+*Figure 4: HTTP chain with browser, intermediate proxies, and web server*
 
 Reference: Fielding, R. et al. (1997). *HTTP/1.1.* RFC 2068.
 
@@ -743,13 +741,11 @@ Reference: Fielding, R. and Reschke, J. (2014). *HTTP/1.1: Authentication.* RFC 
 
 The `employee-session-jdbc` project adds a **Servlet Filter** to protect resources under `/protected/*`.
 
-![[http-session-project-structure.jpg]]
+![[http-session-project-structure.jpg|280]]
+*Figure 5: Structure of the employee session JDBC project with filter and protected area*
 
-*Figure: `employee-session-jdbc` project structure — new `filter/` package with `ProtectedResourceFilter`, `AuthenticateUserDAO`, and `/protected/` folder for protected JSPs.*
-
-![[http-session-webxml.jpg]]
-
-*Figure: `web.xml` — `ProtectedResourceFilter` mapped to `/protected/*`; `CreateEmployeeServlet` mapped to `/protected/create-employee`. All URLs under `/protected/` require authentication.*
+![[http-session-webxml.jpg|500]]
+*Figure 6: web.xml configuration for the authentication filter and protected servlets*
 
 The protected project keeps the database resource reference in `web.xml`:
 
@@ -768,9 +764,8 @@ The protected project keeps the database resource reference in `web.xml`:
 > - Can intercept before AND after the servlet/JSP
 > - Configured in `web.xml` with `<filter>` + `<filter-mapping>`
 
-![[http-filter-class-fields.jpg]]
-
-*Figure: `ProtectedResourceFilter` class fields — `Base64.Decoder DECODER`, `USER_ATTRIBUTE = "user"`, `FilterConfig config`, `DataSource ds`.*
+![[http-filter-class-fields.jpg|560]]
+*Figure 7: Main fields of the ProtectedResourceFilter class*
 
 > [!Example] ProtectedResourceFilter — field declarations
 > ```java
@@ -784,9 +779,8 @@ The protected project keeps the database resource reference in `web.xml`:
 > - `HttpSession` is basically a hash map; `USER_ATTRIBUTE` is the key used to store the authenticated username
 > - In `init()`, the filter retrieves the connection pool with `new InitialContext().lookup("java:/comp/env/jdbc/employee-ferro")` and passes it to `AuthenticateUserDAO`
 
-![[http-filter-dofilter-code.jpg]]
-
-*Figure: `doFilter()` main logic — if no session → try authenticate; if session but no user → invalidate + try authenticate; if session with user → pass to next filter.*
+![[http-filter-dofilter-code.jpg|560]]
+*Figure 8: doFilter logic used to check session state and authentication*
 
 > [!Example] doFilter() logic (text form)
 > ```java
@@ -807,9 +801,8 @@ The protected project keeps the database resource reference in `web.xml`:
 > chain.doFilter(req, res); // pass to next element
 > ```
 
-![[http-filter-authenticate-user.jpg]]
-
-*Figure: `authenticateUser()` — reads `Authorization` header, checks `"BASIC "` prefix, Base64-decodes, splits on `:` to get username:password.*
+![[http-filter-authenticate-user.jpg|560]]
+*Figure 9: authenticateUser logic for reading and verifying Basic credentials*
 
 > [!Example] authenticateUser() logic
 > ```java
@@ -845,9 +838,8 @@ The protected project keeps the database resource reference in `web.xml`:
 > }
 > ```
 
-![[http-filter-send-challenge.jpg]]
-
-*Figure: `sendAuthenticationChallenge()` — sets `WWW-Authenticate: Basic realm=Employee` and sends `401 Unauthorized`.*
+![[http-filter-send-challenge.jpg|560]]
+*Figure 10: Method used to send the HTTP Basic challenge with 401 Unauthorized status*
 
 > [!Example] sendAuthenticationChallenge()
 > ```java

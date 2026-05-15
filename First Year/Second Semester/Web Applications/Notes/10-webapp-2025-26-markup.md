@@ -232,9 +232,8 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 
 ### XML Document Structure — Tree Model
 
-![[markup-xml-tree.jpg]]
-
-*Figure: XML document as a tree — RSS example. `rss` → `channel` → `title`, `link`, `description`, `item`(s). Each `item` → `title`, `pubDate`, `link`, `guid`, `description`.*
+![[markup-xml-tree.jpg|560]]
+*Figure 1: Tree representation of an RSS XML document*
 
 > [!Example] RSS XML document
 > ```xml
@@ -330,9 +329,8 @@ _Source: `10-webapp-2025-26-markup.pdf` — Web Applications, Master Degree, A.Y
 >
 > Reference: W3C (1998). *DOM Level 1 Specification.* W3C Recommendation.
 
-![[markup-dom-interfaces.jpg]]
-
-*Figure: DOM interface hierarchy — `Node` (root interface) → `ProcessingInstruction`, `Document`, `Element`, `Attr`, `CharacterData` → `Text`, `Comment`.*
+![[markup-dom-interfaces.jpg|580]]
+*Figure 2: DOM interface hierarchy starting from Node*
 
 | DOM Interface | Represents |
 |---------------|-----------|
@@ -553,13 +551,11 @@ Important `Node` methods:
 
 ### JSON Structures
 
-![[markup-json-object-syntax.jpg]]
+![[markup-json-object-syntax.jpg|620]]
+*Figure 3: Railroad diagram for JSON object syntax*
 
-*Figure: JSON object railroad diagram — `{ string : value , ... }`*
-
-![[markup-json-array-value-syntax.jpg]]
-
-*Figure: JSON array + value railroad diagram — array is `[ value , ... ]`; value can be string, number, object, array, true, false, null.*
+![[markup-json-array-value-syntax.jpg|520]]
+*Figure 4: Railroad diagram for JSON array and value syntax*
 
 | JSON Type | Syntax | Example |
 |-----------|--------|---------|
@@ -666,13 +662,11 @@ Important `Node` methods:
 > instances, while `JsonParser` and `JsonGenerator` perform token-based reading
 > and writing.
 
-![[markup-jackson-core-api.jpg]]
+![[markup-jackson-core-api.jpg|560]]
+*Figure 5: Overview of the main classes in the com.fasterxml.jackson.core package*
 
-*Figure: `com.fasterxml.jackson.core` package summary — key classes: `JsonFactory` (main factory, creates parsers/generators), `JsonParser` (reading), `JsonGenerator` (writing).*
-
-![[markup-jackson-jsonparser-api.jpg]]
-
-*Figure: `JsonParser` class API — key methods: `nextToken()`, `nextFieldName()`, `getIntValue()`, `getText()`, `getValueAsString()`, `isClosed()`, `currentToken()`.*
+![[markup-jackson-jsonparser-api.jpg|560]]
+*Figure 6: Main methods of Jackson JsonParser*
 
 | Jackson Class | Role |
 |---------------|------|

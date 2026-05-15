@@ -482,7 +482,8 @@ The slides show Chrome and Firefox Developer Tools as the practical environment 
 
 ### DOM Structure
 
-![[js-dom-tree.jpg]]
+![[js-dom-tree.jpg|560]]
+*Figure 1: DOM tree generated from the structure of an HTML document*
 
 The DOM represents HTML as a **tree of nodes**:
 

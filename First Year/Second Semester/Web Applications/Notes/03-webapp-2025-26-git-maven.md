@@ -31,6 +31,7 @@
 
 ## Git — Version Control System
 ![[Pasted image 20260512202324.png|300]]
+*Figure 1: Comparison between centralized and distributed version control*
 
 **Git** is a distributed version control system (https://git-scm.com/). It manages versions (*revisions*) of files and directories, concurrent modification conflicts, and their resolution (**merge**).
 
@@ -62,8 +63,8 @@ git clone username@host:/path/to/repos
 >
 > **Insight:** you work in the working dir → add to the stage with `add` → consolidate into history with `commit`.
 
-![[git-workflow-three-trees.jpg]]
-*Working dir → (add) → Index/Stage → (commit) → HEAD*
+![[git-workflow-three-trees.jpg|560]]
+*Figure 2: Flow between working directory, staging area, and HEAD*
 
 ### Add, Commit, Push
 
@@ -86,8 +87,8 @@ git push origin master
 > [!Important] Branch
 > Branches are used to develop independent features (e.g. new versions). The **master** branch is the default one. The other branches are merged into master when appropriate.
 
-![[git-branch-merge.jpg]]
-*A branch (`feature_x`) starts from master, is developed separately, and is then merged into master.*
+![[git-branch-merge.jpg|580]]
+*Figure 3: Creation of a feature branch and merge back into the main branch*
 
 ```bash
 # Create and switch to a new branch
@@ -200,8 +201,8 @@ Advantages:
 >
 > **Insight:** lifecycle > phase > goal > plugin. The POM is the project's "manifest".
 
-![[maven-phases-goals-plugins-pom.jpg]]
-*Each Phase contains Goals implemented by Plugins. The POM governs everything.*
+![[maven-phases-goals-plugins-pom.jpg|580]]
+*Figure 4: Relationship between Maven phases, goals, plugins, and the POM file*
 
 ### Build Lifecycle
 
@@ -247,7 +248,9 @@ Three predefined lifecycles:
 | **Deployment** | `verify` | Verifies package validity and quality |
 | | `install` | Installs the package in the local repository |
 | | `deploy` | Copies the package to the remote repository (release environment) |
-![[Pasted image 20260512202851.png]]
+![[Pasted image 20260512202851.png|520]]
+*Figure 5: Overview of Maven lifecycles and their phases*
+
 ### Default Build Lifecycle for JAR
 
 ```
@@ -263,7 +266,7 @@ process-resources  →  compile  →  process-test-resources  →  test-compile
 ### Project Object Model (POM)
 
 ![[Pasted image 20260512114735.png|500]]
-*POM contains: Coordinates (groupId, artifactId, version), Relationships (Multi-Module, Inheritance, Dependencies), Build Settings (Directories, Extensions, Resources, Plugins, Reporting), General Project Info, Build Environment (Profiles).*
+*Figure 6: Logical structure of a Maven POM file*
 
 > [!Important] POM — Main sections
 > - **Coordinates**: uniquely identify the project in the repository
@@ -282,6 +285,8 @@ process-resources  →  compile  →  process-test-resources  →  test-compile
 > Maven downloads dependencies and plugins from **remote repositories** (Maven Central, Sonatype, other repositories) and keeps them in a **local cache** (`~/.m2/repository`).
 > If a dependency is not in the cache, Maven automatically downloads it from the configured remote repository.
 ![[Pasted image 20260512114820.png|500]]
+*Figure 7: Role of settings.xml in Maven configuration*
+
 ### settings.xml Configuration
 
 The `~/.m2/settings.xml` file contains Maven's global configuration:

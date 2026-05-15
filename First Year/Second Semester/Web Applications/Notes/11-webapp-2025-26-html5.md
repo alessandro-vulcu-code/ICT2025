@@ -146,7 +146,8 @@ Text elements that add **extra information** about content without necessarily c
 
 ### Block and Inline Elements
 
-![[html5-block-inline.jpg]]
+![[html5-block-inline.jpg|580]]
+*Figure 1: Difference between block and inline elements in HTML*
 
 | Type | Behavior | Examples |
 |------|----------|---------|
@@ -608,7 +609,8 @@ HTML5 allows `<a>` to wrap block-level elements — turns entire block into link
 
 ### HTML4 vs HTML5 Layout
 
-![[html5-layout-comparison.jpg]]
+![[html5-layout-comparison.jpg|560]]
+*Figure 2: Comparison between traditional HTML layout and semantic HTML5 layout*
 
 > [!Important] HTML5 Semantic Layout
 > Left (HTML4): all structure via `<div id="header">`, `<div id="nav">`, `<div id="sidebar">`, `<div id="footer">`.

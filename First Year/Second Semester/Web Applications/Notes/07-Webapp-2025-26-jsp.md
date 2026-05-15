@@ -66,7 +66,9 @@ Official reference: Jakarta Server Pages 3.0 specification, `https://jakarta.ee/
 > **Intuition:** JSP is syntactic sugar. Under the hood it's a servlet — it just lets you write HTML and embed Java/EL snippets instead of writing `out.printf("<html>...")`.
 
 Flow: `hello.jsp` → (translation) → `hello_jsp.java` → (compilation) → `hello_jsp.class` → (execution) → `hello.html` sent to browser.
-![[Pasted image 20260512115326.png]]
+![[Pasted image 20260512115326.png|440]]
+*Figure 1: Compilation and execution flow of a JSP page*
+
 ### Components of a JSP Page
 
 | Component | Syntax | Purpose |
@@ -113,8 +115,11 @@ Reference specification: JavaBeans 1.01-A, `http://www.oracle.com/technetwork/ja
 | `<jsp:include>`     | Includes the response of another JSP/servlet (inside web container only) |
 | `<jsp:forward>`     | Forwards processing to another JSP/servlet (inside web container only)   |
 | `<jsp:param>`       | Adds parameters to a request made by `<jsp:include>` or `<jsp:forward>`  |
-![[Pasted image 20260512115436.png]]
-![[Pasted image 20260512115449.png]]
+![[Pasted image 20260512115436.png|520]]
+*Figure 2: Examples of JSP standard actions and their use in a page*
+
+![[Pasted image 20260512115449.png|520]]
+*Figure 3: Additional JSP standard action examples for including or forwarding requests*
 
 ---
 
@@ -349,8 +354,11 @@ Referenced with `<c:import url="/jsp/include/head.jsp"/>` — this includes the 
 Flow: Browser → (HTTP request) → Servlet (Controller) → (invokes) → DAO (Model layer) → Servlet sets request attributes → (forwards) → JSP (View) → (HTML) → Browser.
 
 ### MVC and Application Layers
-![[Pasted image 20260512115525.png]]
-![[jsp-mvc-layers-employee.jpg]]
+![[Pasted image 20260512115525.png|440]]
+*Figure 4: MVC pattern schema applied to servlets, JSP pages, and the model*
+
+![[jsp-mvc-layers-employee.jpg|500]]
+*Figure 5: Mapping between MVC roles and the layers of the Employee application*
 
 MVC roles map to application layers:
 
@@ -628,7 +636,8 @@ They are **"almost JavaBeans"** — EL can call `getXXX()` methods via `${employ
 
 ### Sequence Diagrams
 
-![[jsp-create-employee-sequence.jpg]]
+![[jsp-create-employee-sequence.jpg|520]]
+*Figure 6: MVC sequence for creating an employee*
 
 **Create Employee (MVC) steps:**
 1. Browser: `POST /create-employee`
@@ -640,7 +649,8 @@ They are **"almost JavaBeans"** — EL can call `getXXX()` methods via `${employ
 7. JSP generates HTML (step 2)
 8. Browser receives HTML (3.1)
 
-![[jsp-search-employee-sequence.jpg]]
+![[jsp-search-employee-sequence.jpg|520]]
+*Figure 7: MVC sequence for searching employees*
 
 **Search Employee (MVC) steps:**
 1. Browser: `POST /search-employee-by-salary`
@@ -652,7 +662,8 @@ They are **"almost JavaBeans"** — EL can call `getXXX()` methods via `${employ
 
 ### Class Diagram
 
-![[jsp-employee-class-diagram.jpg]]
+![[jsp-employee-class-diagram.jpg|560]]
+*Figure 8: Class diagram of the JSP project with servlet controllers and JSP views*
 
 Same class structure as the servlet-only version (slide 06) — the key addition is that servlets now **forward to JSP views** instead of writing HTML directly.
 
