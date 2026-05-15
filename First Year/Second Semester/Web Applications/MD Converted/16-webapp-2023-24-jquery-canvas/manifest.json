@@ -1,0 +1,997 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/16-webapp-2023-24-jquery-canvas.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "jQuery",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            13,
+            2,
+            1038,
+            496
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            0.96,
+            498.0843486410497,
+            238.07999999999998
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Introduction to jQuery",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "jQuery",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            86,
+            264,
+            2124,
+            1482
+          ],
+          "bbox_pdf": [
+            41.26710402999063,
+            126.72,
+            1019.2014995313965,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Why jQuery?",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            228,
+            941,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            109.4058106841612,
+            451.68,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "jQuery Basics",
+      "figures": []
+    },
+    {
+      "page_number": 6,
+      "title": "jQuery Objects",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            153,
+            1069,
+            2017,
+            1482
+          ],
+          "bbox_pdf": [
+            73.41705716963449,
+            513.12,
+            967.8575445173384,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "Queries and Query Results",
+      "figures": []
+    },
+    {
+      "page_number": 8,
+      "title": "Creating DOM Elements",
+      "figures": []
+    },
+    {
+      "page_number": 9,
+      "title": "Each() Method",
+      "figures": []
+    },
+    {
+      "page_number": 10,
+      "title": "jQuery Getters and",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            654,
+            788,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            378.24,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "jQuery Getters and Setters",
+      "figures": []
+    },
+    {
+      "page_number": 12,
+      "title": "Getting and Setting HTML Attributes",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            105,
+            528,
+            1993,
+            1482
+          ],
+          "bbox_pdf": [
+            50.3842549203374,
+            253.44,
+            956.3411433926898,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "Getting and Setting CSS Attributes",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            117,
+            645,
+            1994,
+            1483
+          ],
+          "bbox_pdf": [
+            56.14245548266167,
+            309.59999999999997,
+            956.8209934395502,
+            711.8399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "Getting and Setting CSS Classes",
+      "figures": []
+    },
+    {
+      "page_number": 15,
+      "title": "Getting and Setting HTML Form Values",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            52,
+            761,
+            2046,
+            1482
+          ],
+          "bbox_pdf": [
+            24.95220243673852,
+            365.28,
+            981.7731958762887,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Getting and Setting Element Content",
+      "figures": []
+    },
+    {
+      "page_number": 17,
+      "title": "Altering the DOM",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            654,
+            788,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            378.24,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "Inserting and Replacing Elements",
+      "figures": []
+    },
+    {
+      "page_number": 19,
+      "title": "Inserting and Replacing Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-019-fig-01.jpg",
+          "bbox_px": [
+            51,
+            266,
+            2083,
+            1482
+          ],
+          "bbox_pdf": [
+            24.472352389878164,
+            127.67999999999999,
+            999.5276476101219,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 20,
+      "title": "Inserting and Replacing Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-020-fig-01.jpg",
+          "bbox_px": [
+            52,
+            910,
+            2072,
+            1473
+          ],
+          "bbox_pdf": [
+            24.95220243673852,
+            436.8,
+            994.2492970946579,
+            707.04
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 21,
+      "title": "Copying Elements",
+      "figures": []
+    },
+    {
+      "page_number": 22,
+      "title": "Copying Elements Example",
+      "figures": []
+    },
+    {
+      "page_number": 23,
+      "title": "Wrapping Elements",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            133,
+            788,
+            2064,
+            1482
+          ],
+          "bbox_pdf": [
+            63.82005623242737,
+            378.24,
+            990.4104967197751,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "Deleting Elements",
+      "figures": []
+    },
+    {
+      "page_number": 25,
+      "title": "Handling Events with",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            654,
+            788,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            378.24,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Simple Event Handler Registration",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            154,
+            906,
+            1985,
+            1449
+          ],
+          "bbox_pdf": [
+            73.89690721649485,
+            434.88,
+            952.502343017807,
+            695.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Event Handler Registration Methods",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            654,
+            884,
+            1500,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            424.32,
+            719.7750702905342,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "jQuery Event Handler",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            151,
+            1000,
+            2048,
+            1485
+          ],
+          "bbox_pdf": [
+            72.45735707591378,
+            480.0,
+            982.7328959700094,
+            712.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "Deregistering Event Handlers",
+      "figures": [
+        {
+          "filename": "assets/slide-029-fig-01.jpg",
+          "bbox_px": [
+            144,
+            1078,
+            1913,
+            1453
+          ],
+          "bbox_pdf": [
+            69.09840674789129,
+            517.4399999999999,
+            917.9531396438613,
+            697.4399999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 30,
+      "title": "AJAX with jQuery",
+      "figures": [
+        {
+          "filename": "assets/slide-030-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 31,
+      "title": "AJAX and jQuery",
+      "figures": [
+        {
+          "filename": "assets/slide-031-fig-01.jpg",
+          "bbox_px": [
+            162,
+            859,
+            2075,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            412.32,
+            995.688847235239,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 32,
+      "title": "AJAX Function",
+      "figures": []
+    },
+    {
+      "page_number": 33,
+      "title": "AJAX Utility Functions - get()",
+      "figures": []
+    },
+    {
+      "page_number": 34,
+      "title": "AJAX Utility Functions - get()",
+      "figures": [
+        {
+          "filename": "assets/slide-034-fig-01.jpg",
+          "bbox_px": [
+            284,
+            253,
+            1762,
+            1482
+          ],
+          "bbox_pdf": [
+            136.27741330834115,
+            121.44,
+            845.4957825679476,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 35,
+      "title": "AJAX Utility Functions - post()",
+      "figures": [
+        {
+          "filename": "assets/slide-035-fig-01.jpg",
+          "bbox_px": [
+            107,
+            816,
+            2048,
+            1441
+          ],
+          "bbox_pdf": [
+            51.34395501405811,
+            391.68,
+            982.7328959700094,
+            691.68
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 36,
+      "title": "AJAX Utility Functions - post()",
+      "figures": [
+        {
+          "filename": "assets/slide-036-fig-01.jpg",
+          "bbox_px": [
+            70,
+            211,
+            2045,
+            1496
+          ],
+          "bbox_pdf": [
+            33.58950328022493,
+            101.28,
+            981.2933458294283,
+            718.0799999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 37,
+      "title": "AJAX Utility Functions - getScript()",
+      "figures": [
+        {
+          "filename": "assets/slide-037-fig-01.jpg",
+          "bbox_px": [
+            46,
+            881,
+            1995,
+            1482
+          ],
+          "bbox_pdf": [
+            22.073102155576382,
+            422.88,
+            957.3008434864105,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 38,
+      "title": "AJAX Utility Functions - getJSON()",
+      "figures": []
+    },
+    {
+      "page_number": 39,
+      "title": "The load() Method",
+      "figures": []
+    },
+    {
+      "page_number": 40,
+      "title": "The load() Method",
+      "figures": []
+    },
+    {
+      "page_number": 41,
+      "title": "Load text into a div (1)",
+      "figures": [
+        {
+          "filename": "assets/slide-041-fig-01.jpg",
+          "bbox_px": [
+            317,
+            293,
+            1721,
+            831
+          ],
+          "bbox_pdf": [
+            152.1124648547329,
+            140.64,
+            825.821930646673,
+            398.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 42,
+      "title": "Load text into a div (2)",
+      "figures": [
+        {
+          "filename": "assets/slide-042-fig-01.jpg",
+          "bbox_px": [
+            355,
+            240,
+            1585,
+            531
+          ],
+          "bbox_pdf": [
+            170.34676663542643,
+            115.19999999999999,
+            760.5623242736644,
+            254.88
+          ]
+        },
+        {
+          "filename": "assets/slide-042-fig-02.jpg",
+          "bbox_px": [
+            356,
+            651,
+            1945,
+            1482
+          ],
+          "bbox_pdf": [
+            170.82661668228678,
+            312.47999999999996,
+            933.3083411433927,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 43,
+      "title": "Load text into a div (3)",
+      "figures": [
+        {
+          "filename": "assets/slide-043-fig-01.jpg",
+          "bbox_px": [
+            654,
+            429,
+            1480,
+            709
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            205.92,
+            710.1780693533271,
+            340.32
+          ]
+        },
+        {
+          "filename": "assets/slide-043-fig-02.jpg",
+          "bbox_px": [
+            453,
+            735,
+            2010,
+            1482
+          ],
+          "bbox_pdf": [
+            217.37207122774134,
+            352.8,
+            964.4985941893159,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 44,
+      "title": "Load text into a div (4)",
+      "figures": [
+        {
+          "filename": "assets/slide-044-fig-01.jpg",
+          "bbox_px": [
+            282,
+            769,
+            1754,
+            1482
+          ],
+          "bbox_pdf": [
+            135.31771321462043,
+            369.12,
+            841.6569821930647,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 45,
+      "title": "Load text into a div (5)",
+      "figures": [
+        {
+          "filename": "assets/slide-045-fig-01.jpg",
+          "bbox_px": [
+            63,
+            256,
+            1969,
+            1482
+          ],
+          "bbox_pdf": [
+            30.230552952202437,
+            122.88,
+            944.8247422680413,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 46,
+      "title": "Canvas",
+      "figures": [
+        {
+          "filename": "assets/slide-046-fig-01.jpg",
+          "bbox_px": [
+            654,
+            943,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            452.64,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 47,
+      "title": "Introduction to HTML5 Canvas",
+      "figures": []
+    },
+    {
+      "page_number": 48,
+      "title": "The Canvas Element",
+      "figures": []
+    },
+    {
+      "page_number": 49,
+      "title": "The Rendering Context",
+      "figures": []
+    },
+    {
+      "page_number": 50,
+      "title": "Example",
+      "figures": []
+    },
+    {
+      "page_number": 51,
+      "title": "The Canvas Grid",
+      "figures": [
+        {
+          "filename": "assets/slide-051-fig-01.jpg",
+          "bbox_px": [
+            148,
+            293,
+            2081,
+            1482
+          ],
+          "bbox_pdf": [
+            71.01780693533271,
+            140.64,
+            998.5679475164011,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 52,
+      "title": "Drawing Rectangles",
+      "figures": [
+        {
+          "filename": "assets/slide-052-fig-01.jpg",
+          "bbox_px": [
+            139,
+            941,
+            2022,
+            1493
+          ],
+          "bbox_pdf": [
+            66.6991565135895,
+            451.68,
+            970.2567947516401,
+            716.64
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 53,
+      "title": "Drawing Path",
+      "figures": []
+    },
+    {
+      "page_number": 54,
+      "title": "Moving the Pen",
+      "figures": []
+    },
+    {
+      "page_number": 55,
+      "title": "Lines",
+      "figures": [
+        {
+          "filename": "assets/slide-055-fig-01.jpg",
+          "bbox_px": [
+            162,
+            1134,
+            1733,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            544.3199999999999,
+            831.5801312089972,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 56,
+      "title": "Arcs",
+      "figures": [
+        {
+          "filename": "assets/slide-056-fig-01.jpg",
+          "bbox_px": [
+            147,
+            1107,
+            2044,
+            1482
+          ],
+          "bbox_pdf": [
+            70.53795688847235,
+            531.36,
+            980.813495782568,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 57,
+      "title": "Arcs Example",
+      "figures": [
+        {
+          "filename": "assets/slide-057-fig-01.jpg",
+          "bbox_px": [
+            299,
+            390,
+            1798,
+            1482
+          ],
+          "bbox_pdf": [
+            143.47516401124648,
+            187.2,
+            862.7703842549204,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 58,
+      "title": "Using Images",
+      "figures": []
+    },
+    {
+      "page_number": 59,
+      "title": "Drawing an Image",
+      "figures": [
+        {
+          "filename": "assets/slide-059-fig-01.jpg",
+          "bbox_px": [
+            46,
+            727,
+            2025,
+            1481
+          ],
+          "bbox_pdf": [
+            22.073102155576382,
+            348.96,
+            971.6963448922212,
+            710.88
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 60,
+      "title": "Saving and Restoring State",
+      "figures": []
+    },
+    {
+      "page_number": 61,
+      "title": "Translate",
+      "figures": []
+    },
+    {
+      "page_number": 62,
+      "title": "Rotating",
+      "figures": [
+        {
+          "filename": "assets/slide-062-fig-01.jpg",
+          "bbox_px": [
+            162,
+            954,
+            2072,
+            1482
+          ],
+          "bbox_pdf": [
+            77.73570759137769,
+            457.91999999999996,
+            994.2492970946579,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 63,
+      "title": "Basic Animations",
+      "figures": []
+    },
+    {
+      "page_number": 64,
+      "title": "Controlling an Animation",
+      "figures": []
+    },
+    {
+      "page_number": 65,
+      "title": "Animation Example",
+      "figures": [
+        {
+          "filename": "assets/slide-065-fig-01.jpg",
+          "bbox_px": [
+            74,
+            764,
+            2002,
+            1482
+          ],
+          "bbox_pdf": [
+            35.50890346766636,
+            366.71999999999997,
+            960.659793814433,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 66,
+      "title": "Slide 66",
+      "figures": []
+    }
+  ]
+}
