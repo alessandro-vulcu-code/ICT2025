@@ -34,6 +34,7 @@
   - [[#Timers|Timers]]
   - [[#Navigator and Screen|Navigator and Screen]]
   - [[#The Console Object|The Console Object]]
+  - [[#Browser Developer Tools|Browser Developer Tools]]
 - [[#The Document Object Model (DOM)|The Document Object Model (DOM)]]
   - [[#DOM Structure|DOM Structure]]
   - [[#Node Properties|Node Properties]]
@@ -70,9 +71,11 @@
 
 ### JavaScript vs Java
 
+- Chris Heilmann's quote from the slides: "Java is to JavaScript what Car is to Carpet."
 - Name is misleading — JavaScript and Java share only superficial syntactic similarity
 - Created by **Brendan Eich** at Netscape in **1995**, originally named *LiveScript*, renamed to JavaScript for marketing reasons
 - Completely different type system, object model, and runtime
+- JavaScript also had a bad reputation for a period because it was associated with unwanted redirects, pop-up windows, and security vulnerabilities
 
 ### What JavaScript Can and Cannot Do
 
@@ -122,6 +125,8 @@ Scripts share the same global scope: variables and functions defined in one scri
 
 JavaScript is **case-sensitive**. `document.getElementById` ≠ `Document.GetElementById`.
 
+HTML is not case-sensitive, but many client-side JavaScript objects and properties mirror HTML tags and attributes and must typically be written in lowercase.
+
 ```javascript
 // Single-line comment
 
@@ -168,7 +173,7 @@ var sum;
 var message = "hello";   // declaration + initialization
 ```
 
-Undeclared variables can cause errors; always declare with `var` (or `let`/`const` in modern JS).
+Undeclared variables can cause errors; in the slides, variables are declared with `var`.
 
 ### Numbers
 
@@ -376,8 +381,6 @@ function addNumbers(a, b) {
 
 Defined with the `function` keyword, followed by name, parameter list in `()`, body in `{}`.
 
-Functions are **first-class objects** — can be assigned to variables, passed as arguments, returned from other functions.
-
 ---
 
 ## Browser Objects
@@ -430,10 +433,6 @@ var id = setTimeout(function() { doSomething(); }, 2000);
 
 // Repeating: run fn every 1000ms
 var id = setInterval(function() { updateClock(); }, 1000);
-
-// Cancel
-clearTimeout(id);
-clearInterval(id);
 ```
 
 ### Navigator and Screen
@@ -466,6 +465,10 @@ Used for debugging (browser DevTools console):
 | `console.dir(obj)` | Log DOM/JS object representation |
 | `console.table(arr)` | Log array of objects as table |
 
+### Browser Developer Tools
+
+The slides show Chrome and Firefox Developer Tools as the practical environment for inspecting pages and using the debugging console exposed through the `console` object.
+
 ---
 
 ## The Document Object Model (DOM)
@@ -479,7 +482,8 @@ Used for debugging (browser DevTools console):
 
 ### DOM Structure
 
-![[js-dom-tree.jpg]]
+![[js-dom-tree.jpg|560]]
+*Figure 1: DOM tree generated from the structure of an HTML document*
 
 The DOM represents HTML as a **tree of nodes**:
 
@@ -524,7 +528,6 @@ element.childElementCount
 | `document.getElementsByTagName("tag")` | `NodeList` | Tag name (e.g., `"span"`) |
 | `document.getElementsByClassName("cls")` | `NodeList` | CSS class |
 | `document.querySelectorAll("selector")` | `NodeList` | Any CSS selector |
-| `document.querySelector("selector")` | Single `Element` | First match of CSS selector |
 
 ```javascript
 var section1    = document.getElementById("section1");
@@ -534,6 +537,8 @@ var warnings    = document.getElementsByClassName("warning");
 var sidebarPara = document.querySelectorAll(".sidebar p");
 var textInput   = document.querySelectorAll("input[type='text']");
 ```
+
+`getElementsByName()`, `getElementsByTagName()`, `getElementsByClassName()`, and `querySelectorAll()` return `NodeList` objects that behave like read-only arrays of `Element` objects. The class-selection method can also be invoked on a specific element, as in `log.getElementsByClassName("warning")`.
 
 ### Element Properties and Attributes
 
@@ -638,6 +643,8 @@ Each event type defines additional properties (e.g., mouse event includes mouse 
 
 ### Mouse Events
 
+In the early Web, browsers supported only a small event set such as `load`, `click`, and `mouseover`. The number of events grew through DOM Level 3 Events, new APIs in HTML5, and touch-based/mobile devices.
+
 | Event | Trigger |
 |-------|---------|
 | `mousemove` | Mouse moves/drags |
@@ -713,6 +720,8 @@ Mixes HTML and JS behavior. **Avoid** — breaks separation of concerns.
 
 #### 3. `addEventListener()` (preferred)
 
+The slides also mention `attachEvent()` as the older registration method used by IE8/IE9.
+
 ```javascript
 var b = document.getElementById("mybutton");
 
@@ -736,27 +745,12 @@ b.addEventListener("click", function() { alert("Thanks again!"); });
 >
 > **Intuition:** Use `addEventListener` always — it's the standard, supports multiple handlers, and doesn't conflict with other libraries.
 
-> [!Example] Full Event Handler Example
-> **Contesto:** Validate form on submit; remove mousemove listener after mouseup.
+> [!Example] Temporarily registered event handlers
+> **Contesto:** `removeEventListener()` removes a handler that was registered earlier.
 > **Codice:**
 > ```javascript
-> window.onload = function() {
->   var form = document.getElementById("myform");
->   form.addEventListener("submit", function(event) {
->     if (!validate(form)) {
->       event.preventDefault();   // cancel submission
->     }
->   });
-> };
->
-> function handleMouseMove(event) { /* track position */ }
-> function handleMouseUp(event) {
->   document.removeEventListener("mousemove", handleMouseMove);
->   document.removeEventListener("mouseup", handleMouseUp);
-> }
->
-> document.addEventListener("mousemove", handleMouseMove);
-> document.addEventListener("mouseup",   handleMouseUp);
+> document.removeEventListener("mousemove", handleMouseMove);
+> document.removeEventListener("mouseup", handleMouseUp);
 > ```
 
 ---
@@ -775,7 +769,7 @@ b.addEventListener("click", function() { alert("Thanks again!"); });
 | **`window`** | Global browser object | All globals are window properties |
 | **Timers** | `setTimeout(fn, ms)` / `setInterval(fn, ms)` | Async deferred/repeating execution |
 | **DOM root** | `window.document` | `Document` object = entry to DOM tree |
-| **Select by id** | `document.getElementById("id")` | Fastest; id must be unique |
+| **Select by id** | `document.getElementById("id")` | Simplest and most common; id must be unique |
 | **Select by CSS** | `document.querySelectorAll("selector")` | Full CSS selector support |
 | **Create node** | `document.createElement("tag")` | Floating until appended |
 | **Insert node** | `parent.appendChild(node)` / `insertBefore(new, ref)` | — |
@@ -785,7 +779,7 @@ b.addEventListener("click", function() { alert("Thanks again!"); });
 | **Attribute write** | `element.setAttribute("attr", "val")` | — |
 | **Register event** | `target.addEventListener("type", fn)` | Preferred; multiple handlers |
 | **Remove event** | `target.removeEventListener("type", fn)` | Same type+fn reference required |
-| **Form submit cancel** | `onsubmit` handler returning `false` | Or `event.preventDefault()` |
+| **Form submit cancel** | `onsubmit` handler returning `false` | Cancels form submission |
 | **Node types** | Document=9, Element=1, Text=3 | `node.nodeType` |
 
 ## Questions
@@ -799,12 +793,12 @@ b.addEventListener("click", function() { alert("Thanks again!"); });
 7. Why are JavaScript objects described as associative arrays, and when would bracket notation be more useful than dot notation?
 8. How do constructor functions and the `this` keyword work together to create reusable object instances?
 9. What makes JavaScript arrays dynamic and heterogeneous, and how do methods such as `push`, `pop`, `slice`, `sort`, and `forEach` support common operations?
-10. Why are functions considered first-class objects in JavaScript, and how does this support callbacks?
+10. How are JavaScript functions defined, and what role do parameters and `return` play?
 11. How do `window`, `document`, `location`, `history`, timers, dialogs, `navigator`, `screen`, and `console` expose browser functionality?
 12. How does the DOM tree represent an HTML document, and what is the difference between `Node`, `Document`, `Element`, and `Text` nodes?
-13. How do DOM selection methods such as `getElementById`, `getElementsByClassName`, `querySelector`, and `querySelectorAll` differ?
+13. How do DOM selection methods such as `getElementById`, `getElementsByName`, `getElementsByClassName`, and `querySelectorAll` differ?
 14. What steps are required to create, insert, remove, and replace DOM nodes programmatically?
 15. Why should `getAttribute()` and direct property access sometimes be treated differently?
 16. How do parsing, synchronous script execution, document completion, and the event-driven phase form the JavaScript execution timeline?
 17. Why is `addEventListener()` preferred over HTML event attributes or assigning `onclick` directly?
-18. How does `event.preventDefault()` or returning `false` from a submit handler stop an invalid form submission?
+18. How does returning `false` from a submit handler stop an invalid form submission?

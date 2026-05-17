@@ -1,0 +1,665 @@
+{
+  "source": "/home/alessandrovulcu/Scaricati/WEB APPLICATIONS 2025-2026 - INP9087843/17-webapp-2023-24-semantic-Web.pdf",
+  "options": {
+    "dpi": 150,
+    "start_page": 1,
+    "max_pages": null,
+    "image_format": "jpg",
+    "jpeg_quality": 88,
+    "min_area_ratio": 0.008,
+    "max_area_ratio": 0.85,
+    "min_width": 140,
+    "min_height": 90,
+    "merge_gap": 34,
+    "crop_padding": 14,
+    "text_padding": 5,
+    "white_threshold": 248,
+    "background_distance": 50,
+    "header_ratio": 0.18,
+    "footer_ratio": 0.085,
+    "include_footer": false,
+    "include_nearby_text_labels": true,
+    "label_gap": 28,
+    "skip_corner_decorations": true,
+    "corner_ratio": 0.18,
+    "debug": false
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Semantic Web",
+      "figures": [
+        {
+          "filename": "assets/slide-001-fig-01.jpg",
+          "bbox_px": [
+            13,
+            2,
+            1038,
+            317
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            0.96,
+            498.0843486410497,
+            152.16
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Semantic Web",
+      "figures": [
+        {
+          "filename": "assets/slide-002-fig-01.jpg",
+          "bbox_px": [
+            484,
+            605,
+            1646,
+            1482
+          ],
+          "bbox_pdf": [
+            232.24742268041237,
+            290.4,
+            789.8331771321463,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "Evolution of the Web",
+      "figures": [
+        {
+          "filename": "assets/slide-003-fig-01.jpg",
+          "bbox_px": [
+            356,
+            943,
+            1777,
+            1535
+          ],
+          "bbox_pdf": [
+            170.82661668228678,
+            452.64,
+            852.6935332708529,
+            736.8
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "title": "Data",
+      "figures": [
+        {
+          "filename": "assets/slide-004-fig-01.jpg",
+          "bbox_px": [
+            1404,
+            386,
+            1654,
+            635
+          ],
+          "bbox_pdf": [
+            673.70946579194,
+            185.28,
+            793.671977507029,
+            304.8
+          ]
+        },
+        {
+          "filename": "assets/slide-004-fig-02.jpg",
+          "bbox_px": [
+            207,
+            496,
+            456,
+            745
+          ],
+          "bbox_pdf": [
+            99.32895970009372,
+            238.07999999999998,
+            218.8116213683224,
+            357.59999999999997
+          ]
+        },
+        {
+          "filename": "assets/slide-004-fig-03.jpg",
+          "bbox_px": [
+            532,
+            762,
+            1428,
+            1482
+          ],
+          "bbox_pdf": [
+            255.28022492970948,
+            365.76,
+            685.2258669165885,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "title": "Data and Information",
+      "figures": [
+        {
+          "filename": "assets/slide-005-fig-01.jpg",
+          "bbox_px": [
+            357,
+            217,
+            1922,
+            1482
+          ],
+          "bbox_pdf": [
+            171.30646672914713,
+            104.16,
+            922.2717900656045,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "title": "Data and Information",
+      "figures": [
+        {
+          "filename": "assets/slide-006-fig-01.jpg",
+          "bbox_px": [
+            4,
+            217,
+            2085,
+            1498
+          ],
+          "bbox_pdf": [
+            1.9194001874414246,
+            104.16,
+            1000.4873477038426,
+            719.04
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "title": "How to Make Different Database Interoperate?",
+      "figures": [
+        {
+          "filename": "assets/slide-007-fig-01.jpg",
+          "bbox_px": [
+            221,
+            300,
+            720,
+            730
+          ],
+          "bbox_pdf": [
+            106.04686035613871,
+            144.0,
+            345.4920337394564,
+            350.4
+          ]
+        },
+        {
+          "filename": "assets/slide-007-fig-02.jpg",
+          "bbox_px": [
+            937,
+            450,
+            1435,
+            881
+          ],
+          "bbox_pdf": [
+            449.6194939081537,
+            216.0,
+            688.584817244611,
+            422.88
+          ]
+        },
+        {
+          "filename": "assets/slide-007-fig-03.jpg",
+          "bbox_px": [
+            328,
+            831,
+            827,
+            1261
+          ],
+          "bbox_pdf": [
+            157.3908153701968,
+            398.88,
+            396.8359887535145,
+            605.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "title": "Semantic Representation of Knowledge",
+      "figures": [
+        {
+          "filename": "assets/slide-008-fig-01.jpg",
+          "bbox_px": [
+            738,
+            346,
+            1092,
+            479
+          ],
+          "bbox_pdf": [
+            354.1293345829428,
+            166.07999999999998,
+            523.9962511715089,
+            229.92
+          ]
+        },
+        {
+          "filename": "assets/slide-008-fig-02.jpg",
+          "bbox_px": [
+            654,
+            762,
+            1901,
+            1482
+          ],
+          "bbox_pdf": [
+            313.8219306466729,
+            365.76,
+            912.1949390815371,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "title": "Resource Description Framework (RDF)",
+      "figures": [
+        {
+          "filename": "assets/slide-009-fig-01.jpg",
+          "bbox_px": [
+            142,
+            870,
+            2134,
+            1482
+          ],
+          "bbox_pdf": [
+            68.13870665417058,
+            417.59999999999997,
+            1024.0,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "title": "Example of RDF",
+      "figures": [
+        {
+          "filename": "assets/slide-010-fig-01.jpg",
+          "bbox_px": [
+            140,
+            202,
+            1994,
+            1450
+          ],
+          "bbox_pdf": [
+            67.17900656044986,
+            96.96,
+            956.8209934395502,
+            696.0
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "title": "Example of RDF",
+      "figures": [
+        {
+          "filename": "assets/slide-011-fig-01.jpg",
+          "bbox_px": [
+            117,
+            197,
+            2053,
+            1524
+          ],
+          "bbox_pdf": [
+            56.14245548266167,
+            94.56,
+            985.1321462043112,
+            731.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "title": "Example of RDF",
+      "figures": [
+        {
+          "filename": "assets/slide-012-fig-01.jpg",
+          "bbox_px": [
+            20,
+            197,
+            2053,
+            1524
+          ],
+          "bbox_pdf": [
+            9.597000937207124,
+            94.56,
+            985.1321462043112,
+            731.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "title": "Example of RDF",
+      "figures": [
+        {
+          "filename": "assets/slide-013-fig-01.jpg",
+          "bbox_px": [
+            27,
+            197,
+            2053,
+            1524
+          ],
+          "bbox_pdf": [
+            12.955951265229617,
+            94.56,
+            985.1321462043112,
+            731.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "title": "Example of RDF",
+      "figures": [
+        {
+          "filename": "assets/slide-014-fig-01.jpg",
+          "bbox_px": [
+            20,
+            197,
+            2133,
+            1524
+          ],
+          "bbox_pdf": [
+            9.597000937207124,
+            94.56,
+            1023.5201499531397,
+            731.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "title": "Example of RDF",
+      "figures": [
+        {
+          "filename": "assets/slide-015-fig-01.jpg",
+          "bbox_px": [
+            22,
+            197,
+            2053,
+            1524
+          ],
+          "bbox_pdf": [
+            10.556701030927835,
+            94.56,
+            985.1321462043112,
+            731.52
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "title": "Simple Protocol and RDF Query Language (SPARQL)",
+      "figures": [
+        {
+          "filename": "assets/slide-016-fig-01.jpg",
+          "bbox_px": [
+            39,
+            534,
+            2123,
+            1511
+          ],
+          "bbox_pdf": [
+            18.71415182755389,
+            256.32,
+            1018.7216494845361,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "title": "Simple Protocol and RDF Query Language (SPARQL)",
+      "figures": [
+        {
+          "filename": "assets/slide-017-fig-01.jpg",
+          "bbox_px": [
+            212,
+            690,
+            1991,
+            1511
+          ],
+          "bbox_pdf": [
+            101.72820993439551,
+            331.2,
+            955.3814432989691,
+            725.28
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 18,
+      "title": "Linked (Open) Data",
+      "figures": [
+        {
+          "filename": "assets/slide-018-fig-01.jpg",
+          "bbox_px": [
+            151,
+            845,
+            2066,
+            1389
+          ],
+          "bbox_pdf": [
+            72.45735707591378,
+            405.59999999999997,
+            991.3701968134958,
+            666.72
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 19,
+      "title": "Linked Data Principles",
+      "figures": []
+    },
+    {
+      "page_number": 20,
+      "title": "Linked Open Data Cloud",
+      "figures": []
+    },
+    {
+      "page_number": 21,
+      "title": "Linked Open Data Cloud",
+      "figures": [
+        {
+          "filename": "assets/slide-021-fig-01.jpg",
+          "bbox_px": [
+            0,
+            197,
+            1763,
+            1505
+          ],
+          "bbox_pdf": [
+            0.0,
+            94.56,
+            845.9756326148079,
+            722.4
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 22,
+      "title": "FAIR Principles",
+      "figures": [
+        {
+          "filename": "assets/slide-022-fig-01.jpg",
+          "bbox_px": [
+            7,
+            861,
+            2125,
+            1504
+          ],
+          "bbox_pdf": [
+            3.358950328022493,
+            413.28,
+            1019.6813495782568,
+            721.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 23,
+      "title": "DBPedia",
+      "figures": [
+        {
+          "filename": "assets/slide-023-fig-01.jpg",
+          "bbox_px": [
+            263,
+            211,
+            1871,
+            1465
+          ],
+          "bbox_pdf": [
+            126.20056232427366,
+            101.28,
+            897.7994376757264,
+            703.1999999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 24,
+      "title": "DBPedia",
+      "figures": [
+        {
+          "filename": "assets/slide-024-fig-01.jpg",
+          "bbox_px": [
+            167,
+            222,
+            1967,
+            1440
+          ],
+          "bbox_pdf": [
+            80.13495782567948,
+            106.56,
+            943.8650421743206,
+            691.1999999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 25,
+      "title": "DBPedia",
+      "figures": [
+        {
+          "filename": "assets/slide-025-fig-01.jpg",
+          "bbox_px": [
+            47,
+            195,
+            2083,
+            1440
+          ],
+          "bbox_pdf": [
+            22.55295220243674,
+            93.6,
+            999.5276476101219,
+            691.1999999999999
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 26,
+      "title": "Wikidata",
+      "figures": [
+        {
+          "filename": "assets/slide-026-fig-01.jpg",
+          "bbox_px": [
+            46,
+            318,
+            2084,
+            1482
+          ],
+          "bbox_pdf": [
+            22.073102155576382,
+            152.64,
+            1000.0074976569822,
+            711.36
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 27,
+      "title": "Wikidata",
+      "figures": [
+        {
+          "filename": "assets/slide-027-fig-01.jpg",
+          "bbox_px": [
+            317,
+            230,
+            1835,
+            1422
+          ],
+          "bbox_pdf": [
+            152.1124648547329,
+            110.39999999999999,
+            880.5248359887536,
+            682.56
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 28,
+      "title": "Overall Web Vision",
+      "figures": [
+        {
+          "filename": "assets/slide-028-fig-01.jpg",
+          "bbox_px": [
+            13,
+            248,
+            2119,
+            1479
+          ],
+          "bbox_pdf": [
+            6.23805060918463,
+            119.03999999999999,
+            1016.8022492970947,
+            709.92
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 29,
+      "title": "Slide 29",
+      "figures": []
+    }
+  ]
+}

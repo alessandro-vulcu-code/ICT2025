@@ -19,6 +19,7 @@
   - [[#Types of Receivable Data|Types of Receivable Data]]
   - [[#Loading JSON with AJAX|Loading JSON with AJAX]]
   - [[#Fetch API|Fetch API]]
+- [[#Further Readings|Further Readings]]
 - [[#Summary Table|Summary Table]]
 
 ---
@@ -191,6 +192,8 @@ AJAX capabilities:
 - Real-time content feeds (Twitter, Facebook)
 - Shopping cart updates without page reload
 - Username availability check during registration
+- Logging user interaction data to the server
+- Improving startup time by showing a simple page first, then downloading additional data and page components only when needed
 
 ### Synchronous vs Asynchronous
 
@@ -255,7 +258,8 @@ request.send(body);     // POST — body as string
 POST requests carry data in the request body. Two common encodings:
 
 **Form-encoded** (`application/x-www-form-urlencoded`):
-- URI-encode each name and value, join with `=`, separate pairs with `&`
+- URI-encode each name and value, replacing special characters with hexadecimal escape codes
+- Join encoded name and value with `=`, separate pairs with `&`
 - Example: `find=pizza&zipcode=02134&radius=1km`
 - Set header: `Content-Type: application/x-www-form-urlencoded`
 
@@ -405,7 +409,7 @@ JSON flow:
 > var promise = fetch(url, [options]);
 > ```
 > - `url`: target URL
-> - `options` (optional): method, headers, body, credentials, etc.
+> - `options` (optional): request parameters such as method and headers
 > - Without options: defaults to `GET` request
 >
 > When Promise **resolves** (server responds), it becomes a **Response** object with useful methods and properties.
@@ -431,6 +435,14 @@ JSON flow:
 > **Spiegazione:** `fetch(url)` initiates request and returns a Promise. `await` pauses until server responds — `response` is now the Response object. `response.ok` is `true` for 2xx status codes. `response.json()` also returns a Promise — `await` gives the parsed JavaScript object directly.
 
 **Note:** Fetch is not supported by older browsers — verify compatibility before use.
+
+---
+
+## Further Readings
+
+- MDN Web Docs: Resources for Developers, by Developers — `https://developer.mozilla.org/en-US/`
+- Duckett, J., Ruppert, G., and Moore, J. (2014). *JavaScript & jQuery: Interactive Front-end Web Development*. Wiley.
+- Flanagan, D. (2011). *JavaScript: The Definitive Guide*. O'Reilly Media.
 
 ---
 

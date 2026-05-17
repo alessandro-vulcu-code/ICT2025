@@ -134,10 +134,7 @@ The PDF conversion has no extracted images. For every figure, graph, diagram, bl
 Use this format:
 
 ```markdown
-> [!figure] Figure N - short descriptive title
-> **Placeholder:** add image later from the original PDF.
-> **Expected content:** describe what the missing figure should show using the surrounding text.
-> **Source cue:** preserve any original figure number, caption, page cue, or nearby label.
+Figure N: concise description of the missing image.
 ```
 
 Rules:
@@ -146,7 +143,10 @@ Rules:
 - Do not skip any visual reference.
 - If the source says only "Figure" or refers to "the diagram below", still add a placeholder.
 - If multiple visuals are described in one paragraph, create one placeholder per distinct visual.
-- Preserve the original caption text when present, then add a concise explanation of why the figure matters.
+- Use a plain text placeholder only, not an Obsidian callout.
+- Preserve the original figure number and caption when present.
+- If there is no original figure number, assign the next sequential figure number.
+- Describe the visual itself using the surrounding text, without extra fields such as placeholder notes, expected content, or source cues.
 
 ## Multimedia-Specific Structure
 

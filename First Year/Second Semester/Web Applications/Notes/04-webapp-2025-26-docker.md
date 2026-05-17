@@ -27,13 +27,21 @@
 
 A web application is composed of multiple technologies (Java backend, HTML/CSS/JS frontend, PostgreSQL database) that must be configured and integrated correctly.
 
+The architecture combines:
+- **Data layer**: database and persistent data
+- **Backend**: business logic and API
+- **Frontend**: user interface design in HTML, CSS, and JavaScript
+
 The standard life cycle is:
 
-![[Pasted image 20260512203729.png]]
+![[Pasted image 20260512203729.png|580]]
+*Figure 1: Build and deployment flow of a Java web application on Tomcat*
 
 **Development → Maven (build) → WAR file → Web Server (Tomcat)**
 
 The problem: if the target server has different versions of PostgreSQL, Java, or Tomcat compared to the development environment, the application may not work. Adapting the code to every environment is costly and error-prone.
+
+Local deployment is usually manageable because you control the data, backend, and frontend layers. The problem appears when the same application must run on a new server with different configurations.
 
 > [!Important] The environment mismatch problem
 > Small version differences between the development, build, and runtime environments can cause application failures. A solution is needed that is **independent of the infrastructure** where the webapp is deployed.
@@ -64,11 +72,15 @@ Typical use cases:
 
 **Docker** is an open source platform for developing, distributing, and running applications. It separates the application from the underlying infrastructure, enabling faster delivery.
 
+Docker packages and runs applications in isolated environments called **containers**, so multiple containers can run simultaneously on a single host. Documentation: `https://docs.docker.com/get-started/overview/`.
+
 Three-level architecture:
 1. **Host** — physical server with its own OS
 2. **Docker Engine** — container engine that creates, starts, stops, and manages containers on the host
 3. **Containers** — isolated applications, each with its own dependencies and libraries
-![[Pasted image 20260512204151.png]]
+![[Pasted image 20260512204151.png|500]]
+*Figure 2: Conceptual comparison between containers and virtual machines*
+
 ### Containers vs Virtual Machines
 
 | | Containers | Virtual Machines |
@@ -79,11 +91,11 @@ Three-level architecture:
 | Replication | Easy | Difficult |
 | Resources | Efficiently shared | Resource-intensive |
 
-![[docker-containers-stack.jpg]]
-*Container stack: App + Bins/Libs → Container Engine → Host OS → Infrastructure*
+![[docker-containers-stack.jpg|440]]
+*Figure 3: Execution stack of a Docker container*
 
-![[docker-vm-stack.jpg]]
-*VM stack: App + Bins/Libs + **Guest OS** → Hypervisor → Host OS → Infrastructure*
+![[docker-vm-stack.jpg|440]]
+*Figure 4: Execution stack of a virtual machine*
 
 > [!Important] Key difference between Container and VM
 > Containers **share the host OS kernel** — they do not have a Guest OS. VMs include an entire guest operating system, managed by a **Hypervisor**.
@@ -108,12 +120,14 @@ The main Docker objects are: **Images**, **Dockerfiles**, **Container**, **Volum
 > **Read-only** template used to create containers. It contains libraries, dependencies, and instructions to run the application.
 > Images are **immutable** and composed of **multiple layers**. Each layer represents changes to the filesystem (adding, removing, or modifying files).
 > **Insight:** like a "snapshot" of the environment — each configuration step adds a layer.
+>
+> **Example:** starting from a Python 3.11 base image, installing required packages, and cloning a repository creates successive image layers.
 
 ### Dockerfile
 
 > [!Important] Dockerfile
 > Text file with declarative syntax that describes **how to build a Docker image**. It contains instructions about dependencies, configuration, exposed ports, and startup commands.
-> An image is obtained by running `docker build` on a Dockerfile.
+> An image is obtained by running `docker build` on a Dockerfile. During the build, Docker Engine reads the Dockerfile and executes its instructions layer by layer.
 
 > [!Example] Dockerfile — complete example
 > **Context:** CUDA-based image for deep learning training with Python 3.10
@@ -148,8 +162,10 @@ The main Docker objects are: **Images**, **Dockerfiles**, **Container**, **Volum
 > ```
 > **Explanation:** every `RUN`, `COPY`, and `ENV` creates a new layer in the final image.
 
-![[docker-dockerfile-image-container-flow.jpg]]
-*Flow: Dockerfile → (build) → Docker Image → (run) → Docker Container*
+![[docker-dockerfile-image-container-flow.jpg|580]]
+*Figure 5: Transition from Dockerfile to Docker image and running container*
+
+When an image is built, it is possible to create one or more **containers** from it. Each container runs the application using host resources, with its own isolated execution environment and state.
 
 ### Docker Container
 
@@ -190,8 +206,10 @@ A **service** represents an application component (e.g. Tomcat web server, Postg
 > Tool for managing and deploying **multi-container applications**. It allows defining and configuring multiple Docker services, networks, and volumes as a single application through a **YAML** file.
 > The file is called `docker-compose.yml`.
 
-![[docker-compose-webapp-architecture.jpg]]
-*Complete architecture: web service (Tomcat, port 8080) ↔ Network ↔ db service (PostgreSQL, port 5432). Volumes for WAR file and Database. Everything described in YAML.*
+In the course example, the multi-container environment has two services: **Tomcat** for the WAR file and **PostgreSQL** for the database. This lets you deploy the locally generated WAR on the Tomcat and PostgreSQL versions you choose, without adapting the application to the hosting infrastructure.
+
+![[docker-compose-webapp-architecture.jpg|560]]
+*Figure 6: Docker Compose architecture with Tomcat web service and PostgreSQL database*
 
 Key advantages:
 - Docker Compose automatically creates a **network** for the application
@@ -240,7 +258,8 @@ Key advantages:
 > - `volumes: ./crane.sql:/docker-entrypoint-initdb.d/init.sql` → `docker-entrypoint-initdb.d/` is a PostgreSQL convention: all SQL scripts in that directory are executed automatically at the **first instantiation** of the container
 > - `volumes: ./data/db:/var/lib/postgresql/data` → persists the database data on the host filesystem
 
-![[docker-compose-file-full.jpg]]
+![[docker-compose-file-full.jpg|500]]
+*Figure 7: Complete docker-compose.yml example for the web application*
 
 ### Healthcheck and depends_on
 
@@ -261,6 +280,19 @@ Key advantages:
 ---
 
 ## Essential Commands
+
+Before running the example, install Docker and Docker Compose following the official documentation:
+- Docker: `https://docs.docker.com/get-docker/`
+- Docker Compose: `https://docs.docker.com/compose/`
+
+> [!Example] Containerizing the group project
+> 1. Install Docker on your machine.
+> 2. Modify the `docker-compose.yml` file provided for the Crane project according to your project.
+> 3. Place the Compose file in the same folder as the WAR file generated with Maven.
+> 4. Open a terminal in the folder containing `docker-compose.yml`.
+> 5. Check that the Docker daemon is running, then use the Docker Compose commands below.
+
+Docker Desktop can be used to manage, run, stop, remove, and inspect containers through a graphical interface.
 
 > [!Example] Docker container management
 > **Startup:**
@@ -284,8 +316,8 @@ Key advantages:
 > docker exec docker-db-1 psql -U postgres   # access the psql CLI
 > ```
 
-![[docker-compose-up-output.jpg]]
-*Output of `docker-compose up`: first `docker-db-1` starts, then `docker-web-1`. PostgreSQL automatically executes `init.sql` from the `docker-entrypoint-initdb.d/` directory.*
+![[docker-compose-up-output.jpg|560]]
+*Figure 8: Startup output of the services with docker compose up*
 
 ---
 

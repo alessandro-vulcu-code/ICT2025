@@ -1,8 +1,11 @@
 # Web Security — Web Applications 2025-26
 
+_Source: `12-webapp-2025-26-WebSecurity.pdf` — Web Applications, A.Y. 2025/2026, Francesco L. De Faveri, Padova, April 28th, 2026_
+
 ## Table of Contents
 
 - [[#Cybersecurity and Web|Cybersecurity and Web]]
+  - [[#Lecture Scope and Lab Material|Lecture Scope and Lab Material]]
   - [[#CIA Triad|CIA Triad]]
   - [[#Web Security|Web Security]]
   - [[#OWASP Top Ten|OWASP Top Ten]]
@@ -29,6 +32,24 @@
 ---
 
 ## Cybersecurity and Web
+
+### Lecture Scope and Lab Material
+
+The lecture covers:
+
+1. Cybersecurity and Web Security
+2. SQL Injection
+3. Cross-Site Scripting (XSS)
+4. Cross-Site Request Forgery (CSRF)
+
+Hands-on material from the slides:
+
+- Git repository: `WA-WebSecurity` repo, with Docker containers and README
+- VM used for the lab: VM Drive
+- Hostname setup:
+  - Linux: edit `/etc/hosts` with `sudo nano /etc/hosts`
+  - Windows: run Notepad as Administrator and open `C:\Windows\System32\drivers\etc\hosts`
+  - Follow the repository `README.md` instructions when modifying the hosts file
 
 ### CIA Triad
 
@@ -57,13 +78,14 @@ Common attacker motives: espionage, extortion, theft, fun.
 
 **OWASP** (*Open Worldwide Application Security Project*) publishes the **Top 10** — a standard awareness document for developers and web security professionals. First step toward more secure software development.
 
-![[websec-owasp-top10.jpg]]
+![[websec-owasp-top10.jpg|520]]
+*Figure 1: Evolution of the OWASP Top 10 between 2017, 2021, and 2025*
 
 OWASP Top 10 evolution highlights (2017 → 2021 → 2025):
 - **Injection** (SQLi, XSS) — consistently in top 5
 - **Broken Access Control** — #1 in 2021 and 2025
 - **XSS** — was A07:2017, merged into Injection category in later editions
-- **CSRF/SSRF** — A10:2021 (Server Side Request Forgery)
+- **SSRF** — A10:2021 (*Server-Side Request Forgery*); this is distinct from CSRF, which is treated separately in this lecture
 
 Attacks covered in this lecture:
 1. SQL Injection
@@ -72,7 +94,8 @@ Attacks covered in this lecture:
 
 ### Attack Scenario
 
-![[websec-scenario.jpg]]
+![[websec-scenario.jpg|500]]
+*Figure 2: Attack surface of a web application with users, server, and database*
 
 Web application attack surface: users (legitimate and attacker) interact via HTTP with a Web Server, which executes SQL Queries against a Database. Attacker has same HTTP access as normal users — the vulnerability lies in how input is processed.
 
@@ -90,6 +113,15 @@ Web application attack surface: users (legitimate and attacker) interact via HTT
 > Root cause: **untrusted user data mixed with trusted SQL code** to form a SQL statement.
 >
 > **Intuition:** The database parser cannot distinguish between "intended SQL code" and "injected SQL code" when they arrive as a single string.
+
+> [!Example] xkcd "Bobby Tables" intuition
+> The slide references xkcd 327. The attacker's input is a name that contains SQL syntax:
+>
+> ```sql
+> Robert'); DROP TABLE Students;--
+> ```
+>
+> If the application concatenates that string into a SQL query, the injected `DROP TABLE` can be interpreted as SQL code. The lesson is to sanitize database inputs and, more importantly, avoid mixing user data with SQL code.
 
 ### SQL Special Characters
 
@@ -113,11 +145,13 @@ Key SQL operations exploitable via injection:
 
 ### How SQL Injection Works
 
-![[websec-sqli-mixing.jpg]]
+![[websec-sqli-mixing.jpg|580]]
+*Figure 3: SQL injection problem caused by mixing user input and SQL code*
 
 The core problem: user input and SQL code are mixed together to form a SQL statement.
 
-![[websec-sqli-flow.jpg]]
+![[websec-sqli-flow.jpg|580]]
+*Figure 4: Flow that sends untrusted data and SQL code to the database parser*
 
 Flow: **Untrusted User Data + Trusted SQL Code → Mixing → SQL Statement → SQL Parser → (Data + SQL Code) → Execution**
 
@@ -140,7 +174,8 @@ The SQL parser cannot distinguish injected SQL from intended SQL — it executes
 
 ### Vulnerable Code Example
 
-![[websec-sqli-vulnerable-code.jpg]]
+![[websec-sqli-vulnerable-code.jpg|580]]
+*Figure 5: Example of code vulnerable to SQL injection*
 
 ```php
 $conn = new mysqli("localhost", "root", "seedubuntu", "dbtest");
@@ -155,7 +190,8 @@ Problem: `$eid` and `$pwd` are inserted directly from user input into the SQL st
 
 ### Protection: Prepared Statements
 
-![[websec-sqli-prepared-stmt.jpg]]
+![[websec-sqli-prepared-stmt.jpg|500]]
+*Figure 6: Use of prepared statements to separate SQL code and parameters*
 
 > [!Important] Prepared Statements — Primary Defense
 > **Prepared statements** separate code from data: the SQL structure is compiled first with placeholders (`?`), then user data is bound separately. The database parser processes them as two distinct things.
@@ -198,7 +234,8 @@ Additional defense: **filter out / encode** special characters (`;`, `'`, `--`) 
 
 ### Stored XSS Flow
 
-![[websec-xss-stored-flow.jpg]]
+![[websec-xss-stored-flow.jpg|500]]
+*Figure 7: Flow of a stored XSS attack with payload persistence*
 
 **Attack flow:**
 1. Attacker submits form containing `<script>malicious code</script>`
@@ -212,7 +249,8 @@ The JS code executes when encountered during DOM construction.
 
 ### XSS Example Code
 
-![[websec-xss-example-code.jpg]]
+![[websec-xss-example-code.jpg|500]]
+*Figure 8: Example code and payload for a stored XSS attack*
 
 > [!Example] Stored XSS — Samy Worm pattern
 > **Contesto:** Attacker stores malicious JS in their profile on a social network.
@@ -246,7 +284,6 @@ The JS code executes when encountered during DOM construction.
 > 1. **Modern frameworks** — React, Angular, Vue have built-in output encoding; use them
 > 2. **Output encoding** — encode HTML special characters before rendering user content (`<` → `&lt;`, `>` → `&gt;`, `"` → `&quot;`)
 > 3. **HTML Sanitization** — OWASP recommends **DOMPurify** library to strip dangerous tags/attributes
-> 4. **Content Security Policy (CSP)** — HTTP header that restricts script sources *(nota: mentioned implicitly via framework security)*
 >
 > **Mitigazione:** Never insert unsanitized user data into the DOM. Treat all user input as untrusted.
 
@@ -269,19 +306,22 @@ The JS code executes when encountered during DOM construction.
 
 **Schema 1** — Normal cross-site request behavior:
 
-![[websec-csrf-schema1.jpg]]
+![[websec-csrf-schema1.jpg|440]]
+*Figure 9: CSRF scenario where cookies are automatically sent by the browser*
 
 Browser holds cookies for both Website A and Website B. A cross-site request from Website A to Website B automatically attaches Website B's cookies.
 
 **Schema 2** — Attacker exploits cross-site requests:
 
-![[websec-csrf-schema2.jpg]]
+![[websec-csrf-schema2.jpg|500]]
+*Figure 10: Malicious page that makes the browser send cross-site requests*
 
 Attacker creates a malicious page that automatically triggers cross-site requests to Website A and/or Website B. The browser attaches the victim's cookies → server accepts as authenticated request.
 
 ### CSRF Example Code
 
-![[websec-csrf-example.jpg]]
+![[websec-csrf-example.jpg|500]]
+*Figure 11: Example of a forged POST request in a CSRF attack*
 
 > [!Example] CSRF Forged POST Request
 > **Contesto:** Attacker's page automatically submits a profile-edit form to the victim's social network.
@@ -324,16 +364,12 @@ Attacker creates a malicious page that automatically triggers cross-site request
 > [!Important] SameSite Cookie Attribute
 > The `SameSite` attribute on cookies controls whether cookies are sent with **cross-site requests**.
 >
-> Set by the **server** in the `Set-Cookie` response header:
-> ```
-> Set-Cookie: sessionid=abc123; SameSite=Strict; HttpOnly; Secure
-> ```
+> The attribute is set by the **server**. Cookies with `SameSite` are always sent with same-site requests; whether they are sent with cross-site requests depends on the attribute value.
 >
 > | Value | Behavior |
 > |-------|----------|
 > | `Strict` | Cookie **not sent** with any cross-site request |
-> | `Lax` | Cookie sent with cross-site requests (GET navigation only, not POST) |
-> | `None` | Cookie always sent (requires `Secure`) |
+> | `Lax` | Cookie sent with cross-site requests |
 >
 > **Intuition:** `SameSite=Strict` breaks CSRF completely — the forged POST request arrives without the victim's session cookie, so the server rejects it as unauthenticated.
 >
@@ -346,10 +382,10 @@ Attacker creates a malicious page that automatically triggers cross-site request
 | Attack | Target | Mechanism | Root Cause | Primary Defense |
 |--------|--------|-----------|-----------|----------------|
 | **SQL Injection** | Database | Inject SQL into query string | Mixing user input with SQL code | Prepared statements; input encoding |
-| **Stored XSS** | Other users' browsers | Store `<script>` in DB; execute on retrieval | Unsanitized user input rendered as HTML | Output encoding; DOMPurify; CSP |
+| **Stored XSS** | Other users' browsers | Store `<script>` in DB; execute on retrieval | Unsanitized user input rendered as HTML | Output encoding; DOMPurify |
 | **Reflected XSS** | Individual user via crafted URL | Malicious URL parameter reflected in response | Server echoes unescaped input | Output encoding; input validation |
 | **DOM-Based XSS** | User's browser | Client-side JS inserts attacker data into DOM | Unsafe `innerHTML`/`document.write` | Avoid dangerous DOM APIs; sanitize |
-| **CSRF** | Authenticated session | Forged cross-site request with victim's cookies | Server trusts cookies from any origin | `SameSite=Strict` cookie; CSRF tokens |
+| **CSRF** | Authenticated session | Forged cross-site request with victim's cookies | Server trusts cookies from cross-site requests | `SameSite=Strict` cookie |
 
 | Defense | Protects Against | How |
 |---------|-----------------|-----|
@@ -358,7 +394,6 @@ Attacker creates a malicious page that automatically triggers cross-site request
 | **Output encoding** | XSS | HTML-encode before rendering |
 | **DOMPurify / HTML sanitization** | XSS | Strip dangerous tags/attributes |
 | **`SameSite=Strict` cookie** | CSRF | Block cookies on cross-site requests |
-| **CSRF token** | CSRF | Server-issued nonce validated per request |
 | **Modern frameworks** | XSS | Built-in escaping (React, Angular, Vue) |
 
 ## Questions
@@ -369,7 +404,7 @@ Attacker creates a malicious page that automatically triggers cross-site request
 4. In the attack scenario diagram, why does giving the attacker normal HTTP access create risk when input handling is weak?
 5. What is the root cause of SQL injection, and why does mixing untrusted user data with trusted SQL code confuse the database parser?
 6. How do characters such as `'`, `;`, `--`, and comments help attackers alter SQL query structure?
-7. How does the classic `' OR '1'='1' --` payload bypass authentication in a vulnerable query?
+7. How does the xkcd `Robert'); DROP TABLE Students;--` example show the danger of mixing user data with SQL code?
 8. Why do prepared statements prevent SQL injection more reliably than manual string filtering alone?
 9. How is XSS similar to SQL injection conceptually, and how is the target of the injected code different?
 10. How do stored, reflected, and DOM-based XSS differ in where the malicious script is stored or reflected?
@@ -378,5 +413,4 @@ Attacker creates a malicious page that automatically triggers cross-site request
 13. Why is output encoding different from input validation, and why are both relevant for XSS defense?
 14. How does CSRF exploit the browser's automatic cookie sending behavior for cross-site requests?
 15. How does `SameSite=Strict` change browser cookie behavior, and why does that help block forged POST requests?
-16. Why are CSRF tokens still useful even when cookie protections exist?
-17. How would you combine prepared statements, output encoding, DOM sanitization, SameSite cookies, and CSRF tokens into a defense-in-depth strategy?
+16. How would you combine prepared statements, output encoding, DOM sanitization, and SameSite cookies into a defense-in-depth strategy?

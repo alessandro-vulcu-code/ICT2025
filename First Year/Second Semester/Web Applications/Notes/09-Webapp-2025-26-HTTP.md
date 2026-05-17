@@ -8,8 +8,9 @@ _Source: `09-Webapp-2025-26-HTTP.pdf` — Web Applications, Master Degree, A.Y. 
 
 - [[#Basic Web Technology|Basic Web Technology]]
 - [[#URL and URI|URL and URI]]
-  - [[#URI Syntax|URI Syntax]]
   - [[#URI URL URN IRI|URI, URL, URN, IRI]]
+  - [[#URI Syntax|URI Syntax]]
+  - [[#URI Examples|URI Examples]]
   - [[#Percent-Encoding|Percent-Encoding]]
 - [[#Character Encoding|Character Encoding]]
   - [[#ASCII|ASCII]]
@@ -22,11 +23,13 @@ _Source: `09-Webapp-2025-26-HTTP.pdf` — Web Applications, Master Degree, A.Y. 
   - [[#File Upload — Jakarta Part API|File Upload — Jakarta Part API]]
   - [[#Sending Email — Jakarta Mail|Sending Email — Jakarta Mail]]
 - [[#Employee Extended — Photo Upload and Email|Employee Extended — Photo Upload and Email]]
+  - [[#Create Employee JSP Form|Create Employee JSP Form]]
   - [[#Employee Resource with Photo|Employee Resource with Photo]]
   - [[#parseRequest — multipart form processing|parseRequest — multipart form processing]]
   - [[#CreateEmployeeServlet — doPost|CreateEmployeeServlet — doPost]]
   - [[#sendCreationConfirmationEmail|sendCreationConfirmationEmail]]
   - [[#LoadEmployeePhotoDAO and LoadEmployeePhotoServlet|LoadEmployeePhotoDAO and LoadEmployeePhotoServlet]]
+  - [[#web.xml Multipart Configuration|web.xml Multipart Configuration]]
   - [[#MailManager|MailManager]]
   - [[#Maven Dependencies — Jakarta Mail|Maven Dependencies — Jakarta Mail]]
 - [[#HTTP 1.1|HTTP/1.1]]
@@ -90,6 +93,20 @@ scheme:[//[user[:password]@]host[:port]][/path][?query][#fragment]
 | `/path` | Data in hierarchical form, segments separated by `/` | `/rest/employee/123` |
 | `?query` | Optional, separated by `?`; `attribute=value` pairs separated by `&` | `?name=Rossi&age=34` |
 | `#fragment` | Optional, separated by `#`; direction to a secondary resource | `#section-2` |
+
+### URI Examples
+
+Different schemes identify and locate resources in different ways:
+
+| URI | Meaning |
+|-----|---------|
+| `ftp://ftp.is.co.za/rfc/rfc1808.txt` | File available through FTP |
+| `http://www.ietf.org/rfc/rfc2396.txt` | HTTP resource |
+| `mailto:John.Doe@example.com` | Email address |
+| `news:comp.infosystems.www.servers.unix` | Usenet/news resource |
+| `tel:+1-816-555-1212` | Telephone number |
+| `telnet://192.0.2.16:80/` | Telnet access to host and port |
+| `urn:oasis:names:specification:docbook:dtd:xml:4.1.2` | Persistent URN name |
 
 ### Percent-Encoding
 
@@ -227,6 +244,7 @@ The 16-bit limit (2¹⁶ = 65,536) was exceeded starting from Unicode 3.1 (2001,
 >     What is your name? <input type="text" name="submit-name"/>
 >     What file are you sending? <input type="file" name="files"/>
 >     <input type="submit" value="Send"/>
+>     <input type="reset" value="Clear"/>
 > </form>
 > ```
 > Resulting HTTP body:
@@ -250,6 +268,8 @@ The 16-bit limit (2¹⁶ = 65,536) was exceeded starting from Unicode 3.1 (2001,
 > <form action="http://www.xyz.com/" enctype="application/x-www-form-urlencoded" method="post">
 >     What is your name? <input type="text" name="submit-name"/>
 >     What is your surname? <input type="text" name="submit-surname"/>
+>     <input type="submit" value="Send"/>
+>     <input type="reset" value="Clear"/>
 > </form>
 > ```
 > Resulting HTTP body:
@@ -258,6 +278,7 @@ The 16-bit limit (2¹⁶ = 65,536) was exceeded starting from Unicode 3.1 (2001,
 >
 > submit-name=Nicola&submit-surname=Ferro
 > ```
+> The same percent-encoded `name=value` string can also be appended as the query part of a URI.
 
 ### File Upload — Jakarta Part API
 
@@ -298,13 +319,32 @@ The 16-bit limit (2¹⁶ = 65,536) was exceeded starting from Unicode 3.1 (2001,
 
 The Employee example is extended: database now stores `email`, `photo` (raw bytes), `photoMediaType`.
 
-![[http-create-employee-form.jpg]]
+![[http-create-employee-form.jpg|520]]
+*Figure 1: HTML form for creating an employee with email and photo upload*
 
-*Figure: Create Employee Form — badge, surname, age, salary, email fields + file upload for photo.*
+![[http-employee-mail-project-structure.jpg|560]]
+*Figure 2: Structure of the employee multipart mail JDBC project and Maven dependencies*
 
-![[http-employee-mail-project-structure.jpg]]
+### Create Employee JSP Form
 
-*Figure: Project structure (`employee-multipart-mail-jdbc`) + Maven dependencies — `jakarta.mail-api`, `angus-mail`, PostgreSQL, Tomcat JDBC.*
+> [!Important] Multipart Form Requirements
+> The JSP form must use `method="POST"` and `enctype="multipart/form-data"`; otherwise uploaded file bytes are not sent as multipart parts.
+>
+> ```jsp
+> <form method="POST" enctype="multipart/form-data" action="<c:url value="/create-employee"/>">
+>   <input id="badgeID" name="badge" type="text"/>
+>   <input id="surnameID" name="surname" type="text"/>
+>   <input id="ageID" name="age" type="text"/>
+>   <input id="salaryID" name="salary" type="text"/>
+>   <input id="emailID" name="email" type="text"/>
+>   <input id="photoID" name="photo" type="file"
+>          accept="image/png, image/jpeg, .jpg, .jpeg, .png"/>
+>   <button type="submit">Submit</button>
+>   <button type="reset">Reset the form</button>
+> </form>
+> ```
+>
+> The `accept` attribute restricts selectable file types on the client side, but the servlet must still validate the uploaded MIME type.
 
 ### Employee Resource with Photo
 
@@ -423,12 +463,18 @@ The Employee example is extended: database now stores `email`, `photo` (raw byte
 > private void sendCreationConfirmationEmail(Employee e) throws MessagingException {
 >     final StringBuilder sb = new StringBuilder();
 >     sb.append(String.format("<p>Dear %s,</p>%n", e.getSurname()));
+>     sb.append(String.format("<p>Your account has been successfully created as follows:</p>%n"));
 >     sb.append(String.format("<ul>%n"));
 >     sb.append(String.format("<li><b>badge</b>: %d</li>%n", e.getBadge()));
+>     sb.append(String.format("<li><b>surname</b>: %s</li>%n", e.getSurname()));
+>     sb.append(String.format("<li><b>age</b>: %d</li>%n", e.getAge()));
 >     sb.append(String.format("<li><b>salary</b>: %d</li>%n", e.getSalary()));
 >     if (e.hasPhoto()) {
+>         sb.append(String.format("<li><b>profile photo</b></li>%n"));
+>         sb.append(String.format("<ul>%n"));
 >         sb.append(String.format("<li><b>MIME media type</b>: %s</li>%n", e.getPhotoMediaType()));
 >         sb.append(String.format("<li><b>size</b>: %d byte(s)</li>%n", e.getPhotoSize()));
+>         sb.append(String.format("</ul>%n"));
 >     }
 >     sb.append(String.format("</ul>%n"));
 >     sb.append(String.format("<p>Best regards,<br>The EMPLOYEE Team</p>%n"));
@@ -472,6 +518,7 @@ The Employee example is extended: database now stores `email`, `photo` (raw byte
 > } else {
 >     res.setStatus(HttpServletResponse.SC_NO_CONTENT); // 204
 > }
+> // On errors: res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR); // 500
 > ```
 > JSP `<img>` tag references this servlet:
 > ```jsp
@@ -479,6 +526,25 @@ The Employee example is extended: database now stores `email`, `photo` (raw byte
 >         <c:param name="badge" value="${employee.badge}"/>
 >     </c:url>"/>
 > ```
+
+### web.xml Multipart Configuration
+
+> [!Important] Multipart Upload Limits
+> `web.xml` configures the multipart upload limits for `CreateEmployeeServlet`:
+>
+> ```xml
+> <servlet>
+>   <servlet-name>CreateEmployee</servlet-name>
+>   <servlet-class>it.unipd.dei.webapp.servlet.CreateEmployeeServlet</servlet-class>
+>   <multipart-config>
+>     <max-file-size>1048576</max-file-size>        <!-- 1 Mbyte -->
+>     <max-request-size>1049600</max-request-size>  <!-- 1 Mbyte + 1 Kbyte -->
+>     <file-size-threshold>524288</file-size-threshold> <!-- 500 Kbyte -->
+>   </multipart-config>
+> </servlet>
+> ```
+>
+> The same `web.xml` also declares `LoadEmployeePhotoServlet`, used by the JSP `<img>` URL to stream photo bytes back to the browser.
 
 ### MailManager
 
@@ -492,6 +558,8 @@ The Employee example is extended: database now stores `email`, `photo` (raw byte
 > - `MailManager.smtp.port` — SMTP port (optional)
 > - `MailManager.smtp.userName` — SMTP auth username
 > - `MailManager.stmp.password` — SMTP auth password
+>
+> The static block sets `mail.transport.protocol = smtp`, enables `mail.smtp.starttls.enable = true`, disables mail debug, and creates an authenticated `Session` with `PasswordAuthentication` only when both username and password are configured.
 
 > [!Example] MailManager.sendMail() — email without attachment
 > ```java
@@ -540,7 +608,8 @@ The Employee example is extended: database now stores `email`, `photo` (raw byte
 
 ### Maven Dependencies — Jakarta Mail
 
-![[http-employee-mail-project-structure.jpg]]
+![[http-employee-mail-project-structure.jpg|560]]
+*Figure 3: Structure of the employee multipart mail JDBC project and Maven dependencies*
 
 ```xml
 <dependency>
@@ -568,9 +637,8 @@ The Employee example is extended: database now stores `email`, `photo` (raw byte
 >   - Simplifies implementation; improves scalability
 > - Supports **intermediaries / proxies**: typically for caching or security
 
-![[Pasted image 20260512120450.png]]
-
-*Figure: HTTP proxy chain — Browser → Proxy (gateway) → Proxy (firewall) → Web server. Each hop is an independent request-response.*
+![[Pasted image 20260512120450.png|440]]
+*Figure 4: HTTP chain with browser, intermediate proxies, and web server*
 
 Reference: Fielding, R. et al. (1997). *HTTP/1.1.* RFC 2068.
 
@@ -673,13 +741,22 @@ Reference: Fielding, R. and Reschke, J. (2014). *HTTP/1.1: Authentication.* RFC 
 
 The `employee-session-jdbc` project adds a **Servlet Filter** to protect resources under `/protected/*`.
 
-![[http-session-project-structure.jpg]]
+![[http-session-project-structure.jpg|280]]
+*Figure 5: Structure of the employee session JDBC project with filter and protected area*
 
-*Figure: `employee-session-jdbc` project structure — new `filter/` package with `ProtectedResourceFilter`, `AuthenticateUserDAO`, and `/protected/` folder for protected JSPs.*
+![[http-session-webxml.jpg|500]]
+*Figure 6: web.xml configuration for the authentication filter and protected servlets*
 
-![[http-session-webxml.jpg]]
+The protected project keeps the database resource reference in `web.xml`:
 
-*Figure: `web.xml` — `ProtectedResourceFilter` mapped to `/protected/*`; `CreateEmployeeServlet` mapped to `/protected/create-employee`. All URLs under `/protected/` require authentication.*
+```xml
+<resource-ref>
+  <description>Connection pool to the database</description>
+  <res-ref-name>jdbc/employee-ferro</res-ref-name>
+  <res-type>javax.sql.DataSource</res-type>
+  <res-auth>Container</res-auth>
+</resource-ref>
+```
 
 > [!Important] Jakarta Servlet Filter
 > The `Filter` interface defines three lifecycle methods: `init()`, `doFilter()`, `destroy()`.
@@ -687,9 +764,8 @@ The `employee-session-jdbc` project adds a **Servlet Filter** to protect resourc
 > - Can intercept before AND after the servlet/JSP
 > - Configured in `web.xml` with `<filter>` + `<filter-mapping>`
 
-![[http-filter-class-fields.jpg]]
-
-*Figure: `ProtectedResourceFilter` class fields — `Base64.Decoder DECODER`, `USER_ATTRIBUTE = "user"`, `FilterConfig config`, `DataSource ds`.*
+![[http-filter-class-fields.jpg|560]]
+*Figure 7: Main fields of the ProtectedResourceFilter class*
 
 > [!Example] ProtectedResourceFilter — field declarations
 > ```java
@@ -701,10 +777,10 @@ The `employee-session-jdbc` project adds a **Servlet Filter** to protect resourc
 > }
 > ```
 > - `HttpSession` is basically a hash map; `USER_ATTRIBUTE` is the key used to store the authenticated username
+> - In `init()`, the filter retrieves the connection pool with `new InitialContext().lookup("java:/comp/env/jdbc/employee-ferro")` and passes it to `AuthenticateUserDAO`
 
-![[http-filter-dofilter-code.jpg]]
-
-*Figure: `doFilter()` main logic — if no session → try authenticate; if session but no user → invalidate + try authenticate; if session with user → pass to next filter.*
+![[http-filter-dofilter-code.jpg|560]]
+*Figure 8: doFilter logic used to check session state and authentication*
 
 > [!Example] doFilter() logic (text form)
 > ```java
@@ -725,9 +801,8 @@ The `employee-session-jdbc` project adds a **Servlet Filter** to protect resourc
 > chain.doFilter(req, res); // pass to next element
 > ```
 
-![[http-filter-authenticate-user.jpg]]
-
-*Figure: `authenticateUser()` — reads `Authorization` header, checks `"BASIC "` prefix, Base64-decodes, splits on `:` to get username:password.*
+![[http-filter-authenticate-user.jpg|560]]
+*Figure 9: authenticateUser logic for reading and verifying Basic credentials*
 
 > [!Example] authenticateUser() logic
 > ```java
@@ -763,9 +838,8 @@ The `employee-session-jdbc` project adds a **Servlet Filter** to protect resourc
 > }
 > ```
 
-![[http-filter-send-challenge.jpg]]
-
-*Figure: `sendAuthenticationChallenge()` — sets `WWW-Authenticate: Basic realm=Employee` and sends `401 Unauthorized`.*
+![[http-filter-send-challenge.jpg|560]]
+*Figure 10: Method used to send the HTTP Basic challenge with 401 Unauthorized status*
 
 > [!Example] sendAuthenticationChallenge()
 > ```java
@@ -780,6 +854,22 @@ The `employee-session-jdbc` project adds a **Servlet Filter** to protect resourc
 > - Queries DB to verify credentials
 > - `outputParam` (boolean): `true` if authenticated, `false` otherwise
 > - Separate DAO for authentication keeps concerns separated from employee DAOs
+
+> [!Example] Using the Authenticated User
+> Protected JSPs can check the session user and render different content:
+>
+> ```jsp
+> <c:choose>
+>   <c:when test="${empty sessionScope.user}">
+>     <!-- unauthorized access page -->
+>   </c:when>
+>   <c:otherwise>
+>     Welcome back, <c:out value="${sessionScope.user}"/>.
+>   </c:otherwise>
+> </c:choose>
+> ```
+>
+> Protected servlets reuse the existing session with `req.getSession(false)`, read `ProtectedResourceFilter.USER_ATTRIBUTE`, and put the authenticated user into the logging context with `LogContext.setUser(user)`.
 
 ---
 
@@ -801,13 +891,16 @@ The `employee-session-jdbc` project adds a **Servlet Filter** to protect resourc
 | `multipart/form-data` | RFC 7578 | File upload + form fields |
 | `application/x-www-form-urlencoded` | HTML 4.01 | Form fields only; percent-encoded |
 | Jakarta Part API | Servlet 5.0+ | `req.getParts()` → `Part.getInputStream()` |
+| Multipart upload config | `web.xml` | `max-file-size`, `max-request-size`, `file-size-threshold` |
 | Jakarta Mail 2.1 | EE 9+ | `MimeMessage`, `Transport.send()`, SMTP |
+| `MailManager` SMTP setup | Jakarta Mail | `smtp`, STARTTLS, optional `PasswordAuthentication` |
 | HTTP | RFC 2068 | Stateless, textual, request-response |
 | Safe methods | HTTP/1.1 | GET, HEAD, OPTIONS — no side effects |
 | Idempotent methods | HTTP/1.1 | GET, HEAD, OPTIONS, DELETE, PUT |
 | HTTP Basic Auth | RFC 7235 | `user:pass` Base64-encoded; NOT encrypted |
 | `ProtectedResourceFilter` | Jakarta Filter | `implements Filter`; `doFilter()` chain pattern |
 | `HttpSession` | Jakarta Servlet | Key-value store per user session; `getSession(false)` |
+| `sessionScope.user` | JSP EL | Read authenticated user in protected JSPs |
 | `AuthenticateUserDAO` | DAO pattern | DB-backed credential check; `outputParam` boolean |
 
 ## Questions

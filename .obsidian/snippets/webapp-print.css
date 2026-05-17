@@ -1,0 +1,170 @@
+/* Print-focused PDF export for university notes in Obsidian. */
+body {
+  --print-note-font-size: 11pt;
+  --print-code-font-size: 9pt;
+  --print-table-font-size: 9.2pt;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 2.2cm 2.2cm 2.3cm 2.2cm;
+  }
+
+  body,
+  .print,
+  .markdown-preview-view,
+  .markdown-rendered {
+    color: #111;
+    font-size: var(--print-note-font-size);
+    line-height: 1.38;
+    background: white;
+  }
+
+  .markdown-preview-view,
+  .markdown-rendered {
+    max-width: none;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #111;
+    page-break-after: avoid;
+    break-after: avoid-page;
+    line-height: 1.18;
+    margin-top: 1.15em;
+    margin-bottom: 0.45em;
+  }
+
+  h1 {
+    font-size: 1.85em;
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 0.18em;
+  }
+
+  h2 {
+    font-size: 1.42em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.12em;
+  }
+
+  h3 {
+    font-size: 1.18em;
+  }
+
+  p,
+  ul,
+  ol,
+  blockquote,
+  table,
+  pre {
+    margin-top: 0.55em;
+    margin-bottom: 0.55em;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.35em;
+  }
+
+  li {
+    margin: 0.15em 0;
+  }
+
+  a,
+  a.internal-link,
+  a.external-link {
+    color: #111 !important;
+    text-decoration: none;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--print-table-font-size);
+    page-break-inside: avoid;
+    break-inside: avoid-page;
+  }
+
+  th,
+  td {
+    border: 1px solid #cfcfcf;
+    padding: 0.28em 0.38em;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f1f1f1 !important;
+    color: #111;
+    font-weight: 700;
+  }
+
+  pre,
+  code {
+    font-size: var(--print-code-font-size);
+    font-family: var(--font-monospace), "Source Code Pro", monospace;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    background: #f7f7f7 !important;
+    padding: 0.65em 0.75em;
+    page-break-inside: avoid;
+    break-inside: avoid-page;
+  }
+
+  code {
+    color: #111;
+    background: #f2f2f2 !important;
+    padding: 0.05em 0.22em;
+    border-radius: 3px;
+  }
+
+  pre code {
+    background: transparent !important;
+    padding: 0;
+  }
+
+  blockquote,
+  .callout {
+    border-left: 3px solid #777;
+    background: #f7f7f7 !important;
+    color: #111;
+    padding: 0.45em 0.75em;
+    margin-left: 0;
+    margin-right: 0;
+    page-break-inside: avoid;
+    break-inside: avoid-page;
+  }
+
+  .callout-title {
+    color: #111;
+    font-weight: 700;
+  }
+
+  img,
+  .internal-embed img {
+    max-width: 100%;
+    max-height: 22cm;
+    object-fit: contain;
+    page-break-inside: avoid;
+    break-inside: avoid-page;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 1em 0;
+  }
+
+  .frontmatter,
+  .metadata-container,
+  .markdown-embed-link,
+  .collapse-indicator,
+  .copy-code-button {
+    display: none !important;
+  }
+}

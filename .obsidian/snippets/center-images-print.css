@@ -1,0 +1,28 @@
+/* Center images and image embeds in Obsidian PDF/print export. */
+@media print {
+  .markdown-rendered p:has(> img:only-child),
+  .markdown-preview-view p:has(> img:only-child),
+  .markdown-rendered p:has(> .internal-embed:only-child),
+  .markdown-preview-view p:has(> .internal-embed:only-child) {
+    text-align: center;
+  }
+
+  .markdown-rendered img,
+  .markdown-preview-view img,
+  .markdown-rendered .internal-embed img,
+  .markdown-preview-view .internal-embed img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .markdown-rendered .internal-embed,
+  .markdown-preview-view .internal-embed,
+  .markdown-rendered .image-embed,
+  .markdown-preview-view .image-embed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}

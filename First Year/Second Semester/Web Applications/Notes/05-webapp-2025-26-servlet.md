@@ -32,7 +32,8 @@
 
 ### Browser and Server Architecture
 
-![[servlet-browser-server-architecture.jpg]]
+![[servlet-browser-server-architecture.jpg|560]]
+*Figure 1: Browser-server architecture for a servlet-based web application*
 
 **Web Browser** components:
 - **User Interface** — what user sees
@@ -54,7 +55,8 @@
 Communication uses **HTTP Request / HTTP Response** between browser and server.
 
 ### Technologies Overview
-![[Pasted image 20260512114912.png]]
+![[Pasted image 20260512114912.png|440]]
+*Figure 2: Comparison between client-side and server-side components*
 
 | Side | Programs | Scripts |
 |------|----------|---------|
@@ -80,7 +82,9 @@ Communication uses **HTTP Request / HTTP Response** between browser and server.
 | J2EE / Java EE ≤ 8 | Sun Microsystems / Oracle | `javax.*` |
 | Jakarta EE ≥ 9 | Eclipse Foundation | `jakarta.*` |
 
-Key transition: **Tomcat 9** → `javax.*`; **Tomcat 10+** → `jakarta.*`. Course uses **Tomcat 11**.
+Since **2018**, Java EE has migrated into the open-source **Jakarta EE** project under the Eclipse Foundation. **Jakarta EE 8** is the same platform as Java EE 8, with the Java name changed into Jakarta. **Jakarta EE 9** is the release that introduced the package rename from `javax.*` to `jakarta.*`.
+
+Key transition: **Tomcat 9** → `javax.*`; **Tomcat 10+** → `jakarta.*`. Course uses **Tomcat 11**. Jakarta@Eclipse must not be confused with the retired Apache Software Foundation Jakarta sub-project.
 
 Relevant version evolution (Servlet spec):
 
@@ -96,7 +100,8 @@ Relevant version evolution (Servlet spec):
 
 ### Multi-tiered Architecture
 
-![[servlet-javaee-multitier-architecture.jpg]]
+![[servlet-javaee-multitier-architecture.jpg|500]]
+*Figure 3: Java EE multi-tier architecture with client, web, business, and data tiers*
 
 Four tiers:
 1. **Client Tier** — Web browser, applets, application clients
@@ -144,7 +149,8 @@ Packages: `jakarta.servlet` and `jakarta.servlet.http` (formerly `javax.*` up to
 
 ### UML Class Diagram
 
-![[servlet-uml-class-diagram.jpg]]
+![[servlet-uml-class-diagram.jpg|560]]
+*Figure 4: UML class diagram of the servlet project*
 
 Key relationships:
 - `HttpServlet` extends `GenericServlet` which implements `Servlet`
@@ -177,6 +183,7 @@ Key relationships:
 ## Apache Tomcat
 
 - Reference: `http://tomcat.apache.org/`
+- Tomcat 11 documentation: `https://tomcat.apache.org/tomcat-11.0-doc/index.html`
 - **Tomcat 9** → Java EE → `javax.*` packages
 - **Tomcat 10+** → Jakarta EE → `jakarta.*` packages
 - Course uses **Tomcat 11** (Jakarta EE, `jakarta.*`)
@@ -184,6 +191,8 @@ Key relationships:
 - Logs in `$CATALINA_BASE/logs/`
 
 Deployment: upload `.war` file via Manager UI → Tomcat unpacks and starts the app.
+
+If the web application is correctly installed and running, the **Start** button is disabled in the Manager UI. Use **Stop** to stop the app and **Undeploy** to remove it.
 
 ---
 
@@ -213,6 +222,17 @@ target/             Compiled classes and WAR
 > `WEB-INF/` is **never served directly** by the container. It holds `web.xml` and private resources (compiled classes, jars). Browsers cannot access it directly.
 
 ### web.xml Configuration
+
+> [!Example] Static HTML Welcome Page
+> A static HTML-only webapp can expose a page from the webapp root by configuring a welcome file:
+>
+> ```xml
+> <welcome-file-list>
+>   <welcome-file>/html/hello.html</welcome-file>
+> </welcome-file-list>
+> ```
+>
+> The corresponding `hello.html` page can include normal HTML metadata, such as `charset`, `description`, `author`, `title`, and then render `"Hello, world!"` in the body.
 
 > [!Example] Servlet Declaration and URL Mapping
 > **Context:** `WEB-INF/web.xml` wires servlet classes to URL patterns. When the container receives a request matching a pattern, it instantiates the servlet and calls `service()`.
@@ -325,6 +345,8 @@ For a static HTML-only app, use `<welcome-file-list>` instead of servlet mapping
 >
 > **Key point:** `<scope>provided</scope>` means the servlet API is needed to compile locally but Tomcat already ships it — do not bundle it in the WAR.
 
+The complete POM examples in the slides also include project metadata: `<url>`, `<inceptionYear>`, `<developers>`, `<licenses>`, and `<organization>`.
+
 Maven lifecycle phases used: `resources` → `compile` → `test` → `package` (produces `.war`) → `install` → `deploy`.
 
 ---
@@ -377,7 +399,8 @@ Maven lifecycle phases used: `resources` → `compile` → `test` → `package` 
 
 ### Servlet Sequence Diagram
 
-![[servlet-sequence-diagram.jpg]]
+![[servlet-sequence-diagram.jpg|560]]
+*Figure 5: Request-response sequence during the first servlet invocation*
 
 **First request flow:**
 1. Browser sends `GET /hello-world-servlet/hello`
@@ -391,6 +414,8 @@ Maven lifecycle phases used: `resources` → `compile` → `test` → `package` 
 **Subsequent requests:** servlet already instantiated and initialized — container calls `service()` directly (step 2).
 
 ### Servlet with Log4J
+
+Reference: `http://logging.apache.org/log4j/2.x/index.html`. The logging example adds Log4J dependencies, a `LogContext` helper class, and a `log4j2.xml` configuration file to the project.
 
 > [!Important] Log4J 2 Structure
 > - **Logger** — named object that issues log messages; organized in a **hierarchy** (tree). Root is `Root`. Child loggers inherit appenders from parents.
@@ -475,6 +500,8 @@ Maven lifecycle phases used: `resources` → `compile` → `test` → `package` 
 > **Pattern:** set MDC → try { process + LOGGER.info } catch { LOGGER.error + rethrow } finally { remove MDC }.
 
 > [!Example] log4j2.xml Configuration
+> Reference: `https://logging.apache.org/log4j/2.x/manual/configuration.html`
+>
 > ```xml
 > <Configuration status="INFO" monitorInterval="0" name="hello-log4j">
 >   <Appenders>
@@ -647,6 +674,8 @@ web.xml for multiple servlets with distinct URL patterns:
 > out.printf("%s%n", output);   // use <pre> to preserve ASCII-art whitespace
 > out.printf("</pre></p>%n");
 > ```
+>
+> The exercise at the end of the slides asks to combine the form example with Figlet: handle GET and POST form submissions and render the submitted value as ASCII art.
 
 ---
 

@@ -62,6 +62,7 @@ In July 1945, Bush published *"As We May Think"* in *The Atlantic Monthly* — a
 - Simplified prior hypertext research; perfect "marriage" with the Internet
 - Internal CERN development: 1990
 - **First website**: 1991 at `http://info.cern.ch/`
+- In 1991, a poster about the WWW was accepted at the 3rd ACM Conference on Hypertext
 
 ### Browser Timeline
 
@@ -87,6 +88,8 @@ In July 1945, Bush published *"As We May Think"* in *The Atlantic Monthly* — a
 | 2008 | Google Chrome |
 | 2015 | Microsoft Edge (superseded Internet Explorer) |
 
+The slide deck also references browser market shares for **January 2026** from W3Counter.
+
 ---
 
 ## Evolution of the Web
@@ -105,7 +108,8 @@ In July 1945, Bush published *"As We May Think"* in *The Atlantic Monthly* — a
 >
 > **Intuition:** One-way content flow — a WebMaster/Producer publishes content; Passive Consumers read it.
 
-![[intro-web10.jpg]]
+![[intro-web10.jpg|560]]
+*Figure 1: Diagram of Web 1.0 as an informative read-only web*
 
 ### Web 2.0 — Read/Write Web
 
@@ -142,6 +146,8 @@ In July 1945, Bush published *"As We May Think"* in *The Atlantic Monthly* — a
 
 **Deep Web:**
 - Web content **not indexed** by standard search engines (login-protected pages, databases, internal systems)
+- Raw estimates: about **14 billion raw tables**, coming from **5.4 million schemas** and comprising more than **5.4 million attributes**
+- Gartner estimated the relational database market at **$26 billion**, with about **9% annual growth** and an expected **$40 billion market in 2018**
 - Estimated ~500× the size of the indexable/surface Web
 - Estimated >1 billion structured data sets (as of Feb 2011)
 - Exists since Web 1.0; nowadays often confused with the Dark Web
@@ -179,7 +185,8 @@ In July 1945, Bush published *"As We May Think"* in *The Atlantic Monthly* — a
 
 The three layers can be distributed across machines in different ways, giving rise to single-tier, two-tier, and three-tier architectures.
 
-![[intro-load-balancing.jpg]]
+![[intro-load-balancing.jpg|560]]
+*Figure 2: Example of load balancing between clients, load balancer, and servers*
 
 ### Single-tier Architecture
 
@@ -190,6 +197,9 @@ The three layers can be distributed across machines in different ways, giving ri
 | Easy to implement | Full computational load on mainframe (single point of failure) |
 | No client management | Poor scalability |
 
+> [!Example] DUO
+> The slides use **DUO** as a visual example of a single-tier architecture.
+
 ### Two-tier Architecture
 
 Two variants depending on where the "fat" side lives:
@@ -199,17 +209,22 @@ Two variants depending on where the "fat" side lives:
 - **Database server**: Data Logic on server
 - Client does most processing
 
-![[intro-two-tier-fat-client.jpg]]
+![[intro-two-tier-fat-client.jpg|500]]
+*Figure 3: Two-tier architecture with a fat client and database server*
+
+> [!Example] Aleph
+> The slides use **Aleph** as a visual example of the fat client/server variant.
 
 **Client / Fat Server:**
 - **Client**: Presentation Logic only
 - **Database + Application server**: Application Logic + Data Logic on server
 
-![[intro-two-tier-fat-server.jpg]]
+![[intro-two-tier-fat-server.jpg|440]]
+*Figure 4: Two-tier architecture with a more central application server*
 
 | Pros | Cons |
 |------|------|
-| Easy to implement | Client maintenance (fat client variant) |
+| Easy to implement | Client maintenance |
 | Possibility to balance load | Scalability limitations |
 
 ### Three-tier Architecture
@@ -220,7 +235,8 @@ Two variants depending on where the "fat" side lives:
 - **Application server**: Application Logic (middleware)
 - **Database server(s)**: Data Logic
 
-![[intro-three-tier.jpg]]
+![[intro-three-tier.jpg|560]]
+*Figure 5: Three-tier architecture with presentation, application logic, and data layers*
 
 | Pros | Cons |
 |------|------|
@@ -247,7 +263,11 @@ Two variants depending on where the "fat" side lives:
 >
 > **Intuition:** The browser becomes the universal thin client — no installation, no updates on the user side.
 
-![[intro-webapp-three-tier.jpg]]
+![[intro-webapp-three-tier.jpg|560]]
+*Figure 6: Example of a web application organized across three tiers*
+
+> [!Example] Aleph as a Web Application
+> The slides also use **Aleph** to illustrate the web-application version of this architecture.
 
 ### Web Applications and the Network Stack
 
@@ -265,7 +285,8 @@ Two variants depending on where the "fat" side lives:
 >
 > **Intuition:** HTTP is just an application-layer protocol riding on top of TCP/IP — the same infrastructure used by all Internet services.
 
-![[intro-network-stack.jpg]]
+![[intro-network-stack.jpg|500]]
+*Figure 7: Network stack used by HTTP over TCP/IP*
 
 ---
 
@@ -298,7 +319,7 @@ Two variants depending on where the "fat" side lives:
 | 1963/1965 | Ted Nelson | Coined "hypertext"; Project Xanadu |
 | 1962–1968 | Douglas Engelbart | NLS: first mouse, hyperlinks, windows |
 | 1983–1987 | Halasz/Moran/Trigg (Xerox) | NoteCards hypertext system |
-| 1989–1991 | Tim Berners-Lee (CERN) | World Wide Web proposal + first website |
+| 1989–1991 | Tim Berners-Lee (CERN) | World Wide Web proposal, ACM Hypertext poster, first website |
 | 1993 | UIUC | Mosaic browser — popularised the Web |
 | 2008 | Google | Chrome browser |
 

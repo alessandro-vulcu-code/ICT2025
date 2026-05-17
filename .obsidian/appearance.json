@@ -5,6 +5,8 @@
   "textFontFamily": "Fira Sans",
   "monospaceFontFamily": "Source Code Pro",
   "enabledCssSnippets": [
-    "custom-width"
+    "custom-width",
+    "center-images-print",
+    "start-new-chapter"
   ]
 }
