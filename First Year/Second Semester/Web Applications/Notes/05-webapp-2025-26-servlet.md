@@ -66,7 +66,7 @@ Communication uses **HTTP Request / HTTP Response** between browser and server.
 ## Jakarta Enterprise Edition
 
 > [!Important] Jakarta EE
-> **Jakarta Enterprise Edition (Jakarta EE)** is the standardized platform for developing multi-tiered enterprise applications. It defines APIs for Web development (servlets, REST, etc.) and is executed by a **Web container**.
+> **Jakarta Enterprise Edition (Jakarta EE)** is the ==standardized platform for developing multi-tiered enterprise applications==. It defines ==APIs for Web development== (servlets, REST, etc.) and is ==executed by a **Web container**==.
 >
 > - **Web container**: implements the Jakarta EE API and executes web components
 > - **Web component**: a part of a web app (servlet, JSP, …) hosted by the container
@@ -113,8 +113,8 @@ Four tiers:
 > [!Important] Java Servlet Definition
 > A **servlet** is a ==Java-based Web component, managed by a container, that generates dynamic content==. Servlets are:
 > - ==Platform-independent Java classes== compiled to bytecode
-> - Loaded dynamically into and run by a Java-enabled web server
-> - **Not thread-safe** — the container may send concurrent requests to a single servlet instance; developers must synchronize access to shared resources (files, network connections, instance variables)
+> - Loaded dynamically ==into== and run by a ==Java-enabled web server==
+> - **==Not thread-safe==** — the container may send concurrent requests to a single servlet instance; ==developers must synchronize access to shared resources== (files, network connections, instance variables)
 >
 > **Intuition:** a servlet is like a controller that receives an HTTP request and writes an HTTP response programmatically.
 

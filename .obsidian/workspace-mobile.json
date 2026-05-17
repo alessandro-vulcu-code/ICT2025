@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "First Year/Second Semester/Web Applications/Notes/05-webapp-2025-26-servlet.md",
+                "file": "First Year/Second Semester/Web Applications/Notes/06-Webapp-2025-26-servlet-database.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "05-webapp-2025-26-servlet"
+              "title": "06-Webapp-2025-26-servlet-database"
             }
           }
         ]
@@ -145,6 +145,8 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "reader-highlighter-tags:Highlight Selection": false,
+      "reader-highlighter-tags:Highlight Navigator": false,
       "switcher:Apri selezione rapida": false,
       "graph:Apri vista grafo": false,
       "canvas:Crea nuova lavagna": false,
@@ -157,6 +159,9 @@
   },
   "active": "8e4b85eaec79ae67",
   "lastOpenFiles": [
+    "PLACEHOLDER_Fig_1 — overall architecture layer diagram.md",
+    "First Year/Second Semester/Web Applications/Notes/06-Webapp-2025-26-servlet-database.md",
+    "First Year/Second Semester/Web Applications/Notes/05-webapp-2025-26-servlet.md",
     "First Year/Second Semester/Multimedia Communications/ToSummarize/10. audiocoding.md",
     "First Year/Second Semester/Multimedia Communications/Slides/10. audiocoding.pdf",
     "First Year/Second Semester/Multimedia Communications/Pics/Audio Coding/Pasted image 20260513134214.png",
