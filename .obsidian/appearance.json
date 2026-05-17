@@ -6,6 +6,7 @@
   "monospaceFontFamily": "Source Code Pro",
   "enabledCssSnippets": [
     "custom-width",
-    "center-images-print"
+    "center-images-print",
+    "start-new-chapter"
   ]
 }
