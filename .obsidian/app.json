@@ -1,6 +1,6 @@
 {
   "showLineNumber": false,
-  "readableLineLength": true,
+  "readableLineLength": false,
   "pdfExportSettings": {
     "includeName": true,
     "pageSize": "A4",
