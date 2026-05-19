@@ -1459,6 +1459,387 @@ HTML is easy to insert into a page but is not portable as data. XML is structure
 
 ---
 
+## 15. jQuery and HTML5 canvas
+
+### Q1. What is jQuery and what does the `$()` function return?
+
+**Answer.**  
+jQuery is a JavaScript library that gives a compact, cross-browser API for selecting elements, manipulating the DOM, registering events, and making AJAX requests. The global function `jQuery()` is usually used through the alias `$()`.
+
+When `$()` receives a CSS selector, it returns a jQuery object containing all matched elements. The object is array-like: it has `length`, indexed elements, and many jQuery methods. If it contains one DOM node, it is still not the same thing as the raw DOM element.
+
+```javascript
+// Select all div elements and keep them inside a jQuery object.
+var divs = $("div");
+
+// Read the number of matched elements.
+console.log(divs.length);
+
+// Extract the first raw DOM element from the jQuery object.
+var firstDiv = divs[0];
+```
+
+### Q2. How do jQuery getters, setters, and method chaining work?
+
+**Answer.**  
+Many jQuery methods work both as setters and getters. When a value is passed, the method sets that value on every matched element and returns the same jQuery object, so calls can be chained. When no value is passed, the method usually reads a value from the first matched element and returns a plain value, so the chain ends there.
+
+```javascript
+// Setter calls return the jQuery object, so they can be chained.
+$("p.details")
+  .css("background-color", "yellow")
+  .attr("title", "Important details")
+  .show("fast");
+
+// Getter call returns a string, not a jQuery object, so it normally ends the chain.
+var title = $("p.details").attr("title");
+```
+
+Common dual-role methods are `attr()`, `css()`, `val()`, `text()`, and `html()`.
+
+### Q3. Compare `text()`, `html()`, `val()`, and class methods.
+
+**Answer.**  
+`text()` reads or writes plain text. It is safer for user-controlled content because markup is escaped as text. `html()` reads or writes HTML markup and should not be used with untrusted input unless the HTML has been sanitized. `val()` reads or writes form-control values, including text inputs, radio buttons, checkboxes, and select elements. Class methods such as `addClass()`, `removeClass()`, and `toggleClass()` change styling through CSS classes instead of editing many inline CSS properties.
+
+```javascript
+// Trim every text input with class tags by computing a new value from the old one.
+$("input[type=text].tags").val(function (index, value) {
+  return value.trim();
+});
+
+// Add a CSS class instead of setting many presentation properties by hand.
+$("#message").addClass("success");
+
+// Insert user-controlled content as text, not as raw HTML.
+$("#message").text("Employee created successfully.");
+```
+
+### Q4. How do jQuery DOM insertion, copying, and deletion methods differ?
+
+**Answer.**  
+Insertion methods exist in two directions. Target-first methods put content relative to a target: `append()`, `prepend()`, `before()`, `after()`, and `replaceWith()`. Content-first methods do the same operation from the inserted content's point of view: `appendTo()`, `prependTo()`, `insertBefore()`, `insertAfter()`, and `replaceAll()`.
+
+If an existing DOM node is inserted elsewhere, it is moved. To copy it, use `clone()`. For deletion, `empty()` removes children, `remove()` removes the matched elements and their jQuery data/events, `detach()` removes elements but keeps jQuery data/events for reinsertion, and `unwrap()` removes the parent while keeping the element.
+
+```javascript
+// Append a new list item at the end of the employee list.
+$("<li/>", { text: "Rossi" }).appendTo("#employees");
+
+// Copy a template row before inserting it, so the original stays in place.
+var row = $("#employee-template").clone();
+row.removeAttr("id").appendTo("#employee-table tbody");
+
+// Temporarily remove a panel while keeping jQuery data and event handlers.
+var panel = $("#filters").detach();
+panel.appendTo("#sidebar");
+```
+
+### Q5. How does jQuery handle events?
+
+**Answer.**  
+jQuery can register handlers on every matched element in one call. Shortcut methods such as `click()` cover common events, while `bind()` and `unbind()` register and remove named handlers. Inside a normal function handler, `this` refers to the raw DOM element that received the event, so `$(this)` wraps it as a jQuery object.
+
+```javascript
+// Register one click handler on every matched button.
+$(".delete-button").click(function (event) {
+  event.preventDefault();
+
+  // Wrap the clicked raw DOM element to use jQuery methods on it.
+  $(this).closest("tr").remove();
+});
+
+// Register the same handler for two mouse events.
+$("a.preview").bind("mouseenter mouseleave", function () {
+  $(this).toggleClass("hovered");
+});
+```
+
+### Q6. Compare `$.ajax()`, `$.get()`, `$.post()`, `$.getJSON()`, `$.getScript()`, and `.load()`.
+
+**Answer.**  
+`$.ajax()` is the low-level function and gives the most control over method, URL, data, headers, and callbacks. `$.get()` and `$.post()` are shortcuts for simple GET and POST requests. `$.getJSON()` performs a GET request and parses JSON automatically. `$.getScript()` downloads and executes a JavaScript file. `.load()` fetches HTML and injects it into matched elements; it can also load only a selector fragment from the remote HTML.
+
+```javascript
+// Full-control jQuery AJAX request. Object data is serialized as form data.
+$.ajax({
+  method: "POST",
+  url: "create-employee.jsp",
+  data: {
+    badge: 7309,
+    surname: "Rossi"
+  }
+}).done(function (html) {
+  // Insert server response HTML into the result area.
+  $("#result").html(html);
+});
+```
+
+```javascript
+// Load JSON and build list items after jQuery has parsed the response.
+$.getJSON("rest/employee/salary/45", function (data) {
+  var list = $("<ul/>");
+
+  $.each(data.employees, function (index, employee) {
+    // Use text to avoid inserting untrusted values as raw HTML.
+    $("<li/>", { text: employee.surname }).appendTo(list);
+  });
+
+  $("#employees").empty().append(list);
+});
+```
+
+### Q7. What is the HTML5 `<canvas>` element?
+
+**Answer.**  
+`<canvas>` is a fixed-size bitmap drawing surface controlled by JavaScript. It has no `src` or `alt` like an image. If `width` and `height` are omitted, the default size is 300 by 150 pixels. CSS can resize the displayed element, but that scales the bitmap and may distort the drawing if the aspect ratio changes.
+
+To draw, JavaScript obtains a rendering context, usually `"2d"`.
+
+```html
+<!-- Minimal canvas page: JavaScript obtains the 2D context after page load. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Canvas example</title>
+  <script>
+    // Initialize drawing only after the canvas element exists in the DOM.
+    function draw() {
+      var canvas = document.getElementById("tutorial");
+
+      if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+        ctx.fillRect(25, 25, 100, 100);
+      }
+    }
+  </script>
+</head>
+<body onload="draw();">
+  <canvas id="tutorial" width="150" height="150"></canvas>
+</body>
+</html>
+```
+
+### Q8. How do the canvas coordinate system and rectangle functions work?
+
+**Answer.**  
+The canvas origin `(0, 0)` is in the top-left corner. The `x` axis grows to the right and the `y` axis grows downward. By default, one canvas unit corresponds to one pixel. Rectangle methods are the only native primitive shapes: `fillRect()` draws a filled rectangle, `strokeRect()` draws an outline, and `clearRect()` clears pixels to transparency.
+
+```javascript
+// Draw a black square, clear a hole, then draw an outline inside the hole.
+var canvas = document.getElementById("tutorial");
+var ctx = canvas.getContext("2d");
+
+ctx.fillRect(25, 25, 100, 100);
+ctx.clearRect(45, 45, 60, 60);
+ctx.strokeRect(50, 50, 50, 50);
+```
+
+### Q9. How are paths, lines, and arcs drawn on canvas?
+
+**Answer.**  
+All non-rectangle shapes are drawn with paths. A path starts with `beginPath()`, moves the virtual pen with `moveTo()`, adds segments with methods such as `lineTo()` or `arc()`, and is finally rendered with `stroke()` or `fill()`. `closePath()` can draw a straight line back to the path start.
+
+Arcs use radians, not degrees. `arc(x, y, radius, startAngle, endAngle, anticlockwise)` draws an arc around a center point.
+
+```javascript
+// Draw a simple smiley face with one outer circle, one mouth arc, and two eyes.
+var canvas = document.getElementById("tutorial");
+var ctx = canvas.getContext("2d");
+
+ctx.beginPath();
+ctx.arc(75, 75, 50, 0, Math.PI * 2, true);
+ctx.moveTo(110, 75);
+ctx.arc(75, 75, 35, 0, Math.PI, false);
+ctx.moveTo(65, 65);
+ctx.arc(60, 65, 5, 0, Math.PI * 2, true);
+ctx.moveTo(95, 65);
+ctx.arc(90, 65, 5, 0, Math.PI * 2, true);
+ctx.stroke();
+```
+
+### Q10. Why are `img.onload`, `save()`, `restore()`, transformations, and `requestAnimationFrame()` useful?
+
+**Answer.**  
+Images must be drawn after `img.onload` because loading is asynchronous. Calling `drawImage()` too early can draw nothing because the image bytes are not ready. `save()` and `restore()` manage canvas state as a stack, including styles, transformations, and clipping. `translate()` moves the origin, while `rotate()` rotates around the current origin. `requestAnimationFrame()` is preferred for animation because it runs before repaint and is synchronized with the browser.
+
+```javascript
+// Load an image, then draw it and overlay a path only after it is available.
+var img = new Image();
+
+img.onload = function () {
+  ctx.drawImage(img, 0, 0);
+  ctx.beginPath();
+  ctx.moveTo(30, 96);
+  ctx.lineTo(70, 66);
+  ctx.lineTo(103, 76);
+  ctx.stroke();
+};
+
+img.src = "backdrop.png";
+```
+
+```javascript
+// Animation loop: clear old frame, isolate transform state, draw, then schedule next frame.
+var angle = 0;
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.save();
+  ctx.translate(75, 75);
+  ctx.rotate(angle);
+  ctx.fillRect(-20, -20, 40, 40);
+  ctx.restore();
+
+  angle += 0.05;
+  requestAnimationFrame(animate);
+}
+
+requestAnimationFrame(animate);
+```
+
+---
+
+## 16. Semantic Web and Linked Data
+
+### Q1. What changes from the Web of Documents to the Web of Data?
+
+**Answer.**  
+The Web of Documents links human-readable resources such as HTML pages, images, and files. The Web of Data also links data entities: people, places, works, measurements, datasets, and concepts. The difference is that links become typed and machine-readable, so software can interpret what a relationship means instead of only following a hyperlink.
+
+Raw values are not enough. `123`, `91`, and `38.5` become information only when metadata says what they represent, such as heartbeat, pressure, or temperature. This is why the Semantic Web needs explicit schemas, identifiers, and machine-readable representations.
+
+### Q2. Compare ontology, Linked Data, knowledge graph, and knowledge base.
+
+**Answer.**  
+An ontology describes abstract concepts and relationships, for example the concept of `Person`, `Artwork`, or `createdBy`. OWL is used to define classes, properties, constraints, and axioms.
+
+Linked Data describes concrete instances using RDF, for example Bob, Alice, the Mona Lisa, or Leonardo da Vinci. A knowledge graph is the graph of facts connecting these instances through typed relationships. A knowledge base combines the graph, the vocabulary/ontology, and the stored facts used by applications.
+
+### Q3. Explain the RDF triple model.
+
+**Answer.**  
+RDF represents facts as triples:
+
+- Subject: the resource being described, usually a URI.
+- Predicate: the relationship, also usually a URI.
+- Object: another resource URI or a literal value.
+
+A set of triples forms an RDF graph. Nodes are subjects or objects; directed edges are predicates. Objects can be literals when the fact points to a value, such as a date or title, and URIs when the fact points to another resource.
+
+```turtle
+# Prefixes shorten long URIs so triples remain readable.
+PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
+PREFIX schema:  <http://schema.org/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX wd:      <http://www.wikidata.org/entity/>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+# Bob is a person, knows Alice, has a typed birth date, and is interested in Mona Lisa.
+<http://example.org/bob#me>
+  a foaf:Person ;
+  foaf:knows <http://example.org/alice#me> ;
+  schema:birthDate "1990-07-04"^^xsd:date ;
+  foaf:topic_interest wd:Q12418 .
+
+# Mona Lisa is linked to its title and creator.
+wd:Q12418
+  dcterms:title "Mona Lisa" ;
+  dcterms:creator <http://dbpedia.org/resource/Leonardo_da_Vinci> .
+```
+
+### Q4. Compare RDF/XML, Turtle, N-Triples, JSON-LD, RDFa, and TriG.
+
+**Answer.**  
+All of these formats can serialize RDF, but they suit different contexts. RDF/XML fits XML-based systems but is verbose. Turtle is compact and good for humans. N-Triples writes one triple per line, so it is simple and useful for bulk exchange or streaming. JSON-LD fits web APIs and JavaScript applications. RDFa embeds RDF annotations inside HTML. TriG extends Turtle-style syntax with named graphs.
+
+Example in RDF/XML:
+
+```xml
+<!-- RDF/XML representation of Bob as a described resource. -->
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:schema="http://schema.org/">
+  <rdf:Description rdf:about="http://example.org/bob#me">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <foaf:knows rdf:resource="http://example.org/alice#me"/>
+    <schema:birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1990-07-04</schema:birthDate>
+  </rdf:Description>
+</rdf:RDF>
+```
+
+Example in JSON-LD. The `_comment` field is only a study note; omit it in real JSON-LD data.
+
+```json
+{
+  "_comment": "JSON-LD representation of Bob with context, id, type, and linked properties.",
+  "@context": "example-context.json",
+  "@id": "http://example.org/bob#me",
+  "@type": "Person",
+  "birthdate": "1990-07-04",
+  "knows": "http://example.org/alice#me",
+  "interest": {
+    "@id": "http://www.wikidata.org/entity/Q12418",
+    "title": "Mona Lisa",
+    "creator": "http://dbpedia.org/resource/Leonardo_da_Vinci"
+  }
+}
+```
+
+### Q5. What is SPARQL and how does a `SELECT` query work?
+
+**Answer.**  
+SPARQL is the W3C query language for RDF graphs, similar in role to SQL for relational databases. A `SELECT` query binds variables by matching graph patterns in the `WHERE` clause. Variables start with `?`. Aggregation works with operators such as `COUNT()` and grouping with `GROUP BY`.
+
+```sparql
+# Query each person's name and count how many foaf:knows links they have.
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?name (COUNT(?friend) AS ?count)
+WHERE {
+  ?person foaf:name ?name .
+  ?person foaf:knows ?friend .
+}
+GROUP BY ?person ?name
+```
+
+`?person foaf:name ?name` binds a person to a name. `?person foaf:knows ?friend` binds each friend. `GROUP BY` groups rows by person and name, then `COUNT(?friend)` returns the number of friends per person.
+
+### Q6. What are Tim Berners-Lee's four Linked Data principles?
+
+**Answer.**  
+The four principles are:
+
+1. Use URIs as names for things, not only for documents.
+2. Use HTTP URIs, so those names can be looked up.
+3. When a URI is looked up, provide useful information using standards such as RDF and SPARQL.
+4. Include links to other URIs, so clients can discover related resources.
+
+Dereferencing matters because an HTTP URI can identify a thing and also lead clients to a description of that thing. In Linked Data, RDF links are typed links between data resources, not just clickable HTML links between pages.
+
+### Q7. What are the FAIR principles?
+
+**Answer.**  
+FAIR means Findable, Accessible, Interoperable, and Reusable.
+
+Findable data has persistent identifiers and rich metadata registered in searchable resources. Accessible data can be retrieved through standard protocols, possibly with authentication or authorization. Interoperable data uses formal representation languages, shared vocabularies, and qualified references to other data. Reusable data has clear licenses, provenance, accurate metadata, and domain standards.
+
+Metadata can remain useful even if the original data disappears, because it still records what the data was, who produced it, and how it could be cited or understood.
+
+### Q8. Why are DBpedia, Wikidata, and the LOD Cloud important examples?
+
+**Answer.**  
+DBpedia extracts structured data from Wikipedia and publishes it as Linked Data. It became a central hub because many datasets link to DBpedia URIs as shared references.
+
+Wikidata is a collaborative, multilingual knowledge base. It gives entities stable URIs, such as the URI for the Mona Lisa, and provides machine-readable statements used by Wikipedia and external datasets.
+
+The Linked Open Data Cloud shows many open datasets connected by RDF links. Its size is useful, but it also creates a discovery problem: users and systems must find which datasets contain the specific data they need.
+
+---
+
 ## High-probability cross-topic questions
 
 ### Q1. Compare servlet-only, JSP/MVC, and REST implementations.
@@ -1484,6 +1865,16 @@ The client sends `POST /rest/employee` with `Content-Type: application/json` and
 
 **Answer.**  
 All of these topics point to the same rule: client input cannot be trusted. HTML5 and JavaScript validation give quick feedback but can be bypassed. Server-side validation is mandatory. SQL injection is prevented primarily with prepared statements. XSS is mitigated with output encoding, sanitization, and safe DOM APIs. CSRF is mitigated with cookie policies such as `SameSite=Strict` and other anti-CSRF controls. File uploads require server-side MIME/type validation and size limits because client-side `accept` can be bypassed.
+
+### Q5. Connect jQuery AJAX with the servlet, JSP, and REST approaches.
+
+**Answer.**  
+jQuery AJAX can call servlet/JSP endpoints that return HTML fragments, or REST endpoints that return JSON. With `.load()`, the browser fetches HTML and injects it into the page, so server-side rendering remains central. With `$.getJSON()` or `$.ajax()` against REST, the browser receives structured data and builds the DOM client-side. The first approach is closer to JSP/MVC; the second is closer to REST plus JavaScript UI logic.
+
+### Q6. Connect Semantic Web concepts with XML, JSON, URI, and REST.
+
+**Answer.**  
+Semantic Web technologies reuse web foundations. URI/IRI identifies resources. HTTP makes those identifiers dereferenceable. XML, RDF/XML, Turtle, JSON-LD, and other formats serialize data. REST can expose resources and representations, while RDF adds typed relationships between resources. SPARQL then queries RDF graphs in a way similar to how SQL queries relational tables.
 
 ---
 
@@ -1558,3 +1949,17 @@ All of these topics point to the same rule: client input cannot be trusted. HTML
 2. Write a Compose file for Tomcat and PostgreSQL.
 3. Explain healthcheck and why startup order is not readiness.
 4. Write Docker Compose debugging commands.
+
+### Simulation 11
+
+1. Explain what a jQuery object is and how it differs from a raw DOM element.
+2. Write jQuery code that registers an event handler and updates the DOM.
+3. Compare `$.ajax()`, `$.getJSON()`, and `.load()`.
+4. Write canvas code that draws rectangles, paths, or an animation frame.
+
+### Simulation 12
+
+1. Explain Web of Documents vs Web of Data.
+2. Convert a small Bob/Alice/Mona Lisa example into RDF triples.
+3. Compare Turtle, RDF/XML, JSON-LD, and N-Triples.
+4. Write a SPARQL query with variables and explain how `GROUP BY` works.
