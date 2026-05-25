@@ -1,6 +1,6 @@
 {
   "baseFontSizeAction": true,
-  "baseFontSize": 19,
+  "baseFontSize": 23,
   "cssTheme": "Cupertino",
   "textFontFamily": "Fira Sans",
   "monospaceFontFamily": "Source Code Pro",
@@ -8,5 +8,6 @@
     "custom-width",
     "center-images-print",
     "start-new-chapter"
-  ]
+  ],
+  "theme": "obsidian"
 }

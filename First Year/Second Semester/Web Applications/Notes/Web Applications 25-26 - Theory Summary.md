@@ -1,22 +1,8 @@
-# Web Applications 25-26 - Theory Summary
-
-This summary follows the order of `Notes/Web Applications 25-26.md`. It is meant for
-theory study: the goal is not to memorize every line of code, but to understand the
-concepts well enough to explain them in 3-4 open answers.
-
-Past multiple-choice exams repeatedly touched definitions and precise distinctions:
-Web architectures, URI/HTTP/MIME, servlets/JSP/MVC, XML/DOM/JSON, HTML/CSS/JS,
-AJAX, jQuery, canvas, and Semantic Web/RDF. They are useful signals, but not a full
-syllabus.
-
----
-
 ## 1. Introduction to Web Applications
 
 ### Historical foundations
 
-The Web did not appear from nothing. It evolved from earlier ideas about linked
-information.
+The Web did not appear from nothing. It evolved from earlier ideas about linked information.
 
 | Person / System | Main contribution |
 |---|---|
@@ -27,11 +13,9 @@ information.
 | Tim Berners-Lee, WWW | Practical Web architecture at CERN: simple hypertext over the Internet. |
 
 > [!important] Definition - Hypertext
-> Hypertext is text connected by links, so the reader can move non-linearly between
-> related pieces of information.
+> Hypertext is text connected by links, so the reader can move non-linearly between related pieces of information.
 
-The first popular graphical browser was **Mosaic** (1993). Later browsers include
-Netscape Navigator, Internet Explorer, Firefox, Safari, Chrome, and Edge.
+The first popular graphical browser was **Mosaic** (1993). Later browsers include Netscape Navigator, Internet Explorer, Firefox, Safari, Chrome, and Edge.
 
 ### Evolution of the Web
 
@@ -46,9 +30,7 @@ Netscape Navigator, Internet Explorer, Firefox, Safari, Chrome, and Edge.
 | Web 3.0 | Web of Data / Semantic Web | RDF, OWL, SPARQL | Data has explicit semantics and machine-readable links. |
 | Web3 | Decentralized Web | Blockchain, crypto, DeFi, NFT | User-controlled data and decentralized infrastructure. |
 
-**Deep Web** means content not indexed by ordinary search engines: private databases,
-login-protected systems, dynamically generated pages. **Dark Web** means anonymous
-access through systems such as Tor or I2P. They are not the same thing.
+**Deep Web** means content not indexed by ordinary search engines: private databases, login-protected systems, dynamically generated pages. **Dark Web** means anonymous access through systems such as Tor or I2P. They are not the same thing.
 
 ### Application layers and architectures
 
@@ -77,55 +59,27 @@ The physical architecture says where those layers run.
 
 *Figure 3: Web application mapped to a three-tier architecture with browser, server, and database*
 
-A typical Web application is a **three-tier application**:
-browser as presentation tier, web/application server as application logic, DBMS as
-data tier. The browser and server communicate through HTTP over the network stack.
+A typical Web application is a **three-tier application**: browser as presentation tier, web/application server as application logic, DBMS as data tier. The browser and server communicate through HTTP over the network stack.
 
-**Open-question focus:** explain the three logical layers, then map them onto
-single-tier, two-tier, and three-tier architectures. Be precise: the application
-logic layer controls the flow of operations; the data layer manages persistent data.
+**Open-question focus:** explain the three logical layers, then map them onto single-tier, two-tier, and three-tier architectures. Be precise: the application logic layer controls the flow of operations; the data layer manages persistent data.
 
 ### Extended study notes
 
-When writing an open answer about Web application architecture, start from the
-logical model, not from the physical machines. The same logical application always
-has presentation, application, and data logic, even if a small prototype puts all of
-them in one process. The architectural question is: where are these responsibilities
-executed and how do they communicate?
+When writing an open answer about Web application architecture, start from the logical model, not from the physical machines. The same logical application always has presentation, application, and data logic, even if a small prototype puts all of them in one process. The architectural question is: where are these responsibilities executed and how do they communicate?
 
-The **presentation layer** is not "only graphics". It includes everything related to
-user interaction: form layout, navigation, input collection, first feedback, and
-sometimes simple client-side validation. In a Web application it is mostly the
-browser running HTML, CSS, and JavaScript.
+The **presentation layer** is not "only graphics". It includes everything related to user interaction: form layout, navigation, input collection, first feedback, and sometimes simple client-side validation. In a Web application it is mostly the browser running HTML, CSS, and JavaScript.
 
-The **application layer** is the center of the system. It decides which operation is
-being requested, checks business rules, calls persistence logic, chooses the response,
-and handles errors. In the course examples, servlets and REST resources perform this
-role.
+The **application layer** is the center of the system. It decides which operation is being requested, checks business rules, calls persistence logic, chooses the response, and handles errors. In the course examples, servlets and REST resources perform this role.
 
-The **data layer** is where long-term state is stored and kept consistent. A DBMS
-does not just "save files"; it enforces schemas, constraints, transactions, indexes,
-and queries.
+The **data layer** is where long-term state is stored and kept consistent. A DBMS does not just "save files"; it enforces schemas, constraints, transactions, indexes, and queries.
 
-Single-tier systems are easy to understand because all logic is in the same place.
-The cost is that scalability and fault isolation are poor. If the central machine is
-overloaded or unavailable, the whole application suffers.
+Single-tier systems are easy to understand because all logic is in the same place. The cost is that scalability and fault isolation are poor. If the central machine is overloaded or unavailable, the whole application suffers.
 
-Two-tier systems split work between clients and a server. In a fat-client design, the
-client contains much application logic and talks directly to the DB server. This can
-reduce server work, but it makes clients hard to update and exposes the database
-model to the client. In a fat-server design, the client is simpler and the server
-does more work.
+Two-tier systems split work between clients and a server. In a fat-client design, the client contains much application logic and talks directly to the DB server. This can reduce server work, but it makes clients hard to update and exposes the database model to the client. In a fat-server design, the client is simpler and the server does more work.
 
-Three-tier systems introduce a middle tier. The browser does not talk directly to the
-database; it talks to a web/application server. This server can validate requests,
-apply business rules, reuse connection pools, enforce security, and expose stable
-APIs even if the database schema changes.
+Three-tier systems introduce a middle tier. The browser does not talk directly to the database; it talks to a web/application server. This server can validate requests, apply business rules, reuse connection pools, enforce security, and expose stable APIs even if the database schema changes.
 
-A good exam answer should also mention that three-tier does not automatically mean
-"three physical machines". It means three logical roles. In a development setup, all
-roles may run on the same laptop; in production, they may be separated across many
-servers and containers.
+A good exam answer should also mention that three-tier does not automatically mean "three physical machines". It means three logical roles. In a development setup, all roles may run on the same laptop; in production, they may be separated across many servers and containers.
 
 Typical flow in a Web application:
 
@@ -140,10 +94,7 @@ Browser
   -> Browser rendering
 ```
 
-Load balancing becomes easier in this model because multiple application servers can
-run the same code behind a load balancer while sharing a database or a replicated
-data layer. This is one of the practical reasons Web applications moved away from
-single-tier designs.
+Load balancing becomes easier in this model because multiple application servers can run the same code behind a load balancer while sharing a database or a replicated data layer. This is one of the practical reasons Web applications moved away from single-tier designs.
 
 Exam-style distinction:
 
@@ -155,9 +106,7 @@ Exam-style distinction:
 | "Disadvantage of three-tier" | More complex implementation and deployment. |
 | "Advantage of three-tier" | Scalability, separation of concerns, load balancing. |
 
-Avoid saying that Web 3.0 and Web3 are the same. In these notes, **Web 3.0** is the
-Semantic Web / Web of Data, based on RDF, OWL, and SPARQL. **Web3** is the
-blockchain/decentralized Web movement.
+Avoid saying that Web 3.0 and Web3 are the same. In these notes, **Web 3.0** is the Semantic Web / Web of Data, based on RDF, OWL, and SPARQL. **Web3** is the blockchain/decentralized Web movement.
 
 ---
 
@@ -165,8 +114,7 @@ blockchain/decentralized Web movement.
 
 ### Git
 
-**Git** is a distributed version control system. Each local copy is a complete
-repository, not only a checkout from a central server.
+**Git** is a distributed version control system. Each local copy is a complete repository, not only a checkout from a central server.
 
 ![[git-workflow-three-trees.jpg|520]]
 
@@ -191,21 +139,17 @@ Explanation:
 - `git commit` records staged changes into local history.
 - `git push` sends local commits to a remote branch.
 
-Branches are independent lines of development. A feature branch can diverge from
-`main` and later be merged back.
+Branches are independent lines of development. A feature branch can diverge from `main` and later be merged back.
 
 ![[git-branch-merge.jpg|520]]
 
 *Figure 5: Feature branch diverging from and merging back into the main branch*
 
-A **pull request** is not the same as `git pull`. A pull request is a collaboration
-mechanism on platforms such as GitHub or Bitbucket: it asks others to review a branch
-before merging it.
+A **pull request** is not the same as `git pull`. A pull request is a collaboration mechanism on platforms such as GitHub or Bitbucket: it asks others to review a branch before merging it.
 
 ### Maven
 
-**Maven** is a Java project management tool. It standardizes building, packaging,
-dependency resolution, documentation, and deployment.
+**Maven** is a Java project management tool. It standardizes building, packaging, dependency resolution, documentation, and deployment.
 
 ![[maven-phases-goals-plugins-pom.jpg|520]]
 
@@ -221,8 +165,7 @@ Core Maven concepts:
 | Plugin | Component that provides one or more goals. |
 | POM | `pom.xml`, declarative description of project coordinates, dependencies, plugins. |
 
-Invoking a Maven phase also executes all previous phases in that lifecycle. For
-example, `mvn package` validates, compiles, tests, and then packages.
+Invoking a Maven phase also executes all previous phases in that lifecycle. For example, `mvn package` validates, compiles, tests, and then packages.
 
 ```xml
 <groupId>it.unipd.dei.webapp</groupId>
@@ -231,49 +174,29 @@ example, `mvn package` validates, compiles, tests, and then packages.
 <packaging>war</packaging>
 ```
 
-These are Maven **coordinates**. They identify the artifact. `packaging` says what
-Maven produces: `jar` for ordinary Java archives, `war` for web applications.
+These are Maven **coordinates**. They identify the artifact. `packaging` says what Maven produces: `jar` for ordinary Java archives, `war` for web applications.
 
-Maven uses remote repositories, such as Maven Central, and a local cache under
-`~/.m2/repository`. If a dependency is missing locally, Maven downloads it.
+Maven uses remote repositories, such as Maven Central, and a local cache under `~/.m2/repository`. If a dependency is missing locally, Maven downloads it.
 
-**Open-question focus:** connect lifecycle -> phase -> goal -> plugin, and explain
-why the POM is declarative. Also know why generated files such as `target/` do not
-belong in Git.
+**Open-question focus:** connect lifecycle -> phase -> goal -> plugin, and explain why the POM is declarative. Also know why generated files such as `target/` do not belong in Git.
 
 ### Extended study notes
 
-Git and Maven solve different problems and are often confused in short answers.
-Git manages the **history of source files**. Maven manages the **build process and
-dependencies**. A good project normally uses both: Git tracks the human-written
-source code and configuration, while Maven regenerates compiled artifacts.
+Git and Maven solve different problems and are often confused in short answers. Git manages the **history of source files**. Maven manages the **build process and dependencies**. A good project normally uses both: Git tracks the human-written source code and configuration, while Maven regenerates compiled artifacts.
 
-Git is distributed because every clone contains the full repository history. This is
-why a developer can commit locally without network access. Synchronization with
-others happens later through `push`, `pull`, `fetch`, and merge operations.
+Git is distributed because every clone contains the full repository history. This is why a developer can commit locally without network access. Synchronization with others happens later through `push`, `pull`, `fetch`, and merge operations.
 
-The three-area Git model is useful because it explains why `git add` is separate
-from `git commit`. You can edit many files in the working directory and stage only
-some of them. The commit records exactly what is in the index, not every modified
-file automatically.
+The three-area Git model is useful because it explains why `git add` is separate from `git commit`. You can edit many files in the working directory and stage only some of them. The commit records exactly what is in the index, not every modified file automatically.
 
 ```text
 working directory --git add--> index --git commit--> HEAD
 ```
 
-Branches are cheap pointers to commits. Creating a branch does not copy the entire
-project; it creates a new name for a line of development. A merge creates a history
-where changes from two lines are combined. If the same lines changed differently,
-Git may ask the developer to resolve conflicts.
+Branches are cheap pointers to commits. Creating a branch does not copy the entire project; it creates a new name for a line of development. A merge creates a history where changes from two lines are combined. If the same lines changed differently, Git may ask the developer to resolve conflicts.
 
-Files generated from the build should not be versioned because they can be recreated.
-For a Maven project, `target/`, `.class`, `.jar`, `.war`, generated Javadoc, IDE
-metadata, and logs usually go into `.gitignore`. Versioning generated files creates
-noise and increases the chance of inconsistent builds.
+Files generated from the build should not be versioned because they can be recreated. For a Maven project, `target/`, `.class`, `.jar`, `.war`, generated Javadoc, IDE metadata, and logs usually go into `.gitignore`. Versioning generated files creates noise and increases the chance of inconsistent builds.
 
-Maven is declarative: the POM describes what the project is and what it needs, not
-the exact shell commands for every step. The lifecycle model then gives standard
-meaning to commands such as `mvn test` or `mvn package`.
+Maven is declarative: the POM describes what the project is and what it needs, not the exact shell commands for every step. The lifecycle model then gives standard meaning to commands such as `mvn test` or `mvn package`.
 
 Important Maven flow:
 
@@ -287,8 +210,7 @@ If the command is:
 mvn package
 ```
 
-Maven does not only package. It first runs the earlier phases in order. This is why
-`mvn package` also compiles code and runs tests before producing a JAR or WAR.
+Maven does not only package. It first runs the earlier phases in order. This is why `mvn package` also compiles code and runs tests before producing a JAR or WAR.
 
 Dependencies are identified through coordinates:
 
@@ -300,16 +222,9 @@ Dependencies are identified through coordinates:
 </dependency>
 ```
 
-The coordinate says which artifact to download. Maven first checks the local
-repository cache, then remote repositories. This makes projects reproducible: the
-POM documents the required libraries instead of requiring each developer to download
-them manually.
+The coordinate says which artifact to download. Maven first checks the local repository cache, then remote repositories. This makes projects reproducible: the POM documents the required libraries instead of requiring each developer to download them manually.
 
-For Web applications, `war` packaging matters. A WAR has the layout expected by a Web
-container such as Tomcat. Servlet API dependencies are usually marked `provided`
-because Tomcat already provides them at runtime. Application libraries such as JDBC
-drivers, Log4J, JSTL, Jackson, or Jakarta Mail normally must be packaged unless the
-container explicitly provides them.
+For Web applications, `war` packaging matters. A WAR has the layout expected by a Web container such as Tomcat. Servlet API dependencies are usually marked `provided` because Tomcat already provides them at runtime. Application libraries such as JDBC drivers, Log4J, JSTL, Jackson, or Jakarta Mail normally must be packaged unless the container explicitly provides them.
 
 Exam-style distinction:
 
@@ -323,8 +238,7 @@ Exam-style distinction:
 | Repository | Place where Maven artifacts are stored and resolved. |
 | `.gitignore` | Prevents generated or local-only files from being tracked. |
 
-An answer about Maven should not describe it as a continuous-integration framework.
-It can be used inside CI pipelines, but Maven itself is the build/dependency tool.
+An answer about Maven should not describe it as a continuous-integration framework. It can be used inside CI pipelines, but Maven itself is the build/dependency tool.
 
 ---
 
@@ -332,17 +246,14 @@ It can be used inside CI pipelines, but Maven itself is the build/dependency too
 
 ### The deployment problem
 
-A Java web application needs compatible versions of Java, Tomcat, PostgreSQL,
-libraries, configuration files, and environment variables. Maven can create the WAR,
-but it does not guarantee the runtime environment.
+A Java web application needs compatible versions of Java, Tomcat, PostgreSQL, libraries, configuration files, and environment variables. Maven can create the WAR, but it does not guarantee the runtime environment.
 
 ![[docker-webapp-lifecycle.jpg|520]]
 
 *Figure 7: Build and deployment flow from development to Maven WAR and Tomcat runtime*
 
 > [!important] Definition - Containerization
-> Containerization packages an application and its runtime dependencies into an
-> isolated environment that behaves consistently across machines.
+> Containerization packages an application and its runtime dependencies into an isolated environment that behaves consistently across machines.
 
 ### Containers vs virtual machines
 
@@ -378,8 +289,7 @@ COPY target/app.war /usr/local/tomcat/webapps/app.war
 EXPOSE 8080
 ```
 
-The Dockerfile is declarative: start from a Tomcat image, add the WAR, expose the
-port. In a real project, each instruction contributes to image layers.
+The Dockerfile is declarative: start from a Tomcat image, add the WAR, expose the port. In a real project, each instruction contributes to image layers.
 
 ### Docker Compose
 
@@ -437,37 +347,19 @@ docker ps -a
 docker exec <container-name> <command>
 ```
 
-`docker-compose up` creates and starts the services. `docker-compose down` stops and
-removes containers. `docker exec` is useful for debugging, for example to open a
-`psql` shell inside the PostgreSQL container.
+`docker-compose up` creates and starts the services. `docker-compose down` stops and removes containers. `docker exec` is useful for debugging, for example to open a `psql` shell inside the PostgreSQL container.
 
-**Open-question focus:** explain why Docker solves environment mismatch, how image,
-container, and volume differ, and why healthchecks matter in a Tomcat + PostgreSQL
-setup.
+**Open-question focus:** explain why Docker solves environment mismatch, how image, container, and volume differ, and why healthchecks matter in a Tomcat + PostgreSQL setup.
 
 ### Extended study notes
 
-The deployment environment problem is broader than "installing Tomcat". A Web
-application depends on versions, configuration, ports, environment variables,
-database initialization scripts, file-system paths, network visibility, and startup
-order. Maven produces an artifact, usually a WAR, but it does not say where the DBMS
-runs or whether PostgreSQL is ready when Tomcat starts.
+The deployment environment problem is broader than "installing Tomcat". A Web application depends on versions, configuration, ports, environment variables, database initialization scripts, file-system paths, network visibility, and startup order. Maven produces an artifact, usually a WAR, but it does not say where the DBMS runs or whether PostgreSQL is ready when Tomcat starts.
 
-Docker moves that environment description closer to the project. A Docker image
-contains the runtime filesystem needed by an application component. A container is a
-running instance of that image. The image is immutable; the container has a writable
-layer on top. If a container is removed, data in that writable layer disappears unless
-it was stored in a volume.
+Docker moves that environment description closer to the project. A Docker image contains the runtime filesystem needed by an application component. A container is a running instance of that image. The image is immutable; the container has a writable layer on top. If a container is removed, data in that writable layer disappears unless it was stored in a volume.
 
-This distinction is very important for databases. PostgreSQL data must be persistent,
-so it belongs in a volume or bind mount. A Tomcat container running a WAR can often
-be recreated from the image and mounted artifact. Database state cannot be recreated
-unless it is only test data generated from initialization scripts.
+This distinction is very important for databases. PostgreSQL data must be persistent, so it belongs in a volume or bind mount. A Tomcat container running a WAR can often be recreated from the image and mounted artifact. Database state cannot be recreated unless it is only test data generated from initialization scripts.
 
-The Dockerfile describes how to build an image. Docker Compose describes how several
-containers form one application. In the course example, Tomcat and PostgreSQL are
-separate services because they are separate application components with different
-lifecycles and persistent-state requirements.
+The Dockerfile describes how to build an image. Docker Compose describes how several containers form one application. In the course example, Tomcat and PostgreSQL are separate services because they are separate application components with different lifecycles and persistent-state requirements.
 
 Port mapping can be misunderstood. This line:
 
@@ -476,9 +368,7 @@ ports:
   - "8080:8080"
 ```
 
-means host port 8080 is forwarded to container port 8080. It is used to reach Tomcat
-from the host browser. It is not how containers normally talk to each other inside
-the Compose network. Inside the network, `web` can reach `db` by service name.
+means host port 8080 is forwarded to container port 8080. It is used to reach Tomcat from the host browser. It is not how containers normally talk to each other inside the Compose network. Inside the network, `web` can reach `db` by service name.
 
 The PostgreSQL initialization convention is also relevant:
 
@@ -487,15 +377,9 @@ volumes:
   - ./crane.sql:/docker-entrypoint-initdb.d/init.sql
 ```
 
-Scripts in `/docker-entrypoint-initdb.d/` run when the database storage is initialized
-for the first time. If the data directory already exists, those scripts are not
-automatically re-run. This is why deleting or preserving the DB volume changes the
-behavior of subsequent starts.
+Scripts in `/docker-entrypoint-initdb.d/` run when the database storage is initialized for the first time. If the data directory already exists, those scripts are not automatically re-run. This is why deleting or preserving the DB volume changes the behavior of subsequent starts.
 
-`depends_on` controls startup dependency, but by itself it only means "start this
-container after that one". A container may be running while the application inside it
-is still initializing. For databases this is common: PostgreSQL may need several
-seconds before accepting connections.
+`depends_on` controls startup dependency, but by itself it only means "start this container after that one". A container may be running while the application inside it is still initializing. For databases this is common: PostgreSQL may need several seconds before accepting connections.
 
 The healthcheck fixes that:
 
@@ -526,9 +410,7 @@ Container vs VM exam answer:
 | Startup | Fast. | Slower. |
 | Typical use | Package services and dependencies. | Full OS isolation. |
 
-Do not say containers are "less isolated" as if they are not isolated at all. They
-are isolated processes with their own filesystem, network namespace, and runtime
-configuration, but they do not emulate a complete computer.
+Do not say containers are "less isolated" as if they are not isolated at all. They are isolated processes with their own filesystem, network namespace, and runtime configuration, but they do not emulate a complete computer.
 
 ---
 
@@ -540,15 +422,11 @@ configuration, but they do not emulate a complete computer.
 
 *Figure 11: Browser-server architecture for a servlet-based Web application*
 
-The browser renders HTML/CSS, executes JavaScript, maintains the DOM, and sends HTTP
-requests. The web server parses requests, performs access control, dispatches to
-static or dynamic resources, logs activity, and sends responses.
+The browser renders HTML/CSS, executes JavaScript, maintains the DOM, and sends HTTP requests. The web server parses requests, performs access control, dispatches to static or dynamic resources, logs activity, and sends responses.
 
 ### Jakarta EE and Tomcat
 
-**Jakarta EE** is the standardized platform for enterprise web applications.
-**Tomcat** is a web container: it implements the servlet/JSP part of the platform and
-executes web components.
+**Jakarta EE** is the standardized platform for enterprise web applications. **Tomcat** is a web container: it implements the servlet/JSP part of the platform and executes web components.
 
 Package naming matters:
 - Tomcat 9 uses Java EE style `javax.*`.
@@ -557,8 +435,7 @@ Package naming matters:
 ### Servlet definition and lifecycle
 
 > [!important] Definition - Servlet
-> A servlet is a Java-based web component, managed by a web container, that generates
-> dynamic content in response to requests.
+> A servlet is a Java-based web component, managed by a web container, that generates dynamic content in response to requests.
 
 Servlets usually extend `HttpServlet`. The container controls the lifecycle:
 
@@ -567,9 +444,7 @@ Servlets usually extend `HttpServlet`. The container controls the lifecycle:
 3. `service()` dispatches to `doGet`, `doPost`, `doPut`, `doDelete`, etc.
 4. `destroy()` runs once before the servlet is taken out of service.
 
-Servlets are **not automatically thread-safe**. Several concurrent requests may use
-the same servlet instance. Request-specific data must stay in local variables, not in
-shared instance fields.
+Servlets are **not automatically thread-safe**. Several concurrent requests may use the same servlet instance. Request-specific data must stay in local variables, not in shared instance fields.
 
 ![[servlet-sequence-diagram.jpg|520]]
 
@@ -589,11 +464,9 @@ shared instance fields.
 </servlet-mapping>
 ```
 
-Explanation: the container maps `/hello` to `HelloWorldServlet`. A servlet can have
-multiple URL patterns.
+Explanation: the container maps `/hello` to `HelloWorldServlet`. A servlet can have multiple URL patterns.
 
-`WEB-INF/` is not directly accessible from the browser. It contains private web app
-configuration such as `web.xml`, libraries, and compiled classes.
+`WEB-INF/` is not directly accessible from the browser. It contains private web app configuration such as `web.xml`, libraries, and compiled classes.
 
 ### Minimal servlet response
 
@@ -623,8 +496,7 @@ Explanation:
 - The servlet manually writes HTML.
 - The writer is flushed and closed after writing.
 
-Manual HTML generation works for tiny examples, but becomes hard to maintain. This
-is why JSP and MVC are introduced later.
+Manual HTML generation works for tiny examples, but becomes hard to maintain. This is why JSP and MVC are introduced later.
 
 ### Logging with Log4J
 
@@ -637,8 +509,7 @@ Log4J separates:
 | Layout | Format of the log line. |
 | Level | Filters messages: `TRACE < DEBUG < INFO < WARN < ERROR < FATAL`. |
 
-`ThreadContext` / MDC stores request-scoped metadata such as IP, user, action, and
-resource. The pattern is:
+`ThreadContext` / MDC stores request-scoped metadata such as IP, user, action, and resource. The pattern is:
 
 ```java
 LogContext.setIPAddress(req.getRemoteAddr());
@@ -652,9 +523,7 @@ try {
 }
 ```
 
-The `finally` cleanup matters because servlet containers reuse threads. If MDC data
-is not removed, the next request handled by the same thread could inherit the wrong
-logging context.
+The `finally` cleanup matters because servlet containers reuse threads. If MDC data is not removed, the next request handled by the same thread could inherit the wrong logging context.
 
 ### GET and POST forms
 
@@ -670,39 +539,23 @@ logging context.
 </form>
 ```
 
-GET puts parameters in the URL query string. POST sends them in the request body.
-In servlets, both can be read with:
+GET puts parameters in the URL query string. POST sends them in the request body. In servlets, both can be read with:
 
 ```java
 String name = req.getParameter("helloName");
 ```
 
-**Open-question focus:** know servlet lifecycle, `HttpServletRequest` vs
-`HttpServletResponse`, `doGet` vs `doPost`, URL mapping, WAR packaging, and why
-servlet instance variables are dangerous.
+**Open-question focus:** know servlet lifecycle, `HttpServletRequest` vs `HttpServletResponse`, `doGet` vs `doPost`, URL mapping, WAR packaging, and why servlet instance variables are dangerous.
 
 ### Extended study notes
 
-Servlets are the first server-side programming model in the course. The most
-important idea is that the servlet code does not run as an ordinary `main()` program.
-It runs inside a Web container. The container creates servlet instances, initializes
-them, passes request and response objects, manages threads, and eventually destroys
-the servlet.
+Servlets are the first server-side programming model in the course. The most important idea is that the servlet code does not run as an ordinary `main()` program. It runs inside a Web container. The container creates servlet instances, initializes them, passes request and response objects, manages threads, and eventually destroys the servlet.
 
-The request object represents what the client sent. It exposes parameters, headers,
-cookies, session information, body streams, remote address, method, and URI. The
-response object represents what the server will send back. It lets the servlet set
-status codes, headers, content type, character encoding, cookies, and body content.
+The request object represents what the client sent. It exposes parameters, headers, cookies, session information, body streams, remote address, method, and URI. The response object represents what the server will send back. It lets the servlet set status codes, headers, content type, character encoding, cookies, and body content.
 
-`HttpServlet` already implements generic request dispatch. In ordinary servlet code,
-developers override `doGet()` or `doPost()` rather than `service()`. REST dispatchers
-are an exception because they need centralized method and path routing for several
-HTTP methods.
+`HttpServlet` already implements generic request dispatch. In ordinary servlet code, developers override `doGet()` or `doPost()` rather than `service()`. REST dispatchers are an exception because they need centralized method and path routing for several HTTP methods.
 
-GET and POST are not just "visible" vs "invisible". GET is intended for retrieving
-information and should be safe. Parameters are in the query string and can be cached,
-bookmarked, or logged. POST sends data in the body and is used for operations that
-submit data, often creating or changing state.
+GET and POST are not just "visible" vs "invisible". GET is intended for retrieving information and should be safe. Parameters are in the query string and can be cached, bookmarked, or logged. POST sends data in the body and is used for operations that submit data, often creating or changing state.
 
 The servlet response pattern is always similar:
 
@@ -714,10 +567,7 @@ try (PrintWriter out = res.getWriter()) {
 }
 ```
 
-The course examples explicitly flush and close the writer. In modern Java,
-try-with-resources is also a common way to ensure cleanup. The key theory point is
-that the servlet is responsible for producing a valid HTTP response body and matching
-`Content-Type`.
+The course examples explicitly flush and close the writer. In modern Java, try-with-resources is also a common way to ensure cleanup. The key theory point is that the servlet is responsible for producing a valid HTTP response body and matching `Content-Type`.
 
 WAR packaging places files where the container expects them:
 
@@ -730,12 +580,9 @@ webapp root
     classes/
 ```
 
-Files under `WEB-INF` are private. A user can request `/html/page.html`, but not
-`/WEB-INF/web.xml`. The container can read `WEB-INF`, but it does not expose it as a
-static public directory.
+Files under `WEB-INF` are private. A user can request `/html/page.html`, but not `/WEB-INF/web.xml`. The container can read `WEB-INF`, but it does not expose it as a static public directory.
 
-Thread safety is a classic exam trap. The container may use one servlet instance for
-many requests at the same time. This is bad:
+Thread safety is a classic exam trap. The container may use one servlet instance for many requests at the same time. This is bad:
 
 ```java
 public class BadServlet extends HttpServlet {
@@ -755,8 +602,7 @@ public void doGet(HttpServletRequest req, HttpServletResponse res) {
 }
 ```
 
-Logging with MDC has the same concurrency concern. The context is thread-local, so
-it must be cleared in `finally` before the container reuses that thread.
+Logging with MDC has the same concurrency concern. The context is thread-local, so it must be cleared in `finally` before the container reuses that thread.
 
 Servlet answer template:
 
@@ -808,8 +654,7 @@ public class Employee {
 }
 ```
 
-Fields are `final`, so the object is immutable after construction. This is safer in
-request processing.
+Fields are `final`, so the object is immutable after construction. This is safer in request processing.
 
 `Message` carries success or error information:
 
@@ -823,8 +668,7 @@ request processing.
 ### DAO pattern
 
 > [!important] Definition - DAO
-> A Data Access Object encapsulates all logic needed to access a data source. Servlets
-> should not contain SQL; they should call DAOs.
+> A Data Access Object encapsulates all logic needed to access a data source. Servlets should not contain SQL; they should call DAOs.
 
 ![[db-dao-interface.jpg|520]]
 
@@ -837,8 +681,7 @@ public interface DataAccessObject<T> {
 }
 ```
 
-`access()` performs the database operation. `getOutputParam()` returns the result,
-for example a `List<Employee>`.
+`access()` performs the database operation. `getOutputParam()` returns the result, for example a `List<Employee>`.
 
 ```java
 String sql = "SELECT badge, surname, age, salary FROM Employee WHERE salary > ?";
@@ -857,8 +700,7 @@ This is the core defense against SQL injection.
 
 ### Connection pool
 
-Opening a new database connection for every request is expensive. Tomcat can manage
-a connection pool exposed through JNDI.
+Opening a new database connection for every request is expensive. Tomcat can manage a connection pool exposed through JNDI.
 
 ```xml
 <Resource name="jdbc/employee-ferro"
@@ -908,24 +750,15 @@ Search by salary:
 4. The list becomes `outputParam`.
 5. Servlet renders an HTML table.
 
-**Open-question focus:** explain why DAO improves separation of concerns and security.
-Be able to describe JNDI + connection pool + servlet + DAO as one flow.
+**Open-question focus:** explain why DAO improves separation of concerns and security. Be able to describe JNDI + connection pool + servlet + DAO as one flow.
 
 ### Extended study notes
 
-The database chapter is where the course moves from "a servlet can answer a request"
-to "a servlet participates in a layered application". The main design rule is that
-SQL must be isolated from request-handling code. Servlets know HTTP. DAOs know SQL.
-Resource classes carry domain data between the two.
+The database chapter is where the course moves from "a servlet can answer a request" to "a servlet participates in a layered application". The main design rule is that SQL must be isolated from request-handling code. Servlets know HTTP. DAOs know SQL. Resource classes carry domain data between the two.
 
-The `Employee` class is intentionally simple. It is a value object: badge, surname,
-age, salary. Making fields `final` means the object cannot silently change after it
-has been created. In a multithreaded Web application, immutability reduces accidental
-sharing bugs.
+The `Employee` class is intentionally simple. It is a value object: badge, surname, age, salary. Making fields `final` means the object cannot silently change after it has been created. In a multithreaded Web application, immutability reduces accidental sharing bugs.
 
-`Message` is not a database entity. It is a response helper. It lets the application
-use one object for both success and failure cases. This makes servlet code cleaner:
-the servlet can set a `Message` and later decide how to render it.
+`Message` is not a database entity. It is a response helper. It lets the application use one object for both success and failure cases. This makes servlet code cleaner: the servlet can set a `Message` and later decide how to render it.
 
 The DAO interface:
 
@@ -934,9 +767,7 @@ DataAccessObject<T> access() throws SQLException;
 T getOutputParam();
 ```
 
-is deliberately generic. Some operations are commands and return no meaningful
-domain data. Others are queries and return a list or single object. The type
-parameter `T` lets both cases use the same pattern.
+is deliberately generic. Some operations are commands and return no meaningful domain data. Others are queries and return a list or single object. The type parameter `T` lets both cases use the same pattern.
 
 `AbstractDAO` centralizes cross-cutting database concerns:
 
@@ -947,9 +778,7 @@ parameter `T` lets both cases use the same pattern.
 | One-shot execution | A DAO instance should not accidentally execute twice. |
 | Logging | DB failures should be recorded consistently. |
 
-`CreateEmployeeDAO` and `SearchEmployeeBySalaryDAO` then implement only the specific
-SQL operation. This is good object-oriented design because shared mechanics are not
-duplicated in every DAO.
+`CreateEmployeeDAO` and `SearchEmployeeBySalaryDAO` then implement only the specific SQL operation. This is good object-oriented design because shared mechanics are not duplicated in every DAO.
 
 `PreparedStatement` is central:
 
@@ -963,14 +792,9 @@ ps.setInt(4, employee.getSalary());
 ps.execute();
 ```
 
-The SQL template is fixed before user data is inserted. The values are sent as typed
-parameters. Even if the surname contains quotes or SQL-looking text, it remains a
-string value, not executable SQL.
+The SQL template is fixed before user data is inserted. The values are sent as typed parameters. Even if the surname contains quotes or SQL-looking text, it remains a string value, not executable SQL.
 
-Connection pooling is a performance and resource-management mechanism. Without a
-pool, each request would pay the cost of opening a TCP connection, authenticating,
-and initializing the JDBC session. With a pool, Tomcat maintains ready connections
-and the servlet borrows one for the duration of the request.
+Connection pooling is a performance and resource-management mechanism. Without a pool, each request would pay the cost of opening a TCP connection, authenticating, and initializing the JDBC session. With a pool, Tomcat maintains ready connections and the servlet borrows one for the duration of the request.
 
 The moving parts fit together like this:
 
@@ -990,9 +814,7 @@ Concrete servlet.doPost()
   calls access()
 ```
 
-`InitialContext` is the JNDI lookup API. It is not the same thing as
-`ServletContext`. `ServletContext` represents the Web application context; JNDI is a
-naming service used to find resources such as the connection pool.
+`InitialContext` is the JNDI lookup API. It is not the same thing as `ServletContext`. `ServletContext` represents the Web application context; JNDI is a naming service used to find resources such as the connection pool.
 
 Error handling in the employee example has semantic meaning:
 
@@ -1002,9 +824,7 @@ Error handling in the employee example has semantic meaning:
 | `E200` | Unexpected SQL/database error. |
 | `E300` | Duplicate key, identified by PostgreSQL SQLState `23505`. |
 
-A strong open answer should mention both architecture and security: DAO separates
-servlet logic from persistence, and prepared statements prevent SQL injection by
-separating SQL code from user data.
+A strong open answer should mention both architecture and security: DAO separates servlet logic from persistence, and prepared statements prevent SQL injection by separating SQL code from user data.
 
 ---
 
@@ -1012,19 +832,16 @@ separating SQL code from user data.
 
 ### Why JSP
 
-Writing HTML with `out.printf` inside servlets is fragile and unreadable. JSP lets
-developers write mostly HTML, with controlled dynamic parts.
+Writing HTML with `out.printf` inside servlets is fragile and unreadable. JSP lets developers write mostly HTML, with controlled dynamic parts.
 
 > [!important] Definition - JSP
-> A JavaServer Page is a template-based server-side view. On first request, the
-> container translates the `.jsp` file into a servlet, compiles it, and executes it.
+> A JavaServer Page is a template-based server-side view. On first request, the container translates the `.jsp` file into a servlet, compiles it, and executes it.
 
 ![[Pasted image 20260512115326.png|420]]
 
 *Figure 16: JSP translation and execution flow from JSP source to servlet class and HTML response*
 
-First invocation: `hello.jsp -> hello_jsp.java -> hello_jsp.class -> response`.
-Later invocations reuse the compiled servlet class.
+First invocation: `hello.jsp -> hello_jsp.java -> hello_jsp.class -> response`. Later invocations reuse the compiled servlet class.
 
 ### JSP components
 
@@ -1059,8 +876,7 @@ Explanation:
 
 ### JavaBeans and EL
 
-JavaBeans expose properties through methods like `getBadge()` and `isError()`.
-Expression Language resolves:
+JavaBeans expose properties through methods like `getBadge()` and `isError()`. Expression Language resolves:
 
 ```jsp
 ${employee.badge}
@@ -1075,8 +891,7 @@ employee.getBadge()
 ### MVC
 
 > [!important] Definition - MVC
-> Model-View-Controller separates application state and logic (Model), rendering
-> (View), and input handling / flow control (Controller).
+> Model-View-Controller separates application state and logic (Model), rendering (View), and input handling / flow control (Controller).
 
 ![[jsp-mvc-layers-employee.jpg|480]]
 
@@ -1088,8 +903,7 @@ employee.getBadge()
 | View | JSP pages. |
 | Controller | Servlets. |
 
-The servlet no longer writes all HTML. It sets request attributes and forwards to a
-JSP.
+The servlet no longer writes all HTML. It sets request attributes and forwards to a JSP.
 
 ```java
 req.setAttribute("employee", e);
@@ -1126,25 +940,17 @@ Explanation:
 - `<c:if>` conditionally renders a block.
 - `<c:out>` escapes user-controlled data and prevents simple XSS.
 
-JSTL must be bundled in the WAR; Tomcat does not provide it by default. Servlet API
-is usually `provided`, JSTL is not.
+JSTL must be bundled in the WAR; Tomcat does not provide it by default. Servlet API is usually `provided`, JSTL is not.
 
-**Open-question focus:** explain the JSP execution model, why scriptlets are bad,
-how EL resolves bean properties, and how MVC changes the servlet-only architecture.
+**Open-question focus:** explain the JSP execution model, why scriptlets are bad, how EL resolves bean properties, and how MVC changes the servlet-only architecture.
 
 ### Extended study notes
 
-JSP should be understood as a view technology, not as a replacement for all server
-logic. Technically, a JSP becomes a servlet. Architecturally, it should be used to
-render a response, not to contain database access or business logic.
+JSP should be understood as a view technology, not as a replacement for all server logic. Technically, a JSP becomes a servlet. Architecturally, it should be used to render a response, not to contain database access or business logic.
 
-The first request to a JSP is slower because the container must translate and compile
-the page. After that, the generated servlet class can be reused. This explains the
-exam statement: JSP is preprocessed into a servlet and then the servlet processes the
-request.
+The first request to a JSP is slower because the container must translate and compile the page. After that, the generated servlet class can be reused. This explains the exam statement: JSP is preprocessed into a servlet and then the servlet processes the request.
 
-Scriptlets are discouraged because they mix Java control logic with HTML structure.
-For example:
+Scriptlets are discouraged because they mix Java control logic with HTML structure. For example:
 
 ```jsp
 <% if (message.isError()) { %>
@@ -1152,8 +958,7 @@ For example:
 <% } %>
 ```
 
-This works, but it is hard to read, test, and maintain. The JSTL version keeps view
-logic in tag form:
+This works, but it is hard to read, test, and maintain. The JSTL version keeps view logic in tag form:
 
 ```jsp
 <c:if test="${message.error}">
@@ -1161,8 +966,7 @@ logic in tag form:
 </c:if>
 ```
 
-The important difference is not only syntax. JSTL and EL encourage a cleaner
-separation: the servlet prepares objects; the JSP renders them.
+The important difference is not only syntax. JSTL and EL encourage a cleaner separation: the servlet prepares objects; the JSP renders them.
 
 EL property access depends on naming conventions:
 
@@ -1173,9 +977,7 @@ EL property access depends on naming conventions:
 | `${param.salary}` | request parameter named `salary` |
 | `${sessionScope.user}` | session attribute named `user` |
 
-The course resource classes are "almost JavaBeans": they have getters, but no
-no-argument constructor and no setters because they are immutable. EL can still read
-their properties because getter names are present.
+The course resource classes are "almost JavaBeans": they have getters, but no no-argument constructor and no setters because they are immutable. EL can still read their properties because getter names are present.
 
 `<c:out>` matters for security. This:
 
@@ -1183,9 +985,7 @@ their properties because getter names are present.
 <c:out value="${employee.surname}"/>
 ```
 
-escapes special characters. If the surname contains `<script>`, it is displayed as
-text rather than executed as markup. Bare `${employee.surname}` can be dangerous when
-rendering user-controlled data.
+escapes special characters. If the surname contains `<script>`, it is displayed as text rather than executed as markup. Bare `${employee.surname}` can be dangerous when rendering user-controlled data.
 
 `<c:url>` matters for portability:
 
@@ -1193,9 +993,7 @@ rendering user-controlled data.
 <form method="POST" action="<c:url value="/create-employee"/>">
 ```
 
-The application may be deployed under different context paths. Hard-coding
-`/create-employee` may point to the server root, not the application root. `<c:url>`
-adds the correct context path and can also handle URL rewriting for sessions.
+The application may be deployed under different context paths. Hard-coding `/create-employee` may point to the server root, not the application root. `<c:url>` adds the correct context path and can also handle URL rewriting for sessions.
 
 MVC flow in the employee app:
 
@@ -1210,9 +1008,7 @@ form JSP
   -> HTML response
 ```
 
-The servlet is the Controller because it interprets the request and decides what to
-do. The DAO/resource objects are the Model because they represent data and operations.
-The JSP is the View because it renders output.
+The servlet is the Controller because it interprets the request and decides what to do. The DAO/resource objects are the Model because they represent data and operations. The JSP is the View because it renders output.
 
 Forward vs redirect:
 
@@ -1221,13 +1017,9 @@ Forward vs redirect:
 | `forward()` | Server-side | No | Yes |
 | redirect | Client-side through 3xx response | Yes | No |
 
-The notes use `forward()` because the servlet wants to pass model objects to the JSP
-in request scope. A redirect would lose those request attributes unless the data were
-stored somewhere else.
+The notes use `forward()` because the servlet wants to pass model objects to the JSP in request scope. A redirect would lose those request attributes unless the data were stored somewhere else.
 
-JSTL dependencies must be packaged in the WAR. Marking JSTL as `provided` would be a
-mistake unless the runtime container supplies it. In the course setup, Tomcat
-provides the servlet API, not JSTL.
+JSTL dependencies must be packaged in the WAR. Marking JSTL as `provided` would be a mistake unless the runtime container supplies it. In the course setup, Tomcat provides the servlet API, not JSTL.
 
 Open-answer template:
 
@@ -1247,16 +1039,13 @@ application easier to maintain.
 ### REST principles
 
 > [!important] Definition - REST
-> REST, Representational State Transfer, is an architectural style that applies Web
-> principles to services. Data is modeled as resources, resources are identified by
-> URIs, and HTTP methods form a uniform interface.
+> REST, Representational State Transfer, is an architectural style that applies Web principles to services. Data is modeled as resources, resources are identified by URIs, and HTTP methods form a uniform interface.
 
 ![[Pasted image 20260512123223.png|420]]
 
 *Figure 18: REST model based on resources, representations, and state transitions*
 
-A **resource** is anything with identity and state. A resource has a URI and can be
-transferred as a representation: JSON, XML, HTML, etc.
+A **resource** is anything with identity and state. A resource has a URI and can be transferred as a representation: JSON, XML, HTML, etc.
 
 | HTTP method | CRUD meaning | Example |
 |---|---|---|
@@ -1267,9 +1056,7 @@ transferred as a representation: JSON, XML, HTML, etc.
 
 REST is stateless: each request must carry all information needed to process it.
 
-A **Web service** is a software system designed to support interoperable
-machine-to-machine interaction over a network using standard Web technologies. REST
-is one way to design such services.
+A **Web service** is a software system designed to support interoperable machine-to-machine interaction over a network using standard Web technologies. REST is one way to design such services.
 
 ### Representations and content negotiation
 
@@ -1290,8 +1077,7 @@ Accept: application/json
 }
 ```
 
-The `Accept` header says which response media types the client can process.
-For POST/PUT, `Content-Type` says what media type the request body has.
+The `Accept` header says which response media types the client can process. For POST/PUT, `Content-Type` says what media type the request body has.
 
 ### Employee REST API
 
@@ -1336,8 +1122,7 @@ REST APIs must be documented precisely. The notes mention two approaches:
 | WADL | XML description for HTTP-based services; W3C submission, not a dominant standard. |
 | OpenAPI | YAML/JSON description of servers, paths, methods, parameters, schemas, and responses; modern de-facto standard. |
 
-OpenAPI is more relevant in practice because it is widely supported by tooling for
-documentation, validation, and client generation.
+OpenAPI is more relevant in practice because it is widely supported by tooling for documentation, validation, and client generation.
 
 ### REST implementation pattern
 
@@ -1380,9 +1165,7 @@ jg.writeEndObject();
 jg.flush();
 ```
 
-Explanation: the generator writes tokens in order. `flush()` sends buffered data to
-the servlet response stream. The code disables Jackson auto-close so it does not
-close the servlet's stream unexpectedly.
+Explanation: the generator writes tokens in order. `flush()` sends buffered data to the servlet response stream. The code disables Jackson auto-close so it does not close the servlet's stream unexpectedly.
 
 ### Header validation
 
@@ -1399,8 +1182,7 @@ close the servlet's stream unexpectedly.
 
 ### REST dispatcher
 
-`RestDispatcherServlet` overrides `service()` because it must support `GET`, `POST`,
-`PUT`, `DELETE`, and dispatch by both URI and method.
+`RestDispatcherServlet` overrides `service()` because it must support `GET`, `POST`, `PUT`, `DELETE`, and dispatch by both URI and method.
 
 ```xml
 <servlet-mapping>
@@ -1409,15 +1191,11 @@ close the servlet's stream unexpectedly.
 </servlet-mapping>
 ```
 
-**Open-question focus:** explain REST resources, URIs, methods, representations,
-`Accept` vs `Content-Type`, error status codes, and why a REST front controller
-dispatches all `/rest/*` requests.
+**Open-question focus:** explain REST resources, URIs, methods, representations, `Accept` vs `Content-Type`, error status codes, and why a REST front controller dispatches all `/rest/*` requests.
 
 ### Extended study notes
 
-REST is often reduced to "JSON over HTTP", but that is incomplete. JSON is only one
-possible representation. The real REST ideas are resource identification, uniform
-interface, stateless communication, and representation transfer.
+REST is often reduced to "JSON over HTTP", but that is incomplete. JSON is only one possible representation. The real REST ideas are resource identification, uniform interface, stateless communication, and representation transfer.
 
 A URI should identify a resource, not an operation name. Prefer:
 
@@ -1432,8 +1210,7 @@ over:
 GET /deleteEmployee?badge=7309
 ```
 
-The operation is expressed by the HTTP method. The URI identifies the target
-resource. This is the uniform interface principle.
+The operation is expressed by the HTTP method. The URI identifies the target resource. This is the uniform interface principle.
 
 Collection resource vs item resource:
 
@@ -1450,8 +1227,7 @@ Collection resource vs item resource:
 | `Accept` | client -> server | What response formats can I accept? |
 | `Content-Type` | sender -> receiver | What is the format of this body? |
 
-For a `GET`, there is usually no request body, so `Content-Type` is often irrelevant.
-For a `POST` or `PUT` with JSON body, `Content-Type: application/json` is essential.
+For a `GET`, there is usually no request body, so `Content-Type` is often irrelevant. For a `POST` or `PUT` with JSON body, `Content-Type: application/json` is essential.
 
 Status codes should match the failure:
 
@@ -1486,27 +1262,15 @@ Concrete RR
   writes Resource JSON response
 ```
 
-`Resource.toJSON(OutputStream)` is a useful abstraction because every response
-object can serialize itself. `Employee`, `Message`, and `ResourceList` all become
-writeable resources. This avoids having each servlet manually build JSON strings.
+`Resource.toJSON(OutputStream)` is a useful abstraction because every response object can serialize itself. `Employee`, `Message`, and `ResourceList` all become writeable resources. This avoids having each servlet manually build JSON strings.
 
-Jackson streaming generation is verbose but controlled. It reduces mistakes such as
-missing quotes, wrong commas, or invalid escaping. Streaming parsing also avoids
-loading an entire JSON object model if only some tokens are needed.
+Jackson streaming generation is verbose but controlled. It reduces mistakes such as missing quotes, wrong commas, or invalid escaping. Streaming parsing also avoids loading an entire JSON object model if only some tokens are needed.
 
-`Employee.fromJSON()` is the inverse of `toJSON()`. It reads the request body and
-constructs a domain object. If the JSON does not contain an `"employee"` object, the
-REST layer returns a client error because the client supplied the wrong resource
-format.
+`Employee.fromJSON()` is the inverse of `toJSON()`. It reads the request body and constructs a domain object. If the JSON does not contain an `"employee"` object, the REST layer returns a client error because the client supplied the wrong resource format.
 
-`RestDispatcherServlet` overrides `service()` because a REST endpoint must dispatch
-multiple methods. A normal servlet example can use `doGet()` and `doPost()`, but a
-front controller receives all `/rest/*` requests and must route them based on both
-the method and the path.
+`RestDispatcherServlet` overrides `service()` because a REST endpoint must dispatch multiple methods. A normal servlet example can use `doGet()` and `doPost()`, but a front controller receives all `/rest/*` requests and must route them based on both the method and the path.
 
-OpenAPI vs WADL is a documentation question. Both describe HTTP APIs, but OpenAPI is
-the modern practical standard. It can describe paths, path parameters, query
-parameters, request bodies, response schemas, and reusable components.
+OpenAPI vs WADL is a documentation question. Both describe HTTP APIs, but OpenAPI is the modern practical standard. It can describe paths, path parameters, query parameters, request bodies, response schemas, and reusable components.
 
 Open-answer template:
 
@@ -1536,8 +1300,7 @@ URIs under /rest/employee.
 ### URI, URL, URN, IRI
 
 > [!important] Definition - URI
-> A URI is a compact sequence of characters that identifies an abstract or physical
-> resource.
+> A URI is a compact sequence of characters that identifies an abstract or physical resource.
 
 | Term | Meaning | Example |
 |---|---|---|
@@ -1552,13 +1315,11 @@ General syntax:
 scheme:[//[user[:password]@]host[:port]][/path][?query][#fragment]
 ```
 
-`path` identifies hierarchical resource location, `query` carries name/value
-parameters, and `fragment` identifies a secondary resource inside the representation.
+`path` identifies hierarchical resource location, `query` carries name/value parameters, and `fragment` identifies a secondary resource inside the representation.
 
 ### Percent-encoding and character encoding
 
-Percent-encoding writes an octet as `%XX` in hexadecimal. It is used for reserved
-characters and non-ASCII characters in URIs.
+Percent-encoding writes an octet as `%XX` in hexadecimal. It is used for reserved characters and non-ASCII characters in URIs.
 
 | Character | Encoding |
 |---|---|
@@ -1567,10 +1328,7 @@ characters and non-ASCII characters in URIs.
 | `&` | `%26` |
 | `#` | `%23` |
 
-ASCII uses 7 bits and covers 128 characters. Extended ASCII uses 8 bits but creates
-country-specific incompatibilities. Unicode provides a universal character set.
-UTF-8 is the dominant Web encoding and is backward-compatible with ASCII for the
-first 128 characters.
+ASCII uses 7 bits and covers 128 characters. Extended ASCII uses 8 bits but creates country-specific incompatibilities. Unicode provides a universal character set. UTF-8 is the dominant Web encoding and is backward-compatible with ASCII for the first 128 characters.
 
 ### MIME
 
@@ -1588,8 +1346,7 @@ Important headers:
 
 ### Multipart and form encodings
 
-`multipart/form-data` is used for file uploads. Each field or file is a separate MIME
-part separated by a boundary.
+`multipart/form-data` is used for file uploads. Each field or file is a separate MIME part separated by a boundary.
 
 ```http
 Content-Type: multipart/form-data; boundary=AaB03x
@@ -1622,8 +1379,7 @@ for (Part p : req.getParts()) {
 }
 ```
 
-Always validate file type server-side. The HTML `accept` attribute is only a client
-hint and can be bypassed.
+Always validate file type server-side. The HTML `accept` attribute is only a client hint and can be bypassed.
 
 The extended employee example combines multipart upload and email:
 
@@ -1644,10 +1400,7 @@ if (e.hasPhoto()) {
 }
 ```
 
-Jakarta Mail models messages through `Session`, `MimeMessage`, `Transport`,
-`MimeMultipart`, and `MimeBodyPart`. An email with an attachment is
-`multipart/mixed`: one body part for the HTML/text message and one body part for the
-binary attachment.
+Jakarta Mail models messages through `Session`, `MimeMessage`, `Transport`, `MimeMultipart`, and `MimeBodyPart`. An email with an attachment is `multipart/mixed`: one body part for the HTML/text message and one body part for the binary attachment.
 
 ### HTTP
 
@@ -1655,8 +1408,7 @@ binary attachment.
 
 *Figure 20: HTTP request-response chain with browser, proxies, and origin web server*
 
-HTTP is textual, request-response based, and stateless. Statelessness simplifies
-scalability because each request can be handled independently.
+HTTP is textual, request-response based, and stateless. Statelessness simplifies scalability because each request can be handled independently.
 
 | Method | Meaning | Safe | Idempotent |
 |---|---|---|---|
@@ -1667,8 +1419,7 @@ scalability because each request can be handled independently.
 | DELETE | Delete resource | no | yes |
 | OPTIONS | Communication options | yes | yes |
 
-**Safe** means no intended server-side side effects. **Idempotent** means repeating
-the same request has the same effect as doing it once.
+**Safe** means no intended server-side side effects. **Idempotent** means repeating the same request has the same effect as doing it once.
 
 Status code classes:
 
@@ -1688,8 +1439,7 @@ HTTP Basic authentication:
 Authorization: Basic bmljb2xhOmZlcnJv
 ```
 
-The value is Base64 of `username:password`. Base64 is encoding, not encryption.
-Basic auth must be used with HTTPS.
+The value is Base64 of `username:password`. Base64 is encoding, not encryption. Basic auth must be used with HTTPS.
 
 If credentials are missing or wrong, the server answers:
 
@@ -1716,22 +1466,15 @@ Explanation:
 - If authentication succeeds, it stores the user in `HttpSession`.
 - `chain.doFilter` lets the request continue.
 
-**Open-question focus:** URI vs URL, percent-encoding, MIME multipart boundaries,
-safe/idempotent HTTP methods, status code classes, Basic auth, and filter/session
-authentication are all high-value theory topics.
+**Open-question focus:** URI vs URL, percent-encoding, MIME multipart boundaries, safe/idempotent HTTP methods, status code classes, Basic auth, and filter/session authentication are all high-value theory topics.
 
 ### Extended study notes
 
-The HTTP chapter is dense because it contains several definitions that look similar.
-For an open question, definitions must be clean and examples help a lot.
+The HTTP chapter is dense because it contains several definitions that look similar. For an open question, definitions must be clean and examples help a lot.
 
-URI is the broad concept. URL is a URI that also tells how to locate the resource.
-URN is a URI intended as a persistent name. IRI generalizes URI syntax to
-international characters. Therefore, every URL is a URI, but not every URI is a URL.
+URI is the broad concept. URL is a URI that also tells how to locate the resource. URN is a URI intended as a persistent name. IRI generalizes URI syntax to international characters. Therefore, every URL is a URI, but not every URI is a URL.
 
-The fragment part of a URI is not sent to the server in an ordinary HTTP request. It
-is interpreted by the client to identify a secondary resource inside the returned
-representation. For example:
+The fragment part of a URI is not sent to the server in an ordinary HTTP request. It is interpreted by the client to identify a secondary resource inside the returned representation. For example:
 
 ```text
 https://example.org/page.html#bottom
@@ -1739,12 +1482,9 @@ https://example.org/page.html#bottom
 
 identifies the `bottom` fragment in the page.
 
-Percent-encoding is about bytes, not "random replacement". A character is first
-encoded into bytes, commonly UTF-8, and then each byte can be written as `%XX`.
-This is why accented letters may become several percent-encoded bytes.
+Percent-encoding is about bytes, not "random replacement". A character is first encoded into bytes, commonly UTF-8, and then each byte can be written as `%XX`. This is why accented letters may become several percent-encoded bytes.
 
-MIME is needed because HTTP bodies are just sequences of bytes. The receiver needs
-metadata to know how to interpret those bytes:
+MIME is needed because HTTP bodies are just sequences of bytes. The receiver needs metadata to know how to interpret those bytes:
 
 ```http
 Content-Type: text/html; charset=utf-8
@@ -1752,17 +1492,11 @@ Content-Encoding: gzip
 Content-Length: 1200
 ```
 
-`Content-Type` says what the representation is. `Content-Encoding` says whether an
-additional encoding such as compression was applied. These are often confused in
-multiple-choice questions.
+`Content-Type` says what the representation is. `Content-Encoding` says whether an additional encoding such as compression was applied. These are often confused in multiple-choice questions.
 
-Multipart bodies rely on a boundary that must not appear inside the parts. Each part
-has its own headers and content. The final boundary has an extra `--` suffix. This
-mechanism is used both in email attachments and HTML file-upload forms.
+Multipart bodies rely on a boundary that must not appear inside the parts. Each part has its own headers and content. The final boundary has an extra `--` suffix. This mechanism is used both in email attachments and HTML file-upload forms.
 
-`application/x-www-form-urlencoded` is simpler than multipart. It is appropriate
-when the form contains only ordinary fields. File upload needs `multipart/form-data`
-because binary files and metadata must be transmitted as separate parts.
+`application/x-www-form-urlencoded` is simpler than multipart. It is appropriate when the form contains only ordinary fields. File upload needs `multipart/form-data` because binary files and metadata must be transmitted as separate parts.
 
 Safe and idempotent are independent concepts:
 
@@ -1773,8 +1507,7 @@ Safe and idempotent are independent concepts:
 | PUT | no | yes | Repeating same replacement leaves same final state. |
 | DELETE | no | yes | After resource is deleted, repeating keeps it deleted. |
 
-This is why retry logic can safely repeat idempotent requests after a network failure,
-but repeating a POST may duplicate an operation.
+This is why retry logic can safely repeat idempotent requests after a network failure, but repeating a POST may duplicate an operation.
 
 HTTP Basic authentication flow:
 
@@ -1787,12 +1520,9 @@ Server verifies credentials.
 Browser repeats Authorization automatically for same realm.
 ```
 
-Base64 is reversible. Anyone who sees the header can decode it. HTTPS is required
-for confidentiality.
+Base64 is reversible. Anyone who sees the header can decode it. HTTPS is required for confidentiality.
 
-The session-based filter adds application-level state on top of stateless HTTP. The
-session identifier is usually stored in a cookie. The server keeps a map from session
-ID to attributes, such as the authenticated username.
+The session-based filter adds application-level state on top of stateless HTTP. The session identifier is usually stored in a cookie. The server keeps a map from session ID to attributes, such as the authenticated username.
 
 The protected-resource filter combines Basic auth and sessions:
 
@@ -1803,9 +1533,7 @@ The protected-resource filter combines Basic auth and sessions:
 5. On success, create session and store user.
 6. On failure, send `401` and `WWW-Authenticate`.
 
-`chain.doFilter(req, res)` is the point where the request is allowed to continue to
-the target servlet or JSP. If authentication fails and the filter returns before
-calling the chain, the protected resource is never reached.
+`chain.doFilter(req, res)` is the point where the request is allowed to continue to the target servlet or JSP. If authentication fails and the filter returns before calling the chain, the protected resource is never reached.
 
 Open-answer template:
 
@@ -1842,13 +1570,10 @@ Modern Web design prefers descriptive markup plus CSS presentation.
 
 **SGML** is a meta-markup language and ancestor of HTML and XML. It introduced DTDs.
 
-HTML4 mixed structure and presentation. Example: `<font color="red">` is procedural
-because it says how text should look. HTML5 improves separation by using semantic
-elements and CSS for presentation.
+HTML4 mixed structure and presentation. Example: `<font color="red">` is procedural because it says how text should look. HTML5 improves separation by using semantic elements and CSS for presentation.
 
 > [!important] Definition - XML
-> XML is a markup language for representing and exchanging semi-structured
-> information. It is designed for interoperability among distributed systems.
+> XML is a markup language for representing and exchanging semi-structured information. It is designed for interoperability among distributed systems.
 
 ![[markup-xml-tree.jpg|520]]
 
@@ -1937,8 +1662,7 @@ XML Schema (XSD) uses XML syntax and supports data types:
 ### JSON and Jackson
 
 > [!important] Definition - JSON
-> JSON is a lightweight, language-independent data interchange format based on
-> objects, arrays, strings, numbers, booleans, and null.
+> JSON is a lightweight, language-independent data interchange format based on objects, arrays, strings, numbers, booleans, and null.
 
 ![[markup-json-object-syntax.jpg|520]]
 
@@ -1955,8 +1679,7 @@ XML Schema (XSD) uses XML syntax and supports data types:
 }
 ```
 
-JSON is usually more compact than XML because it has no closing tags and maps
-naturally to JavaScript objects.
+JSON is usually more compact than XML because it has no closing tags and maps naturally to JavaScript objects.
 
 Jackson streaming parser pattern:
 
@@ -1968,27 +1691,15 @@ while (jp.getCurrentToken() != JsonToken.FIELD_NAME
 }
 ```
 
-Explanation: the parser pulls one token at a time, like StAX for XML. This is useful
-for streaming large inputs without building a full object tree first.
+Explanation: the parser pulls one token at a time, like StAX for XML. This is useful for streaming large inputs without building a full object tree first.
 
-**Open-question focus:** procedural vs descriptive markup, XML well-formed vs valid,
-DOM/SAX/StAX differences, DTD vs XSD, namespaces, JSON vs XML, and Jackson streaming.
+**Open-question focus:** procedural vs descriptive markup, XML well-formed vs valid, DOM/SAX/StAX differences, DTD vs XSD, namespaces, JSON vs XML, and Jackson streaming.
 
 ### Extended study notes
 
-Markup languages are useful because they add structure to otherwise plain text.
-For the exam, the important point is not just that markup uses tags, but that tags
-turn a document into something that software can process. A browser can render an
-HTML document, an XML parser can build a tree, a validator can compare a document
-against a grammar, and an application can extract specific fields without guessing
-from visual layout.
+Markup languages are useful because they add structure to otherwise plain text. For the exam, the important point is not just that markup uses tags, but that tags turn a document into something that software can process. A browser can render an HTML document, an XML parser can build a tree, a validator can compare a document against a grammar, and an application can extract specific fields without guessing from visual layout.
 
-The difference between procedural and descriptive markup is a good open-question
-topic. Procedural markup gives instructions about presentation or processing. It
-tells a program what to do. Descriptive markup identifies the role of a piece of
-content. It tells a program what the content is. HTML, especially modern semantic
-HTML, should be descriptive: a `<nav>` element describes navigation, while CSS
-decides how that navigation looks.
+The difference between procedural and descriptive markup is a good open-question topic. Procedural markup gives instructions about presentation or processing. It tells a program what to do. Descriptive markup identifies the role of a piece of content. It tells a program what the content is. HTML, especially modern semantic HTML, should be descriptive: a `<nav>` element describes navigation, while CSS decides how that navigation looks.
 
 | Aspect | Procedural markup | Descriptive markup |
 |---|---|---|
@@ -1997,11 +1708,7 @@ decides how that navigation looks.
 | Example | "make this bold" | "this is a heading" |
 | Web relevance | Older/presentational style. | Modern HTML and XML data exchange. |
 
-XML is stricter than HTML. In HTML, browsers often recover from errors because
-human-facing pages should remain visible. In XML, a single structural error can make
-the document not well-formed, so a parser must reject it. This strictness is useful
-when XML is used for data interchange: the receiver should not silently guess the
-meaning of malformed data.
+XML is stricter than HTML. In HTML, browsers often recover from errors because human-facing pages should remain visible. In XML, a single structural error can make the document not well-formed, so a parser must reject it. This strictness is useful when XML is used for data interchange: the receiver should not silently guess the meaning of malformed data.
 
 A complete answer on XML should separate three levels:
 
@@ -2028,13 +1735,9 @@ Example of not well-formed XML:
 </employee>
 ```
 
-The second example is wrong because the closing tag does not match the opening tag.
-A DTD or XSD is not even needed to reject it.
+The second example is wrong because the closing tag does not match the opening tag. A DTD or XSD is not even needed to reject it.
 
-DTD and XSD both define allowed structure, but they belong to different generations
-of XML tooling. DTD is older and compact, but it has weak typing and a syntax that
-is not XML. XSD is more verbose, but it is itself XML and supports data types,
-namespaces, cardinality constraints, and richer validation.
+DTD and XSD both define allowed structure, but they belong to different generations of XML tooling. DTD is older and compact, but it has weak typing and a syntax that is not XML. XSD is more verbose, but it is itself XML and supports data types, namespaces, cardinality constraints, and richer validation.
 
 | Feature | DTD | XML Schema (XSD) |
 |---|---|---|
@@ -2044,10 +1747,7 @@ namespaces, cardinality constraints, and richer validation.
 | Expressiveness | Good for simple document shape. | Better for typed data exchange. |
 | Readability | Shorter. | More verbose. |
 
-Namespaces solve collisions between element names from different vocabularies. For
-example, `<title>` can mean the title of a book, the title of an HTML page, or the
-title of an RSS item. A namespace URI qualifies the vocabulary, so processors can
-distinguish names that look the same locally.
+Namespaces solve collisions between element names from different vocabularies. For example, `<title>` can mean the title of a book, the title of an HTML page, or the title of an RSS item. A namespace URI qualifies the vocabulary, so processors can distinguish names that look the same locally.
 
 ```xml
 <book xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -2056,8 +1756,7 @@ distinguish names that look the same locally.
 </book>
 ```
 
-The exam may ask about DOM, SAX, and StAX. The clean way to compare them is by
-memory usage and control flow:
+The exam may ask about DOM, SAX, and StAX. The clean way to compare them is by memory usage and control flow:
 
 | Parser model | How it works | Advantages | Disadvantages |
 |---|---|---|---|
@@ -2065,15 +1764,9 @@ memory usage and control flow:
 | SAX | Parser pushes events to callbacks. | Low memory cost. | Harder because control is inverted. |
 | StAX | Application pulls events from parser. | Low memory and explicit control. | More manual than DOM. |
 
-If a program needs random access to many parts of a small document, DOM is often
-comfortable. If the file is huge and the program only needs a few fields, SAX or
-StAX is more appropriate.
+If a program needs random access to many parts of a small document, DOM is often comfortable. If the file is huge and the program only needs a few fields, SAX or StAX is more appropriate.
 
-JSON is not a markup language in the same sense as XML. It does not annotate text
-with tags; it represents data as nested objects and arrays. Its advantage in Web
-applications is that it maps naturally to JavaScript and is compact. Its weakness is
-that it does not carry a standard schema mechanism inside the core format, although
-JSON Schema exists as a separate specification.
+JSON is not a markup language in the same sense as XML. It does not annotate text with tags; it represents data as nested objects and arrays. Its advantage in Web applications is that it maps naturally to JavaScript and is compact. Its weakness is that it does not carry a standard schema mechanism inside the core format, although JSON Schema exists as a separate specification.
 
 Compare the same data in XML and JSON:
 
@@ -2093,14 +1786,9 @@ Compare the same data in XML and JSON:
 }
 ```
 
-The JSON version is shorter and directly usable in JavaScript. The XML version can
-be validated with XML tools, can mix vocabularies through namespaces, and can
-represent document-like structures with attributes and ordered text nodes.
+The JSON version is shorter and directly usable in JavaScript. The XML version can be validated with XML tools, can mix vocabularies through namespaces, and can represent document-like structures with attributes and ordered text nodes.
 
-An open answer about Jackson should mention that streaming parsing avoids loading a
-whole JSON document into memory. This is similar in spirit to StAX. The application
-asks for the next token, checks whether it is a field name, object start, string,
-number, and so on, then decides what to do.
+An open answer about Jackson should mention that streaming parsing avoids loading a whole JSON document into memory. This is similar in spirit to StAX. The application asks for the next token, checks whether it is a field name, object start, string, number, and so on, then decides what to do.
 
 Short answer template:
 
@@ -2143,11 +1831,9 @@ Key elements:
 
 ### Semantic HTML
 
-HTML tags should be chosen for meaning, not visual appearance. Use CSS for visual
-style.
+HTML tags should be chosen for meaning, not visual appearance. Use CSS for visual style.
 
-Example: do not use `<h1>` only to make text large. Use `<h1>` when the text is the
-main heading.
+Example: do not use `<h1>` only to make text large. Use `<h1>` when the text is the main heading.
 
 ![[html5-block-inline.jpg|520]]
 
@@ -2184,8 +1870,7 @@ Prefer these over purely presentational `<b>` and `<i>`.
 </figure>
 ```
 
-`alt` is required for accessibility and fallback. `<figure>` and `<figcaption>`
-associate media with its caption.
+`alt` is required for accessibility and fallback. `<figure>` and `<figcaption>` associate media with its caption.
 
 ```html
 <form action="/create-employee" method="post">
@@ -2195,8 +1880,7 @@ associate media with its caption.
 </form>
 ```
 
-`name` is the server-side parameter name. `id` is unique in the page and used by CSS
-or JavaScript. Radio buttons share the same `name` to form one group.
+`name` is the server-side parameter name. `id` is unique in the page and used by CSS or JavaScript. Radio buttons share the same `name` to form one group.
 
 ### HTML5 semantic layout
 
@@ -2213,12 +1897,9 @@ or JavaScript. Radio buttons share the same `name` to form one group.
 | `<section>` | Thematic grouping, often with heading. |
 | `<aside>` | Related but non-essential content. |
 
-HTML5 layout is clearer than generic `<div id="header">` patterns. It helps
-developers, accessibility tools, and search engines.
+HTML5 layout is clearer than generic `<div id="header">` patterns. It helps developers, accessibility tools, and search engines.
 
-HTML5 also standardizes APIs that previously required plug-ins or custom solutions:
-Media API, Session History, Offline Web Applications, Editing, Drag and Drop,
-Canvas, Web Storage, Geolocation, Web Workers, and Web Sockets.
+HTML5 also standardizes APIs that previously required plug-ins or custom solutions: Media API, Session History, Offline Web Applications, Editing, Drag and Drop, Canvas, Web Storage, Geolocation, Web Workers, and Web Sockets.
 
 ### Media and canvas
 
@@ -2240,17 +1921,11 @@ Multiple `<source>` elements handle browser format differences.
 
 Canvas creates a drawable rectangle. Actual drawing is done through JavaScript.
 
-**Open-question focus:** base structure, `title`, block vs inline, semantic vs
-presentational tags, `id` vs `name`, forms, `<figure>`, semantic layout elements,
-and native media/canvas.
+**Open-question focus:** base structure, `title`, block vs inline, semantic vs presentational tags, `id` vs `name`, forms, `<figure>`, semantic layout elements, and native media/canvas.
 
 ### Extended study notes
 
-HTML5 should be understood as both a markup language and a Web platform. As markup,
-it defines elements used to structure a document. As a platform, it standardizes
-native APIs such as media playback, canvas, storage, geolocation, workers, and
-WebSockets. For a theory answer, start from the document structure and then connect
-semantic elements to accessibility, search engines, and maintainability.
+HTML5 should be understood as both a markup language and a Web platform. As markup, it defines elements used to structure a document. As a platform, it standardizes native APIs such as media playback, canvas, storage, geolocation, workers, and WebSockets. For a theory answer, start from the document structure and then connect semantic elements to accessibility, search engines, and maintainability.
 
 The minimal HTML5 page has a precise purpose for each part:
 
@@ -2270,17 +1945,9 @@ The minimal HTML5 page has a precise purpose for each part:
 </html>
 ```
 
-`<!DOCTYPE html>` is not an HTML tag. It tells the browser to use standards mode
-instead of old compatibility behavior. The `lang` attribute helps screen readers,
-translation tools, and search engines. The `<title>` element is not a visible
-heading; it is metadata shown in the browser tab and used by bookmarks/search
-results. The visible page heading should be an `<h1>` inside the body.
+`<!DOCTYPE html>` is not an HTML tag. It tells the browser to use standards mode instead of old compatibility behavior. The `lang` attribute helps screen readers, translation tools, and search engines. The `<title>` element is not a visible heading; it is metadata shown in the browser tab and used by bookmarks/search results. The visible page heading should be an `<h1>` inside the body.
 
-Semantic HTML means choosing elements by meaning. This is important because many
-agents consume a page: browsers, screen readers, crawlers, validators, CSS
-selectors, JavaScript code, and future developers. A `<button>` is better than a
-clickable `<div>` because it already has keyboard behavior, focus behavior, and
-accessibility semantics.
+Semantic HTML means choosing elements by meaning. This is important because many agents consume a page: browsers, screen readers, crawlers, validators, CSS selectors, JavaScript code, and future developers. A `<button>` is better than a clickable `<div>` because it already has keyboard behavior, focus behavior, and accessibility semantics.
 
 Bad semantic choice:
 
@@ -2300,10 +1967,7 @@ Then JavaScript can attach behavior without mixing it into the markup:
 document.getElementById("save").addEventListener("click", save);
 ```
 
-Block and inline elements are often tested because they affect document flow.
-Block-level elements normally start on a new line and take the available width.
-Inline elements flow inside text. Modern CSS can change visual display, but the
-semantic role of the element should still be chosen correctly.
+Block and inline elements are often tested because they affect document flow. Block-level elements normally start on a new line and take the available width. Inline elements flow inside text. Modern CSS can change visual display, but the semantic role of the element should still be chosen correctly.
 
 | Category | Examples | Typical role |
 |---|---|---|
@@ -2311,17 +1975,14 @@ semantic role of the element should still be chosen correctly.
 | Inline / phrasing | `span`, `a`, `em`, `strong`, `code` | Text-level meaning inside a line. |
 | Replaced/media | `img`, `video`, `canvas`, `input` | Element whose content is external or special. |
 
-`id` and `name` are different. `id` identifies one element in the document and is
-used by CSS, JavaScript, fragment URLs, and labels. `name` is used mainly for form
-submission: it becomes the key sent to the server.
+`id` and `name` are different. `id` identifies one element in the document and is used by CSS, JavaScript, fragment URLs, and labels. `name` is used mainly for form submission: it becomes the key sent to the server.
 
 ```html
 <label for="email">Email</label>
 <input id="email" name="email" type="email" required>
 ```
 
-Here `for="email"` points to the element with `id="email"`. When the form is sent,
-the browser sends a parameter named `email` because of the `name` attribute.
+Here `for="email"` points to the element with `id="email"`. When the form is sent, the browser sends a parameter named `email` because of the `name` attribute.
 
 Forms are the standard way to send user input from the browser to the server.
 
@@ -2333,12 +1994,9 @@ Forms are the standard way to send user input from the browser to the server.
 </form>
 ```
 
-`method="get"` appends parameters to the URL and is suitable for safe queries such
-as search. `method="post"` sends data in the request body and is suitable for
-operations that create or modify server state.
+`method="get"` appends parameters to the URL and is suitable for safe queries such as search. `method="post"` sends data in the request body and is suitable for operations that create or modify server state.
 
-Tables should be used for tabular data, not for layout. A good table answer should
-mention headings and structure:
+Tables should be used for tabular data, not for layout. A good table answer should mention headings and structure:
 
 ```html
 <table>
@@ -2352,12 +2010,9 @@ mention headings and structure:
 </table>
 ```
 
-`<caption>` gives a human-readable title to the table. `<th>` marks header cells,
-which helps accessibility tools associate values with headings.
+`<caption>` gives a human-readable title to the table. `<th>` marks header cells, which helps accessibility tools associate values with headings.
 
-`<figure>` and `<figcaption>` group media with a caption. In these notes, Obsidian
-image embeds are followed by italic Markdown captions, but the HTML idea is the
-same: the image and its explanation should stay together.
+`<figure>` and `<figcaption>` group media with a caption. In these notes, Obsidian image embeds are followed by italic Markdown captions, but the HTML idea is the same: the image and its explanation should stay together.
 
 ```html
 <figure>
@@ -2366,19 +2021,11 @@ same: the image and its explanation should stay together.
 </figure>
 ```
 
-The `alt` attribute is not a decorative caption. It is fallback text for users who
-cannot see the image or when the image cannot load. If the figure caption explains
-the image fully, the `alt` text can be shorter, but it should still identify the
-image.
+The `alt` attribute is not a decorative caption. It is fallback text for users who cannot see the image or when the image cannot load. If the figure caption explains the image fully, the `alt` text can be shorter, but it should still identify the image.
 
-HTML5 media elements replace many old plug-in based solutions. A `<video>` or
-`<audio>` element can expose native controls, while multiple `<source>` tags let the
-browser choose a supported format.
+HTML5 media elements replace many old plug-in based solutions. A `<video>` or `<audio>` element can expose native controls, while multiple `<source>` tags let the browser choose a supported format.
 
-Canvas is different from normal HTML elements. It is a bitmap drawing surface. The
-browser does not remember "there is a circle" as an accessible DOM node; JavaScript
-draws pixels on a rectangle. This is powerful for games, charts, and custom graphics,
-but less semantic than SVG or normal HTML.
+Canvas is different from normal HTML elements. It is a bitmap drawing surface. The browser does not remember "there is a circle" as an accessible DOM node; JavaScript draws pixels on a rectangle. This is powerful for games, charts, and custom graphics, but less semantic than SVG or normal HTML.
 
 Short answer template:
 
@@ -2408,14 +2055,12 @@ a JavaScript-controlled bitmap drawing area.
 
 *Figure 26: Web application attack surface involving users, web server, SQL queries, and database*
 
-In web applications, attackers often have the same HTTP access as normal users. The
-vulnerability appears when the application processes input incorrectly.
+In web applications, attackers often have the same HTTP access as normal users. The vulnerability appears when the application processes input incorrectly.
 
 ### SQL Injection
 
 > [!important] Definition - SQL Injection
-> SQL injection happens when untrusted user input is mixed with trusted SQL code and
-> the database interprets attacker-controlled text as SQL syntax.
+> SQL injection happens when untrusted user input is mixed with trusted SQL code and the database interprets attacker-controlled text as SQL syntax.
 
 ![[websec-sqli-flow.jpg|520]]
 
@@ -2449,15 +2094,12 @@ $stmt->bind_param("ss", $eid, $pwd);
 $stmt->execute();
 ```
 
-Prepared statements separate SQL code from data. The DB compiles the query structure
-before parameter values are bound.
+Prepared statements separate SQL code from data. The DB compiles the query structure before parameter values are bound.
 
 ### XSS
 
 > [!important] Definition - XSS
-> Cross-Site Scripting lets an attacker inject malicious JavaScript into pages viewed
-> by other users. The script executes in the victim's browser under the trusted site's
-> origin.
+> Cross-Site Scripting lets an attacker inject malicious JavaScript into pages viewed by other users. The script executes in the victim's browser under the trusted site's origin.
 
 Types:
 
@@ -2482,15 +2124,13 @@ Main defenses:
 ### CSRF
 
 > [!important] Definition - CSRF
-> Cross-Site Request Forgery tricks an authenticated user's browser into sending an
-> unwanted request to a site where the user is already logged in.
+> Cross-Site Request Forgery tricks an authenticated user's browser into sending an unwanted request to a site where the user is already logged in.
 
 ![[websec-csrf-schema2.jpg|480]]
 
 *Figure 29: CSRF attack flow where a malicious page triggers authenticated cross-site requests*
 
-The attacker does not need to know the victim's cookie. The browser automatically
-sends cookies for the target site.
+The attacker does not need to know the victim's cookie. The browser automatically sends cookies for the target site.
 
 Protection:
 
@@ -2500,16 +2140,11 @@ Protection:
 | CSRF token | Server accepts only requests containing a valid unpredictable token. |
 | Method discipline | Avoid state-changing GET requests. |
 
-**Open-question focus:** compare SQLi, XSS, and CSRF by target, root cause, attack
-flow, and primary defenses. This is very suitable for an open question.
+**Open-question focus:** compare SQLi, XSS, and CSRF by target, root cause, attack flow, and primary defenses. This is very suitable for an open question.
 
 ### Extended study notes
 
-Security questions are usually best answered by separating the security property,
-the vulnerability, the attack flow, and the defense. A common mistake is to list
-attack names without explaining what trust boundary is broken. In Web applications,
-the main boundary is between untrusted input from the network and trusted code,
-queries, pages, sessions, and server-side state.
+Security questions are usually best answered by separating the security property, the vulnerability, the attack flow, and the defense. A common mistake is to list attack names without explaining what trust boundary is broken. In Web applications, the main boundary is between untrusted input from the network and trusted code, queries, pages, sessions, and server-side state.
 
 The CIA triad is a compact way to organize security goals:
 
@@ -2519,9 +2154,7 @@ The CIA triad is a compact way to organize security goals:
 | Integrity | A request changes only what it is allowed to change. | CSRF transfers money or changes email address. |
 | Availability | The service remains usable. | Overload, crashes, or resource exhaustion. |
 
-SQL injection attacks the database layer through the application layer. The root
-cause is not "SQL is insecure"; the root cause is string concatenation that mixes
-trusted query syntax with untrusted user data.
+SQL injection attacks the database layer through the application layer. The root cause is not "SQL is insecure"; the root cause is string concatenation that mixes trusted query syntax with untrusted user data.
 
 Vulnerable Java-style example:
 
@@ -2531,8 +2164,7 @@ Statement st = connection.createStatement();
 ResultSet rs = st.executeQuery(sql);
 ```
 
-If `email` contains SQL syntax, the database receives a different query from the one
-the programmer intended. The defense is parameter binding:
+If `email` contains SQL syntax, the database receives a different query from the one the programmer intended. The defense is parameter binding:
 
 ```java
 String sql = "SELECT * FROM users WHERE email = ?";
@@ -2541,14 +2173,9 @@ ps.setString(1, email);
 ResultSet rs = ps.executeQuery();
 ```
 
-The key concept is separation. The SQL structure is fixed first; values are sent as
-values. Escaping strings manually is more fragile and should not be the main answer.
+The key concept is separation. The SQL structure is fixed first; values are sent as values. Escaping strings manually is more fragile and should not be the main answer.
 
-XSS attacks the browser of another user. The server may store or reflect attacker
-input, but the damage happens when the victim's browser executes injected script in
-the origin of the trusted site. Because the script runs under that origin, it can
-read page content, send requests, modify the DOM, and interact with the application
-as the victim.
+XSS attacks the browser of another user. The server may store or reflect attacker input, but the damage happens when the victim's browser executes injected script in the origin of the trusted site. Because the script runs under that origin, it can read page content, send requests, modify the DOM, and interact with the application as the victim.
 
 Unsafe output:
 
@@ -2562,17 +2189,11 @@ Safer JSP output:
 <p><c:out value="${comment}"/></p>
 ```
 
-`<c:out>` escapes characters such as `<`, `>`, and `&`, so a stored comment like
-`<script>...</script>` is rendered as text instead of becoming executable code.
+`<c:out>` escapes characters such as `<`, `>`, and `&`, so a stored comment like `<script>...</script>` is rendered as text instead of becoming executable code.
 
-Encoding depends on context. HTML text, HTML attributes, JavaScript strings, CSS,
-and URLs need different escaping rules. For exam purposes, the core idea is enough:
-never insert untrusted data into executable or structural contexts without the
-correct output encoding or sanitization.
+Encoding depends on context. HTML text, HTML attributes, JavaScript strings, CSS, and URLs need different escaping rules. For exam purposes, the core idea is enough: never insert untrusted data into executable or structural contexts without the correct output encoding or sanitization.
 
-CSRF is different from XSS. In CSRF, the attacker usually cannot read the response
-because of the same-origin policy. The attack relies on the browser automatically
-including authentication cookies with a request to the target site.
+CSRF is different from XSS. In CSRF, the attacker usually cannot read the response because of the same-origin policy. The attack relies on the browser automatically including authentication cookies with a request to the target site.
 
 Example malicious page:
 
@@ -2586,9 +2207,7 @@ Example malicious page:
 </script>
 ```
 
-If the victim is logged in and the bank accepts the request only based on cookies,
-the transfer may be executed. A CSRF token prevents this because the attacker cannot
-guess a fresh token embedded in the legitimate page.
+If the victim is logged in and the bank accepts the request only based on cookies, the transfer may be executed. A CSRF token prevents this because the attacker cannot guess a fresh token embedded in the legitimate page.
 
 | Attack | Main victim | Root cause | Main defense |
 |---|---|---|---|
@@ -2596,15 +2215,9 @@ guess a fresh token embedded in the legitimate page.
 | XSS | Victim browser/session. | Rendering untrusted data as executable HTML/JS. | Output encoding, sanitization, safe DOM APIs. |
 | CSRF | Authenticated server-side action. | Server trusts cookie-only cross-site request. | CSRF token, SameSite cookies, no state-changing GET. |
 
-`SameSite` cookies reduce CSRF risk by controlling whether cookies are sent in
-cross-site requests. `SameSite=Strict` is strongest but can be inconvenient for
-normal navigation flows. `SameSite=Lax` is a common compromise. Tokens are still
-important for sensitive actions.
+`SameSite` cookies reduce CSRF risk by controlling whether cookies are sent in cross-site requests. `SameSite=Strict` is strongest but can be inconvenient for normal navigation flows. `SameSite=Lax` is a common compromise. Tokens are still important for sensitive actions.
 
-Open questions may also expect a mention of defense in depth. Prepared statements do
-not replace authorization checks. Output encoding does not replace authentication.
-CSRF tokens do not protect against XSS, because an injected script may be able to
-read the token from the page. Security controls should be layered.
+Open questions may also expect a mention of defense in depth. Prepared statements do not replace authorization checks. Output encoding does not replace authentication. CSRF tokens do not protect against XSS, because an injected script may be able to read the token from the page. Security controls should be layered.
 
 Short answer template:
 
@@ -2632,8 +2245,7 @@ Preferred attachment:
 <link rel="stylesheet" type="text/css" href="styles.css">
 ```
 
-External stylesheets are cacheable and reusable across pages. Embedded `<style>` is
-per-page. Inline `style="..."` is hard to maintain and has high specificity.
+External stylesheets are cacheable and reusable across pages. Embedded `<style>` is per-page. Inline `style="..."` is hard to maintain and has high specificity.
 
 ### Rules and selectors
 
@@ -2679,11 +2291,9 @@ Specificity priority:
 4. type selector,
 5. universal selector.
 
-If specificity is equal, the later rule wins. `!important` overrides ordinary
-specificity; user `!important` rules outrank author rules for accessibility.
+If specificity is equal, the later rule wins. `!important` overrides ordinary specificity; user `!important` rules outrank author rules for accessibility.
 
-Text properties such as `font-family`, `font-size`, `color`, `line-height` inherit.
-Box properties such as `margin`, `padding`, `border`, `width` do not.
+Text properties such as `font-family`, `font-size`, `color`, `line-height` inherit. Box properties such as `margin`, `padding`, `border`, `width` do not.
 
 ### Colors and typography
 
@@ -2697,8 +2307,7 @@ p { color: hsl(0, 100%, 50%); }
 p { color: rgba(255, 0, 0, 0.5); }
 ```
 
-`rgba()` and `hsla()` add alpha only to the specific color property. `opacity`
-applies transparency to the whole element, including children.
+`rgba()` and `hsla()` add alpha only to the specific color property. `opacity` applies transparency to the whole element, including children.
 
 ```css
 body {
@@ -2708,8 +2317,7 @@ body {
 }
 ```
 
-A font stack lists preferred fonts, then fallbacks, ending with a generic family
-such as `serif`, `sans-serif`, or `monospace`.
+A font stack lists preferred fonts, then fallbacks, ending with a generic family such as `serif`, `sans-serif`, or `monospace`.
 
 ### Box model
 
@@ -2799,19 +2407,13 @@ and media queries:
 }
 ```
 
-Breakpoints should be content-driven: add one when the layout starts to break, not
-because of a specific device name.
+Breakpoints should be content-driven: add one when the layout starts to break, not because of a specific device name.
 
-**Open-question focus:** CSS selectors, specificity/cascade, inheritance, box model
-formula, `display:none` vs `visibility:hidden`, positioning, flex vs grid, viewport
-and media queries.
+**Open-question focus:** CSS selectors, specificity/cascade, inheritance, box model formula, `display:none` vs `visibility:hidden`, positioning, flex vs grid, viewport and media queries.
 
 ### Extended study notes
 
-CSS is the language that assigns visual presentation to structured documents. In an
-open answer, the most important idea is that CSS is rule-based and conflict-prone:
-many rules can apply to the same element, so the browser needs a deterministic
-algorithm to decide the final computed value of each property.
+CSS is the language that assigns visual presentation to structured documents. In an open answer, the most important idea is that CSS is rule-based and conflict-prone: many rules can apply to the same element, so the browser needs a deterministic algorithm to decide the final computed value of each property.
 
 The cascade combines several inputs:
 
@@ -2821,9 +2423,7 @@ The cascade combines several inputs:
 3. selector specificity,
 4. source order when previous factors tie.
 
-Specificity is commonly represented as a tuple. Inline styles are strongest among
-normal author declarations, then IDs, then classes/attributes/pseudo-classes, then
-type selectors and pseudo-elements.
+Specificity is commonly represented as a tuple. Inline styles are strongest among normal author declarations, then IDs, then classes/attributes/pseudo-classes, then type selectors and pseudo-elements.
 
 ```css
 p { color: black; }                 /* type selector */
@@ -2831,14 +2431,9 @@ p { color: black; }                 /* type selector */
 #main .note { color: red; }         /* id + class */
 ```
 
-For `<p id="x" class="note">`, `.note` beats `p`. For an element inside `#main`,
-`#main .note` beats `.note` because ID specificity is higher. If two selectors have
-the same specificity, the later rule wins.
+For `<p id="x" class="note">`, `.note` beats `p`. For an element inside `#main`, `#main .note` beats `.note` because ID specificity is higher. If two selectors have the same specificity, the later rule wins.
 
-Inheritance is separate from the cascade. Some properties, such as `color` and
-`font-family`, naturally inherit from the parent. Others, such as `margin`, `border`,
-and `width`, do not. If a property is not specified on an element, the browser may
-inherit it or use its initial value depending on the property.
+Inheritance is separate from the cascade. Some properties, such as `color` and `font-family`, naturally inherit from the parent. Others, such as `margin`, `border`, and `width`, do not. If a property is not specified on an element, the browser may inherit it or use its initial value depending on the property.
 
 ```css
 body {
@@ -2851,8 +2446,7 @@ body {
 }
 ```
 
-The text color and font usually propagate to children. The border does not, because
-otherwise every nested element would draw its own border.
+The text color and font usually propagate to children. The border does not, because otherwise every nested element would draw its own border.
 
 The box model describes how much space an element occupies:
 
@@ -2862,10 +2456,7 @@ total width = margin-left + border-left + padding-left
             + padding-right + border-right + margin-right
 ```
 
-With the default `box-sizing: content-box`, the declared `width` applies only to the
-content area. With `box-sizing: border-box`, the declared width includes content,
-padding, and border. Many modern layouts set border-box globally because it makes
-component sizing easier.
+With the default `box-sizing: content-box`, the declared `width` applies only to the content area. With `box-sizing: border-box`, the declared width includes content, padding, and border. Many modern layouts set border-box globally because it makes component sizing easier.
 
 ```css
 * {
@@ -2904,12 +2495,9 @@ Example:
 }
 ```
 
-The badge is positioned relative to `.card` because `.card` is positioned. Without
-that, the badge might be positioned relative to a more distant ancestor.
+The badge is positioned relative to `.card` because `.card` is positioned. Without that, the badge might be positioned relative to a more distant ancestor.
 
-Floats were historically used for layouts, but their original purpose is text
-wrapping around content such as images. Modern layout should use Flexbox for one
-dimension and Grid for two dimensions.
+Floats were historically used for layouts, but their original purpose is text wrapping around content such as images. Modern layout should use Flexbox for one dimension and Grid for two dimensions.
 
 Flexbox is useful for distributing items along a row or column:
 
@@ -2933,10 +2521,7 @@ Grid is useful when both rows and columns matter:
 }
 ```
 
-Responsive Web Design has three core ingredients: fluid layouts, flexible media,
-and media queries. The viewport meta tag is necessary on mobile because otherwise
-the browser may render the page as if it had a wide desktop viewport and then scale
-it down.
+Responsive Web Design has three core ingredients: fluid layouts, flexible media, and media queries. The viewport meta tag is necessary on mobile because otherwise the browser may render the page as if it had a wide desktop viewport and then scale it down.
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -2981,9 +2566,7 @@ meta tag.
 | CSS | Presentation. |
 | JavaScript | Behavior and interactivity. |
 
-JavaScript is high-level, dynamically typed, interpreted, and works with object-like
-and functional styles. In the browser, it can modify the current page and react to
-events, but same-origin restrictions protect other pages and origins.
+JavaScript is high-level, dynamically typed, interpreted, and works with object-like and functional styles. In the browser, it can modify the current page and react to events, but same-origin restrictions protect other pages and origins.
 
 External JS is preferred:
 
@@ -2991,8 +2574,7 @@ External JS is preferred:
 <script src="my_script.js"></script>
 ```
 
-Scripts execute in document order. A `<script>` pauses HTML parsing while it loads
-and runs, so scripts are often placed at the end of `<body>`.
+Scripts execute in document order. A `<script>` pauses HTML parsing while it loads and runs, so scripts are often placed at the end of `<body>`.
 
 ### Types and objects
 
@@ -3030,8 +2612,7 @@ misc.forEach(function(value, index, array) {
 
 ### Browser objects and DOM
 
-`window` is the global browser object. It exposes `document`, `location`, `history`,
-`navigator`, `screen`, timers, dialogs, and the console.
+`window` is the global browser object. It exposes `document`, `location`, `history`, `navigator`, `screen`, timers, dialogs, and the console.
 
 Useful browser methods:
 
@@ -3044,8 +2625,7 @@ setTimeout(function() { console.log("once"); }, 2000);
 setInterval(function() { console.log("repeat"); }, 1000);
 ```
 
-`confirm()` is often tested: it shows OK/Cancel and returns a boolean. Timers schedule
-asynchronous callbacks; they do not block the whole browser while waiting.
+`confirm()` is often tested: it shows OK/Cancel and returns a boolean. Timers schedule asynchronous callbacks; they do not block the whole browser while waiting.
 
 ![[js-dom-tree.jpg|520]]
 
@@ -3113,17 +2693,11 @@ form.addEventListener("submit", function(event) {
 
 `preventDefault()` blocks the browser's default form submission.
 
-**Open-question focus:** JavaScript vs Java, primitive vs object, objects as
-associative arrays, arrays and `forEach`, DOM tree and selection methods, node
-creation, and `addEventListener`.
+**Open-question focus:** JavaScript vs Java, primitive vs object, objects as associative arrays, arrays and `forEach`, DOM tree and selection methods, node creation, and `addEventListener`.
 
 ### Extended study notes
 
-JavaScript is the behavior layer of the browser platform. It should not be confused
-with Java: the names are historically related for marketing reasons, but the
-languages have different type systems, object models, execution environments, and
-typical uses. In this course, Java is mostly server-side, while JavaScript is mainly
-client-side code executed by the browser.
+JavaScript is the behavior layer of the browser platform. It should not be confused with Java: the names are historically related for marketing reasons, but the languages have different type systems, object models, execution environments, and typical uses. In this course, Java is mostly server-side, while JavaScript is mainly client-side code executed by the browser.
 
 Good open answers usually start from the three Web layers:
 
@@ -3133,8 +2707,7 @@ Good open answers usually start from the three Web layers:
 | Presentation | CSS | Define visual appearance and layout. |
 | Behavior | JavaScript | React to events, update DOM, call servers. |
 
-JavaScript is dynamically typed. A variable does not have a fixed declared type; the
-value currently stored in it has a type.
+JavaScript is dynamically typed. A variable does not have a fixed declared type; the value currently stored in it has a type.
 
 ```javascript
 let value = 10;       // number
@@ -3142,12 +2715,9 @@ value = "ten";        // string
 value = { n: 10 };    // object
 ```
 
-This flexibility is convenient but can also hide errors. That is why careful naming,
-small functions, and explicit checks are important in browser scripts.
+This flexibility is convenient but can also hide errors. That is why careful naming, small functions, and explicit checks are important in browser scripts.
 
-Primitive values include numbers, strings, booleans, `null`, and `undefined`.
-Objects are reference values. Objects can contain properties, and properties can be
-functions.
+Primitive values include numbers, strings, booleans, `null`, and `undefined`. Objects are reference values. Objects can contain properties, and properties can be functions.
 
 ```javascript
 const course = {
@@ -3159,10 +2729,7 @@ const course = {
 };
 ```
 
-In this example, `this` refers to the object before the dot when the method is
-called as `course.describe()`. For an introductory exam answer, it is enough to say
-that `this` depends on the call context, and that it commonly represents the object
-owning the method call.
+In this example, `this` refers to the object before the dot when the method is called as `course.describe()`. For an introductory exam answer, it is enough to say that `this` depends on the call context, and that it commonly represents the object owning the method call.
 
 Objects also behave like associative arrays:
 
@@ -3171,11 +2738,9 @@ course["name"] = "Web Applications";
 course.teacher = "Professor";
 ```
 
-Dot notation is shorter when the property name is known and is a valid identifier.
-Bracket notation is useful when the property name is computed.
+Dot notation is shorter when the property name is known and is a valid identifier. Bracket notation is useful when the property name is computed.
 
-Arrays are objects specialized for ordered lists. They have a `length` property and
-methods such as `push`, `pop`, `forEach`, `map`, and `filter`.
+Arrays are objects specialized for ordered lists. They have a `length` property and methods such as `push`, `pop`, `forEach`, `map`, and `filter`.
 
 ```javascript
 const numbers = [1, 2, 3];
@@ -3185,14 +2750,9 @@ numbers.forEach(function(number, index) {
 });
 ```
 
-The callback receives the current value, the index, and the full array. This pattern
-is useful when code must execute once per element without writing an explicit
-counter loop.
+The callback receives the current value, the index, and the full array. This pattern is useful when code must execute once per element without writing an explicit counter loop.
 
-The browser exposes a hierarchy of objects. `window` is the global object. It
-contains `document`, which represents the current page as the DOM tree. The DOM is
-not the source HTML file itself; it is the parsed, live, in-memory representation
-that scripts can inspect and modify.
+The browser exposes a hierarchy of objects. `window` is the global object. It contains `document`, which represents the current page as the DOM tree. The DOM is not the source HTML file itself; it is the parsed, live, in-memory representation that scripts can inspect and modify.
 
 DOM selection methods are different in return type:
 
@@ -3213,12 +2773,9 @@ item.textContent = "Ada Lovelace";
 list.appendChild(item);
 ```
 
-`textContent` inserts text, not HTML. This is safer than assigning untrusted content
-to `innerHTML`, because the browser will not interpret the string as markup.
+`textContent` inserts text, not HTML. This is safer than assigning untrusted content to `innerHTML`, because the browser will not interpret the string as markup.
 
-Events are central to browser programming. The page loads, the user clicks, types,
-submits forms, resizes the window, and receives asynchronous responses. JavaScript
-registers callback functions to react to these events.
+Events are central to browser programming. The page loads, the user clicks, types, submits forms, resizes the window, and receives asynchronous responses. JavaScript registers callback functions to react to these events.
 
 ```javascript
 const form = document.querySelector("form");
@@ -3230,9 +2787,7 @@ form.addEventListener("submit", function(event) {
 });
 ```
 
-The callback receives an event object. `event.target` is the element where the event
-originated. `event.preventDefault()` cancels the default browser action, such as
-submitting a form or following a link.
+The callback receives an event object. `event.target` is the element where the event originated. `event.preventDefault()` cancels the default browser action, such as submitting a form or following a link.
 
 Inline event attributes are discouraged:
 
@@ -3246,13 +2801,9 @@ External registration is cleaner:
 document.querySelector("button").addEventListener("click", save);
 ```
 
-This separates behavior from markup and allows multiple independent listeners on
-the same element.
+This separates behavior from markup and allows multiple independent listeners on the same element.
 
-JavaScript in the browser is restricted by security rules. The same-origin policy
-prevents a page from freely reading responses from another origin. An origin is
-defined by scheme, host, and port. `https://example.com` and
-`http://example.com` are different origins because the scheme is different.
+JavaScript in the browser is restricted by security rules. The same-origin policy prevents a page from freely reading responses from another origin. An origin is defined by scheme, host, and port. `https://example.com` and `http://example.com` are different origins because the scheme is different.
 
 Short answer template:
 
@@ -3308,17 +2859,14 @@ email.addEventListener("input", function () {
 });
 ```
 
-`setCustomValidity("")` clears the error; any non-empty string marks the field as
-invalid with that custom message.
+`setCustomValidity("")` clears the error; any non-empty string marks the field as invalid with that custom message.
 
-Manual JavaScript validation uses event handlers, regular expressions, CSS classes,
-and `event.preventDefault()` in the submit handler.
+Manual JavaScript validation uses event handlers, regular expressions, CSS classes, and `event.preventDefault()` in the submit handler.
 
 ### AJAX
 
 > [!important] Definition - AJAX
-> AJAX is scripted HTTP from the browser. It lets a page exchange data with the
-> server and update part of the DOM without reloading the whole page.
+> AJAX is scripted HTTP from the browser. It lets a page exchange data with the server and update part of the DOM without reloading the whole page.
 
 XHR request parts:
 1. method,
@@ -3370,8 +2918,7 @@ request.send(JSON.stringify(dataObject));
 
 ### CORS
 
-The same-origin policy normally blocks XHR responses from other origins. CORS is the
-server's opt-in mechanism through headers such as `Access-Control-Allow-Origin`.
+The same-origin policy normally blocks XHR responses from other origins. CORS is the server's opt-in mechanism through headers such as `Access-Control-Allow-Origin`.
 
 ### JSON and Fetch
 
@@ -3393,24 +2940,15 @@ if (response.ok) {
 }
 ```
 
-Fetch returns a Promise. `await response.json()` parses the response body into a
-JavaScript object.
+Fetch returns a Promise. `await response.json()` parses the response body into a JavaScript object.
 
-**Open-question focus:** client vs server validation, HTML5 validation attributes,
-Constraint Validation API, `preventDefault`, XHR lifecycle, CORS, JSON parse/stringify,
-and Fetch vs XHR.
+**Open-question focus:** client vs server validation, HTML5 validation attributes, Constraint Validation API, `preventDefault`, XHR lifecycle, CORS, JSON parse/stringify, and Fetch vs XHR.
 
 ### Extended study notes
 
-Form validation is a strong candidate for an open question because it connects HTML,
-CSS, JavaScript, HTTP, and server-side security. The key thesis is simple:
-client-side validation improves usability, but server-side validation is mandatory
-for correctness and security.
+Form validation is a strong candidate for an open question because it connects HTML, CSS, JavaScript, HTTP, and server-side security. The key thesis is simple: client-side validation improves usability, but server-side validation is mandatory for correctness and security.
 
-Client-side validation can be bypassed by disabling JavaScript, editing HTML in the
-browser developer tools, sending requests with curl/Postman, or directly calling an
-API. Therefore it should never be the only protection for business rules, database
-constraints, authentication, authorization, or security.
+Client-side validation can be bypassed by disabling JavaScript, editing HTML in the browser developer tools, sending requests with curl/Postman, or directly calling an API. Therefore it should never be the only protection for business rules, database constraints, authentication, authorization, or security.
 
 HTML5 validation attributes cover many common constraints:
 
@@ -3459,8 +2997,7 @@ password.addEventListener("input", function() {
 });
 ```
 
-The empty string is important: it means "no custom error". Any non-empty message
-makes the field invalid.
+The empty string is important: it means "no custom error". Any non-empty message makes the field invalid.
 
 Manual validation often runs on the `submit` event:
 
@@ -3473,13 +3010,9 @@ form.addEventListener("submit", function(event) {
 });
 ```
 
-`preventDefault()` cancels the browser's normal submit behavior. Without it, the
-form would be sent even if JavaScript found an error.
+`preventDefault()` cancels the browser's normal submit behavior. Without it, the form would be sent even if JavaScript found an error.
 
-AJAX changes the interaction model. Instead of submitting a form and loading a new
-page, JavaScript sends an HTTP request in the background and updates part of the DOM
-when the response arrives. This produces faster interfaces, but it does not change
-the fact that the server must validate all input.
+AJAX changes the interaction model. Instead of submitting a form and loading a new page, JavaScript sends an HTTP request in the background and updates part of the DOM when the response arrives. This produces faster interfaces, but it does not change the fact that the server must validate all input.
 
 The XMLHttpRequest lifecycle can be answered step by step:
 
@@ -3498,14 +3031,9 @@ xhr.open("GET", "/api/status");
 xhr.send();
 ```
 
-The request is configured with `open(method, url)`, optional headers are set, then
-`send(body)` starts it. The browser later calls the callback as state changes. The
-important final state is `DONE`, and the HTTP status tells whether the server
-returned success or an error.
+The request is configured with `open(method, url)`, optional headers are set, then `send(body)` starts it. The browser later calls the callback as state changes. The important final state is `DONE`, and the HTTP status tells whether the server returned success or an error.
 
-AJAX requests still use HTTP. The request can send query parameters, form-encoded
-data, multipart data, or JSON. The server responds with text, HTML, XML, JSON, or
-another media type. Modern APIs commonly exchange JSON:
+AJAX requests still use HTTP. The request can send query parameters, form-encoded data, multipart data, or JSON. The server responds with text, HTML, XML, JSON, or another media type. Modern APIs commonly exchange JSON:
 
 ```javascript
 const payload = {
@@ -3518,16 +3046,14 @@ xhr.setRequestHeader("Content-Type", "application/json");
 xhr.send(JSON.stringify(payload));
 ```
 
-`JSON.stringify` converts a JavaScript object into a JSON string. `JSON.parse`
-converts a JSON string into a JavaScript value.
+`JSON.stringify` converts a JavaScript object into a JSON string. `JSON.parse` converts a JSON string into a JavaScript value.
 
 ```javascript
 const data = JSON.parse(xhr.responseText);
 console.log(data.title);
 ```
 
-`eval()` must not be used for JSON because it executes code. JSON parsing should
-parse data, not run arbitrary script.
+`eval()` must not be used for JSON because it executes code. JSON parsing should parse data, not run arbitrary script.
 
 Fetch is a newer Promise-based API:
 
@@ -3547,14 +3073,9 @@ if (!response.ok) {
 const result = await response.json();
 ```
 
-A common trap: `fetch()` only rejects the Promise for network-level failures. HTTP
-errors such as 404 or 500 still produce a response object, so code must check
-`response.ok` or `response.status`.
+A common trap: `fetch()` only rejects the Promise for network-level failures. HTTP errors such as 404 or 500 still produce a response object, so code must check `response.ok` or `response.status`.
 
-CORS appears when JavaScript tries to read a response from another origin. The
-browser enforces the same-origin policy, and the server can opt into cross-origin
-access with CORS headers. The policy is enforced by the browser, not by the server
-alone.
+CORS appears when JavaScript tries to read a response from another origin. The browser enforces the same-origin policy, and the server can opt into cross-origin access with CORS headers. The policy is enforced by the browser, not by the server alone.
 
 Short answer template:
 
@@ -3574,8 +3095,7 @@ JSON.parse. Cross-origin AJAX is controlled by the same-origin policy and CORS.
 
 ### jQuery
 
-jQuery is a JavaScript library that simplifies DOM selection, manipulation, event
-handling, and AJAX.
+jQuery is a JavaScript library that simplifies DOM selection, manipulation, event handling, and AJAX.
 
 The `$()` function has several uses:
 
@@ -3585,15 +3105,13 @@ $(document)             // wrap a raw DOM object
 $("<p>Hello</p>")       // create a new DOM element
 ```
 
-A **jQuery object** is a set of zero or more DOM elements plus jQuery methods. It is
-not the same as a raw DOM element.
+A **jQuery object** is a set of zero or more DOM elements plus jQuery methods. It is not the same as a raw DOM element.
 
 ```javascript
 $("p").css("color", "red");
 ```
 
-Explanation: `$("p")` returns all paragraphs as a jQuery object. `.css("color",
-"red")` sets the CSS property on all matched elements.
+Explanation: `$("p")` returns all paragraphs as a jQuery object. `.css("color", "red")` sets the CSS property on all matched elements.
 
 Getter/setter pattern:
 
@@ -3618,13 +3136,11 @@ Useful methods:
 | Events | `click`, `bind`, `unbind` |
 | AJAX | `$.ajax`, `$.get`, `$.post`, `$.getJSON`, `.load` |
 
-`text()` is safer for user content because it treats content as text. `html()` parses
-HTML and can introduce XSS if used with untrusted data.
+`text()` is safer for user content because it treats content as text. `html()` parses HTML and can introduce XSS if used with untrusted data.
 
 ### Canvas
 
-`<canvas>` is a fixed-size bitmap drawing surface. CSS resizing can distort it
-because the internal bitmap size and visual size may differ.
+`<canvas>` is a fixed-size bitmap drawing surface. CSS resizing can distort it because the internal bitmap size and visual size may differ.
 
 ```html
 <canvas id="myCanvas" width="600" height="400">
@@ -3641,8 +3157,7 @@ const ctx = canvas.getContext("2d");
 
 *Figure 34: Canvas coordinate system with origin at the top-left corner and axes growing right and down*
 
-Canvas coordinates start at top-left `(0,0)`. `x` grows to the right, `y` grows
-downward. One canvas unit usually corresponds to one pixel.
+Canvas coordinates start at top-left `(0,0)`. `x` grows to the right, `y` grows downward. One canvas unit usually corresponds to one pixel.
 
 Rectangles:
 
@@ -3667,8 +3182,7 @@ ctx.closePath();
 ctx.stroke();
 ```
 
-`beginPath()` starts a new path. `moveTo()` moves the virtual pen without drawing.
-`lineTo()` draws a segment. `stroke()` draws the outline; `fill()` fills the shape.
+`beginPath()` starts a new path. `moveTo()` moves the virtual pen without drawing. `lineTo()` draws a segment. `stroke()` draws the outline; `fill()` fills the shape.
 
 Arcs use radians:
 
@@ -3698,19 +3212,13 @@ ctx.rotate(Math.PI / 4);
 ctx.restore();
 ```
 
-`save()` and `restore()` avoid leaking transformations and styles into later drawing.
-Use `requestAnimationFrame()` for smooth animations synchronized with browser repaint.
+`save()` and `restore()` avoid leaking transformations and styles into later drawing. Use `requestAnimationFrame()` for smooth animations synchronized with browser repaint.
 
-**Open-question focus:** jQuery object vs DOM element, getter/setter chaining,
-`text` vs `html`, jQuery AJAX shortcuts, canvas coordinate system, paths, image
-loading, state stack, and animation scheduling.
+**Open-question focus:** jQuery object vs DOM element, getter/setter chaining, `text` vs `html`, jQuery AJAX shortcuts, canvas coordinate system, paths, image loading, state stack, and animation scheduling.
 
 ### Extended study notes
 
-jQuery is less central in new projects than it used to be, but it remains important
-for understanding many Web applications and for this course because it shows common
-DOM and AJAX patterns in a compact form. The main idea is that jQuery wraps DOM
-elements in a jQuery object that exposes convenience methods.
+jQuery is less central in new projects than it used to be, but it remains important for understanding many Web applications and for this course because it shows common DOM and AJAX patterns in a compact form. The main idea is that jQuery wraps DOM elements in a jQuery object that exposes convenience methods.
 
 The `$` function can select, wrap, create, or run code after the DOM is ready:
 
@@ -3746,9 +3254,7 @@ If you have a jQuery object and want the raw element, use indexing or `.get()`:
 const element = $("#title")[0];
 ```
 
-jQuery methods often use the same method as getter and setter. With no argument,
-they read. With an argument, they write and return the same jQuery object, enabling
-chaining.
+jQuery methods often use the same method as getter and setter. With no argument, they read. With an argument, they write and return the same jQuery object, enabling chaining.
 
 ```javascript
 const oldText = $("#message").text();
@@ -3778,8 +3284,7 @@ This displays the angle brackets as text. By contrast:
 $("#output").html("<strong>Hello</strong>");
 ```
 
-This creates a real `<strong>` element. If the string came from an attacker, this
-could become an XSS vulnerability.
+This creates a real `<strong>` element. If the string came from an attacker, this could become an XSS vulnerability.
 
 jQuery groups DOM manipulation into readable methods:
 
@@ -3800,8 +3305,7 @@ $("#save").on("click", function(event) {
 });
 ```
 
-Older jQuery code may use shortcuts such as `.click(handler)`, but `.on()` is the
-more general method and supports delegated events:
+Older jQuery code may use shortcuts such as `.click(handler)`, but `.on()` is the more general method and supports delegated events:
 
 ```javascript
 $("#list").on("click", "li", function() {
@@ -3809,9 +3313,7 @@ $("#list").on("click", "li", function() {
 });
 ```
 
-Delegation attaches one listener to `#list`. Clicks from child `<li>` elements bubble
-up, and jQuery checks whether the actual target matches `"li"`. This also works for
-items added later.
+Delegation attaches one listener to `#list`. Clicks from child `<li>` elements bubble up, and jQuery checks whether the actual target matches `"li"`. This also works for items added later.
 
 jQuery AJAX hides some XMLHttpRequest boilerplate:
 
@@ -3823,12 +3325,9 @@ $.getJSON("/api/students", function(students) {
 });
 ```
 
-The theory point is still HTTP: jQuery sends a request, receives a response, parses
-data if needed, and calls callbacks.
+The theory point is still HTTP: jQuery sends a request, receives a response, parses data if needed, and calls callbacks.
 
-Canvas is a different topic but fits the same JavaScript chapter because drawing is
-performed through scripts. The `<canvas>` element creates a rectangular bitmap.
-The 2D context exposes drawing operations:
+Canvas is a different topic but fits the same JavaScript chapter because drawing is performed through scripts. The `<canvas>` element creates a rectangular bitmap. The 2D context exposes drawing operations:
 
 ```javascript
 const canvas = document.getElementById("scene");
@@ -3838,13 +3337,9 @@ ctx.fillStyle = "lightblue";
 ctx.fillRect(10, 10, 120, 80);
 ```
 
-Coordinates start at the top-left corner. `x` grows to the right, `y` grows
-downward. This is different from the mathematical coordinate system usually drawn
-on paper.
+Coordinates start at the top-left corner. `x` grows to the right, `y` grows downward. This is different from the mathematical coordinate system usually drawn on paper.
 
-Canvas drawing is immediate-mode. After a rectangle or line is drawn, the canvas
-does not keep a DOM object representing that shape. If the scene changes, the
-program usually clears and redraws the frame.
+Canvas drawing is immediate-mode. After a rectangle or line is drawn, the canvas does not keep a DOM object representing that shape. If the scene changes, the program usually clears and redraws the frame.
 
 ```javascript
 function draw(x) {
@@ -3890,8 +3385,7 @@ function frame() {
 requestAnimationFrame(frame);
 ```
 
-This lets the browser synchronize drawing with repaint cycles, which is smoother and
-more efficient than a fixed `setInterval` for animation.
+This lets the browser synchronize drawing with repaint cycles, which is smoother and more efficient than a fixed `setInterval` for animation.
 
 Short answer template:
 
@@ -3915,8 +3409,7 @@ coordinates, paths, images, transformations, save/restore, and animation frames.
 
 *Figure 36: Evolution from the Web of Documents to the Web of Data*
 
-The Web of Documents links human-readable pages. The Web of Data links data entities
-with typed relationships so machines can interpret what the links mean.
+The Web of Documents links human-readable pages. The Web of Data links data entities with typed relationships so machines can interpret what the links mean.
 
 Raw data becomes information only when paired with schema/metadata.
 
@@ -3924,8 +3417,7 @@ Raw data becomes information only when paired with schema/metadata.
 
 *Figure 37: Raw data becoming information when interpreted through schema and metadata*
 
-Example: `123`, `91`, `38.5`, `7` are just numbers. With labels, they become heart
-rate, pressure, temperature, age, etc.
+Example: `123`, `91`, `38.5`, `7` are just numbers. With labels, they become heart rate, pressure, temperature, age, etc.
 
 ### Ontologies, RDF, knowledge graphs
 
@@ -3950,8 +3442,7 @@ Object    -> URI or literal
 
 *Figure 38: RDF document serializations representing an RDF graph of subject-predicate-object triples*
 
-The predicate is a URI because relationships also need global identifiers. The object
-can be another resource URI or a literal value.
+The predicate is a URI because relationships also need global identifiers. The object can be another resource URI or a literal value.
 
 ![[Figures/slide-011-fig-01.jpg|560]]
 
@@ -3998,8 +3489,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 ### SPARQL
 
 > [!important] Definition - SPARQL
-> SPARQL is the standard query language for RDF graphs, analogous to SQL for
-> relational databases.
+> SPARQL is the standard query language for RDF graphs, analogous to SQL for relational databases.
 
 ```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -4037,8 +3527,7 @@ Linked Open Data is Linked Data published under an open license.
 
 *Figure 41: Linked Open Data cloud showing many interlinked datasets across domains*
 
-The LOD cloud is huge, which creates a practical discovery problem: finding the
-specific dataset and links you need is difficult.
+The LOD cloud is huge, which creates a practical discovery problem: finding the specific dataset and links you need is difficult.
 
 FAIR principles:
 
@@ -4049,33 +3538,21 @@ FAIR principles:
 | Interoperable | Formal representation and shared vocabularies. |
 | Reusable | Clear license, provenance, accurate attributes, community standards. |
 
-DBpedia extracts structured data from Wikipedia. Wikidata is a collaborative,
-multilingual knowledge base with stable entity URIs.
+DBpedia extracts structured data from Wikipedia. Wikidata is a collaborative, multilingual knowledge base with stable entity URIs.
 
 ![[Figures/slide-028-fig-01.jpg|540]]
 
 *Figure 42: W3C One Web technology stack including Web applications, Semantic Web, Web services, and security*
 
-The Semantic Web stack is part of the same "One Web" vision: it sits alongside Web
-Applications, Web Services, Privacy/Security, and shared Web foundations such as URI,
-HTTP, XML, RDF, DOM, and SPARQL.
+The Semantic Web stack is part of the same "One Web" vision: it sits alongside Web Applications, Web Services, Privacy/Security, and shared Web foundations such as URI, HTTP, XML, RDF, DOM, and SPARQL.
 
-**Open-question focus:** Web of Documents vs Web of Data, data vs information, RDF
-triple model, URI/literal distinction, serialization formats, SPARQL graph matching,
-Linked Data principles, LOD vs Linked Data, and FAIR.
+**Open-question focus:** Web of Documents vs Web of Data, data vs information, RDF triple model, URI/literal distinction, serialization formats, SPARQL graph matching, Linked Data principles, LOD vs Linked Data, and FAIR.
 
 ### Extended study notes
 
-The Semantic Web chapter is conceptual, so open answers should be built slowly. The
-starting point is the limitation of the traditional Web: pages are connected by
-links, but links usually do not tell machines what the relationship means. A human
-can read a page and understand that "Leonardo da Vinci painted the Mona Lisa"; a
-machine needs explicit structured statements to process that fact reliably.
+The Semantic Web chapter is conceptual, so open answers should be built slowly. The starting point is the limitation of the traditional Web: pages are connected by links, but links usually do not tell machines what the relationship means. A human can read a page and understand that "Leonardo da Vinci painted the Mona Lisa"; a machine needs explicit structured statements to process that fact reliably.
 
-The Web of Documents is centered on HTML documents and hyperlinks. The Web of Data
-is centered on identifiable entities and typed relationships. The goal is not to
-replace documents, but to add machine-readable data that can be linked, queried, and
-combined across sources.
+The Web of Documents is centered on HTML documents and hyperlinks. The Web of Data is centered on identifiable entities and typed relationships. The goal is not to replace documents, but to add machine-readable data that can be linked, queried, and combined across sources.
 
 | Web of Documents | Web of Data |
 |---|---|
@@ -4084,14 +3561,9 @@ combined across sources.
 | Meaning is mainly interpreted by humans. | Meaning is explicit through predicates and vocabularies. |
 | HTML and URLs dominate. | URI, RDF, RDFS/OWL, SPARQL, JSON-LD/Turtle dominate. |
 
-The difference between data and information is also important. Data are raw values.
-Information is data interpreted through structure, context, and meaning. The value
-`38.5` means little alone; with a schema saying it is body temperature in Celsius,
-it becomes information.
+The difference between data and information is also important. Data are raw values. Information is data interpreted through structure, context, and meaning. The value `38.5` means little alone; with a schema saying it is body temperature in Celsius, it becomes information.
 
-Ontologies define shared vocabulary and meaning. They can describe classes,
-properties, relationships, and constraints. RDF then represents concrete facts using
-that vocabulary. A knowledge graph combines many facts into a connected graph.
+Ontologies define shared vocabulary and meaning. They can describe classes, properties, relationships, and constraints. RDF then represents concrete facts using that vocabulary. A knowledge graph combines many facts into a connected graph.
 
 Example:
 
@@ -4108,10 +3580,7 @@ In RDF, the fact becomes a triple:
 <http://example.org/bob#me> foaf:knows <http://example.org/alice#me> .
 ```
 
-The subject is the thing being described. The predicate is the relationship. The
-object is either another resource or a literal value. Predicates are URIs because
-relationships themselves need global meaning. `foaf:knows` is not just the string
-"knows"; it identifies a property from the FOAF vocabulary.
+The subject is the thing being described. The predicate is the relationship. The object is either another resource or a literal value. Predicates are URIs because relationships themselves need global meaning. `foaf:knows` is not just the string "knows"; it identifies a property from the FOAF vocabulary.
 
 RDF objects can be resources or literals:
 
@@ -4122,8 +3591,7 @@ RDF objects can be resources or literals:
   schema:birthDate "1990-07-04"^^xsd:date .
 ```
 
-`<http://example.org/alice#me>` is a URI resource. `"Bob"` is a plain literal.
-`"1990-07-04"^^xsd:date` is a typed literal.
+`<http://example.org/alice#me>` is a URI resource. `"Bob"` is a plain literal. `"1990-07-04"^^xsd:date` is a typed literal.
 
 Prefixes are abbreviations, not different identifiers:
 
@@ -4139,13 +3607,9 @@ This expands to:
 http://xmlns.com/foaf/0.1/name
 ```
 
-RDF is a data model, not one concrete syntax. Turtle, RDF/XML, JSON-LD, N-Triples,
-RDFa, and TriG can serialize RDF graphs in different ways. This distinction is like
-the difference between "table data" and "CSV/JSON/XML representation": the model and
-the syntax are not the same thing.
+RDF is a data model, not one concrete syntax. Turtle, RDF/XML, JSON-LD, N-Triples, RDFa, and TriG can serialize RDF graphs in different ways. This distinction is like the difference between "table data" and "CSV/JSON/XML representation": the model and the syntax are not the same thing.
 
-SPARQL queries graph patterns. A `WHERE` clause describes triples to match, and
-variables collect the matching parts.
+SPARQL queries graph patterns. A `WHERE` clause describes triples to match, and variables collect the matching parts.
 
 ```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -4157,9 +3621,7 @@ WHERE {
 }
 ```
 
-This means: find resources that are persons and have a FOAF name. Return the
-resource and the name. The query does not require knowing all person URIs in
-advance; it discovers them by matching graph patterns.
+This means: find resources that are persons and have a FOAF name. Return the resource and the name. The query does not require knowing all person URIs in advance; it discovers them by matching graph patterns.
 
 Aggregation works after grouping:
 
@@ -4175,20 +3637,16 @@ GROUP BY ?person
 
 This counts how many `foaf:knows` relationships each person has.
 
-Linked Data principles explain how RDF data should be published on the Web. The
-principles are practical:
+Linked Data principles explain how RDF data should be published on the Web. The principles are practical:
 
 1. Use URIs to name things, so entities can be referenced globally.
 2. Use HTTP URIs, so clients can look them up.
 3. Return useful information, preferably RDF and SPARQL access.
 4. Link to other URIs, so datasets become connected rather than isolated.
 
-Linked Open Data adds the open-license requirement. Data can be Linked Data without
-being open, for example inside a company. It becomes Linked Open Data when it is
-published under terms that allow reuse.
+Linked Open Data adds the open-license requirement. Data can be Linked Data without being open, for example inside a company. It becomes Linked Open Data when it is published under terms that allow reuse.
 
-FAIR is related but broader. It is not only about RDF; it is a set of principles for
-scientific and data management quality:
+FAIR is related but broader. It is not only about RDF; it is a set of principles for scientific and data management quality:
 
 | FAIR principle | Practical meaning |
 |---|---|
@@ -4197,14 +3655,9 @@ scientific and data management quality:
 | Interoperable | Data uses formal languages, shared vocabularies, and links. |
 | Reusable | Data has license, provenance, and enough context for reuse. |
 
-DBpedia and Wikidata are useful examples. DBpedia extracts structured facts from
-Wikipedia, while Wikidata is a collaborative knowledge base designed around
-entities, properties, statements, references, and multilingual labels. Both provide
-stable identifiers that can be linked from other datasets.
+DBpedia and Wikidata are useful examples. DBpedia extracts structured facts from Wikipedia, while Wikidata is a collaborative knowledge base designed around entities, properties, statements, references, and multilingual labels. Both provide stable identifiers that can be linked from other datasets.
 
-A strong final connection is that Semantic Web technologies reuse general Web
-foundations. URIs identify resources, HTTP retrieves representations, RDF models
-facts, SPARQL queries graphs, and vocabularies/ontologies define shared meaning.
+A strong final connection is that Semantic Web technologies reuse general Web foundations. URIs identify resources, HTTP retrieves representations, RDF models facts, SPARQL queries graphs, and vocabularies/ontologies define shared meaning.
 
 Short answer template:
 
