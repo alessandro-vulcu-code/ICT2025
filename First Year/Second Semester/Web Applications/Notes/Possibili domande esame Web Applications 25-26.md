@@ -1,6 +1,6 @@
 # Web Applications 2025-26 - exam questions and model answers
 
-Source note: [[Web Applications 25-26]].
+Source note: [[Web Applications 25-26 complete course]].
 
 Study bank for a 1-hour written exam with 3-4 questions. Each macro-topic has possible theory questions and paper-code questions, with compact model answers. Use it for rehearsal: definitions, code skeletons, and links between topics.
 
