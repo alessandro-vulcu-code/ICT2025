@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "First Year/Second Semester/Web Applications/Notes/Web Applications 25-26 - Theory Summary.md",
-                "mode": "source",
+                "file": "First Year/Second Semester/Web Applications/Notes/Web Applications 25-26 - Theory Summary 1.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Web Applications 25-26 - Theory Summary"
+              "title": "Web Applications 25-26 - Theory Summary 1"
             }
           }
         ]
@@ -98,7 +98,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "First Year/Second Semester/Web Applications/Notes/Web Applications 25-26 - Theory Summary.md",
+            "file": "First Year/Second Semester/Web Applications/Notes/Web Applications 25-26 - Theory Summary 1.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -159,19 +159,30 @@
   },
   "active": "8e4b85eaec79ae67",
   "lastOpenFiles": [
+    "First Year/Second Semester/Web Applications/Notes/Web Applications 25-26 - Theory Summary.md",
+    "First Year/Second Semester/Multimedia Communications/ToSummarize/12. Adaptive_streaming.md",
+    "First Year/Second Semester/Multimedia Communications/ToSummarize/5. Wavelet analysis.md",
+    "First Year/Second Semester/Multimedia Communications/Slides/12. Adaptive_streaming.pdf",
+    "First Year/Second Semester/Multimedia Communications/Slides/12. Adaptive_streaming-2_1.png",
+    "First Year/Second Semester/Multimedia Communications/Slides/12. Adaptive_streaming-3_1.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Adaptive Streaming/Pasted image 20260520131140.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Adaptive Streaming/Pasted image 20260520131236.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Adaptive Streaming/Pasted image 20260520134429.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Adaptive Streaming/Pasted image 20260520133226.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Adaptive Streaming/Pasted image 20260520134348.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Adaptive Streaming/Pasted image 20260520134407.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Adaptive Streaming/Pasted image 20260520135123.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Adaptive Streaming/Pasted image 20260520133342.png",
+    "First Year/Second Semester/Multimedia Communications/Pics/Adaptive Streaming",
+    "First Year/Second Semester/Multimedia Communications/Pics/Video coding principles",
+    "First Year/Second Semester/Multimedia Communications/Pics/Other",
+    "First Year/Second Semester/Multimedia Communications/Summaries/12. Adaptive_streaming.md",
+    "First Year/Second Semester/Web Applications/Notes/Possibili domande esame Web Applications 25-26.md",
+    "First Year/Second Semester/Web Applications/Notes/Web Applications 25-26 - Theory Summary 1.md",
+    "First Year/Second Semester/Web Applications/Notes/Web Applications 25-26 - Domande aperte e risposte.md",
     "First Year/Second Semester/Web Applications/Notes/Web Applications 25-26.md",
-    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/22.PNG",
-    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/11.PNG",
-    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/21_part2.PNG",
-    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/21_part1.PNG",
-    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/12.PNG",
     "First Year/Second Semester/Web Applications/Notes/10-webapp-2025-26-markup.md",
     "First Year/Second Semester/Web Applications/Notes/11-webapp-2025-26-html5.md",
-    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/5.PNG",
-    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/4.PNG",
-    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/3.PNG",
-    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/2.PNG",
-    "First Year/Second Semester/Web Applications/Exam questions/webapp_first_call_2024_with_answer/1.PNG",
     "First Year/Second Semester/Web Applications/Exam questions/WebApp - Questions.pdf",
     "First Year/Second Semester/Web Applications/Exam questions/Multiple-exams - Questions.pdf",
     "First Year/Second Semester/Web Applications/Exam questions/Exam 23-06-2019.pdf",
@@ -182,15 +193,10 @@
     "First Year/Second Semester/Multimedia Communications/Pics/Quality Assessment and Quality of Experience for Multimedia Services",
     "First Year/Second Semester/Multimedia Communications/Summaries/11. Quality Assessment and Quality of Experience for Multimedia Services.md",
     "First Year/Second Semester/Web Applications/Notes/16-webapp-2023-24-jquery-canvas.md",
-    "First Year/Second Semester/Web Applications/Notes/Web Applications 25-26 - Theory Summary.md",
     "First Year/Second Semester/Web Applications/Notes/17-webapp-2023-24-semantic-Web.md",
     "First Year/Second Semester/Web Applications/MD Converted/16-webapp-2023-24-jquery-canvas/assets",
-    "First Year/Second Semester/Web Applications/MD Converted/16-webapp-2023-24-jquery-canvas/manifest.json",
     "First Year/Second Semester/Web Applications/MD Converted/16-webapp-2023-24-jquery-canvas/16-webapp-2023-24-jquery-canvas.md",
     "First Year/Second Semester/Web Applications/MD Converted/16-webapp-2023-24-jquery-canvas/16-webapp-2023-24-jquery-canvas.rewritten.md",
-    "First Year/Second Semester/Web Applications/MD Converted/16-webapp-2023-24-jquery-canvas",
-    "First Year/Second Semester/Web Applications/MD Converted/17-webapp-2023-24-semantic-Web/assets",
-    "First Year/Second Semester/Web Applications/MD Converted/17-webapp-2023-24-semantic-Web/manifest.json",
     "First Year/Second Semester/Web Applications/MD Converted/17-webapp-2023-24-semantic-Web/17-webapp-2023-24-semantic-Web.md",
     "PLACEHOLDER_Fig_1 — overall architecture layer diagram.md",
     "First Year/Second Semester/Web Applications/Notes/05-webapp-2025-26-servlet.md",
@@ -198,11 +204,6 @@
     "First Year/Second Semester/Multimedia Communications/Summaries/10. Audio Coding.md",
     "First Year/Second Semester/Multimedia Communications/Summaries/8. Video Coding Principles.md",
     "First Year/Second Semester/Web Applications/Notes/04-webapp-2025-26-docker.md",
-    "First Year/Second Semester/Web Applications/Notes/03-webapp-2025-26-git-maven.md",
-    "First Year/Second Semester/Web Applications/Notes/02-webapp-2025-26-introduction.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/1. Types And Declarations.md",
-    "Excalidraw/Drawing 2025-12-03 08.59.51.excalidraw.md",
-    "Internet of Things and Smart Cities/13. Wired IoT.md",
-    "Modern CPP for Internet and Multimedia/Modern CPP/11. Autotools.md"
+    "First Year/Second Semester/Web Applications/Notes/03-webapp-2025-26-git-maven.md"
   ]
 }
