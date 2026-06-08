@@ -51,3 +51,358 @@ T1 For a Poisson process of rate $\lambda$, prove that the interarrival times ar
 T2 State precisely and formally prove the result that establishes that in a Markov chain the period is a class property.
 
 T3 For a renewal process, give an expression for $E[S_{N(t)+1}]$, also providing a formal proof.
+
+
+Diagram:
+```text
+0 --0.5--> 1
+0 --0.2--> 2
+0 --0.3--> 0
+
+1 --0.5--> 0
+1 --0.2--> 2
+1 --0.3--> 1
+
+2 --1.0--> 2
+```
+
+State `2` absorbing; `0,1` transient [[wiki/concepts/absorbing-markov-chain]].
+
+**(a)** With $X_0=0$:
+$$
+X_1=(1,0,0)P=(0.3,0.5,0.2)
+$$
+
+$$
+X_2=X_1P=(0.34,0.30,0.36)
+$$
+
+Exact:
+$$
+X_n=\left(\frac{0.8^n+(-0.2)^n}{2},\frac{0.8^n-(-0.2)^n}{2},1-0.8^n\right)
+$$
+
+So
+$$
+X_{1000}\approx (0,0,1).
+$$
+
+**(b)** Transient block:
+$$
+Q=\begin{pmatrix}0.3&0.5\\0.5&0.3\end{pmatrix}
+$$
+
+Fundamental matrix [[wiki/concepts/fundamental-matrix]]:
+$$
+N=(I-Q)^{-1}
+=
+\begin{pmatrix}
+35/12&25/12\\
+25/12&35/12
+\end{pmatrix}
+$$
+
+Thus:
+$$
+\lim_{n\to\infty}W_{00}^{(n)}=\frac{35}{12}
+$$
+
+$$
+\lim_{n\to\infty}W_{01}^{(n)}=\frac{25}{12}
+$$
+
+Since state `2` is absorbing:
+$$
+\lim_{n\to\infty}W_{02}^{(n)}=\infty.
+$$
+
+**(c)** Mean absorption time = row sum of fundamental matrix [[wiki/theorems/mean-absorption-time]]:
+$$
+E_0[T]=\frac{35}{12}+\frac{25}{12}=5.
+$$
+
+So average absorption time index:  
+$$
+\boxed{5}
+$$
+
+
+Facciamo tutto con tempo in minuti, partendo da:
+
+$$
+8:00 \text{ AM}=t=0
+$$
+
+Il rate è:
+
+$$
+\lambda=12\text{ clienti/ora}=\frac{12}{60}=0.2\text{ clienti/minuto}
+$$
+
+La permanenza di un visitatore è:
+
+$$
+S\sim U[10,15]\text{ minuti}
+$$
+
+La sala è grande, quindi nessun visitatore viene bloccato: è un modello tipo [[wiki/concepts/m-g-infinity-queue|M/G/infinity Queue]].
+
+## (a) Meno di due arrivi nei primi 15 minuti
+
+Qui conta solo il processo di arrivo, non quanto restano dentro.
+
+Se $N(t)$ è numero di arrivi entro tempo $t$, allora per un [[wiki/concepts/poisson-process|Poisson Process]]:
+
+$$
+N(t)\sim \text{Poisson}(\lambda t)
+$$
+
+Nei primi 15 minuti:
+
+$$
+\lambda t=0.2\cdot15=3
+$$
+
+Quindi:
+
+$$
+N(15)\sim \text{Poisson}(3)
+$$
+
+Chiedono:
+
+$$
+P(N(15)<2)=P(N(15)=0)+P(N(15)=1)
+$$
+
+Formula Poisson:
+
+$$
+P(N=k)=e^{-3}\frac{3^k}{k!}
+$$
+
+Quindi:
+
+$$
+P(N(15)=0)=e^{-3}
+$$
+
+$$
+P(N(15)=1)=3e^{-3}
+$$
+
+Somma:
+
+$$
+P(N(15)<2)=e^{-3}+3e^{-3}=4e^{-3}
+$$
+
+Risultato:
+
+$$
+\boxed{4e^{-3}\approx0.199}
+$$
+
+cioè circa:
+
+$$
+\boxed{19.9\%}
+$$
+
+## (b1) Probabilità che alle 8:15 ci sia solo un visitatore
+
+Alle 8:15 siamo a:
+
+$$
+t=15
+$$
+
+Ora non basta contare quanti sono arrivati. Serve contare quanti sono ancora dentro.
+
+Un visitatore arrivato prima resta dentro se:
+
+$$
+\text{tempo di permanenza} > \text{età del visitatore}
+$$
+
+La formula M/G/∞ dice:
+
+$$
+X(t)\sim \text{Poisson}(m(t))
+$$
+
+dove:
+
+$$
+m(t)=\lambda\int_0^t P(S>u)\,du
+$$
+
+Qui $u$ è l’età del visitatore al tempo osservato.
+
+Per $S\sim U[10,15]$:
+
+- se $0\le u<10$, il visitatore è sicuramente ancora dentro;
+- se $10\le u\le15$, resta dentro con probabilità decrescente;
+- se $u>15$, è sicuramente uscito.
+
+Quindi:
+
+$$
+P(S>u)=
+\begin{cases}
+1, & 0\le u<10,\\
+\frac{15-u}{5}, & 10\le u\le15,\\
+0, & u>15.
+\end{cases}
+$$
+
+A $t=15$:
+
+$$
+m(15)=0.2\int_0^{15}P(S>u)\,du
+$$
+
+Spezzando integrale:
+
+$$
+\int_0^{15}P(S>u)\,du
+=
+\int_0^{10}1\,du+
+\int_{10}^{15}\frac{15-u}{5}\,du
+$$
+
+Primo pezzo:
+
+$$
+\int_0^{10}1\,du=10
+$$
+
+Secondo pezzo:
+
+$$
+\int_{10}^{15}\frac{15-u}{5}\,du=2.5
+$$
+
+Totale:
+
+$$
+10+2.5=12.5
+$$
+
+Quindi:
+
+$$
+m(15)=0.2\cdot12.5=2.5
+$$
+
+Allora:
+
+$$
+X(15)\sim \text{Poisson}(2.5)
+$$
+
+Chiedono:
+
+$$
+P(X(15)=1)
+$$
+
+Formula:
+
+$$
+P(X(15)=1)=e^{-2.5}\frac{2.5^1}{1!}
+$$
+
+Quindi:
+
+$$
+\boxed{P(X(15)=1)=2.5e^{-2.5}\approx0.205}
+$$
+
+cioè circa:
+
+$$
+\boxed{20.5\%}
+$$
+
+## (b2) Probabilità che alle 6 PM la stanza sia vuota
+
+Dalle 8 AM alle 6 PM passano:
+
+$$
+10\text{ ore}=600\text{ minuti}
+$$
+
+Quindi vogliamo:
+
+$$
+P(X(600)=0)
+$$
+
+A 6 PM possono essere ancora dentro solo visitatori arrivati negli ultimi 15 minuti, perché nessuno resta più di 15 minuti.
+
+Per $t\ge15$, la media del numero di visitatori dentro è:
+
+$$
+m(t)=\lambda E[S]
+$$
+
+La media di una uniforme $U[10,15]$ è:
+
+$$
+E[S]=\frac{10+15}{2}=12.5
+$$
+
+Quindi:
+
+$$
+m(600)=0.2\cdot12.5=2.5
+$$
+
+Allora:
+
+$$
+X(600)\sim \text{Poisson}(2.5)
+$$
+
+Stanza vuota significa:
+
+$$
+X(600)=0
+$$
+
+Quindi:
+
+$$
+P(X(600)=0)=e^{-2.5}\frac{2.5^0}{0!}
+$$
+
+$$
+P(X(600)=0)=e^{-2.5}
+$$
+
+Risultato:
+
+$$
+\boxed{e^{-2.5}\approx0.0821}
+$$
+
+cioè circa:
+
+$$
+\boxed{8.21\%}
+$$
+
+Riassunto:
+
+$$
+\boxed{P(\text{meno di 2 arrivi nei primi 15 min})=4e^{-3}\approx0.199}
+$$
+
+$$
+\boxed{P(\text{un solo visitatore alle 8:15})=2.5e^{-2.5}\approx0.205}
+$$
+
+$$
+\boxed{P(\text{stanza vuota alle 6 PM})=e^{-2.5}\approx0.0821}
+$$
