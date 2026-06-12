@@ -1,0 +1,82 @@
+\subsubsection{Direct vs Predictive Quantization}
+With predictive I still have to use a lot of bits to represent information. 
+Idea: why should we use fixed-length coding? 
+Using PQ + Entropy coding we outperform direct quantization, since quantization indexes are Gaussian distributed. 
+At 1bpp we have $\Delta $PSNR $ = 20$dB.
+\section{Lossless Coding}
+\subsection{Definitions}
+\begin{itemize}
+    \item \textbf{Alphabet}: $\mathcal{X} = \left\{x_1, \cdots, x_M\right\}$ Symbols to encode
+    \item \textbf{Code}: Application $\mathcal{C} : \mathcal{X} \to \left\{0,1\right\}^\star$ set of finite-length bit strings, can be Fixed or Variable length.
+\end{itemize}
+\subsection{Code Types}
+\subsubsection{Fixed-Length Code}
+Good: straight forward parsing of the codewords.\\
+Bad: Very large rate $R = \log_2 L$, we are assuming all symbols are equally probable.\\
+Needed bits: $\left\lceil \log_2 M \right\rceil$
+\subsubsection{Variable-Length Code}
+\begin{itemize}
+    \item Statistical Approach: we make use of source entropy $H(x)$, to build an optimal Huffman code. We could use also suboptimal aritmethic codes, which scale very well.
+    \item Euristic Approach: if we don't know data statistics, universal coding (LZW)
+\end{itemize}
+We define $l_i$ as the length of the codeword $c_i$.\\
+We need also two conditions:
+\begin{itemize}
+    \item Decodability condition / prefix condition (each word is not a prefix for other words)
+    \item Non-equiprobable symbols
+\end{itemize}
+How to write this in math terms?
+$$f : x_i \to c_i \qquad \qquad \text{avg. length }\bar{L} = \sum p_i l_i$$
+We want to minimize the average length.
+\subsection{Variable-length codes theorems}
+\subsubsection{McMillan's Theorem}
+Decodable codes do not improve performance w.r.t. instantaneous/prefix codes.\\
+The best possible prefix code = the best possible decodable code. We have to focus on prefix codes.
+\subsubsection{Kraft's Inequality}
+$$\sr{}{i}2^{-l_i} \leq 1 \qquad \Longleftrightarrow \qquad \exists \ \text{instantaneous code with lengths } \{l_1, \cdots, l_M\}$$
+If the equality is verified, we say the code is \textbf{complete}, otherwise we can try to push more from the code.\\
+We can associate a binary code to a binary tree.
+\subsubsection{Proof for Kraft's $\Rightarrow$ (necessity)}
+Build a binary tree with $L_{\max} = \max(l_i)$ depth.\\
+We remove nodes which have prefix equal to a codeword, then each removed subset is disjoint from the others:
+$$\text{Removed nodes }: \sr{}{i}2^{L_{\max} - l_i} \leq 2^{L_{\max}}$$
+\subsubsection{Proof for Kraft's $\Leftarrow$ (sufficiency)}
+Greedy Construction Algorithm:
+\begin{itemize}
+    \item Sort Length $l_1 \leq \cdots \leq l_N$
+    \item $\forall$ step $k$: pick available node at depth $l_k$
+    \item Mark descendants as forbidden
+\end{itemize}
+Finally: there is no way to improve it.
+\subsection{Recall: Information Theory}
+\subsubsection{Information}
+$$I(x_i) = - \log_2 p(x_i) = -\log_2 p_i$$
+Joint Information:
+$$I(x_i,x_j) \leq I(x_i) + I(x_j)$$
+Equality only if symbols are independent.
+\subsubsection{Source Entropy}
+$$H(X) = \sr{}{i}p_iI(x_i) = -\sr{}{i}p_i\log_2 p_i$$
+\subsubsection{Max Entropy Distribution}
+We want $p^{\star}$ such that:
+$$p^{\star} = \arg\max_{p}\sr{M}{i=1}p_iH(x_i) \qquad \text{with }\sr{M}{i=1}p_i = 1$$
+Using Lagrange Multipliers:
+\begin{itemize}
+    \item we consider a function $f:\mathbb{R}^n \to \mathbb{R}$
+    \item then we build a function $J(x, \lambda) = f(x) + \lambda\cdot \varphi(x)$ 
+    \item then we set $\forall i$ the $\nabla J(x_i, \lambda) = 0$
+\end{itemize}
+In this case:
+\begin{itemize}
+    \item $f(p) = -\sr{M}{i=1}p_i\log_2(p_i)$
+    \item $\varphi(p) = \sr{M}{i=1}p_i - 1$
+\end{itemize}
+Thus the gradient is:
+$$\frac{\partial J}{\partial x_i} = -\left({\log_2 e} + \log_2 p_i\right)+\lambda \qquad \qquad \qquad \frac{\partial J}{\partial p_i}(p^\star) = \varphi(p) = 0$$
+By imposing =0 to the $x_i$ component of gradient:
+$$\log_2p_i^\star = \lambda - \log_2 e$$
+\subsubsection{Joint Entropy}
+$$H(X,Y) = -\sr{}{i,j}p_{ij}\log p_{ij}$$
+\subsubsection{Conditional Entropy}
+$$H(X|Y) = \sr{}{j}p_jH(X|Y=Y_j)$$
+Using chain rule:
+$$H(X,Y) = H(Y) + H(X|Y) = H(X) + H(Y|X)$$

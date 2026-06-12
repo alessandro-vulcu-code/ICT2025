@@ -1,0 +1,91 @@
+\section{Transform Coding and JPEG}
+\subsection{Introduction with Block Coding}
+Take a $X = [x_1 \cdots x_M]^T$ random vector as source of information of size M.\\
+We suppose $\forall$ component to know the $\sigma^2_k = \text{var}(x_k)$. The distorsion of the $k$-th element then is $D_k = c_k\sigma_k^22^{-2R_k}$.\\
+Globally, across all vector, we have:
+$$D = \frac{1}{M}E\left[||X-Q(X)||^2\right] = \dots = \frac{1}{M}\sr{M-1}{k=0}D_k = \frac{1}{M}\sr{M-1}{k=0}c_k\sigma_k^22^{-2R_k}$$
+\subsection{Huang-Schulteiss (HS) formula}
+What is the optimal way to minimize distortion $D$? find rate vector $K$ with Constraint Optimization Problem:
+$$\min D(K) = \frac{1}{M}\sr{M-1}{k=0}D = \frac{1}{M}\sr{M-1}{k=0}c_k\sigma^2_k2^{-2R_k} \qquad \text{s.t. }\sr{M-1}{k=0}R_k \leq R_{tot}$$
+% Integrated from Summaries: full Lagrangian derivation (exam asks to derive HS)
+\subsubsection{HS formula derivation}
+Build the Lagrangian of the constrained problem:
+$$J(\vec{R},\lambda) = \frac{1}{M}\sr{M-1}{k=0}c_k\sigma_k^22^{-2R_k} + \lambda\left(\sr{M-1}{k=0}R_k - R_{tot}\right)$$
+Setting $\frac{\partial J}{\partial R_k} = 0$:
+$$2^{-2R_k^\star} = \frac{M\lambda}{2\ln 2}\cdot\frac{1}{c_k\sigma_k^2} \qquad \Longrightarrow \qquad R_k^\star = \lambda' + \frac{1}{2}\log_2\left(c_k\sigma_k^2\right)$$
+Imposing the constraint $\sr{M-1}{k=0}R_k^\star = R_{tot}$ determines $\lambda' = \frac{R_{tot}}{M} - \frac{1}{2}\log_2\left(c_{GM}\sigma^2_{GM}\right)$, so:
+$$\text{Huang-Schulteiss' Formula: }R_k^{\star} = \frac{R_{tot}}{M} + \frac{1}{2}\log_2\left[\frac{c_k\sigma^2_k}{c_{GM}\sigma^2_{GM}}\right] \qquad \text{with }\begin{cases}
+    c_{GM}=\sqrt[M]{\pr{M-1}{k=0}c_k}\\
+    \sigma^2_{GM}=\sqrt[M]{\pr{M-1}{k=0}\sigma^2_k}\\
+    GM = \text{ Geometrical Mean}
+\end{cases}$$
+Reading: start from uniform allocation $\bar{R} = \frac{R_{tot}}{M}$, then components with variance above the geometric mean get more bits, those below get fewer.
+\subsubsection{HS formula interpretation}
+\textbf{Recall}:
+\begin{itemize}
+    \item Arithmetic Mean: $Z_{AM} = \frac{1}{M}\sr{M-1}{i=0}z_i$
+    \item Geometric Mean: $Z_{GM} = \sqrt[M]{\pr{M-1}{i=0}z_i}$
+    \item For Jensen Inequality $Z_{GM} \leq Z_{AM}$
+\end{itemize}
+We are looking for a uniform resource distribution $\bar{R} = \frac{R_{tot}}{M}$, so the $k$-th component distorsion using $R_k^\star$ is:
+$$D_k^\star = c_{GM}\sigma^2_{GM}2^{-2\bar{R}} \qquad \Longrightarrow \qquad D^\star = D_k^\star$$
+At the optimum \textbf{all components have the same distortion}.\\
+In the Gaussian case:
+$$D^\star = D_k^\star = c_{\mathcal{N}}\sigma^2_{GM}2^{-2\bar{R}}$$
+% Integrated from Summaries
+\subsubsection{Why the Geometric Mean is the key quantity}
+$D^\star = c_{GM}\sigma^2_{GM}2^{-2\bar{R}}$: at fixed total rate, the R-D performance depends \emph{only} on the geometric mean of the variances. By Jensen $\sigma^2_{GM} \leq \sigma^2_{AM}$ with equality iff all $\sigma^2_k$ are equal.\\
+\textbf{Identically distributed components} ($\sigma^2_k = \sigma^2_X$, $c_k = c_X\ \forall k$):
+$$R_k^\star = \bar{R} \qquad D^\star = c_X\sigma^2_X2^{-2\bar{R}} = D_{PCM}$$
+Block coding brings \textbf{no improvement} over sample-by-sample coding in this case. The signal must be \emph{sparse} (diverse variances) to benefit: the whole strategy of transform coding is to reduce $\sigma^2_{GM}$ while keeping energy constant.
+\subsection{Transform Coding}
+IDEA: can we modify our signal where symbols have different distribution (sparse signal)?\\
+We use \textbf{Linear Transforms} (change in base of the vectors, like rotations) to reach \textbf{signal sparsification} (few big samples with many lower samples). We are looking for a transform T which is:
+\begin{itemize}
+    \item Reversible $Y = T(X) \Longleftrightarrow X = T^{-1}(Y)$
+    \item Input data is of size $M$
+    \item Input $X$ is not sparse, while output is sparse $Y$
+    \item Quantization error of $Y$ is the same of the $X$ one
+\end{itemize}
+An example could be the Fourier Transform.
+\subsubsection{Orthogonal Transforms}
+Recalling Orthogonal Matrix property: $T^{-1} = T^T$, we have that $Y = TX$ and $X = T^T Y$\\
+Orthogonal Transforms Isometry property also guarantees that $||Y||^2 = ||TX||^2 = ||X||^2$ and $D_X = \cdots = D_Y$
+\subsubsection{Orthogonal Transforms applied to Block Coding}
+Assume we have $X$ random vector of $M$ components, $X \sim \mathcal{N}(0,\sigma^2_x) \ \forall k$, then:
+$$\text{PCM Distorsion: } D_{PCM} = c_{\mathcal{N}}\sigma^2_x2^{-2\bar{R}}$$
+Let's use a generic O.T.: $$T : \begin{cases}
+    Y = TX\\
+    D_X = D_Y
+\end{cases} \qquad \Longrightarrow \qquad D_Y = c_{GM,Y}\sigma^2_{GM,Y}2^{-2\bar{R}}$$
+If $X,Y$ are gaussian, we can also use $c_{GM,Y} = c_{GM,X }= c_{\mathcal{N}}$, so for any $T\to\sigma^2_{AM,Y} = \sigma^2_{AM,X} = \sigma^2_{X}$, and also:
+$$\text{Coding Gain: }G_{T} = \frac{D_{PCM}}{D_Y} =\frac{\sigma^2_{AM,Y}}{\sigma^2_{GM,Y}}  =\frac{\sigma^2_X}{\sigma^2_{GM,Y}} \qquad \Longrightarrow \text{Jensen's Ineq.}\to G_T \geq 1$$
+\subsubsection{Transform Coding example}
+We have a 2D random vector constrained in $S$, we know joint probability:
+$$f_{x_1,x_2} = \begin{cases}
+    \frac{1}{\Delta_1\Delta_2} \qquad (x_1,x_2)\in S\\
+    0 \qquad \text{otherwise}
+\end{cases}\qquad\qquad\text{where }\Delta_1 \gg \Delta_2 \text{ and } x_1 \sim x_2 \sim \mathcal{U}\left[-\frac{\Delta_1}{2\sqrt{2}},\frac{\Delta_1}{2\sqrt{2}}\right]$$
+By applying the rotation, $x_1$ and $x_2$ become independent:
+$$\vec{Y} = \frac{1}{\sqrt{2}}\left[\begin{matrix}
+    1 & -1\\
+    1 & 1
+\end{matrix}\right]\vec{X} \qquad \Longrightarrow \qquad D_2 \ll \sigma^2 \Longrightarrow D = D_1$$
+\subsection{Practical Algorithms for Resource Allocation}
+\subsubsection{Greedy Algorithm}
+Requires nr. of iterations $\approx$ nr. of bits, steps:
+\begin{itemize}
+    \item Start with $0$ bits
+    \item Take largest distorsion and assign 1 bit
+    \item Recompute distorsions
+    \item Iterate until we finish the available bits
+\end{itemize}
+\subsubsection{Modified HS algorithm}
+Quicker than the Greedy Algorithm, steps:
+\begin{itemize}
+    \item Compute $R_K^\star$ with HS
+    \item If some $R_K^\star$ are negative, remove concerned components and relative variances (zero bit coded)
+    \item Repeat until there are no more negative $R$s
+    \item Remove all decimal parts from the obtained values
+    \item Reallocate residual bits to bigger $R$s
+\end{itemize}

@@ -1,0 +1,89 @@
+\subsubsection{Context-based coding}
+It is based on context (near pixels), so joint probability.\\
+How to choose the context? Look the data, or use learning-based techniques to learn prob. distribution.
+\subsection{Other Techniques}
+\subsubsection{Unsigned Exp-Golomb}
+\begin{minipage}{0.5\textwidth}
+    \textbf{Encoder}:
+    \begin{itemize}
+        \item start with $n=0$
+        \item $\forall n \in \{1,2,\cdots\}$ we write $n+1$ in binary
+        \item we compute $b = \left\lfloor\log_2(n+1)\right\rfloor + 1$
+        \item we add $b-1$ zeros in front of the binary number
+    \end{itemize}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+    \textbf{Decoder}:
+    \begin{itemize}
+        \item if next bit is 1 $\to$ set to $0$
+        \item count how leading zeros $(b-1)$ we have
+        \item we read the $b$-sized bitstring
+        \item we get the decimal representation and subtract 1
+    \end{itemize}
+\end{minipage}
+\subsubsection{Signed Exp-Golomb}
+\begin{minipage}{0.5\textwidth}
+    \textbf{Encoder}:
+    \begin{itemize}
+        \item $m(n) = \begin{cases}
+            2n-1 \qquad \text{if }n>0\\
+            -2n \qquad \text{if }n\leq0
+        \end{cases}$
+        \item encode $m(n)$ with previous method
+    \end{itemize}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+    \textbf{Decoder}:
+    \begin{itemize}
+        \item decode with unsigned exp-golomb
+        \item remap $n = \begin{cases}
+            \frac{m+1}{2} \qquad \text{if odd}\\
+            -\frac{m}{2} \qquad \text{if even}\\
+        \end{cases}$
+    \end{itemize}
+\end{minipage}
+\subsubsection{Dictionary-based coding}
+\textbf{Asymptotic Optimality Theorem}:\\
+If stationary and ergodic source, Dictionary-based coding is asymptotically optimal.\\
+Examples of Dictionary-based coding: LZ\footnote{Lempel-Ziv}77, LZ78, LZW\footnote{Lempel-Ziv-Welsch} (used in Deflate, GIF, ZIP), LZMA.
+\subsubsection{LZW coding}
+
+\textbf{Encoder and Decoder - Greedy Matching Process + Dictionary Evolution and Merging}:
+\begin{itemize}
+    \item read inputstream symbol by symbol
+    \item foreach new input, check if (prefix $W$ + next $K$) exists in the dictionary
+    \item if $\exists \ (W+K)$, read next symbol until new pattern.
+    \item if $\not\exists\ (W+K)$, index of longest known $W$ is sent to bitstream, $W+K$ added to dictionary
+    \item then prefix merging and update local statistics
+\end{itemize}
+\subsubsection{Examples of real-life Coding}
+\begin{itemize}
+    \item JBIG-1: template of 10 pixels, progressive coding (context-based arithmetic coding).
+    \item JBIG-2: images classified as text, halftone or other, it is used in PDFs, (context-based arithmetic coding).
+    \item JPEG-LS: Lossless image compression, encoding\footnote{using Exp-Golomb} of $e = x - \hat{x}$, where $\hat{x} = \begin{cases}
+        \min(A,B) \qquad C \geq \max(A,B)\\
+        \max(A,B) \qquad C \leq \min(A,B)\\
+        A+B-C \qquad \text{otherwise}
+    \end{cases}$
+    \item PNG: uses LZ77 + Huffman, not so difficult, can use prediction
+    \item DPCM\footnote{Differential Pulse Coding Modulation}: 1D/2D spatial prediction, encodes error $y = x(n) - p(n) = x(n)-x(n-1)$ (zero-centered)
+\end{itemize}
+\subsubsection{Neural Lossless Coding (NLC) Techniques}
+$$H(P,Q) = H(P) + D_{KL}(P\parallel Q)$$
+It takes into account source entropy $H(P)$ and penalty for model inaccuracy based on Kullback-Leibler distance.\\%(how different are $P,Q$)
+\textbf{Models}:
+\begin{itemize}
+    \item Autoregressive models: causal density estimation
+    \item Latent Variable Models: mapping to manifolds
+    \item Neural Predictive Coding (Non-linear prediction), uses multi-layer Perceptron
+    $$\hat{y} = f_{MLP}(S,W)\to \text{INPUT S: local causal neighborhood}$$
+\end{itemize}
+NLC has an high complexity, is more efficient for high-resolution images. We also need to encode Biases and Weights, still convenient for small NNs but we also need HW requirements = complexity grows.
+\subsubsection{Guidelines to reach $\mathcal{L} \approx \mathcal{H}$}
+\begin{itemize}
+    \item For Memoryless: use Huffman/Arithmetic
+    \item For stationary with memory: use Context-adaptive (Markov Chains)
+    \item For Locally Stationary: use adaptive
+    \item For Highly Complex: use Neural Models
+\end{itemize}
+Dictionary is the best if I have to compress text.

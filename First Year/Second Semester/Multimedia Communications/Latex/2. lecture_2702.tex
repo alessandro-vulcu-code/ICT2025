@@ -1,0 +1,89 @@
+\subsection{Image and Video Representation}
+\subsubsection{Images}
+Images are stored as a $N\times M$ matrix ($f_{n,m}$ with $n \in \{0 \cdots N-1\}, m \in \{0 \cdots M-1\}$).\\
+Sometimes can be useful to use a single index, we define $k = (n-1)M + m \to$ image $f_k$.
+\subsubsection{Color Sampling}
+There are 4 ways to sample color, following the \verb|J:a:b| schema\\
+(J = reference horizontal size, a = chroma samples on 1$^{st}$ line, b = chroma samples on 2$^{nd}$ line)\\
+Common schemes are (J = 4 columns):
+\begin{itemize}
+    \item 4:1:1 $\to$ 1$^\circ$ row is 1 sample (1-4), 2$^\circ$ row is another sample\\
+        $\Rightarrow$ full vertical and 1/4 horizontal resolution
+    \item \textbf{Most Used 4:2:0} $\to$ 1$^\circ$ row has 2 samples (1-2 + 3-4), 2$^\circ$ row reuses the samples (0 further).\\
+        $\Rightarrow$ half vertical and half horizontal resolution
+    \item 4:2:2 $\to$ 4:2:0 but sampled also on second line\\
+        $\Rightarrow$ full vertical and half horizontal resolution
+    \item 4:4:4 $\to$ complete sampling, full resolution
+\end{itemize}
+\subsection{Compression}
+A frame $I$ in a DVB system is identified as:
+$$I : (n,m,T,c) \to x \in \left\{0, \cdots, 2^b - 1\right\} \text{ with }\begin{cases}
+    n = \text{ row}\\
+    m = \text{ column}\\
+    T = \text{ frame period}\\
+    c = \text{ channel}
+\end{cases}$$
+We need compression, keyword: redundancy (delete all unnecessary information), there are 3 types:
+\begin{itemize}
+    \item Spatial and Temporal redundancy (neighbor-pixels are similar)
+    \item Human Sensitivity redundancy (psychovisual)
+    \item Semantical redundancy (images described by words)
+\end{itemize}
+Compression Ratio $=\frac{B_{in}}{B_{out}}$
+\subsubsection{Lossless Techniques}
+\begin{itemize}
+    \item Bit-by-bit identical representation
+    \item useful for X-rays, and medical images.
+    \item not so much compression
+\end{itemize}
+\subsubsection{Lossy Techniques}
+\begin{itemize}
+    \item decoded $\neq$ original
+    \item we compress much more
+    \item visually lossy compression + then lossless to squeeze even more
+\end{itemize}
+\subsection{Quantization}
+We need to have signal sparsification (information is concentrated in specific samples while other are not so much different).
+\subsubsection{Quality Evaluation}
+We need to define some parameters, given $f$ original image matrix, and $\tilde{f}$ the reconstructed one, we can define the Error Image: $\xi(f,\tilde{f}) = f - \tilde{f}$ 
+\subsubsection{Peak SNR (PSNR)}
+$$PSNR(f, \tilde{f}) = 10 \log_{10}\left(\frac{V^2}{D(f, \tilde{f})}\right)$$
+where D is the MSE of the difference: $D(f,\tilde{f}) = \frac{1}{NM}||\xi(f,\tilde{f})||^2$, and $V$ is the max value which a color can be.
+Typical values:
+\begin{itemize}
+    \item over 40: perfect image, lossless
+    \item equal 40: very high quality
+    \item between 30 and 40: some errors visible
+    \item below 30: problems
+\end{itemize}
+\subsubsection{Weighted Peak SNR (WPSNR)}
+Instead of D we use Weighted D $D_{W}(f,\tilde{f}) = \frac{1}{NM}||h\star\xi(f,\tilde{f})||^2$, such that:
+$$WPSNR(f, \tilde{f}) = 10 \log_{10}\left(\frac{V^2}{D_W(f, \tilde{f})}\right)$$
+\subsubsection{Other criteria}
+\begin{itemize}
+    \item SSIM: Percepted quality metric
+    % Integrated from Summaries
+    $$SSIM(x,y) = \frac{(2\mu_x\mu_y + C_1)(2\sigma_{xy}+C_2)}{(\mu_x^2+\mu_y^2+C_1)(\sigma_x^2+\sigma_y^2+C_2)} \in [0,1]$$
+    Product of 3 components: \textbf{luminance} ($\mu$'s), \textbf{contrast} ($\sigma$'s), \textbf{structure} ($\sigma_{xy}$). Computed per block, then averaged. Captures what MSE misses: same MSE can give very different perceived quality (contour errors least visible, high-frequency noise most visible).
+    \item LPIPS: Neural-Network based quality metrix (Deep-Perceptual Metric), distance in feature space of a pre-trained NN instead of pixel space. Low PSNR can coexist with high perceptual plausibility.
+\end{itemize}
+PSNR/SSIM are objective proxies; the ground truth is the human observer (\textbf{subjective criteria}): expensive and slow, so NP-OC are used in practice. Modern approach: report all three (PSNR, SSIM, LPIPS).
+% Integrated from Summaries: full criteria list (sample exam question)
+\subsubsection{Criteria to evaluate a compression algorithm}
+Beyond \textbf{rate} (compression ratio, bpp) and \textbf{quality} (distortion metrics above), three more axes:
+\begin{itemize}
+    \item \textbf{Complexity}: limited by real-time constraints, hardware, economic cost
+    \item \textbf{Delay}: measured at the encoder; related to complexity but mainly driven by the \emph{coding order} (how far ahead the encoder must look, e.g. B-frames)
+    \item \textbf{Robustness}: sensitivity of the compressed stream to transmission losses.\\
+    In uncompressed images a bit flip stays local; with compression there is \textbf{error propagation} (problem for noisy channels)
+\end{itemize}
+Design tensions: quality $\uparrow$ conflicts with rate $\downarrow$; robustness $\uparrow$ conflicts with complexity $\downarrow$ and delay $\downarrow$. Modern design balances all five.
+\section{Scalar and Predictive Quantization}
+Quantization = control the number of bits used for representing some samples\\
+$\theta^i$ are the quantization region/cells $ = (t^i, t^{i+1})$\\
+There is a total of $(L+1)$ thresholds and $L$ levels, total of $2L+1$ elements.
+Mathematical definition:
+$$Q : x\in \mathbb{R} \to y \in C = \{\hat{x}^1, \cdots \hat{x}^L\} \subset \mathbb{R}$$
+Cell-size $\Delta = \frac{2\text{Amplitude}}{L}$, higher nr. of levels = smaller error\\
+Quantization process can be seen as a coding-decoding process.
+$$\stackrel{x}{\longrightarrow}\boxed{E_{\theta^i}}\stackrel{i}{\longrightarrow}\qquad \qquad \qquad \qquad \stackrel{i}{\longrightarrow}\boxed{D_{C}}\stackrel{\hat{x}}{\longrightarrow}$$

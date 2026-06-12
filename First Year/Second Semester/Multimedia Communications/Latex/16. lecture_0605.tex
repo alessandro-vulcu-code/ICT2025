@@ -1,0 +1,116 @@
+\section{Modern Video-Compression Standards}
+\subsection{Universal Hybrid Video Encoder}
+From MPEG-1 going on they use all the same structure, core points:
+\begin{itemize}
+    \item Spatial (intra) and temporal (inter) prediction
+    \item Residual calculation
+    \item Transform and Quantization
+    \item Internal closed loops to provide reliability
+\end{itemize}
+Rule of thumb: every generation reduces video size by $1/2$ and increases complexity by $10\times$
+\subsubsection{Codecs applications}
+\begin{itemize}
+    \item Real Time $\to$ H.264 (very diffused, also in HW implementations since 2003)
+    \item Broadcast $\to$ H.264 + HEVC, growing HEVC market share
+    \item Web Streaming $\to$ H.264 + HEVC + AV1 (still royalty free)
+    \item Next-Generations $\to$ need to use massive bitrates of raw video $\to$ VVC, AV1
+\end{itemize}
+\subsection{Rate-Distorsion Optimization}
+$$J = D + \lambda R$$
+Using the R-D optimization method we have a huge number of options, how do we choose the best mode?\\
+The solution is to work in blocks $\to$ Block Partitioning Problem
+\subsubsection{Block Partitioning Problem: H.264}
+In H.264 we use macroblocks $16 \times 16$, it allows further splitting until $4 \times 4$ blocks, useful to compute edges.\\
+Still this size is too low for High-Resoluton videos, we need something more.
+\subsubsection{Block Partitioning Problem: H.265/HEVC}
+HEVC uses a Quad-Tree paradigm, it is like a 2D binary tree.\\
+A certain CTU (Code Tree Unit) can be split into 4 CU (Coding Units), then a CU becomes a CTU and we can apply this recursively.
+Standards should provide only the syntax, we need to do the actual implementation.\\
+We continue splitting until another split provides no more improvement, and complexity becomes reasonable.\\
+CU can be split even in asymmetrical quantities into the PU (Prediction Units), then we use S and T prediction.
+\subsubsection{Block Partitioning Problem: H.266/VVC}
+It uses the same paradigm but here we have a 10-way superblock partitioning, we can binary and ternary split.\\
+How can we build the decision tree? Depth First Search:
+\begin{itemize}
+    \item Encode Block, freeze it
+    \item Go to the next neighbor block
+    \item Iterate until all blocks are encoded
+\end{itemize}
+If the block is flat, doesn't make any sense to partition it.\\
+In this case we also have a huge number of possible partitions, but we give up in looking all possible choices.\\
+This is like a classification among pixel groups, ML and NN are good in solving these problems.\\
+Researchers are looking for a light NN to exploit this.
+\subsection{Spatial and Temporal Frame Prediction}
+\subsubsection{Intra Prediction}
+We want to exploit spatial prediction among neighbors.
+Instead of trying just one prediction we use different predictors in parallel for the same block, then we pick the best one. We have to signal this to the Encoder.\\
+We take one director-per-block instead of one-per-pixel (it is too much bits wasted):
+% Integrated from Summaries: exact mode counts per standard
+\begin{itemize}
+    \item \textbf{H.264/AVC}: 9 modes for $4\times4$ blocks (\textbf{8 directional + DC}); 4 modes for $16\times16$ blocks (2 bits). A $16\times16$ MB split in 16 $4\times4$ subblocks has ideally $9^{16}$ combinations: done sequentially to cut them down.
+    \item \textbf{H.265/HEVC}: \textbf{35 modes = 33 directional + DC + Planar}, to handle complex textures.
+    \item \textbf{H.266/VVC}: \textbf{65 directional modes + wide-angle} modes for non-square blocks.
+\end{itemize}
+Predictors grow exponentially with the signaling bits: $P \propto 2^B$. With 67 modes, $\approx 7$ bits/block of pure signaling would destroy the gain on $4\times4$ blocks.\\
+\textbf{MPM: Most Probable Mode} idea, ENC predicts which is the most probable direction using the spatial context: a candidate list is built from the modes chosen by top and left neighbors (HEVC: 3 candidates, VVC: 6). If the chosen mode is in the list, 1--2 bits suffice; only if it fails long codewords are used.
+\subsubsection{Inter Prediction}
+Here we use Fractional Motion Compensation, each frame is computed using multiple reference frames.\\
+Foreach image in the GOP, we have to say what is the List of frames used for prediction.\\
+ Here complexity $\propto$ size of bits. How do we encode the motion vectors?\\
+A better strategy is to produce a list of predictors and encode the indexes.
+\subsubsection{Merge Mode}
+Used in AV1/VVC, not only picks the pixels but also applies affine transformation on the blocks, thus producing a complexity increase.
+\subsection{Filtering, Transforms and Quantization}
+\subsubsection{Residual Coding}
+DCT problem: we want floating number operations (too complex for an encoder, must be quick).\\
+Solution: just use integer power of 2, such that multiplications are bit shifts and we have also $\pm$ operations.\\
+We don't provide quantization table, but a similar Quantization Parameter ($\propto$ dB step size)\\
+% Integrated from Summaries
+\textbf{QP behavior} (H.264/HEVC): the quantization step \textbf{doubles every +6 of QP}; empirically +1 QP $\approx$ $-12.5\%$ rate. QP is the main knob for rate control.\\
+Entropy coding standardized around \textbf{CABAC} (Context-Adaptive Binary Arithmetic Coding): binarizes syntax elements and adapts probabilities on spatial context; $5\to15\%$ rate saving over older VLC (CAVLC).
+% Integrated from Summaries: deblocking is a sample exam question
+\subsubsection{In-loop Deblocking Filter}
+\textbf{Why artifacts}: transform and quantization are applied \emph{independently on disjoint blocks} $\Rightarrow$ at low bitrate strong discontinuities (\textbf{blocking artifacts}) appear at block boundaries.\\
+\textbf{Why in-loop} (and not just post-processing): uncorrected artifacts would be stored in the Decoded Picture Buffer and copied around by future motion compensations, propagating the damage. The filter is \textbf{normative} (inside the reconstruction loop, identical at encoder and decoder to keep sync).\\
+\textbf{Key insight}: artifact locations are known a priori --- the block edges --- so we apply adaptive smart smoothing there, without blurring real image edges.
+\begin{itemize}
+    \item \textbf{H.264/AVC deblocking}: analyzes edges between $4\times4$ blocks; filtering strength adapts dynamically to coding mode, motion vectors and quantization step of the neighboring blocks.
+    \item \textbf{H.265/HEVC}: deblocking only on $8\times8$ grid (less complexity) + \textbf{SAO} (Sample Adaptive Offset): classifies pixels by edges/bands and adds offsets to fix ringing artifacts.
+    \item \textbf{H.266/VVC}: adds \textbf{ALF} (Adaptive Loop Filter) and LMCS (HDR detail preservation).
+    \item \textbf{AV1}: CDEF directional filters, Wiener loop-restoration filters, film grain synthesis (grain re-synthesized at decoder at zero rate cost).
+\end{itemize}
+\subsubsection{Slices}
+Error corruption behavior: artifacts highlight due to error propagation in compression.\\
+How can we prevent this? Slices are subparts of the frame, that are independently encoded, such that we can parallel-encode them, because we don't use them for prediction.\\
+At Intra Frames CABAC\footnote{Context-Adaptive Binary Arithmetic Coding} is reset.
+\subsection{Network parallelism}
+All the video data is encoded into a bitstream.
+\subsubsection{NALU}
+\begin{itemize}
+    \item VCL NALUs: contain all the compression data for a slice, can be IDR\footnote{Istantaneous Decoding Refresh, video access point} (I + CABAC reset) or non-IDR
+    \item non-VCL NALUs: contain SPS, PPS, SEI
+    \begin{itemize}
+        \item SPS: Sequence Parameter Set (picture size, color depth,...)
+        \item PPS: Picture Parameter Set (coding specific parameters)
+        \item SEI: Supplemenetal and Enhancement Infos (Subtitles, HDR infos, ...)
+    \end{itemize}
+\end{itemize}
+NALUs are then packetized into a sequential bit stream, there are 2 ways to signal the NALU (H.264/HEVC):
+\begin{itemize}
+    \item Start Code $0x00000001$: it is used but we have problems if this sequence is repeated in a nalu (start code mismatch), we have to use Emulation Prevention Techniques
+    \item Length Header: before the NALU we specify the actual NALU length, such that we can read it or skip it.
+\end{itemize}
+Actual Sequence using Annex-B ordering is:
+$$\begin{aligned}
+    \boxed{\text{SPS}}\boxed{\text{PPS}}&\boxed{\text{AUD}}\boxed{\text{SEI}}\boxed{\text{I slice }1\to 4}\\
+    &\boxed{\text{AUD}}\boxed{\text{SEI}}\boxed{\text{P slice }1\to 2}\\
+    &\boxed{\text{AUD}}\boxed{\text{SEI}}\boxed{B_1\text{I slice }1}\\
+    &\boxed{\text{AUD}}\boxed{\text{SEI}}\boxed{B_2\text{ slice }1}\\
+\end{aligned}
+$$
+AV1 drops this approach and uses OBUs (Open Bitstream Units), in CDNs there are MANE\footnote{Media Aware Network Elements} that can allow to change the bitstream on the fly to add redundance or remove unnecessary NALUs.\\
+Decoder accesses video at RAPs (Random Access Points), there are 2 main access techniques:
+\begin{itemize}
+    \item IDR: Technique to clear previous buffer at a certain intra frame. It breaks bidirectional temp. prediction
+    \item CRA (Clear Random Access): we just skip some images because they are not decodable.
+\end{itemize}

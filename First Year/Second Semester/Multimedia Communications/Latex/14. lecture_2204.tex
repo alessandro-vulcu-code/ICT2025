@@ -1,0 +1,111 @@
+\newpage
+\subsubsection{Full-Search research strategy}
+We consider windows of the image, with size $=(2A+1)\times (2B+1)$.\\
+Then we build a $(2A+1)\times (2B+1)$ SSD matrix, this brings $\propto n^2$ complexity.
+By searching the minimum of the SSD matrix, it is the best possible vector that can be used to approximate the window.
+\subsubsection{Fast Research Methods: 3SS (Three step search, 2D-log)}
+The use of Full-search is computationally expensive, we need strategies to test less positions in the window. Assuming error function is unimodal $\Rightarrow \exists$ one global minimum.\\
+3SS method allows to test only 9 positions ($x \in \{0, \pm A/2\}$,$y \in \{0, \pm B/2\}$).Avoiding to compute $89\%$ operations.\\
+We recursively apply this method on the sub-windows centered in the minimum valued element of the matrix, and also reducing the size of the sub-matrix by a half, until we get a 1-pixel subwindow.
+\subsubsection{Fast Research Methods: Diamond Search}
+We rotate the initial 9-points structure by 45 degrees, thus we use a diamond pattern to search, new iteration can cost from $3$ (diagonal displacement) to $5$ (horizontal/vertical displacements) positions to compute.\\
+Recursively refining until final refinement is done through a cross-shaped 5-position small diamond.\\
+Avoiding to compute $90\%$ operations.
+\subsubsection{Fast Research Methods: Hex Search}
+As the diamond search, here we use an hexagon-like shape with 7 positions to compute. Horizontal, vertical and diagonal displacements cost 3 positions to compute.
+Final refinement is done through the same cross-like shape of the diamond search. Avoiding to compute $92\%$ operations.
+\subsubsection{Fast Research Methods: TZSearch}
+Robust to local minima, phases:
+\begin{itemize}
+    \item Search predictors: search time/space neighbors, if low error stop
+    \item Adaptive loop: if no predictor is good, use diamond/square search increasing steps
+\end{itemize}
+\subsubsection{BM Improvement: Sub-pixel precision}
+With half pixel precision, we can reduce cost function because we have more options.\\
+Problem: we have to increase resolution, we can use some interpolation methods, steps:
+\begin{enumerate}
+    \item select a certain pixel $(\hat{i}, \hat{j})$
+    \item we test $(\hat{i}\pm \frac{1}{2}, \hat{j}\pm \frac{1}{2})$
+    \item recursively we test all subpixels with $1/4, 1/8$...
+\end{enumerate}
+\subsubsection{BM Improvement: Variable Blocksize}
+Foreach block $b$ of size $B$ in image $F$:
+\begin{itemize}
+    \item calculate $J = D + \lambda R$
+    \item divide b into 4 subblocks
+    \item compute $J_i$ $\forall i$ subblocks, $J_{sub} = \sum J_i$
+    \item if $J_{sub} < J(v)$ apply algorithm to subblocks, else keep and store MV
+\end{itemize}
+\subsection{Parametric Methods}
+We want MVF as a function of each pixel, degrees of freedom = parameters of the function.\\
+\subsubsection{Affine Model}
+$$\vec{v}(p) = \vec{b} + Bp = \left[\begin{matrix}
+    b_1\\
+    b_2
+\end{matrix}\right] + \left[\begin{matrix}
+    b_3 & b_4\\
+    b_5 & b_6
+\end{matrix}\right]p$$
+Special case if $B=0 \to$ translation (Block Matching), other possible intermediate cases are:
+\begin{itemize}
+    \item Zoom In or Zoom Out
+    \item Rotations
+    \item Displacement (Translations)
+\end{itemize}
+\subsubsection{Best possible parameters}
+Which are the best possible parameters? We know the affine model has 6 parameters $\pi = \left[b_1 \cdots b_6\right]$\\
+\textbf{Indirect Estimation}
+$$\pi^\star = \arg\min_{\pi}\sr{}{n,m\in R}\left[u(n,m)-u_\pi(n,m)\right]^2 + \left[v(n,m)-v_\pi(n,m)\right]^2$$
+\textbf{Direct Estimation}, first approach
+$$\pi^\star = \arg\min_{\pi}\sr{}{n,m\in R}\left[u_\pi(n,m)f_x(n,m) + v_\pi(n,m)f_y(n,m) + f_t(n,m)\right]^2$$
+\textbf{Direct Estimation}, second approach (SAD/SSD minimization)
+$$\pi^\star = \arg\min_{\pi}\sr{}{n,m\in R}\left[f(n-u_\pi(n,m),m-v_\pi(n,m), t-1) - f(n,m,t)\right]^2$$
+\subsection{Deep-Learning for Motion Estimation}
+\begin{itemize}
+    \item Specialized architectures (CNNs)
+    \item Large-scale datasets for training (Synthetic or Real, used by some game video quality enhancement tools)
+    \item High computational power of inference by using GPUs (in the last few years)
+\end{itemize}
+\subsubsection{Time evolution}
+\begin{itemize}
+    \item First Generation: \textbf{FlowNet (2015)}, first CNN for motion estimation (input images, output optical flow)
+    \item Second Generation: \textbf{FlowNet 2.0 (2017)}, better tradeoff complexity-performance
+    \item Third Generation: \textbf{PWC-Net (2018)}, faster and quite efficient in complexity, easier to implement
+    \item Nowadays:\textbf{RAFT (2020)}, slower than PWC-Net, precise on thin structures, iterative updates and GRU\footnote{Gated Recurrent Unit}.
+\end{itemize}
+\subsubsection{Usage Comparison}
+DL methods has the best efficiency in analysis tasks (Optical Flow).\\
+DL methods used in real-time video coding need to be tuned by practical constraints.\\
+\textbf{Advantages}: Robustness, high precision\\
+\textbf{Challenges}: Generalization on different datasets, computational cost to be optimized.
+\section{Video-coding Principles}
+We want to exploit both spatial redundancy and temporal redundancy.
+\subsection{Block Schema}
+$$x \longrightarrow \boxed{\text{Temporal Compression}} \longrightarrow \boxed{\text{Spatial Compression}} \longrightarrow \boxed{\text{Buffer}} \longrightarrow$$
+Can we swap Temporal and Spatial compression blocks? Yes but it isn't used because it doesn't make sense.
+\subsection{Block-Matching motion estimation}
+$$J(v) = d(B_k^{(p)},B_h^{(p+v)}) + \lambda_{ME}R(v)$$
+How can we build the prediction using motion estimation? Motion Compensation
+\subsubsection{Motion Compensation}
+$$\hat{I}_k(p) = I_h(p + v^\star(p))$$
+Sometimes MC works better and sometimes it works worse, solution: adaptive blocks.
+\subsubsection{Adaptive block coding}
+\begin{itemize}
+    \item Intra Coding: encode block as it is
+    \item Inter Coding: use other images to predict it
+\end{itemize}
+$\forall B_k^{(p)}$ block of image k:
+\begin{itemize}
+    \item compute $J(v)$
+    \item find the $v^\star = \arg\min_pv(p)$
+    \item encode block:
+    \begin{itemize}
+        \item If intra: encode in a JPEG-like way
+        \item If Inter:
+        \begin{itemize}
+            \item Decode $v^\star$ motion vector
+            \item Decode predictor error blocks $E_p^{(b)}$
+            \item Correct blocks
+        \end{itemize}
+    \end{itemize}
+\end{itemize}

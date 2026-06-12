@@ -1,0 +1,66 @@
+EXAM: Learn the Finite State Machine diagram and values $\to$ saw-tooth behavior.
+\subsubsection{Client Scoring-Policy Design}
+Assume $K(n)$ is the quality of segment $n$, then we want a function to assign each $K(n)$ a score: ideally MOS.\\
+The QoE needs to take into account:
+\begin{itemize}
+    \item Per-segment video quality
+    \item Penalize High Buffering Times
+    \item Penalize frequent quality switching
+\end{itemize}
+Let's take $Q(n) = K_n$ or $Q(n) = R(K_n)$, and define $\Delta_n =$ duration of rebuff. during playout at segment $n$.\\
+We can define $J(n)$ as the score for playout of segment $n$, takes into account quality switches and rebuffering:
+$$J(n) = \lambda_1 K_n - \lambda_2 \left|K_n - K_{n-1}\right| - \phi(\Delta_n) \qquad \Rightarrow J(n) \propto K_n$$
+To have a general score we define the final $J$ by taking into account the first buffering event:
+$$J = \sr{N}{n=1}J(n) - \lambda_3 T_{ST}$$
+\subsection{ABR Strategies}
+\subsubsection{Throughput-based ABR}
+Goal: given an estimate of the current $S(t)$ let's check if segment arrives in time for playout.\\
+Estimated Throughput: $$S(n) = \frac{D(n)}{T_D(n)}$$
+By using a smoothing filter (EMA):
+$$\hat{S}(n) = \alpha S(n) + (1- \alpha)\hat{S}(n-1)$$
+Decision Rule:
+$$R(n) \leq \eta \hat{S}(n) \qquad \Longrightarrow \text{typical value }\eta = 0.85$$
+Problem: here we totally ignore buffer status (buffer blindness).
+\subsubsection{Buffer-based ABR}
+Strategy: select low quality if buffer is always empty, full quality if buffer is always full, linear behavior in the middle (2 thresholds to set).
+Problem: here we totally ignore network status.
+\subsubsection{Hybrid ABR strategy}
+Takes into account both strategies: it wants to maximize $J(n)$ as defined before. Pseudoalgorithm:
+\begin{enumerate}
+    \item Set $J_{\min} = \infty$
+    \item $\forall l \in \{1\cdots k\}$:\\
+    Assuming constant $\hat{S}$ in the interval and $R = R(l)$, $\beta = \frac{\hat{S}}{R_c} -1$, $B(t) = B_0 + \beta t$
+    \begin{itemize}
+        \item if $\beta \geq 0$ set $\Delta = 0$ (won't empty while downloading)
+        \item if $\beta < 0$, compute $t_0 = \frac{B_0}{1 - \hat{S}{R}} = \frac{RB_0}{R - \hat{S}}$ emptying time, and check:
+        \begin{itemize}
+            \item if $t_0 \geq T_s$ set $\Delta = 0$
+            \item if $t_0 < T_s$ set $\Delta = \frac{R}{\hat{S}}\left(T_s + MT_s\right)$
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+Server is totally unaware of what the client does, just serves what requested.
+\subsubsection{Learning-Based ABR}
+What works well: Reinforcement Learning techniques (State, Action, Reward)
+\subsubsection{Multiplayer Competition}
+Goal: guarantee the best possible average quality among all users.\\
+\begin{minipage}{0.475\textwidth}
+    \textbf{What are the Pathologies:}
+    \begin{itemize}
+        \item BW unfairness
+        \item Inefficiency (under-utilization)
+        \item Instability (synchro-flicker effect)
+    \end{itemize}
+\end{minipage}
+\begin{minipage}{0.475\textwidth}
+    \textbf{What ABR Provides:}
+    \begin{itemize}
+        \item Fairness
+        \item Efficiency
+        \item Stability
+    \end{itemize}
+    by using `Implicit Coordination' mechanisms
+\end{minipage}
+\subsubsection{Neural Video Coding}
+Uses Learned Transforms (instead of DCTs), Learned Motion Estimation (instead of Block Matching), Learned Entropy Modeling to reach a Joint R/D optimization. There is a unified loss function to be able to use many differential metrics, like MS-SSIM and VMAF (useful as an indicator of Human perception):
+$$\mathcal{L} = D(x,\hat{x}) + \lambda R(\hat{y})$$

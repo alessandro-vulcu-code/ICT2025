@@ -1,0 +1,92 @@
+\subsection{Towards Optimal Transform}
+\subsubsection{Karhunen-Lo\`eve Transform (KLT)}
+Assuming we have $X$: zero mean random vector of size $M$\\
+Such that $R_X = E[XX^T]$, $R_X$ has M orthogonal eigenvectors $u_1 \cdots u_M$\\
+Then KLT $\equiv$ an orthogonal Matrix $T_{KLT}$ where the rows are the eigenvectors:
+$$T_{KLT} = \left[u_1 \ \vdots\ u_2\ \vdots\ \cdots\ \vdots\ u_M\right]^T$$
+\textbf{Properties}:
+\begin{itemize}
+    \item $T_{KLT}^{-1} = T_{KLT}^T$
+    \item Decorrelating transofrm, $E[y_iy_j] =\lambda_i \delta_{ij}$
+    \item Best energy correlation (sparsity) $\forall N \in \{1 \cdots M\} : \sum E[y_i^2] \geq \sum E[z_i^2]$
+\end{itemize}
+3D intuition: take the spatial direction of point distribution and rotate it to the max,medium,min power axis. After transform we have sparsity and size reduction (Similar to ML PCA = Principal Component Analysis).\\
+In the case of Gaussian data, this transform minimizes the geometric mean.\\
+Example of usage: Multi/Hyper spectral imaging, where there is a large correlation across spectral bands.\\
+KLT is not used typically in image codecs, due to:
+\begin{itemize}
+    \item Computational Complexity $\propto O(N^3)$ for eigenvectors, $O(N^2)$ for matrix multiplications
+    \item Signaling overhead, $T_{KLT}$ sent apart
+    \item Model Correctness: images are locally stationary
+\end{itemize}
+\subsection{Frequency Transforms}
+\subsubsection{1D-DFT for Compression}
+DFT = Discrete Fourier Transform
+$$y[k] = \frac{1}{\sqrt{M}}\sr{M}{n=1}x[n]\exp\left(-j\frac{2\pi}{M}kn\right) \qquad \forall k = \{1 \cdots M\}$$
+It is the same as a $T_{DFT}$ transform where:
+$$T_{DFT} = \frac{1}{\sqrt{M}} \left[W_m^{i \cdot j}\right] \qquad \text{where} \begin{cases}
+    i \in \{0 \cdots M-1\}\\
+    j \in \{0 \cdots M-1\}\\
+    W_m = \exp\left(-j\frac{2\pi}{M}\right)
+\end{cases}$$
+\subsubsection{2D-DFT for Compression}
+$$y = Ax \qquad \text{where } A \text{ has size }N^2 \times N^2$$ 
+\subsubsection{DFT Separable Implementation}
+$$Y = \left(T X\right)T^T \qquad \qquad \text{with 2D basis func. }B_{kl}(n,m)=\frac{1}{N}\exp\left(j\frac{2\pi}{N}(kn+lm)\right)$$
+First product $TX$ analyses the col. (V) frequency variation, while product with $T^T$ makes the row (H) analysis.\\
+By sampling and periodizing the signal $\Rightarrow$ big jumps in the signal at period start/end $\Rightarrow$ \textbf{Frequency Leakage}.\\
+In Frequency Leakage some energy leaks to the high frequencies (due to the big jumps = high variation).\\
+Plotted DFT has a cross-like structure, usually it is plotted the $\log_{10}|DFT|$ version of the data\\
+IDEA: why don't we put a mirror on the signal instead of periodizing, s.t. we reduce big jumps?
+\subsubsection{DCT Transform Matrix}
+DCT = Discrete Cosine Transform, steps to obtain it:
+\begin{itemize}
+    \item Create a mirrored-periodic version of $x \to x_{sym}$
+    \item DFT of $x_{sym}$
+    \item Apply frequency domain modulation (to obtain real coefficients)
+    \item Keep only M coefficients
+\end{itemize}
+\subsubsection{1D-DCT Transform}
+$$T_{DCT} = \forall n = \{0 \cdots M-1\} \to \begin{cases}
+    \frac{1}{\sqrt{M}} \qquad\qquad\qquad\qquad k=0\\
+    \sqrt{\frac{2}{M}}\cos\frac{\left(2n+1\right)k\pi}{2M} \qquad k>0
+\end{cases}$$
+\subsubsection{2D-DCT Transform: Block-Based DCT}
+We just apply the DCT on both the horizontal and vertical axis.\\
+Usually we apply an $n\times n$ block-based DCT transform, so with 64 vector of the basis.\\
+The $n\times n$ matrix represents no variations with the UL corner, total horizontal variation on the UR corner, total vertical variation on the BL corner and a combination of total H/V variation in the BR corner.\\
+Using the Block-Based DCT we get a very sparse signal, it is good because we apply the transform on blocks of the image: blocks are locally stationary, if there are more informations we use more bits, otherwise no.\\
+How to decide the quantization step of each coefficient?
+\begin{itemize}
+    \item Adaptive Solutions: based on HS formula, or Greedy algorithm
+    \item Fized Quantization Step: faster and used in JPEG
+\end{itemize}
+\subsection{JPEG}
+It is a standard, guarantees interoperability and implementation competition (decoder is regulated by the standard but every producer can make its own encoder, but it needs to guarantee interoperability).\\
+If we have 1 component $\to$ BW images, for color images $\to 3$ components: YCbCr.
+\subsubsection{Encoding Strategy}
+\begin{itemize}
+    \item Take a block
+    \item Subtrack the average value (128)
+    \item Apply DCT on the blocks
+    \item Quantization using Mid-Tread UQ $\to \tilde{C}_{ij} = \text{round}\left(\frac{C_{ij}}{q_{ij}}\right)$
+    \item Zig-Zag Scan
+    \item Entropy Coding (Huffman)
+    \item Compressed Data in JPEG format
+\end{itemize}
+\subsubsection{Quantization-step table}
+What is the $q$ table?\\
+It is the quantization-step table: steps $\propto$ human sensitivity to the DCT components (64 byte table, $n \times n$ size).\\
+Usually we use the $q^\star$ table, which has been made experimentally on scientific tests, bigger steps for lower sensitivity (BR corner), shorter steps for UL corner components.
+\subsubsection{Scaling Factor and Quality}
+The Quantization step table can be scaled by a factor $S_F$ depending on the quality we want:
+$$S_F = \begin{cases}
+    \frac{5000}{Q} \qquad\qquad 1 \leq Q \leq 50\\
+    200 -2Q \qquad 50 < Q \leq 99\\
+    1 \qquad \qquad\qquad Q = 100
+\end{cases} \qquad \text{such that actual }q \leftarrow \frac{S_F}{100}q^\star$$
+\subsubsection{Zig-Zag Coding}
+We need a bitstream from the matrix. To encode the sparse matrix we use prediction + Huffman for the DC component, while the others are encoded using `run-length' coding.\\
+Run-length coding: scanning sequentially the matrix and representing the value as $(i,j)$ where $i = $number of zeros before, and $j$ the actual value.\\
+In this case the sequential scan is made with a zig-zag technique, final representation is:
+$$\text{for the n-th block: }\qquad \left[ DC_{n} - DC_{n-1},\qquad (i,j) \to (\text{zig-zag}),\qquad \text{EOB: End of Block}\right]$$

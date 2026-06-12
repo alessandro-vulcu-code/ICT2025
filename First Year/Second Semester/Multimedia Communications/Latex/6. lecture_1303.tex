@@ -1,0 +1,75 @@
+\subsection{Optimal Code}
+\subsubsection{Math Formulation}
+\begin{itemize}
+    \item $\forall i = 1 \cdots M,\ l_i \in \mathbb{N}$ satisfies Kraft Inequality
+    \item Average length $\mathcal{L} = \sr{M}{i=1}p_il_i$
+\end{itemize}
+Constrained Minimization Problem to find the optimal length $\mathcal{L}$ (it is a lowerbound): 
+$$\vec{l}^\star = \arg\min_{\vec{l}}\sr{}{i}p_il_i \qquad\text{subject to Kraft: }\sr{}{i}2^{-l_i} = 1 $$
+Appyling the Lagrangian Multipliers method we end up with:
+$$p_i = 2^{-l_i^\star} \qquad\Longrightarrow\qquad \mathcal{L}^\star = -\sr{}{i}p_i \log_2 p_i = H(x)$$
+\subsubsection{Shannon's source coding theorem}
+$$\forall i \in \{1\cdots M\} \qquad \exists k \in \mathbb{N} \qquad : \qquad H(x) \leq \mathcal{L}^\star \leq \mathcal{L} < H(x) + 1$$
+Upper band proof: using $l_i = \left\lceil - log_2 p_i \right\rceil$, we prove that satisfies Kraft's (having $\delta_i \in \{0,1\}$, $\epsilon_i = 2^{\delta_i}$)
+$$l_i = -\log_2 p_i + \delta_i \qquad\Longrightarrow\qquad 2^{-l_i} = p_i 2^{\delta_i} \qquad\Longrightarrow\qquad \sr{}{i}2^{-l_i} = \sr{}{i}p_i\epsilon_i \leq \sr{}{i}p_i = 1$$
+Average length proof
+$$l_i = \left\lceil - log_2 p_i \right\rceil < - log_2 p_i +1 \qquad \Longrightarrow \qquad \sr{}{i}p_i l_i < \sr{}{i}(-p_i \log_2 p_i + p_i) \Longrightarrow \mathcal{L} < H(x) + 1$$
+\subsubsection{Huffman Coding}
+\begin{enumerate}
+    \item Build leaves nodes with respective probability
+    \item Take the two least probable nodes
+    \item Merge these nodes, keeping the sum of the probabilities
+    \item Re-sort all the nodes in descending order of probability
+    \item Iterate these steps (from 2.) until we reach a single node with $p=1$
+    \item Assign at each branch either 0 or 1.
+\end{enumerate}
+Using only PQ + Huffman Coding we cannot reach $< 1$bpp coding rate, how can we do better?
+\subsubsection{Block Coding}
+We take $X^K$ as blocks of $K$ symbols: we also know that $H(X^K) \leq \mathcal{L}^\star < H(X^K) + 1$ for Shannon, by scaling:
+$$H(X^K) \leq \mathcal{L}^\star < H(X^K) + 1 \qquad\Longrightarrow \qquad \frac{H(X^K)}{K} \leq \frac{\mathcal{L}^\star}{K} < \frac{H(X^K)}{K} + \frac{1}{K}$$
+We can make $\frac{1}{K} \to 0$ if we grow block size to $K \to \infty$.
+$$\text{Avg. length per symbol }\mathcal{L}_s^\star \approx \frac{H(X^K)}{K}\leq H(x)$$
+We define now the Entropic Rate of the source (ultimate bound for lossless coding):
+$$\lim_{k\to\infty}\frac{H(X^k)}{k} = \mathcal{H}(X)$$
+% Integrated from Summaries
+\subsubsection{Limits of Huffman}
+\begin{itemize}
+    \item Complexity \textbf{exponential} in $K$: block alphabet has $M^K$ words
+    \item Joint probability estimation for large blocks is costly and unreliable
+    \item Cannot handle $H(X) < 1$ efficiently symbol by symbol (min 1 bit/symbol)
+\end{itemize}
+Arithmetic coding solves at least the complexity problem: \textbf{block coding with linear complexity} $O(n)$, encoding the whole sequence as a single interval in $[0,1)$. Penalty only $+2$ bits \emph{per block}, vs Huffman's $+1$ bit \emph{per symbol}.
+\subsubsection{Arithmetic coding}
+The alphabet is $M$ long, we take a $K$ block. Huffman Alphabet has $M^K$ possible words.\\
+Since complexity increases with growing $K$, we take a suboptimal code (excluding non-sensed words).\\
+IDEA:
+\begin{itemize}
+    \item Take a squence
+    \item Each symbol $\in [0,1]$
+    \item For each new symbol use 2 multiplications and 2 sums to update interval.
+    \item We encode each symbol with a number (the center of the probability interval $c_i = c_{i-1} + \frac{p_{i} - p_{i-1}}{2}$)
+\end{itemize}
+How many bits do we need? %Basically we take recursively symbols by rescaling interval based on chosen-symbol's probability.
+$$\left\lceil-\log_2 p_i\right\rceil+1 < -\log_2 p_i+2$$
+So basically we have:
+\begin{itemize}
+    \item Length:
+    $$L(n) = -\left\lceil\sr{n}{i=1}\log_2 p(x_i)\right\rceil + 1 = E[\bar{L}(n)]$$
+    \item Average Length: 
+    $$\bar{L}(n) = \frac{-\sr{n}{i=1}\log_2 p(x_i) + 2}{n}$$
+    \item Precision:
+    $$\frac{\pr{n}{i=1}p_i}{2}$$
+\end{itemize}
+We have that
+$$\mathcal{L} < H(x) + \frac{2}{n} \qquad \stackrel{n\to\infty}{\longrightarrow}\qquad H(x)$$
+It is a context based encoding, it uses conditional probabilities.
+% Integrated from Summaries
+\subsubsection{Adaptivity and Context-based coding}
+\begin{itemize}
+    \item \textbf{Adaptivity}: symbol statistics learned during encoding via occurrence counts, updated at both encoder and decoder with an agreed rule $\Rightarrow$ handles non-stationary sources.
+    \item \textbf{Context-based}: instead of estimating $P(X^K)$ directly, condition on the $N_S$ previous symbols ($N_C = M^{N_S}$ contexts $\equiv$ $N_C$ arithmetic encoders switching among each other). Reaches the entropy rate $\mathcal{H}$ without massive block sizes.
+    \item Context design rule: too large $\to$ sparse data, unreliable estimation; too small $\to$ misses dependencies.
+\end{itemize}
+\subsubsection{Why Arithmetic is preferred over Huffman (wrap-up)}
+\textbf{Advantages}: linear complexity $O(n)$; exploits high-order dependencies removing the non-dyadic penalty; context coding models high-order statistics cheaply; adaptive.\\
+\textbf{Disadvantages}: tricky implementation (precision, carry propagation); needs initialization; context selection non-trivial; adaptivity needs large training data.

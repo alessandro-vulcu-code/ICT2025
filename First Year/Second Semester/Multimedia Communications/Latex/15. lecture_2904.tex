@@ -1,0 +1,95 @@
+\subsubsection{Design Parameters}
+Block size (smaller better), Cost function (SAD + regularization),\\
+Motion Model (translational), Search Strategy (fast methods: hex, TZ)
+%\section{Video Coding Principles}
+%\subsection{Principles}
+%Exploit redundancy and correlation both in time and space domains.
+\subsection{GOP: Group of Pictures}
+It is a sequence of $n$ frames, usually in the following order:
+$$\boxed{\boxed{I}\ \boxed{B}\ \boxed{B}\ \boxed{P}\ \boxed{B}\ \boxed{B}\ \boxed{P}\ \boxed{B}\ \boxed{B}} \to n\text{-th GOP}$$
+\subsubsection{`I' frames: Intra Frames}
+Access points of our videos, decoding starts here. Useful to stop error propagation. Fast to encode, no ME.
+% Integrated from Summaries
+All blocks of an I frame are Intra coded. Used for: \textbf{random access} (independently decodable), \textbf{fast forward} (decode only I frames), \textbf{error robustness} (stop error propagation). Low complexity but low compression.
+\subsubsection{`B' frames: `between' frames}
+Uses both past and future frame exploitation for prediction. This leads a change in encoding order (1,4,2,3,7,5,6,10,8,9), leading also to a \textbf{structural latency}.
+In Real time applications we do not use B frames due to this latency.
+% Integrated from Summaries
+For each block of a B frame the encoder can choose: Intra coding, \textbf{forward} prediction (from the past), \textbf{backward} prediction (from the future), or \textbf{bidirectional} prediction (average of past and future predictors). Very high complexity (double ME) but the highest compression ratio.
+\subsubsection{`P' frames: Predictive Frames}
+Predicted from the \textbf{previous anchor frame (I or P)}. Decision taken at block level: each block can be Inter or Intra coded. High complexity (ME/MC) but much higher compression than I frames at the same quality.
+\subsubsection{Rate and quality of the frame types}
+I frames are $\approx 3\to5\times$ larger than P frames and $\approx 10\to20\times$ larger than B frames. The quality of I frames is typically forced high, because they predict (directly or indirectly) the whole GOP.\\
+The GOP structure controls the tradeoff among: compression efficiency, delay, random access, error propagation.
+\subsection{Hybrid Video Encoder}
+\subsubsection{Frame coding modes}
+Encoder tries all of these to encode a frame:
+\begin{itemize}
+    \item Intra: available for all frames
+    \item Inter: ME/MC-based temporal prediction (only NON-intra frames)
+    \item Direct (skip): trying to infer MV from neighbors (gain in rate, loss in distorsion)
+    \item Lossless: all frames can be encoded in this way
+\end{itemize}
+\subsubsection{Block Size: Block Partition Problem}
+$$D = \sr{K}{k=1}D_k(i_k, Q) \qquad \qquad R = \sr{K}{k=1}R_k(i_k, Q)$$
+We want the lowest distorsion for a given bitrate:
+$$J(\vec{i},Q,\lambda ) = D(\vec{i},Q) + \lambda R(\vec{i},Q) \qquad \text{ where }\vec{i} = \left\{i_k\right\}_{k=1}^K \text{ s.t. }i_k^\star = \arg\min_{i_k} J(i_k,Q,\lambda) = \arg\min_{i_k} J_k(\vec{i})$$
+% Integrated from Summaries
+How to find Q and $\lambda$? $Q$ is an input (set by rate control); for each $Q$ there is an optimal $\lambda$, determined \textbf{empirically} per codec:
+$$\text{MPEG-2: } \lambda = aQ^2 + b \qquad \text{H.264: } \lambda = c\cdot2^{dQ+e} \qquad \lambda_{ME} = \sqrt{\lambda}$$
+Joint minimization over all $\vec{i}$ is too complex $\Rightarrow$ suboptimal \textbf{block-wise} minimization of $J_k(i_k,Q,\lambda) = D_k + \lambda R_k$, one block at a time. Block partition cast as a mode too: split if $J_{split} = \sr{}{i}J_{subblock_i} < J_B$, applied recursively from the largest block size.
+\subsubsection{Coding Mode $i_k$ selection}
+On a R-D plane we plot all the points related to the available modes, then we select the nearest to our J slope.
+% Integrated from Summaries
+$D = -\lambda R + J$ is a family of lines with slope $-\lambda$: high $\lambda$ (steep) $\to$ low bit budget, picks low-rate modes (e.g. Direct); low $\lambda$ (flat) $\to$ prioritizes fidelity (e.g. Inter8 bidirectional). The chosen mode is the first point touched by the line moving from the origin towards the convex hull of the available modes.
+% Integrated from Summaries: scheme to be able to draw at the exam
+\subsubsection{Encoder scheme}
+$$\begin{array}{ccccccccc}
+x_k & \longrightarrow & \boxed{+} & \stackrel{y}{\longrightarrow} & \boxed{T} \to \boxed{Q} & \longrightarrow & \boxed{\text{VLC}} & \longrightarrow & \boxed{\text{Ch. Buffer}} \to \text{bitstream}\\
+ & & \uparrow {\scriptstyle -v} & & \downarrow & & \uparrow {\scriptstyle \text{MVs},\ i_k\text{, partition}} & & \downarrow {\scriptstyle \text{rate control}\ \to\ Q}\\
+ & & {\scriptstyle v} & & \boxed{Q^{-1}} \to \boxed{T^{-1}} & \stackrel{\hat{y}}{\longrightarrow} & \boxed{+} {\scriptstyle \ \leftarrow +v} & & \\
+ & & \uparrow & & & & \downarrow {\scriptstyle \tilde{x}_k} & & \\
+ & & \boxed{\begin{matrix}\text{Mode decision}\\ \text{Intra pred / ME-MC / null}\end{matrix}} & & \longleftarrow\hspace{-8pt}\longleftarrow & & \boxed{\text{DFB}} & &
+\end{array}$$
+Comment on the blocks:
+\begin{itemize}
+    \item Each image is split into blocks; for each block the encoder computes a prediction $v$: \textbf{null} (direct DCT coding), \textbf{temporal} (ME/MC, simple or bi-prediction), or \textbf{spatial} (Intra, from already encoded blocks of the same frame).
+    \item The prediction error $y = x_k - v$ is JPEG-like compressed: Transform + Quantization.
+    \item \textbf{Decoder loop inside the encoder}: $Q^{-1}$, $T^{-1}$, then $\tilde{x}_k = \hat{y} + v$ is stored in the \textbf{DFB} (Decoded Frame Buffer), because future temporal/spatial predictions must use the same reconstructed data the decoder will have (no drift, same principle as closed-loop DPCM).
+    \item Side information (mode decision, block partition, motion vectors) + quantized coefficients are entropy-coded with a VLC (Huffman/Arithmetic/Exp-Golomb; MVs coded predictively, exploiting spatial coherence of the MVF).
+    \item \textbf{Rate control}: encoded stream enters the channel buffer at rate $R_C$ (content-dependent) and leaves at target rate $R_T$. Closed-loop controller: if occupancy $> \gamma_{high}$ increase quantization step ($R_C$ drops); if $< \gamma_{low}$ decrease it ($R_C$ grows).
+\end{itemize}
+Why do we have standards? Interoperability, we only standardize the decoder (able to decode anything), to leave encoding competition.
+\subsection{Hybrid Video Decoder}
+\subsubsection{Decoder scheme}
+% Integrated from Summaries
+$$\text{bitstream} \to \boxed{\text{Ch. Buffer}} \to \boxed{\text{VLC}^{-1}} \stackrel{\hat{y}}{\longrightarrow} \boxed{Q^{-1}} \to \boxed{T^{-1}} \to \boxed{+} \stackrel{\tilde{x}_k}{\longrightarrow} \text{out}, \qquad \boxed{+} \leftarrow {\scriptstyle v} \leftarrow \boxed{\text{Pred}} \leftarrow \boxed{\text{DFB}} \leftarrow \tilde{x}$$
+\begin{itemize}
+    \item First decodes the \textbf{side information}: partition, coding mode, motion vector(s).
+    \item Then inverse quantization, inverse transform, and sum with the prediction (MC or Intra) to get the final block, stored back in the DFB.
+    \item The decoder does \textbf{not} perform: mode decision, block partition decision, motion estimation (the heavy operations) $\Rightarrow$ decoder much faster than encoder. These are read from the bitstream.
+    \item Since only the decoder is standardized, ME strategy / mode decision / partitioning are free: competition on encoder efficiency (hex-search, fast mode decision, \dots).
+\end{itemize}
+\subsubsection{Key elements}
+\begin{itemize}
+    \item Spatial Compression: Transforms
+    \item Temporal Compression: GOP and ME
+    \item LossLess coding: Huffman and Arithmetic codings
+    \item Coding Mode estimation: Lagrangian ($D + \lambda R$)
+\end{itemize}
+\subsection{Video Encoding Standards}
+\begin{itemize}
+    \item MPEG (1,2,4): among the first standards, since 1988
+    \item H.264/AVC: free standard
+    \item H.265/HEVC: some patenting
+    \item H.266/VVC: not really free, we have some patenting
+    \item AV1, VP8, VP9: Royalty free standards (AOM\footnote{Alliance for Open Media})
+\end{itemize}
+\subsubsection{MPEG-1}
+MPEG-1 Part 2 (MP3 Audio Format) was the first digital audio standard used for CDs.\\
+MPEG-1 allows:
+\begin{itemize}
+    \item Rate $\leq 1.86$Mbps
+    \item $[720\times 576]@30$fps max resolution
+    \item Audio: 128 $\to$ 320 kbps
+\end{itemize}
