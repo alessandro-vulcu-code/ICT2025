@@ -37,6 +37,10 @@ $$\mathbf{R}_x\vec{a} = -\vec{r}_x$$
 How do we find the $a_i$s? We use this YW equation. The $\mathbf{R}_x$ is the Toeplitz matrix of autocorrelation, the $\vec{a} = [a_1\cdots a_p]^T$ is the unknown coefficient vector, and the $-\vec{r}_x$ is the autocorrelation vector.\\
 There is also an efficient algorithm which has small complexity: \textbf{Levinson-Durbin} Algorithm.
 $$x(n) \longrightarrow \boxed{\text{Windowing }\sim 20ms} \longrightarrow \stackrel{\text{Voiced/Unvoiced}, T_0}{\boxed{\text{Autocorrelation}}} \longrightarrow \boxed{\text{Levinson-Durbin}} \longrightarrow \{a_i\}, G$$
+\begin{center}
+\includegraphics[width=0.35\linewidth]{lpc_analysis.png}
+\end{center}
+\noindent LPC analysis chain: windowing ($\sim20$ms frames), autocorrelation (which also yields the voiced/unvoiced decision and pitch $T_0$), then Levinson(-Durbin) to solve Yule-Walker for the filter coefficients $\{a_i\}$ and the gain $G$.
 How do we estimate autocorrelation? Check linear predictors (2.4.5), very similar behavior.\\
 How do we detect the pitch? Compare $k > P$, how do we check Voiced/Unvoiced? Compare to $\mathbf{R}_x(0)$\\
 \subsubsection{Residuals}
@@ -76,6 +80,10 @@ Between Voiced and Unvoiced saomples we have $28$ bits to allocate freely:
     \item Analysis-by-synthesis: encoder is like a mini-decoder
     \item Closed loop shape search, and then tx the optimal shape.
 \end{itemize}
+\begin{center}
+\includegraphics[width=0.85\linewidth]{celp_basic.png}
+\end{center}
+\noindent Basic CELP analysis-by-synthesis: each candidate codebook entry $i$ (scaled by gain $g$) is passed through the synthesis filter $1/A(z)$; the index/gain minimizing the error $\varepsilon(n)$ against $x(n)$ is transmitted (closed-loop search).
 CELP minimizes the perceptual weighted error, the optimal shape of the error should be something like:
 $$W(z) = \frac{A(z)}{A(z/\gamma)} \qquad \text{with }0 < \gamma < 1$$
 Then CELP does also pole shifting to move poles toward the origin.\\
@@ -84,6 +92,10 @@ $$\begin{cases}
     \text{Sample Lag }Q\\
     \text{Gain }b = g_P
 \end{cases} \qquad \Longrightarrow \qquad y_{\text{adapt}}(n) = y(n-Q)$$
+\begin{center}
+\includegraphics[width=\linewidth]{celp_ltp.png}
+\end{center}
+\noindent Full CELP: the error is shaped by the perceptual weighting filter $W(z)=A(z)/A(z/\gamma)$, and a \textbf{long-term predictor} (adaptive codebook, lag $Q$, gain $b$, branch $b\,z^{-Q}$) models the pitch periodicity on top of the fixed (stochastic) codebook.
 Examples: G.729, G.722.2 (AMR-WB), EVS
 \subsubsection{Perceptual Coding for Audio}
 Coclea in human ear acts as a sum of critical bands (BPF), narrow bands for low frequency, wider bands for high frequency. Masking Effects:
@@ -91,6 +103,14 @@ Coclea in human ear acts as a sum of critical bands (BPF), narrow bands for low 
     \item Frequency masking effect is still effective, the quantization mask based on frequency is defined as $\varphi(f)$
     \item Temporal Masking: we use pre/post masking techniques
 \end{itemize}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{perc_audio_encoder.png}
+\end{center}
+\noindent Perceptual audio \textbf{encoder}: the signal is windowed and frequency-transformed; in parallel a Spectral Estimator feeds the Audition (psychoacoustic) Model, which drives Bit Allocation, so quantization spends bits only where the ear is sensitive (masking).
+\begin{center}
+\includegraphics[width=0.6\linewidth]{perc_audio_decoder.png}
+\end{center}
+\noindent Perceptual audio \textbf{decoder}: inverse quantization then inverse frequency transform reconstruct $\hat{x}(n)$ (the psychoacoustic model is encoder-only).
 Standards: MP3 (first actually used digital standard for audio), aac (basically it is an mp3 improvement).
 \subsection{Modern Techniques}
 \subsubsection{OPUS}

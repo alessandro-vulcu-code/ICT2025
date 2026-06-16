@@ -74,6 +74,10 @@ If we have 1 component $\to$ BW images, for color images $\to 3$ components: YCb
     \item Entropy Coding (Huffman)
     \item Compressed Data in JPEG format
 \end{itemize}
+\begin{center}
+\includegraphics[width=0.95\linewidth]{jpeg_pipeline.png}
+\end{center}
+\noindent Full JPEG encoding chain: RGB$\to$YCbCr conversion, chroma subsampling, $8\times8$ block partitioning, DCT, quantization (driven by the quantization table), zig-zag scan and entropy coding (Huffman/RLE) into the compressed JPEG stream.
 \subsubsection{Quantization-step table}
 What is the $q$ table?\\
 It is the quantization-step table: steps $\propto$ human sensitivity to the DCT components (64 byte table, $n \times n$ size).\\

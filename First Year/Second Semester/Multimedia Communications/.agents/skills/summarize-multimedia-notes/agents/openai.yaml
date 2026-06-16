@@ -1,0 +1,4 @@
+interface:
+  display_name: "Summarize Multimedia Notes"
+  short_description: "Exam-ready Multimedia note summaries"
+  default_prompt: "Use $summarize-multimedia-notes to summarize a Multimedia Communications Markdown note into Summaries/."

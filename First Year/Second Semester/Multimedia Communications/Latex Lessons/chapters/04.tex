@@ -1,0 +1,819 @@
+\chapter{Transform Coding and JPEG}
+
+\textbf{Course:} Multimedia Communications — Marco Cagnazzo
+
+\bigskip\hrule\bigskip
+
+\section{Introduction and Overview}
+
+\textbf{Context:} Three strategies to improve on scalar quantization distortion $D = c_X \sigma_X^2 2^{-2R}$:
+
+\begin{enumerate}
+\item \textbf{Predictive quantization (PQ)}: reduces signal variance
+\item \textbf{Block coding}: exploits signal sparsity
+\item \textbf{Transform coding}: \textit{makes} the signal sparse
+\end{enumerate}
+
+\textbf{Roadmap}:
+\begin{enumerate}
+\item Block coding + Huang-Schulteiss formula → optimal rate allocation
+\item Coding gain → quantifies improvement from block coding
+\item Orthogonal transforms → enable sparsification
+\item Frequency transforms (DFT, DCT) → practical special cases of OT
+\item JPEG → applies all these ideas for image compression
+\end{enumerate}
+
+\bigskip\hrule\bigskip
+
+\section{Block Coding}
+
+Consider a block of $M$ random variables $X = [X_1, X_2, \ldots, X_M]^T$ (column vector). The variables need not be independent or identically distributed.
+
+Let:
+\begin{itemize}
+\item $\sigma_k^2 = \text{Var}(X_k)$
+\item $c_k$ = shape factor of $X_k$
+\item Distortion of $X_k$ with optimal quantizer: $D_k = c_k \sigma_k^2 2^{-2R_k}$
+\end{itemize}
+
+\textbf{Global distortion} (mean squared error per component):
+
+\[
+\mathcal{D} = \frac{1}{M} \mathbb{E}\left[\|X - Q(X)\|^2\right] = \frac{1}{M}\sum_{k=1}^{M} c_k \sigma_k^2 2^{-2R_k}
+\]
+
+\subsection{Resource Allocation Problem}
+
+Find rate vector $R = [R_1, \ldots, R_M]^T$ minimizing global distortion subject to total rate constraint:
+
+\[
+\min_R \; \mathcal{D}(R) = \frac{1}{M}\sum_{k=0}^{M-1} c_k \sigma_k^2 2^{-2R_k}
+\]
+
+\[
+\text{subject to} \quad \sum_{k=0}^{M-1} R_k \leq R_{\text{Tot}}
+\]
+
+\textbf{Lagrangian}:
+\[
+J(R, \lambda) = \frac{1}{M}\sum_{k=0}^{M-1} c_k \sigma_k^2 2^{-2R_k} + \lambda\left(\sum_{k=0}^{M-1} R_k - R_{\text{Tot}}\right)
+\]
+
+\subsection{Huang-Schulteiss (HS) Formula}
+
+\begin{calloutbox}{red!70!black}{Huang-Schulteiss Formula}
+The optimal bit allocation for component $k$ is:
+\[
+R_k^* = \frac{R_{\text{Tot}}}{M} + \frac{1}{2}\log_2\left[\frac{c_k \sigma_k^2}{c_{\text{GM}} \sigma_{\text{GM}}^2}\right]
+\]
+
+where $c_{\text{GM}} = \left(\prod_k c_k\right)^{1/M}$ and $\sigma_{\text{GM}}^2 = \left(\prod_k \sigma_k^2\right)^{1/M}$ are the \textbf{geometric means}.
+
+\textbf{Proof (sketch):} Set $\partial J/\partial R_k = 0$:
+\[
+2^{-2R_k^*} = \frac{M\lambda}{2\ln 2}\frac{1}{c_k \sigma_k^2} \Rightarrow R_k^* = \lambda' + \frac{1}{2}\log_2(c_k\sigma_k^2)
+\]
+Imposing $\sum R_k^* = R_{\text{Tot}}$ determines $\lambda' = \frac{R_{\text{Tot}}}{M} - \frac{1}{2}\log_2(c_{\text{GM}}\sigma_{\text{GM}}^2)$.
+\end{calloutbox}
+
+\textbf{Key tool — AM ≥ GM} (via Jensen's inequality for concave $\log$):
+\[
+\sigma_{\text{GM}}^2 = \left(\prod_k \sigma_k^2\right)^{1/M} \leq \frac{1}{M}\sum_k \sigma_k^2 = \sigma_{\text{AM}}^2
+\]
+with equality iff all $\sigma_k^2$ are equal.
+
+\subsection{Interpretation of HS Formula}
+
+\begin{itemize}
+\item Uniform allocation $\bar{R} = R_{\text{Tot}}/M$ is adjusted using component variances
+\item Components with high variance → more bits; low variance → fewer bits
+\item \textbf{Per-component optimal distortion}: $\mathcal{D}_k^* = c_k \sigma_k^2 2^{-2\bar{R}} \cdot (c_k\sigma_k^2)^0 = \text{const}$ — all components have \textit{equal} distortion at optimum
+\item \textbf{Global optimal distortion}:
+\end{itemize}
+\[
+\mathcal{D}^* = c_{\text{GM}}\sigma_{\text{GM}}^2 \cdot 2^{-2\bar{R}}
+\]
+
+For \textbf{Gaussian} ($c_k = c_N$):
+\[
+R_k^* = \bar{R} + \frac{1}{2}\log_2\frac{\sigma_k^2}{\sigma_{\text{GM}}^2}, \qquad \mathcal{D}^* = c_N \sigma_{\text{GM}}^2 \cdot 2^{-2\bar{R}}
+\]
+
+\subsection{Case of Identically Distributed RVs}
+
+If all components have the same distribution ($\sigma_k^2 = \sigma_X^2$, $c_k = c_X$):
+
+\[
+R_k^* = \bar{R}, \qquad \mathcal{D} = c_X \sigma_X^2 2^{-2\bar{R}} = D_{\text{PCM}}
+\]
+
+\textbf{Conclusion:} For i.d. RVs, block coding brings no improvement over sample-by-sample coding. The signal must be \textit{sparse} to benefit — i.e., component variances must be diverse. The strategy to reduce $\mathcal{D}^*$ is to reduce $\sigma_{\text{GM}}^2$.
+
+\bigskip\hrule\bigskip
+
+\section{Transform Coding Paradigm}
+
+\subsection{Signal Sparsification}
+
+\textbf{Goal:} Find a reversible operator $T$ such that $Y = T(X)$ is \textbf{sparse} while preserving distortion.
+
+\begin{itemize}
+\item \textbf{Sparse signal}: few large samples + many small (near-zero) samples
+\item Quantization on sparse signal: use high-resolution quantizer on important coefficients, low-resolution (or zero bits) on negligible ones
+\item \textbf{Sparsification goal}: transform i.d. RVs into a block where variances are as \textit{diverse} as possible → minimize $\sigma_{\text{GM}}^2$
+\end{itemize}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501180944.png}\end{center}
+\textit{In the figure: a pure tone signal has all samples equally important (non-sparse). After applying the DFT matrix, only one frequency coefficient is non-negligible — the signal is perfectly sparse.}
+
+\subsection{Orthogonal Transforms}
+
+An \textbf{orthogonal transform (OT)}: $T^{-1} = T^T$, so $Y = TX$ and $X = T^T Y$.
+
+Properties:
+\begin{enumerate}
+\item \textbf{Inversion is immediate}: $X = T^T Y$
+\item \textbf{Isometry} (preserves $\ell^2$ norm):
+\end{enumerate}
+
+\[
+\|TX\|^2 = X^T(T^TT)X = \|X\|^2
+\]
+
+\begin{calloutbox}{red!70!black}{Distortion Preservation for Orthogonal Transforms}
+Since OT are isometries, distortion is preserved:
+\[
+\mathcal{D}_Y = \frac{1}{M}\mathbb{E}\|Y-\hat{Y}\|^2 = \frac{1}{M}\mathbb{E}\|T(X-\hat{X})\|^2 = \frac{1}{M}\mathbb{E}\|X-\hat{X}\|^2 = \mathcal{D}_X
+\]
+
+\textbf{Consequence:} We can compute and optimize distortion directly in the transform domain.
+\end{calloutbox}
+
+\subsection{Coding Gain}
+
+For i.d. Gaussian input $X$ ($\sigma_k^2 = \sigma_X^2$), sample-by-sample quantization gives:
+\[
+D_{\text{PCM}} = c_N \sigma_X^2 2^{-2\bar{R}}
+\]
+
+After OT $Y = \mathcal{T}X$ with optimal (H.S.) resource allocation:
+\[
+\mathcal{D}_T = c_N \sigma_{\text{GM},Y}^2 \cdot 2^{-2\bar{R}}
+\]
+
+Key observation: \textbf{any OT preserves the AM of variances}:
+\[
+\sigma_{\text{AM},Y}^2 = \frac{1}{M}\mathbb{E}\|Y\|^2 = \frac{1}{M}\mathbb{E}\|X\|^2 = \sigma_X^2 = \sigma_{\text{AM},X}^2
+\]
+
+\begin{calloutbox}{red!70!black}{Coding Gain}
+\[
+G_{\mathcal{T}} = \frac{D_{\text{PCM}}}{\mathcal{D}_T} = \frac{c_N \sigma_X^2 2^{-2\bar{R}}}{c_N \sigma_{\text{GM},Y}^2 2^{-2\bar{R}}} = \frac{\sigma_{\text{AM},Y}^2}{\sigma_{\text{GM},Y}^2} = \frac{\sigma_X^2}{\sigma_{\text{GM},Y}^2} \geq 1
+\]
+
+Since AM ≥ GM, $G_{\mathcal{T}} \geq 1$ always. To maximize $G_{\mathcal{T}}$: \textbf{minimize $\sigma_{\text{GM},Y}^2$} — i.e., make variances as diverse as possible.
+\end{calloutbox}
+
+\subsection{Toy Example}
+
+Two highly correlated RVs: joint distribution uniform over a thin elongated region ($\Delta_1 \gg \Delta_2$).
+
+\[
+f_{X_1,X_2}(x_1,x_2) = \frac{1}{\Delta_1\Delta_2}, \quad (x_1,x_2)\in S
+\]
+
+Both marginals: $X_i \sim \mathcal{U}[-\Delta_1/(2\sqrt{2}),\, \Delta_1/(2\sqrt{2})]$, variance $\sigma^2 = \Delta_1^2/24$.
+\begin{center}\includegraphics[width=0.968\linewidth]{Pasted_image_20260501181043.png}\end{center}
+
+\textit{The joint pdf is concentrated along the diagonal direction. Quantizing $X_1, X_2$ independently fails to exploit this structure.}
+
+\textbf{Apply transform} $\begin{bmatrix}Y_1\\Y_2\end{bmatrix} = \frac{1}{\sqrt{2}}\begin{bmatrix}1&-1\\1&1\end{bmatrix}\begin{bmatrix}X_1\\X_2\end{bmatrix}$ (a 45° rotation):
+
+After transform:
+\begin{itemize}
+\item $Y_1 \sim \mathcal{U}[-\Delta_1/2,\,\Delta_1/2]$, $\sigma_1^2 = \Delta_1^2/12 = 2\sigma^2$ (large variance)
+\item $Y_2 \sim \mathcal{U}[-\Delta_2/2,\,\Delta_2/2]$, $\sigma_2^2 \ll \sigma^2$ (negligible variance)
+\item $Y_1, Y_2$ are now \textbf{independent}
+\end{itemize}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501181202.png}\end{center}
+\begin{calloutbox}{green!55!black}{Toy Example — Rate-Distortion}
+\textbf{Without transform} (scalar quantization of $X_1, X_2$): Total rate $2R$ → distortion $D = 2\sigma^2 2^{-2R}$
+
+\textbf{With transform} (quantize only $Y_1$, skip $Y_2$):
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Bits} & \textbf{Rate $\bar{R}$} & \textbf{$D_1$} & \textbf{$D_2$} & \textbf{$D$} \\ \hline
+0 & 0 & $2\sigma^2$ & $\approx 0$ & $2\sigma^2$ \\ \hline
+1 & 0.5 & $\sigma^2/2$ & $\approx 0$ & $\sigma^2/2$ \\ \hline
+2 & 1 & $\sigma^2/8$ & $\approx 0$ & $\sigma^2/8$ \\ \hline
+3 & 1.5 & $\sigma^2/32$ & $\approx 0$ & $\sigma^2/32$ \\ \hline
+\end{tabular}
+\end{center}
+
+Transform coding uses 1 bit per pair = 0.5 bpS but achieves distortion $\sigma^2/2$, far better than scalar quantization at the same rate.
+\end{calloutbox}
+
+\begin{center}
+\begin{minipage}{0.475\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522110626.png}\end{minipage}\hfill\begin{minipage}{0.475\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522110639.png}\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.500\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522110653.png}\end{minipage}\hfill\begin{minipage}{0.500\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522110705.png}\end{minipage}
+\end{center}
+
+\textit{The figure shows 3 R-D curves: scalar quantization on $(X_1, X_2)$ (worst), transform coding (good), vector quantization (optimal). Transform coding dramatically closes the gap toward VQ performance.}
+
+\bigskip\hrule\bigskip
+
+\section{Practical Rate Allocation}
+
+HS formula may yield: (1) negative values, (2) non-integer values. Two practical algorithms fix this.
+
+\subsection{Modified HS Algorithm}
+
+\begin{enumerate}
+\item Compute $R_k^*$ with HS formula
+\item If any $R_k^* < 0$: remove that component (set its rate = 0), recompute GM with remaining variances, repeat HS on active components
+\item Repeat until all rates ≥ 0
+\item Floor all rates: $R_k = \lfloor R_k^* \rfloor$
+\item Allocate residual bits to components with largest fractional parts
+\end{enumerate}
+
+\begin{calloutbox}{green!55!black}{Modified HS — 4 Gaussian Components}
+\textbf{Data:} $\sigma_1^2=1000,\ \sigma_2^2=100,\ \sigma_3^2=50,\ \sigma_4^2=1$; $R_{\text{Tot}}=10$ bits
+
+\textbf{Step 1 — HS on all 4:} GM$= (1000\cdot100\cdot50\cdot1)^{1/4}\approx47.29$
+\[
+R_k^* = 2.5 + 0.5\log_2\frac{\sigma_k^2}{47.29}: \quad R_1\approx4.70,\ R_2\approx3.04,\ R_3\approx2.54,\ R_4\approx-0.28
+\]
+
+\textbf{Step 2 — Remove $k=4$ (negative):} GM$(1000,100,50)\approx171.00$
+\[
+R_k = \frac{10}{3}+0.5\log_2\frac{\sigma_k^2}{171}: \quad R_1\approx4.61,\ R_2\approx2.95,\ R_3\approx2.45
+\]
+
+\textbf{Step 3 — Floor:} $R_1=4, R_2=2, R_3=2, R_4=0$ → total=8, residual=2 bits
+
+\textbf{Step 4 — Allocate residual} to largest fractional parts ($R_1,R_2$):
+\[
+R_1=5,\ R_2=3,\ R_3=2,\ R_4=0
+\]
+
+\textbf{Distortions:} $D_1=1000\cdot2^{-10}\approx0.98$, $D_2=100\cdot2^{-6}\approx1.56$, $D_3=50\cdot2^{-4}\approx3.13$, $D_4=1$ \textbf{Total:} $D\approx6.67$
+\end{calloutbox}
+
+\subsection{Greedy Algorithm}
+
+Produces \textbf{same result} as modified HS; faster when $R_{\text{Tot}}$ is small.
+
+\textbf{Algorithm}:
+\begin{enumerate}
+\item Initialize: $R_k = 0$, $D_k = \sigma_k^2$ for all $k$
+\item While $\sum R_k < R_{\text{Tot}}$:
+\begin{itemize}
+\item $\ell = \arg\max_k D_k$
+\item $R_\ell \leftarrow R_\ell + 1$
+\item $D_\ell \leftarrow D_\ell / 4$ (one extra bit → distortion ÷ 4 since $2^{-2} = 1/4$)
+\end{itemize}
+\end{enumerate}
+
+\begin{calloutbox}{green!55!black}{Greedy Algorithm — 4 Components}
+\textbf{Data:} $\sigma_1^2=1000,\ \sigma_2^2=100,\ \sigma_3^2=50,\ \sigma_4^2=1$; $R_{\text{Tot}}=10$
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\hline
+\textbf{Iter} & \textbf{$\ell$} & \textbf{$R_1$} & \textbf{$R_2$} & \textbf{$R_3$} & \textbf{$R_4$} & \textbf{$D_1$} & \textbf{$D_2$} & \textbf{$D_3$} & \textbf{$D_4$} \\ \hline
+0 & — & 0 & 0 & 0 & 0 & 1000 & 100 & 50 & 1 \\ \hline
+1 & 1 & 1 & 0 & 0 & 0 & 250 & 100 & 50 & 1 \\ \hline
+2 & 1 & 2 & 0 & 0 & 0 & 62.5 & 100 & 50 & 1 \\ \hline
+3 & 2 & 2 & 1 & 0 & 0 & 62.5 & 25 & 50 & 1 \\ \hline
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\ \hline
+10 & 1 & 5 & 3 & 2 & 0 & 0.98 & 1.56 & 3.13 & 1 \\ \hline
+\end{tabular}
+\end{center}
+
+Final allocation: $R = [5,3,2,0]$ — identical to modified HS.
+\end{calloutbox}
+
+\bigskip\hrule\bigskip
+
+\section{Optimal and Frequency Transforms}
+
+\subsection{Karhunen-Loève Transform (KLT)}
+
+Let $X$ be a zero-mean random vector with \textbf{correlation matrix} $R_X = \mathbb{E}[XX^T]$.
+
+\begin{calloutbox}{red!70!black}{KLT Definition}
+$T_{\text{KLT}}$ is the orthonormal matrix whose \textbf{rows are the eigenvectors} of $R_X$:
+\[
+T_{\text{KLT}} = [u_1\; u_2\; \cdots\; u_M]^T, \qquad Y = T_{\text{KLT}} X
+\]
+
+\textbf{Properties:}
+\begin{enumerate}
+\item $T_{\text{KLT}}^{-1} = T_{\text{KLT}}^T$ (orthogonal)
+\item \textbf{Complete decorrelation}: $\mathbb{E}[Y_i Y_j] = \lambda_i \delta_{ij}$ — transformed components are uncorrelated (and independent for Gaussian $X$)
+\item \textbf{Best energy compaction}: for any $N<M$ and any other OT $T$ with $Z=TX$:
+\begin{itemize}
+\item $$\textbackslash{}sum\_\{i=1\}\textasciicircum{}N \textbackslash{}mathbb\{E\}[Y\_i\textasciicircum{}2] \textbackslash{}geq \textbackslash{}sum\_\{i=1\}\textasciicircum{}N \textbackslash{}mathbb\{E\}[Z\_i\textasciicircum{}2]$$
+\end{itemize}
+\item \textbf{Optimality for Gaussian}: $\sigma_{\text{GM},Y}^2 \leq \sigma_{\text{GM},Z}^2$ — KLT maximizes coding gain
+\end{enumerate}
+\end{calloutbox}
+
+The KLT is \textbf{data-dependent}: the basis functions change with the source statistics ($R_X$ must be known or estimated).
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501181646.png}\end{center}
+\textit{The figure shows a 3D point cloud shaped like an elongated ellipsoid. Left: original $(X_1,X_2,X_3)$ space — high correlation, axes misaligned with variance directions. Right: after KLT — the cloud is axis-aligned; $Y_1$ captures most variance, $Y_2,Y_3$ have small variance (sparse).}
+
+\textbf{Application — Multispectral imaging:}
+\[
+Y(m,n) = T_{\text{KLT}} X(m,n), \quad X = [X_1,\ldots,X_M]^T \text{ (spectral signature at pixel)}
+\]
+
+Energy compaction after KLT on 6-band multispectral image:
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Eigenband} & \textbf{\% Energy} \\ \hline
+1 & 86.37\% \\ \hline
+2 & 7.65\% \\ \hline
+3 & 4.16\% \\ \hline
+4 & 1.67\% \\ \hline
+5 & 0.12\% \\ \hline
+6 & 0.03\% \\ \hline
+\end{tabular}
+\end{center}
+
+First band alone captures 86\% of total energy.
+
+\textbf{Limitations of KLT}:
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Limitation} & \textbf{Description} \\ \hline
+Computational complexity & $O(N^3)$ for eigenvectors, $O(N^2)$ per block \\ \hline
+Signaling overhead & Matrix $T_{\text{KLT}}$ must be transmitted to decoder \\ \hline
+Model correctness & Assumes stationarity (images are only locally stationary) \\ \hline
+\end{tabular}
+\end{center}
+
+→ For AR(1) Markov process with $\rho \to 1$: \textbf{frequency transforms (DFT, DCT)} approach KLT optimality with fixed basis and fast $O(N\log N)$ algorithms.
+
+\subsection{Discrete Fourier Transform (DFT)}
+
+\textbf{1D DFT} of signal $x[n]$ of length $M$:
+
+\[
+y[k] = \frac{1}{\sqrt{M}}\sum_{n=1}^{M} x[n]\, e^{-j\frac{2\pi}{M}kn}, \quad k=1,\ldots,M
+\]
+
+\textit{(Factor $1/\sqrt{M}$ ensures orthonormality.)}
+
+\textbf{DFT matrix} (each row = conjugate of one basis vector):
+
+\[
+(\mathcal{T}_{\text{DFT}})_{k,n} = \frac{1}{\sqrt{M}} W_M^{kn}, \quad W_M = e^{-j2\pi/M}
+\]
+
+Geometric interpretation: rigid rotation in $\mathbb{C}^N$, preserving energy $\|Y\|=\|X\|$.
+
+\textbf{2D DFT} — separable implementation:
+\[
+Y = \mathcal{T} X \mathcal{T}^T
+\]
+Step 1: transform each column; Step 2: transform each row of result. Complexity: $O(N^2\log N)$ with FFT vs. $O(N^4)$ naive.
+
+\textbf{2D basis functions}:
+\[
+B_{k,\ell}(n,m) = \frac{1}{N} e^{j\frac{2\pi}{N}(kn+\ell m)}
+\]
+
+For natural images: most energy concentrated at small $k,\ell$ (low frequencies).
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501182052.png}\end{center}
+\textit{The figure shows the magnitude spectrum of a natural image after 2D-DFT (DC component at center). Most energy is in the center (low frequencies). A characteristic cross pattern appears along the horizontal and vertical axes — this is spectral leakage.}
+
+\subsection{Spectral Leakage in DFT}
+
+\textbf{Problem:} DFT is the discrete-time analog of the Fourier Series — it implicitly \textbf{periodizes} the signal. The periodic extension introduces discontinuities ("jumps") at block boundaries.
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501182128.png}\end{center}
+\textit{The signal $x$ is periodized to $x_{\text{PER}}$. Even if $x$ is smooth, $x_{\text{PER}}$ has sharp discontinuities where the signal "wraps around." These artificial edges require high-frequency DFT coefficients → leakage → less sparse representation.}
+
+\textbf{Consequence}: Energy "leaks" into high-frequency coefficients → representation is less sparse → compression is less effective. \textbf{DFT is never used directly for compression.}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501182154.png}\end{center}
+\textit{The 2D version is worse: horizontal AND vertical jumps appear at all four edges of the periodized image tile.}
+
+\subsection{Discrete Cosine Transform (DCT)}
+
+\textbf{Solution to leakage:} Create a \textbf{symmetric mirror} $x_{\text{SYM}}$ of $x$ before periodizing. Symmetric periodization has no discontinuities.
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501182310.png}\end{center}
+\textit{By mirroring $x$ before periodizing, the resulting $x_{\text{SYM}}$ is smooth and continuous at boundaries. The DFT of $x_{\text{SYM}}$ has no leakage. Mathematical properties of the DFT allow extracting only $M$ real coefficients from the $2M$ symmetric DFT — this is the DCT.}
+
+\begin{calloutbox}{red!70!black}{DCT Transformation Matrix}
+\[
+(\mathcal{T}_{\text{DCT}})_{k,n} = \begin{cases} \frac{1}{\sqrt{M}} & k=0 \\ \sqrt{\frac{2}{M}}\cos\frac{(2n+1)k\pi}{2M} & k>0 \end{cases}
+\]
+
+$k, n = 0, 1, \ldots, M-1$
+
+\textbf{Properties:} Real-valued coefficients, no negative frequencies needed (eliminated by symmetry), better sparsification than DFT.
+\end{calloutbox}
+
+\textbf{DCT basis vectors} (without normalization): real-valued cosine waves of increasing frequency. $k=0$ → DC (flat), $k=1$ → slowest oscillation, $k=M-1$ → fastest.
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501182505.png}\end{center}
+\textbf{DFT vs DCT} (keeping only $k<3$ coefficients):
+\begin{itemize}
+\item DCT: excellent reconstruction, no border artifact
+\item DFT: border effect + less effective energy compaction
+\end{itemize}
+
+\textbf{Conclusion:} DCT = DFT + symmetric periodization = real coefficients + no leakage. \textbf{DCT is the standard choice for compression.}
+
+\subsection{2D-DCT and Block-Based DCT}
+
+\textbf{2D-DCT} — separable (identical structure to 2D-DFT):
+\[
+Y = \mathcal{T}X\mathcal{T}^T
+\]
+Apply 1D DCT to each row, then to each column of the result. Only positive frequencies → after the transform, the top-left coefficient (DC) = zero-frequency, others (AC) = spatial frequencies.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501182538.png}\end{center}
+\textit{The DC component (top-left) is largest; energy decays rapidly toward bottom-right (high frequencies). For natural images, the 2D-DCT produces a strongly sparse coefficient matrix.}
+
+\textbf{Block-based DCT} (used in JPEG):
+\begin{itemize}
+\item Large non-stationary image is divided into small blocks (e.g., $8\times8$)
+\item DCT applied to each block independently
+\item Trade-off: small blocks → local stationarity; large blocks → better exploit correlation
+\item Each 8×8 block is projected onto 64 basis images (the 2D-DCT basis functions)
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522104346.png}\end{center}
+
+\textit{Each small image is one of the 64 DCT basis patterns. Top-left = DC (uniform). Moving right increases horizontal frequency. Moving down increases vertical frequency. An 8×8 pixel block's DCT coefficient at position $(k,\ell)$ tells how similar the block is to basis pattern $(k,\ell)$.}
+
+\textbf{Block behavior}:
+\begin{itemize}
+\item Detailed regions (e.g., textures): many non-negligible coefficients
+\item Smooth regions: only DC + few low-freq coefficients
+\item Strong edges: directional "traces" in DCT spectrum
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522104420.png}\end{center}
+
+\textbf{Resource allocation for DCT}: either HS/greedy (adaptive) or a fixed quantization table (used in JPEG). Example for 16 subbands (1D DCT case):
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Subband} & \textbf{Variance} & \textbf{Rate (bits)} & \textbf{Distortion} \\ \hline
+1 & 141.35 & 3.90 & 0.86 \\ \hline
+2 & 32.92 & 2.74 & 0.98 \\ \hline
+3–16 & decreasing & 0–1.5 & increasing \\ \hline
+\end{tabular}
+\end{center}
+
+\bigskip\hrule\bigskip
+
+\section{JPEG}
+
+\subsection{JPEG Standard Overview}
+
+\textbf{JPEG} (Joint Photographic Experts Group):
+\begin{itemize}
+\item Image compression standard based on 2D-DCT
+\item Specified 1991, adopted 1992
+\item Standard describes \textbf{only the decoder} → implementation competition, interoperability
+\item Supports: grayscale (1 component), color (3-component YCbCr by default)
+\end{itemize}
+
+\textbf{Encoding pipeline}:
+\begin{enumerate}
+\item Pre-processing: color space conversion + chroma subsampling + block splitting + offset removal
+\item DCT (8×8 blocks)
+\item Quantization
+\item Entropy coding (VLC)
+\end{enumerate}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501182627.png}\end{center}
+\textit{The JPEG pipeline: input image → color conversion (RGB→YCbCr) → chroma subsampling (4:2:0 or other) → split into 8×8 blocks → subtract 128 → 2D-DCT → quantization → entropy coding → bitstream.}
+
+\subsection{Pre-processing and Block Splitting}
+
+\begin{enumerate}
+\item \textbf{Color space conversion}: RGB → YCbCr (luminance/chrominance separation)
+\item \textbf{Chroma subsampling}: 4:2:0 (CbCr at half resolution), 4:2:2, or 4:4:4
+\item \textbf{Block splitting}: divide each component into $8\times8$ blocks
+\item \textbf{Level offset}: subtract 128 to center values around zero
+\end{enumerate}
+
+\begin{calloutbox}{green!55!black}{8×8 Pixel Block}
+\textbf{Original block} (pixel values 91–184):
+
+\end{calloutbox}
+\begin{verbatim}
+> 173 171 171 143 109 100  91  96
+> 171 169 150 137 112 101  94  96
+> 184 158 139 120 110 107  94 100
+> ...
+> 
+\end{verbatim}
+
+\textgreater{} \textbf{After -128 centering} (values now in ≈ [-56, +56]):
+\textgreater{}
+\begin{verbatim}
+>  45  43  43  15 -19 -28 -37 -32
+>  43  41  22   9 -16 -27 -34 -32
+>  56  30  11  -8 -18 -21 -34 -28
+> ...
+> 
+\end{verbatim}
+
+\subsection{DCT Transform Step}
+
+\textbf{8×8 2D-DCT produces 64 floating-point coefficients} per block.
+
+\begin{calloutbox}{green!55!black}{DCT of Example Block}
+\textbf{DCT coefficients} (top row = low horizontal freq., leftmost col = low vertical freq.):
+
+\end{calloutbox}
+\begin{verbatim}
+> -38.6  186.2   34.1   11.6    7.3   1.6   4.9  -8.2
+>  40.3   47.8    5.7  -26.0   -5.3  -3.5   4.0  -1.0
+>   6.3    4.0   -9.3   -6.7   -1.2   8.1   3.4   4.1
+>  ...
+> 
+\end{verbatim}
+
+\textgreater{}
+\textgreater{} Note: DC coefficient (top-left) = -38.6, but the large value 186.2 at position (0,1) is strong horizontal low-frequency content.
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522104710.png}\end{center}
+
+\textit{Typical DCT block: most energy is in top-left corner (low horizontal + low vertical frequencies). High-frequency coefficients (bottom-right) are near zero.}
+
+\textbf{Typical standard deviations} of DCT coefficients across natural images:
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Position} & \textbf{(0,0)} & \textbf{(0,1)} & \textbf{(1,0)} & \textbf{(7,7)} \\ \hline
+Std dev & 261 & 101 & 100 & 2.8 \\ \hline
+\end{tabular}
+\end{center}
+
+DC component ($k=\ell=0$) has by far the largest variance. Variance decays monotonically toward high frequencies.
+
+\subsection{Quantization}
+
+\textbf{Uniform mid-tread quantization} per coefficient:
+
+\[
+\tilde{c}_{i,j} = \text{round}\!\left(\frac{c_{i,j}}{q_{i,j}}\right)
+\]
+
+The \textbf{quantization table} $q$ controls R-D tradeoff (not standardized → must be encoded in file header).
+
+\textbf{Standard quantization table} $q^*$ (luminance):
+
+\[
+q^* = \begin{pmatrix}
+16 & 11 & 10 & 16 & 24 & 40 & 51 & 61 \\
+12 & 12 & 14 & 19 & 26 & 58 & 60 & 55 \\
+14 & 13 & 16 & 24 & 40 & 57 & 69 & 56 \\
+14 & 17 & 22 & 29 & 51 & 87 & 81 & 61 \\
+18 & 22 & 37 & 56 & 68 & 109 & 103 & 77 \\
+24 & 35 & 55 & 64 & 81 & 104 & 111 & 90 \\
+49 & 63 & 78 & 87 & 101 & 121 & 120 & 100 \\
+72 & 92 & 95 & 98 & 112 & 100 & 103 & 99
+\end{pmatrix}
+\]
+
+\textit{Values increase toward high frequencies (bottom-right) → coarser quantization where human eye is less sensitive (HVS-adapted).}
+
+\textbf{Quality factor} $Q$ (1–100, non-normative convenience tool):
+
+\[
+S_F = \begin{cases} 5000/Q & 1 \leq Q \leq 50 \\ 200-2Q & 50 < Q \leq 99 \\ 1 & Q=100 \end{cases}, \qquad q = \frac{S_F}{100}\, q^*
+\]
+
+$Q=100$ → $q = q^*/100$ (finest, lossless-like). $Q=1$ → $q=50\,q^*$ (coarsest).
+
+\begin{calloutbox}{green!55!black}{Quantization and De-quantization}
+\textbf{DCT coefficients → Quantized} (divide by $q^*$, round):
+
+\end{calloutbox}
+\begin{verbatim}
+>  -2  17   3   1   0   0   0   0
+>   3   4   0  -1   0   0   0   0
+>   0   0  -1   0   0   0   0   0
+>   0   0  -1  -1   0   0   0   0
+>   (all remaining: 0)
+> 
+\end{verbatim}
+
+\textgreater{} Most high-frequency coefficients become \textbf{zero} after quantization.
+\textgreater{}
+\textgreater{} \textbf{De-quantized} (multiply by $q^*$):
+\textgreater{}
+\begin{verbatim}
+> -32  187   30   16   0  ...
+>  36   48    0  -19   0  ...
+>   0    0  -16    0   0  ...
+>   0    0  -22  -29   0  ...
+> 
+\end{verbatim}
+
+\textgreater{}
+\textgreater{} \textbf{Reconstructed block} (inverse DCT + +128):
+\textgreater{} Visually very similar to original. \textbf{MSE = 24.05, PSNR = 34.32 dB}
+
+\subsection{Entropy Coding}
+
+After quantization, the 64 coefficients (mostly zeros) are entropy coded. Two separate methods for DC and AC.
+
+\textbf{Step 1 — Zig-zag scan:} reorder the 64 quantized coefficients in a zig-zag pattern (top-left → bottom-right diagonals). This groups the non-zero values (top-left) first, then zeros (bottom-right).
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501182720.png}\end{center}
+\textit{The zig-zag scan visits coefficients in order of increasing frequency along diagonal bands: DC first, then lowest AC frequencies, finally highest. After the scan, the sparse matrix becomes a sequence with zeros clustered at the end.}
+
+\subsubsection{DC Coefficient Encoding}
+
+DC coefficients of neighboring blocks are strongly correlated → use \textbf{DPCM}:
+\[
+DC_P = DC_n - DC_{n-1}
+\]
+
+The prediction error is encoded as \textbf{(category, amplitude)}:
+\begin{itemize}
+\item \textbf{Category} $k = \lceil\log_2(|DC_P|+1)\rceil$ — encodes magnitude range
+\item Category coded with a \textbf{pseudo-Huffman code} (12 categories: 0–11)
+\item \textbf{Amplitude} coded on $k$ bits using 2's complement (negative values: flip all bits)
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Category} & \textbf{Huffman Code} & \textbf{Values} \\ \hline
+0 & 00 & $DC_P = 0$ \\ \hline
+1 & 010 & $\pm 1$ \\ \hline
+2 & 011 & $\pm2, \pm3$ \\ \hline
+3 & 100 & $\pm4, \ldots, \pm7$ \\ \hline
+... & ... & ... \\ \hline
+11 & 111111110 & $\pm1024, \ldots, \pm2047$ \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{calloutbox}{green!55!black}{DC Encoding: $DC_P = -5$}
+Category: $k = \lceil\log_2(|-5|+1)\rceil = 3$ → Huffman code: \texttt{100} Amplitude: $5 = 101_2$ → complement bits (negative): \texttt{010} \textbf{Total:} \texttt{100} + \texttt{010} = \texttt{100010}
+
+Compare: $DC_P = +5$ → \texttt{100} + \texttt{101} = \texttt{100101}
+\end{calloutbox}
+
+\subsubsection{AC Coefficient Encoding}
+
+AC coefficients encoded as \textbf{(run-length, category, amplitude)} tuples:
+\begin{itemize}
+\item \textbf{Run-length} = number of consecutive zeros before the next non-zero coefficient
+\item Pairs (run-length, category) encoded jointly with pseudo-Huffman table
+\item \textbf{Special symbols}:
+\begin{itemize}
+\item $(15, 0)$ = "Zero-Run" (ZR): 16+ consecutive zeros
+\item $(0, 0)$ = "EOB" (End Of Block): all remaining coefficients are zero
+\end{itemize}
+\end{itemize}
+
+AC Huffman table is not standardized — transmitted in file header.
+
+\begin{calloutbox}{green!55!black}{Block Entropy Coding}
+Quantized block (after zig-zag scan, assuming $DC_{n-1}=1$):
+\[
+-3 \;\mid\; (0,17)\; (0,3)\; (1,4)\; (0,3)\; (0,1)\; (5,-1)\; (0,-1)\; (4,-1)\; (5,-1)\; \text{EOB}
+\]
+
+DC: $DC_P=-3$, cat=2 → \texttt{011} + \texttt{00} = \texttt{01100} $(0,17)$: run=0, cat=5 → \texttt{11010} + \texttt{10001} = \texttt{1101010001} $(0,3)$: run=0, cat=2 → \texttt{01} + \texttt{11} = \texttt{0111} ...
+
+\textbf{Final bitstream:} \texttt{0110011010100010111111001100011100111101010000111011011101001010} → \textbf{66 bits for 64 pixels ≈ 1.03 bpp}
+\end{calloutbox}
+
+\subsection{File Structure}
+
+\textbf{Hierarchy}:
+
+\begin{verbatim}
+Frame (image)
++-- Frame header: size, components, chroma format
++-- Scan (one per component in baseline JPEG)
+    +-- Scan header: component ID, quantization tables
+    +-- Segment (restart markers for parallel decoding)
+        +-- Segment header: Huffman tables (4 types: DC/AC x Y/CbCr)
+        +-- Blocks (one per 8x8 region, no headers)
+
+\end{verbatim}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522104858.png}\end{center}
+
+\textbf{File formats}:
+
+\textbf{JFIF} (JPEG File Interchange Format):
+\begin{itemize}
+\item Basic metadata: JFIF version, pixel density (dpi/dpcm), optional thumbnail
+\item Widely used for web images
+\item No camera-specific information
+\end{itemize}
+
+\textbf{Exif} (Exchangeable Image File Format):
+\begin{itemize}
+\item Rich metadata for digital cameras (JEIDA standard)
+\item Camera make/model, date/time, aperture, shutter speed, ISO, GPS, thumbnail
+\item Preferred by photographers
+\end{itemize}
+
+\subsection{Coding Examples}
+
+Quality vs. rate vs. PSNR on a natural image:
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Quality} & \textbf{Rate (bpp)} & \textbf{PSNR (dB)} & \textbf{Visual} \\ \hline
+High & 1.02 & 33.92 & Nearly identical to original \\ \hline
+Medium-high & 0.75 & 33.45 & Minor artifacts visible on close inspection \\ \hline
+Medium & 0.50 & 32.70 & Slight blocking visible \\ \hline
+Low & 0.31 & 31.31 & Blocking artifacts visible \\ \hline
+Very low & 0.21 & 29.50 & Strong blocking, ringing artifacts \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.317\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522105656.png}\end{minipage}\hfill\begin{minipage}{0.317\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522105711.png}\end{minipage}\hfill\begin{minipage}{0.317\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522105725.png}\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.317\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522105736.png}\end{minipage}\hfill\begin{minipage}{0.317\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522110011.png}\end{minipage}\hfill\begin{minipage}{0.317\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522110044.png}\end{minipage}
+\end{center}
+
+\textit{The figures shows the same natural image at 6 quality levels. At 1.02 bpp, the compressed image is visually indistinguishable. At 0.21 bpp, the 8×8 block structure becomes visible (blocking artifacts), and high-frequency details are lost (ringing around edges).}
+
+\textbf{JPEG limitation — rate control:} it is difficult to predict the number of bits used per block as a function of quality factor → JPEG does not have precise rate control.
+
+\bigskip\hrule\bigskip
+
+\section{Conclusions}
+
+\subsection{Transform Coding: Conceptual Map}
+
+\begin{verbatim}
+Block Coding
++-- Joint decision on quantization rates
++-- Huang-Schulteiss Formula -> optimal rates per component
+|   +-- Practical: Modified HS (remove negatives, floor, allocate residual)
+|   +-- Practical: Greedy Algorithm (equivalent, faster for small R_Tot)
++-- Coding Gain G_T = σ²_AM / σ²_GM -> must minimize σ²_GM
+    +-- Orthogonal Transforms -> modify σ²_GM
+        +-- KLT -> optimal, data-dependent, expensive
+        +-- Frequency Transforms -> fixed basis, O(N log N), near-optimal for AR(1)
+            +-- DFT -> spectral leakage -> NOT used for compression
+            +-- DCT -> symmetric periodization -> no leakage -> JPEG
+
+\end{verbatim}
+
+\subsection{JPEG: Conceptual Map}
+
+\begin{verbatim}
+Input Image
+-> Color Space Conversion (RGB->YCbCr)
+-> Chroma Subsampling (4:2:0, 4:2:2, 4:4:4)
+-> Block Splitting (8x8)
+-> DCT (2D, block-based)
+-> Quantization (table q, quality factor Q)
+-> Entropy Coding
+   +-- DC: DPCM + Huffman (category/amplitude)
+   +-- AC: run-length + Huffman (R/k/amplitude) + EOB
+-> File Structure (Frame/Scan/Segment/Block)
+-> File Format (JFIF or Exif)
+
+\end{verbatim}
+
+\subsection{Summary Table}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Concept} & \textbf{Formula / Value} & \textbf{Note} \\ \hline
+Block coding distortion & $\mathcal{D}^* = c_{\text{GM}}\sigma_{\text{GM}}^2 2^{-2\bar{R}}$ & Minimize $\sigma_{\text{GM}}^2$ \\ \hline
+HS optimal rate & $R_k^* = \bar{R} + \frac{1}{2}\log_2\frac{c_k\sigma_k^2}{c_{\text{GM}}\sigma_{\text{GM}}^2}$ & May give negatives \\ \hline
+Coding gain & $G_T = \sigma_{\text{AM}}^2 / \sigma_{\text{GM}}^2 \geq 1$ & = 1 for i.d. signals \\ \hline
+OT energy preservation & $\sigma_{\text{AM},Y}^2 = \sigma_{\text{AM},X}^2 = \sigma_X^2$ & AM invariant under OT \\ \hline
+KLT optimality & $\sigma_{\text{GM},Y}^2 \leq \sigma_{\text{GM},Z}^2$ for any OT $Z$ & Gaussian source \\ \hline
+DFT & Complex, periodic extension → leakage & Not used for compression \\ \hline
+DCT & Real, symmetric extension → no leakage & JPEG, H.264/HEVC, ... \\ \hline
+JPEG block size & $8 \times 8$ pixels & Empirical choice \\ \hline
+JPEG quantization & $\tilde{c}_{i,j} = \text{round}(c_{i,j}/q_{i,j})$ & Table not standardized \\ \hline
+JPEG quality $Q$ & $S_F = 5000/Q$ ($Q\leq50$) or $200-2Q$ ($Q>50$) & $Q=100$: $q=q^*/100$ \\ \hline
+JPEG DC coding & DPCM + category/amplitude Huffman & 12 categories \\ \hline
+JPEG AC coding & Run-length + $(R,k)$ Huffman + EOB & Table in header \\ \hline
+\end{tabular}
+\end{center}
+

@@ -1,4 +1,4 @@
-\subsection{Image and Video Representation}
+  \subsection{Image and Video Representation}
 \subsubsection{Images}
 Images are stored as a $N\times M$ matrix ($f_{n,m}$ with $n \in \{0 \cdots N-1\}, m \in \{0 \cdots M-1\}$).\\
 Sometimes can be useful to use a single index, we define $k = (n-1)M + m \to$ image $f_k$.
@@ -30,6 +30,31 @@ We need compression, keyword: redundancy (delete all unnecessary information), t
     \item Semantical redundancy (images described by words)
 \end{itemize}
 Compression Ratio $=\frac{B_{in}}{B_{out}}$
+\begin{center}
+\begin{tikzpicture}[
+    encblk/.style={draw=#1, semithick, minimum width=28mm, minimum height=16mm,
+                   align=center, font=\small},
+    flow/.style={w,->}
+]
+  \node[encblk=red] (pred) {\textbf{Prediction}\\[-0.5mm]\scriptsize spatial/temporal\\[-0.5mm]\scriptsize redundancy};
+  \node[encblk=blue, right=11mm of pred] (trans) {\textbf{Transform}\\[-0.5mm]\scriptsize sparsification};
+  \node[encblk=green!70!black, right=11mm of trans] (quant) {\textbf{Quantization}\\[-0.5mm]\scriptsize lossy\\[-0.5mm]\scriptsize human sensitivity};
+  \node[encblk=cyan, right=11mm of quant] (vlc) {\textbf{VLC}\\[-0.5mm]\scriptsize lossless entropy\\[-0.5mm]\scriptsize coding};
+
+  \coordinate[left=13mm of pred] (input);
+  \coordinate[right=13mm of vlc] (output);
+
+  \draw[flow] (input) -- (pred);
+  \draw[flow] (pred) -- (trans);
+  \draw[flow] (trans) -- (quant);
+  \draw[flow] (quant) -- (vlc);
+  \draw[flow] (vlc) -- (output);
+
+  \draw[w] ($(input)+(-8mm,10mm)$) -- ($(input)+(0,10mm)$) -- (input);
+  \draw[w,->,red!70!black] (pred.south east) to[out=-60,in=-120]
+    node[sig,below]{feedback loop} (pred.south west);
+\end{tikzpicture}
+\end{center}
 \subsubsection{Lossless Techniques}
 \begin{itemize}
     \item Bit-by-bit identical representation
@@ -78,12 +103,4 @@ Beyond \textbf{rate} (compression ratio, bpp) and \textbf{quality} (distortion m
     In uncompressed images a bit flip stays local; with compression there is \textbf{error propagation} (problem for noisy channels)
 \end{itemize}
 Design tensions: quality $\uparrow$ conflicts with rate $\downarrow$; robustness $\uparrow$ conflicts with complexity $\downarrow$ and delay $\downarrow$. Modern design balances all five.
-\section{Scalar and Predictive Quantization}
-Quantization = control the number of bits used for representing some samples\\
-$\theta^i$ are the quantization region/cells $ = (t^i, t^{i+1})$\\
-There is a total of $(L+1)$ thresholds and $L$ levels, total of $2L+1$ elements.
-Mathematical definition:
-$$Q : x\in \mathbb{R} \to y \in C = \{\hat{x}^1, \cdots \hat{x}^L\} \subset \mathbb{R}$$
-Cell-size $\Delta = \frac{2\text{Amplitude}}{L}$, higher nr. of levels = smaller error\\
-Quantization process can be seen as a coding-decoding process.
-$$\stackrel{x}{\longrightarrow}\boxed{E_{\theta^i}}\stackrel{i}{\longrightarrow}\qquad \qquad \qquad \qquad \stackrel{i}{\longrightarrow}\boxed{D_{C}}\stackrel{\hat{x}}{\longrightarrow}$$
+

@@ -1,3 +1,20 @@
+\section{Wavelet-based Image Compression}
+\subsection{Signal Analysis}
+\subsubsection{Signal Analysis through Projection}
+Given an orthonormal basis with the $\varphi_k$ vectors, any signal can be represented as:
+$$x(t) = \sr{}{k}c_k \varphi_k(t)$$
+We can see the transform as a scalar product:
+$$c_k = \left<x(t),\varphi_k(t)\right> = \int_{-\infty}^{+\infty}x(t) \cdot \varphi_k^\star(t)dt$$
+\subsubsection{Resolution Tradeoff: Time-Frequency Heisenberg-like Uncertainty principle}
+$$(A=\Delta f \cdot \Delta t) \geq \frac{1}{4\pi}$$
+The area remains constant, we cannot increase both at the same time.\\
+We can only change shape from (wide flat $\leftrightarrow$ narrow tall).
+\subsubsection{Frequency Analysis: STFT and Rigid Tilting}
+Problem: JPEG uses 8x8 fixed size blocks, having fixed N we cannot change resolution.\\
+We need a flexible approach, using Wavelets we have Adaptive Multiresolution, Mother Wavelet generation:
+$$\psi_{a,b}(t) = \frac{1}{\sqrt{a}}\psi\left(\frac{t-b}{a}\right)$$
+Using the scaling property of the Fourier Transform:
+$$\mathcal{F}(x(t)) =X(f) \qquad \Longrightarrow \qquad \mathcal{F}\left\{x\left(\frac{t}{a}\right)\right\} = |a|X(af)$$
 \subsection{Discrete Wavelet Transform (DWT) and Multi Resolution Analysis (MRA)}
 \subsubsection{1D-MRA}
 Objective: sparsification of the signal. We start from $x[k] = c_{i=0}[k]$ then going on with increasing the $i$ we get the $c_i$ becomes shorter in time, almost by a factor of $\frac{1}{i+1}$.

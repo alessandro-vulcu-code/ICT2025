@@ -58,11 +58,19 @@ Useful for a $1\to N$ realtime video streaming. IDEA: just perform 1 encoding an
     \item \textbf{Space} Scalability: exploit Multiresolution Transforms, low-res base-layer + enhancement layers
 \end{itemize}
 Enhanced Layer is computed as $= I_{\text{nput}} - \text{DEC}(\text{ENC}( I_{\text{nput}}))$
+\begin{center}
+\includegraphics[width=0.5\linewidth]{svc_encoder.png}
+\end{center}
+\noindent SVC layered encoder: a coarse encoder $Q_B$ produces the \textbf{Base Layer}; its local decoder reconstruction is subtracted from the input and the residual is coded by $Q_E$ into the \textbf{Enhancement Layer} (quality scalability).
 \subsubsection{Smart Layer Pruning}
 Assume we have the following architecture:
 $$\boxed{\text{Speaker}} \qquad \longrightarrow \qquad \boxed{\text{Confluence Server}} \qquad \longrightarrow \qquad \boxed{n\ U_i}$$
 The speaker produces the Base-layer + 2 more enhancement layers, total of 3 Layers.\\
 Confluence server decides how to send the layers to users, it's the \textbf{Selective Forward Unit}, usually a MANE.
+\begin{center}
+\includegraphics[width=\linewidth]{svc_conference.png}
+\end{center}
+\noindent SFU layer pruning: the speaker sends one unified bitstream (BL + EL1 + EL2). The conference server forwards \emph{all} layers to the high-capacity client (full quality) and only the Base Layer to the constrained mobile client --- zero re-encoding, just NAL-header inspection.
 \subsubsection{Streaming via Legacy HTTP}
 Why don't we use the same solution for streaming? SFU needs memory proportional to the connected users, to keep the state of each. And the BL + EL solution has some overhead w.r.t. a single high res block of data.
 Solution: use HTTP because it is stateless and also largely implemented.\\

@@ -1,0 +1,643 @@
+\chapter{Scalar and Predictive Quantization}
+
+\textbf{Course:} Multimedia Communications — Marco Cagnazzo — 06.03.26
+
+\bigskip\hrule\bigskip
+
+\section{Definitions}
+
+\subsection{Quantizer Model}
+
+\textbf{Quantization}: mapping a signal from a continuous (or large discrete) set to a signal taking only a \textbf{finite number of values}.
+
+\begin{itemize}
+\item Used to represent analog/high-precision signals with fewer bits
+\item Fundamental operation in any lossy compression system
+\item Introduces \textbf{irreversible} information loss (distortion)
+\end{itemize}
+
+A quantizer $Q$ is defined by:
+\begin{itemize}
+\item \textbf{Thresholds}: $-\infty = t^0 < t^1 < \cdots < t^{L-1} < t^L = +\infty$
+\item \textbf{Quantization regions}: $\Theta^i = [t^{i-1}, t^i)$ for $i = 1, \ldots, L$
+\item \textbf{Reconstruction levels} (dictionary): $\hat{x}^1, \hat{x}^2, \ldots, \hat{x}^L$
+\end{itemize}
+
+The quantizer maps: $x \in \Theta^i \Rightarrow Q(x) = \hat{x}^i$
+
+A \textbf{scalar quantizer (SQ)} operates on one sample at a time: $\tilde{X} = Q(X)$.
+\begin{center}\includegraphics[width=1.000\linewidth]{Pasted_image_20260501165859.png}\end{center}
+\subsection{Key Quantities}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Quantity} & \textbf{Formula} & \textbf{Units} \\ \hline
+\textbf{Quantization error} & $e = X - Q(X) = X - \tilde{X}$ & — \\ \hline
+\textbf{Distortion (MSE)} & $D = \sigma_Q^2 = \mathbb{E}[(X - Q(X))^2]$ & — \\ \hline
+\textbf{Rate} & $R = \log_2 L$ & bits/sample \\ \hline
+\textbf{SNR} & $10\log_{10}\frac{\mathbb{E}\{X^2\}}{D} = 10\log_{10}\frac{\sigma_X^2}{\sigma_Q^2}$ & dB \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Types of Quantizers}
+
+\begin{itemize}
+\item \textbf{Uniform quantizer (UQ)}: all quantization regions have equal width $\Delta$
+\item \textbf{Non-uniform quantizer}: variable-width regions adapted to the input PDF
+\end{itemize}
+
+\subsection{Noise Regimes}
+
+\begin{itemize}
+\item \textbf{Granular noise}: input $x$ inside dynamic range $[-A/2, A/2]$ → error bounded: $|e| \leq \Delta/2$
+\item \textbf{Overload (clipping) noise}: input $x$ outside dynamic range → error arbitrarily large
+\end{itemize}
+
+\bigskip\hrule\bigskip
+
+\section{Uniform Quantization}
+
+\subsection{Definition and Formula}
+
+\textbf{Uniform quantizer (UQ)}: partitions $[-A/2, A/2]$ into $L$ equal intervals of width:
+
+\[
+\Delta = \frac{A}{L} = A \cdot 2^{-R}
+\]
+
+Reconstruction levels at interval centers:
+
+\[
+\hat{x}^i = -\frac{A}{2} + \left(i - \frac{1}{2}\right)\Delta, \quad i = 1, \ldots, L
+\]
+
+\textbf{Midrise formula}:
+
+\[
+Q(x) = \Delta \cdot \left\lfloor\frac{x}{\Delta} + \frac{1}{2}\right\rfloor \quad \text{(with saturation at } \pm A/2\text{)}
+\]
+
+\subsection{Midrise and Midtread}
+\begin{center}
+\begin{minipage}{0.500\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260501170641.png}\end{minipage}\hfill\begin{minipage}{0.500\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260501170650.png}\end{minipage}
+\end{center}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501170704.png}\end{center}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Type} & \textbf{$L$} & \textbf{Zero level?} & \textbf{Common use} \\ \hline
+\textbf{Midtread} & Odd & Yes & — \\ \hline
+\textbf{Midrise} & Even & No & More common in practice \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Design Trade-offs}
+
+\textbf{Step size vs. clipping tradeoff} (fixed $A$):
+\begin{itemize}
+\item Small $\Delta$ (large $L$): fine quantization, low granular noise, but high-peak signals clip more often
+\item Large $\Delta$ (small $L$): coarse quantization, high granular noise, wider dynamic range
+\end{itemize}
+
+\textbf{Dynamic range $A$ selection}:
+\begin{itemize}
+\item Too small $A$ → frequent clipping, high distortion
+\item Too large $A$ → fine quantization wasted on the large range; increased granular noise per bit budget
+\end{itemize}
+
+\bigskip\hrule\bigskip
+
+\section{Examples}
+
+\subsection{Image Quantization}
+
+\begin{center}
+\begin{minipage}{0.450\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112004.png}\end{minipage}\hfill\begin{minipage}{0.450\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112025.png}\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.450\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112044.png}\end{minipage}\hfill\begin{minipage}{0.450\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112112.png}\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.450\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112124.png}\end{minipage}\hfill\begin{minipage}{0.450\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112139.png}\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.450\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112150.png}\end{minipage}\hfill\begin{minipage}{0.450\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112201.png}\end{minipage}
+\end{center}
+
+[[2. Scalar and Predictive Quantization.pdf\#page=49|RGB "peppers" image quantized at 8, 6, 3 bpp showing false contouring at lower rates ]]
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Rate (bpp)} & \textbf{PSNR (dB)} & \textbf{Compression ratio} \\ \hline
+8 & 29.26 & 2.667 \\ \hline
+6 & 27.83 & 4.000 \\ \hline
+3 & 25.75 & 8.000 \\ \hline
+\end{tabular}
+\end{center}
+
+At low rates: visible \textbf{banding artifacts} (false contouring) due to coarse quantization of color channels.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522112829.png}\end{center}
+
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112843.png}\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112853.png}\end{minipage}
+\end{center}
+\textless{}/div\textgreater{}
+
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112905.png}\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112914.png}\end{minipage}
+\end{center}
+\textless{}/div\textgreater{}
+
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112924.png}\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522112934.png}\end{minipage}
+\end{center}
+\textless{}/div\textgreater{}
+
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522113005.png}\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522113015.png}\end{minipage}
+\end{center}
+\textless{}/div\textgreater{}
+
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522113034.png}\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522113046.png}\end{minipage}
+\end{center}
+\textless{}/div\textgreater{}
+
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522113058.png}\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522113111.png}\end{minipage}
+\end{center}
+\textless{}/div\textgreater{}
+
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522113120.png}\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{0.980\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522113133.png}\end{minipage}
+\end{center}
+\textless{}/div\textgreater{} [[2. Scalar and Predictive Quantization.pdf\#page=48|Grayscale "umbrella" image quantized at different levels, with luminance histogram (log scale)]]
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Quant. levels} & \textbf{Bits/pixel} & \textbf{Compr. ratio} & \textbf{Y-PSNR (dB)} \\ \hline
+256 & 8.000 & 1.000 & $\infty$ \\ \hline
+128 & 7.000 & 1.143 & 91.08 \\ \hline
+64 & 6.000 & 1.333 & 46.51 \\ \hline
+32 & 5.000 & 1.600 & 40.75 \\ \hline
+16 & 4.000 & 2.000 & 34.47 \\ \hline
+8 & 3.000 & 2.667 & 29.06 \\ \hline
+4 & 2.000 & 4.000 & 22.85 \\ \hline
+2 & 1.000 & 8.000 & 17.42 \\ \hline
+1 & 0.000 & $\infty$ & 12.11 \\ \hline
+\end{tabular}
+\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501171132.png}\end{center}
+\subsection{Audio Quantization}
+[[2. Scalar and Predictive Quantization.pdf\#page=64|Audio quantization examples]]
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Bit depth} & \textbf{Perceptual quality} \\ \hline
+8 bits & Slight "hissing" / granular noise \\ \hline
+4 bits & Significant fidelity loss, prominent noise \\ \hline
+2 bits & Very strong noise; speech still intelligible, music totally lost \\ \hline
+\end{tabular}
+\end{center}
+
+\bigskip\hrule\bigskip
+
+\section{Rate-Distortion Curve}
+
+\subsection{Probability Refreshers}
+
+\textbf{Uniform RV}: $X \sim \mathcal{U}(a,b)$:
+\[
+f_X(x) = \frac{1}{b-a} \quad \text{for } a\leq x\leq b, \qquad \text{Var}(X) = \frac{(b-a)^2}{12}
+\]
+
+\textbf{LOTUS} (Law of the Unconscious Statistician): for any $g(X)$:
+\[
+\mathbb{E}[g(X)] = \int_{-\infty}^{+\infty} g(x)\, f_X(x)\, dx
+\]
+
+\subsection{UQ of Uniform RV: Exact R-D Derivation}
+
+\textbf{Hypothesis}: $X \sim \mathcal{U}(-A/2, A/2)$, UQ with $L$ levels.
+
+\begin{calloutbox}{red!70!black}{UQ Distortion for Uniform RV}
+\[
+\sigma_Q^2 = \mathbb{E}[(X-\tilde{X})^2] = \frac{1}{A}\sum_{i=1}^L \int_{\hat{x}^i-\Delta/2}^{\hat{x}^i+\Delta/2}[u-\hat{x}^i]^2\,du = \frac{1}{A}\cdot L \cdot\frac{\Delta^3}{12} = \frac{\Delta^2}{12}
+\]
+
+Since $\Delta = A/L = A\cdot 2^{-R}$ and $\sigma_X^2 = A^2/12$:
+\[
+D = \frac{\Delta^2}{12} = \frac{A^2}{12 L^2} = \sigma_X^2 \cdot 2^{-2R}
+\]
+
+\[
+\mathrm{SNR} = 10\log_{10}\frac{\sigma_X^2}{\sigma_X^2 \cdot 2^{-2R}} = 10\log_{10}(2^{2R}) \approx 6R \quad \text{[dB]}
+\]
+
+\textbf{Rule of thumb}: every additional bit ≈ +6 dB SNR.
+\end{calloutbox}
+
+\subsection{HR UQ for Generic RV}
+
+\textbf{Hypothesis}: $L \to +\infty$ (high resolution — HR), $X$ generic RV.
+
+In HR, within any region $\Theta^i$, $p_X$ is approximately constant → quantization error $\sim \mathcal{U}(-\Delta/2, \Delta/2)$ in each region → by total probability law, overall error $\sim \mathcal{U}(-\Delta/2, \Delta/2)$.
+
+\begin{calloutbox}{red!70!black}{HR UQ for Generic RV}
+\[
+D = \frac{\Delta^2}{12} = \frac{A^2}{12}\cdot 2^{-2R} = K_X\,\sigma_X^2\cdot 2^{-2R}
+\]
+
+where the \textbf{load factor} $\gamma^2 = \frac{A^2/4}{\sigma_X^2}$ and $K_X = \gamma^2/3$.
+
+\[
+\mathrm{SNR} \approx 6R - 10\log_{10}\frac{\gamma^2}{3}
+\]
+
+\textbf{Intuition}: $K_X$ penalizes the mismatch between dynamic range $A$ and signal variance $\sigma_X^2$.
+\end{calloutbox}
+
+\bigskip\hrule\bigskip
+
+\section{Optimal Scalar Quantization}
+
+\subsection{HR Optimal Quantizer}
+
+For a given PDF $p_X(x)$, find thresholds and levels minimizing $D$ for fixed $R$.
+
+Under HR hypothesis ($L\to\infty$, $\max_i\Delta_i\to0$, $p_X$ approximately constant per region):
+
+\begin{calloutbox}{red!70!black}{Optimal Quantizer (HR) — R-D Curve}
+\[
+\sigma_Q^2 = c_X\,\sigma_X^2\cdot 2^{-2R}
+\]
+
+where $U = X/\sigma_X$ (normalized input) and:
+\[
+c_X = \frac{1}{12}\left[\int_{\mathbb{R}} p_U^{1/3}(t)\,dt\right]^3
+\]
+
+\textbf{Analytic solution exists only in HR.} For finite $R$, use the Lloyd-Max algorithm.
+\end{calloutbox}
+
+\subsection{Shape Factor}
+
+$c_X$ is the \textbf{shape factor} — depends only on the PDF \textit{shape}, not on variance.
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Distribution} & \textbf{Shape Factor $c_X$} \\ \hline
+Uniform & $1$ \\ \hline
+Gaussian & $\frac{\sqrt{3}}{2}\pi \approx 2.72$ \\ \hline
+\end{tabular}
+\end{center}
+
+\textit{Note: Gaussian signals require \textasciitilde{}2.72× more distortion than uniform at the same rate. This reflects the heavier tails.}
+
+\subsection{Lloyd-Max Algorithm}
+
+Used when HR hypothesis does not hold (low/very low rate). Finds a \textbf{local optimum} via alternating optimization.
+
+\begin{calloutbox}{red!70!black}{Lloyd-Max Algorithm — Two Necessary Conditions}
+
+\textbf{Nearest Neighbor Rule} (best thresholds given levels):
+\[
+k = \arg\min_n |x - \hat{x}^n| \Rightarrow Q(x) = \hat{x}^k
+\]
+\[
+t^i = \frac{\hat{x}^i + \hat{x}^{i+1}}{2}
+\]
+\textit{Threshold = midpoint between consecutive levels.}
+
+\textbf{Centroid Condition} (best levels given thresholds):
+\[
+\hat{x}^i = \frac{\int_{t^{i-1}}^{t^i} u\,p_X(u)\,du}{\int_{t^{i-1}}^{t^i} p_X(u)\,du} = \mathbb{E}[X\mid X\in\Theta^i]
+\]
+\textit{Level = conditional mean of $X$ in its region.}
+
+\textbf{Proof (centroid):} Minimize $\sigma_Q^2$ w.r.t. $\hat{x}^i$: $\frac{\partial\sigma_Q^2}{\partial\hat{x}^i} = 2\hat{x}^i\int_{\Theta_i}p_X\,du - 2\int_{\Theta_i}u\,p_X\,du = 0 \Rightarrow \hat{x}^i = \mathbb{E}[X\mid X\in\Theta^i]$
+\end{calloutbox}
+
+\textbf{Algorithm}:
+\begin{enumerate}
+\item Initialize dictionary $\mathcal{C}^{(0)}$ (uniform or random)
+\item Apply nearest neighbor rule → update thresholds
+\item Apply centroid condition → update levels
+\item Compute $\sigma^2_{Q,(k)}$; stop if $\frac{\sigma^2_{Q,(k-1)}-\sigma^2_{Q,(k)}}{\sigma^2_{Q,(k-1)}} < \varepsilon$ or $k = K$
+\end{enumerate}
+
+\textbf{Convergence properties}:
+\begin{itemize}
+\item Distortion never increases across iterations
+\item Convergence to \textbf{global optimum not guaranteed}
+\item Final result depends on initialization
+\end{itemize}
+
+\subsection{Lloyd-Max for Data}
+
+When PDF is unknown but data is available (training set $\mathcal{X} = \{u_1,\ldots,u_M\}$):
+
+\begin{enumerate}
+\item Initialize dictionary $\mathcal{C}^{(0)} = \{\hat{x}^i_0\}$
+\item \textbf{Nearest neighbor}: $W^i_k = \{u_m\in\mathcal{X}: \forall j\neq i, \|u_m-\hat{x}^i_k\|\leq\|u_m-\hat{x}^j_k\|\}$
+\item \textbf{Centroid}: $\hat{x}^i_{k+1} = \frac{1}{|W^i_k|}\sum_{u_m\in W^i_k}u_m$
+\item Repeat until convergence
+\end{enumerate}
+
+\textit{(Note: same structure as k-means clustering)}
+
+\bigskip\hrule\bigskip
+
+\section{Predictive Scalar Quantization}
+
+\subsection{Motivation and Sparse Signals}
+
+SQ neglects dependencies among samples — fails to exploit signal correlation.
+
+\begin{calloutbox}{red!70!black}{Sparse Signal}
+A signal is \textbf{sparse} if most elements are zero or near zero.
+\begin{itemize}
+\item Sparse → low variance → efficient quantization (set near-zero values to 0 without large distortion)
+\item Natural signals are NOT sparse in their original domain, but may become sparse after \textbf{prediction} or \textbf{linear transform}
+\end{itemize}
+\end{calloutbox}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501171327.png}\end{center}
+\subsection{Open-Loop Coding Scheme}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501171341.png}\end{center}
+\textbf{Prediction error signal}: $y(n) = x(n) - v(n)$, where $v(n)$ is the predictor output.
+
+If prediction is good → $v(n) \approx x(n)$ → $y(n)$ has small variance → more efficient quantization.
+
+\subsection{Prediction Gain}
+
+Key identity: \textbf{prediction error = quantization error on original signal}:
+\[
+q(n) = y(n) - \hat{y}(n) = [x(n)-v(n)] - [\hat{x}(n)-v(n)] = x(n) - \hat{x}(n)
+\]
+
+Total SNR decomposition:
+\[
+\mathrm{SNR}_P = 10\log_{10}\frac{\sigma_X^2}{D} = \underbrace{10\log_{10}\frac{\sigma_X^2}{\sigma_Y^2}}_{G_P \text{ (prediction gain)}} + \underbrace{10\log_{10}\frac{\sigma_Y^2}{D}}_{G_Q \text{ (quantization gain)}}
+\]
+
+\begin{calloutbox}{red!70!black}{Condition for Positive Prediction Gain}
+Prediction is effective \textbf{if and only if} $\sigma_Y^2 < \sigma_X^2$, i.e., $G_P > 0$.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Prediction Gain for AR(1) Signal}
+\textbf{Signal:} $X(n)\sim\mathcal{N}(0,\sigma^2)$ with $\mathbb{E}[X(n)X(m)] = \sigma^2\rho^{|n-m|}$
+
+\textbf{Predictor:} $V(n) = X(n-1)$ (previous sample)
+
+\textbf{Prediction error variance:}
+\[
+\sigma_Y^2 = \mathbb{E}[(X(n)-X(n-1))^2] = 2\sigma^2 - 2\sigma^2\rho = 2\sigma^2(1-\rho)
+\]
+
+\textbf{Prediction gain:}
+\[
+G_P = 10\log_{10}\frac{\sigma^2}{2(1-\rho)\sigma^2} = 10\log_{10}\frac{1}{2(1-\rho)}
+\]
+
+\textbf{Condition:} $G_P > 0 \Leftrightarrow \rho > \frac{1}{2}$
+
+For $\rho = 0.9$: $G_P = 10\log_{10}\frac{1}{0.2}\approx 7$ dB
+\end{calloutbox}
+
+\subsection{Linear Predictors}
+
+Linear predictors are simple and \textbf{optimal for Gaussian RVs}:
+
+\[
+v(n) = -\sum_{i=1}^{P} a_i\, x_{n-i} \qquad \text{(order-$P$ filter)}
+\]
+
+\[
+y(n) = x(n) - v(n) = \sum_{i=0}^{P} a_i\, x_{n-i} \qquad (a_0 = 1)
+\]
+
+$y$ = output of FIR filter $A(z) = 1 + a_1 z^{-1} + \cdots + a_P z^{-P}$ applied to $x$.
+
+\textbf{Goal}: minimize $\sigma_Y^2 = \mathbb{E}[Y^2(n)]$ by optimizing $\underline{a} = [a_1,\ldots,a_P]^T$.
+
+\subsection{Optimal Predictor Selection}
+
+Expanding $\sigma_Y^2$:
+
+\[
+\sigma_Y^2 = \sigma_X^2 + 2\underline{r}^T\underline{a} + \underline{a}^T R_X\,\underline{a}
+\]
+
+where:
+\[
+\underline{r} = [r_X(1),\ldots,r_X(P)]^T, \qquad (R_X)_{ij} = r_X(|i-j|), \qquad r_X(k) = \mathbb{E}[X(n)X(n-k)]
+\]
+
+\begin{calloutbox}{red!70!black}{Optimal Predictor (Wiener-Hopf)}
+\[
+\frac{\partial\sigma_Y^2}{\partial\underline{a}} = 2\underline{r} + 2R_X\,\underline{a} = 0 \quad \Rightarrow \quad \underline{a}^{\mathrm{opt}} = -R_X^{-1}\,\underline{r}
+\]
+
+\[
+\sigma_{Y,\mathrm{opt}}^2 = \sigma_X^2 + \underline{r}^T\,\underline{a}^{\mathrm{opt}}
+\]
+
+$R_X$ is the \textbf{autocorrelation matrix} (Toeplitz); $\underline{r}$ is the cross-correlation vector.
+\end{calloutbox}
+
+Autocorrelation estimated from data:
+\[
+\hat{r}_X(k) = \frac{1}{N}\sum_{n=0}^{N-1-k} X(n)X(n+k)
+\]
+
+\subsection{Predictive Quantization Example}
+
+2D predictor for "peppers" grayscale image:
+
+\[
+\tilde{f}_{n,m} = a\,f_{n-1,m} + b\,f_{n,m-1}
+\]
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{$a$} & \textbf{$b$} & \textbf{$\sigma_E^2$} & \textbf{Notes} \\ \hline
+0 & 0 & 2902.7 & No prediction ($\sigma_X^2$) \\ \hline
+1/2 & 1/2 & 78.7 & Simple average of neighbors \\ \hline
+0.449 & 0.546 & 78.4 & Optimal predictor \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{Key result}: simple predictor reduces variance by factor \textgreater{}37×. Optimal predictor only marginally better than simple average → near neighbors capture most correlation.
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501171415.png}\end{center}
+\subsection{Filter Order and Block Size}
+
+\subsubsection{Effect of Filter Order}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501173123.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501173135.png}\end{center}
+
+\begin{itemize}
+\item Higher order (2→4): improves $G_P$ (more whitened residual)
+\item \textbf{Screening effect}: distant pixels already "explained" by immediate neighbors → rapidly diminishing returns
+\item \textbf{Complexity/performance}: higher order = more computation, negligible PSNR gain for natural textures
+\end{itemize}
+
+\subsubsection{Effect of Block Size (Local Adaptation)}
+
+Images are \textbf{non-stationary} → single global filter is suboptimal.
+
+\textbf{Block-wise strategy}: compute locally optimal filter for each $M\times M$ block.
+
+\textbf{Side information overhead}: total rate increases by $\frac{N\cdot B}{M^2}$ (where $N$ = filter order, $B$ = bits per coefficient ≈ 16).
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Block size} & \textbf{Adaptation} & \textbf{Overhead} \\ \hline
+Small & Excellent local tracking & Large — many filter sets \\ \hline
+Large & Minimal overhead & Poor adaptation to local features \\ \hline
+\end{tabular}
+\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501173200.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501173211.png}\end{center}
+
+\subsection{Drift Problem and Correct Scheme}
+
+\subsubsection{Wrong Scheme (Encoder/Decoder Mismatch)}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501173246.png}\end{center}
+\textbf{Problem}: encoder predictor uses original (unquantized) $x(n)$; decoder uses reconstructed $\tilde{x}(n)$. Since $x\neq\tilde{x}$, the predictions diverge → \textbf{drift} accumulates over time.
+
+\begin{calloutbox}{green!55!black}{Drift with Wrong Scheme (3-bit quantizer, levels: -9,-6,-3,0,3,6,9)}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\textbf{Step} & \textbf{Original} & \textbf{Enc. Pred.} & \textbf{Enc. Error} & \textbf{Quant. Error} & \textbf{Dec. Pred.} & \textbf{Recon.} \\ \hline
+1 & 10 & — & — & 9 & — & 9 \\ \hline
+2 & 11 & \textbf{10} & 1 & 0 & \textbf{9} & 9 \\ \hline
+3 & 12 & \textbf{11} & 1 & 0 & \textbf{9} & 9 \\ \hline
+4 & 13 & \textbf{12} & 1 & 0 & \textbf{9} & 9 \\ \hline
+5 & 14 & \textbf{13} & 1 & 0 & \textbf{9} & 9 \\ \hline
+6 & 18 & \textbf{14} & 4 & 3 & \textbf{9} & 12 \\ \hline
+\end{tabular}
+\end{center}
+
+Encoder predicts from original; decoder stuck at 9. Drift grows.
+\end{calloutbox}
+
+\subsubsection{Correct Scheme}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501173300.png}\end{center}
+\textbf{Solution}: encoder also uses the \textbf{quantized/reconstructed} samples $\tilde{x}(n)$ for prediction — same data as the decoder. Both sides stay synchronized.
+
+\begin{calloutbox}{green!55!black}{No Drift with Correct Scheme (same quantizer)}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\textbf{Step} & \textbf{Original} & \textbf{Enc. Pred.} & \textbf{Enc. Error} & \textbf{Quant. Error} & \textbf{Dec. Pred.} & \textbf{Recon.} \\ \hline
+1 & 10 & — & — & 9 & — & 9 \\ \hline
+2 & 11 & \textbf{9} & 2 & 3 & \textbf{9} & 12 \\ \hline
+3 & 12 & \textbf{12} & 0 & 0 & \textbf{12} & 12 \\ \hline
+4 & 13 & \textbf{12} & 1 & 0 & \textbf{12} & 12 \\ \hline
+5 & 14 & \textbf{12} & 2 & 3 & \textbf{12} & 15 \\ \hline
+6 & 18 & \textbf{15} & 3 & 3 & \textbf{15} & 18 \\ \hline
+7 & 21 & \textbf{18} & 3 & 3 & \textbf{18} & 21 \\ \hline
+8 & 18 & \textbf{21} & −3 & −3 & \textbf{21} & 18 \\ \hline
+\end{tabular}
+\end{center}
+
+Encoder and decoder perfectly synchronized — no drift.
+\end{calloutbox}
+
+\textbf{Implementation}: encoder maintains a buffer of quantized past samples $\tilde{x}(n)$; predictor reads from this buffer.
+
+\subsection{Impact of Entropy Coding}
+
+\subsubsection{Direct Comparison (without entropy coding)}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501173349.png}\end{center}
+Without entropy coding, rate estimated as $R = \log_2 L$ (bits/sample). PQ appears disappointing:
+\begin{itemize}
+\item At low bitrates: predictor uses heavily quantized data → unreliable
+\item At high bitrates: quantizer forced to encode added quantization noise
+\end{itemize}
+
+\textbf{Root cause}: rate estimate $\log_2 L$ is \textbf{too pessimistic} for PQ.
+
+\textbf{Why}: most quantization indexes are zero. Example: $L=19$ levels → $\approx 84\%$ of indexes are 0; less than 1\% outside $(-3,3)$.
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501173405.png}\end{center}
+→ \textbf{Variable-length code} (entropy coding): short codeword for index 0, longer for rare non-zero indexes.
+
+\subsubsection{With Entropy Coding}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501173437.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260501173447.png}\end{center}
+
+\textbf{Result}: PQ + entropy coding achieves:
+\begin{itemize}
+\item $\Delta\mathrm{PSNR} \approx +20\,\mathrm{dB}$ at 1 bpp vs. direct UQ
+\item Or equivalently: \textbf{−86\% rate reduction} at 30 dB target quality
+\end{itemize}
+
+\bigskip\hrule\bigskip
+
+\section{Wrap-up}
+
+\subsection{Summary of R-D Formulas}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Method} & \textbf{R-D Formula} & \textbf{Notes} \\ \hline
+UQ, uniform RV & $D = \sigma_X^2\cdot 2^{-2R}$ & $c_X=K_X=1$ \\ \hline
+HR UQ, generic RV & $D = K_X\sigma_X^2\cdot 2^{-2R}$ & $K_X = \gamma^2/3$ \\ \hline
+Optimal SQ (HR) & $D = c_X\sigma_X^2\cdot 2^{-2R}$ & $c_X=1$ (uniform), $c_X\approx2.72$ (Gaussian) \\ \hline
+SNR rule of thumb & $\mathrm{SNR}\approx 6R$ dB & +6 dB per extra bit \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Key Takeaways}
+
+\begin{enumerate}
+\item \textbf{UQ and optimal SQ alone}: catastrophic for natural images/audio — quality drops, rate barely reduced
+\item \textbf{Predictive quantization} dramatically improves performance \textbf{only when}:
+\begin{itemize}
+\item Prediction computed on \textbf{quantized data} (otherwise decoder drifts)
+\item Signal is \textbf{sufficiently correlated} ($\rho > 1/2$ for first-order prediction)
+\item Followed by \textbf{entropy coding} (to exploit the sparsity of prediction errors)
+\end{itemize}
+\item \textbf{Rate estimate $\log_2 L$ is too pessimistic} for PQ — entropy coding reveals the true gain
+\item \textbf{Entropy coding} is the essential final step: subject of the next lesson
+\end{enumerate}
+

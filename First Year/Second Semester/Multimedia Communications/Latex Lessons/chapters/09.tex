@@ -1,0 +1,725 @@
+\chapter{Modern Video Compression Standards}
+
+Marco Cagnazzo - Multimedia Communications
+
+\bigskip\hrule\bigskip
+
+\section{The Hybrid Video Coding Paradigm}
+
+\subsection{The Universal Hybrid Video Encoder}
+
+From MPEG-1 to VVC, every standard uses the same fundamental \textbf{hybrid video coding} architecture.
+
+\textbf{Core processes:}
+
+\begin{itemize}
+\item \textbf{Spatial prediction}, also called \textit{Intra prediction}.
+\item \textbf{Temporal prediction}, also called \textit{Inter prediction}.
+\item \textbf{Residual calculation}, obtained as the difference between the current signal and the prediction.
+\item \textbf{Transform and quantization}, which decorrelate and compress the residual.
+\item An \textbf{internal closed loop}, using inverse quantization and inverse transform, to reconstruct the same reference frames available at the decoder and prevent \textit{drift}.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Universal Hybrid Encoder}
+\textbf{Statement:} Modern standards from MPEG-1 to VVC are based on spatial and temporal prediction, residual coding, transform, quantization, entropy coding, and an internal reconstruction loop.
+
+\textbf{Interpretation:} The encoder must reconstruct its own decoded frames because future motion compensation uses decoded references, not original frames. This keeps the encoder and decoder synchronized and prevents drift.
+\end{calloutbox}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506125516.png}\end{center}
+\textit{Block diagram of the universal hybrid video encoder. The input frame $\hat{A}$ enters a summation node that produces residual $e_B$. The residual passes through two stages of $4 \times 4$ DCT, quantization, and CABAC/CAVLC to form the output bitstream. The reconstruction loop contains inverse quantization, inverse DCT, reconstructed residual $\hat{e}_B$, summation with prediction, frame buffer, deblocking filter, and reconstructed frames $\hat{f}_p$ / $\hat{f}_b$. A mode decision block selects between Intra Prediction and Motion Compensation, while Motion Estimation feeds Motion Compensation from the Frame Buffer.}
+\subsection{Scope of the Standard}
+
+If the fundamental architecture is universal, the key question is: what exactly is standardized?
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506125634.png}\end{center}
+
+\begin{calloutbox}{red!70!black}{Interoperability and Competition}
+\textbf{Statement:} Standards exclusively define the bitstream syntax and the decoding process. Encoder architecture and optimization strategies remain open problems for industrial competition.
+
+\textbf{Interpretation:} Any compliant decoder must decode a valid bitstream in the same way. Encoders, however, can compete through better mode decisions, faster search strategies, rate control, perceptual optimization, and hardware implementation.
+\end{calloutbox}
+
+\subsection{Codecs Historical Evolution}
+
+To improve compression, standards continuously increase the encoder's \textbf{degrees of freedom}, especially partitioning options and prediction modes.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506125655.png}\end{center}
+
+\begin{calloutbox}{red!70!black}{The Golden Rule}
+\textbf{Statement:} Generational leaps typically halve the required bit-rate for identical perceptual quality, with an encoder computational complexity increase of approximately $10\times$.
+
+\textbf{Interpretation:} Each new codec generation improves compression efficiency, but the encoder must search a much larger space of partitions, prediction modes, transforms, filters, and signaling choices.
+\end{calloutbox}
+
+\subsection{Market and Use Cases 2026 Scenarios}
+
+Currently, multiple standards coexist. Codec adoption is driven by licensing models and hardware availability rather than strict technical superiority.
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Ecosystem} & \textbf{Typical Codecs and Features} & \textbf{Market Share} \\ \hline
+\textbf{Real-Time and Legacy} (video calls, old devices) & H.264/AVC: low-latency support and universal hardware compatibility. & H.264: approximately 80-90\% \\ \hline
+\textbf{Broadcast and Mobile} (DVB-T2, premium 4K) & H.265/HEVC, H.264/AVC: high efficiency and mature hardware ecosystem. & HEVC: approximately 50-70\%; H.264: approximately 30-50\% \\ \hline
+\textbf{Web Streaming} (YouTube, VOD) & AV1, H.264/AVC, H.265/HEVC: OTT-optimized, with AV1 as royalty-free. & H.264: approximately 60\%; AV1: approximately 20-30\%; HEVC: approximately 10-20\% \\ \hline
+\textbf{Next-Gen} (8K, 360-degree video, VR) & H.266/VVC, AV1: maximum efficiency and high computational complexity. & AV1: growing; VVC: less than 5\% \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Video Codec Comparison}
+
+The following comparisons use the UVG dataset and show the tradeoff between bitrate, objective quality, and encoding time.
+
+\subsubsection{Test Sequence: HoneyBee}
+
+\textbf{Test sequence:} HoneyBee, 1080p, 120 fps. \textbf{Target coding rate:} 2.0 Mbps.
+
+\begin{center}
+\begin{tabular}{|l|r|r|r|}
+\hline
+\textbf{Codec} & \textbf{Actual Rate} & \textbf{PSNR} & \textbf{Enc. Time (s)} \\ \hline
+MPEG-2 & 7.06 Mbps & 36.58 dB & 2.18 \\ \hline
+H.264 & 2.00 Mbps & 40.51 dB & 17.06 \\ \hline
+HEVC & 1.98 Mbps & 41.69 dB & 109.45 \\ \hline
+AV1 & 1.80 Mbps & 43.47 dB & 158.66 \\ \hline
+VVC & 1.98 Mbps & 43.81 dB & 105.08 \\ \hline
+\end{tabular}
+\end{center}
+
+\textit{A. Mercat, M. Viitanen, and J. Vanne, "UVG dataset: 50/120fps 4K sequences for video codec analysis and development," in Proc. ACM Multimedia Syst. Conf., Istanbul, Turkey, June 2020. Copyright: Digiturk 2013.}
+
+\begin{calloutbox}{gray!60!black}{Figure 4 - HoneyBee visual comparison across codecs}
+\textbf{Placeholder:} add image later from the original PDF. \textbf{Expected content:} HoneyBee sequence with purple flowers compared across MPEG-2, H.264, HEVC, AV1, and VVC. \textbf{Source cue:} \texttt{[Figura: HoneyBee sequence (purple flowers) compared across codecs.]}
+\end{calloutbox}
+
+\textbf{Visual comparison: HoneyBee}
+
+\begin{itemize}
+\item \textbf{MPEG-2:} Rate 7.06 Mbps, PSNR 36.58 dB. MPEG-2 is not able to attain the target bit-rate. Blocking artifacts are quite visible.
+\item \textbf{H.264:} Rate 2.00 Mbps, PSNR 40.51 dB. H.264 attains the target bit-rate. Blocking artifacts are removed, but some artifacts are still visible.
+\item \textbf{HEVC:} Rate 1.98 Mbps, PSNR 41.69 dB. Improved quality.
+\item \textbf{AV1:} Rate 1.80 Mbps, PSNR 43.47 dB. Top quality.
+\item \textbf{VVC:} Rate 1.98 Mbps, PSNR 43.81 dB. Top quality.
+\end{itemize}
+
+\subsubsection{Test Sequence: Bosphorus}
+
+\textbf{Test sequence:} Bosphorus, 1080p, 120 fps. \textbf{VBV target:} 2.0 Mbps.
+
+\begin{center}
+\begin{tabular}{|l|r|r|r|l|}
+\hline
+\textbf{Codec} & \textbf{Actual Rate} & \textbf{PSNR} & \textbf{Enc. Time (s)} & \textbf{Playback} \\ \hline
+MPEG-2 & 8.47 Mbps & 36.14 dB & 2.45 & [Play] \\ \hline
+H.264 & 2.03 Mbps & 35.58 dB & 19.20 & [Play] \\ \hline
+HEVC & 1.97 Mbps & 38.82 dB & 143.83 & [Play] \\ \hline
+AV1 & 1.98 Mbps & 40.69 dB & 147.13 & [Play] \\ \hline
+VVC & 1.96 Mbps & 41.00 dB & 139.08 & [Play] \\ \hline
+\end{tabular}
+\end{center}
+
+\textit{A. Mercat, M. Viitanen, and J. Vanne, "UVG dataset: 50/120fps 4K sequences for video codec analysis and development," in Proc. ACM Multimedia Syst. Conf., Istanbul, Turkey, June 2020. Copyright: Digiturk 2013.}
+
+\begin{calloutbox}{gray!60!black}{Figure 5 - Bosphorus visual comparison across codecs}
+\textbf{Placeholder:} add image later from the original PDF. \textbf{Expected content:} Bosphorus sequence with a boat on water and a bridge, compared across MPEG-2, H.264, HEVC, AV1, and VVC. \textbf{Source cue:} \texttt{[Figura: Bosphorus sequence (boat on water with bridge) compared across codecs.]}
+\end{calloutbox}
+
+\textbf{Visual comparison: Bosphorus}
+
+\begin{itemize}
+\item \textbf{MPEG-2:} Rate 8.47 Mbps, PSNR 36.14 dB.
+\item \textbf{H.264:} Rate 2.03 Mbps, PSNR 35.58 dB.
+\item \textbf{HEVC:} Rate 1.97 Mbps, PSNR 38.82 dB.
+\item \textbf{AV1:} Rate 1.98 Mbps, PSNR 40.69 dB.
+\item \textbf{VVC:} Rate 1.96 Mbps, PSNR 41.00 dB.
+\end{itemize}
+
+\subsection{The Cost of Freedom}
+
+The empirical data shows that newer standards achieve significantly better PSNR at the same bit-rate, but require ever increasing encoding time.
+
+\begin{itemize}
+\item \textbf{MPEG-2 underflow:} The encoder reaches its maximum quantization limit. It lacks the tools to discard further bits, causing severe target-rate overshoots of 7-8 Mbps.
+\item \textbf{The RDO challenge:} VVC and AV1 have a massive tree of possible block partitions and prediction modes. Finding the optimal configuration under 2.0 Mbps while maximizing quality requires evaluating millions of combinations.
+\end{itemize}
+
+\textbf{How does the encoder make these decisions?}
+
+\[
+\rightarrow \text{Rate-Distortion Optimization}
+\]
+
+\section{Space Partitioning and RDO}
+
+\subsection{Recall: Rate-Distortion Optimization}
+
+From the previous lecture, the encoder minimizes the Lagrangian cost function for each block:
+
+\[
+J = D + \lambda R \tag{1}
+\]
+
+\begin{calloutbox}{red!70!black}{Rate-Distortion Optimization}
+\textbf{Statement:} For each coding choice, the encoder minimizes
+
+\[
+J = D + \lambda R
+\]
+
+where $D$ is distortion, $R$ is rate, and $\lambda$ controls the tradeoff between quality and bitrate.
+
+\textbf{Interpretation:} A mode is not selected only because it has low distortion or low rate. It is selected because it minimizes their weighted combination.
+\end{calloutbox}
+
+\textbf{The block partitioning problem:}
+
+\begin{itemize}
+\item Partitioning a block into sub-blocks is treated as a distinct coding mode.
+\item The encoder evaluates the cost of the original block, $J_B$, against the sum of the sub-block costs:
+\end{itemize}
+
+\[
+J_{split} = \sum J_{subblock}
+\]
+
+\begin{itemize}
+\item If $J_{split} < J_B$, the split is accepted.
+\item \textit{The evolution of video standards is largely the evolution of allowable split geometries.}
+\end{itemize}
+
+\subsection{H.264/AVC: The Macroblock Era}
+
+H.264 relies on a fixed and rigid structure, which limits the RDO search space.
+
+\begin{itemize}
+\item \textbf{Base unit:} the $16 \times 16$ \textbf{Macroblock} (MB).
+\item \textbf{Variable Block-Size (VBS):} the MB can be partitioned into $16 \times 8$, $8 \times 16$, or $8 \times 8$ blocks to better capture motion boundaries.
+\item \textbf{Sub-partitions:} $8 \times 8$ blocks can be further divided down to $4 \times 4$.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Limitation of the Macroblock}
+\textbf{Statement:} A maximum block size of $16 \times 16$ is highly inefficient for High Definition (1080p) or 4K video, where smooth background areas such as sky or walls can span hundreds of pixels.
+
+\textbf{Interpretation:} Large smooth regions should be represented by large blocks. If the standard only permits small blocks, the encoder must spend unnecessary bits on partition signaling and local prediction.
+\end{calloutbox}
+
+\subsection{H.265/HEVC: The Quad-Tree Paradigm}
+
+HEVC abandons macroblocks in favor of the \textbf{Coding Tree Unit (CTU)} to handle UHD resolutions.
+
+\begin{itemize}
+\item \textbf{Larger base size:} CTUs can be up to $64 \times 64$ pixels.
+\item \textbf{Quad-Tree split:} a CTU is recursively split into four square \textbf{Coding Units} (CUs), down to $4 \times 4$ CUs.
+\item \textbf{Functional separation:} a CU can be symmetrically or asymmetrically divided into \textbf{Prediction Units} (PUs) and \textbf{Transform Units} (TUs).
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506125829.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506125913.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506125928.png}\end{center}
+\subsection{H.266/VVC: QT + Multi-Type Tree (MTT)}
+
+VVC introduces extreme flexibility and eliminates the strict separation between CUs, PUs, and TUs for most modes.
+
+\begin{itemize}
+\item \textbf{Massive base size:} CTUs can be up to $128 \times 128$ pixels.
+\item \textbf{QT + MTT:} Quad-Tree leaves can be further partitioned using a \textbf{Multi-Type Tree}.
+\item \textbf{New splits:} includes \textit{Binary} splits, which are symmetric halves, and \textit{Ternary} splits, with a $1:2:1$ ratio.
+\item Rectangular blocks become fundamental for encoding object edges accurately.
+\end{itemize}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506125946.png}\end{center}
+\subsection{AV1: 10-Way Superblock Partitioning}
+
+AV1 uses a similar highly flexible hierarchical approach.
+
+\begin{itemize}
+\item \textbf{Base unit:} the \textit{Superblock}, sized up to $128 \times 128$.
+\item \textbf{10-way split:} a block can be partitioned using 10 different geometrical patterns.
+\item The available geometries include $4:1$ and $1:4$ rectangular splits, creating highly elongated blocks for sharp directional textures.
+\item Square blocks can be recursively partitioned.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506130003.png}\end{center}
+
+\subsection{The Algorithmic Burden of RDO}
+
+\begin{calloutbox}{red!70!black}{Decision Tree Search}
+\textbf{Statement:} To find the optimal partition, the encoder explores the block geometry using a \textbf{Depth-First Search (DFS)} algorithm while optimizing the cost
+
+\[
+J = D + \lambda R.
+\]
+
+\textbf{Interpretation:} More partition freedom improves compression only if the encoder can afford to search the corresponding decision tree.
+\end{calloutbox}
+
+Idea: use the encoded block to predict the next block -\textgreater{} sequential The evaluation is a massive sequential process:
+
+\begin{enumerate}
+\item \textbf{Top-down exploration:} try coding the block as a whole, then try splitting it.
+\item \textbf{Causal dependency:} sub-blocks are tested sequentially in Z-scan order. A block cannot be predicted until its top and left neighboring blocks have been fully \textit{reconstructed}, so their pixels are frozen.
+\item \textbf{Inner loop for prediction:} for each block, exhaustively test Intra and Inter modes to find the local minimum $J_{CU}$.
+\item \textbf{Bottom-up decision:} compare the total cost. If
+\end{enumerate}
+
+\[
+\sum J_{children} < J_{parent},
+\]
+
+the split is kept.
+
+\textbf{Conclusion:} The theoretical state space of a CTU is enormous, but reference models traverse it sequentially. Commercial encoders drastically reduce this process using \textbf{fast heuristics} and \textbf{machine learning} to prune the tree early.
+
+\subsection{Pruning the Decision Tree: Fast Heuristics}
+
+To mitigate the extreme complexity of RDO, production encoders such as VVenC and SVT-AV1 implement aggressive early termination strategies.
+
+\textbf{Common pruning approaches:}
+
+\begin{itemize}
+\item \textbf{Spatial/texture analysis:} evaluate local variance and directional gradients. If a $64 \times 64$ Coding Unit has low variance, as in a flat background, deeper QT/MTT partitions are immediately bypassed.
+\item \textbf{Temporal correlation:} constrain the RDO search space by exploiting the partition depth of the co-located CU in the reference frame.
+\item \textbf{Machine learning classifiers:} use lightweight CNNs or gradient boosting decision trees, such as LightGBM, to predict split probabilities directly from raw pixel features and discard highly improbable geometries before any RDO calculation.
+\end{itemize}
+
+\section{Spatial and Temporal Prediction}
+
+\subsection{Intra Prediction}
+
+\textbf{Intra prediction} exploits spatial redundancy by extrapolating pixels from already-decoded neighboring blocks.
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260506130740.png}\end{center}
+
+\textbf{The evolution of freedom:}
+
+\begin{itemize}
+\item \textbf{H.264/AVC:} 4 prediction types for $16 \times 16$ blocks, and 9 types for $4 \times 4$ blocks: 8 directions plus DC.
+\item \textbf{H.265/HEVC:} expands to 35 modes: 33 directions plus DC and Planar, to handle complex textures.
+\item \textbf{H.266/VVC:} expands to 65 directional modes, plus wide-angle modes for non-square blocks.
+\end{itemize}
+
+The number of possible predictors grows exponentially with the number of signaling bits:
+
+\[
+P \propto 2^B.
+\]
+
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260506130804.png}\end{center}
+\textit{Horizontal predictor}
+
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260506130818.png}\end{center}
+\textit{Vertical predictor}
+
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260506130833.png}\end{center}
+**
+
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260506130853.png}\end{center}
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260506130918.png}\end{center}
+\textit{we can split it in 16 4x4 blocks}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506131234.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506131249.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506131301.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506131310.png}\end{center}
+
+For each sub block we have 9 options. We can build 9 times 16 possible combinations. We have $9^{16}$ possible predictions ideally. We do it sequentially to have fewer combination.
+\subsection{The Cost of Freedom: Predicting the Predictor}
+
+\begin{calloutbox}{red!70!black}{Overhead Problem}
+\textbf{Statement:} If VVC has 67 Intra modes, sending the mode index requires approximately 7 bits per block. For tiny $4 \times 4$ blocks, this signaling overhead would completely destroy the compression gains.
+
+\textbf{Interpretation:} Increasing the number of modes improves prediction quality, but the selected mode must also be transmitted. The mode index itself can become too expensive.
+\end{calloutbox}
+
+\textbf{Solution: Most Probable Mode (MPM)}
+
+\begin{itemize}
+\item The encoder predicts the mode itself using the spatial context.
+\item A list of \textbf{Most Probable Modes} (MPM) is built using the directions chosen by the top and left neighbors.
+\item HEVC uses a 3-candidate MPM list.
+\item VVC expands this to a 6-candidate MPM list.
+\item If the chosen mode is in the MPM list, it is coded with a very short index, for example 1 or 2 bits.
+\end{itemize}
+
+\subsection{Inter Prediction: Fractional Motion Compensation}
+
+\textbf{Inter prediction} removes temporal redundancy through \textbf{Motion Estimation} and \textbf{Motion Compensation} (ME/MC).
+
+\begin{itemize}
+\item Objects rarely move by exact integer pixel amounts between frames.
+\item \textbf{H.264/HEVC/VVC:} use quarter-pel, or $1/4$-pixel, fractional precision. The encoder generates sub-pixels using interpolation filters, such as the 6-tap filters in H.264.
+\item \textbf{AV1:} pushes precision further to $1/8$-pixel accuracy and uses dynamically selectable interpolation filters, such as sharp and smooth filters.
+\end{itemize}
+
+\subsection{Advanced Motion Compensation}
+
+Modern standards generalize temporal distance. A frame is no longer restricted to predicting from its immediate chronological neighbor.
+
+\begin{itemize}
+\item \textbf{Multiple reference frames:} slices can maintain one P-list or two B-lists of reference images kept in the \textbf{Decoded Picture Buffer} (DPB).
+\item \textbf{Generalized B-slices:} the encoder can flexibly select predictors from these lists and combine them using weighted averages.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506133134.png}\end{center}
+
+\subsection{Vector Prediction: From Skip to Merge}
+
+Just like Intra modes, \textbf{Motion Vectors} (MVs) must be predicted to save bits.
+
+\begin{itemize}
+\item \textbf{H.264 Skip/Direct:} uses a simple median of spatial neighbors. If the median is correct, 0 bits are spent on MVs.
+\item \textbf{HEVC/VVC Merge Mode:} replaces the median with a dynamic \textit{candidate list}.
+\item The list aggregates 5 spatial candidates from adjacent blocks and 1 temporal candidate from the co-located block in the reference frame.
+\item The encoder transmits only the index of the best candidate in the list, sharing both the MV and the reference frame index.
+\end{itemize}
+
+\subsection{Beyond Translation: Modern Inter Tools}
+
+To squeeze the final bits of temporal redundancy out of the signal, AV1 and VVC abandon the assumption that blocks only move rigidly in 2D space.
+
+\textbf{Affine Motion Prediction:}
+
+\begin{itemize}
+\item Allows blocks to rotate, zoom, and shear.
+\item Uses 4-parameter or 6-parameter models instead of a simple $(x, y)$ vector.
+\end{itemize}
+
+\textbf{Compound Prediction:}
+
+\begin{itemize}
+\item AV1 allows Inter and Intra predictions to be combined within the same block.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506134619.png}\end{center}
+
+\section{Transforms, Quantization, and Filters}
+
+\subsection{Residual Coding: The Evolution of Transforms}
+
+After prediction, the residual error must be decorrelated into the frequency domain.
+
+\textbf{The push for larger and flexible transforms:}
+
+\begin{itemize}
+\item \textbf{H.264/AVC:} relies on a $4 \times 4$ integer-coefficient approximation of the DCT, perfectly synchronized to avoid precision errors between encoder and decoder.
+\item \textbf{H.265/HEVC:} expands transforms up to $32 \times 32$ to handle 4K resolutions. It also introduces a DST, or \textit{Discrete Sine Transform}, approximation specifically for $4 \times 4$ Intra blocks, improving compression by approximately $1\%$.
+\item \textbf{H.266/VVC:} introduces \textbf{Multiple Transform Selection} (MTS) and non-square transforms to match the rectangular partitions created by QT+MTT.
+\end{itemize}
+
+\subsection{Quantization and Entropy Coding}
+
+\textbf{Quantization} is the only lossy step in the hybrid encoder.
+
+\textbf{Quantization Parameter (QP):}
+
+\begin{itemize}
+\item In H.264/HEVC, the quantization step size doubles for every increment of 6 in the \textbf{Quantization Parameter} (QP).
+\item Empirically, a unitary QP increment increases the rate by approximately $12.5\%$.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Quantization Parameter Behavior}
+\textbf{Statement:} In H.264/HEVC, the quantization step size doubles whenever QP increases by 6. Empirically, increasing QP by 1 changes the rate by approximately $12.5\%$.
+
+\textbf{Interpretation:} QP is the main knob for rate control. Higher QP means coarser quantization, lower bitrate, and higher distortion.
+\end{calloutbox}
+
+\textbf{Lossless entropy coding:}
+
+\begin{itemize}
+\item Modern standards are standardized around \textbf{CABAC}, or \textit{Context-Adaptive Binary Arithmetic Coding}.
+\item CABAC transforms syntax elements into binary formats and dynamically adapts probabilities based on previously decoded spatial contexts.
+\item CABAC yields a 5\%-15\% rate reduction over older variable-length codes such as CAVLC.
+\end{itemize}
+
+\subsection{The Need for In-Loop Filtering}
+
+Because transform and quantization are applied independently to disjoint blocks, strong discontinuities, called \textbf{blocking artifacts}, appear at block boundaries at low bit-rates.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506134648.png}\end{center}
+
+If left uncorrected, these artifacts are saved in the Decoded Picture Buffer (DPB) and permanently damage future motion compensations. But here we know where we have those artifacts: around the contours.
+
+\subsection{Evolution of In-Loop Filters}
+
+To fix quantization damage, standards mandate complex \textbf{normative filters} inside the reconstruction loop.
+
+\begin{itemize}
+\item \textbf{H.264/AVC Deblocking:} analyzes edges between $4 \times 4$ blocks. Filtering strength adapts dynamically to the coding mode, motion vectors, and quantization step of neighboring blocks.
+\item \textbf{H.265/HEVC Deblocking + SAO:} applies deblocking only on an $8 \times 8$ grid to reduce complexity. It introduces \textbf{Sample Adaptive Offset} (SAO), which categorizes pixels by edges and bands, then adds offsets to correct ringing artifacts.
+\end{itemize}
+
+\subsection{VVC and AV1 Filters}
+
+As transform sizes grew and bit-rates decreased, deblocking and SAO were no longer sufficient. Modern codecs dedicate major computational effort to pixel restoration.
+
+\begin{itemize}
+\item \textbf{H.266/VVC:} adds the \textbf{Adaptive Loop Filter} (ALF) and \textbf{Luma Mapping with Chroma Scaling} (LMCS), specifically designed to preserve details in HDR, or \textit{High Dynamic Range}, video.
+\item \textbf{AV1:} implements a strong post-processing pipeline:
+\begin{itemize}
+\item \textbf{Directional Filters (CDEF):} analyze gradient directions to smooth edges without blurring textures.
+\item \textbf{Loop Restoration Filters:} Wiener filters applied over large windows.
+\item \textbf{Film Grain Synthesis:} denoises the image before encoding, then synthesizes artificial grain at the decoder to recreate the cinematic look at zero bitrate cost.
+\end{itemize}
+\end{itemize}
+
+\section{Network Abstraction and Parallelism}
+
+\subsection{Transmission and Network Errors}
+
+\begin{calloutbox}{red!70!black}{Fragility of Compression}
+\textbf{Statement:} A 4K video compressed into a perfect 2 Mbps mathematical stream can be severely corrupted if only a few bits are flipped.
+
+\textbf{Interpretation:} Entropy-coded streams are compact but fragile. A bit error can desynchronize CABAC contexts and then propagate through spatial prediction and motion compensation.
+\end{calloutbox}
+
+\textbf{Different "pipes", same vulnerability:}
+
+\begin{itemize}
+\item \textbf{DVB-T broadcast:} a continuous stream subject to electromagnetic noise.
+\item \textbf{Internet, using RTP/UDP or TCP/DASH:} a stream cut into packets with MTU around 1500 bytes; packets can arrive late or be lost.
+\item \textbf{Disk storage, such as MP4:} requires specific indexes to seek.
+\end{itemize}
+
+\textbf{Consequence:} CABAC loses context. Errors propagate spatially and temporally through Motion Compensation, creating a "green and gray mosaic".
+
+\subsection{Pictures and Slices}
+
+To limit error propagation, pictures can be divided into \textbf{slices}.
+
+At each new slice, Intra prediction is stopped and CABAC is reset, so parallel encoding and decoding of slices becomes possible.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506135622.png}\end{center}
+
+\subsection{The Solution: Separation of Concerns}
+
+Starting from H.264, video standards separate \textbf{compression} from \textbf{transport}.
+
+\textbf{The factory analogy:}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506135653.png}\end{center}
+
+\begin{itemize}
+\item \textbf{Video Coding Layer (VCL):} the production department. It handles pure compression: transforms, prediction, and RDO. It generates the \textit{slices} of each compressed picture.
+\item \textbf{Network Abstraction Layer (NAL):} the shipping department. It takes VCL slices, encapsulates them, and adds metadata.
+\item \textbf{Goal:} provide a standard interface to map video over RTP/IP for real-time communication, ISO MP4 for storage, or MPEG-2 TS for diffusion.
+\end{itemize}
+
+\subsection{NAL Units}
+
+The VCL encodes each picture into one or more slices. The NAL encapsulates the slices into \textbf{VCL NALUs}, one per slice, and generates \textbf{Non-VCL NALUs}, such as SPS, PPS, and SEI.
+
+\begin{itemize}
+\item \textbf{VCL NALU:} contains modes, MVs, and quantized coefficients of a slice. It can be \textbf{Instantaneous Decoding Refresh}, meaning Intra with CABAC reset, or non-IDR.
+\item \textbf{SPS:} \textbf{Sequence Parameter Set}, a non-VCL NALU containing important encoding parameters such as picture size and color depth.
+\item \textbf{PPS:} \textbf{Picture Parameter Set}, containing per-picture coding options specific to each codec.
+\item \textbf{SEI:} \textbf{Supplemental Enhancement Information}, not necessary for decoding but useful for specific tasks such as subtitles, HDR information, user data, and similar metadata.
+\item \textbf{AUD:} \textbf{Access Unit Delimiter}, an optional NALU that signals a new picture.
+\end{itemize}
+
+\subsection{NALUs and Access Units}
+
+\begin{calloutbox}{red!70!black}{Access Unit}
+\textbf{Statement:} An \textbf{Access Unit} (AU) is a logical grouping of all NALUs required to decode a single frame. The decoder identifies its boundaries implicitly.
+
+\textbf{Interpretation:} The AU is the frame-level unit of decoding, while NALUs are the transport and syntax units that compose it.
+\end{calloutbox}
+
+How is this sequence of NALUs delivered?
+
+\begin{itemize}
+\item If the transport medium is a continuous "blind" tube, such as MPEG-TS or raw \texttt{.264} files, use the \textbf{Byte-Stream format}.
+\item If the transport layer already provides boundaries, such as an MP4 container, use the \textbf{Packetized format}.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506140326.png}\end{center}
+
+\subsection{Format 1: Annex-B Byte-Stream}
+
+\textbf{Mechanism:} a Start Code, for example \texttt{0x00000001}, is injected before every NALU.
+
+\textbf{Emulation prevention:} fake bytes are injected into the payload to prevent valid video data from accidentally mimicking a Start Code.
+
+\textbf{Pro:} Annex-B is well suited to continuous streaming or broadcasting, where packet boundaries do not exist natively.
+
+\textbf{Con:} it introduces CPU overhead for emulation prevention and re-synchronization. The decoder must scan every byte sequentially to find the next Start Code.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506140340.png}\end{center}
+
+\subsection{Format 2: Packetized Length-Prefixed}
+
+\textbf{Mechanism:} a \textbf{Length Field}, usually 4 bytes, is written exactly before the NALU header.
+
+\textbf{No Start Codes:} emulation prevention is not strictly required for boundary detection.
+
+\textbf{Pro:} this format is highly software-friendly. The parser reads the length and performs an $O(1)$ memory jump directly to the next NALU.
+
+\textbf{Con:} it is useless if the stream is corrupted or the external container is damaged, because synchronization is lost.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506140352.png}\end{center}
+
+\subsection{The Evolution: HEVC, VVC, and AV1}
+
+\textbf{H.265/HEVC and H.266/VVC:}
+
+\begin{itemize}
+\item Maintain the Annex-B / Packetized dualism.
+\item Expand the NALU header from 1 byte to \textbf{2 bytes} to include \textit{Temporal ID} and \textit{Layer ID} for spatial and temporal scalability.
+\end{itemize}
+
+\textbf{AV1: breaking the paradigm}
+
+\begin{itemize}
+\item AV1 abandons the MPEG legacy. NALUs are called \textbf{OBUs}, or \textit{Open Bitstream Units}.
+\item \textbf{No Start Codes:} AV1 completely drops Annex-B and emulation prevention to save CPU cycles.
+\item AV1 exclusively uses a length-prefixed approach, even for raw bitstreams.
+\end{itemize}
+
+\subsection{Network Friendliness in Action}
+
+The NAL enables intelligent network operations without decoding. The NAL header and structure allow intermediate nodes, called \textbf{Media Aware Network Elements} (MANEs), to understand and manage the video stream.
+
+\textbf{1. Router inspection (MANE):}
+
+\begin{itemize}
+\item MANEs can read the 1-byte or 2-byte header; this is a form of \textit{Deep Packet Inspection}.
+\item \textbf{Smart dropping:} if the network is congested, the router can selectively drop Non-Reference B-frames without touching critical IDR frames or parameter sets.
+\item Protection, such as CRC, can be added to sensitive data such as SPS.
+\end{itemize}
+
+\textbf{2. RTP transport and fragmentation:}
+
+\begin{itemize}
+\item If a VCL NALU, such as an entire I-frame slice, exceeds the network MTU of 1500 bytes, it cannot be transmitted as-is.
+\item The RTP layer slices large NALUs into \textbf{Fragmentation Units} (FUs) and reassembles them at the receiver, keeping the video decoder unaware of the network constraints.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506140426.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506140532.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506140606.png}\end{center}
+\subsection{Resynchronization: Stream Structure}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506140635.png}\end{center}
+
+Decoding may restart at a \textbf{Random Access Point} (RAP).
+
+\textbf{IDR (Instantaneous Decoding Refresh):}
+
+An IDR is a strict barrier that completely clears the Decoded Picture Buffer (DPB). No pictures following the IDR in decoding order can reference pictures preceding it.
+
+\begin{itemize}
+\item \textbf{Pros:} guarantees a clean restart. It is ideal for the absolute beginning of a video sequence or hard scene cuts.
+\item \textbf{Cons:} breaks temporal prediction across the barrier, reducing compression efficiency. It cannot exploit leading pictures for better referencing.
+\end{itemize}
+
+\textbf{CRA (Clean Random Access):}
+
+CRA was introduced in HEVC. It is an Intra picture that allows \textbf{RASL} (\textit{Random Access Skipped Leading}) frames to reference pictures located before the CRA.
+
+\begin{itemize}
+\item \textbf{Scenario 1, normal playback:} the decoder has past frames in memory. RASL pictures are fully decoded, maximizing compression efficiency.
+\item \textbf{Scenario 2, seeking:} decoding starts directly at the CRA. Past references are missing, so the decoder safely discards, or skips, the RASL pictures and decodes the rest cleanly.
+\item \textbf{Comparison:} H.264 lacked this feature, forcing frequent use of costly IDR frames.
+\end{itemize}
+
+\textbf{BLA (Broken Link Access):}
+
+BLA functions similarly to CRA, but explicitly signals that the required reference pictures for its leading frames are destroyed.
+
+\begin{itemize}
+\item \textbf{Origin:} BLA is typically generated by a \textit{secondary encoder} in network nodes, such as transcoders, packagers, and ad-insertion splicers, rather than by the original content encoder.
+\item \textbf{Mechanism:} when a stream is cut and spliced at a CRA, the network node alters the NALU header from CRA to BLA. The decoder reads this and immediately drops the broken RASL pictures without attempting reference lookups.
+\end{itemize}
+
+\subsection{Hardware Friendliness: Tiles}
+
+\begin{itemize}
+\item The CTU may be grouped into rectangular regions called \textbf{tiles}.
+\item Tiles are self-contained and independent from slices.
+\item A slice may contain several tiles, or a tile may contain several slices.
+\item One of the main targets of tiles is to allow \textbf{parallel encoding and decoding} across multi-core processors.
+\item Another application is viewport priority in 360-degree video.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506140722.png}\end{center}
+
+\subsection{Tiles in 360-Degree Video}
+
+Tiles are the foundational technology for \textbf{Viewport-Adaptive Streaming} in Virtual Reality, especially MPEG-OMAF.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260506140746.png}\end{center}
+
+\begin{itemize}
+\item \textbf{The problem:} a VR headset only displays approximately 15\% of the full 360-degree sphere, the Field of View. Transmitting the unseen 85\% at 8K is a massive waste of bandwidth.
+\item \textbf{The tile solution:} the sphere is projected and encoded as a grid of independent HEVC tiles.
+\item \textbf{Dynamic stitching:} the client requests only the tiles inside the current viewport at high resolution, and requests the background tiles at very low resolution as a fallback.
+\item \textbf{Why tiles?} Motion vectors cannot cross tile boundaries, so tiles are independent and can be mixed and matched at different qualities.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Bandwidth Savings With Tiles}
+\textbf{Statement:} Tile-based adaptive streaming can reduce bandwidth consumption by 50\%-60\% without degrading the user's perceived quality.
+
+\textbf{Interpretation:} The system spends high bitrate only where the user is looking and sends low-quality fallback content outside the viewport.
+\end{calloutbox}
+
+\subsection{Wavefront Parallel Processing (WPP)}
+
+\begin{itemize}
+\item A finer degree of parallelism can be achieved using \textbf{Wavefront Parallel Processing} (WPP).
+\item Slices are divided into rows of CTUs.
+\item The encoding of a row may start as soon as two CTUs of the previous row have been encoded.
+\item There is a guaranteed delay of 2 CTUs between successive rows, preserving spatial prediction contexts.
+\end{itemize}
+
+![[Pasted image 20260506140812.png]]`
+
+\subsection{Summary of the Hybrid Architecture}
+
+\textbf{The cost of compression:}
+
+\begin{itemize}
+\item Standards moved from fixed $16 \times 16$ blocks to extreme QT+MTT geometries up to $128 \times 128$.
+\item Intra directions expanded from 9 to 67, and sub-pixel affine motion was introduced.
+\item Complex in-loop filters, such as ALF and Restoration filters, were deployed to mask quantization artifacts.
+\item NALUs, mappings, tiles, and WPP were engineered to make the compressed video transportable and parallelizable.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{The Next Frontier}
+\textbf{Statement:} The hybrid paradigm has arguably reached its mathematical asymptote with VVC. The next major leap requires abandoning discrete mathematical transforms in favor of end-to-end differentiable neural architectures.
+
+\[
+\rightarrow \textit{Next Lectures: Neural Video Coding}
+\]
+
+\textbf{Interpretation:} Further compression gains may require learned representations and neural codecs rather than simply adding more handcrafted prediction, transform, partitioning, and filtering tools.
+\end{calloutbox}
+
+\section{Final Summary Table}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Tool / Standard} & \textbf{Key idea} & \textbf{Main parameters} & \textbf{Typical use} \\ \hline
+Hybrid video encoder & Prediction plus residual transform coding inside a closed reconstruction loop. & Intra/Inter prediction, residual, transform, quantization, entropy coding, inverse loop. & Universal architecture from MPEG-1 to VVC. \\ \hline
+Scope of standard & Standardize bitstream syntax and decoding, not encoder optimization. & Decoder behavior, syntax elements, conformance rules. & Interoperability and industrial competition. \\ \hline
+Rate-Distortion Optimization & Select the mode minimizing $J = D + \lambda R$. & Distortion $D$, rate $R$, multiplier $\lambda$. & Partitioning, prediction mode choice, transform and quantization decisions. \\ \hline
+H.264/AVC macroblocks & Fixed $16 \times 16$ MB with variable block-size partitions. & $16 \times 16$, $16 \times 8$, $8 \times 16$, $8 \times 8$, down to $4 \times 4$. & Legacy and real-time video with broad hardware support. \\ \hline
+H.265/HEVC CTU & Quad-tree Coding Tree Unit for UHD content. & CTU up to $64 \times 64$, CUs, PUs, TUs. & Efficient HD, 4K, broadcast, and mobile compression. \\ \hline
+H.266/VVC QT+MTT & Quad-tree plus binary and ternary multi-type splits. & CTU up to $128 \times 128$, binary split, ternary $1:2:1$ split. & Maximum coding efficiency with high encoder complexity. \\ \hline
+AV1 superblock partitioning & Flexible 10-way partitioning of $128 \times 128$ superblocks. & Square, rectangular, $4:1$, and $1:4$ split options. & Web streaming and royalty-free distribution. \\ \hline
+Intra prediction & Predict current block from already-decoded spatial neighbors. & H.264 4/9 modes, HEVC 35 modes, VVC 65+ modes. & Spatial redundancy removal. \\ \hline
+Most Probable Mode & Predict the Intra mode using top and left neighboring modes. & HEVC 3-candidate list, VVC 6-candidate list. & Reduce signaling overhead for many Intra modes. \\ \hline
+Fractional ME/MC & Estimate motion at sub-pixel precision. & Quarter-pel for H.264/HEVC/VVC, eighth-pel for AV1. & Temporal redundancy removal. \\ \hline
+Merge mode & Transmit an index into a motion-vector candidate list. & Spatial candidates, temporal co-located candidate, reference frame index. & MV compression in HEVC/VVC. \\ \hline
+Affine motion & Model rotation, zoom, and shear instead of simple translation. & 4-parameter or 6-parameter affine models. & Advanced Inter prediction in modern codecs. \\ \hline
+Transform coding & Decorrelate prediction residuals in the frequency domain. & H.264 $4 \times 4$ integer DCT, HEVC up to $32 \times 32$, VVC MTS. & Compact residual representation. \\ \hline
+Quantization & Lossy reduction of transform coefficient precision. & QP, step size doubling every +6 QP, approximately 12.5\% rate change per QP. & Main bitrate and distortion control. \\ \hline
+CABAC & Context-adaptive binary arithmetic coding. & Binary syntax elements, adaptive spatial contexts. & Lossless entropy coding with 5\%-15\% rate savings over older VLC. \\ \hline
+In-loop filters & Normative filtering inside the reconstruction loop. & Deblocking, SAO, ALF, LMCS, CDEF, restoration filters. & Prevent artifacts from entering reference frames. \\ \hline
+VCL and NAL & Separate compression from transport encapsulation. & VCL slices, NAL units, SPS, PPS, SEI, AUD. & Mapping video to RTP/IP, MP4, MPEG-2 TS, and other systems. \\ \hline
+Annex-B & Byte-stream format with Start Codes. & \texttt{0x00000001}, emulation prevention. & Continuous streams and broadcasting. \\ \hline
+Packetized format & Length-prefixed NALU format. & Usually 4-byte length field. & MP4-like containers and software-friendly parsing. \\ \hline
+AV1 OBU & AV1 replaces NALUs with Open Bitstream Units. & Length-prefixed OBUs, no Annex-B Start Codes. & AV1 raw bitstreams and web-oriented delivery. \\ \hline
+Random access & Restart decoding at well-defined access points. & IDR, CRA, RASL, BLA. & Seeking, splicing, scene cuts, clean recovery. \\ \hline
+Tiles & Self-contained rectangular CTU regions. & Tile grid, independent motion constraints. & Parallel processing and viewport-adaptive 360-degree streaming. \\ \hline
+WPP & Row-level CTU parallelism with a two-CTU delay. & CTU rows, diagonal wavefront, 2-CTU offset. & Multi-core encoding and decoding. \\ \hline
+\end{tabular}
+\end{center}
+

@@ -8,6 +8,14 @@ From MPEG-1 going on they use all the same structure, core points:
     \item Internal closed loops to provide reliability
 \end{itemize}
 Rule of thumb: every generation reduces video size by $1/2$ and increases complexity by $10\times$
+\begin{center}
+\includegraphics[width=0.95\linewidth]{video_chain.png}
+\end{center}
+\noindent End-to-end video chain. Only the \textbf{decoding} is normative (\emph{scope of the standard}): pre/post-processing and the encoder are left to implementation competition.
+\begin{center}
+\includegraphics[width=\linewidth]{modern_encoder.png}
+\end{center}
+\noindent Modern hybrid encoder (H.264-style): integer two-stage $4\times4$ DCT, in-loop \textbf{Deblocking Filter} inside the reconstruction loop before the Frame Buffer, and \textbf{CABAC/CAVLC} entropy coding. Same closed-loop structure as the universal encoder, refined block by block.
 \subsubsection{Codecs applications}
 \begin{itemize}
     \item Real Time $\to$ H.264 (very diffused, also in HW implementations since 2003)
@@ -95,6 +103,10 @@ All the video data is encoded into a bitstream.
         \item SEI: Supplemenetal and Enhancement Infos (Subtitles, HDR infos, ...)
     \end{itemize}
 \end{itemize}
+\begin{center}
+\includegraphics[width=0.45\linewidth]{h264_layers.png}
+\end{center}
+\noindent H.264 layered architecture: the \textbf{Video Coding Layer} produces the compressed bitstream, the \textbf{Network Abstraction Layer} wraps it into NAL units, which the Transport Layer packetizes for the network.
 NALUs are then packetized into a sequential bit stream, there are 2 ways to signal the NALU (H.264/HEVC):
 \begin{itemize}
     \item Start Code $0x00000001$: it is used but we have problems if this sequence is repeated in a nalu (start code mismatch), we have to use Emulation Prevention Techniques
@@ -109,6 +121,18 @@ $$\begin{aligned}
 \end{aligned}
 $$
 AV1 drops this approach and uses OBUs (Open Bitstream Units), in CDNs there are MANE\footnote{Media Aware Network Elements} that can allow to change the bitstream on the fly to add redundance or remove unnecessary NALUs.\\
+\begin{center}
+\includegraphics[width=0.9\linewidth]{nal_stream.png}
+\end{center}
+\noindent NAL-unit stream Encoder $\to$ MANE $\to$ Decoder: parameter sets (SPS, PPS), SEI and slice NALUs are forwarded packet by packet.
+\begin{center}
+\includegraphics[width=0.9\linewidth]{nal_prune.png}
+\end{center}
+\noindent \textbf{Pruning}: the MANE drops the non-decodable B-frame NALUs, forwarding only the I and P frames (rate adaptation without re-encoding).
+\begin{center}
+\includegraphics[width=0.9\linewidth]{nal_crc.png}
+\end{center}
+\noindent \textbf{Adding redundancy}: the MANE can inject extra protection (e.g.\ a CRC NALU) into the stream for more robust delivery.
 Decoder accesses video at RAPs (Random Access Points), there are 2 main access techniques:
 \begin{itemize}
     \item IDR: Technique to clear previous buffer at a certain intra frame. It breaks bidirectional temp. prediction

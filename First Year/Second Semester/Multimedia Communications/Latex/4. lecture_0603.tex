@@ -21,6 +21,25 @@ Starting from a signal where pixels have the same weight, after applying some sp
 \subsubsection{Prediction}
 We need to encode differences or predicting the differences. How to choose the $v(n)$?\\
 We need a $v(n)$ such that $y(n) = x(n) - v(n)$, then the reconstructed $\hat{y}(n) + v(n) = \hat{x}(n)$.
+\begin{center}
+\begin{tikzpicture}[baseline=(Q.center)]
+  \node (x) at (0,0) {$x(n)$};
+  \node[sum] (s1) at (1.8,0) {$-$};
+  \node[blk, minimum width=18mm, minimum height=13mm] (Q) at (3.8,0) {$Q$};
+  \node[sum] (s2) at (6.4,0) {$+$};
+  \node (xh) at (8.1,0) {$\hat{x}(n)$};
+  \node (v1) at (1.8,-1.2) {$v(n)$};
+  \node (v2) at (6.4,-1.2) {$v(n)$};
+
+  \draw[w,->] (x) -- (s1);
+  \draw[w,->] (s1) -- node[sig,above]{$y(n)$} (Q);
+  \draw[w,->] (Q) -- node[sig,above]{$\hat{y}(n)$} (s2);
+  \draw[w,->] (s2) -- (xh);
+  \draw[w,->] (v1) -- (s1);
+  \draw[w,->] (v2) -- (s2);
+\end{tikzpicture}
+\end{center}
+\noindent Basic predictive quantizer: the predictor $v(n)$ is subtracted before the quantizer $Q$ and added back after, so only the (smaller-variance) prediction error is quantized.
 \subsubsection{Prediction Error}
 $$q(n) = y(n) - \hat{y}(n) = x(n) - \hat{x}(n) = \bar{q}(n)\qquad\text{ the same of the original signal }x$$
 \subsubsection{Coding Gains}
@@ -79,17 +98,40 @@ If we split an image in too many blocks, we lose efficiency. For low bitrates is
 % Integrated from Summaries: DPCM schemes (exam asks to draw and comment encoder/decoder)
 \subsubsection{Wrong scheme: open-loop prediction (drift)}
 Naive idea: encoder predicts from the \emph{original} samples $x(n)$.
-$$\begin{array}{ccccccc}
-x(n) & \longrightarrow & \boxed{+} & \stackrel{y(n)}{\longrightarrow} & \boxed{Q} & \stackrel{\hat{y}(n)}{\longrightarrow} & \text{to decoder}\\
- & & \uparrow {\scriptstyle -v(n)} & & & & \\
- & & \boxed{\text{Pred}} & \hspace{-25pt}\longleftarrow x(n-1)\cdots & & &
-\end{array}
-\qquad\qquad
-\begin{array}{ccccc}
-\hat{y}(n) & \longrightarrow & \boxed{+} & \stackrel{\tilde{x}(n)}{\longrightarrow} & \text{out}\\
- & & \uparrow {\scriptstyle +v'(n)} & & \\
- & & \boxed{\text{Pred}} & \hspace{-25pt}\longleftarrow \tilde{x}(n-1)\cdots &
-\end{array}$$
+\begin{center}
+\begin{tikzpicture}[baseline=(s1.center)]
+  \node (lbl) at (-1.0,1.0) {\textbf{ENCODER}};
+  \node (x)   at (0,0)      {$x(n)$};
+  \node[sum]  (s1) at (1.6,0)  {$+$};
+  \node[blk]  (Q)  at (3.4,0)  {$Q$};
+  \node       (out) at (5.4,0) {to dec.};
+  \node[blk]  (P)  at (1.6,-1.4) {Pred};
+  \draw[w,->] (x)  -- (s1);
+  \draw[w,->] (s1) -- node[sig,above]{$y(n)$} (Q);
+  \draw[w,->] (Q)  -- node[sig,above]{$\hat{y}(n)$} (out);
+  \node[dot] (t) at (0.8,0) {};
+  \draw[w,->] (t)  |- (P.west);
+  \draw[w,->] (P)  -- node[sig,right]{$v(n)$} (s1);
+  \node[sig] at (1.86,-0.30) {$-$};
+\end{tikzpicture}
+\hspace{10mm}
+\begin{tikzpicture}[baseline=(sd.center)]
+  \node (lbl) at (-1.0,1.0) {\textbf{DECODER}};
+  \node (yh)  at (0,0)      {$\hat{y}(n)$};
+  \node[sum]  (sd) at (1.7,0)  {$+$};
+  \node       (out) at (3.9,0) {out};
+  \node[blk]  (P)  at (1.7,-1.4) {Pred};
+  \draw[w,->] (yh) -- (sd);
+  \draw[w,->] (sd) -- node[sig,above]{$\tilde{x}(n)$} (out);
+  \node[dot] (t) at (2.8,0) {};
+  \draw[w,->] (t)  |- (P.east);
+  \draw[w,->] (P)  -- node[sig,right]{$v'(n)$} (sd);
+  \node[sig] at (1.96,-0.30) {$+$};
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\includegraphics[width=0.95\linewidth]{predq_openloop.png}
+\end{center}
 \textbf{Problem}: the encoder predictor uses the original $x(n)$, but the decoder can only use the reconstructed $\tilde{x}(n)$. Since $x \neq \tilde{x}$, the two predictions $v(n) \neq v'(n)$ diverge and the error accumulates over time: this is the \textbf{drift} problem.\\
 Numerical example (3-bit quantizer, levels $\{-9,-6,-3,0,3,6,9\}$), predictor = previous sample:
 $$\begin{array}{c|cccccc}
@@ -104,16 +146,51 @@ $$\begin{array}{c|cccccc}
 Encoder predicts from originals (10,11,12,\dots), decoder is stuck at 9: drift grows unbounded.
 \subsubsection{Correct scheme: closed-loop prediction (DPCM)}
 \textbf{Solution}: the encoder embeds a copy of the decoder, and predicts from the \emph{quantized/reconstructed} samples $\tilde{x}(n)$ --- exactly the same data the decoder has.
-$$\text{ENCODER: }\begin{array}{ccccccc}
-x(n) & \longrightarrow & \boxed{+} & \stackrel{y(n)}{\longrightarrow} & \boxed{Q} & \stackrel{\hat{y}(n)}{\longrightarrow} & \text{to decoder}\\
- & & \uparrow {\scriptstyle -v(n)} & & \downarrow {\scriptstyle \hat{y}(n)} & & \\
- & & \boxed{\text{Pred}} & \stackrel{\tilde{x}(n)}{\longleftarrow} & \boxed{+} & \hspace{-12pt}\circlearrowleft {\scriptstyle +v(n)} &
-\end{array}$$
-$$\text{DECODER: }\begin{array}{ccccc}
-\hat{y}(n) & \longrightarrow & \boxed{+} & \stackrel{\tilde{x}(n)}{\longrightarrow} & \text{out}\\
- & & \uparrow {\scriptstyle +v(n)} & \downarrow & \\
- & & \boxed{\text{Pred}} & \hspace{-20pt}\longleftarrow &
-\end{array}$$
+\begin{center}
+\begin{tikzpicture}[baseline=(s1.center)]
+  \node (lbl) at (-1.0,1.0) {\textbf{ENCODER}};
+  \node (x)   at (0,0)        {$x(n)$};
+  \node[sum]  (s1) at (1.8,0)   {$+$};
+  \node[blk]  (Q)  at (3.8,0)   {$Q$};
+  \node       (out) at (6.4,0)  {to decoder};
+  \node[sum]  (s2) at (3.8,-1.8) {$+$};
+  \node[blk]  (P)  at (1.8,-1.8) {Pred};
+  \draw[w,->] (x)  -- (s1);
+  \draw[w,->] (s1) -- node[sig,above]{$y(n)$} (Q);
+  \draw[w,->] (Q)  -- node[sig,above]{$\hat{y}(n)$} (out);
+  % yhat tapped down into reconstruction adder
+  \node[dot] (t) at (5.2,0) {};
+  \draw[w,->] (t)  |- (s2.east);
+  % reconstruction adder back to predictor
+  \draw[w,->] (s2) -- node[sig,above]{$\tilde{x}(n)$} (P);
+  % predictor output: junction feeding both adders
+  \node[dot] (j) at (1.8,-0.9) {};
+  \draw[w]    (P)  -- (j);
+  \draw[w,->] (j)  -- (s1);
+  \node[sig,left] at (j.west) {$v(n)$};
+  \node[sig] at (2.06,-0.30) {$-$};
+  \draw[w,->] (j)  -| (s2.north);
+  \node[sig] at (3.52,-1.42) {$+$};
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[baseline=(sd.center)]
+  \node (lbl) at (-1.0,1.0) {\textbf{DECODER}};
+  \node (yh)  at (0,0)       {$\hat{y}(n)$};
+  \node[sum]  (sd) at (1.8,0)  {$+$};
+  \node       (out) at (4.0,0) {out};
+  \node[blk]  (P)  at (1.8,-1.5) {Pred};
+  \draw[w,->] (yh) -- (sd);
+  \draw[w,->] (sd) -- node[sig,above]{$\tilde{x}(n)$} (out);
+  \node[dot] (t) at (3.0,0) {};
+  \draw[w,->] (t)  |- (P.east);
+  \draw[w,->] (P)  -- node[sig,right]{$v(n)$} (sd);
+  \node[sig] at (2.06,-0.30) {$+$};
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\includegraphics[width=0.95\linewidth]{predq_closedloop.png}
+\end{center}
 Comment on the blocks:
 \begin{itemize}
     \item Encoder: prediction error $y(n) = x(n) - v(n)$ is quantized to $\hat{y}(n)$ and sent.
@@ -139,3 +216,8 @@ Without entropy coding ($R = \log_2 L$) PQ looks disappointing: that rate estima
     \item equivalently $-86\%$ rate at 30 dB target quality
 \end{itemize}
 PQ works only if: (1) prediction computed on \textbf{quantized} data, (2) signal sufficiently correlated ($\rho > 1/2$ for trivial first-order prediction), (3) followed by \textbf{entropy coding}.
+\subsubsection{Direct vs Predictive Quantization}
+With predictive I still have to use a lot of bits to represent information. 
+Idea: why should we use fixed-length coding? 
+Using PQ + Entropy coding we outperform direct quantization, since quantization indexes are Gaussian distributed. 
+At 1bpp we have $\Delta $PSNR $ = 20$dB.

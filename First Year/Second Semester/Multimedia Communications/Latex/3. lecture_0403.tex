@@ -1,3 +1,12 @@
+\section{Scalar and Predictive Quantization}
+Quantization = control the number of bits used for representing some samples\\
+$\theta^i$ are the quantization region/cells $ = (t^i, t^{i+1})$\\
+There is a total of $(L+1)$ thresholds and $L$ levels, total of $2L+1$ elements.
+Mathematical definition:
+$$Q : x\in \mathbb{R} \to y \in C = \{\hat{x}^1, \cdots \hat{x}^L\} \subset \mathbb{R}$$
+Cell-size $\Delta = \frac{2\text{Amplitude}}{L}$, higher nr. of levels = smaller error\\
+Quantization process can be seen as a coding-decoding process.
+$$\stackrel{x}{\longrightarrow}\boxed{E_{\theta^i}}\stackrel{i}{\longrightarrow}\qquad \qquad \qquad \qquad \stackrel{i}{\longrightarrow}\boxed{D_{C}}\stackrel{\hat{x}}{\longrightarrow}$$
 Note: Scalar quantization $\equiv$ we only take a sample at a time, not a vector.
 \subsection{Scalar Quantizer}
 \subsubsection{Rate}

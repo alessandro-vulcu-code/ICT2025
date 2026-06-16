@@ -20,20 +20,20 @@ Accept requests in this form:
 The input is usually in `Notes/` or `ToSummarize/`. Save the output to:
 
 ```text
-Summaries/<same-base-filename>.md
+Lessons/<same-base-filename>.md
 ```
 
-Create `Summaries/` if missing. If the user requests another destination, follow it. Confirm completion exactly like:
+Create `Lessons/` if missing. If the user requests another destination, follow it. Confirm completion exactly like:
 
 ```text
-Rewrite saved -> Summaries/<filename>.md
+Rewrite saved -> Lessons/<filename>.md
 ```
 
 ## Workflow
 
 1. Read the entire source file before editing.
 2. Identify headings, formulas, examples, exercises, tables, figure captions, references to diagrams, and OCR artifacts.
-3. Create or update `Summaries/<filename>.md`.
+3. Create or update `Lessons/<filename>.md`.
 4. Preserve the complete content: every definition, sentence, formula, algorithm, example, exercise, answer, table, and figure reference must appear.
 5. Insert explicit image placeholders wherever the source refers to a figure, diagram, graph, block scheme, table image, slide image, or visual example but no image file is available.
 6. Run a quick local check with `rg` or file inspection to verify the output path exists and major headings, formulas, and figure placeholders were preserved.

@@ -1,9 +1,41 @@
+\section{Video-coding Principles}
+We want to exploit both spatial redundancy and temporal redundancy.
+\subsection{Block Schema}
+$$x \longrightarrow \boxed{\text{Temporal Compression}} \longrightarrow \boxed{\text{Spatial Compression}} \longrightarrow \boxed{\text{Buffer}} \longrightarrow$$
+Can we swap Temporal and Spatial compression blocks? Yes but it isn't used because it doesn't make sense.
+\begin{center}
+\includegraphics[width=0.8\linewidth]{hybrid_concept.png}
+\end{center}
+\noindent Hybrid coding intuition: only the temporal prediction error $e = x - x_p$ (previous frame) is quantized and transmitted; the reconstructed frame $x_q$ is stored in the frame buffer to predict the next one (closed loop, same anti-drift principle as DPCM).
+\subsection{Block-Matching motion estimation}
+$$J(v) = d(B_k^{(p)},B_h^{(p+v)}) + \lambda_{ME}R(v)$$
+How can we build the prediction using motion estimation? Motion Compensation
+\subsubsection{Motion Compensation}
+$$\hat{I}_k(p) = I_h(p + v^\star(p))$$
+Sometimes MC works better and sometimes it works worse, solution: adaptive blocks.
+\subsubsection{Adaptive block coding}
+\begin{itemize}
+    \item Intra Coding: encode block as it is
+    \item Inter Coding: use other images to predict it
+\end{itemize}
+$\forall B_k^{(p)}$ block of image k:
+\begin{itemize}
+    \item compute $J(v)$
+    \item find the $v^\star = \arg\min_pv(p)$
+    \item encode block:
+    \begin{itemize}
+        \item If intra: encode in a JPEG-like way
+        \item If Inter:
+        \begin{itemize}
+            \item Decode $v^\star$ motion vector
+            \item Decode predictor error blocks $E_p^{(b)}$
+            \item Correct blocks
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
 \subsubsection{Design Parameters}
 Block size (smaller better), Cost function (SAD + regularization),\\
 Motion Model (translational), Search Strategy (fast methods: hex, TZ)
-%\section{Video Coding Principles}
-%\subsection{Principles}
-%Exploit redundancy and correlation both in time and space domains.
 \subsection{GOP: Group of Pictures}
 It is a sequence of $n$ frames, usually in the following order:
 $$\boxed{\boxed{I}\ \boxed{B}\ \boxed{B}\ \boxed{P}\ \boxed{B}\ \boxed{B}\ \boxed{P}\ \boxed{B}\ \boxed{B}} \to n\text{-th GOP}$$
@@ -44,13 +76,11 @@ On a R-D plane we plot all the points related to the available modes, then we se
 $D = -\lambda R + J$ is a family of lines with slope $-\lambda$: high $\lambda$ (steep) $\to$ low bit budget, picks low-rate modes (e.g. Direct); low $\lambda$ (flat) $\to$ prioritizes fidelity (e.g. Inter8 bidirectional). The chosen mode is the first point touched by the line moving from the origin towards the convex hull of the available modes.
 % Integrated from Summaries: scheme to be able to draw at the exam
 \subsubsection{Encoder scheme}
-$$\begin{array}{ccccccccc}
-x_k & \longrightarrow & \boxed{+} & \stackrel{y}{\longrightarrow} & \boxed{T} \to \boxed{Q} & \longrightarrow & \boxed{\text{VLC}} & \longrightarrow & \boxed{\text{Ch. Buffer}} \to \text{bitstream}\\
- & & \uparrow {\scriptstyle -v} & & \downarrow & & \uparrow {\scriptstyle \text{MVs},\ i_k\text{, partition}} & & \downarrow {\scriptstyle \text{rate control}\ \to\ Q}\\
- & & {\scriptstyle v} & & \boxed{Q^{-1}} \to \boxed{T^{-1}} & \stackrel{\hat{y}}{\longrightarrow} & \boxed{+} {\scriptstyle \ \leftarrow +v} & & \\
- & & \uparrow & & & & \downarrow {\scriptstyle \tilde{x}_k} & & \\
- & & \boxed{\begin{matrix}\text{Mode decision}\\ \text{Intra pred / ME-MC / null}\end{matrix}} & & \longleftarrow\hspace{-8pt}\longleftarrow & & \boxed{\text{DFB}} & &
-\end{array}$$
+
+\begin{center}
+\includegraphics[width=\linewidth]{hybrid_encoder.png}
+\end{center}
+\noindent Full hybrid encoder block diagram. The dashed JPEG-like core (Transform $\to$ Quantization $\to$ Lossless Coding) compresses the residual $e_k = B_k - \tilde{B}_k$. The reconstruction loop (Inv.\ Quantization $\to$ Inverse Transform $\to$ $+\,\tilde{B}_k$) feeds the Frame Buffer used by Motion Compensation, Motion Estimation and Intra Prediction; Mode Decision picks the predictor and Control drives rate via the Channel Buffer.
 Comment on the blocks:
 \begin{itemize}
     \item Each image is split into blocks; for each block the encoder computes a prediction $v$: \textbf{null} (direct DCT coding), \textbf{temporal} (ME/MC, simple or bi-prediction), or \textbf{spatial} (Intra, from already encoded blocks of the same frame).
@@ -63,7 +93,10 @@ Why do we have standards? Interoperability, we only standardize the decoder (abl
 \subsection{Hybrid Video Decoder}
 \subsubsection{Decoder scheme}
 % Integrated from Summaries
-$$\text{bitstream} \to \boxed{\text{Ch. Buffer}} \to \boxed{\text{VLC}^{-1}} \stackrel{\hat{y}}{\longrightarrow} \boxed{Q^{-1}} \to \boxed{T^{-1}} \to \boxed{+} \stackrel{\tilde{x}_k}{\longrightarrow} \text{out}, \qquad \boxed{+} \leftarrow {\scriptstyle v} \leftarrow \boxed{\text{Pred}} \leftarrow \boxed{\text{DFB}} \leftarrow \tilde{x}$$
+\begin{center}
+\includegraphics[width=0.85\linewidth]{hybrid_decoder.png}
+\end{center}
+\noindent Hybrid decoder: only the reconstruction half of the encoder. After Lossless Decoding, Inv.\ Quantization and Inverse Transform give $\tilde{e}_k$, summed with the prediction (Motion Compensation from the Frame Buffer, or Intra Prediction, selected by Mode) to output $\tilde{B}_k$. No mode decision / motion estimation $\Rightarrow$ far cheaper than the encoder.
 \begin{itemize}
     \item First decodes the \textbf{side information}: partition, coding mode, motion vector(s).
     \item Then inverse quantization, inverse transform, and sum with the prediction (MC or Intra) to get the final block, stored back in the DFB.

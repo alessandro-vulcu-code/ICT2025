@@ -78,34 +78,3 @@ DL methods has the best efficiency in analysis tasks (Optical Flow).\\
 DL methods used in real-time video coding need to be tuned by practical constraints.\\
 \textbf{Advantages}: Robustness, high precision\\
 \textbf{Challenges}: Generalization on different datasets, computational cost to be optimized.
-\section{Video-coding Principles}
-We want to exploit both spatial redundancy and temporal redundancy.
-\subsection{Block Schema}
-$$x \longrightarrow \boxed{\text{Temporal Compression}} \longrightarrow \boxed{\text{Spatial Compression}} \longrightarrow \boxed{\text{Buffer}} \longrightarrow$$
-Can we swap Temporal and Spatial compression blocks? Yes but it isn't used because it doesn't make sense.
-\subsection{Block-Matching motion estimation}
-$$J(v) = d(B_k^{(p)},B_h^{(p+v)}) + \lambda_{ME}R(v)$$
-How can we build the prediction using motion estimation? Motion Compensation
-\subsubsection{Motion Compensation}
-$$\hat{I}_k(p) = I_h(p + v^\star(p))$$
-Sometimes MC works better and sometimes it works worse, solution: adaptive blocks.
-\subsubsection{Adaptive block coding}
-\begin{itemize}
-    \item Intra Coding: encode block as it is
-    \item Inter Coding: use other images to predict it
-\end{itemize}
-$\forall B_k^{(p)}$ block of image k:
-\begin{itemize}
-    \item compute $J(v)$
-    \item find the $v^\star = \arg\min_pv(p)$
-    \item encode block:
-    \begin{itemize}
-        \item If intra: encode in a JPEG-like way
-        \item If Inter:
-        \begin{itemize}
-            \item Decode $v^\star$ motion vector
-            \item Decode predictor error blocks $E_p^{(b)}$
-            \item Correct blocks
-        \end{itemize}
-    \end{itemize}
-\end{itemize}
