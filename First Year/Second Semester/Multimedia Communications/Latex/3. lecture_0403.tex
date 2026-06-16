@@ -1,0 +1,98 @@
+\section{Scalar and Predictive Quantization}
+Quantization = control the number of bits used for representing some samples\\
+$\theta^i$ are the quantization region/cells $ = (t^i, t^{i+1})$\\
+There is a total of $(L+1)$ thresholds and $L$ levels, total of $2L+1$ elements.
+Mathematical definition:
+$$Q : x\in \mathbb{R} \to y \in C = \{\hat{x}^1, \cdots \hat{x}^L\} \subset \mathbb{R}$$
+Cell-size $\Delta = \frac{2\text{Amplitude}}{L}$, higher nr. of levels = smaller error\\
+Quantization process can be seen as a coding-decoding process.
+$$\stackrel{x}{\longrightarrow}\boxed{E_{\theta^i}}\stackrel{i}{\longrightarrow}\qquad \qquad \qquad \qquad \stackrel{i}{\longrightarrow}\boxed{D_{C}}\stackrel{\hat{x}}{\longrightarrow}$$
+Note: Scalar quantization $\equiv$ we only take a sample at a time, not a vector.
+\subsection{Scalar Quantizer}
+\subsubsection{Rate}
+Correct for average formula, no need to use ceil
+$$R = \log_2 L$$
+\subsubsection{Distortion}
+We use the MSE to track the error:
+$$\text{MSE}\ d[x(n),Q(x(n))] =|e(n)|^2 = \left[x(n)-Q(x(n))\right]^2$$
+For signals of duration N:
+$$ D = \frac{1}{N}\sr{N-1}{n=0}d[x(n),Q(x(n))]$$
+For random signals:
+$$D = \vatt{|X(n) - Q(X(n))|^2} = \vatt{|E(n)|^2}$$
+\subsection{Uniform Quantization}
+We can use the \verb|floor|,\verb|ceil|,\verb|round|,\verb|fix| operators to perform a quantization, since they map $\mathbb{R} \to \mathbb{Z}$ ($\mathbb{Z}$ mapping).
+\subsubsection{Definitions}
+$\forall i$:
+\begin{itemize}
+    \item Interval is $(0,A)$ for unsigned data, while $(-\frac{A}{2},\frac{A}{2})$ for signed data
+    \item Symbol Spacing: $\Delta^i = \Delta = \frac{A}{L}$
+    \item Thresholds: $t^{i} = t^{i-1} + \Delta$
+    \item Symbols Intervals: $\theta^i = \left(\hat{x}^i-\frac{\Delta}{2},\hat{x}^i+\frac{\Delta}{2}\right)$
+    \item Symbols: $\hat{x}^i = \left(\frac{t^i + t^{i-1}}{2}\right)$
+\end{itemize}
+\subsubsection{Unsigned Data}
+\begin{itemize}
+    \item $ i =\left\lceil\frac{x}{\Delta}\right\rceil$
+    \item $\hat{x}^i = i\Delta - \frac{\Delta}{2}$
+    \item $t^i = (i-1)\Delta$
+    \item $Q(x) = \Delta \left\lceil\frac{x}{\Delta}\right\rceil -\frac{\Delta}{2}$
+\end{itemize}
+\subsubsection{Signed Data (Midtread)}
+Midtread = `0' is a quantized level, not a threshold
+\begin{itemize}
+    \item $ i =\text{round}\left(\frac{x}{\Delta}\right)$
+    \item $\hat{x}^i = i\Delta$
+    \item $Q(x) = \Delta \cdot\text{round}\left(\frac{x}{\Delta}\right)$
+\end{itemize}
+Alternative case: Midrise = `0' is a threshold, not a level. Bad idea in most of the cases because when there are little oscillations around 0, the quantized value gets amplified.
+\subsubsection{Dead-zone Quantization for Signed Data}
+We exploit the midtread quantizer, by extending the `0' region:
+$$i = \begin{cases}
+    \text{sign}(x)\left\lfloor\frac{|x| + \frac{\tau\Delta}{2}}{\Delta}\right\rfloor \qquad |x| \geq \tau\\
+    0 \text{ otherwise}
+\end{cases} \qquad \qquad x = \begin{cases}
+    \text{sign}(i)\Delta\left(|i| + \frac{1-\tau}{2}\right)\qquad |x| \geq \tau\\
+    0 \text{ otherwise}
+\end{cases}$$
+\subsubsection{Rate and Distorsion curve}
+We are looking for a relation that allows us to write $D = f(R)$\\
+We use uniform r.v. and the LOTUS\footnote{Law of the unconscious statistician} expected value of function of r.v., by applying this to uniform quantizers:
+$$D = \sigma_Q^2 = \vatt{|X - \hat{X}|^2} = \cdots = \frac{1}{A}L\frac{\Delta^3}{12} = \frac{1}{12}\frac{A^2}{L^2} \qquad \text{with }X \sim \mathcal{U}\left(-\frac{A}{2},\frac{A}{2}\right)$$
+Using the fact that $R = \log_2L$:
+$$D = \sigma_Q^2  = \frac{1}{12}\frac{A^2}{L^2} = \sigma_X^2 2^{-2R}$$
+Finally we can write the SNR:
+$$\text{SNR} \approx10\log_{10}\frac{\vatt{X}}{D} = 10\log_{10} 2^{2R} \approx 6R$$
+This is the slope of a Rate/SNR plot.
+\subsection{Optimal Quantization}
+Hypothesis, we use High Resolution Quantization, searching for a locally-optimal solution:
+\begin{itemize}
+    \item $L \to \infty \Rightarrow \max\limits_i\Delta_i \to 0$
+    \item $\forall i$ $\forall u \in \theta^i: p_x(u)\approx P_i$
+    \item Optimal R-D curve: $\sigma^2_Q = C_x \sigma^2_x 2^{-2R}$\\
+    Shape Factor $C_x = \frac{1}{12}\left[\int_{\mathbb{R}}P^{\frac{1}{3}}_U(t)dt\right]^3$ and $U = \frac{X}{\sigma_X}$
+\end{itemize}
+% Integrated from Summaries
+The shape factor depends only on the PDF \emph{shape}, not on the variance:
+$$C_x = 1 \ (\text{Uniform}) \qquad C_x = \frac{\sqrt{3}}{2}\pi \approx 2.72 \ (\text{Gaussian})$$
+Gaussian signals need $\approx 2.72\times$ more distortion than uniform at the same rate (heavier tails).
+\subsubsection{High Resolution (HR) Uniform Quantization}
+Hypothesis:
+\begin{itemize}
+    \item $L \to +\infty \Rightarrow \Delta \to 0$, $X$ generic r.v.
+    \item $D = \frac{\Delta^2}{12} = \frac{A^2}{12}2^{-2R}$
+    \item In this case: $\sigma^2_X \neq \frac{A^2}{12}$
+\end{itemize}
+Computing the SNR, we get:
+$$\text{SNR} \approx10\log_{10}\frac{\vatt{X}}{D} = 10\log_{10} \frac{\sigma^2_X}{\frac{A^2}{12}2^{-2R}} \approx 6R - 10\log_{10}\frac{\gamma^2}{3} \qquad\text{where }\gamma^2 = \frac{X_{\max}^2}{\sigma_X^2} = \frac{A^2}{4\sigma_X^2}$$
+\subsubsection{Lloyd-Max algorithm}
+What if we are not in high resolution hypothesis? Lloyd-Max provides a locally-optimal solution. Steps:
+\begin{enumerate}
+    \item Choose an initial dictionary $C^{(0)} = \{\hat{x}^i_0\}_{i=1\cdots L}$ (uniform initialization)
+    \item Find Best \textbf{thresholds} from given dictionary $\Rightarrow$ nearest neighbor method
+    \item Find Best \textbf{dictionary} from given thresholds $\Rightarrow$ centroid condition
+    \item Iterate 2,3 until convergence.
+\end{enumerate}
+\textbf{Nearest Neighbor}:
+$$k = \arg\min_{n}|X - \hat{X}^n| \qquad \Longrightarrow \qquad Q(k) = \hat{x}^k \Rightarrow t^i = \frac{\hat{x}^i +\hat{x}^{i+1}}{2} \quad \forall i \in \{1\cdots(L-1)\}$$
+\textbf{Centroid Condition}: computing the gradient of distortion and imposing to zero
+$$\nabla D = 0 \qquad \Longrightarrow \qquad \hat{x}^i = \vatt{X| X \in \theta^i}$$

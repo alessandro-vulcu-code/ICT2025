@@ -1,0 +1,28 @@
+\section{Multimedia Representation \& Perception}
+\subsection{Human Eye}
+\subsubsection{CSF - Contrast Sensitivity Function}
+Draw a chart with on the x-axis the pixels per cycle in decreasing order, and on the y-axis the percentage of contrast, we'll see that at the higher corners we are not able to distinguish lines. This is position and frequency dependent.
+\subsubsection{Eye Sensitivity}
+Rods have Sensitivity to brightness, Cones can sense colors. We have 3 types of cones:
+\begin{itemize}
+    \item Blue (445 nm) cones, 2\% of the total
+    \item Green (535 nm) cones, 33\% of the total
+    \item Red (575 nm) cones, 65\% of the total
+\end{itemize}
+\subsection{Color Spaces}
+\subsubsection{RGB}
+We use 3 channels: Red, Green and Blue to identify each colour. Since we use 8 bits we have $2^8 = 256$ values. This means $256^3=16.7$ million possible colors.
+\subsubsection{HSV}
+Hue, Saturation and Value.\\
+By applying a rotation on the 3D cube identifiying the RGB space, we put the black on $z=-1$ and white on $z=1$, we get another space.\\
+$z$ is the luminance axis. The longitude corresponds to the color (hue), while the radius is the saturation.
+\subsubsection{YCbCr = YUV}
+Y = Luminance, Cb and Cr (U and V) are the chrominance informations. (Polar coordinates)\\
+Similarly to HSV, we have luminance on the $z$-axis, while Chrominance infos are respectively saturation and value. This is a more natural way to identify colors. (exmaple: Bright (z-axis) Magenta (angle) Pastel (radius)).\\
+Knowing this we can lose some informations about chrominance, thus getting a \textbf{visually} lossless image (sampling 1/4 of CbCr, but keeping all pixel\footnote{Pixel = Picture Element} Y sampled).
+\subsection{Machine-centric Multimedia}
+Given that contents are consumed by people and machines, some information that for us is irrelevant could be fatal to the machines if not available, like dropping CbCr. We must know the important features.
+\subsection{Frequency Masking Functions}
+$S_m(f_i, \sigma_i^2, f)$ functions. We don't encode information that couldn't be heard, like in mp3/aac/... codecs.\\
+Basically if 2 sinewaves $S_m$ are adjacent, we hardly distinguish them, while if they are somewhat far it is easy to distinguish them.
+Frequency analysis is very used in this field, still the best technique (Fourier analysis).

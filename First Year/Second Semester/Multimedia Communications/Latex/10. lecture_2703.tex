@@ -1,0 +1,36 @@
+\subsection{Entropy Coding of the Coefficients}
+\subsubsection{DC Coefficients}
+It is a pseudo-Huffman code, we encode the value $DC_p = DC_n - DC_{n-1}$ as a "Category code" + "Amplitude Code", where the categories are defined as:
+$$k\text{-th Category }\to \left\lceil\log_2\left(|DC_p| + 1\right)\right\rceil \qquad \to \{\pm2^{k-1}\cdots \pm 2^k - 1\} \subset \text{category }k\text{, encoded using k bits}$$
+\subsubsection{AC Coefficients}
+The Run-length code uses the same method to encode couples of $(r,k)$ values where $\begin{cases}
+    r \equiv \text{ number of zeros leading}\\
+    k \equiv \text{ actual value}
+\end{cases}$.
+There are 2 special values: $\begin{cases}
+    (15,0) \to \text{ at least 15 zeros}\\
+    (0,0) \to \text{ End Of Block (EOB)}
+\end{cases}$
+\subsection{Frame Building}
+Image is stored into a \textbf{Frame}:
+\begin{itemize}
+    \item \textbf{Frame Header}: Tells the Image size, components, color sampling scheme, digitization format
+    \item \textbf{Frame Payload} contains one scan per component (JPEG Baseline):
+    \begin{itemize}
+        \item \textbf{Scan Header}: identifies the component and specifies quantization table
+        \item \textbf{Scan Payload} is made up of segments:
+        \begin{itemize}
+            \item \textbf{Segment Header}: define Huffman tables (4 types: DC, AC, Y, CbCr)
+            \item \textbf{Segment Payload}: 8x8 blocks
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+\subsection{JPEG additional informations}
+\subsubsection{JFIF: JPEG File Interchange Format}
+Includes some metadata in JPEG, to ensure interoperability, thumbnail, JFIF version, resolution, density unit.
+\subsubsection{EXIF: Extended Image File Format}
+\begin{itemize}
+    \item Rich metadata for digital cameras 
+    \item Wide range of informations (camera details, datetime, GPS infos, Thumbnail)
+    \item Other Manufacturer-specific data
+\end{itemize}

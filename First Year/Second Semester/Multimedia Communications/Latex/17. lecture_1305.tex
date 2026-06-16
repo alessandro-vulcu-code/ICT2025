@@ -1,0 +1,134 @@
+\section{Audio and Speech Coding}
+Different uses have different requirements:
+\begin{itemize}
+    \item VR and AR need low latency
+    \item Dynamic Range, deal with $100$ dB differences
+    \item Transparency of the encoded audio w.r.t. the original signal
+\end{itemize}
+\subsection{Audio Modeling}
+\subsubsection{Requirements}
+\begin{itemize}
+    \item Speech is stationary but for small intervals ($\sim 20$ms), it uses \textbf{source based} coding, linear filters to guarantee intelligibility and low latency.
+    \item General Audio is more homogeneous (fast transients, tonal segments), it uses \textbf{sink\footnote{Sink = human ear} based} coding, needs to guarantee fidelity and transparency.
+\end{itemize}
+\subsubsection{Vowels}
+Vowels are very correlated with zero-centered frequency.\\
+Usually there are harmonics, ordinary FT doesn't work, here we use Short-Time Fourier Transform (STFT).\\
+Pitch is the frequency of the most important harmonic, then the others are computed based on this.
+\subsubsection{Music}
+Histogram is less sparse, correlation is still strong. There is no harmonic structure.\\
+We treat these sounds as images so we use an image-like analysis, using perceptual models.
+\subsubsection{Human Speech Production System}
+3 Entities:
+\begin{itemize}
+    \item Power: we use the lungs
+    \item Source: we have our vocal folds
+    \item Filter: the vocal tract act as a filter
+\end{itemize}
+There are 2 main types of sounds:
+\begin{itemize}
+    \item Voiced sounds: depend on a pitch period $T_0$, which depends on the person (M/F, old/young)
+    \item Unvoiced sounds: it is like filtering differently white noise (fricatives etc...)
+\end{itemize}
+\subsection{Linear Predictive Coding}
+$$\hat{x}(n) = -\sr{P}{i=1}a_i x(n-i) \qquad \Longrightarrow \qquad \text{s.t. }y(n) = x(n) - \hat{x}(n) = \sr{P}{i=0}a_i x(n-i) \text{ with }a_0 = 0$$
+\subsubsection{Yule-Walker Equation}
+$$\mathbf{R}_x\vec{a} = -\vec{r}_x$$
+How do we find the $a_i$s? We use this YW equation. The $\mathbf{R}_x$ is the Toeplitz matrix of autocorrelation, the $\vec{a} = [a_1\cdots a_p]^T$ is the unknown coefficient vector, and the $-\vec{r}_x$ is the autocorrelation vector.\\
+There is also an efficient algorithm which has small complexity: \textbf{Levinson-Durbin} Algorithm.
+$$x(n) \longrightarrow \boxed{\text{Windowing }\sim 20ms} \longrightarrow \stackrel{\text{Voiced/Unvoiced}, T_0}{\boxed{\text{Autocorrelation}}} \longrightarrow \boxed{\text{Levinson-Durbin}} \longrightarrow \{a_i\}, G$$
+\begin{center}
+\includegraphics[width=0.35\linewidth]{lpc_analysis.png}
+\end{center}
+\noindent LPC analysis chain: windowing ($\sim20$ms frames), autocorrelation (which also yields the voiced/unvoiced decision and pitch $T_0$), then Levinson(-Durbin) to solve Yule-Walker for the filter coefficients $\{a_i\}$ and the gain $G$.
+How do we estimate autocorrelation? Check linear predictors (2.4.5), very similar behavior.\\
+How do we detect the pitch? Compare $k > P$, how do we check Voiced/Unvoiced? Compare to $\mathbf{R}_x(0)$\\
+\subsubsection{Residuals}
+$$Y(z) = A(z)X(z) \qquad \Longrightarrow \qquad X(z) = A^{-1}(z)Y(z)$$
+Residuals are:
+\begin{itemize}
+    \item If unvoiced: zero mean white noise
+    \item If voiced: periodic spikes
+\end{itemize}
+If $Y$ are impulses, then $A^{-1}$ (inverse filter) is the $H \Longrightarrow X$ is also the $H$.\\
+We know $a_i$ are numbers, how do we quantize them? We have 2 problems:
+\begin{itemize}
+    \item $a_i$ can vary a lot, we don't have an a-priori range knowledge
+    \item Filter is not BIBO\footnote{Bounded-Input, Bounded-Output} stable
+\end{itemize}
+\subsubsection{LPC Synthesis}
+We know how to get the $a_i$s, but we also want BIBO stability
+$$\begin{cases}
+    P(z) = A(z) + z^{-(P+1)}A(z^{-1})\\
+    Q(z) = A(z) - z^{-(P+1)}A(z^{-1})
+\end{cases} \qquad \text{such that} \qquad P(z) + Q(z) = 2A(z)$$
+It must be easy to recover $A$ from P, Q. All the roots are on the unit circle, how do we get stability?
+$$\text{(BIBO) Stable} \qquad \Longleftrightarrow \qquad \text{roots of }P(z)\text{ are alternate with the }Q(z)\text{ ones}$$
+From the Itakura paper (1975): $0 < \omega_1^{(P)} < \omega_1^{(Q)} < \omega_2^{(P)} < \cdots <\pi$\\
+If the roots are close to one another we have sharp peaks in the filter response.
+\subsection{Vector Quantization}
+We have a set of $\omega = [\omega_1\cdots \omega_p]$, then we have a codebook (shared dictionary of most important $\omega_i$).\\
+Between Voiced and Unvoiced saomples we have $28$ bits to allocate freely:
+\begin{itemize}
+    \item Voiced: 21 bits for LPC coefficients, 7 bits for $T_0$
+    \item Unvoiced: all 28 bits go to the error proctection
+\end{itemize}
+\subsubsection{CELP Paradigm (Code-Excited Linear Prediction)}
+3 main ideas:
+\begin{itemize}
+    \item Vector Excitation: choose residual vector from codebook
+    \item Analysis-by-synthesis: encoder is like a mini-decoder
+    \item Closed loop shape search, and then tx the optimal shape.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.85\linewidth]{celp_basic.png}
+\end{center}
+\noindent Basic CELP analysis-by-synthesis: each candidate codebook entry $i$ (scaled by gain $g$) is passed through the synthesis filter $1/A(z)$; the index/gain minimizing the error $\varepsilon(n)$ against $x(n)$ is transmitted (closed-loop search).
+CELP minimizes the perceptual weighted error, the optimal shape of the error should be something like:
+$$W(z) = \frac{A(z)}{A(z/\gamma)} \qquad \text{with }0 < \gamma < 1$$
+Then CELP does also pole shifting to move poles toward the origin.\\
+The adaptive part models pitch based on previous $y(n)$:
+$$\begin{cases}
+    \text{Sample Lag }Q\\
+    \text{Gain }b = g_P
+\end{cases} \qquad \Longrightarrow \qquad y_{\text{adapt}}(n) = y(n-Q)$$
+\begin{center}
+\includegraphics[width=\linewidth]{celp_ltp.png}
+\end{center}
+\noindent Full CELP: the error is shaped by the perceptual weighting filter $W(z)=A(z)/A(z/\gamma)$, and a \textbf{long-term predictor} (adaptive codebook, lag $Q$, gain $b$, branch $b\,z^{-Q}$) models the pitch periodicity on top of the fixed (stochastic) codebook.
+Examples: G.729, G.722.2 (AMR-WB), EVS
+\subsubsection{Perceptual Coding for Audio}
+Coclea in human ear acts as a sum of critical bands (BPF), narrow bands for low frequency, wider bands for high frequency. Masking Effects:
+\begin{itemize}
+    \item Frequency masking effect is still effective, the quantization mask based on frequency is defined as $\varphi(f)$
+    \item Temporal Masking: we use pre/post masking techniques
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{perc_audio_encoder.png}
+\end{center}
+\noindent Perceptual audio \textbf{encoder}: the signal is windowed and frequency-transformed; in parallel a Spectral Estimator feeds the Audition (psychoacoustic) Model, which drives Bit Allocation, so quantization spends bits only where the ear is sensitive (masking).
+\begin{center}
+\includegraphics[width=0.6\linewidth]{perc_audio_decoder.png}
+\end{center}
+\noindent Perceptual audio \textbf{decoder}: inverse quantization then inverse frequency transform reconstruct $\hat{x}(n)$ (the psychoacoustic model is encoder-only).
+Standards: MP3 (first actually used digital standard for audio), aac (basically it is an mp3 improvement).
+\subsection{Modern Techniques}
+\subsubsection{OPUS}
+Makes use of CELT techniques for speech processing (xiph.org based), and uses SILK techniques for Music (Skype derived). It also provide Low-Latency and it is the de-facto standard for Discord,WebRTC,...
+\subsubsection{Neural Codecs}
+Google and Meta proposed their own solutions, they can reach very low bitrates (3/4 kbps) but at which cost? Complexity! They will be used as a fallback solution.\\
+Currently we also have to take into account the `Hallucination'-challenge of NN-based codecs.
+\subsubsection{Spatial Audio}
+3 Main methods:
+\begin{itemize}
+    \item Channel Based Distribution (5.1, 7.1)
+    \item Mono + Position information approach (Object based)
+    \item Scene-based approach
+\end{itemize}
+\subsubsection{Quality Assessment}
+\begin{itemize}
+    \item Mean Opinion Score, human based, it costs much (POLQA, VISQOL)
+    \item MUSHRA (ITU-R BS.1534)
+    \item Transparency Test
+\end{itemize}
+Why SNR is not an effective parameter? We are insensitive to phase noise, perceptual methods needed.

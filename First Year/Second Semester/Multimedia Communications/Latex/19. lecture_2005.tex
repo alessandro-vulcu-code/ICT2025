@@ -1,0 +1,148 @@
+\section{Adaptive Streaming}
+While streaming a content we need to take into account rate-quality (tradeoff). Video is the most difficult problem because we have to reduce uncompressed video (from the order of Gbps of rate, down to some Mbps).\\
+Possible applications of multimedia streaming:\begin{itemize}
+    \item Bulk Transfer (need data integrity)
+    \item VOD (delay tolerant)
+    \item Live streaming (scalability and low delay)
+\end{itemize}
+It is possible to control the encoders such that we are able to compress video with the same rate.
+\subsection{Video Content Distribution}
+\subsubsection{Challenges}
+Each user has different links to the central server, and each user has different constraints (display, battery,...)\\
+A possible solution is the Conversational Paradigm (1 source to N destinations):
+$$\boxed{\text{Speaker A}} \longrightarrow \boxed{\text{Conference SRV}} \longrightarrow \begin{cases}
+    \boxed{\text{Listener B (TV)}}\\
+    \boxed{\text{Listener C (Phone)}}\\
+    \boxed{\text{Listener }n}
+\end{cases}$$
+How to choose the coding rate of my video?
+\subsubsection{Coding Rate Bottleneck}
+We need:
+$$R_c \leq C_k \qquad (\text{capacity limit of user }k)$$
+We need to keep the rate lower than the max capacity, to avoid buffering.\\
+if $R_c = \min\limits_k c_k$ we fix a low resolution also for high-capacity linked users.\\
+Solution: use MANE, also deployed in CDNs and 5G Networks.
+\subsubsection{Paradigms}
+\begin{minipage}{0.475\textwidth}
+    \centering\textbf{Push}
+    \begin{itemize}
+        \item Goal: Minimize latency
+        \item Stack: WebRTC/RTCP/RTP/UDP
+        \item Server pushes, client listens\\
+        (Real Time approach)
+    \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}{0.475\textwidth}
+    \centering
+    \textbf{Pull}
+    \begin{itemize}
+        \item Goal: Maximize QoE
+        \item Stack:\\
+        $[$DASH,HLS$]$/HTTP3/QUIC/UDP/(CDNs)
+        \item Client asks for the content, server serves
+    \end{itemize}
+\end{minipage}
+UDP is quick and fast, RTP just adds additional infos like:
+\begin{itemize}
+    \item Packet Numbering
+    \item if Out-of-order packets $\to$ sort out
+\end{itemize} 
+RTCP also adds also a metrics exchange as control messages to let the server adapt the $R_c$.\\
+There are also timestamps added to packets to handle sync and control jitter.
+\subsection{Scalable Video Coding (SVC)}
+Useful for a $1\to N$ realtime video streaming. IDEA: just perform 1 encoding and then be able to extract several versions of the content. (JP2K like capabilities $\to$ progressive video coding)
+\subsubsection{Scalability Types}
+\begin{itemize}
+    \item \textbf{Time} Scalability: exploit temporal prediction
+    \item \textbf{Quality} Scalability: use progressive coding, Base-Layer (BL) as prediction of ELs (Enhancement-Layers)
+    \item \textbf{Space} Scalability: exploit Multiresolution Transforms, low-res base-layer + enhancement layers
+\end{itemize}
+Enhanced Layer is computed as $= I_{\text{nput}} - \text{DEC}(\text{ENC}( I_{\text{nput}}))$
+\begin{center}
+\includegraphics[width=0.5\linewidth]{svc_encoder.png}
+\end{center}
+\noindent SVC layered encoder: a coarse encoder $Q_B$ produces the \textbf{Base Layer}; its local decoder reconstruction is subtracted from the input and the residual is coded by $Q_E$ into the \textbf{Enhancement Layer} (quality scalability).
+\subsubsection{Smart Layer Pruning}
+Assume we have the following architecture:
+$$\boxed{\text{Speaker}} \qquad \longrightarrow \qquad \boxed{\text{Confluence Server}} \qquad \longrightarrow \qquad \boxed{n\ U_i}$$
+The speaker produces the Base-layer + 2 more enhancement layers, total of 3 Layers.\\
+Confluence server decides how to send the layers to users, it's the \textbf{Selective Forward Unit}, usually a MANE.
+\begin{center}
+\includegraphics[width=\linewidth]{svc_conference.png}
+\end{center}
+\noindent SFU layer pruning: the speaker sends one unified bitstream (BL + EL1 + EL2). The conference server forwards \emph{all} layers to the high-capacity client (full quality) and only the Base Layer to the constrained mobile client --- zero re-encoding, just NAL-header inspection.
+\subsubsection{Streaming via Legacy HTTP}
+Why don't we use the same solution for streaming? SFU needs memory proportional to the connected users, to keep the state of each. And the BL + EL solution has some overhead w.r.t. a single high res block of data.
+Solution: use HTTP because it is stateless and also largely implemented.\\
+We can slice the video and have caching using the \textbf{CDNs}\footnote{Content Delivery Networks} at the network edges.\\
+The only drawback of Legacy HTTP is TCP, we increase latency and stop playout if a segment is lost (Head-of-line blocking). This implies ReTX and large delays. Solution: QUIC.
+\subsubsection{QUIC and HTTP/3}
+HTTP/3 is based on UDP:
+\begin{itemize}
+    \item removes Head-of-line blocking
+    \item it has short setup time (no handshakes)
+    \item has connection migration, not bound to (ip,port) couple, just a connection ID
+\end{itemize}
+\subsection{Adaptive Bitrate Streaming}
+\subsubsection{Media Presentation Description (MPD) file}
+\begin{itemize}
+    \item \textbf{Period}: It is representing a certain content
+    \item \textbf{AdaptationSet}: It represents a certain track (video, audio,...)
+    \item \textbf{Representation}: It represents the different qualities (different codecs, resolutions, bitrates,...)
+    \item \textbf{Segments}: They are the actual sliced media parts, by joining them together we get the actual content.
+\end{itemize}
+Further notes:
+\begin{itemize}
+    \item Segments (.m4s) are Indepently decodable, they only need an init signature part (.m4i)
+    \item To encode a segment you have to wait the IDR block in a certain GOP.\\
+    Also in the decoding we'll start from a fresh new IDR block.
+    \item If we know networks changes quickly: better short segments, otherwise viceversa.
+    \item For Live streaming we have to use small chunks of about $200 - 500$ ms, this is achieved with CMAF\footnote{Common Media Application Format}\\
+    this leads to a glass-to-glass latency of about $1 \to 3$ seconds.
+\end{itemize}
+\subsubsection{Network Metrics: Throughput}
+Here we use continuous models to describe discrete things.
+$$S(t) = \frac{d}{dt}D(t) \leq R_{\text{PHY}}$$
+This inequality takes into account also for Overhead + Congestions + Other users on the link.
+Since $S$ can be very sparky we want to use the average:
+$$\bar{S} = \frac{1}{T}\int_0^TS(t)dt = \frac{D(T)}{T}$$
+\subsubsection{Network Metrics: E-2-E Nodal Delay}
+$$d_{e2e} = \sr{}{k \in \text{ links}}d_{\text{processing}}(k) + d_{\text{queue}}(k) + d_{\text{TX}}(k) + d_{\text{propagation}}(k)$$
+\begin{itemize}
+    \item Processing: Error control, header reading
+    \item Queuing: buffering
+    \item Transmission: from the 1st bit to the last one, $\frac{\text{pkt size}}{\text{link rate}}$
+    \item Propagation: usually distance over speed of light.
+\end{itemize}
+In modern networks an increase of $R$ does affect only $d_{TX}$, the other delays keep the same size.\\
+The only thing we can change is the distance, we use CDNs to bring the content nearer to the users.\\
+Jitter is the most annoying phenomenon. Solution: use buffers to absorbe the variability of the delay (Jitter).
+\subsection{Buffer Dynamics}
+\subsubsection{Rebuffering event}
+Rebuffering: process of filling our buffers, it involves the download of some segments to play later 
+$$B(t) = L \cdot T_s \qquad \text{where }\begin{cases}
+    L = \# \text{segments}\\
+    T_s = \text{duration of a segment}
+\end{cases}$$
+If the network goes down, slowly buffer occupation decreases.\\
+In a QoE maximization approach, for a user is better to have low quality video than an interruption.
+\subsubsection{Playout management}
+When I empty the buffer I wait for the playout to restart until I received $M$ segments (Hysteresis):
+$$B(t) = M \cdot T_s \qquad \text{typically better for users if }L \geq M$$
+%For users typically is better to have a $L \geq M$ contraint
+We also set:
+$$\frac{dB}{dt} = f_{IN} - f_{OUT}$$
+Flows:
+\begin{itemize}
+    \item $f_{IN}$ Input Flow Rate, derived from network condition
+        \begin{itemize}
+            \item Average $f_{IN} = \frac{D(T)}{T} = \frac{\bar{S}}{R_c}$
+            \item Instantaneous flow rate: $\frac{S(t)}{R_c} = \lim\limits_{t\to 0}\frac{D(t)}{t}$
+        \end{itemize} 
+        \item $f_{OUT}$ Output Flow Rate: speed of playout, considering 1x speed.
+\end{itemize}
+For a typical $f_{OUT} = 1$: $$\frac{dB}{dt} = \begin{cases}
+            \frac{S}{R_c} - 1 \qquad \text{if playout going}\\
+            \frac{S}{R_c} \qquad \text{if rebuffering, no playout}\\
+        \end{cases}$$
+The ideal condition is to have $S > R_c$ such that buffer is growing.\\

@@ -1,0 +1,1155 @@
+\chapter{Audio and Speech Compression}
+
+Marco Cagnazzo - Multimedia Communications University of Padova
+
+\bigskip\hrule\bigskip
+
+\section{Speech and Audio Foundations}
+
+\subsection{Audio in the Multimedia Ecosystem}
+
+\textit{Compression: audio vs. video}
+
+While video accounts for the largest share of network traffic, audio imposes the strictest constraints on the communication chain.
+
+\begin{itemize}
+\item \textbf{The Latency Constraint:} human auditory perception is significantly more sensitive to temporal jitter and delay than the visual system. Real-time interaction in immersive environments requires ultra-low end-to-end latency, below 20 ms.
+\item \textbf{Dynamic Range and Precision:} audio signals span a dynamic range of up to 100 dB. This necessitates high-precision quantization and adaptive strategies to maintain a constant signal-to-noise ratio.
+\item \textbf{Bandwidth vs. Transparency:} the objective is to achieve \textbf{perceptual transparency}, where the compressed signal is indistinguishable from the original, at minimal bitrates for high-density network scenarios.
+\end{itemize}
+
+\subsection{Methodological Framework}
+
+\textit{Synergies with Signal Processing Foundations}
+
+The compression of audio signals integrates and specializes the fundamental coding tools developed throughout the course:
+
+\begin{itemize}
+\item \textbf{Perceptual Thresholding:} moving from general sound perception to specific \textbf{psychoacoustic masking models} to optimize the distribution of quantization noise.
+\item Extending the principles of \textbf{predictive quantization} to the physical modeling of the acoustic source, specifically the human vocal tract.
+\item \textbf{Transform Coding:} adapting frequency-domain compaction techniques, such as the DCT, to time-continuous signals via the \textbf{MDCT} (\textit{Modified Discrete Cosine Transform}).
+\item \textbf{Entropy Optimization:} applying advanced \textbf{arithmetic coding} or \textbf{Huffman coding} to reach the information-theoretic limit of the quantized representation.
+\end{itemize}
+
+\subsection{Methodological Taxonomy}
+
+\textit{Source Modeling vs. Sink Modeling}
+
+Compression strategies are formally categorized based on the specific end of the communication chain they prioritize:
+
+\begin{enumerate}
+\item \textbf{Source-Based Coding (Parametric):} exploits the physical constraints of sound generation. Modeling the vocal tract with \textbf{LPC} enables high-intelligibility speech coding at extremely low data rates.
+\item \textbf{Sink-Based Coding (Perceptual):} exploits the physiological limitations of the human ear. This is the foundation for high-fidelity audio and music, for example AAC and MP3.
+\item \textbf{Hybrid Architectures:} contemporary standards, such as \textbf{Opus} or \textbf{EVS}, dynamically integrate both paradigms to handle mixed content, speech and music, with maximal efficiency.
+\end{enumerate}
+
+\begin{calloutbox}{red!70!black}{Emerging Frontier}
+\textbf{Statement:} \textbf{Neural codecs} based on generative models are redefining the lower bounds of bitrate by synthesizing high-quality audio from sparse latent representations.
+
+\textbf{Interpretation:} Instead of transmitting a precise waveform description, neural approaches transmit compact latent information that a learned decoder uses to generate perceptually plausible audio.
+\end{calloutbox}
+
+\subsection{Temporal Dynamics: Speech vs. Music}
+
+\textit{Variability of the Stationarity Assumption}
+
+Predictive and transform coding rely on signal stationarity. Audio exhibits local stationarity, but the duration of this stability window varies drastically across signal types:
+
+\begin{itemize}
+\item \textbf{Speech:} characterized by a quasi-stationarity of approximately 20 ms, dictated by the physical inertia of the human vocal folds and articulators.
+\item \textbf{General Audio/Music:} highly heterogeneous.
+\begin{itemize}
+\item \textit{Tonal segments}, for example a sustained violin note, can remain stationary for hundreds of milliseconds.
+\item \textit{Transients}, for example a drum hit, change their statistical properties in less than 2-5 ms.
+\end{itemize}
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Window-Length Compromise}
+\textbf{Statement:} modern codecs must switch window lengths dynamically to avoid temporal artifacts like pre-echo during transients while maintaining frequency resolution for tonal parts.
+
+\textbf{Interpretation:} short windows localize attacks in time, while long windows provide better frequency resolution for stable tonal material.
+\end{calloutbox}
+
+\subsection{Modeling Paradigms}
+
+\textit{Source Modeling vs. Sink Modeling}
+
+The choice of compression technique depends on the nature of the signal's redundancy:
+
+\begin{itemize}
+\item \textbf{Source-Based Modeling (Speech):} effective when the generator is known, namely the vocal tract. We use AR filters to model resonances. It is extremely efficient but fails for non-vocal sounds. The priority is \textit{intelligibility} and low latency.
+\item \textbf{Sink-Based Modeling (General Audio):} since music lacks a single physical model, we focus on the receiver, the human auditory system. The priority is \textit{fidelity} and perceptual transparency.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Redundancy vs. Irrelevancy}
+\textbf{Statement:} speech coding focuses on exploiting \textbf{statistical redundancy} through prediction, while audio coding focuses on removing \textbf{perceptual irrelevancy} through masking.
+
+\textbf{Interpretation:} speech coders model how the signal is produced; perceptual coders model what the listener cannot hear.
+\end{calloutbox}
+
+\subsection{Amplitude Statistics across Audio Types}
+
+\textit{PDF Sparsity and Dynamic Range}
+
+The efficiency of optimal quantizers, such as Lloyd-Max quantizers, depends on the shape of the signal's \textbf{probability density function (PDF)}:
+
+\begin{itemize}
+\item \textbf{Sparsity:} both speech and many musical instruments exhibit Laplacian-like PDFs, with a sharp peak at zero, indicating that the signal spends most time at low energy.
+\item \textbf{Dynamic Range:} music requires 16-24 bit precision to handle the vast range between silence and peaks, whereas speech is often acceptable with 8-bit non-uniform quantization.
+\end{itemize}
+
+The following slides provide empirical evidence of these properties using real-world samples.
+
+\subsection{Empirical Analysis: Voiced Speech}
+
+\textit{Vowels: high periodicity and correlation}
+
+\begin{itemize}
+\item \textbf{File:} \texttt{vocali.wav}
+\item \textbf{Analysis:} the histogram shows a multi-modal distribution reflecting the periodic nature of vowels.
+\item \textbf{Correlation:} the plot of consecutive samples, $x_n$ vs. $x_{n-1}$, shows a very tight diagonal alignment, indicating massive redundancy.
+\end{itemize}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513130347.png}\end{center}
+\textit{Figura: Histogram of relative frequency of sound samples for vocali.wav — multi-modal distribution around zero}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513130521.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513130558.png}\end{center}
+
+\begin{calloutbox}{gray!60!black}{Figure 2 - Consecutive-sample scatter plot for voiced speech}
+\textbf{Placeholder:} add image later from the original PDF. \textbf{Expected content:} log-scale scatter plot of the relative frequency of consecutive samples, showing a tight diagonal alignment that indicates high sample correlation. \textbf{Source cue:} \texttt{[Figura: Scatter plot of relative frequency of consecutive samples (log scale) — tight diagonal alignment indicating high correlation]}
+\end{calloutbox}
+
+\subsection{Spectral Analysis: Vowels}
+
+\textit{Formants and the Source-Filter Justification}
+
+\textbf{Visualizing the resonances:}
+
+\begin{itemize}
+\item The Fourier analysis of a vowel sound clearly shows the fundamental frequency and harmonics.
+\item However, in order to take locality into account, we perform a \textit{short-time Fourier transform} over consecutive time windows.
+\item This produces the \textbf{spectrogram}, where we see the \textbf{harmonic structure}: the clear horizontal lines represent the fundamental frequency, or pitch, and its harmonics.
+\end{itemize}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513130738.png}\end{center}
+
+\subsection{Empirical Analysis: General Speech}
+
+\textit{Mixed Phonemes and Laplacian Distribution}
+
+\begin{itemize}
+\item \textbf{File:} \texttt{voice.wav}
+\item \textbf{Analysis:} a typical speech signal. The histogram exhibits the characteristic Laplacian "peaked" shape centered at zero.
+\item \textbf{Coding Insight:} the high density near zero confirms that a large portion of the signal can be represented with very few bits after prediction.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260513140029.png}\end{center}
+
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260513140052.png}\end{center}
+\subsection{Empirical Analysis: Electronic Music}
+
+\textit{Beats and Transients}
+
+\begin{itemize}
+\item \textbf{File:} \texttt{electronic-beat\_10s.wav}
+\item \textbf{Analysis:} percussive elements create more dispersion in the consecutive-sample plot.
+\item \textbf{Challenge:} sudden transients, the "beats", represent non-stationary events that break the prediction model.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260513140114.png}\end{center}
+
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260513140200.png}\end{center}
+\subsection{Spectral Analysis: Electronic Music}
+
+\textit{Absence of evident structures}
+
+\begin{itemize}
+\item Frequency analysis of music signals does not show evident structures like those observed in speech.
+\item The sharp fall of the amplitude spectrum at 16 kHz is due to an acquisition low-pass filter.
+\item Using a spectrogram in this case would not improve the analysis.
+\end{itemize}
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260513140218.png}\end{center}
+\subsection{Empirical Analysis: Game Audio}
+
+\textit{Complex Soundscapes and Effects}
+
+\begin{itemize}
+\item \textbf{File:} \texttt{battle-of-pogs\_10s.wav}
+\item \textbf{Analysis:} the most "noise-like" distribution among the samples.
+\item \textbf{Complexity:} high-frequency components and non-harmonic textures make this signal harder to compress using parametric models.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260513140307.png}\end{center}
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260513140328.png}\end{center}
+
+\subsection{Lessons from Empirical Data}
+
+\textit{Bridging Statistics to Coding Strategy}
+
+\begin{itemize}
+\item \textbf{For Speech:} we can rely on source-filter models because the physical constraints of the vocal tract ensure good predictability.
+\item \textbf{For Music:} we must shift to perceptual models, because the time-domain signal is too unpredictable for pure source models.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Prediction Gain}
+\textbf{Statement:} by modeling the resonances seen in the voice examples, we can derive the \textbf{Linear Predictive Coding (LPC)} coefficients to maximize the \textbf{prediction gain} $G_p$.
+
+\textbf{Interpretation:} strong resonance structure makes prediction effective, so the residual carries less variance than the original signal and becomes cheaper to encode.
+\end{calloutbox}
+
+\subsection{The Human Speech Production System}
+
+\textit{From Anatomy to Signal Processing}
+
+Speech is generated through a highly structured mechanical process that can be mapped directly to a digital signal processing block diagram:
+
+\begin{itemize}
+\item \textbf{The Lungs (Power):} provide the DC air pressure, acting as the system's power supply.
+\item \textbf{The Vocal Folds (Source):} the "sound generator." They vibrate periodically for voiced sounds or remain open for noise-like unvoiced sounds.
+\item \textbf{The Vocal Tract (Filter):} the pharynx, oral cavity, and nasal cavity. These act as an acoustic tube, shaping the sound through resonances.
+\end{itemize}
+
+\subsection{Voiced and Unvoiced Speech}
+
+\textit{The Two Modes of Acoustic Excitation}
+
+The human vocal system generates two fundamentally different types of acoustic excitation based on the state of the glottis:
+
+\begin{itemize}
+\item \textbf{Voiced Sounds}, for example vowels like /a/ and /u/, or nasals like /m/:
+\begin{itemize}
+\item \textbf{Mechanism:} the vocal folds are held together and vibrate periodically due to airflow.
+\item \textbf{Signal:} quasi-periodic waveform with a clear \textbf{pitch period} $T_0$.
+\item \textbf{Spectrum:} harmonic structure with energy concentrated at multiples of $F_0 = 1/T_0$.
+\end{itemize}
+\item \textbf{Unvoiced Sounds}, for example fricatives like /s/, /f/, or /sh/:
+\begin{itemize}
+\item \textbf{Mechanism:} the vocal folds remain open, or abducted; turbulence is created by air rushing through a narrow constriction.
+\item \textbf{Signal:} stochastic, noise-like waveform with no apparent periodicity.
+\item \textbf{Spectrum:} continuous and "flat" or "colored", depending on the vocal tract shape, similar to white noise.
+\end{itemize}
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Voiced/Unvoiced Coding Decision}
+\textbf{Statement:} the encoder must distinguish between these two states: \textbf{voiced} frames require pitch-period estimation, $T_0$, while \textbf{unvoiced} frames are modeled using a random noise generator.
+
+\textbf{Interpretation:} the same vocal-tract filter can be excited by a periodic impulse train for voiced speech or by noise for unvoiced speech.
+\end{calloutbox}
+
+\subsection{The Source-Filter Acoustic Model}
+
+\textit{Decoupling Excitation and Resonance}
+
+Fant's classic theory states that the speech signal $s$ is the convolution of an excitation source $e$ and a time-varying vocal tract filter $h$. In the frequency domain:
+
+\[
+S(f) = E(f) \cdot H(f)
+\]
+
+Instead of encoding the complex waveform $s$, we aim to transmit the filter parameters that represent the vocal tract and a simplified excitation model: an impulse train for voiced speech and white noise for unvoiced speech.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513140535.png}\end{center}
+
+\subsection{Bridge to Linear Predictive Coding}
+
+\begin{itemize}
+\item In the upcoming section, we will learn how to model the $h$ filter by using predictive coding.
+\item The model is based on a number $P$ of discrete past samples.
+\item If the prediction model is robust, the residual can be easily modeled either as noise or as an impulse train.
+\item We work in the discrete domain: the input signal is $x(n)$, and we use the Z-transform to describe the processing architecture.
+\item The predictor is a discrete linear filter, which turns out to be related to $H$.
+\item \textbf{LPC} means \textbf{Linear Predictive Coding}.
+\end{itemize}
+
+\bigskip\hrule\bigskip
+
+\section{Linear Predictive Coding (LPC)}
+
+\subsection{Principles of Linear Prediction}
+
+\textit{Modeling the Signal and the Residual}
+
+Following the source-filter model, we assume the current signal sample $x(n)$ can be estimated from a linear combination of its $P$ past values:
+
+\[
+\hat{x}(n) = -\sum_{i=1}^{P} a_i x(n-i)
+\]
+
+The prediction error, or \textbf{residual signal} $y(n)$, is defined as:
+
+\[
+y(n) = x(n) - \hat{x}(n) = \sum_{i=0}^{P} a_i x(n-i) \quad \text{with } a_0 = 1
+\]
+
+\begin{calloutbox}{red!70!black}{Whitening Filter}
+\textbf{Statement:} the residual $y(n)$ is the output of a FIR filter $A(z) = \sum_{i=0}^{P} a_i z^{-i}$ applied to $x(n)$. If the prediction is optimal, $y(n)$ is a white-noise-like signal or a periodic impulse train.
+
+\textbf{Interpretation:} LPC attempts to remove the spectral envelope from speech. The residual should contain mainly the excitation information.
+\end{calloutbox}
+
+\subsection{Estimation of Optimal Coefficients}
+
+\textit{Minimization of the Residual Variance}
+
+To find the coefficients $\{a_i\}$, we minimize the variance of the residual $\sigma_y^2 = E\{y^2(n)\}$. As seen in the Predictive Quantization module, setting the partial derivatives $\frac{\partial \sigma_y^2}{\partial a_i} = 0$ leads to the \textbf{Yule-Walker equations}:
+
+\[
+\mathbf{R}_x \mathbf{a} = -\mathbf{r}_x
+\]
+
+where:
+
+\begin{itemize}
+\item $\mathbf{R}_x$ is a symmetric \textbf{Toeplitz matrix} of autocorrelations.
+\item $\mathbf{r}_x$ is the autocorrelation vector.
+\item $\mathbf{a} = [a_1, a_2, \ldots, a_P]^T$ is the vector of LP coefficients.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Levinson-Durbin Recursion}
+\textbf{Statement:} the Toeplitz structure allows the Yule-Walker system to be solved with $\mathcal{O}(P^2)$ complexity.
+
+\textbf{Interpretation:} this makes real-time estimation feasible even on low-power devices.
+\end{calloutbox}
+
+\subsection{The LPC Analysis Process}
+
+\textit{From Waveform to Parametric Representation}
+
+The encoder segments the signal $x(n)$ into frames, approximately 20 ms long, and extracts the main parameters:
+
+\begin{enumerate}
+\item \textbf{LP Coefficients} $\{a_i\}$: define the spectral envelope, that is, the vocal tract.
+\item \textbf{Gain} $G$: represents the signal energy, $\sigma_y$.
+\item \textbf{V/UV Decision:} determines the source type, voiced or unvoiced.
+\item \textbf{Pitch Period} $T_0$: fundamental frequency, if voiced.
+\end{enumerate}
+
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260513140733.png}\end{center}
+
+\subsection{The Autocorrelation Estimation}
+
+The short-time autocorrelation $R_x(k)$ is the fundamental tool for extracting both source and filter parameters from a windowed frame $x_w(n)$.
+
+\begin{itemize}
+\item \textbf{Biased Estimator:} as seen in previous modules, we use:
+\end{itemize}
+
+\[
+R_x(k) = \sum_{n=0}^{N-1-k} x_w(n) x_w(n+k) \quad \text{for } k = 0, \ldots, K
+\]
+
+\begin{itemize}
+\item \textbf{Filter Estimation (Lags 0...P):} these values form $\mathbf{R}_x$ and $\mathbf{r}_x$.
+\item \textbf{Source Analysis (Long Lags):} the same function is used for:
+\begin{itemize}
+\item \textbf{Pitch Detection:} finding the maximum peak at $k > P$.
+\item \textbf{V/UV Decision:} comparing the peak magnitude against $R_x(0)$.
+\end{itemize}
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Autocorrelation Efficiency}
+\textbf{Statement:} by computing $R_x(k)$ once, the encoder determines the spectral envelope, the signal energy, the periodicity, and the excitation type.
+
+\textbf{Interpretation:} one statistic supports both the short-term vocal-tract model and the longer-term pitch analysis.
+\end{calloutbox}
+
+\subsection{Characteristics of the Residual $y(n)$}
+
+\textit{What remains after spectral flattening?}
+
+The residual $y(n)$ represents the information that the linear filter cannot capture, namely the excitation source:
+
+\begin{itemize}
+\item \textbf{Voiced segments:} $y(n)$ shows sharp, periodic spikes, corresponding to glottal pulses. The prediction gain is high because the signal is highly redundant.
+\item \textbf{Unvoiced segments:} $y(n)$ resembles zero-mean white noise. The linear model captures the "color" of the turbulence.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{LPC Compression Efficiency}
+\textbf{Statement:} by transmitting the filter $A(z)$ and a simplified model of $y(n)$, we achieve high compression because $y(n)$ has a much lower variance and flatter spectrum than $x(n)$.
+
+\textbf{Interpretation:} the decoder reconstructs intelligible speech from a compact vocal-tract model plus a compact excitation model.
+\end{calloutbox}
+
+\subsection{LPC Synthesis}
+
+\textit{Reconstructing the Signal via Inverse Filtering}
+
+The synthesis process is the exact mathematical inverse of the analysis. If the prediction error filter $A(z)$ is used to extract the residual $y(n)$ from the signal $x(n)$:
+
+\[
+Y(z) = A(z)X(z) \implies X(z) = A^{-1}(z)Y(z)
+\]
+
+At the decoder, we reconstruct the speech by applying the \textbf{inverse filter} $A^{-1}(z)$ to the excitation:
+
+\begin{itemize}
+\item \textbf{Excitation Source:} $y(n)$ is reconstructed as either a periodic impulse train, for voiced speech, or white noise, for unvoiced speech, based on the received gain, pitch, and V/UV parameters.
+\item \textbf{Time-Domain Implementation:} the synthesis is performed using a linear recurrence equation:
+\end{itemize}
+
+\[
+x(n) = y(n) - \sum_{i=1}^{P} a_i x(n-i)
+\]
+
+\subsection{LPC Spectral Modeling}
+
+Since $X(z) = A^{-1}(z)Y(z)$, the general shape of $X$ is determined by $A^{-1}(z)$, because $Y$ is either flat, as in white noise, or a Dirac comb, as referenced in page 18 of the source material.
+
+LPC modeling is more accurate near spectral peaks, the \textbf{formants}, than in spectral valleys.
+
+Notice that:
+
+\[
+A(z) = a_0 + a_1 z^{-1} + \ldots + a_P z^{-P}
+\]
+
+is a FIR filter. Therefore, its inverse is an all-pole IIR filter.
+
+\subsection{The Quantization Problem}
+
+\textit{Why not quantize $\{a_i\}$ directly?}
+
+To transmit the vocal tract model $A(z)$, we need to quantize the filter coefficients $\{a_1, a_2, \ldots, a_P\}$. However, direct scalar quantization of $\{a_i\}$ is extremely dangerous:
+
+\begin{itemize}
+\item \textbf{High Dynamic Range:} the coefficients $a_i$ can vary wildly in magnitude, making uniform quantization highly inefficient.
+\item \textbf{Lack of Boundedness:} there is no simple relationship to guarantee that the quantized coefficients $\hat{a}_i$ will keep the roots of $A(z)$ inside the unit circle.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Stability Constraint}
+\textbf{Statement:} if even one pole of the synthesis filter $1/A(z)$ moves outside the unit circle due to quantization noise, the decoder filter becomes unstable, resulting in massive audio distortion.
+
+\textbf{Interpretation:} quantization must preserve filter stability, not only coefficient accuracy.
+\end{calloutbox}
+
+\subsection{Line Spectrum Frequencies (LSF)}
+
+\textit{The Itakura Solution}
+
+Introduced by Fumitada Itakura in 1975, \textbf{Line Spectrum Frequencies (LSFs)} map the LPC polynomial $A(z)$ into two new symmetric and anti-symmetric auxiliary polynomials:
+
+\[
+P(z) = A(z) + z^{-(P+1)}A(z^{-1})
+\]
+
+\[
+Q(z) = A(z) - z^{-(P+1)}A(z^{-1})
+\]
+
+This decomposition creates a mathematical "miracle" for quantization.
+
+\begin{calloutbox}{red!70!black}{LSF Property 1: Roots on the Unit Circle}
+\textbf{Statement:} all roots of $P(z)$ and $Q(z)$ lie exactly on the unit circle. Therefore, they can be represented simply by their angles, or frequencies, $\omega_i \in [0, \pi]$, without needing a magnitude component.
+
+\textbf{Interpretation:} converting LPC coefficients to angles gives a better-behaved parameter space for quantization.
+\end{calloutbox}
+
+\subsection{The Interlacing Property}
+
+Let $\omega_i^{(P)}$ be the roots of $P(z)$ and $\omega_i^{(Q)}$ be the roots of $Q(z)$.
+
+\begin{calloutbox}{red!70!black}{LSF Property 2: Strict Interlacing}
+\textbf{Statement:} the synthesis filter $1/A(z)$ is strictly stable if and only if the roots of $P(z)$ and $Q(z)$ interlace, or alternate, along the unit circle:
+
+\[
+0 < \omega_1^{(P)} < \omega_1^{(Q)} < \omega_2^{(P)} < \omega_2^{(Q)} < \cdots < \pi
+\]
+
+\textbf{Interpretation:} stability can be checked and repaired by verifying the order of the LSF angles.
+\end{calloutbox}
+
+\textbf{Why this is perfect for coding:}
+
+\begin{itemize}
+\item We quantize the frequencies $\omega_i$.
+\item If quantization error causes two frequencies to swap order, the decoder detects the anomaly instantly.
+\item The decoder simply re-sorts them to restore strict interlacing, guaranteeing a 100\% stable filter.
+\end{itemize}
+
+\subsection{From LSFs back to LPC Coefficients}
+
+\textit{Reconstructing the Filter at the Decoder}
+
+Once the decoder receives the quantized LSF angles $\{\omega_i\}$, it reconstructs the filter $A(z)$ to perform synthesis:
+
+\begin{enumerate}
+\item \textbf{Form the auxiliary polynomials:} the roots are placed on the unit circle at the received angles:
+\end{enumerate}
+
+\[
+P(z) = (1 + z^{-1}) \prod_{i=1,3,\ldots}^{P-1} (1 - 2\cos(\omega_i)z^{-1} + z^{-2})
+\]
+
+\[
+Q(z) = (1 - z^{-1}) \prod_{i=2,4,\ldots}^{P} (1 - 2\cos(\omega_i)z^{-1} + z^{-2})
+\]
+
+\begin{enumerate}
+\item \textbf{Reconstruct $A(z)$:} based on the initial definitions, we simply average the two polynomials:
+\end{enumerate}
+
+\[
+A(z) = \frac{P(z) + Q(z)}{2} \tag{1}
+\]
+
+\subsection{Visualizing LSFs and Formants}
+
+The LSF representation offers a direct visual link between the root positions and the spectral peaks, or formants, of the vocal tract.
+
+\begin{enumerate}
+\item \textbf{Z-Plane (Unit Circle):}
+\begin{itemize}
+\item Blue roots: $P(z)$.
+\item Red roots: $Q(z)$.
+\end{itemize}
+\item \textbf{Spectral Envelope:} \textbf{resonance} occurs when a $P$-root and a $Q$-root are very close together. In that case, the filter $A(z)$ exhibits a sharp spectral peak, namely a formant.
+\end{enumerate}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513132924.png}\end{center}
+
+\subsection{Efficient Coding: Vector Quantization (VQ)}
+
+Instead of quantizing each LSF $\omega_i$ independently, modern codecs use \textbf{Vector Quantization (VQ)}.
+
+\begin{itemize}
+\item \textbf{The Concept:} the entire set of $P$ LSFs is treated as a single vector $\omega = [\omega_1, \ldots, \omega_P]$.
+\item \textbf{The Codebook:} encoder and decoder share a "dictionary" of representative LSF vectors, trained on human speech.
+\item \textbf{The Search:} the encoder finds the vector in the codebook that minimizes distortion and transmits only its \textbf{index}.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{LSF Vector Quantization Advantage}
+\textbf{Statement:} LSFs are highly correlated because the vocal tract can only take certain physical shapes. VQ exploits this to encode the whole 10th-order filter with just 20-30 bits per frame.
+
+\textbf{Interpretation:} vector quantization exploits dependencies among frequencies better than independent scalar quantization.
+\end{calloutbox}
+
+\subsection{LPC-10 Bitrate Breakdown}
+
+The LPC-10 standard, Federal Standard 1015, operates at a constant bitrate of 2.4 kbps, or 54 bits per 22.5 ms frame. The bit allocation adapts to the source type:
+
+\begin{center}
+\begin{tabular}{|l|r|r|}
+\hline
+\textbf{Parameter} & \textbf{Voiced (Bits)} & \textbf{Unvoiced (Bits)} \\ \hline
+LPC Coefficients & 41 (Order $P = 10$) & 20 (Order $P = 4$) \\ \hline
+Pitch Period ($T_0$) & 7 & 0 (Reserved) \\ \hline
+Energy (Gain $G$) & 5 & 5 \\ \hline
+Synchronization & 1 & 1 \\ \hline
+Error Protection & 0 & 28 \\ \hline
+\textbf{Total Bits / Frame} & \textbf{54} & \textbf{54} \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{LPC-10 Bit Allocation Observations}
+\textbf{Statement:} voiced frames use maximum spectral detail, $P=10$, and pitch information. Unvoiced frames use lower spectral detail, $P=4$, which leaves significant error-protection bits to improve robustness against channel noise.
+
+\textbf{Interpretation:} the encoder spends bits on the parameters that matter for each excitation type.
+\end{calloutbox}
+
+\bigskip\hrule\bigskip
+\section{Source-Based Codecs}
+
+\subsection{The CELP Paradigm}
+
+\textit{From Open-Loop to Analysis-by-Synthesis}
+
+LPC-10 failed to achieve high quality because the excitation $y(n)$ was too simplistic. \textbf{CELP} (\textit{Code Excited Linear Prediction}) introduces three innovations:
+
+\begin{enumerate}
+\item \textbf{Vector Excitation:} the residual $y(n)$ is no longer just pulses or noise, but a vector chosen from a \textbf{codebook}, or dictionary.
+\item \textbf{Analysis-by-Synthesis (AbS):} the encoder acts as a "mini-decoder". It tries different excitation vectors $i$ and different gains $g$, synthesizes the speech, and compares it to the original.
+\item \textbf{Closed-Loop Search:} the shape and gain of the vector that produces the minimum error are transmitted.
+\end{enumerate}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513133621.png}\end{center}
+
+\subsection{Perceptual Weighting Theory}
+
+\textit{Hiding Noise in the Formants}
+
+The previous scheme is a simplification made to introduce the main concepts of CELP encoders.
+
+To improve the Quality of Experience, CELP does not minimize the physical error $\varepsilon(n) = x(n) - \hat{x}(n)$. It minimizes a \textbf{perceptually weighted error}.
+
+\begin{itemize}
+\item \textbf{The Masking Principle:} the human ear is less sensitive to noise in frequency regions where the signal energy is high, namely the \textit{formants}.
+\item \textbf{The Weighting Filter:} CELP uses a filter $W(z)$ to shape the error:
+\end{itemize}
+
+\[
+W(z) = \frac{A(z)}{A(z/\gamma)} \quad \text{with } 0 < \gamma < 1 \tag{2}
+\]
+
+\begin{itemize}
+\item \textbf{Pole Shifting:} by multiplying the filter coefficients by $\gamma^i$, we move the poles toward the origin, effectively \textbf{broadening the formants}.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{CELP Perceptual Weighting}
+\textbf{Statement:} CELP minimizes a perceptually weighted error instead of the raw waveform error, using $W(z) = A(z)/A(z/\gamma)$.
+
+\textbf{Interpretation:} the search prefers excitation vectors whose error is hidden under strong speech formants.
+\end{calloutbox}
+
+\subsection{Visualizing the Perceptual Mask}
+
+\textit{Spectral Shaping of the Quantization Noise}
+
+\begin{itemize}
+\item \textbf{Blue:} the original LPC spectral envelope $1/A(z)$.
+\item \textbf{Red:} the broadened envelope $1/A(z/\gamma)$.
+\item \textbf{Black:} $W(z)$ de-emphasizes the error near the formants, where the signal provides natural masking, and emphasizes it in the spectral valleys.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513133851.png}\end{center}
+
+\subsection{The CELP Excitation Model (1/2)}
+
+\textit{The Adaptive Codebook and Long-Term Prediction}
+
+The adaptive codebook models the \textbf{periodicity}, or pitch, of voiced speech by "recycling" the previous excitation $y(n)$.
+
+\begin{itemize}
+\item \textbf{The Buffer:} a memory of the excitation $y(n)$ synthesized in previous subframes.
+\item \textbf{The Lag $Q$ (Pitch Period):} the adaptive vector is extracted by going back $Q$ samples in the buffer:
+\end{itemize}
+
+\[
+y_{\text{adapt}}(n) = y(n - Q)
+\]
+
+\begin{itemize}
+\item \textbf{The Gain $b = g_p$ (Pitch Gain):} scales the past excitation to match the current energy.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Long-Term Predictor Interpretation}
+\textbf{Statement:} the adaptive codebook acts as a \textbf{Long-Term Predictor (LTP)}. It effectively implements a filter $B(z) = g_p z^{-Q}$ that models the harmonic structure of the signal.
+
+\textbf{Interpretation:} pitch periodicity is represented by reusing delayed excitation rather than by storing a new arbitrary vector.
+\end{calloutbox}
+
+\subsection{The CELP Excitation Model (2/2)}
+
+\textit{The Fixed Codebook and Multi-Shape Innovation}
+
+Since the past cannot predict everything, such as transitions or unvoiced noise, a \textbf{fixed codebook} provides the "innovation". To achieve high quality without requiring an impossibly large dictionary, the innovation is constructed by combining multiple entries:
+
+\begin{itemize}
+\item \textbf{The Structure:} a static dictionary of shape vectors, for example algebraic pulse patterns.
+\item \textbf{Multi-Shape Combination:} instead of choosing just one vector, the encoder selects \textbf{two shape vectors}, $v_1$ and $v_2$.
+\item \textbf{Independent Gains:} each shape vector is scaled by its own gain factor, $g_{c1}$ and $g_{c2}$.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Total CELP Excitation Construction}
+\textbf{Statement:} the final excitation $y(n)$ sent to the synthesis filter $1/A(z)$ is the sum of the adaptive past and the multi-shape innovation:
+
+\[
+y(n) = \underbrace{g_p \cdot y_{\text{adapt}}(n)}_{\text{Periodic}} + \underbrace{g_{c1} \cdot v_1(n) + g_{c2} \cdot v_2(n)}_{\text{Fixed Innovation}} \tag{3}
+\]
+
+\textbf{Interpretation:} the adaptive term represents voiced periodicity, while the fixed-codebook terms represent new unpredictable content.
+\end{calloutbox}
+
+\subsection{Global CELP Architecture}
+
+\textit{Implementation in the ITU-T G.729 Standard}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513134214.png}\end{center}
+
+\begin{itemize}
+\item \textbf{Feedback Loop:} the total excitation $y(n)$ is fed back into the adaptive codebook to be used as history for subsequent subframes.
+\item \textbf{Subframe Processing:} the excitation parameters, $Q$, $v_1$, $v_2$, $g_p$, $g_{c1}$, and $g_{c2}$, are updated every 5 ms, or subframe, to capture rapid transients, while the LPC filter $A(z)$ is updated every 10 ms, or frame.
+\end{itemize}
+
+\subsection{The Analysis-by-Synthesis Loop}
+
+\textit{Filter Memory and the Target Signal ($\hat{p}_0$)}
+
+In the G.729 diagram, before the error is minimized, a signal $\hat{p}_0(n)$ is subtracted from the perceptually weighted input. This is a crucial computational optimization.
+
+\begin{itemize}
+\item \textbf{Filter Components:} the output of the synthesis filter $\frac{1}{A(z/\gamma)}$ is the sum of two responses:
+\begin{enumerate}
+\item \textbf{Zero-Input Response (ZIR):} the "ringing" due to the filter's past memory, namely states from previous subframes.
+\item \textbf{Zero-State Response (ZSR):} the response to the \textit{new} excitation, assuming empty memory.
+\end{enumerate}
+\item \textbf{The Signal $\hat{p}_0(n)$:} this is exactly the ZIR. It is the output the filter would produce if the current codebook excitation were zero.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Target Signal in Analysis-by-Synthesis}
+\textbf{Statement:} by subtracting the past memory from the original weighted signal, $\text{Target} = x_{\text{weighted}} - \hat{p}_0$, the codebook search is tremendously simplified.
+
+\textbf{Interpretation:} the encoder only needs to match the new codebook vectors, the zero-state response, to this memoryless target signal.
+\end{calloutbox}
+
+\subsection{Bitrate Breakdown for G.729}
+
+\textit{8 kbps Allocation: 80 bits per 10 ms frame}
+
+\begin{center}
+\begin{tabular}{|l|l|r|}
+\hline
+\textbf{Parameter} & \textbf{Update Rate} & \textbf{Bits} \\ \hline
+LPC Coefficients (LSF) & 10 ms (Once/Frame) & 18 \\ \hline
+Adaptive Codebook Index & 5 ms (Twice/Frame) & 14 (8 + 6) \\ \hline
+Fixed Codebook Index & 5 ms (Twice/Frame) & 26 (13 + 13) \\ \hline
+Codebook Gains & 5 ms (Twice/Frame) & 14 (7 + 7) \\ \hline
+Parity/Sync & 10 ms & 8 \\ \hline
+\textbf{Total} &  & \textbf{80 bits} \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{G.729 Bitrate Calculation}
+\textbf{Statement:} the frame rate and bit allocation give:
+
+\[
+R = \frac{80 \text{ bits}}{0.010 \text{ s}} = 8000 \text{ bps}
+\]
+
+\textbf{Interpretation:} 80 bits every 10 ms corresponds to an 8 kbps speech codec.
+\end{calloutbox}
+
+\subsection{The Wideband Revolution: AMR-WB}
+
+\textit{Standard 3GPP G.722.2: HD Voice}
+
+\textbf{AMR-WB} marked the transition from \textbf{Narrowband (NB)} to \textbf{Wideband (WB)} audio.
+
+\begin{itemize}
+\item \textbf{Extended Bandwidth:}
+\begin{itemize}
+\item \textbf{50-200 Hz:} provides "presence".
+\item \textbf{3.4-7 kHz:} improves fricatives and understandability.
+\end{itemize}
+\item \textbf{ACELP Evolution:} modified perceptual weighting and a significantly larger dictionary.
+\item \textbf{Adaptive Rates:} 9 bitrates, from 6.6 to 23.85 kbps.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513134732.png}\end{center}
+
+\subsection{Enhanced Voice Services (EVS)}
+
+\textit{The Standard for VoLTE and 5G}
+
+\textbf{EVS} is the successor to AMR-WB, designed for high-fidelity audio over IP-based packet networks.
+
+\begin{itemize}
+\item \textbf{Bandwidth Versatility:} from Narrowband (NB) to \textbf{Full-band (FB, 20 kHz)}.
+\item \textbf{Hybrid Coding:} integrates ACELP for speech and MDCT for music modes.
+\item \textbf{Bitrate Range:} highly flexible, from 5.9 kbps to 128 kbps.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{EVS Backwards Compatibility}
+\textbf{Statement:} EVS includes an \textbf{AMR-WB IO} (Input/Output) mode to remain compatible with older devices while improving transport robustness.
+
+\textbf{Interpretation:} EVS can serve newer wideband and full-band services while still interoperating with AMR-WB infrastructures.
+\end{calloutbox}
+
+\subsection{EVS: Reliability and Quality}
+
+\textit{Solving IP Network Challenges}
+
+EVS is optimized for packet-switched (PS) networks where latency and loss are common:
+
+\begin{itemize}
+\item \textbf{Jitter Buffer Management:} new algorithms to smooth out the arrival of IP packets.
+\item \textbf{Frame Erasure Concealment (FEC):} advanced techniques to hide packet loss by predicting speech from past parameters.
+\item \textbf{Discontinuous Transmission (DTX):} optimized Silence Insertion Descriptors (SID) and comfort noise.
+\end{itemize}
+
+\subsection{Mobile Standards Comparison}
+
+\textit{The Path from 2G to 5G}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Standard} & \textbf{Network} & \textbf{Quality} & \textbf{Bandwidth} \\ \hline
+GSM-FR & 2G & Telephony & 300-3400 Hz \\ \hline
+AMR-NB & 3G & Telephony & 300-3400 Hz \\ \hline
+AMR-WB & 4G/LTE & HD Voice & 50-7000 Hz \\ \hline
+\textbf{EVS} & \textbf{4G/5G} & \textbf{Hi-Fi} & \textbf{20-20000 Hz} \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{Speech-Audio Convergence}
+\textbf{Statement:} EVS represents the final merge of speech-specific ACELP and general-audio MDCT technologies, as developed in the next sections.
+
+\textbf{Interpretation:} modern voice services no longer rely only on source coding; they also need music-quality transform tools.
+\end{calloutbox}
+
+\bigskip\hrule\bigskip
+\section{Perceptual Audio Coding}
+
+\subsection{Absolute Threshold of Hearing}
+
+\textit{Minimum Audible Pressure}
+
+The human ear does not have a flat frequency response. The power required for a sound to be audible, $S_a(f)$, varies significantly with frequency.
+
+\begin{itemize}
+\item \textbf{Audible Range:} typically between 20 Hz and 20 kHz.
+\item \textbf{Maximum Sensitivity:} the threshold is lowest, meaning the ear is most sensitive, between 1 kHz and 4 kHz, which corresponds to the core frequencies of human speech.
+\item \textbf{Coding Implication:} sounds with power $\sigma^2 < S_a(f)$ are not heard and can be discarded by the encoder without any loss in subjective quality.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513135220.png}\end{center}
+
+\subsection{Critical Bands (BC)}
+
+\textit{The Bark Scale}
+
+The cochlea acts as a bank of overlapping bandpass filters. These filters define the \textbf{critical bands}.
+
+\begin{itemize}
+\item \textbf{Definition:} if multiple sinusoids fall within the same critical band, the ear perceives their total power rather than individual components.
+\item \textbf{Variable Width:} the bandwidth of these filters increases with frequency: narrower at low frequencies and wider at high frequencies.
+\item \textbf{Standardization:} AAC uses 51 groups to approximate these critical bands.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.806\linewidth]{Pasted_image_20260513135313.png}\end{center}
+
+\subsection{Frequency Domain Masking}
+
+\textit{Masking Curves $S_m(f_0, \sigma^2, f)$}
+
+A strong "masker" sound reduces the sensitivity to a second "masked" sound at nearby frequencies.
+
+\begin{itemize}
+\item \textbf{Masking Threshold:} for a given frequency $f_0$ and power $\sigma^2$, the threshold $\Phi(f)$ increases, hiding noise below it.
+\item \textbf{Asymmetry:} masking is more effective for frequencies higher than the masker's frequency, $f > f_0$.
+\item \textbf{Coding Gain:} we allow the quantization noise $S_Q(f)$ to increase as long as it remains below the masking curve: $S_Q(f) < \Phi(f)$.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513135345.png}\end{center}
+
+\subsection{Temporal Domain Masking}
+
+\textit{Pre-masking and Post-masking}
+
+The masking effect also occurs in time, before and after a loud sound.
+
+\begin{itemize}
+\item \textbf{Pre-masking:} lasts about 2-5 ms. The ear is "blinded" just before the onset of a loud sound.
+\item \textbf{Post-masking:} much longer effect, lasting 100-200 ms. Sensitivity recovers slowly after a sound stops.
+\item \textbf{Windowing:} temporal masking justifies the use of specific window shapes to avoid \textbf{pre-echo} artifacts in transients.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513135412.png}\end{center}
+
+\subsection{Perceptual Coding Standards}
+
+\textit{The MPEG Legacy}
+
+The most successful perceptual coders are part of the ISO/IEC MPEG, \textit{Moving Picture Experts Group}, family:
+
+\begin{itemize}
+\item \textbf{MP3:} formally known as \textbf{MPEG-1 Audio Layer 3}. It uses a hybrid filterbank, polyphase plus MDCT.
+\item \textbf{AAC:} stands for \textbf{Advanced Audio Coding}. It is defined in the \textbf{MPEG-2} and \textbf{MPEG-4} standards.
+\end{itemize}
+
+\textbf{Design Objective:} achieve "transparent" quality, indistinguishable from the original, by removing irrelevant information based on the psychoacoustic model.
+
+\subsection{Transform Coding Principles}
+
+\textit{Windowing and Overlap}
+
+Perceptual coders operate on discrete blocks of signal called windows.
+
+\begin{itemize}
+\item \textbf{Overlapping:} to avoid blocking artifacts, windows overlap in time.
+\item \textbf{Frame vs. Buffer:}
+\begin{itemize}
+\item \textbf{MP3:} uses a buffer of $N = 512$ samples, coding $M = 32$ new samples.
+\item \textbf{AAC:} uses a larger buffer of $N = 2048$ samples, coding $M = 1024$ new samples per frame.
+\end{itemize}
+\item \textbf{Window Switching:} modern encoders switch between "long" windows, for steady state, and "short" windows, for transients, to manage temporal masking.
+\end{itemize}
+
+\subsection{Modified Discrete Cosine Transform (M-DCT)}
+
+\textit{The Engine of Modern Audio Coding}
+
+The \textbf{M-DCT} is a block-based transform used to map the signal from the time domain to the frequency domain.
+
+\begin{itemize}
+\item \textbf{Overlap:} it uses overlapping windows, typically 50\%, to eliminate blocking artifacts at frame boundaries.
+\item \textbf{TDAC:} \textit{Time Domain Aliasing Cancellation}. The mathematical structure ensures that the aliasing introduced in one block is cancelled by the next during reconstruction.
+\item \textbf{Critical Sampling:} this is a key efficiency property.
+\begin{itemize}
+\item Despite the 50\% overlap, where we process $N = 2M$ samples, the transform produces only $M$ spectral coefficients.
+\item \textbf{Result:} the number of frequency coefficients equals the number of \textit{new} time samples, meaning there is \textbf{no redundancy} or data expansion.
+\end{itemize}
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{MDCT Critical Sampling}
+\textbf{Statement:} with 50\% overlap, MDCT processes $N = 2M$ samples but produces only $M$ spectral coefficients.
+
+\textbf{Interpretation:} overlap improves reconstruction quality and avoids blocking artifacts without increasing the number of transmitted coefficients.
+\end{calloutbox}
+
+\subsection{Generic Perceptual Coder Architecture}
+
+\textit{The Analysis-by-Synthesis Loop in Frequency}
+
+The encoder and decoder are asymmetric: most of the complexity lies in the encoder's bit allocation logic.
+
+\textbf{Encoder tasks:}
+
+\begin{enumerate}
+\item Time-frequency mapping.
+\item Psychoacoustic analysis.
+\item Dynamic bit allocation.
+\item Quantization and Huffman coding.
+\end{enumerate}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513135624.png}\end{center}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260513135642.png}\end{center}
+\subsection{MPEG-1 Layer 3 (MP3): Signal-to-Mask Ratio}
+
+\textit{Signal-to-Mask Ratio (SMR)}
+
+The core efficiency of MP3 comes from its ability to measure the "perceptual headroom" in each subband to guide bit allocation.
+
+\begin{calloutbox}{red!70!black}{Signal-to-Mask Ratio (SMR)}
+\textbf{Statement:} for a given frequency band $k$, the SMR is the ratio between the signal power $S_k$ and the masking threshold $\Phi_k$:
+
+\[
+SMR_k[\text{dB}] = S_k[\text{dB}] - \Phi_k[\text{dB}]
+\]
+
+\textbf{Interpretation:} SMR tells the encoder how much quantization noise can be injected before it becomes audible.
+\end{calloutbox}
+
+\begin{itemize}
+\item \textbf{Role:} SMR tells the encoder how much noise can be "injected" before it becomes audible.
+\item \textbf{Allocation Goal:} assign enough bits to the subband so that the Signal-to-Noise Ratio, $SNR_k$, exceeds $SMR_k$.
+\item \textbf{Transparency Condition:} when $SNR_k > SMR_k$, the quantization noise $S_Q$ remains below the threshold $\Phi$, becoming \textbf{inaudible}.
+\end{itemize}
+
+\subsection{MPEG-1 Layer 3 (MP3): Psychoacoustic Model}
+
+\textit{Calculating $\Phi(f)$}
+
+To find the global masking threshold $\Phi(f)$, the encoder follows a standardized psychoacoustic procedure:
+
+\begin{enumerate}
+\item \textbf{Spectral Analysis:} a high-resolution FFT is performed to identify the energy distribution.
+\item \textbf{Identification of Maskers:} the model distinguishes between \textbf{tonal} components, such as sinusoids, and \textbf{noise-like} components, because they have different masking properties.
+\item \textbf{Individual Masking Curves:} for each masker, a "spreading function", the masking tent, is calculated based on its intensity and frequency.
+\item \textbf{Summation:} all individual curves are combined with the \textbf{Absolute Threshold of Hearing (ATH)} to form the \textbf{Global Masking Threshold} $\Phi(f)$.
+\end{enumerate}
+
+\subsection{MPEG-1 MP3 vs. MPEG-2/4 AAC}
+
+\textit{Evolution of Perceptual Audio Coding}
+
+AAC was designed to be the successor to MP3, fixing its structural limitations and providing better quality at lower bitrates.
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Feature} & \textbf{MP3} & \textbf{AAC} \\ \hline
+\textbf{Transform} & Hybrid (Polyphase + MDCT) & Pure MDCT \\ \hline
+\textbf{Frequency Bands} & 32 uniform subbands & \textbf{51 Critical Bands (SFB)} \\ \hline
+\textbf{Resolution} & Fixed / Limited & Flexible, up to 1024 bins \\ \hline
+\textbf{Quantization} & Simple / Linear & \textbf{Non-linear, Power Law $X^{3/4}$} \\ \hline
+\textbf{Huffman Coding} & Static tables & \textbf{Dynamic, 12 different tables} \\ \hline
+\textbf{Typical Bitrate} & Transparent at 192 kbps & \textbf{Transparent at 128 kbps} \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{Scale Factor Logic in AAC}
+\textbf{Statement:} unlike MP3's rigid bands, AAC uses the Scale Factor $g$ to surgically place the noise floor for each Scale Factor Band (SFB), ensuring that quantization noise $S_Q$ is always hidden under the masking threshold $\Phi$.
+
+\textbf{Interpretation:} AAC has finer and more flexible control over where quantization noise is placed.
+\end{calloutbox}
+
+\subsection{HE-AAC and Unified Codecs}
+
+\textit{Spectral Band Replication (SBR)}
+
+Modern standards like \textbf{HE-AAC}, or High Efficiency AAC, and \textbf{USAC} go beyond simple quantization.
+
+\begin{itemize}
+\item \textbf{HE-AAC:} combines AAC with \textbf{SBR} (\textit{Spectral Band Replication}) to replicate high frequencies and with Parametric Stereo.
+\item \textbf{USAC:} a hybrid codec that switches between AMR-WB for speech and HE-AAC for music to handle mixed content seamlessly.
+\end{itemize}
+
+\bigskip\hrule\bigskip
+\section{The Modern Era: Opus and Neural Codecs}
+
+\subsection{Opus: The Hybrid King}
+
+\textit{Blending SILK and CELT}
+
+\textbf{Opus} is designed for the modern web, capable of handling everything from low-bitrate VoIP to high-fidelity music with very low latency.
+
+\begin{itemize}
+\item \textbf{SILK Layer:} derived from Skype. Based on \textbf{LPC} (\textit{Linear Prediction}), optimized for speech at 8-12 kbps.
+\item \textbf{CELT Layer:} derived from Xiph.org. Based on \textbf{MDCT}, optimized for audio and music at high bitrates.
+\item \textbf{The Hybrid Mode:} between 16 and 32 kbps, Opus uses both layers simultaneously, with SILK for the low frequencies and CELT for the highs.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Opus Seamless Adaptation}
+\textbf{Statement:} Opus can change its bitrate, audio bandwidth, from NB to FB, and coding mode on the fly without any audio glitches or renegotiation.
+
+\textbf{Interpretation:} this makes Opus suitable for unstable real-time internet links where bandwidth and packet loss change continuously.
+\end{calloutbox}
+
+\subsection{Opus: Low Latency for the Internet}
+
+\textit{Why it replaced MP3 and AAC for Real-Time}
+
+\begin{itemize}
+\item \textbf{Algorithmic Delay:} while MP3 and AAC often require more than 100 ms, Opus can work with frames as small as \textbf{5 ms}.
+\item \textbf{VoIP Superiority:} this makes it the standard for WebRTC, Discord, and WhatsApp.
+\item \textbf{Resilience:} includes advanced In-band Forward Error Correction (FEC) to survive packet loss on unstable Wi-Fi and 4G connections.
+\end{itemize}
+
+\subsection{The AI Frontier: Neural Codecs}
+
+\textit{From Quantization to Generation}
+
+Traditional codecs try to match the \textit{waveform}. Neural codecs, such as Google's \textbf{Lyra} or Meta's \textbf{EnCodec}, try to match the \textit{perception} using generative AI.
+
+\begin{itemize}
+\item \textbf{Encoder (Feature Extraction):} a neural network compresses audio into a very small latent space, as low as 3 kbps.
+\item \textbf{Decoder (Generative Synthesis):} instead of simple inverse transforms, a \textbf{GAN} (\textit{Generative Adversarial Network}) or a \textbf{diffusion model} re-synthesizes the voice.
+\item \textbf{Result:} intelligible and natural-sounding speech at bitrates where CELP would sound like broken noise.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Neural Codec Paradigm Shift}
+\textbf{Statement:} we no longer send the samples; we send "instructions" for the AI to reconstruct a plausible version of the original signal.
+
+\textbf{Interpretation:} the codec becomes partly generative, so low bitrate is achieved by relying on learned priors rather than only on waveform coding.
+\end{calloutbox}
+
+\subsection{The Evolution of Spatial Audio}
+
+\textit{Channels, Objects, and Scenes}
+
+Modern immersive audio, for VR/AR and cinema, uses three different approaches:
+
+\begin{itemize}
+\item \textbf{Channel-based:} fixed positions, such as 5.1 or 7.1. The mix is baked for a specific speaker layout.
+\item \textbf{Object-based (MPEG-H / Dolby Atmos):} sound sources, for example a "helicopter", are sent as mono signals plus \textbf{XYZ metadata}. The receiver renders the sound based on the user's actual speakers.
+\item \textbf{Scene-based (Ambisonics):} captures the entire sound-field sphere. This is ideal for 360 videos and head tracking.
+\end{itemize}
+
+\subsection{MPEG-H and Next-Generation TV}
+
+\textit{Interactivity and Personalization}
+
+The MPEG-H standard, used in ATSC 3.0 and DVB, introduces user interactivity:
+
+\begin{itemize}
+\item \textbf{Object Control:} the user can manually increase the volume of the "Dialogue Object" or the "Stadium Commentary" while keeping the background noise at the same level.
+\item \textbf{Binaural Rendering:} downmixes 3D audio for standard headphones, simulating a 22.2 speaker setup using \textbf{HRTF} (\textit{Head Related Transfer Functions}).
+\end{itemize}
+
+\bigskip\hrule\bigskip
+\section{Conclusion and Evaluation}
+
+\subsection{Subjective Quality Assessment}
+
+\textit{The Gold Standard: MOS and MUSHRA}
+
+The only true judge of audio quality is the human ear. Standardized tests include:
+
+\begin{itemize}
+\item \textbf{MOS (Mean Opinion Score):} listeners rate clips from 1, Bad, to 5, Excellent. A score of 4.0 or higher is usually considered "toll quality".
+\item \textbf{MUSHRA (ITU-R BS.1534):} used for intermediate quality. Listeners compare multiple samples against a "Hidden Reference", the original, and "Anchors", low-pass filtered versions.
+\item \textbf{Transparency Test:} used for high-end codecs such as AAC. The goal is for the listener to be unable to distinguish the original from the compressed version in a double-blind \textbf{ABX} test.
+\end{itemize}
+
+\subsection{Why SNR is Not Effective for Lossy Audio}
+
+\textit{Perceptual Noise vs. Mathematical Noise}
+
+In traditional DSP, we use Signal-to-Noise Ratio (SNR). In audio coding, this fails because:
+
+\begin{itemize}
+\item \textbf{Masking:} a codec might introduce 20 dB of noise that is perfectly masked by the signal, therefore inaudible. The SNR would be low, but the quality perfect.
+\item \textbf{Phase Shifting:} perceptual codecs often change the phase of the signal. The waveform looks different, with high mathematical error, but it sounds identical.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Shift to Perceptual Metrics}
+\textbf{Statement:} we need \textbf{perceptual metrics} that model the human auditory system to estimate MOS automatically.
+
+\textbf{Interpretation:} waveform error is not a reliable proxy for human-perceived audio quality.
+\end{calloutbox}
+
+\subsection{Objective Metrics: POLQA and ViSQOL}
+
+\textit{Replacing the Human Listener}
+
+Modern networks use algorithms to predict the MOS score in real time.
+
+\begin{itemize}
+\item \textbf{POLQA (ITU-T P.863):} the industry standard for 4G/5G. It compares the original and degraded signal using a psychoacoustic model, including Bark scale and loudness mapping.
+\item \textbf{ViSQOL (by Google):} a newer metric based on \textbf{spectrogram similarity}. It is particularly robust for VoIP and "generative" neural codecs where the time alignment might be imperfect.
+\end{itemize}
+
+\subsection{The Audio Coding Landscape}
+
+\textit{A Comparative Overview}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Codec} & \textbf{Paradigm} & \textbf{Bitrate} & \textbf{Latency} & \textbf{Primary Use Case} \\ \hline
+AMR-WB & Source (CELP) & 6-24 kbps & 20-30 ms & Legacy Mobile Voice (3G/4G) \\ \hline
+AAC & Receiver (MDCT) & 64-128 kbps & \textgreater{}100 ms & Streaming and Storage \\ \hline
+\textbf{Opus} & \textbf{Hybrid} & \textbf{6-128 kbps} & \textbf{5-20 ms} & \textbf{WebRTC / Real-time Internet} \\ \hline
+EVS & Hybrid & 5-128 kbps & 32 ms & 5G VoNR / VoLTE \\ \hline
+Lyra/EnCodec & \textbf{Neural} & \textbf{3-6 kbps} & Variable & Ultra-low bandwidth / Fallback \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Future Trends in Audio Coding}
+
+\textit{The Shift towards AI-Driven and Hybrid Systems}
+
+\begin{itemize}
+\item \textbf{The Neural "Safety Net":} today, AI codecs act as a fallback. If the network bitrate drops below 6 kbps, the system switches from waveform coding to generative reconstruction.
+\item \textbf{Hybridization:} future standards will likely merge \textbf{MDCT}, for transparency in critical bands, with \textbf{neural layers}, to "imagine" high-frequency textures or background noise.
+\item \textbf{Computation vs. Bandwidth:} a paradigm shift where we use more local battery and CPU power, such as NPUs, to save precious network bandwidth.
+\item \textbf{The "Hallucination" Challenge:} balancing generative realism with mathematical transparency. In professional and legal fields, faithful reconstruction remains superior to AI-generated "plausible" audio.
+\end{itemize}
+
+\section{Final Summary Table}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Concept / Standard} & \textbf{Definition / Formula} & \textbf{Compression role} & \textbf{Notes} \\ \hline
+Source-based coding & Parametric coding based on physical sound generation & Achieves very low bitrate for speech & Works best when the source, such as the vocal tract, is known \\ \hline
+Sink-based coding & Perceptual coding based on hearing limitations & Removes inaudible or irrelevant information & Main paradigm for music and general audio \\ \hline
+Speech stationarity & Speech is quasi-stationary over about 20 ms & Enables frame-based LPC analysis & Music may require longer windows for tones or shorter windows for transients \\ \hline
+Source-filter model & $S(f) = E(f) \cdot H(f)$ & Separates excitation from vocal-tract resonances & Voiced excitation is periodic; unvoiced excitation is noise-like \\ \hline
+Linear prediction & $\hat{x}(n) = -\sum_{i=1}^{P} a_i x(n-i)$ & Predicts samples from past values and lowers residual variance & Produces a whitening filter $A(z)$ \\ \hline
+Residual signal & $y(n) = x(n)-\hat{x}(n)=\sum_{i=0}^{P}a_i x(n-i)$ & Carries excitation information after spectral envelope removal & Periodic for voiced speech, noise-like for unvoiced speech \\ \hline
+Yule-Walker equations & $\mathbf{R}_x\mathbf{a}=-\mathbf{r}_x$ & Estimate optimal LPC coefficients & Solved efficiently by Levinson-Durbin recursion \\ \hline
+LPC synthesis & $X(z)=A^{-1}(z)Y(z)$ & Reconstructs speech by filtering the excitation & The synthesis filter is all-pole IIR \\ \hline
+LSF & Angles obtained from $P(z)$ and $Q(z)$ auxiliary polynomials & Makes LPC coefficient quantization stable and efficient & Roots lie on the unit circle and must interlace \\ \hline
+Vector Quantization & Codebook index for an entire LSF vector & Reduces bits for LPC parameters & Exploits correlation among vocal-tract shapes \\ \hline
+LPC-10 & 2.4 kbps speech codec with 54 bits per 22.5 ms frame & Very low bitrate speech coding & Low quality because excitation is too simple \\ \hline
+CELP & Code Excited Linear Prediction with analysis-by-synthesis & Improves excitation modeling over LPC-10 & Uses adaptive and fixed codebooks \\ \hline
+Perceptual weighting & $W(z)=A(z)/A(z/\gamma)$ & Hides CELP error near formants & Broadens formants by pole shifting \\ \hline
+G.729 & CELP codec at 8 kbps & Efficient narrowband speech coding & Uses 80 bits per 10 ms frame \\ \hline
+AMR-WB & 3GPP G.722.2 wideband speech codec & Extends speech bandwidth to 50-7000 Hz & Known as HD Voice \\ \hline
+EVS & Hybrid ACELP/MDCT codec for VoLTE and 5G & Supports NB to full-band audio & Includes packet-loss and jitter robustness tools \\ \hline
+Absolute threshold of hearing & Minimum audible power $S_a(f)$ & Allows inaudible components to be discarded & Lowest threshold around 1-4 kHz \\ \hline
+Critical bands & Cochlear frequency bands on the Bark scale & Basis for band-wise perceptual bit allocation & AAC approximates them with 51 groups \\ \hline
+Frequency masking & A strong masker raises $\Phi(f)$ near its frequency & Allows higher quantization noise where hidden & More effective above the masker's frequency \\ \hline
+Temporal masking & Pre-masking lasts 2-5 ms; post-masking lasts 100-200 ms & Guides window switching and pre-echo control & Important for transients \\ \hline
+MDCT & Overlapped transform with TDAC and critical sampling & Converts audio into frequency coefficients without expansion & Processes $N=2M$ samples and outputs $M$ coefficients \\ \hline
+SMR & $SMR_k[\text{dB}]=S_k[\text{dB}]-\Phi_k[\text{dB}]$ & Determines how many bits a band needs & Transparency requires $SNR_k > SMR_k$ \\ \hline
+MP3 & MPEG-1 Audio Layer 3 & Perceptual audio coding with hybrid filterbank & Typically transparent around 192 kbps \\ \hline
+AAC & MPEG-2/4 Advanced Audio Coding & More flexible perceptual coding than MP3 & Uses pure MDCT, SFBs, non-linear quantization, and dynamic Huffman tables \\ \hline
+HE-AAC / USAC & AAC extensions and unified coding & Improve low-bitrate and mixed-content performance & SBR replicates high frequencies \\ \hline
+Opus & Hybrid SILK/CELT codec & Low-latency speech and music over the internet & Supports seamless bitrate, bandwidth, and mode adaptation \\ \hline
+Neural codecs & Learned latent coding with generative decoding & Reach very low bitrates by exploiting learned priors & Risk plausible but not mathematically faithful reconstruction \\ \hline
+MPEG-H / spatial audio & Channel-, object-, and scene-based immersive audio & Encodes audio scenes and interactive objects & Supports binaural rendering with HRTF \\ \hline
+MOS / MUSHRA / ABX & Subjective quality tests & Gold standard for perceived quality & Needed because SNR does not predict audio quality well \\ \hline
+POLQA / ViSQOL & Objective perceptual quality metrics & Estimate MOS automatically & Useful for network monitoring and generative codec evaluation \\ \hline
+\end{tabular}
+\end{center}
+

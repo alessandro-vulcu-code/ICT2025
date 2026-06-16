@@ -1,0 +1,104 @@
+% Main entry point for Multimedia Communications lecture notes.
+\documentclass[11pt, a4paper]{article}
+
+% Encoding and page layout
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.2cm]{geometry}
+
+% Math
+\usepackage{amsmath, amssymb}
+
+% Figures and diagrams
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{tikz}
+\usetikzlibrary{
+  arrows.meta,
+  backgrounds,
+  calc,
+  fit,
+  positioning
+}
+
+% Hyperlinks must be loaded late.
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue
+}
+
+% Macros used throughout the lecture notes
+\newcommand{\sr}[2]{\sum_{#2}^{#1}}                 % \sr{upper}{lower} -> sum
+\newcommand{\pr}[2]{\prod_{#2}^{#1}}                % \pr{upper}{lower} -> product
+\newcommand{\vatt}[1]{\mathbb{E}\left[#1\right]}   % Expected value
+
+% Shared styles for block diagrams.
+\tikzset{
+  >={Stealth[length=2mm,width=1.6mm]},
+  blk/.style={
+    draw,
+    semithick,
+    rounded corners=1.5pt,
+    minimum height=8mm,
+    minimum width=12mm,
+    align=center,
+    font=\small
+  },
+  sum/.style={
+    draw,
+    semithick,
+    circle,
+    minimum size=6mm,
+    inner sep=0pt,
+    font=\footnotesize
+  },
+  sig/.style={font=\footnotesize, inner sep=1.5pt},
+  dot/.style={circle, fill, inner sep=1.1pt},
+  w/.style={semithick}
+}
+
+\title{Multimedia Communications\\\large Lecture Notes}
+\author{}
+\date{A.Y. 2025/2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% Lecture files
+\input{"1. lecture_2502.tex"}
+\newpage
+\input{"2. lecture_2702.tex"}
+\newpage
+\input{"3. lecture_0403.tex"}
+\newpage
+\input{"4. lecture_0603.tex"}
+\input{"5. lecture_1103.tex"}
+\input{"6. lecture_1303.tex"}
+\input{"7. lecture_1803.tex"}
+\input{"8. lecture_2003.tex"}
+\input{"9. lecture_2503.tex"}
+\input{"10. lecture_2703.tex"}
+\newpage
+\input{"11. lecture_0104.tex"}
+\input{"12. lecture_0804.tex"}
+\newpage
+\input{"13. lecture_1504.tex"}
+\input{"14. lecture_2204.tex"}
+\newpage
+\input{"15. lecture_2904.tex"}
+\newpage
+\input{"16. lecture_0605.tex"}
+\newpage
+\input{"17. lecture_1305.tex"}
+\newpage
+\input{"18. lecture_1505.tex"}
+\newpage
+\input{"19. lecture_2005.tex"}
+\newpage
+\input{"20. lecture_2205.tex"}
+
+\end{document}

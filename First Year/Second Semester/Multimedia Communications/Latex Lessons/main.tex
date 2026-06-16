@@ -1,0 +1,117 @@
+% Multimedia Communications — Lecture Notes (converted 1:1 from Lessons/).
+\documentclass[11pt,a4paper,oneside]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{lmodern}
+
+% Math
+\usepackage{amsmath,amssymb}
+
+% Figures
+\usepackage{graphicx}
+\graphicspath{{Pics/}}
+
+% Tables
+\usepackage{array}
+\usepackage{booktabs}
+
+% Callout boxes
+\usepackage[most]{tcolorbox}
+\newtcolorbox{calloutbox}[2]{%
+  colframe=#1, colback=#1!4, coltitle=white, fonttitle=\bfseries,
+  title={#2}, breakable, enhanced, sharp corners=south,
+  boxrule=0.6pt, left=2mm, right=2mm, top=1mm, bottom=1mm}
+
+% Links
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+
+% Unicode symbols that may appear outside math
+\usepackage{newunicodechar}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{←}{\ensuremath{\leftarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{↑}{\ensuremath{\uparrow}}
+\newunicodechar{↓}{\ensuremath{\downarrow}}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{÷}{\ensuremath{\div}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{≡}{\ensuremath{\equiv}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{–}{--}
+\newunicodechar{—}{---}
+\newunicodechar{…}{\ldots}
+\newunicodechar{°}{\ensuremath{^{\circ}}}
+\newunicodechar{²}{\ensuremath{^{2}}}
+\newunicodechar{³}{\ensuremath{^{3}}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∉}{\ensuremath{\notin}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∂}{\ensuremath{\partial}}
+\newunicodechar{∇}{\ensuremath{\nabla}}
+\newunicodechar{∑}{\ensuremath{\textstyle\sum}}
+\newunicodechar{∏}{\ensuremath{\textstyle\prod}}
+\newunicodechar{√}{\ensuremath{\sqrt{}}}
+\newunicodechar{∝}{\ensuremath{\propto}}
+\newunicodechar{⌊}{\ensuremath{\lfloor}}
+\newunicodechar{⌋}{\ensuremath{\rfloor}}
+\newunicodechar{⌈}{\ensuremath{\lceil}}
+\newunicodechar{⌉}{\ensuremath{\rceil}}
+\newunicodechar{∥}{\ensuremath{\parallel}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{✗}{\ensuremath{\times}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Σ}{\ensuremath{\Sigma}}
+\newunicodechar{Π}{\ensuremath{\Pi}}
+\newunicodechar{Ω}{\ensuremath{\Omega}}
+\newunicodechar{Φ}{\ensuremath{\Phi}}
+\newunicodechar{Θ}{\ensuremath{\Theta}}
+\newunicodechar{Γ}{\ensuremath{\Gamma}}
+
+\title{Multimedia Communications\\\large Lecture Notes}
+\author{}
+\date{A.Y. 2025/2026}
+
+\begin{document}
+\frontmatter
+\maketitle
+\tableofcontents
+
+\mainmatter
+\input{chapters/01.tex}\clearpage
+\input{chapters/02.tex}\clearpage
+\input{chapters/03.tex}\clearpage
+\input{chapters/04.tex}\clearpage
+\input{chapters/05.tex}\clearpage
+\input{chapters/06.tex}\clearpage
+\input{chapters/07.tex}\clearpage
+\input{chapters/08.tex}\clearpage
+\input{chapters/09.tex}\clearpage
+\input{chapters/10.tex}\clearpage
+\input{chapters/11.tex}\clearpage
+\input{chapters/12.tex}\clearpage
+
+\end{document}

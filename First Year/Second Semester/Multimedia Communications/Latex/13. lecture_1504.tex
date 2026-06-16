@@ -1,0 +1,114 @@
+\section{Motion Estimation}
+\subsection{Variational Methods}
+\subsubsection{Velocity Vector Field - Optical Flow}
+$$V : (x,y) \in \mathcal{J} \subset \mathbb{R}^2 \to (u,v)$$
+First part of the process is the formulation, then there is the discretization part.
+\subsubsection{Motion Vector Field}
+$$\forall \text{ point } \Longrightarrow \exists \text{ vector that represents pixel velocity of motion}$$
+Formulation:
+$$\arg\min_{(u,v)} \left\{D\left[f_0, f_1, (u,v)\right] + R(u,v)\right\} \qquad \text{ where}\begin{cases}
+    D \equiv \text{ Data-attachment Term}\\
+    R \equiv \text{ Regularization Term}
+\end{cases}$$
+\subsubsection{Data Attachment and Regularization}
+\begin{itemize}
+    \item \textbf{Data Attachment}: measures coherence of the estimated field compared to $f_0, f_1$\\
+    Each vector should link pixels of the same color = same pixel.\\
+    Problem: we have much more pixels than colors (assuming $2^8$ colors).
+    \item \textbf{Regularization} $R$: We include A-priori knowledge on the MVF.\\
+    It penalizes MVF which are different than our A-priori knowledge, it doesn't depend on data.
+\end{itemize}
+\subsubsection{Optical Flow Problem}
+Optical Flow $\propto$ color of the pixels: the goal is to find the best possible predictor. Problem Statement:
+\begin{itemize}
+    \item Motion = estimated on the Y component of YCbCr
+    \item we have a Generic Point $\vec{p} = \left[x, y\right]^T$
+    \item we have a trajectory $x(t)$
+\end{itemize}
+The optical flow is the estimate velocity of trajectory of point $\vec{p}$ at time $t$.\\
+The associated displacement is the MVF.
+\subsubsection{Optical Flow - Displacement Field}
+Consider at a given time $t_0 \to x(t_0) = \vec{p} - {D}$\\
+Then for a time step $T \to x(t_0 + T) = \vec{p}$\\
+We can define the displacement as this difference:
+$$D(\vec{p}, t_0, T) = x(t_0 + T) - x(t_0) = \left[\begin{matrix}
+    c(\vec{p},t_0, T)\\
+    d(\vec{p},t_0, T)
+\end{matrix}\right] = \left[\begin{matrix}
+    c(x,y)\\
+    d(x,y)
+\end{matrix}\right] \qquad \text{ where }\begin{cases}
+    c = \text{ Horizontal Displacement}\\
+    d = \text{ Vertical Displacement}
+\end{cases}$$
+\subsubsection{Optical Flow - Constant Illumination Hypothesis (CIH)}
+CIH is one of the \textbf{Fundamental Hypothesis}.
+\begin{center}
+    \textit{`Luminance doesn't change along the motion trajectory $x(t)$'}
+\end{center}
+Mathematically we can use the brightness $f$ to define it:
+$$f(x,y, t+T) = f\left(x-c(x,y),y-d(x,y),t\right)$$
+However this hypothesis is rarely satisfied, due to discretization (sampling, aliasing), noise, degradation of signal.\\
+$c,d$ are unknowns, we can estimate them by linearizing $f$, we assume $f$ is linear w.r.t. its own data.
+\subsubsection{Optical Flow - Equation}
+By using Taylor's expansion:
+$$f(\vec{p},t+T) = f(\vec{p},t) - \left[c(\vec{p})\frac{\partial f(\vec{p},t)}{\partial x} + d(\vec{p})\frac{\partial f(\vec{p},t)}{\partial y}\right] + o\left[\left\|D(\vec{p})\right\|\right]$$
+By dividing all by T and rearranging terms:
+$$\frac{f(\vec{p},t+T) -f(\vec{p},t)}{T}= -\frac{1}{T}\left[c(\vec{p})\frac{\partial f(\vec{p},t)}{\partial x} + d(\vec{p})\frac{\partial f(\vec{p},t)}{\partial y}\right] +\frac{1}{T}o\left[\left\|D(\vec{p})\right\|\right]= -\frac{\vec{D}\nabla f}{T} + \frac{1}{T}o\left[\left\|D(\vec{p})\right\|\right]$$
+We can see the left-side term is the incremental ratio (derivative), then from CIH:
+$$\frac{\partial f}{\partial t} = -\vec{V}\nabla f \qquad \Longrightarrow \qquad u\frac{\partial f}{\partial x} + v\frac{\partial f}{\partial y} + \frac{\partial f}{\partial t} = \boxed{uf_x + vf_y + f_t = 0}$$
+\subsubsection{Optical Flow - Solution: Horn \& Schunck method}
+How to find $u$ and $v$? We use the energy of the function.\\
+Assuming the total variation of the velocity over a region $\mathcal{R}$ is:
+$$\iint_{\mathcal{R}}(uf_x + vf_y +f_t)^2 dx dy = {\min} \text{ s.t. }\iint \left(\left\|\nabla u\right\|^2 + \left\|\nabla v\right\|^2\right) dx dy \leq \tau$$
+It is a combined minimization problem, it can be solved using lagrangian multipliers:
+$$J = \iint_{\mathcal{R}}(uf_x + vf_y +f_t)^2 dx dy + \lambda\left[\iint \left(\left\|\nabla u\right\|^2 + \left\|\nabla v\right\|^2\right) dx dy - \tau\right]$$
+$$\text{Solutions }\qquad \longrightarrow \begin{cases}
+    \lambda \nabla_2 u = (uf_x + vf_y +f_t)f_x\\
+    \lambda \nabla_2 v = (uf_x + vf_y +f_t)f_y
+\end{cases} \text{ and with }\begin{cases}
+    \nabla u = \bar{u} - u\\
+    \nabla v = \bar{v} - v
+\end{cases} \longrightarrow \begin{cases}
+    u = \bar{u} - f_x \frac{\bar{u}f_x + \bar{v}f_y + f_t}{\lambda +\left\|\nabla f\right\|^2}\\
+    v = \bar{v} - f_y \frac{\bar{u}f_x + \bar{v}f_y + f_t}{\lambda +\left\|\nabla f\right\|^2}
+\end{cases}$$
+Horn and Schunck method provides a smooth motion estimation (smooth and coherent result), very used in practice for object tracking, video compression and motion analysis.
+\subsection{Block Matching}
+We split images into blocks $B_{p,q}$ with $(p,q) \in N \times M$\\
+We can estimate our global motion using simple motions of small blocks, simple to program.\\
+The idea is to compare a single block luminance $f_k(B_{p,q})$ with a subblocks in a block window $f_h(B_{p-i, q-j})$
+\subsubsection{Formulation}
+Imagine we have two blocks in position $B_{p,q}$ and $B_{p-i,q-j}$, then image indexes $h,k$ and window $W$ (full or subset of the image). We can find the luminance values and compare them using the function $d$:
+$$d\left(f_k(B_{p,q}),f_h(B_{p-i,q-j})\right) = J(i,j) \qquad \Longrightarrow \qquad (\hat{i},\hat{j}) = \arg\min_{(i,j) \in W}J(i,j)$$
+Different techniques differ in:
+\begin{itemize}
+    \item minimization criterion of $J$
+    \item set of candidate vectors $W$
+    \item Block size and shape
+\end{itemize}
+Basically there is a function assigning a score depending on different parameters: we try to minimize that score.
+\subsubsection{Evaluation of the MVF}
+How can we tell if the result we get is good enough?
+\begin{itemize}
+    \item \textbf{Motion-Compensation (MC) prediction associated to MVF} (pretty similar to the other equations) $$\text{Similar to CIH - Brightness }\tilde{f}_k(n,m) = f_h(n + u_{h\to k}(n,m), m + v_{h\to k}(n,m))$$
+    \item \textbf{Prediction Error} $$e(n,n) = f_k(n,m) - \tilde{f}_k(n,m)$$
+    \item \textbf{MC-ed MSE} $$ \mathcal{E} = \frac{1}{NM}\sr{}{n,m}e^2(n,m)$$
+    \item \textbf{PSNR} $=10\log_{10}\frac{255^2}{\mathcal{E}}$
+\end{itemize}
+Main Tradeoff on complexity is to change block size $P \times Q$.\\
+Larger blocks reduce coding costs, complexity, and increase MSE
+\subsubsection{Block Matching criteria}
+\begin{itemize}
+    \item \textbf{SSD} (Sum of Squared Differences), norm-based criteria $$J_{SSD}(i,j) = \sr{}{(n,m)\in B_{p,q}}\left[f(n,m,k) - f(n-i, m-j, h)\right]^2$$
+    \begin{itemize}
+        \item PROS: Good for maximizing PSNR
+        \item CONS: Difficult to compute, increase in entropy of MVF, doesn't account global illumination changes.
+    \end{itemize}
+    \item \textbf{SAD} (Sum of Absolute Differences) $$J_{SAD}(i,j) = \sr{}{(n,m)\in B_{p,q}}\left|f(n,m,k) - f(n-i, m-j, h)\right|$$
+    \begin{itemize}
+        \item PROS: globally costs less bits, quality still really good
+        \item CONS: problems with parts with same colors (unknown behavior due to noise)
+    \end{itemize}
+    \item \textbf{REG} Regularized norm-based criteria $\to$ solves most of the problems $$J_{REG}(i,j) = \left\|\vec{f}_k(B_{p,q}) - \vec{f}_h(B_{p-i,q-j})\right\|^p_p + \lambda R(i,j)$$
+\end{itemize}

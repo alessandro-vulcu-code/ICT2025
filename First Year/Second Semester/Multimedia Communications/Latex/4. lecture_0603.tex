@@ -1,0 +1,223 @@
+\textbf{Stop condition}:
+\begin{itemize}
+    \item Threshold model
+    $$\frac{\sigma^2_{Q,(k-1)}-\sigma^2_{Q,(k)}}{\sigma^2_{Q,(k-1)}} < \epsilon$$
+    \item Reach iteration number $ k = K$
+\end{itemize}
+\subsubsection{Real-life Lloyd-Max adaptation}
+In real-life we don't have models, but real data:
+\begin{itemize}
+    \item $\chi = \left\{u_1, \cdots, u_m\right\}$
+    \item $C^{(k)} = \left\{\hat{x}_0^i\right\}_{i = 1\cdots L}$
+    \item Nearest neighbor rule: $w_k^{i} = \left\{u_m \in \chi : \forall j \neq i \quad ||u_m - \hat{x}_k^i|| \leq ||u_m - \hat{x}_k^j||\right\}$
+    \item Centroid rule: $\hat{x}_{k+1}^{i} = \frac{1}{|w_k^i|}\sr{}{u_m \in w_k^i}u_m$
+\end{itemize}
+This guarantees better performance but not too much improve performances.
+\subsection{Predictive Scalar Quantization}
+Idea: exploit sample quantization with prediction.\\
+We want to lower distorsion $D = \sigma_x^22^{-2R}$: we have to reduce $\sigma$ or, to keep the same distorsion, lower the rate.
+\subsubsection{Sparsification}
+Starting from a signal where pixels have the same weight, after applying some sparsification function (Fourier transform for example) some components become more important. Then we make quantization based on human sensitivity.
+\subsubsection{Prediction}
+We need to encode differences or predicting the differences. How to choose the $v(n)$?\\
+We need a $v(n)$ such that $y(n) = x(n) - v(n)$, then the reconstructed $\hat{y}(n) + v(n) = \hat{x}(n)$.
+\begin{center}
+\begin{tikzpicture}[baseline=(Q.center)]
+  \node (x) at (0,0) {$x(n)$};
+  \node[sum] (s1) at (1.8,0) {$-$};
+  \node[blk, minimum width=18mm, minimum height=13mm] (Q) at (3.8,0) {$Q$};
+  \node[sum] (s2) at (6.4,0) {$+$};
+  \node (xh) at (8.1,0) {$\hat{x}(n)$};
+  \node (v1) at (1.8,-1.2) {$v(n)$};
+  \node (v2) at (6.4,-1.2) {$v(n)$};
+
+  \draw[w,->] (x) -- (s1);
+  \draw[w,->] (s1) -- node[sig,above]{$y(n)$} (Q);
+  \draw[w,->] (Q) -- node[sig,above]{$\hat{y}(n)$} (s2);
+  \draw[w,->] (s2) -- (xh);
+  \draw[w,->] (v1) -- (s1);
+  \draw[w,->] (v2) -- (s2);
+\end{tikzpicture}
+\end{center}
+\noindent Basic predictive quantizer: the predictor $v(n)$ is subtracted before the quantizer $Q$ and added back after, so only the (smaller-variance) prediction error is quantized.
+\subsubsection{Prediction Error}
+$$q(n) = y(n) - \hat{y}(n) = x(n) - \hat{x}(n) = \bar{q}(n)\qquad\text{ the same of the original signal }x$$
+\subsubsection{Coding Gains}
+Goal of PQ: minimizing D
+$$SNR_p = 10\log_{10}\frac{\sigma^2_x}{D} = G_P + G_Q \qquad \text{where} \begin{cases}
+    G_P = 10\log_{10}\frac{\sigma_x^2}{\sigma_y^2} \text{ predictive gain}\\
+    G_Q = 10\log_{10}\frac{\sigma_y^2}{D}
+\end{cases}$$
+We are gaining the $G_P$ factor, since $\sigma_x^2 > \sigma_y^2$\\
+We cannot be sure that any prediction is good, we need to look for optimal predictors from previous samples.
+\subsubsection{Linear Predictors}
+Linear predictors are simple and \textbf{optimal for Gaussian r.v.}:
+$$v(n) = -\sr{P}{i=1}a_ix_{n-i} \qquad\Longrightarrow\qquad y(n) = x(n) - v(n) = \sr{P}{i=0}a_ix_{n-i} \quad (a_0 = 1)$$
+$y$ is the output of the FIR filter $A(z) = 1 + \sr{P}{i=1}a_iz^{-i}$ applied to $x$. Goal: minimize $\sigma^2_y$ over $\vec{a} = [a_1 \cdots a_P]^T$.
+% Integrated from Summaries: Wiener-Hopf derivation
+\subsubsection{Optimal Predictor (Wiener-Hopf)}
+Expanding the error variance:
+$$\sigma^2_y = \sigma_x^2 + 2\vec{r}^T\vec{a} + \vec{a}^TR_x\vec{a} \qquad\text{where }\begin{cases}
+    \vec{r} = [r_x(1) \cdots r_x(P)]^T\\
+    (R_x)_{ij} = r_x(|i-j|) \text{ (Toeplitz autocorr. matrix)}\\
+    r_x(k) = \vatt{X(n)X(n-k)}
+\end{cases}$$
+Setting the gradient to zero:
+$$\frac{\partial\sigma^2_y}{\partial\vec{a}} = 2\vec{r} + 2R_x\vec{a} = 0 \qquad\Longrightarrow\qquad \vec{a}^{opt} = -R_x^{-1}\vec{r} \qquad\Longrightarrow\qquad \sigma^2_{y,opt} = \sigma_x^2 + \vec{r}^T\vec{a}^{opt}$$
+If we want to use it in predictions, we need the autocorrelation estimation:
+$$\hat{r}_x(k) = \frac{1}{N}\sr{(N-1)-k}{n=0}X(n)X(n-k)$$
+% Integrated from Summaries: worked example (sample exam question)
+\subsubsection{Worked example: AR(1) Gaussian signal}
+Signal $X(n)\sim\mathcal{N}(0,\sigma^2)$ with autocorrelation $r_x(n-m) = \vatt{X(n)X(m)} = \sigma^2\rho^{|n-m|}$.
+\begin{itemize}
+    \item \textbf{Trivial predictor} $V(n) = X(n-1)$:
+    $$\sigma^2_y = \vatt{\left(X(n)-X(n-1)\right)^2} = 2\sigma^2 - 2\sigma^2\rho = 2\sigma^2(1-\rho)$$
+    $$G_P = 10\log_{10}\frac{\sigma^2}{2(1-\rho)\sigma^2} = 10\log_{10}\frac{1}{2(1-\rho)} \qquad\Longrightarrow\qquad G_P > 0 \Longleftrightarrow \rho > \frac{1}{2}$$
+    For $\rho = 0.9$: $G_P = 10\log_{10}\frac{1}{0.2} \approx 7$ dB.
+    \item \textbf{Optimal predictor of order} $P=1$: applying Wiener-Hopf with $R_x = \sigma^2$, $\vec{r} = \sigma^2\rho$:
+    $$a_1^{opt} = -\rho \Rightarrow V(n) = \rho X(n-1) \qquad \sigma^2_y = \sigma^2 + \sigma^2\rho(-\rho) = \sigma^2(1-\rho^2)$$
+    $$G_P = 10\log_{10}\frac{1}{1-\rho^2} \geq 0 \quad \forall\rho \qquad\text{(never worse than no prediction)}$$
+    Comparison: $1-\rho^2 = (1-\rho)(1+\rho) < 2(1-\rho)$ for $\rho<1$ $\Rightarrow$ optimal always beats trivial.
+    \item \textbf{Optimal predictor of order} $P=2$: now $R_x = \sigma^2\left[\begin{smallmatrix}1 & \rho\\ \rho & 1\end{smallmatrix}\right]$, $\vec{r} = \sigma^2[\rho,\ \rho^2]^T$:
+    $$\vec{a}^{opt} = -R_x^{-1}\vec{r} = -\frac{1}{1-\rho^2}\left[\begin{matrix}1 & -\rho\\ -\rho & 1\end{matrix}\right]\left[\begin{matrix}\rho\\ \rho^2\end{matrix}\right] = \left[\begin{matrix}-\rho\\ 0\end{matrix}\right]$$
+    Same solution as $P=1$: the second tap is useless because in an AR(1) source all the information about $X(n)$ is contained in $X(n-1)$ (Markov property). Increasing the order brings no further gain.
+\end{itemize}
+\subsubsection{Prediction Gain: filter order impact}
+\begin{itemize}
+    \item Order increase = gain improve
+    \item Complexity vs Performance tradeoff
+\end{itemize}
+\subsubsection{Local adaptation}
+Some images are not stationary, we need to split them into omogeneous blocks and compute different predictors:
+\begin{itemize}
+    \item Large Blocks: small overhead but no local features
+    \item Small Blocks: excellent tracking of features, but high overhead
+    \item Rate increase by $\frac{N\cdot B}{m^2}$ where $N$ = bits*pixel/block, $B$ number of blocks, $M^2$ number of blocks
+\end{itemize}
+If we split an image in too many blocks, we lose efficiency. For low bitrates is better to use large blocks.
+% Integrated from Summaries: DPCM schemes (exam asks to draw and comment encoder/decoder)
+\subsubsection{Wrong scheme: open-loop prediction (drift)}
+Naive idea: encoder predicts from the \emph{original} samples $x(n)$.
+\begin{center}
+\begin{tikzpicture}[baseline=(s1.center)]
+  \node (lbl) at (-1.0,1.0) {\textbf{ENCODER}};
+  \node (x)   at (0,0)      {$x(n)$};
+  \node[sum]  (s1) at (1.6,0)  {$+$};
+  \node[blk]  (Q)  at (3.4,0)  {$Q$};
+  \node       (out) at (5.4,0) {to dec.};
+  \node[blk]  (P)  at (1.6,-1.4) {Pred};
+  \draw[w,->] (x)  -- (s1);
+  \draw[w,->] (s1) -- node[sig,above]{$y(n)$} (Q);
+  \draw[w,->] (Q)  -- node[sig,above]{$\hat{y}(n)$} (out);
+  \node[dot] (t) at (0.8,0) {};
+  \draw[w,->] (t)  |- (P.west);
+  \draw[w,->] (P)  -- node[sig,right]{$v(n)$} (s1);
+  \node[sig] at (1.86,-0.30) {$-$};
+\end{tikzpicture}
+\hspace{10mm}
+\begin{tikzpicture}[baseline=(sd.center)]
+  \node (lbl) at (-1.0,1.0) {\textbf{DECODER}};
+  \node (yh)  at (0,0)      {$\hat{y}(n)$};
+  \node[sum]  (sd) at (1.7,0)  {$+$};
+  \node       (out) at (3.9,0) {out};
+  \node[blk]  (P)  at (1.7,-1.4) {Pred};
+  \draw[w,->] (yh) -- (sd);
+  \draw[w,->] (sd) -- node[sig,above]{$\tilde{x}(n)$} (out);
+  \node[dot] (t) at (2.8,0) {};
+  \draw[w,->] (t)  |- (P.east);
+  \draw[w,->] (P)  -- node[sig,right]{$v'(n)$} (sd);
+  \node[sig] at (1.96,-0.30) {$+$};
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\includegraphics[width=0.95\linewidth]{predq_openloop.png}
+\end{center}
+\textbf{Problem}: the encoder predictor uses the original $x(n)$, but the decoder can only use the reconstructed $\tilde{x}(n)$. Since $x \neq \tilde{x}$, the two predictions $v(n) \neq v'(n)$ diverge and the error accumulates over time: this is the \textbf{drift} problem.\\
+Numerical example (3-bit quantizer, levels $\{-9,-6,-3,0,3,6,9\}$), predictor = previous sample:
+$$\begin{array}{c|cccccc}
+\text{step} & \text{original} & \text{ENC pred} & \text{ENC error} & \text{quantized} & \text{DEC pred} & \text{reconstr.}\\\hline
+1 & 10 & - & - & 9 & - & 9\\
+2 & 11 & 10 & 1 & 0 & 9 & 9\\
+3 & 12 & 11 & 1 & 0 & 9 & 9\\
+4 & 13 & 12 & 1 & 0 & 9 & 9\\
+5 & 14 & 13 & 1 & 0 & 9 & 9\\
+6 & 18 & 14 & 4 & 3 & 9 & 12
+\end{array}$$
+Encoder predicts from originals (10,11,12,\dots), decoder is stuck at 9: drift grows unbounded.
+\subsubsection{Correct scheme: closed-loop prediction (DPCM)}
+\textbf{Solution}: the encoder embeds a copy of the decoder, and predicts from the \emph{quantized/reconstructed} samples $\tilde{x}(n)$ --- exactly the same data the decoder has.
+\begin{center}
+\begin{tikzpicture}[baseline=(s1.center)]
+  \node (lbl) at (-1.0,1.0) {\textbf{ENCODER}};
+  \node (x)   at (0,0)        {$x(n)$};
+  \node[sum]  (s1) at (1.8,0)   {$+$};
+  \node[blk]  (Q)  at (3.8,0)   {$Q$};
+  \node       (out) at (6.4,0)  {to decoder};
+  \node[sum]  (s2) at (3.8,-1.8) {$+$};
+  \node[blk]  (P)  at (1.8,-1.8) {Pred};
+  \draw[w,->] (x)  -- (s1);
+  \draw[w,->] (s1) -- node[sig,above]{$y(n)$} (Q);
+  \draw[w,->] (Q)  -- node[sig,above]{$\hat{y}(n)$} (out);
+  % yhat tapped down into reconstruction adder
+  \node[dot] (t) at (5.2,0) {};
+  \draw[w,->] (t)  |- (s2.east);
+  % reconstruction adder back to predictor
+  \draw[w,->] (s2) -- node[sig,above]{$\tilde{x}(n)$} (P);
+  % predictor output: junction feeding both adders
+  \node[dot] (j) at (1.8,-0.9) {};
+  \draw[w]    (P)  -- (j);
+  \draw[w,->] (j)  -- (s1);
+  \node[sig,left] at (j.west) {$v(n)$};
+  \node[sig] at (2.06,-0.30) {$-$};
+  \draw[w,->] (j)  -| (s2.north);
+  \node[sig] at (3.52,-1.42) {$+$};
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[baseline=(sd.center)]
+  \node (lbl) at (-1.0,1.0) {\textbf{DECODER}};
+  \node (yh)  at (0,0)       {$\hat{y}(n)$};
+  \node[sum]  (sd) at (1.8,0)  {$+$};
+  \node       (out) at (4.0,0) {out};
+  \node[blk]  (P)  at (1.8,-1.5) {Pred};
+  \draw[w,->] (yh) -- (sd);
+  \draw[w,->] (sd) -- node[sig,above]{$\tilde{x}(n)$} (out);
+  \node[dot] (t) at (3.0,0) {};
+  \draw[w,->] (t)  |- (P.east);
+  \draw[w,->] (P)  -- node[sig,right]{$v(n)$} (sd);
+  \node[sig] at (2.06,-0.30) {$+$};
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\includegraphics[width=0.95\linewidth]{predq_closedloop.png}
+\end{center}
+Comment on the blocks:
+\begin{itemize}
+    \item Encoder: prediction error $y(n) = x(n) - v(n)$ is quantized to $\hat{y}(n)$ and sent.
+    \item Reconstruction loop (inside the encoder): $\tilde{x}(n) = \hat{y}(n) + v(n)$, stored in a buffer of past quantized samples; the predictor reads only from this buffer.
+    \item Decoder: computes the same $v(n)$ from the same $\tilde{x}$ buffer, then $\tilde{x}(n) = \hat{y}(n) + v(n)$.
+    \item Encoder and decoder stay \textbf{synchronized}: same inputs to the predictor on both sides $\Rightarrow$ no drift. The quantization error on $x$ equals the one on $y$ (see Prediction Error above).
+\end{itemize}
+Same numerical example with the correct scheme:
+$$\begin{array}{c|cccccc}
+\text{step} & \text{original} & \text{ENC pred} & \text{ENC error} & \text{quantized} & \text{DEC pred} & \text{reconstr.}\\\hline
+1 & 10 & - & - & 9 & - & 9\\
+2 & 11 & 9 & 2 & 3 & 9 & 12\\
+3 & 12 & 12 & 0 & 0 & 12 & 12\\
+4 & 13 & 12 & 1 & 0 & 12 & 12\\
+5 & 14 & 12 & 2 & 3 & 12 & 15\\
+6 & 18 & 15 & 3 & 3 & 15 & 18
+\end{array}$$
+Encoder and decoder predictions always coincide: error stays bounded, no drift.
+\subsubsection{Impact of entropy coding on PQ}
+Without entropy coding ($R = \log_2 L$) PQ looks disappointing: that rate estimate is \textbf{too pessimistic}, because most quantization indexes are zero (e.g. $L = 19$ levels $\Rightarrow \approx 84\%$ of indexes are 0). A variable-length code (short codeword for index 0, longer for rare indexes) reveals the true gain:
+\begin{itemize}
+    \item $\Delta$PSNR $\approx +20$ dB at 1 bpp vs direct UQ
+    \item equivalently $-86\%$ rate at 30 dB target quality
+\end{itemize}
+PQ works only if: (1) prediction computed on \textbf{quantized} data, (2) signal sufficiently correlated ($\rho > 1/2$ for trivial first-order prediction), (3) followed by \textbf{entropy coding}.
+\subsubsection{Direct vs Predictive Quantization}
+With predictive I still have to use a lot of bits to represent information. 
+Idea: why should we use fixed-length coding? 
+Using PQ + Entropy coding we outperform direct quantization, since quantization indexes are Gaussian distributed. 
+At 1bpp we have $\Delta $PSNR $ = 20$dB.

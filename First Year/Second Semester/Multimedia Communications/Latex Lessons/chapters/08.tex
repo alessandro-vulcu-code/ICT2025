@@ -1,0 +1,763 @@
+\chapter{Video Coding Principles}
+
+Marco Cagnazzo - Multimedia Communications
+
+\bigskip\hrule\bigskip
+
+\section{Video Compression Principles}
+
+Video compression exploits two main kinds of redundancy:
+
+\begin{itemize}
+\item \textbf{Spatial redundancy:} images are made of homogeneous regions.
+\item \textbf{Time redundancy:} successive images in a video are similar to one another.
+\end{itemize}
+
+A video compression algorithm must exploit both kinds of redundancy. Spatial redundancy is effectively handled by linear transforms, while \textbf{prediction} is the most effective tool for removing temporal redundancy.
+
+Temporal prediction requires:
+
+\begin{itemize}
+\item computing a predictor;
+\item sending the predictor parameters to the decoder;
+\item compressing and transmitting the prediction error.
+\end{itemize}
+
+If the prediction error is \textbf{sparser} than the original signal, compression becomes more effective.
+
+\begin{calloutbox}{red!70!black}{Temporal Prediction Principle}
+\textbf{Statement:} temporal redundancy is removed by predicting the current frame or block from already available reference frames and encoding the prediction error plus the parameters needed to reproduce the prediction.
+
+\textbf{Interpretation:} video coding is effective when the residual is easier to transform, quantize, and entropy-code than the original block.
+\end{calloutbox}
+
+\subsection{General Scheme of a Video Coder}
+
+The basic video coder combines temporal compression, spatial compression, buffering, and feedback information.
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522141129.png}\end{center}
+\section{Prediction in Video Coding: DPCM}
+
+Successive images are usually very similar. A simple predictive strategy is \textbf{DPCM}, where the current sample or pixel is predicted from the previous frame:
+
+\[
+\hat{f}_{n,m,k} = \hat{f}_{n,m,k-1}
+\]
+
+This predictor requires no prediction parameter to send. However, if the images are different because of object motion, camera motion, illumination change, or scene changes, this simple prediction becomes ineffective.
+
+\begin{calloutbox}{red!70!black}{DPCM Prediction in Video}
+\textbf{Statement:} the simplest temporal predictor reuses the previously reconstructed frame:
+
+\[
+\hat{f}_{n,m,k} = \hat{f}_{n,m,k-1}
+\]
+
+\textbf{Interpretation:} no motion parameter must be transmitted, but the method assumes that objects do not move between frames. Motion-compensated prediction generalizes this idea by allowing displaced predictors.
+\end{calloutbox}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522141438.png}\end{center}
+
+\section{Block-Matching Motion Estimation}
+
+For each current block $B_k^{(\mathbf{p})}$, the encoder searches in a reference image for the most similar block $B_h^{(\mathbf{p}+\mathbf{v})}$. When a match is found, the encoder assumes that the same object has been displaced by a vector $\mathbf{v}$.
+
+The most similar block is the one minimizing a distance, possibly with a regularization term:
+
+\[
+J(\mathbf{v}) =
+d\left(B_k^{(\mathbf{p})}, B_h^{(\mathbf{p}+\mathbf{v})}\right)
++ \lambda_{\text{ME}} r(\mathbf{v})
+\]
+
+This expression is also called a \textbf{cost function}. The estimated vector for block $B_k^{(\mathbf{p})}$ is:
+
+\[
+\mathbf{v}^*(\mathbf{p}) = \arg \min_{\mathbf{v}} J(\mathbf{v})
+\]
+
+\begin{calloutbox}{red!70!black}{Block-Matching Motion Estimation}
+\textbf{Statement:} for each current block, search the reference image for the displacement vector that minimizes the motion-estimation cost:
+
+\[
+J(\mathbf{v}) =
+d\left(B_k^{(\mathbf{p})}, B_h^{(\mathbf{p}+\mathbf{v})}\right)
++ \lambda_{\text{ME}} r(\mathbf{v})
+\]
+
+\[
+\mathbf{v}^*(\mathbf{p}) = \arg \min_{\mathbf{v}} J(\mathbf{v})
+\]
+
+\textbf{Interpretation:} the distance term measures prediction quality, while the regularization term accounts for the coding cost or plausibility of the vector.
+\end{calloutbox}
+
+\section{Performance Criteria of Motion Estimation}
+
+Motion estimation is evaluated through three criteria:
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Criterion} & \textbf{Meaning} \\ \hline
+\textbf{Quality of prediction} & MSE between the current block and the predictor. \\ \hline
+\textbf{Coding cost} & Number of bits needed to encode $\mathbf{v}^*$; this requires defining the motion-vector encoding technique. \\ \hline
+\textbf{Computational cost} & Time required by motion estimation. \\ \hline
+\end{tabular}
+\end{center}
+
+\section{Motion Estimation: Example}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522141524.png}\end{center}
+
+\section{Motion Vector Components}
+
+The two components of the motion vector field, usually denoted $v_x$ and $v_y$, contain spatial structure correlated with scene geometry.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522141553.png}\end{center}
+
+The false-color images reveal that $v_x$ and $v_y$ possess a structure highly correlated with the scene geometry.
+
+\section{Statistical Analysis and Entropy}
+
+Histograms of motion-vector components show a non-sparse signal. The per-component entropy is:
+
+\[
+H = -\sum_i p_i \log_2 p_i
+\]
+
+This entropy sets the theoretical limit for lossless encoding of each vector component separately. Direct encoding of raw motion vectors is inefficient because the probability density function has wide support.
+
+\begin{calloutbox}{red!70!black}{Entropy of Motion Vector Components}
+\textbf{Statement:} the entropy
+
+\[
+H = -\sum_i p_i \log_2 p_i
+\]
+
+gives the theoretical limit for lossless encoding of each motion-vector component.
+
+\textbf{Interpretation:} if raw motion vectors have broad, non-sparse histograms, entropy coding them directly wastes bits compared with coding a more concentrated residual.
+\end{calloutbox}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522141734.png}\end{center}
+
+\section{Coding Performance: Raw MV}
+
+For the "Flower" sequence, direct coding of raw motion vectors gives:
+
+\begin{center}
+\begin{tabular}{|l|r|r|r|}
+\hline
+\textbf{Algorithm} & \textbf{Total Bits} & \textbf{bits per vector} & \textbf{bits per pixel} \\ \hline
+Exp-Golomb & 3048 & 7.697 & 0.0301 \\ \hline
+Huffman & 1582 & 3.995 & 0.0156 \\ \hline
+Arithmetic & 1570 & 3.965 & 0.0155 \\ \hline
+\end{tabular}
+\end{center}
+
+Arithmetic coding and Huffman coding have close performance because $H$ is substantially larger than $1$ bit. Exp-Golomb coding is ineffective because the distributions are not centered on zero.
+
+\section{Predictive Coding of Motion Vectors}
+
+To reduce the bit-rate, video coders exploit the correlation between adjacent vectors. The encoder defines a \textbf{Motion Vector Predictor (MVP)} and encodes only the \textbf{Motion Vector Difference (MVD)}:
+
+\[
+MVD = MV_{\text{actual}} - MVP
+\]
+
+\begin{calloutbox}{red!70!black}{Prediction Principle for Motion Vectors}
+\textbf{Statement:} encode the motion-vector difference rather than the raw motion vector:
+
+\[
+MVD = MV_{\text{actual}} - MVP
+\]
+
+\textbf{Interpretation:} neighboring vectors are often similar, so the residual vector has a sharper distribution and lower coding cost.
+\end{calloutbox}
+
+The \textbf{median predictor} is used in several video coding standards:
+
+\[
+MVP = \operatorname{median}(\mathbf{v}_A, \mathbf{v}_B, \mathbf{v}_C)
+\]
+
+where:
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Neighbor} & \textbf{Position} \\ \hline
+$A$ & Left \\ \hline
+$B$ & Top \\ \hline
+$C$ & Top-right \\ \hline
+\end{tabular}
+\end{center}
+
+The median predictor is robust even in the presence of motion boundaries.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522141759.png}\end{center}
+
+\section{Statistics of the Prediction Error}
+
+\subsection{Horizontal Component: Raw MV}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522141820.png}\end{center}
+
+\subsection{Horizontal Component: Prediction Error}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522141831.png}\end{center}
+
+\subsection{Vertical Component: Raw MV}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522141844.png}\end{center}
+
+\subsection{Vertical Component: Prediction Error}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522141852.png}\end{center}
+
+\section{Coding Performance: Residual Vectors}
+
+Applying spatial prediction with the median predictor before the entropy coder reduces the motion-vector-field coding cost:
+
+\begin{center}
+\begin{tabular}{|l|r|r|r|r|r|}
+\hline
+\textbf{Algorithm} & \textbf{No Prediction Bits} & \textbf{No Prediction bpv} & \textbf{With Prediction Bits} & \textbf{With Prediction bpv} & \textbf{Delta} \\ \hline
+Exp-Golomb & 3048 & 7.70 & 1526 & 3.85 & -49.9\% \\ \hline
+Huffman & 1582 & 3.99 & 1211 & 3.05 & -23.5\% \\ \hline
+Arithmetic & 1570 & 3.96 & \textbf{1199} & \textbf{3.03} & -23.6\% \\ \hline
+\end{tabular}
+\end{center}
+
+The key takeaway is that prediction substantially reduces the MVF coding cost. The best performance is obtained by combining prediction and arithmetic coding.
+
+\section{Motion Compensation}
+
+A prediction $\hat{I}_k$ of image $I_k$ can be built through \textbf{motion compensation}. The block centered in $\mathbf{p}$ of $\hat{I}_k$ is a copy of a specific block in the reference image $I_h$. The copied block is the one pointed to by $\mathbf{v}^*(\mathbf{p})$:
+
+\[
+\hat{I}_k(\mathbf{p}) = I_h\left(\mathbf{p} + \mathbf{v}^*(\mathbf{p})\right)
+\]
+
+This prediction is called the \textbf{motion-compensated image}.
+
+\begin{calloutbox}{red!70!black}{Motion Compensation}
+\textbf{Statement:} once motion estimation has selected $\mathbf{v}^*(\mathbf{p})$, the predicted block is copied from the reference image:
+
+\[
+\hat{I}_k(\mathbf{p}) = I_h\left(\mathbf{p} + \mathbf{v}^*(\mathbf{p})\right)
+\]
+
+\textbf{Interpretation:} the encoder does not transmit the predicted pixels directly. It transmits motion information and residual data that allow the decoder to reconstruct the block.
+\end{calloutbox}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522141915.png}\end{center}
+
+\section{Motion-Compensated Video Coding}
+
+Video codecs work \textbf{block by block}. Very often, the motion-compensated block is very similar to the actual block. In this case, it is more effective to encode the prediction error than the current block, because a sparser signal is better compressed with JPEG-like methods.
+
+Sometimes the prediction is not effective, for example because of new objects or disocclusions. In this case, the encoder encodes the actual block rather than the prediction error.
+
+Therefore, the encoder must signal whether it encodes:
+
+\begin{itemize}
+\item the current block using \textbf{Intra coding};
+\item the temporal prediction error using \textbf{Inter coding}.
+\end{itemize}
+
+\section{Summary of ME/MC: Encoder}
+
+For each block $B_k^{(\mathbf{p})}$ of image $k$, the encoder performs a motion-estimation test with a reference $h$, for example $h = k - 1$:
+
+\[
+J(\mathbf{v}) =
+d\left(B_k^{(\mathbf{p})}, B_h^{(\mathbf{p}+\mathbf{v})}\right)
++ \lambda_{\text{ME}} r(\mathbf{v})
+\]
+
+The estimated vector corresponds to the best match:
+
+\[
+\mathbf{v}^* = \arg \min_{\mathbf{v}} J(\mathbf{v})
+\]
+
+The encoder transmits:
+
+\begin{itemize}
+\item a signalization bit:
+\begin{itemize}
+\item Intra: no temporal prediction;
+\item Inter: temporal prediction;
+\end{itemize}
+\item if Intra, $B_k^{(\mathbf{p})}$ encoded with a JPEG-like method;
+\item if Inter, $\mathbf{v}^*$ and the prediction error encoded with a JPEG-like method:
+\end{itemize}
+
+\[
+E(\mathbf{p}) =
+B_k^{(\mathbf{p})} - B_h^{(\mathbf{p}+\mathbf{v}^*)}
+\]
+
+The problem of deciding whether a block must be encoded in Intra mode or Inter mode is the \textbf{mode selection} problem.
+
+\section{Summary of ME/MC: Decoder}
+
+For each block $B_k^{(\mathbf{p})}$ of image $k$, the decoder reads the signalization bit:
+
+\begin{itemize}
+\item If \textbf{Intra}, it decodes the following bits with a JPEG-like decoder and copies the result into block $B_k^{(\mathbf{p})}$ of the decoded image.
+\item If \textbf{Inter}:
+\begin{itemize}
+\item it decodes the motion vector $\mathbf{v}^*$;
+\item it decodes the prediction error block $E(\mathbf{p})$;
+\item it builds the block as:
+\end{itemize}
+\end{itemize}
+
+\[
+B_k^{(\mathbf{p})} =
+E(\mathbf{p}) + B_h^{(\mathbf{p}+\mathbf{v}^*)}
+\]
+
+\section{Design Parameters of Motion Estimation}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Design parameter} & \textbf{Options and trade-off} \\ \hline
+\textbf{Block size and shape} & Small blocks give higher PSNR, higher rate, and higher computation time. Variable block size is usually the most effective, although its design is more complicated. \\ \hline
+\textbf{Cost function $d$} & SSD optimizes PSNR but can produce larger rate because of outliers. SAD gives slightly worse PSNR and slightly better rate because it acts as implicit regularization. SAD plus explicit regularization is often the best option. \\ \hline
+\textbf{Search strategy} & Full search gives the best vector for a fixed search area but has very large complexity. Fast methods such as hex search and TZ search are close to optimal with much less complexity. \\ \hline
+\textbf{Motion model} & Translational models use two parameters per block: horizontal and vertical displacement. Affine models use six parameters per block; they are highly complex but can improve RD performance in some cases. \\ \hline
+\end{tabular}
+\end{center}
+
+\section{Motion Estimation: Summary}
+
+\begin{itemize}
+\item \textbf{Goal:} sparsify the signal.
+\item \textbf{How:} provide a prediction of the current block.
+\item Motion estimation is very effective and is used in virtually all video encoders.
+\item \textbf{Performance indicators:} quality, coding cost, and complexity.
+\item \textbf{Design choices:}
+\begin{itemize}
+\item cost function, such as SAD, SSD, or regularized costs;
+\item shape and size of blocks;
+\item search radius and search strategy;
+\item motion model, such as translational or affine.
+\end{itemize}
+\end{itemize}
+
+\section{Frame Types and the Group of Pictures}
+
+In all video compression methods, frames are divided into:
+
+\begin{itemize}
+\item \textbf{I frames}, or Intra-coded frames.
+\item \textbf{P frames}, or Predictive frames.
+\item \textbf{B frames}, or Bi-directional or bi-predictive frames.
+\end{itemize}
+
+In older standards, I and P frames are called \textbf{Anchor Frames (AF)}. The first description of frame organization is based on anchor frames.
+
+\section{Group of Pictures}
+
+Frames are organized into a periodic structure called a \textbf{Group of Pictures (GOP)}. The GOP defines how each frame can be predicted from other frames, and it is central in all video standards.
+
+The first GOP architectures, used in MPEG-1 and MPEG-2, have these properties:
+
+\begin{itemize}
+\item The first frame of the GOP is always an Intra frame.
+\item Between two consecutive anchor frames there is a fixed number of B frames, possibly zero.
+\item The GOP structure is completely defined by:
+\begin{itemize}
+\item the interval between I frames, called the GOP period;
+\item the number of B frames between successive anchor frames.
+\end{itemize}
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Group of Pictures}
+\textbf{Statement:} a GOP is the periodic frame organization that determines which frames can be used as references for temporal prediction.
+
+\textbf{Interpretation:} the GOP structure controls compression efficiency, delay, random access, error propagation, and decoding dependencies.
+\end{calloutbox}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522141956.png}\end{center}
+
+\section{I Frames}
+
+\textbf{I frames} are encoded independently from the other frames using JPEG-like coding. They have low complexity but low coding rate compared with predictive frames.
+
+I frames are used for:
+
+\begin{itemize}
+\item \textbf{Random access:} they can be decoded independently from the other frames.
+\item \textbf{Fast forward:} decoding only I frames allows accelerated video playback.
+\item \textbf{Error robustness:} they stop error propagation.
+\end{itemize}
+
+All blocks of an Intra frame are Intra coded.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522142011.png}\end{center}
+
+\section{P Frames}
+
+Each \textbf{P frame} can be predicted from the previous anchor frame. The prediction decision is taken at block level: each block of a P frame can be either Inter coded or Intra coded.
+
+P frames have high complexity because of motion estimation and motion compensation, but they also provide a much higher compression ratio than I frames for the same quality.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522142020.png}\end{center}
+
+\section{B Frames}
+
+\textbf{B frames} can be predicted from both previous and next anchor frames. For each block, the encoder can decide whether to use:
+
+\begin{itemize}
+\item Intra coding;
+\item forward prediction, from the past;
+\item backward prediction, from the future;
+\item bi-directional prediction, using the average of past and future predictors.
+\end{itemize}
+
+B frames have very high complexity because they require double motion estimation, but they also have a very high compression ratio for the same quality.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522142028.png}\end{center}
+
+\section{Frame Coding Order}
+
+Because B frames may depend on future anchor frames, coding order can differ from display order:
+
+\[
+I \to AF \to \text{Frames B} \to AF \to \text{Frames B} \to \cdots
+\]
+
+This raises a delay issue because a future reference frame may need to be decoded before intermediate B frames can be decoded.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522142041.png}\end{center}
+
+\section{Rate and PSNR of Different Frame Types}
+
+After appropriate adjustment, I frames are approximately $3$ to $5$ times larger than P frames and $10$ to $20$ times larger than B frames.
+
+PSNR is more variable and depends on content. However, the quality of I frames is typically forced to be high because they are used for predicting the whole GOP.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522142054.png}\end{center}
+
+\section{The Hybrid Video Encoder}
+
+All practical video codecs work on the basis of blocks of pixels. These blocks are called \textbf{macroblocks (MB)} in older standards up to H.264 and \textbf{coding units (CU)} from H.265 onward.
+
+Each macroblock or coding unit can be coded with one of several \textbf{coding modes}. The available modes depend on the frame type:
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Coding mode} & \textbf{Meaning} & \textbf{Availability} \\ \hline
+\textbf{Intra} & No temporal prediction; transform-based coding. & All frames. \\ \hline
+\textbf{Inter} & ME/MC-based temporal prediction and transform coding. & Only non-Intra frames. \\ \hline
+\textbf{Direct} & Motion vector inferred from neighbors; no residual coding. & Only non-Intra frames. \\ \hline
+\textbf{Lossless} & Lossless coding of the block. & All frames. \\ \hline
+\end{tabular}
+\end{center}
+
+Each mode has different rate and distortion. Choosing the best mode is the \textbf{mode selection problem}.
+
+Each macroblock or coding unit can also be split into smaller blocks. Choosing the best split is the \textbf{block partition problem}.
+
+\section{Coding Mode and Partition Selection}
+
+A single $16 \times 16$ block in a B frame can be encoded in many different modes:
+
+\begin{itemize}
+\item \textbf{Direct} mode has very small bit-rate but large distortion.
+\item \textbf{Inter} mode can use backward, forward, and bidirectional prediction.
+\item The block can be split into four $8 \times 8$ blocks.
+\item \textbf{Intra} mode can use spatial prediction or no spatial prediction.
+\item The block can be encoded \textbf{losslessly}.
+\end{itemize}
+
+Each choice corresponds to a different $(R,D)$ operating point.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522142211.png}\end{center}
+
+\section{Coding Mode Selection}
+
+First consider fixed block size. Let $K$ be the total number of blocks in a video sequence. The goal of coding mode selection is: for each block $k$, find the coding mode $i_k$ such that distortion $D$ is minimized for a given total rate $R$.
+
+The sequence distortion and rate are:
+
+\[
+D = \sum_{k=1}^{K} D_k(i_k, Q)
+\qquad
+R = \sum_{k=1}^{K} R_k(i_k, Q)
+\]
+
+The quantization step $Q$ is given. The set of modes is:
+
+\[
+\mathbf{i} = \{i_k\}_{k=1}^{K}
+\]
+
+It must be chosen to minimize the Lagrangian cost:
+
+\[
+J(\mathbf{i}, Q, \lambda) =
+\sum_{k=1}^{K} D_k(i_k, Q)
++ \lambda \sum_{k=1}^{K} R_k(i_k, Q)
+\]
+
+\begin{calloutbox}{red!70!black}{Coding Mode Selection Objective}
+\textbf{Statement:} mode selection minimizes a Lagrangian rate-distortion objective:
+
+\[
+J(\mathbf{i}, Q, \lambda) =
+\sum_{k=1}^{K} D_k(i_k, Q)
++ \lambda \sum_{k=1}^{K} R_k(i_k, Q)
+\]
+
+\textbf{Interpretation:} $\lambda$ controls the relative importance of saving bits versus reducing distortion.
+\end{calloutbox}
+
+\section{Coding Mode Selection: Block-Wise}
+
+Joint minimization over $\mathbf{i}$ is much too complex. A suboptimal block-wise minimization is preferable.
+
+For block $k$, the selected mode minimizes:
+
+\[
+J_k(i_k, Q, \lambda) =
+D_k(i_k, Q) + \lambda R_k(i_k, Q)
+\]
+
+Thus, the encoder minimizes the coding mode of each block separately. The selected mode depends on both $Q$ and $\lambda$.
+
+\section{Coding Mode Selection: Lagrangian Multiplier}
+
+The quantization step $Q$ is considered an input. For each $Q$, there is an optimal value of $\lambda$, determined empirically for each video codec.
+
+Examples:
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Codec} & \textbf{Empirical relation} \\ \hline
+MPEG-2 & $\lambda = aQ^2 + b$ \\ \hline
+H.264 & $\lambda = c \cdot 2^{dQ+e}$ \\ \hline
+\end{tabular}
+\end{center}
+
+The Lagrangian multiplier used in motion estimation, $\lambda_{\text{ME}}$, is empirically set as the square root of the mode-selection Lagrangian multiplier:
+
+\[
+\lambda_{\text{ME}} = \sqrt{\lambda}
+\]
+
+With a fixed $\lambda$, minimizing $J_k$ amounts to finding a line in the rate-distortion plane.
+
+\section{Block Partition}
+
+Modern video codecs allow variable-size blocks $B$, called \textbf{coding units (CU)}, with sizes from $128 \times 128$ to $4 \times 4$, depending on the standard.
+
+The problem of choosing the best block size is the \textbf{block partition problem}. It can be cast as a mode selection problem: splitting one block into four subblocks is considered a new coding mode with a new RD cost.
+
+The split cost is:
+
+\[
+J_{\text{split}} = \sum_i J_{\text{subblock}_i}
+\]
+
+The block partition is decided recursively:
+
+\begin{enumerate}
+\item Start with the largest block size.
+\item Compute the cost $J_B$ for the current block.
+\item Compute the split cost $J_{\text{split}}$ from the subblocks.
+\item If $J_{\text{split}} < J_B$, split the block.
+\item For each subblock, run the algorithm again to decide whether to split further.
+\end{enumerate}
+
+This approach avoids exploring all possible combinations of split decisions. If a block has a better coding cost than its four subblocks, deeper partitions are not explored. The method is suboptimal but reasonable.
+
+\section{Coding Mode Selection: Slope Interpretation}
+
+The equation
+
+\[
+D = -\lambda R + J
+\]
+
+defines a family of lines in the RD plane with negative slope $-\lambda$.
+
+\begin{itemize}
+\item \textbf{High $\lambda$}, corresponding to steep lines: the encoder is constrained by a low bit budget and selects points closer to the vertical axis, for example Direct mode.
+\item \textbf{Low $\lambda$}, corresponding to flatter lines: the encoder prioritizes visual fidelity and selects points closer to the horizontal axis, for example Inter8 bidirectional mode.
+\end{itemize}
+
+The optimization goal is to select the point that is first touched by the line as it moves from the origin toward the convex hull of all available coding modes.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522142235.png}\end{center}
+
+\section{Hybrid Video Encoder Architecture}
+
+With temporal prediction, spatial prediction, transform coding, quantization, mode decision, and entropy coding, we can build a \textbf{hybrid video encoder and decoder}.
+
+The encoder works as follows:
+
+\begin{itemize}
+\item Each image is split into blocks.
+\item For each block, the encoder can compute a prediction:
+\begin{itemize}
+\item \textbf{Null predictor:} the block is directly encoded with DCT and quantization.
+\item \textbf{Temporal prediction:} ME/MC, using simple prediction or bi-prediction.
+\item \textbf{Spatial prediction}, or \textbf{Intra prediction:} a block is predicted from already encoded blocks in the same image.
+\end{itemize}
+\item The prediction error is JPEG-like compressed with DCT and quantization.
+\item The block is decoded and stored because it may serve for future temporal or spatial predictions.
+\item Mode decision, block partition, motion vectors, and quantized coefficients are encoded with a VLC.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Hybrid Video Encoder}
+\textbf{Statement:} the hybrid encoder predicts each block, transforms and quantizes the residual, entropy-codes side information and coefficients, reconstructs the block internally, and stores it for future prediction.
+
+\textbf{Interpretation:} the encoder includes a decoder loop so that future predictions use the same reconstructed data that the decoder will have available.
+\end{calloutbox}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522142252.png}\end{center}
+
+\section{Rate Control}
+
+The coding rate is determined by the quantization step. This defines the rate $R_C$ at which the compressed stream is \textbf{produced}. However, the $R_C$ resulting from a given quantization step depends on the content.
+
+In many applications, the goal is to achieve a target rate $R_T$. This target can be related to:
+
+\begin{itemize}
+\item physical constraints, such as the speed of a reading device;
+\item network conditions, such as the channel capacity $C$.
+\end{itemize}
+
+To make $R_C$ match the reading rate $R_T$, the codec uses a \textbf{channel buffer} and a closed-loop controller.
+
+The encoded video is written into the buffer at speed $R_C$ and read from the buffer at speed $R_T$:
+
+\begin{itemize}
+\item If $R_C > R_T$, buffer occupancy grows. If it exceeds a high threshold $\gamma_{\text{high}}$, the controller increases the quantization step, reducing $R_C$.
+\item If $R_C < R_T$, the buffer empties. If it falls below a low threshold $\gamma_{\text{low}}$, the controller reduces the quantization step, increasing $R_C$.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Rate Control by Buffer Feedback}
+\textbf{Statement:} the channel buffer and controller adapt the quantization step so that the produced coding rate $R_C$ tracks the target reading or transmission rate $R_T$.
+
+\textbf{Interpretation:} increasing the quantization step increases compression and lowers rate; decreasing it reduces compression and raises rate.
+\end{calloutbox}
+
+\section{The Hybrid Video Decoder}
+
+The decoder is a subset of the encoder. Standards define only the decoder operation to guarantee interoperability and competition among encoders.
+
+First, the decoder decodes the \textbf{side information}:
+
+\begin{itemize}
+\item partition information, if variable block size is admitted;
+\item coding mode, if multiple modes are possible;
+\item motion vector or vectors, if the coding mode is based on temporal prediction.
+\end{itemize}
+
+This information is in the bitstream. Therefore, the decoder does not perform:
+
+\begin{itemize}
+\item mode decision;
+\item block partition decision;
+\item motion estimation.
+\end{itemize}
+
+These operations are computationally heavy, so the decoder is typically much faster than the encoder. Since only the decoder is standardized, motion estimation, mode selection, and block partition are not standardized. This enables competition through efficient methods such as hex-search motion estimation and fast mode decision algorithms.
+
+\begin{calloutbox}{red!70!black}{Decoder Standardization}
+\textbf{Statement:} video standards define the bitstream syntax and decoder behavior, not the full encoder optimization process.
+
+\textbf{Interpretation:} any compliant decoder must reconstruct the same output from the same valid bitstream, while encoders may differ in search strategy, mode decision, partitioning, and rate control.
+\end{calloutbox}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522142313.png}\end{center}
+
+\section{Hybrid Video Coding: Wrap-Up}
+
+\begin{itemize}
+\item Each frame in the sequence is labeled I, P, or B according to the GOP structure.
+\item The encoder works block by block.
+\item For each block, the encoder chooses one \textbf{coding mode} from a set that depends on the frame type.
+\item For example, no motion-compensated mode can be used in I frames.
+\item The \textbf{coding mode decision} strategy is not standardized.
+\item The \textbf{mode syntax} is standardized.
+\item Therefore, an encoder can choose a suboptimal mode and still produce a decodable bitstream.
+\item A suboptimal mode decision can make sense when the goal is to reduce computation time.
+\item The optimal RD decision, called \textbf{RDO}, minimizes:
+\end{itemize}
+
+\[
+J = D + \lambda R
+\]
+
+\section{Hybrid Video Coding: Wrap-Up Continued}
+
+In \textbf{INTRA coding mode}, only information from the current frame can be used to encode the block:
+
+\begin{itemize}
+\item spatial coding tools can be used;
+\item examples include linear transform such as DCT and possibly spatial prediction.
+\end{itemize}
+
+In \textbf{INTER coding mode}, information from decoded frames other than the current one in the decoded frame buffer (\textbf{DFB}) can be used:
+
+\begin{itemize}
+\item temporal prediction for P frames;
+\item bi-prediction for B frames, using information from two frames in the DFB;
+\item motion-estimation parameters have a large impact on the rate-distortion-complexity trade-off.
+\end{itemize}
+
+Motion vectors must be encoded losslessly:
+
+\begin{itemize}
+\item Huffman coding;
+\item Arithmetic coding;
+\item Exp-Golomb coding.
+\end{itemize}
+
+Since motion vector fields usually have spatial coherence, predictive coding is often used.
+
+The channel buffer adapts coding rate to the rate of the output channel or storage medium:
+
+\begin{itemize}
+\item when the channel buffer size is above a high threshold, the quantization parameter is increased, giving more compression;
+\item when the channel buffer size is below a low threshold, the quantization parameter is reduced, giving less compression.
+\end{itemize}
+
+\section{Hybrid Video Coding: Concept Map}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522142331.png}\end{center}
+
+\section{Final Summary Table}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Tool / Standard Concept} & \textbf{Key idea} & \textbf{Main parameters} & \textbf{Typical use} \\ \hline
+Temporal prediction & Predict current data from reference frames and encode the residual. & Predictor, reference frame, side information. & Remove temporal redundancy. \\ \hline
+DPCM prediction & Predict the current frame from the previous reconstructed frame. & $\hat{f}_{n,m,k} = \hat{f}_{n,m,k-1}$. & Simple temporal prediction with no motion parameter. \\ \hline
+Block-matching ME & Search for the displaced reference block minimizing a cost. & $J(\mathbf{v}) = d(\cdot) + \lambda_{\text{ME}}r(\mathbf{v})$. & Estimate motion vectors for temporal prediction. \\ \hline
+Motion compensation & Copy the reference block indicated by the selected motion vector. & $\hat{I}_k(\mathbf{p}) = I_h(\mathbf{p}+\mathbf{v}^*(\mathbf{p}))$. & Build motion-compensated prediction. \\ \hline
+Motion-vector prediction & Encode $MVD = MV_{\text{actual}} - MVP$. & Median predictor using left, top, and top-right vectors. & Reduce MV coding cost. \\ \hline
+Intra mode & Encode without temporal prediction. & Transform, quantization, possible spatial prediction. & I frames and blocks poorly predicted by motion compensation. \\ \hline
+Inter mode & Encode temporal prediction error plus motion information. & Reference frame, vector, residual, block mode. & P and B frames. \\ \hline
+GOP & Periodic organization of I, P, and B frames. & GOP period, number of B frames between anchor frames. & Control dependencies, access, delay, and compression. \\ \hline
+I frames & Independently decoded frames. & Intra-coded blocks. & Random access, fast forward, error robustness. \\ \hline
+P frames & Predicted from previous anchor frames. & Forward ME/MC, block-level Intra or Inter choice. & Higher compression than I frames. \\ \hline
+B frames & Predicted from previous and next anchor frames. & Forward, backward, or bidirectional prediction. & Highest compression with higher complexity and delay. \\ \hline
+Mode selection & Choose the coding mode minimizing RD cost. & $J = D + \lambda R$. & Decide Intra, Inter, Direct, Lossless, and partitions. \\ \hline
+Block partition & Recursively decide whether a block should split. & $J_{\text{split}} = \sum_i J_{\text{subblock}_i}$. & Adapt block size to local image content. \\ \hline
+Rate control & Adjust quantization according to channel buffer occupancy. & $R_C$, $R_T$, $\gamma_{\text{high}}$, $\gamma_{\text{low}}$, $Q$. & Match produced rate to channel or storage rate. \\ \hline
+Hybrid encoder & Prediction, residual transform/quantization, entropy coding, and reconstruction loop. & Mode decision, ME, transform, quantization, VLC, frame buffer. & Practical video compression architecture. \\ \hline
+Hybrid decoder & Decode side information and residual, reconstruct with prediction. & Lossless decoding, inverse quantization, inverse transform, MC, frame buffer. & Standardized decoding process. \\ \hline
+\end{tabular}
+\end{center}
+

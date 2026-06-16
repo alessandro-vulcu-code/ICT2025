@@ -1,0 +1,116 @@
+\subsubsection{Comparison between JPEG and JP2K (JPEG2000)}
+\begin{itemize}
+    \item For high bitrates: no lots of differences
+    \item For low bitrates: JPEG becomes very bad but still JPEG2000 has a better quality
+    \begin{itemize}
+        \item Ringing Artifacts
+        \item Even comparing 0.2bpp JPEG with 0.1bpp JP2K, this last one is better visually
+    \end{itemize}
+    \item JP2K allows the reachability of every code rate we want.
+\end{itemize}
+\subsubsection{Error Robustness in compressed data}
+Errors can be introduced in TXing information, or saving it into files.
+Compressed streams are vulnerable, can induce error propagation. We need some `marker' sequences of bits to recover errors.
+Tradeoff: robustness-rate.
+\begin{itemize}
+    \item JPEG with $P_e=10^{-4}$: corrupted bit = all the following part of the image corruption
+    \item JPEG2000 with $P_e=10^{-4}$: corrupted bit = loss of detail in $\geq 1$ subbands, visually no great loss.
+\end{itemize} 
+\subsection{Conceptual Maps}
+\begin{minipage}{0.6\textwidth}
+    \textbf{DWT}
+    \begin{itemize}
+        \item Signal model
+        \item Filter Banks (analysis/synthesis)
+        \item 2D-DWT: approximation, detail of the subbands
+        \item Energy Concentration (sparsity), intra/inter band correlation
+    \end{itemize}    
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+    \textbf{EZW/JP2K}
+    \begin{itemize}
+        \item Wavelet Transform
+        \item Bitplane Coding
+        \item Coding Strategy
+        \begin{itemize}
+            \item EZW
+            \item JP2K
+        \end{itemize}
+        \item Comparison with JPEG
+    \end{itemize}    
+\end{minipage}
+\section{Learned Image Coding (LIC) / Neural Image Coding (NIC)}
+LIC algos are E2E learned from data using generative VAEs\footnote{Variational Auto-Encoders}/GANs\footnote{Generative Adversarial Networks} models.
+\subsection{Coding Architecture}
+$$\text{original }x \qquad \longrightarrow \qquad \boxed{\stackrel{\text{Analysis}}{z = g_a(x)}} \qquad \longrightarrow \qquad \boxed{\stackrel{\text{Quantization}}{\hat{z} = Q(z)}} \qquad \longrightarrow \qquad \boxed{\stackrel{\text{Synthesis}}{\hat{x} = g_s(\hat{z})}} \qquad \longrightarrow \qquad \hat{x} \text{ decoded}$$
+Legacy framework (JPEG): $g_a$ is a Block Based DCT, while $g_s$ is a DWT.\\
+Learned Paradigms allow the use of the optimal $g_a, g_s$ by learning directly from data.
+\subsubsection{Optimization of the Loss Function}
+It all goes toward the optimization of the loss function:
+$$\mathcal{L} = D(x,\hat{x}) + \lambda R(\hat{z})$$
+\subsection{NN Recap}
+For image processing we use CNNs.
+\subsubsection{Gradient Descent and Backpropagation}
+$$\theta_{t+1} = \theta_t - \eta\nabla_\theta \mathcal{L}\left(\theta_t\right)$$
+\subsubsection{GDN: Generalized Divisive Normalization}
+$$w_i = \frac{v_i}{\sqrt{\beta_i + \sr{}{j}\gamma_{ij}v_j}}$$
+Given a feature $v_i$ the parameters $\beta_i, \gamma_{ij}$ are learned. This allows us to:
+\begin{itemize}
+    \item Represent Masking effect
+    \item Linking to the perceptron
+    \item Gaussianization of the data (decorrelation of the signal = use entropy coding)
+\end{itemize}
+\subsection{JPEG-AI standard}
+It has nothing to do with the original JPEG. Standardized as ISO/IEC 29170-2.
+\subsubsection{Core Idea}
+Going from pixels to 3D-Latent Tensor (sparse signal). JPEG AI uses $\begin{cases}
+    160 \text{ Luminance channels (human sensitivity)}\\
+    96\text{ Chrominance channels}
+\end{cases}$
+\subsubsection{Auto-Encoder Framework}
+\begin{itemize}
+    \item Encoder: Analysis Transform ($g_a$)
+    \item Bottleneck: Latents $y$ are quantized to $\hat{y}$
+    \item Decoder: Synthesis Transform ($g_s$)
+\end{itemize}
+\subsubsection{Rate-Distorsion Variable Auto-Encoder}
+Objective: minimizing $\mathcal{L}$ defined as
+$$\mathcal{L} = R + \lambda D \qquad \text{where }\begin{cases}
+    \text{Rate }R = D_{KL}\left[q\left(\hat{y}|x\right)\left|\right|p\left(\hat{y}\right)\right]\\
+    \text{Distorsion }D = E\left[\rho(x,\hat{x})\right] 
+\end{cases}$$
+Tradeoff: higher $\lambda$ = higher quality, lower $\lambda$ = high compression. Compressing always in latent space.\\
+Problem: Non differentiability for the quantization function, backprop gradient not working properly. We need:
+\begin{itemize}
+    \item \textbf{Hard} quantization at \textbf{test} time 
+    \item \textbf{Soft} quantization at \textbf{training} time $\to$ Additive Uniform Noise
+\end{itemize}
+Additive uniform noise has the statistical description of the quantization, and makes the backpropagation work.
+$$\hat{z} \approx z + u \qquad u \sim \mathcal{U}\left(-0.5, 0.5\right)$$
+\subsubsection{Scale Hyperprior: spatial adaptability}
+IDEA: set NN to learn statistics of the quantized data, additional side information $\hat{z}$ to predict $p_{\hat{y}}$ $\forall$ location.\\
+We change paradigm: since JPEG-AI is a Nonlinear Tranform Coding, we can outperform HEVC and VVC (intra coding) by 50\% in coding efficiency. We need a Hierarchical VAE model.
+\subsubsection{Hierarchical VAE}
+Multimodality: compression can be adapted do human consumption or machine consumption. JPEG-AI (at 0.5bpp) saves up to $27\%$ compared with VVC. HF are preserved but huge complexity.\\
+Complexity is measured in kilo Multiplication-Accumulation-Count over pixel (kMAC/px). There are 3 profiles:
+\begin{itemize}
+    \item Dec0 $\to 8$ kMAC/px (low-end CPUs)
+    \item Dec1 $\to 23$ kMAC/px (also for Mid-range smartphones)
+    \item Dec2 $\to 214$ kMAC/px (high-end GPUs)
+\end{itemize}
+\subsubsection{Conclusions}
+\begin{itemize}
+    \item E2E Optimization: $\mathcal{L} = R+\lambda D$
+    \item Data driven transforms (Non linear way)
+    \item Current Challenges:
+    \begin{itemize}
+        \item Energy Consumption
+        \item Cross Platform Determinism
+        \item Out of distribution vulnerability (Hallucinations and artifacts)
+    \end{itemize}
+    \item State of the art: tradeoff
+    \begin{itemize}
+        \item Pros $\to$ R-D efficiency
+        \item Cons $\to$ COMPLEXITY
+    \end{itemize}
+\end{itemize}

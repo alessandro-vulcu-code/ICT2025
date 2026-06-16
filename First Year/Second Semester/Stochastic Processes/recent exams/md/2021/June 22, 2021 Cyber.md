@@ -9,6 +9,146 @@ E1 Consider two independent Poisson processes $X_1(t)$ e $X_2(t)$, where $X_i(t)
 
 (b) Compute $P[X_1(1) + X_2(1) = 2|X_1(2) = 0]$ and $P[X_1(1) + X_2(1) = 2|X_1(2) = 1]$
 
+---
+Let $\lambda_1=\lambda_2=1$. Use:
+
+- [[wiki/concepts/poisson-process|Poisson Process]]: disjoint increments independent, $X_i(t)-X_i(s)\sim \mathrm{Pois}(t-s)$.
+- [[wiki/theorems/superposition-theorem|Superposition Theorem]] / [[wiki/theorems/poisson-sum|Poisson Sum]]: independent Poisson counts add.
+- [[wiki/theorems/binomial-conditional-distribution|Binomial Conditional Distribution]]: given total Poisson arrivals, sub-counts are binomial/multinomial by their mean weights.
+
+**(a1)**  
+Compute
+$$
+P[X_1(1)=1\mid X_1(2)+X_2(2)=4].
+$$
+
+Split total into independent cells:
+
+$$
+X_1(1),\quad X_1(2)-X_1(1),\quad X_2(1),\quad X_2(2)-X_2(1).
+$$
+
+Each cell is $\mathrm{Pois}(1)$. Total mean is $4$. Given total count $4$, count in first cell has
+
+$$
+X_1(1)\mid X_1(2)+X_2(2)=4\sim \mathrm{Bin}\left(4,\frac14\right).
+$$
+
+Thus
+
+$$
+P[X_1(1)=1\mid X_1(2)+X_2(2)=4]
+=
+\binom41\left(\frac14\right)\left(\frac34\right)^3
+=
+\frac{27}{64}.
+$$
+
+**(a2)**  
+Compute
+$$
+P[X_1(2)+X_2(2)=4\mid X_1(1)=1].
+$$
+
+Write
+
+$$
+X_1(2)+X_2(2)=X_1(1)+[X_1(2)-X_1(1)]+X_2(2).
+$$
+
+Given $X_1(1)=1$, need
+
+$$
+[X_1(2)-X_1(1)]+X_2(2)=3.
+$$
+
+Now
+
+$$
+X_1(2)-X_1(1)\sim \mathrm{Pois}(1),\qquad X_2(2)\sim \mathrm{Pois}(2),
+$$
+
+independent, so sum is $\mathrm{Pois}(3)$. Therefore
+
+$$
+P=\frac{e^{-3}3^3}{3!}
+=
+\frac{27}{6}e^{-3}
+=
+\frac92 e^{-3}.
+$$
+
+**(b1)**  
+Compute
+$$
+P[X_1(1)+X_2(1)=2\mid X_1(2)=0].
+$$
+
+Since $X_1$ is counting process, $X_1(2)=0$ forces $X_1(1)=0$. So event becomes
+
+$$
+X_2(1)=2.
+$$
+
+$X_2$ independent from $X_1$, so conditioning on $X_1(2)=0$ changes nothing for $X_2(1)$. Hence
+
+$$
+P=P[X_2(1)=2]
+=
+\frac{e^{-1}1^2}{2!}
+=
+\frac{e^{-1}}{2}.
+$$
+
+**(b2)**  
+Compute
+$$
+P[X_1(1)+X_2(1)=2\mid X_1(2)=1].
+$$
+
+Given $X_1(2)=1$, by binomial conditional distribution on subinterval $[0,1]\subset[0,2]$,
+
+$$
+X_1(1)\mid X_1(2)=1\sim \mathrm{Bin}\left(1,\frac12\right).
+$$
+
+So
+
+$$
+P[X_1(1)=0\mid X_1(2)=1]=\frac12,\qquad
+P[X_1(1)=1\mid X_1(2)=1]=\frac12.
+$$
+
+Need total $2$:
+
+$$
+\begin{aligned}
+P
+&=
+P[X_1(1)=0\mid X_1(2)=1]P[X_2(1)=2]\\
+&\quad+
+P[X_1(1)=1\mid X_1(2)=1]P[X_2(1)=1] \\
+&=
+\frac12\cdot \frac{e^{-1}}{2}
++
+\frac12\cdot e^{-1}\\
+&=
+\frac{3}{4}e^{-1}.
+\end{aligned}
+$$
+
+Final answers:
+
+$$
+\boxed{\frac{27}{64}},\qquad
+\boxed{\frac92 e^{-3}},\qquad
+\boxed{\frac12 e^{-1}},\qquad
+\boxed{\frac34 e^{-1}}.
+$$
+
+---
+
+
 E2 Consider a two-state Markov channel, where the steady-state probability that the channel is in the bad state is 0.02 and the average number of consecutive good slots is 100. The packet error probability is 1 for a bad slot and 0 for a good slot, respectively. The round-trip time is $m = 2$ slots, i.e., a packet that is erroneous in slot $t$ is retransmitted in slot $t + 2$ (if a retransmission protocol is used).
 
 (a) Compute the throughput that could be obtained if packets were directly transmitted over the channel without using any protocol

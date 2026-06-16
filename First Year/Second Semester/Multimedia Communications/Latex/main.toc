@@ -1,0 +1,275 @@
+\contentsline {section}{\numberline {1}Multimedia Representation \& Perception}{7}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Human Eye}{7}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}CSF - Contrast Sensitivity Function}{7}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Eye Sensitivity}{7}{subsubsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.2}Color Spaces}{7}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}RGB}{7}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}HSV}{7}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.3}YCbCr = YUV}{7}{subsubsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.3}Machine-centric Multimedia}{7}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Frequency Masking Functions}{7}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Image and Video Representation}{8}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Images}{8}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Color Sampling}{8}{subsubsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.6}Compression}{8}{subsection.1.6}%
+\contentsline {subsubsection}{\numberline {1.6.1}Lossless Techniques}{8}{subsubsection.1.6.1}%
+\contentsline {subsubsection}{\numberline {1.6.2}Lossy Techniques}{9}{subsubsection.1.6.2}%
+\contentsline {subsection}{\numberline {1.7}Quantization}{9}{subsection.1.7}%
+\contentsline {subsubsection}{\numberline {1.7.1}Quality Evaluation}{9}{subsubsection.1.7.1}%
+\contentsline {subsubsection}{\numberline {1.7.2}Peak SNR (PSNR)}{9}{subsubsection.1.7.2}%
+\contentsline {subsubsection}{\numberline {1.7.3}Weighted Peak SNR (WPSNR)}{9}{subsubsection.1.7.3}%
+\contentsline {subsubsection}{\numberline {1.7.4}Other criteria}{9}{subsubsection.1.7.4}%
+\contentsline {subsubsection}{\numberline {1.7.5}Criteria to evaluate a compression algorithm}{10}{subsubsection.1.7.5}%
+\contentsline {section}{\numberline {2}Scalar and Predictive Quantization}{11}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Scalar Quantizer}{11}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Rate}{11}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Distortion}{11}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}Uniform Quantization}{11}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Definitions}{11}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Unsigned Data}{12}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Signed Data (Midtread)}{12}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Dead-zone Quantization for Signed Data}{12}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Rate and Distorsion curve}{12}{subsubsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.3}Optimal Quantization}{13}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}High Resolution (HR) Uniform Quantization}{13}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Lloyd-Max algorithm}{13}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Real-life Lloyd-Max adaptation}{14}{subsubsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.4}Predictive Scalar Quantization}{14}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Sparsification}{14}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Prediction}{14}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Prediction Error}{14}{subsubsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.4}Coding Gains}{15}{subsubsection.2.4.4}%
+\contentsline {subsubsection}{\numberline {2.4.5}Linear Predictors}{15}{subsubsection.2.4.5}%
+\contentsline {subsubsection}{\numberline {2.4.6}Optimal Predictor (Wiener-Hopf)}{15}{subsubsection.2.4.6}%
+\contentsline {subsubsection}{\numberline {2.4.7}Worked example: AR(1) Gaussian signal}{15}{subsubsection.2.4.7}%
+\contentsline {subsubsection}{\numberline {2.4.8}Prediction Gain: filter order impact}{16}{subsubsection.2.4.8}%
+\contentsline {subsubsection}{\numberline {2.4.9}Local adaptation}{16}{subsubsection.2.4.9}%
+\contentsline {subsubsection}{\numberline {2.4.10}Wrong scheme: open-loop prediction (drift)}{16}{subsubsection.2.4.10}%
+\contentsline {subsubsection}{\numberline {2.4.11}Correct scheme: closed-loop prediction (DPCM)}{17}{subsubsection.2.4.11}%
+\contentsline {subsubsection}{\numberline {2.4.12}Impact of entropy coding on PQ}{18}{subsubsection.2.4.12}%
+\contentsline {subsubsection}{\numberline {2.4.13}Direct vs Predictive Quantization}{18}{subsubsection.2.4.13}%
+\contentsline {section}{\numberline {3}Lossless Coding}{18}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Definitions}{18}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Code Types}{18}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Fixed-Length Code}{18}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Variable-Length Code}{19}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.3}Variable-length codes theorems}{19}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}McMillan's Theorem}{19}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Kraft's Inequality}{19}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Proof for Kraft's $\Rightarrow $ (necessity)}{19}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Proof for Kraft's $\Leftarrow $ (sufficiency)}{19}{subsubsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.4}Recall: Information Theory}{20}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Information}{20}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Source Entropy}{20}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Max Entropy Distribution}{20}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Joint Entropy}{20}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}Conditional Entropy}{20}{subsubsection.3.4.5}%
+\contentsline {subsection}{\numberline {3.5}Optimal Code}{21}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Math Formulation}{21}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Shannon's source coding theorem}{21}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}Huffman Coding}{21}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}Block Coding}{21}{subsubsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.5}Limits of Huffman}{22}{subsubsection.3.5.5}%
+\contentsline {subsubsection}{\numberline {3.5.6}Arithmetic coding}{22}{subsubsection.3.5.6}%
+\contentsline {subsubsection}{\numberline {3.5.7}Adaptivity and Context-based coding}{22}{subsubsection.3.5.7}%
+\contentsline {subsubsection}{\numberline {3.5.8}Why Arithmetic is preferred over Huffman (wrap-up)}{23}{subsubsection.3.5.8}%
+\contentsline {subsubsection}{\numberline {3.5.9}Context-based coding}{23}{subsubsection.3.5.9}%
+\contentsline {subsection}{\numberline {3.6}Other Techniques}{23}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Unsigned Exp-Golomb}{23}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Signed Exp-Golomb}{23}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}Dictionary-based coding}{23}{subsubsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {3.6.4}LZW coding}{23}{subsubsection.3.6.4}%
+\contentsline {subsubsection}{\numberline {3.6.5}Examples of real-life Coding}{24}{subsubsection.3.6.5}%
+\contentsline {subsubsection}{\numberline {3.6.6}Neural Lossless Coding (NLC) Techniques}{24}{subsubsection.3.6.6}%
+\contentsline {subsubsection}{\numberline {3.6.7}Guidelines to reach $\mathcal {L} \approx \mathcal {H}$}{24}{subsubsection.3.6.7}%
+\contentsline {section}{\numberline {4}Transform Coding and JPEG}{24}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Introduction with Block Coding}{24}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Huang-Schulteiss (HS) formula}{25}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}HS formula derivation}{25}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}HS formula interpretation}{25}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Why the Geometric Mean is the key quantity}{25}{subsubsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.3}Transform Coding}{26}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Orthogonal Transforms}{26}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Orthogonal Transforms applied to Block Coding}{26}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Transform Coding example}{26}{subsubsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.4}Practical Algorithms for Resource Allocation}{26}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Greedy Algorithm}{26}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Modified HS algorithm}{27}{subsubsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.5}Towards Optimal Transform}{27}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Karhunen-Lo\`eve Transform (KLT)}{27}{subsubsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.6}Frequency Transforms}{27}{subsection.4.6}%
+\contentsline {subsubsection}{\numberline {4.6.1}1D-DFT for Compression}{27}{subsubsection.4.6.1}%
+\contentsline {subsubsection}{\numberline {4.6.2}2D-DFT for Compression}{28}{subsubsection.4.6.2}%
+\contentsline {subsubsection}{\numberline {4.6.3}DFT Separable Implementation}{28}{subsubsection.4.6.3}%
+\contentsline {subsubsection}{\numberline {4.6.4}DCT Transform Matrix}{28}{subsubsection.4.6.4}%
+\contentsline {subsubsection}{\numberline {4.6.5}1D-DCT Transform}{28}{subsubsection.4.6.5}%
+\contentsline {subsubsection}{\numberline {4.6.6}2D-DCT Transform: Block-Based DCT}{28}{subsubsection.4.6.6}%
+\contentsline {subsection}{\numberline {4.7}JPEG}{28}{subsection.4.7}%
+\contentsline {subsubsection}{\numberline {4.7.1}Encoding Strategy}{29}{subsubsection.4.7.1}%
+\contentsline {subsubsection}{\numberline {4.7.2}Quantization-step table}{29}{subsubsection.4.7.2}%
+\contentsline {subsubsection}{\numberline {4.7.3}Scaling Factor and Quality}{29}{subsubsection.4.7.3}%
+\contentsline {subsubsection}{\numberline {4.7.4}Zig-Zag Coding}{29}{subsubsection.4.7.4}%
+\contentsline {subsection}{\numberline {4.8}Entropy Coding of the Coefficients}{30}{subsection.4.8}%
+\contentsline {subsubsection}{\numberline {4.8.1}DC Coefficients}{30}{subsubsection.4.8.1}%
+\contentsline {subsubsection}{\numberline {4.8.2}AC Coefficients}{30}{subsubsection.4.8.2}%
+\contentsline {subsection}{\numberline {4.9}Frame Building}{30}{subsection.4.9}%
+\contentsline {subsection}{\numberline {4.10}JPEG additional informations}{30}{subsection.4.10}%
+\contentsline {subsubsection}{\numberline {4.10.1}JFIF: JPEG File Interchange Format}{30}{subsubsection.4.10.1}%
+\contentsline {subsubsection}{\numberline {4.10.2}EXIF: Extended Image File Format}{30}{subsubsection.4.10.2}%
+\contentsline {section}{\numberline {5}Wavelet-based Image Compression}{31}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Signal Analysis}{31}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Signal Analysis through Projection}{31}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Resolution Tradeoff: Time-Frequency Heisenberg-like Uncertainty principle}{31}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Frequency Analysis: STFT and Rigid Tilting}{31}{subsubsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.2}Discrete Wavelet Transform (DWT) and Multi Resolution Analysis (MRA)}{31}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}1D-MRA}{31}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}2D-MRA}{31}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}EZW: Embedded Zerotrees of Wavelet Coefficients}{32}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Recall: Bitplanes}{32}{subsubsection.5.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.5}EZW Algorithm}{32}{subsubsection.5.2.5}%
+\contentsline {subsection}{\numberline {5.3}JPEG2000}{32}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Introduction}{32}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}Quantization}{33}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}Comparison between JPEG and JP2K (JPEG2000)}{33}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}Error Robustness in compressed data}{33}{subsubsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.4}Conceptual Maps}{33}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Learned Image Coding (LIC) / Neural Image Coding (NIC)}{34}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Coding Architecture}{34}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Optimization of the Loss Function}{34}{subsubsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.2}NN Recap}{34}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Gradient Descent and Backpropagation}{34}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}GDN: Generalized Divisive Normalization}{34}{subsubsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.3}JPEG-AI standard}{34}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Core Idea}{34}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Auto-Encoder Framework}{34}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Rate-Distorsion Variable Auto-Encoder}{35}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Scale Hyperprior: spatial adaptability}{35}{subsubsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.5}Hierarchical VAE}{35}{subsubsection.6.3.5}%
+\contentsline {subsubsection}{\numberline {6.3.6}Conclusions}{35}{subsubsection.6.3.6}%
+\contentsline {section}{\numberline {7}Motion Estimation}{36}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Variational Methods}{36}{subsection.7.1}%
+\contentsline {subsubsection}{\numberline {7.1.1}Velocity Vector Field - Optical Flow}{36}{subsubsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {7.1.2}Motion Vector Field}{36}{subsubsection.7.1.2}%
+\contentsline {subsubsection}{\numberline {7.1.3}Data Attachment and Regularization}{36}{subsubsection.7.1.3}%
+\contentsline {subsubsection}{\numberline {7.1.4}Optical Flow Problem}{36}{subsubsection.7.1.4}%
+\contentsline {subsubsection}{\numberline {7.1.5}Optical Flow - Displacement Field}{36}{subsubsection.7.1.5}%
+\contentsline {subsubsection}{\numberline {7.1.6}Optical Flow - Constant Illumination Hypothesis (CIH)}{36}{subsubsection.7.1.6}%
+\contentsline {subsubsection}{\numberline {7.1.7}Optical Flow - Equation}{37}{subsubsection.7.1.7}%
+\contentsline {subsubsection}{\numberline {7.1.8}Optical Flow - Solution: Horn \& Schunck method}{37}{subsubsection.7.1.8}%
+\contentsline {subsection}{\numberline {7.2}Block Matching}{37}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Formulation}{37}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Evaluation of the MVF}{38}{subsubsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.3}Block Matching criteria}{38}{subsubsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.4}Full-Search research strategy}{39}{subsubsection.7.2.4}%
+\contentsline {subsubsection}{\numberline {7.2.5}Fast Research Methods: 3SS (Three step search, 2D-log)}{39}{subsubsection.7.2.5}%
+\contentsline {subsubsection}{\numberline {7.2.6}Fast Research Methods: Diamond Search}{39}{subsubsection.7.2.6}%
+\contentsline {subsubsection}{\numberline {7.2.7}Fast Research Methods: Hex Search}{39}{subsubsection.7.2.7}%
+\contentsline {subsubsection}{\numberline {7.2.8}Fast Research Methods: TZSearch}{39}{subsubsection.7.2.8}%
+\contentsline {subsubsection}{\numberline {7.2.9}BM Improvement: Sub-pixel precision}{39}{subsubsection.7.2.9}%
+\contentsline {subsubsection}{\numberline {7.2.10}BM Improvement: Variable Blocksize}{39}{subsubsection.7.2.10}%
+\contentsline {subsection}{\numberline {7.3}Parametric Methods}{40}{subsection.7.3}%
+\contentsline {subsubsection}{\numberline {7.3.1}Affine Model}{40}{subsubsection.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.2}Best possible parameters}{40}{subsubsection.7.3.2}%
+\contentsline {subsection}{\numberline {7.4}Deep-Learning for Motion Estimation}{40}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {7.4.1}Time evolution}{40}{subsubsection.7.4.1}%
+\contentsline {subsubsection}{\numberline {7.4.2}Usage Comparison}{41}{subsubsection.7.4.2}%
+\contentsline {section}{\numberline {8}Video-coding Principles}{42}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Block Schema}{42}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Block-Matching motion estimation}{42}{subsection.8.2}%
+\contentsline {subsubsection}{\numberline {8.2.1}Motion Compensation}{42}{subsubsection.8.2.1}%
+\contentsline {subsubsection}{\numberline {8.2.2}Adaptive block coding}{42}{subsubsection.8.2.2}%
+\contentsline {subsubsection}{\numberline {8.2.3}Design Parameters}{43}{subsubsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.3}GOP: Group of Pictures}{43}{subsection.8.3}%
+\contentsline {subsubsection}{\numberline {8.3.1}`I' frames: Intra Frames}{43}{subsubsection.8.3.1}%
+\contentsline {subsubsection}{\numberline {8.3.2}`B' frames: `between' frames}{43}{subsubsection.8.3.2}%
+\contentsline {subsubsection}{\numberline {8.3.3}`P' frames: Predictive Frames}{43}{subsubsection.8.3.3}%
+\contentsline {subsubsection}{\numberline {8.3.4}Rate and quality of the frame types}{43}{subsubsection.8.3.4}%
+\contentsline {subsection}{\numberline {8.4}Hybrid Video Encoder}{44}{subsection.8.4}%
+\contentsline {subsubsection}{\numberline {8.4.1}Frame coding modes}{44}{subsubsection.8.4.1}%
+\contentsline {subsubsection}{\numberline {8.4.2}Block Size: Block Partition Problem}{44}{subsubsection.8.4.2}%
+\contentsline {subsubsection}{\numberline {8.4.3}Coding Mode $i_k$ selection}{44}{subsubsection.8.4.3}%
+\contentsline {subsubsection}{\numberline {8.4.4}Encoder scheme}{45}{subsubsection.8.4.4}%
+\contentsline {subsection}{\numberline {8.5}Hybrid Video Decoder}{46}{subsection.8.5}%
+\contentsline {subsubsection}{\numberline {8.5.1}Decoder scheme}{46}{subsubsection.8.5.1}%
+\contentsline {subsubsection}{\numberline {8.5.2}Key elements}{46}{subsubsection.8.5.2}%
+\contentsline {subsection}{\numberline {8.6}Video Encoding Standards}{47}{subsection.8.6}%
+\contentsline {subsubsection}{\numberline {8.6.1}MPEG-1}{47}{subsubsection.8.6.1}%
+\contentsline {section}{\numberline {9}Modern Video-Compression Standards}{48}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Universal Hybrid Video Encoder}{48}{subsection.9.1}%
+\contentsline {subsubsection}{\numberline {9.1.1}Codecs applications}{48}{subsubsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.2}Rate-Distorsion Optimization}{49}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Block Partitioning Problem: H.264}{49}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}Block Partitioning Problem: H.265/HEVC}{49}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}Block Partitioning Problem: H.266/VVC}{49}{subsubsection.9.2.3}%
+\contentsline {subsection}{\numberline {9.3}Spatial and Temporal Frame Prediction}{49}{subsection.9.3}%
+\contentsline {subsubsection}{\numberline {9.3.1}Intra Prediction}{49}{subsubsection.9.3.1}%
+\contentsline {subsubsection}{\numberline {9.3.2}Inter Prediction}{50}{subsubsection.9.3.2}%
+\contentsline {subsubsection}{\numberline {9.3.3}Merge Mode}{50}{subsubsection.9.3.3}%
+\contentsline {subsection}{\numberline {9.4}Filtering, Transforms and Quantization}{50}{subsection.9.4}%
+\contentsline {subsubsection}{\numberline {9.4.1}Residual Coding}{50}{subsubsection.9.4.1}%
+\contentsline {subsubsection}{\numberline {9.4.2}In-loop Deblocking Filter}{50}{subsubsection.9.4.2}%
+\contentsline {subsubsection}{\numberline {9.4.3}Slices}{51}{subsubsection.9.4.3}%
+\contentsline {subsection}{\numberline {9.5}Network parallelism}{51}{subsection.9.5}%
+\contentsline {subsubsection}{\numberline {9.5.1}NALU}{51}{subsubsection.9.5.1}%
+\contentsline {section}{\numberline {10}Audio and Speech Coding}{54}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Audio Modeling}{54}{subsection.10.1}%
+\contentsline {subsubsection}{\numberline {10.1.1}Requirements}{54}{subsubsection.10.1.1}%
+\contentsline {subsubsection}{\numberline {10.1.2}Vowels}{54}{subsubsection.10.1.2}%
+\contentsline {subsubsection}{\numberline {10.1.3}Music}{54}{subsubsection.10.1.3}%
+\contentsline {subsubsection}{\numberline {10.1.4}Human Speech Production System}{54}{subsubsection.10.1.4}%
+\contentsline {subsection}{\numberline {10.2}Linear Predictive Coding}{54}{subsection.10.2}%
+\contentsline {subsubsection}{\numberline {10.2.1}Yule-Walker Equation}{55}{subsubsection.10.2.1}%
+\contentsline {subsubsection}{\numberline {10.2.2}Residuals}{55}{subsubsection.10.2.2}%
+\contentsline {subsubsection}{\numberline {10.2.3}LPC Synthesis}{55}{subsubsection.10.2.3}%
+\contentsline {subsection}{\numberline {10.3}Vector Quantization}{56}{subsection.10.3}%
+\contentsline {subsubsection}{\numberline {10.3.1}CELP Paradigm (Code-Excited Linear Prediction)}{56}{subsubsection.10.3.1}%
+\contentsline {subsubsection}{\numberline {10.3.2}Perceptual Coding for Audio}{57}{subsubsection.10.3.2}%
+\contentsline {subsection}{\numberline {10.4}Modern Techniques}{58}{subsection.10.4}%
+\contentsline {subsubsection}{\numberline {10.4.1}OPUS}{58}{subsubsection.10.4.1}%
+\contentsline {subsubsection}{\numberline {10.4.2}Neural Codecs}{58}{subsubsection.10.4.2}%
+\contentsline {subsubsection}{\numberline {10.4.3}Spatial Audio}{58}{subsubsection.10.4.3}%
+\contentsline {subsubsection}{\numberline {10.4.4}Quality Assessment}{58}{subsubsection.10.4.4}%
+\contentsline {section}{\numberline {11}Quality Assessment and QoE for Multimedia Services}{59}{section.11}%
+\contentsline {subsection}{\numberline {11.1}What is Quality Assessment?}{59}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Image Quality: Subjective Assessment}{59}{subsection.11.2}%
+\contentsline {subsubsection}{\numberline {11.2.1}Testing Conditions}{59}{subsubsection.11.2.1}%
+\contentsline {subsubsection}{\numberline {11.2.2}1$^{st}$ Technique: Single Stimulus}{59}{subsubsection.11.2.2}%
+\contentsline {subsubsection}{\numberline {11.2.3}2$^{nd}$ Technique: Double Stimulus}{59}{subsubsection.11.2.3}%
+\contentsline {subsubsection}{\numberline {11.2.4}3$^{rd}$ Technique: Pairwise Comparison}{59}{subsubsection.11.2.4}%
+\contentsline {subsection}{\numberline {11.3}Human Assessment Measures}{59}{subsection.11.3}%
+\contentsline {subsubsection}{\numberline {11.3.1}MOS: Mean Opinion Score}{59}{subsubsection.11.3.1}%
+\contentsline {subsubsection}{\numberline {11.3.2}Standard Measures}{60}{subsubsection.11.3.2}%
+\contentsline {subsection}{\numberline {11.4}Image Quality: Objective Assessment}{60}{subsection.11.4}%
+\contentsline {subsubsection}{\numberline {11.4.1}Full Reference Techniques}{60}{subsubsection.11.4.1}%
+\contentsline {subsubsection}{\numberline {11.4.2}Y component measures}{60}{subsubsection.11.4.2}%
+\contentsline {subsubsection}{\numberline {11.4.3}CbCr component measures}{60}{subsubsection.11.4.3}%
+\contentsline {subsubsection}{\numberline {11.4.4}Total PSNR measure}{60}{subsubsection.11.4.4}%
+\contentsline {subsubsection}{\numberline {11.4.5}Bjontegaard Deltas}{60}{subsubsection.11.4.5}%
+\contentsline {subsubsection}{\numberline {11.4.6}Perceptual Metrics}{61}{subsubsection.11.4.6}%
+\contentsline {subsubsection}{\numberline {11.4.7}Reduced Reference}{61}{subsubsection.11.4.7}%
+\contentsline {subsubsection}{\numberline {11.4.8}No Reference}{61}{subsubsection.11.4.8}%
+\contentsline {section}{\numberline {12}Adaptive Streaming}{62}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Video Content Distribution}{62}{subsection.12.1}%
+\contentsline {subsubsection}{\numberline {12.1.1}Challenges}{62}{subsubsection.12.1.1}%
+\contentsline {subsubsection}{\numberline {12.1.2}Coding Rate Bottleneck}{62}{subsubsection.12.1.2}%
+\contentsline {subsubsection}{\numberline {12.1.3}Paradigms}{62}{subsubsection.12.1.3}%
+\contentsline {subsection}{\numberline {12.2}Scalable Video Coding (SVC)}{63}{subsection.12.2}%
+\contentsline {subsubsection}{\numberline {12.2.1}Scalability Types}{63}{subsubsection.12.2.1}%
+\contentsline {subsubsection}{\numberline {12.2.2}Smart Layer Pruning}{63}{subsubsection.12.2.2}%
+\contentsline {subsubsection}{\numberline {12.2.3}Streaming via Legacy HTTP}{64}{subsubsection.12.2.3}%
+\contentsline {subsubsection}{\numberline {12.2.4}QUIC and HTTP/3}{64}{subsubsection.12.2.4}%
+\contentsline {subsection}{\numberline {12.3}Adaptive Bitrate Streaming}{64}{subsection.12.3}%
+\contentsline {subsubsection}{\numberline {12.3.1}Media Presentation Description (MPD) file}{64}{subsubsection.12.3.1}%
+\contentsline {subsubsection}{\numberline {12.3.2}Network Metrics: Throughput}{65}{subsubsection.12.3.2}%
+\contentsline {subsubsection}{\numberline {12.3.3}Network Metrics: E-2-E Nodal Delay}{65}{subsubsection.12.3.3}%
+\contentsline {subsection}{\numberline {12.4}Buffer Dynamics}{65}{subsection.12.4}%
+\contentsline {subsubsection}{\numberline {12.4.1}Rebuffering event}{65}{subsubsection.12.4.1}%
+\contentsline {subsubsection}{\numberline {12.4.2}Playout management}{66}{subsubsection.12.4.2}%
+\contentsline {subsubsection}{\numberline {12.4.3}Client Scoring-Policy Design}{67}{subsubsection.12.4.3}%
+\contentsline {subsection}{\numberline {12.5}ABR Strategies}{67}{subsection.12.5}%
+\contentsline {subsubsection}{\numberline {12.5.1}Throughput-based ABR}{67}{subsubsection.12.5.1}%
+\contentsline {subsubsection}{\numberline {12.5.2}Buffer-based ABR}{67}{subsubsection.12.5.2}%
+\contentsline {subsubsection}{\numberline {12.5.3}Hybrid ABR strategy}{67}{subsubsection.12.5.3}%
+\contentsline {subsubsection}{\numberline {12.5.4}Learning-Based ABR}{68}{subsubsection.12.5.4}%
+\contentsline {subsubsection}{\numberline {12.5.5}Multiplayer Competition}{68}{subsubsection.12.5.5}%
+\contentsline {subsubsection}{\numberline {12.5.6}Neural Video Coding}{68}{subsubsection.12.5.6}%

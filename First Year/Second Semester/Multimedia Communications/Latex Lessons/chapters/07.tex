@@ -1,0 +1,772 @@
+\chapter{Motion Estimation}
+
+\textbf{Course:} Multimedia Communications — Università di Padova \textbf{Lecturer:} Marco Cagnazzo
+
+\bigskip\hrule\bigskip
+
+\section{1. Introduction}
+
+\subsection{Motion and Apparent Motion}
+
+Two distinct concepts:
+
+\begin{itemize}
+\item \textbf{Physical motion:} actual displacement of objects in 3D space (measurable by accelerometers, gyroscopes)
+\item \textbf{Apparent motion (optical flow):} 2D displacement of pixel intensities between consecutive frames
+\end{itemize}
+
+These are \textbf{not} equivalent:
+\begin{itemize}
+\item Rotating sphere with uniform texture → physical motion exists, \textbf{zero} apparent motion
+\item Moving light source → apparent motion without any physical object motion
+\end{itemize}
+
+We focus exclusively on \textbf{optical flow} — a 2D vector field $\mathbf{v}(n,m) = (u(n,m), v(n,m))^T$ describing per-pixel displacement between frames.
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522134312.png}\end{center}
+\subsection{Applications}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Domain} & \textbf{Application} \\ \hline
+Video compression & Temporal prediction, reduces inter-frame redundancy \\ \hline
+Video analysis & Object tracking, action recognition \\ \hline
+Video enhancement & Deblurring, super-resolution, frame interpolation \\ \hline
+Medical imaging & Cardiac motion analysis \\ \hline
+Autonomous driving & Obstacle detection \\ \hline
+\end{tabular}
+\end{center}
+
+\bigskip\hrule\bigskip
+
+\section{2. Variational Methods}
+
+Also called \textbf{differential} or \textbf{gradient-based} methods. Produce a \textbf{dense} motion field — one vector per pixel. Key representative: \textit{Horn and Schunck}.
+
+General formulation as energy minimization:
+
+\[
+\hat{v} = \arg\min_v E(v)
+\]
+
+\[
+E(v) = E_{\text{data}}(v) + \lambda\, E_{\text{smooth}}(v)
+\]
+\subsection{Optical Flow Equation}
+
+\textbf{Problem:} given frames $f_k$ (current) and $f_h$ (reference, $h = k \pm 1$), find $\mathbf{v}(n,m)$ such that:
+
+\[
+f_k(n,m) \approx f_h(n - u(n,m),\; m - v(n,m))
+\]
+
+\begin{calloutbox}{red!70!black}{Constant Illumination Hypothesis}
+\[
+f_k(n,m) = f_h(n - u,\; m - v)
+\]
+Pixel brightness does not change between frames. This is the foundational assumption of all gradient-based ME methods. It is violated by lighting changes, reflections, and occlusions.
+\end{calloutbox}
+
+\textbf{Derivation via Taylor expansion:}
+
+\[
+f_h(n-u, m-v) \approx f_h(n,m) - u\,f_n - v\,f_m
+\]
+
+Substituting into the constant illumination hypothesis:
+
+\[
+f_k - f_h = u\,f_n + v\,f_m \implies f_t = u\,f_n + v\,f_m
+\]
+
+\begin{calloutbox}{red!70!black}{Optical Flow (OF) Equation}
+\[
+\nabla f \cdot \mathbf{v} + f_t = 0
+\]
+One equation, two unknowns $(u, v)$ — \textbf{underdetermined}. This is the \textbf{aperture problem}: along an edge, only the normal component of motion is observable from local measurements.
+\end{calloutbox}
+
+\subsection{Horn and Schunck Algorithm}
+
+Horn and Schunck introduced a constraint on the \textbf{total variation} of the velocity over a region $\mathcal{R}$. The original formulation is a constrained minimization:
+
+\[
+\iint_{\mathcal{R}} (u f_x + v f_y + f_t)^2 \, dx\, dy = \min
+\]
+
+\[
+\iint_{\mathcal{R}} \left(\|\nabla u\|^2 + \|\nabla v\|^2\right) dx\, dy \leq \tau
+\]
+
+Via Lagrange multiplier, this becomes the unconstrained problem of minimizing $J$:
+
+\[
+J = \iint_{\mathcal{R}} (u f_x + v f_y + f_t)^2 \, dx\, dy + \lambda \left[\iint_{\mathcal{R}} \left(\|\nabla u\|^2 + \|\nabla v\|^2\right) dx\, dy - \tau\right]
+\]
+
+Equivalently, minimize (dropping the constant $-\lambda\tau$):
+
+\begin{calloutbox}{red!70!black}{Horn and Schunck Energy Functional}
+\[
+E(u,v) = \iint_{\mathcal{R}} \left[(\nabla f \cdot \mathbf{v} + f_t)^2 + \lambda^2\left(|\nabla u|^2 + |\nabla v|^2\right)\right] dn\, dm
+\]
+\begin{itemize}
+\item First term: data fidelity (OF equation residual)
+\item Second term: smoothness regularization weighted by $\lambda^2$
+\item Problem is \textbf{convex} → unique global minimum
+\end{itemize}
+\end{calloutbox}
+
+\textbf{Euler-Lagrange equations} derived from the functional:
+
+\[
+f_n(f_n u + f_m v + f_t) = \lambda^2 \Delta u
+\]
+\[
+f_m(f_n u + f_m v + f_t) = \lambda^2 \Delta v
+\]
+
+Since $\Delta u \approx \bar{u} - u$ (Laplacian via local average), one obtains the linear system:
+
+\[
+\begin{cases} (f_n^2 + \lambda)u + f_n f_m v = \lambda\bar{u} - f_n f_t \\ f_n f_m u + (f_m^2 + \lambda)v = \lambda\bar{v} - f_m f_t \end{cases}
+\]
+
+\textbf{Iterative solution (Gauss-Seidel):}
+
+\[
+u^{k+1} = \bar{u}^k - f_n \frac{f_n \bar{u}^k + f_m \bar{v}^k + f_t}{\lambda^2 + f_n^2 + f_m^2}
+\]
+
+\[
+v^{k+1} = \bar{v}^k - f_m \frac{f_n \bar{u}^k + f_m \bar{v}^k + f_t}{\lambda^2 + f_n^2 + f_m^2}
+\]
+
+where $\bar{u}^k, \bar{v}^k$ are local spatial averages at iteration $k$.
+
+\begin{center}
+\begin{minipage}{0.330\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522134513.png}\end{minipage}\hfill\begin{minipage}{0.330\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522134536.png}\end{minipage}\hfill\begin{minipage}{0.330\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522134558.png}\end{minipage}
+\end{center}
+
+\textbf{Conclusions:}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{\textbf{Advantages}} & \textbf{Dense field (1 vector/pixel), convex optimization (unique solution), good in low-texture areas} \\ \hline
+\textbf{Disadvantages} & Over-smoothed at motion boundaries, slow for large displacements, brightness constancy violated in practice \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{Applications:} object tracking, video compression, motion analysis. Foundational approach in computer vision — basis for more advanced and modern optical flow estimation algorithms.
+
+\bigskip\hrule\bigskip
+
+\section{3. Block-Matching Methods}
+
+\textbf{Core idea:} divide image into rectangular blocks; for each block in current frame $f_k$, find best-matching block in reference frame $f_h$. Motion described by one translation vector per block → \textbf{piecewise-constant} \textit{Motion Vector Field (MVF)}.
+
+Foundation of all major video compression standards (MPEG, H.264, H.265, AV1).
+
+\subsection{Notation and Formulation}
+
+\begin{itemize}
+\item $N \times M$ image; blocks of size $P \times Q$
+\item Block $B_{p,q} = \{p, p+1, \ldots, p+P-1\} \times \{q, q+1, \ldots, q+Q-1\}$
+\item $\mathbf{f}_k(B_{p,q})$: vector of $PQ$ luminance values in $B_{p,q}$ at time $k$
+\item Search window $\mathcal{W}$: set of candidate displacement vectors
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Block-Matching Optimization}
+\[
+\left(\hat{i}, \hat{j}\right) = \arg\min_{(i,j)\in\mathcal{W}}\; d\!\left[\mathbf{f}_k(B_{p,q}),\; \mathbf{f}_h(B_{p-i,q-j})\right]
+\]
+BM methods differ in: choice of criterion $d$, set $\mathcal{W}$ (search window + strategy), block size and shape.
+\end{calloutbox}
+
+The full MVF is then:
+
+\[
+\forall (n,m) \in B_{p,q}: \quad (u(n,m), v(n,m)) = \arg\min_{(i,j)\in\mathcal{W}} d\!\left[\mathbf{f}_k(B_{p,q}),\; \mathbf{f}_h(B_{p-i,q-j})\right]
+\]
+
+A more precise notation uses subscript $h \to k$ to indicate reference frame $h$ and current frame $k$.
+\begin{itemize}
+\item \textbf{Forward motion} ($h = k-1$): predict from previous frame
+\item \textbf{Backward motion} ($h = k+1$): predict from next frame
+\end{itemize}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522134710.png}\end{center}
+\subsection{Evaluation of the MVF}
+
+Three complementary metrics:
+
+\textbf{1. Quality — MC-ed MSE / PSNR}
+
+Motion-compensated prediction of pixel $(n,m)$:
+
+\[
+\tilde{f}_k(n,m) = f_h\!\left(n + u_{h\to k}(n,m),\; m + v_{h\to k}(n,m)\right)
+\]
+
+Prediction error: $e(n,m) = f_k(n,m) - \tilde{f}_k(n,m)$
+
+\[
+\mathcal{E} = \frac{1}{NM}\sum_{n,m} e^2(n,m) \qquad \text{PSNR} = 10\log_{10}\frac{255^2}{\mathcal{E}} \quad \text{[dB]}
+\]
+
+\textbf{2. Coding cost — MVF entropy}
+
+Bits to losslessly encode the MVF. Techniques: fixed-length, Exp-Golomb, Huffman, arithmetic coding. Technique-independent measure: \textbf{empirical entropy} of $(u,v)$ marginal distributions.
+
+\textbf{3. Computational complexity}
+
+To compute $\arg\min$ over $\mathcal{W}$, for each of $\lceil NM/PQ \rceil$ blocks, evaluate $|\mathcal{W}|$ instances of $d[\cdot,\cdot]$. Complexity drivers:
+\begin{itemize}
+\item Block size $P \times Q$ → number of blocks
+\item $|\mathcal{W}|$ → search window size and strategy
+\item Cost of computing $d$
+\end{itemize}
+
+\textbf{Block size trade-off:}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Block size} & \textbf{Complexity} & \textbf{Coding cost} & \textbf{MSE} \\ \hline
+Large ($\uparrow$) & Low (fewer blocks) & Low (fewer vectors) & High (less flexible model) \\ \hline
+Small ($\downarrow$) & High & High & Low \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}\fbox{\parbox{0.85\linewidth}{\centering\itshape Figure placeholder: MVF comparison: block sizes 32×32, 16×16, 8×8}}\end{center}
+
+\subsection{Cost Functions: SAD and SSD}
+
+\begin{calloutbox}{red!70!black}{Norm-Based Dissimilarity (General)}
+\[
+J(i,j) = \|\mathbf{f}_k(B_{p,q}) - \mathbf{f}_h(B_{p-i,q-j})\|_p^p \tag{2}
+\]
+Two principal cases: $p=1$ ($\mathcal{L}^1$ norm → SAD), $p=2$ ($\mathcal{L}^2$ norm → SSD)
+\end{calloutbox}
+
+\textbf{SSD} — Sum of Squared Differences ($p = 2$):
+
+\[
+J_{\text{SSD}}(i,j) = \sum_{(n,m)\in B_{p,q}} \left[f(n,m,k) - f(n-i,\,m-j,\,h)\right]^2
+\]
+
+\begin{itemize}
+\item Minimizes energy of MC-ed prediction error → \textbf{best quality} metric
+\item Complex to compute (requires multiplications)
+\item Sensitive to \textbf{outliers}: a single pixel violating brightness constancy can corrupt the vector
+\item Irregular MVF → higher entropy → higher coding cost
+\end{itemize}
+
+\textbf{SAD} — Sum of Absolute Differences ($p = 1$):
+
+\[
+J_{\text{SAD}}(i,j) = \sum_{(n,m)\in B_{p,q}} \left|f(n,m,k) - f(n-i,\,m-j,\,h)\right|
+\]
+
+\begin{itemize}
+\item More robust to outliers (linear, not quadratic penalization)
+\item Produces more \textbf{regular} MVF → lower coding cost
+\item Slightly worse MSE than SSD (by construction: SAD minimizes $\mathcal{L}^1$, not $\mathcal{L}^2$ error)
+\end{itemize}
+
+\begin{calloutbox}{green!55!black}{SAD vs SSD on \textit{Flower Garden} sequence (16×16 blocks)}
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Criterion} & \textbf{Rate (MV)} & \textbf{PSNR(Pred)} \\ \hline
+SSD & 2143 bits & 22.46 dB \\ \hline
+SAD & 2103 bits & 22.30 dB \\ \hline
+\end{tabular}
+\end{center}
+SSD gives better PSNR but costs more bits; SAD gives more regular MVF.
+\end{calloutbox}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522134839.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522134856.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522134904.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522134913.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522134931.png}\end{center}
+\subsection{Regularized Cost Function}
+
+Penalize vectors that differ too much from neighbors:
+
+\[
+J_{\text{REG}}(i,j) = \|\mathbf{f}_k(B_{p,q}) - \mathbf{f}_h(B_{p-i,q-j})\|_p^p + \lambda\, R(i,j)
+\]
+
+where $R(i,j)$ = distance of $(i,j)$ from neighborhood representative (average or median).
+
+More generally, encode coding cost directly:
+
+\[
+J(v) = d(v) + \lambda_{ME}\, r(v)
+\]
+
+\begin{itemize}
+\item $r(v)$: bits to encode vector $v$
+\item $\lambda_{ME}$ controls rate-distortion trade-off:
+\begin{itemize}
+\item $\lambda_{ME} \to 0$: only minimize distortion $d$
+\item $\lambda_{ME} \to \infty$: only minimize rate $r$
+\end{itemize}
+\end{itemize}
+
+\begin{calloutbox}{green!55!black}{Regularization effect on \textit{Flower Garden}}
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{} & \textbf{Rate (MV)} & \textbf{PSNR(Pred)} \\ \hline
+SSD (no reg.) & 2143 bits & 22.46 dB \\ \hline
+SSD (regularized) & 2008 bits & 22.35 dB \\ \hline
+\end{tabular}
+\end{center}
+Rate reduced 6.3\% at cost of 0.11 dB.
+\end{calloutbox}
+
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522135013.png}\end{center}
+\subsection{Search Strategies}
+
+\subsubsection{Full Search (FS)}
+
+Search window:
+
+\[
+\mathcal{W} = \{-A,\ldots,A\} \times \{-B,\ldots,B\}
+\]
+
+Test all $n^2 = (2A+1)^2$ candidates. \textbf{Guarantees global minimum.} Very costly.
+
+The cost function surface $J(i,j)$ is a 3D landscape:
+\begin{itemize}
+\item \textbf{Global minimum}: optimal MV
+\item \textbf{Local minima}: traps for fast methods
+\item \textbf{Flat regions}: ambiguous (low texture)
+\end{itemize}
+\subsubsection{Three Steps Search (3SS)}
+
+Assumes \textbf{unimodal} cost surface. Steps with decreasing stride $D, D/2, \ldots, 1$; tests 4 or 8 points per step.
+\begin{itemize}
+\item \textasciitilde{}25 tests vs 225 for FS (-89\%)
+\item Risk: trapped in local minimum if surface is multimodal
+\end{itemize}
+
+\subsubsection{Diamond Search (DS)}
+
+Uses \textbf{Large Diamond Search Pattern (LDSP)} — moves until minimum is at center, then refines with \textbf{Small Diamond (SDSP)}.
+\begin{itemize}
+\item 3–5 new tests per iteration (9 for first step)
+\item \textasciitilde{}23 tests (-90\% vs FS)
+\item Unbounded: can follow large motions across frame
+\end{itemize}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522135115.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522135125.png}\end{center}
+\subsubsection{Hexagon Search}
+
+H.264/AVC standard. 6-sided \textbf{Large Hexagon Pattern (LHP)}; only 3 new points per step when minimum ≠ center. Final refinement with \textbf{Small Hexagon Pattern (SHP)}.
+\begin{itemize}
+\item \textasciitilde{}17 tests (-92\% vs FS)
+\item More efficient than diamond for natural video
+\end{itemize}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522135139.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522135148.png}\end{center}
+\subsubsection{Comparison}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Strategy} & \textbf{Tests} & \textbf{Δ\% vs FS} \\ \hline
+Full Search (FS) & 225 & Baseline \\ \hline
+2D-Log Search & 25 & \textasciitilde{}−89\% \\ \hline
+Diamond Search & 23 & \textasciitilde{}−90\% \\ \hline
+Hexagon Search & 17 & \textasciitilde{}−92\% \\ \hline
+\end{tabular}
+\end{center}
+
+\textit{All converge to same optimal vector in this example.}
+
+\textbf{Key distinctions:}
+\begin{itemize}
+\item FS: bounded search, global optimum guaranteed
+\item Diamond/Hexagon: \textbf{iterative, unbounded} — can follow motion of any amplitude; risk of local minima (rare in natural video)
+\end{itemize}
+
+\subsubsection{Modern Fast Search: TZSearch}
+
+Reference algorithm for recent standards (H.265, VVC), handles blocks up to 64×64.
+
+Three phases:
+\begin{enumerate}
+\item \textbf{Search Predictors:} test vectors from spatial/temporal neighbors; stop if error is small
+\item \textbf{Adaptive Loop:} if no predictor is good, apply Diamond/Square with increasing step size
+\item \textit{(Full refinement phase — details not covered in slides)}
+\end{enumerate}
+
+\textbf{Key advantage:} more robust to local minima than pure Diamond/Hexagon.
+
+\subsection{Subpixel Precision}
+
+Motion is not constrained to integer pixel displacement. Half-pixel, quarter-pixel vectors improve prediction quality.
+
+\textbf{Hierarchical approach:}
+\begin{enumerate}
+\item Find integer $(\hat{i}, \hat{j}) \in \mathbb{Z}^2$
+\item Test $(\hat{i} \pm \tfrac{1}{2},\; \hat{j} \pm \tfrac{1}{2})$
+\item Test $(\hat{i} \pm \tfrac{1}{4},\; \hat{j} \pm \tfrac{1}{4})$, etc.
+\end{enumerate}
+
+Non-integer positions evaluated via \textbf{bilinear interpolation}:
+
+\[
+f(n+a, m+b) = (1-a)(1-b)\,x + a(1-b)\,y + (1-a)b\,z + ab\,w
+\]
+
+where $x,y,z,w$ are the four integer-pixel neighbors. Higher-order filter interpolation also used.
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522135238.png}\end{center}
+\subsection{Variable Block Size}
+
+\textbf{Problem:} homogeneous-motion assumption fails at object borders.
+
+\begin{itemize}
+\item \textbf{Solution 1 — fixed smaller blocks:} better precision, higher complexity and coding cost
+\item \textbf{Solution 2 — variable-size blocks (adopted in modern standards):} split block only when needed
+\end{itemize}
+
+\textbf{Hierarchical splitting algorithm:}
+
+\textbf{Input:} Frame $F$, reference $R$, initial block size $B$, $\lambda$ \textbf{Output:} MVF + block partitioning
+
+\begin{verbatim}
+for each block b of size B in F do
+    Calculate J(v) = D + λR for b;
+    Divide b into four sub-blocks;
+    for each sub-block s_i do
+        Calculate J_i(v) = D_i + λR_i for s_i;
+    end
+    J_sub = Σ^4_{i=1} J_i(v)
+    if J_sub < J(v) then
+        Apply algorithm recursively to each sub-block;
+    else
+        Keep b; store MV;
+    end
+end
+
+\end{verbatim}
+
+\begin{itemize}
+\item $D$: distortion (SAD or SSD); $R$: rate (bits for MV); $\lambda$: Lagrange multiplier
+\item Terminates when: minimum block size reached, or $J(v)$ no longer decreases
+\item Balances accuracy vs. coding efficiency
+\end{itemize}
+
+\bigskip\hrule\bigskip
+
+\section{4. Parametric Methods}
+
+\textbf{Definition:} MVF modeled as a \textbf{closed-form function} of pixel position. Degrees of freedom = model parameters.
+
+Scope:
+\begin{itemize}
+\item \textbf{Global model:} one set of parameters for the entire scene
+\item \textbf{Per-region model:} region = object (requires segmentation) or block
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Relationship to Block Matching}
+BM is a special case of parametric ME: MVF is block-wise constant (pure translation), 2 parameters per block. More general models trade off:
+\begin{itemize}
+\item Fewer parameters → robust, but may miss motion complexity
+\item More parameters → general, but prone to overfitting
+\end{itemize}
+\end{calloutbox}
+
+\subsection{Translational Model}
+
+Rigid object translating orthogonally to the optical axis, no rotation.
+
+\[
+\mathbf{v}(\mathbf{p}) = \begin{bmatrix} v_x \\ v_y \end{bmatrix} = \begin{bmatrix} b_1 \\ b_2 \end{bmatrix}
+\]
+
+Constant field — only 2 parameters. Same as block matching with $P = N$, $Q = M$.
+
+\subsection{Affine Model}
+
+\begin{calloutbox}{red!70!black}{Affine Motion Model}
+\[
+\mathbf{v}(\mathbf{p}) = \mathbf{b} + \mathbf{B}\mathbf{p} = \begin{bmatrix} b_1 \\ b_2 \end{bmatrix} + \begin{bmatrix} b_3 & b_4 \\ b_5 & b_6 \end{bmatrix} \mathbf{p}
+\]
+\begin{itemize}
+\item 6 parameters: 2 for translation $\mathbf{b}$, 4 for linear part $\mathbf{B}$
+\item Special case $\mathbf{B} = 0$: pure translation
+\item Represents translation, zoom, rotation, shear in combination
+\item Small parameter count → robust estimation
+\end{itemize}
+\end{calloutbox}
+
+\textbf{Examples:}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Motion} & \textbf{$\mathbf{b}$} & \textbf{$\mathbf{B}$} & \textbf{Field} \\ \hline
+Translation & $[0.5,\; 2]^T$ & $\mathbf{0}$ & Uniform $v_x=0.5$, $v_y=2$ \\ \hline
+Zoom in & $\mathbf{0}$ & $\text{diag}(0.5, 0.5)$ & $v_x=0.5x$, $v_y=0.5y$ \\ \hline
+Zoom out & $\mathbf{0}$ & $\text{diag}(-0.5,-0.5)$ & $v_x=-0.5x$, $v_y=-0.5y$ \\ \hline
+Rotation & $\mathbf{0}$ & $\begin{bmatrix}0&-0.5\\0.5&0\end{bmatrix}$ & $v_x=-0.5y$, $v_y=0.5x$ \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.450\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522135333.png}\end{minipage}\hfill\begin{minipage}{0.450\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522135458.png}\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.500\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522135546.png}\end{minipage}\hfill\begin{minipage}{0.500\linewidth}\centering\includegraphics[width=\linewidth]{Pasted_image_20260522135610.png}\end{minipage}
+\end{center}
+Only 6 parameters encode the entire field — replacing hundreds of block-matching vectors.
+
+\subsection{Parameter Estimation}
+
+\subsubsection{Indirect Estimation}
+
+\begin{enumerate}
+\item Estimate dense field $(u(n,m), v(n,m))$ first (e.g., with Horn-Schunck)
+\item Fit model parameters via least squares:
+\end{enumerate}
+
+\[
+\pi^* = \arg\min_\pi \sum_{n,m \in \mathcal{R}} \left[u - u_\pi\right]^2 + \left[v - v_\pi\right]^2
+\]
+
+\begin{itemize}
+\item For affine: $\pi = [b_1\, b_2\, b_3\, b_4\, b_5\, b_6]$, solvable with gradient descent
+\item \textbf{Disadvantage:} strongly dependent on quality of initial dense estimation; needs region $\mathcal{R}$ with homogeneous motion
+\end{itemize}
+
+\subsubsection{Direct Estimation}
+
+Parameters enter the estimation directly. Two approaches:
+
+\textbf{Via OF equation:}
+
+\[
+\pi^* = \arg\min_\pi \sum_{n,m \in \mathcal{R}} \left[u_\pi(n,m)\, f_x + v_\pi(n,m)\, f_y + f_t\right]^2
+\]
+
+\textbf{Via SSD/SAD on parametrized MVF:}
+
+\[
+\pi^* = \arg\min_\pi \sum_{n,m \in \mathcal{R}} \left[e(n,m)\right]^2
+\]
+
+\[
+e(n,m) = f\!\left(n - u_\pi(n,m),\, m - v_\pi(n,m),\, t-1\right) - f(n,m,t)
+\]
+
+\textit{Note:} SAD-based block matching = direct parametric estimation with pure translation model ($\mathbf{B} = 0$).
+
+\bigskip\hrule\bigskip
+
+\section{5. Deep Learning Methods}
+
+\subsection{The Paradigm Shift}
+
+Traditional methods use hand-crafted models (gradient, block matching). DL treats ME as a \textbf{supervised or unsupervised learning problem} via CNNs.
+
+\textbf{Key requirements:}
+\begin{itemize}
+\item Specialized architectures for pixel-level correspondence
+\item Large-scale training data (synthetic or real)
+\item GPU inference
+\end{itemize}
+
+\textbf{Ground truth challenge:} optical flow GT is hard to obtain for real sequences.
+
+Solutions:
+\begin{itemize}
+\item \textbf{Synthetic datasets:} FlyingChairs, Sintel (perfect labels from rendering)
+\item \textbf{Data augmentation:} geometric and photometric transforms
+\item \textbf{Unsupervised:} minimize photometric error between current frame and warped reference
+\end{itemize}
+
+\subsection{FlowNet (2015)}
+
+First end-to-end CNN for optical flow.
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522135655.png}\end{center}
+
+Two variants:
+\begin{itemize}
+\item \textbf{FlowNetS:} concatenate both frames → single encoder-decoder
+\item \textbf{FlowNetC:} explicit \textbf{correlation layer} between feature maps of each frame
+\end{itemize}
+
+\textgreater{} Dosovitskiy et al. (2015). \textit{FlowNet: Learning Optical Flow with Convolutional Networks}
+
+\textbf{Performance \& limits:}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Aspect} & \textbf{Detail} \\ \hline
+Speed & 10–100 FPS on mid-range GPU \\ \hline
+Weakness & Struggles with small displacements and fine details \\ \hline
+Data dependency & Heavily tied to \textit{Flying Chairs} quality \\ \hline
+Failure mode & Repetitive patterns (limited CNN receptive field) \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{FlowNet 2.0 (2017)}
+
+\textgreater{} Ilg et al. (2017). \textit{FlowNet 2.0: Evolution of Optical Flow Estimation with Deep Networks}
+
+\textbf{Improvements:}
+\begin{itemize}
+\item \textbf{Stacked architectures:} multiple FlowNet modules chained (FlowNetC + FlowNetS)
+\item \textbf{Small displacement module (FlowNet-SD):} specialized sub-network for slow motions
+\item \textbf{Multi-stage training schedule} on multiple datasets
+\end{itemize}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522135728.png}\end{center}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522135809.png}\end{center}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Aspect} & \textbf{Detail} \\ \hline
+Quality & Significantly lower EPE than FlowNet \\ \hline
+Size & Large memory footprint (stacked networks) \\ \hline
+Efficiency & Trade-off: FlowNet2 (accurate) vs FlowNet2-s (faster, lighter) \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{PWC-Net (2018)}
+
+\textgreater{} Sun et al. (2018). \textit{PWC-Net: CNNs for Optical Flow Using Pyramid, Warping, and Cost Volume}
+
+\textbf{Hybrid design} — embeds classical vision priors into CNN:
+
+Three innovations:
+\begin{itemize}
+\item \textbf{P}yramidal feature extraction (coarse-to-fine)
+\item \textbf{W}arping: warp reference features using current flow estimate
+\item \textbf{C}ost volume: local cross-correlation between warped and current features (limited search range)
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Aspect} & \textbf{Detail} \\ \hline
+Parameters & 17× fewer than FlowNet2 \\ \hline
+Speed & ≈ 30ms for Sintel-resolution images \\ \hline
+Evaluation & SOTA on KITTI benchmarks; strong sim-to-real generalization \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{RAFT (2020)}
+
+\textgreater{} Teed \& Deng (2020). \textit{RAFT: Recurrent All-Pairs Field Transforms for Optical Flow}
+
+\textbf{Innovations:}
+
+\begin{itemize}
+\item \textbf{All-pairs correlation volume:} compute correlation between \textit{every pair} of pixels (4D tensor)
+\item \textbf{GRU-based iterative update:} recurrent refinement of a single high-resolution flow field
+\item \textbf{No spatial pyramids:} avoids detail loss from coarse-to-fine
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{RAFT Key Property}
+Maintains full-resolution flow field throughout — no pyramid-induced information loss. Number of GRU iterations tunable at inference (speed-quality trade-off).
+\end{calloutbox}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Aspect} & \textbf{Detail} \\ \hline
+Accuracy & SOTA on Sintel and KITTI; precise on thin structures and boundaries \\ \hline
+Generalization & Unprecedented "zero-shot" transfer from synthetic to real video \\ \hline
+Speed & Slower than PWC-Net \\ \hline
+Complexity & All-pairs correlation is memory-intensive (mitigated via Correlation Pyramid) \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{DL Perspectives and Challenges}
+
+\textbf{Main advantages:}
+\begin{itemize}
+\item Robust to occlusions and large displacements
+\item High precision in textureless areas
+\end{itemize}
+
+\textbf{Current challenges:}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Challenge} & \textbf{Description} \\ \hline
+Generalization & Performance drops on data outside training distribution \\ \hline
+Computational cost & High memory/power for SOTA models \\ \hline
+Integration & Real-time and video coding standards require accuracy-efficiency balance \\ \hline
+\end{tabular}
+\end{center}
+
+\textit{DL dominates analysis tasks (optical flow); block-matching remains standard for video compression.}
+
+\subsection{Evolutionary Summary}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Model} & \textbf{Year} & \textbf{Key Innovation} \\ \hline
+FlowNet & 2015 & First end-to-end CNN for dense flow; correlation layer \\ \hline
+FlowNet 2.0 & 2017 & Stacked networks; small displacement module \\ \hline
+PWC-Net & 2018 & Pyramids + Warping + Cost Volume; 17× smaller \\ \hline
+RAFT & 2020 & All-pairs correlation + GRU iterative update; no pyramids \\ \hline
+\end{tabular}
+\end{center}
+
+\bigskip\hrule\bigskip
+
+\section{6. Conclusions}
+
+\begin{itemize}
+\item \textbf{Motion Estimation} extracts motion information from video sequences
+\item Focus is on \textbf{optical flow} (apparent motion), not physical motion
+\item \textbf{Block-matching:} conceptually simple, widely used in video compression standards
+\item \textbf{Neural networks:} emerging paradigm, dominant for analysis tasks
+\end{itemize}
+\begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522135856.png}\end{center}
+\bigskip\hrule\bigskip
+
+\section{Summary Table}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Method} & \textbf{Type} & \textbf{Motion Model} & \textbf{Output} & \textbf{Key Advantage} & \textbf{Key Limitation} \\ \hline
+Horn-Schunck & Variational & Continuous smooth field & Dense (1 vec/pixel) & Convex, unique solution & Over-smooth at boundaries \\ \hline
+Block Matching (FS) & Block-based & Translation per block & Sparse (1 vec/block) & Global optimum guaranteed & $O(n^2)$ complexity \\ \hline
+Block Matching (fast) & Block-based & Translation per block & Sparse & Low complexity & Local minima risk \\ \hline
+Affine Parametric & Parametric & Affine (6 params) & Global/regional & Very compact representation & Requires segmentation or region \\ \hline
+FlowNet & DL & Learned end-to-end & Dense & Fast inference (GPU) & Weak on small displacements \\ \hline
+PWC-Net & DL (hybrid) & Pyramidal + Cost Volume & Dense & 17× smaller than FlowNet2; SOTA KITTI & Loss at pyramid boundaries \\ \hline
+RAFT & DL (recurrent) & All-pairs + GRU & Dense & Best accuracy; zero-shot generalization & Memory-intensive \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Parameter} & \textbf{Trade-off} \\ \hline
+Block size $P \times Q$ ↑ & Complexity ↓, Coding cost ↓, MSE ↑ \\ \hline
+Search window $\mathcal{W}$ ↑ & Accuracy ↑, Complexity ↑ \\ \hline
+Subpixel precision ↑ & Accuracy ↑, Complexity ↑ \\ \hline
+$p = 1$ (SAD) & Regular MVF, lower coding cost, worse MSE \\ \hline
+$p = 2$ (SSD) & Better MSE, irregular MVF, higher coding cost \\ \hline
+$\lambda_{ME}$ ↑ & Coding cost ↓, MSE ↑ \\ \hline
+\end{tabular}
+\end{center}
+

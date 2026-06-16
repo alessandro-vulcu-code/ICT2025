@@ -1,0 +1,80 @@
+\section{Quality Assessment and QoE for Multimedia Services}
+\subsection{What is Quality Assessment?}
+It is the association of a grade/number to a specific signal, called stimulus.\\
+The assessment process can be objective (using a math. formula) or subjective (ask to people).\\
+We have a Quality/Rate tradeoff, since these process are time/space-complex, energy and latency consuming.\\
+QoE is a multidimensional variable.
+\subsection{Image Quality: Subjective Assessment}
+It is not easy to get consistant results, need to define carefully the equipment, such that the environmental conditions are equal for all the people that is asked. Process is costly, offline and time consuming.\\
+Because of this it is used as the golden standard, but in a $2^{nd}$ phase of testing (cannot afford at first trial).
+\subsubsection{Testing Conditions}
+People must be in the same conditions to get good assessments, we have to take into account people artifacts (expert people vs non-expert people, people who prefer movements vs detail, colorblind people, myopia...)
+\begin{itemize}
+    \item Space Information: lots of details and structures $\to$ Nature Documentaries
+    \item Temporal Information: lots of movement $\to$ football matches (high difference between 2 near frames)
+\end{itemize}
+Users should be informed about the assessment methods, it shouldn't be too long, people can be tired.\\
+Human Observers do not always agree. Techniques can be compared using a flowchart.
+\subsubsection{1$^{st}$ Technique: Single Stimulus}
+We have ACR (Absolute Category Rating) techniques. What if we have to compute a `normal' scale? ACR-HR (Hidden Reference) technique.
+\subsubsection{2$^{nd}$ Technique: Double Stimulus}
+DSIS (Double Stimulus Impairment Scale) technique, very high accuracy, used for codec validation. It alternates reference video with the test video.
+\subsubsection{3$^{rd}$ Technique: Pairwise Comparison}
+PC technique assures a fine perceptual ranking, by comparing some times 2 different images/videos and asking which is the best among those possible answers.
+\subsection{Human Assessment Measures}
+Nowadays we can use also crowdfunded campaigns to call volunteers.
+\subsubsection{MOS: Mean Opinion Score}
+$$\text{MOS} = \frac{1}{N}\sr{N}{i=1} x_i$$
+This is evaluable with std. measures
+\subsubsection{Standard Measures}
+\begin{itemize}
+    \item Standard Deviation: $s = \sqrt{\frac{1}{N}\sr{N}{i-1}(x_i - m)^2}$
+    \item Standard Error: SE $= \frac{s}{\sqrt{N}} = \frac{1}{N}\sqrt{\sr{N}{i-1}(x_i - m)^2}$
+    \item Confidence Interval: CI $= [-1.96\cdot \text{SE}, 1.96\cdot \text{SE}]$
+\end{itemize}
+\subsection{Image Quality: Objective Assessment}
+It is difficult to evaluate the human perceptual system using maths.\\
+It is always a chain of:
+$$\boxed{\text{Input Signal Reference}} \qquad \longrightarrow \qquad \boxed{\text{Signal Processing}} \qquad \longrightarrow \qquad \boxed{\text{Output Signal}}$$
+$$\text{Input Signal}: I(n,m,c,t) \qquad \text{Output Signal}: \hat{I}(n,m,c,t) \qquad \text{ where }\begin{cases}
+    n,m \to \text{ position}\\
+    c \to \text{ component}\\
+    t \to \text{ time}
+\end{cases}$$
+\subsubsection{Full Reference Techniques}
+From the previous chain we take the input $I$ and the output $\hat{I}$ and we compare them in the $\boxed{FR}$ block.
+\subsubsection{Y component measures}
+$$\text{MSE}_Y(t) = \frac{1}{NM}\sr{}{n,m}\left[I(n,m,1,t) - \hat{I}(n,m,1,t)\right]^2$$
+$$\text{PSNR}_{Y,\text{dB}}(t) \approx 48\text{dB} - 10\log_{10}\text{MSE}_Y(t)$$
+\subsubsection{CbCr component measures}
+Analog to the Y component we can write:
+$$\text{MSE}_{Cb}(t) = \frac{1}{\frac{N}{2}\cdot\frac{M}{2}}\sr{}{n,m}\left[I(n,m,2,t) - \hat{I}(n,m,2,t)\right]^2 \qquad \text{MSE}_{Cr}(t) = \frac{1}{\frac{N}{2}\cdot\frac{M}{2}}\sr{}{n,m}\left[I(n,m,3,t) - \hat{I}(n,m,3,t)\right]^2$$
+\subsubsection{Total PSNR measure}
+$$\text{PSNR}_\text{YCbCr}(t) = \frac{3}{4}\text{PSNR}_\text{Y}(t) + \frac{1}{4}\left[\frac{1}{2}\text{PSNR}_\text{Cb}(t) + \frac{1}{2}\text{PSNR}_\text{Cr}(t)\right]$$
+\subsubsection{Bjontegaard Deltas}
+It measures the average improvement for the PSNR. Given two different codecs:
+\begin{itemize}
+    \item Delta PSNR: Average PSNR difference (in dB) between the two codecs
+    \item Delta Rate: Average rate difference (in percentage) at the same quality 
+\end{itemize}
+We don't actually need to compute the integrals, we just use log-based parametric functions given 4 points.
+\subsubsection{Perceptual Metrics}
+Why PSNR is not enough? It is a Per-pixel distorsion measure (no idea of the temporal perception), for videos we have to use perceptual metrics:
+\begin{itemize}
+    \item SSIM: Structure-SIMilarity (compares YCbCr and structural information instead of PSNR-like methods)
+    \item VMAF: Video Multi-method Assessment Fusion (from Netflix and Google(?))
+    \begin{itemize}
+        \item Multiple features to estimate video quality
+        \item It exploits ML techniques to get objective testing
+    \end{itemize}
+    \item AI-based metrics: CNN based, trained using image subjective datasets (get very good estimations)
+\end{itemize}
+\subsubsection{Reduced Reference}
+Practical for Large Scale systems. The input $I$ and output $\hat{I}$ goes in a parallel way into:
+$$\boxed{I} \qquad \longrightarrow \qquad \boxed{\text{Feature Extraction}}\qquad \longrightarrow \qquad \boxed{\text{Reduced Reference Processing}}\qquad \longleftarrow \qquad \boxed{\hat{I}}$$
+We focus on a limited subset of features, which are preserved in the final image.
+\subsubsection{No Reference}
+It only used the $\hat{I}$ output:
+$$\boxed{\hat{I}} \qquad \longrightarrow \qquad \boxed{NR}$$
+Techniques: BRISQUE, NIQE, PIQE. Used to assess photos.\\
+Mobile Smartphone Cameras are assessed this way, it tells what are the characteristics of the good images.
