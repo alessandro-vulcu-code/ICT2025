@@ -549,7 +549,7 @@ Probabilities: A=0.4, B=0.2, C=0.15, D=0.15, E=0.05, F=0.05
 \end{calloutbox}
 
 \begin{center}\includegraphics[width=0.600\linewidth]{Pasted_image_20260522124452.png}\end{center}
-[[3. Lossless coding.pdf\#page=79|Example: arithmetic coding interval subdivision for ACFD]]
+\textit{(Source figure: arithmetic coding interval subdivision for ACFD.)}
 
 \subsection{Average Length}
 
@@ -686,101 +686,102 @@ L_n \xrightarrow{n\to\infty} \mathcal{H}(X)
 \textbf{Problem:} encode a binary stream using a dynamic dictionary initialized with one-symbol entries.
 
 Input stream:
+\begin{center}
+\texttt{0 0 0 1 0 0 0 0 0 0 1 0 1 0 0 0 0 1 0 0 0 0 1 0}
+\end{center}
 
+Initial dictionary:
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{Code} & \textbf{Pattern} \\ \hline
+\texttt{0} & \texttt{0} \\ \hline
+\texttt{1} & \texttt{1} \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{Encoding rule:} keep the longest current prefix already present in the dictionary. When adding the next bit creates a new pattern, output the code of the known prefix and insert the new pattern in the dictionary.
+
+\begin{center}
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522125815.png}\\[2pt]
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522130349.png}\\[2pt]
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522130357.png}\\[2pt]
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522130409.png}\\[2pt]
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522130420.png}\\[2pt]
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522130430.png}\\[2pt]
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522130441.png}\\[2pt]
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522130449.png}\\[2pt]
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522130457.png}\\[2pt]
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522130506.png}\\[2pt]
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522130519.png}
+\end{center}
+
+The dictionary grows as recurring binary patterns are discovered:
+\begin{center}
+\begin{tabular}{|c|c|l|l|}
+\hline
+\textbf{Step} & \textbf{New dictionary entry} & \textbf{Pattern added} & \textbf{Output stream after emission} \\ \hline
+1 & \texttt{2} & \texttt{00} & \texttt{0} \\ \hline
+2 & \texttt{3} & \texttt{001} & \texttt{0 2} \\ \hline
+3 & \texttt{4} & \texttt{10} & \texttt{0 2 1} \\ \hline
+4 & \texttt{5} & \texttt{000} & \texttt{0 2 1 2} \\ \hline
+5 & \texttt{6} & \texttt{0000} & \texttt{0 2 1 2 2} \\ \hline
+6 & \texttt{7} & \texttt{01} & \texttt{0 2 1 2 2 0} \\ \hline
+7 & \texttt{8} & \texttt{101} & \texttt{0 2 1 2 2 0 4} \\ \hline
+8 & \texttt{9} & \texttt{100} & \texttt{0 2 1 2 2 0 4 4} \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{Notation note:} the visual walkthrough keeps the displayed code stream \texttt{0 2 1 2 2 0 4 4}. If the same binary stream is recomputed with the strict longest-prefix LZW table above, the entry \texttt{000} is indexed as \texttt{5}, so that checkpoint may appear as \texttt{0 2 1 2 5 ...}. Use the visual values when matching the figures, and the algorithmic values when recomputing the standard LZW procedure by hand.
+
+Figure: LZW encoding frames where \texttt{00} is detected as a new pattern, added at dictionary index \texttt{2}, and the first \texttt{0} is emitted.
+
+\begin{center}
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522125906.png}\\[2pt]
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522130004.png}
+\end{center}
+
+The output values are dictionary indices, not final binary codewords. The compression benefit appears when a long pattern is represented by one index instead of by all its raw bits.
+
+\textbf{Decoding rule:} read each index, output the associated pattern, and add the same new patterns in the same order. The decoder does not receive the dictionary; it reconstructs it because encoder and decoder follow the same deterministic update rule.
+
+A shorter coded prefix is decoded as:
+\begin{center}
+\texttt{0 2 1 2 2 0}
+\end{center}
+
+During decoding, some just-created entries are written with temporary symbols such as \texttt{x}, \texttt{y}, \texttt{z}, and \texttt{w}. These placeholders mean: "this bit will be known when the corresponding dictionary entry is resolved." This is the classic LZW self-reference case.
+
+The decoder evolution is:
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Input prefix read} & \textbf{New dictionary entry} & \textbf{Decoded output form} \\ \hline
+\texttt{0} & \texttt{2 = 0x} & \texttt{0x} \\ \hline
+\texttt{0 2} & \texttt{3 = 0xy}, then \texttt{3 = 00y} & \texttt{000y} \\ \hline
+\texttt{0 2 1} & \texttt{4 = 1z} & \texttt{0001z} \\ \hline
+\texttt{0 2 1 2} & \texttt{5 = 00w} & \texttt{000100w} \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\includegraphics[width=0.6\linewidth]{Pasted_image_20260522130246.png}
+\end{center}
+
+Figure: LZW decoding frames where entries \texttt{2}, \texttt{3}, \texttt{4}, and \texttt{5} are reconstructed while the output evolves through \texttt{0x}, \texttt{000y}, \texttt{0001z}, and \texttt{000100w}.
+
+At the shown checkpoint the output is:
+\begin{center}
+\texttt{000100w}
+\end{center}
+
+The next resolution gives $w = 0$, so the prefix becomes:
+\begin{center}
+\texttt{0001000}
+\end{center}
+
+\textbf{Takeaway:} LZW works because encoder and decoder do not need to transmit the dictionary. Both sides create identical entries in identical order, so a repeated pattern can later be transmitted as a compact dictionary index.
 \end{calloutbox}
-\begin{verbatim}
-> 0 0 0 1 0 0 0 0 0 0 1 0 1 0 0 0 0 1 0 0 0 0 1 0
-> 
-\end{verbatim}
-
-\textgreater{}
-\textgreater{} Initial dictionary:
-\textgreater{}
-\textgreater{} | Code | Pattern |
-\textgreater{} | :---: | :--- |
-\textgreater{} | \texttt{0} | \texttt{0} |
-\textgreater{} | \texttt{1} | \texttt{1} |
-\textgreater{}
-\textgreater{} \textbf{Encoding rule:} keep the longest current prefix already present in the dictionary. When adding the next bit creates a new pattern, output the code of the known prefix and insert the new pattern in the dictionary.
-\textgreater{}
-\textgreater{} ![[Pasted image 20260522125815.png]]
-\textgreater{} ![[Pasted image 20260522130349.png]]
-\textgreater{}![[Pasted image 20260522130357.png]]
-\textgreater{}![[Pasted image 20260522130409.png]]
-\textgreater{}![[Pasted image 20260522130420.png]]
-\textgreater{}![[Pasted image 20260522130430.png]]
-\textgreater{}![[Pasted image 20260522130441.png]]
-\textgreater{}![[Pasted image 20260522130449.png]]
-\textgreater{}![[Pasted image 20260522130457.png]]
-\textgreater{}![[Pasted image 20260522130506.png]]
-\textgreater{}![[Pasted image 20260522130519.png]]
-\textgreater{}
-\textgreater{} The dictionary grows as recurring binary patterns are discovered:
-\textgreater{}
-\textgreater{} | Step | New dictionary entry | Pattern added | Output stream after emission |
-\textgreater{} | :---: | :---: | :--- | :--- |
-\textgreater{} | 1 | \texttt{2} | \texttt{00} | \texttt{0} |
-\textgreater{} | 2 | \texttt{3} | \texttt{001} | \texttt{0 2} |
-\textgreater{} | 3 | \texttt{4} | \texttt{10} | \texttt{0 2 1} |
-\textgreater{} | 4 | \texttt{5} | \texttt{000} | \texttt{0 2 1 2} |
-\textgreater{} | 5 | \texttt{6} | \texttt{0000} | \texttt{0 2 1 2 2} |
-\textgreater{} | 6 | \texttt{7} | \texttt{01} | \texttt{0 2 1 2 2 0} |
-\textgreater{} | 7 | \texttt{8} | \texttt{101} | \texttt{0 2 1 2 2 0 4} |
-\textgreater{} | 8 | \texttt{9} | \texttt{100} | \texttt{0 2 1 2 2 0 4 4} |
-\textgreater{}
-\textgreater{} \textbf{Notation note:} the visual walkthrough keeps the displayed code stream \texttt{0 2 1 2 2 0 4 4}. If the same binary stream is recomputed with the strict longest-prefix LZW table above, the entry \texttt{000} is indexed as \texttt{5}, so that checkpoint may appear as \texttt{0 2 1 2 5 ...}. Use the visual values when matching the figures, and the algorithmic values when recomputing the standard LZW procedure by hand.
-\textgreater{} Figure: LZW encoding frames where \texttt{00} is detected as a new pattern, added at dictionary index \texttt{2}, and the first \texttt{0} is emitted.
-\textgreater{}
-\textgreater{}![[Pasted image 20260522125906.png]]
-\textgreater{}![[Pasted image 20260522130004.png]]
-\textgreater{}
-\textgreater{} The output values are dictionary indices, not final binary codewords. The compression benefit appears when a long pattern is represented by one index instead of by all its raw bits.
-\textgreater{}
-\textgreater{} \textbf{Decoding rule:} read each index, output the associated pattern, and add the same new patterns in the same order. The decoder does not receive the dictionary; it reconstructs it because encoder and decoder follow the same deterministic update rule.
-\textgreater{}
-\textgreater{} A shorter coded prefix is decoded as:
-\textgreater{}
-\textgreater{}
-\begin{verbatim}
-> 0 2 1 2 2 0
-> 
-\end{verbatim}
-
-\textgreater{}
-\textgreater{} During decoding, some just-created entries are written with temporary symbols such as \texttt{x}, \texttt{y}, \texttt{z}, and \texttt{w}. These placeholders mean: "this bit will be known when the corresponding dictionary entry is resolved." This is the classic LZW self-reference case.
-\textgreater{}
-\textgreater{} The decoder evolution is:
-\textgreater{}
-\textgreater{} | Input prefix read | New dictionary entry | Decoded output form |
-\textgreater{} | :--- | :--- | :--- |
-\textgreater{} | \texttt{0} | \texttt{2 = 0x} | \texttt{0x} |
-\textgreater{} | \texttt{0 2} | \texttt{3 = 0xy}, then \texttt{3 = 00y} | \texttt{000y} |
-\textgreater{} | \texttt{0 2 1} | \texttt{4 = 1z} | \texttt{0001z} |
-\textgreater{} | \texttt{0 2 1 2} | \texttt{5 = 00w} | \texttt{000100w} |
-\textgreater{}
-\textgreater{} ![[Pasted image 20260522130246.png]]
-\textgreater{}
-\textgreater{} Figure: LZW decoding frames where entries \texttt{2}, \texttt{3}, \texttt{4}, and \texttt{5} are reconstructed while the output evolves through \texttt{0x}, \texttt{000y}, \texttt{0001z}, and \texttt{000100w}.
-\textgreater{}
-\textgreater{} At the shown checkpoint the output is:
-\textgreater{}
-\textgreater{}
-\begin{verbatim}
-> 000100w
-> 
-\end{verbatim}
-
-\textgreater{}
-\textgreater{} The next resolution gives $w = 0$, so the prefix becomes:
-\textgreater{}
-\textgreater{}
-\begin{verbatim}
-> 0001000
-> 
-\end{verbatim}
-
-\textgreater{}
-\textgreater{} \textbf{Takeaway:} LZW works because encoder and decoder do not need to transmit the dictionary. Both sides create identical entries in identical order, so a repeated pattern can later be transmitted as a compact dictionary index.
 
 \textbf{Family of algorithms}:
 

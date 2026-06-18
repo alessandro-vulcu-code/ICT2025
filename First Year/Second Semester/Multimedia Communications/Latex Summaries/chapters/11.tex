@@ -1,0 +1,506 @@
+\chapter{Quality Assessment and Quality of Experience for Multimedia Services}
+
+\section{Table of Contents}
+
+\begin{itemize}
+  \item Core Idea
+  \item Key Concepts
+  \item Theory and Formulas
+  \item Visual Schemes
+  \item Examples
+\end{itemize}
+
+\section{Core Idea}
+
+\textbf{Quality assessment} assigns a quantitative grade to a multimedia stimulus as perceived by human observers. In multimedia services, this grade is needed because quality is the \textbf{benefit} in the tradeoff against rate, latency, complexity, memory, and energy.
+
+\begin{calloutbox}{red!70!black}{Quality assessment}
+\textbf{Statement:} quality assessment maps one or more multimedia signals to a number describing perceived quality.
+
+\textbf{Meaning:} if humans produce the number, the method is subjective. If an algorithm produces it, the method is objective. Subjective evaluation remains ground truth.
+\end{calloutbox}
+
+\textbf{QoS} (\textit{Quality of Service}) describes measurable system/network properties: bitrate, delay, jitter, loss, resolution, frame rate. \textbf{QoE} (\textit{Quality of Experience}) describes final user perception, including content, display, context, expectations, and interaction.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch11/rate-quality-tradeoff.png}\end{center}
+Rate-quality curves show why quality assessment is necessary: codec/service choices must compare quality gain against bitrate cost.
+
+\section{Key Concepts}
+
+\subsection{Assessment Taxonomy}
+
+\begin{center}\includegraphics[width=\linewidth]{ch11/quality-assessment-taxonomy.png}\end{center}
+Quality assessment splits into subjective and objective families.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Family} & \textbf{Method} & \textbf{Reference availability} & \textbf{Typical use} \\ \hline
+subjective & ACR / MOS & none shown directly & fast large-scale scoring \\ \hline
+subjective & ACR-HR & hidden reference & large compression tests \\ \hline
+subjective & DSIS & visible reference & fidelity/degradation tests \\ \hline
+subjective & Pairwise comparison & relative A/B & fine ranking \\ \hline
+objective & Full-reference & complete original & codec evaluation \\ \hline
+objective & Reduced-reference & features from original & network monitoring \\ \hline
+objective & No-reference & no original & streaming analytics, UGC \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Subjective Testing}
+
+Subjective testing directly measures human opinion, but must control:
+
+\begin{itemize}
+  \item lab illumination and display;
+  \item viewing distance;
+  \item monitor characteristics;
+  \item observer acuity and color vision;
+  \item content selection;
+  \item stimulus order;
+  \item training and fatigue;
+  \item score processing and outlier handling.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Subjective assessment}
+Subjective experiments are expensive and slow, but they are the gold standard because objective metrics are only useful when they correlate with human perception.
+\end{calloutbox}
+
+\subsection{Stimulus Selection: SI and TI}
+
+Video test sets should span content diversity. \textbf{Spatial Information (SI)} measures spatial detail; \textbf{Temporal Information (TI)} measures temporal activity.
+
+\begin{center}\includegraphics[width=\linewidth]{ch11/spatial-information-pipeline.png}\end{center}
+SI uses Sobel edge energy and keeps maximum activity across time.
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch11/temporal-information-pipeline.png}\end{center}
+TI uses frame differences and keeps maximum temporal activity.
+
+\subsection{Subjective Methodologies}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Method} & \textbf{Procedure} & \textbf{Strength} & \textbf{Weakness} \\ \hline
+\textbf{ACR} & rate one stimulus independently & fast, natural usage & no direct fidelity test \\ \hline
+\textbf{ACR-HR} & ACR with hidden reference & removes scene/reference bias & less sensitive than direct comparison \\ \hline
+\textbf{DSIS} & show reference then impaired & strong fidelity test & longer sessions \\ \hline
+\textbf{PC} & choose better of two & highest discrimination & grows slowly with many items \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch11/dsis-timing.png}\end{center}
+DSIS explicitly compares reference and impaired stimulus, so it is well suited for transmission fidelity.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch11/subjective-method-selection.png}\end{center}
+Method choice depends on required accuracy, reference availability, and test scale.
+
+\subsection{Objective Metric Types}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Type} & \textbf{Input} & \textbf{Accuracy} & \textbf{Main problem} \\ \hline
+\textbf{FR} & reference + processed signal & highest & reference often unavailable \\ \hline
+\textbf{RR} & partial reference features + processed signal & medium & needs side information \\ \hline
+\textbf{NR} & processed signal only & hardest / evolving & must separate content from artifacts \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch11/full-reference-metric.png}\end{center}
+FR metrics compare original and processed signals directly.
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch11/reduced-reference-metric.png}\end{center}
+RR metrics transmit only selected reference features.
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch11/no-reference-metric.png}\end{center}
+NR metrics estimate quality from received content alone.
+
+\section{Theory and Formulas}
+
+\subsection{Spatial Information}
+
+For each frame $F_n$, apply Sobel filtering and compute spatial standard deviation:
+
+\[
+SI=\max_{time}\{\sigma_{space}[Sobel(F_n)]\}
+\]
+
+High $SI$ means many edges/textures. Low $SI$ means smooth content.
+
+\subsection{Temporal Information}
+
+Frame difference:
+
+\[
+M_n(i,j)=F_n(i,j)-F_{n-1}(i,j)
+\]
+
+Temporal Information:
+
+\[
+TI=\max_{time}\{\sigma_{space}[M_n(i,j)]\}
+\]
+
+High $TI$ means strong motion or temporal changes.
+
+\subsection{MOS}
+
+If $N$ observers give scores $x_i$:
+
+\[
+MOS=\frac{1}{N}\sum_{i=1}^{N}x_i
+\]
+
+\begin{calloutbox}{red!70!black}{MOS limitation}
+MOS estimates average perceived quality. It does not describe observer disagreement or statistical confidence.
+\end{calloutbox}
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch11/mos-histogram.png}\end{center}
+Subjective scores are random variables; MOS is estimated from their distribution.
+
+\subsection{Variability, Standard Error, Confidence}
+
+Standard deviation:
+
+\[
+s=\sqrt{\frac{1}{N}\sum_{i=1}^{N}(x_i-m)^2}
+\]
+
+Standard error:
+
+\[
+SE=\frac{s}{\sqrt{N}}
+\]
+
+Approximate 95\% confidence interval around MOS:
+
+\[
+ci=[-1.96SE,\;1.96SE]
+\]
+
+\begin{center}\includegraphics[width=0.867\linewidth]{ch11/standard-error-sampling.png}\end{center}
+More observers reduce uncertainty of MOS estimate, not intrinsic disagreement.
+
+\begin{calloutbox}{red!70!black}{Standard error}
+$s$ measures spread among observers. $SE$ measures uncertainty of mean estimate. Increasing $N$ decreases $SE$ but does not force observers to agree.
+\end{calloutbox}
+
+\subsection{Human Visual System Effects}
+
+Objective metrics should consider visual perception:
+
+\begin{itemize}
+  \item local contrast matters;
+  \item same luminance can look different on different backgrounds;
+  \item edges can create overshoot/undershoot perception;
+  \item motion and geometry illusions show that perception is not pixel-wise.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.533\linewidth]{ch11/mach-band-effect.png}\end{center}
+Mach bands show perceived brightness overshoot near intensity transitions.
+
+\begin{center}\includegraphics[width=0.867\linewidth]{ch11/simultaneous-contrast.png}\end{center}
+Simultaneous contrast: identical gray patches appear different depending on background.
+
+\subsection{MSE and PSNR}
+
+For luminance component at frame $t$:
+
+\[
+MSE_Y(t)=\frac{1}{NM}\sum_{n,m}
+\left(I(n,m,1,t)-\hat{I}(n,m,1,t)\right)^2
+\]
+
+PSNR:
+
+\[
+PSNR_Y(t)=10\log_{10}\frac{255^2}{MSE_Y(t)}
+\approx 48\text{dB}-10\log_{10}MSE_Y(t)
+\]
+
+Typical interpretation:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{PSNR} & \textbf{Quality} \\ \hline
+$>45$ dB & excellent \\ \hline
+40-45 dB & very good \\ \hline
+30-40 dB & good to very good \\ \hline
+$<30$ dB & usually poor \\ \hline
+\end{tabular}}
+\end{center}
+
+Weighted YCbCr PSNR:
+
+\[
+PSNR_{YCbCr}(t)=
+\frac{3}{4}PSNR_Y(t)
++\frac{1}{8}PSNR_{Cb}(t)
++\frac{1}{8}PSNR_{Cr}(t)
+\]
+
+Video sequence average:
+
+\[
+PSNR_Y=\frac{1}{T}\sum_{t=1}^{T}PSNR_Y(t)
+\]
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch11/psnr-frame-plot.png}\end{center}
+Per-frame PSNR varies across I/P/B frames, so sequence averages hide temporal behavior.
+
+\subsection{Bjontegaard Metrics}
+
+Rate-distortion curves are compared with:
+
+\begin{itemize}
+  \item \textbf{BD-Rate}: average bitrate difference at same quality, in percent;
+  \item \textbf{BD-PSNR}: average PSNR difference at same bitrate, in dB.
+\end{itemize}
+
+Typical procedure:
+
+\begin{enumerate}
+  \item measure 4 or 5 RD points per codec;
+  \item fit polynomial, often in $t=\log R$;
+  \item integrate curve difference on common interval;
+  \item divide by interval length.
+\end{enumerate}
+
+\begin{center}\includegraphics[width=0.867\linewidth]{ch11/bjontegaard-area.png}\end{center}
+Bjontegaard area summarizes full RD-curve difference into one number.
+
+\subsection{Why PSNR Is Not Enough}
+
+PSNR treats all pixel errors equally. It ignores:
+
+\begin{itemize}
+  \item masking;
+  \item structure and edges;
+  \item temporal sensitivity;
+  \item artifact type;
+  \item viewing conditions.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch11/similar-psnr-different-quality.png}\end{center}
+Different distortions can have similar PSNR but very different perceived quality.
+
+\begin{calloutbox}{red!70!black}{PSNR limitation}
+Similar PSNR does not imply similar QoE. Blur, blocking, ringing, frame drops, and motion judder can have different annoyance at same pixel-error level.
+\end{calloutbox}
+
+\subsection{SSIM}
+
+\textbf{SSIM} (\textit{Structural Similarity Index}) is full-reference and compares luminance, contrast, and structure:
+
+\[
+SSIM(x,y)=[l(x,y)]^\alpha[c(x,y)]^\beta[s(x,y)]^\gamma
+\]
+
+Range:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{SSIM} & \textbf{Meaning} \\ \hline
+1.0 & identical \\ \hline
+$>0.95$ & very high \\ \hline
+0.8-0.9 & noticeable degradation \\ \hline
+\end{tabular}}
+\end{center}
+
+Components:
+
+\begin{itemize}
+  \item $l(x,y)$: luminance similarity, related to light adaptation;
+  \item $c(x,y)$: contrast similarity, related to contrast masking;
+  \item $s(x,y)$: structure similarity.
+\end{itemize}
+
+SSIM better follows HVS than PSNR, but remains limited for video temporal perception and complex artifacts.
+
+\subsection{VMAF}
+
+\textbf{VMAF} (\textit{Video Multi-Method Assessment Fusion}) is full-reference video metric from Netflix.
+
+It fuses:
+
+\begin{itemize}
+  \item VIF/detail preservation;
+  \item DLM/structural information;
+  \item temporal information;
+  \item learned mapping from subjective data;
+  \item spatial and temporal pooling.
+\end{itemize}
+
+Values run from 0 to 100. Around 90+ often indicates good perceptual quality; 93 is common target.
+
+\begin{center}\includegraphics[width=\linewidth]{ch11/vmaf-pipeline.png}\end{center}
+VMAF combines perceptual features and learned fusion to predict subjective quality.
+
+\subsection{AI-Based Metrics}
+
+Modern metrics use deep networks and subjective datasets:
+
+\begin{itemize}
+  \item \textbf{LPIPS}: perceptual feature distance;
+  \item \textbf{DISTS}: deep image structure/texture similarity;
+  \item learned NR models such as CLIP-IQA-like approaches.
+\end{itemize}
+
+AI metrics can model complex artifacts and generated media, but depend strongly on training data and validation.
+
+\subsection{Reduced-Reference Metrics}
+
+RR metrics transmit selected reference features:
+
+\begin{itemize}
+  \item edge statistics;
+  \item frequency features;
+  \item texture descriptors;
+  \item motion descriptors.
+\end{itemize}
+
+Use cases: IPTV monitoring, adaptive streaming, network QoE monitoring.
+
+Limitation: less accurate than FR and requires side information.
+
+\subsection{No-Reference Metrics}
+
+NR metrics infer quality without original signal. Examples:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Metric} & \textbf{Main idea} \\ \hline
+BRISQUE & natural scene statistics \\ \hline
+NIQE & deviation from natural image statistics \\ \hline
+PIQE & block-wise distortion estimation \\ \hline
+Deep NR & learned perceptual prediction \\ \hline
+\end{tabular}}
+\end{center}
+
+NR is essential for social media, user-generated content, mobile capture, surveillance, and streaming analytics. It is hardest because metric must distinguish real scene properties from distortions.
+
+\section{Visual Schemes}
+
+\subsection{Subjective Quality Experiment}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Stimulus set] --> B[Lab setup]
+    B --> C[Observer screening]
+    C --> D[Training]
+    D --> E[Randomized test session]
+    E --> F[Scores]
+    F --> G[Outlier processing]
+    G --> H[MOS + CI]
+\end{verbatim}
+
+Subjective tests require controlled environment, controlled stimuli, and statistical score processing.
+
+\subsection{Objective Metric Pipeline}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Reference signal] --> B{Reference available?}
+    C[Processed signal] --> B
+    B -- full --> D[FR metric]
+    B -- partial --> E[RR metric]
+    B -- none --> F[NR metric]
+    D --> G[Predicted quality]
+    E --> G
+    F --> G
+\end{verbatim}
+
+Reference availability determines objective metric family.
+
+\subsection{QoE Optimization Loop}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Codec / network parameters] --> B[Delivered media]
+    B --> C[QoS: rate delay loss frame rate]
+    B --> D[Perceived quality]
+    D --> E[QoE score]
+    E --> F[Optimization]
+    C --> F
+    F --> A
+\end{verbatim}
+
+Systems should optimize user-perceived QoE, not only raw QoS or PSNR.
+
+\section{Examples}
+
+\subsection{Subjective Method Choice}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Goal} & \textbf{Recommended method} \\ \hline
+fast large-scale testing & ACR \\ \hline
+remove reference-scene bias & ACR-HR \\ \hline
+fidelity to source & DSIS \\ \hline
+rank near-equivalent versions & Pairwise comparison \\ \hline
+uncontrolled large panel & crowdsourcing with strict filtering \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{SI/TI Content Interpretation}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Content} & \textbf{SI} & \textbf{TI} & \textbf{Meaning} \\ \hline
+football & medium & high & motion-dominated \\ \hline
+anime & medium & low & edges but little motion \\ \hline
+nature documentary & high & medium & texture/detail-heavy \\ \hline
+video call & low & low & smooth and static \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Objective Metrics Summary}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Metric} & \textbf{Type} & \textbf{Strength} & \textbf{Weakness} \\ \hline
+MSE & FR & simple, differentiable & perceptually weak \\ \hline
+PSNR & FR & standard codec comparison & ignores HVS/artifact type \\ \hline
+BD-Rate & RD comparison & summarizes curves & depends on fitted points/range \\ \hline
+SSIM & FR & structure-aware & limited temporal modeling \\ \hline
+VMAF & FR video & strong practical QoE predictor & trained/validated on datasets \\ \hline
+BRISQUE/NIQE/PIQE & NR & no reference needed & lower reliability \\ \hline
+AI metrics & FR/RR/NR & complex perceptual modeling & training-data dependence \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Final Exam Table}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Concept} & \textbf{Must remember} \\ \hline
+QoE & final perceived user quality \\ \hline
+QoS & measurable system/network conditions \\ \hline
+subjective assessment & gold standard, slow and costly \\ \hline
+objective assessment & scalable prediction of subjective quality \\ \hline
+MOS & average opinion score \\ \hline
+SE & uncertainty of MOS estimate, $s/\sqrt{N}$ \\ \hline
+CI & reliability interval for estimated MOS \\ \hline
+SI/TI & content descriptors for spatial/temporal complexity \\ \hline
+ACR/ACR-HR/DSIS/PC & subjective methodologies with different tradeoffs \\ \hline
+MSE/PSNR & simple fidelity metrics \\ \hline
+BD-Rate/BD-PSNR & RD-curve comparison metrics \\ \hline
+SSIM & luminance, contrast, structure \\ \hline
+VMAF & learned fusion of video quality features \\ \hline
+FR/RR/NR & objective metric families based on reference availability \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{Main takeaway}
+Multimedia quality is ultimately human perception. PSNR and QoS are useful engineering signals, but codec and service decisions should be validated against subjective QoE or objective metrics trained to predict it.
+\end{calloutbox}

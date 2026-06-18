@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.7)  16 JUN 2026 21:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.7)  17 JUN 2026 16:37
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
@@ -951,28 +950,28 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.48 ...2.2}Uniform Quantization}{20}{section.2.2}
+l.48 ...inition and Formula}{20}{subsection.2.2.1}
                                                   % [1
 
 ] [2] [3] [4] [5]
 [6] [7{/opt/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/opt/texl
 ive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}] [8] [9]
-Overfull \hbox (3.89328pt too wide) detected at line 496
+Overfull \hbox (3.89328pt too wide) detected at line 495
 \T1/lmr/m/n/10.95 12.18.10 
  []
 
 
-Overfull \hbox (3.89328pt too wide) detected at line 497
+Overfull \hbox (3.89328pt too wide) detected at line 496
 \T1/lmr/m/n/10.95 12.18.11 
  []
 
 
-Overfull \hbox (3.89328pt too wide) detected at line 499
+Overfull \hbox (3.89328pt too wide) detected at line 498
 \T1/lmr/m/n/10.95 12.18.12 
  []
 
 
-Overfull \hbox (3.89328pt too wide) detected at line 501
+Overfull \hbox (3.89328pt too wide) detected at line 500
 \T1/lmr/m/n/10.95 12.18.13 
  []
 
@@ -982,7 +981,7 @@ Overfull \hbox (3.89328pt too wide) detected at line 501
 
  [10] (./chapters/01.tex
 Chapter 1.
-<Pics/Pasted_image_20260501163251.png, id=2491, 592.46344pt x 331.2375pt>
+<Pics/Pasted_image_20260501163251.png, id=2486, 592.46344pt x 331.2375pt>
 File: Pics/Pasted_image_20260501163251.png Graphic file (type png)
 <use Pics/Pasted_image_20260501163251.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501163251.png  used on input li
@@ -996,19 +995,19 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 
 
  <./Pics/Pasted_image_20260501163251.png>]
-<Pics/Pasted_image_20260522103557.png, id=2498, 536.75531pt x 149.8097pt>
+<Pics/Pasted_image_20260522103557.png, id=2493, 536.75531pt x 149.8097pt>
 File: Pics/Pasted_image_20260522103557.png Graphic file (type png)
 <use Pics/Pasted_image_20260522103557.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522103557.png  used on input li
 ne 41.
 (pdftex.def)             Requested size: 233.31252pt x 65.1164pt.
-<Pics/Pasted_image_20260522103612.png, id=2499, 322.20375pt x 518.6878pt>
+<Pics/Pasted_image_20260522103612.png, id=2494, 322.20375pt x 518.6878pt>
 File: Pics/Pasted_image_20260522103612.png Graphic file (type png)
 <use Pics/Pasted_image_20260522103612.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522103612.png  used on input li
 ne 41.
 (pdftex.def)             Requested size: 186.64716pt x 300.47507pt.
-<Pics/Pasted_image_20260501163356.png, id=2500, 414.79968pt x 311.66437pt>
+<Pics/Pasted_image_20260501163356.png, id=2495, 414.79968pt x 311.66437pt>
 File: Pics/Pasted_image_20260501163356.png Graphic file (type png)
 <use Pics/Pasted_image_20260501163356.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501163356.png  used on input li
@@ -1017,7 +1016,7 @@ ne 58.
  [2{/opt/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/opt/texlive/20
 25/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc} <./Pics/Pasted_image_2026052210
 3557.png> <./Pics/Pasted_image_20260522103612.png>]
-<Pics/Pasted_image_20260501163417.png, id=2511, 414.79968pt x 311.66437pt>
+<Pics/Pasted_image_20260501163417.png, id=2506, 414.79968pt x 311.66437pt>
 File: Pics/Pasted_image_20260501163417.png Graphic file (type png)
 <use Pics/Pasted_image_20260501163417.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501163417.png  used on input li
@@ -1025,7 +1024,7 @@ ne 70.
 (pdftex.def)             Requested size: 279.97786pt x 210.36913pt.
  [3 <./Pics/Pasted_image_20260501163356.png> <./Pics/Pasted_image_2026050116341
 7.png>]
-<Pics/Pasted_image_20260501163800.png, id=2518, 569.87906pt x 311.66437pt>
+<Pics/Pasted_image_20260501163800.png, id=2513, 569.87906pt x 311.66437pt>
 File: Pics/Pasted_image_20260501163800.png Graphic file (type png)
 <use Pics/Pasted_image_20260501163800.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501163800.png  used on input li
@@ -1038,26 +1037,26 @@ Overfull \hbox (50.01045pt too wide) in paragraph at lines 119--126
 
 [4{/opt/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc} <./Pics/Paste
 d_image_20260501163800.png>]
-<Pics/Pasted_image_20260501163839.png, id=2528, 576.65437pt x 213.79875pt>
+<Pics/Pasted_image_20260501163839.png, id=2523, 576.65437pt x 213.79875pt>
 File: Pics/Pasted_image_20260501163839.png Graphic file (type png)
 <use Pics/Pasted_image_20260501163839.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501163839.png  used on input li
 ne 146.
 (pdftex.def)             Requested size: 279.97786pt x 103.80644pt.
  [5 <./Pics/Pasted_image_20260501163839.png>]
-<Pics/Pasted_image_20260501163938.png, id=2537, 221.32687pt x 186.6975pt>
+<Pics/Pasted_image_20260501163938.png, id=2532, 221.32687pt x 186.6975pt>
 File: Pics/Pasted_image_20260501163938.png Graphic file (type png)
 <use Pics/Pasted_image_20260501163938.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501163938.png  used on input li
 ne 164.
 (pdftex.def)             Requested size: 376.09966pt x 317.27328pt.
-<Pics/Pasted_image_20260501164014.png, id=2538, 582.67688pt x 213.04594pt>
+<Pics/Pasted_image_20260501164014.png, id=2533, 582.67688pt x 213.04594pt>
 File: Pics/Pasted_image_20260501164014.png Graphic file (type png)
 <use Pics/Pasted_image_20260501164014.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501164014.png  used on input li
 ne 171.
 (pdftex.def)             Requested size: 279.97786pt x 102.37141pt.
-<Pics/Pasted_image_20260522103757.png, id=2539, 484.05844pt x 265.74281pt>
+<Pics/Pasted_image_20260522103757.png, id=2534, 484.05844pt x 265.74281pt>
 File: Pics/Pasted_image_20260522103757.png Graphic file (type png)
 <use Pics/Pasted_image_20260522103757.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522103757.png  used on input li
@@ -1066,13 +1065,13 @@ ne 181.
 
 [6 <./Pics/Pasted_image_20260501163938.png> <./Pics/Pasted_image_20260501164014
 .png>]
-<Pics/Pasted_image_20260501164647.png, id=2547, 434.37282pt x 213.04594pt>
+<Pics/Pasted_image_20260501164647.png, id=2542, 434.37282pt x 213.04594pt>
 File: Pics/Pasted_image_20260501164647.png Graphic file (type png)
 <use Pics/Pasted_image_20260501164647.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501164647.png  used on input li
 ne 183.
 (pdftex.def)             Requested size: 279.97786pt x 137.32742pt.
-<Pics/Pasted_image_20260501164756.png, id=2548, 162.6075pt x 130.23656pt>
+<Pics/Pasted_image_20260501164756.png, id=2543, 162.6075pt x 130.23656pt>
 File: Pics/Pasted_image_20260501164756.png Graphic file (type png)
 <use Pics/Pasted_image_20260501164756.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501164756.png  used on input li
@@ -1080,13 +1079,13 @@ ne 215.
 (pdftex.def)             Requested size: 279.97786pt x 224.25887pt.
  [7 <./Pics/Pasted_image_20260522103757.png> <./Pics/Pasted_image_2026050116464
 7.png>]
-<Pics/Pasted_image_20260501164937.png, id=2556, 362.10281pt x 266.49562pt>
+<Pics/Pasted_image_20260501164937.png, id=2551, 362.10281pt x 266.49562pt>
 File: Pics/Pasted_image_20260501164937.png Graphic file (type png)
 <use Pics/Pasted_image_20260501164937.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501164937.png  used on input li
 ne 219.
 (pdftex.def)             Requested size: 279.97786pt x 206.0562pt.
-<Pics/Pasted_image_20260501164947.png, id=2557, 328.97906pt x 251.43938pt>
+<Pics/Pasted_image_20260501164947.png, id=2552, 328.97906pt x 251.43938pt>
 File: Pics/Pasted_image_20260501164947.png Graphic file (type png)
 <use Pics/Pasted_image_20260501164947.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501164947.png  used on input li
@@ -1094,7 +1093,7 @@ ne 221.
 (pdftex.def)             Requested size: 279.97786pt x 213.99303pt.
  [8 <./Pics/Pasted_image_20260501164756.png> <./Pics/Pasted_image_2026050116493
 7.png>]
-<Pics/Pasted_image_20260501165005.png, id=2565, 699.36281pt x 302.63063pt>
+<Pics/Pasted_image_20260501165005.png, id=2560, 699.36281pt x 302.63063pt>
 File: Pics/Pasted_image_20260501165005.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165005.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165005.png  used on input li
@@ -1102,14 +1101,14 @@ ne 231.
 (pdftex.def)             Requested size: 279.97786pt x 121.15169pt.
  [9 <./Pics/Pasted_image_20260501164947.png> <./Pics/Pasted_image_2026050116500
 5.png>] [10]
-<Pics/Pasted_image_20260501165037.png, id=2576, 443.40656pt x 90.3375pt>
+<Pics/Pasted_image_20260501165037.png, id=2571, 443.40656pt x 90.3375pt>
 File: Pics/Pasted_image_20260501165037.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165037.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165037.png  used on input li
 ne 367.
 (pdftex.def)             Requested size: 279.97786pt x 57.04387pt.
  [11 <./Pics/Pasted_image_20260501165037.png>]
-<Pics/Pasted_image_20260501165141.png, id=2590, 307.90031pt x 207.02344pt>
+<Pics/Pasted_image_20260501165141.png, id=2585, 307.90031pt x 207.02344pt>
 File: Pics/Pasted_image_20260501165141.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165141.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165141.png  used on input li
@@ -1117,25 +1116,25 @@ ne 422.
 (pdftex.def)             Requested size: 279.97786pt x 188.26208pt.
 
 [12 <./Pics/Pasted_image_20260501165141.png>]
-<Pics/Pasted_image_20260501165246.png, id=2599, 549.55313pt x 303.38344pt>
+<Pics/Pasted_image_20260501165246.png, id=2594, 549.55313pt x 303.38344pt>
 File: Pics/Pasted_image_20260501165246.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165246.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165246.png  used on input li
 ne 455.
 (pdftex.def)             Requested size: 279.97786pt x 154.5661pt.
-<Pics/Pasted_image_20260501165300.png, id=2600, 549.55313pt x 303.38344pt>
+<Pics/Pasted_image_20260501165300.png, id=2595, 549.55313pt x 303.38344pt>
 File: Pics/Pasted_image_20260501165300.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165300.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165300.png  used on input li
 ne 456.
 (pdftex.def)             Requested size: 279.97786pt x 154.5661pt.
-<Pics/Pasted_image_20260501165307.png, id=2601, 549.55313pt x 303.38344pt>
+<Pics/Pasted_image_20260501165307.png, id=2596, 549.55313pt x 303.38344pt>
 File: Pics/Pasted_image_20260501165307.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165307.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165307.png  used on input li
 ne 457.
 (pdftex.def)             Requested size: 279.97786pt x 154.5661pt.
-<Pics/Pasted_image_20260501165313.png, id=2602, 549.55313pt x 303.38344pt>
+<Pics/Pasted_image_20260501165313.png, id=2597, 549.55313pt x 303.38344pt>
 File: Pics/Pasted_image_20260501165313.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165313.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165313.png  used on input li
@@ -1143,7 +1142,7 @@ ne 458.
 (pdftex.def)             Requested size: 279.97786pt x 154.5661pt.
  [13 <./Pics/Pasted_image_20260501165246.png> <./Pics/Pasted_image_202605011653
 00.png> <./Pics/Pasted_image_20260501165307.png>]
-<Pics/Pasted_image_20260501165357.png, id=2611, 539.01375pt x 252.19218pt>
+<Pics/Pasted_image_20260501165357.png, id=2606, 539.01375pt x 252.19218pt>
 File: Pics/Pasted_image_20260501165357.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165357.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165357.png  used on input li
@@ -1151,19 +1150,19 @@ ne 485.
 (pdftex.def)             Requested size: 279.97786pt x 130.99445pt.
  [14 <./Pics/Pasted_image_20260501165313.png> <./Pics/Pasted_image_202605011653
 57.png>]
-<Pics/Pasted_image_20260501165536.png, id=2619, 524.71031pt x 295.1025pt>
+<Pics/Pasted_image_20260501165536.png, id=2614, 524.71031pt x 295.1025pt>
 File: Pics/Pasted_image_20260501165536.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165536.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165536.png  used on input li
 ne 519.
 (pdftex.def)             Requested size: 279.97786pt x 157.46625pt.
-<Pics/Pasted_image_20260501165547.png, id=2620, 524.71031pt x 295.1025pt>
+<Pics/Pasted_image_20260501165547.png, id=2615, 524.71031pt x 295.1025pt>
 File: Pics/Pasted_image_20260501165547.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165547.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165547.png  used on input li
 ne 520.
 (pdftex.def)             Requested size: 279.97786pt x 157.46625pt.
-<Pics/Pasted_image_20260501165556.png, id=2621, 524.71031pt x 295.1025pt>
+<Pics/Pasted_image_20260501165556.png, id=2616, 524.71031pt x 295.1025pt>
 File: Pics/Pasted_image_20260501165556.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165556.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165556.png  used on input li
@@ -1171,25 +1170,25 @@ ne 521.
 (pdftex.def)             Requested size: 279.97786pt x 157.46625pt.
  [15 <./Pics/Pasted_image_20260501165536.png> <./Pics/Pasted_image_202605011655
 47.png>]
-<Pics/Pasted_image_20260501165604.png, id=2628, 524.71031pt x 295.1025pt>
+<Pics/Pasted_image_20260501165604.png, id=2623, 524.71031pt x 295.1025pt>
 File: Pics/Pasted_image_20260501165604.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165604.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165604.png  used on input li
 ne 522.
 (pdftex.def)             Requested size: 279.97786pt x 157.46625pt.
-<Pics/Pasted_image_20260501165612.png, id=2629, 524.71031pt x 295.1025pt>
+<Pics/Pasted_image_20260501165612.png, id=2624, 524.71031pt x 295.1025pt>
 File: Pics/Pasted_image_20260501165612.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165612.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165612.png  used on input li
 ne 523.
 (pdftex.def)             Requested size: 279.97786pt x 157.46625pt.
-<Pics/Pasted_image_20260501165619.png, id=2630, 524.71031pt x 295.1025pt>
+<Pics/Pasted_image_20260501165619.png, id=2625, 524.71031pt x 295.1025pt>
 File: Pics/Pasted_image_20260501165619.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165619.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165619.png  used on input li
 ne 524.
 (pdftex.def)             Requested size: 279.97786pt x 157.46625pt.
-<Pics/Pasted_image_20260501165626.png, id=2631, 524.71031pt x 279.29344pt>
+<Pics/Pasted_image_20260501165626.png, id=2626, 524.71031pt x 279.29344pt>
 File: Pics/Pasted_image_20260501165626.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165626.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165626.png  used on input li
@@ -1199,7 +1198,7 @@ ne 525.
 04.png> <./Pics/Pasted_image_20260501165612.png> <./Pics/Pasted_image_202605011
 65619.png>]) [17 <./Pics/Pasted_image_20260501165626.png>] (./chapters/02.tex
 Chapter 2.
-<Pics/Pasted_image_20260501165859.png, id=2645, 1505.625pt x 1174.3875pt>
+<Pics/Pasted_image_20260501165859.png, id=2640, 1505.625pt x 1174.3875pt>
 File: Pics/Pasted_image_20260501165859.png Graphic file (type png)
 <use Pics/Pasted_image_20260501165859.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501165859.png  used on input li
@@ -1209,19 +1208,19 @@ ne 29.
 
 
 ] [19 <./Pics/Pasted_image_20260501165859.png>]
-<Pics/Pasted_image_20260501170641.png, id=2656, 284.56313pt x 258.9675pt>
+<Pics/Pasted_image_20260501170641.png, id=2651, 284.56313pt x 258.9675pt>
 File: Pics/Pasted_image_20260501170641.png Graphic file (type png)
 <use Pics/Pasted_image_20260501170641.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501170641.png  used on input li
 ne 83.
 (pdftex.def)             Requested size: 233.31252pt x 212.33495pt.
-<Pics/Pasted_image_20260501170650.png, id=2657, 263.48438pt x 258.9675pt>
+<Pics/Pasted_image_20260501170650.png, id=2652, 263.48438pt x 258.9675pt>
 File: Pics/Pasted_image_20260501170650.png Graphic file (type png)
 <use Pics/Pasted_image_20260501170650.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501170650.png  used on input li
 ne 83.
 (pdftex.def)             Requested size: 233.31252pt x 229.32253pt.
-<Pics/Pasted_image_20260501170704.png, id=2658, 698.61pt x 347.04657pt>
+<Pics/Pasted_image_20260501170704.png, id=2653, 698.61pt x 347.04657pt>
 File: Pics/Pasted_image_20260501170704.png Graphic file (type png)
 <use Pics/Pasted_image_20260501170704.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501170704.png  used on input li
@@ -1229,37 +1228,37 @@ ne 86.
 (pdftex.def)             Requested size: 279.97786pt x 139.08623pt.
  [20 <./Pics/Pasted_image_20260501170641.png> <./Pics/Pasted_image_202605011706
 50.png> <./Pics/Pasted_image_20260501170704.png>]
-<Pics/Pasted_image_20260522112004.png, id=2667, 435.12563pt x 436.63126pt>
+<Pics/Pasted_image_20260522112004.png, id=2662, 435.12563pt x 436.63126pt>
 File: Pics/Pasted_image_20260522112004.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112004.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112004.png  used on input li
 ne 118.
 (pdftex.def)             Requested size: 209.97983pt x 210.71323pt.
-<Pics/Pasted_image_20260522112025.png, id=2668, 435.12563pt x 453.19313pt>
+<Pics/Pasted_image_20260522112025.png, id=2663, 435.12563pt x 453.19313pt>
 File: Pics/Pasted_image_20260522112025.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112025.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112025.png  used on input li
 ne 118.
 (pdftex.def)             Requested size: 209.97983pt x 218.7058pt.
-<Pics/Pasted_image_20260522112044.png, id=2669, 435.12563pt x 453.19313pt>
+<Pics/Pasted_image_20260522112044.png, id=2664, 435.12563pt x 453.19313pt>
 File: Pics/Pasted_image_20260522112044.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112044.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112044.png  used on input li
 ne 122.
 (pdftex.def)             Requested size: 209.97983pt x 218.7058pt.
-<Pics/Pasted_image_20260522112112.png, id=2670, 435.12563pt x 453.19313pt>
+<Pics/Pasted_image_20260522112112.png, id=2665, 435.12563pt x 453.19313pt>
 File: Pics/Pasted_image_20260522112112.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112112.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112112.png  used on input li
 ne 122.
 (pdftex.def)             Requested size: 209.97983pt x 218.7058pt.
-<Pics/Pasted_image_20260522112124.png, id=2671, 435.12563pt x 453.19313pt>
+<Pics/Pasted_image_20260522112124.png, id=2666, 435.12563pt x 453.19313pt>
 File: Pics/Pasted_image_20260522112124.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112124.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112124.png  used on input li
 ne 126.
 (pdftex.def)             Requested size: 209.97983pt x 218.7058pt.
-<Pics/Pasted_image_20260522112139.png, id=2672, 435.12563pt x 453.19313pt>
+<Pics/Pasted_image_20260522112139.png, id=2667, 435.12563pt x 453.19313pt>
 File: Pics/Pasted_image_20260522112139.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112139.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112139.png  used on input li
@@ -1268,19 +1267,19 @@ ne 126.
  [21 <./Pics/Pasted_image_20260522112004.png> <./Pics/Pasted_image_202605221120
 25.png> <./Pics/Pasted_image_20260522112044.png> <./Pics/Pasted_image_202605221
 12112.png>]
-<Pics/Pasted_image_20260522112150.png, id=2681, 435.12563pt x 453.19313pt>
+<Pics/Pasted_image_20260522112150.png, id=2676, 435.12563pt x 453.19313pt>
 File: Pics/Pasted_image_20260522112150.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112150.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112150.png  used on input li
 ne 130.
 (pdftex.def)             Requested size: 209.97983pt x 218.7058pt.
-<Pics/Pasted_image_20260522112201.png, id=2682, 435.12563pt x 453.19313pt>
+<Pics/Pasted_image_20260522112201.png, id=2677, 435.12563pt x 453.19313pt>
 File: Pics/Pasted_image_20260522112201.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112201.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112201.png  used on input li
 ne 130.
 (pdftex.def)             Requested size: 209.97983pt x 218.7058pt.
-<Pics/Pasted_image_20260522112829.png, id=2683, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522112829.png, id=2678, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522112829.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112829.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112829.png  used on input li
@@ -1289,111 +1288,111 @@ ne 147.
  [22 <./Pics/Pasted_image_20260522112124.png> <./Pics/Pasted_image_202605221121
 39.png> <./Pics/Pasted_image_20260522112150.png> <./Pics/Pasted_image_202605221
 12201.png>]
-<Pics/Pasted_image_20260522112843.png, id=2693, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522112843.png, id=2687, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522112843.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112843.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112843.png  used on input li
 ne 150.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
-<Pics/Pasted_image_20260522112853.png, id=2694, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522112853.png, id=2688, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522112853.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112853.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112853.png  used on input li
 ne 153.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
-<Pics/Pasted_image_20260522112905.png, id=2695, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522112905.png, id=2689, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522112905.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112905.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112905.png  used on input li
-ne 158.
+ne 157.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
  [23 <./Pics/Pasted_image_20260522112829.png> <./Pics/Pasted_image_202605221128
 43.png> <./Pics/Pasted_image_20260522112853.png>]
-<Pics/Pasted_image_20260522112914.png, id=2703, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522112914.png, id=2698, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522112914.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112914.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112914.png  used on input li
-ne 161.
+ne 160.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
-<Pics/Pasted_image_20260522112924.png, id=2704, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522112924.png, id=2699, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522112924.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112924.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112924.png  used on input li
-ne 166.
+ne 164.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
  [24 <./Pics/Pasted_image_20260522112905.png> <./Pics/Pasted_image_202605221129
 14.png>]
-<Pics/Pasted_image_20260522112934.png, id=2711, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522112934.png, id=2706, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522112934.png Graphic file (type png)
 <use Pics/Pasted_image_20260522112934.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522112934.png  used on input li
-ne 169.
+ne 167.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
-<Pics/Pasted_image_20260522113005.png, id=2712, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522113005.png, id=2707, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522113005.png Graphic file (type png)
 <use Pics/Pasted_image_20260522113005.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522113005.png  used on input li
-ne 174.
+ne 171.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
  [25 <./Pics/Pasted_image_20260522112924.png> <./Pics/Pasted_image_202605221129
 34.png>]
-<Pics/Pasted_image_20260522113015.png, id=2719, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522113015.png, id=2714, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522113015.png Graphic file (type png)
 <use Pics/Pasted_image_20260522113015.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522113015.png  used on input li
-ne 177.
+ne 174.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
-<Pics/Pasted_image_20260522113034.png, id=2720, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522113034.png, id=2715, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522113034.png Graphic file (type png)
 <use Pics/Pasted_image_20260522113034.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522113034.png  used on input li
-ne 182.
+ne 178.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
  [26 <./Pics/Pasted_image_20260522113005.png> <./Pics/Pasted_image_202605221130
 15.png>]
-<Pics/Pasted_image_20260522113046.png, id=2728, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522113046.png, id=2723, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522113046.png Graphic file (type png)
 <use Pics/Pasted_image_20260522113046.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522113046.png  used on input li
-ne 185.
+ne 181.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
-<Pics/Pasted_image_20260522113058.png, id=2729, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522113058.png, id=2724, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522113058.png Graphic file (type png)
 <use Pics/Pasted_image_20260522113058.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522113058.png  used on input li
-ne 190.
+ne 185.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
  [27 <./Pics/Pasted_image_20260522113034.png> <./Pics/Pasted_image_202605221130
 46.png>]
-<Pics/Pasted_image_20260522113111.png, id=2736, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522113111.png, id=2731, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522113111.png Graphic file (type png)
 <use Pics/Pasted_image_20260522113111.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522113111.png  used on input li
-ne 193.
+ne 188.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
-<Pics/Pasted_image_20260522113120.png, id=2737, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522113120.png, id=2732, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522113120.png Graphic file (type png)
 <use Pics/Pasted_image_20260522113120.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522113120.png  used on input li
-ne 198.
+ne 192.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
  [28 <./Pics/Pasted_image_20260522113058.png> <./Pics/Pasted_image_202605221131
 11.png>]
-<Pics/Pasted_image_20260522113133.png, id=2744, 670.00313pt x 376.40625pt>
+<Pics/Pasted_image_20260522113133.png, id=2739, 670.00313pt x 376.40625pt>
 File: Pics/Pasted_image_20260522113133.png Graphic file (type png)
 <use Pics/Pasted_image_20260522113133.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522113133.png  used on input li
-ne 201.
+ne 195.
 (pdftex.def)             Requested size: 457.29053pt x 256.90053pt.
-<Pics/Pasted_image_20260501171132.png, id=2745, 566.115pt x 350.81062pt>
+<Pics/Pasted_image_20260501171132.png, id=2740, 566.115pt x 350.81062pt>
 File: Pics/Pasted_image_20260501171132.png Graphic file (type png)
 <use Pics/Pasted_image_20260501171132.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501171132.png  used on input li
-ne 220.
+ne 214.
 (pdftex.def)             Requested size: 279.97786pt x 173.49922pt.
  [29 <./Pics/Pasted_image_20260522113120.png> <./Pics/Pasted_image_202605221131
 33.png>] [30 <./Pics/Pasted_image_20260501171132.png>]
-Overfull \hbox (8.52731pt too wide) in paragraph at lines 275--276
+Overfull \hbox (8.52731pt too wide) in paragraph at lines 269--270
 []\T1/lmr/m/n/10.95 In HR, within any re-gion $\OT1/lmr/m/n/10.95 ^^B[]$\T1/lmr
 /m/n/10.95 , $\OML/lmm/m/it/10.95 p[]$ \T1/lmr/m/n/10.95 is ap-prox-i-mately co
 n-stant $\OMS/lmsy/m/n/10.95 !$ \T1/lmr/m/n/10.95 quan-ti-za-tion er-ror $\OMS/
@@ -1403,97 +1402,97 @@ lmsy/m/n/10.95 ^^X U\OT1/lmr/m/n/10.95 (\OMS/lmsy/m/n/10.95 ^^@\OT1/lmr/m/n/10.
  []
 
 [31] [32]
-<Pics/Pasted_image_20260501171327.png, id=2775, 190.46156pt x 280.04625pt>
+<Pics/Pasted_image_20260501171327.png, id=2770, 190.46156pt x 280.04625pt>
 File: Pics/Pasted_image_20260501171327.png Graphic file (type png)
 <use Pics/Pasted_image_20260501171327.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501171327.png  used on input li
-ne 397.
+ne 391.
 (pdftex.def)             Requested size: 279.97786pt x 411.7143pt.
-<Pics/Pasted_image_20260501171341.png, id=2776, 449.42906pt x 97.86563pt>
+<Pics/Pasted_image_20260501171341.png, id=2771, 449.42906pt x 97.86563pt>
 File: Pics/Pasted_image_20260501171341.png Graphic file (type png)
 <use Pics/Pasted_image_20260501171341.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501171341.png  used on input li
-ne 399.
+ne 393.
 (pdftex.def)             Requested size: 279.97786pt x 60.96873pt.
  [33 <./Pics/Pasted_image_20260501171327.png> <./Pics/Pasted_image_202605011713
 41.png>] [34]
-<Pics/Pasted_image_20260501171415.png, id=2787, 698.61pt x 272.51813pt>
+<Pics/Pasted_image_20260501171415.png, id=2782, 698.61pt x 272.51813pt>
 File: Pics/Pasted_image_20260501171415.png Graphic file (type png)
 <use Pics/Pasted_image_20260501171415.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501171415.png  used on input li
-ne 505.
+ne 499.
 (pdftex.def)             Requested size: 279.97786pt x 109.21738pt.
-<Pics/Pasted_image_20260501173123.png, id=2788, 702.37407pt x 306.39468pt>
+<Pics/Pasted_image_20260501173123.png, id=2783, 702.37407pt x 306.39468pt>
 File: Pics/Pasted_image_20260501173123.png Graphic file (type png)
 <use Pics/Pasted_image_20260501173123.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501173123.png  used on input li
-ne 509.
+ne 503.
 (pdftex.def)             Requested size: 279.97786pt x 122.13493pt.
-<Pics/Pasted_image_20260501173135.png, id=2789, 707.64375pt x 306.39468pt>
+<Pics/Pasted_image_20260501173135.png, id=2784, 707.64375pt x 306.39468pt>
 File: Pics/Pasted_image_20260501173135.png Graphic file (type png)
 <use Pics/Pasted_image_20260501173135.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501173135.png  used on input li
-ne 510.
+ne 504.
 (pdftex.def)             Requested size: 279.97786pt x 121.22327pt.
  [35 <./Pics/Pasted_image_20260501171415.png> <./Pics/Pasted_image_202605011731
 23.png>]
-<Pics/Pasted_image_20260501173200.png, id=2797, 707.64375pt x 306.39468pt>
+<Pics/Pasted_image_20260501173200.png, id=2792, 707.64375pt x 306.39468pt>
 File: Pics/Pasted_image_20260501173200.png Graphic file (type png)
 <use Pics/Pasted_image_20260501173200.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501173200.png  used on input li
-ne 534.
+ne 528.
 (pdftex.def)             Requested size: 279.97786pt x 121.22327pt.
-<Pics/Pasted_image_20260501173211.png, id=2798, 707.64375pt x 306.39468pt>
+<Pics/Pasted_image_20260501173211.png, id=2793, 707.64375pt x 306.39468pt>
 File: Pics/Pasted_image_20260501173211.png Graphic file (type png)
 <use Pics/Pasted_image_20260501173211.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501173211.png  used on input li
-ne 535.
+ne 529.
 (pdftex.def)             Requested size: 279.97786pt x 121.22327pt.
-<Pics/Pasted_image_20260501173246.png, id=2799, 712.91344pt x 306.39468pt>
+<Pics/Pasted_image_20260501173246.png, id=2794, 712.91344pt x 306.39468pt>
 File: Pics/Pasted_image_20260501173246.png Graphic file (type png)
 <use Pics/Pasted_image_20260501173246.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501173246.png  used on input li
-ne 540.
+ne 534.
 (pdftex.def)             Requested size: 279.97786pt x 120.32562pt.
  [36 <./Pics/Pasted_image_20260501173135.png> <./Pics/Pasted_image_202605011732
 00.png> <./Pics/Pasted_image_20260501173211.png>]
-<Pics/Pasted_image_20260501173300.png, id=2808, 712.91344pt x 306.39468pt>
+<Pics/Pasted_image_20260501173300.png, id=2803, 712.91344pt x 306.39468pt>
 File: Pics/Pasted_image_20260501173300.png Graphic file (type png)
 <use Pics/Pasted_image_20260501173300.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501173300.png  used on input li
-ne 562.
+ne 556.
 (pdftex.def)             Requested size: 279.97786pt x 120.32562pt.
 [37 <./Pics/Pasted_image_20260501173246.png> <./Pics/Pasted_image_2026050117330
 0.png>]
-<Pics/Pasted_image_20260501173349.png, id=2817, 447.17062pt x 208.52907pt>
+<Pics/Pasted_image_20260501173349.png, id=2812, 447.17062pt x 208.52907pt>
 File: Pics/Pasted_image_20260501173349.png Graphic file (type png)
 <use Pics/Pasted_image_20260501173349.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501173349.png  used on input li
-ne 590.
+ne 584.
 (pdftex.def)             Requested size: 279.97786pt x 130.5658pt.
-<Pics/Pasted_image_20260501173405.png, id=2818, 557.08125pt x 250.68657pt>
+<Pics/Pasted_image_20260501173405.png, id=2813, 557.08125pt x 250.68657pt>
 File: Pics/Pasted_image_20260501173405.png Graphic file (type png)
 <use Pics/Pasted_image_20260501173405.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501173405.png  used on input li
-ne 600.
+ne 594.
 (pdftex.def)             Requested size: 279.97786pt x 125.99324pt.
-<Pics/Pasted_image_20260501173437.png, id=2819, 706.13812pt x 250.68657pt>
+<Pics/Pasted_image_20260501173437.png, id=2814, 706.13812pt x 250.68657pt>
 File: Pics/Pasted_image_20260501173437.png Graphic file (type png)
 <use Pics/Pasted_image_20260501173437.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501173437.png  used on input li
-ne 604.
+ne 598.
 (pdftex.def)             Requested size: 279.97786pt x 99.39305pt.
-<Pics/Pasted_image_20260501173447.png, id=2820, 706.13812pt x 250.68657pt>
+<Pics/Pasted_image_20260501173447.png, id=2815, 706.13812pt x 250.68657pt>
 File: Pics/Pasted_image_20260501173447.png Graphic file (type png)
 <use Pics/Pasted_image_20260501173447.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501173447.png  used on input li
-ne 605.
+ne 599.
 (pdftex.def)             Requested size: 279.97786pt x 99.39305pt.
  [38 <./Pics/Pasted_image_20260501173349.png> <./Pics/Pasted_image_202605011734
 05.png> <./Pics/Pasted_image_20260501173437.png>]) [39 <./Pics/Pasted_image_202
 60501173447.png>] (./chapters/03.tex
 Chapter 3.
-<Pics/Pasted_image_20260501174916.png, id=2840, 672.26157pt x 161.10187pt>
+<Pics/Pasted_image_20260501174916.png, id=2835, 672.26157pt x 161.10187pt>
 File: Pics/Pasted_image_20260501174916.png Graphic file (type png)
 <use Pics/Pasted_image_20260501174916.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501174916.png  used on input li
@@ -1503,45 +1502,45 @@ ne 22.
 
 
  <./Pics/Pasted_image_20260501174916.png>] [41]
-<Pics/Pasted_image_20260501175049.png, id=2857, 381.67593pt x 295.85532pt>
+<Pics/Pasted_image_20260501175049.png, id=2852, 381.67593pt x 295.85532pt>
 File: Pics/Pasted_image_20260501175049.png Graphic file (type png)
 <use Pics/Pasted_image_20260501175049.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501175049.png  used on input li
 ne 122.
 (pdftex.def)             Requested size: 279.97786pt x 217.03345pt.
  [42 <./Pics/Pasted_image_20260501175049.png>]
-<Pics/Pasted_image_20260522113842.png, id=2863, 543.53062pt x 274.02374pt>
+<Pics/Pasted_image_20260522113842.png, id=2858, 543.53062pt x 274.02374pt>
 File: Pics/Pasted_image_20260522113842.png Graphic file (type png)
 <use Pics/Pasted_image_20260522113842.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522113842.png  used on input li
 ne 204.
 (pdftex.def)             Requested size: 279.97786pt x 141.15933pt.
  [43 <./Pics/Pasted_image_20260522113842.png>]
-<Pics/Pasted_image_20260522113926.png, id=2869, 836.3747pt x 274.02374pt>
+<Pics/Pasted_image_20260522113926.png, id=2864, 836.3747pt x 274.02374pt>
 File: Pics/Pasted_image_20260522113926.png Graphic file (type png)
 <use Pics/Pasted_image_20260522113926.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522113926.png  used on input li
 ne 225.
 (pdftex.def)             Requested size: 269.01479pt x 88.14096pt.
-<Pics/Pasted_image_20260522113942.png, id=2870, 836.3747pt x 312.41719pt>
+<Pics/Pasted_image_20260522113942.png, id=2865, 836.3747pt x 312.41719pt>
 File: Pics/Pasted_image_20260522113942.png Graphic file (type png)
 <use Pics/Pasted_image_20260522113942.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522113942.png  used on input li
 ne 226.
 (pdftex.def)             Requested size: 269.01479pt x 100.49037pt.
-<Pics/Pasted_image_20260522113958.png, id=2871, 836.3747pt x 312.41719pt>
+<Pics/Pasted_image_20260522113958.png, id=2866, 836.3747pt x 312.41719pt>
 File: Pics/Pasted_image_20260522113958.png Graphic file (type png)
 <use Pics/Pasted_image_20260522113958.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522113958.png  used on input li
 ne 227.
 (pdftex.def)             Requested size: 269.01479pt x 100.49037pt.
-<Pics/Pasted_image_20260522114010.png, id=2872, 836.3747pt x 312.41719pt>
+<Pics/Pasted_image_20260522114010.png, id=2867, 836.3747pt x 312.41719pt>
 File: Pics/Pasted_image_20260522114010.png Graphic file (type png)
 <use Pics/Pasted_image_20260522114010.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522114010.png  used on input li
 ne 228.
 (pdftex.def)             Requested size: 269.01479pt x 100.49037pt.
-<Pics/Pasted_image_20260522114025.png, id=2873, 836.3747pt x 312.41719pt>
+<Pics/Pasted_image_20260522114025.png, id=2868, 836.3747pt x 312.41719pt>
 File: Pics/Pasted_image_20260522114025.png Graphic file (type png)
 <use Pics/Pasted_image_20260522114025.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522114025.png  used on input li
@@ -1557,49 +1556,49 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
 (/opt/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<Pics/Pasted_image_20260522114157.png, id=2891, 325.96782pt x 312.41719pt>
+<Pics/Pasted_image_20260522114157.png, id=2886, 325.96782pt x 312.41719pt>
 File: Pics/Pasted_image_20260522114157.png Graphic file (type png)
 <use Pics/Pasted_image_20260522114157.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522114157.png  used on input li
 ne 320.
 (pdftex.def)             Requested size: 214.65063pt x 205.73357pt.
-<Pics/Pasted_image_20260522114218.png, id=2892, 325.96782pt x 312.41719pt>
+<Pics/Pasted_image_20260522114218.png, id=2887, 325.96782pt x 312.41719pt>
 File: Pics/Pasted_image_20260522114218.png Graphic file (type png)
 <use Pics/Pasted_image_20260522114218.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522114218.png  used on input li
 ne 320.
 (pdftex.def)             Requested size: 214.65063pt x 205.73357pt.
-<Pics/Pasted_image_20260522123825.png, id=2893, 459.96844pt x 329.73187pt>
+<Pics/Pasted_image_20260522123825.png, id=2888, 459.96844pt x 329.73187pt>
 File: Pics/Pasted_image_20260522123825.png Graphic file (type png)
 <use Pics/Pasted_image_20260522123825.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522123825.png  used on input li
 ne 361.
 (pdftex.def)             Requested size: 269.01479pt x 192.85461pt.
-<Pics/Pasted_image_20260522123948.png, id=2894, 677.53125pt x 377.15906pt>
+<Pics/Pasted_image_20260522123948.png, id=2889, 677.53125pt x 377.15906pt>
 File: Pics/Pasted_image_20260522123948.png Graphic file (type png)
 <use Pics/Pasted_image_20260522123948.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522123948.png  used on input li
 ne 366.
 (pdftex.def)             Requested size: 269.01479pt x 149.756pt.
-<Pics/Pasted_image_20260522124015.png, id=2895, 677.53125pt x 377.15906pt>
+<Pics/Pasted_image_20260522124015.png, id=2890, 677.53125pt x 377.15906pt>
 File: Pics/Pasted_image_20260522124015.png Graphic file (type png)
 <use Pics/Pasted_image_20260522124015.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522124015.png  used on input li
 ne 369.
 (pdftex.def)             Requested size: 269.01479pt x 149.756pt.
-<Pics/Pasted_image_20260522124028.png, id=2896, 677.53125pt x 377.15906pt>
+<Pics/Pasted_image_20260522124028.png, id=2891, 677.53125pt x 377.15906pt>
 File: Pics/Pasted_image_20260522124028.png Graphic file (type png)
 <use Pics/Pasted_image_20260522124028.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522124028.png  used on input li
 ne 372.
 (pdftex.def)             Requested size: 269.01479pt x 149.756pt.
-<Pics/Pasted_image_20260522124215.png, id=2897, 798.73407pt x 285.31593pt>
+<Pics/Pasted_image_20260522124215.png, id=2892, 798.73407pt x 285.31593pt>
 File: Pics/Pasted_image_20260522124215.png Graphic file (type png)
 <use Pics/Pasted_image_20260522124215.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522124215.png  used on input li
 ne 432.
 (pdftex.def)             Requested size: 269.01479pt x 96.09624pt.
-<Pics/Pasted_image_20260522124323.png, id=2898, 798.73407pt x 285.31593pt>
+<Pics/Pasted_image_20260522124323.png, id=2893, 798.73407pt x 285.31593pt>
 File: Pics/Pasted_image_20260522124323.png Graphic file (type png)
 <use Pics/Pasted_image_20260522124323.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522124323.png  used on input li
@@ -1611,109 +1610,196 @@ ne 514.
 age_20260522124028.png>]
 [49 <./Pics/Pasted_image_20260522124215.png>] [50 <./Pics/Pasted_image_20260522
 124323.png>]
-<Pics/Pasted_image_20260522124452.png, id=2934, 785.93625pt x 297.36093pt>
+<Pics/Pasted_image_20260522124452.png, id=2929, 785.93625pt x 297.36093pt>
 File: Pics/Pasted_image_20260522124452.png Graphic file (type png)
 <use Pics/Pasted_image_20260522124452.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522124452.png  used on input li
 ne 551.
 (pdftex.def)             Requested size: 279.97786pt x 105.93365pt.
  [51 <./Pics/Pasted_image_20260522124452.png>] [52]
-Overfull \hbox (13.77435pt too wide) in paragraph at lines 696--744
-\T1/lmr/m/n/10.95 20260522130420.png]] >![[Pasted im-age 20260522130430.png]] >
-![[Pasted im-age 20260522130441.png]]
- []
+<Pics/Pasted_image_20260522125815.png, id=2941, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522125815.png Graphic file (type png)
+<use Pics/Pasted_image_20260522125815.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522125815.png  used on input li
+ne 706.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522130349.png, id=2942, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522130349.png Graphic file (type png)
+<use Pics/Pasted_image_20260522130349.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522130349.png  used on input li
+ne 707.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522130357.png, id=2943, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522130357.png Graphic file (type png)
+<use Pics/Pasted_image_20260522130357.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522130357.png  used on input li
+ne 708.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522130409.png, id=2944, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522130409.png Graphic file (type png)
+<use Pics/Pasted_image_20260522130409.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522130409.png  used on input li
+ne 709.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522130420.png, id=2945, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522130420.png Graphic file (type png)
+<use Pics/Pasted_image_20260522130420.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522130420.png  used on input li
+ne 710.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522130430.png, id=2946, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522130430.png Graphic file (type png)
+<use Pics/Pasted_image_20260522130430.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522130430.png  used on input li
+ne 711.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522130441.png, id=2947, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522130441.png Graphic file (type png)
+<use Pics/Pasted_image_20260522130441.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522130441.png  used on input li
+ne 712.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522130449.png, id=2948, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522130449.png Graphic file (type png)
+<use Pics/Pasted_image_20260522130449.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522130449.png  used on input li
+ne 713.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522130457.png, id=2949, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522130457.png Graphic file (type png)
+<use Pics/Pasted_image_20260522130457.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522130457.png  used on input li
+ne 714.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522130506.png, id=2950, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522130506.png Graphic file (type png)
+<use Pics/Pasted_image_20260522130506.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522130506.png  used on input li
+ne 715.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522130519.png, id=2951, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522130519.png Graphic file (type png)
+<use Pics/Pasted_image_20260522130519.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522130519.png  used on input li
+ne 716.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522125906.png, id=2952, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522125906.png Graphic file (type png)
+<use Pics/Pasted_image_20260522125906.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522125906.png  used on input li
+ne 740.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522130004.png, id=2953, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522130004.png Graphic file (type png)
+<use Pics/Pasted_image_20260522130004.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522130004.png  used on input li
+ne 741.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+<Pics/Pasted_image_20260522130246.png, id=2954, 651.93562pt x 246.9225pt>
+File: Pics/Pasted_image_20260522130246.png Graphic file (type png)
+<use Pics/Pasted_image_20260522130246.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522130246.png  used on input li
+ne 768.
+(pdftex.def)             Requested size: 269.01479pt x 101.89445pt.
+ [53 <./Pics/Pasted_image_20260522125815.png>] [54 <./Pics/Pasted_image_2026052
+2130349.png> <./Pics/Pasted_image_20260522130357.png> <./Pics/Pasted_image_2026
+0522130409.png> <./Pics/Pasted_image_20260522130420.png> <./Pics/Pasted_image_2
+0260522130430.png> <./Pics/Pasted_image_20260522130441.png>] [55 <./Pics/Pasted
+_image_20260522130449.png> <./Pics/Pasted_image_20260522130457.png> <./Pics/Pas
+ted_image_20260522130506.png> <./Pics/Pasted_image_20260522130519.png>] [56 <./
+Pics/Pasted_image_20260522125906.png> <./Pics/Pasted_image_20260522130004.png> 
+<./Pics/Pasted_image_20260522130246.png>] [57
 
-[53] [54]
-<Pics/Pasted_image_20260501180155.png, id=2959, 715.92468pt x 295.1025pt>
+]
+<Pics/Pasted_image_20260501180155.png, id=2995, 715.92468pt x 295.1025pt>
 File: Pics/Pasted_image_20260501180155.png Graphic file (type png)
 <use Pics/Pasted_image_20260501180155.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501180155.png  used on input li
-ne 860.
+ne 861.
 (pdftex.def)             Requested size: 279.97786pt x 115.40471pt.
- [55 <./Pics/Pasted_image_20260501180155.png>]
-<Pics/Pasted_image_20260501180238.png, id=2965, 325.96782pt x 205.5178pt>
+<Pics/Pasted_image_20260501180238.png, id=2996, 325.96782pt x 205.5178pt>
 File: Pics/Pasted_image_20260501180238.png Graphic file (type png)
 <use Pics/Pasted_image_20260501180238.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501180238.png  used on input li
-ne 889.
+ne 890.
 (pdftex.def)             Requested size: 279.97786pt x 176.5349pt.
-<Pics/Pasted_image_20260501180316.png, id=2966, 319.1925pt x 199.49532pt>
+<Pics/Pasted_image_20260501180316.png, id=2997, 319.1925pt x 199.49532pt>
 File: Pics/Pasted_image_20260501180316.png Graphic file (type png)
 <use Pics/Pasted_image_20260501180316.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501180316.png  used on input li
-ne 902.
+ne 903.
 (pdftex.def)             Requested size: 279.97786pt x 174.98717pt.
- [56 <./Pics/Pasted_image_20260501180238.png> <./Pics/Pasted_image_202605011803
-16.png>] [57]
-Overfull \hbox (133.50963pt too wide) in paragraph at lines 1023--1031
- [] 
- []
-
-[58]
-Overfull \hbox (103.37817pt too wide) in paragraph at lines 1059--1068
+ [58 <./Pics/Pasted_image_20260501180155.png> <./Pics/Pasted_image_202605011802
+38.png>] [59 <./Pics/Pasted_image_20260501180316.png>] [60]
+Overfull \hbox (133.50963pt too wide) in paragraph at lines 1024--1032
  [] 
  []
 
 
-Overfull \hbox (70.1118pt too wide) in paragraph at lines 1079--1087
+Overfull \hbox (103.37817pt too wide) in paragraph at lines 1060--1069
  [] 
  []
 
-) [59] (./chapters/04.tex
+
+Overfull \hbox (70.1118pt too wide) in paragraph at lines 1080--1088
+ [] 
+ []
+
+[61]) [62] (./chapters/04.tex
 Chapter 4.
-[60
+[63
 
 
-] [61]
-<Pics/Pasted_image_20260501180944.png, id=3006, 400.49625pt x 152.82094pt>
+] [64]
+<Pics/Pasted_image_20260501180944.png, id=3042, 400.49625pt x 152.82094pt>
 File: Pics/Pasted_image_20260501180944.png Graphic file (type png)
 <use Pics/Pasted_image_20260501180944.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501180944.png  used on input li
 ne 125.
 (pdftex.def)             Requested size: 279.97786pt x 106.83865pt.
- [62 <./Pics/Pasted_image_20260501180944.png>]
-<Pics/Pasted_image_20260501181043.png, id=3015, 219.82124pt x 192.72pt>
+ [65 <./Pics/Pasted_image_20260501180944.png>]
+<Pics/Pasted_image_20260501181043.png, id=3050, 219.82124pt x 192.72pt>
 File: Pics/Pasted_image_20260501181043.png Graphic file (type png)
 <use Pics/Pasted_image_20260501181043.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501181043.png  used on input li
 ne 185.
 (pdftex.def)             Requested size: 451.6941pt x 396.01953pt.
- [63]
-<Pics/Pasted_image_20260501181202.png, id=3021, 257.46187pt x 134.75343pt>
+ [66]
+<Pics/Pasted_image_20260501181202.png, id=3056, 257.46187pt x 134.75343pt>
 File: Pics/Pasted_image_20260501181202.png Graphic file (type png)
 <use Pics/Pasted_image_20260501181202.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501181202.png  used on input li
 ne 197.
 (pdftex.def)             Requested size: 279.97786pt x 146.55139pt.
- [64 <./Pics/Pasted_image_20260501181043.png> <./Pics/Pasted_image_202605011812
+ [67 <./Pics/Pasted_image_20260501181043.png> <./Pics/Pasted_image_202605011812
 02.png>]
-<Pics/Pasted_image_20260522110626.png, id=3028, 420.82219pt x 316.18124pt>
+<Pics/Pasted_image_20260522110626.png, id=3063, 420.82219pt x 316.18124pt>
 File: Pics/Pasted_image_20260522110626.png Graphic file (type png)
 <use Pics/Pasted_image_20260522110626.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522110626.png  used on input li
 ne 218.
 (pdftex.def)             Requested size: 221.64973pt x 166.53798pt.
-<Pics/Pasted_image_20260522110639.png, id=3029, 420.82219pt x 341.77687pt>
+<Pics/Pasted_image_20260522110639.png, id=3064, 420.82219pt x 341.77687pt>
 File: Pics/Pasted_image_20260522110639.png Graphic file (type png)
 <use Pics/Pasted_image_20260522110639.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522110639.png  used on input li
 ne 218.
 (pdftex.def)             Requested size: 221.64973pt x 180.01962pt.
-<Pics/Pasted_image_20260522110653.png, id=3030, 536.0025pt x 222.07968pt>
+<Pics/Pasted_image_20260522110653.png, id=3065, 536.0025pt x 222.07968pt>
 File: Pics/Pasted_image_20260522110653.png Graphic file (type png)
 <use Pics/Pasted_image_20260522110653.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522110653.png  used on input li
 ne 222.
 (pdftex.def)             Requested size: 233.31252pt x 96.66487pt.
-<Pics/Pasted_image_20260522110705.png, id=3031, 383.93437pt x 344.78813pt>
+<Pics/Pasted_image_20260522110705.png, id=3066, 383.93437pt x 344.78813pt>
 File: Pics/Pasted_image_20260522110705.png Graphic file (type png)
 <use Pics/Pasted_image_20260522110705.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522110705.png  used on input li
 ne 222.
 (pdftex.def)             Requested size: 233.31252pt x 209.52603pt.
- [65 <./Pics/Pasted_image_20260522110626.png> <./Pics/Pasted_image_202605221106
+ [68 <./Pics/Pasted_image_20260522110626.png> <./Pics/Pasted_image_202605221106
 39.png> <./Pics/Pasted_image_20260522110653.png> <./Pics/Pasted_image_202605221
-10705.png>] [66]
+10705.png>] [69]
 
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 320.
 
@@ -1745,139 +1831,139 @@ LaTeX Warning: Command \textbackslash invalid in math mode on input line 320.
 LaTeX Warning: Command \textasciicircum invalid in math mode on input line 320.
 
 
-<Pics/Pasted_image_20260501181646.png, id=3051, 648.17157pt x 298.86656pt>
+<Pics/Pasted_image_20260501181646.png, id=3087, 648.17157pt x 298.86656pt>
 File: Pics/Pasted_image_20260501181646.png Graphic file (type png)
 <use Pics/Pasted_image_20260501181646.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501181646.png  used on input li
 ne 327.
 (pdftex.def)             Requested size: 279.97786pt x 129.09383pt.
-[67 <./Pics/Pasted_image_20260501181646.png>]
-<Pics/Pasted_image_20260501182052.png, id=3061, 549.55313pt x 298.86656pt>
+[70 <./Pics/Pasted_image_20260501181646.png>]
+<Pics/Pasted_image_20260501182052.png, id=3097, 549.55313pt x 298.86656pt>
 File: Pics/Pasted_image_20260501182052.png Graphic file (type png)
 <use Pics/Pasted_image_20260501182052.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501182052.png  used on input li
 ne 396.
 (pdftex.def)             Requested size: 279.97786pt x 152.26486pt.
- [68]
-<Pics/Pasted_image_20260501182128.png, id=3067, 705.38531pt x 219.82124pt>
+ [71]
+<Pics/Pasted_image_20260501182128.png, id=3102, 705.38531pt x 219.82124pt>
 File: Pics/Pasted_image_20260501182128.png Graphic file (type png)
 <use Pics/Pasted_image_20260501182128.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501182128.png  used on input li
 ne 402.
 (pdftex.def)             Requested size: 279.97786pt x 87.24937pt.
-<Pics/Pasted_image_20260501182154.png, id=3068, 517.18219pt x 256.70906pt>
+<Pics/Pasted_image_20260501182154.png, id=3103, 517.18219pt x 256.70906pt>
 File: Pics/Pasted_image_20260501182154.png Graphic file (type png)
 <use Pics/Pasted_image_20260501182154.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501182154.png  used on input li
 ne 406.
 (pdftex.def)             Requested size: 279.97786pt x 138.97336pt.
-<Pics/Pasted_image_20260501182310.png, id=3069, 712.91344pt x 208.52907pt>
+<Pics/Pasted_image_20260501182310.png, id=3104, 712.91344pt x 208.52907pt>
 File: Pics/Pasted_image_20260501182310.png Graphic file (type png)
 <use Pics/Pasted_image_20260501182310.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501182310.png  used on input li
 ne 412.
 (pdftex.def)             Requested size: 279.97786pt x 81.89238pt.
- [69 <./Pics/Pasted_image_20260501182052.png> <./Pics/Pasted_image_202605011821
+ [72 <./Pics/Pasted_image_20260501182052.png> <./Pics/Pasted_image_202605011821
 28.png> <./Pics/Pasted_image_20260501182154.png>]
-<Pics/Pasted_image_20260501182505.png, id=3078, 366.61969pt x 296.60812pt>
+<Pics/Pasted_image_20260501182505.png, id=3113, 366.61969pt x 296.60812pt>
 File: Pics/Pasted_image_20260501182505.png Graphic file (type png)
 <use Pics/Pasted_image_20260501182505.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501182505.png  used on input li
 ne 426.
 (pdftex.def)             Requested size: 279.97786pt x 226.52429pt.
-<Pics/Pasted_image_20260501182538.png, id=3079, 743.77875pt x 255.20343pt>
+<Pics/Pasted_image_20260501182538.png, id=3114, 743.77875pt x 255.20343pt>
 File: Pics/Pasted_image_20260501182538.png Graphic file (type png)
 <use Pics/Pasted_image_20260501182538.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501182538.png  used on input li
 ne 443.
 (pdftex.def)             Requested size: 279.97786pt x 96.0671pt.
- [70 <./Pics/Pasted_image_20260501182310.png> <./Pics/Pasted_image_202605011825
+ [73 <./Pics/Pasted_image_20260501182310.png> <./Pics/Pasted_image_202605011825
 05.png>]
-<Pics/Pasted_image_20260522104346.png, id=3086, 392.96812pt x 313.17pt>
+<Pics/Pasted_image_20260522104346.png, id=3121, 392.96812pt x 313.17pt>
 File: Pics/Pasted_image_20260522104346.png Graphic file (type png)
 <use Pics/Pasted_image_20260522104346.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522104346.png  used on input li
 ne 454.
 (pdftex.def)             Requested size: 279.97786pt x 223.1407pt.
-<Pics/Pasted_image_20260522104420.png, id=3087, 670.00313pt x 198.7425pt>
+<Pics/Pasted_image_20260522104420.png, id=3122, 670.00313pt x 198.7425pt>
 File: Pics/Pasted_image_20260522104420.png Graphic file (type png)
 <use Pics/Pasted_image_20260522104420.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522104420.png  used on input li
 ne 465.
 (pdftex.def)             Requested size: 279.97786pt x 83.04974pt.
- [71 <./Pics/Pasted_image_20260501182538.png> <./Pics/Pasted_image_202605221043
+ [74 <./Pics/Pasted_image_20260501182538.png> <./Pics/Pasted_image_202605221043
 46.png> <./Pics/Pasted_image_20260522104420.png>]
-<Pics/Pasted_image_20260501182627.png, id=3095, 463.7325pt x 168.63pt>
+<Pics/Pasted_image_20260501182627.png, id=3131, 463.7325pt x 168.63pt>
 File: Pics/Pasted_image_20260501182627.png Graphic file (type png)
 <use Pics/Pasted_image_20260501182627.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501182627.png  used on input li
 ne 501.
 (pdftex.def)             Requested size: 279.97786pt x 101.81175pt.
 
-[72 <./Pics/Pasted_image_20260501182627.png>]
-<Pics/Pasted_image_20260522104710.png, id=3110, 597.73312pt x 198.7425pt>
+[75 <./Pics/Pasted_image_20260501182627.png>]
+<Pics/Pasted_image_20260522104710.png, id=3146, 597.73312pt x 198.7425pt>
 File: Pics/Pasted_image_20260522104710.png Graphic file (type png)
 <use Pics/Pasted_image_20260522104710.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522104710.png  used on input li
 ne 553.
 (pdftex.def)             Requested size: 279.97786pt x 93.09056pt.
- [73 <./Pics/Pasted_image_20260522104710.png>] [74]
-<Pics/Pasted_image_20260501182720.png, id=3121, 265.74281pt x 217.5628pt>
+ [76 <./Pics/Pasted_image_20260522104710.png>] [77]
+<Pics/Pasted_image_20260501182720.png, id=3156, 265.74281pt x 217.5628pt>
 File: Pics/Pasted_image_20260501182720.png Graphic file (type png)
 <use Pics/Pasted_image_20260501182720.png>
 Package pdftex.def Info: Pics/Pasted_image_20260501182720.png  used on input li
 ne 638.
 (pdftex.def)             Requested size: 279.97786pt x 229.23445pt.
- [75 <./Pics/Pasted_image_20260501182720.png>]
+ [78 <./Pics/Pasted_image_20260501182720.png>]
 Overfull \hbox (10.98306pt too wide) in paragraph at lines 697--698
 []\T1/lmr/bx/n/10.95 Final bit-stream: \T1/lmtt/m/n/10.95 011001101010001011111
 1001100011100111101010000111011011101001010
  []
 
-<Pics/Pasted_image_20260522104858.png, id=3128, 611.28375pt x 288.3272pt>
+<Pics/Pasted_image_20260522104858.png, id=3163, 611.28375pt x 288.3272pt>
 File: Pics/Pasted_image_20260522104858.png Graphic file (type png)
 <use Pics/Pasted_image_20260522104858.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522104858.png  used on input li
 ne 715.
 (pdftex.def)             Requested size: 279.97786pt x 132.05577pt.
-[76 <./Pics/Pasted_image_20260522104858.png>]
-<Pics/Pasted_image_20260522105656.png, id=3135, 410.2828pt x 416.30531pt>
+[79 <./Pics/Pasted_image_20260522104858.png>]
+<Pics/Pasted_image_20260522105656.png, id=3170, 410.2828pt x 416.30531pt>
 File: Pics/Pasted_image_20260522105656.png Graphic file (type png)
 <use Pics/Pasted_image_20260522105656.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522105656.png  used on input li
 ne 750.
 (pdftex.def)             Requested size: 147.92076pt x 150.09212pt.
-<Pics/Pasted_image_20260522105711.png, id=3136, 410.2828pt x 416.30531pt>
+<Pics/Pasted_image_20260522105711.png, id=3171, 410.2828pt x 416.30531pt>
 File: Pics/Pasted_image_20260522105711.png Graphic file (type png)
 <use Pics/Pasted_image_20260522105711.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522105711.png  used on input li
 ne 750.
 (pdftex.def)             Requested size: 147.92076pt x 150.09212pt.
-<Pics/Pasted_image_20260522105725.png, id=3137, 410.2828pt x 416.30531pt>
+<Pics/Pasted_image_20260522105725.png, id=3172, 410.2828pt x 416.30531pt>
 File: Pics/Pasted_image_20260522105725.png Graphic file (type png)
 <use Pics/Pasted_image_20260522105725.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522105725.png  used on input li
 ne 750.
 (pdftex.def)             Requested size: 147.92076pt x 150.09212pt.
-<Pics/Pasted_image_20260522105736.png, id=3138, 410.2828pt x 416.30531pt>
+<Pics/Pasted_image_20260522105736.png, id=3173, 410.2828pt x 416.30531pt>
 File: Pics/Pasted_image_20260522105736.png Graphic file (type png)
 <use Pics/Pasted_image_20260522105736.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522105736.png  used on input li
 ne 754.
 (pdftex.def)             Requested size: 147.92076pt x 150.09212pt.
-<Pics/Pasted_image_20260522110011.png, id=3139, 410.2828pt x 416.30531pt>
+<Pics/Pasted_image_20260522110011.png, id=3174, 410.2828pt x 416.30531pt>
 File: Pics/Pasted_image_20260522110011.png Graphic file (type png)
 <use Pics/Pasted_image_20260522110011.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522110011.png  used on input li
 ne 754.
 (pdftex.def)             Requested size: 147.92076pt x 150.09212pt.
-<Pics/Pasted_image_20260522110044.png, id=3140, 410.2828pt x 416.30531pt>
+<Pics/Pasted_image_20260522110044.png, id=3175, 410.2828pt x 416.30531pt>
 File: Pics/Pasted_image_20260522110044.png Graphic file (type png)
 <use Pics/Pasted_image_20260522110044.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522110044.png  used on input li
 ne 754.
 (pdftex.def)             Requested size: 147.92076pt x 150.09212pt.
- [77 <./Pics/Pasted_image_20260522105656.png> <./Pics/Pasted_image_202605221057
+ [80 <./Pics/Pasted_image_20260522105656.png> <./Pics/Pasted_image_202605221057
 11.png> <./Pics/Pasted_image_20260522105725.png> <./Pics/Pasted_image_202605221
 05736.png> <./Pics/Pasted_image_20260522110011.png> <./Pics/Pasted_image_202605
 22110044.png>]
@@ -1891,35 +1977,1849 @@ Overfull \hbox (23.73503pt too wide) in paragraph at lines 802--818
  [] 
  []
 
-) [78] (./chapters/05.tex
+) [81] (./chapters/05.tex
 Chapter 5.
-<Pics/Pasted_image_20260522131150.png, id=3155, 618.05907pt x 282.30469pt>
+<Pics/Pasted_image_20260522131150.png, id=3191, 618.05907pt x 282.30469pt>
 File: Pics/Pasted_image_20260522131150.png Graphic file (type png)
 <use Pics/Pasted_image_20260522131150.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522131150.png  used on input li
 ne 42.
 (pdftex.def)             Requested size: 221.64973pt x 101.24191pt.
-<Pics/Pasted_image_20260522131213.png, id=3156, 618.05907pt x 282.30469pt>
+<Pics/Pasted_image_20260522131213.png, id=3192, 618.05907pt x 282.30469pt>
 File: Pics/Pasted_image_20260522131213.png Graphic file (type png)
 <use Pics/Pasted_image_20260522131213.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522131213.png  used on input li
 ne 42.
 (pdftex.def)             Requested size: 221.64973pt x 101.24191pt.
-<Pics/Pasted_image_20260522131257.png, id=3157, 618.05907pt x 282.30469pt>
+<Pics/Pasted_image_20260522131257.png, id=3193, 618.05907pt x 282.30469pt>
 File: Pics/Pasted_image_20260522131257.png Graphic file (type png)
 <use Pics/Pasted_image_20260522131257.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522131257.png  used on input li
 ne 46.
 (pdftex.def)             Requested size: 221.64973pt x 101.24191pt.
-<Pics/Pasted_image_20260522131317.png, id=3158, 618.05907pt x 282.30469pt>
+<Pics/Pasted_image_20260522131317.png, id=3194, 618.05907pt x 282.30469pt>
 File: Pics/Pasted_image_20260522131317.png Graphic file (type png)
 <use Pics/Pasted_image_20260522131317.png>
 Package pdftex.def Info: Pics/Pasted_image_20260522131317.png  used on input li
 ne 46.
 (pdftex.def)             Requested size: 221.64973pt x 101.24191pt.
-[79
+[82
 
 
  <./Pics/Pasted_image_20260522131150.png> <./Pics/Pasted_image_20260522131213.p
 ng>]
-<Pics/Pasted_image_20260522131505.png, id=3165, 289.83281pt x 282.30469pt>
+<Pics/Pasted_image_20260522131505.png, id=3201, 289.83281pt x 282.30469pt>
+File: Pics/Pasted_image_20260522131505.png Graphic file (type png)
+<use Pics/Pasted_image_20260522131505.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522131505.png  used on input li
+ne 62.
+(pdftex.def)             Requested size: 279.97786pt x 272.72383pt.
+<Pics/Pasted_image_20260522131525.png, id=3202, 286.82156pt x 248.42813pt>
+File: Pics/Pasted_image_20260522131525.png Graphic file (type png)
+<use Pics/Pasted_image_20260522131525.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522131525.png  used on input li
+ne 73.
+(pdftex.def)             Requested size: 279.97786pt x 242.50644pt.
+ [83 <./Pics/Pasted_image_20260522131257.png> <./Pics/Pasted_image_202605221313
+17.png> <./Pics/Pasted_image_20260522131505.png>]
+Overfull \hbox (53.7606pt too wide) in paragraph at lines 92--98
+ [] 
+ []
+
+<Pics/Pasted_image_20260522131637.png, id=3210, 420.06938pt x 418.56375pt>
+File: Pics/Pasted_image_20260522131637.png Graphic file (type png)
+<use Pics/Pasted_image_20260522131637.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522131637.png  used on input li
+ne 101.
+(pdftex.def)             Requested size: 147.92076pt x 147.38725pt.
+<Pics/Pasted_image_20260522131647.png, id=3211, 420.06938pt x 418.56375pt>
+File: Pics/Pasted_image_20260522131647.png Graphic file (type png)
+<use Pics/Pasted_image_20260522131647.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522131647.png  used on input li
+ne 101.
+(pdftex.def)             Requested size: 147.92076pt x 147.38725pt.
+<Pics/Pasted_image_20260522131658.png, id=3212, 420.06938pt x 418.56375pt>
+File: Pics/Pasted_image_20260522131658.png Graphic file (type png)
+<use Pics/Pasted_image_20260522131658.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522131658.png  used on input li
+ne 101.
+(pdftex.def)             Requested size: 147.92076pt x 147.38725pt.
+<Pics/Pasted_image_20260522132014.png, id=3213, 439.6425pt x 441.14813pt>
+File: Pics/Pasted_image_20260522132014.png Graphic file (type png)
+<use Pics/Pasted_image_20260522132014.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522132014.png  used on input li
+ne 106.
+(pdftex.def)             Requested size: 147.92076pt x 148.4267pt.
+<Pics/Pasted_image_20260522132024.png, id=3214, 439.6425pt x 441.14813pt>
+File: Pics/Pasted_image_20260522132024.png Graphic file (type png)
+<use Pics/Pasted_image_20260522132024.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522132024.png  used on input li
+ne 106.
+(pdftex.def)             Requested size: 147.92076pt x 148.4267pt.
+<Pics/Pasted_image_20260522132034.png, id=3215, 439.6425pt x 441.14813pt>
+File: Pics/Pasted_image_20260522132034.png Graphic file (type png)
+<use Pics/Pasted_image_20260522132034.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522132034.png  used on input li
+ne 106.
+(pdftex.def)             Requested size: 147.92076pt x 148.4267pt.
+[84 <./Pics/Pasted_image_20260522131525.png> <./Pics/Pasted_image_2026052213163
+7.png> <./Pics/Pasted_image_20260522131647.png> <./Pics/Pasted_image_2026052213
+1658.png>]
+<Pics/Pasted_image_20260522132053.png, id=3224, 532.99126pt x 413.29407pt>
+File: Pics/Pasted_image_20260522132053.png Graphic file (type png)
+<use Pics/Pasted_image_20260522132053.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522132053.png  used on input li
+ne 111.
+(pdftex.def)             Requested size: 279.97786pt x 217.10875pt.
+ [85 <./Pics/Pasted_image_20260522132014.png> <./Pics/Pasted_image_202605221320
+24.png> <./Pics/Pasted_image_20260522132034.png> <./Pics/Pasted_image_202605221
+32053.png>] [86]
+Overfull \hbox (14.31577pt too wide) in paragraph at lines 258--259
+[]\T1/lmr/m/n/10.95 Problem: in-tro-duces \T1/lmr/bx/n/10.95 dis-con-ti-nu-itie
+s ("jumps") \T1/lmr/m/n/10.95 at bound-aries $\OMS/lmsy/m/n/10.95 !$ \T1/lmr/m/
+n/10.95 spu-ri-ous high-frequency
+ []
+
+[87]
+Overfull \hbox (23.92287pt too wide) in paragraph at lines 315--321
+ [] 
+ []
+
+[88]
+<Pics/Pasted_image_20260522132918.png, id=3254, 493.845pt x 260.47313pt>
+File: Pics/Pasted_image_20260522132918.png Graphic file (type png)
+<use Pics/Pasted_image_20260522132918.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522132918.png  used on input li
+ne 329.
+(pdftex.def)             Requested size: 279.97786pt x 147.66837pt.
+<Pics/Pasted_image_20260522132934.png, id=3255, 493.845pt x 397.485pt>
+File: Pics/Pasted_image_20260522132934.png Graphic file (type png)
+<use Pics/Pasted_image_20260522132934.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522132934.png  used on input li
+ne 331.
+(pdftex.def)             Requested size: 279.97786pt x 225.34364pt.
+<Pics/Pasted_image_20260522132953.png, id=3256, 493.845pt x 255.95625pt>
+File: Pics/Pasted_image_20260522132953.png Graphic file (type png)
+<use Pics/Pasted_image_20260522132953.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522132953.png  used on input li
+ne 334.
+(pdftex.def)             Requested size: 279.97786pt x 145.10764pt.
+ [89 <./Pics/Pasted_image_20260522132918.png> <./Pics/Pasted_image_202605221329
+34.png> <./Pics/Pasted_image_20260522132953.png>]
+<Pics/Pasted_image_20260522133023.png, id=3264, 711.4078pt x 274.77657pt>
+File: Pics/Pasted_image_20260522133023.png Graphic file (type png)
+<use Pics/Pasted_image_20260522133023.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522133023.png  used on input li
+ne 353.
+(pdftex.def)             Requested size: 279.97786pt x 108.14352pt.
+<Pics/Pasted_image_20260522133059.png, id=3265, 355.3275pt x 355.3275pt>
+File: Pics/Pasted_image_20260522133059.png Graphic file (type png)
+<use Pics/Pasted_image_20260522133059.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522133059.png  used on input li
+ne 369.
+(pdftex.def)             Requested size: 279.97786pt x 279.98453pt.
+<Pics/Pasted_image_20260522133143.png, id=3266, 606.76688pt x 355.3275pt>
+File: Pics/Pasted_image_20260522133143.png Graphic file (type png)
+<use Pics/Pasted_image_20260522133143.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522133143.png  used on input li
+ne 370.
+(pdftex.def)             Requested size: 279.97786pt x 163.95685pt.
+ [90 <./Pics/Pasted_image_20260522133023.png> <./Pics/Pasted_image_202605221330
+59.png>]
+Overfull \hbox (387.80579pt too wide) in paragraph at lines 402--408
+ [] 
+ []
+
+[91 <./Pics/Pasted_image_20260522133143.png>] [92] [93] [94] [95]
+Overfull \hbox (5.49545pt too wide) in paragraph at lines 681--682
+[]\T1/lmr/bx/n/10.95 Error cor-rec-tion codes \T1/lmr/m/n/10.95 (ECC): highly e
+f-fec-tive but costly $\OMS/lmsy/m/n/10.95 !$ \T1/lmr/m/n/10.95 used only for h
+ead-ers/metadata 
+ []
+
+[96]
+Overfull \hbox (32.3953pt too wide) in paragraph at lines 688--698
+ [] 
+ []
+
+
+Overfull \hbox (133.29343pt too wide) in paragraph at lines 709--727
+ [] 
+ []
+
+
+Overfull \hbox (129.13367pt too wide) in paragraph at lines 730--737
+ [] 
+ []
+
+) [97] (./chapters/06.tex
+Chapter 6.
+[98
+
+
+]
+Overfull \hbox (276.92908pt too wide) in paragraph at lines 50--57
+ [] 
+ []
+
+[99]
+<Pics/Pasted_image_20260522133933.png, id=3322, 868.74562pt x 314.67563pt>
+File: Pics/Pasted_image_20260522133933.png Graphic file (type png)
+<use Pics/Pasted_image_20260522133933.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522133933.png  used on input li
+ne 123.
+(pdftex.def)             Requested size: 279.97786pt x 101.41368pt.
+ [100 <./Pics/Pasted_image_20260522133933.png>]
+<Pics/Pasted_image_20260522134030.png, id=3328, 494.59781pt x 398.99063pt>
+File: Pics/Pasted_image_20260522134030.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134030.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134030.png  used on input li
+ne 158.
+(pdftex.def)             Requested size: 279.97786pt x 225.8563pt.
+ [101 <./Pics/Pasted_image_20260522134030.png>]
+<Pics/Pasted_image_20260522134048.png, id=3335, 526.21594pt x 408.77719pt>
+File: Pics/Pasted_image_20260522134048.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134048.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134048.png  used on input li
+ne 188.
+(pdftex.def)             Requested size: 279.97786pt x 217.49916pt.
+
+Overfull \hbox (340.89264pt too wide) in paragraph at lines 211--218
+ [] 
+ []
+
+[102 <./Pics/Pasted_image_20260522134048.png>]
+<Pics/Pasted_image_20260522134118.png, id=3341, 578.16pt x 268.00125pt>
+File: Pics/Pasted_image_20260522134118.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134118.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134118.png  used on input li
+ne 231.
+(pdftex.def)             Requested size: 269.01479pt x 124.69698pt.
+<Pics/Pasted_image_20260522134131.png, id=3342, 578.16pt x 268.00125pt>
+File: Pics/Pasted_image_20260522134131.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134131.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134131.png  used on input li
+ne 236.
+(pdftex.def)             Requested size: 269.01479pt x 124.69698pt.
+ [103 <./Pics/Pasted_image_20260522134118.png> <./Pics/Pasted_image_20260522134
+131.png>]
+<Pics/Pasted_image_20260522134150.png, id=3354, 522.45187pt x 268.00125pt>
+File: Pics/Pasted_image_20260522134150.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134150.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134150.png  used on input li
+ne 253.
+(pdftex.def)             Requested size: 279.97786pt x 143.62256pt.
+
+Overfull \hbox (407.23303pt too wide) in paragraph at lines 274--281
+ [] 
+ []
+
+[104 <./Pics/Pasted_image_20260522134150.png>] [105]
+
+Package tcolorbox Warning: Using nobreak failed. Try to enlarge `lines before b
+reak' or set page breaks manually on input line 348.
+
+
+Overfull \hbox (227.31908pt too wide) in paragraph at lines 390--397
+ [] 
+ []
+
+[106] [107] [108] [109]
+
+Package tcolorbox Warning: Using nobreak failed. Try to enlarge `lines before b
+reak' or set page breaks manually on input line 555.
+
+
+Underfull \hbox (badness 2980) in paragraph at lines 568--569
+[]\T1/lmr/m/n/10.95 Complexity is mea-sured in \T1/lmr/bx/n/10.95 kilo-Multipli
+cation Ac-cu-mu-la-tor Count per pixel
+ []
+
+[110] [111]
+Overfull \hbox (86.43436pt too wide) in paragraph at lines 681--697
+ [] 
+ []
+
+) [112] (./chapters/07.tex
+Chapter 7.
+<Pics/Pasted_image_20260522134312.png, id=3406, 868.74562pt x 343.2825pt>
+File: Pics/Pasted_image_20260522134312.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134312.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134312.png  used on input li
+ne 26.
+(pdftex.def)             Requested size: 279.97786pt x 110.6331pt.
+[113
+
+
+ <./Pics/Pasted_image_20260522134312.png>] [114]
+<Pics/Pasted_image_20260522134513.png, id=3416, 423.08063pt x 343.2825pt>
+File: Pics/Pasted_image_20260522134513.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134513.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134513.png  used on input li
+ne 149.
+(pdftex.def)             Requested size: 153.9871pt x 124.9435pt.
+<Pics/Pasted_image_20260522134536.png, id=3417, 415.5525pt x 343.2825pt>
+File: Pics/Pasted_image_20260522134536.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134536.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134536.png  used on input li
+ne 149.
+(pdftex.def)             Requested size: 153.9871pt x 127.20633pt.
+<Pics/Pasted_image_20260522134558.png, id=3418, 415.5525pt x 343.2825pt>
+File: Pics/Pasted_image_20260522134558.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134558.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134558.png  used on input li
+ne 149.
+(pdftex.def)             Requested size: 153.9871pt x 127.20633pt.
+
+Overfull \hbox (157.98218pt too wide) in paragraph at lines 155--160
+ [] 
+ []
+
+[115 <./Pics/Pasted_image_20260522134513.png> <./Pics/Pasted_image_202605221345
+36.png> <./Pics/Pasted_image_20260522134558.png>]
+<Pics/Pasted_image_20260522134710.png, id=3426, 415.5525pt x 343.2825pt>
+File: Pics/Pasted_image_20260522134710.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134710.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134710.png  used on input li
+ne 199.
+(pdftex.def)             Requested size: 279.97786pt x 231.2971pt.
+ [116 <./Pics/Pasted_image_20260522134710.png>] [117]
+<Pics/Pasted_image_20260522134839.png, id=3438, 959.83594pt x 401.24907pt>
+File: Pics/Pasted_image_20260522134839.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134839.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134839.png  used on input li
+ne 290.
+(pdftex.def)             Requested size: 279.97786pt x 117.03885pt.
+<Pics/Pasted_image_20260522134856.png, id=3439, 959.83594pt x 424.58624pt>
+File: Pics/Pasted_image_20260522134856.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134856.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134856.png  used on input li
+ne 291.
+(pdftex.def)             Requested size: 279.97786pt x 123.84598pt.
+<Pics/Pasted_image_20260522134904.png, id=3440, 959.83594pt x 424.58624pt>
+File: Pics/Pasted_image_20260522134904.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134904.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134904.png  used on input li
+ne 292.
+(pdftex.def)             Requested size: 279.97786pt x 123.84598pt.
+<Pics/Pasted_image_20260522134913.png, id=3441, 959.83594pt x 424.58624pt>
+File: Pics/Pasted_image_20260522134913.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134913.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134913.png  used on input li
+ne 293.
+(pdftex.def)             Requested size: 279.97786pt x 123.84598pt.
+<Pics/Pasted_image_20260522134931.png, id=3442, 959.83594pt x 424.58624pt>
+File: Pics/Pasted_image_20260522134931.png Graphic file (type png)
+<use Pics/Pasted_image_20260522134931.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522134931.png  used on input li
+ne 294.
+(pdftex.def)             Requested size: 279.97786pt x 123.84598pt.
+ [118 <./Pics/Pasted_image_20260522134839.png> <./Pics/Pasted_image_20260522134
+856.png> <./Pics/Pasted_image_20260522134904.png> <./Pics/Pasted_image_20260522
+134913.png>]
+<Pics/Pasted_image_20260522135013.png, id=3452, 959.83594pt x 424.58624pt>
+File: Pics/Pasted_image_20260522135013.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135013.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135013.png  used on input li
+ne 332.
+(pdftex.def)             Requested size: 279.97786pt x 123.84598pt.
+ [119 <./Pics/Pasted_image_20260522134931.png> <./Pics/Pasted_image_20260522135
+013.png>]
+<Pics/Pasted_image_20260522135115.png, id=3460, 745.28438pt x 340.27126pt>
+File: Pics/Pasted_image_20260522135115.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135115.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135115.png  used on input li
+ne 367.
+(pdftex.def)             Requested size: 279.97786pt x 127.82466pt.
+<Pics/Pasted_image_20260522135125.png, id=3461, 745.28438pt x 340.27126pt>
+File: Pics/Pasted_image_20260522135125.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135125.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135125.png  used on input li
+ne 368.
+(pdftex.def)             Requested size: 279.97786pt x 127.82466pt.
+<Pics/Pasted_image_20260522135139.png, id=3462, 745.28438pt x 340.27126pt>
+File: Pics/Pasted_image_20260522135139.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135139.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135139.png  used on input li
+ne 376.
+(pdftex.def)             Requested size: 279.97786pt x 127.82466pt.
+ [120 <./Pics/Pasted_image_20260522135115.png> <./Pics/Pasted_image_20260522135
+125.png>]
+<Pics/Pasted_image_20260522135148.png, id=3472, 745.28438pt x 340.27126pt>
+File: Pics/Pasted_image_20260522135148.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135148.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135148.png  used on input li
+ne 377.
+(pdftex.def)             Requested size: 279.97786pt x 127.82466pt.
+ [121 <./Pics/Pasted_image_20260522135139.png> <./Pics/Pasted_image_20260522135
+148.png>]
+<Pics/Pasted_image_20260522135238.png, id=3484, 758.08218pt x 392.21532pt>
+File: Pics/Pasted_image_20260522135238.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135238.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135238.png  used on input li
+ne 430.
+(pdftex.def)             Requested size: 279.97786pt x 144.85406pt.
+ [122 <./Pics/Pasted_image_20260522135238.png>]
+<Pics/Pasted_image_20260522135333.png, id=3494, 347.79938pt x 374.90062pt>
+File: Pics/Pasted_image_20260522135333.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135333.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135333.png  used on input li
+ne 525.
+(pdftex.def)             Requested size: 209.97983pt x 226.3379pt.
+<Pics/Pasted_image_20260522135458.png, id=3495, 347.79938pt x 364.36125pt>
+File: Pics/Pasted_image_20260522135458.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135458.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135458.png  used on input li
+ne 525.
+(pdftex.def)             Requested size: 209.97983pt x 219.97499pt.
+ [123]
+<Pics/Pasted_image_20260522135546.png, id=3500, 269.50688pt x 278.54062pt>
+File: Pics/Pasted_image_20260522135546.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135546.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135546.png  used on input li
+ne 529.
+(pdftex.def)             Requested size: 233.31252pt x 241.13832pt.
+<Pics/Pasted_image_20260522135610.png, id=3501, 350.05782pt x 348.55219pt>
+File: Pics/Pasted_image_20260522135610.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135610.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135610.png  used on input li
+ne 529.
+(pdftex.def)             Requested size: 233.31252pt x 232.3108pt.
+ [124 <./Pics/Pasted_image_20260522135333.png> <./Pics/Pasted_image_20260522135
+458.png> <./Pics/Pasted_image_20260522135546.png> <./Pics/Pasted_image_20260522
+135610.png>]
+<Pics/Pasted_image_20260522135655.png, id=3513, 776.9025pt x 386.19281pt>
+File: Pics/Pasted_image_20260522135655.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135655.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135655.png  used on input li
+ne 600.
+(pdftex.def)             Requested size: 279.97786pt x 139.17662pt.
+ [125 <./Pics/Pasted_image_20260522135655.png>]
+<Pics/Pasted_image_20260522135728.png, id=3521, 776.9025pt x 386.19281pt>
+File: Pics/Pasted_image_20260522135728.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135728.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135728.png  used on input li
+ne 633.
+(pdftex.def)             Requested size: 279.97786pt x 139.17662pt.
+<Pics/Pasted_image_20260522135809.png, id=3522, 776.9025pt x 318.43968pt>
+File: Pics/Pasted_image_20260522135809.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135809.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135809.png  used on input li
+ne 634.
+(pdftex.def)             Requested size: 279.97786pt x 114.75967pt.
+ [126 <./Pics/Pasted_image_20260522135728.png> <./Pics/Pasted_image_20260522135
+809.png>]
+Overfull \hbox (1.18222pt too wide) in paragraph at lines 686--694
+ [] 
+ []
+
+
+Overfull \hbox (3.41812pt too wide) in paragraph at lines 707--714
+ [] 
+ []
+
+[127]
+<Pics/Pasted_image_20260522135856.png, id=3533, 954.56625pt x 318.43968pt>
+File: Pics/Pasted_image_20260522135856.png Graphic file (type png)
+<use Pics/Pasted_image_20260522135856.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522135856.png  used on input li
+ne 741.
+(pdftex.def)             Requested size: 279.97786pt x 93.39954pt.
+
+Overfull \hbox (368.92598pt too wide) in paragraph at lines 747--758
+ [] 
+ []
+
+) [128 <./Pics/Pasted_image_20260522135856.png>] (./chapters/08.tex
+Chapter 8.
+<Pics/Pasted_image_20260522141129.png, id=3540, 703.12688pt x 248.42813pt>
+File: Pics/Pasted_image_20260522141129.png Graphic file (type png)
+<use Pics/Pasted_image_20260522141129.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522141129.png  used on input li
+ne 37.
+(pdftex.def)             Requested size: 279.97786pt x 98.9184pt.
+[129
+
+
+ <./Pics/Pasted_image_20260522141129.png>]
+<Pics/Pasted_image_20260522141438.png, id=3546, 651.93562pt x 462.97969pt>
+File: Pics/Pasted_image_20260522141438.png Graphic file (type png)
+<use Pics/Pasted_image_20260522141438.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522141438.png  used on input li
+ne 57.
+(pdftex.def)             Requested size: 279.97786pt x 198.83719pt.
+ [130 <./Pics/Pasted_image_20260522141438.png>]
+Overfull \hbox (141.30847pt too wide) in paragraph at lines 98--105
+ [] 
+ []
+
+<Pics/Pasted_image_20260522141524.png, id=3553, 1171.37625pt x 333.49594pt>
+File: Pics/Pasted_image_20260522141524.png Graphic file (type png)
+<use Pics/Pasted_image_20260522141524.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522141524.png  used on input li
+ne 109.
+(pdftex.def)             Requested size: 279.97786pt x 79.70988pt.
+<Pics/Pasted_image_20260522141553.png, id=3554, 1068.24094pt x 415.5525pt>
+File: Pics/Pasted_image_20260522141553.png Graphic file (type png)
+<use Pics/Pasted_image_20260522141553.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522141553.png  used on input li
+ne 115.
+(pdftex.def)             Requested size: 279.97786pt x 108.90979pt.
+[131 <./Pics/Pasted_image_20260522141524.png> <./Pics/Pasted_image_202605221415
+53.png>]
+<Pics/Pasted_image_20260522141734.png, id=3561, 313.17pt x 424.58624pt>
+File: Pics/Pasted_image_20260522141734.png Graphic file (type png)
+<use Pics/Pasted_image_20260522141734.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522141734.png  used on input li
+ne 141.
+(pdftex.def)             Requested size: 279.97786pt x 379.59741pt.
+ [132 <./Pics/Pasted_image_20260522141734.png>]
+<Pics/Pasted_image_20260522141759.png, id=3567, 271.76532pt x 198.7425pt>
+File: Pics/Pasted_image_20260522141759.png Graphic file (type png)
+<use Pics/Pasted_image_20260522141759.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522141759.png  used on input li
+ne 197.
+(pdftex.def)             Requested size: 279.97786pt x 204.7586pt.
+<Pics/Pasted_image_20260522141820.png, id=3568, 1154.06157pt x 444.91219pt>
+File: Pics/Pasted_image_20260522141820.png Graphic file (type png)
+<use Pics/Pasted_image_20260522141820.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522141820.png  used on input li
+ne 203.
+(pdftex.def)             Requested size: 279.97786pt x 107.9352pt.
+ [133 <./Pics/Pasted_image_20260522141759.png>]
+<Pics/Pasted_image_20260522141831.png, id=3574, 1154.06157pt x 444.91219pt>
+File: Pics/Pasted_image_20260522141831.png Graphic file (type png)
+<use Pics/Pasted_image_20260522141831.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522141831.png  used on input li
+ne 207.
+(pdftex.def)             Requested size: 279.97786pt x 107.9352pt.
+<Pics/Pasted_image_20260522141844.png, id=3575, 1154.06157pt x 444.91219pt>
+File: Pics/Pasted_image_20260522141844.png Graphic file (type png)
+<use Pics/Pasted_image_20260522141844.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522141844.png  used on input li
+ne 211.
+(pdftex.def)             Requested size: 279.97786pt x 107.9352pt.
+<Pics/Pasted_image_20260522141852.png, id=3576, 1154.06157pt x 444.91219pt>
+File: Pics/Pasted_image_20260522141852.png Graphic file (type png)
+<use Pics/Pasted_image_20260522141852.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522141852.png  used on input li
+ne 215.
+(pdftex.def)             Requested size: 279.97786pt x 107.9352pt.
+
+Overfull \hbox (138.1743pt too wide) in paragraph at lines 222--229
+ [] 
+ []
+
+[134 <./Pics/Pasted_image_20260522141820.png> <./Pics/Pasted_image_202605221418
+31.png> <./Pics/Pasted_image_20260522141844.png> <./Pics/Pasted_image_202605221
+41852.png>]
+<Pics/Pasted_image_20260522141915.png, id=3586, 791.95876pt x 444.91219pt>
+File: Pics/Pasted_image_20260522141915.png Graphic file (type png)
+<use Pics/Pasted_image_20260522141915.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522141915.png  used on input li
+ne 253.
+(pdftex.def)             Requested size: 279.97786pt x 157.2898pt.
+ [135 <./Pics/Pasted_image_20260522141915.png>]
+Overfull \hbox (754.71321pt too wide) in paragraph at lines 325--333
+ [] 
+ []
+
+[136]
+<Pics/Pasted_image_20260522141956.png, id=3596, 628.59843pt x 163.3603pt>
+File: Pics/Pasted_image_20260522141956.png Graphic file (type png)
+<use Pics/Pasted_image_20260522141956.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522141956.png  used on input li
+ne 385.
+(pdftex.def)             Requested size: 279.97786pt x 72.75865pt.
+ [137 <./Pics/Pasted_image_20260522141956.png>]
+<Pics/Pasted_image_20260522142011.png, id=3602, 628.59843pt x 163.3603pt>
+File: Pics/Pasted_image_20260522142011.png Graphic file (type png)
+<use Pics/Pasted_image_20260522142011.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522142011.png  used on input li
+ne 401.
+(pdftex.def)             Requested size: 279.97786pt x 72.75865pt.
+<Pics/Pasted_image_20260522142020.png, id=3603, 628.59843pt x 163.3603pt>
+File: Pics/Pasted_image_20260522142020.png Graphic file (type png)
+<use Pics/Pasted_image_20260522142020.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522142020.png  used on input li
+ne 409.
+(pdftex.def)             Requested size: 279.97786pt x 72.75865pt.
+<Pics/Pasted_image_20260522142028.png, id=3604, 628.59843pt x 163.3603pt>
+File: Pics/Pasted_image_20260522142028.png Graphic file (type png)
+<use Pics/Pasted_image_20260522142028.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522142028.png  used on input li
+ne 424.
+(pdftex.def)             Requested size: 279.97786pt x 72.75865pt.
+ [138 <./Pics/Pasted_image_20260522142011.png> <./Pics/Pasted_image_20260522142
+020.png> <./Pics/Pasted_image_20260522142028.png>]
+<Pics/Pasted_image_20260522142041.png, id=3612, 646.66594pt x 255.20343pt>
+File: Pics/Pasted_image_20260522142041.png Graphic file (type png)
+<use Pics/Pasted_image_20260522142041.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522142041.png  used on input li
+ne 436.
+(pdftex.def)             Requested size: 279.97786pt x 110.49078pt.
+<Pics/Pasted_image_20260522142054.png, id=3613, 796.47563pt x 310.91156pt>
+File: Pics/Pasted_image_20260522142054.png Graphic file (type png)
+<use Pics/Pasted_image_20260522142054.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522142054.png  used on input li
+ne 444.
+(pdftex.def)             Requested size: 279.97786pt x 109.29033pt.
+
+Overfull \hbox (34.97343pt too wide) in paragraph at lines 453--461
+ [] 
+ []
+
+[139 <./Pics/Pasted_image_20260522142041.png> <./Pics/Pasted_image_202605221420
+54.png>]
+<Pics/Pasted_image_20260522142211.png, id=3620, 581.92406pt x 473.51906pt>
+File: Pics/Pasted_image_20260522142211.png Graphic file (type png)
+<use Pics/Pasted_image_20260522142211.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522142211.png  used on input li
+ne 481.
+(pdftex.def)             Requested size: 279.97786pt x 227.82123pt.
+ [140 <./Pics/Pasted_image_20260522142211.png>] [141]
+<Pics/Pasted_image_20260522142235.png, id=3634, 596.98032pt x 485.56406pt>
+File: Pics/Pasted_image_20260522142235.png Graphic file (type png)
+<use Pics/Pasted_image_20260522142235.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522142235.png  used on input li
+ne 598.
+(pdftex.def)             Requested size: 279.97786pt x 227.72614pt.
+ [142 <./Pics/Pasted_image_20260522142235.png>]
+<Pics/Pasted_image_20260522142252.png, id=3643, 956.07187pt x 530.73282pt>
+File: Pics/Pasted_image_20260522142252.png Graphic file (type png)
+<use Pics/Pasted_image_20260522142252.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522142252.png  used on input li
+ne 625.
+(pdftex.def)             Requested size: 279.97786pt x 155.41486pt.
+ [143 <./Pics/Pasted_image_20260522142252.png>]
+<Pics/Pasted_image_20260522142313.png, id=3649, 518.6878pt x 459.21562pt>
+File: Pics/Pasted_image_20260522142313.png Graphic file (type png)
+<use Pics/Pasted_image_20260522142313.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522142313.png  used on input li
+ne 681.
+(pdftex.def)             Requested size: 279.97786pt x 247.88866pt.
+
+[144] [145 <./Pics/Pasted_image_20260522142313.png>]
+<Pics/Pasted_image_20260522142331.png, id=3659, 1022.31938pt x 526.96875pt>
+File: Pics/Pasted_image_20260522142331.png Graphic file (type png)
+<use Pics/Pasted_image_20260522142331.png>
+Package pdftex.def Info: Pics/Pasted_image_20260522142331.png  used on input li
+ne 737.
+(pdftex.def)             Requested size: 279.97786pt x 144.3178pt.
+
+Overfull \hbox (801.3093pt too wide) in paragraph at lines 742--762
+ [] 
+ []
+
+[146 <./Pics/Pasted_image_20260522142331.png>]) [147] (./chapters/09.tex
+Chapter 9.
+<Pics/Pasted_image_20260506125516.png, id=3670, 852.93657pt x 438.8897pt>
+File: Pics/Pasted_image_20260506125516.png Graphic file (type png)
+<use Pics/Pasted_image_20260506125516.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506125516.png  used on input li
+ne 28.
+(pdftex.def)             Requested size: 279.97786pt x 144.0706pt.
+[148
+
+
+]
+<Pics/Pasted_image_20260506125634.png, id=3675, 852.93657pt x 237.13594pt>
+File: Pics/Pasted_image_20260506125634.png Graphic file (type png)
+<use Pics/Pasted_image_20260506125634.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506125634.png  used on input li
+ne 34.
+(pdftex.def)             Requested size: 279.97786pt x 77.84259pt.
+<Pics/Pasted_image_20260506125655.png, id=3676, 652.68843pt x 529.22719pt>
+File: Pics/Pasted_image_20260506125655.png Graphic file (type png)
+<use Pics/Pasted_image_20260506125655.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506125655.png  used on input li
+ne 46.
+(pdftex.def)             Requested size: 279.97786pt x 227.0222pt.
+ [149 <./Pics/Pasted_image_20260506125516.png> <./Pics/Pasted_image_20260506125
+634.png>]
+Overfull \hbox (600.3723pt too wide) in paragraph at lines 59--67
+ [] 
+ []
+
+[150 <./Pics/Pasted_image_20260506125655.png>] [151] [152]
+<Pics/Pasted_image_20260506125829.png, id=3700, 622.57594pt x 328.22626pt>
+File: Pics/Pasted_image_20260506125829.png Graphic file (type png)
+<use Pics/Pasted_image_20260506125829.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506125829.png  used on input li
+ne 216.
+(pdftex.def)             Requested size: 279.97786pt x 147.60529pt.
+<Pics/Pasted_image_20260506125913.png, id=3701, 622.57594pt x 387.69844pt>
+File: Pics/Pasted_image_20260506125913.png Graphic file (type png)
+<use Pics/Pasted_image_20260506125913.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506125913.png  used on input li
+ne 217.
+(pdftex.def)             Requested size: 279.97786pt x 174.35028pt.
+<Pics/Pasted_image_20260506125928.png, id=3702, 622.57594pt x 227.34938pt>
+File: Pics/Pasted_image_20260506125928.png Graphic file (type png)
+<use Pics/Pasted_image_20260506125928.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506125928.png  used on input li
+ne 218.
+(pdftex.def)             Requested size: 279.97786pt x 102.24036pt.
+ [153 <./Pics/Pasted_image_20260506125829.png> <./Pics/Pasted_image_20260506125
+913.png> <./Pics/Pasted_image_20260506125928.png>]
+<Pics/Pasted_image_20260506125946.png, id=3710, 807.015pt x 502.87875pt>
+File: Pics/Pasted_image_20260506125946.png Graphic file (type png)
+<use Pics/Pasted_image_20260506125946.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506125946.png  used on input li
+ne 229.
+(pdftex.def)             Requested size: 279.97786pt x 174.46019pt.
+<Pics/Pasted_image_20260506130003.png, id=3711, 549.55313pt x 332.74312pt>
+File: Pics/Pasted_image_20260506130003.png Graphic file (type png)
+<use Pics/Pasted_image_20260506130003.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506130003.png  used on input li
+ne 241.
+(pdftex.def)             Requested size: 279.97786pt x 169.52411pt.
+ [154 <./Pics/Pasted_image_20260506125946.png> <./Pics/Pasted_image_20260506130
+003.png>]
+<Pics/Pasted_image_20260506130740.png, id=3718, 533.74406pt x 563.10374pt>
+File: Pics/Pasted_image_20260506130740.png Graphic file (type png)
+<use Pics/Pasted_image_20260506130740.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506130740.png  used on input li
+ne 289.
+(pdftex.def)             Requested size: 376.09966pt x 396.79916pt.
+ [155]
+<Pics/Pasted_image_20260506130804.png, id=3727, 533.74406pt x 603.75563pt>
+File: Pics/Pasted_image_20260506130804.png Graphic file (type png)
+<use Pics/Pasted_image_20260506130804.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506130804.png  used on input li
+ne 305.
+(pdftex.def)             Requested size: 376.09966pt x 425.4451pt.
+ [156 <./Pics/Pasted_image_20260506130740.png>]
+<Pics/Pasted_image_20260506130818.png, id=3733, 533.74406pt x 603.75563pt>
+File: Pics/Pasted_image_20260506130818.png Graphic file (type png)
+<use Pics/Pasted_image_20260506130818.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506130818.png  used on input li
+ne 308.
+(pdftex.def)             Requested size: 376.09966pt x 425.4451pt.
+ [157 <./Pics/Pasted_image_20260506130804.png>]
+<Pics/Pasted_image_20260506130833.png, id=3739, 533.74406pt x 603.75563pt>
+File: Pics/Pasted_image_20260506130833.png Graphic file (type png)
+<use Pics/Pasted_image_20260506130833.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506130833.png  used on input li
+ne 311.
+(pdftex.def)             Requested size: 376.09966pt x 425.4451pt.
+ [158 <./Pics/Pasted_image_20260506130818.png>]
+<Pics/Pasted_image_20260506130853.png, id=3746, 533.74406pt x 603.75563pt>
+File: Pics/Pasted_image_20260506130853.png Graphic file (type png)
+<use Pics/Pasted_image_20260506130853.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506130853.png  used on input li
+ne 314.
+(pdftex.def)             Requested size: 376.09966pt x 425.4451pt.
+ [159 <./Pics/Pasted_image_20260506130833.png>]
+<Pics/Pasted_image_20260506130918.png, id=3752, 533.74406pt x 654.19406pt>
+File: Pics/Pasted_image_20260506130918.png Graphic file (type png)
+<use Pics/Pasted_image_20260506130918.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506130918.png  used on input li
+ne 315.
+(pdftex.def)             Requested size: 376.09966pt x 460.98726pt.
+
+[160 <./Pics/Pasted_image_20260506130853.png>]
+<Pics/Pasted_image_20260506131234.png, id=3758, 290.58563pt x 325.215pt>
+File: Pics/Pasted_image_20260506131234.png Graphic file (type png)
+<use Pics/Pasted_image_20260506131234.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506131234.png  used on input li
+ne 318.
+(pdftex.def)             Requested size: 279.97786pt x 313.36404pt.
+ [161 <./Pics/Pasted_image_20260506130918.png>]
+<Pics/Pasted_image_20260506131249.png, id=3764, 290.58563pt x 325.215pt>
+File: Pics/Pasted_image_20260506131249.png Graphic file (type png)
+<use Pics/Pasted_image_20260506131249.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506131249.png  used on input li
+ne 319.
+(pdftex.def)             Requested size: 279.97786pt x 313.36404pt.
+<Pics/Pasted_image_20260506131301.png, id=3765, 290.58563pt x 325.215pt>
+File: Pics/Pasted_image_20260506131301.png Graphic file (type png)
+<use Pics/Pasted_image_20260506131301.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506131301.png  used on input li
+ne 320.
+(pdftex.def)             Requested size: 279.97786pt x 313.36404pt.
+ [162 <./Pics/Pasted_image_20260506131234.png> <./Pics/Pasted_image_20260506131
+249.png>]
+<Pics/Pasted_image_20260506131310.png, id=3772, 290.58563pt x 325.215pt>
+File: Pics/Pasted_image_20260506131310.png Graphic file (type png)
+<use Pics/Pasted_image_20260506131310.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506131310.png  used on input li
+ne 321.
+(pdftex.def)             Requested size: 279.97786pt x 313.36404pt.
+ [163 <./Pics/Pasted_image_20260506131301.png> <./Pics/Pasted_image_20260506131
+310.png>]
+<Pics/Pasted_image_20260506133134.png, id=3780, 618.81187pt x 325.215pt>
+File: Pics/Pasted_image_20260506133134.png Graphic file (type png)
+<use Pics/Pasted_image_20260506133134.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506133134.png  used on input li
+ne 361.
+(pdftex.def)             Requested size: 279.97786pt x 147.14433pt.
+ [164 <./Pics/Pasted_image_20260506133134.png>]
+<Pics/Pasted_image_20260506134619.png, id=3787, 664.73344pt x 492.33937pt>
+File: Pics/Pasted_image_20260506134619.png Graphic file (type png)
+<use Pics/Pasted_image_20260506134619.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506134619.png  used on input li
+ne 391.
+(pdftex.def)             Requested size: 279.97786pt x 207.36708pt.
+[165 <./Pics/Pasted_image_20260506134619.png>]
+<Pics/Pasted_image_20260506134648.png, id=3793, 775.39688pt x 236.38312pt>
+File: Pics/Pasted_image_20260506134648.png Graphic file (type png)
+<use Pics/Pasted_image_20260506134648.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506134648.png  used on input li
+ne 436.
+(pdftex.def)             Requested size: 279.97786pt x 85.35394pt.
+ [166 <./Pics/Pasted_image_20260506134648.png>]
+Overfull \hbox (1.44058pt too wide) in paragraph at lines 454--455
+[]\T1/lmr/bx/n/10.95 H.266/VVC: \T1/lmr/m/n/10.95 adds the \T1/lmr/bx/n/10.95 A
+dap-tive Loop Fil-ter \T1/lmr/m/n/10.95 (ALF) and \T1/lmr/bx/n/10.95 Luma Map-p
+ing with Chroma
+ []
+
+<Pics/Pasted_image_20260506135622.png, id=3799, 694.84593pt x 458.46281pt>
+File: Pics/Pasted_image_20260506135622.png Graphic file (type png)
+<use Pics/Pasted_image_20260506135622.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506135622.png  used on input li
+ne 489.
+(pdftex.def)             Requested size: 279.97786pt x 184.72502pt.
+[167]
+<Pics/Pasted_image_20260506135653.png, id=3804, 558.58687pt x 643.6547pt>
+File: Pics/Pasted_image_20260506135653.png Graphic file (type png)
+<use Pics/Pasted_image_20260506135653.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506135653.png  used on input li
+ne 497.
+(pdftex.def)             Requested size: 279.97786pt x 322.62209pt.
+ [168 <./Pics/Pasted_image_20260506135622.png> <./Pics/Pasted_image_20260506135
+653.png>]
+<Pics/Pasted_image_20260506140326.png, id=3811, 849.1725pt x 501.37312pt>
+File: Pics/Pasted_image_20260506140326.png Graphic file (type png)
+<use Pics/Pasted_image_20260506140326.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506140326.png  used on input li
+ne 532.
+(pdftex.def)             Requested size: 279.97786pt x 165.30827pt.
+<Pics/Pasted_image_20260506140340.png, id=3812, 849.1725pt x 501.37312pt>
+File: Pics/Pasted_image_20260506140340.png Graphic file (type png)
+<use Pics/Pasted_image_20260506140340.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506140340.png  used on input li
+ne 544.
+(pdftex.def)             Requested size: 279.97786pt x 165.30827pt.
+ [169 <./Pics/Pasted_image_20260506140326.png>]
+<Pics/Pasted_image_20260506140352.png, id=3818, 849.1725pt x 501.37312pt>
+File: Pics/Pasted_image_20260506140352.png Graphic file (type png)
+<use Pics/Pasted_image_20260506140352.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506140352.png  used on input li
+ne 556.
+(pdftex.def)             Requested size: 279.97786pt x 165.30827pt.
+ [170 <./Pics/Pasted_image_20260506140340.png> <./Pics/Pasted_image_20260506140
+352.png>]
+<Pics/Pasted_image_20260506140426.png, id=3826, 802.49812pt x 402.00188pt>
+File: Pics/Pasted_image_20260506140426.png Graphic file (type png)
+<use Pics/Pasted_image_20260506140426.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506140426.png  used on input li
+ne 594.
+(pdftex.def)             Requested size: 279.97786pt x 140.25497pt.
+<Pics/Pasted_image_20260506140532.png, id=3827, 853.68938pt x 424.58624pt>
+File: Pics/Pasted_image_20260506140532.png Graphic file (type png)
+<use Pics/Pasted_image_20260506140532.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506140532.png  used on input li
+ne 595.
+(pdftex.def)             Requested size: 279.97786pt x 139.25223pt.
+<Pics/Pasted_image_20260506140606.png, id=3828, 853.68938pt x 424.58624pt>
+File: Pics/Pasted_image_20260506140606.png Graphic file (type png)
+<use Pics/Pasted_image_20260506140606.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506140606.png  used on input li
+ne 596.
+(pdftex.def)             Requested size: 279.97786pt x 139.25223pt.
+<Pics/Pasted_image_20260506140635.png, id=3829, 789.70032pt x 201.75375pt>
+File: Pics/Pasted_image_20260506140635.png Graphic file (type png)
+<use Pics/Pasted_image_20260506140635.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506140635.png  used on input li
+ne 599.
+(pdftex.def)             Requested size: 279.97786pt x 71.52917pt.
+ [171 <./Pics/Pasted_image_20260506140426.png> <./Pics/Pasted_image_20260506140
+532.png> <./Pics/Pasted_image_20260506140606.png>]
+<Pics/Pasted_image_20260506140722.png, id=3837, 743.02594pt x 511.9125pt>
+File: Pics/Pasted_image_20260506140722.png Graphic file (type png)
+<use Pics/Pasted_image_20260506140722.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506140722.png  used on input li
+ne 641.
+(pdftex.def)             Requested size: 279.97786pt x 192.89624pt.
+ [172 <./Pics/Pasted_image_20260506140635.png>]
+<Pics/Pasted_image_20260506140746.png, id=3843, 743.02594pt x 599.99156pt>
+File: Pics/Pasted_image_20260506140746.png Graphic file (type png)
+<use Pics/Pasted_image_20260506140746.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506140746.png  used on input li
+ne 647.
+(pdftex.def)             Requested size: 279.97786pt x 226.08574pt.
+ [173 <./Pics/Pasted_image_20260506140722.png> <./Pics/Pasted_image_20260506140
+746.png>]
+<Pics/Pasted_image_20260506140812.png, id=3850, 663.98062pt x 481.8pt>
+File: Pics/Pasted_image_20260506140812.png Graphic file (type png)
+<use Pics/Pasted_image_20260506140812.png>
+Package pdftex.def Info: Pics/Pasted_image_20260506140812.png  used on input li
+ne 672.
+(pdftex.def)             Requested size: 326.6361pt x 237.01772pt.
+
+Overfull \hbox (868.62883pt too wide) in paragraph at lines 699--726
+ [] 
+ []
+
+[174 <./Pics/Pasted_image_20260506140812.png>]) [175] (./chapters/10.tex
+Chapter 10.
+[176
+
+
+] [177]
+<Pics/Pasted_image_20260513130347.png, id=3872, 710.655pt x 701.62125pt>
+File: Pics/Pasted_image_20260513130347.png Graphic file (type png)
+<use Pics/Pasted_image_20260513130347.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513130347.png  used on input li
+ne 112.
+(pdftex.def)             Requested size: 279.97786pt x 276.42542pt.
+<Pics/Pasted_image_20260513130521.png, id=3873, 564.60938pt x 532.23843pt>
+File: Pics/Pasted_image_20260513130521.png Graphic file (type png)
+<use Pics/Pasted_image_20260513130521.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513130521.png  used on input li
+ne 114.
+(pdftex.def)             Requested size: 279.97786pt x 263.9258pt.
+ [178 <./Pics/Pasted_image_20260513130347.png>]
+<Pics/Pasted_image_20260513130558.png, id=3879, 695.59875pt x 532.23843pt>
+File: Pics/Pasted_image_20260513130558.png Graphic file (type png)
+<use Pics/Pasted_image_20260513130558.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513130558.png  used on input li
+ne 115.
+(pdftex.def)             Requested size: 279.97786pt x 214.22348pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+\T1/lmtt/m/n/10.95 of relative frequency of consecutive samples (log scale) ---
+ tight diagonal
+ []
+
+[179 <./Pics/Pasted_image_20260513130521.png> <./Pics/Pasted_image_202605131305
+58.png>]
+<Pics/Pasted_image_20260513130738.png, id=3886, 634.62094pt x 480.29437pt>
+File: Pics/Pasted_image_20260513130738.png Graphic file (type png)
+<use Pics/Pasted_image_20260513130738.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513130738.png  used on input li
+ne 132.
+(pdftex.def)             Requested size: 279.97786pt x 211.89447pt.
+<Pics/Pasted_image_20260513140029.png, id=3887, 745.28438pt x 700.86844pt>
+File: Pics/Pasted_image_20260513140029.png Graphic file (type png)
+<use Pics/Pasted_image_20260513140029.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513140029.png  used on input li
+ne 144.
+(pdftex.def)             Requested size: 376.09966pt x 353.68445pt.
+ [180 <./Pics/Pasted_image_20260513130738.png>]
+<Pics/Pasted_image_20260513140052.png, id=3893, 697.8572pt x 648.92438pt>
+File: Pics/Pasted_image_20260513140052.png Graphic file (type png)
+<use Pics/Pasted_image_20260513140052.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513140052.png  used on input li
+ne 146.
+(pdftex.def)             Requested size: 376.09966pt x 349.73071pt.
+ [181 <./Pics/Pasted_image_20260513140029.png> <./Pics/Pasted_image_20260513140
+052.png>]
+<Pics/Pasted_image_20260513140114.png, id=3900, 715.92468pt x 692.5875pt>
+File: Pics/Pasted_image_20260513140114.png Graphic file (type png)
+<use Pics/Pasted_image_20260513140114.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513140114.png  used on input li
+ne 157.
+(pdftex.def)             Requested size: 376.09966pt x 363.84637pt.
+<Pics/Pasted_image_20260513140200.png, id=3901, 670.00313pt x 618.81187pt>
+File: Pics/Pasted_image_20260513140200.png Graphic file (type png)
+<use Pics/Pasted_image_20260513140200.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513140200.png  used on input li
+ne 159.
+(pdftex.def)             Requested size: 376.09966pt x 347.3632pt.
+ [182 <./Pics/Pasted_image_20260513140114.png>]
+<Pics/Pasted_image_20260513140218.png, id=3908, 692.5875pt x 533.74406pt>
+File: Pics/Pasted_image_20260513140218.png Graphic file (type png)
+<use Pics/Pasted_image_20260513140218.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513140218.png  used on input li
+ne 169.
+(pdftex.def)             Requested size: 376.09966pt x 289.84634pt.
+ [183 <./Pics/Pasted_image_20260513140200.png>]
+Overfull \hbox (1.6469pt too wide) in paragraph at lines 177--178
+[]\T1/lmr/bx/n/10.95 Complexity: \T1/lmr/m/n/10.95 high-frequency com-po-nents 
+and non-harmonic tex-tures make this sig-nal harder
+ []
+
+<Pics/Pasted_image_20260513140307.png, id=3915, 834.86906pt x 774.64406pt>
+File: Pics/Pasted_image_20260513140307.png Graphic file (type png)
+<use Pics/Pasted_image_20260513140307.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513140307.png  used on input li
+ne 180.
+(pdftex.def)             Requested size: 376.09966pt x 348.97667pt.
+[184 <./Pics/Pasted_image_20260513140218.png>]
+<Pics/Pasted_image_20260513140328.png, id=3921, 808.52063pt x 735.49782pt>
+File: Pics/Pasted_image_20260513140328.png Graphic file (type png)
+<use Pics/Pasted_image_20260513140328.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513140328.png  used on input li
+ne 181.
+(pdftex.def)             Requested size: 376.09966pt x 342.13763pt.
+ [185 <./Pics/Pasted_image_20260513140307.png> <./Pics/Pasted_image_20260513140
+328.png>] [186]
+<Pics/Pasted_image_20260513140535.png, id=3932, 811.53188pt x 590.95781pt>
+File: Pics/Pasted_image_20260513140535.png Graphic file (type png)
+<use Pics/Pasted_image_20260513140535.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513140535.png  used on input li
+ne 249.
+(pdftex.def)             Requested size: 279.97786pt x 203.88066pt.
+ [187 <./Pics/Pasted_image_20260513140535.png>]
+<Pics/Pasted_image_20260513140733.png, id=3938, 513.41812pt x 551.05875pt>
+File: Pics/Pasted_image_20260513140733.png Graphic file (type png)
+<use Pics/Pasted_image_20260513140733.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513140733.png  used on input li
+ne 325.
+(pdftex.def)             Requested size: 376.09966pt x 403.67375pt.
+ [188] [189 <./Pics/Pasted_image_20260513140733.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 354.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 354.
+
+[190]
+Overfull \hbox (6.13458pt too wide) in paragraph at lines 410--411
+[]\T1/lmr/m/n/10.95 To trans-mit the vo-cal tract model $\OML/lmm/m/it/10.95 A\
+OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 z\OT1/lmr/m/n/10.95 )$\T1/lmr/m/n/10.95 
+, we need to quan-tize the fil-ter co-ef-fi-cients $\OMS/lmsy/m/n/10.95 f\OML/l
+mm/m/it/10.95 a[]; a[]; [] ; a[]\OMS/lmsy/m/n/10.95 g$\T1/lmr/m/n/10.95 .
+ []
+
+[191]
+<Pics/Pasted_image_20260513132924.png, id=3963, 797.22844pt x 258.21469pt>
+File: Pics/Pasted_image_20260513132924.png Graphic file (type png)
+<use Pics/Pasted_image_20260513132924.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513132924.png  used on input li
+ne 505.
+(pdftex.def)             Requested size: 279.97786pt x 90.67987pt.
+ [192 <./Pics/Pasted_image_20260513132924.png>]
+<Pics/Pasted_image_20260513133621.png, id=3974, 681.29532pt x 194.97844pt>
+File: Pics/Pasted_image_20260513133621.png Graphic file (type png)
+<use Pics/Pasted_image_20260513133621.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513133621.png  used on input li
+ne 561.
+(pdftex.def)             Requested size: 279.97786pt x 80.12613pt.
+ [193 <./Pics/Pasted_image_20260513133621.png>]
+<Pics/Pasted_image_20260513133851.png, id=3983, 712.16063pt x 569.12625pt>
+File: Pics/Pasted_image_20260513133851.png Graphic file (type png)
+<use Pics/Pasted_image_20260513133851.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513133851.png  used on input li
+ne 600.
+(pdftex.def)             Requested size: 279.97786pt x 223.73859pt.
+ [194 <./Pics/Pasted_image_20260513133851.png>]
+<Pics/Pasted_image_20260513134214.png, id=3991, 861.9703pt x 298.11375pt>
+File: Pics/Pasted_image_20260513134214.png Graphic file (type png)
+<use Pics/Pasted_image_20260513134214.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513134214.png  used on input li
+ne 652.
+(pdftex.def)             Requested size: 279.97786pt x 96.83122pt.
+ [195 <./Pics/Pasted_image_20260513134214.png>] [196]
+<Pics/Pasted_image_20260513134732.png, id=4004, 647.41875pt x 609.02531pt>
+File: Pics/Pasted_image_20260513134732.png Graphic file (type png)
+<use Pics/Pasted_image_20260513134732.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513134732.png  used on input li
+ne 723.
+(pdftex.def)             Requested size: 279.97786pt x 263.37195pt.
+ [197 <./Pics/Pasted_image_20260513134732.png>]
+<Pics/Pasted_image_20260513135220.png, id=4010, 885.3075pt x 267.24844pt>
+File: Pics/Pasted_image_20260513135220.png Graphic file (type png)
+<use Pics/Pasted_image_20260513135220.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513135220.png  used on input li
+ne 791.
+(pdftex.def)             Requested size: 279.97786pt x 84.51808pt.
+<Pics/Pasted_image_20260513135313.png, id=4011, 669.2503pt x 594.72188pt>
+File: Pics/Pasted_image_20260513135313.png Graphic file (type png)
+<use Pics/Pasted_image_20260513135313.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513135313.png  used on input li
+ne 805.
+(pdftex.def)             Requested size: 376.09966pt x 334.23077pt.
+ [198 <./Pics/Pasted_image_20260513135220.png>]
+<Pics/Pasted_image_20260513135345.png, id=4018, 852.18375pt x 284.56313pt>
+File: Pics/Pasted_image_20260513135345.png Graphic file (type png)
+<use Pics/Pasted_image_20260513135345.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513135345.png  used on input li
+ne 819.
+(pdftex.def)             Requested size: 279.97786pt x 93.49362pt.
+ [199 <./Pics/Pasted_image_20260513135313.png> <./Pics/Pasted_image_20260513135
+345.png>]
+<Pics/Pasted_image_20260513135412.png, id=4025, 660.96938pt x 325.96782pt>
+File: Pics/Pasted_image_20260513135412.png Graphic file (type png)
+<use Pics/Pasted_image_20260513135412.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513135412.png  used on input li
+ne 833.
+(pdftex.def)             Requested size: 279.97786pt x 138.07938pt.
+ [200 <./Pics/Pasted_image_20260513135412.png>]
+<Pics/Pasted_image_20260513135624.png, id=4032, 855.94781pt x 356.0803pt>
+File: Pics/Pasted_image_20260513135624.png Graphic file (type png)
+<use Pics/Pasted_image_20260513135624.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513135624.png  used on input li
+ne 901.
+(pdftex.def)             Requested size: 279.97786pt x 116.46909pt.
+<Pics/Pasted_image_20260513135642.png, id=4033, 770.12718pt x 413.29407pt>
+File: Pics/Pasted_image_20260513135642.png Graphic file (type png)
+<use Pics/Pasted_image_20260513135642.png>
+Package pdftex.def Info: Pics/Pasted_image_20260513135642.png  used on input li
+ne 903.
+(pdftex.def)             Requested size: 279.97786pt x 150.24881pt.
+ [201 <./Pics/Pasted_image_20260513135624.png> <./Pics/Pasted_image_20260513135
+642.png>] [202] [203] [204]
+Overfull \hbox (24.69926pt too wide) in paragraph at lines 1095--1104
+ [] 
+ []
+
+[205]
+Overfull \hbox (688.81174pt too wide) in paragraph at lines 1120--1154
+ [] 
+ []
+
+) [206] (./chapters/11.tex
+Chapter 11.
+[207
+
+
+]
+<Pics/Pasted_image_20260515104515.png, id=4073, 708.39656pt x 513.41812pt>
+File: Pics/Pasted_image_20260515104515.png Graphic file (type png)
+<use Pics/Pasted_image_20260515104515.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515104515.png  used on input li
+ne 57.
+(pdftex.def)             Requested size: 279.97786pt x 202.91936pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 208
+ []
+
+[208 <./Pics/Pasted_image_20260515104515.png>]
+<Pics/Pasted_image_20260515104621.png, id=4079, 1513.15312pt x 603.75563pt>
+File: Pics/Pasted_image_20260515104621.png Graphic file (type png)
+<use Pics/Pasted_image_20260515104621.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515104621.png  used on input li
+ne 83.
+(pdftex.def)             Requested size: 279.97786pt x 111.71146pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 209
+ []
+
+[209 <./Pics/Pasted_image_20260515104621.png>]
+Overfull \hbox (313.68651pt too wide) in paragraph at lines 167--180
+ [] 
+ []
+
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 210
+ []
+
+[210]
+<Pics/Pasted_image_20260515104824.png, id=4089, 312.41719pt x 649.67719pt>
+File: Pics/Pasted_image_20260515104824.png Graphic file (type png)
+<use Pics/Pasted_image_20260515104824.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515104824.png  used on input li
+ne 212.
+(pdftex.def)             Requested size: 300.97513pt x 625.90358pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 211
+ []
+
+[211]
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 212
+ []
+
+[212 <./Pics/Pasted_image_20260515104824.png>]
+<Pics/Pasted_image_20260515104905.png, id=4100, 1437.11906pt x 579.66562pt>
+File: Pics/Pasted_image_20260515104905.png Graphic file (type png)
+<use Pics/Pasted_image_20260515104905.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515104905.png  used on input li
+ne 265.
+(pdftex.def)             Requested size: 451.6941pt x 182.18877pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 213
+ []
+
+[213 <./Pics/Pasted_image_20260515104905.png>]
+<Pics/Pasted_image_20260515105231.png, id=4110, 1016.29688pt x 435.12563pt>
+File: Pics/Pasted_image_20260515105231.png Graphic file (type png)
+<use Pics/Pasted_image_20260515105231.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515105231.png  used on input li
+ne 286.
+(pdftex.def)             Requested size: 279.97786pt x 119.86905pt.
+<Pics/Pasted_image_20260515105459.png, id=4111, 987.69pt x 364.36125pt>
+File: Pics/Pasted_image_20260515105459.png Graphic file (type png)
+<use Pics/Pasted_image_20260515105459.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515105459.png  used on input li
+ne 306.
+(pdftex.def)             Requested size: 279.97786pt x 103.2825pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 214
+ []
+
+[214 <./Pics/Pasted_image_20260515105231.png>]
+<Pics/Pasted_image_20260515105531.png, id=4117, 957.5775pt x 568.37344pt>
+File: Pics/Pasted_image_20260515105531.png Graphic file (type png)
+<use Pics/Pasted_image_20260515105531.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515105531.png  used on input li
+ne 343.
+(pdftex.def)             Requested size: 376.09966pt x 223.2345pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 215
+ []
+
+[215 <./Pics/Pasted_image_20260515105459.png>]
+<Pics/Pasted_image_20260515105605.png, id=4125, 1065.9825pt x 413.29407pt>
+File: Pics/Pasted_image_20260515105605.png Graphic file (type png)
+<use Pics/Pasted_image_20260515105605.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515105605.png  used on input li
+ne 364.
+(pdftex.def)             Requested size: 279.97786pt x 108.55122pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 216
+ []
+
+[216 <./Pics/Pasted_image_20260515105531.png> <./Pics/Pasted_image_202605151056
+05.png>]
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 217
+ []
+
+[217]
+<Pics/Pasted_image_20260515111804.png, id=4150, 301.125pt x 337.26pt>
+File: Pics/Pasted_image_20260515111804.png Graphic file (type png)
+<use Pics/Pasted_image_20260515111804.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515111804.png  used on input li
+ne 432.
+(pdftex.def)             Requested size: 279.97786pt x 313.60223pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 218
+ []
+
+[218 <./Pics/Pasted_image_20260515111804.png>]
+<Pics/Pasted_image_20260515112817.png, id=4160, 1125.45468pt x 413.29407pt>
+File: Pics/Pasted_image_20260515112817.png Graphic file (type png)
+<use Pics/Pasted_image_20260515112817.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515112817.png  used on input li
+ne 470.
+(pdftex.def)             Requested size: 279.97786pt x 102.81244pt.
+<Pics/Pasted_image_20260515112908.png, id=4161, 774.64406pt x 626.34pt>
+File: Pics/Pasted_image_20260515112908.png Graphic file (type png)
+<use Pics/Pasted_image_20260515112908.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515112908.png  used on input li
+ne 498.
+(pdftex.def)             Requested size: 279.97786pt x 226.38058pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 219
+ []
+
+[219 <./Pics/Pasted_image_20260515112817.png>]
+<Pics/Pasted_image_20260515113323.png, id=4167, 748.29562pt x 589.4522pt>
+File: Pics/Pasted_image_20260515113323.png Graphic file (type png)
+<use Pics/Pasted_image_20260515113323.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515113323.png  used on input li
+ne 518.
+(pdftex.def)             Requested size: 279.97786pt x 220.54935pt.
+
+Overfull \hbox (145.0556pt too wide) in paragraph at lines 524--532
+ [] 
+ []
+
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 220
+ []
+
+[220 <./Pics/Pasted_image_20260515112908.png> <./Pics/Pasted_image_202605151133
+23.png>]
+<Pics/Pasted_image_20260515113344.png, id=4174, 586.44093pt x 453.19313pt>
+File: Pics/Pasted_image_20260515113344.png Graphic file (type png)
+<use Pics/Pasted_image_20260515113344.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515113344.png  used on input li
+ne 542.
+(pdftex.def)             Requested size: 279.97786pt x 216.36156pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 221
+ []
+
+[221 <./Pics/Pasted_image_20260515113344.png>]
+<Pics/Pasted_image_20260515113721.png, id=4180, 512.66531pt x 170.88844pt>
+File: Pics/Pasted_image_20260515113721.png Graphic file (type png)
+<use Pics/Pasted_image_20260515113721.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515113721.png  used on input li
+ne 586.
+(pdftex.def)             Requested size: 279.97786pt x 93.3266pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 222
+ []
+
+[222 <./Pics/Pasted_image_20260515113721.png>]
+<Pics/Pasted_image_20260515114134.png, id=4186, 257.46187pt x 381.67593pt>
+File: Pics/Pasted_image_20260515114134.png Graphic file (type png)
+<use Pics/Pasted_image_20260515114134.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515114134.png  used on input li
+ne 613.
+(pdftex.def)             Requested size: 279.97786pt x 415.09253pt.
+<Pics/Pasted_image_20260515114152.png, id=4187, 916.92563pt x 323.70938pt>
+File: Pics/Pasted_image_20260515114152.png Graphic file (type png)
+<use Pics/Pasted_image_20260515114152.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515114152.png  used on input li
+ne 618.
+(pdftex.def)             Requested size: 279.97786pt x 98.84235pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 223
+ []
+
+[223 <./Pics/Pasted_image_20260515114134.png>]
+<Pics/Pasted_image_20260515114212.png, id=4193, 364.36125pt x 361.35pt>
+File: Pics/Pasted_image_20260515114212.png Graphic file (type png)
+<use Pics/Pasted_image_20260515114212.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515114212.png  used on input li
+ne 623.
+(pdftex.def)             Requested size: 279.97786pt x 277.67244pt.
+<Pics/Pasted_image_20260515114232.png, id=4194, 764.10469pt x 454.69875pt>
+File: Pics/Pasted_image_20260515114232.png Graphic file (type png)
+<use Pics/Pasted_image_20260515114232.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515114232.png  used on input li
+ne 626.
+(pdftex.def)             Requested size: 279.97786pt x 166.60544pt.
+<Pics/Pasted_image_20260515114249.png, id=4195, 546.54187pt x 413.29407pt>
+File: Pics/Pasted_image_20260515114249.png Graphic file (type png)
+<use Pics/Pasted_image_20260515114249.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515114249.png  used on input li
+ne 629.
+(pdftex.def)             Requested size: 279.97786pt x 211.71683pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 224
+ []
+
+[224 <./Pics/Pasted_image_20260515114152.png> <./Pics/Pasted_image_202605151142
+12.png> <./Pics/Pasted_image_20260515114232.png>]
+<Pics/Pasted_image_20260515114324.png, id=4204, 867.99281pt x 207.77625pt>
+File: Pics/Pasted_image_20260515114324.png Graphic file (type png)
+<use Pics/Pasted_image_20260515114324.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515114324.png  used on input li
+ne 644.
+(pdftex.def)             Requested size: 279.97786pt x 67.01921pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 225
+ []
+
+[225 <./Pics/Pasted_image_20260515114249.png> <./Pics/Pasted_image_202605151143
+24.png>]
+Overfull \hbox (21.1516pt too wide) in paragraph at lines 706--707
+[]\T1/lmr/m/n/10.95 For chroma com-po-nents, one can sim-i-larly de-fine $[][]\
+OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 t\OT1/lmr/m/n/10.95 )$\T1/lmr/m/n/10.95 
+, $[][]\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 t\OT1/lmr/m/n/10.95 )$\T1/lmr/m/
+n/10.95 , $[][]\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 t\OT1/lmr/m/n/10.95 )$\T
+1/lmr/m/n/10.95 , and $[][]\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 t\OT1/lmr/m/
+n/10.95 )$\T1/lmr/m/n/10.95 . 
+ []
+
+<Pics/Pasted_image_20260515114654.png, id=4211, 444.15938pt x 382.42876pt>
+File: Pics/Pasted_image_20260515114654.png Graphic file (type png)
+<use Pics/Pasted_image_20260515114654.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515114654.png  used on input li
+ne 735.
+(pdftex.def)             Requested size: 279.97786pt x 241.0656pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 226
+ []
+
+[226]
+<Pics/Pasted_image_20260515114717.png, id=4216, 976.39781pt x 727.96968pt>
+File: Pics/Pasted_image_20260515114717.png Graphic file (type png)
+<use Pics/Pasted_image_20260515114717.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515114717.png  used on input li
+ne 754.
+(pdftex.def)             Requested size: 279.97786pt x 208.7398pt.
+<Pics/Pasted_image_20260515114740.png, id=4217, 810.77907pt x 627.84563pt>
+File: Pics/Pasted_image_20260515114740.png Graphic file (type png)
+<use Pics/Pasted_image_20260515114740.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515114740.png  used on input li
+ne 755.
+(pdftex.def)             Requested size: 279.97786pt x 216.80815pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 227
+ []
+
+[227 <./Pics/Pasted_image_20260515114654.png> <./Pics/Pasted_image_202605151147
+17.png>]
+<Pics/Pasted_image_20260515114955.png, id=4226, 983.17313pt x 775.39688pt>
+File: Pics/Pasted_image_20260515114955.png Graphic file (type png)
+<use Pics/Pasted_image_20260515114955.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515114955.png  used on input li
+ne 770.
+(pdftex.def)             Requested size: 279.97786pt x 220.8011pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 228
+ []
+
+[228 <./Pics/Pasted_image_20260515114740.png> <./Pics/Pasted_image_202605151149
+55.png>]
+<Pics/Pasted_image_20260515115320.png, id=4236, 737.75626pt x 427.5975pt>
+File: Pics/Pasted_image_20260515115320.png Graphic file (type png)
+<use Pics/Pasted_image_20260515115320.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515115320.png  used on input li
+ne 805.
+(pdftex.def)             Requested size: 279.97786pt x 162.27342pt.
+<Pics/Pasted_image_20260515115335.png, id=4237, 737.75626pt x 427.5975pt>
+File: Pics/Pasted_image_20260515115335.png Graphic file (type png)
+<use Pics/Pasted_image_20260515115335.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515115335.png  used on input li
+ne 808.
+(pdftex.def)             Requested size: 279.97786pt x 162.27342pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 229
+ []
+
+[229 <./Pics/Pasted_image_20260515115320.png> <./Pics/Pasted_image_202605151153
+35.png>]
+<Pics/Pasted_image_20260515115415.png, id=4244, 731.73375pt x 487.8225pt>
+File: Pics/Pasted_image_20260515115415.png Graphic file (type png)
+<use Pics/Pasted_image_20260515115415.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515115415.png  used on input li
+ne 876.
+(pdftex.def)             Requested size: 279.97786pt x 186.65477pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 230
+ []
+
+[230]
+<Pics/Pasted_image_20260515115437.png, id=4250, 731.73375pt x 487.8225pt>
+File: Pics/Pasted_image_20260515115437.png Graphic file (type png)
+<use Pics/Pasted_image_20260515115437.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515115437.png  used on input li
+ne 879.
+(pdftex.def)             Requested size: 279.97786pt x 186.65477pt.
+<Pics/Pasted_image_20260515115452.png, id=4251, 731.73375pt x 487.8225pt>
+File: Pics/Pasted_image_20260515115452.png Graphic file (type png)
+<use Pics/Pasted_image_20260515115452.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515115452.png  used on input li
+ne 882.
+(pdftex.def)             Requested size: 279.97786pt x 186.65477pt.
+<Pics/Pasted_image_20260515115505.png, id=4252, 731.73375pt x 487.8225pt>
+File: Pics/Pasted_image_20260515115505.png Graphic file (type png)
+<use Pics/Pasted_image_20260515115505.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515115505.png  used on input li
+ne 885.
+(pdftex.def)             Requested size: 279.97786pt x 186.65477pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 231
+ []
+
+[231 <./Pics/Pasted_image_20260515115415.png> <./Pics/Pasted_image_202605151154
+37.png> <./Pics/Pasted_image_20260515115452.png>]
+<Pics/Pasted_image_20260515115521.png, id=4260, 731.73375pt x 487.8225pt>
+File: Pics/Pasted_image_20260515115521.png Graphic file (type png)
+<use Pics/Pasted_image_20260515115521.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515115521.png  used on input li
+ne 888.
+(pdftex.def)             Requested size: 279.97786pt x 186.65477pt.
+<Pics/Pasted_image_20260515115553.png, id=4261, 970.3753pt x 508.14844pt>
+File: Pics/Pasted_image_20260515115553.png Graphic file (type png)
+<use Pics/Pasted_image_20260515115553.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515115553.png  used on input li
+ne 906.
+(pdftex.def)             Requested size: 279.97786pt x 146.61491pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 232
+ []
+
+[232 <./Pics/Pasted_image_20260515115505.png> <./Pics/Pasted_image_202605151155
+21.png>]
+<Pics/Pasted_image_20260515115621.png, id=4268, 920.68968pt x 260.47313pt>
+File: Pics/Pasted_image_20260515115621.png Graphic file (type png)
+<use Pics/Pasted_image_20260515115621.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515115621.png  used on input li
+ne 939.
+(pdftex.def)             Requested size: 279.97786pt x 79.2077pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 233
+ []
+
+[233 <./Pics/Pasted_image_20260515115553.png> <./Pics/Pasted_image_202605151156
+21.png>]
+<Pics/Pasted_image_20260515115703.png, id=4275, 844.65562pt x 90.3375pt>
+File: Pics/Pasted_image_20260515115703.png Graphic file (type png)
+<use Pics/Pasted_image_20260515115703.png>
+Package pdftex.def Info: Pics/Pasted_image_20260515115703.png  used on input li
+ne 971.
+(pdftex.def)             Requested size: 279.97786pt x 29.94379pt.
+
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 234
+ []
+
+[234 <./Pics/Pasted_image_20260515115703.png>]
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 235
+ []
+
+[235]
+Overfull \hbox (462.47556pt too wide) in paragraph at lines 1090--1119
+ [] 
+ []
+
+)
+Overfull \hbox (90.64697pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10.95 CHAPTER 11.  QUALITY ASSESSMENT AND QUALITY OF EXPERIENCE FO
+R MULTIMEDIA SERVICES \T1/lmr/m/n/10.95 236
+ []
+
+[236] (./chapters/12.tex
+Chapter 12.
+
+Overfull \hbox (41.2873pt too wide) in paragraph at lines 3--4
+\T1/lmr/bx/n/10.95 Course: \T1/lmr/m/n/10.95 Mul-ti-me-dia Com-mu-ni-ca-tions, 
+Uni-ver-sita di Padova, Di-par-ti-mento di In-geg-ne-ria dell'Informazione. 
+ []
+
+
+Overfull \hbox (53.97972pt too wide) in paragraph at lines 25--34
+ [] 
+ []
+
+[237
+
+
+]
+<Pics/Pasted_image_20260520131140.png, id=4299, 517.935pt x 482.55281pt>
+File: Pics/Pasted_image_20260520131140.png Graphic file (type png)
+<use Pics/Pasted_image_20260520131140.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520131140.png  used on input li
+ne 44.
+(pdftex.def)             Requested size: 376.09966pt x 350.41983pt.
+
+Overfull \hbox (137.12785pt too wide) in paragraph at lines 60--68
+ [] 
+ []
+
+<Pics/Pasted_image_20260520131216.png, id=4300, 506.6428pt x 342.5297pt>
+File: Pics/Pasted_image_20260520131216.png Graphic file (type png)
+<use Pics/Pasted_image_20260520131216.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520131216.png  used on input li
+ne 70.
+(pdftex.def)             Requested size: 376.09966pt x 254.27812pt.
+[238 <./Pics/Pasted_image_20260520131140.png>]
+<Pics/Pasted_image_20260520131236.png, id=4306, 429.10312pt x 207.02344pt>
+File: Pics/Pasted_image_20260520131236.png Graphic file (type png)
+<use Pics/Pasted_image_20260520131236.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520131236.png  used on input li
+ne 84.
+(pdftex.def)             Requested size: 376.09966pt x 181.45462pt.
+ [239 <./Pics/Pasted_image_20260520131216.png> <./Pics/Pasted_image_20260520131
+236.png>]
+<Pics/Pasted_image_20260520131321.png, id=4313, 691.08188pt x 347.79938pt>
+File: Pics/Pasted_image_20260520131321.png Graphic file (type png)
+<use Pics/Pasted_image_20260520131321.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520131321.png  used on input li
+ne 116.
+(pdftex.def)             Requested size: 451.6941pt x 227.32466pt.
+ [240 <./Pics/Pasted_image_20260520131321.png>]
+Overfull \hbox (528.01582pt too wide) in paragraph at lines 124--130
+ [] 
+ []
+
+<Pics/Pasted_image_20260520133139.png, id=4319, 486.31688pt x 404.26031pt>
+File: Pics/Pasted_image_20260520133139.png Graphic file (type png)
+<use Pics/Pasted_image_20260520133139.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520133139.png  used on input li
+ne 132.
+(pdftex.def)             Requested size: 391.5005pt x 325.44429pt.
+<Pics/Pasted_image_20260520133201.png, id=4320, 237.88875pt x 317.68687pt>
+File: Pics/Pasted_image_20260520133201.png Graphic file (type png)
+<use Pics/Pasted_image_20260520133201.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520133201.png  used on input li
+ne 145.
+(pdftex.def)             Requested size: 225.84349pt x 301.6166pt.
+[241 <./Pics/Pasted_image_20260520133139.png>]
+Overfull \hbox (18.92308pt too wide) in paragraph at lines 148--148
+[]\T1/lmr/bx/n/14.4 One-to-Many Real-Time Com-mu-ni-ca-tions The SVC Paradigm 
+ []
+
+<Pics/Pasted_image_20260520133226.png, id=4326, 499.11469pt x 317.68687pt>
+File: Pics/Pasted_image_20260520133226.png Graphic file (type png)
+<use Pics/Pasted_image_20260520133226.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520133226.png  used on input li
+ne 168.
+(pdftex.def)             Requested size: 391.5005pt x 249.19568pt.
+[242 <./Pics/Pasted_image_20260520133201.png>]
+<Pics/Pasted_image_20260520133327.png, id=4333, 499.11469pt x 317.68687pt>
+File: Pics/Pasted_image_20260520133327.png Graphic file (type png)
+<use Pics/Pasted_image_20260520133327.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520133327.png  used on input li
+ne 182.
+(pdftex.def)             Requested size: 391.5005pt x 249.19568pt.
+ [243 <./Pics/Pasted_image_20260520133226.png>]
+<Pics/Pasted_image_20260520133342.png, id=4339, 397.485pt x 206.27063pt>
+File: Pics/Pasted_image_20260520133342.png Graphic file (type png)
+<use Pics/Pasted_image_20260520133342.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520133342.png  used on input li
+ne 186.
+(pdftex.def)             Requested size: 376.09966pt x 195.17856pt.
+ [244 <./Pics/Pasted_image_20260520133327.png> <./Pics/Pasted_image_20260520133
+342.png>]
+<Pics/Pasted_image_20260520134145.png, id=4346, 612.03656pt x 359.09157pt>
+File: Pics/Pasted_image_20260520134145.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134145.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134145.png  used on input li
+ne 202.
+(pdftex.def)             Requested size: 451.6941pt x 265.01677pt.
+ [245 <./Pics/Pasted_image_20260520134145.png>]
+<Pics/Pasted_image_20260520134208.png, id=4352, 858.95906pt x 124.21407pt>
+File: Pics/Pasted_image_20260520134208.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134208.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134208.png  used on input li
+ne 228.
+(pdftex.def)             Requested size: 466.62503pt x 67.47829pt.
+<Pics/Pasted_image_20260520134237.png, id=4353, 402.75468pt x 227.34938pt>
+File: Pics/Pasted_image_20260520134237.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134237.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134237.png  used on input li
+ne 239.
+(pdftex.def)             Requested size: 376.09966pt x 212.30347pt.
+ [246 <./Pics/Pasted_image_20260520134208.png> <./Pics/Pasted_image_20260520134
+237.png>]
+<Pics/Pasted_image_20260520134259.png, id=4361, 402.75468pt x 348.55219pt>
+File: Pics/Pasted_image_20260520134259.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134259.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134259.png  used on input li
+ne 254.
+(pdftex.def)             Requested size: 376.09966pt x 325.48509pt.
+<Pics/Pasted_image_20260520134319.png, id=4362, 595.47469pt x 308.65312pt>
+File: Pics/Pasted_image_20260520134319.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134319.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134319.png  used on input li
+ne 271.
+(pdftex.def)             Requested size: 451.6941pt x 234.12668pt.
+[247 <./Pics/Pasted_image_20260520134259.png>]
+<Pics/Pasted_image_20260520134348.png, id=4368, 572.89032pt x 511.15968pt>
+File: Pics/Pasted_image_20260520134348.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134348.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134348.png  used on input li
+ne 312.
+(pdftex.def)             Requested size: 413.89333pt x 369.29822pt.
+ [248 <./Pics/Pasted_image_20260520134319.png>]
+<Pics/Pasted_image_20260520134407.png, id=4375, 786.68906pt x 539.01375pt>
+File: Pics/Pasted_image_20260520134407.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134407.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134407.png  used on input li
+ne 328.
+(pdftex.def)             Requested size: 466.62503pt x 319.72607pt.
+ [249 <./Pics/Pasted_image_20260520134348.png>]
+Overfull \hbox (286.9252pt too wide) in paragraph at lines 346--352
+ [] 
+ []
+
+<Pics/Pasted_image_20260520134429.png, id=4381, 572.1375pt x 342.5297pt>
+File: Pics/Pasted_image_20260520134429.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134429.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134429.png  used on input li
+ne 353.
+(pdftex.def)             Requested size: 451.6941pt x 270.423pt.
+[250 <./Pics/Pasted_image_20260520134407.png>]
+<Pics/Pasted_image_20260520134456.png, id=4387, 582.67688pt x 280.79906pt>
+File: Pics/Pasted_image_20260520134456.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134456.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134456.png  used on input li
+ne 374.
+(pdftex.def)             Requested size: 451.6941pt x 217.68129pt.
+ [251 <./Pics/Pasted_image_20260520134429.png>] [252 <./Pics/Pasted_image_20260
+520134456.png>]
+<Pics/Pasted_image_20260520134551.png, id=4398, 532.99126pt x 563.10374pt>
+File: Pics/Pasted_image_20260520134551.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134551.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134551.png  used on input li
+ne 460.
+(pdftex.def)             Requested size: 376.09966pt x 397.35767pt.
+ [253] [254 <./Pics/Pasted_image_20260520134551.png>] [255]
+<Pics/Pasted_image_20260520134648.png, id=4416, 704.6325pt x 307.1475pt>
+File: Pics/Pasted_image_20260520134648.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134648.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134648.png  used on input li
+ne 553.
+(pdftex.def)             Requested size: 466.62503pt x 203.40222pt.
+<Pics/Pasted_image_20260520134714.png, id=4417, 590.95781pt x 422.32782pt>
+File: Pics/Pasted_image_20260520134714.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134714.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134714.png  used on input li
+ne 577.
+(pdftex.def)             Requested size: 451.6941pt x 322.80907pt.
+ [256 <./Pics/Pasted_image_20260520134648.png>]
+<Pics/Pasted_image_20260520134728.png, id=4424, 590.95781pt x 422.32782pt>
+File: Pics/Pasted_image_20260520134728.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134728.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134728.png  used on input li
+ne 590.
+(pdftex.def)             Requested size: 451.6941pt x 322.80907pt.
+ [257 <./Pics/Pasted_image_20260520134714.png>]
+<Pics/Pasted_image_20260520134744.png, id=4430, 590.95781pt x 422.32782pt>
+File: Pics/Pasted_image_20260520134744.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134744.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134744.png  used on input li
+ne 603.
+(pdftex.def)             Requested size: 451.6941pt x 322.80907pt.
+ [258 <./Pics/Pasted_image_20260520134728.png>]
+<Pics/Pasted_image_20260520134757.png, id=4436, 590.95781pt x 422.32782pt>
+File: Pics/Pasted_image_20260520134757.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134757.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134757.png  used on input li
+ne 616.
+(pdftex.def)             Requested size: 451.6941pt x 322.80907pt.
+ [259 <./Pics/Pasted_image_20260520134744.png>]
+<Pics/Pasted_image_20260520134810.png, id=4442, 590.95781pt x 422.32782pt>
+File: Pics/Pasted_image_20260520134810.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134810.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134810.png  used on input li
+ne 629.
+(pdftex.def)             Requested size: 451.6941pt x 322.80907pt.
+
+[260 <./Pics/Pasted_image_20260520134757.png>] [261 <./Pics/Pasted_image_202605
+20134810.png>]
+<Pics/Pasted_image_20260520134841.png, id=4454, 446.41782pt x 356.83313pt>
+File: Pics/Pasted_image_20260520134841.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134841.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134841.png  used on input li
+ne 737.
+(pdftex.def)             Requested size: 376.09966pt x 300.63072pt.
+ [262] [263 <./Pics/Pasted_image_20260520134841.png>] [264]
+[265] [266] [267]
+<Pics/Pasted_image_20260520134935.png, id=4488, 264.99pt x 443.40656pt>
+File: Pics/Pasted_image_20260520134935.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134935.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134935.png  used on input li
+ne 1049.
+(pdftex.def)             Requested size: 263.64427pt x 441.18628pt.
+<Pics/Pasted_image_20260520134955.png, id=4489, 655.69969pt x 129.48375pt>
+File: Pics/Pasted_image_20260520134955.png Graphic file (type png)
+<use Pics/Pasted_image_20260520134955.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520134955.png  used on input li
+ne 1052.
+(pdftex.def)             Requested size: 466.62503pt x 92.14746pt.
+ [268 <./Pics/Pasted_image_20260520134935.png>]
+<Pics/Pasted_image_20260520135034.png, id=4495, 446.41782pt x 325.96782pt>
+File: Pics/Pasted_image_20260520135034.png Graphic file (type png)
+<use Pics/Pasted_image_20260520135034.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520135034.png  used on input li
+ne 1100.
+(pdftex.def)             Requested size: 376.09966pt x 274.6268pt.
+ [269 <./Pics/Pasted_image_20260520134955.png>] [270 <./Pics/Pasted_image_20260
+520135034.png>] [271]
+<Pics/Pasted_image_20260520135123.png, id=4516, 360.59718pt x 350.05782pt>
+File: Pics/Pasted_image_20260520135123.png Graphic file (type png)
+<use Pics/Pasted_image_20260520135123.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520135123.png  used on input li
+ne 1229.
+(pdftex.def)             Requested size: 338.7688pt x 328.86743pt.
+ [272 <./Pics/Pasted_image_20260520135123.png>]
+<Pics/Pasted_image_20260520135147.png, id=4524, 532.23843pt x 419.31656pt>
+File: Pics/Pasted_image_20260520135147.png Graphic file (type png)
+<use Pics/Pasted_image_20260520135147.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520135147.png  used on input li
+ne 1288.
+(pdftex.def)             Requested size: 413.89333pt x 326.08665pt.
+<Pics/Pasted_image_20260520135203.png, id=4525, 658.71094pt x 532.23843pt>
+File: Pics/Pasted_image_20260520135203.png Graphic file (type png)
+<use Pics/Pasted_image_20260520135203.png>
+Package pdftex.def Info: Pics/Pasted_image_20260520135203.png  used on input li
+ne 1291.
+(pdftex.def)             Requested size: 466.62503pt x 377.03918pt.
+ [273 <./Pics/Pasted_image_20260520135147.png>] [274 <./Pics/Pasted_image_20260
+520135203.png>]
+Overfull \hbox (597.49638pt too wide) in paragraph at lines 1391--1415
+ [] 
+ []
+
+[275]) [276] (./main.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-11-14>
+ ***********
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 957AD7DF62B514BC8D509FF2B7DE9DC1;95111.
+ ) 
+Here is how much of TeX's memory you used:
+ 32555 strings out of 467538
+ 703819 string characters out of 5390376
+ 1008856 words of memory out of 5000000
+ 59947 multiletter control sequences out of 15000+600000
+ 731823 words of font info for 102 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 98i,13n,118p,694b,1064s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</opt/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></opt/texlive/
+2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></opt/texlive/2025/texmf-dist/
+fonts/type1/public/lm/lmbx8.pfb></opt/texlive/2025/texmf-dist/fonts/type1/publi
+c/lm/lmbxi10.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb
+></opt/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></opt/texlive/2
+025/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></opt/texlive/2025/texmf-dist/f
+onts/type1/public/lm/lmmi6.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public
+/lm/lmmi8.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmib10.pfb><
+/opt/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></opt/texlive/2025
+/texmf-dist/fonts/type1/public/lm/lmr12.pfb></opt/texlive/2025/texmf-dist/fonts
+/type1/public/lm/lmr17.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/lm/
+lmr6.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb></opt/tex
+live/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb></opt/texlive/2025/texmf-
+dist/fonts/type1/public/lm/lmri8.pfb></opt/texlive/2025/texmf-dist/fonts/type1/
+public/lm/lmro10.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10
+.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></opt/texliv
+e/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></opt/texlive/2025/texmf-dist
+/fonts/type1/public/lm/lmtt10.pfb></opt/texlive/2025/texmf-dist/fonts/type1/pub
+lic/lm/lmtti10.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/sy
+mbols/msam10.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symb
+ols/msbm10.pfb>
+Output written on main.pdf (287 pages, 55712049 bytes).
+PDF statistics:
+ 4887 PDF objects out of 5155 (max. 8388607)
+ 3830 compressed objects within 39 object streams
+ 984 named destinations out of 1000 (max. 500000)
+ 5577 words of extra memory for PDF output out of 10000 (max. 10000000)
+

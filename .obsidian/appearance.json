@@ -2,12 +2,14 @@
   "baseFontSizeAction": true,
   "baseFontSize": 23,
   "cssTheme": "Cupertino",
-  "textFontFamily": "Fira Sans",
-  "monospaceFontFamily": "Source Code Pro",
+  "textFontFamily": "",
+  "monospaceFontFamily": "",
   "enabledCssSnippets": [
     "custom-width",
     "center-images-print",
-    "start-new-chapter"
+    "start-new-chapter",
+    "mermaid-pdf-export"
   ],
-  "theme": "obsidian"
+  "theme": "obsidian",
+  "interfaceFontFamily": "Noto Sans Malayalam UI"
 }

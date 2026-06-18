@@ -1,0 +1,720 @@
+\chapter{Adaptive Streaming}
+
+\section{Table of Contents}
+
+\begin{itemize}
+  \item Core Idea
+  \item Key Concepts
+  \item Theory and Formulas
+  \item Visual Schemes
+  \item Examples
+\end{itemize}
+
+\section{Core Idea}
+
+\textbf{Adaptive streaming} delivers video to heterogeneous users by changing requested quality over time. The client chooses which encoded segment representation to download according to network throughput, buffer state, and QoE tradeoffs.
+
+Main motivation:
+
+\begin{itemize}
+  \item compressed video has variable frame sizes;
+  \item users have different and time-varying capacities;
+  \item a single fixed coding rate causes either stalls or wasted capacity;
+  \item HTTP/CDN infrastructure scales better than per-user real-time server adaptation.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Coding-rate constraint}
+Continuous playout requires selected coding rate to fit user capacity:
+
+\[
+R_C \leq C_k
+\]
+
+If $R_C>C_k$, packets accumulate, delay grows, losses happen, and playback may freeze.
+\end{calloutbox}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch12/compressed-frame-size-variability.png}\end{center}
+Compressed video rate is not constant at frame level: I frames are much larger than P/B frames, and stability appears only over GOP-scale averages.
+
+\section{Key Concepts}
+
+\subsection{Service Classes}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Service} & \textbf{Examples} & \textbf{Main need} & \textbf{Delay tolerance} \\ \hline
+bulk transfer & photos, messages & integrity & seconds \\ \hline
+VoD & Netflix, YouTube & continuity & startup delay acceptable \\ \hline
+live streaming & Twitch, DAZN & recency and scale & seconds \\ \hline
+real-time interactive & Zoom, Teams & low latency & below 150 ms \\ \hline
+cloud gaming / VR & GeForce Now, VR & interaction & below 50 ms \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{One-to-Many Heterogeneity}
+
+One server may serve millions of users with different:
+
+\begin{itemize}
+  \item network paths and capacities;
+  \item wireless dynamics;
+  \item memory, battery, decoding hardware;
+  \item screens and target resolutions.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.867\linewidth]{ch12/one-to-many-heterogeneity.png}\end{center}
+Different users should not receive one common rate: low-capacity users stall, high-capacity users are underused.
+
+\subsection{Push vs. Pull Multimedia Stacks}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Paradigm} & \textbf{Control} & \textbf{Stack} & \textbf{Use} \\ \hline
+\textbf{real-time push} & server pushes immediately & UDP/RTP/RTCP/WebRTC & calls, gaming \\ \hline
+\textbf{adaptive pull} & client requests next object & HTTP/DASH/HLS over QUIC/HTTP/3 & VoD, live broadcast \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch12/push-vs-pull-stacks.png}\end{center}
+Push optimizes latency. Pull optimizes scalability, caching, and QoE through client-side choices.
+
+\subsection{Network-Friendly Video}
+
+Compressed video is fragile: packet losses can desynchronize entropy decoding and temporal prediction. \textbf{MANEs} (\textit{Media Aware Network Elements}) can inspect NAL headers and drop less important units under congestion.
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch12/mane-smart-dropping.png}\end{center}
+MANE can drop non-reference B data while protecting SPS/PPS/IDR and key references.
+
+\subsection{Scalable Video Coding}
+
+\textbf{SVC} encodes once and decodes many qualities:
+
+\begin{itemize}
+  \item \textbf{Base Layer (BL)}: essential stream, low rate $R_B$;
+  \item \textbf{Enhancement Layers (EL)}: progressively improve quality, resolution, or frame rate.
+\end{itemize}
+
+Base layer condition:
+
+\[
+R_B \leq \min_k C(k)
+\]
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch12/svc-layer-hierarchy.png}\end{center}
+Enhancement layers depend on lower layers, so they are useless without base layer.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch12/svc-quality-spatial-scalability.png}\end{center}
+Quality/spatial scalability codes residual information on top of reconstructed lower layer.
+
+In conferencing, SVC works with an SFU:
+
+\begin{center}\includegraphics[width=\linewidth]{ch12/svc-selective-forwarding.png}\end{center}
+SFU forwards all layers to high-capacity users and only base layer to low-capacity users.
+
+Why SVC is poor for web-scale streaming:
+
+\begin{itemize}
+  \item 10\%-25\% overhead versus single-layer streams;
+  \item layer dependencies are hard to cache as independent HTTP objects;
+  \item many MANEs would be needed at Internet scale;
+  \item hardware SVC support is weak on mass-market devices.
+\end{itemize}
+
+\subsection{HTTP, QUIC, and CDNs}
+
+HTTP works well for streaming because it:
+
+\begin{itemize}
+  \item uses ports 80/443, passing firewalls/NATs;
+  \item lets servers stay stateless;
+  \item maps video chunks to cacheable CDN objects.
+\end{itemize}
+
+\begin{center}\includegraphics[width=\linewidth]{ch12/http-cdn-chunk-request.png}\end{center}
+HTTP chunk request can be served by CDN edge cache, reducing origin load and latency.
+
+Classic TCP limitation: \textbf{Head-of-Line (HOL) blocking}. If one packet is lost, later received bytes cannot be delivered to application until missing data is retransmitted.
+
+\begin{center}\includegraphics[width=0.767\linewidth]{ch12/tcp-head-of-line-blocking.png}\end{center}
+TCP reliability can freeze application delivery and drain video buffer.
+
+HTTP/3 uses \textbf{QUIC} over UDP:
+
+\begin{itemize}
+  \item independent streams avoid cross-stream HOL blocking;
+  \item 0-RTT handshake lowers startup delay;
+  \item connection IDs support Wi-Fi/5G migration.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch12/quic-stream-isolation.png}\end{center}
+QUIC loss in one stream pauses only that stream, not all media/control streams.
+
+CDNs place edge nodes close to users:
+
+\begin{center}\includegraphics[width=\linewidth]{ch12/cdn-architecture.png}\end{center}
+CDNs reduce propagation delay and origin load through edge caching and request routing.
+
+\section{Theory and Formulas}
+
+\subsection{DASH Architecture}
+
+\textbf{MPEG-DASH} (\textit{Dynamic Adaptive Streaming over HTTP}) splits video into segments and encodes each segment at multiple representations.
+
+Segment $n$ has duration $T_S$. Level $k$ has:
+
+\begin{itemize}
+  \item coding rate $R_C(k)$;
+  \item resolution $Res_k$;
+  \item frame rate $F_k$.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch12/dash-segments-representations.png}\end{center}
+Client downloads one representation for each segment; switching is possible at segment boundaries.
+
+\subsection{MPD Manifest}
+
+The \textbf{Media Presentation Description (MPD)} is XML metadata describing available media:
+
+\begin{itemize}
+  \item \textbf{Period}: temporal interval, e.g. content and ads;
+  \item \textbf{AdaptationSet}: media type/track, e.g. video, English audio;
+  \item \textbf{Representation}: quality level, e.g. 1080p 5 Mbps;
+  \item \textbf{Segment}: URL or byte-range of each chunk.
+\end{itemize}
+
+\begin{center}\includegraphics[width=\linewidth]{ch12/mpd-manifest-hierarchy.png}\end{center}
+Client reads MPD before choosing representations.
+
+\subsection{Segment Generation Rules}
+
+Bitrate adaptation can happen only at segment boundaries. Therefore:
+
+\begin{itemize}
+  \item each segment starts with closed GOP and IDR;
+  \item open GOP with CRA is forbidden across segment boundary;
+  \item no frame in segment $N+1$ can reference segment $N$;
+  \item all representations must align in time and share IDR timestamps.
+\end{itemize}
+
+\begin{center}\includegraphics[width=\linewidth]{ch12/aligned-segment-boundaries.png}\end{center}
+Cross-representation alignment lets client switch quality without breaking decoding.
+
+Segment duration tradeoff:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{$T_S$} & \textbf{Advantage} & \textbf{Disadvantage} \\ \hline
+short, 1-2 s & fast adaptation, lower stall risk & more IDR overhead, lower compression efficiency \\ \hline
+long, 6-10 s & better compression efficiency & slower reaction, higher latency \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Low-Latency DASH/CMAF}
+
+Traditional DASH publishes a segment only after full segment encoding. \textbf{CMAF} divides a segment into 200-500 ms chunks. HTTP chunked transfer can send each chunk before the parent segment is complete.
+
+\begin{center}\includegraphics[width=\linewidth]{ch12/low-latency-cmaf-chunks.png}\end{center}
+Low-latency DASH/CMAF targets about 1-3 s glass-to-glass latency while keeping HTTP/CDN infrastructure.
+
+\subsection{Throughput}
+
+Instantaneous application-layer throughput:
+
+\[
+S(t)=\frac{dD(t)}{dt}\leq R
+\]
+
+where $D(t)$ is cumulative successfully received data and $R$ is physical link bitrate.
+
+Average throughput over window $T$:
+
+\[
+\bar{S}=\frac{1}{T}\int_0^T S(t)\,dt=\frac{D(T)}{T}
+\]
+
+ABR usually uses smoothed throughput estimates, not raw instantaneous samples.
+
+\subsection{Delay and Jitter}
+
+End-to-end delay:
+
+\[
+d_{e2e}=\sum_k d_{\text{proc}}(k)+d_{\text{queue}}(k)+d_{\text{tx}}(k)+d_{\text{prop}}(k)
+\]
+
+Transmission delay:
+
+\[
+d_{\text{tx}}(k)=\frac{L}{R}
+\]
+
+Propagation delay:
+
+\[
+d_{\text{prop}}(k)=\frac{d}{s}
+\]
+
+Increasing link rate reduces transmission delay, but not propagation distance or congestion queues.
+
+\begin{center}\includegraphics[width=0.767\linewidth]{ch12/jitter-delay-distribution.png}\end{center}
+Jitter is delay variability; playout buffer must absorb delay peaks, not only average delay.
+
+\subsection{Playout Buffer Model}
+
+Buffer $B(t)$ is measured in seconds of downloaded but unplayed video.
+
+Playback starts after initial reservoir:
+
+\[
+B(t)=L T_S
+\]
+
+Buffer starvation:
+
+\[
+B(t)=0
+\]
+
+After stall, playback resumes when:
+
+\[
+B(t)=M T_S
+\]
+
+Usually $L\geq M$: users tolerate startup delay more than mid-playback stalls.
+
+\subsection{Fluid Dynamics}
+
+Buffer equation:
+
+\[
+\frac{dB}{dt}=f_{\text{in}}-f_{\text{out}}
+\]
+
+If throughput is $S$ and selected coding rate is $R_C$, received playable seconds per real second are:
+
+\[
+f_{\text{in}}=\frac{S}{R_C}
+\]
+
+Output flow:
+
+\begin{itemize}
+  \item during playback: $f_{\text{out}}=1$;
+  \item during rebuffering: $f_{\text{out}}=0$.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Playout buffer equation}
+\[
+\frac{dB}{dt}=
+\begin{cases}
+\dfrac{S}{R_C}-1 & \text{if playout}\\
+\dfrac{S}{R_C} & \text{if rebuffering}
+\end{cases}
+\]
+
+Buffer grows if download is faster than consumption, shrinks if $R_C>S$, and fills during rebuffering.
+\end{calloutbox}
+
+\begin{center}\includegraphics[width=\linewidth]{ch12/buffer-starvation-timeline.png}\end{center}
+Throughput drop can make buffer hit zero, causing rebuffering.
+
+Download time for segment $n$ at level $k$:
+
+\[
+T_D(n,k)=\frac{T_S R_C(k)}{S_n}
+\]
+
+Initial buffering time:
+
+\[
+T_{IB}=L T_S
+\]
+
+\subsection{QoE for Streaming}
+
+QoE depends on:
+
+\begin{enumerate}
+  \item per-segment quality;
+  \item rebuffering count and duration;
+  \item quality switching amplitude/frequency;
+  \item initial startup time.
+\end{enumerate}
+
+Segment quality can be modeled as:
+
+\[
+Q(n)=f(R(k_n))
+\]
+
+or simplified as:
+
+\[
+Q(n)=R(k_n)
+\]
+
+or:
+
+\[
+Q(n)=k_n
+\]
+
+Rebuffering event duration for segment $n$:
+
+\[
+\Delta_n=0
+\]
+
+if no stall.
+
+Rebuffering penalty:
+
+\[
+\phi(\Delta)=
+\begin{cases}
+0 & \text{if } \Delta=0\\
+a\Delta+b & \text{if } \Delta>0
+\end{cases}
+\]
+
+where $a$ is small and $b$ is large.
+
+\begin{center}\includegraphics[width=0.7\linewidth]{ch12/rebuffering-penalty.png}\end{center}
+Any stall causes large QoE drop; longer stalls add smaller extra penalty.
+
+Segment-level QoE:
+
+\[
+J(n)=\lambda_1 k_n-\lambda_2|k_n-k_{n-1}|-\phi(\Delta_n)
+\]
+
+Sequence-level QoE:
+
+\[
+J=\sum_{n=1}^{N}J(n)-\lambda_3T_{ST}
+\]
+
+\begin{calloutbox}{red!70!black}{QoE tradeoff}
+Higher level improves quality, switching decreases stability, stalls are heavily penalized, startup delay is penalized but usually less than mid-playback stalls.
+\end{calloutbox}
+
+\subsection{ABR Strategies}
+
+Client-side \textbf{Adaptive Bitrate (ABR)} chooses next segment level.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Strategy} & \textbf{Input} & \textbf{Behavior} & \textbf{Examples} \\ \hline
+throughput-based & estimated $\hat{S}$ & choose rate downloadable in time & PANDA, FESTIVE, SQUAD \\ \hline
+buffer-based & $B(t)$ & high buffer increases quality, low buffer lowers quality & BBA, BOLA \\ \hline
+hybrid & throughput + buffer & combines prediction and safety & ELASTIC, MPC, ABMA+, DYNAMIC \\ \hline
+\end{tabular}}
+\end{center}
+
+ABR logic is not standardized. Different clients can be aggressive or conservative.
+
+\subsection{Example ABR Decision}
+
+Given previous level $k_{n-1}$, current buffer $B_0$, throughput estimate $\hat{S}$, and candidate level $\ell$ with rate $R(\ell)$:
+
+\[
+\beta=\frac{\hat{S}}{R(\ell)}-1
+\]
+
+If $\beta\geq 0$, buffer does not drain during download:
+
+\[
+\Delta=0
+\]
+
+If $\beta<0$, buffer reaches zero at:
+
+\[
+t_0=\frac{B_0}{1-\frac{\hat{S}}{R}}
+=\frac{R B_0}{R-\hat{S}}
+\]
+
+If $t_0>T_S$, no stall. If $t_0<T_S$, remaining segment time is:
+
+\[
+T_R=T_S-\frac{R B_0}{R-\hat{S}}
+\]
+
+Stall duration:
+
+\[
+\Delta=\frac{(T_R+M T_S)R}{\hat{S}}
+\]
+
+Then evaluate:
+
+\[
+J=\lambda_1 \ell-\lambda_2|\ell-k_{n-1}|-\phi(\Delta)
+\]
+
+and select best $\ell$.
+
+Limits:
+
+\begin{itemize}
+  \item assumes constant throughput;
+  \item ignores intra-frame bitrate peaks;
+  \item has no safety threshold unless explicitly added;
+  \item client has partial view of network state.
+\end{itemize}
+
+\section{Visual Schemes}
+
+\subsection{DASH Pull Pipeline}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Encoded representations] --> B[Segments]
+    B --> C[CDN cache]
+    D[MPD manifest] --> E[Client ABR]
+    E --> F[Select level k_n]
+    F --> C
+    C --> G[Download segment]
+    G --> H[Playout buffer]
+    H --> I[Decoder]
+    H --> E
+\end{verbatim}
+
+Client-driven loop: MPD describes options, ABR chooses next representation, buffer feedback affects future choices.
+
+\subsection{Buffer State Machine}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart TD
+    A[Startup] --> B{B = L T_S?}
+    B -- no --> A
+    B -- yes --> C[Playout]
+    C --> D{B = 0?}
+    D -- no --> C
+    D -- yes --> E[Rebuffering]
+    E --> F{B = M T_S?}
+    F -- no --> E
+    F -- yes --> C
+\end{verbatim}
+
+Startup threshold and post-stall refill threshold control delay/stall tradeoff.
+
+\subsection{ABR Objective}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Candidate level] --> B[Quality reward]
+    A --> C[Switch penalty]
+    A --> D[Stall prediction]
+    D --> E[Rebuffer penalty]
+    B --> F[QoE score J]
+    C --> F
+    E --> F
+    F --> G[Choose max score]
+\end{verbatim}
+
+ABR optimizes perceived experience, not only maximum bitrate.
+
+\section{Examples}
+
+\subsection{Buffer Parameter Tradeoff}
+
+Simulations in source use throughput:
+
+\begin{itemize}
+  \item $S_1=3$ Mbps for 0-10 s;
+  \item $S_2=1$ Mbps for 10-40 s;
+  \item $S_3=3$ Mbps after 40 s;
+  \item $R_C=2.5$ Mbps.
+\end{itemize}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Parameters} & \textbf{Result} & \textbf{Takeaway} \\ \hline
+$T_S=0.5$, $L=2$, $M=1$ & 12 stalls, 15 s total & fast start, frequent short stalls \\ \hline
+$T_S=0.5$, $L=10$, $M=1$ & 10 stalls, 11.95 s & larger startup buffer helps \\ \hline
+$T_S=0.5$, $L=10$, $M=5$ & 2 stalls, 12.5 s & fewer but longer stalls \\ \hline
+$T_S=2$, $L=10$, $M=5$ & 0 stalls & big reserve avoids stalls but raises latency \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Exercise 1 Result}
+
+Given:
+
+\begin{itemize}
+  \item $T_S=1$ s;
+  \item $R_C(1)=0.5$ Mbps;
+  \item $S_1=0.4$ Mbps for $0<t<T$;
+  \item $S_2=0.5$ Mbps for $t>T$;
+  \item fixed $q(n)=1$.
+\end{itemize}
+
+During startup before $T$:
+
+\[
+B'=S_1/R_C=0.8
+\]
+
+During playout before $T$:
+
+\[
+B'=S_1/R_C-1=-0.2
+\]
+
+If startup ends at $t_{ST}<T$:
+
+\[
+B(t)=t_{ST}-0.2t
+\]
+
+Zero time:
+
+\[
+t^*=5t_{ST}
+\]
+
+No stall before throughput recovers if:
+
+\[
+T<5t_{ST}
+\]
+
+Minimum:
+
+\[
+t_{ST}=\frac{T}{5}
+\]
+
+\subsection{Exercise 2: Max Quality Causes Periodic Stalls}
+
+Throughput profile:
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch12/exercise-throughput-profile.png}\end{center}
+For $q(n)=3$ always, $R_C=2$ Mbps. Startup downloads first two segments:
+
+\[
+N_b=2+2=4\text{ Mbits}
+\]
+
+First 2 s download 3 Mbits, next 1 s downloads 0.1 Mbits, remaining 0.9 Mbits take:
+
+\[
+\frac{0.9}{1.8}=0.5\text{ s}
+\]
+
+Startup time:
+
+\[
+t_{ST}=3.5\text{ s}
+\]
+
+After startup, $S_3=1.8<R_C=2$, so:
+
+\[
+B'=\frac{1.8}{2}-1=-0.1
+\]
+
+Starting from $B=2$, buffer empties after 20 s and first stall occurs at:
+
+\[
+23.5\text{ s}
+\]
+
+After each stall, playback resumes with $M=1$ loaded segment, i.e. $1$ s of buffer. Since the buffer drains with slope $-0.1$, it empties again after 10 s of playback.
+
+The stall duration is:
+
+\[
+\Delta=\frac{2}{1.8}=\frac{10}{9}\text{ s}
+\]
+
+so the rebuffering period is:
+
+\[
+T_{\text{rebuff}}=10+\frac{10}{9}=11.\overline{1}\text{ s}
+\]
+
+\begin{center}\includegraphics[width=0.75\linewidth]{ch12/exercise-periodic-rebuffering.png}\end{center}
+Max quality produces periodic rebuffering because throughput stays below chosen rate.
+
+\subsection{Exercise 2: Periodic Quality Reduction}
+
+Strategy:
+
+\[
+q(n)=
+\begin{cases}
+3 & \text{if } n\bmod 5\neq 3\\
+2 & \text{if } n\bmod 5=3
+\end{cases}
+\]
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch12/exercise-periodic-quality-pattern.png}\end{center}
+Level 2 every fifth segment fills buffer enough to compensate four level-3 segments.
+
+Comparing no-stall strategies:
+
+\[
+J_1\approx N\left(\frac{14}{5}\lambda_1-\frac{2}{5}\lambda_2\right)-\lambda_3T_1
+\]
+
+Constant level 2:
+
+\[
+J_2=2N\lambda_1-\lambda_3T_2
+\]
+
+For large $N$:
+
+\[
+J_1-J_2\approx N\left(\frac{4}{5}\lambda_1-\frac{2}{5}\lambda_2\right)
+\]
+
+Periodic switching wins iff:
+
+\[
+\lambda_1>\frac{\lambda_2}{2}
+\]
+
+\begin{calloutbox}{green!55!black}{ABR insight}
+Higher quality is not automatically better. Strategy quality depends on subjective weights: quality reward $\lambda_1$, switching annoyance $\lambda_2$, stall penalty $\phi$, and startup penalty $\lambda_3$.
+\end{calloutbox}
+
+\subsection{Final Exam Table}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Concept} & \textbf{Must remember} \\ \hline
+fixed $R_C$ & causes cliff effect or leveling effect \\ \hline
+WebRTC/RTP/UDP & low-latency push for real-time \\ \hline
+DASH/HLS over HTTP & scalable pull for streaming \\ \hline
+SVC & base/enhancement layers; good for conferencing, bad for CDN-scale \\ \hline
+HTTP/CDN & stateless cacheable chunks \\ \hline
+TCP HOL & lost packet blocks later bytes \\ \hline
+QUIC & stream isolation, 0-RTT, connection migration \\ \hline
+MPD & manifest describing periods, adaptation sets, representations, segments \\ \hline
+closed GOP & needed for segment boundary switching \\ \hline
+CMAF chunks & low-latency sub-segment delivery \\ \hline
+throughput & application-layer received data rate \\ \hline
+jitter & delay variance requiring buffer \\ \hline
+buffer $B(t)$ & seconds of video ready for playout \\ \hline
+starvation & $B(t)=0$, playback freezes \\ \hline
+ABR & client chooses next segment representation \\ \hline
+QoE metric & quality reward minus switching/stall/startup penalties \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{Main takeaway}
+Adaptive streaming shifts intelligence to the client: HTTP/CDN infrastructure serves static segment objects, while ABR uses throughput and buffer state to balance quality, stability, startup delay, and rebuffering.
+\end{calloutbox}

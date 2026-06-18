@@ -541,29 +541,3 @@ AVIF & 2019 & 48,745 & 127.6:1 & \textbf{32.45} \\ \hline
 \textit{All lossy codecs at ≈50 KB target. AVIF achieves highest PSNR at comparable size.}
 
 \bigskip\hrule\bigskip
-
-\section{Summary Table}
-
-\begin{center}
-\begin{tabular}{|l|l|l|}
-\hline
-\textbf{Concept} & \textbf{Key Value / Formula} & \textbf{Note} \\ \hline
-Cones & 6–7M (fovea center) & Color, high res, bright light \\ \hline
-Rods & 75–150M (periphery) & Intensity, low res, dark \\ \hline
-CSF peak & 2–5 cycles/degree & Mid spatial freq most sensitive \\ \hline
-Cone distribution & 65\% R / 33\% G / 2\% B &  \\ \hline
-RGB→Y weight & $0.299R+0.587G+0.114B$ & ITU-R BT.601 \\ \hline
-4:2:0 compression & $6/12 = 0.5$ & 50\% vs full RGB \\ \hline
-Pre-masking & 2–5 ms & Temporal masking \\ \hline
-Post-masking & 100–200 ms & Temporal masking \\ \hline
-MSE & $\frac{1}{NM}\sum\mathcal{E}^2$ & Non-perceptual \\ \hline
-PSNR & $10\log_{10}(255^2/\mathcal{D})$ [dB] & Non-perceptual \\ \hline
-SSIM & $[l\cdot c\cdot s]$ → $[0,1]$ & Structure-based \\ \hline
-LPIPS & NN feature distance & Perceptual, learned \\ \hline
-HD uncompressed & ≈1.24 Gbps & 1920×1080, 50 fps, 4:2:0 \\ \hline
-Lossless ratio & $T\leq3$ & Stat. redundancy only \\ \hline
-Lossy image ratio & $T\approx5\to ?$ & + psychovisual redundancy \\ \hline
-Lossy video ratio & $T\approx20\to ?$ & + temporal redundancy \\ \hline
-\end{tabular}
-\end{center}
-

@@ -1,0 +1,762 @@
+\chapter{Wavelet Analysis}
+
+\section{Table of Contents}
+
+\begin{itemize}
+  \item Core Idea
+  \item Key Concepts
+  \item Theory and Formulas
+  \item Visual Schemes
+  \item Examples
+\end{itemize}
+
+\section{Core Idea}
+
+\textbf{Wavelet analysis} represents signals with basis functions that change scale and position. Unlike DFT or block-DCT, wavelets use \textbf{adaptive multiresolution}:
+
+\begin{itemize}
+  \item low frequencies use long windows and good frequency resolution,
+  \item high frequencies use short windows and good spatial/time resolution,
+  \item smooth trends are separated from sharp anomalies such as edges.
+\end{itemize}
+
+For image compression, this gives sparse coefficients without $8x8$ block boundaries. JPEG2000 uses wavelet transforms, bitplane coding, arithmetic coding, and optimized truncation to provide quality scalability, resolution scalability, ROI coding, exact bitrate control, and lossy-to-lossless coding.
+
+\begin{calloutbox}{red!70!black}{Main wavelet compression idea}
+Images are modeled as smooth trends plus localized anomalies. Wavelets represent trends in low-pass subbands and edges in sparse high-pass subbands, making coefficient coding efficient.
+\end{calloutbox}
+
+\section{Key Concepts}
+
+\subsection{Linear Transform by Projection}
+
+All transforms used in image coding project the signal onto basis functions:
+
+\[
+x(t)=\sum_k c_k\phi_k(t)
+\]
+
+with:
+
+\[
+c_k=\langle x(t),\phi_k(t)\rangle
+=
+\int_{-\infty}^{+\infty}x(t)\phi_k^*(t)\,dt
+\]
+
+Large $|c_k|$ means the signal strongly resembles basis function $k$. Compression works when most coefficients are small.
+
+\subsection{Time-Frequency Uncertainty}
+
+For a windowed sinusoid:
+
+\[
+x[n]=\cos(\omega_0 n)\operatorname{rect}_N[n]
+\]
+
+window length controls localization:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Window} & \textbf{Time localization} & \textbf{Frequency resolution} \\ \hline
+short & excellent & poor \\ \hline
+medium & good & medium \\ \hline
+long & poor & good \\ \hline
+very long & very poor & excellent \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{Time-frequency uncertainty}
+\[
+\Delta t\cdot\Delta f\geq\frac{1}{4\pi}
+\]
+
+The area of the time-frequency uncertainty cell is fixed. A transform can change the cell shape, but cannot make both time and frequency resolution arbitrarily good.
+\end{calloutbox}
+
+\subsection{STFT vs. Wavelets}
+
+\textbf{STFT / block DCT} use a fixed window for all frequencies. This creates rigid tiling of the time-frequency plane.
+
+\textbf{Wavelets} adapt the window:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Frequency} & \textbf{Wavelet window} & \textbf{Captures} \\ \hline
+high & short & edges, impulses, anomalies \\ \hline
+low & long & trends, smooth texture \\ \hline
+\end{tabular}}
+\end{center}
+
+Wavelet basis from a mother wavelet:
+
+\[
+\psi_{a,b}(t)
+=
+\frac{1}{\sqrt{a}}\psi\left(\frac{t-b}{a}\right)
+\]
+
+where $a$ controls scale and $b$ controls position.
+
+\begin{itemize}
+  \item Large $a$: stretched wavelet, lower frequency, better frequency resolution.
+  \item Small $a$: compressed wavelet, higher frequency, better time/spatial resolution.
+\end{itemize}
+
+\subsection{Image Model}
+
+Images contain:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Component} & \textbf{Signal behavior} & \textbf{Frequency} & \textbf{Spatial precision needed} \\ \hline
+\textbf{Trend} & slow variation & low & rough \\ \hline
+\textbf{Anomaly} & abrupt variation & high & fine \\ \hline
+\end{tabular}}
+\end{center}
+
+Wavelets split image rows/blocks into approximation plus details:
+
+\begin{itemize}
+  \item approximation: low-resolution trend,
+  \item detail: high-frequency anomalies, often sparse.
+\end{itemize}
+
+\subsection{1D Filter Bank}
+
+Wavelet transform is implemented by analysis filters plus downsampling.
+
+Analysis:
+
+\[
+x[k]\xrightarrow{h_0}\tilde{c}[k]\xrightarrow{\downarrow2}c[k]
+\]
+
+\[
+x[k]\xrightarrow{h_1}\tilde{d}[k]\xrightarrow{\downarrow2}d[k]
+\]
+
+\begin{itemize}
+  \item $h_0$: low-pass analysis filter, approximation coefficients.
+  \item $h_1$: high-pass analysis filter, detail coefficients.
+  \item Downsampling keeps one sample every two.
+\end{itemize}
+
+Synthesis:
+
+\[
+c[k]\xrightarrow{\uparrow2}\hat{c}[k]\xrightarrow{f_0}\bar{x}[k]
+\]
+
+\[
+d[k]\xrightarrow{\uparrow2}\hat{d}[k]\xrightarrow{f_1}\bar{x}[k]
+\]
+
+Interpolation:
+
+\[
+\hat{c}[k]=
+\begin{cases}
+c[k/2] & k\ \text{even}\\
+0 & k\ \text{odd}
+\end{cases}
+\]
+
+\subsection{Perfect Reconstruction}
+
+A useful wavelet filter bank should allow perfect reconstruction (possibly with delay) after analysis and synthesis.
+
+In $z$ domain:
+
+\[
+\tilde{C}(z)=H_0(z)X(z)
+\]
+
+Decimation:
+
+\[
+C(z)=\frac{1}{2}
+\left[
+\tilde{C}(z^{1/2})+\tilde{C}(-z^{1/2})
+\right]
+\]
+
+Interpolation:
+
+\[
+\hat{C}(z)=C(z^2)
+\]
+
+Output:
+
+\[
+\tilde{X}(z)
+=
+\frac{1}{2}[F_0(z)H_0(z)+F_1(z)H_1(z)]X(z)
++
+\frac{1}{2}[F_0(z)H_0(-z)+F_1(z)H_1(-z)]X(-z)
+\]
+
+\begin{calloutbox}{red!70!black}{Perfect reconstruction conditions}
+\textbf{No distortion:}
+
+\[
+T(z)=H_0(z)F_0(z)+H_1(z)F_1(z)=2z^{-\ell}
+\]
+
+\textbf{Aliasing cancellation:}
+
+\[
+A(z)=H_0(-z)F_0(z)+H_1(-z)F_1(z)=0
+\]
+
+Together:
+
+\[
+\tilde{X}(z)=z^{-\ell}X(z)
+\]
+
+so the output is the input delayed by $\ell$ samples.
+\end{calloutbox}
+
+\subsection{Orthogonality and Biorthogonality}
+
+Orthogonal filter banks conserve energy:
+
+\[
+\sum_{k=-\infty}^{+\infty}x_k^2
+=
+\sum_{k=-\infty}^{+\infty}c_k^2
++
+\sum_{k=-\infty}^{+\infty}d_k^2
+\]
+
+\textbf{Compression meaning:} reconstruction error equals quantization error in coefficient domain.
+
+Biorthogonal filters are not strictly energy preserving, but they can be symmetric and close to orthogonal. In image compression, symmetry is often more important because it avoids boundary artifacts.
+
+\subsection{Vanishing Moments}
+
+\begin{calloutbox}{red!70!black}{Vanishing moments}
+A wavelet/filter with $p$ vanishing moments has zero high-pass response to polynomials of degree $<p$.
+
+It needs at least $2p$ taps.
+
+Smooth image regions become nearly zero in detail subbands, increasing sparsity.
+\end{calloutbox}
+
+\subsection{Border Problem}
+
+Wavelet theory assumes infinite signals, but images have finite support. Linear convolution with an $M$-tap filter expands an $N$-sample signal to $N+M-1$ samples.
+
+Possible extensions:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Method} & \textbf{Benefit} & \textbf{Problem} \\ \hline
+zero padding & simple & coefficient expansion and boundary artifacts \\ \hline
+periodization & same number of coefficients & artificial boundary jumps \\ \hline
+symmetrization & removes jumps & doubles period unless filters are symmetric \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{Symmetry constraint}
+The only FIR filter that is both orthogonal and symmetric, apart from trivial cases, is the Haar filter.
+
+Image compression therefore prefers \textbf{biorthogonal symmetric filters} such as CDF 9/7 and CDF 5/3.
+\end{calloutbox}
+
+\subsection{Haar and CDF Filters}
+
+Haar filters:
+
+\[
+h_0=[1\ 1],\qquad h_1=[1\ -1]
+\]
+
+\[
+f_0=[1\ 1],\qquad f_1=[-1\ 1]
+\]
+
+Properties:
+
+\begin{itemize}
+  \item symmetric,
+  \item orthogonal,
+  \item one vanishing moment,
+  \item only piecewise-constant approximation.
+\end{itemize}
+
+CDF filters:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Filter} & \textbf{Vanishing moments} & \textbf{Taps} & \textbf{Use} \\ \hline
+\textbf{CDF 9/7} & 4 & 9/7 & JPEG2000 lossy, best R-D \\ \hline
+\textbf{CDF 5/3} & 2 & 5/3 & JPEG2000 lossless, integer exact reconstruction \\ \hline
+\end{tabular}}
+\end{center}
+
+If analysis has $p$ vanishing moments and synthesis has $\tilde{p}$, the filter needs at least:
+
+\[
+p+\tilde{p}-1
+\]
+
+taps.
+
+\subsection{1D and 2D Multiresolution}
+
+In 1D multiresolution, the filter bank is recursively applied only to the low-pass approximation $c_j$.
+
+In 2D, apply 1D filters separably:
+
+\begin{enumerate}
+  \item filter rows,
+  \item filter columns,
+  \item downsample each direction.
+\end{enumerate}
+
+One level creates four subbands:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Subband} & \textbf{Filtering} & \textbf{Content} \\ \hline
+\textbf{LL} & LP rows + LP columns & low-resolution approximation \\ \hline
+\textbf{HL} & HP rows + LP columns & vertical details \\ \hline
+\textbf{LH} & LP rows + HP columns & horizontal details \\ \hline
+\textbf{HH} & HP rows + HP columns & diagonal details \\ \hline
+\end{tabular}}
+\end{center}
+
+Recursive decomposition applies again to LL.
+
+Optimal number of levels for images: \textbf{4 to 6}. More levels give diminishing returns because LL becomes too small and less well modeled as smooth trend.
+
+\subsection{EZW}
+
+\textbf{Embedded Zerotrees of Wavelet coefficients (EZW)} is a progressive wavelet coder:
+
+\begin{itemize}
+  \item sends largest coefficients first,
+  \item uses bitplane thresholds,
+  \item exploits inter-scale correlation,
+  \item produces quality scalability,
+  \item can be lossy-to-lossless with integer DWT and all bitplanes.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Zerotree principle}
+If a wavelet coefficient is insignificant below threshold $T$, its descendants at finer scales in the same orientation are likely insignificant too.
+
+A whole insignificant subtree can be coded with one \textbf{ZR} symbol.
+\end{calloutbox}
+
+EZW symbols:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Symbol} & \textbf{Meaning} \\ \hline
+\textbf{SP} & significant positive, $c\geq T$ \\ \hline
+\textbf{SN} & significant negative, $c\leq -T$ \\ \hline
+\textbf{IZ} & isolated zero: insignificant but has significant descendant \\ \hline
+\textbf{ZR} & zerotree root: insignificant and all descendants insignificant \\ \hline
+\end{tabular}}
+\end{center}
+
+Thresholds:
+
+\[
+T_k=2^{n-k},
+\qquad
+n=\left\lfloor\log_2\max|c|\right\rfloor
+\]
+
+Each pass halves the threshold:
+
+\[
+T_{k+1}=\frac{T_k}{2}
+\]
+
+Dominant pass finds newly significant coefficients; refining pass sends the next bitplane of already significant coefficients.
+
+\subsection{JPEG2000}
+
+JPEG2000 addresses JPEG limitations:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{JPEG issue} & \textbf{JPEG2000 response} \\ \hline
+poor quality below 0.25 bpp & wavelet transform \\ \hline
+blocking artifacts & global/tiled DWT instead of $8x8$ DCT \\ \hline
+weak scalability & quality + resolution scalability \\ \hline
+no random access & tiling and codeblock independence \\ \hline
+imprecise rate control & EBCOT optimized truncation \\ \hline
+no native lossy-to-lossless path & 5/3 integer DWT and scalable bitstream \\ \hline
+\end{tabular}}
+\end{center}
+
+JPEG2000 structure:
+
+\begin{itemize}
+  \item \textbf{Tier 1:} DWT, fine quantization if lossy, arithmetic coding of codeblocks by bitplane.
+  \item \textbf{Tier 2:} EBCOT organizes coded blocks into layers and truncates bitstreams optimally.
+\end{itemize}
+
+Lossy JPEG2000 uses CDF 9/7. Lossless JPEG2000 uses integer CDF 5/3.
+
+\subsection{EBCOT}
+
+\textbf{EBCOT} means \textit{Embedded Block Coding with Optimized Truncation}.
+
+Workflow:
+
+\begin{enumerate}
+  \item split each DWT subband into codeblocks, e.g. $64x64$,
+  \item independently arithmetic-code each codeblock by bitplanes,
+  \item compute R-D curve for each codeblock,
+  \item choose truncation points to satisfy target rate.
+\end{enumerate}
+
+Optimization:
+
+\[
+\min\sum_i D_i
+\quad\text{s.t.}\quad
+\sum_i R_i\leq R_{\text{tot}}
+\]
+
+Lagrangian:
+
+\[
+J=\sum_i(D_i+\lambda R_i)-\lambda R_{\text{tot}}
+\]
+
+\begin{calloutbox}{red!70!black}{EBCOT optimal truncation}
+For each codeblock:
+
+\[
+\frac{\partial J_i}{\partial R_i}
+=
+\frac{\partial D_i}{\partial R_i}+\lambda=0
+\]
+
+At optimum:
+
+\[
+\frac{\partial D_i}{\partial R_i}=-\lambda
+\]
+
+All selected codeblock truncation points have the same R-D slope.
+\end{calloutbox}
+
+Multiple $\lambda$ values give multiple quality layers.
+
+\subsection{Error Robustness}
+
+Compressed streams are fragile because:
+
+\begin{itemize}
+  \item predictive coding propagates errors,
+  \item variable-length coding loses synchronization,
+  \item header errors can corrupt complete files.
+\end{itemize}
+
+JPEG2000 improves robustness through codeblock independence and bitstream organization.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Feature} & \textbf{JPEG} & \textbf{JPEG2000} \\ \hline
+entropy stream & more global & independent codeblocks \\ \hline
+error propagation & severe & localized \\ \hline
+transform artifacts & blocking & no blocking \\ \hline
+rate/resolution layers & limited & built in \\ \hline
+\end{tabular}}
+\end{center}
+
+\section{Theory and Formulas}
+
+\subsection{Wavelet Scaling and Fourier Interpretation}
+
+Mother wavelet:
+
+\[
+\psi_{a,b}(t)
+=
+\frac{1}{\sqrt{a}}\psi\left(\frac{t-b}{a}\right)
+\]
+
+Fourier scaling:
+
+\[
+\mathcal{F}\{x(t/a)\}=|a|X(af)
+\]
+
+Thus large $a$ stretches the wavelet in time and compresses its frequency support. Small $a$ does the opposite.
+
+\subsection{Perfect Reconstruction Matrix Form}
+
+PR conditions can be written as:
+
+\[
+\begin{bmatrix}
+H_0(z) & H_1(z)\\
+H_0(-z) & H_1(-z)
+\end{bmatrix}
+\begin{bmatrix}
+F_0(z)\\
+F_1(z)
+\end{bmatrix}
+=
+\begin{bmatrix}
+2z^{-\ell}\\
+0
+\end{bmatrix}
+\]
+
+The modulation matrix must be invertible on the unit circle:
+
+\[
+\Delta(z)
+=
+H_0(z)H_1(-z)-H_1(z)H_0(-z)
+\neq0,
+\qquad |z|=1
+\]
+
+\subsection{EZW Zerotree Saving}
+
+If a zerotree root starts at scale $n$ and has depth to $N$, one symbol can replace:
+
+\[
+1+4+4^2+\cdots+4^{N-n}
+\]
+
+individual insignificance symbols in 2D.
+
+\subsection{JPEG2000 Exact Rate Control}
+
+EBCOT can hit a target bitrate with very small error because each codeblock bitstream has many candidate truncation points:
+
+\begin{itemize}
+  \item early truncation: low rate, high distortion,
+  \item later truncation: high rate, low distortion,
+  \item layers collect truncation segments in increasing quality order.
+\end{itemize}
+
+\section{Visual Schemes}
+
+\subsection{Time-Frequency Resolution}
+
+\begin{center}\includegraphics[width=\linewidth]{ch05/time-frequency-short-window.png}\end{center}
+Short windows localize time well but blur frequency.
+
+\begin{center}\includegraphics[width=\linewidth]{ch05/time-frequency-long-window.png}\end{center}
+Long windows localize frequency well but blur time.
+
+\begin{center}\includegraphics[width=0.7\linewidth]{ch05/stft-rigid-tiling.png}\end{center}
+STFT and block-DCT use fixed tiles, so all frequencies receive the same resolution tradeoff.
+
+\begin{center}\includegraphics[width=0.7\linewidth]{ch05/wavelet-adaptive-tiling.png}\end{center}
+Wavelets use narrow high-frequency tiles and wide low-frequency tiles.
+
+\subsection{Trends and Anomalies}
+
+\begin{center}\includegraphics[width=0.7\linewidth]{ch05/image-original-row.png}\end{center}
+An image row contains both smooth trends and sharp localized changes.
+
+\begin{center}\includegraphics[width=0.7\linewidth]{ch05/image-anomalies.png}\end{center}
+High-pass wavelet details isolate anomalies such as edges and contours.
+
+\begin{center}\includegraphics[width=\linewidth]{ch05/trend-detail-model.png}\end{center}
+Approximation stores the trend; detail stores deviations from the trend.
+
+\subsection{Filter Bank and Multiresolution}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    X[Input x] --> LP[Low-pass h0]
+    X --> HP[High-pass h1]
+    LP --> D1[Downsample 2]
+    HP --> D2[Downsample 2]
+    D1 --> C[Approximation c]
+    D2 --> D[Detail d]
+\end{verbatim}
+
+\begin{center}\includegraphics[width=\linewidth]{ch05/one-dimensional-mra.png}\end{center}
+1D multiresolution recursively decomposes the low-pass approximation.
+
+\begin{center}\includegraphics[width=\linewidth]{ch05/multilevel-decomposition.png}\end{center}
+Analysis filter banks generate approximation and detail streams across scales.
+
+\begin{center}\includegraphics[width=\linewidth]{ch05/multilevel-reconstruction.png}\end{center}
+Synthesis filter banks invert the decomposition from coarse scale back to the original signal.
+
+\subsection{2D DWT}
+
+\begin{center}\includegraphics[width=\linewidth]{ch05/two-dimensional-dwt-subbands.png}\end{center}
+One 2D DWT level produces LL, HL, LH, and HH subbands.
+
+\begin{center}\includegraphics[width=0.633\linewidth]{ch05/synthetic-square.png}\end{center}
+Synthetic square image is simple but has sharp edges.
+
+\begin{center}\includegraphics[width=\linewidth]{ch05/synthetic-square-dwt.png}\end{center}
+DWT places smooth content in LL and edges/corners in detail subbands.
+
+\subsection{EZW and JPEG2000 Schemes}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart TD
+    A[DWT coefficients] --> B[Initial threshold T0]
+    B --> C[Dominant pass]
+    C --> D{Coefficient class}
+    D --> SP[SP / SN]
+    D --> IZ[IZ]
+    D --> ZR[ZR subtree]
+    SP --> E[Significant list]
+    E --> F[Refining pass]
+    F --> G[Halve threshold]
+    G --> C
+\end{verbatim}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Image tile] --> B[DWT 9/7 or 5/3]
+    B --> C[Subbands]
+    C --> D[Codeblocks]
+    D --> E[Bitplane arithmetic coding]
+    E --> F[R-D curves]
+    F --> G[EBCOT truncation]
+    G --> H[Quality / resolution layers]
+    H --> I[JPEG2000 bitstream]
+\end{verbatim}
+
+\begin{calloutbox}{blue!60!black}{Missing visual}
+Source uses placeholders for EBCOT codeblocks, R-D truncation, JPEG/JPEG2000 comparison, and error-robustness figures. Mermaid schemes above cover the processing logic.
+\end{calloutbox}
+
+\section{Examples}
+
+\begin{calloutbox}{green!55!black}{Trends vs anomalies}
+\textbf{Setup:} an image row has smooth regions plus edges.
+
+\textbf{Wavelet effect:} low-pass branch captures slowly varying intensity; high-pass branch activates mostly at edges.
+
+\textbf{Takeaway:} smooth areas generate few detail coefficients, so they compress well.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Haar transform intuition}
+For a pair $(x_0,x_1)$, Haar approximation and detail are proportional to:
+
+\[
+c=x_0+x_1,\qquad d=x_0-x_1
+\]
+
+If the pair is smooth, $x_0\approx x_1$, so $d\approx0$.
+
+\textbf{Takeaway:} Haar is simple edge/detail extraction, but only has one vanishing moment.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{2D DWT subbands}
+\textbf{LL:} blurred low-resolution image.
+
+\textbf{HL:} responds to vertical details.
+
+\textbf{LH:} responds to horizontal details.
+
+\textbf{HH:} responds to diagonal details.
+
+\textbf{Takeaway:} DWT separates image geometry by scale and orientation.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{EZW encoding on a 4x4 coefficient matrix}
+Coefficients:
+
+\[
+\begin{bmatrix}
+26 & 6 & -13 & 10\\
+-7 & 3 & 6 & 4\\
+4 & -3 & 3 & -3\\
+2 & -2 & -2 & 0
+\end{bmatrix}
+\]
+
+Initial threshold:
+
+\[
+T=16
+\]
+
+Since $26\geq16$, first coefficient is \textbf{SP}. Coefficients below threshold whose descendants are also below threshold become \textbf{ZR}.
+
+First dominant pass:
+
+\begin{verbatim}
+SP ZR ZR ZR
+\end{verbatim}
+
+Refining sends next bit of already significant coefficients.
+
+\textbf{Takeaway:} EZW sends coarse significance first, then progressively refines.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{EZW decoding estimate}
+If a coefficient becomes significant positive at threshold $T=16$, decoder knows:
+
+\[
+16\leq c<32
+\]
+
+Initial estimate is midpoint:
+
+\[
+\hat{c}=24
+\]
+
+Refining bits shrink the uncertainty interval by factor 2 at each pass.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{JPEG2000 vs JPEG at low rate}
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Rate} & \textbf{JPEG} & \textbf{JPEG2000} \\ \hline
+1.0 bpp & good & good \\ \hline
+0.5 bpp & visible blocking & clean \\ \hline
+0.3 bpp & strong blocking & slight blur \\ \hline
+0.2 bpp & very poor & acceptable \\ \hline
+0.1 bpp & often unusable & usable \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} wavelet coding degrades by blur/ringing rather than block artifacts.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Error robustness}
+At bit error probability $p_E=10^{-3}$, JPEG can suffer catastrophic visual degradation because entropy decoding can desynchronize and errors propagate.
+
+JPEG2000 confines much damage to independent codeblocks, so degradation is more local and graceful.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Method comparison}
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Technique} & \textbf{Transform} & \textbf{Coding} & \textbf{Scalability} & \textbf{Lossless path} & \textbf{Blocking} \\ \hline
+JPEG & $8x8$ DCT & Huffman/arithmetic & no & no & yes \\ \hline
+EZW & DWT & symbols + arithmetic & quality & yes with integer DWT & no \\ \hline
+JPEG2000 & DWT 9/7 or 5/3 & EBCOT arithmetic & quality, resolution, ROI & yes with 5/3 & no \\ \hline
+\end{tabular}}
+\end{center}
+\end{calloutbox}

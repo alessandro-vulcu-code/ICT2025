@@ -1,0 +1,690 @@
+\chapter{Scalar and Predictive Quantization}
+
+\section{Table of Contents}
+
+\begin{itemize}
+  \item Core Idea
+  \item Key Concepts
+  \item Theory and Formulas
+  \item Visual Schemes
+  \item Examples
+\end{itemize}
+
+\section{Core Idea}
+
+\textbf{Quantization} maps a continuous or high-precision signal to a finite set of reconstruction values. It is the main irreversible step in lossy compression: it reduces rate, but introduces distortion.
+
+Scalar quantization alone is weak for natural images and audio because it treats each sample independently. \textbf{Predictive quantization} first removes predictable content, then quantizes the prediction error. If the prediction error has much lower variance and is entropy-coded, the rate-distortion gain is large.
+
+\begin{calloutbox}{red!70!black}{Central message}
+Quantization controls distortion; prediction reduces variance before quantization; entropy coding converts sparse prediction errors into real bitrate savings.
+\end{calloutbox}
+
+\section{Key Concepts}
+
+\subsection{Scalar Quantizer Model}
+
+A scalar quantizer $Q$ is defined by:
+
+\begin{itemize}
+  \item \textbf{Thresholds}:
+\end{itemize}
+
+\[
+-\infty=t^0<t^1<\cdots<t^{L-1}<t^L=+\infty
+\]
+
+\begin{itemize}
+  \item \textbf{Quantization regions}:
+\end{itemize}
+
+\[
+\Theta^i=[t^{i-1},t^i), \qquad i=1,\ldots,L
+\]
+
+\begin{itemize}
+  \item \textbf{Reconstruction levels}:
+\end{itemize}
+
+\[
+\hat{x}^1,\hat{x}^2,\ldots,\hat{x}^L
+\]
+
+Mapping rule:
+
+\[
+x\in\Theta^i \Rightarrow Q(x)=\hat{x}^i
+\]
+
+Key quantities:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Quantity} & \textbf{Formula} & \textbf{Meaning} \\ \hline
+Quantization error & $e=X-Q(X)=X-\tilde{X}$ & sample error \\ \hline
+Distortion & $D=\sigma_Q^2=\mathbb{E}[(X-Q(X))^2]$ & MSE due to quantization \\ \hline
+Rate & $R=\log_2 L$ & fixed-length bits/sample \\ \hline
+SNR & $10\log_{10}(\sigma_X^2/\sigma_Q^2)$ & signal quality in dB \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Uniform Quantization}
+
+\textbf{Uniform quantization (UQ)} uses equal-width cells inside dynamic range $[-A/2,A/2]$:
+
+\[
+\Delta=\frac{A}{L}=A2^{-R}
+\]
+
+Reconstruction levels are cell centers:
+
+\[
+\hat{x}^i=-\frac{A}{2}+\left(i-\frac{1}{2}\right)\Delta
+\]
+
+For a midrise quantizer:
+
+\[
+Q(x)=\Delta\left\lfloor\frac{x}{\Delta}+\frac{1}{2}\right\rfloor
+\]
+
+with saturation at $\pm A/2$.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Type} & \textbf{Number of levels} & \textbf{Zero reconstruction level} & \textbf{Typical property} \\ \hline
+\textbf{Midtread} & odd & yes & dead-zone around zero \\ \hline
+\textbf{Midrise} & even & no & common for signed fixed-rate quantization \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Dead-Zone}
+
+A \textbf{midtread} quantizer keeps zero as a reconstruction level, so the central cell around zero behaves as a \textbf{dead-zone}: any sample with small magnitude falls inside it and maps exactly to zero. A \textbf{dead-zone quantizer} widens this zero region by a factor $\tau$, so even more low-amplitude samples collapse to zero.
+
+Index (forward) and reconstruction (inverse), extending the midtread zero region:
+
+\[
+i=
+\begin{cases}
+\operatorname{sign}(x)\left\lfloor\dfrac{|x|+\frac{\tau\Delta}{2}}{\Delta}\right\rfloor & |x|\geq\tau\\
+0 & \text{otherwise}
+\end{cases}
+\qquad
+\hat{x}=
+\begin{cases}
+\operatorname{sign}(i)\,\Delta\left(|i|+\dfrac{1-\tau}{2}\right) & |x|\geq\tau\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+Parameter $\tau$ controls the dead-zone width: larger $\tau$ sends more samples to zero.
+
+\begin{calloutbox}{red!70!black}{Why dead-zone helps lossy compression}
+Natural signals are not sparse in their original domain, but become sparse after \textbf{prediction} or \textbf{linear transform}. A signal is sparse when most elements are zero or near zero. Setting near-zero values to zero adds little distortion, so the dead-zone produces many zero indexes. Sparse zero-heavy output is then cheap to entropy-code, which is where the real rate saving comes from.
+\end{calloutbox}
+
+This connects to the predictive and entropy-coding sections: a midrise quantizer maps even small fluctuations to a non-zero level, while a midtread dead-zone suppresses them, favoring sparsity.
+
+\subsection{Granular Noise vs. Overload Noise}
+
+\begin{itemize}
+  \item \textbf{Granular noise}: input lies inside dynamic range, so $|e|\leq\Delta/2$.
+  \item \textbf{Overload noise}: input exceeds dynamic range, so clipping creates potentially large error.
+\end{itemize}
+
+Design tension:
+
+\begin{itemize}
+  \item Smaller $\Delta$ gives lower granular noise but requires either more levels or narrower dynamic range.
+  \item Smaller dynamic range increases clipping risk.
+  \item Larger dynamic range avoids clipping but wastes levels and increases $\Delta$ for fixed $R$.
+\end{itemize}
+
+\subsection{Rate-Distortion Behavior}
+
+For a uniform random variable and UQ:
+
+\[
+D=\sigma_X^2 2^{-2R}
+\]
+
+so every extra bit reduces distortion by about a factor 4 and increases SNR by about \textbf{6 dB}.
+
+For generic sources at high resolution:
+
+\[
+D=K_X\sigma_X^2 2^{-2R}
+\]
+
+where $K_X$ depends on dynamic-range loading.
+
+For high-resolution optimal scalar quantization:
+
+\[
+D=c_X\sigma_X^2 2^{-2R}
+\]
+
+where $c_X$ depends only on source PDF shape.
+
+\subsection{Optimal Scalar Quantization}
+
+Uniform quantizers are not always optimal. \textbf{Non-uniform scalar quantizers} allocate smaller cells where the input PDF is dense and larger cells where samples are rare.
+
+The finite-rate optimum is found numerically with \textbf{Lloyd-Max}:
+
+\begin{enumerate}
+  \item Given reconstruction levels, choose thresholds by nearest neighbor.
+  \item Given thresholds, choose reconstruction levels as centroids.
+  \item Repeat until distortion stops decreasing.
+\end{enumerate}
+
+This is the scalar case of the same alternating idea behind \textit{k-means}.
+
+\subsection{Predictive Scalar Quantization}
+
+Scalar quantization ignores correlation. Predictive quantization uses past samples to predict the current one:
+
+\[
+y(n)=x(n)-v(n)
+\]
+
+where $v(n)$ is the prediction. If prediction is good, $\sigma_Y^2\ll\sigma_X^2$, so quantizing $y(n)$ is easier than quantizing $x(n)$ directly.
+
+\begin{calloutbox}{red!70!black}{Sparse residual idea}
+Natural images and audio are not sparse in their sample domain, but prediction can make residuals sparse. Sparse residuals produce many zero or near-zero quantizer indexes, which entropy coding can compress well.
+\end{calloutbox}
+
+\subsection{Drift Problem}
+
+In predictive coding, encoder and decoder must predict from the \textbf{same reconstructed past samples}. If the encoder predicts from original samples but the decoder predicts from reconstructed samples, their predictors diverge and reconstruction drifts.
+
+Correct predictive quantization is therefore \textbf{closed-loop}:
+
+\begin{itemize}
+  \item Encoder quantizes the residual.
+  \item Encoder reconstructs locally.
+  \item Encoder and decoder both update prediction buffers with reconstructed samples $\tilde{x}$.
+\end{itemize}
+
+\subsection{Entropy Coding Impact}
+
+Using $R=\log_2 L$ assumes fixed-length indexes and hides the advantage of predictive quantization. Prediction errors are concentrated near zero, so variable-length or arithmetic coding assigns short codes to frequent zero indexes and longer codes to rare large errors.
+
+Without entropy coding, predictive quantization may look disappointing. With entropy coding, it can provide large gains.
+
+\section{Theory and Formulas}
+
+\subsection{UQ of a Uniform Random Variable}
+
+Let:
+
+\[
+X\sim\mathcal{U}\left(-\frac{A}{2},\frac{A}{2}\right)
+\]
+
+Then:
+
+\[
+f_X(x)=\frac{1}{A}, \qquad \sigma_X^2=\frac{A^2}{12}
+\]
+
+For UQ with $L$ cells:
+
+\[
+\sigma_Q^2
+=\mathbb{E}[(X-\tilde{X})^2]
+=\frac{1}{A}\sum_{i=1}^{L}\int_{\hat{x}^i-\Delta/2}^{\hat{x}^i+\Delta/2}(u-\hat{x}^i)^2\,du
+\]
+
+Each cell contributes $\Delta^3/12$, so:
+
+\[
+D=\sigma_Q^2=\frac{1}{A}L\frac{\Delta^3}{12}
+=\frac{\Delta^2}{12}
+\]
+
+Since $\Delta=A/L=A2^{-R}$:
+
+\[
+D=\frac{A^2}{12L^2}
+=\sigma_X^2 2^{-2R}
+\]
+
+\begin{calloutbox}{red!70!black}{6 dB per bit rule}
+\[
+\mathrm{SNR}
+=10\log_{10}\frac{\sigma_X^2}{\sigma_X^2 2^{-2R}}
+=10\log_{10}(2^{2R})
+\approx 6R \quad [\mathrm{dB}]
+\]
+
+Each additional bit/sample improves SNR by about 6 dB under uniform high-resolution assumptions.
+\end{calloutbox}
+
+\subsection{High-Resolution UQ for a Generic Source}
+
+High resolution means $L\to+\infty$ and each quantization cell is small. Locally, $p_X(x)$ is approximately constant, so the quantization error behaves like:
+
+\[
+e\sim\mathcal{U}\left(-\frac{\Delta}{2},\frac{\Delta}{2}\right)
+\]
+
+Thus:
+
+\[
+D=\frac{\Delta^2}{12}
+=\frac{A^2}{12}2^{-2R}
+=K_X\sigma_X^2 2^{-2R}
+\]
+
+with load factor:
+
+\[
+\gamma^2=\frac{A^2/4}{\sigma_X^2}, \qquad K_X=\frac{\gamma^2}{3}
+\]
+
+So:
+
+\[
+\mathrm{SNR}\approx 6R-10\log_{10}\frac{\gamma^2}{3}
+\]
+
+\textbf{Meaning:} poor dynamic-range loading costs SNR.
+
+\subsection{High-Resolution Optimal Scalar Quantizer}
+
+For a generic PDF and fixed rate:
+
+\[
+\sigma_Q^2=c_X\sigma_X^2 2^{-2R}
+\]
+
+where $U=X/\sigma_X$ and:
+
+\[
+c_X=\frac{1}{12}\left[\int_{\mathbb{R}}p_U^{1/3}(t)\,dt\right]^3
+\]
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Distribution} & \textbf{Shape factor $c_X$} & \textbf{Meaning} \\ \hline
+Uniform & $1$ & best case for UQ \\ \hline
+Gaussian & $\frac{\sqrt{3}}{2}\pi\approx2.72$ & heavier tails increase distortion \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Lloyd-Max Conditions}
+
+\begin{calloutbox}{red!70!black}{Lloyd-Max necessary conditions}
+\textbf{Nearest-neighbor thresholds:}
+
+\[
+k=\arg\min_n |x-\hat{x}^n| \Rightarrow Q(x)=\hat{x}^k
+\]
+
+\[
+t^i=\frac{\hat{x}^i+\hat{x}^{i+1}}{2}
+\]
+
+\textbf{Centroid reconstruction levels:}
+
+\[
+\hat{x}^i=
+\frac{\int_{t^{i-1}}^{t^i}u\,p_X(u)\,du}
+{\int_{t^{i-1}}^{t^i}p_X(u)\,du}
+=\mathbb{E}[X\mid X\in\Theta^i]
+\]
+
+Distortion never increases at each iteration, but convergence to the global optimum is not guaranteed.
+\end{calloutbox}
+
+For a training set $\mathcal{X}=\{u_1,\ldots,u_M\}$, replace integrals with cluster assignments:
+
+\[
+W_k^i=\{u_m\in\mathcal{X}: \|u_m-\hat{x}_k^i\|\leq\|u_m-\hat{x}_k^j\|,\forall j\neq i\}
+\]
+
+\[
+\hat{x}_{k+1}^i=\frac{1}{|W_k^i|}\sum_{u_m\in W_k^i}u_m
+\]
+
+\subsection{Prediction Gain}
+
+Quantizing the prediction error:
+
+\[
+y(n)=x(n)-v(n)
+\]
+
+reconstructs:
+
+\[
+\hat{x}(n)=v(n)+\hat{y}(n)
+\]
+
+Prediction-error quantization error equals final reconstruction error:
+
+\[
+q(n)=y(n)-\hat{y}(n)
+=[x(n)-v(n)]-[\hat{x}(n)-v(n)]
+=x(n)-\hat{x}(n)
+\]
+
+Total SNR decomposes into prediction gain plus quantization gain:
+
+\[
+\mathrm{SNR}_P
+=10\log_{10}\frac{\sigma_X^2}{D}
+=
+\underbrace{10\log_{10}\frac{\sigma_X^2}{\sigma_Y^2}}_{G_P}
++
+\underbrace{10\log_{10}\frac{\sigma_Y^2}{D}}_{G_Q}
+\]
+
+\begin{calloutbox}{red!70!black}{Positive prediction gain}
+Prediction helps if and only if:
+
+\[
+\sigma_Y^2<\sigma_X^2
+\]
+
+Equivalently, $G_P>0$.
+\end{calloutbox}
+
+\subsection{Linear Prediction and Wiener-Hopf Solution}
+
+Order-$P$ linear predictor:
+
+\[
+v(n)=-\sum_{i=1}^{P}a_i x_{n-i}
+\]
+
+Prediction error:
+
+\[
+y(n)=x(n)-v(n)=\sum_{i=0}^{P}a_i x_{n-i}, \qquad a_0=1
+\]
+
+Prediction-error variance:
+
+\[
+\sigma_Y^2=\sigma_X^2+2\underline{r}^{T}\underline{a}
++\underline{a}^{T}R_X\underline{a}
+\]
+
+where:
+
+\[
+\underline{r}=[r_X(1),\ldots,r_X(P)]^T
+\]
+
+\[
+(R_X)_{ij}=r_X(|i-j|), \qquad r_X(k)=\mathbb{E}[X(n)X(n-k)]
+\]
+
+\begin{calloutbox}{red!70!black}{Optimal predictor}
+\[
+\frac{\partial\sigma_Y^2}{\partial\underline{a}}
+=2\underline{r}+2R_X\underline{a}=0
+\]
+
+\[
+\underline{a}^{\mathrm{opt}}=-R_X^{-1}\underline{r}
+\]
+
+\[
+\sigma_{Y,\mathrm{opt}}^2=\sigma_X^2+\underline{r}^{T}\underline{a}^{\mathrm{opt}}
+\]
+\end{calloutbox}
+
+Autocorrelation can be estimated from data:
+
+\[
+\hat{r}_X(k)=\frac{1}{N}\sum_{n=0}^{N-1-k}X(n)X(n+k)
+\]
+
+\subsection{Local Adaptation and Side Information}
+
+Natural images are non-stationary. Local prediction filters can track local textures better, but filter coefficients must be transmitted as side information.
+
+For block size $M\times M$, filter order $N$, and $B$ bits/coefficient:
+
+\[
+R_{\text{overhead}}=\frac{NB}{M^2}
+\]
+
+Small blocks adapt well but have high overhead. Large blocks reduce overhead but adapt poorly.
+
+\section{Visual Schemes}
+
+\subsection{Scalar Quantizer Structure}
+
+\begin{center}\includegraphics[width=\linewidth]{ch02/scalar-quantizer-model.png}\end{center}
+Scalar quantization partitions the real line into regions and maps each region to one reconstruction level.
+
+\begin{center}\includegraphics[width=0.633\linewidth]{ch02/midtread-quantizer.png}\end{center}
+Midtread quantizer with odd $L$: zero is a reconstruction level.
+
+\begin{center}\includegraphics[width=0.633\linewidth]{ch02/midrise-quantizer.png}\end{center}
+Midrise quantizer with even $L$: zero is a threshold, not a reconstruction level.
+
+\subsection{Rate-Distortion and Visual Artifacts}
+
+\begin{center}\includegraphics[width=\linewidth]{ch02/grayscale-quantization-levels.png}\end{center}
+Coarse scalar quantization creates visible banding and false contours, especially at low bit depth.
+
+\begin{center}\includegraphics[width=\linewidth]{ch02/rate-distortion-curve.png}\end{center}
+Rate-distortion curves show the expected reduction of distortion as bit rate increases.
+
+\subsection{Predictive Coding Schemes}
+
+\begin{center}\includegraphics[width=\linewidth]{ch02/open-loop-predictive-coding.png}\end{center}
+Open-loop prediction quantizes the prediction error, but can drift if encoder and decoder predictors use different past samples.
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    X[Input x(n)] --> S[Subtract prediction]
+    P[Predictor] --> S
+    S --> Y[Residual y(n)]
+    Y --> Q[Quantizer]
+    Q --> I[Index stream]
+    Q --> YH[Quantized residual]
+    YH --> A[Add prediction]
+    P --> A
+    A --> XR[Local reconstruction]
+    XR --> P
+\end{verbatim}
+
+\begin{center}\includegraphics[width=\linewidth]{ch02/prediction-residual-image.png}\end{center}
+Prediction removes much of the local image structure, leaving a lower-variance residual.
+
+\begin{center}\includegraphics[width=\linewidth]{ch02/predictor-order-effect.png}\end{center}
+Higher predictor order improves residual whitening, but gains quickly saturate because near neighbors already explain most correlation.
+
+\subsection{Drift and Correct Closed Loop}
+
+\begin{center}\includegraphics[width=\linewidth]{ch02/predictive-coding-drift.png}\end{center}
+Wrong scheme: encoder predicts from original samples, decoder predicts from reconstructed samples, so mismatch accumulates as drift.
+
+\begin{center}\includegraphics[width=\linewidth]{ch02/predictive-coding-closed-loop.png}\end{center}
+Correct scheme: encoder and decoder both predict from reconstructed samples, keeping state synchronized.
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    X[Input x(n)] --> M[Subtract]
+    PR[Predictor from reconstructed past] --> M
+    M --> Q[Quantize residual]
+    Q --> EC[Entropy coding]
+    EC --> BS[Bitstream]
+    Q --> IQ[Decoded residual]
+    IQ --> ADD[Add prediction]
+    PR --> ADD
+    ADD --> XH[Reconstructed sample]
+    XH --> BUF[Past reconstructed buffer]
+    BUF --> PR
+\end{verbatim}
+
+\subsection{Entropy Coding Gain}
+
+\begin{center}\includegraphics[width=\linewidth]{ch02/prediction-error-index-distribution.png}\end{center}
+Prediction errors produce many zero indexes, making fixed-length rate estimates too pessimistic.
+
+\begin{center}\includegraphics[width=\linewidth]{ch02/predictive-quantization-entropy-gain.png}\end{center}
+Predictive quantization becomes strongly effective when its sparse indexes are entropy-coded.
+
+\section{Examples}
+
+\begin{calloutbox}{green!55!black}{Image quantization at low rates}
+\textbf{RGB peppers example:}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Rate} & \textbf{PSNR} & \textbf{Compression ratio} \\ \hline
+8 bpp & 29.26 dB & 2.667 \\ \hline
+6 bpp & 27.83 dB & 4.000 \\ \hline
+3 bpp & 25.75 dB & 8.000 \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} lower bit depth reduces rate, but creates banding and false contours.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Grayscale image quantization}
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Quantization levels} & \textbf{Bits/pixel} & \textbf{Compression ratio} & \textbf{Y-PSNR} \\ \hline
+256 & 8 & 1.000 & $\infty$ \\ \hline
+64 & 6 & 1.333 & 46.51 dB \\ \hline
+16 & 4 & 2.000 & 34.47 dB \\ \hline
+8 & 3 & 2.667 & 29.06 dB \\ \hline
+4 & 2 & 4.000 & 22.85 dB \\ \hline
+2 & 1 & 8.000 & 17.42 dB \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} rate reduction is smooth numerically, but visual quality drops sharply at low levels.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Audio quantization}
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Bit depth} & \textbf{Perceptual quality} \\ \hline
+8 bits & slight hissing or granular noise \\ \hline
+4 bits & strong fidelity loss and prominent noise \\ \hline
+2 bits & very strong noise; speech may remain intelligible, music is badly damaged \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} scalar quantization noise is more tolerable for some signals than others, but very low bit depth destroys quality.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Prediction gain for AR(1)}
+\textbf{Signal:}
+
+\[
+X(n)\sim\mathcal{N}(0,\sigma^2), \qquad
+\mathbb{E}[X(n)X(m)]=\sigma^2\rho^{|n-m|}
+\]
+
+\textbf{Predictor:} $V(n)=X(n-1)$.
+
+Prediction error variance:
+
+\[
+\sigma_Y^2
+=\mathbb{E}[(X(n)-X(n-1))^2]
+=2\sigma^2(1-\rho)
+\]
+
+Prediction gain:
+
+\[
+G_P=10\log_{10}\frac{\sigma^2}{2(1-\rho)\sigma^2}
+=10\log_{10}\frac{1}{2(1-\rho)}
+\]
+
+Positive gain condition:
+
+\[
+G_P>0 \Leftrightarrow \rho>\frac{1}{2}
+\]
+
+For $\rho=0.9$, $G_P\approx7$ dB.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{2D image predictor}
+Predictor for grayscale image:
+
+\[
+\tilde{f}_{n,m}=a f_{n-1,m}+b f_{n,m-1}
+\]
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{$a$} & \textbf{$b$} & \textbf{$\sigma_E^2$} & \textbf{Meaning} \\ \hline
+0 & 0 & 2902.7 & no prediction \\ \hline
+1/2 & 1/2 & 78.7 & simple neighbor average \\ \hline
+0.449 & 0.546 & 78.4 & optimal predictor \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} a simple local predictor reduces variance by more than 37 times; optimization adds only small improvement.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Drift with wrong prediction loop}
+Encoder predicts from original past values, decoder predicts from reconstructed past values.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\textbf{Step} & \textbf{Original} & \textbf{Encoder prediction} & \textbf{Encoder error} & \textbf{Quantized error} & \textbf{Decoder prediction} & \textbf{Reconstruction} \\ \hline
+1 & 10 & - & - & 9 & - & 9 \\ \hline
+2 & 11 & 10 & 1 & 0 & 9 & 9 \\ \hline
+3 & 12 & 11 & 1 & 0 & 9 & 9 \\ \hline
+4 & 13 & 12 & 1 & 0 & 9 & 9 \\ \hline
+5 & 14 & 13 & 1 & 0 & 9 & 9 \\ \hline
+6 & 18 & 14 & 4 & 3 & 9 & 12 \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} decoder stays behind because it cannot reproduce encoder predictions.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{No drift with closed-loop prediction}
+Encoder and decoder both predict from reconstructed past values.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\textbf{Step} & \textbf{Original} & \textbf{Encoder prediction} & \textbf{Encoder error} & \textbf{Quantized error} & \textbf{Decoder prediction} & \textbf{Reconstruction} \\ \hline
+1 & 10 & - & - & 9 & - & 9 \\ \hline
+2 & 11 & 9 & 2 & 3 & 9 & 12 \\ \hline
+3 & 12 & 12 & 0 & 0 & 12 & 12 \\ \hline
+4 & 13 & 12 & 1 & 0 & 12 & 12 \\ \hline
+5 & 14 & 12 & 2 & 3 & 12 & 15 \\ \hline
+6 & 18 & 15 & 3 & 3 & 15 & 18 \\ \hline
+7 & 21 & 18 & 3 & 3 & 18 & 21 \\ \hline
+8 & 18 & 21 & -3 & -3 & 21 & 18 \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} shared reconstructed state keeps encoder and decoder synchronized.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Entropy coding gain}
+With $L=19$ quantization levels, about \textbf{84\%} of prediction-error indexes are zero, and less than \textbf{1\%} fall outside $(-3,3)$.
+
+\textbf{Result from source:} predictive quantization plus entropy coding gives about \textbf{+20 dB PSNR at 1 bpp} versus direct UQ, or about \textbf{86\% rate reduction} at 30 dB.
+
+\textbf{Takeaway:} prediction creates sparsity; entropy coding turns sparsity into bitrate reduction.
+\end{calloutbox}

@@ -1,0 +1,679 @@
+\chapter{Learned Image Compression}
+
+\section{Table of Contents}
+
+\begin{itemize}
+  \item Core Idea
+  \item Key Concepts
+  \item Theory and Formulas
+  \item Visual Schemes
+  \item Examples
+\end{itemize}
+
+\section{Core Idea}
+
+\textbf{Learned Image Compression (LIC)}, also called \textbf{Neural Image Compression (NIC)}, replaces hand-designed codec blocks with neural networks trained end-to-end on image data.
+
+Classical codecs use fixed linear transforms:
+
+\begin{itemize}
+  \item JPEG: block DCT,
+  \item JPEG 2000: DWT,
+  \item handcrafted quantization and entropy models.
+\end{itemize}
+
+Learned codecs use neural networks:
+
+\begin{itemize}
+  \item \textbf{analysis transform} $g_a$: maps image to latent tensor,
+  \item \textbf{quantization}: maps latents to discrete values,
+  \item \textbf{entropy model}: predicts bit cost of latents,
+  \item \textbf{synthesis transform} $g_s$: reconstructs the image.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Main paradigm shift}
+Learned compression is non-linear transform coding. The transform, probability model, and reconstruction behavior are optimized from data for a rate-distortion objective instead of being manually specified.
+\end{calloutbox}
+
+\section{Key Concepts}
+
+\subsection{Classical vs. Learned Transform Coding}
+
+General transform-coding structure remains:
+
+\[
+x \xrightarrow{\text{analysis}} z=g_a(x)
+\xrightarrow{\text{quantization}} \hat{z}=Q(z)
+\xrightarrow{\text{synthesis}} \hat{x}=g_s(\hat{z})
+\]
+
+In classical codecs, $g_a$ and $g_s$ are fixed transforms such as DCT or DWT. In learned compression, $g_a$ and $g_s$ are trained CNNs.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Aspect} & \textbf{Classical} & \textbf{Learned} \\ \hline
+Transform & fixed linear basis & learned non-linear mapping \\ \hline
+Adaptivity & parameters only & weights learned from data \\ \hline
+Coefficients & transform coefficients & latent variables / latent tensor \\ \hline
+Optimization & discrete tool selection & gradient descent \\ \hline
+Entropy model & fixed or handcrafted & learned prior/hyperprior \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{KLT as Linear Limit}
+
+KLT is optimal among linear transforms for Gaussian data, because it decorrelates components. Neural codecs generalize this:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{KLT} & \textbf{Neural codec} \\ \hline
+linear & non-linear \\ \hline
+optimal mainly for Gaussian sources & handles complex natural-image distributions \\ \hline
+data-dependent but expensive & CNNs process large images with shared weights \\ \hline
+decorrelates second-order statistics & learns high-order features: edges, textures, semantics \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{Non-linear KLT view}
+LIC can be interpreted as a non-linear KLT optimized for rate-distortion, where the basis/functions are learned instead of fixed.
+\end{calloutbox}
+
+\subsection{Rate-Distortion Objective}
+
+Learned codecs are trained by minimizing a Lagrangian:
+
+\[
+\mathcal{L}=D(x,\hat{x})+\lambda R(\hat{z})
+\]
+
+or equivalently:
+
+\[
+\mathcal{L}=R(\hat{z})+\lambda D(x,\hat{x})
+\]
+
+The meaning of "large $\lambda$" depends on which form is used:
+
+\begin{itemize}
+  \item in $D+\lambda R$, large $\lambda$ penalizes rate more strongly;
+  \item in $R+\lambda D$, large $\lambda$ penalizes distortion more strongly.
+\end{itemize}
+
+Training several models with different $\lambda$ values gives different points on the rate-distortion curve, similar in role to quality factors.
+
+\subsection{Artificial Neuron and MLP}
+
+Neuron:
+
+\[
+y=f(w^Tx+b)=f(w_1x_1+\cdots+w_nx_n+b)
+\]
+
+where $f$ is a non-linear activation.
+
+Common activations:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Activation} & \textbf{Formula} & \textbf{Role} \\ \hline
+ReLU & $f(z)=\max(0,z)$ & sparse non-linearity \\ \hline
+Sigmoid & $f(z)=1/(1+e^{-z})$ & maps to $(0,1)$ \\ \hline
+Tanh & $f(z)=\tanh(z)$ & maps to $(-1,1)$ \\ \hline
+GDN & normalized response & compression-specific \\ \hline
+\end{tabular}}
+\end{center}
+
+MLP with one hidden layer:
+
+\[
+h=f(W_1x+b_1)
+\]
+
+\[
+y=g(W_2h+b_2)
+\]
+
+Non-linear activations matter because without them a deep stack collapses to one linear transform.
+
+\subsection{Gradient Descent and Backpropagation}
+
+Neural training updates parameters $\theta$ by:
+
+\[
+\theta_{t+1}=\theta_t-\eta\nabla_\theta\mathcal{L}(\theta_t)
+\]
+
+where $\eta$ is the learning rate.
+
+Backpropagation applies the chain rule from output to input to compute gradients for every weight. This makes end-to-end codec training possible.
+
+\subsection{Why MLPs Fail on Images}
+
+Flattening an image loses spatial structure. A $256x256$ image gives:
+
+\[
+256\cdot256=65536
+\]
+
+input values. Connecting it to 1000 hidden neurons requires:
+
+\[
+65,536,000
+\]
+
+weights in one layer.
+
+Problems:
+
+\begin{itemize}
+  \item no translation invariance,
+  \item parameter explosion,
+  \item overfitting,
+  \item no explicit locality,
+  \item computationally impractical.
+\end{itemize}
+
+\subsection{CNNs for Learned Compression}
+
+CNNs solve image scalability using:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Feature} & \textbf{Compression meaning} \\ \hline
+local connectivity & nearby pixels treated together \\ \hline
+weight sharing & same detector reused everywhere \\ \hline
+strided convolution & learned downsampling in encoder \\ \hline
+multiple channels & many parallel learned features \\ \hline
+transposed convolution & learned upsampling in decoder \\ \hline
+\end{tabular}}
+\end{center}
+
+A convolution applies a small kernel, e.g. $3x3$, to every local patch. A stride $s>1$ reduces spatial resolution and compacts information.
+
+Typical neural codec latent tensor:
+
+\[
+H\times W \rightarrow \frac{H}{16}\times\frac{W}{16}\times C
+\]
+
+after four stride-2 stages. Source notes JPEG AI-like examples with:
+
+\begin{itemize}
+  \item 160 channels for luminance,
+  \item 96 channels for chrominance.
+\end{itemize}
+
+\subsection{GDN}
+
+\begin{calloutbox}{red!70!black}{Generalized Divisive Normalization}
+\[
+w_i=
+\frac{v_i}
+{\sqrt{\beta_i+\sum_j\gamma_{ij}v_j^2}}
+\]
+
+$\beta_i$ and $\gamma_{ij}$ are learned parameters.
+\end{calloutbox}
+
+GDN is useful because it:
+
+\begin{itemize}
+  \item performs local feature normalization,
+  \item mimics lateral inhibition and visual masking,
+  \item reduces correlation,
+  \item makes latent distributions easier to model for entropy coding.
+\end{itemize}
+
+\subsection{Autoencoder Codec}
+
+Learned image codecs are autoencoders:
+
+\begin{enumerate}
+  \item \textbf{Analysis transform}:
+\end{enumerate}
+
+\[
+y=g_a(x)
+\]
+
+\begin{enumerate}
+  \item \textbf{Bottleneck}:
+\end{enumerate}
+
+\[
+\hat{y}=Q(y)
+\]
+
+\begin{enumerate}
+  \item \textbf{Entropy coding} of $\hat{y}$.
+  \item \textbf{Synthesis transform}:
+\end{enumerate}
+
+\[
+\hat{x}=g_s(\hat{y})
+\]
+
+The bottleneck is where compression happens.
+
+\subsection{VAE Interpretation}
+
+Modern neural codecs can be interpreted as rate-distortion VAEs.
+
+\begin{calloutbox}{red!70!black}{VAE rate-distortion objective}
+\[
+\mathcal{L}
+=
+D_{KL}[q(\hat{y}|x)\|p(\hat{y})]
++
+\lambda\mathbb{E}[\rho(x,\hat{x})]
+\]
+
+The KL term corresponds to rate, and the reconstruction term corresponds to distortion.
+\end{calloutbox}
+
+Interpretation:
+
+\begin{itemize}
+  \item $q(\hat{y}|x)$: distribution induced by encoder and quantization.
+  \item $p(\hat{y})$: entropy model expected by arithmetic coder.
+  \item $\rho(x,\hat{x})$: distortion metric, e.g. MSE, MS-SSIM, perceptual loss.
+  \item $\lambda$: rate-distortion tradeoff parameter.
+\end{itemize}
+
+\subsection{Quantization Training Problem}
+
+Hard rounding is non-differentiable:
+
+\[
+\hat{z}=Q(z)=\mathrm{round}(z)
+\]
+
+Its derivative is zero almost everywhere, so backpropagation cannot train the encoder through it.
+
+Common training solution:
+
+\[
+\hat{z}\approx z+u,
+\qquad
+u\sim\mathcal{U}(-0.5,0.5)
+\]
+
+During inference:
+
+\[
+\hat{z}=\mathrm{round}(z)
+\]
+
+Additive uniform noise is a differentiable proxy and matches high-resolution quantization-noise theory.
+
+Alternative approaches:
+
+\begin{itemize}
+  \item \textbf{STE}: pretend quantizer derivative is 1.
+  \item \textbf{Soft quantization}: smooth approximation during training, hard rounding at test time.
+\end{itemize}
+
+\subsection{Hyperprior}
+
+Basic latent priors assume fixed statistics, but real latent tensors have spatially varying variance. Hyperprior models transmit compact side information to predict local latent distributions.
+
+Hyperprior mechanism:
+
+\[
+x\xrightarrow{g_a}y\xrightarrow{Q}\hat{y}\xrightarrow{g_s}\hat{x}
+\]
+
+\[
+y\xrightarrow{h_a}z\xrightarrow{Q}\hat{z}\xrightarrow{h_s}\sigma
+\]
+
+Conditional model:
+
+\[
+p(\hat{y}|\hat{z})=\mathcal{N}(\mu,\sigma^2)
+\]
+
+Total rate includes:
+
+\[
+R_{\text{total}}=R(\hat{y})+R(\hat{z})
+\]
+
+The hyperprior overhead is useful when the rate saved by a better model for $\hat{y}$ exceeds the rate spent on $\hat{z}$.
+
+\subsection{JPEG AI}
+
+Source notes describe \textbf{JPEG AI} as an international learned-image-coding standard built on deep learning. Its goals:
+
+\begin{itemize}
+  \item outperform HEVC/VVC intra coding in image compression efficiency,
+  \item support both human and machine tasks,
+  \item use hierarchical VAE-like neural codecs,
+  \item provide complexity profiles for different hardware.
+\end{itemize}
+
+Key ideas:
+
+\begin{itemize}
+  \item deep CNN analysis/synthesis transforms,
+  \item hyperprior side information,
+  \item quantization proxy during training,
+  \item latent tensors with many channels,
+  \item one bitstream usable by human reconstruction or machine task decoders.
+\end{itemize}
+
+Complexity profiles in source:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Profile} & \textbf{Complexity} & \textbf{Target} \\ \hline
+Dec0 & 8 kMAC/px & low-end CPUs \\ \hline
+Dec1 & 23 kMAC/px & real-time mid-range smartphones \\ \hline
+Dec2 & 214 kMAC/px & high-end GPU / maximum quality \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Current Limitations}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Limitation} & \textbf{Why it matters} \\ \hline
+high complexity & many kMAC/px, high energy cost \\ \hline
+hardware dependence & GPU/NPU often needed \\ \hline
+determinism & floating-point differences can cause drift \\ \hline
+out-of-distribution risk & unusual images may be poorly reconstructed \\ \hline
+hallucination & neural decoder may synthesize plausible but false details \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Future Directions}
+
+\begin{itemize}
+  \item \textbf{Generative compression:} GAN/diffusion decoders synthesize realistic textures at very low rates.
+  \item \textbf{Coding for machines:} transmit latents directly to detection/segmentation systems.
+  \item \textbf{Hardware-algorithm co-design:} neural codecs designed with NPUs and mobile accelerators.
+\end{itemize}
+
+\section{Theory and Formulas}
+
+\subsection{Classical-to-Neural Architecture}
+
+Classical transform coding:
+
+\[
+x\rightarrow T(x)\rightarrow Q(T(x))\rightarrow \text{entropy coding}
+\]
+
+Learned transform coding:
+
+\[
+x\rightarrow g_a(x)=y\rightarrow Q(y)=\hat{y}
+\rightarrow \text{entropy coding}
+\rightarrow g_s(\hat{y})=\hat{x}
+\]
+
+The learned transform is non-linear, data-driven, and optimized jointly with the entropy model.
+
+\subsection{Latent Tensor Size}
+
+If an input image has shape $H\times W$, and the encoder uses four stride-2 stages:
+
+\[
+H\times W
+\rightarrow
+\frac{H}{2}\times\frac{W}{2}
+\rightarrow
+\frac{H}{4}\times\frac{W}{4}
+\rightarrow
+\frac{H}{8}\times\frac{W}{8}
+\rightarrow
+\frac{H}{16}\times\frac{W}{16}
+\]
+
+With $C$ channels:
+
+\[
+y\in\mathbb{R}^{H/16\times W/16\times C}
+\]
+
+Spatial size shrinks, but channel count increases to preserve multiple learned features.
+
+\subsection{Entropy Model and Arithmetic Coding}
+
+If entropy model assigns probability $p_{\hat{y}}(\hat{y}_i)$ to each quantized latent symbol, rate estimate is:
+
+\[
+R(\hat{y})\approx
+-\sum_i \log_2 p_{\hat{y}}(\hat{y}_i)
+\]
+
+Better probability models reduce arithmetic-coding length.
+
+With hyperprior:
+
+\[
+R(\hat{y}|\hat{z})
+\approx
+-\sum_i\log_2 p(\hat{y}_i|\hat{z})
+\]
+
+Total:
+
+\[
+R_{\text{total}}
+=
+R(\hat{z})+R(\hat{y}|\hat{z})
+\]
+
+\subsection{Additive Noise Approximation}
+
+Uniform scalar quantization with unit step has error approximately:
+
+\[
+e\sim\mathcal{U}(-0.5,0.5)
+\]
+
+So during training:
+
+\[
+\tilde{y}=y+u,\qquad u\sim\mathcal{U}(-0.5,0.5)
+\]
+
+approximates:
+
+\[
+\hat{y}=\mathrm{round}(y)
+\]
+
+while preserving gradient flow.
+
+\subsection{GDN Interpretation}
+
+GDN divides each feature by local energy:
+
+\[
+w_i=\frac{v_i}{\sqrt{\beta_i+\sum_j\gamma_{ij}v_j^2}}
+\]
+
+If neighboring channels are strong, $w_i$ is suppressed. This resembles perceptual masking and helps produce latents with simpler distributions.
+
+\section{Visual Schemes}
+
+\subsection{Neural Network Basics}
+
+\begin{center}\includegraphics[width=\linewidth]{ch06/artificial-neuron.png}\end{center}
+Artificial neuron computes weighted sum, adds bias, and applies non-linear activation.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch06/mlp-architecture.png}\end{center}
+MLP connects all neurons between layers; useful conceptually but inefficient for images.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch06/image-flattening-problem.png}\end{center}
+Flattening image pixels destroys spatial topology and causes parameter explosion.
+
+\subsection{CNN Features}
+
+\begin{center}\includegraphics[width=\linewidth]{ch06/convolution-receptive-field.png}\end{center}
+Convolution applies the same local kernel at all positions, reusing learned pattern detectors.
+
+\begin{center}\includegraphics[width=\linewidth]{ch06/strided-convolution.png}\end{center}
+Strided convolution downsamples spatial dimensions and compacts information.
+
+\begin{center}\includegraphics[width=\linewidth]{ch06/parallel-feature-channels.png}\end{center}
+Multiple kernels create multiple feature maps, forming a 3D latent representation.
+
+\subsection{Autoencoder Codec}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Input image x] --> B[Analysis transform ga]
+    B --> C[Latent tensor y]
+    C --> D[Quantization Q]
+    D --> E[Quantized latents yhat]
+    E --> F[Entropy coding]
+    F --> G[Bitstream]
+    G --> H[Entropy decoding]
+    H --> E2[Quantized latents yhat]
+    E2 --> I[Synthesis transform gs]
+    I --> J[Reconstructed image xhat]
+\end{verbatim}
+
+\subsection{Hyperprior Codec}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Image x] --> B[Analysis ga]
+    B --> Y[Latents y]
+    Y --> QY[Quantize yhat]
+    Y --> HA[Hyper-analysis ha]
+    HA --> Z[Hyperlatents z]
+    Z --> QZ[Quantize zhat]
+    QZ --> HS[Hyper-synthesis hs]
+    HS --> P[Scale / probability model]
+    QY --> EC[Arithmetic coding]
+    P --> EC
+    QZ --> ECZ[Encode side info]
+    EC --> BS[Bitstream]
+    ECZ --> BS
+    BS --> DEC[Decode yhat, zhat]
+    DEC --> GS[Synthesis gs]
+    GS --> XH[Image xhat]
+\end{verbatim}
+
+\subsection{JPEG AI Dual Use}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[JPEG AI bitstream] --> B[Decode latent tensor]
+    B --> C[Human vision decoder]
+    B --> D[Machine task decoder]
+    C --> E[RGB reconstruction]
+    D --> F[Detection / segmentation / features]
+\end{verbatim}
+
+\begin{calloutbox}{blue!60!black}{Missing visual}
+Source has real figures for neural-network/CNN basics, but not for autoencoder, hyperprior, or dual-use JPEG AI architecture. Mermaid schemes above summarize those architectures.
+\end{calloutbox}
+
+\section{Examples}
+
+\begin{calloutbox}{green!55!black}{MLP parameter explosion}
+A $256x256$ image has:
+
+\[
+256\cdot256=65536
+\]
+
+input values. A fully connected layer with 1000 neurons needs:
+
+\[
+65536\cdot1000=65,536,000
+\]
+
+weights, before biases.
+
+\textbf{Takeaway:} CNNs are needed because they reuse local filters instead of connecting every pixel to every neuron.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Latent tensor dimensions}
+With four stride-2 convolution layers:
+
+\[
+H\times W\rightarrow H/16\times W/16
+\]
+
+If $C=160$ channels, the encoder produces:
+
+\[
+y\in\mathbb{R}^{H/16\times W/16\times160}
+\]
+
+\textbf{Takeaway:} spatial resolution shrinks, but many channels store learned features.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Training vs. inference quantization}
+During training:
+
+\[
+\tilde{y}=y+u,\qquad u\sim\mathcal{U}(-0.5,0.5)
+\]
+
+During inference:
+
+\[
+\hat{y}=\mathrm{round}(y)
+\]
+
+\textbf{Takeaway:} additive noise makes training differentiable while approximating quantization noise.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Hyperprior rate tradeoff}
+Sending hyperlatents $\hat{z}$ costs bits, but improves probability estimates for $\hat{y}$.
+
+Useful condition:
+
+\[
+R(\hat{z})+R(\hat{y}|\hat{z}) < R(\hat{y})
+\]
+
+\textbf{Takeaway:} side information is worth sending only when it saves more latent bits than it costs.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Complexity profiles}
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Profile} & \textbf{Complexity} & \textbf{Interpretation} \\ \hline
+Dec0 & 8 kMAC/px & lightweight decoder \\ \hline
+Dec1 & 23 kMAC/px & phone-class real-time target \\ \hline
+Dec2 & 214 kMAC/px & high-quality high-compute decoder \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} same bitstream can be decoded with different compute/quality profiles.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Classical vs. learned codec}
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Aspect} & \textbf{JPEG / JPEG 2000} & \textbf{Learned / JPEG AI} \\ \hline
+Transform & DCT / DWT & CNN + GDN \\ \hline
+Basis & hand-crafted & learned from data \\ \hline
+Optimization & module-wise & end-to-end \\ \hline
+Entropy model & Huffman/arithmetic tables & learned prior/hyperprior \\ \hline
+Artifacts & blocking or blur & possible hallucination \\ \hline
+Complexity & low & high \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} learned codecs win rate-distortion performance, but cost much more computation and must manage determinism.
+\end{calloutbox}

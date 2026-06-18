@@ -1,33 +1,33 @@
-# Multimedia Communications — Complete Notes
+# Multimedia Communications - complete notes
 
 ## Lectures
 
-1. [[#Introduction to Multimedia Compression]]
-2. [[#Scalar and Predictive Quantization]]
-3. [[#Lossless Coding]]
-4. [[#Transform Coding]]
-5. [[#Wavelet Analysis]]
-6. [[#Learned Image Compression]]
-7. [[#Motion Estimation]]
-8. [[#Video Coding Principles]]
-9. [[#Modern Video Compression Standards]]
-10. [[#Audio Coding]]
-11. [[#Quality Assessment and Quality of Experience for Multimedia Services]]
-12. [[#Adaptive Streaming]]
+1. [[#Introduction to multimedia compression]]
+2. [[#Scalar and predictive quantization]]
+3. [[#Lossless coding]]
+4. [[#Transform coding]]
+5. [[#Wavelet analysis]]
+6. [[#Learned image compression]]
+7. [[#Motion estimation]]
+8. [[#Video coding principles]]
+9. [[#Modern video compression standards]]
+10. [[#Audio coding]]
+11. [[#Quality assessment and quality of experience for multimedia services]]
+12. [[#Adaptive streaming]]
 
 ---
 
-# Introduction to Multimedia Compression
+# Introduction to multimedia compression
 
-## Table of Contents
+## Contents
 
-- [[#Core Idea|Core Idea]]
-- [[#Key Concepts|Key Concepts]]
-- [[#Theory and Formulas|Theory and Formulas]]
-- [[#Visual Schemes|Visual Schemes]]
+- [[#Core idea|Core idea]]
+- [[#Main concepts|Main concepts]]
+- [[#Theory and formulas|Theory and formulas]]
+- [[#Visual schemes|Visual schemes]]
 - [[#Examples|Examples]]
 
-## Core Idea
+## Core idea
 
 Multimedia compression is needed because raw image, video, and audio data rates are far above practical storage and transmission limits. Effective codecs reduce rate by exploiting:
 
@@ -40,16 +40,22 @@ Compression is always a design tradeoff among **rate**, **quality**, **complexit
 > [!Important] Main compression principle
 > A codec should spend bits where errors are visible or useful, and remove information that is predictable, imperceptible, or irrelevant to the final task.
 
-## Key Concepts
+## Main concepts
 
-### Multimedia Representation
+### Multimedia representation
 
-| Signal | Discrete representation | Key dependency |
-| :--- | :--- | :--- |
-| Gray image | $N \times M$ samples $f_{n,m}$ | Spatial correlation |
-| Color image | Three components, usually RGB or YCbCr | Luma/chroma sensitivity |
-| Video | Sequence of color images over time | Spatial and temporal correlation |
-| Audio | Time signal or frequency components | Hearing threshold and masking |
+- **Gray image**
+    - Discrete representation: $N \times M$ samples $f_{n,m}$
+    - Main dependency: spatial correlation
+- **Color image**
+    - Discrete representation: three components, usually RGB or YCbCr
+    - Main dependency: luma/chroma sensitivity
+- **Video**
+    - Discrete representation: sequence of color images over time
+    - Main dependency: spatial and temporal correlation
+- **Audio**
+    - Discrete representation: time signal or frequency components
+    - Main dependency: hearing threshold and masking
 
 For an image scanned in raster order:
 
@@ -65,7 +71,7 @@ $$
 
 where $(n,m)$ is position, $T$ is frame index, $c$ is color component, and $b$ is bit depth.
 
-### Human Visual System
+### Human visual system
 
 - **Cones**: 6-7 million, concentrated near the fovea, responsible for color and high spatial resolution under good illumination.
 - **Rods**: 75-150 million, more sensitive in low light, mainly detect intensity with lower resolution.
@@ -85,9 +91,9 @@ Retinal receptors explain why compression can treat brightness, color, and fine 
 >
 > Sensitivity is highest around **2-5 cycles/degree** and lower at very low and very high spatial frequencies.
 >
-> **Compression meaning:** high-frequency errors are often less visible, so high-frequency transform coefficients can be quantized more coarsely.
+> Compression meaning: high-frequency errors are often less visible, so high-frequency transform coefficients can be quantized more coarsely.
 
-### Color Perception and Color Spaces
+### Color perception and color spaces
 
 Visible light lies roughly between **400 nm and 700 nm**. Cone sensitivities are uneven:
 
@@ -97,11 +103,9 @@ Visible light lies roughly between **400 nm and 700 nm**. Cone sensitivities are
 
 Color perception is **tristimulus**: a color corresponds to the 3D response vector of the three cone classes.
 
-| Space | Components | Compression relevance |
-| :--- | :--- | :--- |
-| **RGB** | Red, Green, Blue | Device-oriented; three full-resolution channels |
-| **HSV** | Hue, Saturation, Value | Perceptual description of color |
-| **YCbCr** | Luminance Y, chrominance Cb/Cr | Separates brightness from color; enables chroma subsampling |
+- **RGB**: Components: Red, Green, Blue; Compression relevance: Device-oriented; three full-resolution channels.
+- **HSV**: Components: Hue, Saturation, Value; Compression relevance: Perceptual description of color.
+- **YCbCr**: Components: Luminance Y, chrominance Cb/Cr; Compression relevance: Separates brightness from color; enables chroma subsampling.
 
 > [!Important] ITU-R BT.601 RGB to YCbCr
 > $$
@@ -131,7 +135,7 @@ Color perception is **tristimulus**: a color corresponds to the 3D response vect
 >
 > The luminance weights follow visual sensitivity: green contributes most, blue least. The $+128$ offset centers chroma components in the 8-bit range.
 
-### Sound Perception
+### Sound perception
 
 Audio coding uses a psychoacoustical model. A pure tone
 
@@ -145,7 +149,7 @@ $$
 \sigma^2 = \frac{a^2}{2}
 $$
 
-and excites several nerve fibers, not only one.
+and excites several nerve fibers instead of a single one.
 
 For auditory filter $k$:
 
@@ -168,7 +172,7 @@ $$
 > [!Important] Hearing threshold
 > $S_a(f)$ is the minimum power for a tone at frequency $f$ to be audible. It is lowest around **1-4 kHz**, where human hearing is most sensitive.
 >
-> **Compression meaning:** components below the threshold can be discarded or hidden under quantization noise.
+> Compression meaning: components below the threshold can be discarded or hidden under quantization noise.
 
 > [!Important] Critical band
 > Sinusoids close in frequency are integrated by hearing. For $N$ sinusoids near $f_1$:
@@ -179,7 +183,7 @@ $$
 >
 > The frequency interval where this energy integration holds is the **critical band**.
 
-### Chroma Subsampling
+### Chroma subsampling
 
 Notation $J:a:b$ describes chroma samples relative to a luma reference block:
 
@@ -187,12 +191,10 @@ Notation $J:a:b$ describes chroma samples relative to a luma reference block:
 - $a$: chroma samples in the first line.
 - $b$: chroma samples in the second line.
 
-| Scheme | Horizontal chroma resolution | Vertical chroma resolution | Use |
-| :--- | :--- | :--- | :--- |
-| **4:4:4** | Full | Full | High quality, no chroma reduction |
-| **4:2:2** | Half | Full | Professional video |
-| **4:2:0** | Half | Half | Most common image/video coding format |
-| **4:1:1** | Quarter | Full | Older video systems |
+- **4:4:4**: Horizontal chroma resolution: Full; Vertical chroma resolution: Full; Use: High quality, no chroma reduction.
+- **4:2:2**: Horizontal chroma resolution: Half; Vertical chroma resolution: Full; Use: Professional video.
+- **4:2:0**: Horizontal chroma resolution: Half; Vertical chroma resolution: Half; Use: Most common image/video coding format.
+- **4:1:1**: Horizontal chroma resolution: Quarter; Vertical chroma resolution: Full; Use: Older video systems.
 
 For **YCbCr 4:2:0**, Y is full resolution, Cb and Cr are half resolution horizontally and vertically:
 
@@ -202,42 +204,60 @@ $$
 
 This gives **50% data reduction** compared with full RGB/YUV 4:4:4 before any transform or entropy coding.
 
-### Compression Tools
+### Compression tools
 
-| Tool | Role | Lossy? |
-| :--- | :--- | :--- |
-| **Transform** | Concentrates energy in few coefficients, e.g. DCT, wavelets, neural transforms | No by itself |
-| **Prediction** | Removes spatial or temporal redundancy | No by itself |
-| **Quantization** | Maps values to fewer levels; reduces precision | **Yes** |
-| **Entropy coding** | Removes residual statistical redundancy, e.g. VLC, arithmetic coding | No |
+- **Transform**
+  - Role: concentrates energy in few coefficients, e.g. DCT, wavelets, neural transforms
+  - Lossy: no by itself
 
-> [!Important] Quantization is the lossy step
-> In classical codecs, transform, prediction, and entropy coding can be reversible. The irreversible rate reduction comes from **quantization**.
+- **Prediction**
+  - Role: removes spatial or temporal redundancy
+  - Lossy: no by itself
 
-### Lossless vs. Lossy Compression
+- **Quantization**
+  - Role: maps values to fewer levels; reduces precision
+  - Lossy: **yes**
 
-| Property | Lossless | Lossy |
-| :--- | :--- | :--- |
-| Reconstruction | Exact | Approximate |
-| Exploits | Statistical redundancy | Statistical + perceptual redundancy |
-| Main tool | Entropy coding, reversible prediction/transform | Quantization plus perceptual modeling |
-| Typical image ratio | $T \leq 3$ | $T \approx 5$ or higher |
-| Typical video ratio | Limited | $T \approx 20$ or higher |
+- **Entropy coding**
+  - Role: removes residual statistical redundancy, e.g. VLC, arithmetic coding
+  - Lossy: no
 
-### Machine-Centric Multimedia
+In classical codecs, transform, prediction, and entropy coding can be reversible. The irreversible rate reduction comes from **quantization**.
+
+### Lossless vs. lossy compression
+
+- **Reconstruction**
+  - Exact
+  - Approximate
+
+- **Exploits**
+  - Exact: statistical redundancy
+  - Approximate: statistical + perceptual redundancy
+
+- **Main tool**
+  - Exact: entropy coding, reversible prediction/transform
+  - Approximate: quantization plus perceptual modeling
+
+- **Typical image ratio**
+  - Exact: $T \leq 3$
+  - Approximate: $T \approx 5$ or higher
+
+- **Typical video ratio**
+  - Exact: limited
+  - Approximate: $T \approx 20$ or higher
+
+### Machine-centric multimedia
 
 Not all multimedia is consumed by humans. Cameras in surveillance, IoT, industry, and robotics often feed algorithms.
 
-| Receiver | Priority | Compression goal |
-| :--- | :--- | :--- |
-| Human | Perceptual quality | Hide distortion below HVS/HAS limits |
-| Machine | Task accuracy | Preserve semantic features needed by model |
+For a **human receiver**, the priority is **perceptual quality**, so the compression goal is to hide distortion below the limits of the human visual or auditory system, HVS/HAS.
+For a **machine receiver**, the priority is **task accuracy**, so compression should preserve the semantic features needed by the model.
 
 **Task-oriented communication** can discard visually important but task-irrelevant information if the downstream algorithm still performs well.
 
-## Theory and Formulas
+## Theory and formulas
 
-### Quantization and Bit Depth
+### Quantization and bit depth
 
 If a scalar sample is represented with $L$ levels:
 
@@ -253,7 +273,7 @@ where $b$ is bits per sample. Standard 8-bit components have:
 
 HDR content may use 32-64 bits per channel.
 
-### Rate and Compression Ratio
+### Rate and compression ratio
 
 > [!Important] Compression ratio
 > $$
@@ -262,26 +282,24 @@ HDR content may use 32-64 bits per channel.
 > $$
 >
 > $T$ measures how many times the coded representation is smaller than the original.
+>
+> Coding rate:
+>
+> $$
+> R_{\text{image}} = \frac{B_{\text{out}}}{NM} \quad [\text{bpp}]
+> $$
+>
+> $$
+> R_{\text{audio/video}} = \frac{B_{\text{out}}}{T} \quad [\text{bps}]
+> $$
+>
+> Typical values:
+>
+> - **Lossless image coding**: Typical compression ratio: $T \leq 3$.
+> - **Lossy image coding**: Typical compression ratio: $T \approx 5$ to much higher.
+> - **Lossy video coding**: Typical compression ratio: $T \approx 20$ to much higher.
 
-Coding rate:
-
-$$
-R_{\text{image}} = \frac{B_{\text{out}}}{NM} \quad [\text{bpp}]
-$$
-
-$$
-R_{\text{audio/video}} = \frac{B_{\text{out}}}{T} \quad [\text{bps}]
-$$
-
-Typical values:
-
-| Application | Typical compression ratio |
-| :--- | :--- |
-| Lossless image coding | $T \leq 3$ |
-| Lossy image coding | $T \approx 5$ to much higher |
-| Lossy video coding | $T \approx 20$ to much higher |
-
-### Objective Quality Metrics
+### Objective quality metrics
 
 Let $f$ be the original image and $\tilde{f}$ the decoded image. The error image is:
 
@@ -342,11 +360,11 @@ $$
 >
 > Image SSIM is the average over blocks. Range is $[0,1]$, with 1 meaning identical.
 
-### Learned Perceptual Metrics
+### Learned perceptual metrics
 
 **LPIPS** (*Learned Perceptual Image Patch Similarity*) compares images in a neural feature space, often using pre-trained VGG or ViT features. It is useful when pixel metrics fail, especially for highly compressed, generated, or neural-coded images.
 
-### Subjective Quality
+### Subjective quality
 
 Subjective tests with human observers are the reference for perceived quality, but they are expensive and statistically demanding. Objective metrics are proxies:
 
@@ -354,7 +372,7 @@ Subjective tests with human observers are the reference for perceived quality, b
 - **SSIM**: structure-aware.
 - **LPIPS**: learned perceptual feature distance.
 
-### Complexity, Delay, and Robustness
+### Complexity, delay, and robustness
 
 Beyond rate and quality, codecs must balance:
 
@@ -362,16 +380,14 @@ Beyond rate and quality, codecs must balance:
 - **Delay**: especially encoder delay; often depends on coding order and look-ahead.
 - **Robustness**: sensitivity of compressed bitstreams to channel loss or packet errors.
 
-| Goal | Typical conflict |
-| :--- | :--- |
-| Higher quality | Higher rate or complexity |
-| Lower rate | Lower quality or higher delay |
-| Lower delay | Less look-ahead, weaker compression |
-| Higher robustness | More redundancy or lower compression efficiency |
+- **Higher quality**: Typical conflict: Higher rate or complexity.
+- **Lower rate**: Typical conflict: Lower quality or higher delay.
+- **Lower delay**: Typical conflict: Less look-ahead, weaker compression.
+- **Higher robustness**: Typical conflict: More redundancy or lower compression efficiency.
 
-## Visual Schemes
+## Visual schemes
 
-### Visual and Auditory Perception
+### Visual and auditory perception
 
 ![[Pics/1. Introduction to Multimedia Compression/contrast-sensitivity-function.png|500]]
 
@@ -393,45 +409,47 @@ Frequency masking allows a strong tone to hide weaker tones nearby in frequency.
 
 Temporal masking permits distortion shortly before and after a strong sound, especially after the masker.
 
-### Color and Chroma Sampling
+### Color and chroma sampling
 
 ![[Pics/1. Introduction to Multimedia Compression/chroma-subsampling.png|600]]
 
 Chroma subsampling reduces color resolution because humans are more sensitive to luminance than chrominance.
 
-### Compression Pipeline
+### Compression pipeline
 
 ![[Pics/1. Introduction to Multimedia Compression/compression-tools.png|500]]
 
 This block scheme summarizes the main codec tools: prediction/transform reduce redundancy, quantization reduces rate, and entropy coding packs symbols efficiently.
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Input samples] --> B[Prediction or transform]
-    B --> C[Quantization]
-    C --> D[Entropy coding]
-    D --> E[Bitstream]
-    C --> F[Inverse quantization]
-    F --> G[Reconstruction for prediction]
+    A["Input samples"] --> B["Prediction or transform"]
+    B --> C["Quantization"]
+    C --> D["Entropy coding"]
+    D --> E["Bitstream"]
+    C --> F["Inverse quantization"]
+    F --> G["Reconstruction for prediction"]
 ```
 
-### Quality Assessment Chain
+### Quality assessment chain
 
 ![[Pics/1. Introduction to Multimedia Compression/weighted-psnr.png|500]]
 
 Weighted PSNR filters the error before measuring energy, so distortions are penalized according to perceptual visibility.
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Original image] --> C[Error image]
-    B[Decoded image] --> C
-    C --> D[Perceptual weighting]
-    D --> E[MSE or WPSNR]
-    C --> F[SSIM / LPIPS]
-    F --> G[Perceptual quality estimate]
+    A["Original image"] --> C["Error image"]
+    B["Decoded image"] --> C
+    C --> D["Perceptual weighting"]
+    D --> E["MSE or WPSNR"]
+    C --> F["SSIM / LPIPS"]
+    F --> G["Perceptual quality estimate"]
 ```
 
-### Video Perception
+### Video perception
 
 ![[Pics/1. Introduction to Multimedia Compression/spatio-temporal-csf.png|500]]
 
@@ -440,7 +458,7 @@ Video perception depends on spatial and temporal frequencies; scene changes crea
 ## Examples
 
 > [!Example] Uncompressed HD DVB data rate
-> **Setup:** one luma component $1920 \times 1080$, two chroma components $960 \times 540$, 8 bits/sample, 50 fps.
+> Setup: one luma component $1920 \times 1080$, two chroma components $960 \times 540$, 8 bits/sample, 50 fps.
 >
 > $$
 > R = (1920\cdot1080 + 2\cdot960\cdot540)\cdot8\cdot50
@@ -449,7 +467,7 @@ Video perception depends on spatial and temporal frequencies; scene changes crea
 >
 > A 2-hour movie needs about **1.12 TB** uncompressed.
 >
-> **Takeaway:** raw video is too large; compression is not optional.
+> Takeaway: raw video is too large; compression is not optional.
 
 > [!Example] 4:2:0 data reduction
 > Full 4:4:4 stores 4 Y samples, 4 Cb samples, and 4 Cr samples in a reference area. 4:2:0 stores 4 Y samples, 1 Cb sample, and 1 Cr sample:
@@ -458,7 +476,7 @@ Video perception depends on spatial and temporal frequencies; scene changes crea
 > \frac{4+1+1}{4+4+4} = 0.5
 > $$
 >
-> **Takeaway:** chroma subsampling alone halves the raw color data.
+> Takeaway: chroma subsampling alone halves the raw color data.
 
 > [!Example] Same MSE, different perception
 > Source examples compare several distortions with similar or equal MSE.
@@ -471,7 +489,7 @@ Video perception depends on spatial and temporal frequencies; scene changes crea
 > | Noise on high spatial frequencies | 16 | 0.882 |
 > | Chroma subsampling | 21.27 | - |
 >
-> **Takeaway:** MSE alone is misleading because it ignores where and how errors appear.
+> Takeaway: MSE alone is misleading because it ignores where and how errors appear.
 
 > [!Example] Codec comparison at about 50 KB
 > The source compares codecs on the same image target size.
@@ -486,23 +504,21 @@ Video perception depends on spatial and temporal frequencies; scene changes crea
 > | WebP | 2010 | 42,676 | 145.8:1 | 30.88 dB |
 > | AVIF | 2019 | 48,745 | 127.6:1 | 32.45 dB |
 >
-> **Takeaway:** at similar size, newer codecs can provide better objective quality.
-
-
+> Takeaway: at similar size, newer codecs can provide better objective quality.
 
 ---
 
-# Scalar and Predictive Quantization
+# Scalar and predictive quantization
 
-## Table of Contents
+## Contents
 
-- [[#Core Idea|Core Idea]]
-- [[#Key Concepts|Key Concepts]]
-- [[#Theory and Formulas|Theory and Formulas]]
-- [[#Visual Schemes|Visual Schemes]]
+- [[#Core idea|Core idea]]
+- [[#Main concepts|Main concepts]]
+- [[#Theory and formulas|Theory and formulas]]
+- [[#Visual schemes|Visual schemes]]
 - [[#Examples|Examples]]
 
-## Core Idea
+## Core idea
 
 **Quantization** maps a continuous or high-precision signal to a finite set of reconstruction values. It is the main irreversible step in lossy compression: it reduces rate, but introduces distortion.
 
@@ -511,9 +527,9 @@ Scalar quantization alone is weak for natural images and audio because it treats
 > [!Important] Central message
 > Quantization controls distortion; prediction reduces variance before quantization; entropy coding converts sparse prediction errors into real bitrate savings.
 
-## Key Concepts
+## Main concepts
 
-### Scalar Quantizer Model
+### Scalar quantizer model
 
 A scalar quantizer $Q$ is defined by:
 
@@ -541,16 +557,14 @@ $$
 x\in\Theta^i \Rightarrow Q(x)=\hat{x}^i
 $$
 
-Key quantities:
+Main quantities:
 
-| Quantity | Formula | Meaning |
-| :--- | :--- | :--- |
-| Quantization error | $e=X-Q(X)=X-\tilde{X}$ | sample error |
-| Distortion | $D=\sigma_Q^2=\mathbb{E}[(X-Q(X))^2]$ | MSE due to quantization |
-| Rate | $R=\log_2 L$ | fixed-length bits/sample |
-| SNR | $10\log_{10}(\sigma_X^2/\sigma_Q^2)$ | signal quality in dB |
+- **Quantization error**: Formula: $e=X-Q(X)=X-\tilde{X}$; Meaning: sample error.
+- **Distortion**: Formula: $D=\sigma_Q^2=\mathbb{E}[(X-Q(X))^2]$; Meaning: MSE due to quantization.
+- **Rate**: Formula: $R=\log_2 L$; Meaning: fixed-length bits/sample.
+- **SNR**: Formula: $10\log_{10}(\sigma_X^2/\sigma_Q^2)$; Meaning: signal quality in dB.
 
-### Uniform Quantization
+### Uniform quantization
 
 **Uniform quantization (UQ)** uses equal-width cells inside dynamic range $[-A/2,A/2]$:
 
@@ -572,12 +586,10 @@ $$
 
 with saturation at $\pm A/2$.
 
-| Type         | Number of levels | Zero reconstruction level | Typical property                          |
-| :----------- | :--------------- | :------------------------ | :---------------------------------------- |
-| **Midtread** | odd              | yes                       | dead-zone around zero                     |
-| **Midrise**  | even             | no                        | common for signed fixed-rate quantization |
+- **Midtread**: Number of levels: odd; Zero reconstruction level: yes; Typical property: dead-zone around zero.
+- **Midrise**: Number of levels: even; Zero reconstruction level: no; Typical property: common for signed fixed-rate quantization.
 
-### Dead-Zone
+### Dead-zone
 
 A **midtread** quantizer keeps zero as a reconstruction level, so the central cell around zero behaves as a **dead-zone**: any sample with small magnitude falls inside it and maps exactly to zero. A **dead-zone quantizer** widens this zero region by a factor $\tau$, so even more low-amplitude samples collapse to zero.
 
@@ -602,9 +614,10 @@ Parameter $\tau$ controls the dead-zone width: larger $\tau$ sends more samples 
 > [!Important] Why dead-zone helps lossy compression
 > Natural signals are not sparse in their original domain, but become sparse after **prediction** or **linear transform**. A signal is sparse when most elements are zero or near zero. Setting near-zero values to zero adds little distortion, so the dead-zone produces many zero indexes. Sparse zero-heavy output is then cheap to entropy-code, which is where the real rate saving comes from.
 
-This connects to the [[#Predictive Scalar Quantization|predictive]] and entropy-coding sections: a midrise quantizer maps even small fluctuations to a non-zero level, while a midtread dead-zone suppresses them, favoring sparsity.
 
-### Granular Noise vs. Overload Noise
+This connects to the [[#Predictive scalar quantization|predictive]] and entropy-coding sections: a midrise quantizer maps even small fluctuations to a non-zero level, while a midtread dead-zone suppresses them, favoring sparsity.
+
+### Granular noise vs. overload noise
 
 - **Granular noise**: input lies inside dynamic range, so $|e|\leq\Delta/2$.
 - **Overload noise**: input exceeds dynamic range, so clipping creates potentially large error.
@@ -615,7 +628,7 @@ Design tension:
 - Smaller dynamic range increases clipping risk.
 - Larger dynamic range avoids clipping but wastes levels and increases $\Delta$ for fixed $R$.
 
-### Rate-Distortion Behavior
+### Rate-distortion behavior
 
 For a uniform random variable and UQ:
 
@@ -641,7 +654,7 @@ $$
 
 where $c_X$ depends only on source PDF shape.
 
-### Optimal Scalar Quantization
+### Optimal scalar quantization
 
 Uniform quantizers are not always optimal. **Non-uniform scalar quantizers** allocate smaller cells where the input PDF is dense and larger cells where samples are rare.
 
@@ -653,7 +666,7 @@ The finite-rate optimum is found numerically with **Lloyd-Max**:
 
 This is the scalar case of the same alternating idea behind *k-means*.
 
-### Predictive Scalar Quantization
+### Predictive scalar quantization
 
 Scalar quantization ignores correlation. Predictive quantization uses past samples to predict the current one:
 
@@ -666,7 +679,7 @@ where $v(n)$ is the prediction. If prediction is good, $\sigma_Y^2\ll\sigma_X^2$
 > [!Important] Sparse residual idea
 > Natural images and audio are not sparse in their sample domain, but prediction can make residuals sparse. Sparse residuals produce many zero or near-zero quantizer indexes, which entropy coding can compress well.
 
-### Drift Problem
+### Drift problem
 
 In predictive coding, encoder and decoder must predict from the **same reconstructed past samples**. If the encoder predicts from original samples but the decoder predicts from reconstructed samples, their predictors diverge and reconstruction drifts.
 
@@ -676,15 +689,15 @@ Correct predictive quantization is therefore **closed-loop**:
 - Encoder reconstructs locally.
 - Encoder and decoder both update prediction buffers with reconstructed samples $\tilde{x}$.
 
-### Entropy Coding Impact
+### Entropy coding impact
 
 Using $R=\log_2 L$ assumes fixed-length indexes and hides the advantage of predictive quantization. Prediction errors are concentrated near zero, so variable-length or arithmetic coding assigns short codes to frequent zero indexes and longer codes to rare large errors.
 
 Without entropy coding, predictive quantization may look disappointing. With entropy coding, it can provide large gains.
 
-## Theory and Formulas
+## Theory and formulas
 
-### UQ of a Uniform Random Variable
+### UQ of a uniform random variable
 
 Let:
 
@@ -730,7 +743,7 @@ $$
 >
 > Each additional bit/sample improves SNR by about 6 dB under uniform high-resolution assumptions.
 
-### High-Resolution UQ for a Generic Source
+### High-resolution UQ for a generic source
 
 High resolution means $L\to+\infty$ and each quantization cell is small. Locally, $p_X(x)$ is approximately constant, so the quantization error behaves like:
 
@@ -758,9 +771,9 @@ $$
 \mathrm{SNR}\approx 6R-10\log_{10}\frac{\gamma^2}{3}
 $$
 
-**Meaning:** poor dynamic-range loading costs SNR.
+Meaning: poor dynamic-range loading costs SNR.
 
-### High-Resolution Optimal Scalar Quantizer
+### High-resolution optimal scalar quantizer
 
 For a generic PDF and fixed rate:
 
@@ -774,15 +787,13 @@ $$
 c_X=\frac{1}{12}\left[\int_{\mathbb{R}}p_U^{1/3}(t)\,dt\right]^3
 $$
 
-| Distribution | Shape factor $c_X$ | Meaning |
-| :--- | :--- | :--- |
-| Uniform | $1$ | best case for UQ |
-| Gaussian | $\frac{\sqrt{3}}{2}\pi\approx2.72$ | heavier tails increase distortion |
+- **Uniform**: Shape factor $c_X$: $1$; Meaning: best case for UQ.
+- **Gaussian**: Shape factor $c_X$: $\frac{\sqrt{3}}{2}\pi\approx2.72$; Meaning: heavier tails increase distortion.
 
-### Lloyd-Max Conditions
+### Lloyd-Max conditions
 
 > [!Important] Lloyd-Max necessary conditions
-> **Nearest-neighbor thresholds:**
+> Nearest-neighbor thresholds:
 >
 > $$
 > k=\arg\min_n |x-\hat{x}^n| \Rightarrow Q(x)=\hat{x}^k
@@ -792,7 +803,7 @@ $$
 > t^i=\frac{\hat{x}^i+\hat{x}^{i+1}}{2}
 > $$
 >
-> **Centroid reconstruction levels:**
+> Centroid reconstruction levels:
 >
 > $$
 > \hat{x}^i=
@@ -802,6 +813,7 @@ $$
 > $$
 >
 > Distortion never increases at each iteration, but convergence to the global optimum is not guaranteed.
+
 
 For a training set $\mathcal{X}=\{u_1,\ldots,u_M\}$, replace integrals with cluster assignments:
 
@@ -813,7 +825,7 @@ $$
 \hat{x}_{k+1}^i=\frac{1}{|W_k^i|}\sum_{u_m\in W_k^i}u_m
 $$
 
-### Prediction Gain
+### Prediction gain
 
 Quantizing the prediction error:
 
@@ -855,7 +867,7 @@ $$
 >
 > Equivalently, $G_P>0$.
 
-### Linear Prediction and Wiener-Hopf Solution
+### Linear prediction and Wiener-Hopf solution
 
 Order-$P$ linear predictor:
 
@@ -900,13 +912,14 @@ $$
 > \sigma_{Y,\mathrm{opt}}^2=\sigma_X^2+\underline{r}^{T}\underline{a}^{\mathrm{opt}}
 > $$
 
+
 Autocorrelation can be estimated from data:
 
 $$
 \hat{r}_X(k)=\frac{1}{N}\sum_{n=0}^{N-1-k}X(n)X(n+k)
 $$
 
-### Local Adaptation and Side Information
+### Local adaptation and side information
 
 Natural images are non-stationary. Local prediction filters can track local textures better, but filter coefficients must be transmitted as side information.
 
@@ -918,11 +931,11 @@ $$
 
 Small blocks adapt well but have high overhead. Large blocks reduce overhead but adapt poorly.
 
-## Visual Schemes
+## Visual schemes
 
-### Scalar Quantizer Structure
+### Scalar quantizer structure
 
-![[Pics/2. Scalar and Predictive Quantization/scalar-quantizer-model.png|650]]
+![[Pics/2. Scalar and Predictive Quantization/scalar-quantizer-model.png|450]]
 
 Scalar quantization partitions the real line into regions and maps each region to one reconstruction level.
 
@@ -934,7 +947,7 @@ Midtread quantizer with odd $L$: zero is a reconstruction level.
 
 Midrise quantizer with even $L$: zero is a threshold, not a reconstruction level.
 
-### Rate-Distortion and Visual Artifacts
+### Rate-distortion and visual artifacts
 
 ![[Pics/2. Scalar and Predictive Quantization/grayscale-quantization-levels.png|600]]
 
@@ -944,23 +957,24 @@ Coarse scalar quantization creates visible banding and false contours, especiall
 
 Rate-distortion curves show the expected reduction of distortion as bit rate increases.
 
-### Predictive Coding Schemes
+### Predictive coding schemes
 
 ![[Pics/2. Scalar and Predictive Quantization/open-loop-predictive-coding.png|600]]
 
 Open-loop prediction quantizes the prediction error, but can drift if encoder and decoder predictors use different past samples.
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    X[Input x(n)] --> S[Subtract prediction]
-    P[Predictor] --> S
-    S --> Y[Residual y(n)]
-    Y --> Q[Quantizer]
-    Q --> I[Index stream]
-    Q --> YH[Quantized residual]
-    YH --> A[Add prediction]
+    X["Input x(n)"] --> S["Subtract prediction"]
+    P["Predictor"] --> S
+    S --> Y["Residual y(n)"]
+    Y --> Q["Quantizer"]
+    Q --> I["Index stream"]
+    Q --> YH["Quantized residual"]
+    YH --> A["Add prediction"]
     P --> A
-    A --> XR[Local reconstruction]
+    A --> XR["Local reconstruction"]
     XR --> P
 ```
 
@@ -972,7 +986,7 @@ Prediction removes much of the local image structure, leaving a lower-variance r
 
 Higher predictor order improves residual whitening, but gains quickly saturate because near neighbors already explain most correlation.
 
-### Drift and Correct Closed Loop
+### Drift and correct closed loop
 
 ![[Pics/2. Scalar and Predictive Quantization/predictive-coding-drift.png|650]]
 
@@ -983,21 +997,22 @@ Wrong scheme: encoder predicts from original samples, decoder predicts from reco
 Correct scheme: encoder and decoder both predict from reconstructed samples, keeping state synchronized.
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    X[Input x(n)] --> M[Subtract]
-    PR[Predictor from reconstructed past] --> M
-    M --> Q[Quantize residual]
-    Q --> EC[Entropy coding]
-    EC --> BS[Bitstream]
-    Q --> IQ[Decoded residual]
-    IQ --> ADD[Add prediction]
+    X["Input x(n)"] --> M["Subtract"]
+    PR["Predictor from reconstructed past"] --> M
+    M --> Q["Quantize residual"]
+    Q --> EC["Entropy coding"]
+    EC --> BS["Bitstream"]
+    Q --> IQ["Decoded residual"]
+    IQ --> ADD["Add prediction"]
     PR --> ADD
-    ADD --> XH[Reconstructed sample]
-    XH --> BUF[Past reconstructed buffer]
+    ADD --> XH["Reconstructed sample"]
+    XH --> BUF["Past reconstructed buffer"]
     BUF --> PR
 ```
 
-### Entropy Coding Gain
+### Entropy coding gain
 
 ![[Pics/2. Scalar and Predictive Quantization/prediction-error-index-distribution.png|600]]
 
@@ -1010,7 +1025,7 @@ Predictive quantization becomes strongly effective when its sparse indexes are e
 ## Examples
 
 > [!Example] Image quantization at low rates
-> **RGB peppers example:**
+> RGB peppers example:
 >
 > | Rate | PSNR | Compression ratio |
 > | :--- | :--- | :--- |
@@ -1018,7 +1033,7 @@ Predictive quantization becomes strongly effective when its sparse indexes are e
 > | 6 bpp | 27.83 dB | 4.000 |
 > | 3 bpp | 25.75 dB | 8.000 |
 >
-> **Takeaway:** lower bit depth reduces rate, but creates banding and false contours.
+> Takeaway: lower bit depth reduces rate, but creates banding and false contours.
 
 > [!Example] Grayscale image quantization
 > | Quantization levels | Bits/pixel | Compression ratio | Y-PSNR |
@@ -1030,7 +1045,7 @@ Predictive quantization becomes strongly effective when its sparse indexes are e
 > | 4 | 2 | 4.000 | 22.85 dB |
 > | 2 | 1 | 8.000 | 17.42 dB |
 >
-> **Takeaway:** rate reduction is smooth numerically, but visual quality drops sharply at low levels.
+> Takeaway: rate reduction is smooth numerically, but visual quality drops sharply at low levels.
 
 > [!Example] Audio quantization
 > | Bit depth | Perceptual quality |
@@ -1039,17 +1054,17 @@ Predictive quantization becomes strongly effective when its sparse indexes are e
 > | 4 bits | strong fidelity loss and prominent noise |
 > | 2 bits | very strong noise; speech may remain intelligible, music is badly damaged |
 >
-> **Takeaway:** scalar quantization noise is more tolerable for some signals than others, but very low bit depth destroys quality.
+> Takeaway: scalar quantization noise is more tolerable for some signals than others, but very low bit depth destroys quality.
 
 > [!Example] Prediction gain for AR(1)
-> **Signal:**
+> Signal:
 >
 > $$
 > X(n)\sim\mathcal{N}(0,\sigma^2), \qquad
 > \mathbb{E}[X(n)X(m)]=\sigma^2\rho^{|n-m|}
 > $$
 >
-> **Predictor:** $V(n)=X(n-1)$.
+> Predictor: $V(n)=X(n-1)$.
 >
 > Prediction error variance:
 >
@@ -1087,7 +1102,7 @@ Predictive quantization becomes strongly effective when its sparse indexes are e
 > | 1/2 | 1/2 | 78.7 | simple neighbor average |
 > | 0.449 | 0.546 | 78.4 | optimal predictor |
 >
-> **Takeaway:** a simple local predictor reduces variance by more than 37 times; optimization adds only small improvement.
+> Takeaway: a simple local predictor reduces variance by more than 37 times; optimization adds only small improvement.
 
 > [!Example] Drift with wrong prediction loop
 > Encoder predicts from original past values, decoder predicts from reconstructed past values.
@@ -1101,7 +1116,7 @@ Predictive quantization becomes strongly effective when its sparse indexes are e
 > | 5 | 14 | 13 | 1 | 0 | 9 | 9 |
 > | 6 | 18 | 14 | 4 | 3 | 9 | 12 |
 >
-> **Takeaway:** decoder stays behind because it cannot reproduce encoder predictions.
+> Takeaway: decoder stays behind because it cannot reproduce encoder predictions.
 
 > [!Example] No drift with closed-loop prediction
 > Encoder and decoder both predict from reconstructed past values.
@@ -1117,29 +1132,28 @@ Predictive quantization becomes strongly effective when its sparse indexes are e
 > | 7 | 21 | 18 | 3 | 3 | 18 | 21 |
 > | 8 | 18 | 21 | -3 | -3 | 21 | 18 |
 >
-> **Takeaway:** shared reconstructed state keeps encoder and decoder synchronized.
+> Takeaway: shared reconstructed state keeps encoder and decoder synchronized.
 
 > [!Example] Entropy coding gain
 > With $L=19$ quantization levels, about **84%** of prediction-error indexes are zero, and less than **1%** fall outside $(-3,3)$.
 >
-> **Result from source:** predictive quantization plus entropy coding gives about **+20 dB PSNR at 1 bpp** versus direct UQ, or about **86% rate reduction** at 30 dB.
+> Result from source: predictive quantization plus entropy coding gives about **+20 dB PSNR at 1 bpp** versus direct UQ, or about **86% rate reduction** at 30 dB.
 >
-> **Takeaway:** prediction creates sparsity; entropy coding turns sparsity into bitrate reduction.
-
+> Takeaway: prediction creates sparsity; entropy coding turns sparsity into bitrate reduction.
 
 ---
 
-# Lossless Coding
+# Lossless coding
 
-## Table of Contents
+## Contents
 
-- [[#Core Idea|Core Idea]]
-- [[#Key Concepts|Key Concepts]]
-- [[#Theory and Formulas|Theory and Formulas]]
-- [[#Visual Schemes|Visual Schemes]]
+- [[#Core idea|Core idea]]
+- [[#Main concepts|Main concepts]]
+- [[#Theory and formulas|Theory and formulas]]
+- [[#Visual schemes|Visual schemes]]
 - [[#Examples|Examples]]
 
-## Core Idea
+## Core idea
 
 **Lossless coding** maps a sequence of discrete symbols to a bitstream that can be decoded exactly. In multimedia compression it usually comes after prediction, transform, or quantization, and it removes remaining **statistical redundancy** without adding distortion.
 
@@ -1152,9 +1166,9 @@ Typical pipeline:
 > [!Important] Lossless coding limit
 > No lossless code can beat source entropy on average. Good entropy coders try to make average length $\mathcal{L}$ approach entropy $H$ or entropy rate $\mathcal{H}$.
 
-## Key Concepts
+## Main concepts
 
-### Codes and Decodability
+### Codes and decodability
 
 Let the alphabet be:
 
@@ -1170,12 +1184,10 @@ $$
 
 where $c_i$ is a finite binary string and $\ell_i$ is its length.
 
-| Code type | Meaning | Practical effect |
-| :--- | :--- | :--- |
-| **Fixed-length coding (FLC)** | all symbols use same length $\lceil\log_2 M\rceil$ | simple, robust, ignores probabilities |
-| **Variable-length coding (VLC)** | probable symbols use shorter codewords | compresses non-uniform sources |
-| **Prefix / instantaneous code** | no codeword is prefix of another | decodes symbol-by-symbol |
-| **Uniquely decodable code** | any finite bitstream has one symbol sequence | may require lookahead |
+- **Fixed-length coding (FLC)**: Meaning: all symbols use same length $\lceil\log_2 M\rceil$; Practical effect: simple, robust, ignores probabilities.
+- **Variable-length coding (VLC)**: Meaning: probable symbols use shorter codewords; Practical effect: compresses non-uniform sources.
+- **Prefix / instantaneous code**: Meaning: no codeword is prefix of another; Practical effect: decodes symbol-by-symbol.
+- **Uniquely decodable code**: Meaning: any finite bitstream has one symbol sequence; Practical effect: may require lookahead.
 
 FLC rate:
 
@@ -1189,7 +1201,7 @@ $$
 \mathcal{L}=\sum_i p_i\ell_i
 $$
 
-### Information and Entropy
+### Information and entropy
 
 **Self-information** of symbol $x_i$:
 
@@ -1205,16 +1217,16 @@ Rare symbols carry more information; certain symbols carry zero information.
 > $$
 >
 > Entropy is the average uncertainty of $X$ and the fundamental lower bound for average lossless code length.
+>
+> For a binary source with $P(1)=p$:
+>
+> $$
+> H(X)=-p\log_2p-(1-p)\log_2(1-p)
+> $$
+>
+> Entropy is maximum at $p=0.5$, where $H=1$ bit/symbol.
 
-For a binary source with $P(1)=p$:
-
-$$
-H(X)=-p\log_2p-(1-p)\log_2(1-p)
-$$
-
-Entropy is maximum at $p=0.5$, where $H=1$ bit/symbol.
-
-### Joint and Conditional Entropy
+### Joint and conditional entropy
 
 Joint entropy:
 
@@ -1244,7 +1256,7 @@ $$
 H(X|Y)\leq H(X)
 $$
 
-### Maximum Entropy
+### Maximum entropy
 
 For an $M$-symbol alphabet, entropy is maximized by the uniform distribution:
 
@@ -1258,9 +1270,9 @@ $$
 H_{\max}=\log_2M
 $$
 
-**Meaning for compression:** non-uniformity is compressible; uniform sources are hardest to compress losslessly.
+Meaning for compression: non-uniformity is compressible; uniform sources are hardest to compress losslessly.
 
-### Kraft and Prefix Codes
+### Kraft and prefix codes
 
 > [!Important] Kraft inequality
 > A prefix code with lengths $\ell_1,\ldots,\ell_M$ exists if and only if:
@@ -1270,10 +1282,10 @@ $$
 > $$
 >
 > If equality holds, the code tree is complete.
+>
+> McMillan's theorem says uniquely decodable codes cannot outperform instantaneous prefix codes in average length. Therefore, optimal lossless coding can focus on prefix codes.
 
-McMillan's theorem says uniquely decodable codes cannot outperform instantaneous prefix codes in average length. Therefore, optimal lossless coding can focus on prefix codes.
-
-### Shannon Source Coding Theorem
+### Shannon source coding theorem
 
 The ideal relaxed code length is:
 
@@ -1306,7 +1318,7 @@ $$
 > H(X)\leq\mathcal{L}<H(X)+1
 > $$
 
-### Huffman Coding
+### Huffman coding
 
 **Huffman coding** is optimal among prefix codes for a known probability table and a fixed symbol alphabet.
 
@@ -1330,7 +1342,7 @@ Limits:
 - Code lengths are integer, so non-dyadic probabilities create overhead.
 - Block Huffman improves efficiency but alphabet size grows as $M^K$.
 
-### Block Coding
+### Block coding
 
 Instead of coding single symbols, code blocks:
 
@@ -1356,9 +1368,9 @@ $$
 \mathcal{L}_S<\frac{H(X^K)}{K}+\frac{1}{K}
 $$
 
-**Meaning:** the Huffman overhead is spread over $K$ symbols, but probability estimation and codebook size become expensive.
+Meaning: the Huffman overhead is spread over $K$ symbols, but probability estimation and codebook size become expensive.
 
-### Arithmetic Coding
+### Arithmetic coding
 
 **Arithmetic coding** encodes an entire sequence as a subinterval of $[0,1)$. Each symbol narrows the current interval according to its probability.
 
@@ -1394,7 +1406,7 @@ Arithmetic coding solves the main Huffman problems:
 - Avoids exponential block-code alphabets.
 - Handles adaptive and context-dependent probabilities.
 
-### Context-Based and Adaptive Coding
+### Context-based and adaptive coding
 
 **Adaptive coding** updates probabilities during encoding and decoding using the same rule on both sides.
 
@@ -1418,7 +1430,7 @@ $$
 
 possible contexts exist. Too many contexts cause sparse training data; too few miss dependencies.
 
-### Exponential-Golomb Coding
+### Exponential-Golomb coding
 
 **Exp-Golomb** is a universal integer code. It needs no probability table and is useful for metadata and sparse residuals.
 
@@ -1440,7 +1452,7 @@ $$
 
 Then encode $m$ as unsigned.
 
-### Dictionary Coding and LZW
+### Dictionary coding and LZW
 
 Dictionary coding learns repeated patterns from the sequence itself. **LZW** initializes the dictionary with one-symbol entries, then adds longer patterns as they are encountered.
 
@@ -1460,14 +1472,12 @@ Decoder builds the same dictionary because updates are deterministic. Dictionary
 > L_n\xrightarrow{n\to\infty}\mathcal{H}(X)
 > $$
 
-### Standards and Practical Codecs
+### Standards and practical codecs
 
-| Standard / codec | Main tools | Best use |
-| :--- | :--- | :--- |
-| **JBIG-1** | context arithmetic coding | bi-level images, progressive coding |
-| **JBIG-2** | segmentation, symbol dictionaries, arithmetic coding | text/halftone documents, PDF |
-| **JPEG-LS** | MED prediction, context modeling, Golomb-Rice | natural photos, medical images |
-| **PNG** | prediction, LZ77/Deflate, Huffman | graphics, icons, text-heavy images |
+- **JBIG-1**: Main tools: context arithmetic coding; Best use: bi-level images, progressive coding.
+- **JBIG-2**: Main tools: segmentation, symbol dictionaries, arithmetic coding; Best use: text/halftone documents, PDF.
+- **JPEG-LS**: Main tools: MED prediction, context modeling, Golomb-Rice; Best use: natural photos, medical images.
+- **PNG**: Main tools: prediction, LZ77/Deflate, Huffman; Best use: graphics, icons, text-heavy images.
 
 JPEG-LS **MED predictor** uses causal neighbors:
 
@@ -1486,7 +1496,7 @@ $$
 
 This avoids overshoot around sharp edges.
 
-### Neural Lossless Coding
+### Neural lossless coding
 
 Neural lossless coding uses a neural network to estimate a probability model $Q$ for arithmetic coding.
 
@@ -1533,9 +1543,9 @@ Limitations:
 - generalization gap,
 - bit-exact determinism issues.
 
-## Theory and Formulas
+## Theory and formulas
 
-### Entropy Bound and Optimal Lengths
+### Entropy bound and optimal lengths
 
 Given probabilities $p_i$, ideal lengths solve:
 
@@ -1565,7 +1575,7 @@ $$
 
 This explains why optimal entropy coding assigns short codewords to probable symbols and long codewords to rare symbols.
 
-### Kraft Tree Interpretation
+### Kraft tree interpretation
 
 In a binary tree of maximum depth $L_{\max}$, a codeword of length $\ell_i$ blocks:
 
@@ -1585,7 +1595,7 @@ $$
 \sum_i2^{-\ell_i}\leq1
 $$
 
-### Conditioning and Context Coding
+### Conditioning and context coding
 
 For sources with memory:
 
@@ -1609,7 +1619,7 @@ $$
 
 This is below single-pixel entropy $H(X)=0.586$ bpp because neighboring pixels are correlated.
 
-### Huffman vs. Arithmetic Overhead
+### Huffman vs. arithmetic overhead
 
 Huffman on single symbols:
 
@@ -1631,7 +1641,7 @@ $$
 
 Arithmetic coding therefore approaches entropy without exponential block alphabets.
 
-### House Image Result
+### House image result
 
 For `house.pgm`, original bit depth is 8 bpp and direct entropy is:
 
@@ -1653,27 +1663,28 @@ $$
 
 through 2D prediction before entropy coding.
 
-## Visual Schemes
+## Visual schemes
 
-### Entropy Coding Pipeline
+### Entropy coding pipeline
 
 ![[Pics/3. Lossless coding/entropy-coding-pipeline.png|650]]
 
 Lossless coding sits after prediction and quantization/index generation, where it removes statistical redundancy from symbol indexes.
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Samples] --> B[Prediction]
-    B --> C[Residuals]
-    C --> D[Quantized indexes]
-    D --> E[Entropy coder]
-    E --> F[Bitstream]
-    F --> G[Entropy decoder]
-    G --> H[Indexes]
-    H --> I[Reconstruction path]
+    A["Samples"] --> B["Prediction"]
+    B --> C["Residuals"]
+    C --> D["Quantized indexes"]
+    D --> E["Entropy coder"]
+    E --> F["Bitstream"]
+    F --> G["Entropy decoder"]
+    G --> H["Indexes"]
+    H --> I["Reconstruction path"]
 ```
 
-### Entropy and Prefix Codes
+### Entropy and prefix codes
 
 ![[Pics/3. Lossless coding/binary-entropy-curve.png|500]]
 
@@ -1687,7 +1698,7 @@ Kraft inequality follows from prefix codewords occupying disjoint subtrees in a 
 
 Huffman coding builds a prefix tree by repeatedly merging the least probable symbols.
 
-### Huffman and Predictive Coding
+### Huffman and predictive coding
 
 ![[Pics/3. Lossless coding/binary-image-huffman-example.png|500]]
 
@@ -1697,23 +1708,24 @@ Single-symbol Huffman on a binary image cannot go below 1 bpp even when entropy 
 
 Predictive quantization plus Huffman coding improves rate-distortion performance by exploiting residual probability imbalance.
 
-### Arithmetic Coding
+### Arithmetic coding
 
 ![[Pics/3. Lossless coding/arithmetic-coding-interval.png|650]]
 
 Arithmetic coding refines an interval for the whole sequence, making it behave like efficient high-order block coding.
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Initial interval 0-1] --> B[Symbol probability model]
-    B --> C[Refine interval]
-    C --> D[Next symbol]
+    A["Initial interval 0-1"] --> B["Symbol probability model"]
+    B --> C["Refine interval"]
+    C --> D["Next symbol"]
     D --> B
-    C --> E[Final interval]
-    E --> F[Binary tag]
+    C --> E["Final interval"]
+    E --> F["Binary tag"]
 ```
 
-### LZW Dictionary Coding
+### LZW dictionary coding
 
 ![[Pics/3. Lossless coding/lzw-encoding-example.png|650]]
 
@@ -1724,15 +1736,16 @@ LZW encoding emits dictionary indexes while adding newly observed repeated patte
 LZW decoding reconstructs the same dictionary deterministically, so the dictionary is not transmitted.
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Input stream] --> B[Find longest dictionary prefix]
-    B --> C[Emit prefix index]
-    C --> D[Add prefix plus next symbol]
+    A["Input stream"] --> B["Find longest dictionary prefix"]
+    B --> C["Emit prefix index"]
+    C --> D["Add prefix plus next symbol"]
     D --> B
-    C --> E[Index stream]
+    C --> E["Index stream"]
 ```
 
-### Prediction Results on House Image
+### Prediction results on house image
 
 ![[Pics/3. Lossless coding/house-direct-coding.png|650]]
 
@@ -1756,7 +1769,7 @@ Direct pixel coding remains close to 7 bpp entropy; dictionary coding can help b
 > | C | `1` | `00` | `110` | `011` |
 > | D | `10` | `11` | `111` | `0111` |
 >
-> **Takeaway:** Code 3 is prefix and instantaneously decodable. Code 4 is decodable with delay. Codes 1 and 2 are not uniquely decodable.
+> Takeaway: Code 3 is prefix and instantaneously decodable. Code 4 is decodable with delay. Codes 1 and 2 are not uniquely decodable.
 
 > [!Example] French text entropy
 > Alphabet size $M=26$.
@@ -1832,7 +1845,7 @@ Direct pixel coding remains close to 7 bpp entropy; dictionary coding can help b
 > \mathcal{L}_S=0.433\ \text{bpp}
 > $$
 >
-> **Takeaway:** larger blocks move Huffman closer to entropy but increase alphabet complexity.
+> Takeaway: larger blocks move Huffman closer to entropy but increase alphabet complexity.
 
 > [!Example] Arithmetic coding for sequence ACFD
 > Probabilities: A=0.4, B=0.2, C=0.15, D=0.15, E=0.05, F=0.05.
@@ -1858,7 +1871,7 @@ Direct pixel coding remains close to 7 bpp entropy; dictionary coding can help b
 > | 3 | `100` | `00100` |
 > | 7 | `1000` | `0001000` |
 >
-> **Takeaway:** efficient for small non-negative integers and simple to decode.
+> Takeaway: efficient for small non-negative integers and simple to decode.
 
 > [!Example] LZW binary sequence
 > Input starts:
@@ -1876,15 +1889,13 @@ Direct pixel coding remains close to 7 bpp entropy; dictionary coding can help b
 >
 > New entries include `00`, `001`, `10`, `000`, and longer repeated patterns. Emitted values are dictionary indexes, not final raw bits.
 >
-> **Takeaway:** repeated patterns become single indexes; decoder reconstructs the same dictionary.
+> Takeaway: repeated patterns become single indexes; decoder reconstructs the same dictionary.
 
 > [!Example] JPEG-LS vs PNG
-> | Codec | Core method | Best source |
-> | :--- | :--- | :--- |
-> | JPEG-LS | prediction + context + Golomb-Rice | natural/medical images |
-> | PNG | LZ77/Deflate + Huffman | graphics, icons, text |
+> - **JPEG-LS**: Core method: prediction + context + Golomb-Rice; Best source: natural/medical images.
+> - **PNG**: Core method: LZ77/Deflate + Huffman; Best source: graphics, icons, text.
 >
-> **Takeaway:** both are lossless, but their models target different source statistics.
+> Takeaway: both are lossless, but their models target different source statistics.
 
 > [!Example] Neural model cost
 > Small MLP with about 100 weights at 32 bits each:
@@ -1899,33 +1910,30 @@ Direct pixel coding remains close to 7 bpp entropy; dictionary coding can help b
 > R=2.704+\frac{3200}{512^2}\approx2.716\ \text{bpp}
 > $$
 >
-> **Takeaway:** neural coding must account for model transmission unless the model is shared.
+> Takeaway: neural coding must account for model transmission unless the model is shared.
 
 > [!Example] Method selection
-> | Source characteristic | Recommended method | Reason |
-> | :--- | :--- | :--- |
-> | Memoryless | Huffman or arithmetic | matches entropy bound |
-> | Stationary with memory | context arithmetic | exploits conditional probabilities |
-> | Locally stationary | adaptive arithmetic | tracks changing statistics |
-> | Repeating strings | dictionary coding | learns recurring patterns |
-> | Complex long-range dependencies | neural models | learns nonlinear probability models |
+> - **Memoryless**: Recommended method: Huffman or arithmetic; Reason: matches entropy bound.
+> - **Stationary with memory**: Recommended method: context arithmetic; Reason: exploits conditional probabilities.
+> - **Locally stationary**: Recommended method: adaptive arithmetic; Reason: tracks changing statistics.
+> - **Repeating strings**: Recommended method: dictionary coding; Reason: learns recurring patterns.
+> - **Complex long-range dependencies**: Recommended method: neural models; Reason: learns nonlinear probability models.
 >
-> **Rule of thumb:** Huffman/Exp-Golomb for speed, arithmetic/context for high compression, dictionary for universal files, neural models for best compression when complexity is acceptable.
-
+> Rule of thumb: Huffman/Exp-Golomb for speed, arithmetic/context for high compression, dictionary for universal files, neural models for best compression when complexity is acceptable.
 
 ---
 
-# Transform Coding
+# Transform coding
 
-## Table of Contents
+## Contents
 
-- [[#Core Idea|Core Idea]]
-- [[#Key Concepts|Key Concepts]]
-- [[#Theory and Formulas|Theory and Formulas]]
-- [[#Visual Schemes|Visual Schemes]]
+- [[#Core idea|Core idea]]
+- [[#Main concepts|Main concepts]]
+- [[#Theory and formulas|Theory and formulas]]
+- [[#Visual schemes|Visual schemes]]
 - [[#Examples|Examples]]
 
-## Core Idea
+## Core idea
 
 **Transform coding** improves compression by converting correlated samples into coefficients with very unequal importance. Important coefficients receive more bits; negligible coefficients receive few bits or become zero.
 
@@ -1939,9 +1947,9 @@ Scalar quantization of natural signals is weak because samples are correlated an
 > [!Important] Transform coding principle
 > Compression gain does not come from losing information in the transform. It comes from making coefficient variances uneven, then allocating quantization bits where they matter.
 
-## Key Concepts
+## Main concepts
 
-### Block Coding and Rate Allocation
+### Block coding and rate allocation
 
 Consider a block:
 
@@ -1977,7 +1985,7 @@ $$
 \sum_{k=0}^{M-1}R_k\leq R_{\text{Tot}}
 $$
 
-### Huang-Schulteiss Formula
+### Huang-Schulteiss formula
 
 > [!Important] Optimal bit allocation
 > $$
@@ -2001,33 +2009,33 @@ $$
 > $$
 >
 > More variance means more bits. At optimum, active components have equal distortion.
+>
+> Optimal distortion:
+>
+> $$
+> \mathcal{D}^*
+> =c_{\text{GM}}\sigma_{\text{GM}}^2 2^{-2\bar{R}},
+> \qquad
+> \bar{R}=\frac{R_{\text{Tot}}}{M}
+> $$
+>
+> For Gaussian variables, $c_k=c_N$:
+>
+> $$
+> R_k^*=\bar{R}+\frac{1}{2}\log_2\frac{\sigma_k^2}{\sigma_{\text{GM}}^2}
+> $$
+>
+> If all components are identically distributed:
+>
+> $$
+> R_k^*=\bar{R},
+> \qquad
+> \mathcal{D}=c_X\sigma_X^2 2^{-2\bar{R}}
+> $$
+>
+> so block coding alone gives no gain. Gain requires **variance diversity**.
 
-Optimal distortion:
-
-$$
-\mathcal{D}^*
-=c_{\text{GM}}\sigma_{\text{GM}}^2 2^{-2\bar{R}},
-\qquad
-\bar{R}=\frac{R_{\text{Tot}}}{M}
-$$
-
-For Gaussian variables, $c_k=c_N$:
-
-$$
-R_k^*=\bar{R}+\frac{1}{2}\log_2\frac{\sigma_k^2}{\sigma_{\text{GM}}^2}
-$$
-
-If all components are identically distributed:
-
-$$
-R_k^*=\bar{R},
-\qquad
-\mathcal{D}=c_X\sigma_X^2 2^{-2\bar{R}}
-$$
-
-so block coding alone gives no gain. Gain requires **variance diversity**.
-
-### Orthogonal Transforms
+### Orthogonal transforms
 
 An orthogonal transform satisfies:
 
@@ -2060,7 +2068,7 @@ $$
 >
 > Therefore, quantization distortion can be analyzed in transform domain without changing MSE.
 
-### Coding Gain
+### Coding gain
 
 For i.d. Gaussian samples, direct PCM gives:
 
@@ -2098,14 +2106,12 @@ $$
 >
 > Since arithmetic mean is at least geometric mean, gain increases when transform coefficients have very unequal variances.
 
-### Practical Rate Allocation
+### Practical rate allocation
 
 The HS formula can produce negative or fractional rates. Practical schemes:
 
-| Method | Idea | Use |
-| :--- | :--- | :--- |
-| **Modified HS** | remove negative-rate components, recompute, floor, distribute residual bits | continuous optimum adapted to integer rates |
-| **Greedy** | start at zero bits, repeatedly add one bit to component with largest current distortion | same result, simpler for small total rate |
+- **Modified HS**: Idea: remove negative-rate components, recompute, floor, distribute residual bits; Use: continuous optimum adapted to integer rates.
+- **Greedy**: Idea: start at zero bits, repeatedly add one bit to component with largest current distortion; Use: same result, simpler for small total rate.
 
 Greedy update after adding one bit:
 
@@ -2143,6 +2149,7 @@ $$
 > $$
 >
 > It gives best energy compaction among orthogonal transforms and maximizes coding gain for Gaussian sources.
+
 
 KLT limitations:
 
@@ -2210,6 +2217,7 @@ DCT solves DFT leakage by using symmetric extension before periodization. This r
 >
 > DCT gives real coefficients, avoids negative frequencies, reduces leakage, and is the standard transform for compression.
 
+
 2D DCT is separable:
 
 $$
@@ -2224,7 +2232,7 @@ In image blocks:
 - smooth blocks become very sparse,
 - textured or edge blocks keep more coefficients.
 
-### JPEG Overview
+### JPEG overview
 
 Baseline JPEG is a block-based DCT image codec. Standard decoder is specified; encoders can choose implementation details.
 
@@ -2238,7 +2246,7 @@ Pipeline:
 6. Quantize DCT coefficients.
 7. Entropy-code DC and AC coefficients.
 
-### JPEG Quantization
+### JPEG quantization
 
 Per coefficient:
 
@@ -2285,7 +2293,7 @@ S_F=
 q=\frac{S_F}{100}q^*
 $$
 
-### JPEG Entropy Coding
+### JPEG entropy coding
 
 After quantization, most high-frequency coefficients are zero.
 
@@ -2312,12 +2320,10 @@ AC symbols:
 
 Special AC symbols:
 
-| Symbol | Meaning |
-| :--- | :--- |
-| $(15,0)$ | zero-run, 16 consecutive zeros |
-| $(0,0)$ | end of block |
+- $(15,0)$: Meaning: zero-run, 16 consecutive zeros.
+- $(0,0)$: Meaning: end of block.
 
-### JPEG File Structure
+### JPEG file structure
 
 JPEG bitstream hierarchy:
 
@@ -2333,9 +2339,9 @@ Frame
 
 JFIF stores basic interchange metadata. Exif stores camera-oriented metadata such as exposure, ISO, GPS, date, thumbnail.
 
-## Theory and Formulas
+## Theory and formulas
 
-### HS Derivation Sketch
+### HS derivation sketch
 
 Lagrangian:
 
@@ -2382,7 +2388,7 @@ $$
 \frac{1}{2}\log_2(c_{\text{GM}}\sigma_{\text{GM}}^2)
 $$
 
-### AM-GM and Coding Gain
+### AM-GM and coding gain
 
 For non-negative variances:
 
@@ -2398,7 +2404,7 @@ $$
 
 Equality holds only if all variances are equal. Therefore a transform improves coding only when it makes coefficient variances unequal.
 
-### Toy Rotation Example
+### Toy rotation example
 
 For two highly correlated variables, independent scalar quantization wastes bits because the joint PDF lies on a thin diagonal region.
 
@@ -2429,7 +2435,7 @@ $$
 
 So $Y_2$ can be ignored or heavily quantized, while most bits go to $Y_1$.
 
-### KLT Energy Compaction
+### KLT energy compaction
 
 For any $N<M$ and any other orthogonal transform $Z=TX$:
 
@@ -2452,7 +2458,7 @@ In multispectral imaging example:
 
 First KLT band carries most energy; later bands can be quantized aggressively.
 
-### JPEG Rate-Distortion Notes
+### JPEG rate-distortion notes
 
 JPEG's quality factor controls quantization but not exact bitrate. Bitrate depends on:
 
@@ -2465,9 +2471,9 @@ JPEG's quality factor controls quantization but not exact bitrate. Bitrate depen
 
 This is why JPEG has weak direct rate control compared with modern codecs.
 
-## Visual Schemes
+## Visual schemes
 
-### Transform Sparsification
+### Transform sparsification
 
 ![[Pics/4. Transform coding/dft-sparsification.png|550]]
 
@@ -2503,24 +2509,25 @@ DCT mirrors the block before periodization, avoiding boundary jumps and reducing
 
 Each $8x8$ DCT coefficient measures similarity to one cosine basis pattern.
 
-### JPEG Pipeline
+### JPEG pipeline
 
 ![[Pics/4. Transform coding/jpeg-pipeline.png|650]]
 
 JPEG combines color conversion, chroma subsampling, block DCT, quantization, and entropy coding.
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[RGB image] --> B[YCbCr]
-    B --> C[Chroma subsampling]
-    C --> D[8x8 blocks]
-    D --> E[Subtract 128]
-    E --> F[2D DCT]
-    F --> G[Quantization]
-    G --> H[Zig-zag scan]
-    H --> I[DC DPCM / AC RLE]
-    I --> J[Huffman coding]
-    J --> K[JPEG bitstream]
+    A["RGB image"] --> B["YCbCr"]
+    B --> C["Chroma subsampling"]
+    C --> D["8x8 blocks"]
+    D --> E["Subtract 128"]
+    E --> F["2D DCT"]
+    F --> G["Quantization"]
+    G --> H["Zig-zag scan"]
+    H --> I["DC DPCM / AC RLE"]
+    I --> J["Huffman coding"]
+    J --> K["JPEG bitstream"]
 ```
 
 ![[Pics/4. Transform coding/jpeg-dct-block-coefficients.png|650]]
@@ -2535,7 +2542,7 @@ Zig-zag scan converts a sparse 2D coefficient matrix into a 1D sequence with zer
 
 JPEG files store frame, scan, segment, table, and block information needed by the decoder.
 
-### JPEG Artifacts
+### JPEG artifacts
 
 ![[Pics/4. Transform coding/jpeg-quality-high.png|330]]
 
@@ -2552,7 +2559,7 @@ Very low bitrate strongly reveals $8x8$ block structure and loss of high frequen
 ## Examples
 
 > [!Example] Modified HS allocation
-> **Data:** $\sigma_1^2=1000$, $\sigma_2^2=100$, $\sigma_3^2=50$, $\sigma_4^2=1$, $R_{\text{Tot}}=10$.
+> Data: $\sigma_1^2=1000$, $\sigma_2^2=100$, $\sigma_3^2=50$, $\sigma_4^2=1$, $R_{\text{Tot}}=10$.
 >
 > HS gives a negative rate for component 4, so it is removed and rates are recomputed over active components.
 >
@@ -2673,22 +2680,21 @@ Very low bitrate strongly reveals $8x8$ block structure and loss of high frequen
 > | Low | 0.31 bpp | 31.31 dB | visible blocking |
 > | Very low | 0.21 bpp | 29.50 dB | strong blocking and ringing |
 >
-> **Takeaway:** JPEG quality factor controls quantization strength, but exact rate is hard to predict from the factor alone.
-
+> Takeaway: JPEG quality factor controls quantization strength, but exact rate is hard to predict from the factor alone.
 
 ---
 
-# Wavelet Analysis
+# Wavelet analysis
 
-## Table of Contents
+## Contents
 
-- [[#Core Idea|Core Idea]]
-- [[#Key Concepts|Key Concepts]]
-- [[#Theory and Formulas|Theory and Formulas]]
-- [[#Visual Schemes|Visual Schemes]]
+- [[#Core idea|Core idea]]
+- [[#Main concepts|Main concepts]]
+- [[#Theory and formulas|Theory and formulas]]
+- [[#Visual schemes|Visual schemes]]
 - [[#Examples|Examples]]
 
-## Core Idea
+## Core idea
 
 **Wavelet analysis** represents signals with basis functions that change scale and position. Unlike DFT or block-DCT, wavelets use **adaptive multiresolution**:
 
@@ -2701,9 +2707,9 @@ For image compression, this gives sparse coefficients without $8x8$ block bounda
 > [!Important] Main wavelet compression idea
 > Images are modeled as smooth trends plus localized anomalies. Wavelets represent trends in low-pass subbands and edges in sparse high-pass subbands, making coefficient coding efficient.
 
-## Key Concepts
+## Main concepts
 
-### Linear Transform by Projection
+### Linear transform by projection
 
 All transforms used in image coding project the signal onto basis functions:
 
@@ -2721,7 +2727,7 @@ $$
 
 Large $|c_k|$ means the signal strongly resembles basis function $k$. Compression works when most coefficients are small.
 
-### Time-Frequency Uncertainty
+### Time-frequency uncertainty
 
 For a windowed sinusoid:
 
@@ -2731,12 +2737,10 @@ $$
 
 window length controls localization:
 
-| Window | Time localization | Frequency resolution |
-| :--- | :--- | :--- |
-| short | excellent | poor |
-| medium | good | medium |
-| long | poor | good |
-| very long | very poor | excellent |
+- **short**: Time localization: excellent; Frequency resolution: poor.
+- **medium**: Time localization: good; Frequency resolution: medium.
+- **long**: Time localization: poor; Frequency resolution: good.
+- **very long**: Time localization: very poor; Frequency resolution: excellent.
 
 > [!Important] Time-frequency uncertainty
 > $$
@@ -2745,16 +2749,14 @@ window length controls localization:
 >
 > The area of the time-frequency uncertainty cell is fixed. A transform can change the cell shape, but cannot make both time and frequency resolution arbitrarily good.
 
-### STFT vs. Wavelets
+### STFT vs. wavelets
 
 **STFT / block DCT** use a fixed window for all frequencies. This creates rigid tiling of the time-frequency plane.
 
 **Wavelets** adapt the window:
 
-| Frequency | Wavelet window | Captures |
-| :--- | :--- | :--- |
-| high | short | edges, impulses, anomalies |
-| low | long | trends, smooth texture |
+- **high**: Wavelet window: short; Captures: edges, impulses, anomalies.
+- **low**: Wavelet window: long; Captures: trends, smooth texture.
 
 Wavelet basis from a mother wavelet:
 
@@ -2769,21 +2771,19 @@ where $a$ controls scale and $b$ controls position.
 - Large $a$: stretched wavelet, lower frequency, better frequency resolution.
 - Small $a$: compressed wavelet, higher frequency, better time/spatial resolution.
 
-### Image Model
+### Image model
 
 Images contain:
 
-| Component | Signal behavior | Frequency | Spatial precision needed |
-| :--- | :--- | :--- | :--- |
-| **Trend** | slow variation | low | rough |
-| **Anomaly** | abrupt variation | high | fine |
+- **Trend**: Signal behavior: slow variation; Frequency: low; Spatial precision needed: rough.
+- **Anomaly**: Signal behavior: abrupt variation; Frequency: high; Spatial precision needed: fine.
 
 Wavelets split image rows/blocks into approximation plus details:
 
 - approximation: low-resolution trend,
 - detail: high-frequency anomalies, often sparse.
 
-### 1D Filter Bank
+### 1D filter bank
 
 Wavelet transform is implemented by analysis filters plus downsampling.
 
@@ -2821,7 +2821,7 @@ c[k/2] & k\ \text{even}\\
 \end{cases}
 $$
 
-### Perfect Reconstruction
+### Perfect reconstruction
 
 A useful wavelet filter bank should allow perfect reconstruction (possibly with delay) after analysis and synthesis.
 
@@ -2857,13 +2857,13 @@ $$
 $$
 
 > [!Important] Perfect reconstruction conditions
-> **No distortion:**
+> No distortion:
 >
 > $$
 > T(z)=H_0(z)F_0(z)+H_1(z)F_1(z)=2z^{-\ell}
 > $$
 >
-> **Aliasing cancellation:**
+> Aliasing cancellation:
 >
 > $$
 > A(z)=H_0(-z)F_0(z)+H_1(-z)F_1(z)=0
@@ -2877,7 +2877,7 @@ $$
 >
 > so the output is the input delayed by $\ell$ samples.
 
-### Orthogonality and Biorthogonality
+### Orthogonality and biorthogonality
 
 Orthogonal filter banks conserve energy:
 
@@ -2889,11 +2889,11 @@ $$
 \sum_{k=-\infty}^{+\infty}d_k^2
 $$
 
-**Compression meaning:** reconstruction error equals quantization error in coefficient domain.
+Compression meaning: reconstruction error equals quantization error in coefficient domain.
 
 Biorthogonal filters are not strictly energy preserving, but they can be symmetric and close to orthogonal. In image compression, symmetry is often more important because it avoids boundary artifacts.
 
-### Vanishing Moments
+### Vanishing moments
 
 > [!Important] Vanishing moments
 > A wavelet/filter with $p$ vanishing moments has zero high-pass response to polynomials of degree $<p$.
@@ -2902,24 +2902,22 @@ Biorthogonal filters are not strictly energy preserving, but they can be symmetr
 >
 > Smooth image regions become nearly zero in detail subbands, increasing sparsity.
 
-### Border Problem
+### Border problem
 
 Wavelet theory assumes infinite signals, but images have finite support. Linear convolution with an $M$-tap filter expands an $N$-sample signal to $N+M-1$ samples.
 
 Possible extensions:
 
-| Method | Benefit | Problem |
-| :--- | :--- | :--- |
-| zero padding | simple | coefficient expansion and boundary artifacts |
-| periodization | same number of coefficients | artificial boundary jumps |
-| symmetrization | removes jumps | doubles period unless filters are symmetric |
+- **zero padding**: Benefit: simple; Problem: coefficient expansion and boundary artifacts.
+- **periodization**: Benefit: same number of coefficients; Problem: artificial boundary jumps.
+- **symmetrization**: Benefit: removes jumps; Problem: doubles period unless filters are symmetric.
 
 > [!Important] Symmetry constraint
 > The only FIR filter that is both orthogonal and symmetric, apart from trivial cases, is the Haar filter.
 >
 > Image compression therefore prefers **biorthogonal symmetric filters** such as CDF 9/7 and CDF 5/3.
 
-### Haar and CDF Filters
+### Haar and CDF filters
 
 Haar filters:
 
@@ -2940,10 +2938,8 @@ Properties:
 
 CDF filters:
 
-| Filter | Vanishing moments | Taps | Use |
-| :--- | :--- | :--- | :--- |
-| **CDF 9/7** | 4 | 9/7 | JPEG2000 lossy, best R-D |
-| **CDF 5/3** | 2 | 5/3 | JPEG2000 lossless, integer exact reconstruction |
+- **CDF 9/7**: Vanishing moments: 4; Taps: 9/7; Use: JPEG2000 lossy, best R-D.
+- **CDF 5/3**: Vanishing moments: 2; Taps: 5/3; Use: JPEG2000 lossless, integer exact reconstruction.
 
 If analysis has $p$ vanishing moments and synthesis has $\tilde{p}$, the filter needs at least:
 
@@ -2953,7 +2949,7 @@ $$
 
 taps.
 
-### 1D and 2D Multiresolution
+### 1D and 2D multiresolution
 
 In 1D multiresolution, the filter bank is recursively applied only to the low-pass approximation $c_j$.
 
@@ -2965,12 +2961,10 @@ In 2D, apply 1D filters separably:
 
 One level creates four subbands:
 
-| Subband | Filtering | Content |
-| :--- | :--- | :--- |
-| **LL** | LP rows + LP columns | low-resolution approximation |
-| **HL** | HP rows + LP columns | vertical details |
-| **LH** | LP rows + HP columns | horizontal details |
-| **HH** | HP rows + HP columns | diagonal details |
+- **LL**: Filtering: LP rows + LP columns; Content: low-resolution approximation.
+- **HL**: Filtering: HP rows + LP columns; Content: vertical details.
+- **LH**: Filtering: LP rows + HP columns; Content: horizontal details.
+- **HH**: Filtering: HP rows + HP columns; Content: diagonal details.
 
 Recursive decomposition applies again to LL.
 
@@ -2990,49 +2984,45 @@ Optimal number of levels for images: **4 to 6**. More levels give diminishing re
 > If a wavelet coefficient is insignificant below threshold $T$, its descendants at finer scales in the same orientation are likely insignificant too.
 >
 > A whole insignificant subtree can be coded with one **ZR** symbol.
-
-EZW symbols:
-
-| Symbol | Meaning |
-| :--- | :--- |
-| **SP** | significant positive, $c\geq T$ |
-| **SN** | significant negative, $c\leq -T$ |
-| **IZ** | isolated zero: insignificant but has significant descendant |
-| **ZR** | zerotree root: insignificant and all descendants insignificant |
-
-Thresholds:
-
-$$
-T_k=2^{n-k},
-\qquad
-n=\left\lfloor\log_2\max|c|\right\rfloor
-$$
-
-Each pass halves the threshold:
-
-$$
-T_{k+1}=\frac{T_k}{2}
-$$
-
-Dominant pass finds newly significant coefficients; refining pass sends the next bitplane of already significant coefficients.
+>
+> EZW symbols:
+>
+> - **SP**: **Meaning:** significant positive, $c\geq T$.
+> - **SN**: **Meaning:** significant negative, $c\leq -T$.
+> - **IZ**: **Meaning:** isolated zero: insignificant but has significant descendant.
+> - **ZR**: **Meaning:** zerotree root: insignificant and all descendants insignificant.
+>
+> Thresholds:
+>
+> $$
+> T_k=2^{n-k},
+> \qquad
+> n=\left\lfloor\log_2\max|c|\right\rfloor
+> $$
+>
+> Each pass halves the threshold:
+>
+> $$
+> T_{k+1}=\frac{T_k}{2}
+> $$
+>
+> Dominant pass finds newly significant coefficients; refining pass sends the next bitplane of already significant coefficients.
 
 ### JPEG2000
 
 JPEG2000 addresses JPEG limitations:
 
-| JPEG issue | JPEG2000 response |
-| :--- | :--- |
-| poor quality below 0.25 bpp | wavelet transform |
-| blocking artifacts | global/tiled DWT instead of $8x8$ DCT |
-| weak scalability | quality + resolution scalability |
-| no random access | tiling and codeblock independence |
-| imprecise rate control | EBCOT optimized truncation |
-| no native lossy-to-lossless path | 5/3 integer DWT and scalable bitstream |
+- **poor quality below 0.25 bpp**: JPEG2000 response: wavelet transform.
+- **blocking artifacts**: JPEG2000 response: global/tiled DWT instead of $8x8$ DCT.
+- **weak scalability**: JPEG2000 response: quality + resolution scalability.
+- **no random access**: JPEG2000 response: tiling and codeblock independence.
+- **imprecise rate control**: JPEG2000 response: EBCOT optimized truncation.
+- **no native lossy-to-lossless path**: JPEG2000 response: 5/3 integer DWT and scalable bitstream.
 
 JPEG2000 structure:
 
-- **Tier 1:** DWT, fine quantization if lossy, arithmetic coding of codeblocks by bitplane.
-- **Tier 2:** EBCOT organizes coded blocks into layers and truncates bitstreams optimally.
+- Tier 1: DWT, fine quantization if lossy, arithmetic coding of codeblocks by bitplane.
+- Tier 2: EBCOT organizes coded blocks into layers and truncates bitstreams optimally.
 
 Lossy JPEG2000 uses CDF 9/7. Lossless JPEG2000 uses integer CDF 5/3.
 
@@ -3078,9 +3068,10 @@ $$
 >
 > All selected codeblock truncation points have the same R-D slope.
 
+
 Multiple $\lambda$ values give multiple quality layers.
 
-### Error Robustness
+### Error robustness
 
 Compressed streams are fragile because:
 
@@ -3090,16 +3081,14 @@ Compressed streams are fragile because:
 
 JPEG2000 improves robustness through codeblock independence and bitstream organization.
 
-| Feature | JPEG | JPEG2000 |
-| :--- | :--- | :--- |
-| entropy stream | more global | independent codeblocks |
-| error propagation | severe | localized |
-| transform artifacts | blocking | no blocking |
-| rate/resolution layers | limited | built in |
+- **entropy stream**: JPEG: more global; JPEG2000: independent codeblocks.
+- **error propagation**: JPEG: severe; JPEG2000: localized.
+- **transform artifacts**: JPEG: blocking; JPEG2000: no blocking.
+- **rate/resolution layers**: JPEG: limited; JPEG2000: built in.
 
-## Theory and Formulas
+## Theory and formulas
 
-### Wavelet Scaling and Fourier Interpretation
+### Wavelet scaling and fourier interpretation
 
 Mother wavelet:
 
@@ -3117,7 +3106,7 @@ $$
 
 Thus large $a$ stretches the wavelet in time and compresses its frequency support. Small $a$ does the opposite.
 
-### Perfect Reconstruction Matrix Form
+### Perfect reconstruction matrix form
 
 PR conditions can be written as:
 
@@ -3147,7 +3136,7 @@ H_0(z)H_1(-z)-H_1(z)H_0(-z)
 \qquad |z|=1
 $$
 
-### EZW Zerotree Saving
+### EZW zerotree saving
 
 If a zerotree root starts at scale $n$ and has depth to $N$, one symbol can replace:
 
@@ -3157,7 +3146,7 @@ $$
 
 individual insignificance symbols in 2D.
 
-### JPEG2000 Exact Rate Control
+### JPEG2000 exact rate control
 
 EBCOT can hit a target bitrate with very small error because each codeblock bitstream has many candidate truncation points:
 
@@ -3165,9 +3154,9 @@ EBCOT can hit a target bitrate with very small error because each codeblock bits
 - later truncation: high rate, low distortion,
 - layers collect truncation segments in increasing quality order.
 
-## Visual Schemes
+## Visual schemes
 
-### Time-Frequency Resolution
+### Time-frequency resolution
 
 ![[Pics/5. Wavelet analysis/time-frequency-short-window.png|600]]
 
@@ -3185,7 +3174,7 @@ STFT and block-DCT use fixed tiles, so all frequencies receive the same resoluti
 
 Wavelets use narrow high-frequency tiles and wide low-frequency tiles.
 
-### Trends and Anomalies
+### Trends and anomalies
 
 ![[Pics/5. Wavelet analysis/image-original-row.png|420]]
 
@@ -3199,16 +3188,17 @@ High-pass wavelet details isolate anomalies such as edges and contours.
 
 Approximation stores the trend; detail stores deviations from the trend.
 
-### Filter Bank and Multiresolution
+### Filter bank and multiresolution
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    X[Input x] --> LP[Low-pass h0]
-    X --> HP[High-pass h1]
-    LP --> D1[Downsample 2]
-    HP --> D2[Downsample 2]
-    D1 --> C[Approximation c]
-    D2 --> D[Detail d]
+    X["Input x"] --> LP["Low-pass h0"]
+    X --> HP["High-pass h1"]
+    LP --> D1["Downsample 2"]
+    HP --> D2["Downsample 2"]
+    D1 --> C["Approximation c"]
+    D2 --> D["Detail d"]
 ```
 
 ![[Pics/5. Wavelet analysis/one-dimensional-mra.png|600]]
@@ -3237,32 +3227,34 @@ Synthetic square image is simple but has sharp edges.
 
 DWT places smooth content in LL and edges/corners in detail subbands.
 
-### EZW and JPEG2000 Schemes
+### EZW and JPEG2000 schemes
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart TD
-    A[DWT coefficients] --> B[Initial threshold T0]
-    B --> C[Dominant pass]
-    C --> D{Coefficient class}
-    D --> SP[SP / SN]
-    D --> IZ[IZ]
-    D --> ZR[ZR subtree]
-    SP --> E[Significant list]
-    E --> F[Refining pass]
-    F --> G[Halve threshold]
+    A["DWT coefficients"] --> B["Initial threshold T0"]
+    B --> C["Dominant pass"]
+    C --> D{"Coefficient class"}
+    D --> SP["SP / SN"]
+    D --> IZ["IZ"]
+    D --> ZR["ZR subtree"]
+    SP --> E["Significant list"]
+    E --> F["Refining pass"]
+    F --> G["Halve threshold"]
     G --> C
 ```
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Image tile] --> B[DWT 9/7 or 5/3]
-    B --> C[Subbands]
-    C --> D[Codeblocks]
-    D --> E[Bitplane arithmetic coding]
-    E --> F[R-D curves]
-    F --> G[EBCOT truncation]
-    G --> H[Quality / resolution layers]
-    H --> I[JPEG2000 bitstream]
+    A["Image tile"] --> B["DWT 9/7 or 5/3"]
+    B --> C["Subbands"]
+    C --> D["Codeblocks"]
+    D --> E["Bitplane arithmetic coding"]
+    E --> F["R-D curves"]
+    F --> G["EBCOT truncation"]
+    G --> H["Quality / resolution layers"]
+    H --> I["JPEG2000 bitstream"]
 ```
 
 > [!Note] Missing visual
@@ -3271,11 +3263,11 @@ flowchart LR
 ## Examples
 
 > [!Example] Trends vs anomalies
-> **Setup:** an image row has smooth regions plus edges.
+> Setup: an image row has smooth regions plus edges.
 >
-> **Wavelet effect:** low-pass branch captures slowly varying intensity; high-pass branch activates mostly at edges.
+> Wavelet effect: low-pass branch captures slowly varying intensity; high-pass branch activates mostly at edges.
 >
-> **Takeaway:** smooth areas generate few detail coefficients, so they compress well.
+> Takeaway: smooth areas generate few detail coefficients, so they compress well.
 
 > [!Example] Haar transform intuition
 > For a pair $(x_0,x_1)$, Haar approximation and detail are proportional to:
@@ -3286,18 +3278,18 @@ flowchart LR
 >
 > If the pair is smooth, $x_0\approx x_1$, so $d\approx0$.
 >
-> **Takeaway:** Haar is simple edge/detail extraction, but only has one vanishing moment.
+> Takeaway: Haar is simple edge/detail extraction, but only has one vanishing moment.
 
 > [!Example] 2D DWT subbands
-> **LL:** blurred low-resolution image.
+> LL: blurred low-resolution image.
 >
-> **HL:** responds to vertical details.
+> HL: responds to vertical details.
 >
-> **LH:** responds to horizontal details.
+> LH: responds to horizontal details.
 >
-> **HH:** responds to diagonal details.
+> HH: responds to diagonal details.
 >
-> **Takeaway:** DWT separates image geometry by scale and orientation.
+> Takeaway: DWT separates image geometry by scale and orientation.
 
 > [!Example] EZW encoding on a 4x4 coefficient matrix
 > Coefficients:
@@ -3327,7 +3319,7 @@ flowchart LR
 >
 > Refining sends next bit of already significant coefficients.
 >
-> **Takeaway:** EZW sends coarse significance first, then progressively refines.
+> Takeaway: EZW sends coarse significance first, then progressively refines.
 
 > [!Example] EZW decoding estimate
 > If a coefficient becomes significant positive at threshold $T=16$, decoder knows:
@@ -3353,7 +3345,7 @@ flowchart LR
 > | 0.2 bpp | very poor | acceptable |
 > | 0.1 bpp | often unusable | usable |
 >
-> **Takeaway:** wavelet coding degrades by blur/ringing rather than block artifacts.
+> Takeaway: wavelet coding degrades by blur/ringing rather than block artifacts.
 
 > [!Example] Error robustness
 > At bit error probability $p_E=10^{-3}$, JPEG can suffer catastrophic visual degradation because entropy decoding can desynchronize and errors propagate.
@@ -3361,26 +3353,23 @@ flowchart LR
 > JPEG2000 confines much damage to independent codeblocks, so degradation is more local and graceful.
 
 > [!Example] Method comparison
-> | Technique | Transform | Coding | Scalability | Lossless path | Blocking |
-> | :--- | :--- | :--- | :--- | :--- | :--- |
-> | JPEG | $8x8$ DCT | Huffman/arithmetic | no | no | yes |
-> | EZW | DWT | symbols + arithmetic | quality | yes with integer DWT | no |
-> | JPEG2000 | DWT 9/7 or 5/3 | EBCOT arithmetic | quality, resolution, ROI | yes with 5/3 | no |
-
+> - **JPEG**: Transform: $8x8$ DCT; Coding: Huffman/arithmetic; Scalability: no; Lossless path: no; Blocking: yes.
+> - **EZW**: Transform: DWT; Coding: symbols + arithmetic; Scalability: quality; Lossless path: yes with integer DWT; Blocking: no.
+> - **JPEG2000**: Transform: DWT 9/7 or 5/3; Coding: EBCOT arithmetic; Scalability: quality, resolution, ROI; Lossless path: yes with 5/3; Blocking: no.
 
 ---
 
-# Learned Image Compression
+# Learned image compression
 
-## Table of Contents
+## Contents
 
-- [[#Core Idea|Core Idea]]
-- [[#Key Concepts|Key Concepts]]
-- [[#Theory and Formulas|Theory and Formulas]]
-- [[#Visual Schemes|Visual Schemes]]
+- [[#Core idea|Core idea]]
+- [[#Main concepts|Main concepts]]
+- [[#Theory and formulas|Theory and formulas]]
+- [[#Visual schemes|Visual schemes]]
 - [[#Examples|Examples]]
 
-## Core Idea
+## Core idea
 
 **Learned Image Compression (LIC)**, also called **Neural Image Compression (NIC)**, replaces hand-designed codec blocks with neural networks trained end-to-end on image data.
 
@@ -3400,9 +3389,9 @@ Learned codecs use neural networks:
 > [!Important] Main paradigm shift
 > Learned compression is non-linear transform coding. The transform, probability model, and reconstruction behavior are optimized from data for a rate-distortion objective instead of being manually specified.
 
-## Key Concepts
+## Main concepts
 
-### Classical vs. Learned Transform Coding
+### Classical vs. learned transform coding
 
 General transform-coding structure remains:
 
@@ -3414,29 +3403,25 @@ $$
 
 In classical codecs, $g_a$ and $g_s$ are fixed transforms such as DCT or DWT. In learned compression, $g_a$ and $g_s$ are trained CNNs.
 
-| Aspect | Classical | Learned |
-| :--- | :--- | :--- |
-| Transform | fixed linear basis | learned non-linear mapping |
-| Adaptivity | parameters only | weights learned from data |
-| Coefficients | transform coefficients | latent variables / latent tensor |
-| Optimization | discrete tool selection | gradient descent |
-| Entropy model | fixed or handcrafted | learned prior/hyperprior |
+- **Transform**: Classical: fixed linear basis; Learned: learned non-linear mapping.
+- **Adaptivity**: Classical: parameters only; Learned: weights learned from data.
+- **Coefficients**: Classical: transform coefficients; Learned: latent variables / latent tensor.
+- **Optimization**: Classical: discrete tool selection; Learned: gradient descent.
+- **Entropy model**: Classical: fixed or handcrafted; Learned: learned prior/hyperprior.
 
-### KLT as Linear Limit
+### KLT as linear limit
 
 KLT is optimal among linear transforms for Gaussian data, because it decorrelates components. Neural codecs generalize this:
 
-| KLT | Neural codec |
-| :--- | :--- |
-| linear | non-linear |
-| optimal mainly for Gaussian sources | handles complex natural-image distributions |
-| data-dependent but expensive | CNNs process large images with shared weights |
-| decorrelates second-order statistics | learns high-order features: edges, textures, semantics |
+- **linear**: Neural codec: non-linear.
+- **optimal mainly for Gaussian sources**: Neural codec: handles complex natural-image distributions.
+- **data-dependent but expensive**: Neural codec: CNNs process large images with shared weights.
+- **decorrelates second-order statistics**: Neural codec: learns high-order features: edges, textures, semantics.
 
 > [!Important] Non-linear KLT view
 > LIC can be interpreted as a non-linear KLT optimized for rate-distortion, where the basis/functions are learned instead of fixed.
 
-### Rate-Distortion Objective
+### Rate-distortion objective
 
 Learned codecs are trained by minimizing a Lagrangian:
 
@@ -3457,7 +3442,7 @@ The meaning of "large $\lambda$" depends on which form is used:
 
 Training several models with different $\lambda$ values gives different points on the rate-distortion curve, similar in role to quality factors.
 
-### Artificial Neuron and MLP
+### Artificial neuron and MLP
 
 Neuron:
 
@@ -3469,12 +3454,10 @@ where $f$ is a non-linear activation.
 
 Common activations:
 
-| Activation | Formula | Role |
-| :--- | :--- | :--- |
-| ReLU | $f(z)=\max(0,z)$ | sparse non-linearity |
-| Sigmoid | $f(z)=1/(1+e^{-z})$ | maps to $(0,1)$ |
-| Tanh | $f(z)=\tanh(z)$ | maps to $(-1,1)$ |
-| GDN | normalized response | compression-specific |
+- **ReLU**: Formula: $f(z)=\max(0,z)$; Role: sparse non-linearity.
+- **Sigmoid**: Formula: $f(z)=1/(1+e^{-z})$; Role: maps to $(0,1)$.
+- **Tanh**: Formula: $f(z)=\tanh(z)$; Role: maps to $(-1,1)$.
+- **GDN**: Formula: normalized response; Role: compression-specific.
 
 MLP with one hidden layer:
 
@@ -3488,7 +3471,7 @@ $$
 
 Non-linear activations matter because without them a deep stack collapses to one linear transform.
 
-### Gradient Descent and Backpropagation
+### Gradient descent and backpropagation
 
 Neural training updates parameters $\theta$ by:
 
@@ -3500,7 +3483,7 @@ where $\eta$ is the learning rate.
 
 Backpropagation applies the chain rule from output to input to compute gradients for every weight. This makes end-to-end codec training possible.
 
-### Why MLPs Fail on Images
+### Why MLPs fail on images
 
 Flattening an image loses spatial structure. A $256x256$ image gives:
 
@@ -3524,17 +3507,15 @@ Problems:
 - no explicit locality,
 - computationally impractical.
 
-### CNNs for Learned Compression
+### CNNs for learned compression
 
 CNNs solve image scalability using:
 
-| Feature | Compression meaning |
-| :--- | :--- |
-| local connectivity | nearby pixels treated together |
-| weight sharing | same detector reused everywhere |
-| strided convolution | learned downsampling in encoder |
-| multiple channels | many parallel learned features |
-| transposed convolution | learned upsampling in decoder |
+- **local connectivity**: Compression meaning: nearby pixels treated together.
+- **weight sharing**: Compression meaning: same detector reused everywhere.
+- **strided convolution**: Compression meaning: learned downsampling in encoder.
+- **multiple channels**: Compression meaning: many parallel learned features.
+- **transposed convolution**: Compression meaning: learned upsampling in decoder.
 
 A convolution applies a small kernel, e.g. $3x3$, to every local patch. A stride $s>1$ reduces spatial resolution and compacts information.
 
@@ -3560,6 +3541,7 @@ after four stride-2 stages. Source notes JPEG AI-like examples with:
 >
 > $\beta_i$ and $\gamma_{ij}$ are learned parameters.
 
+
 GDN is useful because it:
 
 - performs local feature normalization,
@@ -3567,7 +3549,7 @@ GDN is useful because it:
 - reduces correlation,
 - makes latent distributions easier to model for entropy coding.
 
-### Autoencoder Codec
+### Autoencoder codec
 
 Learned image codecs are autoencoders:
 
@@ -3592,7 +3574,7 @@ $$
 
 The bottleneck is where compression happens.
 
-### VAE Interpretation
+### VAE interpretation
 
 Modern neural codecs can be interpreted as rate-distortion VAEs.
 
@@ -3606,15 +3588,15 @@ Modern neural codecs can be interpreted as rate-distortion VAEs.
 > $$
 >
 > The KL term corresponds to rate, and the reconstruction term corresponds to distortion.
+>
+> Interpretation:
+>
+> - $q(\hat{y}|x)$: distribution induced by encoder and quantization.
+> - $p(\hat{y})$: entropy model expected by arithmetic coder.
+> - $\rho(x,\hat{x})$: distortion metric, e.g. MSE, MS-SSIM, perceptual loss.
+> - $\lambda$: rate-distortion tradeoff parameter.
 
-Interpretation:
-
-- $q(\hat{y}|x)$: distribution induced by encoder and quantization.
-- $p(\hat{y})$: entropy model expected by arithmetic coder.
-- $\rho(x,\hat{x})$: distortion metric, e.g. MSE, MS-SSIM, perceptual loss.
-- $\lambda$: rate-distortion tradeoff parameter.
-
-### Quantization Training Problem
+### Quantization training problem
 
 Hard rounding is non-differentiable:
 
@@ -3682,7 +3664,7 @@ Source notes describe **JPEG AI** as an international learned-image-coding stand
 - use hierarchical VAE-like neural codecs,
 - provide complexity profiles for different hardware.
 
-Key ideas:
+Main ideas:
 
 - deep CNN analysis/synthesis transforms,
 - hyperprior side information,
@@ -3692,31 +3674,27 @@ Key ideas:
 
 Complexity profiles in source:
 
-| Profile | Complexity | Target |
-| :--- | :--- | :--- |
-| Dec0 | 8 kMAC/px | low-end CPUs |
-| Dec1 | 23 kMAC/px | real-time mid-range smartphones |
-| Dec2 | 214 kMAC/px | high-end GPU / maximum quality |
+- **Dec0**: Complexity: 8 kMAC/px; Target: low-end CPUs.
+- **Dec1**: Complexity: 23 kMAC/px; Target: real-time mid-range smartphones.
+- **Dec2**: Complexity: 214 kMAC/px; Target: high-end GPU / maximum quality.
 
-### Current Limitations
+### Current limitations
 
-| Limitation | Why it matters |
-| :--- | :--- |
-| high complexity | many kMAC/px, high energy cost |
-| hardware dependence | GPU/NPU often needed |
-| determinism | floating-point differences can cause drift |
-| out-of-distribution risk | unusual images may be poorly reconstructed |
-| hallucination | neural decoder may synthesize plausible but false details |
+- **high complexity**: Why it matters: many kMAC/px, high energy cost.
+- **hardware dependence**: Why it matters: GPU/NPU often needed.
+- **determinism**: Why it matters: floating-point differences can cause drift.
+- **out-of-distribution risk**: Why it matters: unusual images may be poorly reconstructed.
+- **hallucination**: Why it matters: neural decoder may synthesize plausible but false details.
 
-### Future Directions
+### Future directions
 
-- **Generative compression:** GAN/diffusion decoders synthesize realistic textures at very low rates.
-- **Coding for machines:** transmit latents directly to detection/segmentation systems.
-- **Hardware-algorithm co-design:** neural codecs designed with NPUs and mobile accelerators.
+- Generative compression: GAN/diffusion decoders synthesize realistic textures at very low rates.
+- Coding for machines: transmit latents directly to detection/segmentation systems.
+- Hardware-algorithm co-design: neural codecs designed with NPUs and mobile accelerators.
 
-## Theory and Formulas
+## Theory and formulas
 
-### Classical-to-Neural Architecture
+### Classical-to-neural architecture
 
 Classical transform coding:
 
@@ -3734,7 +3712,7 @@ $$
 
 The learned transform is non-linear, data-driven, and optimized jointly with the entropy model.
 
-### Latent Tensor Size
+### Latent tensor size
 
 If an input image has shape $H\times W$, and the encoder uses four stride-2 stages:
 
@@ -3758,7 +3736,7 @@ $$
 
 Spatial size shrinks, but channel count increases to preserve multiple learned features.
 
-### Entropy Model and Arithmetic Coding
+### Entropy model and arithmetic coding
 
 If entropy model assigns probability $p_{\hat{y}}(\hat{y}_i)$ to each quantized latent symbol, rate estimate is:
 
@@ -3785,7 +3763,7 @@ R_{\text{total}}
 R(\hat{z})+R(\hat{y}|\hat{z})
 $$
 
-### Additive Noise Approximation
+### Additive noise approximation
 
 Uniform scalar quantization with unit step has error approximately:
 
@@ -3807,7 +3785,7 @@ $$
 
 while preserving gradient flow.
 
-### GDN Interpretation
+### GDN interpretation
 
 GDN divides each feature by local energy:
 
@@ -3817,9 +3795,9 @@ $$
 
 If neighboring channels are strong, $w_i$ is suppressed. This resembles perceptual masking and helps produce latents with simpler distributions.
 
-## Visual Schemes
+## Visual schemes
 
-### Neural Network Basics
+### Neural network basics
 
 ![[Pics/6. Learned Image Compression/artificial-neuron.png|650]]
 
@@ -3833,7 +3811,7 @@ MLP connects all neurons between layers; useful conceptually but inefficient for
 
 Flattening image pixels destroys spatial topology and causes parameter explosion.
 
-### CNN Features
+### CNN features
 
 ![[Pics/6. Learned Image Compression/convolution-receptive-field.png|600]]
 
@@ -3847,53 +3825,56 @@ Strided convolution downsamples spatial dimensions and compacts information.
 
 Multiple kernels create multiple feature maps, forming a 3D latent representation.
 
-### Autoencoder Codec
+### Autoencoder codec
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Input image x] --> B[Analysis transform ga]
-    B --> C[Latent tensor y]
-    C --> D[Quantization Q]
-    D --> E[Quantized latents yhat]
-    E --> F[Entropy coding]
-    F --> G[Bitstream]
-    G --> H[Entropy decoding]
-    H --> E2[Quantized latents yhat]
-    E2 --> I[Synthesis transform gs]
-    I --> J[Reconstructed image xhat]
+    A["Input image x"] --> B["Analysis transform ga"]
+    B --> C["Latent tensor y"]
+    C --> D["Quantization Q"]
+    D --> E["Quantized latents yhat"]
+    E --> F["Entropy coding"]
+    F --> G["Bitstream"]
+    G --> H["Entropy decoding"]
+    H --> E2["Quantized latents yhat"]
+    E2 --> I["Synthesis transform gs"]
+    I --> J["Reconstructed image xhat"]
 ```
 
-### Hyperprior Codec
+### Hyperprior codec
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Image x] --> B[Analysis ga]
-    B --> Y[Latents y]
-    Y --> QY[Quantize yhat]
-    Y --> HA[Hyper-analysis ha]
-    HA --> Z[Hyperlatents z]
-    Z --> QZ[Quantize zhat]
-    QZ --> HS[Hyper-synthesis hs]
-    HS --> P[Scale / probability model]
-    QY --> EC[Arithmetic coding]
+    A["Image x"] --> B["Analysis ga"]
+    B --> Y["Latents y"]
+    Y --> QY["Quantize yhat"]
+    Y --> HA["Hyper-analysis ha"]
+    HA --> Z["Hyperlatents z"]
+    Z --> QZ["Quantize zhat"]
+    QZ --> HS["Hyper-synthesis hs"]
+    HS --> P["Scale / probability model"]
+    QY --> EC["Arithmetic coding"]
     P --> EC
-    QZ --> ECZ[Encode side info]
-    EC --> BS[Bitstream]
+    QZ --> ECZ["Encode side info"]
+    EC --> BS["Bitstream"]
     ECZ --> BS
-    BS --> DEC[Decode yhat, zhat]
-    DEC --> GS[Synthesis gs]
-    GS --> XH[Image xhat]
+    BS --> DEC["Decode yhat, zhat"]
+    DEC --> GS["Synthesis gs"]
+    GS --> XH["Image xhat"]
 ```
 
-### JPEG AI Dual Use
+### JPEG AI dual use
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[JPEG AI bitstream] --> B[Decode latent tensor]
-    B --> C[Human vision decoder]
-    B --> D[Machine task decoder]
-    C --> E[RGB reconstruction]
-    D --> F[Detection / segmentation / features]
+    A["JPEG AI bitstream"] --> B["Decode latent tensor"]
+    B --> C["Human vision decoder"]
+    B --> D["Machine task decoder"]
+    C --> E["RGB reconstruction"]
+    D --> F["Detection / segmentation / features"]
 ```
 
 > [!Note] Missing visual
@@ -3916,7 +3897,7 @@ flowchart LR
 >
 > weights, before biases.
 >
-> **Takeaway:** CNNs are needed because they reuse local filters instead of connecting every pixel to every neuron.
+> Takeaway: CNNs are needed because they reuse local filters instead of connecting every pixel to every neuron.
 
 > [!Example] Latent tensor dimensions
 > With four stride-2 convolution layers:
@@ -3931,7 +3912,7 @@ flowchart LR
 > y\in\mathbb{R}^{H/16\times W/16\times160}
 > $$
 >
-> **Takeaway:** spatial resolution shrinks, but many channels store learned features.
+> Takeaway: spatial resolution shrinks, but many channels store learned features.
 
 > [!Example] Training vs. inference quantization
 > During training:
@@ -3946,7 +3927,7 @@ flowchart LR
 > \hat{y}=\mathrm{round}(y)
 > $$
 >
-> **Takeaway:** additive noise makes training differentiable while approximating quantization noise.
+> Takeaway: additive noise makes training differentiable while approximating quantization noise.
 
 > [!Example] Hyperprior rate tradeoff
 > Sending hyperlatents $\hat{z}$ costs bits, but improves probability estimates for $\hat{y}$.
@@ -3957,43 +3938,38 @@ flowchart LR
 > R(\hat{z})+R(\hat{y}|\hat{z}) < R(\hat{y})
 > $$
 >
-> **Takeaway:** side information is worth sending only when it saves more latent bits than it costs.
+> Takeaway: side information is worth sending only when it saves more latent bits than it costs.
 
 > [!Example] Complexity profiles
-> | Profile | Complexity | Interpretation |
-> | :--- | :--- | :--- |
-> | Dec0 | 8 kMAC/px | lightweight decoder |
-> | Dec1 | 23 kMAC/px | phone-class real-time target |
-> | Dec2 | 214 kMAC/px | high-quality high-compute decoder |
+> - **Dec0**: Complexity: 8 kMAC/px; Interpretation: lightweight decoder.
+> - **Dec1**: Complexity: 23 kMAC/px; Interpretation: phone-class real-time target.
+> - **Dec2**: Complexity: 214 kMAC/px; Interpretation: high-quality high-compute decoder.
 >
-> **Takeaway:** same bitstream can be decoded with different compute/quality profiles.
+> Takeaway: same bitstream can be decoded with different compute/quality profiles.
 
 > [!Example] Classical vs. learned codec
-> | Aspect | JPEG / JPEG 2000 | Learned / JPEG AI |
-> | :--- | :--- | :--- |
-> | Transform | DCT / DWT | CNN + GDN |
-> | Basis | hand-crafted | learned from data |
-> | Optimization | module-wise | end-to-end |
-> | Entropy model | Huffman/arithmetic tables | learned prior/hyperprior |
-> | Artifacts | blocking or blur | possible hallucination |
-> | Complexity | low | high |
+> - **Transform**: JPEG / JPEG 2000: DCT / DWT; Learned / JPEG AI: CNN + GDN.
+> - **Basis**: JPEG / JPEG 2000: hand-crafted; Learned / JPEG AI: learned from data.
+> - **Optimization**: JPEG / JPEG 2000: module-wise; Learned / JPEG AI: end-to-end.
+> - **Entropy model**: JPEG / JPEG 2000: Huffman/arithmetic tables; Learned / JPEG AI: learned prior/hyperprior.
+> - **Artifacts**: JPEG / JPEG 2000: blocking or blur; Learned / JPEG AI: possible hallucination.
+> - **Complexity**: JPEG / JPEG 2000: low; Learned / JPEG AI: high.
 >
-> **Takeaway:** learned codecs win rate-distortion performance, but cost much more computation and must manage determinism.
-
+> Takeaway: learned codecs win rate-distortion performance, but cost much more computation and must manage determinism.
 
 ---
 
-# Motion Estimation
+# Motion estimation
 
-## Table of Contents
+## Contents
 
-- [[#Core Idea|Core Idea]]
-- [[#Key Concepts|Key Concepts]]
-- [[#Theory and Formulas|Theory and Formulas]]
-- [[#Visual Schemes|Visual Schemes]]
+- [[#Core idea|Core idea]]
+- [[#Main concepts|Main concepts]]
+- [[#Theory and formulas|Theory and formulas]]
+- [[#Visual schemes|Visual schemes]]
 - [[#Examples|Examples]]
 
-## Core Idea
+## Core idea
 
 **Motion Estimation (ME)** extracts displacement information between video frames. In Multimedia Communications its main role is **temporal prediction**: if a region in the current frame can be predicted from a reference frame, the codec stores a **motion vector** and a smaller residual instead of coding the full frame independently.
 
@@ -4016,18 +3992,16 @@ where $u$ and $v$ are horizontal and vertical pixel displacements.
 
 The figure shows why optical flow is an image-domain concept: visible intensity patterns, not real object mechanics, determine the estimated motion.
 
-## Key Concepts
+## Main concepts
 
-### Families of Motion Estimation Methods
+### Families of motion estimation methods
 
-| Family | Output | Model | Typical use |
-| :--- | :--- | :--- | :--- |
-| **Variational / gradient-based** | dense field, one vector per pixel | smooth optical flow | vision analysis, foundational theory |
-| **Block matching** | one vector per block | piecewise-constant translation | video compression standards |
-| **Parametric** | global or regional field | closed-form model, e.g. affine | camera/object motion models |
-| **Deep learning** | dense learned flow | CNN / recurrent correspondence model | optical-flow benchmarks, analysis tasks |
+- **Variational / gradient-based**: Output: dense field, one vector per pixel; Model: smooth optical flow; Typical use: vision analysis, foundational theory.
+- **Block matching**: Output: one vector per block; Model: piecewise-constant translation; Typical use: video compression standards.
+- **Parametric**: Output: global or regional field; Model: closed-form model, e.g. affine; Typical use: camera/object motion models.
+- **Deep learning**: Output: dense learned flow; Model: CNN / recurrent correspondence model; Typical use: optical-flow benchmarks, analysis tasks.
 
-### Motion-Compensated Prediction
+### Motion-compensated prediction
 
 Given a current frame $f_k$ and a reference frame $f_h$, the motion-compensated prediction is:
 
@@ -4044,21 +4018,19 @@ $$
 
 In compression, good ME should reduce residual energy while keeping the motion-vector field cheap to encode.
 
-### How to Evaluate a Motion Field
+### How to evaluate a motion field
 
-| Criterion | Formula / measure | Meaning |
-| :--- | :--- | :--- |
-| **Prediction quality** | $\mathcal{E}=\frac{1}{NM}\sum e^2(n,m)$ | residual MSE after compensation |
-| **PSNR** | $10\log_{10}\frac{255^2}{\mathcal{E}}$ | quality of the predicted frame |
-| **MV coding cost** | entropy or coded bits of $(u,v)$ | bit cost of the motion field |
-| **Complexity** | blocks $\times$ candidates $\times$ cost evaluation | implementation cost |
+- **Prediction quality**: Formula / measure: $\mathcal{E}=\frac{1}{NM}\sum e^2(n,m)$; Meaning: residual MSE after compensation.
+- **PSNR**: Formula / measure: $10\log_{10}\frac{255^2}{\mathcal{E}}$; Meaning: quality of the predicted frame.
+- **MV coding cost**: Formula / measure: entropy or coded bits of $(u,v)$; Meaning: bit cost of the motion field.
+- **Complexity**: Formula / measure: blocks $\times$ candidates $\times$ cost evaluation; Meaning: implementation cost.
 
 > [!Important] Compression tradeoff
 > The best geometric match is not always the best coding decision. A slightly worse prediction can be preferable if its motion vector is much cheaper to transmit.
 
-## Theory and Formulas
+## Theory and formulas
 
-### Variational Optical Flow
+### Variational optical flow
 
 Gradient-based methods assume **brightness constancy**:
 
@@ -4101,24 +4073,24 @@ The first term enforces brightness constancy. The second term penalizes rapid sp
 
 > [!Important] Role of $\lambda$
 > Small $\lambda$ follows the data more closely and can be noisy. Large $\lambda$ enforces smoother flow but can blur motion boundaries.
-
-The iterative update used in the slides is:
-
-$$
-u^{k+1}=\bar{u}^{k}
--f_x
-\frac{f_x\bar{u}^{k}+f_y\bar{v}^{k}+f_t}
-{\lambda^2+f_x^2+f_y^2}
-$$
-
-$$
-v^{k+1}=\bar{v}^{k}
--f_y
-\frac{f_x\bar{u}^{k}+f_y\bar{v}^{k}+f_t}
-{\lambda^2+f_x^2+f_y^2}
-$$
-
-where $\bar{u}^{k}$ and $\bar{v}^{k}$ are local averages.
+>
+> The iterative update used in the slides is:
+>
+> $$
+> u^{k+1}=\bar{u}^{k}
+> -f_x
+> \frac{f_x\bar{u}^{k}+f_y\bar{v}^{k}+f_t}
+> {\lambda^2+f_x^2+f_y^2}
+> $$
+>
+> $$
+> v^{k+1}=\bar{v}^{k}
+> -f_y
+> \frac{f_x\bar{u}^{k}+f_y\bar{v}^{k}+f_t}
+> {\lambda^2+f_x^2+f_y^2}
+> $$
+>
+> where $\bar{u}^{k}$ and $\bar{v}^{k}$ are local averages.
 
 ![[Pics/7. Motion Estimation/optical-flow-input-frame.png|360]]
 
@@ -4128,7 +4100,7 @@ Input video frame used to illustrate dense optical-flow estimation.
 
 Dense optical flow estimated over the frame. The method gives one vector per pixel but tends to smooth across object boundaries.
 
-### Block Matching
+### Block matching
 
 **Block matching (BM)** divides the current frame into blocks and assigns one translation vector to each block. For a block $B_{p,q}$ and search window $\mathcal{W}$:
 
@@ -4168,16 +4140,14 @@ $$
 
 Two important cases:
 
-| Cost | Formula | Properties |
-| :--- | :--- | :--- |
-| **SAD** | $\sum |f_k-f_h|$ | robust to outliers, simpler, often more regular MVF |
-| **SSD** | $\sum (f_k-f_h)^2$ | directly minimizes squared residual energy, but more outlier-sensitive |
+- **SAD**: Formula: $\sum |f_k-f_h|$; Properties: robust to outliers, simpler, often more regular MVF.
+- **SSD**: Formula: $\sum (f_k-f_h)^2$; Properties: directly minimizes squared residual energy, but more outlier-sensitive.
 
 ![[Pics/7. Motion Estimation/sad-vs-ssd-motion-vectors.png|500]]
 
 SAD can give a more regular motion-vector field, while SSD may slightly improve PSNR because it matches the MSE objective.
 
-### Regularized Motion Estimation
+### Regularized motion estimation
 
 Motion vectors can be regularized by penalizing vectors that differ from neighboring vectors:
 
@@ -4201,16 +4171,14 @@ where $D(v)$ is prediction distortion and $R(v)$ is the number of bits needed to
 
 Regularization reduces MVF entropy by preferring smoother vectors, at the cost of a small prediction-quality loss.
 
-### Block Size Tradeoff
+### Block size tradeoff
 
-| Block size | Complexity | MV coding cost | Prediction error |
-| :--- | :--- | :--- | :--- |
-| larger blocks | lower | lower | higher |
-| smaller blocks | higher | higher | lower |
+- **larger blocks**: Complexity: lower; MV coding cost: lower; Prediction error: higher.
+- **smaller blocks**: Complexity: higher; MV coding cost: higher; Prediction error: lower.
 
 Large blocks are efficient but cannot model detailed object boundaries. Small blocks are flexible but produce more vectors and higher overhead.
 
-### Search Strategies
+### Search strategies
 
 For a full search window:
 
@@ -4242,7 +4210,7 @@ Diamond Search uses a large pattern to move across the cost surface and a small 
 
 Hexagon Search reduces new tests per iteration and is used in H.264/AVC-style fast ME.
 
-### Subpixel Precision
+### Subpixel precision
 
 Motion is not limited to integer pixels. Codecs usually refine integer vectors at half-pixel and quarter-pixel precision.
 
@@ -4262,7 +4230,7 @@ where $x,y,z,w$ are the four neighboring integer samples.
 
 Subpixel vectors improve prediction quality but require interpolation filters and extra search steps.
 
-### Variable Block Size
+### Variable block size
 
 Variable-size BM splits a block only when the rate-distortion cost improves:
 
@@ -4274,11 +4242,11 @@ Variable-size BM splits a block only when the rate-distortion cost improves:
 
 This is the practical solution used by modern standards: flat regions keep large blocks, while object boundaries use smaller partitions.
 
-### Parametric Motion Models
+### Parametric motion models
 
 Parametric ME represents the entire MVF with a small number of parameters.
 
-**Translation:**
+Translation:
 
 $$
 \mathbf{v}(\mathbf{p})=
@@ -4288,7 +4256,7 @@ b_2
 \end{bmatrix}
 $$
 
-**Affine model:**
+Affine model:
 
 $$
 \mathbf{v}(\mathbf{p})=
@@ -4332,16 +4300,14 @@ u_\pi(n,m)f_x+v_\pi(n,m)f_y+f_t
 \right]^2
 $$
 
-### Deep Learning Methods
+### Deep learning methods
 
 Deep learning treats optical flow as a learned correspondence problem. Training can be supervised with synthetic ground truth or unsupervised with photometric reconstruction losses.
 
-| Model | Year | Main contribution | Limitation |
-| :--- | :--- | :--- | :--- |
-| **FlowNet** | 2015 | first end-to-end CNN for dense optical flow | weak on fine details and small displacements |
-| **FlowNet 2.0** | 2017 | stacked networks and small-displacement module | large memory footprint |
-| **PWC-Net** | 2018 | pyramids, warping, cost volume | coarse-to-fine detail loss |
-| **RAFT** | 2020 | all-pairs correlation and recurrent GRU updates | high memory cost |
+- **FlowNet**: Year: 2015; Main contribution: first end-to-end CNN for dense optical flow; Limitation: weak on fine details and small displacements.
+- **FlowNet 2.0**: Year: 2017; Main contribution: stacked networks and small-displacement module; Limitation: large memory footprint.
+- **PWC-Net**: Year: 2018; Main contribution: pyramids, warping, cost volume; Limitation: coarse-to-fine detail loss.
+- **RAFT**: Year: 2020; Main contribution: all-pairs correlation and recurrent GRU updates; Limitation: high memory cost.
 
 ![[Pics/7. Motion Estimation/flownet-architecture.png|500]]
 
@@ -4354,47 +4320,49 @@ FlowNet 2.0 improves accuracy by stacking networks and specializing modules for 
 > [!Important] Compression vs. analysis
 > Learned dense flow dominates many analysis benchmarks. Block matching remains central in video compression because it is simple, controllable, standardizable, and naturally tied to rate-distortion optimization.
 
-## Visual Schemes
+## Visual schemes
 
-### Motion-Compensated Coding Loop
+### Motion-compensated coding loop
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Current frame f_k] --> B[Block partition]
-    B --> C[Motion estimation]
-    R[Reference frame f_h] --> C
-    C --> D[Motion vectors]
-    D --> E[Motion compensation]
+    A["Current frame f_k"] --> B["Block partition"]
+    B --> C["Motion estimation"]
+    R["Reference frame f_h"] --> C
+    C --> D["Motion vectors"]
+    D --> E["Motion compensation"]
     R --> E
-    E --> F[Prediction f_hat_k]
-    A --> G[Residual e]
+    E --> F["Prediction f_hat_k"]
+    A --> G["Residual e"]
     F --> G
-    D --> H[MV coding]
-    G --> I[Residual coding]
-    H --> J[Bitstream]
+    D --> H["MV coding"]
+    G --> I["Residual coding"]
+    H --> J["Bitstream"]
     I --> J
 ```
 
 The loop shows why ME is a codec tool: it creates a predictor, then only vectors and residual information must be transmitted.
 
-### Method Overview
+### Method overview
 
 ![[Pics/7. Motion Estimation/motion-estimation-methods-overview.png|600]]
 
 The overview connects the main ME families: optical flow, block matching, parametric models, and learned methods.
 
-### Variable Block-Size Decision
+### Variable block-size decision
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart TD
-    A[Block b] --> B[Estimate vector for b]
-    B --> C[Cost J = D + lambda R]
-    C --> D[Split into 4 sub-blocks]
-    D --> E[Estimate sub-block vectors]
-    E --> F[Cost J_sub = sum J_i]
-    F --> G{J_sub < J?}
-    G -- yes --> H[Keep split and recurse]
-    G -- no --> I[Keep parent block]
+    A["Block b"] --> B["Estimate vector for b"]
+    B --> C["Cost J = D + lambda R"]
+    C --> D["Split into 4 sub-blocks"]
+    D --> E["Estimate sub-block vectors"]
+    E --> F["Cost J_sub = sum J_i"]
+    F --> G{"J_sub < J?"}
+    G -->|yes| H["Keep split and recurse"]
+    G -->|no| I["Keep parent block"]
 ```
 
 This decision balances lower residual distortion against the extra rate required by more vectors and partition syntax.
@@ -4426,7 +4394,7 @@ $$
 
 The example shows the principle behind rate-distortion ME: a small distortion increase can be accepted if it saves enough motion-vector bits.
 
-### Search Complexity Example
+### Search complexity example
 
 For $A=B=7$, full search tests $225$ candidates. Fast search methods in the source example need about:
 
@@ -4438,34 +4406,31 @@ For $A=B=7$, full search tests $225$ candidates. Fast search methods in the sour
 
 Fast methods are efficient because natural-video cost surfaces are often locally well behaved, but they do not guarantee the global minimum.
 
-### Final Comparison
+### Final comparison
 
-| Method | Strength | Weakness |
-| :--- | :--- | :--- |
-| Horn-Schunck | dense, convex, elegant theory | over-smooths boundaries |
-| Full-search BM | global optimum in search window | expensive |
-| Fast BM | very low complexity | possible local minima |
-| Variable-size BM | good codec tradeoff | partition overhead and control complexity |
-| Affine ME | compact global/regional field | needs suitable region/model |
-| FlowNet / PWC-Net / RAFT | accurate dense flow for analysis | training data, memory, generalization |
+- **Horn-Schunck**: Strength: dense, convex, elegant theory; Weakness: over-smooths boundaries.
+- **Full-search BM**: Strength: global optimum in search window; Weakness: expensive.
+- **Fast BM**: Strength: very low complexity; Weakness: possible local minima.
+- **Variable-size BM**: Strength: good codec tradeoff; Weakness: partition overhead and control complexity.
+- **Affine ME**: Strength: compact global/regional field; Weakness: needs suitable region/model.
+- **FlowNet / PWC-Net / RAFT**: Strength: accurate dense flow for analysis; Weakness: training data, memory, generalization.
 
 > [!Important] What to remember
-> Motion estimation is a rate-distortion problem in video coding, not only a geometric matching problem. The best codec decision balances residual energy, motion-vector rate, search complexity, block partitioning, and interpolation precision.
-
+> Motion estimation in video coding is a rate-distortion problem. A good codec decision balances residual energy, motion-vector rate, search complexity, block partitioning, and interpolation precision.
 
 ---
 
-# Video Coding Principles
+# Video coding principles
 
-## Table of Contents
+## Contents
 
-- [[#Core Idea|Core Idea]]
-- [[#Key Concepts|Key Concepts]]
-- [[#Theory and Formulas|Theory and Formulas]]
-- [[#Visual Schemes|Visual Schemes]]
+- [[#Core idea|Core idea]]
+- [[#Main concepts|Main concepts]]
+- [[#Theory and formulas|Theory and formulas]]
+- [[#Visual schemes|Visual schemes]]
 - [[#Examples|Examples]]
 
-## Core Idea
+## Core idea
 
 **Video coding** compresses image sequences by exploiting two redundancies:
 
@@ -4475,21 +4440,21 @@ Fast methods are efficient because natural-video cost surfaces are often locally
 Spatial redundancy is handled with image-coding tools such as transform, quantization, and entropy coding. Temporal redundancy is handled with **prediction**: encode a residual instead of encoding each frame independently.
 
 > [!Important] Temporal prediction principle
-> **Statement:** predict current frame/block from information available to decoder, then code prediction error plus side information.
+> Statement: predict current frame/block from information available to decoder, then code prediction error plus side information.
 >
 > $$
 > \text{coded data} = \text{prediction parameters} + \text{residual}
 > $$
 >
-> **Meaning:** compression improves when residual is sparser and cheaper to encode than original signal.
+> Meaning: compression improves when residual is sparser and cheaper to encode than original signal.
 
 ![[Pics/8. Video Coding Principles/general-video-coder.png|560]]
 
 General video coder: temporal compression removes inter-frame redundancy, spatial compression removes intra-frame redundancy, buffer/rate control adapts bitstream production.
 
-## Key Concepts
+## Main concepts
 
-### Predictive Video Coding
+### Predictive video coding
 
 Simple temporal prediction reuses previous reconstructed frame:
 
@@ -4503,7 +4468,7 @@ This is **DPCM** in video form. It sends no motion parameter, but fails when obj
 
 DPCM-like loop: current image is predicted from previous reconstructed image; quantized error enters frame buffer for future prediction.
 
-### Motion Estimation and Motion Compensation
+### Motion estimation and motion compensation
 
 **Motion Estimation (ME)** finds displacement vectors. **Motion Compensation (MC)** uses those vectors to build predictor.
 
@@ -4525,7 +4490,7 @@ where $d$ measures prediction error and $r(\mathbf{v})$ approximates vector codi
 
 ME searches for a displaced reference block whose content best matches current block.
 
-### Motion-Vector Field Coding
+### Motion-vector field coding
 
 Motion vectors have two components, usually $v_x$ and $v_y$. They are spatially structured because nearby blocks often follow same object or camera motion.
 
@@ -4551,20 +4516,18 @@ where $A$ is left, $B$ is top, and $C$ is top-right.
 
 Median MVP is robust near motion boundaries and reduces vector residual entropy.
 
-### Intra, Inter, and Direct Modes
+### Intra, inter, and direct modes
 
 Video codecs work block by block. Each block chooses a **coding mode**:
 
-| Mode | Prediction source | Main payload |
-| :--- | :--- | :--- |
-| **Intra** | current frame only | transform-coded block or intra residual |
-| **Inter** | decoded reference frame(s) | motion vectors plus temporal residual |
-| **Direct** | inferred motion | little side information, often higher distortion |
-| **Lossless** | no quantization loss | high rate |
+- **Intra**: Prediction source: current frame only; Main payload: transform-coded block or intra residual.
+- **Inter**: Prediction source: decoded reference frame(s); Main payload: motion vectors plus temporal residual.
+- **Direct**: Prediction source: inferred motion; Main payload: little side information, often higher distortion.
+- **Lossless**: Prediction source: no quantization loss; Main payload: high rate.
 
 Mode choice is not standardized; bitstream syntax and decoder behavior are standardized.
 
-### Frame Types and GOP
+### Frame types and GOP
 
 A **Group of Pictures (GOP)** defines frame dependencies:
 
@@ -4580,7 +4543,7 @@ GOP controls prediction dependencies, random access, compression efficiency, del
 
 B frames can use forward, backward, or bidirectional prediction, improving compression but increasing delay and complexity.
 
-### Hybrid Video Codec
+### Hybrid video codec
 
 Practical standards use **hybrid video coding**:
 
@@ -4602,17 +4565,15 @@ Hybrid encoder includes transform coding, ME/MC, intra prediction, entropy codin
 
 Decoder is subset of encoder: it decodes side information and residuals, reconstructs blocks, and updates frame buffer.
 
-### Video Encoding Standards
+### Video encoding standards
 
 Standardized hybrid codecs share the same core architecture; generations differ mainly in degrees of freedom. Licensing also drives adoption:
 
-| Standard | Note |
-| :--- | :--- |
-| **MPEG-1/2/4** | among the first standards, since 1988 |
-| **H.264/AVC** | royalty-free |
-| **H.265/HEVC** | partly patented |
-| **H.266/VVC** | patented |
-| **AV1, VP8, VP9** | royalty-free (Alliance for Open Media, AOM) |
+- **MPEG-1/2/4**: Note: among the first standards, since 1988.
+- **H.264/AVC**: Note: royalty-free.
+- **H.265/HEVC**: Note: partly patented.
+- **H.266/VVC**: Note: patented.
+- **AV1, VP8, VP9**: Note: royalty-free (Alliance for Open Media, AOM)
 
 **MPEG-1** is the first generation. It introduced the MP3 audio format (MPEG-1 Audio Layer III) and targets low-rate digital video:
 
@@ -4622,11 +4583,11 @@ Standardized hybrid codecs share the same core architecture; generations differ 
 | max resolution | about $720\times576$ at 30 fps |
 | audio bitrate | 128 to 320 kbps |
 
-Standards from MPEG-2 onward (H.264/HEVC/VVC, AV1) are detailed in [[#Modern Video Compression Standards]].
+Standards from MPEG-2 onward (H.264/HEVC/VVC, AV1) are detailed in [[#Modern video compression standards]].
 
-## Theory and Formulas
+## Theory and formulas
 
-### Motion Compensation and Residual
+### Motion compensation and residual
 
 Once ME selects best vector, MC prediction is:
 
@@ -4655,7 +4616,7 @@ $$
 
 Motion-compensated image plus residual: residual is sparse except where prediction fails, e.g. occlusions and new areas.
 
-### Entropy of Motion Vectors
+### Entropy of motion vectors
 
 For a discrete vector-component distribution:
 
@@ -4675,16 +4636,14 @@ After MVP prediction, MVD histogram is more concentrated:
 
 Prediction error has lower entropy than raw vector field, so entropy coding needs fewer bits.
 
-### Motion Estimation Design Parameters
+### Motion estimation design parameters
 
-| Parameter | Options | Tradeoff |
-| :--- | :--- | :--- |
-| block size / shape | fixed or variable | small blocks improve prediction but increase rate and complexity |
-| cost function | SAD, SSD, regularized | SSD favors PSNR; SAD is simpler and robust; regularization reduces vector rate |
-| search strategy | full, hex, TZSearch | full search best in window; fast search much cheaper |
-| motion model | translation, affine | translation is simple; affine can improve RD but costs more |
+- **block size / shape**: Options: fixed or variable; Tradeoff: small blocks improve prediction but increase rate and complexity.
+- **cost function**: Options: SAD, SSD, regularized; Tradeoff: SSD favors PSNR; SAD is simpler and robust; regularization reduces vector rate.
+- **search strategy**: Options: full, hex, TZSearch; Tradeoff: full search best in window; fast search much cheaper.
+- **motion model**: Options: translation, affine; Tradeoff: translation is simple; affine can improve RD but costs more.
 
-### GOP and Coding Order
+### GOP and coding order
 
 B frames can depend on future anchor frames. Therefore **display order** and **coding/decoding order** may differ.
 
@@ -4698,7 +4657,7 @@ I, P, and B frames have different rate and quality behavior:
 
 Typical adjusted rates: I frames are about $3$ to $5$ times larger than P frames and $10$ to $20$ times larger than B frames.
 
-### Rate-Distortion Mode Selection
+### Rate-distortion mode selection
 
 For fixed quantization step $Q$, choose coding mode $i_k$ for each block $k$.
 
@@ -4731,10 +4690,8 @@ $$
 
 Empirical codec relations:
 
-| Codec | Example relation |
-| :--- | :--- |
-| MPEG-2 | $\lambda=aQ^2+b$ |
-| H.264 | $\lambda=c\cdot 2^{dQ+e}$ |
+- **MPEG-2**: Example relation: $\lambda=aQ^2+b$.
+- **H.264**: Example relation: $\lambda=c\cdot 2^{dQ+e}$.
 
 Motion-estimation multiplier often follows:
 
@@ -4742,7 +4699,7 @@ $$
 \lambda_{\text{ME}}=\sqrt{\lambda}
 $$
 
-### RD Plane Slope
+### RD plane slope
 
 From $J=D+\lambda R$:
 
@@ -4760,7 +4717,7 @@ Each coding mode and partition gives different rate-distortion point.
 
 RDO chooses point first touched by line with slope $-\lambda$ when line moves toward convex hull of candidates.
 
-### Block Partition
+### Block partition
 
 Variable block-size coding treats splitting as another mode:
 
@@ -4778,7 +4735,7 @@ Recursive decision:
 
 This avoids exhaustive partition search but is suboptimal.
 
-### Rate Control
+### Rate control
 
 Quantization step controls produced coding rate $R_C$, but actual rate depends on content. Target rate $R_T$ comes from channel/storage constraints.
 
@@ -4792,59 +4749,62 @@ Buffer feedback rules:
 >
 > **Meaning:** rate control trades visual quality against buffer overflow/underflow safety.
 
-## Visual Schemes
+## Visual schemes
 
-### Motion-Compensated Inter Coding
+### Motion-compensated inter coding
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Current block] --> B[Motion estimation]
-    R[Reference frame] --> B
-    B --> C[Motion vector]
-    C --> D[Motion compensation]
+    A["Current block"] --> B["Motion estimation"]
+    R["Reference frame"] --> B
+    B --> C["Motion vector"]
+    C --> D["Motion compensation"]
     R --> D
-    D --> E[Prediction]
-    A --> F[Residual]
+    D --> E["Prediction"]
+    A --> F["Residual"]
     E --> F
-    C --> G[MV entropy coding]
-    F --> H[Transform + quantization]
-    H --> I[Coefficient entropy coding]
-    G --> J[Bitstream]
+    C --> G["MV entropy coding"]
+    F --> H["Transform + quantization"]
+    H --> I["Coefficient entropy coding"]
+    G --> J["Bitstream"]
     I --> J
 ```
 
 Encoder sends vector side information plus coded residual, not predicted pixels.
 
-### Hybrid Codec Concept Map
+### Hybrid codec concept map
 
 ![[Pics/8. Video Coding Principles/hybrid-video-concept-map.png|650]]
 
 Concept map links GOP, temporal prediction, spatial transform coding, motion estimation, entropy coding, and rate control.
 
-### Block Partition Decision
+### Block partition decision
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart TD
-    A[Current coding unit] --> B[Evaluate unsplit modes]
-    B --> C[Cost J_B]
-    C --> D[Split into subblocks]
-    D --> E[Evaluate subblock modes]
-    E --> F[Cost J_split]
-    F --> G{J_split < J_B?}
-    G -- yes --> H[Keep split and recurse]
-    G -- no --> I[Keep current block]
+    A["Current coding unit"] --> B["Evaluate unsplit modes"]
+    B --> C["Cost J_B"]
+    C --> D["Split into subblocks"]
+    D --> E["Evaluate subblock modes"]
+    E --> F["Cost J_split"]
+    F --> G{"J_split < J_B?"}
+    G -->|yes| H["Keep split and recurse"]
+    G -->|no| I["Keep current block"]
 ```
 
 Partition selection is RD optimization over block geometry.
 
-### Rate-Control Feedback
+### Rate-control feedback
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Encoder] -->|rate R_C| B[Channel buffer]
-    B -->|rate R_T| C[Channel / storage]
-    B --> D[Occupancy measure]
-    D --> E[Controller]
+    A["Encoder"] -->|rate R_C| B["Channel buffer"]
+    B -->|rate R_T| C["Channel / storage"]
+    B --> D["Occupancy measure"]
+    D --> E["Controller"]
     E -->|adjust Q| A
 ```
 
@@ -4852,7 +4812,7 @@ Increasing $Q$ lowers produced rate and quality; decreasing $Q$ raises rate and 
 
 ## Examples
 
-### Raw Motion-Vector Coding
+### Raw motion-vector coding
 
 For *Flower* sequence, direct raw MV coding gives:
 
@@ -4865,7 +4825,7 @@ For *Flower* sequence, direct raw MV coding gives:
 > [!Example] Why Exp-Golomb fails here
 > Exp-Golomb is efficient when values concentrate near zero. Raw MV components have broad support, so Huffman/arithmetic coding are much better.
 
-### Predictive MV Coding Gain
+### Predictive MV coding gain
 
 After median MVP and MVD coding:
 
@@ -4877,17 +4837,15 @@ After median MVP and MVD coding:
 
 Best result in source example: **prediction + arithmetic coding**, $1199$ bits, $3.03$ bits/vector.
 
-### Frame-Type Tradeoffs
+### Frame-type tradeoffs
 
-| Frame type | Prediction | Rate | Complexity | Role |
-| :--- | :--- | :--- | :--- | :--- |
-| I | none | highest | low | random access, error reset |
-| P | previous anchor | medium | high | efficient forward prediction |
-| B | previous and future references | lowest | very high | best compression, adds delay |
+- **I**: Prediction: none; Rate: highest; Complexity: low; Role: random access, error reset.
+- **P**: Prediction: previous anchor; Rate: medium; Complexity: high; Role: efficient forward prediction.
+- **B**: Prediction: previous and future references; Rate: lowest; Complexity: very high; Role: best compression, adds delay.
 
 I frames should keep high quality because prediction errors can propagate through GOP.
 
-### Mode-Selection Interpretation
+### Mode-selection interpretation
 
 For one block, possible modes produce several $(R,D)$ points: Direct, Inter16, Inter8, Intra, Lossless. Encoder chooses minimum:
 
@@ -4898,38 +4856,35 @@ $$
 - high $\lambda$: save bits, choose low-rate modes such as Direct;
 - low $\lambda$: preserve quality, choose lower-distortion modes such as fine Inter partitions or Lossless.
 
-### Final Exam Summary
+### Final exam checklist
 
-| Concept | Must remember |
-| :--- | :--- |
-| temporal prediction | code residual instead of full frame |
-| ME | find vector minimizing $d+\lambda_{\text{ME}}r$ |
-| MC | copy reference block indicated by vector |
-| MVD | code vector residual after spatial prediction |
-| GOP | controls dependencies, delay, access, compression |
-| I/P/B | increasing prediction efficiency and complexity from I to B |
-| hybrid codec | prediction + transform/quantization + entropy coding + reconstruction loop |
-| RDO | choose mode/partition minimizing $D+\lambda R$ |
-| rate control | adapt $Q$ from buffer occupancy |
-| standardization | decoder and bitstream standardized; encoder decisions not standardized |
+- **temporal prediction**: code residual instead of full frame.
+- **ME**: find vector minimizing $d+\lambda_{\text{ME}}r$.
+- **MC**: copy reference block indicated by vector.
+- **MVD**: code vector residual after spatial prediction.
+- **GOP**: controls dependencies, delay, access, compression.
+- **I/P/B**: increasing prediction efficiency and complexity from I to B.
+- **hybrid codec**: prediction + transform/quantization + entropy coding + reconstruction loop.
+- **RDO**: choose mode/partition minimizing $D+\lambda R$.
+- **rate control**: adapt $Q$ from buffer occupancy.
+- **standardization**: decoder and bitstream standardized; encoder decisions not standardized.
 
 > [!Important] Main takeaway
 > Video coding is joint optimization of prediction quality, residual sparsity, side-information rate, computational cost, and buffer constraints.
 
-
 ---
 
-# Modern Video Compression Standards
+# Modern video compression standards
 
-## Table of Contents
+## Contents
 
-- [[#Core Idea|Core Idea]]
-- [[#Key Concepts|Key Concepts]]
-- [[#Theory and Formulas|Theory and Formulas]]
-- [[#Visual Schemes|Visual Schemes]]
+- [[#Core idea|Core idea]]
+- [[#Main concepts|Main concepts]]
+- [[#Theory and formulas|Theory and formulas]]
+- [[#Visual schemes|Visual schemes]]
 - [[#Examples|Examples]]
 
-## Core Idea
+## Core idea
 
 Modern video standards from MPEG-1 to H.266/VVC keep the same **hybrid video coding** paradigm:
 
@@ -4940,17 +4895,17 @@ Modern video standards from MPEG-1 to H.266/VVC keep the same **hybrid video cod
 - reconstruct frame inside encoder to keep decoder and encoder synchronized.
 
 > [!Important] Universal hybrid paradigm
-> **Statement:** modern video standards share prediction, residual coding, transform, quantization, entropy coding, in-loop reconstruction, and reference-frame buffering.
+> Statement: modern video standards share prediction, residual coding, transform, quantization, entropy coding, in-loop reconstruction, and reference-frame buffering.
 >
-> **Meaning:** codec generations mainly differ in how much freedom they give to partitioning, prediction, transforms, filters, and transport syntax.
+> Meaning: codec generations mainly differ in how much freedom they give to partitioning, prediction, transforms, filters, and transport syntax.
 
 ![[Pics/9. Modern Video Compression Standards/universal-hybrid-encoder.png|650]]
 
 Universal hybrid encoder: mode decision chooses Intra or Inter prediction, residual is transform-coded, and decoded reconstruction re-enters frame buffer to prevent drift.
 
-## Key Concepts
+## Main concepts
 
-### What Standards Define
+### What standards define
 
 Video standards do **not** standardize full encoder optimization. They standardize:
 
@@ -4967,17 +4922,15 @@ Standard scope: decoder and bitstream are fixed; encoder implementation is compe
 > [!Important] Interoperability
 > Any compliant decoder must produce same reconstruction from same valid bitstream. Encoders may differ in RDO search, heuristics, machine-learning pruning, and hardware scheduling.
 
-### Historical Evolution
+### Historical evolution
 
 Generations improve compression by increasing degrees of freedom:
 
-| Standard | Main design step | Cost |
-| :--- | :--- | :--- |
-| **MPEG-2** | basic hybrid coding | low complexity, weak compression |
-| **H.264/AVC** | macroblocks, strong ME, CABAC/CAVLC | much better efficiency |
-| **H.265/HEVC** | CTUs, quad-tree, larger transforms, SAO | higher encoder complexity |
-| **H.266/VVC** | QT+MTT, affine tools, MTS, ALF | very high complexity |
-| **AV1** | royalty-free web codec, superblocks, strong filters | high complexity, broad web focus |
+- **MPEG-2**: Main design step: basic hybrid coding; Cost: low complexity, weak compression.
+- **H.264/AVC**: Main design step: macroblocks, strong ME, CABAC/CAVLC; Cost: much better efficiency.
+- **H.265/HEVC**: Main design step: CTUs, quad-tree, larger transforms, SAO; Cost: higher encoder complexity.
+- **H.266/VVC**: Main design step: QT+MTT, affine tools, MTS, ALF; Cost: very high complexity.
+- **AV1**: Main design step: royalty-free web codec, superblocks, strong filters; Cost: high complexity, broad web focus.
 
 ![[Pics/9. Modern Video Compression Standards/codec-evolution-timeline.png|500]]
 
@@ -4986,35 +4939,31 @@ Codec evolution trades lower bitrate for much larger encoder search space.
 > [!Important] Golden rule
 > New codec generations often target roughly half bitrate for same perceptual quality, but encoder complexity can increase by about $10x$.
 
-### Source 2026 Adoption Scenarios
+### Source 2026 adoption scenarios
 
 Course notes frame codec adoption as ecosystem-driven:
 
-| Ecosystem | Typical codecs | Main reason |
-| :--- | :--- | :--- |
-| real-time / legacy | H.264/AVC | universal hardware, low latency |
-| broadcast / mobile | HEVC, H.264 | mature 4K hardware support |
-| web streaming | AV1, H.264, HEVC | AV1 royalty-free appeal, H.264 compatibility |
-| next-gen 8K / VR | VVC, AV1 | maximum compression, higher complexity |
+- **real-time / legacy**: Typical codecs: H.264/AVC; Main reason: universal hardware, low latency.
+- **broadcast / mobile**: Typical codecs: HEVC, H.264; Main reason: mature 4K hardware support.
+- **web streaming**: Typical codecs: AV1, H.264, HEVC; Main reason: AV1 royalty-free appeal, H.264 compatibility.
+- **next-gen 8K / VR**: Typical codecs: VVC, AV1; Main reason: maximum compression, higher complexity.
 
-Adoption depends on licensing, decoder hardware, battery cost, latency, and platform support, not only compression efficiency.
+Adoption depends on compression efficiency, licensing, decoder hardware, battery cost, latency, and platform support.
 
-### Core Standard Tools
+### Core standard tools
 
-| Layer | Tool | Purpose |
-| :--- | :--- | :--- |
-| partitioning | MB, CTU, superblock, QT, MTT | adapt block geometry to content |
-| prediction | Intra, Inter, Merge, affine | remove spatial/temporal redundancy |
-| residual coding | DCT/DST/MTS transforms | compact residual energy |
-| quantization | QP-controlled scalar quantization | rate-distortion control |
-| entropy coding | CABAC / arithmetic coding | lossless syntax compression |
-| filtering | deblocking, SAO, ALF, CDEF | avoid artifacts in reference frames |
-| transport | VCL/NAL, NALUs, OBUs | map compressed video to networks/files |
-| parallelism | slices, tiles, WPP | error containment and hardware speed |
+- **partitioning**: Tool: MB, CTU, superblock, QT, MTT; Purpose: adapt block geometry to content.
+- **prediction**: Tool: Intra, Inter, Merge, affine; Purpose: remove spatial/temporal redundancy.
+- **residual coding**: Tool: DCT/DST/MTS transforms; Purpose: compact residual energy.
+- **quantization**: Tool: QP-controlled scalar quantization; Purpose: rate-distortion control.
+- **entropy coding**: Tool: CABAC / arithmetic coding; Purpose: lossless syntax compression.
+- **filtering**: Tool: deblocking, SAO, ALF, CDEF; Purpose: avoid artifacts in reference frames.
+- **transport**: Tool: VCL/NAL, NALUs, OBUs; Purpose: map compressed video to networks/files.
+- **parallelism**: Tool: slices, tiles, WPP; Purpose: error containment and hardware speed.
 
-## Theory and Formulas
+## Theory and formulas
 
-### Rate-Distortion Optimization
+### Rate-distortion optimization
 
 For each coding decision:
 
@@ -5026,24 +4975,24 @@ where $D$ is distortion, $R$ is rate, and $\lambda$ controls quality-rate balanc
 
 > [!Important] RDO
 > Encoder should not select lowest distortion or lowest rate alone. It selects option minimizing weighted cost $D+\lambda R$.
+>
+> Block splitting is also a mode decision:
+>
+> $$
+> J_{\text{split}}=\sum_i J_{\text{subblock}_i}
+> $$
+>
+> Split if:
+>
+> $$
+> J_{\text{split}}<J_B
+> $$
+>
+> This principle drives modern partition trees.
 
-Block splitting is also a mode decision:
+### Space partitioning evolution
 
-$$
-J_{\text{split}}=\sum_i J_{\text{subblock}_i}
-$$
-
-Split if:
-
-$$
-J_{\text{split}}<J_B
-$$
-
-This principle drives modern partition trees.
-
-### Space Partitioning Evolution
-
-#### H.264/AVC: Macroblocks
+#### H.264/AVC: macroblocks
 
 H.264 uses $16 \times 16$ **macroblocks**. Variable block-size partitioning supports:
 
@@ -5054,7 +5003,7 @@ H.264 uses $16 \times 16$ **macroblocks**. Variable block-size partitioning supp
 
 Limitation: $16 \times 16$ maximum is inefficient for HD/4K smooth regions, where larger areas could be predicted with fewer bits.
 
-#### H.265/HEVC: CTU and Quad-Tree
+#### H.265/HEVC: CTU and quad-tree
 
 HEVC replaces macroblocks with **Coding Tree Units (CTUs)** up to $64 \times 64$. CTU splits recursively into square **Coding Units (CUs)** through quad-tree partitioning.
 
@@ -5080,7 +5029,7 @@ VVC expands CTUs up to $128 \times 128$ and introduces **Multi-Type Tree (MTT)**
 
 QT+MTT gives rectangular blocks, useful for object edges and directional textures, but increases RDO search complexity.
 
-#### AV1: Superblock Partitioning
+#### AV1: superblock partitioning
 
 AV1 uses up to $128 \times 128$ **superblocks** and 10-way partitioning, including elongated $4:1$ and $1:4$ patterns.
 
@@ -5088,7 +5037,7 @@ AV1 uses up to $128 \times 128$ **superblocks** and 10-way partitioning, includi
 
 AV1 partitioning gives high geometric freedom, especially for web-streaming efficiency.
 
-### RDO Search Burden
+### RDO search burden
 
 Modern partitioning forms huge decision trees. Reference encoders often use DFS:
 
@@ -5107,7 +5056,7 @@ Production encoders prune using:
 - early termination;
 - learned split classifiers such as LightGBM or small CNNs.
 
-### Intra Prediction
+### Intra prediction
 
 **Intra prediction** uses already decoded top and left neighbors to predict current block.
 
@@ -5137,7 +5086,7 @@ Directional modes improve texture prediction but require more signaling.
 
 For many small blocks, Intra-mode combinations explode; practical encoders search sequentially and prune.
 
-### Most Probable Mode
+### Most probable mode
 
 If VVC exposes 67 Intra modes, naive signaling needs around 7 bits per block. For tiny $4 \times 4$ blocks this can erase prediction gains.
 
@@ -5148,7 +5097,7 @@ If VVC exposes 67 Intra modes, naive signaling needs around 7 bits per block. Fo
 - HEVC uses 3 MPM candidates;
 - VVC uses 6 MPM candidates.
 
-### Inter Prediction
+### Inter prediction
 
 Inter prediction uses ME/MC and reference frames in the **Decoded Picture Buffer (DPB)**.
 
@@ -5162,27 +5111,23 @@ Modern tools:
 
 ![[Pics/9. Modern Video Compression Standards/multiple-reference-frames.png|520]]
 
-Multiple reference frames let encoder choose best temporal predictor, not only nearest frame.
+Multiple reference frames let the encoder choose the best temporal predictor, including frames that are not nearest in time.
 
 Sub-pixel precision:
 
-| Codec family | Motion precision |
-| :--- | :--- |
-| H.264/HEVC/VVC | quarter-pel, $1/4$ pixel |
-| AV1 | eighth-pel, $1/8$ pixel |
+- **H.264/HEVC/VVC**: Motion precision: quarter-pel, $1/4$ pixel.
+- **AV1**: Motion precision: eighth-pel, $1/8$ pixel.
 
-### Motion-Vector Prediction and Merge
+### Motion-vector prediction and merge
 
 Motion vectors must also be coded efficiently.
 
-| Tool | Idea |
-| :--- | :--- |
-| H.264 Skip/Direct | use median of spatial neighbors; if correct, send no MV |
-| HEVC/VVC Merge | build candidate list from spatial and temporal candidates; send index |
+- **H.264 Skip/Direct**: Idea: use median of spatial neighbors; if correct, send no MV.
+- **HEVC/VVC Merge**: Idea: build candidate list from spatial and temporal candidates; send index.
 
 Merge mode shares both motion vector and reference index. It replaces raw MV transmission with small candidate index.
 
-### Beyond Translational Motion
+### Beyond translational motion
 
 Modern codecs model more than 2D translation:
 
@@ -5197,11 +5142,9 @@ Affine prediction captures motion that a single translational vector cannot mode
 
 Residual transform evolution:
 
-| Standard | Transform design |
-| :--- | :--- |
-| H.264/AVC | $4 \times 4$ integer DCT approximation |
-| H.265/HEVC | transforms up to $32 \times 32$, DST for $4 \times 4$ Intra |
-| H.266/VVC | Multiple Transform Selection, non-square transforms |
+- **H.264/AVC**: Transform design: $4 \times 4$ integer DCT approximation.
+- **H.265/HEVC**: Transform design: transforms up to $32 \times 32$, DST for $4 \times 4$ Intra.
+- **H.266/VVC**: Transform design: Multiple Transform Selection, non-square transforms.
 
 Integer transforms keep encoder/decoder synchronized and avoid mismatch from floating-point precision.
 
@@ -5214,14 +5157,14 @@ Quantization is main lossy step. In H.264/HEVC:
 
 > [!Important] QP
 > Higher QP means coarser quantization, lower bitrate, and higher distortion. QP is primary rate-control knob.
+>
+> Modern standards rely on **CABAC**:
+>
+> - binarizes syntax elements;
+> - adapts probabilities from spatial context;
+> - gives about 5%-15% rate reduction over older VLC/CAVLC.
 
-Modern standards rely on **CABAC**:
-
-- binarizes syntax elements;
-- adapts probabilities from spatial context;
-- gives about 5%-15% rate reduction over older VLC/CAVLC.
-
-### In-Loop Filters
+### In-loop filters
 
 Independent block transform and quantization create **blocking artifacts** at low bitrate.
 
@@ -5231,12 +5174,10 @@ If artifacts enter DPB, future motion compensation uses damaged references. Ther
 
 Filter evolution:
 
-| Codec | Filters |
-| :--- | :--- |
-| H.264/AVC | deblocking on $4 \times 4$ edges |
-| H.265/HEVC | lighter deblocking on $8 \times 8$ grid plus SAO |
-| H.266/VVC | deblocking, SAO, ALF, LMCS |
-| AV1 | CDEF, loop restoration, film grain synthesis |
+- **H.264/AVC**: Filters: deblocking on $4 \times 4$ edges.
+- **H.265/HEVC**: Filters: lighter deblocking on $8 \times 8$ grid plus SAO.
+- **H.266/VVC**: Filters: deblocking, SAO, ALF, LMCS.
+- **AV1**: Filters: CDEF, loop restoration, film grain synthesis.
 
 ### Slices
 
@@ -5263,13 +5204,11 @@ VCL produces compressed slices; NAL packages them for RTP/IP, MP4, MPEG-2 TS, or
 
 NALU types:
 
-| Unit | Meaning |
-| :--- | :--- |
-| VCL NALU | compressed slice data: modes, MVs, coefficients |
-| SPS | Sequence Parameter Set: sequence-level parameters |
-| PPS | Picture Parameter Set: per-picture options |
-| SEI | extra metadata: HDR, subtitles, user data |
-| AUD | optional Access Unit Delimiter |
+- **VCL NALU**: Meaning: compressed slice data: modes, MVs, coefficients.
+- **SPS**: Meaning: Sequence Parameter Set: sequence-level parameters.
+- **PPS**: Meaning: Picture Parameter Set: per-picture options.
+- **SEI**: Meaning: extra metadata: HDR, subtitles, user data.
+- **AUD**: Meaning: optional Access Unit Delimiter.
 
 **Access Unit (AU)**: all NALUs needed to decode one frame.
 
@@ -5279,7 +5218,7 @@ AU is frame-level decoding group; NALUs are syntax/transport units inside it.
 
 AV1 uses **OBUs** (*Open Bitstream Units*) instead of MPEG-style NALUs.
 
-### Annex-B vs Packetized Format
+### Annex-B vs packetized format
 
 **Annex-B byte-stream** inserts start code before each NALU:
 
@@ -5301,7 +5240,7 @@ Packetized format is software-friendly and common in MP4-like containers.
 
 HEVC/VVC keep both formats and expand NALU header to 2 bytes for Temporal ID and Layer ID. AV1 drops Annex-B start codes and uses length-prefixed OBUs.
 
-### Network-Friendly Operations
+### Network-friendly operations
 
 NAL structure lets intermediate nodes inspect stream without decoding:
 
@@ -5313,17 +5252,15 @@ NAL structure lets intermediate nodes inspect stream without decoding:
 
 NAL headers allow network-aware pruning, protection, and packet fragmentation.
 
-### Random Access
+### Random access
 
 Random access points define where decoding may restart cleanly.
 
 ![[Pics/9. Modern Video Compression Standards/random-access-idr-cra-bla.png|600]]
 
-| RAP type | Meaning | Use |
-| :--- | :--- | :--- |
-| **IDR** | clears DPB; future frames cannot reference before IDR | clean restart, scene cuts |
-| **CRA** | Intra picture; leading RASL frames may reference past in normal playback | efficient seeking in HEVC+ |
-| **BLA** | like CRA but signals broken past references | splicing, ad insertion, transcoding |
+- **IDR**: Meaning: clears DPB; future frames cannot reference before IDR; Use: clean restart, scene cuts.
+- **CRA**: Meaning: Intra picture; leading RASL frames may reference past in normal playback; Use: efficient seeking in HEVC+.
+- **BLA**: Meaning: like CRA but signals broken past references; Use: splicing, ad insertion, transcoding.
 
 CRA improves compression compared with frequent IDR because normal playback can keep useful past references.
 
@@ -5345,73 +5282,76 @@ Tiles enable independent rectangular processing regions.
 
 > [!Important] Tile bandwidth saving
 > Tile-based adaptive 360-degree streaming can reduce bandwidth by about 50%-60% without degrading perceived viewport quality.
-
-**Wavefront Parallel Processing (WPP)** starts CTU row encoding after two CTUs of previous row are ready.
+>
+> **Wavefront Parallel Processing (WPP)** starts CTU row encoding after two CTUs of previous row are ready.
 
 ![[Pics/9. Modern Video Compression Standards/wavefront-parallel-processing.png|520]]
 
 WPP preserves spatial prediction contexts while enabling row-level multicore parallelism.
 
-## Visual Schemes
+## Visual schemes
 
-### Modern Hybrid Encoder Loop
+### Modern hybrid encoder loop
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Input frame] --> B[Mode decision]
-    B --> C[Intra prediction]
-    B --> D[Inter prediction]
-    D --> E[Motion compensation]
-    C --> F[Prediction]
+    A["Input frame"] --> B["Mode decision"]
+    B --> C["Intra prediction"]
+    B --> D["Inter prediction"]
+    D --> E["Motion compensation"]
+    C --> F["Prediction"]
     E --> F
-    A --> G[Residual]
+    A --> G["Residual"]
     F --> G
-    G --> H[Transform]
-    H --> I[Quantization]
-    I --> J[Entropy coding]
-    J --> K[Bitstream]
-    I --> L[Inverse quantization]
-    L --> M[Inverse transform]
-    M --> N[Reconstruction]
+    G --> H["Transform"]
+    H --> I["Quantization"]
+    I --> J["Entropy coding"]
+    J --> K["Bitstream"]
+    I --> L["Inverse quantization"]
+    L --> M["Inverse transform"]
+    M --> N["Reconstruction"]
     F --> N
-    N --> O[In-loop filters]
-    O --> P[Frame buffer]
+    N --> O["In-loop filters"]
+    O --> P["Frame buffer"]
     P --> D
 ```
 
 Internal decoder loop makes encoder use same references as decoder.
 
-### Standard Abstraction
+### Standard abstraction
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Encoder optimization] --> B[Compliant bitstream]
-    B --> C[Standard decoder]
-    C --> D[Reconstructed video]
-    E[Standard] --> B
+    A["Encoder optimization"] --> B["Compliant bitstream"]
+    B --> C["Standard decoder"]
+    C --> D["Reconstructed video"]
+    E["Standard"] --> B
     E --> C
 ```
 
 Standards constrain bitstream and decoder, not full encoder search algorithm.
 
-### Transport Mapping
+### Transport mapping
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart TD
-    A[VCL: slices] --> B[NAL units]
-    B --> C{Delivery format}
-    C --> D[Annex-B start codes]
-    C --> E[Length-prefixed packets]
-    D --> F[Broadcast / raw stream]
-    E --> G[MP4 / packetized storage]
-    B --> H[RTP fragmentation]
+    A["VCL: slices"] --> B["NAL units"]
+    B --> C{"Delivery format"}
+    C --> D["Annex-B start codes"]
+    C --> E["Length-prefixed packets"]
+    D --> F["Broadcast / raw stream"]
+    E --> G["MP4 / packetized storage"]
+    B --> H["RTP fragmentation"]
 ```
 
 NAL separates compression syntax from delivery syntax.
 
 ## Examples
 
-### UVG HoneyBee Comparison
+### UVG HoneyBee comparison
 
 Source sequence: 1080p, 120 fps, target 2.0 Mbps.
 
@@ -5426,7 +5366,7 @@ Source sequence: 1080p, 120 fps, target 2.0 Mbps.
 > [!Example] Takeaway
 > MPEG-2 cannot meet target bitrate on this sequence. H.264 reaches target. HEVC, AV1, and VVC give higher PSNR but require far larger encoding time.
 
-### UVG Bosphorus Comparison
+### UVG Bosphorus comparison
 
 Source sequence: 1080p, 120 fps, VBV target 2.0 Mbps.
 
@@ -5441,7 +5381,7 @@ Source sequence: 1080p, 120 fps, VBV target 2.0 Mbps.
 > [!Note] Missing visual
 > Source references HoneyBee and Bosphorus visual codec-comparison figures, but no corresponding image asset was present in available course image folders. Metric tables preserve exam-relevant comparison.
 
-### Partition Evolution Summary
+### Partition evolution summary
 
 | Codec | Largest unit | Partition style | Main tradeoff |
 | :--- | :--- | :--- | :--- |
@@ -5450,46 +5390,43 @@ Source sequence: 1080p, 120 fps, VBV target 2.0 Mbps.
 | VVC | $128 \times 128$ CTU | QT + binary/ternary MTT | best flexibility, high search cost |
 | AV1 | $128 \times 128$ superblock | 10-way split | flexible royalty-free web codec |
 
-### Final Exam Table
+### Final exam checklist
 
-| Concept | Must remember |
-| :--- | :--- |
-| hybrid paradigm | same core architecture from MPEG-1 to VVC |
-| standard scope | bitstream + decoder standardized, encoder free |
-| RDO | every mode/partition decided by $J=D+\lambda R$ |
-| complexity growth | more freedom improves compression but expands search tree |
-| Intra evolution | directions grow from H.264 to HEVC to VVC |
-| MPM | predicts Intra mode to reduce signaling |
-| Inter evolution | multiple references, merge mode, fractional ME, affine motion |
-| transform evolution | larger/flexible transforms and MTS for residuals |
-| QP | main lossy rate-control knob; +6 QP doubles step size |
-| CABAC | adaptive arithmetic coding for syntax elements |
-| in-loop filters | protect future references from blocking/ringing |
-| VCL/NAL | compression separated from transport |
-| Annex-B | start-code byte stream for continuous delivery |
-| packetized format | length-prefixed NALUs for containers |
-| AV1 OBU | AV1 replaces NALUs with length-prefixed OBUs |
-| IDR/CRA/BLA | random access and stream splicing tools |
-| tiles | independent regions for parallelism and 360 streaming |
-| WPP | row-level CTU parallelism with two-CTU offset |
+- **hybrid paradigm**: same core architecture from MPEG-1 to VVC.
+- **standard scope**: bitstream + decoder standardized, encoder free.
+- **RDO**: every mode/partition decided by $J=D+\lambda R$.
+- **complexity growth**: more freedom improves compression but expands search tree.
+- **Intra evolution**: directions grow from H.264 to HEVC to VVC.
+- **MPM**: predicts Intra mode to reduce signaling.
+- **Inter evolution**: multiple references, merge mode, fractional ME, affine motion.
+- **transform evolution**: larger/flexible transforms and MTS for residuals.
+- **QP**: main lossy rate-control knob; +6 QP doubles step size.
+- **CABAC**: adaptive arithmetic coding for syntax elements.
+- **in-loop filters**: protect future references from blocking/ringing.
+- **VCL/NAL**: compression separated from transport.
+- **Annex-B**: start-code byte stream for continuous delivery.
+- **packetized format**: length-prefixed NALUs for containers.
+- **AV1 OBU**: AV1 replaces NALUs with length-prefixed OBUs.
+- **IDR/CRA/BLA**: random access and stream splicing tools.
+- **tiles**: independent regions for parallelism and 360 streaming.
+- **WPP**: row-level CTU parallelism with two-CTU offset.
 
 > [!Important] Main takeaway
 > Modern standards improve compression by adding controlled freedom. Encoder must spend computation to search partitions, modes, vectors, transforms, filters, and syntax choices, while decoder remains standardized and deterministic.
 
-
 ---
 
-# Audio Coding
+# Audio coding
 
-## Table of Contents
+## Contents
 
-- [[#Core Idea|Core Idea]]
-- [[#Key Concepts|Key Concepts]]
-- [[#Theory and Formulas|Theory and Formulas]]
-- [[#Visual Schemes|Visual Schemes]]
+- [[#Core idea|Core idea]]
+- [[#Main concepts|Main concepts]]
+- [[#Theory and formulas|Theory and formulas]]
+- [[#Visual schemes|Visual schemes]]
 - [[#Examples|Examples]]
 
-## Core Idea
+## Core idea
 
 **Audio coding** compresses speech and general audio by exploiting both signal redundancy and human perception.
 
@@ -5503,23 +5440,21 @@ Two main paradigms:
 
 Modern codecs such as **Opus**, **EVS**, and **USAC** are hybrid: they switch or blend speech-oriented and music-oriented tools.
 
-## Key Concepts
+## Main concepts
 
-### Speech vs. Music
+### Speech vs. music
 
 Audio signals are locally stationary, but stationarity time varies:
 
-| Signal | Typical behavior | Coding implication |
-| :--- | :--- | :--- |
-| speech | quasi-stationary around 20 ms | LPC/CELP frame analysis works well |
-| tonal music | can be stable for hundreds of ms | long transform windows improve frequency resolution |
-| transients | can change in 2-5 ms | short windows avoid pre-echo |
-| complex game/effects audio | noise-like and mixed | parametric speech models fail |
+- **speech**: Typical behavior: quasi-stationary around 20 ms; Coding implication: LPC/CELP frame analysis works well.
+- **tonal music**: Typical behavior: can be stable for hundreds of ms; Coding implication: long transform windows improve frequency resolution.
+- **transients**: Typical behavior: can change in 2-5 ms; Coding implication: short windows avoid pre-echo.
+- **complex game/effects audio**: Typical behavior: noise-like and mixed; Coding implication: parametric speech models fail.
 
 > [!Important] Window-length compromise
 > Long windows give good frequency resolution for stable tones. Short windows localize attacks and reduce pre-echo around transients.
 
-### Empirical Signal Structure
+### Empirical signal structure
 
 Voiced speech has strong correlation between consecutive samples and harmonic spectral structure.
 
@@ -5537,7 +5472,7 @@ Music can be less predictable in time domain, especially with beats and transien
 
 Music amplitudes can still be sparse, but structure is not tied to a single vocal-tract model.
 
-### Source-Filter Model
+### Source-filter model
 
 Speech production:
 
@@ -5557,18 +5492,16 @@ where $E(f)$ is excitation spectrum and $H(f)$ is vocal-tract transfer function.
 
 Source-filter model separates excitation from resonant vocal-tract envelope.
 
-### Voiced and Unvoiced Speech
+### Voiced and unvoiced speech
 
-| Type | Excitation | Signal | Codec parameter |
-| :--- | :--- | :--- | :--- |
-| voiced | periodic glottal pulses | harmonic, pitch period $T_0$ | pitch and gain |
-| unvoiced | turbulent noise | stochastic, noise-like | noise excitation and gain |
+- **voiced**: Excitation: periodic glottal pulses; Signal: harmonic, pitch period $T_0$; Codec parameter: pitch and gain.
+- **unvoiced**: Excitation: turbulent noise; Signal: stochastic, noise-like; Codec parameter: noise excitation and gain.
 
 Encoder must decide voiced/unvoiced per frame because synthesis excitation differs.
 
-## Theory and Formulas
+## Theory and formulas
 
-### Linear Predictive Coding
+### Linear predictive coding
 
 LPC estimates current sample from past $P$ samples:
 
@@ -5592,6 +5525,7 @@ $$
 > [!Important] LPC whitening filter
 > LPC removes vocal-tract spectral envelope. If prediction is good, residual $y(n)$ becomes white-noise-like for unvoiced frames or impulse-train-like for voiced frames.
 
+
 Optimal LPC coefficients minimize residual variance. Yule-Walker system:
 
 $$
@@ -5600,7 +5534,7 @@ $$
 
 $\mathbf{R}_x$ is Toeplitz, so Levinson-Durbin solves it in $\mathcal{O}(P^2)$.
 
-### LPC Analysis
+### LPC analysis
 
 LPC encoder extracts, usually every 20 ms:
 
@@ -5622,7 +5556,7 @@ $$
 
 Small lags estimate LPC coefficients; larger lags reveal pitch peaks.
 
-### LPC Synthesis
+### LPC synthesis
 
 Analysis:
 
@@ -5644,7 +5578,7 @@ $$
 
 The synthesis filter $1/A(z)$ is all-pole IIR. Its stability is critical.
 
-### LPC Coefficient Quantization and LSF
+### LPC coefficient quantization and LSF
 
 Direct scalar quantization of $a_i$ is dangerous:
 
@@ -5675,6 +5609,7 @@ $$
 > [!Important] LSF coding advantage
 > LSFs make LPC quantization safer: decoder can detect and repair order violations by restoring interlacing, preserving filter stability.
 
+
 Reconstruction:
 
 $$
@@ -5685,7 +5620,7 @@ $$
 
 Close LSF root pairs correspond to formants, so LSFs encode vocal-tract resonances in stable frequency coordinates.
 
-### Vector Quantization
+### Vector quantization
 
 Instead of quantizing each LSF independently, speech coders quantize full LSF vector:
 
@@ -5698,7 +5633,7 @@ Encoder searches a trained shared codebook and sends only index.
 > [!Important] VQ for speech
 > Vocal tracts can take only physically plausible shapes, so LSF components are correlated. Vector quantization exploits this structure better than scalar quantization.
 
-### LPC-10 Bitrate
+### LPC-10 bitrate
 
 LPC-10 uses 54 bits per 22.5 ms frame:
 
@@ -5729,7 +5664,7 @@ LPC-10 sounds poor because excitation is too simple. **CELP** (*Code Excited Lin
 
 CELP encoder tests candidate excitations through synthesis filter and selects best perceptual match.
 
-### Perceptual Weighting in CELP
+### Perceptual weighting in CELP
 
 CELP minimizes perceptually weighted error, not raw waveform error:
 
@@ -5744,7 +5679,7 @@ Pole shifting broadens formants and shapes error so noise is hidden under speech
 
 Weighting de-emphasizes error near formants and emphasizes error in spectral valleys.
 
-### CELP Excitation
+### CELP excitation
 
 Adaptive codebook models pitch by reusing past excitation:
 
@@ -5770,7 +5705,7 @@ Adaptive term captures voiced periodicity; fixed-codebook innovation captures ne
 
 G.729 combines adaptive codebook, fixed codebook, gains, perceptual weighting, and synthesis filtering.
 
-### G.729 Bitrate
+### G.729 bitrate
 
 G.729 uses 80 bits per 10 ms frame:
 
@@ -5806,7 +5741,7 @@ Wideband speech preserves presence and fricatives missing in narrowband telephon
 - robust jitter buffer, frame erasure concealment, DTX, comfort noise;
 - AMR-WB IO mode for backward compatibility.
 
-### Psychoacoustic Coding
+### Psychoacoustic coding
 
 Perceptual coders remove inaudible components.
 
@@ -5847,7 +5782,7 @@ Temporal masking motivates window switching and pre-echo control.
 
 **MDCT** maps overlapped time samples to frequency coefficients.
 
-Key properties:
+Main properties:
 
 - 50% overlap;
 - TDAC (*Time Domain Aliasing Cancellation*);
@@ -5870,7 +5805,7 @@ coefficients.
 > [!Important] MDCT critical sampling
 > Overlap avoids blocking artifacts, but output coefficient count equals new time samples. No data expansion occurs.
 
-### Perceptual Audio Coder
+### Perceptual audio coder
 
 Encoder tasks:
 
@@ -5888,7 +5823,7 @@ Encoder uses auditory model to allocate bits where quantization noise would be a
 
 Decoder is simpler: inverse quantization and inverse frequency transform reconstruct signal.
 
-### Signal-to-Mask Ratio
+### Signal-to-mask ratio
 
 For band $k$:
 
@@ -5906,20 +5841,18 @@ This means quantization noise remains below masking threshold.
 
 ### MP3 vs. AAC
 
-| Feature | MP3 | AAC |
-| :--- | :--- | :--- |
-| standard | MPEG-1 Audio Layer 3 | MPEG-2/4 Advanced Audio Coding |
-| transform | hybrid polyphase + MDCT | pure MDCT |
-| bands | 32 uniform subbands | 51 critical-band-like SFBs |
-| resolution | limited/fixed | flexible up to 1024 bins |
-| quantization | simpler | non-linear power law $X^{3/4}$ |
-| entropy coding | static Huffman tables | 12 dynamic Huffman table choices |
-| typical transparency | around 192 kbps | around 128 kbps |
+- **standard**: MP3: MPEG-1 Audio Layer 3; AAC: MPEG-2/4 Advanced Audio Coding.
+- **transform**: MP3: hybrid polyphase + MDCT; AAC: pure MDCT.
+- **bands**: MP3: 32 uniform subbands; AAC: 51 critical-band-like SFBs.
+- **resolution**: MP3: limited/fixed; AAC: flexible up to 1024 bins.
+- **quantization**: MP3: simpler; AAC: non-linear power law $X^{3/4}$.
+- **entropy coding**: MP3: static Huffman tables; AAC: 12 dynamic Huffman table choices.
+- **typical transparency**: MP3: around 192 kbps; AAC: around 128 kbps.
 
 > [!Important] AAC advantage
 > AAC has finer control of quantization noise through scale-factor bands, so it can keep noise below masking threshold with fewer bits than MP3.
 
-### HE-AAC, USAC, Opus, Neural Codecs
+### HE-AAC, USAC, Opus, neural codecs
 
 **HE-AAC** adds:
 
@@ -5938,17 +5871,15 @@ Opus can change bitrate, bandwidth, and mode on the fly, with frames as small as
 
 **Neural codecs** such as Lyra and EnCodec encode audio into learned latent variables and use generative decoders. They target very low rates, around 3-6 kbps, but may reconstruct plausible rather than sample-faithful audio.
 
-### Spatial Audio
+### Spatial audio
 
-| Approach | Representation | Use |
-| :--- | :--- | :--- |
-| channel-based | fixed speaker channels, e.g. 5.1 | classic cinema / TV |
-| object-based | mono object plus XYZ metadata | MPEG-H, Dolby Atmos |
-| scene-based | full sound field, ambisonics | VR/AR and 360 video |
+- **channel-based**: Representation: fixed speaker channels, e.g. 5.1; Use: classic cinema / TV.
+- **object-based**: Representation: mono object plus XYZ metadata; Use: MPEG-H, Dolby Atmos.
+- **scene-based**: Representation: full sound field, ambisonics; Use: VR/AR and 360 video.
 
 MPEG-H supports interactive objects, dialogue enhancement, and binaural rendering through HRTF.
 
-### Quality Assessment
+### Quality assessment
 
 Waveform SNR is weak for lossy audio because:
 
@@ -5957,71 +5888,72 @@ Waveform SNR is weak for lossy audio because:
 
 Subjective tests:
 
-| Test | Role |
-| :--- | :--- |
-| MOS | listeners rate 1-5, toll quality around 4+ |
-| MUSHRA | multiple samples against hidden reference and anchors |
-| ABX | double-blind transparency test |
+- **MOS**: Role: listeners rate 1-5, toll quality around 4+.
+- **MUSHRA**: Role: multiple samples against hidden reference and anchors.
+- **ABX**: Role: double-blind transparency test.
 
 Objective metrics:
 
 - **POLQA**: ITU-T P.863, speech/telecom MOS prediction;
 - **ViSQOL**: spectrogram similarity, robust for VoIP and neural codecs.
 
-## Visual Schemes
+## Visual schemes
 
-### Speech Coding Pipeline
+### Speech coding pipeline
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Speech frame] --> B[Windowing]
-    B --> C[Autocorrelation]
-    C --> D[LPC coefficients]
-    C --> E[Pitch + V/UV]
-    D --> F[LSF conversion]
-    F --> G[VQ index]
-    E --> H[Excitation parameters]
-    G --> I[Bitstream]
+    A["Speech frame"] --> B["Windowing"]
+    B --> C["Autocorrelation"]
+    C --> D["LPC coefficients"]
+    C --> E["Pitch + V/UV"]
+    D --> F["LSF conversion"]
+    F --> G["VQ index"]
+    E --> H["Excitation parameters"]
+    G --> I["Bitstream"]
     H --> I
 ```
 
 Speech coders transmit vocal-tract model plus compact excitation parameters.
 
-### CELP Analysis-by-Synthesis
+### CELP analysis-by-synthesis
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Original speech] --> B[Perceptual weighting]
-    C[Candidate excitation] --> D[Synthesis filter]
-    D --> E[Weighted synthesized speech]
-    B --> F[Weighted error]
+    A["Original speech"] --> B["Perceptual weighting"]
+    C["Candidate excitation"] --> D["Synthesis filter"]
+    D --> E["Weighted synthesized speech"]
+    B --> F["Weighted error"]
     E --> F
-    F --> G[Minimize error]
-    G --> H[Codebook index + gains]
+    F --> G["Minimize error"]
+    G --> H["Codebook index + gains"]
 ```
 
 CELP encoder searches excitation that sounds closest after synthesis and perceptual weighting.
 
-### Perceptual Audio Coding
+### Perceptual audio coding
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Audio samples] --> B[MDCT / filterbank]
-    A --> C[Psychoacoustic model]
-    B --> D[Transform coefficients]
-    C --> E[Masking thresholds]
-    D --> F[Bit allocation]
+    A["Audio samples"] --> B["MDCT / filterbank"]
+    A --> C["Psychoacoustic model"]
+    B --> D["Transform coefficients"]
+    C --> E["Masking thresholds"]
+    D --> F["Bit allocation"]
     E --> F
-    F --> G[Quantization]
-    G --> H[Entropy coding]
-    H --> I[Bitstream]
+    F --> G["Quantization"]
+    G --> H["Entropy coding"]
+    H --> I["Bitstream"]
 ```
 
 Perceptual coder shapes quantization noise under masking threshold.
 
 ## Examples
 
-### Speech Codec Progression
+### Speech codec progression
 
 | Codec | Paradigm | Bitrate | Main idea |
 | :--- | :--- | :--- | :--- |
@@ -6030,17 +5962,15 @@ Perceptual coder shapes quantization noise under masking threshold.
 | AMR-WB | ACELP wideband | 6.6-23.85 kbps | HD Voice bandwidth |
 | EVS | hybrid ACELP/MDCT | 5.9-128 kbps | speech + music + IP robustness |
 
-### Perceptual Codec Progression
+### Perceptual codec progression
 
-| Codec | Main tool | Typical use |
-| :--- | :--- | :--- |
-| MP3 | hybrid filterbank, SMR allocation | legacy music/storage |
-| AAC | pure MDCT, SFBs, improved Huffman | streaming/storage |
-| HE-AAC | AAC + SBR | low-bitrate music |
-| Opus | SILK + CELT | low-latency internet audio |
-| Neural codecs | learned latents + generative synthesis | ultra-low-rate fallback |
+- **MP3**: Main tool: hybrid filterbank, SMR allocation; Typical use: legacy music/storage.
+- **AAC**: Main tool: pure MDCT, SFBs, improved Huffman; Typical use: streaming/storage.
+- **HE-AAC**: Main tool: AAC + SBR; Typical use: low-bitrate music.
+- **Opus**: Main tool: SILK + CELT; Typical use: low-latency internet audio.
+- **Neural codecs**: Main tool: learned latents + generative synthesis; Typical use: ultra-low-rate fallback.
 
-### G.729 Rate Calculation
+### G.729 rate calculation
 
 Given 80 bits every 10 ms:
 
@@ -6051,7 +5981,7 @@ $$
 > [!Example] Exam takeaway
 > Frame duration and bit allocation directly determine codec bitrate. Always convert frame duration to seconds before computing $R$.
 
-### Why SNR Fails for Audio
+### Why SNR fails for audio
 
 Two signals can have large waveform error and still sound identical if:
 
@@ -6060,49 +5990,46 @@ Two signals can have large waveform error and still sound identical if:
 
 Audio codec evaluation therefore relies on MOS, MUSHRA, ABX, POLQA, and ViSQOL rather than plain SNR.
 
-### Final Exam Table
+### Final exam checklist
 
-| Concept | Must remember |
-| :--- | :--- |
-| source coding | model signal generator, best for speech |
-| sink coding | model listener, best for music |
-| LPC | predict sample from past values, code residual/excitation |
-| Yule-Walker | estimates optimal LP coefficients |
-| LSF | stable quantization representation for LPC filters |
-| CELP | codebook excitation plus analysis-by-synthesis |
-| perceptual weighting | hides CELP error around formants |
-| MDCT | overlapped, critically sampled transform |
-| masking | lets encoder place noise where inaudible |
-| SMR | band-wise headroom for quantization noise |
-| MP3/AAC | perceptual transform coders; AAC more flexible |
-| Opus/EVS | hybrid speech/music, network-aware codecs |
-| neural codecs | learned low-rate latent representations |
-| quality metrics | perceptual tests and models beat SNR |
+- **source coding**: model signal generator, best for speech.
+- **sink coding**: model listener, best for music.
+- **LPC**: predict sample from past values, code residual/excitation.
+- **Yule-Walker**: estimates optimal LP coefficients.
+- **LSF**: stable quantization representation for LPC filters.
+- **CELP**: codebook excitation plus analysis-by-synthesis.
+- **perceptual weighting**: hides CELP error around formants.
+- **MDCT**: overlapped, critically sampled transform.
+- **masking**: lets encoder place noise where inaudible.
+- **SMR**: band-wise headroom for quantization noise.
+- **MP3/AAC**: perceptual transform coders; AAC more flexible.
+- **Opus/EVS**: hybrid speech/music, network-aware codecs.
+- **neural codecs**: learned low-rate latent representations.
+- **quality metrics**: perceptual tests and models beat SNR.
 
 > [!Important] Main takeaway
 > Audio coding chooses model according to content: speech needs source models and low delay; music needs perceptual transform coding; modern communication needs hybrid adaptive codecs.
 
-
 ---
 
-# Quality Assessment and Quality of Experience for Multimedia Services
+# Quality assessment and quality of experience for multimedia services
 
-## Table of Contents
+## Contents
 
-- [[#Core Idea|Core Idea]]
-- [[#Key Concepts|Key Concepts]]
-- [[#Theory and Formulas|Theory and Formulas]]
-- [[#Visual Schemes|Visual Schemes]]
+- [[#Core idea|Core idea]]
+- [[#Main concepts|Main concepts]]
+- [[#Theory and formulas|Theory and formulas]]
+- [[#Visual schemes|Visual schemes]]
 - [[#Examples|Examples]]
 
-## Core Idea
+## Core idea
 
 **Quality assessment** assigns a quantitative grade to a multimedia stimulus as perceived by human observers. In multimedia services, this grade is needed because quality is the **benefit** in the tradeoff against rate, latency, complexity, memory, and energy.
 
 > [!Important] Quality assessment
-> **Statement:** quality assessment maps one or more multimedia signals to a number describing perceived quality.
+> Statement: quality assessment maps one or more multimedia signals to a number describing perceived quality.
 >
-> **Meaning:** if humans produce the number, the method is subjective. If an algorithm produces it, the method is objective. Subjective evaluation remains ground truth.
+> Meaning: if humans produce the number, the method is subjective. If an algorithm produces it, the method is objective. Subjective evaluation remains ground truth.
 
 **QoS** (*Quality of Service*) describes measurable system/network properties: bitrate, delay, jitter, loss, resolution, frame rate. **QoE** (*Quality of Experience*) describes final user perception, including content, display, context, expectations, and interaction.
 
@@ -6110,25 +6037,23 @@ Audio codec evaluation therefore relies on MOS, MUSHRA, ABX, POLQA, and ViSQOL r
 
 Rate-quality curves show why quality assessment is necessary: codec/service choices must compare quality gain against bitrate cost.
 
-## Key Concepts
+## Main concepts
 
-### Assessment Taxonomy
+### Assessment taxonomy
 
 ![[Pics/11. Quality Assessment and Quality of Experience for Multimedia Services/quality-assessment-taxonomy.png|650]]
 
 Quality assessment splits into subjective and objective families.
 
-| Family | Method | Reference availability | Typical use |
-| :--- | :--- | :--- | :--- |
-| subjective | ACR / MOS | none shown directly | fast large-scale scoring |
-| subjective | ACR-HR | hidden reference | large compression tests |
-| subjective | DSIS | visible reference | fidelity/degradation tests |
-| subjective | Pairwise comparison | relative A/B | fine ranking |
-| objective | Full-reference | complete original | codec evaluation |
-| objective | Reduced-reference | features from original | network monitoring |
-| objective | No-reference | no original | streaming analytics, UGC |
+- **subjective**: Method: ACR / MOS; Reference availability: none shown directly; Typical use: fast large-scale scoring.
+- **subjective**: Method: ACR-HR; Reference availability: hidden reference; Typical use: large compression tests.
+- **subjective**: Method: DSIS; Reference availability: visible reference; Typical use: fidelity/degradation tests.
+- **subjective**: Method: Pairwise comparison; Reference availability: relative A/B; Typical use: fine ranking.
+- **objective**: Method: Full-reference; Reference availability: complete original; Typical use: codec evaluation.
+- **objective**: Method: Reduced-reference; Reference availability: features from original; Typical use: network monitoring.
+- **objective**: Method: No-reference; Reference availability: no original; Typical use: streaming analytics, UGC.
 
-### Subjective Testing
+### Subjective testing
 
 Subjective testing directly measures human opinion, but must control:
 
@@ -6144,7 +6069,7 @@ Subjective testing directly measures human opinion, but must control:
 > [!Important] Subjective assessment
 > Subjective experiments are expensive and slow, but they are the gold standard because objective metrics are only useful when they correlate with human perception.
 
-### Stimulus Selection: SI and TI
+### Stimulus selection: SI and TI
 
 Video test sets should span content diversity. **Spatial Information (SI)** measures spatial detail; **Temporal Information (TI)** measures temporal activity.
 
@@ -6156,14 +6081,12 @@ SI uses Sobel edge energy and keeps maximum activity across time.
 
 TI uses frame differences and keeps maximum temporal activity.
 
-### Subjective Methodologies
+### Subjective methodologies
 
-| Method | Procedure | Strength | Weakness |
-| :--- | :--- | :--- | :--- |
-| **ACR** | rate one stimulus independently | fast, natural usage | no direct fidelity test |
-| **ACR-HR** | ACR with hidden reference | removes scene/reference bias | less sensitive than direct comparison |
-| **DSIS** | show reference then impaired | strong fidelity test | longer sessions |
-| **PC** | choose better of two | highest discrimination | grows slowly with many items |
+- **ACR**: Procedure: rate one stimulus independently; Strength: fast, natural usage; Weakness: no direct fidelity test.
+- **ACR-HR**: Procedure: ACR with hidden reference; Strength: removes scene/reference bias; Weakness: less sensitive than direct comparison.
+- **DSIS**: Procedure: show reference then impaired; Strength: strong fidelity test; Weakness: longer sessions.
+- **PC**: Procedure: choose better of two; Strength: highest discrimination; Weakness: grows slowly with many items.
 
 ![[Pics/11. Quality Assessment and Quality of Experience for Multimedia Services/dsis-timing.png|560]]
 
@@ -6173,13 +6096,11 @@ DSIS explicitly compares reference and impaired stimulus, so it is well suited f
 
 Method choice depends on required accuracy, reference availability, and test scale.
 
-### Objective Metric Types
+### Objective metric types
 
-| Type | Input | Accuracy | Main problem |
-| :--- | :--- | :--- | :--- |
-| **FR** | reference + processed signal | highest | reference often unavailable |
-| **RR** | partial reference features + processed signal | medium | needs side information |
-| **NR** | processed signal only | hardest / evolving | must separate content from artifacts |
+- **FR**: Input: reference + processed signal; Accuracy: highest; Main problem: reference often unavailable.
+- **RR**: Input: partial reference features + processed signal; Accuracy: medium; Main problem: needs side information.
+- **NR**: Input: processed signal only; Accuracy: hardest / evolving; Main problem: must separate content from artifacts.
 
 ![[Pics/11. Quality Assessment and Quality of Experience for Multimedia Services/full-reference-metric.png|560]]
 
@@ -6193,9 +6114,9 @@ RR metrics transmit only selected reference features.
 
 NR metrics estimate quality from received content alone.
 
-## Theory and Formulas
+## Theory and formulas
 
-### Spatial Information
+### Spatial information
 
 For each frame $F_n$, apply Sobel filtering and compute spatial standard deviation:
 
@@ -6205,7 +6126,7 @@ $$
 
 High $SI$ means many edges/textures. Low $SI$ means smooth content.
 
-### Temporal Information
+### Temporal information
 
 Frame difference:
 
@@ -6236,7 +6157,7 @@ $$
 
 Subjective scores are random variables; MOS is estimated from their distribution.
 
-### Variability, Standard Error, Confidence
+### Variability, standard error, confidence
 
 Standard deviation:
 
@@ -6263,7 +6184,7 @@ More observers reduce uncertainty of MOS estimate, not intrinsic disagreement.
 > [!Important] Standard error
 > $s$ measures spread among observers. $SE$ measures uncertainty of mean estimate. Increasing $N$ decreases $SE$ but does not force observers to agree.
 
-### Human Visual System Effects
+### Human visual system effects
 
 Objective metrics should consider visual perception:
 
@@ -6324,7 +6245,7 @@ $$
 
 Per-frame PSNR varies across I/P/B frames, so sequence averages hide temporal behavior.
 
-### Bjontegaard Metrics
+### Bjontegaard metrics
 
 Rate-distortion curves are compared with:
 
@@ -6342,7 +6263,7 @@ Typical procedure:
 
 Bjontegaard area summarizes full RD-curve difference into one number.
 
-### Why PSNR Is Not Enough
+### Why PSNR is not enough
 
 PSNR treats all pixel errors equally. It ignores:
 
@@ -6401,7 +6322,7 @@ Values run from 0 to 100. Around 90+ often indicates good perceptual quality; 93
 
 VMAF combines perceptual features and learned fusion to predict subjective quality.
 
-### AI-Based Metrics
+### AI-based metrics
 
 Modern metrics use deep networks and subjective datasets:
 
@@ -6411,7 +6332,7 @@ Modern metrics use deep networks and subjective datasets:
 
 AI metrics can model complex artifacts and generated media, but depend strongly on training data and validation.
 
-### Reduced-Reference Metrics
+### Reduced-reference metrics
 
 RR metrics transmit selected reference features:
 
@@ -6424,136 +6345,128 @@ Use cases: IPTV monitoring, adaptive streaming, network QoE monitoring.
 
 Limitation: less accurate than FR and requires side information.
 
-### No-Reference Metrics
+### No-reference metrics
 
 NR metrics infer quality without original signal. Examples:
 
-| Metric | Main idea |
-| :--- | :--- |
-| BRISQUE | natural scene statistics |
-| NIQE | deviation from natural image statistics |
-| PIQE | block-wise distortion estimation |
-| Deep NR | learned perceptual prediction |
+- **BRISQUE**: Main idea: natural scene statistics.
+- **NIQE**: Main idea: deviation from natural image statistics.
+- **PIQE**: Main idea: block-wise distortion estimation.
+- **Deep NR**: Main idea: learned perceptual prediction.
 
 NR is essential for social media, user-generated content, mobile capture, surveillance, and streaming analytics. It is hardest because metric must distinguish real scene properties from distortions.
 
-## Visual Schemes
+## Visual schemes
 
-### Subjective Quality Experiment
+### Subjective quality experiment
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Stimulus set] --> B[Lab setup]
-    B --> C[Observer screening]
-    C --> D[Training]
-    D --> E[Randomized test session]
-    E --> F[Scores]
-    F --> G[Outlier processing]
-    G --> H[MOS + CI]
+    A["Stimulus set"] --> B["Lab setup"]
+    B --> C["Observer screening"]
+    C --> D["Training"]
+    D --> E["Randomized test session"]
+    E --> F["Scores"]
+    F --> G["Outlier processing"]
+    G --> H["MOS + CI"]
 ```
 
 Subjective tests require controlled environment, controlled stimuli, and statistical score processing.
 
-### Objective Metric Pipeline
+### Objective metric pipeline
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Reference signal] --> B{Reference available?}
-    C[Processed signal] --> B
-    B -- full --> D[FR metric]
-    B -- partial --> E[RR metric]
-    B -- none --> F[NR metric]
-    D --> G[Predicted quality]
+    A["Reference signal"] --> B{"Reference available?"}
+    C["Processed signal"] --> B
+    B -->|full| D["FR metric"]
+    B -->|partial| E["RR metric"]
+    B -->|none| F["NR metric"]
+    D --> G["Predicted quality"]
     E --> G
     F --> G
 ```
 
 Reference availability determines objective metric family.
 
-### QoE Optimization Loop
+### QoE optimization loop
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Codec / network parameters] --> B[Delivered media]
-    B --> C[QoS: rate delay loss frame rate]
-    B --> D[Perceived quality]
-    D --> E[QoE score]
-    E --> F[Optimization]
+    A["Codec / network parameters"] --> B["Delivered media"]
+    B --> C["QoS: rate delay loss frame rate"]
+    B --> D["Perceived quality"]
+    D --> E["QoE score"]
+    E --> F["Optimization"]
     C --> F
     F --> A
 ```
 
-Systems should optimize user-perceived QoE, not only raw QoS or PSNR.
+Systems should optimize user-perceived QoE alongside raw QoS and PSNR.
 
 ## Examples
 
-### Subjective Method Choice
+### Subjective method choice
 
-| Goal | Recommended method |
-| :--- | :--- |
-| fast large-scale testing | ACR |
-| remove reference-scene bias | ACR-HR |
-| fidelity to source | DSIS |
-| rank near-equivalent versions | Pairwise comparison |
-| uncontrolled large panel | crowdsourcing with strict filtering |
+- **fast large-scale testing**: Recommended method: ACR.
+- **remove reference-scene bias**: Recommended method: ACR-HR.
+- **fidelity to source**: Recommended method: DSIS.
+- **rank near-equivalent versions**: Recommended method: Pairwise comparison.
+- **uncontrolled large panel**: Recommended method: crowdsourcing with strict filtering.
 
-### SI/TI Content Interpretation
+### SI/TI content interpretation
 
-| Content | SI | TI | Meaning |
-| :--- | :--- | :--- | :--- |
-| football | medium | high | motion-dominated |
-| anime | medium | low | edges but little motion |
-| nature documentary | high | medium | texture/detail-heavy |
-| video call | low | low | smooth and static |
+- **football**: SI: medium; TI: high; Meaning: motion-dominated.
+- **anime**: SI: medium; TI: low; Meaning: edges but little motion.
+- **nature documentary**: SI: high; TI: medium; Meaning: texture/detail-heavy.
+- **video call**: SI: low; TI: low; Meaning: smooth and static.
 
-### Objective Metrics Summary
+### Objective metrics summary
 
-| Metric | Type | Strength | Weakness |
-| :--- | :--- | :--- | :--- |
-| MSE | FR | simple, differentiable | perceptually weak |
-| PSNR | FR | standard codec comparison | ignores HVS/artifact type |
-| BD-Rate | RD comparison | summarizes curves | depends on fitted points/range |
-| SSIM | FR | structure-aware | limited temporal modeling |
-| VMAF | FR video | strong practical QoE predictor | trained/validated on datasets |
-| BRISQUE/NIQE/PIQE | NR | no reference needed | lower reliability |
-| AI metrics | FR/RR/NR | complex perceptual modeling | training-data dependence |
+- **MSE**: Type: FR; Strength: simple, differentiable; Weakness: perceptually weak.
+- **PSNR**: Type: FR; Strength: standard codec comparison; Weakness: ignores HVS/artifact type.
+- **BD-Rate**: Type: RD comparison; Strength: summarizes curves; Weakness: depends on fitted points/range.
+- **SSIM**: Type: FR; Strength: structure-aware; Weakness: limited temporal modeling.
+- **VMAF**: Type: FR video; Strength: strong practical QoE predictor; Weakness: trained/validated on datasets.
+- **BRISQUE/NIQE/PIQE**: Type: NR; Strength: no reference needed; Weakness: lower reliability.
+- **AI metrics**: Type: FR/RR/NR; Strength: complex perceptual modeling; Weakness: training-data dependence.
 
-### Final Exam Table
+### Final exam checklist
 
-| Concept | Must remember |
-| :--- | :--- |
-| QoE | final perceived user quality |
-| QoS | measurable system/network conditions |
-| subjective assessment | gold standard, slow and costly |
-| objective assessment | scalable prediction of subjective quality |
-| MOS | average opinion score |
-| SE | uncertainty of MOS estimate, $s/\sqrt{N}$ |
-| CI | reliability interval for estimated MOS |
-| SI/TI | content descriptors for spatial/temporal complexity |
-| ACR/ACR-HR/DSIS/PC | subjective methodologies with different tradeoffs |
-| MSE/PSNR | simple fidelity metrics |
-| BD-Rate/BD-PSNR | RD-curve comparison metrics |
-| SSIM | luminance, contrast, structure |
-| VMAF | learned fusion of video quality features |
-| FR/RR/NR | objective metric families based on reference availability |
+- **QoE**: final perceived user quality.
+- **QoS**: measurable system/network conditions.
+- **subjective assessment**: gold standard, slow and costly.
+- **objective assessment**: scalable prediction of subjective quality.
+- **MOS**: average opinion score.
+- **SE**: uncertainty of MOS estimate, $s/\sqrt{N}$.
+- **CI**: reliability interval for estimated MOS.
+- **SI/TI**: content descriptors for spatial/temporal complexity.
+- **ACR/ACR-HR/DSIS/PC**: subjective methodologies with different tradeoffs.
+- **MSE/PSNR**: simple fidelity metrics.
+- **BD-Rate/BD-PSNR**: RD-curve comparison metrics.
+- **SSIM**: luminance, contrast, structure.
+- **VMAF**: learned fusion of video quality features.
+- **FR/RR/NR**: objective metric families based on reference availability.
 
 > [!Important] Main takeaway
 > Multimedia quality is ultimately human perception. PSNR and QoS are useful engineering signals, but codec and service decisions should be validated against subjective QoE or objective metrics trained to predict it.
 
-
 ---
 
-# Adaptive Streaming
+# Adaptive streaming
 
-## Table of Contents
+## Contents
 
-- [[#Core Idea|Core Idea]]
-- [[#Key Concepts|Key Concepts]]
-- [[#Theory and Formulas|Theory and Formulas]]
-- [[#Visual Schemes|Visual Schemes]]
+- [[#Core idea|Core idea]]
+- [[#Main concepts|Main concepts]]
+- [[#Theory and formulas|Theory and formulas]]
+- [[#Visual schemes|Visual schemes]]
 - [[#Examples|Examples]]
 
-## Core Idea
+## Core idea
 
 **Adaptive streaming** delivers video to heterogeneous users by changing requested quality over time. The client chooses which encoded segment representation to download according to network throughput, buffer state, and QoE tradeoffs.
 
@@ -6577,19 +6490,17 @@ Main motivation:
 
 Compressed video rate is not constant at frame level: I frames are much larger than P/B frames, and stability appears only over GOP-scale averages.
 
-## Key Concepts
+## Main concepts
 
-### Service Classes
+### Service classes
 
-| Service | Examples | Main need | Delay tolerance |
-| :--- | :--- | :--- | :--- |
-| bulk transfer | photos, messages | integrity | seconds |
-| VoD | Netflix, YouTube | continuity | startup delay acceptable |
-| live streaming | Twitch, DAZN | recency and scale | seconds |
-| real-time interactive | Zoom, Teams | low latency | below 150 ms |
-| cloud gaming / VR | GeForce Now, VR | interaction | below 50 ms |
+- **bulk transfer**: Examples: photos, messages; Main need: integrity; Delay tolerance: seconds.
+- **VoD**: Examples: Netflix, YouTube; Main need: continuity; Delay tolerance: startup delay acceptable.
+- **live streaming**: Examples: Twitch, DAZN; Main need: recency and scale; Delay tolerance: seconds.
+- **real-time interactive**: Examples: Zoom, Teams; Main need: low latency; Delay tolerance: below 150 ms.
+- **cloud gaming / VR**: Examples: GeForce Now, VR; Main need: interaction; Delay tolerance: below 50 ms.
 
-### One-to-Many Heterogeneity
+### One-to-many heterogeneity
 
 One server may serve millions of users with different:
 
@@ -6602,26 +6513,24 @@ One server may serve millions of users with different:
 
 Different users should not receive one common rate: low-capacity users stall, high-capacity users are underused.
 
-### Push vs. Pull Multimedia Stacks
+### Push vs. pull multimedia stacks
 
-| Paradigm | Control | Stack | Use |
-| :--- | :--- | :--- | :--- |
-| **real-time push** | server pushes immediately | UDP/RTP/RTCP/WebRTC | calls, gaming |
-| **adaptive pull** | client requests next object | HTTP/DASH/HLS over QUIC/HTTP/3 | VoD, live broadcast |
+- **real-time push**: Control: server pushes immediately; Stack: UDP/RTP/RTCP/WebRTC; Use: calls, gaming.
+- **adaptive pull**: Control: client requests next object; Stack: HTTP/DASH/HLS over QUIC/HTTP/3; Use: VoD, live broadcast.
 
 ![[Pics/12. Adaptive_streaming/push-vs-pull-stacks.png|560]]
 
 Push optimizes latency. Pull optimizes scalability, caching, and QoE through client-side choices.
 
-### Network-Friendly Video
+### Network-friendly video
 
 Compressed video is fragile: packet losses can desynchronize entropy decoding and temporal prediction. **MANEs** (*Media Aware Network Elements*) can inspect NAL headers and drop less important units under congestion.
 
 ![[Pics/12. Adaptive_streaming/mane-smart-dropping.png|560]]
 
-MANE can drop non-reference B data while protecting SPS/PPS/IDR and key references.
+MANE can drop non-reference B data while protecting SPS/PPS/IDR and important references.
 
-### Scalable Video Coding
+### Scalable video coding
 
 **SVC** encodes once and decodes many qualities:
 
@@ -6689,9 +6598,9 @@ CDNs place edge nodes close to users:
 
 CDNs reduce propagation delay and origin load through edge caching and request routing.
 
-## Theory and Formulas
+## Theory and formulas
 
-### DASH Architecture
+### DASH architecture
 
 **MPEG-DASH** (*Dynamic Adaptive Streaming over HTTP*) splits video into segments and encodes each segment at multiple representations.
 
@@ -6705,7 +6614,7 @@ Segment $n$ has duration $T_S$. Level $k$ has:
 
 Client downloads one representation for each segment; switching is possible at segment boundaries.
 
-### MPD Manifest
+### MPD manifest
 
 The **Media Presentation Description (MPD)** is XML metadata describing available media:
 
@@ -6718,7 +6627,7 @@ The **Media Presentation Description (MPD)** is XML metadata describing availabl
 
 Client reads MPD before choosing representations.
 
-### Segment Generation Rules
+### Segment generation rules
 
 Bitrate adaptation can happen only at segment boundaries. Therefore:
 
@@ -6733,12 +6642,10 @@ Cross-representation alignment lets client switch quality without breaking decod
 
 Segment duration tradeoff:
 
-| $T_S$ | Advantage | Disadvantage |
-| :--- | :--- | :--- |
-| short, 1-2 s | fast adaptation, lower stall risk | more IDR overhead, lower compression efficiency |
-| long, 6-10 s | better compression efficiency | slower reaction, higher latency |
+- **short, 1-2 s**: Advantage: fast adaptation, lower stall risk; Disadvantage: more IDR overhead, lower compression efficiency.
+- **long, 6-10 s**: Advantage: better compression efficiency; Disadvantage: slower reaction, higher latency.
 
-### Low-Latency DASH/CMAF
+### Low-latency DASH/CMAF
 
 Traditional DASH publishes a segment only after full segment encoding. **CMAF** divides a segment into 200-500 ms chunks. HTTP chunked transfer can send each chunk before the parent segment is complete.
 
@@ -6764,7 +6671,7 @@ $$
 
 ABR usually uses smoothed throughput estimates, not raw instantaneous samples.
 
-### Delay and Jitter
+### Delay and jitter
 
 End-to-end delay:
 
@@ -6788,9 +6695,9 @@ Increasing link rate reduces transmission delay, but not propagation distance or
 
 ![[Pics/12. Adaptive_streaming/jitter-delay-distribution.png|460]]
 
-Jitter is delay variability; playout buffer must absorb delay peaks, not only average delay.
+Jitter is delay variability; the playout buffer must absorb delay peaks as well as average delay.
 
-### Playout Buffer Model
+### Playout buffer model
 
 Buffer $B(t)$ is measured in seconds of downloaded but unplayed video.
 
@@ -6814,7 +6721,7 @@ $$
 
 Usually $L\geq M$: users tolerate startup delay more than mid-playback stalls.
 
-### Fluid Dynamics
+### Fluid dynamics
 
 Buffer equation:
 
@@ -6860,7 +6767,7 @@ $$
 T_{IB}=L T_S
 $$
 
-### QoE for Streaming
+### QoE for streaming
 
 QoE depends on:
 
@@ -6926,19 +6833,17 @@ $$
 > [!Important] QoE tradeoff
 > Higher level improves quality, switching decreases stability, stalls are heavily penalized, startup delay is penalized but usually less than mid-playback stalls.
 
-### ABR Strategies
+### ABR strategies
 
 Client-side **Adaptive Bitrate (ABR)** chooses next segment level.
 
-| Strategy | Input | Behavior | Examples |
-| :--- | :--- | :--- | :--- |
-| throughput-based | estimated $\hat{S}$ | choose rate downloadable in time | PANDA, FESTIVE, SQUAD |
-| buffer-based | $B(t)$ | high buffer increases quality, low buffer lowers quality | BBA, BOLA |
-| hybrid | throughput + buffer | combines prediction and safety | ELASTIC, MPC, ABMA+, DYNAMIC |
+- **throughput-based**: Input: estimated $\hat{S}$; Behavior: choose rate downloadable in time; Examples: PANDA, FESTIVE, SQUAD.
+- **buffer-based**: Input: $B(t)$; Behavior: high buffer increases quality, low buffer lowers quality; Examples: BBA, BOLA.
+- **hybrid**: Input: throughput + buffer; Behavior: combines prediction and safety; Examples: ELASTIC, MPC, ABMA+, DYNAMIC.
 
 ABR logic is not standardized. Different clients can be aggressive or conservative.
 
-### Example ABR Decision
+### Example ABR decision
 
 Given previous level $k_{n-1}$, current buffer $B_0$, throughput estimate $\hat{S}$, and candidate level $\ell$ with rate $R(\ell)$:
 
@@ -6986,61 +6891,64 @@ Limits:
 - has no safety threshold unless explicitly added;
 - client has partial view of network state.
 
-## Visual Schemes
+## Visual schemes
 
-### DASH Pull Pipeline
+### DASH pull pipeline
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Encoded representations] --> B[Segments]
-    B --> C[CDN cache]
-    D[MPD manifest] --> E[Client ABR]
-    E --> F[Select level k_n]
+    A["Encoded representations"] --> B["Segments"]
+    B --> C["CDN cache"]
+    D["MPD manifest"] --> E["Client ABR"]
+    E --> F["Select level k_n"]
     F --> C
-    C --> G[Download segment]
-    G --> H[Playout buffer]
-    H --> I[Decoder]
+    C --> G["Download segment"]
+    G --> H["Playout buffer"]
+    H --> I["Decoder"]
     H --> E
 ```
 
 Client-driven loop: MPD describes options, ABR chooses next representation, buffer feedback affects future choices.
 
-### Buffer State Machine
+### Buffer state machine
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart TD
-    A[Startup] --> B{B = L T_S?}
-    B -- no --> A
-    B -- yes --> C[Playout]
-    C --> D{B = 0?}
-    D -- no --> C
-    D -- yes --> E[Rebuffering]
-    E --> F{B = M T_S?}
-    F -- no --> E
-    F -- yes --> C
+    A["Startup"] --> B{"B = L T_S?"}
+    B -->|no| A
+    B -->|yes| C["Playout"]
+    C --> D{"B = 0?"}
+    D -->|no| C
+    D -->|yes| E["Rebuffering"]
+    E --> F{"B = M T_S?"}
+    F -->|no| E
+    F -->|yes| C
 ```
 
 Startup threshold and post-stall refill threshold control delay/stall tradeoff.
 
-### ABR Objective
+### ABR objective
 
 ```mermaid
+%%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false, "nodeSpacing": 18, "rankSpacing": 28, "padding": 8}, "themeVariables": {"fontSize": "12px"}}}%%
 flowchart LR
-    A[Candidate level] --> B[Quality reward]
-    A --> C[Switch penalty]
-    A --> D[Stall prediction]
-    D --> E[Rebuffer penalty]
-    B --> F[QoE score J]
+    A["Candidate level"] --> B["Quality reward"]
+    A --> C["Switch penalty"]
+    A --> D["Stall prediction"]
+    D --> E["Rebuffer penalty"]
+    B --> F["QoE score J"]
     C --> F
     E --> F
-    F --> G[Choose max score]
+    F --> G["Choose max score"]
 ```
 
-ABR optimizes perceived experience, not only maximum bitrate.
+ABR optimizes perceived experience rather than maximum bitrate alone.
 
 ## Examples
 
-### Buffer Parameter Tradeoff
+### Buffer parameter tradeoff
 
 Simulations in source use throughput:
 
@@ -7056,7 +6964,7 @@ Simulations in source use throughput:
 | $T_S=0.5$, $L=10$, $M=5$ | 2 stalls, 12.5 s | fewer but longer stalls |
 | $T_S=2$, $L=10$, $M=5$ | 0 stalls | big reserve avoids stalls but raises latency |
 
-### Exercise 1 Result
+### Exercise 1 result
 
 Given:
 
@@ -7102,7 +7010,7 @@ $$
 t_{ST}=\frac{T}{5}
 $$
 
-### Exercise 2: Max Quality Causes Periodic Stalls
+### Exercise 2: Max quality causes periodic stalls
 
 Throughput profile:
 
@@ -7156,7 +7064,7 @@ $$
 
 Max quality produces periodic rebuffering because throughput stays below chosen rate.
 
-### Exercise 2: Periodic Quality Reduction
+### Exercise 2: periodic quality reduction
 
 Strategy:
 
@@ -7199,30 +7107,26 @@ $$
 > [!Example] ABR insight
 > Higher quality is not automatically better. Strategy quality depends on subjective weights: quality reward $\lambda_1$, switching annoyance $\lambda_2$, stall penalty $\phi$, and startup penalty $\lambda_3$.
 
-### Final Exam Table
+### Final exam checklist
 
-| Concept | Must remember |
-| :--- | :--- |
-| fixed $R_C$ | causes cliff effect or leveling effect |
-| WebRTC/RTP/UDP | low-latency push for real-time |
-| DASH/HLS over HTTP | scalable pull for streaming |
-| SVC | base/enhancement layers; good for conferencing, bad for CDN-scale |
-| HTTP/CDN | stateless cacheable chunks |
-| TCP HOL | lost packet blocks later bytes |
-| QUIC | stream isolation, 0-RTT, connection migration |
-| MPD | manifest describing periods, adaptation sets, representations, segments |
-| closed GOP | needed for segment boundary switching |
-| CMAF chunks | low-latency sub-segment delivery |
-| throughput | application-layer received data rate |
-| jitter | delay variance requiring buffer |
-| buffer $B(t)$ | seconds of video ready for playout |
-| starvation | $B(t)=0$, playback freezes |
-| ABR | client chooses next segment representation |
-| QoE metric | quality reward minus switching/stall/startup penalties |
+- **fixed $R_C$**: causes cliff effect or leveling effect.
+- **WebRTC/RTP/UDP**: low-latency push for real-time.
+- **DASH/HLS over HTTP**: scalable pull for streaming.
+- **SVC**: base/enhancement layers; good for conferencing, bad for CDN-scale.
+- **HTTP/CDN**: stateless cacheable chunks.
+- **TCP HOL**: lost packet blocks later bytes.
+- **QUIC**: stream isolation, 0-RTT, connection migration.
+- **MPD**: manifest describing periods, adaptation sets, representations, segments.
+- **closed GOP**: needed for segment boundary switching.
+- **CMAF chunks**: low-latency sub-segment delivery.
+- **throughput**: application-layer received data rate.
+- **jitter**: delay variance requiring buffer.
+- **buffer $B(t)$**: seconds of video ready for playout.
+- **starvation**: $B(t)=0$, playback freezes.
+- **ABR**: client chooses next segment representation.
+- **QoE metric**: quality reward minus switching/stall/startup penalties.
 
 > [!Important] Main takeaway
 > Adaptive streaming shifts intelligence to the client: HTTP/CDN infrastructure serves static segment objects, while ABR uses throughput and buffer state to balance quality, stability, startup delay, and rebuffering.
 
-
 ---
-

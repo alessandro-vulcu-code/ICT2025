@@ -1,0 +1,531 @@
+\chapter{Introduction to Multimedia Compression}
+
+\section{Table of Contents}
+
+\begin{itemize}
+  \item Core Idea
+  \item Key Concepts
+  \item Theory and Formulas
+  \item Visual Schemes
+  \item Examples
+\end{itemize}
+
+\section{Core Idea}
+
+Multimedia compression is needed because raw image, video, and audio data rates are far above practical storage and transmission limits. Effective codecs reduce rate by exploiting:
+
+\begin{itemize}
+  \item \textbf{Statistical redundancy}: correlation between nearby samples or frames.
+  \item \textbf{Perceptual redundancy}: details humans cannot see or hear well.
+  \item \textbf{Semantic redundancy}: task-irrelevant content, especially when the receiver is a machine.
+\end{itemize}
+
+Compression is always a design tradeoff among \textbf{rate}, \textbf{quality}, \textbf{complexity}, \textbf{delay}, and \textbf{robustness}.
+
+\begin{calloutbox}{red!70!black}{Main compression principle}
+A codec should spend bits where errors are visible or useful, and remove information that is predictable, imperceptible, or irrelevant to the final task.
+\end{calloutbox}
+
+\section{Key Concepts}
+
+\subsection{Multimedia Representation}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Signal} & \textbf{Discrete representation} & \textbf{Key dependency} \\ \hline
+Gray image & $N \times M$ samples $f_{n,m}$ & Spatial correlation \\ \hline
+Color image & Three components, usually RGB or YCbCr & Luma/chroma sensitivity \\ \hline
+Video & Sequence of color images over time & Spatial and temporal correlation \\ \hline
+Audio & Time signal or frequency components & Hearing threshold and masking \\ \hline
+\end{tabular}}
+\end{center}
+
+For an image scanned in raster order:
+
+\[
+k = (n-1)M + m, \qquad f_{n,m} = f_k
+\]
+
+For digital video:
+
+\[
+I : (n,m,T,c) \rightarrow x \in \{0,1,\ldots,2^b-1\}
+\]
+
+where $(n,m)$ is position, $T$ is frame index, $c$ is color component, and $b$ is bit depth.
+
+\subsection{Human Visual System}
+
+\begin{itemize}
+  \item \textbf{Cones}: 6-7 million, concentrated near the fovea, responsible for color and high spatial resolution under good illumination.
+  \item \textbf{Rods}: 75-150 million, more sensitive in low light, mainly detect intensity with lower resolution.
+  \item Perceived brightness is approximately \textbf{logarithmic} with physical intensity.
+  \item The eye adapts to illumination, so it cannot use the full physical dynamic range at once.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch01/hvs-receptors.png}\end{center}
+Retinal receptors explain why compression can treat brightness, color, and fine details differently.
+
+\begin{calloutbox}{red!70!black}{Contrast Sensitivity Function (CSF)}
+The \textbf{CSF} gives sensitivity to luminance changes as a function of spatial frequency.
+
+\[
+\text{sensitivity} = \frac{1}{\text{minimum detectable contrast}}
+\]
+
+Sensitivity is highest around \textbf{2-5 cycles/degree} and lower at very low and very high spatial frequencies.
+
+\textbf{Compression meaning:} high-frequency errors are often less visible, so high-frequency transform coefficients can be quantized more coarsely.
+\end{calloutbox}
+
+\subsection{Color Perception and Color Spaces}
+
+Visible light lies roughly between \textbf{400 nm and 700 nm}. Cone sensitivities are uneven:
+
+\begin{itemize}
+  \item Red-sensitive cones: about \textbf{65\%}, peak near 575 nm.
+  \item Green-sensitive cones: about \textbf{33\%}, peak near 535 nm.
+  \item Blue-sensitive cones: about \textbf{2\%}, peak near 445 nm.
+\end{itemize}
+
+Color perception is \textbf{tristimulus}: a color corresponds to the 3D response vector of the three cone classes.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Space} & \textbf{Components} & \textbf{Compression relevance} \\ \hline
+\textbf{RGB} & Red, Green, Blue & Device-oriented; three full-resolution channels \\ \hline
+\textbf{HSV} & Hue, Saturation, Value & Perceptual description of color \\ \hline
+\textbf{YCbCr} & Luminance Y, chrominance Cb/Cr & Separates brightness from color; enables chroma subsampling \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{ITU-R BT.601 RGB to YCbCr}
+\[
+\begin{bmatrix}
+Y\\
+Cb\\
+Cr
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.299 & 0.587 & 0.114\\
+-0.1687 & -0.3313 & 0.5\\
+0.5 & -0.4187 & -0.0813
+\end{bmatrix}
+\begin{bmatrix}
+R\\
+G\\
+B
+\end{bmatrix}
++
+\begin{bmatrix}
+0\\
+128\\
+128
+\end{bmatrix}
+\]
+
+The luminance weights follow visual sensitivity: green contributes most, blue least. The $+128$ offset centers chroma components in the 8-bit range.
+\end{calloutbox}
+
+\subsection{Sound Perception}
+
+Audio coding uses a psychoacoustical model. A pure tone
+
+\[
+x(t)=a\sin(2\pi f_1 t)
+\]
+
+has power
+
+\[
+\sigma^2 = \frac{a^2}{2}
+\]
+
+and excites several nerve fibers, not only one.
+
+For auditory filter $k$:
+
+\[
+H_k(f)=A_k(f)e^{j\phi_k(f)}
+\]
+
+The response to tone $f_1$ is:
+
+\[
+y_k(t)=aA_k(f_1)\sin(2\pi f_1t+\phi_k(f_1))
+\]
+
+The \textbf{spreading function} is:
+
+\[
+S_E(k)=A_k^2(f_1)
+\]
+
+\begin{calloutbox}{red!70!black}{Hearing threshold}
+$S_a(f)$ is the minimum power for a tone at frequency $f$ to be audible. It is lowest around \textbf{1-4 kHz}, where human hearing is most sensitive.
+
+\textbf{Compression meaning:} components below the threshold can be discarded or hidden under quantization noise.
+\end{calloutbox}
+
+\begin{calloutbox}{red!70!black}{Critical band}
+Sinusoids close in frequency are integrated by hearing. For $N$ sinusoids near $f_1$:
+
+\[
+\sum_i \sigma_i^2 > S_a(f_1)
+\]
+
+The frequency interval where this energy integration holds is the \textbf{critical band}.
+\end{calloutbox}
+
+\subsection{Chroma Subsampling}
+
+Notation $J:a:b$ describes chroma samples relative to a luma reference block:
+
+\begin{itemize}
+  \item $J$: horizontal luma reference size, usually 4.
+  \item $a$: chroma samples in the first line.
+  \item $b$: chroma samples in the second line.
+\end{itemize}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Scheme} & \textbf{Horizontal chroma resolution} & \textbf{Vertical chroma resolution} & \textbf{Use} \\ \hline
+\textbf{4:4:4} & Full & Full & High quality, no chroma reduction \\ \hline
+\textbf{4:2:2} & Half & Full & Professional video \\ \hline
+\textbf{4:2:0} & Half & Half & Most common image/video coding format \\ \hline
+\textbf{4:1:1} & Quarter & Full & Older video systems \\ \hline
+\end{tabular}}
+\end{center}
+
+For \textbf{YCbCr 4:2:0}, Y is full resolution, Cb and Cr are half resolution horizontally and vertically:
+
+\[
+\frac{4+1+1}{4+4+4}=\frac{6}{12}=0.5
+\]
+
+This gives \textbf{50\% data reduction} compared with full RGB/YUV 4:4:4 before any transform or entropy coding.
+
+\subsection{Compression Tools}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Tool} & \textbf{Role} & \textbf{Lossy?} \\ \hline
+\textbf{Transform} & Concentrates energy in few coefficients, e.g. DCT, wavelets, neural transforms & No by itself \\ \hline
+\textbf{Prediction} & Removes spatial or temporal redundancy & No by itself \\ \hline
+\textbf{Quantization} & Maps values to fewer levels; reduces precision & \textbf{Yes} \\ \hline
+\textbf{Entropy coding} & Removes residual statistical redundancy, e.g. VLC, arithmetic coding & No \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{Quantization is the lossy step}
+In classical codecs, transform, prediction, and entropy coding can be reversible. The irreversible rate reduction comes from \textbf{quantization}.
+\end{calloutbox}
+
+\subsection{Lossless vs. Lossy Compression}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Property} & \textbf{Lossless} & \textbf{Lossy} \\ \hline
+Reconstruction & Exact & Approximate \\ \hline
+Exploits & Statistical redundancy & Statistical + perceptual redundancy \\ \hline
+Main tool & Entropy coding, reversible prediction/transform & Quantization plus perceptual modeling \\ \hline
+Typical image ratio & $T \leq 3$ & $T \approx 5$ or higher \\ \hline
+Typical video ratio & Limited & $T \approx 20$ or higher \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Machine-Centric Multimedia}
+
+Not all multimedia is consumed by humans. Cameras in surveillance, IoT, industry, and robotics often feed algorithms.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Receiver} & \textbf{Priority} & \textbf{Compression goal} \\ \hline
+Human & Perceptual quality & Hide distortion below HVS/HAS limits \\ \hline
+Machine & Task accuracy & Preserve semantic features needed by model \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Task-oriented communication} can discard visually important but task-irrelevant information if the downstream algorithm still performs well.
+
+\section{Theory and Formulas}
+
+\subsection{Quantization and Bit Depth}
+
+If a scalar sample is represented with $L$ levels:
+
+\[
+b = \log_2 L
+\]
+
+where $b$ is bits per sample. Standard 8-bit components have:
+
+\begin{itemize}
+  \item $L=256$ gray levels.
+  \item RGB: $256^3 \approx 16$ million colors.
+  \item 24 bpp for full RGB.
+\end{itemize}
+
+HDR content may use 32-64 bits per channel.
+
+\subsection{Rate and Compression Ratio}
+
+\begin{calloutbox}{red!70!black}{Compression ratio}
+\[
+T = \frac{B_{\text{in}}}{B_{\text{out}}}
+  = \frac{R_{\text{in}}}{R_{\text{out}}}
+\]
+
+$T$ measures how many times the coded representation is smaller than the original.
+\end{calloutbox}
+
+Coding rate:
+
+\[
+R_{\text{image}} = \frac{B_{\text{out}}}{NM} \quad [\text{bpp}]
+\]
+
+\[
+R_{\text{audio/video}} = \frac{B_{\text{out}}}{T} \quad [\text{bps}]
+\]
+
+Typical values:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Application} & \textbf{Typical compression ratio} \\ \hline
+Lossless image coding & $T \leq 3$ \\ \hline
+Lossy image coding & $T \approx 5$ to much higher \\ \hline
+Lossy video coding & $T \approx 20$ to much higher \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Objective Quality Metrics}
+
+Let $f$ be the original image and $\tilde{f}$ the decoded image. The error image is:
+
+\[
+\mathcal{E}(f,\tilde{f}) = f-\tilde{f}
+\]
+
+\begin{calloutbox}{red!70!black}{MSE and PSNR}
+\[
+\mathcal{D}(f,\tilde{f}) =
+\frac{1}{NM}\|\mathcal{E}\|^2 =
+\frac{1}{NM}\sum_{n,m}\mathcal{E}_{n,m}^2
+\]
+
+\[
+\text{PSNR}(f,\tilde{f}) =
+10\log_{10}\left(\frac{255^2}{\mathcal{D}(f,\tilde{f})}\right)
+\quad [\text{dB}]
+\]
+
+\textbf{Meaning:} MSE/PSNR are simple and analytically useful, but they do not model perception.
+\end{calloutbox}
+
+Weighted PSNR introduces a filter $h$ that weights errors according to perceptual sensitivity:
+
+\[
+\mathcal{D}_W = \frac{1}{NM}\|h * \mathcal{E}\|^2
+\]
+
+\[
+\text{WPSNR}(f,\tilde{f}) =
+10\log_{10}\left(\frac{255^2}{\mathcal{D}_W}\right)
+\]
+
+\subsection{SSIM}
+
+\begin{calloutbox}{red!70!black}{Structural Similarity Index}
+For image blocks $x$ and $y$:
+
+\[
+\text{SSIM}(x,y)=
+\frac{(2\mu_x\mu_y+C_1)(2\sigma_{xy}+C_2)}
+{(\mu_x^2+\mu_y^2+C_1)(\sigma_x^2+\sigma_y^2+C_2)}
+\]
+
+SSIM combines:
+
+\[
+l(x,y)=\frac{2\mu_x\mu_y+C_1}{\mu_x^2+\mu_y^2+C_1}
+\]
+
+\[
+c(x,y)=\frac{2\sigma_x\sigma_y+C_2}{\sigma_x^2+\sigma_y^2+C_2}
+\]
+
+\[
+s(x,y)=\frac{\sigma_{xy}+C_3}{\sigma_x\sigma_y+C_3}
+\]
+
+Image SSIM is the average over blocks. Range is $[0,1]$, with 1 meaning identical.
+\end{calloutbox}
+
+\subsection{Learned Perceptual Metrics}
+
+\textbf{LPIPS} (\textit{Learned Perceptual Image Patch Similarity}) compares images in a neural feature space, often using pre-trained VGG or ViT features. It is useful when pixel metrics fail, especially for highly compressed, generated, or neural-coded images.
+
+\subsection{Subjective Quality}
+
+Subjective tests with human observers are the reference for perceived quality, but they are expensive and statistically demanding. Objective metrics are proxies:
+
+\begin{itemize}
+  \item \textbf{PSNR}: easy, pixel-based.
+  \item \textbf{SSIM}: structure-aware.
+  \item \textbf{LPIPS}: learned perceptual feature distance.
+\end{itemize}
+
+\subsection{Complexity, Delay, and Robustness}
+
+Beyond rate and quality, codecs must balance:
+
+\begin{itemize}
+  \item \textbf{Complexity}: real-time feasibility, hardware cost, power consumption.
+  \item \textbf{Delay}: especially encoder delay; often depends on coding order and look-ahead.
+  \item \textbf{Robustness}: sensitivity of compressed bitstreams to channel loss or packet errors.
+\end{itemize}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Goal} & \textbf{Typical conflict} \\ \hline
+Higher quality & Higher rate or complexity \\ \hline
+Lower rate & Lower quality or higher delay \\ \hline
+Lower delay & Less look-ahead, weaker compression \\ \hline
+Higher robustness & More redundancy or lower compression efficiency \\ \hline
+\end{tabular}}
+\end{center}
+
+\section{Visual Schemes}
+
+\subsection{Visual and Auditory Perception}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch01/contrast-sensitivity-function.png}\end{center}
+CSF shows why compression can quantize frequencies differently: mid spatial frequencies are most visible, while very low and very high frequencies can tolerate larger errors.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch01/hearing-threshold.png}\end{center}
+The hearing threshold identifies inaudible components that can be removed or used to hide quantization noise.
+
+\begin{center}\includegraphics[width=0.667\linewidth]{ch01/critical-band.png}\end{center}
+Critical bands explain why nearby tones interact and why audio coders group frequency components.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch01/frequency-masking.png}\end{center}
+Frequency masking allows a strong tone to hide weaker tones nearby in frequency.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch01/temporal-masking.png}\end{center}
+Temporal masking permits distortion shortly before and after a strong sound, especially after the masker.
+
+\subsection{Color and Chroma Sampling}
+
+\begin{center}\includegraphics[width=\linewidth]{ch01/chroma-subsampling.png}\end{center}
+Chroma subsampling reduces color resolution because humans are more sensitive to luminance than chrominance.
+
+\subsection{Compression Pipeline}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch01/compression-tools.png}\end{center}
+This block scheme summarizes the main codec tools: prediction/transform reduce redundancy, quantization reduces rate, and entropy coding packs symbols efficiently.
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Input samples] --> B[Prediction or transform]
+    B --> C[Quantization]
+    C --> D[Entropy coding]
+    D --> E[Bitstream]
+    C --> F[Inverse quantization]
+    F --> G[Reconstruction for prediction]
+\end{verbatim}
+
+\subsection{Quality Assessment Chain}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch01/weighted-psnr.png}\end{center}
+Weighted PSNR filters the error before measuring energy, so distortions are penalized according to perceptual visibility.
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Original image] --> C[Error image]
+    B[Decoded image] --> C
+    C --> D[Perceptual weighting]
+    D --> E[MSE or WPSNR]
+    C --> F[SSIM / LPIPS]
+    F --> G[Perceptual quality estimate]
+\end{verbatim}
+
+\subsection{Video Perception}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch01/spatio-temporal-csf.png}\end{center}
+Video perception depends on spatial and temporal frequencies; scene changes create masking and can temporarily hide distortion.
+
+\section{Examples}
+
+\begin{calloutbox}{green!55!black}{Uncompressed HD DVB data rate}
+\textbf{Setup:} one luma component $1920 \times 1080$, two chroma components $960 \times 540$, 8 bits/sample, 50 fps.
+
+\[
+R = (1920\cdot1080 + 2\cdot960\cdot540)\cdot8\cdot50
+\approx 1.24\ \text{Gbps}
+\]
+
+A 2-hour movie needs about \textbf{1.12 TB} uncompressed.
+
+\textbf{Takeaway:} raw video is too large; compression is not optional.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{4:2:0 data reduction}
+Full 4:4:4 stores 4 Y samples, 4 Cb samples, and 4 Cr samples in a reference area. 4:2:0 stores 4 Y samples, 1 Cb sample, and 1 Cr sample:
+
+\[
+\frac{4+1+1}{4+4+4} = 0.5
+\]
+
+\textbf{Takeaway:} chroma subsampling alone halves the raw color data.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Same MSE, different perception}
+Source examples compare several distortions with similar or equal MSE.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Error type} & \textbf{MSE} & \textbf{SSIM} \\ \hline
+Distributed white noise, $\sigma=4$ & 16 & 0.906 \\ \hline
+Concentrated on $100\times100$ pixels & 16 & 0.972 \\ \hline
+Concentrated on contours & 16 & 0.987 \\ \hline
+Noise on high spatial frequencies & 16 & 0.882 \\ \hline
+Chroma subsampling & 21.27 & - \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} MSE alone is misleading because it ignores where and how errors appear.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Codec comparison at about 50 KB}
+The source compares codecs on the same image target size.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Codec} & \textbf{Year} & \textbf{Size (Bytes)} & \textbf{Ratio} & \textbf{PSNR} \\ \hline
+Original & - & 6,220,800 & 1.0:1 & - \\ \hline
+PNG & 1996 & 2,923,960 & 2.1:1 & - \\ \hline
+4:2:0 only & - & 3,110,400 & 2.0:1 & 43.05 dB \\ \hline
+JPEG & 1991 & 49,795 & 124.9:1 & 26.89 dB \\ \hline
+JPEG 2000 & - & 50,943 & 122.1:1 & 29.82 dB \\ \hline
+WebP & 2010 & 42,676 & 145.8:1 & 30.88 dB \\ \hline
+AVIF & 2019 & 48,745 & 127.6:1 & 32.45 dB \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} at similar size, newer codecs can provide better objective quality.
+\end{calloutbox}
