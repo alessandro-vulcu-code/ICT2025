@@ -453,19 +453,19 @@
 
 ## Program coverage summary
 
-| # | Lesson | In the PDFs? | In this doc |
-|---|--------|--------------|-------------|
-| 1 | Introduction / Perception / Quality metrics | ❌ absent | ✅ section 1 (new) |
-| 2 | Scalar & Predictive Quantization | ✅ | ✅ PDF + extra |
-| 3 | Lossless coding | ✅ | ✅ PDF + extra |
-| 4 | Transform coding / JPEG | ✅ | ✅ PDF + extra |
-| 5 | Wavelet analysis / JPEG2000 | ⚠️ only via JPEG2000 | ✅ section 5 (new) |
-| 6 | Learned Image Compression | ⚠️ 3 scattered MCQs | ✅ section 6 (new) |
-| 7 | Motion Estimation | ✅ | ✅ PDF + extra |
-| 8 | Video Coding Principles | ✅ | ✅ PDF + extra |
-| 9 | Modern Video Compression Standards | ✅ | ✅ PDF + extra |
-| 10 | Audio Coding | ✅ | ✅ PDF + extra |
-| 11 | Quality Assessment & QoE | ✅ | ✅ PDF + extra |
-| 12 | Adaptive Streaming | ✅ | ✅ PDF + extra |
+| #   | Lesson                                      | In the PDFs?         | In this doc       |
+| --- | ------------------------------------------- | -------------------- | ----------------- |
+| 1   | Introduction / Perception / Quality metrics | ❌ absent             | ✅ section 1 (new) |
+| 2   | Scalar & Predictive Quantization            | ✅                    | ✅ PDF + extra     |
+| 3   | Lossless coding                             | ✅                    | ✅ PDF + extra     |
+| 4   | Transform coding / JPEG                     | ✅                    | ✅ PDF + extra     |
+| 5   | Wavelet analysis / JPEG2000                 | ⚠️ only via JPEG2000 | ✅ section 5 (new) |
+| 6   | Learned Image Compression                   | ⚠️ 3 scattered MCQs  | ✅ section 6 (new) |
+| 7   | Motion Estimation                           | ✅                    | ✅ PDF + extra     |
+| 8   | Video Coding Principles                     | ✅                    | ✅ PDF + extra     |
+| 9   | Modern Video Compression Standards          | ✅                    | ✅ PDF + extra     |
+| 10  | Audio Coding                                | ✅                    | ✅ PDF + extra     |
+| 11  | Quality Assessment & QoE                    | ✅                    | ✅ PDF + extra     |
+| 12  | Adaptive Streaming                          | ✅                    | ✅ PDF + extra     |
 
 > Professor's reminder: the list is **indicative, not exhaustive**; the exam will also include **numerical exercises** and topics not present here. Favor block diagrams, comparisons, and explanation of principles over the mere formula.
