@@ -1,2530 +1,1656 @@
-<!-- Pagina 1 -->
+# Multimedia Communications - Alberto Answers (corrected)
 
-Principles of image compression. Discuss the criteria for evaluating a compression algorithm: rate, quality, [Bonus: robustness, delay, complexity].
+## Table of Contents
 
-Modulations: reduce media size, we exploit spatial temporal and psychovisual redundancies.
-
-2 types of expression:
-- Lossless → 1:1 representation, perfect reconstruction
-- Lossy → decoded to signal we love so much
-- Visually complex → Higher compression ratio
-
-Evaluation Rate →
-$R = \frac{B_{our}}{N_M}$
-$R = \frac{B_{our}}{T}$
-Video Audio [bps]
-
-Correlation Ratio $T = \frac{R_{inv}}{B_{our}}$
-$D(f_i) = \frac{1}{N_M} N g(f_i f_j)^2$
-$D(w(f_i f_j)) = \frac{1}{N_M} N w * g(f_i f_j)^2$
-
-A zero-mean Gaussian random signal has an autocorrelation function:
-
-$$r_X(n - m) = E[X(n)X(m)] = \sigma^2\rho^{|n - m|}$$
-
-1. Consider the predictor $V(n) = X(n - 1)$. For which values of $n$ the prediction gain is positive?
-2. Optimal linear predictor is $V(n) = -\sum_{i=1}^{P} a_i x_{n-i}$, with $a = -R_X^1 r, R_X(i,j) = r_X(i-j), r = [r_X(1) \cdots r_X(P)]^T$.
-   Find optimal linear predictor of order $P = 1$ and compute prediction gain, compare then with previous case.
-
-3. Compute the optimal predictor of order 2. Compare with the previous cases
-
-$$G_p = \frac{\sigma_x^2}{\sigma_y^2}$$
-$$Y(n) = X(n) - V(n)$$
-$$\frac{1}{2} X(n) - X(n-1)$$
-$$G_p = \log \frac{\sigma^2}{\sigma_e^2}$$
-$$r_y = \sum_{i=1}^{P} [X(n)(X(n-1))] \sigma^2 \rho^{|n - m|}$$
-$$\frac{1}{2} \sigma_e^2$$
-$G_p \geq dB$
-1
-1. Consider the predictor $V(n) = X(n - 1)$. For which values of $n$ the prediction gain is positive?
-2. Optimal linear predictor is $V(n) = -\sum_{i=1}^{P} a_i x_{n-i}$, with $a = -R_X^1 r, R_X(i,j) = r_X(i-j), r = [r_X(1) \cdots r_X(P)]^T$.
-   Find optimal linear predictor of order $P = 1$ and compute prediction gain, compare then with previous case.
-
-3. Compute the optimal predictor of order 2. Compare with the previous cases
+- [[#Multimedia Representation and Perception|Multimedia Representation and Perception]]
+- [[#Compression, Prediction and Lossless Coding|Compression, Prediction and Lossless Coding]]
+- [[#Transform Coding and JPEG|Transform Coding and JPEG]]
+- [[#Wavelet-Based Image Coding|Wavelet-Based Image Coding]]
+- [[#Learned Image Coding|Learned Image Coding]]
+- [[#Audio and Speech Coding|Audio and Speech Coding]]
+- [[#Quality Evaluation and Quantization|Quality Evaluation and Quantization]]
+- [[#Adaptive Streaming|Adaptive Streaming]]
+- [[#Motion Estimation and Video Coding|Motion Estimation and Video Coding]]
+- [[#Modern Video Coding|Modern Video Coding]]
 
 ---
 
-<!-- Pagina 2 -->
+## Multimedia Representation and Perception
 
-Draw and comment on the schemes of predictive quantization (encoder and decoder)
+> [!question] Domanda 1
+> Explain the Contrast Sensitivity Function (CSF): what it is, in which units spatial frequency is measured, where it peaks, and the direct implication for quantization in compression.
 
-Discuss the principles of lossless coding
+The Contrast Sensitivity Function describes how sensitive the human visual system is to luminance contrast as spatial frequency changes. Spatial frequency is measured in cycles per degree of visual angle.
 
-• Based on Data statistical Properties
-  VLC - short cw for possible symbols, long cw for not-possible symbols
-  LLC → Some length for each cw
-  Definitions:
-    • Alphabet $X = \{ X_1, \dots, X_m \}$ symbols to encode
-    • Code : $X \rightarrow [0,1]^*$ → set of finite-length bitstrings
+Sensitivity is high at intermediate frequencies and lower at very low and very high frequencies. The usual qualitative curve is band-pass: the eye is less sensitive to very fine high-frequency texture and to very slow luminance variations.
 
-ZTEOs:
-  McMillan → Best Prefix code $\Longleftrightarrow$ Best possible decodible code
-  Kraft → $\sum_{i=1}^{n} 2^{-li}$ $\ll 1 \Longleftrightarrow$ Most efficient code with lengths $\{l_1, \dots, l_m\}$
-  Optimal code $\sum_{i=1}^{n} 2^{-ci} = 1$
-  Kraft's proof on Greedy construct $^2$ Algorithm
-$$\begin{array}{c}
-x(n) \\
-\Sigma \\
-y(n) \\
-Q \\
-\hat{y}(n) \\
-Euc/Dec \\
-\Sigma \\
-x(n) \\
-V(n) \\
-P \\
-\hat{x}(n) \\
-P \\
-\end{array}$$
+For compression, this justifies frequency-dependent quantization: coefficients corresponding to less visible spatial frequencies can be quantized more coarsely, while visually important frequencies should receive smaller quantization steps.
 
-We use the postitive Data as a feedback
-Note: linear is affine $\Rightarrow$ Error Propagation!
-McMillan → Best Prefix code $\Longleftrightarrow$ Best possible decodible code
-Kraft → $\sum_{i=1}^{n} 2^{-li}$ $\ll 1 \Longleftrightarrow$ Most efficient code with lengths $\{l_1, \dots, l_m\}$
-Optimal code $\sum_{i=1}^{n} 2^{-ci} = 1$
-Kraft's proof on Greedy construct $^2$ Algorithm
+> [!question] Domanda 2
+> Compare cones and rods (number, function, lighting conditions) and explain why the RGB-to-Y conversion weights the green component the most.
 
----
+Rods are very sensitive to light intensity and dominate vision in low-light conditions, but they do not provide color perception. Cones work in brighter conditions and provide color perception. The three cone classes are sensitive mainly to short, medium and long wavelengths.
 
-<!-- Pagina 3 -->
+The luminance component is a weighted sum of RGB, for example in BT.601:
 
-Consider a source that emits the symbols A, B, C, D, E, and F. The probabilities of these symbols are given in the following table:
+$$
+Y \approx 0.299R + 0.587G + 0.114B
+$$
 
-$$p_A = 0.3, p_B = 0.1, p_C = 0.05, p_D = 0.18, p_E = 0.15, p_F = 0.22$$
+Green receives the largest weight because the human visual system is most sensitive to luminance variations in the green/yellow part of the spectrum. Therefore, preserving green contributes more to perceived brightness detail than preserving blue with the same weight.
 
-- Describe the Huffman Algorithm
-- Compute Huffman code for this distribution
-- Compare the average length of the Huffman code with the distribution entropy
+> [!question] Domanda 3
+> Explain the J:a:b chroma subsampling notation. Compute the data-reduction factor of 4:2:0 vs full RGB and justify why it is perceptually acceptable.
 
-Algorithm: South Hand by Prost, table 2. Least paddle nodes merge, iterate until splee nodes.
+The notation $J:a:b$ describes how many chroma samples are kept relative to $J$ luma samples across two image rows. $J$ is the horizontal luma reference, $a$ is the number of chroma samples in the first row, and $b$ is the number of chroma samples in the second row.
 
-$$\begin{array}{ccccccc}
-A & 0.3 & A & AF & D & 0.7 & A \\
-F & 0.22 & F & D & 0.4 & C & 0.18 \\
-D & 0.18 & D & B & C & E & 0.15 \\
-E & 0.15 & E & B & C & E & 0.3 \\
-B & 0.1 & B & C & E & F & 0.05
-\end{array}$$
+For 4:2:0, luma $Y$ is kept at full resolution, while $Cb$ and $Cr$ are sampled at half horizontal and half vertical resolution. Over a $2\times 2$ block:
 
-$$\begin{array}{ccccccc}
-A & B & C & D & F \\
-0.6 + 0.3 + 0.15 + 0.3 + 0.54 + 0.66 = 2.55 g/L \\
-H = \sum p_i g_i = 2.40 g/L
-\end{array}$$
+- full RGB has $4\times3=12$ component samples;
+- YCbCr 4:2:0 has $4Y+1Cb+1Cr=6$ component samples.
 
-Why arithmetic encoder is preferred over Huffman for high-performance lossless coding?
+So, with the same bit depth, 4:2:0 uses about half the component samples of full RGB. This is perceptually acceptable because the eye is much more sensitive to luminance detail than to chrominance detail.
 
-It allows to perform block coding with linear complexity.
+> [!question] Domanda 4
+> Draw the Basic Tools for Compression scheme (Transform -> Prediction -> Quantization -> Entropy Coding) and indicate which stage is the only lossy one and why.
 
-Arithmetic coding is suboptimal, but asymptotically optimal.
+A generic compression chain combines decorrelation, approximation and lossless coding:
 
-You encode one symbol using one number.
+![[Pasted image 20260624205627.png]]
 
-Average length $Y < H(x) + \frac{2}{n} \rightarrow H(x)$ (instead of $Y < H(x) + 1$)
+Prediction and transform reduce redundancy or concentrate energy. Entropy coding is lossless: it only assigns shorter codes to more probable symbols.
 
-Arithmetic coding is also good for context-based coding.
-3
-3
+Quantization is the only lossy step because many input values are mapped to the same reconstruction value. This reduces rate, but the original value cannot be recovered exactly.
 
 ---
 
-<!-- Pagina 4 -->
+## Compression, Prediction and Lossless Coding
 
-Motion estimation: give the principles of the block matching approach. Give at least one cost function. [Bonus]. Discuss the regularization issue
+> [!question] Domanda 5
+> Principles of image compression. Discuss the criteria for evaluating a compression algorithm: rate, quality, [Bonus: robustness, delay, complexity].
 
-Block Matchy: • Split Images into Blocks $B_{pq}$ with $(P, q) \in N \times M$
-ISEA: estimate motion using staggered motions of small objects
-Comparing style block亮度 $f_K(B_{pq})$ with a window $f_M(B_{pq}, 9-j)$
+Compression reduces the number of bits needed to represent multimedia data by exploiting:
 
-Criterion:
-• SSD (sum of spined diffuse) $J_{\text{SSD}}(n_j, j) = \sum_{m \in M} [f(n_m, k) - f(n-m, m-j, h)]^2$
-• SAD (sum of Absolute Diffuse) $J_{\text{SAD}}(n_j, j) = \sum_{m \in M} |f(n_m, k) - f(n-m, m-j, h)|$
-• REG (Regular Norm-Based Criterion) $\rightarrow$ Solves problems of SSD/SAD
-$\overline{J_{\text{REG}}}(n_j, j) = \|f_K(B_{pq}) - f_M(B_{pq}, 9-j)\|^2 + \lambda R(n_j, j)$
+- **Statistical redundancy:** neighboring samples, blocks or frames are correlated.
+- **Spatial / temporal redundancy:** images and videos contain repeated structures across space and time.
+- **Psychovisual redundancy:** distortions not perceived by the human visual system can be coarsely quantized.
 
-ISSUE: estimate of largeess Reyls (artifacts) $\Rightarrow$ Prediction factor
+Compression can be:
 
-Discuss the advantages and the disadvantages of Intra, Predictive, and Bidirectional images in a GOP for video coding.
+- **Lossless:** perfect reconstruction, bit-exact output, lower compression ratio.
+- **Lossy:** decoded signal differs from the original but is perceptually close, higher compression ratio.
 
-Coding Mode Selection
+Rate measures coded size:
 
-Intro: No temporal prediction
-Transform-Based coding
-Available for Mimeses (High Rate, Low Distortion)
+$$
+R_{\text{image}} = \frac{B_{\text{out}}}{NM} \quad [\text{bpp}]
+$$
 
-I frames: low complexity, low rate
-Random Access points
-Independent frames
+$$
+R_{\text{stream}} = \frac{B_{\text{out}}}{T} \quad [\text{bit/s}]
+$$
 
-Inter: MS/MC-based temporal prediction
-Transform coding
-only available for non-latent frames (Lower Rate, Higher Distortion)
+Compression ratio is:
 
-P frames:
-• Polaroid cause latent coded or later coded
-• Higher complexity
-• High companion ratio for a given quality wrt. I frames
-• Predictive for previous AF
+$$
+\text{CR} = \frac{B_{\text{in}}}{B_{\text{out}}}
+$$
 
-B frames: Very high complexity, very high companion ratio, predicted from both previous AF
-*block → Eve choose $f_{intra}$, forward pred., both pred., bidirectional prediction)
+Quality is usually evaluated by distortion measures:
+
+$$
+D(f,\hat{f}) = \frac{1}{NM}\|f-\hat{f}\|^2
+$$
+
+$$
+\text{PSNR}(f,\hat{f}) = 10\log_{10}\left(\frac{V^2}{D(f,\hat{f})}\right)
+$$
+
+For perceptual weighting:
+
+$$
+D_W(f,\hat{f}) = \frac{1}{NM}\|h \star (f-\hat{f})\|^2
+$$
+
+$$
+\text{WPSNR}(f,\hat{f}) = 10\log_{10}\left(\frac{V^2}{D_W(f,\hat{f})}\right)
+$$
+
+Other objective metrics are **SSIM** and **LPIPS**. The main design tensions are: higher quality usually requires higher rate; robustness, lower delay and lower complexity are often in conflict.
+
+> [!question] Domanda 6
+> A zero-mean Gaussian random signal has an autocorrelation function:
+>
+> $$
+> r_X(n-m)=E[X(n)X(m)] = \sigma^2\rho^{|n-m|}
+> $$
+>
+> - Consider the predictor $V(n)=X(n-1)$. For which values is the prediction gain positive?
+> - Optimal linear predictor is $V(n)=-\sum_{i=1}^{P} a_i x_{n-i}$, with $a=-R_X^{-1}r$, $R_X(i,j)=r_X(i-j)$, $r=[r_X(1)\cdots r_X(P)]^T$. Find optimal linear predictor of order $P=1$ and compute prediction gain, compare then with previous case.
+> - Compute the optimal predictor of order 2. Compare with the previous cases.
+
+Let:
+
+$$
+r_X(n-m)=\mathbb{E}[X(n)X(m)] = \sigma^2\rho^{|n-m|}
+$$
+
+For the predictor $V(n)=X(n-1)$:
+
+$$
+\sigma_y^2 = \mathbb{E}[(X(n)-X(n-1))^2] = 2\sigma^2(1-\rho)
+$$
+
+$$
+G_P = 10\log_{10}\left(\frac{\sigma^2}{\sigma_y^2}\right)
+=10\log_{10}\left(\frac{1}{2(1-\rho)}\right)
+$$
+
+The gain is positive iff:
+
+$$
+\rho > \frac{1}{2}
+$$
+
+For the optimal linear predictor:
+
+$$
+V(n) = -\sum_{i=1}^{P} a_i x(n-i)
+$$
+
+with:
+
+$$
+\vec{a}^{\,opt} = -R_X^{-1}\vec{r}
+$$
+
+For $P=1$:
+
+$$
+a_1^{opt}=-\rho \quad \Rightarrow \quad V(n)=\rho X(n-1)
+$$
+
+$$
+\sigma_y^2=\sigma^2(1-\rho^2)
+$$
+
+$$
+G_P = 10\log_{10}\left(\frac{1}{1-\rho^2}\right)
+$$
+
+For $P=2$, the autocorrelation matrix is:
+
+$$
+R_X = \sigma^2
+\begin{bmatrix}
+1 & \rho \\
+\rho & 1
+\end{bmatrix},
+\quad
+\vec{r} = \sigma^2
+\begin{bmatrix}
+\rho \\
+\rho^2
+\end{bmatrix}
+$$
+
+and:
+
+$$
+\vec{a}^{\,opt} =
+\begin{bmatrix}
+-\rho \\
+0
+\end{bmatrix}
+$$
+
+Thus the second tap gives no extra gain for an AR(1) source.
+
+> [!question] Domanda 7
+> Draw and comment on the schemes of predictive quantization (encoder and decoder).
+
+![[Block Scheme Exam/Predictive quantization - open loop.png]]
+
+The open-loop scheme shows the basic predictive quantization idea: the predictor output $v(n)$ is subtracted from the current sample, only the residual $y(n)$ is quantized, and the prediction is added back after quantization. It is useful to understand DPCM-style coding, but it is not safe as a complete codec because the encoder and decoder may base prediction on different past samples.
+
+Open-loop prediction is wrong because the encoder predicts from original samples while the decoder predicts from reconstructed samples. This mismatch causes **drift**.
+
+Correct predictive quantization uses a closed reconstruction loop at the encoder:
+
+![[Block Scheme Exam/Predictive quantization - correct closed loop.png]]
+
+The encoder and decoder feed the predictor with the same reconstructed samples:
+
+$$
+y(n)=x(n)-v(n)
+$$
+
+$$
+\hat{x}(n)=\hat{y}(n)+v(n)
+$$
+
+The prediction is useful only if the residual variance is smaller than the original variance.
+
+> [!question] Domanda 8
+> Discuss the principles of lossless coding.
+
+Lossless coding maps source symbols into bitstrings and reconstructs the original sequence exactly.
+
+Alphabet and code:
+
+$$
+\mathcal{X}=\{x_1,\dots,x_M\}
+$$
+
+$$
+\mathcal{C}: \mathcal{X}\rightarrow \{0,1\}^*
+$$
+
+Fixed-length coding assigns the same number of bits to every symbol:
+
+$$
+R=\lceil\log_2 M\rceil
+$$
+
+Variable-length coding assigns shorter codewords to more probable symbols. Average length is:
+
+$$
+\bar{L} = \sum_i p_i l_i
+$$
+
+Prefix codes are instantaneously decodable: no codeword is prefix of another codeword.
+
+McMillan theorem: the best uniquely decodable code has same performance as the best prefix code, so it is enough to focus on prefix codes.
+
+Kraft inequality:
+
+$$
+\sum_i 2^{-l_i} \le 1
+\iff
+\text{there exists a prefix code with lengths } \{l_i\}
+$$
+
+Entropy is the theoretical lossless lower bound:
+
+$$
+H(X)=-\sum_i p_i \log_2 p_i
+$$
+
+Shannon theorem:
+
+$$
+H(X) \le \bar{L} < H(X)+1
+$$
+
+> [!question] Domanda 9
+> Consider a source that emits the symbols A, B, C, D, E, and F. The probabilities of these symbols are given in the following table:
+>
+> $$
+> p_A=0.3,\ p_B=0.1,\ p_C=0.05,\ p_D=0.18,\ p_E=0.15,\ p_F=0.22
+> $$
+>
+> - Describe the Huffman Algorithm.
+> - Compute Huffman code for this distribution.
+> - Compare the average length of the Huffman code with the distribution entropy.
+
+Huffman coding repeatedly merges the two least probable symbols. One valid optimal code is:
+
+| Symbol | Probability | Code | Length |
+|---|---:|---:|---:|
+| A | 0.30 | 10 | 2 |
+| B | 0.10 | 1111 | 4 |
+| C | 0.05 | 1110 | 4 |
+| D | 0.18 | 00 | 2 |
+| E | 0.15 | 110 | 3 |
+| F | 0.22 | 01 | 2 |
+
+Average length:
+
+$$
+\bar{L}=0.30\cdot2+0.10\cdot4+0.05\cdot4+0.18\cdot2+0.15\cdot3+0.22\cdot2 = 2.45
+$$
+
+Entropy:
+
+$$
+H(X)=-\sum_i p_i\log_2 p_i \approx 2.406 \text{ bit/symbol}
+$$
+
+The Huffman code is close to entropy:
+
+$$
+\bar{L}-H(X) \approx 0.044 \text{ bit/symbol}
+$$
+
+> [!question] Domanda 10
+> Why arithmetic encoder is preferred over Huffman for high-performance lossless coding?
+
+Huffman coding has integer-length codewords and therefore suffers from a non-dyadic probability penalty. Block Huffman can reduce this penalty, but its alphabet grows as $M^K$ for blocks of length $K$.
+
+Arithmetic coding encodes the whole sequence as one interval in $[0,1)$ and has linear complexity in sequence length. Its rate satisfies:
+
+$$
+\mathcal{L} < H(X) + \frac{2}{n}
+\xrightarrow[n\to\infty]{}
+H(X)
+$$
+
+It is also well suited to adaptive and context-based probability models.
+
+> [!question] Domanda 11
+> (LLCod) Explain the difference between Fixed-Length Coding (FLC) and Variable-Length Coding (VLC), and describe why VLC is theoretically superior for non-equiprobable sources.
+
+FLC assigns all symbols the same codeword length. It is simple and instant to parse, but inefficient for non-equiprobable sources.
+
+VLC uses different lengths. If symbols are non-equiprobable, more probable symbols get shorter codewords and the average length decreases:
+
+$$
+\bar{L} = \sum_i p_i l_i
+$$
+
+VLC is theoretically superior when source probabilities are not uniform.
+
+> [!question] Domanda 12
+> (LLCod) Discuss the importance of the prefix condition in Variable-Length Coding and how it relates to the concept of instantaneous decodability.
+
+The prefix condition requires that no codeword is the prefix of another. This lets the decoder identify each symbol as soon as the codeword ends, without look-ahead.
+
+Kraft inequality gives the condition for such lengths:
+
+$$
+\sum_i 2^{-l_i}\le 1
+$$
+
+Equality means the prefix tree is complete.
+
+> [!question] Domanda 13
+> (LLCod) What are the two distinct mechanisms by which “block coding” improves the efficiency of lossless compression?
+
+Block coding improves lossless compression in two ways:
+
+1. For sources with memory, block entropy satisfies:
+
+$$
+H(X^K) \le \sum_{i=1}^{K}H(X_i)
+$$
+
+so dependencies are exploited.
+
+2. For memoryless non-dyadic distributions, integer-length overhead is spread over $K$ symbols:
+
+$$
+\frac{H(X^K)}{K} \le \frac{L^*}{K} < \frac{H(X^K)}{K} + \frac{1}{K}
+$$
+
+As $K$ grows, the overhead per symbol tends to zero.
+
+> [!question] Domanda 14
+> (LLCod) Provide a synthetic comparison between the main lossless coding techniques (Exp-Golomb, Huffman, Arithmetic, Dictionary, Neural) in terms of complexity and Latency, and provide a typical use case for each of them.
+
+| Method | Efficiency | Complexity | Latency | Typical use |
+|---|---:|---:|---:|---|
+| Exp-Golomb | Good for small integers | Very low | Very low | Syntax elements, motion-vector residuals |
+| Huffman | Good, optimal among symbol prefix codes | Low / medium | Very low | JPEG, DEFLATE-style coding |
+| Arithmetic | Very high, close to entropy | High | Medium | CABAC, context-adaptive coding |
+| Dictionary (LZ/LZW) | Universal for repeated patterns | Medium | Low / medium | Text, GIF, ZIP-like systems |
+| Neural lossless | Potentially very high | Very high | High | Research / high-resolution image models |
+
+> [!question] Domanda 15
+> (LLCod) Describe the principle of the Huffman coding. For the following probability distribution, compute the optimal lossless code, and compare its average length to the source’s entropy:
+>
+> $$
+> p_A=0.35,\ p_B=0.1,\ p_C=0.07,\ p_D=0.08,\ p_E=0.12,\ p_F=0.28
+> $$
+
+One valid optimal Huffman code is:
+
+| Symbol | Probability | Code | Length |
+|---|---:|---:|---:|
+| A | 0.35 | 00 | 2 |
+| B | 0.10 | 100 | 3 |
+| C | 0.07 | 101 | 3 |
+| D | 0.08 | 110 | 3 |
+| E | 0.12 | 111 | 3 |
+| F | 0.28 | 01 | 2 |
+
+Only codeword labels may vary; the relevant result is the set of lengths:
+
+$$
+l_A=l_F=2,\quad l_B=l_C=l_D=l_E=3
+$$
+
+Average length:
+
+$$
+\bar{L}=0.35\cdot2+0.28\cdot2+(0.10+0.07+0.08+0.12)\cdot3=2.37
+$$
+
+Entropy:
+
+$$
+H(X)\approx 2.304 \text{ bit/symbol}
+$$
+
+Overhead:
+
+$$
+\bar{L}-H(X)\approx 0.066 \text{ bit/symbol}
+$$
+
+> [!question] Domanda 16
+> (LLCod) Which of the following statements best describes the behavior of the Shannon entropy $H(X)$ for a binary random variable with probability $p$?
+
+For $X\sim\text{Bernoulli}(p)$:
+
+$$
+H(X)=-p\log_2 p -(1-p)\log_2(1-p)
+$$
+
+The entropy is $0$ for $p=0$ or $p=1$, and maximum at $p=\frac{1}{2}$:
+
+$$
+H\left(\frac{1}{2}\right)=1 \text{ bit}
+$$
+
+> [!question] Domanda 17
+> (LLCod) Why is Lempel-Ziv (e.g., LZW) considered a “universal” coding algorithm?
+
+Lempel-Ziv methods do not require prior knowledge of the source probability distribution. Encoder and decoder build the same dictionary adaptively from the observed sequence. For stationary ergodic sources, dictionary coding is asymptotically optimal.
+
 ---
-```markdown
-Motion estimation: give the principles of the block matching approach. Give at least one cost function. [Bonus]. Discuss the regularization issue
 
-Block Matchy: • Split Images into Blocks $B_{pq}$ with $(P, q) \in N \times M$
-ISEA: estimate motion using staggered motions of small objects
-Comparing style block亮度 $f_K(B_{pq})$ with a window $f_M(B_{pq}, 9-j)$
+## Transform Coding and JPEG
 
-Criterion:
-• SSD (sum of spined diffuse) $J_{\text{SSD}}(n_j, j) = \sum_{m \in M} [f(n_m, k) - f(n-m, m-j, h)]^2$
-• SAD (sum of Absolute Diffuse) $J_{\text{SAD}}(n_j, j) = \sum_{m \in M} |f(n_m, k) - f(n-m, m-j, h)|$
-• REG (Regular Norm-Based Criterion) $\rightarrow$ Solves problems of SSD/SAD
-$\overline{J_{\text{REG}}}(n_j, j) = \|f_K(B_{pq}) - f_M(B_{pq}, 9-j)\|^2 + \lambda R(n_j, j)$
+> [!question] Domanda 18
+> Why the geometric mean of the variances of a random vector is key information to evaluate the rate-distortion performance of a quantizer?
 
-ISSUE: estimate of largeess Reyls (artifacts) $\Rightarrow$ Prediction factor
+With high-resolution quantization and optimal bit allocation, the distortion after transform coding is proportional to the geometric mean of transformed coefficient variances:
 
-Discuss the advantages and the disadvantages of Intra, Predictive, and Bidirectional images in a GOP for video coding.
+$$
+D^\star = c_{GM}\sigma_{GM}^2 2^{-2\bar{R}}
+$$
+
+Orthogonal transforms preserve total energy, hence preserve the arithmetic mean of variances:
+
+$$
+\sigma_{AM,Y}^2 = \sigma_{AM,X}^2
+$$
+
+but they can change the distribution of variances. A good transform makes few coefficients high-energy and many coefficients low-energy, reducing $\sigma_{GM}^2$. Since:
+
+$$
+\sigma_{GM}^2 \le \sigma_{AM}^2
+$$
+
+smaller geometric mean means lower distortion at the same rate.
+
+Coding gain is:
+
+$$
+G_T = \frac{D_{\text{PCM}}}{D_Y}
+=\frac{\sigma_{AM,Y}^2}{\sigma_{GM,Y}^2}
+$$
+
+and in dB:
+
+$$
+G_{T,dB}=10\log_{10}G_T
+$$
+
+> [!question] Domanda 19
+> Write the resource allocation problem for transform coding. Derive the Huang-Schulteiss formula.
+
+For a vector with components $k=0,\dots,M-1$, high-resolution distortion is:
+
+$$
+D = \frac{1}{M}\sum_{k=0}^{M-1} c_k\sigma_k^2 2^{-2R_k}
+$$
+
+subject to:
+
+$$
+\sum_{k=0}^{M-1} R_k \le R_{\text{tot}}
+$$
+
+Lagrangian:
+
+$$
+J(\vec{R},\lambda)=
+\frac{1}{M}\sum_{k=0}^{M-1} c_k\sigma_k^2 2^{-2R_k}
++\lambda\left(\sum_{k=0}^{M-1}R_k-R_{\text{tot}}\right)
+$$
+
+Set:
+
+$$
+\frac{\partial J}{\partial R_k}=0
+$$
+
+This gives:
+
+$$
+R_k^\star = \frac{R_{\text{tot}}}{M}
++\frac{1}{2}\log_2\left(
+\frac{c_k\sigma_k^2}{c_{GM}\sigma_{GM}^2}
+\right)
+$$
+
+where:
+
+$$
+c_{GM}=\sqrt[M]{\prod_{k=0}^{M-1} c_k},
+\quad
+\sigma_{GM}^2=\sqrt[M]{\prod_{k=0}^{M-1}\sigma_k^2}
+$$
+
+Components above the geometric mean receive more bits; components below it receive fewer bits.
+
+> [!question] Domanda 20
+> Explain why the KLT is the optimal linear transform for decorrelation and why the DCT is used in practice instead.
+
+The Karhunen-Loeve Transform is built from the eigenvectors of the signal covariance matrix. In that basis, transform coefficients are decorrelated and energy compaction is optimal among linear orthogonal transforms for the given source statistics.
+
+If $R_X$ is the covariance matrix and $u_i$ are its eigenvectors, then:
+
+$$
+T_{KLT} = [u_1\ u_2\ \cdots\ u_M]^T
+$$
+
+The problem is that KLT depends on the actual statistics of the image or block. The encoder would need to estimate the covariance, compute the transform and signal it to the decoder.
+
+The DCT is used in practice because it is fixed, separable, fast, has no side information cost and approximates the KLT well for locally correlated image blocks.
+
+> [!question] Domanda 21
+> Describe the principles of the JPEG standard.
+
+JPEG is a lossy still-image coding standard based on block DCT, quantization and entropy coding. The standard mainly defines the decodable bitstream and decoder behavior, while encoder choices remain flexible.
+
+Baseline JPEG chain:
+
+```text
+RGB -> YCbCr -> chroma subsampling -> 8x8 blocks
+    -> level shift by 128 -> DCT -> quantization
+    -> zig-zag scan -> RLE/Huffman -> JPEG bitstream
 ```
+
+Quantization:
+
+$$
+\tilde{C}_{ij}=\text{round}\left(\frac{C_{ij}}{q_{ij}}\right)
+$$
+
+The quantization table assigns different steps to DCT frequencies: smaller steps for visually important low frequencies, larger steps for high frequencies.
+
+Quality factor scaling:
+
+$$
+S_F =
+\begin{cases}
+\frac{5000}{Q} & 1 \le Q \le 50\\
+200-2Q & 50 < Q \le 99\\
+1 & Q=100
+\end{cases}
+$$
+
+The actual quantization table is scaled approximately as:
+
+$$
+q \leftarrow \frac{S_F}{100}q^\star
+$$
+
+JPEG metadata formats:
+
+- **JFIF:** interoperability metadata such as density, resolution and thumbnails.
+- **EXIF:** camera metadata such as date/time, GPS and camera settings.
+
+> [!question] Domanda 22
+> (TC&JPEG) Draw the scheme and describe the functional blocks of a JPEG encoder.
+
+![[Block Scheme Exam/JPEG encoder.png]]
+
+The DCT compacts energy; quantization creates losses; zig-zag scan groups zeros; entropy coding is lossless.
+
+> [!question] Domanda 23
+> (TC&JPEG) Describe the problem of “frequency leakage” in the Discrete Fourier Transform (DFT) when applied to signal compression and how the Discrete Cosine Transform (DCT) addresses it.
+
+DFT assumes the finite signal is periodic. If the first and last samples do not match, periodization creates discontinuities. These discontinuities spread energy into high frequencies: this is frequency leakage.
+
+DCT reduces leakage by using a symmetric extension of the signal before transforming it. The mirror boundary makes the periodic continuation smoother and improves energy compaction for images.
+
+> [!question] Domanda 24
+> (TC&JPEG) Explain the entropy coding process for AC coefficients in the JPEG standard and the significance of the “End of Block” (EOB) symbol.
+
+After zig-zag scan, AC coefficients are represented by pairs:
+
+$$
+(r,k)
+$$
+
+where:
+
+- $r$ is the run of preceding zeros.
+- $k$ is the category of the non-zero coefficient amplitude.
+
+Special symbols:
+
+$$
+(15,0) = \text{ZRL, run of 16 zeros}
+$$
+
+$$
+(0,0) = \text{EOB, End Of Block}
+$$
+
+EOB means all remaining coefficients in the block are zero.
+
+> [!question] Domanda 25
+> (TC&JPEG) Describe the JPEG lossless coding process applied to the following table of quantized DCT coefficients:
+>
+> $$
+> \begin{bmatrix}
+> 10 & 3 & 0 & 0 & 0 & 0 & 0 & 0 \\
+> -2 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
+> 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+> 0 & 4 & 0 & 0 & 0 & 0 & 0 & 0 \\
+> 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+> 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+> 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+> 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+> \end{bmatrix}
+> $$
+
+Given the displayed coefficient matrix, treat missing positions as zero-padded to an $8\times 8$ block. The DC coefficient is:
+
+$$
+DC_n=10
+$$
+
+JPEG encodes the DC difference:
+
+$$
+\Delta DC = DC_n-DC_{n-1}
+$$
+
+If this is the first block and $DC_{n-1}=0$:
+
+$$
+\Delta DC=10
+$$
+
+The non-zero AC values in zig-zag order are:
+
+$$
+3,\ -2,\ 1,\ 1,\ 4,\ 1
+$$
+
+Run/category representation:
+
+| AC value | Zero run | Category |
+|---:|---:|---:|
+| 3 | 0 | 2 |
+| -2 | 0 | 2 |
+| 1 | 0 | 1 |
+| 1 | 0 | 1 |
+| 4 | 6 | 3 |
+| 1 | 1 | 1 |
+| EOB | 0 | 0 |
+
+No ZRL symbol is needed because there is no run longer than 15 zeros before a non-zero coefficient.
+
+> [!question] Domanda 26
+> (TC&JPEG) What is the primary purpose of an orthogonal transform in the context of the transform coding paradigm?
+
+The primary purpose of an orthogonal transform in transform coding is **sparsification / energy compaction**. It concentrates information into fewer coefficients while preserving energy and squared error:
+
+$$
+T^{-1}=T^T,\quad \|TX\|^2=\|X\|^2
+$$
+
+> [!question] Domanda 27
+> (TC&JPEG) In the context of JPEG compression, what is the role of the quantization table?
+
+The quantization table defines the quantization step for each DCT coefficient. It controls rate-quality tradeoff and reflects visual sensitivity: low-frequency coefficients usually receive smaller steps than high-frequency coefficients.
+
+> [!question] Domanda 28
+> (TC&JPEG) Which statement regarding the relationship between the Arithmetic Mean (AM) and Geometric Mean (GM) of variances in transform coding is correct?
+
+Orthogonal transforms preserve energy, hence they preserve the arithmetic mean of coefficient variances. They do not necessarily preserve the geometric mean. Transform coding tries to reduce the GM while keeping the AM fixed, because optimal distortion depends on the GM.
+
+---
+
+## Wavelet-Based Image Coding
+
+> [!question] Domanda 29
+> State the time-frequency uncertainty principle ($\Delta t \cdot \Delta f \geq 1/4\pi$), explain why it imposes a trade-off, and how wavelets address it with adaptive multiresolution (short windows at high frequencies, long at low frequencies).
+
+The uncertainty principle says that time/space localization and frequency localization cannot both be arbitrarily precise:
+
+$$
+\Delta t \cdot \Delta f \geq \frac{1}{4\pi}
+$$
+
+A short analysis window gives good localization in time or space, but poor frequency resolution. A long window gives good frequency resolution, but poor localization.
+
+Wavelets address this by using multiresolution analysis: short basis functions for high frequencies and long basis functions for low frequencies. This is well matched to images, where edges and discontinuities need spatial localization while smooth trends are better represented at coarse scales.
+
+> [!question] Domanda 30
+> Compare STFT (rigid tiling) and DWT (adaptive tiling) of the time-frequency plane, linking them to the trends vs anomalies image model.
+
+The Short-Time Fourier Transform uses a fixed window size. Therefore the time-frequency plane is tiled rigidly: all frequencies are analyzed with the same resolution.
+
+The Discrete Wavelet Transform uses analysis filter banks and downsampling to split the signal into low-frequency approximations and high-frequency detail subbands. Repeating the decomposition creates a multiresolution representation.
+
+This matches the trends/anomalies model: smooth trends are represented by coarse low-frequency components, while local anomalies such as edges are represented by high-frequency detail components with better localization.
+
+> [!question] Domanda 31
+> (TC&JPEG) What is a primary advantage of the hierarchical (multiresolution) decomposition offered by the Wavelet Transform in JPEG2000?
+
+Wavelet decomposition gives progressive and multiresolution coding: low-resolution approximations are decoded first, then detail subbands refine quality and resolution.
+
+> [!question] Domanda 32
+> (TC&JPEG) Compare the block-based DCT approach used in JPEG with the wavelet-based decomposition used in JPEG2000, specifically in terms of how they handle the image signal and the resulting artifacts.
+>
+> (TC&JPEG) Which of the following is a key reason why JPEG2000 is generally more efficient than JPEG?
+
+JPEG uses independent $8\times 8$ block DCT. It is simple and efficient, but at low bitrate it creates **blocking artifacts** at block boundaries.
+
+JPEG2000 uses DWT over large tiles / the whole image. It provides multiresolution representation, embedded bitplane coding and precise rate control. At low bitrate it tends to produce ringing or blurring near edges rather than blocking artifacts.
+
+JPEG2000 is more efficient mainly because of:
+
+- wavelet multiresolution decomposition,
+- embedded bitstream truncation,
+- independent code blocks,
+- better scalability by quality and resolution,
+- no fixed $8\times 8$ block boundaries.
+
+> [!question] Domanda 33
+> Describe the JPEG2000 architecture (Tier 1: DWT 9/7 or 5/3 -> fine quantization -> arithmetic coding of codeblocks per bitplane; Tier 2: EBCOT). Where does the lossy operation actually happen?
+
+JPEG2000 is a wavelet-based still-image standard designed for scalability, precise rate control, region-of-interest access and lossy-to-lossless operation.
+
+Tier 1 performs the main coding of wavelet coefficients:
+
+~~~text
+image -> DWT -> quantization -> codeblocks -> bitplane arithmetic coding
+~~~
+
+The irreversible 9/7 DWT is used for lossy coding, while the reversible 5/3 DWT supports lossless coding. Coefficients are split into codeblocks and coded bitplane by bitplane.
+
+Tier 2 is EBCOT packaging and rate control. It organizes coded passes into layers, packets and progression orders, and selects truncation points to meet the target bitrate.
+
+The actual lossy operation is quantization and, in embedded coding, truncating coded bitplanes/passes to satisfy the rate constraint.
+
+> [!question] Domanda 34
+> Compare JPEG and JPEG2000 on channel-error robustness (codeblock independence, contained vs catastrophic propagation, resynchronization markers).
+
+JPEG entropy coding is sequential. A bit error can desynchronize the Huffman stream and corrupt following coefficients until the next restart marker or resynchronization point. Artifacts can therefore propagate across a scan segment.
+
+JPEG2000 codes relatively independent codeblocks and organizes the stream into packets/layers. A damaged portion tends to affect a limited codeblock, subband or quality layer instead of the whole image.
+
+So JPEG2000 is generally more robust to localized channel errors, while JPEG can suffer more catastrophic propagation unless restart markers are used frequently.
+
+---
+
+## Learned Image Coding
+
+> [!question] Domanda 35
+> (TC&JPEG) Explain the fundamental shift in Rate-Distortion (R-D) optimization from classical codecs (e.g., JPEG) to neural compression methods.
+
+Classical codecs optimize over handcrafted tools: fixed transforms, prediction modes, block partitions and quantization steps. Mode choice is often combinatorial:
+
+$$
+J = D + \lambda R
+$$
+
+Neural compression learns analysis transform, synthesis transform and entropy model by minimizing a differentiable loss:
+
+$$
+\mathcal{L}=D(x,\hat{x})+\lambda R(\hat{y})
+$$
+
+The transform is learned from data instead of fixed in the standard.
+
+> [!question] Domanda 36
+> JPEG-AI: goals (beat VVC-Intra by about 50%), backbone (hierarchical VAE with hyperprior), dual-use human/machine support, and complexity profiles (Dec0/Dec1/Dec2, kMAC/px). Cite pros/cons vs classical codecs (R-D vs computational cost, determinism, hallucinations).
+
+JPEG-AI targets learned still-image coding for both human viewing and machine consumption. The goal is substantially better rate-distortion performance than classical intra codecs, especially at low bitrate.
+
+The typical backbone is a hierarchical variational autoencoder:
+
+~~~text
+x -> analysis transform -> quantized latents -> entropy coding -> bitstream
+                 |
+                 v
+              hyperprior
+~~~
+
+The hyperprior transmits side information about local latent statistics, such as scales or probabilities. Although it costs bits, it improves entropy modeling and can reduce the total rate.
+
+JPEG-AI also defines decoder complexity profiles, such as Dec0, Dec1 and Dec2, to trade coding efficiency against computational cost measured in operations per pixel.
+
+Main advantages:
+
+- better R-D efficiency, especially at low bitrate;
+- nonlinear transforms learned from data;
+- possible support for both human and machine tasks.
+
+Main drawbacks:
+
+- high computational and energy cost;
+- harder deterministic reproducibility across platforms;
+- risk of perceptually plausible but inaccurate reconstructed details.
+
+> [!question] Domanda 37
+> (TC&JPEG) What is the primary purpose of adding Additive Uniform Noise during the training phase of a neural codec?
+
+Quantization is non-differentiable and has zero gradient almost everywhere. During training, additive uniform noise:
+
+$$
+u \sim \mathcal{U}\left(-\frac{1}{2},\frac{1}{2}\right)
+$$
+
+is used as a continuous relaxation of rounding, allowing gradient-based optimization.
+
+> [!question] Domanda 38
+> (TC&JPEG) Why do Convolutional Neural Networks (CNNs) outperform Multi-Layer Perceptrons (MLPs) when applied to image compression?
+
+MLPs flatten images and ignore spatial locality, causing many parameters and poor inductive bias. CNNs exploit local correlations, translation structure and shared filters, making them much more efficient for images.
+
+---
+
+## Audio and Speech Coding
+
+> [!question] Domanda 39
+> Explain masking in the auditory system: define frequency masking and temporal masking (pre/post-masking) with their time-scale orders of magnitude.
+
+Auditory masking means that a strong sound can make weaker sounds inaudible. Perceptual audio codecs exploit this by spending fewer bits where quantization noise is hidden below the masking threshold.
+
+Frequency masking is simultaneous masking: a strong component at frequency $f_0$ raises the hearing threshold around nearby frequencies, mostly within the same critical band.
+
+Temporal masking happens around the time of a masker:
+
+- pre-masking hides sounds shortly before the masker, typically for a few milliseconds;
+- post-masking hides sounds after the masker, often up to about $100$-$200$ ms depending on level and content.
+
+> [!question] Domanda 40
+> What is the critical band and how does it relate to the audibility condition of a set of sinusoids close in frequency?
+
+A critical band is a frequency interval processed roughly by the same auditory filter in the cochlea. Its bandwidth increases with center frequency.
+
+When several sinusoids are close in frequency, they interact inside the same critical band. Even if each component is individually weak, their combined power can become audible if it exceeds the local hearing threshold. A simplified condition is:
+
+$$
+\sum_i g_i^2 > S_0(f_n)
+$$
+
+where $g_i^2$ are the sinusoid powers and $S_0(f_n)$ is the absolute hearing threshold near frequency $f_n$.
+
+> [!question] Domanda 41
+> (A&S Comp.) Explain the difference between Source-Based (Parametric) coding and Sink-Based (Perceptual) coding.
+
+**Source-based / parametric coding** models how the signal is produced. Speech codecs use a source-filter model of vocal folds plus vocal tract. Goal: intelligibility and low latency at very low bitrate.
+
+**Sink-based / perceptual coding** models how the listener perceives sound. Audio codecs exploit auditory masking and critical bands. Goal: transparent quality by removing inaudible information.
+
+> [!question] Domanda 42
+> (A&S Comp.) Describe the “Analysis-by-Synthesis” (AbS) loop used in CELP (Code Excited Linear Prediction) codecs and why it represents an improvement over simple LPC-10.
+
+LPC-10 uses a simplified excitation model: impulse train for voiced speech and noise for unvoiced speech. This can sound synthetic.
+
+CELP improves LPC using **Analysis-by-Synthesis**. The encoder contains a local decoder loop:
+
+```text
+candidate codebook excitation -> gain -> synthesis filter 1/A(z)
+    -> perceptual weighting -> compare with original speech
+    -> choose index/gain with minimum weighted error
 ```
-```
-Motion estimation: give the principles of the block matching approach. Give at least one cost function. [Bonus]. Discuss the regularization issue
 
-Block Matchy: • Split Images into Blocks $B_{pq}$ with $(P, q) \in N \times M$
-ISEA: estimate motion using staggered motions of small objects
-Comparing style block亮度 $f_K(B_{pq})$ with a window $f_M(B_{pq}, 9-j)$
+The transmitted data are codebook index and gains. The perceptual weighting filter is:
 
-Criterion:
-• SSD (sum of spined diffuse) $J_{\text{SSD}}(n_j, j) = \sum_{m \in M} [f(n_m, k) - f(n-m, m-j, h)]^2$
-• SAD (sum of Absolute Diffuse) $J_{\text{SAD}}(n_j, j) = \sum_{m \in M} |f(n_m, k) - f(n-m, m-j, h)|$
-• REG (Regular Norm-Based Criterion) $\rightarrow$ Solves problems of SSD/SAD
-$\overline{J_{\text{REG}}}(n_j, j) = \|f_K(B_{pq}) - f_M(B_{pq}, 9-j)\|^2 + \lambda R(n_j, j)$
+$$
+W(z)=\frac{A(z)}{A(z/\gamma)},\quad 0<\gamma<1
+$$
 
-ISSUE: estimate of largeess Reyls (artifacts) $\Rightarrow$ Prediction factor
+CELP is better because it searches excitation vectors in closed loop and minimizes perceptually weighted reconstruction error.
 
-Discuss the advantages and the disadvantages of Intra, Predictive, and Bidirectional images in a GOP for video coding.
-```
+> [!question] Domanda 43
+> (A&S Comp.) What is the role of the psychoacoustic masking model in perceptual audio coding, and how is it used to allocate bits?
 
----
+The psychoacoustic model estimates a frequency-dependent masking threshold. Quantization noise can be hidden below that threshold.
 
-<!-- Pagina 5 -->
+Typical encoder blocks:
 
-Why the geometric mean of the variances of a random vector is key information to evaluate the rate-distortion performance of a quantizer?
-
-Geometric Mean $\rightarrow$ becomes smaller as the values become different write others
-
-To maximize the Carly-Gold $G_{TR} = \frac{\sigma^2}{g_{AM}, y}$
-$\Rightarrow$ We need to find an outlier transform
-$Y = \tau X$
-that minimizes $\sigma^2_{AM}, y$
-
-Distorting inputs or G.M.
-
-$D^*OC \sigma^2_{GM}$
-
-Write the resource allocation problem for transform coding. Derive the Huang-Schulteiss formula
-
-Minimize $D$ under Rate constraint
-$\min D(R) = \frac{1}{M} \sum_{k=0}^{M-1} C_k \sigma^2_k 2^{-2R_k}$
-s.t. $\sum_{k=0}^{M-1} R_k \leq R_{OT}$
-
-$\Rightarrow$ Logarithm method
-$J(R^*, \lambda) = \frac{1}{M} \sum_{k=0}^{M-1} C_k \sigma^2_k 2^{-2R_k} + \lambda \left( \sum_{k=0}^{M-1} R_k - R_{OT} \right)$
-
-setting $\frac{\partial J}{\partial R_k} = 0, \frac{\partial J}{\partial \lambda} = 0$
-
-HS $\Rightarrow R_{K^*} = \frac{R_{OT}}{M} + \frac{1}{2} g_k \left[ \frac{C_k \sigma^2_k}{g_{AM}, y} \right]$
-5
-$$\begin{align*}
-C_{GM} &= \frac{M}{\sum_{k=0}^{M-1} C_k} \\
-\sigma^2_{GM} &= \frac{M}{\sum_{k=0}^{M-1} C_k}
-\end{align*}$$
-
----
-
-<!-- Pagina 6 -->
-
-Describe the principles of the JPEG standard
-
-JPEG → • Standard → Only decoder is regulated, cooperation for the ENC.
-• Guarantees Interoperability
-
-Encoding strategy
-Block → abstract avg rate → DCF → Quantization Mid-Tread VQ → Fig. 209
-Energety Calibration (Huffman)
-
-Quality defined by a Sally factor
-$$S_F = \begin{cases} 
-5000/Q & Q \in [1, 50] \\
-200-2Q & Q \in [50, 98] \\
-1 & Q = 100 
-\end{cases}$$
-
-Methodator
-• JFIF → rewards Interoperability
-• Density units x/4 denting
-• EXIF → Can include proprietary data
-• Also add Comment Info
-• GPS info
-• Date/Time
-• Camera Settings
-
-Describe the intra-coding modes in H.264. [Optional] Discuss also the Intra modes in H.265
-
-Inter-prediction: exploit spatial prediction array registers
-H.264 → 9 predictive types for 4×4 subblocks → 16 available choices
-4 for 16×16 subblocks → 4 available choices
-
-H.265 → 35 modes (33 directions + DC + Planar)
-Uses 3-candidate MPM List to predict the mode
-6
-```markdown
-Describe the principles of the JPEG standard
-
-JPEG → • Standard → Only decoder is regulated, cooperation for the ENC.
-• Guarantees Interoperability
-
-Encoding strategy
-Block → abstract avg rate → DCF → Quantization Mid-Tread VQ → Fig. 209
-Energety Calibration (Huffman)
-
-Quality defined by a Sally factor
-$$S_F = \begin{cases} 
-5000/Q & Q \in [1, 50] \\
-200-2Q & Q \in [50, 98] \\
-1 & Q = 100 
-\end{cases}$$
-
-Methodator
-• JFIF → rewards Interoperability
-• Density units x/4 denting
-• EXIF → Can include proprietary data
-• Also add Comment Info
-• GPS info
-• Date/Time
-• Camera Settings
-
-Describe the intra-coding modes in H.264. [Optional] Discuss also the Intra modes in H.265
-
-Inter-prediction: exploit spatial prediction array registers
-H.264 → 9 predictive types for 4×4 subblocks → 16 available choices
-4 for 16×16 subblocks → 4 available choices
-
-H.265 → 35 modes (33 directions + DC + Planar)
-Uses 3-candidate MPM List to predict the mode
+```text
+audio -> windowing/MDCT -> quantization -> entropy coding
+      -> spectral estimation -> psychoacoustic model -> bit allocation
 ```
 
----
+The model allocates more bits where the ear is sensitive and fewer bits where masking hides distortion.
 
-<!-- Pagina 7 -->
+> [!question] Domanda 44
+> (A&S Comp.) Describe the principles of the LPC10 speech coding scheme.
 
-Describe the principle of the deblocking in-loop filter of H.264
+LPC models each short speech frame as an excitation passed through an all-pole vocal-tract filter. The encoder sends filter parameters, gain and excitation information.
 
-Transform dequantization are applied to low-pass blocks
-→ at low bitrates → 7 blocking intervals at black boundaries
+Analysis:
 
-Deblocking Filter in H.264:
-• Analyzes edge between 4x4 blocks
-• Filtering colorantly with code mode, mV, quantizer of self-loss
-→ Basically we dequantize antiflect anchoring.
+![[Block Scheme Exam/Linear predictive coding - analysis.png]]
 
-(A&S Comp.) Explain the difference between Source-Based (Parametric) coding and Sink-Based (Perceptual) coding
+This LPC analysis scheme estimates speech-model parameters frame by frame. Windowing isolates a short quasi-stationary segment, autocorrelation provides statistics plus voiced/unvoiced and pitch-period information, and Levinson-Durbin solves the linear prediction equations to obtain the LPC coefficients $\{a_i\}$ and gain $G$.
 
-Source-Based: exploits physical constraints of sound generation
-→ Intelligibility & Low Latency
-
-Sink-Based: exploits physical characteristics of the human ear
-→ Fidelity & Perceptual Transparency
-7
-
----
-
-<!-- Pagina 8 -->
-
-(A&S Comp.) Describe the “Analysis-by-Synthesis” (AbS) loop used in CELP (Code Excited Linear Prediction) codecs and why it represents an improvement over simple LPC-10.
-
-LPC-10 uses a simplified excitation model (impulse train or white noise) that often results in unnatural-sounding speech. CELP improves this by using a codebook-based excitation (not just periodic pulses and white noise), introduces a closed loop search, and uses perceptual quality. The AbS loop functions as a “mini-decoder” inside the encoder: for each potential excitation vector from the codebook, the encoder synthesizes the speech and compares it against the original input. It then selects the vector that minimizes the perceptually weighted error, ensuring the chosen excitation yields the highest quality reconstruction, which is significantly more flexible and robust than the static LPC-10 excitation.
-
-(A&S Comp.) What is the role of the psychoacoustic masking model in perceptual audio coding, and how is it used to allocate bits?
-
-Psychoacoustic Masking model
-• Design objective → achieve “transparent quality” by rendering information based on the model
-
-• Analysis steps:
-  • Spectral Analysis
-  • Identification of the windows
-  • Find Masking curves (spreading functions)
-  • Simulation of the Array
-  → Used to remove bits we “canNOT” hear.
-
-(A&S Comp.) Describe the principles of the LPC10 speech coding scheme
-
-LPC-10 → Standard (F.S. 1015), CBR 2.4 Kbps (54 bits/22.5 ms frames)
-
-Principle: Voiced sounds → max spectral detail & padded info.
-Unvoiced → lower spectral detail, error protection bits to improve robustness
-
-In detail → Bit Allocation:
-
-| Voice | Unvoice |
-| :--- | :--- |
-| 41 (P=10) | 20 (P=4) |
-| 7 | 0 |
-| 5 | 5 |
-| 1 | 1 |
-| 0 | 28 |
-
-Pot 545. 546.
----
----
-
----
-
-<!-- Pagina 9 -->
-
-(A&S Comp.) Draw the scheme and describe the operation of the functional blocks of an MP3 encoder
-
-A&S Comp.) Why are Line Spectrum Frequencies (LSF) preferred over direct quantization of LPC coefficients ($a_i$)?
-
-Perfect for Carly:
-• We quantize the frequencies $w_i$
-• If quant. error moves 2 frequencies to swap $\Rightarrow$ detected instability
-• Decoder first restores strict interlocky $\Rightarrow$ 100% single filter
-
-(A&S Comp.) Regarding the Opus audio codec, what is the primary technical advantage of its hybrid design?
-
-Hybrid mode uses both SILK and CELT cogs:
-• SILK $\rightarrow$ LPC-based, optimized for speech (8-12 kbps)
-• CELT $\rightarrow$ MDCF-based, optimized for audio & music (high bitrate)
-
-Key feature $\rightarrow$ Seamless Adaptation on the fly
-
-(A&S Comp.) Which of the following best describes current research trends in the future of multimedia audio coding?
-
-• NR video quality for streaming
-• noise QoE prediction
-• generation AI quality assessment
-• Perceptual needs for AI-generated needs
-
-For Carly $\Rightarrow$ Executive NL Transform with near zero overhead
-$\Rightarrow$ Toward Reduction Carly → (A)
-<table><tr><td>(A&S Comp.) Why are Line Spectrum Frequencies (LSF) preferred over direct quantization of LPC coefficients ($a_i$)?</td></tr><tr><td>Perfect for Carly:
-• We quantize the frequencies $w_i$
-• If quant. error moves 2 frequencies to swap $\Rightarrow$ detected instability
-• Decoder first restores strict interlocky $\Rightarrow$ 100% single filter</td></tr><tr><td>(A&S Comp.) Regarding the Opus audio codec, what is the primary technical advantage of its hybrid design?</td></tr><tr><td>Hybrid mode uses both SILK and CELT cogs:
-• SILK $\rightarrow$ LPC-based, optimized for speech (8-12 kbps)
-• CELT $\rightarrow$ MDCF-based, optimized for audio & music (high bitrate)</td></tr><tr><td>Key feature $\rightarrow$ Seamless Adaptation on the fly</td></tr><tr><td>(A&S Comp.) Which of the following best describes current research trends in the future of multimedia audio coding?</td></tr><tr><td>NR video quality for streaming
-noise QoE prediction
-generation AI quality assessment
-Perceptual needs for AI-generated needs</td></tr><tr><td>For Carly $\Rightarrow$ Executive NL Transform with near zero overhead
-$\Rightarrow$ Toward Reduction Carly → (A)</td></tr></table>
-
----
-
-<!-- Pagina 10 -->
-
-(TC&JPEG) Explain the role of the Geometric Mean of variances in transform coding and how it relates to the coding gain.
-
-In block coding with optimal resource allocation (e.g., using the Huang-Schulteiss formula), the resulting quantization distortion is proportional to the geometric mean of the variances of the transformed coefficients. The coding gain $G_T$ is defined as the ratio between the distortion of direct sample-by-sample quantization and the distortion achieved by transform coding. Since orthogonal transforms preserve the arithmetic mean of the variances (energy conservation) but alter their distribution, a transform that achieves high energy compaction, thereby minimizing the geometric mean of the variances, maximizes the coding gain.
-
-(TC&JPEG) Describe the problem of “frequency leakage” in the Discrete Fourier Transform (DFT) when applied to signal compression and how the Discrete Cosine Transform (DCT) addresses it.
-
-Frequency leakage: It occurs on sampling and periodizing the signal if there are big jumps in signal at period start/end with the DCT we put a “mirror” instead of periodizing. We reduce the big jumps.
-
-(TC&JPEG) Explain the entropy coding process for AC coefficients in the JPEG standard and the significance of the “End of Block” (EOB) symbol.
-
-AC coefficients represented by run-length category, amplitude encoded as in DC cosine couples
-
-$EOB = (0, 0)$ means there are no non-zero values $\neq 0$ in the block.
-
-Run Category $\rightarrow \max 12$
-$K = \prod_{p=1}^{12} |DC_p| + 1|$ each category has $2^k$ values
-
-First order control
-$$V_{de-DC_{n-1}}$$
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-10
-
----
-
-<!-- Pagina 11 -->
-
-(TC&JPEG) Draw the scheme and describe the functional blocks of a JPEG encoder.
-
-(TC&JPEG) Compare the block-based DCT approach used in JPEG with the wavelet-based decomposition used in JPEG2000, specifically in terms of how they handle the image signal and the resulting artifacts.
-
-JPEG uses an 8x8 block-based DCT, which processes the image in independent segments. While computationally efficient, this approach often leads to “blocking artifacts” at low bitrates because discontinuities at the block boundaries become visible. In contrast, JPEG2000 utilizes the Discrete Wavelet Transform (DWT), which performs a multiresolution analysis of the entire image (or large tiles). By applying the transform across the image, JPEG2000 avoids the rigid boundaries of JPEG. As a result, instead of blocking, JPEG2000 tends to exhibit “ringing” artifacts (blurring near sharp edges) at very low bitrates, providing a more visually pleasing subjective quality compared to traditional block-based methods.
-
-(TC&JPEG) Explain the fundamental shift in Rate-Distortion (R-D) optimization from classical codecs (e.g., JPEG) to neural compression methods.
-
-Classical codecs rely on combinatorial selection, where the optimization process searches through a pre-defined, discrete set of tools (like fixed transform basis functions and quantization step sizes) to minimize distortion at a given bit-rate. In contrast, neural compression uses continuous learning. It treats optimization as a design process in a continuous space, utilizing gradient descent to physically shape the network’s filter weights by minimizing a differentiable loss function $\mathcal{L} = D + \lambda R$. Consequently, the transform in neural compression is not fixed but is “born” from the data and specifically tailored to the targeted bit-rate.
-
-(TC&JPEG) Describe the JPEG lossless coding process applied to the following table of quantized DCT coefficients:
-
-$$\begin{bmatrix}
-10 & 3 & 0 & 0 & 0 & 0 \\
--2 & 1 & 0 & 1 & 0 & 0 \\
-1 & 0 & 0 & 0 & 0 & 0 \\
-0 & 4 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 0
-\end{bmatrix}$$
-11
-11
-
----
-
-<!-- Pagina 12 -->
-
-(TC&JPEG) What is the primary purpose of an orthogonal transform in the context of the transform coding paradigm?
-
-(A) Sparsification of the Signal
-
-(TC&JPEG) In the context of JPEG compression, what is the role of the quantization table?
-
-(B) Table standardized by JPEGs
-
-(TC&JPEG) Which statement regarding the relationship between the Arithmetic Mean (AM) and Geometric Mean (GM) of variances in transform coding is correct?
-
-(A) Correct answer: A. Comment: Because orthogonal transforms are isometries, they preserve the $L^2$ norm, which implies that the sum of the variances (related to the AM) remains constant, while the transform aims to minimize the GM to reduce distortion.
-
-(TC&JPEG) What is a primary advantage of the hierarchical (multiresolution) decomposition offered by the Wavelet Transform in JPEG2000?
-
-(B) Progressive Decomposition of Density Images, Add details later
-
-(TC&JPEG) Which of the following is a key reason why JPEG2000 is generally more efficient than JPEG?
-
-(D) Data prioritization → Members
-• No dependency among code blocks → Less error propagation
-• No Block-Based Transform → No blocking artifacts
-
-(TC&JPEG) What is the primary purpose of adding Additive Uniform Noise during the training phase of a neural codec?
-
-(A) Comment: Quantization is a “staircase” function with zero derivative almost everywhere, which blocks back-propagation. Adding uniform noise $\sim u(-0.5, 0.5)$ acts as a continuous relaxation, allowing gradients to flow during training.
-
-(TC&JPEG) Why do Convolutional Neural Networks (CNNs) outperform Multi-Layer Perceptrons (MLPs) when applied to image compression?
-
-(A) MLPs treat images as flattened vectors, ignoring spatial topology and causing a “parameter explosion.” CNNs exploit local spatial correlations using sliding filters, which is much more efficient for image data.
-12
-12
-
----
-
-<!-- Pagina 13 -->
-
-(LLCod) Explain the difference between Fixed-Length Coding (FLC) and Variable-Length Coding (VLC), and describe why VLC is theoretically superior for non-equiprobable sources.
-
-Code C: $x_i \in X \rightarrow x_i \in [0,1]$
-
-FLC:
-All codewords have length
-Fig. M7 of bits/symbol
-
-VLC:
-Different codewords $\rightarrow$ different lengths
-Ki: Length of CW Ci
-$\Rightarrow$ Lossless coding
-Prefix code
-Non-equiprobable symbols (Huffman code)
-
-We exploit this foot to design lower slater codes to most probable symbol (Huffman code)
-
-(LLCod) Discuss the importance of the prefix condition in Variable-Length Coding and how it relates to the concept of instantaneous decodability.
-
-Prefix condition $\Rightarrow$ No codeword is a descendant of another (in the tree)
-No codeword is a prefix for any other word
-
-Since the prefix condition is valid $\Rightarrow$ We have instantaneous decodability
-1:1 Mapping Symbol $\leftarrow$ Bits
-
-TEO:
-McMillan $\rightarrow$ Best prefix code $\Rightarrow$ Best decodable code
-Kraft Ineq. $\rightarrow \sum 2^{-k_i} \leq 1$ $\Longleftrightarrow$ Instantaneous code with lengths $\{l_1, \dots, l_m\}$
-
-(LLCod) Explain the mechanism behind Arithmetic Coding and why it is often preferred over Huffman coding in practical, high-performance applications.
-
-Arithmetic coding maps an entire input message sequence to a single fractional number within the range [0, 1]. The range is recursively subdivided based on the probability of each incoming symbol. This approach allows to implement block coding of the input message, without having to generate the full, exponentially-complex dictionary as Huffman would do. Its overhead is larger than Huffman’s (2 bits per block instead of one), but, as the block size grows large, it becomes negligible
-
-(LLCod) What are the two distinct mechanisms by which “block coding” improves the efficiency of lossless compression?
-
-Block coding improves performance through two primary contributions. First, for sources with dependencies, the joint entropy of a block $H(X^K)$ is strictly less than the sum of individual marginal entropies $\sum H(X_i)$, meaning that encoding blocks allows the system to exploit inter-symbol correlations. Second, even for independent variables, block coding addresses the “1-bit penalty” inherent in non-dyadic probability distributions; by grouping $K$ symbols, the overhead of rounding codeword lengths to integer bits is distributed across the entire block, effectively becoming 1/K per symbol and vanishing as $K$ approaches infinity.-
-13
-13
-
----
-
-<!-- Pagina 14 -->
-
-(LLCod) Provide a synthetic comparison between the main lossless coding techniques (Exp-Golomb, Huffman, Arithmetic, Dictionary, Neural) in terms of complexity and Latency, and provide a typical use case for each of them
-
-| Method | Efficiency | Complexity | Latency | Use Case |
-| :---: | :---: | :---: | :---: | :---: |
-| Newel (sota) | High | Ultra High | High | SOTA Ing/ViL. |
-| Arithmetic | High | High | Med. | BI Level Ing, CABAC |
-| Dictionary | Universal | Moderate | Low/med | Repeating Patterns |
-| Huffman | Good → High | Low/med | Very low | JPEG, Gravel Purpose |
-| Exp-Golomb | Good | Very low | Negligible | Metodora, Resilient |
-
-(LLCod) Describe the principle of the Huffman coding. For the following probability distribution, compute the optimal lossless code, and compare its average length to the source’s entropy
-
-$$p_A = 0.35, p_B = 0.1, p_C = 0.07, p_D = 0.08, p_E = 0.12, p_F = 0.28$$
-
-Sort $\rightarrow$
-
-| Symbol | ENC | Product |
-| :---: | :---: | :---: |
-| A | 11 | 0.35 |
-| B | 010 | 0.10 |
-| C | 000 | 0.07 |
-| D | 001 | 0.08 |
-| E | 011 | 0.12 |
-| F | 10 | 0.28 |
-
-$$H_2 = \sum p_i c_i$$
-14
-
----
-
-<!-- Pagina 15 -->
-
-(LLCod) According to Kraft’s inequality, which condition must be satisfied for an instantaneous (prefixx) code to exist with lengths $\{l_1, \dots, l_M\}$?
-
-Kraft’s inequality provides the necessary and sufficient condition for the existence of a prefix code. If the equality holds, the code is complete (or maximal), meaning no more codewords can be added without violating the prefix property.
-
-(LLCod) Which of the following statements best describes the behavior of the Shannon entropy $H(X)$ for a binary random variable with probability $p$?
-
-$$H(x) = -\sum P_x g_2 P_x$$
-
-$$P_x \rightarrow 0 \quad P_x \rightarrow 1 \Rightarrow H(x) \rightarrow 0$$
-
-(LLCod) Why is Lempel-Ziv (e.g., LZW) considered a “universal” coding algorithm?
-
-Universality $\rightarrow$ No preamble Knowledge of source statistics or prior distribution
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-15
-
----
-
-<!-- Pagina 16 -->
-
-(MMQuEv) Explain the difference between subjective and objective quality evaluation in multi-media systems and why both are necessary.
-
-Subjective evaluation involves human participants who rate content based on their personal experience (Quality of Experience - QoE), which is considered the “gold standard” because it directly reflects human perception. However, it is time-consuming, expensive, and not suitable for real-time applications. Objective evaluation uses mathematical models and algorithms to predict quality scores (Quality of Service - QoS). Objective metrics are fast and repeatable, making them ideal for monitoring and optimization, but they may not perfectly correlate with human visual or auditory perception in all scenarios. Therefore, objective metrics are often validated against subjective test data to ensure reliability.
-
-(MMQuEv) What are the key stages involved in designing a subjective quality test according to standardized guidelines?
-
-We need to standardize:
-- LAB equipment
-- Data set
-- Test methodology
-- Score Processing
-
-To be repeatable:
-- Viewing distance
-- Closest angle
-- Room-environment color scheme
-- Monitor specs (residual contrast, brightness ...)
-
-(MMQuEv) Describe the main categories of objective quality metrics based on the availability of the original “reference” signal.
-
-Availability of the subjective refinement:
-Full Reference → PSNR is $G \frac{255^2}{MSE(H)}$, $SSIM = G \frac{C_P}{H}$
-Full Refinement → NIRE, BRISSUE, CLIP-1QA
-Reduced Refinement → RRED
-
-(MMQuEv) In the context of subjective testing, what is the main purpose of a “screening” phase for participants?
-
-A Comment: To guarantee the validity of subjective results, it is essential that subjects can perceive the stimuli correctly; screening ensures they meet the minimum sensory requirements defined by standards.
-
-(MMQuEv) Which of the following best describes the “Full-Reference” (FR) objective quality assessment approach?
-
-(A) We need the whole signal
-
-(MMQuEv) Why is statistical analysis a critical component of subjective quality evaluation?
-(C) Reuse our data
-Remove outliers
-We also need to take into account:
-- Classes
-- Color sensitivity
-- Expert/not experts
-- Visual problem
-We also need to take into account:
-- Classes
-- Color sensitivity
-- Expert/not experts
-- Visual problem
-
----
-
-<!-- Pagina 17 -->
-
-(S&P Qnt) Explain the difference between a “mid-tread” and a “mid-rise” quantizer in the context of uniform quantization for signed data.
-
-Mid-tread
-
-Mid-Rise
-
-In 0 there is a threshold
-there is a value
-
-Better to use because of zero-count fluctuations $x = 0$
-
-(S&P Qnt) Define the concept of a “deadzone” in a quantizer and explain why it is frequently employed in lossy compression systems.
-
-Deadzone ≠ Zero central area where all data is set to 0
-In the quantization process
-
-It is frequently used to filter out the signal fluctuations that are zero-counted.
-
-(S&P Qnt) Why is scalar quantization alone often considered insufficient for effective compression of non-sparse data?
-
-Scalar quantization $\Rightarrow$ regular distance may be large
-
-Improvement in performance using:
-
-• Prediction Quantization → reduce signal variance
-• Block Coloring → exploit signal diversity
-• Transform Coding → miter the signal sparse
-17
-
----
-
-<!-- Pagina 18 -->
-
-(S&P Qnt) What is the condition for a predictive quantization system to be effective, and how is the “coding gain” defined?
-
-Predictive quantization is effective if and only if the resulting prediction error has a smaller variance than the original signal. The coding gain (or prediction gain, $G_P$) is defined as the ratio between the variance of the original signal $\sigma_X^2$ and the variance of the prediction error $\sigma_Y^2$, expressed in decibels: $G_P = 10 \log_{10} \left( \frac{\sigma_X^2}{\sigma_Y^2} \right)$. A positive coding gain indicates that the prediction successfully reduced the signal’s energy, thereby improving the overall SNR for a given bit rate.
-
-(S&P Qnt) Draw the scheme of a linear predictive quantization scheme, and motivate the structure, with particular attention to the use of a decoding loop at the encoder side
-
-The predictor $\mathcal{P}$ must be fed with the same data at the encoder and the decoder, otherwise there will be a drift. Thus, prediction is used to compute the quantized value $\hat{x}(n)$, which in turn is fed to the linear predictor.
-
-(A) What is the primary purpose of the predictor in a predictive quantization system?
-
-The core objective of predictive quantization is to leverage the correlation between neighboring samples to create a residual signal that is easier to compress than the raw input.
-
-(S&P Qnt) In a predictive quantization system, if the prediction $v(n)$ is nearly equal to $x(n)$, what happens to the variance of the signal $y(n)$ being sent to the quantizer?
-
-$v(n) \approx x(n)$ prediction $\Rightarrow$ good
-$y(n) = x(n) - v(n) \rightarrow 0 \Rightarrow y(n) \rightarrow 0$
-18
-18
-
----
-
-<!-- Pagina 19 -->
-
-(S&P Qnt) When selecting a linear predictor of order $P$ for a random process, how does the prediction error variance typically behave as the order increases?
-
-$$y(n) = \sum_{n=0}^{P} \partial_n X_n = Fitting x \quad A(z) = \sum_{n=0}^{P} \partial_n z^{-n}$$
-
-Typically an increase in the filter order improves Prediction Gain but for higher orders we get also an increased overload and negligible performance improvement (big P)
-
-(S&P Qnt) In high-resolution uniform quantization, what is the approximate relationship between the SNR and the bit rate ($R$)?
-
-$$\text{SNR} = 10 \log_2 \frac{E[x^2]}{5} = 10 \lg_2 \frac{\theta_x^2}{A^2/12} z^{2R} \approx 6R - 10 \lg_2 \frac{\theta}{3}$$
-
-(AdapStrm) Describe the fundamental architectural differences between a “Push-based” streaming system (e.g., RTP/UDP) and a “Pull-based” system (e.g., DASH).
-
-In push-based architectures, the server dictates the data flow, sending packets to the client according to a server-controlled schedule. This typically requires specialized transport mechanisms and can be problematic for network traversal. Conversely, pull-based systems shift control to the client, which autonomously requests media segments via standard HTTP. This allows the system to utilize standard web infrastructure, such as Content Delivery Networks (CDNs), and enables the client to adapt its requests based on local monitoring of network throughput and buffer state.
-
-(AdapStrm) Analyze the role of the client-side buffer in the context of stability and Quality of Experience (QoE).
-
-Client has to decide applying $K(n)$ and then decide it adaptively $R$ dynamically.
-
-QoE is affected by:
-
-- # ad duration of Puffering Events
-- # ad episode of quality changes
-- per segment video quality
-- duration of initial buff. time
-
-All depends on the client-side buffer.
-19
-19
-
----
-
-<!-- Pagina 20 -->
-
-(AdaptStrm) Define “Switching Penalty” and discuss its impact on perceived video quality.
-
-$$\text{Reduction of QoE} \Rightarrow \phi(\Delta) = \begin{cases} 0 & \Delta = 0 \\ \Delta + 5 & \Delta > 0 \\ \frac{\Delta}{2} & \Delta < 0.5 \end{cases}$$
-
-Impact:
-Any quality metric, or refinement is imagining perse, better to have constant behavior than frequently changing.
-
-$$\Rightarrow QoE \propto C / \phi(\Delta)$$
-
-(AdaptStrm) Explain the evolution of the playout buffer level $B(t)$ using a mathematical model. In your explanation, describe the dynamics of the “playback” (draining) phase and the “rebufferization” (stalling) phase.
-
-The dynamics of the buffer $B(t)$ are modeled as a continuous-time differential equation:
-
-$$\frac{dB(t)}{dt} = C(t) - R(t),$$
-
-where $C(t)$ is the download rate (throughput) and $R(t)$ is the consumption rate (playback bit-rate).
-
-Playback Phase $B(t) > 0$: During normal operation, the system consumes data at rate $R(t)$. If the download rate $C(t)$ exceeds $R(t)$, the buffer fills. If $C(t) < R(t)$, the buffer drains. The video playback proceeds continuously as long as the buffer level remains above zero.
-
-Rebufferization Phase $B(t) = 0$: When the buffer level reaches zero, playback must stop to avoid an underflow error. The system enters a stall state where $R(t) = 0$ and the buffer level is forced to remain at zero until the accumulated downloaded data exceeds the playback requirement again. The time spent in this state is known as the “rebuffering time,” which is a primary negative factor for the user’s Quality of Experience (QoE).
-
-(AdaptStrm) What is the primary motivation for using HTTP-based protocols for video streaming?
-
-Standard HTTP compatibility is the defining feature of DASH, ensuring that streaming traffic can traverse virtually all enterprise and residential network barriers without specialized hardware.
-
-(AdaptStrm) What is the consequence of an ABR algorithm that systematically overestimates the available bandwidth?
-
-Overestimating throughput causes the client to request data chunks that exceed the current network capability, directly leading to buffer starvation.
-
-(AdaptStrm) Which metric is a direct indicator of streaming QoE from the end-user’s perspective?
-
-Users evaluate streaming quality primarily through the lens of continuous, uninterrupted viewing and perceptual stability, rather than low-level networking metrics like packet loss or hardware versions.
-
-(AdaptStrm) At what stage in the session lifecycle does a DASH client process the Media Presentation Description (MPD)?
-
-The MPD functions as the foundational manifest of the content; the client must ingest this metadata initially to identify the available variants and determine how to construct the requests for specific media segments.
-20
-
----
-
-<!-- Pagina 21 -->
-
-(ME) Describe the difference between “motion field” and “optical flow”.
-
-• (ZD) Motion Field → Project of PHY moment into the image plane
-• Optical flow → Apparent motion of a continuum pattern
-
-Often the two things are the same, but not always true
-
-(ME) Explain the Horn and Schunck algorithm’s core principle for dense optical flow estimation.
-
-The algorithm treats optical flow estimation as a global optimization problem. It combines two terms: a data attachment term, which minimizes the residual of the optical flow equation $(u_f + v_f + f_1 = 0)$, and a regularization term that penalizes spatial variations in the velocity field $(\nabla u^2 + \nabla v^2)$. By using a Lagrange multiplier, it forces the flow field to be smooth, effectively resolving the flow estimation problem. In practical applications, the images are spatially sampled and the HS algorithm iteratively converges toward the solution.
-
-(ME) Discuss the Rate-Distortion trade-off when selecting block sizes in motion estimation.
-
-Imagine $L = R + \lambda D$
-
-Rate $R = D_{kl}$ $q(9(x)) p(g)$
-
-Distortion $D = E [\rho(x, x)]$
-
-Trade-off $\Rightarrow$ Higher $\lambda =$ higher quality
-
-Lower $\lambda =$ lower compression
-
-In ME tracking:
-
-$$J(v) = d(v) + \lambda_{ME}$$
-
-$$r(v)$$
-
-High $\lambda_{ME}$ → minimizing colony cost
-
-Low $\lambda_{ME}$ → odgy cost not important just minimize d
-
-(ME) Which of the following is a disadvantage of using the Sum of Squared Differences (SSD) as a matching criterion?
-
-SSD squares the prediction errors, which heavily weights large outliers (e.g., pixels violating the constant illumination hypothesis), often leading to irregular motion vectors compared to SAD.
-21
-(A)
-
----
-
-<!-- Pagina 22 -->
-
-(ME) What is the main benefit of the Hexagon Search strategy compared to Full Search?
-
-(D) Hexagon search → evolution of the diamond search
-→ more regular shape
-→ new step only 3 points to check more
-Wrt fill search → 32% of tests to check
-
-(ME) What does an affine motion model allow that a pure translational model does not?
-
-(B) Affine motion models allow other than translation also:
-• Rotation → Camera Tilt
-• Zoom In/Out → Magnifying effect
-The entire motion field is powered by only 6 parameters
-$$V = b + B_p = \begin{bmatrix} b_1 \\ b_2 \end{bmatrix} + \begin{bmatrix} b_3 & b_4 \\ b_5 & b_6 \end{bmatrix} P$$
-
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
-
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal
-we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22
-```mark-22
+```text
+speech frame (~20 ms)
+  -> windowing
+  -> autocorrelation
+  -> Levinson-Durbin / Yule-Walker
+  -> LPC coefficients, gain, pitch, voiced/unvoiced decision
 ```
-(ME) What is the main benefit of the Hexagon Search strategy compared to Full Search?
 
-(D) Hexagon search → evolution of the diamond search
-→ more regular shape
-→ new step only 3 points to check more
-Wrt fill search → 32% of tests to check
+Prediction model:
 
-(ME) What does an affine motion model allow that a pure translational model does not?
+$$
+\hat{x}(n)=-\sum_{i=1}^{P}a_i x(n-i)
+$$
 
-(B) Affine motion models allow other than translation also:
-• Rotation → Camera Tilt
-• Zoom In/Out → Magnifying effect
-The entire motion field is powered by only 6 parameters
-$$V = b + B_p = \begin{bmatrix} b_1 \\ b_2 \end{bmatrix} + \begin{bmatrix} b_3 & b_4 \\ b_5 & b_6 \end{bmatrix} P$$
+Residual:
 
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+$$
+y(n)=x(n)-\hat{x}(n)=\sum_{i=0}^{P}a_i x(n-i),\quad a_0=1
+$$
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal
-we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22-22
-```
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+Voiced frames use pitch-period excitation; unvoiced frames use noise-like excitation. LPC-10 is low bitrate, but less natural than CELP because its excitation model is too rigid.
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22
-```
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+> [!question] Domanda 45
+> (A&S Comp.) Draw the scheme and describe the operation of the functional blocks of an MP3 encoder.
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+MP3 is a perceptual audio codec. Its encoder can be summarized as:
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+![[Pasted image 20260624185047.png]]
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+The psychoacoustic model is encoder-side only. The decoder performs inverse quantization and inverse transform.
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+> [!question] Domanda 46
+> (A&S Comp.) Why are Line Spectrum Frequencies (LSF) preferred over direct quantization of LPC coefficients ($a_i$)?
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+Direct LPC coefficient quantization can easily create unstable synthesis filters. Line Spectrum Frequencies represent the LPC filter through roots on the unit circle. Stability can be checked and enforced by preserving interlacing/order:
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+$$
+0<\omega_1^{(P)}<\omega_1^{(Q)}<\omega_2^{(P)}<\cdots<\pi
+$$
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+If quantization disturbs the order, the decoder can restore a valid ordering, making stable reconstruction easier.
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+> [!question] Domanda 47
+> (A&S Comp.) Regarding the Opus audio codec, what is the primary technical advantage of its hybrid design?
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+Opus combines:
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying a predictor at new substring it from the original signal we get a wider more sparse signal ⇒ better compressed with PSDG-like methods-22
-(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+- **SILK:** LPC-based, efficient for speech and low bitrates.
+- **CELT:** MDCT-based, efficient for music/general audio and low delay.
 
-Good: get a sparse signal
-Original video signal ⇒ not really sparse
-By coplying
+The key advantage is seamless adaptation across speech, music, bitrate and latency constraints, which is useful for WebRTC and real-time communication.
+
+> [!question] Domanda 48
+> (A&S Comp.) Which of the following best describes current research trends in the future of multimedia audio coding?
+
+Main trends:
+
+- neural speech and audio codecs at very low bitrates,
+- perceptual and QoE-driven quality metrics,
+- spatial/immersive audio,
+- robust real-time coding under latency constraints,
+- quality assessment for generated or enhanced audio.
 
 ---
 
-<!-- Pagina 23 -->
+## Quality Evaluation and Quantization
 
-(VCP) Describe the function of the “Mode Selection” step in a hybrid video encoder.
+> [!question] Domanda 49
+> Compare MSE/PSNR, SSIM and LPIPS: what each measures, pros/cons, and why two images with the same MSE can have very different perceived quality.
 
-$$D = \sum_{k=1}^{K} D_k(n_i, q), R = \sum_{k=1}^{K} R_k(n_i, q) \Rightarrow J(n_i, q, \lambda) = D + \lambda R$$
+MSE measures average squared pixel error:
 
-$$J_K(n_i, q, \lambda) = D_K(n_i, Q) + \lambda R_K(n_i, Q)$$ (Block wise quantization step)
+$$
+\text{MSE}=\frac{1}{NM}\sum_{i,j}(x_{ij}-\hat{x}_{ij})^2
+$$
 
-$Q \equiv$ quantization step, for each $q \Rightarrow$ quantize $\lambda$ for MPEG-2 and H.264
+PSNR is the logarithmic form of MSE:
 
-$$\lambda = \frac{\partial Q^2}{\partial q} + \frac{\partial Q}{\partial \lambda}$$ $$\lambda = C_2 \frac{\partial Q}{\partial \lambda}$$ $$\lambda = \sqrt{\lambda}$$
+$$
+\text{PSNR}=10\log_{10}\left(\frac{MAX^2}{\text{MSE}}\right)
+$$
 
-(VCP) How does the “Channel Buffer” controller manage the trade-off between target rate and video quality?
+They are simple and reproducible, but weak perceptually because they ignore structure, masking and semantics.
 
-The controller monitors the buffer occupancy. If the buffer level exceeds a high threshold (indicating bits are being produced faster than they can be sent), it increases the quantization step size to lower the bit-rate. Conversely, if the buffer falls below a low threshold, it decreases the quantization step size to improve quality by using more bits.
+SSIM compares local luminance, contrast and structure, so it usually correlates better with perceived visual quality than MSE/PSNR. LPIPS compares deep feature activations and can capture perceptual similarity better for texture and semantic distortions, but it is more expensive and model-dependent.
 
-(VCP) What is the primary role of an “I-frame” in a GOP structure?
+Two images can have the same MSE but very different perceived quality because the error can be distributed differently: noise in textured regions may be barely visible, while structured errors around edges can be very annoying.
 
-I-frames are coded independently (Intra-coded), which makes them the only frames that can be decoded without reference to others, acting as anchors.
+> [!question] Domanda 50
+> (MMQuEv) Explain the difference between subjective and objective quality evaluation in multimedia systems and why both are necessary.
 
-(VCP) In the context of motion vector coding, why is a Median Predictor (MVP) used?
+Subjective evaluation asks human observers to rate perceived quality. It is the perceptual ground truth, but it is slow, expensive and statistically variable.
 
-Since motion in a scene is usually continuous, adjacent blocks have similar vectors. By predicting the current vector from neighbors (A, B, C), we only need to encode the difference (MVD), which is typically small and sparse.
+Objective evaluation computes metrics automatically from signals. It is fast and repeatable, but may correlate imperfectly with human perception.
 
-(VCP) What happens in the decoder when it receives an “Inter-coded” block?
+Both are necessary: subjective tests validate perception; objective metrics enable optimization and large-scale monitoring.
 
-In Inter-mode, the decoder relies on the motion information provided in the bitstream to find the predictor in the frame buffer and adds the decoded residual to it.
-23
-The document contains mathematical equations and text related to video encoder technology. The headings include "(VCP) Describe the function of the 'Mode Selection' step in a hybrid video encoder." and "(VCP) How does the 'Channel Buffer' controller manage the trade-off between target rate and video quality?".
+> [!question] Domanda 51
+> (MMQuEv) What are the key stages involved in designing a subjective quality test according to standardized guidelines?
 
-The equations involve summations, matrix multiplication, and algebraic operations. The text discusses the relationship between the buffer level, quantization step size, and video quality in a hybrid video encoder. It also explains the role of an "I-frame" in a GOP structure and how a Median Predictor (MVP) is used for motion vector coding.
+A standardized subjective test must define:
 
-The document appears to be a technical report or academic paper, likely intended for researchers or professionals in the field of video processing or computer vision.
-The document contains mathematical equations and text related to video encoder technology. The headings include "(VCP) Describe the function of the 'Mode Selection' step in a hybrid video encoder." and "(VCP) How does the 'Channel Buffer' controller manage the trade-off between target rate and video quality?".
+- dataset and content selection,
+- display/audio equipment,
+- viewing/listening conditions,
+- test methodology (ACR, DSIS, pairwise comparison, etc.),
+- participant screening,
+- score processing and outlier handling.
 
-The equations involve summations, matrix multiplication, and algebraic operations. The text discusses the relationship between the buffer level, quantization step size, and video quality in a hybrid video encoder. It also explains the role of an "I-frame" in a GOP structure and how a Median Predictor (MVP) is used for motion vector coding.
+Controlled factors include viewing distance, display brightness/contrast, room illumination, audio setup and test duration.
 
-The document appears to be a technical report or academic paper, likely intended for researchers or professionals in the field of video processing or computer vision.
+> [!question] Domanda 52
+> (MMQuEv) Describe the main categories of objective quality metrics based on the availability of the original “reference” signal.
+>
+> (MMQuEv) Which of the following best describes the “Full-Reference” (FR) objective quality assessment approach?
+
+- **Full Reference (FR):** original and degraded signals are both available. Examples: MSE, PSNR, SSIM, VMAF.
+- **Reduced Reference (RR):** only compact features from the original are available.
+- **No Reference (NR):** only the degraded signal is available. Examples: BRISQUE, NIQE, PIQE.
+
+For FR PSNR on luminance:
+
+$$
+\text{MSE}_Y(t)=\frac{1}{NM}\sum_{n,m}[I(n,m,1,t)-\hat{I}(n,m,1,t)]^2
+$$
+
+$$
+\text{PSNR}_Y(t)=10\log_{10}\left(\frac{255^2}{\text{MSE}_Y(t)}\right)
+$$
+
+> [!question] Domanda 53
+> (MMQuEv) In the context of subjective testing, what is the main purpose of a “screening” phase for participants?
+
+Screening checks that participants can correctly perceive the stimuli. It removes invalid observers, e.g. people with uncorrected visual issues, color-vision problems or inconsistent scoring behavior.
+
+> [!question] Domanda 54
+> (MMQuEv) Why is statistical analysis a critical component of subjective quality evaluation?
+
+Human scores vary. Statistical analysis computes mean opinion score, variance, confidence intervals and outlier detection. It ensures results are reliable and comparable.
+
+Mean Opinion Score:
+
+$$
+\text{MOS}=\frac{1}{N}\sum_{i=1}^{N}x_i
+$$
+
+Standard error:
+
+$$
+SE=\frac{s}{\sqrt{N}}
+$$
+
+> [!question] Domanda 55
+> (S&P Qnt) Explain the difference between a “mid-tread” and a “mid-rise” quantizer in the context of uniform quantization for signed data.
+
+For signed uniform quantization:
+
+- **Mid-tread:** zero is a reconstruction level. Small values around zero are mapped to zero.
+- **Mid-rise:** zero is a decision threshold. Values around zero are mapped to positive or negative non-zero levels.
+
+Mid-tread is preferred for residuals because many small values become exactly zero:
+
+$$
+Q(x)=\Delta\cdot\text{round}\left(\frac{x}{\Delta}\right)
+$$
+
+> [!question] Domanda 56
+> (S&P Qnt) Define the concept of a “deadzone” in a quantizer and explain why it is frequently employed in lossy compression systems.
+
+A deadzone quantizer enlarges the interval mapped to zero:
+
+$$
+Q(x)=0 \quad \text{for small } |x|
+$$
+
+It is useful in lossy compression because prediction and transform residuals often contain many small coefficients. Mapping them to zero improves entropy coding efficiency.
+
+> [!question] Domanda 57
+> (S&P Qnt) Why is scalar quantization alone often considered insufficient for effective compression of non-sparse data?
+
+Scalar quantization processes one sample at a time. If the signal is not sparse, many samples remain significant and entropy coding has little to exploit.
+
+Better compression needs:
+
+- prediction, to reduce residual variance;
+- transform coding, to compact energy;
+- vector/block coding, to exploit dependencies;
+- entropy coding, to exploit non-uniform symbol probabilities.
+
+> [!question] Domanda 58
+> (S&P Qnt) What is the condition for a predictive quantization system to be effective, and how is the “coding gain” defined?
+
+Predictive quantization is effective when the residual variance is smaller than the original signal variance:
+
+$$
+\sigma_y^2 < \sigma_x^2
+$$
+
+with:
+
+$$
+y(n)=x(n)-v(n)
+$$
+
+Prediction gain is:
+
+$$
+G_P=10\log_{10}\left(\frac{\sigma_x^2}{\sigma_y^2}\right)
+$$
+
+It is positive when the predictor reduces variance.
+
+> [!question] Domanda 59
+> (S&P Qnt) Draw the scheme of a linear predictive quantization scheme, and motivate the structure, with particular attention to the use of a decoding loop at the encoder side.
+
+The predictor must use reconstructed past samples on both encoder and decoder sides:
+
+$$
+v(n)=\mathcal{P}(\hat{x}(n-1),\hat{x}(n-2),\dots)
+$$
+
+Then:
+
+$$
+y(n)=x(n)-v(n)
+$$
+
+$$
+\hat{x}(n)=\hat{y}(n)+v(n)
+$$
+
+The encoder includes the same reconstruction loop as the decoder, preventing drift.
+
+> [!question] Domanda 60
+> (S&P Qnt) What is the primary purpose of the predictor in a predictive quantization system?
+>
+> (S&P Qnt) In a predictive quantization system, if the prediction $v(n)$ is nearly equal to $x(n)$, what happens to the variance of the signal $y(n)$ being sent to the quantizer?
+
+The predictor exploits correlation among neighboring samples. If $v(n)$ is close to $x(n)$, then:
+
+$$
+y(n)=x(n)-v(n)\approx 0
+$$
+
+so:
+
+$$
+\sigma_y^2 \ll \sigma_x^2
+$$
+
+The quantizer then encodes a lower-energy residual.
+
+> [!question] Domanda 61
+> (S&P Qnt) When selecting a linear predictor of order $P$ for a random process, how does the prediction error variance typically behave as the order increases?
+
+For a linear predictor:
+
+$$
+v(n)=-\sum_{i=1}^{P}a_i x(n-i)
+$$
+
+$$
+y(n)=\sum_{i=0}^{P}a_i x(n-i),\quad a_0=1
+$$
+
+Increasing $P$ cannot worsen the optimal error variance in theory, because the old solution remains available. In practice, large $P$ increases complexity, side information and estimation error; gains eventually become negligible.
+
+> [!question] Domanda 62
+> Explain the screening effect: why does the prediction gain saturate as the linear predictor order $P$ increases?
+
+As predictor order $P$ increases, the optimal prediction error variance cannot increase in theory, because the lower-order solution remains available. However, the gain usually saturates.
+
+The reason is the screening effect: nearby samples already explain most of the correlation with the current sample. Once the closest neighbors are included, farther samples add little independent information because their correlation is mostly mediated by the nearer samples.
+
+Therefore, increasing $P$ gives diminishing returns while increasing complexity and estimation sensitivity.
+
+> [!question] Domanda 63
+> (S&P Qnt) In high-resolution uniform quantization, what is the approximate relationship between the SNR and the bit rate ($R$)?
+
+For high-resolution uniform quantization:
+
+$$
+D \approx \frac{A^2}{12}2^{-2R}
+$$
+
+Therefore:
+
+$$
+\text{SNR}
+=10\log_{10}\left(\frac{\sigma_X^2}{D}\right)
+=10\log_{10}\left(\frac{\sigma_X^2}{\frac{A^2}{12}2^{-2R}}\right)
+$$
+
+Using $\gamma^2=\frac{A^2}{4\sigma_X^2}$:
+
+$$
+\text{SNR}\approx 6.02R - 10\log_{10}\left(\frac{\gamma^2}{3}\right)
+$$
+
+Rule of thumb: each extra bit/sample gives about $6$ dB SNR improvement.
 
 ---
 
-<!-- Pagina 24 -->
+## Adaptive Streaming
 
-(ModernVC) What is the specific scope of video compression standards like H.266/VVC?
+> [!question] Domanda 64
+> Compare QoS and QoE: what they measure and how they correlate. Which network factors impact streaming QoE?
 
-H.266/VVC → We get max efficiency but require high computational complexity.
-Next-Gen Content (8K 360° video, VR)
-Introduces flexibility in space partitioning (blocks), with MTT trees
-Loonging at Ternary splits
-And provides 65 directional modes for Intro frame prediction
+Quality of Service (QoS) describes technical service or network metrics, such as throughput, latency, jitter and packet loss.
 
-(ModernVC) Explain the advantage of the “Coding Tree Unit” (CTU) structure introduced in HEVC/VVC.
+Quality of Experience (QoE) describes the user-perceived quality of the multimedia service. It depends on media quality, startup delay, stalls, quality switches, device, context and expectations.
 
-Unlike fixed-size macroblocks, CTUs allow for flexible, recursive partitioning (Quad-tree and Multi-type trees). This enables the encoder to use very large blocks (up to 128x128) for homogeneous areas like sky or walls, and fine-grained, small blocks for detailed textures or object boundaries, significantly improving R-D efficiency in high-resolution video.
+QoS and QoE are correlated but not linearly. For example, packet loss may be invisible if the buffer hides it, while a short throughput drop can severely hurt QoE if it causes rebuffering.
 
-(ModernVC) What are the roles of VCL and NAL in modern video standards?
+> [!question] Domanda 65
+> (AdapStrm) Describe the fundamental architectural differences between a “Push-based” streaming system (e.g., RTP/UDP) and a “Pull-based” system (e.g., DASH).
 
-VCL → Video coding layer
-Prod. Dept. handles pure compression
-NAL → Non-Abstractive layer
-L's sliding deck. Takes VCL slices encapsulates them
-God: provide an interleaver to map video on RTP/IP, MPEG
+**Push-based streaming** (RTP/UDP/WebRTC-style):
 
-(ModernVC) What is the main purpose of the CABAC entropy coder in modern standards?
+- server sends packets according to its timing,
+- low latency,
+- needs real-time transport/control mechanisms,
+- often used for conferencing/live interactive media.
 
-CABAC → Context Adaptive Binary Antithetic Coding
+**Pull-based streaming** (DASH/HLS over HTTP):
 
-A) Gain sensitivity on the coding point while keeping lossless
-It adapts possibilities dynamically based on previous spatial ctxt.
+- client requests segments,
+- works with HTTP/CDNs/caches,
+- client selects bitrate based on throughput and buffer,
+- higher delay but scalable and robust for VoD/streaming.
 
-(ModernVC) Why are “Tiles” considered “hardware-friendly” in VVC and HEVC?
+> [!question] Domanda 66
+> (AdapStrm) Analyze the role of the client-side buffer in the context of stability and Quality of Experience (QoE).
 
-Tiles restrict motion vectors and prediction dependencies to specific boundaries, allowing multiple CPU or GPU cores to process different parts of the same frame simultaneously.
+The buffer stores already downloaded media in seconds. It absorbs throughput variation and jitter. Larger buffer improves stability but increases startup delay and latency.
 
-(ModernVC) What is the function of an “In-Loop Filter” like the Adaptive Loop Filter (ALF)?
+QoE depends on:
 
-Since quantization is lossy and block-based, it creates artifacts like blocking or ringing. Filters inside the reconstruction loop ensure these artifacts are smoothed before the frame is stored in the buffer as a reference for future frames.
-24
-24
+- initial startup time,
+- rebuffering events,
+- duration of stalls,
+- segment quality,
+- quality switches.
+
+> [!question] Domanda 67
+> (AdapStrm) Define “Switching Penalty” and discuss its impact on perceived video quality.
+
+Switching penalty is the QoE loss caused by visible changes in quality between consecutive segments. A common score model is:
+
+$$
+J(n)=\lambda_1K_n-\lambda_2|K_n-K_{n-1}|-\phi(\Delta_n)
+$$
+
+where:
+
+- $K_n$ is segment quality,
+- $|K_n-K_{n-1}|$ penalizes switching,
+- $\phi(\Delta_n)$ penalizes rebuffering.
+
+Frequent quality oscillations can be worse than stable slightly lower quality.
+
+> [!question] Domanda 68
+> (AdapStrm) Explain the evolution of the playout buffer level $B(t)$ using a mathematical model. In your explanation, describe the dynamics of the “playback” (draining) phase and the “rebufferization” (stalling) phase.
+
+Buffer level $B(t)$ is measured in playback seconds:
+
+$$
+B(t)=L\cdot T_s
+$$
+
+where $L$ is number of stored segments and $T_s$ is segment duration.
+
+For coding rate $R_c$ and throughput $S$:
+
+$$
+\frac{dB}{dt}=
+\begin{cases}
+\frac{S}{R_c}-1 & \text{during playback}\\
+\frac{S}{R_c} & \text{during rebuffering}
+\end{cases}
+$$
+
+During playback, the buffer drains at one playback second per real second. During rebuffering, playout stops, so there is no output drain. Stable playback requires, on average:
+
+$$
+S>R_c
+$$
+
+> [!question] Domanda 69
+> (AdapStrm) What is the primary motivation for using HTTP-based protocols for video streaming?
+
+HTTP streaming is stateless, CDN-friendly, firewall-friendly and easy to deploy at scale. DASH/HLS can use standard web infrastructure and let the client adapt representation quality.
+
+> [!question] Domanda 70
+> (AdapStrm) What is the consequence of an ABR algorithm that systematically overestimates the available bandwidth?
+
+If ABR overestimates throughput, it requests segments with too high a bitrate. Download time grows, the buffer empties, and rebuffering/stalling occurs.
+
+> [!question] Domanda 71
+> (AdapStrm) Which metric is a direct indicator of streaming QoE from the end-user’s perspective?
+
+Direct QoE indicators are startup delay, rebuffering duration/frequency, quality level and quality switches. For users, uninterrupted stable playback is usually more important than low-level network metrics.
+
+> [!question] Domanda 72
+> (AdapStrm) At what stage in the session lifecycle does a DASH client process the Media Presentation Description (MPD)?
+
+The client processes the MPD at session start, before downloading media segments. The MPD lists periods, adaptation sets, representations, codecs, bitrates, resolutions and segment URLs.
+
+> [!question] Domanda 73
+> Explain how an ABR (Adaptive Bitrate) algorithm works: rate-based vs buffer-based logic, and the risk of overestimating available bandwidth.
+
+An ABR algorithm is the client-side rule that selects the bitrate representation for the next media segment. Its goal is to maximize QoE by balancing quality, stability and stall avoidance.
+
+Rate-based ABR estimates recent throughput and chooses a representation below the available bandwidth, often with a safety margin.
+
+Buffer-based ABR uses buffer occupancy: if the buffer is low it chooses conservative bitrates, while if the buffer is high it can request higher quality.
+
+If available bandwidth is overestimated, the client requests segments that are too large. Download time increases, the buffer drains and playback can stall.
+
+---
+
+## Motion Estimation and Video Coding
+
+> [!question] Domanda 74
+> Motion estimation: give the principles of the block matching approach. Give at least one cost function. [Bonus]. Discuss the regularization issue.
+
+Block matching splits a frame into blocks $B_{p,q}$ and searches a reference frame for the most similar block inside a search window.
+
+The best displacement is:
+
+$$
+(\hat{i},\hat{j})=\arg\min_{(i,j)\in W}J(i,j)
+$$
+
+SSD:
+
+$$
+J_{\text{SSD}}(i,j)=
+\sum_{(n,m)\in B_{p,q}}
+[f(n,m,k)-f(n-i,m-j,h)]^2
+$$
+
+SAD:
+
+$$
+J_{\text{SAD}}(i,j)=
+\sum_{(n,m)\in B_{p,q}}
+|f(n,m,k)-f(n-i,m-j,h)|
+$$
+
+Regularized cost:
+
+$$
+J_{\text{REG}}(i,j)=
+\|\vec{f}_k(B_{p,q})-\vec{f}_h(B_{p-i,q-j})\|_p^p
++\lambda R(i,j)
+$$
+
+Regularization penalizes expensive or irregular motion vectors and balances prediction quality with motion-vector coding rate.
+
+> [!question] Domanda 75
+> Discuss the advantages and the disadvantages of Intra, Predictive, and Bidirectional images in a GOP for video coding.
+
+| Frame type | Prediction | Advantages | Disadvantages |
+|---|---|---|---|
+| I | Intra only | Random access, error reset, no ME | High rate, lower compression |
+| P | From previous anchor frames | Good compression, moderate delay | ME/MC complexity, error propagation |
+| B | From past and future frames | Best compression | Highest complexity, structural delay, not ideal for low latency |
+
+GOP structure controls compression efficiency, delay, random access interval and error propagation.
+
+> [!question] Domanda 76
+> (ME) Describe the difference between “motion field” and “optical flow”.
+
+**Motion field** is the projection of actual 3D scene motion onto the image plane.
+
+**Optical flow** is the apparent motion of brightness patterns in the image. They often coincide, but not always, because illumination changes, occlusions and texture ambiguities can break the relation.
+
+> [!question] Domanda 77
+> (ME) Explain the Horn and Schunck algorithm’s core principle for dense optical flow estimation.
+
+The optical flow constraint is:
+
+$$
+u f_x + v f_y + f_t = 0
+$$
+
+Horn-Schunck estimates dense flow by minimizing data attachment plus smoothness:
+
+$$
+J=
+\iint_{\mathcal{R}}(u f_x+v f_y+f_t)^2\,dxdy
++\lambda\iint_{\mathcal{R}}(\|\nabla u\|^2+\|\nabla v\|^2)\,dxdy
+$$
+
+The first term enforces brightness consistency; the second term regularizes the flow field so neighboring vectors vary smoothly.
+
+> [!question] Domanda 78
+> (ME) Discuss the Rate-Distortion trade-off when selecting block sizes in motion estimation.
+
+Motion estimation can use:
+
+$$
+J(v)=d(B_k^{(p)},B_h^{(p+v)})+\lambda_{ME}R(v)
+$$
+
+Large blocks:
+
+- fewer motion vectors,
+- lower side information and complexity,
+- worse fit near object boundaries.
+
+Small blocks:
+
+- better prediction and lower distortion,
+- more motion vectors and partition bits,
+- higher complexity.
+
+> [!question] Domanda 79
+> (ME) Which of the following is a disadvantage of using the Sum of Squared Differences (SSD) as a matching criterion?
+
+SSD squares errors, so outliers dominate the cost. Illumination changes, noise or occlusions can produce irregular motion vectors. SAD is often more robust and cheaper.
+
+> [!question] Domanda 80
+> (ME) What is the main benefit of the Hexagon Search strategy compared to Full Search?
+
+Full search tests all candidate vectors and is optimal within the window, but expensive. Hexagon search tests a small hexagonal pattern iteratively and greatly reduces candidate evaluations. It is faster but not guaranteed globally optimal.
+
+> [!question] Domanda 81
+> (ME) What does an affine motion model allow that a pure translational model does not?
+
+Translation uses only a constant displacement. Affine motion can also represent rotation, zoom and shear:
+
+$$
+\vec{v}(p)=\vec{b}+Bp
+=
+\begin{bmatrix}b_1\\b_2\end{bmatrix}
++
+\begin{bmatrix}b_3&b_4\\b_5&b_6\end{bmatrix}p
+$$
+
+If $B=0$, it reduces to pure translation / block matching.
+
+> [!question] Domanda 82
+> Draw the block diagram of a hybrid video encoder (motion estimation/compensation + DCT + quantization + entropy coding + reconstruction loop with frame buffer). Explain why the encoder contains an internal decoder.
+
+A hybrid video encoder codes the prediction residual, not usually the whole frame:
+
+![[Block Scheme Exam/Hybrid video encoder.png]]
+
+This scheme combines inter/intra prediction with JPEG-like residual coding. Mode decision selects the predictor, transform and quantization encode the residual, lossless coding creates the bitstream, and the inverse quantization/inverse transform path reconstructs the same block that will be stored in the frame buffer for later motion compensation.
+
+The encoder contains an internal decoder because future predictions must be built from exactly the same reconstructed frames available at the decoder. If the encoder predicted from original frames while the decoder predicted from reconstructed frames, their references would diverge and drift would propagate through the video.
+
+> [!question] Domanda 83
+> (VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+
+![[Block Scheme Exam/Video coding principles.png]]
+
+This high-level video coding scheme separates temporal compression from spatial compression. Temporal compression exploits similarity between frames and produces motion information, while spatial compression removes redundancy inside the prediction residual; the buffer then regulates the coded stream rate.
+
+Neighboring video frames are highly correlated. Motion-compensated prediction estimates the current block from reference frames, then encodes only:
+
+$$
+e=x-x_p
+$$
+
+The residual is usually lower-energy and more sparse than the original frame, so transform quantization and entropy coding are more efficient.
+
+> [!question] Domanda 84
+> (VCP) Describe the function of the “Mode Selection” step in a hybrid video encoder.
+
+Mode selection chooses the coding mode that minimizes rate-distortion cost:
+
+$$
+J = D+\lambda R
+$$
+
+For blocks:
+
+$$
+D=\sum_{k=1}^{K}D_k(i_k,Q),
+\quad
+R=\sum_{k=1}^{K}R_k(i_k,Q)
+$$
+
+$$
+J(\vec{i},Q,\lambda)=D(\vec{i},Q)+\lambda R(\vec{i},Q)
+$$
+
+The encoder usually performs suboptimal block-wise minimization:
+
+$$
+i_k^\star=\arg\min_{i_k}J_k(i_k,Q,\lambda)
+$$
+
+Typical empirical choices:
+
+$$
+\text{MPEG-2: } \lambda=aQ^2+b
+$$
+
+$$
+\text{H.264: } \lambda=c\cdot2^{dQ+e},
+\quad
+\lambda_{ME}=\sqrt{\lambda}
+$$
+
+> [!question] Domanda 85
+> (VCP) How does the “Channel Buffer” controller manage the trade-off between target rate and video quality?
+
+The channel buffer controls the quantization step to meet target rate:
+
+- if buffer occupancy is too high, increase quantization step to reduce rate;
+- if buffer occupancy is too low, decrease quantization step to improve quality.
+
+This avoids overflow/underflow while keeping quality as high as possible.
+
+> [!question] Domanda 86
+> (VCP) What is the primary role of an “I-frame” in a GOP structure?
+
+An I-frame is intra-coded and independently decodable. It provides random access, starts a GOP and limits temporal error propagation.
+
+> [!question] Domanda 87
+> (VCP) In the context of motion vector coding, why is a Median Predictor (MVP) used?
+
+Neighboring motion vectors are correlated. The median predictor estimates the current vector from adjacent blocks, then the encoder sends only the motion-vector difference:
+
+$$
+\text{MVD} = \text{MV} - \text{MVP}
+$$
+
+This difference is usually small and cheaper to encode.
+
+> [!question] Domanda 88
+> (VCP) What happens in the decoder when it receives an “Inter-coded” block?
+
+![[Block Scheme Exam/Hybrid video decoder.png]]
+
+The hybrid decoder reverses only the normative part of the encoder. Entropy decoding recovers mode information, motion vectors and quantized residuals; inverse quantization and inverse transform reconstruct the residual; intra prediction or motion compensation builds the predictor, which is added to the residual and stored in the frame buffer.
+
+The decoder reads side information: mode, reference index and motion vector. It fetches the predictor from the decoded frame buffer, decodes the residual, then reconstructs:
+
+$$
+\hat{x}=\text{prediction}+\hat{e}
+$$
+
+---
+
+## Modern Video Coding
+
+> [!question] Domanda 89
+> (ModernVC) What is the specific scope of video compression standards like H.266/VVC?
+
+Video coding standards define bitstream syntax and normative decoder behavior. They do not prescribe the full encoder implementation. VVC targets much higher compression efficiency than HEVC, especially for high-resolution, HDR, 360-degree and immersive video, at the cost of much higher complexity.
+
+> [!question] Domanda 90
+> (ModernVC) Explain the advantage of the “Coding Tree Unit” (CTU) structure introduced in HEVC/VVC.
+
+Coding Tree Units replace fixed macroblocks with flexible recursive partitioning. Large homogeneous regions can use large blocks, while detailed regions can be split into smaller blocks. This improves rate-distortion efficiency.
+
+HEVC uses quadtree partitioning. VVC extends this with multi-type trees, including binary and ternary splits.
+
+> [!question] Domanda 91
+> (ModernVC) What are the roles of VCL and NAL in modern video standards?
+
+- **VCL (Video Coding Layer):** contains compressed video data such as slices, prediction, residuals and coding syntax.
+- **NAL (Network Abstraction Layer):** wraps VCL and non-VCL data into NAL units for transport/storage. It separates codec syntax from packetization.
+
+Examples of non-VCL NAL units: SPS, PPS and SEI.
+
+> [!question] Domanda 92
+> (ModernVC) What is the main purpose of the CABAC entropy coder in modern standards?
+
+CABAC means **Context-Adaptive Binary Arithmetic Coding**. It binarizes syntax elements and arithmetic-codes them with probabilities adapted to local context. It improves compression efficiency over simpler VLC/CAVLC while remaining lossless.
+
+> [!question] Domanda 93
+> (ModernVC) Why are “Tiles” considered “hardware-friendly” in VVC and HEVC?
+
+Tiles split a frame into independently decodable rectangular regions. They restrict dependencies across boundaries, enabling parallel encoding/decoding on multiple CPU/GPU cores with lower synchronization cost.
+
+> [!question] Domanda 94
+> (ModernVC) What is the function of an “In-Loop Filter” like the Adaptive Loop Filter (ALF)?
+
+In-loop filters are applied inside the reconstruction loop before frames are stored as references. This prevents artifacts from being propagated by motion compensation.
+
+H.264 uses deblocking. HEVC adds SAO. VVC adds ALF and other tools.
+
+ALF (Adaptive Loop Filter) reduces reconstruction artifacts such as ringing and residual distortion by applying adaptive filtering to reconstructed samples before reference storage.
+
+> [!question] Domanda 95
+> Describe the intra-coding modes in H.264. [Optional] Discuss also the Intra modes in H.265.
+
+Intra prediction exploits spatial redundancy from already reconstructed neighboring samples in the same frame.
+
+- **H.264/AVC:** 9 modes for $4\times4$ blocks: 8 directional + DC. For $16\times16$ luma blocks, 4 modes.
+- **H.265/HEVC:** 35 modes: 33 directional + DC + Planar.
+- **H.266/VVC:** 65 directional modes plus wide-angle variants for non-square blocks.
+
+Most Probable Mode (MPM) lists reduce signaling cost by predicting likely modes from neighboring blocks.
+
+> [!question] Domanda 96
+> Describe the principle of the deblocking in-loop filter of H.264.
+
+At low bitrate, block transform and quantization create visible discontinuities at block boundaries. H.264 applies a normative in-loop deblocking filter on edges between $4\times4$ blocks.
+
+Filtering strength depends on:
+
+- coding mode,
+- motion vectors,
+- reference frames,
+- quantization parameter,
+- local boundary conditions.
+
+It is in-loop because filtered reconstructed frames are used as future references; this avoids propagating blocking artifacts.

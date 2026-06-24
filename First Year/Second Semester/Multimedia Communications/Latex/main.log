@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.4.8)  22 JUN 2026 10:39
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.4.8)  24 JUN 2026 18:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -794,20 +794,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 155--101
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: 4E755E86C578C02EFB71F9E486D1D209;51565
-(rerunfilecheck)             After:  36C96AEE671069AB396A777135719DE1;51514.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 36C96AEE671069AB396A777135719DE1;51514.
  ) 
 Here is how much of TeX's memory you used:
  21691 strings out of 469612
  402764 string characters out of 5465786
- 843601 words of memory out of 5000000
+ 843550 words of memory out of 5000000
  49881 multiletter control sequences out of 15000+600000
  679975 words of font info for 100 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191

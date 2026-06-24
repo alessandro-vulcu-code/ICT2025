@@ -1,0 +1,171 @@
+\section{Adaptive Streaming}
+
+
+\begin{questionbox}{Domanda 64}
+\textbf{Compare QoS and QoE}: what they measure and how they correlate. Which network factors impact streaming QoE?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{QoS} $\rightarrow$ technical service/network metrics: throughput, latency, jitter, packet loss.
+  \item \textbf{QoE} $\rightarrow$ user-perceived service quality: media quality, startup delay, stalls, quality switches, device, context, expectations.
+  \item \textbf{Correlation} $\rightarrow$ not linear.
+  \begin{itemize}
+    \item Packet loss may be hidden by buffer.
+    \item Short throughput drop may cause rebuffering $\rightarrow$ large QoE loss.
+
+  \end{itemize}
+\end{itemize}
+\begin{questionbox}{Domanda 65}
+(AdapStrm) Describe the fundamental architectural dif and only iferences between a “Push-based” streaming system (e.g., RTP/UDP) and a “Pull-based” system (e.g., DASH).
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{Push-based streaming} (RTP/UDP/WebRTC-style):
+  \begin{itemize}
+    \item server sends packets according to timing;
+    \item low latency;
+    \item needs real-time transport/control;
+    \item \textbf{typical use} $\rightarrow$ conferencing/live interactive media.
+  \end{itemize}
+  \item \textbf{Pull-based streaming} (DASH/HLS over HTTP):
+  \begin{itemize}
+    \item client requests segments;
+    \item works with HTTP/CDNs/caches;
+    \item client selects bitrate from throughput/buffer;
+    \item higher delay, scalable/robust for VoD/streaming.
+
+  \end{itemize}
+\end{itemize}
+\begin{questionbox}{Domanda 66}
+(AdapStrm) Analyze the role of the client-side buffer in the context of stability and Quality of Experience (QoE).
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{Buffer} $\rightarrow$ stores downloaded media in seconds.
+  \item \textbf{Function} $\rightarrow$ absorbs throughput variation and jitter.
+  \item \textbf{Larger buffer} $\rightarrow$ more stability, but higher startup delay/latency.
+  \item QoE depends on startup time, stalls, stall duration, segment quality, quality switches.
+
+\end{itemize}
+\begin{questionbox}{Domanda 67}
+(AdapStrm) Define “Switching Penalty” and discuss its impact on perceived video quality.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{Switching penalty} $\rightarrow$ QoE loss from visible quality changes between segments.
+
+\end{itemize}
+$$
+J(n)=\lambda_1K_n-\lambda_2|K_n-K_{n-1}|-\phi(\Delta_n)
+$$
+
+\begin{itemize}
+  \item $K_n$ $\rightarrow$ segment quality.
+  \item $|K_n-K_{n-1}|$ $\rightarrow$ switching penalty.
+  \item $\phi(\Delta_n)$ $\rightarrow$ rebuffering penalty.
+  \item Frequent oscillations can be worse than stable slightly lower quality.
+
+\end{itemize}
+\begin{questionbox}{Domanda 68}
+(AdapStrm) Explain the evolution of the playout buffer level $B(t)$ using a mathematical model. In your explanation, describe the dynamics of the “playback” (draining) phase and the “rebufferization” (stalling) phase.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{Buffer level in playback seconds}:
+
+\end{itemize}
+$$
+B(t)=L\cdot T_s
+$$
+
+\begin{itemize}
+  \item $L$ $\rightarrow$ stored segments; $T_s$ $\rightarrow$ segment duration.
+  \item Coding rate $R_c$, throughput $S$:
+
+\end{itemize}
+$$
+\frac{dB}{dt}=
+\begin{cases}
+\frac{S}{R_c}-1 & \text{during playback}\\
+\frac{S}{R_c} & \text{during rebuffering}
+\end{cases}
+$$
+
+\begin{itemize}
+  \item \textbf{Playback} $\rightarrow$ buffer receives data but drains at one playback second per real second.
+  \item \textbf{Rebuffering} $\rightarrow$ playout stops; no output drain.
+  \item \textbf{Stable playback average}:
+
+\end{itemize}
+$$
+S>R_c
+$$
+
+\begin{questionbox}{Domanda 69}
+(AdapStrm) What is the primary motivation for using HTTP-based protocols for video streaming?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{HTTP streaming} $\rightarrow$ stateless, CDN-friendly, firewall-friendly, easy to deploy at scale.
+  \item \textbf{DASH/HLS} $\rightarrow$ use web infrastructure; client adapts representation quality.
+
+\end{itemize}
+\begin{questionbox}{Domanda 70}
+(AdapStrm) What is the consequence of an ABR algorithm that systematically overestimates the available bandwidth?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{ABR overestimates throughput} $\rightarrow$ requests too high bitrate.
+  \item \textbf{Segment download time grows} $\rightarrow$ buffer empties $\rightarrow$ rebuffering/stalling.
+
+\end{itemize}
+\begin{questionbox}{Domanda 71}
+(AdapStrm) Which metric is a direct indicator of streaming QoE from the end-user’s perspective?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{Direct QoE indicators} $\rightarrow$ startup delay, rebuffering duration/frequency, quality level, quality switches.
+  \item \textbf{User perspective} $\rightarrow$ uninterrupted stable playback often more important than low-level network metrics.
+
+\end{itemize}
+\begin{questionbox}{Domanda 72}
+(AdapStrm) At what stage in the session lifecycle does a DASH client process the Media Presentation Description (MPD)?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item Client processes \textbf{MPD} at session start, before media segment download.
+  \item MPD lists periods, adaptation sets, representations, codecs, bitrates, resolutions, segment URLs.
+
+\end{itemize}
+\begin{questionbox}{Domanda 73}
+Explain how an ABR (Adaptive Bitrate) algorithm works: rate-based vs buffer-based logic, and the risk of overestimating available bandwidth.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{ABR} $\rightarrow$ client-side rule selecting bitrate representation for next segment.
+  \item \textbf{Goal} $\rightarrow$ maximize QoE: quality + stability, avoid stalls.
+  \item \textbf{Rate-based}:
+  \begin{itemize}
+    \item estimate recent throughput;
+    \item choose representation below available bandwidth, often with safety margin.
+  \end{itemize}
+  \item \textbf{Buffer-based}:
+  \begin{itemize}
+    \item \textbf{low buffer} $\rightarrow$ conservative bitrate;
+    \item \textbf{high buffer} $\rightarrow$ higher quality.
+  \end{itemize}
+  \item \textbf{Overestimated bandwidth} $\rightarrow$ segments too large $\rightarrow$ long downloads $\rightarrow$ buffer drain $\rightarrow$ stalls.
+
+\end{itemize}
+---
+
