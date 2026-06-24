@@ -1,8 +1,10 @@
 \subsubsection{Context-based coding}
+Context-based coding predicts the probability of the next symbol from a causal neighborhood already known to both encoder and decoder. Better contexts lower coding rate when they make the next symbol more predictable, but excessively large contexts produce unreliable statistics.
 It is based on context (near pixels), so joint probability.\\
 How to choose the context? Look the data, or use learning-based techniques to learn prob. distribution.
 \subsection{Other Techniques}
 \subsubsection{Unsigned Exp-Golomb}
+Unsigned Exp-Golomb is a universal variable-length code for non-negative integers. Small values receive short codewords, so it is effective for syntax elements and prediction residual magnitudes concentrated near zero.
 \begin{minipage}{0.5\textwidth}
     \textbf{Encoder}:
     \begin{itemize}
@@ -22,6 +24,7 @@ How to choose the context? Look the data, or use learning-based techniques to le
     \end{itemize}
 \end{minipage}
 \subsubsection{Signed Exp-Golomb}
+Signed Exp-Golomb first maps positive and negative integers to non-negative integers, then applies unsigned Exp-Golomb coding. It preserves short codewords around zero without needing a separate sign bit.
 \begin{minipage}{0.5\textwidth}
     \textbf{Encoder}:
     \begin{itemize}
@@ -43,10 +46,12 @@ How to choose the context? Look the data, or use learning-based techniques to le
     \end{itemize}
 \end{minipage}
 \subsubsection{Dictionary-based coding}
+Dictionary-based coding replaces repeated symbol strings with references to entries in a shared dictionary. Its rate improves when long patterns recur, because one dictionary index can represent many source symbols.
 \textbf{Asymptotic Optimality Theorem}:\\
 If stationary and ergodic source, Dictionary-based coding is asymptotically optimal.\\
 Examples of Dictionary-based coding: LZ\footnote{Lempel-Ziv}77, LZ78, LZW\footnote{Lempel-Ziv-Welsch} (used in Deflate, GIF, ZIP), LZMA.
 \subsubsection{LZW coding}
+LZW is an adaptive dictionary code in which encoder and decoder construct the same phrase dictionary while processing the stream. Only dictionary indexes are transmitted; the dictionary itself need not be sent.
 
 \textbf{Encoder and Decoder - Greedy Matching Process + Dictionary Evolution and Merging}:
 \begin{itemize}
@@ -69,6 +74,7 @@ Examples of Dictionary-based coding: LZ\footnote{Lempel-Ziv}77, LZ78, LZW\footno
     \item DPCM\footnote{Differential Pulse Coding Modulation}: 1D/2D spatial prediction, encodes error $y = x(n) - p(n) = x(n)-x(n-1)$ (zero-centered)
 \end{itemize}
 \subsubsection{Neural Lossless Coding (NLC) Techniques}
+Neural lossless coding uses a neural probability model to estimate symbol distributions, then applies entropy coding without changing source values. Cross-entropy $H(P,Q)$ is the achieved ideal rate under model $Q$ when true data follow $P$; the KL term measures extra bits caused by model mismatch.
 $$H(P,Q) = H(P) + D_{KL}(P\parallel Q)$$
 It takes into account source entropy $H(P)$ and penalty for model inaccuracy based on Kullback-Leibler distance.\\%(how different are $P,Q$)
 \textbf{Models}:

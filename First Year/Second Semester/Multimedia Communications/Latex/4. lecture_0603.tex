@@ -14,11 +14,14 @@ In real-life we don't have models, but real data:
 \end{itemize}
 This guarantees better performance but not too much improve performances.
 \subsection{Predictive Scalar Quantization}
+Predictive scalar quantization represents the difference between a sample and its prediction rather than quantizing the sample directly. If prediction is accurate, the residual has lower variance and can reach the same distortion with fewer bits.
 Idea: exploit sample quantization with prediction.\\
 We want to lower distorsion $D = \sigma_x^22^{-2R}$: we have to reduce $\sigma$ or, to keep the same distorsion, lower the rate.
 \subsubsection{Sparsification}
+Sparsification is the concentration of most signal energy or information into a small number of significant coefficients while the remaining coefficients become small or zero. Sparse representations are easier to quantize and entropy-code.
 Starting from a signal where pixels have the same weight, after applying some sparsification function (Fourier transform for example) some components become more important. Then we make quantization based on human sensitivity.
 \subsubsection{Prediction}
+Prediction estimates the current sample from already available samples. The prediction residual $y(n)$ is the part not explained by the predictor and is the quantity sent to the quantizer.
 We need to encode differences or predicting the differences. How to choose the $v(n)$?\\
 We need a $v(n)$ such that $y(n) = x(n) - v(n)$, then the reconstructed $\hat{y}(n) + v(n) = \hat{x}(n)$.
 \begin{center}
@@ -43,6 +46,7 @@ We need a $v(n)$ such that $y(n) = x(n) - v(n)$, then the reconstructed $\hat{y}
 \subsubsection{Prediction Error}
 $$q(n) = y(n) - \hat{y}(n) = x(n) - \hat{x}(n) = \bar{q}(n)\qquad\text{ the same of the original signal }x$$
 \subsubsection{Coding Gains}
+Coding gain measures how much a coding operation reduces distortion at equal rate, or reduces rate at equal distortion, relative to a reference system. Predictive gain $G_P$ is expressed in dB and compares original-signal variance with residual variance.
 Goal of PQ: minimizing D
 $$SNR_p = 10\log_{10}\frac{\sigma^2_x}{D} = G_P + G_Q \qquad \text{where} \begin{cases}
     G_P = 10\log_{10}\frac{\sigma_x^2}{\sigma_y^2} \text{ predictive gain}\\
@@ -51,6 +55,7 @@ $$SNR_p = 10\log_{10}\frac{\sigma^2_x}{D} = G_P + G_Q \qquad \text{where} \begin
 We are gaining the $G_P$ factor, since $\sigma_x^2 > \sigma_y^2$\\
 We cannot be sure that any prediction is good, we need to look for optimal predictors from previous samples.
 \subsubsection{Linear Predictors}
+A linear predictor forms its estimate as a weighted sum of previous samples. Its order $P$ is the number of past samples used; larger orders provide more modeling freedom but increase computation and coefficient-signaling cost.
 Linear predictors are simple and \textbf{optimal for Gaussian r.v.}:
 $$v(n) = -\sr{P}{i=1}a_ix_{n-i} \qquad\Longrightarrow\qquad y(n) = x(n) - v(n) = \sr{P}{i=0}a_ix_{n-i} \quad (a_0 = 1)$$
 $y$ is the output of the FIR filter $A(z) = 1 + \sr{P}{i=1}a_iz^{-i}$ applied to $x$. Goal: minimize $\sigma^2_y$ over $\vec{a} = [a_1 \cdots a_P]^T$.
@@ -145,6 +150,7 @@ $$\begin{array}{c|cccccc}
 \end{array}$$
 Encoder predicts from originals (10,11,12,\dots), decoder is stuck at 9: drift grows unbounded.
 \subsubsection{Correct scheme: closed-loop prediction (DPCM)}
+\textbf{DPCM} (Differential Pulse-Code Modulation) is predictive quantization with matching reconstruction loops at encoder and decoder. Both sides predict from previously reconstructed samples, preventing predictor mismatch and unbounded drift.
 \textbf{Solution}: the encoder embeds a copy of the decoder, and predicts from the \emph{quantized/reconstructed} samples $\tilde{x}(n)$ --- exactly the same data the decoder has.
 \begin{center}
 \begin{tikzpicture}[baseline=(s1.center)]

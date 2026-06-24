@@ -1,4 +1,5 @@
 \section{Modern Video-Compression Standards}
+A video codec is an encoder--decoder pair that maps frames to a compressed bitstream and reconstructs frames from that stream. A coding standard defines bitstream syntax and normative decoding behavior so conforming implementations interoperate.
 \subsection{Universal Hybrid Video Encoder}
 From MPEG-1 going on they use all the same structure, core points:
 \begin{itemize}
@@ -24,6 +25,7 @@ Rule of thumb: every generation reduces video size by $1/2$ and increases comple
     \item Next-Generations $\to$ need to use massive bitrates of raw video $\to$ VVC, AV1
 \end{itemize}
 \subsection{Rate-Distorsion Optimization}
+Rate--distortion optimization (RDO) compares valid coding choices using a combined cost. Rate $R$ is the number of output bits, distortion $D$ measures reconstruction error, and $\lambda$ controls the relative price assigned to rate.
 $$J = D + \lambda R$$
 Using the R-D optimization method we have a huge number of options, how do we choose the best mode?\\
 The solution is to work in blocks $\to$ Block Partitioning Problem
@@ -31,6 +33,7 @@ The solution is to work in blocks $\to$ Block Partitioning Problem
 In H.264 we use macroblocks $16 \times 16$, it allows further splitting until $4 \times 4$ blocks, useful to compute edges.\\
 Still this size is too low for High-Resoluton videos, we need something more.
 \subsubsection{Block Partitioning Problem: H.265/HEVC}
+In HEVC, a Coding Tree Unit (CTU) is the largest processing region, a Coding Unit (CU) carries coding decisions, and a Prediction Unit (PU) defines a prediction partition. Their hierarchy adapts block shape and size to local image structure.
 HEVC uses a Quad-Tree paradigm, it is like a 2D binary tree.\\
 A certain CTU (Code Tree Unit) can be split into 4 CU (Coding Units), then a CU becomes a CTU and we can apply this recursively.
 Standards should provide only the syntax, we need to do the actual implementation.\\
@@ -50,6 +53,7 @@ This is like a classification among pixel groups, ML and NN are good in solving 
 Researchers are looking for a light NN to exploit this.
 \subsection{Spatial and Temporal Frame Prediction}
 \subsubsection{Intra Prediction}
+Intra prediction estimates a block from already reconstructed neighboring samples in the same frame. It removes spatial redundancy without referring to other frames and therefore supports random access and limits temporal error propagation.
 We want to exploit spatial prediction among neighbors.
 Instead of trying just one prediction we use different predictors in parallel for the same block, then we pick the best one. We have to signal this to the Encoder.\\
 We take one director-per-block instead of one-per-pixel (it is too much bits wasted):
@@ -62,19 +66,22 @@ We take one director-per-block instead of one-per-pixel (it is too much bits was
 Predictors grow exponentially with the signaling bits: $P \propto 2^B$. With 67 modes, $\approx 7$ bits/block of pure signaling would destroy the gain on $4\times4$ blocks.\\
 \textbf{MPM: Most Probable Mode} idea, ENC predicts which is the most probable direction using the spatial context: a candidate list is built from the modes chosen by top and left neighbors (HEVC: 3 candidates, VVC: 6). If the chosen mode is in the list, 1--2 bits suffice; only if it fails long codewords are used.
 \subsubsection{Inter Prediction}
+Inter prediction estimates a block from one or more previously reconstructed reference frames using motion information. It removes temporal redundancy but requires motion-vector and reference-index side information.
 Here we use Fractional Motion Compensation, each frame is computed using multiple reference frames.\\
-Foreach image in the GOP, we have to say what is the List of frames used for prediction.\\
+For each image in the GOP, the bitstream identifies the list of frames available for prediction.\\
  Here complexity $\propto$ size of bits. How do we encode the motion vectors?\\
 A better strategy is to produce a list of predictors and encode the indexes.
 \subsubsection{Merge Mode}
 Used in AV1/VVC, not only picks the pixels but also applies affine transformation on the blocks, thus producing a complexity increase.
 \subsection{Filtering, Transforms and Quantization}
 \subsubsection{Residual Coding}
+The residual is the sample-wise difference between the original block and its selected prediction. Residual coding transforms, quantizes, and entropy-codes this difference; better prediction produces a lower-energy residual and usually a lower rate.
 DCT problem: we want floating number operations (too complex for an encoder, must be quick).\\
 Solution: just use integer power of 2, such that multiplications are bit shifts and we have also $\pm$ operations.\\
 We don't provide quantization table, but a similar Quantization Parameter ($\propto$ dB step size)\\
 % Integrated from Summaries
 \textbf{QP behavior} (H.264/HEVC): the quantization step \textbf{doubles every +6 of QP}; empirically +1 QP $\approx$ $-12.5\%$ rate. QP is the main knob for rate control.\\
+The Quantization Parameter (QP) is a coded index controlling quantization-step size. Higher QP means coarser quantization, lower bitrate, and greater distortion; QP itself is dimensionless and is not a direct quality score.
 Entropy coding standardized around \textbf{CABAC} (Context-Adaptive Binary Arithmetic Coding): binarizes syntax elements and adapts probabilities on spatial context; $5\to15\%$ rate saving over older VLC (CAVLC).
 % Integrated from Summaries: deblocking is a sample exam question
 \subsubsection{In-loop Deblocking Filter}
@@ -88,12 +95,14 @@ Entropy coding standardized around \textbf{CABAC} (Context-Adaptive Binary Arith
     \item \textbf{AV1}: CDEF directional filters, Wiener loop-restoration filters, film grain synthesis (grain re-synthesized at decoder at zero rate cost).
 \end{itemize}
 \subsubsection{Slices}
+A slice is an independently entropy-decodable sequence of coded blocks within a frame. Slice boundaries support resynchronization and parallel processing, but reduce prediction efficiency and add header overhead.
 Error corruption behavior: artifacts highlight due to error propagation in compression.\\
 How can we prevent this? Slices are subparts of the frame, that are independently encoded, such that we can parallel-encode them, because we don't use them for prediction.\\
 At Intra Frames CABAC\footnote{Context-Adaptive Binary Arithmetic Coding} is reset.
 \subsection{Network parallelism}
 All the video data is encoded into a bitstream.
 \subsubsection{NALU}
+A Network Abstraction Layer Unit (NALU) is a self-delimited packet of video-coding data or metadata. The NAL layer separates codec syntax from transport packaging and lets networks identify parameter sets, slices, and access points without fully decoding video.
 \begin{itemize}
     \item VCL NALUs: contain all the compression data for a slice, can be IDR\footnote{Istantaneous Decoding Refresh, video access point} (I + CABAC reset) or non-IDR
     \item non-VCL NALUs: contain SPS, PPS, SEI
@@ -134,6 +143,7 @@ AV1 drops this approach and uses OBUs (Open Bitstream Units), in CDNs there are 
 \end{center}
 \noindent \textbf{Adding redundancy}: the MANE can inject extra protection (e.g.\ a CRC NALU) into the stream for more robust delivery.
 Decoder accesses video at RAPs (Random Access Points), there are 2 main access techniques:
+\textbf{A Random Access Point (RAP)} is a bitstream position from which decoding and display can begin without decoding the entire preceding stream.
 \begin{itemize}
     \item IDR: Technique to clear previous buffer at a certain intra frame. It breaks bidirectional temp. prediction
     \item CRA (Clear Random Access): we just skip some images because they are not decodable.

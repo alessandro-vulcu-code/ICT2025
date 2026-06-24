@@ -1,4 +1,5 @@
 \section{Adaptive Streaming}
+Adaptive streaming divides media into independently downloadable segments available at several encoded bitrates. The client changes representation over time to match network conditions and buffer state while maximizing QoE.
 While streaming a content we need to take into account rate-quality (tradeoff). Video is the most difficult problem because we have to reduce uncompressed video (from the order of Gbps of rate, down to some Mbps).\\
 Possible applications of multimedia streaming:\begin{itemize}
     \item Bulk Transfer (need data integrity)
@@ -17,6 +18,7 @@ $$\boxed{\text{Speaker A}} \longrightarrow \boxed{\text{Conference SRV}} \longri
 \end{cases}$$
 How to choose the coding rate of my video?
 \subsubsection{Coding Rate Bottleneck}
+Coding rate $R_c$ is the average number of compressed media bits produced per second. Link capacity $C_k$ is the maximum sustainable transport rate for user $k$; stable delivery requires coding rate, protocol overhead included where appropriate, to stay below available throughput.
 We need:
 $$R_c \leq C_k \qquad (\text{capacity limit of user }k)$$
 We need to keep the rate lower than the max capacity, to avoid buffering.\\
@@ -42,6 +44,7 @@ Solution: use MANE, also deployed in CDNs and 5G Networks.
         \item Client asks for the content, server serves
     \end{itemize}
 \end{minipage}
+\par\medskip
 UDP is quick and fast, RTP just adds additional infos like:
 \begin{itemize}
     \item Packet Numbering
@@ -50,6 +53,7 @@ UDP is quick and fast, RTP just adds additional infos like:
 RTCP also adds also a metrics exchange as control messages to let the server adapt the $R_c$.\\
 There are also timestamps added to packets to handle sync and control jitter.
 \subsection{Scalable Video Coding (SVC)}
+Scalable Video Coding produces a layered bitstream containing a mandatory base layer and optional enhancement layers. Removing enhancement layers lowers rate, quality, resolution, or frame rate without re-encoding the source.
 Useful for a $1\to N$ realtime video streaming. IDEA: just perform 1 encoding and then be able to extract several versions of the content. (JP2K like capabilities $\to$ progressive video coding)
 \subsubsection{Scalability Types}
 \begin{itemize}
@@ -84,7 +88,9 @@ HTTP/3 is based on UDP:
     \item has connection migration, not bound to (ip,port) couple, just a connection ID
 \end{itemize}
 \subsection{Adaptive Bitrate Streaming}
+Adaptive Bitrate (ABR) streaming lets the client select one encoded representation for each segment. Representation bitrate is measured in bit/s and indicates encoded media size per playback second, not instantaneous download speed.
 \subsubsection{Media Presentation Description (MPD) file}
+The Media Presentation Description (MPD) is a DASH manifest describing content timing, tracks, available representations, segment locations, codecs, resolutions, and bitrates. It contains metadata and URLs rather than media samples.
 \begin{itemize}
     \item \textbf{Period}: It is representing a certain content
     \item \textbf{AdaptationSet}: It represents a certain track (video, audio,...)
@@ -101,12 +107,14 @@ Further notes:
     this leads to a glass-to-glass latency of about $1 \to 3$ seconds.
 \end{itemize}
 \subsubsection{Network Metrics: Throughput}
+Throughput is the rate at which useful data are successfully delivered over a time interval. It is measured in bit/s and is usually lower and more variable than physical link rate because of protocol overhead, congestion, competing traffic, and losses.
 Here we use continuous models to describe discrete things.
 $$S(t) = \frac{d}{dt}D(t) \leq R_{\text{PHY}}$$
 This inequality takes into account also for Overhead + Congestions + Other users on the link.
 Since $S$ can be very sparky we want to use the average:
 $$\bar{S} = \frac{1}{T}\int_0^TS(t)dt = \frac{D(T)}{T}$$
 \subsubsection{Network Metrics: E-2-E Nodal Delay}
+End-to-end delay is elapsed time from sending data at the source to receiving it at the destination. It is measured in seconds or milliseconds and sums processing, queuing, transmission, and propagation delays along the path.
 $$d_{e2e} = \sr{}{k \in \text{ links}}d_{\text{processing}}(k) + d_{\text{queue}}(k) + d_{\text{TX}}(k) + d_{\text{propagation}}(k)$$
 \begin{itemize}
     \item Processing: Error control, header reading
@@ -116,10 +124,10 @@ $$d_{e2e} = \sr{}{k \in \text{ links}}d_{\text{processing}}(k) + d_{\text{queue}
 \end{itemize}
 In modern networks an increase of $R$ does affect only $d_{TX}$, the other delays keep the same size.\\
 The only thing we can change is the distance, we use CDNs to bring the content nearer to the users.\\
-Jitter is the most annoying phenomenon. Solution: use buffers to absorbe the variability of the delay (Jitter).
+Jitter is variation in packet delay or arrival spacing, commonly measured in milliseconds. Playback buffers absorb this variation by trading extra startup or end-to-end delay for smoother playout.
 \subsection{Buffer Dynamics}
 \subsubsection{Rebuffering event}
-Rebuffering: process of filling our buffers, it involves the download of some segments to play later 
+A playback buffer stores already downloaded media as seconds of future playable content. Rebuffering is a playback stall caused when this buffered duration reaches zero; during the stall, playback waits while new segments are downloaded.
 $$B(t) = L \cdot T_s \qquad \text{where }\begin{cases}
     L = \# \text{segments}\\
     T_s = \text{duration of a segment}

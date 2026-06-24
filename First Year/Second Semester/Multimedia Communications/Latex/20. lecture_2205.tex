@@ -1,5 +1,6 @@
 EXAM: Learn the Finite State Machine diagram and values $\to$ saw-tooth behavior.
 \subsubsection{Client Scoring-Policy Design}
+A QoE scoring policy maps measurable playback events to one utility value. It rewards segment quality and penalizes startup time, rebuffering duration, and visible quality changes; coefficients express their relative importance.
 Assume $K(n)$ is the quality of segment $n$, then we want a function to assign each $K(n)$ a score: ideally MOS.\\
 The QoE needs to take into account:
 \begin{itemize}
@@ -13,7 +14,9 @@ $$J(n) = \lambda_1 K_n - \lambda_2 \left|K_n - K_{n-1}\right| - \phi(\Delta_n) \
 To have a general score we define the final $J$ by taking into account the first buffering event:
 $$J = \sr{N}{n=1}J(n) - \lambda_3 T_{ST}$$
 \subsection{ABR Strategies}
+An ABR strategy is the client-side decision rule that chooses the bitrate of the next media segment. It must keep requested coding rate below predicted delivery capacity while preserving enough buffered playback time.
 \subsubsection{Throughput-based ABR}
+Throughput-based ABR selects the highest representation safely below an estimate of future network throughput. The safety factor $\eta<1$ leaves margin for estimation error and short-term capacity drops.
 Goal: given an estimate of the current $S(t)$ let's check if segment arrives in time for playout.\\
 Estimated Throughput: $$S(n) = \frac{D(n)}{T_D(n)}$$
 By using a smoothing filter (EMA):
@@ -22,9 +25,11 @@ Decision Rule:
 $$R(n) \leq \eta \hat{S}(n) \qquad \Longrightarrow \text{typical value }\eta = 0.85$$
 Problem: here we totally ignore buffer status (buffer blindness).
 \subsubsection{Buffer-based ABR}
+Buffer-based ABR selects quality from current buffered playback duration rather than explicitly estimating throughput. Low occupancy triggers conservative rates; high occupancy permits larger rates.
 Strategy: select low quality if buffer is always empty, full quality if buffer is always full, linear behavior in the middle (2 thresholds to set).
 Problem: here we totally ignore network status.
 \subsubsection{Hybrid ABR strategy}
+Hybrid ABR combines throughput prediction, buffer occupancy, and a QoE objective. It evaluates candidate representations using expected quality, switching cost, and stall risk before requesting the next segment.
 Takes into account both strategies: it wants to maximize $J(n)$ as defined before. Pseudoalgorithm:
 \begin{enumerate}
     \item Set $J_{\min} = \infty$
@@ -41,11 +46,11 @@ Takes into account both strategies: it wants to maximize $J(n)$ as defined befor
 \end{enumerate}
 Server is totally unaware of what the client does, just serves what requested.
 \subsubsection{Learning-Based ABR}
-What works well: Reinforcement Learning techniques (State, Action, Reward)
+Learning-based ABR learns a representation-selection policy from observed states and rewards. Reinforcement learning models buffer and network measurements as state, representation choice as action, and QoE as reward.
 \subsubsection{Multiplayer Competition}
 Goal: guarantee the best possible average quality among all users.\\
 \begin{minipage}{0.475\textwidth}
-    \textbf{What are the Pathologies:}
+    \textbf{Pathologies:}
     \begin{itemize}
         \item BW unfairness
         \item Inefficiency (under-utilization)
@@ -62,5 +67,6 @@ Goal: guarantee the best possible average quality among all users.\\
     by using `Implicit Coordination' mechanisms
 \end{minipage}
 \subsubsection{Neural Video Coding}
+Neural video coding replaces one or more handcrafted codec blocks with learned transforms, motion models, and entropy models optimized jointly. Its rate term estimates coded bits, while its distortion term measures reconstruction or perceptual loss.
 Uses Learned Transforms (instead of DCTs), Learned Motion Estimation (instead of Block Matching), Learned Entropy Modeling to reach a Joint R/D optimization. There is a unified loss function to be able to use many differential metrics, like MS-SSIM and VMAF (useful as an indicator of Human perception):
 $$\mathcal{L} = D(x,\hat{x}) + \lambda R(\hat{y})$$

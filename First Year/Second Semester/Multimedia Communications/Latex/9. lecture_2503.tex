@@ -1,5 +1,6 @@
 \subsection{Towards Optimal Transform}
 \subsubsection{Karhunen-Lo\`eve Transform (KLT)}
+The Karhunen--Lo\`eve Transform is the data-dependent orthogonal transform formed from covariance-matrix eigenvectors. It decorrelates transform coefficients and is optimal for energy compaction under its statistical model.
 Assuming we have $X$: zero mean random vector of size $M$\\
 Such that $R_X = E[XX^T]$, $R_X$ has M orthogonal eigenvectors $u_1 \cdots u_M$\\
 Then KLT $\equiv$ an orthogonal Matrix $T_{KLT}$ where the rows are the eigenvectors:
@@ -21,7 +22,7 @@ KLT is not used typically in image codecs, due to:
 \end{itemize}
 \subsection{Frequency Transforms}
 \subsubsection{1D-DFT for Compression}
-DFT = Discrete Fourier Transform
+The Discrete Fourier Transform (DFT) represents a finite sequence as complex sinusoidal frequency components. Each coefficient measures amplitude and phase at one discrete frequency.
 $$y[k] = \frac{1}{\sqrt{M}}\sr{M}{n=1}x[n]\exp\left(-j\frac{2\pi}{M}kn\right) \qquad \forall k = \{1 \cdots M\}$$
 It is the same as a $T_{DFT}$ transform where:
 $$T_{DFT} = \frac{1}{\sqrt{M}} \left[W_m^{i \cdot j}\right] \qquad \text{where} \begin{cases}
@@ -39,7 +40,8 @@ In Frequency Leakage some energy leaks to the high frequencies (due to the big j
 Plotted DFT has a cross-like structure, usually it is plotted the $\log_{10}|DFT|$ version of the data\\
 IDEA: why don't we put a mirror on the signal instead of periodizing, s.t. we reduce big jumps?
 \subsubsection{DCT Transform Matrix}
-DCT = Discrete Cosine Transform, steps to obtain it:
+The Discrete Cosine Transform (DCT) represents a finite real sequence using real cosine basis functions. Its symmetric boundary model reduces frequency leakage and usually compacts image energy better than a directly periodized DFT.
+Steps to obtain it:
 \begin{itemize}
     \item Create a mirrored-periodic version of $x \to x_{sym}$
     \item DFT of $x_{sym}$
@@ -62,7 +64,7 @@ How to decide the quantization step of each coefficient?
     \item Fized Quantization Step: faster and used in JPEG
 \end{itemize}
 \subsection{JPEG}
-It is a standard, guarantees interoperability and implementation competition (decoder is regulated by the standard but every producer can make its own encoder, but it needs to guarantee interoperability).\\
+JPEG is a lossy still-image coding standard based on block DCT, coefficient quantization, and lossless entropy coding. It defines a decodable bitstream syntax, guaranteeing interoperability while allowing different encoder implementations.\\
 If we have 1 component $\to$ BW images, for color images $\to 3$ components: YCbCr.
 \subsubsection{Encoding Strategy}
 \begin{itemize}
@@ -79,10 +81,10 @@ If we have 1 component $\to$ BW images, for color images $\to 3$ components: YCb
 \end{center}
 \noindent Full JPEG encoding chain: RGB$\to$YCbCr conversion, chroma subsampling, $8\times8$ block partitioning, DCT, quantization (driven by the quantization table), zig-zag scan and entropy coding (Huffman/RLE) into the compressed JPEG stream.
 \subsubsection{Quantization-step table}
-What is the $q$ table?\\
-It is the quantization-step table: steps $\propto$ human sensitivity to the DCT components (64 byte table, $n \times n$ size).\\
+The $q$ table is the quantization-step table: steps $\propto$ human sensitivity to the DCT components (64 byte table, $n \times n$ size).\\
 Usually we use the $q^\star$ table, which has been made experimentally on scientific tests, bigger steps for lower sensitivity (BR corner), shorter steps for UL corner components.
 \subsubsection{Scaling Factor and Quality}
+JPEG quality $Q$ is an encoder control parameter, not an objective quality measurement. It scales quantization steps: larger $Q$ produces smaller steps, higher rate, and usually higher reconstructed quality; values are not directly comparable across different encoders.
 The Quantization step table can be scaled by a factor $S_F$ depending on the quality we want:
 $$S_F = \begin{cases}
     \frac{5000}{Q} \qquad\qquad 1 \leq Q \leq 50\\
@@ -90,6 +92,7 @@ $$S_F = \begin{cases}
     1 \qquad \qquad\qquad Q = 100
 \end{cases} \qquad \text{such that actual }q \leftarrow \frac{S_F}{100}q^\star$$
 \subsubsection{Zig-Zag Coding}
+Zig-zag scanning is an ordering of the $8\times8$ DCT coefficients from low toward high spatial frequencies. It tends to place long runs of quantized zeros at the end of the sequence, where run-length coding represents them cheaply.
 We need a bitstream from the matrix. To encode the sparse matrix we use prediction + Huffman for the DC component, while the others are encoded using `run-length' coding.\\
 Run-length coding: scanning sequentially the matrix and representing the value as $(i,j)$ where $i = $number of zeros before, and $j$ the actual value.\\
 In this case the sequential scan is made with a zig-zag technique, final representation is:

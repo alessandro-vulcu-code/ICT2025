@@ -1,4 +1,5 @@
 \section{Audio and Speech Coding}
+Audio coding represents sampled sound with fewer bits while preserving a required perceptual quality, intelligibility, or latency. Audio bitrate is measured in bit/s and depends on sampling rate, channel count, and average coded bits per sample.
 Different uses have different requirements:
 \begin{itemize}
     \item VR and AR need low latency
@@ -12,6 +13,7 @@ Different uses have different requirements:
     \item General Audio is more homogeneous (fast transients, tonal segments), it uses \textbf{sink\footnote{Sink = human ear} based} coding, needs to guarantee fidelity and transparency.
 \end{itemize}
 \subsubsection{Vowels}
+Pitch is the perceived fundamental frequency of a periodic sound and is measured in hertz. Its reciprocal is the pitch period $T_0$, measured in seconds or samples.
 Vowels are very correlated with zero-centered frequency.\\
 Usually there are harmonics, ordinary FT doesn't work, here we use Short-Time Fourier Transform (STFT).\\
 Pitch is the frequency of the most important harmonic, then the others are computed based on this.
@@ -31,6 +33,7 @@ There are 2 main types of sounds:
     \item Unvoiced sounds: it is like filtering differently white noise (fricatives etc...)
 \end{itemize}
 \subsection{Linear Predictive Coding}
+Linear Predictive Coding (LPC) models each short speech frame as an excitation passed through an all-pole vocal-tract filter. The encoder transmits filter parameters, gain, and excitation information instead of coding every waveform sample directly.
 $$\hat{x}(n) = -\sr{P}{i=1}a_i x(n-i) \qquad \Longrightarrow \qquad \text{s.t. }y(n) = x(n) - \hat{x}(n) = \sr{P}{i=0}a_i x(n-i) \text{ with }a_0 = 0$$
 \subsubsection{Yule-Walker Equation}
 $$\mathbf{R}_x\vec{a} = -\vec{r}_x$$
@@ -44,6 +47,7 @@ $$x(n) \longrightarrow \boxed{\text{Windowing }\sim 20ms} \longrightarrow \stack
 How do we estimate autocorrelation? Check linear predictors (2.4.5), very similar behavior.\\
 How do we detect the pitch? Compare $k > P$, how do we check Voiced/Unvoiced? Compare to $\mathbf{R}_x(0)$\\
 \subsubsection{Residuals}
+The LPC residual is the prediction error left after removing the estimated short-term vocal-tract structure. It approximates the excitation source: periodic impulses for voiced speech and noise-like samples for unvoiced speech.
 $$Y(z) = A(z)X(z) \qquad \Longrightarrow \qquad X(z) = A^{-1}(z)Y(z)$$
 Residuals are:
 \begin{itemize}
@@ -67,6 +71,7 @@ $$\text{(BIBO) Stable} \qquad \Longleftrightarrow \qquad \text{roots of }P(z)\te
 From the Itakura paper (1975): $0 < \omega_1^{(P)} < \omega_1^{(Q)} < \omega_2^{(P)} < \cdots <\pi$\\
 If the roots are close to one another we have sharp peaks in the filter response.
 \subsection{Vector Quantization}
+Vector quantization maps an input vector to the closest representative vector in a finite codebook. Only the selected codebook index is transmitted, so its fixed rate is $\log_2 L$ bits per vector for a codebook of $L$ entries, or $\log_2 L/P$ bits per scalar component for vectors of dimension $P$.
 We have a set of $\omega = [\omega_1\cdots \omega_p]$, then we have a codebook (shared dictionary of most important $\omega_i$).\\
 Between Voiced and Unvoiced saomples we have $28$ bits to allocate freely:
 \begin{itemize}
@@ -74,6 +79,7 @@ Between Voiced and Unvoiced saomples we have $28$ bits to allocate freely:
     \item Unvoiced: all 28 bits go to the error proctection
 \end{itemize}
 \subsubsection{CELP Paradigm (Code-Excited Linear Prediction)}
+Code-Excited Linear Prediction (CELP) is an analysis-by-synthesis speech codec. The encoder tests candidate excitation vectors through the synthesis model and transmits the codebook index and gains that minimize perceptually weighted reconstruction error.
 3 main ideas:
 \begin{itemize}
     \item Vector Excitation: choose residual vector from codebook
@@ -98,6 +104,7 @@ $$\begin{cases}
 \noindent Full CELP: the error is shaped by the perceptual weighting filter $W(z)=A(z)/A(z/\gamma)$, and a \textbf{long-term predictor} (adaptive codebook, lag $Q$, gain $b$, branch $b\,z^{-Q}$) models the pitch periodicity on top of the fixed (stochastic) codebook.
 Examples: G.729, G.722.2 (AMR-WB), EVS
 \subsubsection{Perceptual Coding for Audio}
+Perceptual audio coding removes or coarsely quantizes spectral components hidden by auditory masking. A psychoacoustic model estimates a frequency-dependent masking threshold, and bit allocation keeps quantization noise below that threshold where possible.
 Coclea in human ear acts as a sum of critical bands (BPF), narrow bands for low frequency, wider bands for high frequency. Masking Effects:
 \begin{itemize}
     \item Frequency masking effect is still effective, the quantization mask based on frequency is defined as $\varphi(f)$

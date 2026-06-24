@@ -1,4 +1,5 @@
 \section{Video-coding Principles}
+Video coding reduces both spatial redundancy within frames and temporal redundancy between frames. Video bitrate is the number of coded bits produced per second, usually measured in kbps or Mbps; at fixed frame rate it depends on average bits per frame.
 We want to exploit both spatial redundancy and temporal redundancy.
 \subsection{Block Schema}
 $$x \longrightarrow \boxed{\text{Temporal Compression}} \longrightarrow \boxed{\text{Spatial Compression}} \longrightarrow \boxed{\text{Buffer}} \longrightarrow$$
@@ -8,9 +9,11 @@ Can we swap Temporal and Spatial compression blocks? Yes but it isn't used becau
 \end{center}
 \noindent Hybrid coding intuition: only the temporal prediction error $e = x - x_p$ (previous frame) is quantized and transmitted; the reconstructed frame $x_q$ is stored in the frame buffer to predict the next one (closed loop, same anti-drift principle as DPCM).
 \subsection{Block-Matching motion estimation}
+Block-matching motion estimation searches reference frames for predictors of current blocks. Its cost $J(v)$ combines prediction distortion with motion-vector rate, so the visually closest vector is not always the cheapest vector to code.
 $$J(v) = d(B_k^{(p)},B_h^{(p+v)}) + \lambda_{ME}R(v)$$
 How can we build the prediction using motion estimation? Motion Compensation
 \subsubsection{Motion Compensation}
+Motion compensation constructs a predicted block by copying or interpolating samples from a reference frame at the selected motion-vector position. Only the residual between current and predicted blocks then needs to be coded.
 $$\hat{I}_k(p) = I_h(p + v^\star(p))$$
 Sometimes MC works better and sometimes it works worse, solution: adaptive blocks.
 \subsubsection{Adaptive block coding}
@@ -37,7 +40,7 @@ $\forall B_k^{(p)}$ block of image k:
 Block size (smaller better), Cost function (SAD + regularization),\\
 Motion Model (translational), Search Strategy (fast methods: hex, TZ)
 \subsection{GOP: Group of Pictures}
-It is a sequence of $n$ frames, usually in the following order:
+A Group of Pictures (GOP) is a coded sequence organized around independently coded and predictively coded frames. GOP length and frame pattern determine compression efficiency, random-access interval, structural delay, and error-propagation length:
 $$\boxed{\boxed{I}\ \boxed{B}\ \boxed{B}\ \boxed{P}\ \boxed{B}\ \boxed{B}\ \boxed{P}\ \boxed{B}\ \boxed{B}} \to n\text{-th GOP}$$
 \subsubsection{`I' frames: Intra Frames}
 Access points of our videos, decoding starts here. Useful to stop error propagation. Fast to encode, no ME.
@@ -63,6 +66,7 @@ Encoder tries all of these to encode a frame:
     \item Lossless: all frames can be encoded in this way
 \end{itemize}
 \subsubsection{Block Size: Block Partition Problem}
+Rate--distortion optimization selects coding modes and partitions by minimizing $J=D+\lambda R$. $D$ is reconstruction distortion, $R$ is coded size in bits, and $\lambda$ converts additional bits into an equivalent distortion penalty.
 $$D = \sr{K}{k=1}D_k(i_k, Q) \qquad \qquad R = \sr{K}{k=1}R_k(i_k, Q)$$
 We want the lowest distorsion for a given bitrate:
 $$J(\vec{i},Q,\lambda ) = D(\vec{i},Q) + \lambda R(\vec{i},Q) \qquad \text{ where }\vec{i} = \left\{i_k\right\}_{k=1}^K \text{ s.t. }i_k^\star = \arg\min_{i_k} J(i_k,Q,\lambda) = \arg\min_{i_k} J_k(\vec{i})$$
@@ -89,6 +93,7 @@ Comment on the blocks:
     \item Side information (mode decision, block partition, motion vectors) + quantized coefficients are entropy-coded with a VLC (Huffman/Arithmetic/Exp-Golomb; MVs coded predictively, exploiting spatial coherence of the MVF).
     \item \textbf{Rate control}: encoded stream enters the channel buffer at rate $R_C$ (content-dependent) and leaves at target rate $R_T$. Closed-loop controller: if occupancy $> \gamma_{high}$ increase quantization step ($R_C$ drops); if $< \gamma_{low}$ decrease it ($R_C$ grows).
 \end{itemize}
+\textbf{Rate control} is the encoder mechanism that adjusts quantization and coding choices to meet a target bitrate or file size while avoiding buffer overflow and underflow. Its target is measured in bit/s for streams or total bits for stored content.
 Why do we have standards? Interoperability, we only standardize the decoder (able to decode anything), to leave encoding competition.
 \subsection{Hybrid Video Decoder}
 \subsubsection{Decoder scheme}

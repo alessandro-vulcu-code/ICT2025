@@ -1,5 +1,6 @@
 \newpage
 \subsubsection{Full-Search research strategy}
+Full search evaluates every integer displacement inside the search window and selects the candidate with minimum matching cost. It gives the optimum for that window and criterion, but its operation count grows with both window area and block size.
 We consider windows of the image, with size $=(2A+1)\times (2B+1)$.\\
 Then we build a $(2A+1)\times (2B+1)$ SSD matrix, this brings $\propto n^2$ complexity.
 By searching the minimum of the SSD matrix, it is the best possible vector that can be used to approximate the window.
@@ -21,6 +22,7 @@ Robust to local minima, phases:
     \item Adaptive loop: if no predictor is good, use diamond/square search increasing steps
 \end{itemize}
 \subsubsection{BM Improvement: Sub-pixel precision}
+Sub-pixel motion estimation allows vectors with fractional-pixel components by interpolating reference samples. It can reduce prediction error, but adds interpolation complexity and may require more motion-vector bits.
 With half pixel precision, we can reduce cost function because we have more options.\\
 Problem: we have to increase resolution, we can use some interpolation methods, steps:
 \begin{enumerate}
@@ -29,6 +31,7 @@ Problem: we have to increase resolution, we can use some interpolation methods, 
     \item recursively we test all subpixels with $1/4, 1/8$...
 \end{enumerate}
 \subsubsection{BM Improvement: Variable Blocksize}
+Variable block-size motion estimation uses large blocks in uniform-motion regions and smaller blocks near boundaries or complex motion. Splitting improves prediction but increases partition and motion-vector signaling rate.
 Foreach block $b$ of size $B$ in image $F$:
 \begin{itemize}
     \item calculate $J = D + \lambda R$
@@ -37,8 +40,10 @@ Foreach block $b$ of size $B$ in image $F$:
     \item if $J_{sub} < J(v)$ apply algorithm to subblocks, else keep and store MV
 \end{itemize}
 \subsection{Parametric Methods}
+Parametric motion models describe an entire region using a small set of parameters rather than independent vectors. They can represent coherent camera or object motion with low signaling cost when the chosen model fits the scene.
 We want MVF as a function of each pixel, degrees of freedom = parameters of the function.\\
 \subsubsection{Affine Model}
+An affine motion model represents translation together with rotation, scaling, and shear using six parameters in two dimensions. Each pixel displacement is computed from its coordinates and the same regional parameter vector.
 $$\vec{v}(p) = \vec{b} + Bp = \left[\begin{matrix}
     b_1\\
     b_2

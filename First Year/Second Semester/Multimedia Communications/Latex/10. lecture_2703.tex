@@ -1,8 +1,11 @@
 \subsection{Entropy Coding of the Coefficients}
+JPEG entropy coding is the final lossless stage that converts quantized DCT symbols into variable-length bits. It exploits differential DC values, zero runs among AC coefficients, and non-uniform symbol probabilities.
 \subsubsection{DC Coefficients}
+The DC coefficient represents the average level of an $8\times8$ block. Neighboring block averages are correlated, so JPEG encodes the difference from the preceding block's DC coefficient rather than the absolute value.
 It is a pseudo-Huffman code, we encode the value $DC_p = DC_n - DC_{n-1}$ as a "Category code" + "Amplitude Code", where the categories are defined as:
 $$k\text{-th Category }\to \left\lceil\log_2\left(|DC_p| + 1\right)\right\rceil \qquad \to \{\pm2^{k-1}\cdots \pm 2^k - 1\} \subset \text{category }k\text{, encoded using k bits}$$
 \subsubsection{AC Coefficients}
+AC coefficients describe spatial variations around the block average. After zig-zag scanning, JPEG represents each non-zero AC value together with the number of zeros that precede it.
 The Run-length code uses the same method to encode couples of $(r,k)$ values where $\begin{cases}
     r \equiv \text{ number of zeros leading}\\
     k \equiv \text{ actual value}
@@ -12,6 +15,7 @@ There are 2 special values: $\begin{cases}
     (0,0) \to \text{ End Of Block (EOB)}
 \end{cases}$
 \subsection{Frame Building}
+The JPEG frame is the structured coded representation of one image. Headers carry decoding parameters and metadata, while scan and segment payloads carry entropy-coded block data.
 Image is stored into a \textbf{Frame}:
 \begin{itemize}
     \item \textbf{Frame Header}: Tells the Image size, components, color sampling scheme, digitization format

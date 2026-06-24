@@ -9,6 +9,7 @@
     \item JP2K allows the reachability of every code rate we want.
 \end{itemize}
 \subsubsection{Error Robustness in compressed data}
+Error robustness is the ability of a coded stream to contain the spatial or temporal effect of corrupted and missing bits. It is commonly evaluated against bit-error or packet-loss probability and usually costs extra rate through markers, resynchronization, redundancy, or independent coding units.
 Errors can be introduced in TXing information, or saving it into files.
 Compressed streams are vulnerable, can induce error propagation. We need some `marker' sequences of bits to recover errors.
 Tradeoff: robustness-rate.
@@ -40,12 +41,14 @@ Tradeoff: robustness-rate.
     \end{itemize}    
 \end{minipage}
 \section{Learned Image Coding (LIC) / Neural Image Coding (NIC)}
-LIC algos are E2E learned from data using generative VAEs\footnote{Variational Auto-Encoders}/GANs\footnote{Generative Adversarial Networks} models.
+Learned image coding uses neural networks to learn analysis transforms, synthesis transforms, and probability models jointly from training images. Unlike a fixed handcrafted transform, its parameters are optimized end to end for a selected rate--distortion objective, often using VAEs\footnote{Variational Auto-Encoders} or GANs\footnote{Generative Adversarial Networks}.
 \subsection{Coding Architecture}
+The analysis transform $g_a$ maps pixels to a latent representation designed for quantization and entropy coding. The synthesis transform $g_s$ reconstructs pixels from quantized latents; together they play roles analogous to transform and inverse transform in a conventional codec.
 $$\text{original }x \qquad \longrightarrow \qquad \boxed{\stackrel{\text{Analysis}}{z = g_a(x)}} \qquad \longrightarrow \qquad \boxed{\stackrel{\text{Quantization}}{\hat{z} = Q(z)}} \qquad \longrightarrow \qquad \boxed{\stackrel{\text{Synthesis}}{\hat{x} = g_s(\hat{z})}} \qquad \longrightarrow \qquad \hat{x} \text{ decoded}$$
 Legacy framework (JPEG): $g_a$ is a Block Based DCT, while $g_s$ is a DWT.\\
 Learned Paradigms allow the use of the optimal $g_a, g_s$ by learning directly from data.
 \subsubsection{Optimization of the Loss Function}
+The loss function is the scalar objective minimized during training. $D$ penalizes reconstruction error, $R$ estimates expected coded length in bits, and $\lambda$ sets how much rate is traded for quality.
 It all goes toward the optimization of the loss function:
 $$\mathcal{L} = D(x,\hat{x}) + \lambda R(\hat{z})$$
 \subsection{NN Recap}
@@ -53,6 +56,7 @@ For image processing we use CNNs.
 \subsubsection{Gradient Descent and Backpropagation}
 $$\theta_{t+1} = \theta_t - \eta\nabla_\theta \mathcal{L}\left(\theta_t\right)$$
 \subsubsection{GDN: Generalized Divisive Normalization}
+Generalized Divisive Normalization (GDN) is a learned nonlinear normalization that scales each feature using the energy of neighboring feature channels. It helps reduce statistical dependencies and makes latents easier to entropy-code.
 $$w_i = \frac{v_i}{\sqrt{\beta_i + \sr{}{j}\gamma_{ij}v_j}}$$
 Given a feature $v_i$ the parameters $\beta_i, \gamma_{ij}$ are learned. This allows us to:
 \begin{itemize}
@@ -74,6 +78,7 @@ Going from pixels to 3D-Latent Tensor (sparse signal). JPEG AI uses $\begin{case
     \item Decoder: Synthesis Transform ($g_s$)
 \end{itemize}
 \subsubsection{Rate-Distorsion Variable Auto-Encoder}
+In a learned codec, rate is the expected number of bits required to entropy-code quantized latents under the learned probability model. It is usually reported as bpp for images; distortion is an expected fidelity loss such as MSE, MS-SSIM loss, or a task-specific metric.
 Objective: minimizing $\mathcal{L}$ defined as
 $$\mathcal{L} = R + \lambda D \qquad \text{where }\begin{cases}
     \text{Rate }R = D_{KL}\left[q\left(\hat{y}|x\right)\left|\right|p\left(\hat{y}\right)\right]\\
@@ -88,6 +93,7 @@ Problem: Non differentiability for the quantization function, backprop gradient 
 Additive uniform noise has the statistical description of the quantization, and makes the backpropagation work.
 $$\hat{z} \approx z + u \qquad u \sim \mathcal{U}\left(-0.5, 0.5\right)$$
 \subsubsection{Scale Hyperprior: spatial adaptability}
+A scale hyperprior is transmitted side information describing local latent statistics, such as coefficient scales. Although the hyperprior consumes bits, it can lower total rate by making the main latent probability model more accurate at each spatial location.
 IDEA: set NN to learn statistics of the quantized data, additional side information $\hat{z}$ to predict $p_{\hat{y}}$ $\forall$ location.\\
 We change paradigm: since JPEG-AI is a Nonlinear Tranform Coding, we can outperform HEVC and VVC (intra coding) by 50\% in coding efficiency. We need a Hierarchical VAE model.
 \subsubsection{Hierarchical VAE}

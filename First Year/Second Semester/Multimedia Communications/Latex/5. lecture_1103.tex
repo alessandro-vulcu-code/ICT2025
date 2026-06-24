@@ -1,4 +1,5 @@
 \section{Lossless Coding}
+Lossless coding maps source data to a reversible bitstream: decoding reproduces every original symbol exactly. Compression comes only from statistical structure and repeated patterns, not from discarding information.
 \subsection{Definitions}
 \begin{itemize}
     \item \textbf{Alphabet}: $\mathcal{X} = \left\{x_1, \cdots, x_M\right\}$ Symbols to encode
@@ -6,10 +7,12 @@
 \end{itemize}
 \subsection{Code Types}
 \subsubsection{Fixed-Length Code}
+A fixed-length code assigns the same number of bits to every source symbol. It offers simple parsing and constant per-symbol rate, but cannot assign shorter descriptions to frequent symbols.
 Good: straight forward parsing of the codewords.\\
 Bad: Very large rate $R = \log_2 L$, we are assuming all symbols are equally probable.\\
 Needed bits: $\left\lceil \log_2 M \right\rceil$
 \subsubsection{Variable-Length Code}
+A variable-length code assigns different codeword lengths to different symbols. Its rate is the expected codeword length $\bar{L}$, measured in bits per source symbol, so frequent symbols should receive shorter codewords.
 \begin{itemize}
     \item Statistical Approach: we make use of source entropy $H(x)$, to build an optimal Huffman code. We could use also suboptimal aritmethic codes, which scale very well.
     \item Euristic Approach: if we don't know data statistics, universal coding (LZW)
@@ -45,11 +48,13 @@ Greedy Construction Algorithm:
 Finally: there is no way to improve it.
 \subsection{Recall: Information Theory}
 \subsubsection{Information}
+Self-information measures how surprising one event is. It is measured in bits when the logarithm has base two: rare events carry more information than probable events.
 $$I(x_i) = - \log_2 p(x_i) = -\log_2 p_i$$
 Joint Information:
 $$I(x_i,x_j) \leq I(x_i) + I(x_j)$$
 Equality only if symbols are independent.
 \subsubsection{Source Entropy}
+Source entropy is the average self-information generated per symbol by a memoryless source. It is measured in bits per symbol and is the fundamental lower bound approached by lossless codes matched to the source statistics.
 $$H(X) = \sr{}{i}p_iI(x_i) = -\sr{}{i}p_i\log_2 p_i$$
 \subsubsection{Max Entropy Distribution}
 We want $p^{\star}$ such that:
@@ -70,8 +75,10 @@ $$\frac{\partial J}{\partial x_i} = -\left({\log_2 e} + \log_2 p_i\right)+\lambd
 By imposing =0 to the $x_i$ component of gradient:
 $$\log_2p_i^\star = \lambda - \log_2 e$$
 \subsubsection{Joint Entropy}
+Joint entropy is the average information needed to describe two random variables together. It includes both their individual uncertainty and any statistical dependence between them.
 $$H(X,Y) = -\sr{}{i,j}p_{ij}\log p_{ij}$$
 \subsubsection{Conditional Entropy}
+Conditional entropy $H(X|Y)$ is the uncertainty that remains about $X$ after $Y$ is known. In coding terms, it is the ideal average rate for coding $X$ when the decoder also has $Y$ as side information.
 $$H(X|Y) = \sr{}{j}p_jH(X|Y=Y_j)$$
 Using chain rule:
 $$H(X,Y) = H(Y) + H(X|Y) = H(X) + H(Y|X)$$

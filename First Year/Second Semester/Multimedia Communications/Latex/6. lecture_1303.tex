@@ -1,4 +1,5 @@
 \subsection{Optimal Code}
+An optimal lossless code minimizes expected codeword length for the source probability distribution while remaining uniquely decodable. Its performance is compared with entropy in bits per source symbol.
 \subsubsection{Math Formulation}
 \begin{itemize}
     \item $\forall i = 1 \cdots M,\ l_i \in \mathbb{N}$ satisfies Kraft Inequality
@@ -9,12 +10,14 @@ $$\vec{l}^\star = \arg\min_{\vec{l}}\sr{}{i}p_il_i \qquad\text{subject to Kraft:
 Appyling the Lagrangian Multipliers method we end up with:
 $$p_i = 2^{-l_i^\star} \qquad\Longrightarrow\qquad \mathcal{L}^\star = -\sr{}{i}p_i \log_2 p_i = H(x)$$
 \subsubsection{Shannon's source coding theorem}
+Shannon's source coding theorem states that entropy is the fundamental average-rate limit for lossless compression. A practical symbol code may stay less than one bit per symbol above this limit, while coding long blocks can make the overhead per symbol arbitrarily small.
 $$\forall i \in \{1\cdots M\} \qquad \exists k \in \mathbb{N} \qquad : \qquad H(x) \leq \mathcal{L}^\star \leq \mathcal{L} < H(x) + 1$$
 Upper band proof: using $l_i = \left\lceil - log_2 p_i \right\rceil$, we prove that satisfies Kraft's (having $\delta_i \in \{0,1\}$, $\epsilon_i = 2^{\delta_i}$)
 $$l_i = -\log_2 p_i + \delta_i \qquad\Longrightarrow\qquad 2^{-l_i} = p_i 2^{\delta_i} \qquad\Longrightarrow\qquad \sr{}{i}2^{-l_i} = \sr{}{i}p_i\epsilon_i \leq \sr{}{i}p_i = 1$$
 Average length proof
 $$l_i = \left\lceil - log_2 p_i \right\rceil < - log_2 p_i +1 \qquad \Longrightarrow \qquad \sr{}{i}p_i l_i < \sr{}{i}(-p_i \log_2 p_i + p_i) \Longrightarrow \mathcal{L} < H(x) + 1$$
 \subsubsection{Huffman Coding}
+Huffman coding is a prefix-code construction that gives shorter binary codewords to more probable symbols. It minimizes average length among symbol-by-symbol binary prefix codes with integer codeword lengths.
 \begin{enumerate}
     \item Build leaves nodes with respective probability
     \item Take the two least probable nodes
@@ -25,12 +28,14 @@ $$l_i = \left\lceil - log_2 p_i \right\rceil < - log_2 p_i +1 \qquad \Longrighta
 \end{enumerate}
 Using only PQ + Huffman Coding we cannot reach $< 1$bpp coding rate, how can we do better?
 \subsubsection{Block Coding}
+Block coding treats $K$ consecutive source symbols as one compound symbol. The code's rate is total block length divided by $K$, measured in bits per original symbol; larger blocks reduce integer-length overhead but make the alphabet and probability model much larger.
 We take $X^K$ as blocks of $K$ symbols: we also know that $H(X^K) \leq \mathcal{L}^\star < H(X^K) + 1$ for Shannon, by scaling:
 $$H(X^K) \leq \mathcal{L}^\star < H(X^K) + 1 \qquad\Longrightarrow \qquad \frac{H(X^K)}{K} \leq \frac{\mathcal{L}^\star}{K} < \frac{H(X^K)}{K} + \frac{1}{K}$$
 We can make $\frac{1}{K} \to 0$ if we grow block size to $K \to \infty$.
 $$\text{Avg. length per symbol }\mathcal{L}_s^\star \approx \frac{H(X^K)}{K}\leq H(x)$$
 We define now the Entropic Rate of the source (ultimate bound for lossless coding):
 $$\lim_{k\to\infty}\frac{H(X^k)}{k} = \mathcal{H}(X)$$
+Entropy rate $\mathcal{H}(X)$ is the average new information produced by each symbol of a source with memory. It can be lower than single-symbol entropy because past symbols help predict the next one.
 % Integrated from Summaries
 \subsubsection{Limits of Huffman}
 \begin{itemize}
@@ -40,6 +45,7 @@ $$\lim_{k\to\infty}\frac{H(X^k)}{k} = \mathcal{H}(X)$$
 \end{itemize}
 Arithmetic coding solves at least the complexity problem: \textbf{block coding with linear complexity} $O(n)$, encoding the whole sequence as a single interval in $[0,1)$. Penalty only $+2$ bits \emph{per block}, vs Huffman's $+1$ bit \emph{per symbol}.
 \subsubsection{Arithmetic coding}
+Arithmetic coding represents an entire symbol sequence with one fractional interval whose width equals the sequence probability. Its average rate can approach entropy without requiring an exponentially large block-code dictionary.
 The alphabet is $M$ long, we take a $K$ block. Huffman Alphabet has $M^K$ possible words.\\
 Since complexity increases with growing $K$, we take a suboptimal code (excluding non-sensed words).\\
 IDEA:
@@ -65,6 +71,7 @@ $$\mathcal{L} < H(x) + \frac{2}{n} \qquad \stackrel{n\to\infty}{\longrightarrow}
 It is a context based encoding, it uses conditional probabilities.
 % Integrated from Summaries
 \subsubsection{Adaptivity and Context-based coding}
+Adaptive coding updates probability estimates while processing the stream. Context-based coding conditions those estimates on already decoded neighboring symbols, allowing encoder and decoder to exploit source memory without transmitting the context itself.
 \begin{itemize}
     \item \textbf{Adaptivity}: symbol statistics learned during encoding via occurrence counts, updated at both encoder and decoder with an agreed rule $\Rightarrow$ handles non-stationary sources.
     \item \textbf{Context-based}: instead of estimating $P(X^K)$ directly, condition on the $N_S$ previous symbols ($N_C = M^{N_S}$ contexts $\equiv$ $N_C$ arithmetic encoders switching among each other). Reaches the entropy rate $\mathcal{H}$ without massive block sizes.

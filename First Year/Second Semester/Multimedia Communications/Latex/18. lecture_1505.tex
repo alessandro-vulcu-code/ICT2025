@@ -1,10 +1,11 @@
 \section{Quality Assessment and QoE for Multimedia Services}
-\subsection{What is Quality Assessment?}
-It is the association of a grade/number to a specific signal, called stimulus.\\
+\subsection{Quality Assessment}
+Quality assessment is the process of assigning a numerical score or category to a multimedia stimulus. It estimates technical fidelity or perceived quality using either human judgments or an objective algorithm.\\
 The assessment process can be objective (using a math. formula) or subjective (ask to people).\\
 We have a Quality/Rate tradeoff, since these process are time/space-complex, energy and latency consuming.\\
-QoE is a multidimensional variable.
+Quality of Experience (QoE) is the user's overall satisfaction with a service. It is multidimensional because perceived media quality, startup delay, stalls, quality changes, device, context, and expectations all contribute.
 \subsection{Image Quality: Subjective Assessment}
+Subjective assessment measures quality directly from ratings provided by human observers under controlled conditions. It is treated as ground truth for perception, but results have statistical uncertainty and experiments are costly.
 It is not easy to get consistant results, need to define carefully the equipment, such that the environmental conditions are equal for all the people that is asked. Process is costly, offline and time consuming.\\
 Because of this it is used as the golden standard, but in a $2^{nd}$ phase of testing (cannot afford at first trial).
 \subsubsection{Testing Conditions}
@@ -24,15 +25,18 @@ PC technique assures a fine perceptual ranking, by comparing some times 2 differ
 \subsection{Human Assessment Measures}
 Nowadays we can use also crowdfunded campaigns to call volunteers.
 \subsubsection{MOS: Mean Opinion Score}
+Mean Opinion Score (MOS) is the arithmetic mean of ratings assigned by $N$ observers. It is dimensionless and uses the rating scale chosen by the test, commonly 1--5 or 0--100; a higher value usually means better perceived quality.
 $$\text{MOS} = \frac{1}{N}\sr{N}{i=1} x_i$$
 This is evaluable with std. measures
 \subsubsection{Standard Measures}
+\textbf{Standard deviation} measures disagreement among individual ratings. \textbf{Standard error} measures uncertainty in the estimated mean and decreases as observer count grows. A \textbf{confidence interval} gives a range expected to contain the unknown population mean at a stated confidence level.
 \begin{itemize}
     \item Standard Deviation: $s = \sqrt{\frac{1}{N}\sr{N}{i-1}(x_i - m)^2}$
     \item Standard Error: SE $= \frac{s}{\sqrt{N}} = \frac{1}{N}\sqrt{\sr{N}{i-1}(x_i - m)^2}$
     \item Confidence Interval: CI $= [-1.96\cdot \text{SE}, 1.96\cdot \text{SE}]$
 \end{itemize}
 \subsection{Image Quality: Objective Assessment}
+Objective quality assessment computes a score from signal data without asking observers during evaluation. A useful metric should correlate with subjective judgments while remaining repeatable and inexpensive.
 It is difficult to evaluate the human perceptual system using maths.\\
 It is always a chain of:
 $$\boxed{\text{Input Signal Reference}} \qquad \longrightarrow \qquad \boxed{\text{Signal Processing}} \qquad \longrightarrow \qquad \boxed{\text{Output Signal}}$$
@@ -42,6 +46,7 @@ $$\text{Input Signal}: I(n,m,c,t) \qquad \text{Output Signal}: \hat{I}(n,m,c,t) 
     t \to \text{ time}
 \end{cases}$$
 \subsubsection{Full Reference Techniques}
+Full-reference metrics compare the complete original signal with the complete degraded signal. They require access to both versions and are therefore mainly used during codec development, laboratory testing, and offline benchmarking.
 From the previous chain we take the input $I$ and the output $\hat{I}$ and we compare them in the $\boxed{FR}$ block.
 \subsubsection{Y component measures}
 $$\text{MSE}_Y(t) = \frac{1}{NM}\sr{}{n,m}\left[I(n,m,1,t) - \hat{I}(n,m,1,t)\right]^2$$
@@ -52,7 +57,8 @@ $$\text{MSE}_{Cb}(t) = \frac{1}{\frac{N}{2}\cdot\frac{M}{2}}\sr{}{n,m}\left[I(n,
 \subsubsection{Total PSNR measure}
 $$\text{PSNR}_\text{YCbCr}(t) = \frac{3}{4}\text{PSNR}_\text{Y}(t) + \frac{1}{4}\left[\frac{1}{2}\text{PSNR}_\text{Cb}(t) + \frac{1}{2}\text{PSNR}_\text{Cr}(t)\right]$$
 \subsubsection{Bjontegaard Deltas}
-It measures the average improvement for the PSNR. Given two different codecs:
+Bjontegaard Delta summarizes the average separation between two rate--distortion curves over a common operating range. BD-Rate reports average bitrate difference at equal quality, while BD-PSNR reports average quality difference at equal rate.
+Given two different codecs:
 \begin{itemize}
     \item Delta PSNR: Average PSNR difference (in dB) between the two codecs
     \item Delta Rate: Average rate difference (in percentage) at the same quality 
@@ -70,11 +76,13 @@ Why PSNR is not enough? It is a Per-pixel distorsion measure (no idea of the tem
     \item AI-based metrics: CNN based, trained using image subjective datasets (get very good estimations)
 \end{itemize}
 \subsubsection{Reduced Reference}
+Reduced-reference assessment compares compact features extracted from the original with the degraded signal. It needs less side information than full-reference assessment but more than no-reference assessment.
 Practical for Large Scale systems. The input $I$ and output $\hat{I}$ goes in a parallel way into:
 $$\boxed{I} \qquad \longrightarrow \qquad \boxed{\text{Feature Extraction}}\qquad \longrightarrow \qquad \boxed{\text{Reduced Reference Processing}}\qquad \longleftarrow \qquad \boxed{\hat{I}}$$
 We focus on a limited subset of features, which are preserved in the final image.
 \subsubsection{No Reference}
+No-reference assessment estimates quality using only the degraded signal. It is suitable when the original is unavailable, but it relies on learned or handcrafted assumptions about natural content and common distortions.
 It only used the $\hat{I}$ output:
 $$\boxed{\hat{I}} \qquad \longrightarrow \qquad \boxed{NR}$$
 Techniques: BRISQUE, NIQE, PIQE. Used to assess photos.\\
-Mobile Smartphone Cameras are assessed this way, it tells what are the characteristics of the good images.
+Mobile smartphone cameras are assessed this way because the metrics estimate characteristics associated with natural, visually acceptable images.
