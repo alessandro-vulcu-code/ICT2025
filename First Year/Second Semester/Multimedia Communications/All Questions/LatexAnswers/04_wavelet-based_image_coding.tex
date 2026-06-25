@@ -1,54 +1,60 @@
 \section{Wavelet-Based Image Coding}
 
 
+
+
 \begin{questionbox}{Domanda 29}
 State the time-frequency uncertainty principle ($\Delta t \cdot \Delta f \geq 1/4\pi$), explain why it imposes a trade-off, and how wavelets address it with adaptive multiresolution (short windows at high frequencies, long at low frequencies).
 \end{questionbox}
+
 
 
 $$
 \Delta t \cdot \Delta f \geq \frac{1}{4\pi}
 $$
 
-\begin{itemize}
-  \item \textbf{Short window} $\rightarrow$ good time/space localization, poor frequency resolution.
-  \item \textbf{Long window} $\rightarrow$ good frequency resolution, poor localization.
-  \item \textbf{Wavelets} $\rightarrow$ multiresolution:
-  \begin{itemize}
-    \item \textbf{high frequencies} $\rightarrow$ short basis functions;
-    \item \textbf{low frequencies} $\rightarrow$ long basis functions.
-  \end{itemize}
-  \item \textbf{Image match} $\rightarrow$ edges need localization; smooth trends need coarse-scale representation.
 
+\begin{itemize}
+  \item Short window → good time/space localization, poor frequency resolution.
+  \item Long window → good frequency resolution, poor localization.
+  \item Wavelets → multiresolution:
+  \item high frequencies → short basis functions;
+  \item low frequencies → long basis functions.
+  \item Image match → edges need localization; smooth trends need coarse-scale representation.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 30}
-Compare STFT (rigid tiling) and DWT (adaptive tiling) of the time-frequency plane, linking them to the trends vs anomalies image model.
+Compare STFT (rigid tiling) and \textbf{DWT} (adaptive tiling) of the time-frequency plane, linking them to the trends vs anomalies image model.
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{STFT} $\rightarrow$ fixed window size $\rightarrow$ rigid time-frequency tiling; same resolution for all frequencies.
-  \item \textbf{DWT} $\rightarrow$ filter banks + downsampling $\rightarrow$ low-frequency approximations + high-frequency detail subbands.
-  \item \textbf{Repeated DWT} $\rightarrow$ multiresolution representation.
-  \item \textbf{Image model}:
-  \begin{itemize}
-    \item \textbf{smooth trends} $\rightarrow$ coarse low-frequency components;
-    \item \textbf{anomalies/edges} $\rightarrow$ high-frequency localized details.
-
-  \end{itemize}
+  \item \textbf{STFT} → fixed window size → rigid time-frequency tiling; same resolution for all frequencies.
+  \item \textbf{\textbf{DWT}} → filter banks + downsampling → low-frequency approximations + high-frequency detail subbands.
+  \item Repeated \textbf{DWT} → multiresolution representation.
+  \item Image model:
+  \item smooth trends → coarse low-frequency components;
+  \item anomalies/edges → high-frequency localized details.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 31}
-(TC\&JPEG) What is a primary advantage of the hierarchical (multiresolution) decomposition offered by the Wavelet Transform in JPEG2000?
+(TC\&JPEG) What is a primary advantage of the hierarchical (multiresolution) decomposition offered by the \textbf{wavelet} Transform in JPEG2000?
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{Wavelet decomposition} $\rightarrow$ progressive and multiresolution coding.
-  \item Low-resolution approximation decoded first $\rightarrow$ detail subbands refine quality and resolution.
-
+  \item \textbf{wavelet} decomposition → progressive and multiresolution coding.
+  \item Low-resolution approximation decoded first → detail subbands refine quality and resolution.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 32}
-(TC\&JPEG) Compare the block-based DCT approach used in JPEG with the wavelet-based decomposition used in JPEG2000, specifically in terms of how they handle the image signal and the resulting artifacts.
+(TC\&JPEG) Compare the block-based \textbf{DCT} approach used in JPEG with the \textbf{wavelet}-based decomposition used in JPEG2000, specifically in terms of how they handle the image signal and the resulting artifacts.
 
 (TC\&JPEG) Which of the following is a key reason why JPEG2000 is generally more efficient than JPEG?
 \end{questionbox}
@@ -56,67 +62,67 @@ Compare STFT (rigid tiling) and DWT (adaptive tiling) of the time-frequency plan
 
 \begin{itemize}
   \item \textbf{JPEG}:
-  \begin{itemize}
-    \item independent $8\times8$ block DCT;
-    \item simple and efficient;
-    \item \textbf{low bitrate} $\rightarrow$ \textbf{blocking artifacts}.
-  \end{itemize}
+  \item independent $8\times8$ block \textbf{DCT};
+  \item simple and efficient;
+  \item low bitrate → \textbf{blocking artifacts}.
   \item \textbf{JPEG2000}:
-  \begin{itemize}
-    \item DWT over large tiles / whole image;
-    \item multiresolution representation;
-    \item embedded bitplane coding and precise rate control;
-    \item \textbf{low bitrate} $\rightarrow$ ringing/blurring near edges, not blocking.
-  \end{itemize}
-  \item \textbf{Efficiency reasons}:
-  \begin{itemize}
-    \item wavelet multiresolution decomposition;
-    \item embedded bitstream truncation;
-    \item independent codeblocks;
-    \item quality/resolution scalability;
-    \item no fixed $8\times8$ boundaries.
-
-  \end{itemize}
+  \item \textbf{DWT} over large tiles / whole image;
+  \item multiresolution representation;
+  \item embedded bitplane coding and precise \textbf{rate} control;
+  \item low bitrate → ringing/blurring near edges, not blocking.
+  \item Efficiency reasons:
+  \item \textbf{wavelet} multiresolution decomposition;
+  \item embedded bitstream truncation;
+  \item independent codeblocks;
+  \item quality/resolution scalability;
+  \item no fixed $8\times8$ boundaries.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 33}
-Describe the JPEG2000 architecture (Tier 1: DWT 9/7 or 5/3 -> fine quantization -> arithmetic coding of codeblocks per bitplane; Tier 2: EBCOT). Where does the lossy operation actually happen?
+Describe the JPEG2000 architecture (Tier 1: \textbf{DWT} 9/7 or 5/3 -> fine \textbf{quantization} -> arithmetic coding of codeblocks per bitplane; Tier 2: \textbf{EBCOT}). Where does the \textbf{lossy} operation actually happen?
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{JPEG2000} $\rightarrow$ wavelet still-image codec for scalability, rate control, ROI, lossy/lossless.
-  \item \textbf{Tier 1}:
-
+  \item \textbf{JPEG2000} → \textbf{wavelet} still-image codec for scalability, \textbf{rate} control, ROI, \textbf{lossy}/\textbf{lossless}.
+  \item Tier 1:
 \end{itemize}
+
+
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-    block/.style={draw, rectangle, minimum width=2.0cm, minimum height=0.8cm, align=center, rounded corners=3pt, fill=green!10, draw=green!50!black, font=\small},
-    arrow/.style={-latex, thick, draw=green!50!black}
+    node distance=1.1cm,
+    block/.style={draw, fill=blue!5, text width=5cm, align=center, minimum height=0.6cm, rounded corners=3pt, font=\small},
+    arrow/.style={thick,->,>=stealth}
 ]
-    \node [block] (img) {Image};
-    \node [block, right=0.8cm of img] (dwt) {DWT};
-    \node [block, right=0.8cm of dwt] (quant) {Quantization};
-    \node [block, right=0.8cm of quant] (blocks) {Codeblocks};
-    \node [block, right=0.8cm of blocks] (coding) {Bitplane\\arithmetic coding};
-    
-    \draw [arrow] (img) -- (dwt);
-    \draw [arrow] (dwt) -- (quant);
-    \draw [arrow] (quant) -- (blocks);
-    \draw [arrow] (blocks) -- (coding);
+    \node (a) [block] {Image};
+    \node (b) [block, below=of a] {DWT};
+    \node (c) [block, below=of b] {Quantization};
+    \node (d) [block, below=of c] {Codeblocks};
+    \node (e) [block, below=of d] {Bitplane Arithmetic Coding};
+
+    \draw [arrow] (a) -- (b);
+    \draw [arrow] (b) -- (c);
+    \draw [arrow] (c) -- (d);
+    \draw [arrow] (d) -- (e);
 \end{tikzpicture}
-\caption{JPEG2000 Coding Pipeline}
-\label{fig:jpeg2000_pipeline}
+\caption{JPEG2000 Tier 1 Coding Chain}
 \end{figure}
 
-\begin{itemize}
-  \item \textbf{9/7 DWT} $\rightarrow$ irreversible, lossy.
-  \item \textbf{5/3 DWT} $\rightarrow$ reversible, lossless.
-  \item \textbf{Coefficients} $\rightarrow$ codeblocks $\rightarrow$ coded bitplane by bitplane.
-  \item \textbf{Tier 2 / EBCOT} $\rightarrow$ layers, packets, progression orders, truncation points.
-  \item \textbf{Lossy operations} $\rightarrow$ quantization and embedded bitplane/pass truncation.
 
+\begin{itemize}
+  \item 9/7 \textbf{DWT} → irreversible, \textbf{lossy}.
+  \item 5/3 \textbf{DWT} → reversible, \textbf{lossless}.
+  \item Coefficients → codeblocks → coded bitplane by bitplane.
+  \item Tier 2 / \textbf{EBCOT} → layers, packets, progression orders, truncation points.
+  \item \textbf{lossy} operations → \textbf{quantization} and embedded bitplane/pass truncation.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 34}
 Compare JPEG and JPEG2000 on channel-error robustness (codeblock independence, contained vs catastrophic propagation, resynchronization markers).
 \end{questionbox}
@@ -124,19 +130,16 @@ Compare JPEG and JPEG2000 on channel-error robustness (codeblock independence, c
 
 \begin{itemize}
   \item \textbf{JPEG}:
-  \begin{itemize}
-    \item sequential entropy coding;
-    \item bit error can desynchronize Huffman stream;
-    \item corruption propagates until restart/resynchronization marker.
-  \end{itemize}
+  \item sequential \textbf{entropy} coding;
+  \item bit error can desynchronize Huffman stream;
+  \item corruption propagates until restart/resynchronization marker.
   \item \textbf{JPEG2000}:
-  \begin{itemize}
-    \item relatively independent codeblocks;
-    \item stream organized into packets/layers;
-    \item damage tends to remain local to codeblock/subband/quality layer.
-  \end{itemize}
-  \item \textbf{Result} $\rightarrow$ JPEG2000 more robust to localized channel errors.
-
+  \item relatively independent codeblocks;
+  \item stream organized into packets/layers;
+  \item damage tends to remain local to codeblock/\textbf{subband}/quality layer.
+  \item Result → JPEG2000 more robust to localized channel errors.
 \end{itemize}
+
 ---
+
 

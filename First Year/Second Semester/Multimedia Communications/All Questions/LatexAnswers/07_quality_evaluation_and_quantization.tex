@@ -1,71 +1,77 @@
 \section{Quality Evaluation and Quantization}
 
 
+
+
 \begin{questionbox}{Domanda 49}
-\textbf{Compare MSE/PSNR, SSIM and LPIPS}: what each measures, pros/cons, and why two images with the same MSE can have very dif and only iferent perceived quality.
+Compare \textbf{MSE}/\textbf{PSNR}, \textbf{SSIM} and \textbf{LPIPS}: what each measures, pros/cons, and why two images with the same \textbf{MSE} can have very different perceived quality.
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{MSE} $\rightarrow$ average squared pixel error:
-
+  \item \textbf{\textbf{MSE}} → average squared pixel error:
 \end{itemize}
+
+
 $$
 \text{MSE}=\frac{1}{NM}\sum_{i,j}(x_{ij}-\hat{x}_{ij})^2
 $$
 
-\begin{itemize}
-  \item \textbf{PSNR} $\rightarrow$ logarithmic MSE:
 
+\begin{itemize}
+  \item \textbf{\textbf{PSNR}} → logarithmic \textbf{MSE}:
 \end{itemize}
+
+
 $$
 \text{PSNR}=10\log_{10}\left(\frac{MAX^2}{\text{MSE}}\right)
 $$
 
-\begin{itemize}
-  \item \textbf{MSE/PSNR} $\rightarrow$ simple and reproducible, but weak perceptually; ignore structure, masking, semantics.
-  \item \textbf{SSIM} $\rightarrow$ compares local luminance, contrast, structure.
-  \item \textbf{LPIPS} $\rightarrow$ compares deep features; better for perceptual/semantic distortions, but expensive and model-dependent.
-  \item \textbf{Same MSE can look dif and only iferent} $\rightarrow$ error distribution matters: texture noise less visible; edge/structure error more annoying.
 
+\begin{itemize}
+  \item \textbf{MSE}/\textbf{PSNR} → simple and reproducible, but weak perceptually; ignore structure, masking, semantics.
+  \item \textbf{\textbf{SSIM}} → compares local luminance, contrast, structure.
+  \item \textbf{\textbf{LPIPS}} → compares deep features; better for perceptual/semantic distortions, but expensive and model-dependent.
+  \item Same \textbf{MSE} can look different → error distribution matters: texture noise less visible; edge/structure error more annoying.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 50}
-(MMQuEv) Explain the dif and only iference between subjective and objective quality evaluation in multimedia systems and why both are necessary.
+(MMQuEv) Explain the difference between subjective and objective quality evaluation in multimedia systems and why both are necessary.
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{Subjective evaluation} $\rightarrow$ human observers rate perceived quality.
-  \begin{itemize}
-    \item Ground truth for perception.
-    \item Slow, expensive, statistically variable.
-  \end{itemize}
-  \item \textbf{Objective evaluation} $\rightarrow$ automatic signal/feature metric.
-  \begin{itemize}
-    \item Fast, repeatable, scalable.
-    \item May correlate imperfectly with human perception.
-  \end{itemize}
-  \item \textbf{Need both} $\rightarrow$ subjective validates perception; objective enables optimization and monitoring.
-
+  \item \textbf{Subjective evaluation} → human observers \textbf{rate} perceived quality.
+  \item Ground truth for perception.
+  \item Slow, expensive, statistically variable.
+  \item \textbf{Objective evaluation} → automatic signal/feature metric.
+  \item Fast, repeatable, scalable.
+  \item May correlate imperfectly with human perception.
+  \item Need both → subjective validates perception; objective enables optimization and monitoring.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 51}
 (MMQuEv) What are the key stages involved in designing a subjective quality test according to standardized guidelines?
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{Define}:
-  \begin{itemize}
-    \item dataset/content selection;
-    \item display/audio equipment;
-    \item viewing/listening conditions;
-    \item \textbf{methodology}: ACR, DSIS, pairwise comparison, etc.;
-    \item participant screening;
-    \item score processing/outlier handling.
-  \end{itemize}
-  \item \textbf{Control factors} $\rightarrow$ viewing distance, brightness/contrast, room illumination, audio setup, test duration.
-
+  \item Define:
+  \item dataset/content selection;
+  \item display/audio equipment;
+  \item viewing/listening conditions;
+  \item methodology: ACR, DSIS, pairwise comparison, etc.;
+  \item participant screening;
+  \item score processing/outlier handling.
+  \item Control factors → viewing distance, brightness/contrast, room illumination, audio setup, test duration.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 52}
 (MMQuEv) Describe the main categories of objective quality metrics based on the availability of the original “reference” signal.
 
@@ -74,19 +80,25 @@ $$
 
 
 \begin{itemize}
-  \item \textbf{Full Reference (FR)} $\rightarrow$ original and degraded signals available; examples: MSE, PSNR, SSIM, VMAF.
-  \item \textbf{Reduced Reference (RR)} $\rightarrow$ only compact original features available.
-  \item \textbf{No Reference (NR)} $\rightarrow$ only degraded signal available; examples: BRISQUE, NIQE, PIQE.
-  \item \textbf{FR luminance PSNR}:
-
+  \item \textbf{Full Reference (FR)} → original and degraded signals available; examples: \textbf{MSE}, \textbf{PSNR}, \textbf{SSIM}, \textbf{VMAF}.
+  \item \textbf{Reduced Reference (RR)} → only compact original features available.
+  \item \textbf{No Reference (NR)} → only degraded signal available; examples: BRISQUE, NIQE, PIQE.
+  \item FR luminance \textbf{PSNR}:
 \end{itemize}
+
+
 $$
 \text{MSE}_Y(t)=\frac{1}{NM}\sum_{n,m}[I(n,m,1,t)-\hat{I}(n,m,1,t)]^2
 $$
 
+
+
 $$
 \text{PSNR}_Y(t)=10\log_{10}\left(\frac{255^2}{\text{MSE}_Y(t)}\right)
 $$
+
+
+
 
 \begin{questionbox}{Domanda 53}
 (MMQuEv) In the context of subjective testing, what is the main purpose of a “screening” phase for participants?
@@ -94,210 +106,267 @@ $$
 
 
 \begin{itemize}
-  \item \textbf{Screening} $\rightarrow$ checks participants can correctly perceive stimuli.
-  \item \textbf{Removes invalid observers}: uncorrected visual issues, color-vision problems, inconsistent scoring behavior.
-
+  \item \textbf{Screening} → checks participants can correctly perceive stimuli.
+  \item Removes invalid observers: uncorrected visual issues, color-vision problems, inconsistent scoring behavior.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 54}
 (MMQuEv) Why is statistical analysis a critical component of subjective quality evaluation?
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{Human scores vary} $\rightarrow$ need reliability measures.
-  \item \textbf{Statistical analysis} $\rightarrow$ MOS, variance, confidence intervals, outlier detection.
+  \item Human scores vary → need reliability measures.
+  \item Statistical analysis → \textbf{MOS}, variance, confidence intervals, outlier detection.
   \item \textbf{MOS}:
-
 \end{itemize}
+
+
 $$
 \text{MOS}=\frac{1}{N}\sum_{i=1}^{N}x_i
 $$
 
-\begin{itemize}
-  \item \textbf{Standard error}:
 
+\begin{itemize}
+  \item Standard error:
 \end{itemize}
+
+
 $$
 SE=\frac{s}{\sqrt{N}}
 $$
 
+
+
+
 \begin{questionbox}{Domanda 55}
-(S\&P Qnt) Explain the dif and only iference between a “mid-tread” and a “mid-rise” quantizer in the context of uniform quantization for signed data.
+(S\&P Qnt) Explain the difference between a “mid-tread” and a “mid-rise” \textbf{quantizer} in the context of \textbf{uniform \textbf{quantization}} for signed data.
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{Mid-tread} $\rightarrow$ zero is reconstruction level; small values around zero map to zero.
-  \item \textbf{Mid-rise} $\rightarrow$ zero is decision threshold; values around zero map to positive/negative non-zero levels.
-  \item \textbf{Residuals prefer mid-tread} $\rightarrow$ many small values become exactly zero:
-
+  \item \textbf{Mid-tread} → zero is reconstruction level; small values around zero map to zero.
+  \item \textbf{Mid-rise} → zero is decision threshold; values around zero map to positive/negative non-zero levels.
+  \item Residuals prefer mid-tread → many small values become exactly zero:
 \end{itemize}
+
+
 $$
 Q(x)=\Delta\cdot\text{round}\left(\frac{x}{\Delta}\right)
 $$
 
+
+\begin{tcolorbox}[colback=white, colframe=gray!50, height=4.5cm, sharp corners]
+\end{tcolorbox}
+\begin{tcolorbox}[colback=white, colframe=gray!50, height=4.5cm, sharp corners]
+\end{tcolorbox}
+
+
+
 \begin{questionbox}{Domanda 56}
-(S\&P Qnt) Define the concept of a “deadzone” in a quantizer and explain why it is frequently employed in lossy compression systems.
+(S\&P Qnt) Define the concept of a “\textbf{deadzone}” in a \textbf{quantizer} and explain why it is frequently employed in \textbf{lossy} compression systems.
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{Deadzone quantizer} $\rightarrow$ enlarged interval mapped to zero:
-
+  \item \textbf{\textbf{deadzone} \textbf{quantizer}} → enlarged interval mapped to zero:
 \end{itemize}
+
+
 $$
 Q(x)=0 \quad \text{for small } |x|
 $$
 
-\begin{itemize}
-  \item \textbf{Useful in lossy compression} $\rightarrow$ prediction/transform residuals often have many small coefficients.
-  \item \textbf{Consequence} $\rightarrow$ more zeros $\rightarrow$ better entropy coding.
 
+\begin{itemize}
+  \item Useful in \textbf{lossy} compression → prediction/transform residuals often have many small coefficients.
+  \item Consequence → more zeros → better \textbf{entropy} coding.
 \end{itemize}
+
+\begin{tcolorbox}[colback=white, colframe=gray!50, height=4.5cm, sharp corners]
+\end{tcolorbox}
+
+
+
 \begin{questionbox}{Domanda 57}
-(S\&P Qnt) Why is scalar quantization alone often considered insufficient for effective compression of non-sparse data?
+(S\&P Qnt) Why is scalar \textbf{quantization} alone often considered insufficient for effective compression of non-sparse data?
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{Scalar quantization} $\rightarrow$ one sample at a time.
-  \item \textbf{Non-sparse signal} $\rightarrow$ many significant samples remain $\rightarrow$ entropy coding has little to exploit.
-  \item \textbf{Better compression needs}:
-  \begin{itemize}
-    \item \textbf{prediction} $\rightarrow$ reduce residual variance;
-    \item \textbf{transform coding} $\rightarrow$ compact energy;
-    \item \textbf{vector/block coding} $\rightarrow$ exploit dependencies;
-    \item \textbf{entropy coding} $\rightarrow$ exploit non-uniform probabilities.
-
-  \end{itemize}
+  \item Scalar \textbf{quantization} → one sample at a time.
+  \item Non-sparse signal → many significant samples remain → \textbf{entropy} coding \textbf{HAS} little to exploit.
+  \item Better compression needs:
+  \item prediction → reduce residual variance;
+  \item transform coding → compact energy;
+  \item vector/block coding → exploit dependencies;
+  \item \textbf{entropy} coding → exploit non-uniform probabilities.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 58}
-(S\&P Qnt) What is the condition for a predictive quantization system to be effective, and how is the “coding gain” defined?
+(S\&P Qnt) What is the condition for a \textbf{predictive \textbf{quantization}} system to be effective, and how is the “coding gain” defined?
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{Effective condition}:
-
+  \item Effective condition:
 \end{itemize}
+
+
 $$
 \sigma_y^2 < \sigma_x^2
 $$
 
-\textbf{with}:
+
+with:
+
 
 $$
 y(n)=x(n)-v(n)
 $$
 
-\begin{itemize}
-  \item \textbf{Prediction gain}:
 
+\begin{itemize}
+  \item Prediction gain:
 \end{itemize}
+
+
 $$
 G_P=10\log_{10}\left(\frac{\sigma_x^2}{\sigma_y^2}\right)
 $$
 
+
 \begin{itemize}
   \item Positive when predictor reduces variance.
-
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 59}
-(S\&P Qnt) Draw the scheme of a linear predictive quantization scheme, and motivate the structure, with particular attention to the use of a decoding loop at the encoder side.
+(S\&P Qnt) Draw the scheme of a linear \textbf{predictive \textbf{quantization}} scheme, and motivate the structure, with particular attention to the use of a decoding loop at the encoder side.
 \end{questionbox}
 
 
 \begin{itemize}
   \item Predictor must use reconstructed past samples on encoder and decoder:
-
 \end{itemize}
+
+
 $$
 v(n)=\mathcal{P}(\hat{x}(n-1),\hat{x}(n-2),\dots)
 $$
+
+
 
 $$
 y(n)=x(n)-v(n)
 $$
 
+
+
 $$
 \hat{x}(n)=\hat{y}(n)+v(n)
 $$
 
+
 \begin{itemize}
-  \item Encoder includes same reconstruction loop as decoder $\rightarrow$ prevents drift.
-
+  \item Encoder includes same reconstruction loop as decoder → prevents drift.
 \end{itemize}
-\begin{questionbox}{Domanda 60}
-(S\&P Qnt) What is the primary purpose of the predictor in a predictive quantization system?
 
-(S\&P Qnt) In a predictive quantization system, if the prediction $v(n)$ is nearly equal to $x(n)$, what happens to the variance of the signal $y(n)$ being sent to the quantizer?
+
+
+\begin{questionbox}{Domanda 60}
+(S\&P Qnt) What is the primary purpose of the predictor in a \textbf{predictive \textbf{quantization}} system?
+
+(S\&P Qnt) In a \textbf{predictive \textbf{quantization}} system, if the prediction $v(n)$ is nearly equal to $x(n)$, what happens to the variance of the signal $y(n)$ being sent to the \textbf{quantizer}?
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{Predictor} $\rightarrow$ exploits correlation among neighboring samples.
+  \item Predictor → exploits correlation among neighboring samples.
   \item If $v(n)\approx x(n)$:
-
 \end{itemize}
+
+
 $$
 y(n)=x(n)-v(n)\approx 0
 $$
+
+
 
 $$
 \sigma_y^2 \ll \sigma_x^2
 $$
 
-\begin{itemize}
-  \item Quantizer encodes lower-energy residual.
 
+\begin{itemize}
+  \item \textbf{quantizer} encodes lower-energy residual.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 61}
 (S\&P Qnt) When selecting a linear predictor of order $P$ for a random process, how does the prediction error variance typically behave as the order increases?
 \end{questionbox}
 
 
 \begin{itemize}
-  \item \textbf{Linear predictor}:
-
+  \item Linear predictor:
 \end{itemize}
+
+
 $$
 v(n)=-\sum_{i=1}^{P}a_i x(n-i)
 $$
+
+
 
 $$
 y(n)=\sum_{i=0}^{P}a_i x(n-i),\quad a_0=1
 $$
 
-\begin{itemize}
-  \item Increasing $P$ cannot worsen optimal error variance in theory $\rightarrow$ old solution still available.
-  \item \textbf{Practice} $\rightarrow$ larger $P$ increases complexity, side information, estimation error; gains eventually negligible.
 
+\begin{itemize}
+  \item Increasing $P$ cannot worsen optimal error variance in theory → old solution still available.
+  \item Practice → larger $P$ increases complexity, side information, estimation error; gains eventually negligible.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 62}
-\textbf{Explain the screening effect}: why does the prediction gain saturate as the linear predictor order $P$ increases?
+Explain the screening effect: why does the prediction gain saturate as the linear predictor order $P$ increases?
 \end{questionbox}
 
 
 \begin{itemize}
-  \item Increasing $P$ $\rightarrow$ optimal prediction error variance cannot increase in theory.
+  \item Increasing $P$ → optimal prediction error variance cannot increase in theory.
   \item Gain usually saturates due to \textbf{screening effect}.
   \item Nearby samples already explain most correlation with current sample.
   \item Farther samples add little independent information because correlation is mostly mediated by nearer samples.
-  \item \textbf{Result} $\rightarrow$ diminishing returns plus higher complexity/estimation sensitivity.
-
+  \item Result → diminishing returns plus higher complexity/estimation sensitivity.
 \end{itemize}
+
+
+
 \begin{questionbox}{Domanda 63}
-(S\&P Qnt) In high-resolution uniform quantization, what is the approximate relationship between the SNR and the bit rate ($R$)?
+(S\&P Qnt) In high-resolution \textbf{uniform \textbf{quantization}}, what is the approximate relationship between the SNR and the bit \textbf{rate} ($R$)?
 \end{questionbox}
 
 
 \begin{itemize}
-  \item High-resolution uniform quantization:
-
+  \item High-resolution \textbf{uniform \textbf{quantization}}:
 \end{itemize}
+
+
 $$
 D \approx \frac{A^2}{12}2^{-2R}
 $$
+
+
 
 $$
 \text{SNR}
@@ -305,17 +374,21 @@ $$
 =10\log_{10}\left(\frac{\sigma_X^2}{\frac{A^2}{12}2^{-2R}}\right)
 $$
 
+
 \begin{itemize}
   \item With $\gamma^2=\frac{A^2}{4\sigma_X^2}$:
-
 \end{itemize}
+
+
 $$
 \text{SNR}\approx 6.02R - 10\log_{10}\left(\frac{\gamma^2}{3}\right)
 $$
 
-\begin{itemize}
-  \item \textbf{Rule} $\rightarrow$ each extra bit/sample gives about $6$ dB SNR improvement.
 
+\begin{itemize}
+  \item Rule → each extra bit/sample gives about $6$ dB SNR improvement.
 \end{itemize}
+
 ---
+
 

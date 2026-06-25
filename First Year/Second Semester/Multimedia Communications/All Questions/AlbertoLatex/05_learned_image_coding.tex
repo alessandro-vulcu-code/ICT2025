@@ -1,0 +1,113 @@
+\section{Learned Image Coding}
+
+
+
+
+\begin{questionbox}{Domanda 35}
+(TC\&JPEG) Explain the fundamental shift in \textbf{\textbf{rate}-\textbf{distortion}} (R-D) optimization from classical codecs (e.g., JPEG) to neural compression methods.
+\end{questionbox}
+
+
+Classical codecs optimize over handcrafted tools: fixed transforms, prediction modes, block partitions and \textbf{quantization} steps. Mode choice is often combinatorial:
+
+
+$$
+J = D + \lambda R
+$$
+
+
+Neural compression learns analysis transform, synthesis transform and \textbf{entropy} model by minimizing a differentiable loss:
+
+
+$$
+\mathcal{L}=D(x,\hat{x})+\lambda R(\hat{y})
+$$
+
+
+The transform is learned from data instead of fixed in the standard.
+
+
+
+\begin{questionbox}{Domanda 36}
+JPEG-AI: goals (beat \textbf{VVC}-Intra by about 50\%), backbone (hierarchical VAE with hyperprior), dual-use human/machine support, and complexity profiles (Dec0/Dec1/Dec2, kMAC/px). Cite pros/cons vs classical codecs (R-D vs computational cost, determinism, hallucinations).
+\end{questionbox}
+
+
+JPEG-AI targets learned still-image coding for both human viewing and machine consumption. The goal is substantially better \textbf{\textbf{rate}-\textbf{distortion}} performance than classical intra codecs, especially at low bitrate.
+
+The typical backbone is a hierarchical variational autoencoder:
+
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.1cm and 1.5cm,
+    block/.style={draw, fill=blue!5, text width=4cm, align=center, minimum height=0.6cm, rounded corners=3pt, font=\small},
+    arrow/.style={thick,->,>=stealth}
+]
+    \node (x) [block] {Input $x$};
+    \node (a) [block, below=of x] {Analysis Transform};
+    \node (q) [block, below=of a] {Quantized Latents};
+    \node (e) [block, below=of q] {Entropy Coding};
+    \node (b) [block, below=of e] {Bitstream};
+    \node (h) [block, right=of a] {Hyperprior};
+
+    \draw [arrow] (x) -- (a);
+    \draw [arrow] (a) -- (q);
+    \draw [arrow] (q) -- (e);
+    \draw [arrow] (e) -- (b);
+    \draw [arrow] (a) -- (h);
+\end{tikzpicture}
+\caption{JPEG-AI Hierarchical VAE Backbone}
+\end{figure}
+
+
+The hyperprior transmits side information about local latent statistics, such as scales or probabilities. Although it costs bits, it improves \textbf{entropy} modeling and can reduce the total \textbf{rate}.
+
+JPEG-AI also defines decoder complexity profiles, such as Dec0, Dec1 and Dec2, to trade coding efficiency against computational cost measured in operations per pixel.
+
+Main advantages:
+
+\begin{itemize}
+  \item better R-D efficiency, especially at low bitrate;
+  \item nonlinear transforms learned from data;
+  \item possible support for both human and machine tasks.
+\end{itemize}
+
+Main drawbacks:
+
+\begin{itemize}
+  \item high computational and energy cost;
+  \item harder deterministic reproducibility across platforms;
+  \item risk of perceptually plausible but inaccurate reconstructed details.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 37}
+(TC\&JPEG) What is the primary purpose of adding Additive Uniform Noise during the training phase of a neural codec?
+\end{questionbox}
+
+
+\textbf{quantization} is non-differentiable and \textbf{HAS} zero gradient almost everywhere. During training, additive uniform noise:
+
+
+$$
+u \sim \mathcal{U}\left(-\frac{1}{2},\frac{1}{2}\right)
+$$
+
+
+is used as a continuous relaxation of rounding, allowing gradient-based optimization.
+
+
+
+\begin{questionbox}{Domanda 38}
+(TC\&JPEG) Why do Convolutional Neural Networks (CNNs) outperform Multi-Layer Perceptrons (MLPs) when applied to image compression?
+\end{questionbox}
+
+
+MLPs flatten images and ignore spatial locality, causing many parameters and poor inductive bias. CNNs exploit local correlations, translation structure and shared filters, making them much more efficient for images.
+
+---
+
+

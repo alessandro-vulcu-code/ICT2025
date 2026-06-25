@@ -1,0 +1,107 @@
+\section{Modern Video Coding}
+
+
+
+
+\begin{questionbox}{Domanda 89}
+(ModernVC) What is the specific scope of video compression standards like H.266/\textbf{VVC}?
+\end{questionbox}
+
+
+Video coding standards define bitstream syntax and normative decoder behavior. They do not prescribe the full encoder implementation. \textbf{VVC} targets much higher compression efficiency than \textbf{HEVC}, especially for high-resolution, HDR, 360-degree and immersive video, at the cost of much higher complexity.
+
+
+
+\begin{questionbox}{Domanda 90}
+(ModernVC) Explain the advantage of the “Coding Tree Unit” (CTU) structure introduced in \textbf{HEVC}/\textbf{VVC}.
+\end{questionbox}
+
+
+Coding Tree Units replace fixed macroblocks with flexible recursive partitioning. Large homogeneous regions can use large blocks, while detailed regions can be split into smaller blocks. This improves \textbf{\textbf{rate}-\textbf{distortion}} efficiency.
+
+\textbf{HEVC} uses quadtree partitioning. \textbf{VVC} extends this with multi-type trees, including binary and ternary splits.
+
+
+
+\begin{questionbox}{Domanda 91}
+(ModernVC) What are the roles of VCL and NAL in modern video standards?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{VCL (Video Coding Layer):} contains compressed video data such as slices, prediction, residuals and coding syntax.
+  \item \textbf{NAL (Network Abstraction Layer):} wraps VCL and non-VCL data into NAL units for transport/storage. It separates codec syntax from packetization.
+\end{itemize}
+
+Examples of non-VCL NAL units: SPS, PPS and SEI.
+
+
+
+\begin{questionbox}{Domanda 92}
+(ModernVC) What is the main purpose of the \textbf{CABAC} \textbf{entropy} coder in modern standards?
+\end{questionbox}
+
+
+\textbf{CABAC} means \textbf{Context-Adaptive Binary Arithmetic Coding}. It binarizes syntax elements and arithmetic-codes them with probabilities adapted to local context. It improves compression efficiency over simpler VLC/\textbf{CAVLC} while remaining \textbf{lossless}.
+
+
+
+\begin{questionbox}{Domanda 93}
+(ModernVC) Why are “Tiles” considered “hardware-friendly” in \textbf{VVC} and \textbf{HEVC}?
+\end{questionbox}
+
+
+Tiles split a frame into independently decodable rectangular regions. They restrict dependencies across boundaries, enabling parallel encoding/decoding on multiple CPU/GPU cores with lower synchronization cost.
+
+
+
+\begin{questionbox}{Domanda 94}
+(ModernVC) What is the function of an “In-\textbf{loop filter}” like the Adaptive \textbf{loop filter} (\textbf{ALF})?
+\end{questionbox}
+
+
+In-loop filters are applied inside the reconstruction loop before frames are stored as references. This prevents artifacts from being propagated by \textbf{motion compensation}.
+
+H.264 uses deblocking. \textbf{HEVC} adds \textbf{SAO}. \textbf{VVC} adds \textbf{ALF} and other tools.
+
+\textbf{ALF} (Adaptive \textbf{loop filter}) reduces reconstruction artifacts such as ringing and residual \textbf{distortion} by applying adaptive filtering to reconstructed samples before reference storage.
+
+
+
+\begin{questionbox}{Domanda 95}
+Describe the intra-coding modes in H.264. [Optional] Discuss also the Intra modes in H.265.
+\end{questionbox}
+
+
+\textbf{intra prediction} exploits spatial redundancy from already reconstructed neighboring samples in the same frame.
+
+\begin{itemize}
+  \item \textbf{H.264/AVC:} 9 modes for $4\times4$ blocks: 8 directional + DC. For $16\times16$ \textbf{luma} blocks, 4 modes.
+  \item \textbf{H.265/\textbf{HEVC}:} 35 modes: 33 directional + DC + Planar.
+  \item \textbf{H.266/\textbf{VVC}:} 65 directional modes plus wide-angle variants for non-square blocks.
+\end{itemize}
+
+Most Probable Mode (MPM) lists reduce signaling cost by predicting likely modes from neighboring blocks.
+
+
+
+\begin{questionbox}{Domanda 96}
+Describe the principle of the deblocking in-\textbf{loop filter} of H.264.
+\end{questionbox}
+
+
+At low bitrate, block transform and \textbf{quantization} create visible discontinuities at block boundaries. H.264 applies a normative in-loop \textbf{deblocking filter} on edges between $4\times4$ blocks.
+
+Filtering strength depends on:
+
+\begin{itemize}
+  \item coding mode,
+  \item motion vectors,
+  \item reference frames,
+  \item \textbf{quantization} parameter,
+  \item local boundary conditions.
+\end{itemize}
+
+It is in-loop because filtered reconstructed frames are used as future references; this avoids propagating blocking artifacts.
+
+

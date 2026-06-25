@@ -58,6 +58,8 @@ A generic compression chain combines decorrelation, approximation and lossless c
 
 ![[Pasted image 20260624205627.png]]
 
+> [!draw] Practice Drawing: Basic Tools for Compression
+
 Prediction and transform reduce redundancy or concentrate energy. Entropy coding is lossless: it only assigns shorter codes to more probable symbols.
 
 Quantization is the only lossy step because many input values are mapped to the same reconstruction value. This reduces rate, but the original value cannot be recovered exactly.
@@ -211,6 +213,8 @@ Thus the second tap gives no extra gain for an AR(1) source.
 
 ![[Block Scheme Exam/Predictive quantization - open loop.png]]
 
+> [!draw] Practice Drawing: Open-loop Predictive Quantization
+
 The open-loop scheme shows the basic predictive quantization idea: the predictor output $v(n)$ is subtracted from the current sample, only the residual $y(n)$ is quantized, and the prediction is added back after quantization. It is useful to understand DPCM-style coding, but it is not safe as a complete codec because the encoder and decoder may base prediction on different past samples.
 
 Open-loop prediction is wrong because the encoder predicts from original samples while the decoder predicts from reconstructed samples. This mismatch causes **drift**.
@@ -218,6 +222,8 @@ Open-loop prediction is wrong because the encoder predicts from original samples
 Correct predictive quantization uses a closed reconstruction loop at the encoder:
 
 ![[Block Scheme Exam/Predictive quantization - correct closed loop.png]]
+
+> [!draw] Practice Drawing: Closed-loop Predictive Quantization
 
 The encoder and decoder feed the predictor with the same reconstructed samples:
 
@@ -567,10 +573,17 @@ JPEG is a lossy still-image coding standard based on block DCT, quantization and
 
 Baseline JPEG chain:
 
-```text
-RGB -> YCbCr -> chroma subsampling -> 8x8 blocks
-    -> level shift by 128 -> DCT -> quantization
-    -> zig-zag scan -> RLE/Huffman -> JPEG bitstream
+```mermaid
+flowchart LR
+    A[RGB] --> B[YCbCr]
+    B --> C[Chroma subsampling]
+    C --> D["8x8 blocks"]
+    D --> E["Level shift by 128"]
+    E --> F[DCT]
+    F --> G[Quantization]
+    G --> H[Zig-zag scan]
+    H --> I["RLE/Huffman"]
+    I --> J[JPEG bitstream]
 ```
 
 Quantization:
@@ -607,6 +620,8 @@ JPEG metadata formats:
 > (TC&JPEG) Draw the scheme and describe the functional blocks of a JPEG encoder.
 
 ![[Block Scheme Exam/JPEG encoder.png]]
+
+> [!draw] Practice Drawing: JPEG Encoder
 
 The DCT compacts energy; quantization creates losses; zig-zag scan groups zeros; entropy coding is lossless.
 
@@ -771,9 +786,13 @@ JPEG2000 is a wavelet-based still-image standard designed for scalability, preci
 
 Tier 1 performs the main coding of wavelet coefficients:
 
-~~~text
-image -> DWT -> quantization -> codeblocks -> bitplane arithmetic coding
-~~~
+```mermaid
+flowchart LR
+    A[Image] --> B[DWT]
+    B --> C[Quantization]
+    C --> D[Codeblocks]
+    D --> E[Bitplane arithmetic coding]
+```
 
 The irreversible 9/7 DWT is used for lossy coding, while the reversible 5/3 DWT supports lossless coding. Coefficients are split into codeblocks and coded bitplane by bitplane.
 
@@ -818,12 +837,15 @@ JPEG-AI targets learned still-image coding for both human viewing and machine co
 
 The typical backbone is a hierarchical variational autoencoder:
 
-~~~text
-x -> analysis transform -> quantized latents -> entropy coding -> bitstream
-                 |
-                 v
-              hyperprior
-~~~
+```mermaid
+flowchart LR
+    X[x] --> A[Analysis transform]
+    A --> Q[Quantized latents]
+    Q --> E[Entropy coding]
+    E --> B[Bitstream]
+
+    A --> H[Hyperprior]
+```
 
 The hyperprior transmits side information about local latent statistics, such as scales or probabilities. Although it costs bits, it improves entropy modeling and can reduce the total rate.
 
@@ -900,10 +922,13 @@ LPC-10 uses a simplified excitation model: impulse train for voiced speech and n
 
 CELP improves LPC using **Analysis-by-Synthesis**. The encoder contains a local decoder loop:
 
-```text
-candidate codebook excitation -> gain -> synthesis filter 1/A(z)
-    -> perceptual weighting -> compare with original speech
-    -> choose index/gain with minimum weighted error
+```mermaid
+flowchart LR
+    A[Candidate codebook excitation] --> B[Gain]
+    B --> C["Synthesis filter 1/A(z)"]
+    C --> D[Perceptual weighting]
+    D --> E[Compare with original speech]
+    E --> F[Choose index/gain with minimum weighted error]
 ```
 
 The transmitted data are codebook index and gains. The perceptual weighting filter is:
@@ -937,14 +962,16 @@ Analysis:
 
 ![[Block Scheme Exam/Linear predictive coding - analysis.png]]
 
+> [!draw] Practice Drawing: Linear Predictive Coding (LPC) Encoder
+
 This LPC analysis scheme estimates speech-model parameters frame by frame. Windowing isolates a short quasi-stationary segment, autocorrelation provides statistics plus voiced/unvoiced and pitch-period information, and Levinson-Durbin solves the linear prediction equations to obtain the LPC coefficients $\{a_i\}$ and gain $G$.
 
-```text
-speech frame (~20 ms)
-  -> windowing
-  -> autocorrelation
-  -> Levinson-Durbin / Yule-Walker
-  -> LPC coefficients, gain, pitch, voiced/unvoiced decision
+```mermaid
+flowchart LR
+    A["Speech frame (~20 ms)"] --> B[Windowing]
+    B --> C[Autocorrelation]
+    C --> D["Levinson-Durbin / Yule-Walker"]
+    D --> E["LPC coefficients, gain, pitch, voiced/unvoiced decision"]
 ```
 
 Prediction model:
@@ -967,6 +994,8 @@ Voiced frames use pitch-period excitation; unvoiced frames use noise-like excita
 MP3 is a perceptual audio codec. Its encoder can be summarized as:
 
 ![[Pasted image 20260624185047.png]]
+
+> [!draw] Practice Drawing: MP3 Encoder
 
 The psychoacoustic model is encoder-side only. The decoder performs inverse quantization and inverse transform.
 
@@ -1105,6 +1134,10 @@ $$
 Q(x)=\Delta\cdot\text{round}\left(\frac{x}{\Delta}\right)
 $$
 
+> > [!draw] Draw Mid-tread Quantizer
+> 
+> > [!draw] Draw Mid-rise Quantizer
+
 > [!question] Domanda 56
 > (S&P Qnt) Define the concept of a “deadzone” in a quantizer and explain why it is frequently employed in lossy compression systems.
 
@@ -1115,6 +1148,8 @@ Q(x)=0 \quad \text{for small } |x|
 $$
 
 It is useful in lossy compression because prediction and transform residuals often contain many small coefficients. Mapping them to zero improves entropy coding efficiency.
+
+> > [!draw] Draw Deadzone Quantizer
 
 > [!question] Domanda 57
 > (S&P Qnt) Why is scalar quantization alone often considered insufficient for effective compression of non-sparse data?
@@ -1299,6 +1334,8 @@ where:
 - $\phi(\Delta_n)$ penalizes rebuffering.
 
 Frequent quality oscillations can be worse than stable slightly lower quality.
+
+> > [!draw] Draw Switching Penalty / QoE vs Quality Curve
 
 > [!question] Domanda 68
 > (AdapStrm) Explain the evolution of the playout buffer level $B(t)$ using a mathematical model. In your explanation, describe the dynamics of the “playback” (draining) phase and the “rebufferization” (stalling) phase.
@@ -1489,6 +1526,8 @@ A hybrid video encoder codes the prediction residual, not usually the whole fram
 
 ![[Block Scheme Exam/Hybrid video encoder.png]]
 
+> [!draw] Practice Drawing: Hybrid Video Encoder
+
 This scheme combines inter/intra prediction with JPEG-like residual coding. Mode decision selects the predictor, transform and quantization encode the residual, lossless coding creates the bitstream, and the inverse quantization/inverse transform path reconstructs the same block that will be stored in the frame buffer for later motion compensation.
 
 The encoder contains an internal decoder because future predictions must be built from exactly the same reconstructed frames available at the decoder. If the encoder predicted from original frames while the decoder predicted from reconstructed frames, their references would diverge and drift would propagate through the video.
@@ -1497,6 +1536,8 @@ The encoder contains an internal decoder because future predictions must be buil
 > (VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
 
 ![[Block Scheme Exam/Video coding principles.png]]
+
+> [!draw] Practice Drawing: Video Coding Principles
 
 This high-level video coding scheme separates temporal compression from spatial compression. Temporal compression exploits similarity between frames and produces motion information, while spatial compression removes redundancy inside the prediction residual; the buffer then regulates the coded stream rate.
 
@@ -1577,6 +1618,8 @@ This difference is usually small and cheaper to encode.
 > (VCP) What happens in the decoder when it receives an “Inter-coded” block?
 
 ![[Block Scheme Exam/Hybrid video decoder.png]]
+
+> [!draw] Practice Drawing: Hybrid Video Decoder
 
 The hybrid decoder reverses only the normative part of the encoder. Entropy decoding recovers mode information, motion vectors and quantized residuals; inverse quantization and inverse transform reconstruct the residual; intra prediction or motion compensation builds the predictor, which is added to the residual and stored in the frame buffer.
 

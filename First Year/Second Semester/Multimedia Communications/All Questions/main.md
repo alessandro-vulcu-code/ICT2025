@@ -770,7 +770,7 @@ $$D = \sigma_Q^2 = \frac{1}{12} \frac{A^2}{L^2} = \sigma_X^2 2^{-2R}$$
 
 Finally we can write the SNR:
 
-$$\text{SNR} \approx 10 \log_{10} \frac{\mathbb{E}[X]}{D} = 10 \log_{10} 2^{2R} \approx 6R$$
+$$\text{SNR} \approx 10 \log_{10} \frac{\sigma_X^2}{D} = 10 \log_{10} 2^{2R} \approx 6R$$
 
 SNR is the ratio between signal power and error power, expressed in decibels. The result above means that adding one bit per sample improves SNR by approximately 6 dB under these assumptions.
 
@@ -799,7 +799,7 @@ High-resolution quantization is an approximation valid when cells are sufficient
 
 Computing the SNR, we get:
 
-$$\text{SNR} \approx 10 \log_{10} \frac{\mathbb{E}[X]}{D} = 10 \log_{10} \frac{\sigma_X^2}{\frac{A^2}{12} 2^{-2R}} \approx 6R - 10 \log_{10} \frac{\gamma^2}{3}$$
+$$\text{SNR} \approx 10 \log_{10} \frac{\sigma_X^2}{D} = 10 \log_{10} \frac{\sigma_X^2}{\frac{A^2}{12} 2^{-2R}} \approx 6R - 10 \log_{10} \frac{\gamma^2}{3}$$
 
 where $\gamma^2 = \frac{X_{\text{max}}^2}{\sigma_X^2} = \frac{A^2}{4\sigma_X^2}$
 
@@ -927,7 +927,7 @@ $$\hat{x}_k(k) = \frac{1}{N} \sum_{n=0}^{(N-1)-k} X(n)X(n-k)$$
 
 2.4.7 Worked example: AR(1) Gaussian signal
 
-Signal $X(n) \sim \mathcal{N}(0, \sigma^2)$ with autocorrelation $r_x(n-m) = \mathbb{E}[X(n)X(m)] = \sigma^2\rho^{n-m}|$.
+Signal $X(n) \sim \mathcal{N}(0, \sigma^2)$ with autocorrelation $r_x(n-m) = \mathbb{E}[X(n)X(m)] = \sigma^2\rho^{|n-m|}$.
 
 • Trivial predictor $V(n) = X(n-1)$:
 
@@ -949,7 +949,7 @@ $$G_P = 10 \log_{10} \frac{1}{1-\rho^2} \geq 0 \quad \forall \rho \quad (\text{n
 
 Comparison: $1 - \rho^2 = (1-\rho)(1+\rho) < 2(1-\rho)$ for $\rho < 1 \Rightarrow$ optimal always beats trivial.
 
-• Optimal predictor of order $P = 2$: now $R_x = \sigma^2\left[\frac{1}{\rho_1}\right], \vec{r} = \sigma^2[\rho, \rho^2]^T$:
+• Optimal predictor of order $P = 2$: now $R_x = \sigma^2\left[ \begin{array}{cc} 1 & \rho \\ \rho & 1 \end{array} \right], \vec{r} = \sigma^2[\rho, \rho^2]^T$:
 
 $$\vec{a}^{opt} = -R_x^{-1}\vec{r} = -\frac{1}{1-\rho^2}\left[ \begin{array}{cc} 1 & -\rho \\ -\rho & 1 \end{array} \right]\left[ \begin{array}{c} \rho \\ \rho^2 \end{array} \right] = \left[ \begin{array}{c} -\rho \\ 0 \end{array} \right]$$
 
@@ -5978,7 +5978,7 @@ Perceptual audio decoder: inverse quantization then inverse frequency transform 
 
 10.4.1 OPUS
 
-Makes use of CELT techniques for speech processing (xiph.org based), and uses SILK techniques for Music (Skype derived). It also provide Low-Latency and it is the de-facto standard for Discord, WebRTC,...
+Makes use of SILK techniques for speech processing (Skype derived), and uses CELT techniques for Music (xiph.org based). It also provides low latency and is the de-facto standard for Discord, WebRTC,...
 
 10.4.2 Neural Codecs
 

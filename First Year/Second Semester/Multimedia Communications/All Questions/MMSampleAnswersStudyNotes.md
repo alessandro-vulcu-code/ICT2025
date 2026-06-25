@@ -56,6 +56,8 @@ $$
 
 ![[Pasted image 20260624205523.png]]
 
+> [!draw] Practice Drawing: Basic Tools for Compression
+
 - Prediction / transform → decorrelate signal or compact energy.
 - Entropy coding → lossless; shorter codes for more probable symbols.
 - **Quantization** → only lossy stage: many input values map to same reconstruction value → exact original cannot be recovered.
@@ -193,6 +195,8 @@ $$
 
 ![[Block Scheme Exam/Predictive quantization - open loop.png]]
 
+> [!draw] Practice Drawing: Open-loop Predictive Quantization
+
 - **Open-loop predictive quantization**:
   - subtract predictor $v(n)$ from $x(n)$ → residual $y(n)$;
   - quantize residual → $\hat y(n)$;
@@ -200,6 +204,8 @@ $$
 - Problem → encoder predicts from original samples, decoder from reconstructed samples → **drift**.
 
 ![[Block Scheme Exam/Predictive quantization - correct closed loop.png]]
+
+> [!draw] Practice Drawing: Closed-loop Predictive Quantization
 
 - **Closed-loop encoder** → encoder contains same reconstruction loop as decoder.
 - Predictor input matches both sides:
@@ -548,6 +554,8 @@ $$
 
 ![[Block Scheme Exam/JPEG encoder.png]]
 
+> [!draw] Practice Drawing: JPEG Encoder
+
 - DCT → energy compaction.
 - Quantization → lossy coefficient reduction.
 - Zig-zag scan → groups zeros.
@@ -886,6 +894,8 @@ flowchart LR
 
 ![[Block Scheme Exam/Linear predictive coding - analysis.png]]
 
+> [!draw] Practice Drawing: Linear Predictive Coding (LPC) Encoder
+
 - Analysis:
 
 ```mermaid
@@ -919,9 +929,13 @@ $$
 
 ![[Pasted image 20260624185047.png]]
 
+> [!draw] Practice Drawing: MP3 Encoder
+
 - Main encoder chain:
 
 ![[Pasted image 20260624213214.png]]
+
+> [!draw] Practice Drawing: MP3 Encoder main chain
 
 - Functional blocks:
   - framing/windowing + transform/filterbank → convert time signal into spectral components;
@@ -1061,6 +1075,10 @@ $$
 Q(x)=\Delta\cdot\text{round}\left(\frac{x}{\Delta}\right)
 $$
 
+> > [!draw] Draw Mid-tread Quantizer
+> 
+> > [!draw] Draw Mid-rise Quantizer
+
 > [!question] Domanda 56
 > (S&P Qnt) Define the concept of a “deadzone” in a quantizer and explain why it is frequently employed in lossy compression systems.
 
@@ -1072,6 +1090,8 @@ $$
 
 - Useful in lossy compression → prediction/transform residuals often have many small coefficients.
 - Consequence → more zeros → better entropy coding.
+
+> > [!draw] Draw Deadzone Quantizer
 
 > [!question] Domanda 57
 > (S&P Qnt) Why is scalar quantization alone often considered insufficient for effective compression of non-sparse data?
@@ -1240,6 +1260,8 @@ $$
 - $|K_n-K_{n-1}|$ → switching penalty.
 - $\phi(\Delta_n)$ → rebuffering penalty.
 - Frequent oscillations can be worse than stable slightly lower quality.
+
+> > [!draw] Draw Switching Penalty / QoE vs Quality Curve
 
 > [!question] Domanda 68
 > (AdapStrm) Explain the evolution of the playout buffer level $B(t)$ using a mathematical model. In your explanation, describe the dynamics of the “playback” (draining) phase and the “rebufferization” (stalling) phase.
@@ -1444,6 +1466,8 @@ $$
 
 ![[Block Scheme Exam/Hybrid video encoder.png]]
 
+> [!draw] Practice Drawing: Hybrid Video Encoder
+
 - Mode decision → selects intra/inter predictor.
 - Transform + quantization → residual coding.
 - Lossless coding → bitstream.
@@ -1455,6 +1479,8 @@ $$
 > (VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
 
 ![[Block Scheme Exam/Video coding principles.png]]
+
+> [!draw] Practice Drawing: Video Coding Principles
 
 - Video frames → highly correlated.
 - Motion-compensated prediction estimates current block from reference frames.
@@ -1537,6 +1563,8 @@ $$
 > (VCP) What happens in the decoder when it receives an “Inter-coded” block?
 
 ![[Block Scheme Exam/Hybrid video decoder.png]]
+
+> [!draw] Practice Drawing: Hybrid Video Decoder
 
 - Decoder reads side information → mode, reference index, motion vector.
 - Entropy decoding → residual and side information.
