@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "First Year/Second Semester/Web Applications/Exam questions/Splash Presentation.md",
+                "file": "First Year/Second Semester/Multimedia Communications/Lessons/3. Lossless coding.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Splash Presentation"
+              "title": "3. Lossless coding"
             }
           }
         ]
@@ -98,7 +98,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "First Year/Second Semester/Web Applications/Exam questions/Splash Presentation.md",
+            "file": "First Year/Second Semester/Multimedia Communications/Lessons/3. Lossless coding.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -159,6 +159,10 @@
   },
   "active": "8e4b85eaec79ae67",
   "lastOpenFiles": [
+    "First Year/Second Semester/Multimedia Communications/Lessons/2. Scalar and Predictive Quantization.md",
+    "First Year/Second Semester/Multimedia Communications/Summaries/Multimedia Communications - Complete Notes.md",
+    "First Year/Second Semester/Multimedia Communications/Summaries/2. Scalar and Predictive Quantization.md",
+    "First Year/Second Semester/Web Applications/Exam questions/Splash Presentation.md",
     "First Year/Second Semester/Stochastic Processes/theorems-beginner-enriched.md",
     "First Year/Second Semester/Stochastic Processes/Theorems.pdf",
     "First Year/Second Semester/Stochastic Processes/solutions.md",
@@ -166,7 +170,6 @@
     "First Year/Second Semester/Multimedia Communications/MM_COMM_sample_questions.pdf",
     "First Year/Second Semester/Multimedia Communications/Lessons/9. Modern Video Compression Standards.md",
     "First Year/Second Semester/Multimedia Communications/Lessons/10. Audio Coding.md",
-    "First Year/Second Semester/Multimedia Communications/Lessons/2. Scalar and Predictive Quantization.md",
     "First Year/Second Semester/Multimedia Communications/Lessons/4. Transform coding.md",
     "First Year/Second Semester/Multimedia Communications/Lessons/6. Learned Image Compression.md",
     "First Year/Second Semester/Multimedia Communications/Lessons/1. Introduction to Multimedia Compression.md",
@@ -194,7 +197,6 @@
     "First Year/Second Semester/Multimedia Communications/Summaries/Pics/10. Audio Coding",
     "First Year/Second Semester/Multimedia Communications/Summaries/Pics/4. Transform coding",
     "First Year/Second Semester/Multimedia Communications/Summaries/Pics/3. Lossless coding",
-    "First Year/Second Semester/Multimedia Communications/Summaries/Multimedia Communications - Complete Notes.md",
     "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/Lab/Lab2.md",
     "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/09. Memory management.md",
     "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/13. Operators overloading.md",
@@ -202,8 +204,6 @@
     "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/12. Derived classes and class hierarchies.md",
     "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/15. Class hierarchies and run-time polymorphism.md",
     "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/16. Templates.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/02. Pointers, Reference, Arrays.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/19. Socket.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/Questions.md"
+    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/02. Pointers, Reference, Arrays.md"
   ]
 }
