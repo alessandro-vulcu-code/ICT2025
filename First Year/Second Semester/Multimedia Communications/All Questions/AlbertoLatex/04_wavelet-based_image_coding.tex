@@ -1,0 +1,123 @@
+\section{Wavelet-Based Image Coding}
+
+
+
+
+\begin{questionbox}{Domanda 29}
+State the time-frequency uncertainty principle ($\Delta t \cdot \Delta f \geq 1/4\pi$), explain why it imposes a trade-off, and how wavelets address it with adaptive multiresolution (short windows at high frequencies, long at low frequencies).
+\end{questionbox}
+
+
+The uncertainty principle says that time/space localization and frequency localization cannot both be arbitrarily precise:
+
+
+$$
+\Delta t \cdot \Delta f \geq \frac{1}{4\pi}
+$$
+
+
+A short analysis window gives good localization in time or space, but poor frequency resolution. A long window gives good frequency resolution, but poor localization.
+
+Wavelets address this by using multiresolution analysis: short basis functions for high frequencies and long basis functions for low frequencies. This is well matched to images, where edges and discontinuities need spatial localization while smooth trends are better represented at coarse scales.
+
+
+
+\begin{questionbox}{Domanda 30}
+Compare STFT (rigid tiling) and \textbf{DWT} (adaptive tiling) of the time-frequency plane, linking them to the trends vs anomalies image model.
+\end{questionbox}
+
+
+The Short-Time Fourier Transform uses a fixed window size. Therefore the time-frequency plane is tiled rigidly: all frequencies are analyzed with the same resolution.
+
+The Discrete \textbf{wavelet} Transform uses analysis filter banks and downsampling to split the signal into low-frequency approximations and high-frequency detail subbands. Repeating the decomposition creates a multiresolution representation.
+
+This matches the trends/anomalies model: smooth trends are represented by coarse low-frequency components, while local anomalies such as edges are represented by high-frequency detail components with better localization.
+
+
+
+\begin{questionbox}{Domanda 31}
+(TC\&JPEG) What is a primary advantage of the hierarchical (multiresolution) decomposition offered by the \textbf{wavelet} Transform in JPEG2000?
+\end{questionbox}
+
+
+\textbf{wavelet} decomposition gives progressive and multiresolution coding: low-resolution approximations are decoded first, then detail subbands refine quality and resolution.
+
+
+
+\begin{questionbox}{Domanda 32}
+(TC\&JPEG) Compare the block-based \textbf{DCT} approach used in JPEG with the \textbf{wavelet}-based decomposition used in JPEG2000, specifically in terms of how they handle the image signal and the resulting artifacts.
+
+(TC\&JPEG) Which of the following is a key reason why JPEG2000 is generally more efficient than JPEG?
+\end{questionbox}
+
+
+JPEG uses independent $8\times 8$ block \textbf{DCT}. It is simple and efficient, but at low bitrate it creates \textbf{blocking artifacts} at block boundaries.
+
+JPEG2000 uses \textbf{DWT} over large tiles / the whole image. It provides multiresolution representation, embedded bitplane coding and precise \textbf{rate} control. At low bitrate it tends to produce ringing or blurring near edges rather than blocking artifacts.
+
+JPEG2000 is more efficient mainly because of:
+
+\begin{itemize}
+  \item \textbf{wavelet} multiresolution decomposition,
+  \item embedded bitstream truncation,
+  \item independent code blocks,
+  \item better scalability by quality and resolution,
+  \item no fixed $8\times 8$ block boundaries.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 33}
+Describe the JPEG2000 architecture (Tier 1: \textbf{DWT} 9/7 or 5/3 -> fine \textbf{quantization} -> arithmetic coding of codeblocks per bitplane; Tier 2: \textbf{EBCOT}). Where does the \textbf{lossy} operation actually happen?
+\end{questionbox}
+
+
+JPEG2000 is a \textbf{wavelet}-based still-image standard designed for scalability, precise \textbf{rate} control, region-of-interest access and \textbf{lossy}-to-\textbf{lossless} operation.
+
+Tier 1 performs the main coding of \textbf{wavelet} coefficients:
+
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.1cm,
+    block/.style={draw, fill=blue!5, text width=5cm, align=center, minimum height=0.6cm, rounded corners=3pt, font=\small},
+    arrow/.style={thick,->,>=stealth}
+]
+    \node (a) [block] {Image};
+    \node (b) [block, below=of a] {DWT};
+    \node (c) [block, below=of b] {Quantization};
+    \node (d) [block, below=of c] {Codeblocks};
+    \node (e) [block, below=of d] {Bitplane Arithmetic Coding};
+
+    \draw [arrow] (a) -- (b);
+    \draw [arrow] (b) -- (c);
+    \draw [arrow] (c) -- (d);
+    \draw [arrow] (d) -- (e);
+\end{tikzpicture}
+\caption{JPEG2000 Tier 1 Coding Chain}
+\end{figure}
+
+
+The irreversible 9/7 \textbf{DWT} is used for \textbf{lossy} coding, while the reversible 5/3 \textbf{DWT} supports \textbf{lossless} coding. Coefficients are split into codeblocks and coded bitplane by bitplane.
+
+Tier 2 is \textbf{EBCOT} packaging and \textbf{rate} control. It organizes coded passes into layers, packets and progression orders, and selects truncation points to meet the target bitrate.
+
+The actual \textbf{lossy} operation is \textbf{quantization} and, in embedded coding, truncating coded bitplanes/passes to satisfy the \textbf{rate} constraint.
+
+
+
+\begin{questionbox}{Domanda 34}
+Compare JPEG and JPEG2000 on channel-error robustness (codeblock independence, contained vs catastrophic propagation, resynchronization markers).
+\end{questionbox}
+
+
+JPEG \textbf{entropy} coding is sequential. A bit error can desynchronize the Huffman stream and corrupt following coefficients until the next restart marker or resynchronization point. Artifacts can therefore propagate across a scan segment.
+
+JPEG2000 codes relatively independent codeblocks and organizes the stream into packets/layers. A damaged portion tends to affect a limited codeblock, \textbf{subband} or quality layer instead of the whole image.
+
+So JPEG2000 is generally more robust to localized channel errors, while JPEG can suffer more catastrophic propagation unless restart markers are used frequently.
+
+---
+
+

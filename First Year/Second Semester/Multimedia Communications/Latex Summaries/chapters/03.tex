@@ -1,0 +1,856 @@
+\chapter{Lossless Coding}
+
+\section{Table of Contents}
+
+\begin{itemize}
+  \item Core Idea
+  \item Key Concepts
+  \item Theory and Formulas
+  \item Visual Schemes
+  \item Examples
+\end{itemize}
+
+\section{Core Idea}
+
+\textbf{Lossless coding} maps a sequence of discrete symbols to a bitstream that can be decoded exactly. In multimedia compression it usually comes after prediction, transform, or quantization, and it removes remaining \textbf{statistical redundancy} without adding distortion.
+
+Typical pipeline:
+
+\begin{enumerate}
+  \item \textbf{Prediction} reduces sample correlation and produces residuals.
+  \item \textbf{Quantization} may map residuals to discrete indexes in lossy systems.
+  \item \textbf{Lossless coding} maps indexes to compact bits.
+\end{enumerate}
+
+\begin{calloutbox}{red!70!black}{Lossless coding limit}
+No lossless code can beat source entropy on average. Good entropy coders try to make average length $\mathcal{L}$ approach entropy $H$ or entropy rate $\mathcal{H}$.
+\end{calloutbox}
+
+\section{Key Concepts}
+
+\subsection{Codes and Decodability}
+
+Let the alphabet be:
+
+\[
+\mathcal{X}=\{x_1,x_2,\ldots,x_M\}
+\]
+
+A code is:
+
+\[
+C:x_i\in\mathcal{X}\rightarrow c_i\in\{0,1\}^*
+\]
+
+where $c_i$ is a finite binary string and $\ell_i$ is its length.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Code type} & \textbf{Meaning} & \textbf{Practical effect} \\ \hline
+\textbf{Fixed-length coding (FLC)} & all symbols use same length $\lceil\log_2 M\rceil$ & simple, robust, ignores probabilities \\ \hline
+\textbf{Variable-length coding (VLC)} & probable symbols use shorter codewords & compresses non-uniform sources \\ \hline
+\textbf{Prefix / instantaneous code} & no codeword is prefix of another & decodes symbol-by-symbol \\ \hline
+\textbf{Uniquely decodable code} & any finite bitstream has one symbol sequence & may require lookahead \\ \hline
+\end{tabular}}
+\end{center}
+
+FLC rate:
+
+\[
+R_{\mathrm{FLC}}=\lceil\log_2 M\rceil
+\]
+
+VLC average length:
+
+\[
+\mathcal{L}=\sum_i p_i\ell_i
+\]
+
+\subsection{Information and Entropy}
+
+\textbf{Self-information} of symbol $x_i$:
+
+\[
+I(x_i)=-\log_2 p_i
+\]
+
+Rare symbols carry more information; certain symbols carry zero information.
+
+\begin{calloutbox}{red!70!black}{Source entropy}
+\[
+H(X)=-\sum_i p_i\log_2 p_i
+\]
+
+Entropy is the average uncertainty of $X$ and the fundamental lower bound for average lossless code length.
+\end{calloutbox}
+
+For a binary source with $P(1)=p$:
+
+\[
+H(X)=-p\log_2p-(1-p)\log_2(1-p)
+\]
+
+Entropy is maximum at $p=0.5$, where $H=1$ bit/symbol.
+
+\subsection{Joint and Conditional Entropy}
+
+Joint entropy:
+
+\[
+H(X,Y)=-\sum_{i,j}p_{i,j}\log_2p_{i,j}
+\]
+
+Conditional entropy:
+
+\[
+H(X|Y)=\sum_jp_jH(X|Y=y_j)
+\]
+
+Chain rule:
+
+\[
+H(X,Y)=H(Y)+H(X|Y)=H(X)+H(Y|X)
+\]
+
+Important consequences:
+
+\begin{itemize}
+  \item If $X$ and $Y$ are independent, $H(X|Y)=H(X)$.
+  \item If $X$ is determined by $Y$, $H(X|Y)=0$.
+  \item Conditioning cannot increase entropy:
+\end{itemize}
+
+\[
+H(X|Y)\leq H(X)
+\]
+
+\subsection{Maximum Entropy}
+
+For an $M$-symbol alphabet, entropy is maximized by the uniform distribution:
+
+\[
+p_i^*=\frac{1}{M}
+\]
+
+and:
+
+\[
+H_{\max}=\log_2M
+\]
+
+\textbf{Meaning for compression:} non-uniformity is compressible; uniform sources are hardest to compress losslessly.
+
+\subsection{Kraft and Prefix Codes}
+
+\begin{calloutbox}{red!70!black}{Kraft inequality}
+A prefix code with lengths $\ell_1,\ldots,\ell_M$ exists if and only if:
+
+\[
+\sum_{i=1}^{M}2^{-\ell_i}\leq1
+\]
+
+If equality holds, the code tree is complete.
+\end{calloutbox}
+
+McMillan's theorem says uniquely decodable codes cannot outperform instantaneous prefix codes in average length. Therefore, optimal lossless coding can focus on prefix codes.
+
+\subsection{Shannon Source Coding Theorem}
+
+The ideal relaxed code length is:
+
+\[
+\ell_i^*=-\log_2p_i
+\]
+
+and the corresponding average length is:
+
+\[
+\mathcal{L}^*=\sum_ip_i\ell_i^*=H(X)
+\]
+
+\begin{calloutbox}{red!70!black}{Source coding theorem}
+Any lossless code satisfies:
+
+\[
+\mathcal{L}^*\geq H(X)
+\]
+
+Equality is possible only when all symbol probabilities are dyadic:
+
+\[
+p_i=2^{-k_i}
+\]
+
+With integer lengths $\ell_i=\lceil-\log_2p_i\rceil$:
+
+\[
+H(X)\leq\mathcal{L}<H(X)+1
+\]
+\end{calloutbox}
+
+\subsection{Huffman Coding}
+
+\textbf{Huffman coding} is optimal among prefix codes for a known probability table and a fixed symbol alphabet.
+
+Algorithm:
+
+\begin{enumerate}
+  \item Create one leaf per symbol with weight $p_i$.
+  \item Merge the two lowest-weight nodes.
+  \item Repeat until one root remains.
+  \item Assign \texttt{0} and \texttt{1} to branches.
+  \item Codewords are root-to-leaf paths.
+\end{enumerate}
+
+Strengths:
+
+\begin{itemize}
+  \item Optimal for single-symbol prefix coding.
+  \item Simple and fast.
+  \item Used inside many formats and standards.
+\end{itemize}
+
+Limits:
+
+\begin{itemize}
+  \item One-symbol Huffman cannot code below 1 bit/symbol for a binary alphabet.
+  \item Code lengths are integer, so non-dyadic probabilities create overhead.
+  \item Block Huffman improves efficiency but alphabet size grows as $M^K$.
+\end{itemize}
+
+\subsection{Block Coding}
+
+Instead of coding single symbols, code blocks:
+
+\[
+X^K=(X_1,\ldots,X_K)
+\]
+
+Block entropy obeys:
+
+\[
+H(X_1,\ldots,X_K)\leq\sum_{i=1}^{K}H(X_i)
+\]
+
+Huffman bound for a block:
+
+\[
+\mathcal{L}<H(X^K)+1
+\]
+
+Per original symbol:
+
+\[
+\mathcal{L}_S<\frac{H(X^K)}{K}+\frac{1}{K}
+\]
+
+\textbf{Meaning:} the Huffman overhead is spread over $K$ symbols, but probability estimation and codebook size become expensive.
+
+\subsection{Arithmetic Coding}
+
+\textbf{Arithmetic coding} encodes an entire sequence as a subinterval of $[0,1)$. Each symbol narrows the current interval according to its probability.
+
+For a sequence $x^n$:
+
+\[
+P(x^n)=\prod_{i=1}^{n}p(x_i)
+\]
+
+The required number of bits is close to:
+
+\[
+-\log_2P(x^n)
+\]
+
+Average per-symbol length:
+
+\[
+\mathcal{L}<H(X)+\frac{2}{n}
+\]
+
+So:
+
+\[
+\mathcal{L}\rightarrow H(X)
+\]
+
+as $n\rightarrow\infty$.
+
+Arithmetic coding solves the main Huffman problems:
+
+\begin{itemize}
+  \item Works efficiently even when entropy is below 1 bit/symbol.
+  \item Avoids exponential block-code alphabets.
+  \item Handles adaptive and context-dependent probabilities.
+\end{itemize}
+
+\subsection{Context-Based and Adaptive Coding}
+
+\textbf{Adaptive coding} updates probabilities during encoding and decoding using the same rule on both sides.
+
+\textbf{Context coding} estimates:
+
+\[
+P(X_n| \text{past context})
+\]
+
+instead of a single unconditional $P(X_n)$. If context captures the significant past, conditional entropy drops:
+
+\[
+H(X_n|\text{context}) < H(X_n)
+\]
+
+For alphabet size $M$ and context length $N_S$:
+
+\[
+N_C=M^{N_S}
+\]
+
+possible contexts exist. Too many contexts cause sparse training data; too few miss dependencies.
+
+\subsection{Exponential-Golomb Coding}
+
+\textbf{Exp-Golomb} is a universal integer code. It needs no probability table and is useful for metadata and sparse residuals.
+
+Unsigned code for $n\geq0$:
+
+\begin{enumerate}
+  \item If $n=0$, code is \texttt{1}.
+  \item If $n\geq1$, write $n+1$ in binary with $b=\lfloor\log_2(n+1)\rfloor+1$ bits.
+  \item Prefix it with $b-1$ zeros.
+\end{enumerate}
+
+Signed mapping:
+
+\[
+m(n)=
+\begin{cases}
+2n-1 & n>0\\
+-2n & n\leq0
+\end{cases}
+\]
+
+Then encode $m$ as unsigned.
+
+\subsection{Dictionary Coding and LZW}
+
+Dictionary coding learns repeated patterns from the sequence itself. \textbf{LZW} initializes the dictionary with one-symbol entries, then adds longer patterns as they are encountered.
+
+Encoding idea:
+
+\begin{enumerate}
+  \item Find longest prefix $W$ already in dictionary.
+  \item If $W+K$ is new, output index of $W$.
+  \item Add $W+K$ to dictionary.
+  \item Continue from $K$.
+\end{enumerate}
+
+Decoder builds the same dictionary because updates are deterministic. Dictionary does not need to be transmitted.
+
+\begin{calloutbox}{red!70!black}{Dictionary asymptotic optimality}
+For stationary ergodic sources, dictionary-based coding is asymptotically optimal:
+
+\[
+L_n\xrightarrow{n\to\infty}\mathcal{H}(X)
+\]
+\end{calloutbox}
+
+\subsection{Standards and Practical Codecs}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Standard / codec} & \textbf{Main tools} & \textbf{Best use} \\ \hline
+\textbf{JBIG-1} & context arithmetic coding & bi-level images, progressive coding \\ \hline
+\textbf{JBIG-2} & segmentation, symbol dictionaries, arithmetic coding & text/halftone documents, PDF \\ \hline
+\textbf{JPEG-LS} & MED prediction, context modeling, Golomb-Rice & natural photos, medical images \\ \hline
+\textbf{PNG} & prediction, LZ77/Deflate, Huffman & graphics, icons, text-heavy images \\ \hline
+\end{tabular}}
+\end{center}
+
+JPEG-LS \textbf{MED predictor} uses causal neighbors:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{C} & \textbf{B} \\ \hline
+A & X \\ \hline
+\end{tabular}}
+\end{center}
+
+\[
+\hat{x}=
+\begin{cases}
+\min(A,B) & C\geq\max(A,B)\\
+\max(A,B) & C\leq\min(A,B)\\
+A+B-C & \text{otherwise}
+\end{cases}
+\]
+
+This avoids overshoot around sharp edges.
+
+\subsection{Neural Lossless Coding}
+
+Neural lossless coding uses a neural network to estimate a probability model $Q$ for arithmetic coding.
+
+Training minimizes cross-entropy:
+
+\[
+H(P,Q)=H(P)+D_{KL}(P\parallel Q)
+\]
+
+where:
+
+\begin{itemize}
+  \item $H(P)$ is the irreducible source entropy.
+  \item $D_{KL}(P\parallel Q)$ is redundancy from model mismatch.
+\end{itemize}
+
+Autoregressive models use:
+
+\[
+P(x_1,\ldots,x_n)=\prod_{i=1}^{n}P(x_i|x_1,\ldots,x_{i-1})
+\]
+
+They can model long-range dependencies, but decoding may require one model evaluation per pixel.
+
+Neural predictive coding replaces a linear predictor with:
+
+\[
+\hat{x}_i=f_{NN}(\text{local context})
+\]
+
+and codes residuals. For \texttt{house.pgm}, source reports:
+
+\begin{itemize}
+  \item 2D linear predictor residual entropy: \textbf{2.830 bpp}.
+  \item MLP predictor residual entropy: \textbf{2.704 bpp}.
+\end{itemize}
+
+Total rate must include model cost:
+
+\[
+R_{\text{total}}=R_{\text{residuals}}+\frac{L_{\text{model}}}{N}
+\]
+
+Limitations:
+
+\begin{itemize}
+  \item high decoding complexity,
+  \item hardware requirements,
+  \item generalization gap,
+  \item bit-exact determinism issues.
+\end{itemize}
+
+\section{Theory and Formulas}
+
+\subsection{Entropy Bound and Optimal Lengths}
+
+Given probabilities $p_i$, ideal lengths solve:
+
+\[
+\min_{\ell_i}\sum_ip_i\ell_i
+\quad\text{s.t.}\quad
+\sum_i2^{-\ell_i}=1
+\]
+
+Using a Lagrangian:
+
+\[
+J(\ell)=\sum_ip_i\ell_i+\lambda\left(\sum_i2^{-\ell_i}-1\right)
+\]
+
+Relaxing integer constraints:
+
+\[
+\ell_i^*=-\log_2p_i
+\]
+
+and:
+
+\[
+\mathcal{L}^*=H(X)
+\]
+
+This explains why optimal entropy coding assigns short codewords to probable symbols and long codewords to rare symbols.
+
+\subsection{Kraft Tree Interpretation}
+
+In a binary tree of maximum depth $L_{\max}$, a codeword of length $\ell_i$ blocks:
+
+\[
+2^{L_{\max}-\ell_i}
+\]
+
+leaves. Prefix codewords block disjoint leaf sets, therefore:
+
+\[
+\sum_i2^{L_{\max}-\ell_i}\leq2^{L_{\max}}
+\]
+
+Dividing by $2^{L_{\max}}$ gives Kraft:
+
+\[
+\sum_i2^{-\ell_i}\leq1
+\]
+
+\subsection{Conditioning and Context Coding}
+
+For sources with memory:
+
+\[
+\mathcal{H}=\lim_{n\to\infty}H(X_n|X_{n-1},\ldots,X_1)
+\]
+
+Context coding approximates this entropy rate by conditioning on a finite significant past.
+
+For a binary image with previous pixel as context:
+
+\[
+H(X|\square)=0.322,\qquad H(X|\blacksquare)=0.918
+\]
+
+Weighted average:
+
+\[
+H(X|Y)=0.406\ \text{bpp}
+\]
+
+This is below single-pixel entropy $H(X)=0.586$ bpp because neighboring pixels are correlated.
+
+\subsection{Huffman vs. Arithmetic Overhead}
+
+Huffman on single symbols:
+
+\[
+H(X)\leq\mathcal{L}<H(X)+1
+\]
+
+Huffman on $K$-symbol blocks:
+
+\[
+\frac{\mathcal{L}}{K}<\frac{H(X^K)}{K}+\frac{1}{K}
+\]
+
+Arithmetic coding on length-$n$ sequences:
+
+\[
+\mathcal{L}<H(X)+\frac{2}{n}
+\]
+
+Arithmetic coding therefore approaches entropy without exponential block alphabets.
+
+\subsection{House Image Result}
+
+For \texttt{house.pgm}, original bit depth is 8 bpp and direct entropy is:
+
+\[
+H=7.056\ \text{bpp}
+\]
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Coding input} & \textbf{Entropy} & \textbf{Huffman} & \textbf{Exp-Golomb} & \textbf{ZIP} \\ \hline
+Direct pixels & 7.06 & 7.08 & 11.32 & 4.00 \\ \hline
+1D residuals & 3.31 & 3.38 & 3.43 & 3.23 \\ \hline
+2D residuals & 2.83 & 2.89 & 2.94 & 3.14 \\ \hline
+\end{tabular}}
+\end{center}
+
+Main result:
+
+\[
+7.06\ \text{bpp}\rightarrow2.83\ \text{bpp}
+\]
+
+through 2D prediction before entropy coding.
+
+\section{Visual Schemes}
+
+\subsection{Entropy Coding Pipeline}
+
+\begin{center}\includegraphics[width=\linewidth]{ch03/entropy-coding-pipeline.png}\end{center}
+Lossless coding sits after prediction and quantization/index generation, where it removes statistical redundancy from symbol indexes.
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Samples] --> B[Prediction]
+    B --> C[Residuals]
+    C --> D[Quantized indexes]
+    D --> E[Entropy coder]
+    E --> F[Bitstream]
+    F --> G[Entropy decoder]
+    G --> H[Indexes]
+    H --> I[Reconstruction path]
+\end{verbatim}
+
+\subsection{Entropy and Prefix Codes}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch03/binary-entropy-curve.png}\end{center}
+Binary entropy is maximum at equal probabilities and decreases when one symbol becomes predictable.
+
+\begin{center}\includegraphics[width=\linewidth]{ch03/kraft-tree-proof.png}\end{center}
+Kraft inequality follows from prefix codewords occupying disjoint subtrees in a binary tree.
+
+\begin{center}\includegraphics[width=0.75\linewidth]{ch03/huffman-tree-example.png}\end{center}
+Huffman coding builds a prefix tree by repeatedly merging the least probable symbols.
+
+\subsection{Huffman and Predictive Coding}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch03/binary-image-huffman-example.png}\end{center}
+Single-symbol Huffman on a binary image cannot go below 1 bpp even when entropy is below 1 bpp.
+
+\begin{center}\includegraphics[width=\linewidth]{ch03/predictive-huffman-gain.png}\end{center}
+Predictive quantization plus Huffman coding improves rate-distortion performance by exploiting residual probability imbalance.
+
+\subsection{Arithmetic Coding}
+
+\begin{center}\includegraphics[width=\linewidth]{ch03/arithmetic-coding-interval.png}\end{center}
+Arithmetic coding refines an interval for the whole sequence, making it behave like efficient high-order block coding.
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Initial interval 0-1] --> B[Symbol probability model]
+    B --> C[Refine interval]
+    C --> D[Next symbol]
+    D --> B
+    C --> E[Final interval]
+    E --> F[Binary tag]
+\end{verbatim}
+
+\subsection{LZW Dictionary Coding}
+
+\begin{center}\includegraphics[width=\linewidth]{ch03/lzw-encoding-example.png}\end{center}
+LZW encoding emits dictionary indexes while adding newly observed repeated patterns.
+
+\begin{center}\includegraphics[width=\linewidth]{ch03/lzw-decoding-example.png}\end{center}
+LZW decoding reconstructs the same dictionary deterministically, so the dictionary is not transmitted.
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Input stream] --> B[Find longest dictionary prefix]
+    B --> C[Emit prefix index]
+    C --> D[Add prefix plus next symbol]
+    D --> B
+    C --> E[Index stream]
+\end{verbatim}
+
+\subsection{Prediction Results on House Image}
+
+\begin{center}\includegraphics[width=\linewidth]{ch03/house-direct-coding.png}\end{center}
+Direct pixel coding remains close to 7 bpp entropy; dictionary coding can help because repeated byte patterns exist.
+
+\begin{center}\includegraphics[width=0.75\linewidth]{ch03/house-1d-prediction.png}\end{center}
+1D DPCM prediction sharply reduces residual entropy compared with direct pixel coding.
+
+\begin{center}\includegraphics[width=0.75\linewidth]{ch03/house-2d-prediction.png}\end{center}
+2D adaptive prediction reduces entropy further by exploiting vertical and horizontal image structure.
+
+\section{Examples}
+
+\begin{calloutbox}{green!55!black}{Code decodability}
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Symbol} & \textbf{Code 1} & \textbf{Code 2} & \textbf{Code 3} & \textbf{Code 4} \\ \hline
+A & \texttt{0} & \texttt{0} & \texttt{0} & \texttt{0} \\ \hline
+B & \texttt{0} & \texttt{1} & \texttt{10} & \texttt{01} \\ \hline
+C & \texttt{1} & \texttt{00} & \texttt{110} & \texttt{011} \\ \hline
+D & \texttt{10} & \texttt{11} & \texttt{111} & \texttt{0111} \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} Code 3 is prefix and instantaneously decodable. Code 4 is decodable with delay. Codes 1 and 2 are not uniquely decodable.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{French text entropy}
+Alphabet size $M=26$.
+
+\[
+R_{\mathrm{FLC}}=\lceil\log_2 26\rceil=5\ \text{bits/symbol}
+\]
+
+Source entropy:
+
+\[
+H=3.999\ \text{bits/symbol}
+\]
+
+Any VLC satisfies $\mathcal{L}\geq3.999$. Huffman gives about $4.041$ bits/symbol, so compression ratio is about $5/4.041=1.238$.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Huffman on six symbols}
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Symbol} & \textbf{Probability} & \textbf{Codeword} & \textbf{Length} \\ \hline
+A & 0.40 & \texttt{0} & 1 \\ \hline
+B & 0.20 & \texttt{100} & 3 \\ \hline
+C & 0.15 & \texttt{101} & 3 \\ \hline
+D & 0.15 & \texttt{110} & 3 \\ \hline
+E & 0.05 & \texttt{1110} & 4 \\ \hline
+F & 0.05 & \texttt{1111} & 4 \\ \hline
+\end{tabular}}
+\end{center}
+
+Average length:
+
+\[
+\mathcal{L}=2.3\ \text{bits/symbol}
+\]
+
+Entropy:
+
+\[
+H\approx2.2464\ \text{bits/symbol}
+\]
+
+Huffman is close to the entropy bound.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Binary image and Huffman block coding}
+For a black-white image:
+
+\[
+P(\square)=86.7\%,\qquad P(\blacksquare)=13.3\%
+\]
+
+Single-pixel entropy:
+
+\[
+H(X)=0.586\ \text{bpp}
+\]
+
+Single-symbol Huffman still needs:
+
+\[
+\mathcal{L}=1\ \text{bpp}
+\]
+
+because a binary alphabet needs at least one bit per symbol.
+
+Two-pixel block coding gives:
+
+\[
+H([X_1X_2])/2=0.511\ \text{bpp},\qquad
+\mathcal{L}_S=0.65\ \text{bpp}
+\]
+
+Four-pixel block coding gives:
+
+\[
+H([X_1X_2X_3X_4])/4=0.383\ \text{bpp},\qquad
+\mathcal{L}_S=0.433\ \text{bpp}
+\]
+
+\textbf{Takeaway:} larger blocks move Huffman closer to entropy but increase alphabet complexity.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Arithmetic coding for sequence ACFD}
+Probabilities: A=0.4, B=0.2, C=0.15, D=0.15, E=0.05, F=0.05.
+
+Interval refinement:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Step} & \textbf{Symbol} & \textbf{Interval} \\ \hline
+start & - & $[0,1)$ \\ \hline
+1 & A & $[0,0.4)$ \\ \hline
+2 & C & $[0.24,0.30)$ \\ \hline
+3 & F & $[0.297,0.30)$ \\ \hline
+4 & D & $[0.29925,0.2997)$ \\ \hline
+\end{tabular}}
+\end{center}
+
+Any binary number inside final interval identifies the whole sequence.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Exp-Golomb codes}
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{$n$} & \textbf{$n+1$ binary} & \textbf{unsigned Exp-Golomb} \\ \hline
+0 & \texttt{1} & \texttt{1} \\ \hline
+1 & \texttt{10} & \texttt{010} \\ \hline
+2 & \texttt{11} & \texttt{011} \\ \hline
+3 & \texttt{100} & \texttt{00100} \\ \hline
+7 & \texttt{1000} & \texttt{0001000} \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} efficient for small non-negative integers and simple to decode.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{LZW binary sequence}
+Input starts:
+
+\begin{verbatim}
+0 0 0 1 0 0 0 0 0 0 1 0 ...
+\end{verbatim}
+
+Initial dictionary:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Code} & \textbf{Pattern} \\ \hline
+\texttt{0} & \texttt{0} \\ \hline
+\texttt{1} & \texttt{1} \\ \hline
+\end{tabular}}
+\end{center}
+
+New entries include \texttt{00}, \texttt{001}, \texttt{10}, \texttt{000}, and longer repeated patterns. Emitted values are dictionary indexes, not final raw bits.
+
+\textbf{Takeaway:} repeated patterns become single indexes; decoder reconstructs the same dictionary.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{JPEG-LS vs PNG}
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Codec} & \textbf{Core method} & \textbf{Best source} \\ \hline
+JPEG-LS & prediction + context + Golomb-Rice & natural/medical images \\ \hline
+PNG & LZ77/Deflate + Huffman & graphics, icons, text \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Takeaway:} both are lossless, but their models target different source statistics.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Neural model cost}
+Small MLP with about 100 weights at 32 bits each:
+
+\[
+L_{\text{model}}=3200\ \text{bits}
+\]
+
+For a $512\times512$ image and residual rate $2.704$ bpp:
+
+\[
+R=2.704+\frac{3200}{512^2}\approx2.716\ \text{bpp}
+\]
+
+\textbf{Takeaway:} neural coding must account for model transmission unless the model is shared.
+\end{calloutbox}
+
+\begin{calloutbox}{green!55!black}{Method selection}
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Source characteristic} & \textbf{Recommended method} & \textbf{Reason} \\ \hline
+Memoryless & Huffman or arithmetic & matches entropy bound \\ \hline
+Stationary with memory & context arithmetic & exploits conditional probabilities \\ \hline
+Locally stationary & adaptive arithmetic & tracks changing statistics \\ \hline
+Repeating strings & dictionary coding & learns recurring patterns \\ \hline
+Complex long-range dependencies & neural models & learns nonlinear probability models \\ \hline
+\end{tabular}}
+\end{center}
+
+\textbf{Rule of thumb:} Huffman/Exp-Golomb for speed, arithmetic/context for high compression, dictionary for universal files, neural models for best compression when complexity is acceptable.
+\end{calloutbox}

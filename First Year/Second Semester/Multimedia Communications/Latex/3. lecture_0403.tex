@@ -1,5 +1,5 @@
 \section{Scalar and Predictive Quantization}
-Quantization = control the number of bits used for representing some samples\\
+Quantization is the replacement of each input value with one value selected from a finite reconstruction set. It controls the number of symbols, and therefore the number of bits, used to represent samples while introducing a measurable approximation error.\\
 $\theta^i$ are the quantization region/cells $ = (t^i, t^{i+1})$\\
 There is a total of $(L+1)$ thresholds and $L$ levels, total of $2L+1$ elements.
 Mathematical definition:
@@ -9,10 +9,14 @@ Quantization process can be seen as a coding-decoding process.
 $$\stackrel{x}{\longrightarrow}\boxed{E_{\theta^i}}\stackrel{i}{\longrightarrow}\qquad \qquad \qquad \qquad \stackrel{i}{\longrightarrow}\boxed{D_{C}}\stackrel{\hat{x}}{\longrightarrow}$$
 Note: Scalar quantization $\equiv$ we only take a sample at a time, not a vector.
 \subsection{Scalar Quantizer}
+A scalar quantizer processes one sample at a time. It assigns the sample to a quantization cell and represents the entire cell using its reconstruction level or corresponding binary index.
 \subsubsection{Rate}
-Correct for average formula, no need to use ceil
+Rate is the amount of coded information spent to represent each source sample. Here it is measured in bits per sample, or in bits per pixel (bpp) when samples are image pixels; for audio and video streams, bitrate is measured in bit/s.
+Under the ideal fixed-length model with $L$ quantization levels, each index requires
 $$R = \log_2 L$$
+bits per sample. Fractional values describe an ideal or average rate; an actual fixed-length binary code requires an integer number of bits unless $L$ is a power of two.
 \subsubsection{Distortion}
+Distortion is the numerical loss introduced by replacing $x(n)$ with its reconstruction $Q(x(n))$. With squared error, distortion has the squared unit of the signal; averaging it over samples or a probability distribution gives the MSE.
 We use the MSE to track the error:
 $$\text{MSE}\ d[x(n),Q(x(n))] =|e(n)|^2 = \left[x(n)-Q(x(n))\right]^2$$
 For signals of duration N:
@@ -20,6 +24,7 @@ $$ D = \frac{1}{N}\sr{N-1}{n=0}d[x(n),Q(x(n))]$$
 For random signals:
 $$D = \vatt{|X(n) - Q(X(n))|^2} = \vatt{|E(n)|^2}$$
 \subsection{Uniform Quantization}
+A uniform quantizer uses equally spaced thresholds and reconstruction levels. Its single step size $\Delta$ controls both precision and rate: smaller steps reduce quantization error but require more levels and therefore more bits.
 We can use the \verb|floor|,\verb|ceil|,\verb|round|,\verb|fix| operators to perform a quantization, since they map $\mathbb{R} \to \mathbb{Z}$ ($\mathbb{Z}$ mapping).
 \subsubsection{Definitions}
 $\forall i$:
@@ -46,6 +51,7 @@ Midtread = `0' is a quantized level, not a threshold
 \end{itemize}
 Alternative case: Midrise = `0' is a threshold, not a level. Bad idea in most of the cases because when there are little oscillations around 0, the quantized value gets amplified.
 \subsubsection{Dead-zone Quantization for Signed Data}
+A dead-zone quantizer enlarges the interval mapped to zero. It is useful for sparse transform or prediction residuals because many small coefficients become exactly zero and can then be compressed efficiently by entropy coding.
 We exploit the midtread quantizer, by extending the `0' region:
 $$i = \begin{cases}
     \text{sign}(x)\left\lfloor\frac{|x| + \frac{\tau\Delta}{2}}{\Delta}\right\rfloor \qquad |x| \geq \tau\\
@@ -55,6 +61,7 @@ $$i = \begin{cases}
     0 \text{ otherwise}
 \end{cases}$$
 \subsubsection{Rate and Distorsion curve}
+The rate--distortion curve describes the minimum distortion achievable at each coding rate, or equivalently the rate required for a target distortion. It makes the central compression tradeoff explicit: spending more bits generally lowers reconstruction error.
 We are looking for a relation that allows us to write $D = f(R)$\\
 We use uniform r.v. and the LOTUS\footnote{Law of the unconscious statistician} expected value of function of r.v., by applying this to uniform quantizers:
 $$D = \sigma_Q^2 = \vatt{|X - \hat{X}|^2} = \cdots = \frac{1}{A}L\frac{\Delta^3}{12} = \frac{1}{12}\frac{A^2}{L^2} \qquad \text{with }X \sim \mathcal{U}\left(-\frac{A}{2},\frac{A}{2}\right)$$
@@ -62,8 +69,9 @@ Using the fact that $R = \log_2L$:
 $$D = \sigma_Q^2  = \frac{1}{12}\frac{A^2}{L^2} = \sigma_X^2 2^{-2R}$$
 Finally we can write the SNR:
 $$\text{SNR} \approx10\log_{10}\frac{\vatt{X}}{D} = 10\log_{10} 2^{2R} \approx 6R$$
-This is the slope of a Rate/SNR plot.
+SNR is the ratio between signal power and error power, expressed in decibels. The result above means that adding one bit per sample improves SNR by approximately $6$ dB under these assumptions.
 \subsection{Optimal Quantization}
+An optimal quantizer chooses thresholds and reconstruction levels to minimize an expected distortion for a specified number of levels or rate. ``Optimal'' always refers to the assumed source distribution and distortion measure.
 Hypothesis, we use High Resolution Quantization, searching for a locally-optimal solution:
 \begin{itemize}
     \item $L \to \infty \Rightarrow \max\limits_i\Delta_i \to 0$
@@ -76,6 +84,7 @@ The shape factor depends only on the PDF \emph{shape}, not on the variance:
 $$C_x = 1 \ (\text{Uniform}) \qquad C_x = \frac{\sqrt{3}}{2}\pi \approx 2.72 \ (\text{Gaussian})$$
 Gaussian signals need $\approx 2.72\times$ more distortion than uniform at the same rate (heavier tails).
 \subsubsection{High Resolution (HR) Uniform Quantization}
+High-resolution quantization is an approximation valid when cells are sufficiently small that the source probability density is almost constant inside each cell. It provides simple analytical rate--distortion formulas, but becomes inaccurate at low rates.
 Hypothesis:
 \begin{itemize}
     \item $L \to +\infty \Rightarrow \Delta \to 0$, $X$ generic r.v.
@@ -85,6 +94,7 @@ Hypothesis:
 Computing the SNR, we get:
 $$\text{SNR} \approx10\log_{10}\frac{\vatt{X}}{D} = 10\log_{10} \frac{\sigma^2_X}{\frac{A^2}{12}2^{-2R}} \approx 6R - 10\log_{10}\frac{\gamma^2}{3} \qquad\text{where }\gamma^2 = \frac{X_{\max}^2}{\sigma_X^2} = \frac{A^2}{4\sigma_X^2}$$
 \subsubsection{Lloyd-Max algorithm}
+The Lloyd--Max algorithm is an iterative method for designing a locally MSE-optimal scalar quantizer for a known distribution or training set. It alternates between optimal cell boundaries and optimal reconstruction centroids until the distortion stops decreasing significantly.
 What if we are not in high resolution hypothesis? Lloyd-Max provides a locally-optimal solution. Steps:
 \begin{enumerate}
     \item Choose an initial dictionary $C^{(0)} = \{\hat{x}^i_0\}_{i=1\cdots L}$ (uniform initialization)

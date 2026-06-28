@@ -1,0 +1,270 @@
+\section{Audio and Speech Coding}
+
+
+
+
+\begin{questionbox}{Domanda 39}
+Explain masking in the auditory system: define frequency masking and \textbf{temporal masking} (pre/post-masking) with their time-scale orders of magnitude.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{Auditory masking} → strong sound makes weaker sound inaudible.
+  \item Codec use → hide \textbf{quantization} noise below \textbf{masking threshold}.
+  \item \textbf{Frequency masking} → \textbf{simultaneous masking}; strong component at $f_0$ raises threshold around nearby frequencies, mostly same critical band.
+  \item \textbf{\textbf{temporal masking}}:
+  \item pre-masking → few ms before masker;
+  \item post-masking → up to about $100$-$200$ ms after masker, depending on level/content.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 40}
+What is the critical band and how does it relate to the audibility condition of a set of sinusoids close in frequency?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{Critical band} → frequency interval processed roughly by same cochlear auditory filter.
+  \item Bandwidth increases with center frequency.
+  \item Close sinusoids interact inside same band.
+  \item Audibility condition:
+\end{itemize}
+
+
+$$
+\sum_i g_i^2 > S_0(f_n)
+$$
+
+
+\begin{itemize}
+  \item $g_i^2$ → sinusoid powers.
+  \item $S_0(f_n)$ → absolute hearing threshold near frequency $f_n$.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 41}
+(A\&S Comp.) Explain the difference between Source-Based (Parametric) coding and Sink-Based (Perceptual) coding.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{Source-based / parametric coding} → models signal production.
+  \item Speech → source-filter model of vocal folds + vocal tract.
+  \item Goal → intelligibility and low latency at very low bitrate.
+  \item \textbf{Sink-based / perceptual coding} → models listener perception.
+  \item Audio codecs → auditory masking + critical bands.
+  \item Goal → transparent quality by removing inaudible information.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 42}
+(A\&S Comp.) Describe the “Analysis-by-Synthesis” (AbS) loop used in \textbf{CELP} (Code Excited Linear Prediction) codecs and why it represents an improvement over simple \textbf{LPC}-10.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{LPC}-10 → simplified excitation: impulse train for voiced, noise for unvoiced → synthetic sound.
+  \item \textbf{CELP} → \textbf{Analysis-by-Synthesis} closed-loop search:
+\end{itemize}
+
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.1cm,
+    block/.style={draw, fill=blue!5, text width=6.5cm, align=center, minimum height=0.6cm, rounded corners=3pt, font=\small},
+    arrow/.style={thick,->,>=stealth}
+]
+    \node (a) [block] {Candidate Codebook Excitation};
+    \node (b) [block, below=of a] {Gain};
+    \node (c) [block, below=of b] {Synthesis Filter $1/A(z)$};
+    \node (d) [block, below=of c] {Perceptual Weighting};
+    \node (e) [block, below=of d] {Compare with Original Speech};
+    \node (f) [block, below=of e] {Choose Index/Gain with Min Weighted Error};
+
+    \draw [arrow] (a) -- (b);
+    \draw [arrow] (b) -- (c);
+    \draw [arrow] (c) -- (d);
+    \draw [arrow] (d) -- (e);
+    \draw [arrow] (e) -- (f);
+\end{tikzpicture}
+\caption{CELP Analysis-by-Synthesis Loop}
+\end{figure}
+
+
+\begin{itemize}
+  \item \textbf{bit allocation}:
+  \item sensitive bands → more bits;
+  \item masked bands → fewer bits.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 44}
+(A\&S Comp.) Describe the principles of the LPC10 speech coding scheme.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{\textbf{LPC}} → short speech frame modeled as excitation through all-pole vocal-tract filter.
+  \item Encoder sends → filter parameters, gain, excitation information.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{images/Linear_predictive_coding_-_analysis.png}
+\caption{Linear predictive coding - analysis}
+\end{figure}\begin{tcolorbox}[colback=white, colframe=gray!50, height=4.5cm, sharp corners]
+\end{tcolorbox}
+
+\begin{itemize}
+  \item Analysis:
+\end{itemize}
+
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.1cm,
+    block/.style={draw, fill=blue!5, text width=7.5cm, align=center, minimum height=0.6cm, rounded corners=3pt, font=\small},
+    arrow/.style={thick,->,>=stealth}
+]
+    \node (a) [block] {Speech Frame ($\sim 20$ ms)};
+    \node (b) [block, below=of a] {Windowing};
+    \node (c) [block, below=of b] {Autocorrelation};
+    \node (d) [block, below=of c] {Levinson-Durbin / Yule-Walker};
+    \node (e) [block, below=of d] {LPC Coefficients, Gain, Pitch, Voiced/Unvoiced Decision};
+
+    \draw [arrow] (a) -- (b);
+    \draw [arrow] (b) -- (c);
+    \draw [arrow] (c) -- (d);
+    \draw [arrow] (d) -- (e);
+\end{tikzpicture}
+\caption{LPC Analysis Block Scheme}
+\end{figure}
+
+
+\begin{itemize}
+  \item Prediction model:
+\end{itemize}
+
+
+$$
+\hat{x}(n)=-\sum_{i=1}^{P}a_i x(n-i)
+$$
+
+
+\begin{itemize}
+  \item Residual:
+\end{itemize}
+
+
+$$
+y(n)=x(n)-\hat{x}(n)=\sum_{i=0}^{P}a_i x(n-i),\quad a_0=1
+$$
+
+
+\begin{itemize}
+  \item Voiced frames → \textbf{pitch}-period excitation.
+  \item Unvoiced frames → noise-like excitation.
+  \item \textbf{LPC}-10 → low bitrate, less natural than \textbf{CELP} because excitation is rigid.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 45}
+(A\&S Comp.) Draw the scheme and describe the operation of the functional blocks of an MP3 encoder.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{MP3} → perceptual audio codec.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{images/Pasted_image_20260624185047.png}
+\caption{Pasted image 20260624185047}
+\end{figure}\begin{tcolorbox}[colback=white, colframe=gray!50, height=4.5cm, sharp corners]
+\end{tcolorbox}
+
+\begin{itemize}
+  \item Main encoder chain:
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{images/Pasted_image_20260624213214.png}
+\caption{Pasted image 20260624213214}
+\end{figure}\begin{tcolorbox}[colback=white, colframe=gray!50, height=4.5cm, sharp corners]
+\end{tcolorbox}
+
+\begin{itemize}
+  \item Functional blocks:
+  \item framing/windowing + transform/filterbank → convert time signal into spectral components;
+  \item \textbf{psychoacoustic model} → estimate \textbf{masking threshold} from signal spectrum;
+  \item \textbf{bit allocation} → spend more bits where ear is sensitive, fewer where noise is masked;
+  \item \textbf{quantization} → \textbf{lossy} stage on spectral coefficients;
+  \item \textbf{entropy} coding → final \textbf{lossless} compression stage.
+  \item \textbf{psychoacoustic model} → encoder-side only; not needed at decoder.
+  \item Decoder → \textbf{entropy} decoding, inverse \textbf{quantization}, inverse transform / synthesis filterbank.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 46}
+(A\&S Comp.) Why are Line Spectrum Frequencies (LSF) preferred over direct \textbf{quantization} of \textbf{LPC} coefficients ($a_i$)?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item Direct \textbf{LPC} coefficient \textbf{quantization} → can create unstable synthesis filters.
+  \item \textbf{LSF} → represent \textbf{LPC} filter through roots on unit circle.
+  \item Stability condition easier to enforce by preserving interlacing/order:
+\end{itemize}
+
+
+$$
+0<\omega_1^{(P)}<\omega_1^{(Q)}<\omega_2^{(P)}<\cdots<\pi
+$$
+
+
+\begin{itemize}
+  \item If \textbf{quantization} disturbs order → decoder can restore valid ordering.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 47}
+(A\&S Comp.) Regarding the Opus audio codec, what is the primary technical advantage of its hybrid design?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{Opus} combines:
+  \item \textbf{SILK} → \textbf{LPC}-based, efficient for speech and low bitrates;
+  \item \textbf{CELT} → \textbf{MDCT}-based, efficient for music/general audio and low delay.
+  \item Advantage → seamless adaptation across speech/music, bitrate, latency; useful for WebRTC.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 48}
+(A\&S Comp.) Which of the following best describes current research trends in the future of multimedia audio coding?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item Neural speech/audio codecs at very low bitrates.
+  \item Perceptual and QoE-driven quality metrics.
+  \item Spatial/immersive audio.
+  \item Robust real-time coding under latency constraints.
+  \item Quality assessment for generated/enhanced audio.
+\end{itemize}
+
+---
+
+

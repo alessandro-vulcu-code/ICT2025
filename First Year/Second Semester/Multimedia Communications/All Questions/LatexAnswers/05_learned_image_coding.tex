@@ -1,0 +1,132 @@
+\section{Learned Image Coding}
+
+
+
+
+\begin{questionbox}{Domanda 35}
+(TC\&JPEG) Explain the fundamental shift in \textbf{\textbf{rate}-\textbf{distortion}} (R-D) optimization from classical codecs (e.g., JPEG) to neural compression methods.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item Classical codecs → optimize handcrafted tools:
+  \item fixed transforms;
+  \item prediction modes;
+  \item block partitions;
+  \item \textbf{quantization} steps.
+\end{itemize}
+
+
+$$
+J = D + \lambda R
+$$
+
+
+\begin{itemize}
+  \item Neural compression → learns analysis transform, synthesis transform, \textbf{entropy} model.
+\end{itemize}
+
+
+$$
+\mathcal{L}=D(x,\hat{x})+\lambda R(\hat{y})
+$$
+
+
+\begin{itemize}
+  \item Main shift → data-learned transform instead of fixed standard tools.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 36}
+JPEG-AI: goals (beat \textbf{VVC}-Intra by about 50\%), backbone (hierarchical VAE with hyperprior), dual-use human/machine support, and complexity profiles (Dec0/Dec1/Dec2, kMAC/px). Cite pros/cons vs classical codecs (R-D vs computational cost, determinism, hallucinations).
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{JPEG-AI} → learned still-image coding for human viewing and machine consumption.
+  \item Goal → beat classical intra codecs, target about \textbf{50\% gain vs \textbf{VVC}-Intra} in favorable settings; notes also report about \textbf{27\% saving at 0.5 bpp}.
+  \item Backbone:
+\end{itemize}
+
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.1cm and 1.5cm,
+    block/.style={draw, fill=blue!5, text width=4cm, align=center, minimum height=0.6cm, rounded corners=3pt, font=\small},
+    arrow/.style={thick,->,>=stealth}
+]
+    \node (x) [block] {Input $x$};
+    \node (a) [block, below=of x] {Analysis Transform};
+    \node (q) [block, below=of a] {Quantized Latents};
+    \node (e) [block, below=of q] {Entropy Coding};
+    \node (b) [block, below=of e] {Bitstream};
+    \node (h) [block, right=of a] {Hyperprior};
+
+    \draw [arrow] (x) -- (a);
+    \draw [arrow] (a) -- (q);
+    \draw [arrow] (q) -- (e);
+    \draw [arrow] (e) -- (b);
+    \draw [arrow] (a) -- (h);
+\end{tikzpicture}
+\caption{JPEG-AI Hierarchical VAE Backbone}
+\end{figure}
+
+
+\begin{itemize}
+  \item Hyperprior → side information about latent statistics (scales/probabilities); costs bits but improves \textbf{entropy} modeling.
+  \item Backbone class → hierarchical \textbf{VAE} with hyperprior; nonlinear analysis/synthesis transforms learned end-to-end.
+  \item Dual use → support both \textbf{human viewing} and \textbf{machine consumption}.
+  \item Decoder profiles, complexity in \textbf{kMAC/px}:
+  \item \textbf{Dec0} → about 8 kMAC/px;
+  \item \textbf{Dec1} → about 23 kMAC/px;
+  \item \textbf{Dec2} → about 214 kMAC/px.
+  \item Pros:
+  \item better R-D efficiency;
+  \item nonlinear transforms learned from data;
+  \item possible human/machine task support.
+  \item Cons:
+  \item high computational/energy cost;
+  \item harder deterministic reproducibility;
+  \item risk of plausible but inaccurate reconstructed details.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 37}
+(TC\&JPEG) What is the primary purpose of adding Additive Uniform Noise during the training phase of a neural codec?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{quantization} → non-differentiable, zero gradient almost everywhere.
+  \item Training relaxation → additive uniform noise:
+\end{itemize}
+
+
+$$
+u \sim \mathcal{U}\left(-\frac{1}{2},\frac{1}{2}\right)
+$$
+
+
+\begin{itemize}
+  \item Effect → approximates rounding with continuous operation → gradient-based optimization possible.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 38}
+(TC\&JPEG) Why do Convolutional Neural Networks (CNNs) outperform Multi-Layer Perceptrons (MLPs) when applied to image compression?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item MLPs → flatten images, ignore spatial locality, many parameters, weak image bias.
+  \item CNNs → exploit local correlations, translation structure, shared filters.
+  \item Result → more efficient image compression models.
+\end{itemize}
+
+---
+
+

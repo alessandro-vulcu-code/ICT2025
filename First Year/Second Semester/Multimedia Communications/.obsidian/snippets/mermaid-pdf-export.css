@@ -1,0 +1,27 @@
+/* Keep Mermaid diagrams inside note width and exported PDF pages. */
+.mermaid,
+.markdown-rendered .mermaid,
+.markdown-preview-view .mermaid {
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+
+.mermaid svg,
+.markdown-rendered .mermaid svg,
+.markdown-preview-view .mermaid svg {
+  display: block !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media print {
+  .mermaid,
+  .markdown-rendered .mermaid,
+  .markdown-preview-view .mermaid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

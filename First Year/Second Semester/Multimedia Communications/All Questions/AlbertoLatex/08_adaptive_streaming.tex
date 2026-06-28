@@ -1,0 +1,179 @@
+\section{Adaptive Streaming}
+
+
+
+
+\begin{questionbox}{Domanda 64}
+Compare QoS and QoE: what they measure and how they correlate. Which network factors impact streaming QoE?
+\end{questionbox}
+
+
+Quality of Service (QoS) describes technical service or network metrics, such as throughput, latency, jitter and packet loss.
+
+Quality of Experience (QoE) describes the user-perceived quality of the multimedia service. It depends on media quality, startup delay, stalls, quality switches, device, context and expectations.
+
+QoS and QoE are correlated but not linearly. For example, packet loss may be invisible if the buffer hides it, while a short throughput drop can severely hurt QoE if it causes rebuffering.
+
+
+
+\begin{questionbox}{Domanda 65}
+(AdapStrm) Describe the fundamental architectural differences between a “Push-based” streaming system (e.g., RTP/UDP) and a “Pull-based” system (e.g., \textbf{DASH}).
+\end{questionbox}
+
+
+\textbf{Push-based streaming} (RTP/UDP/WebRTC-style):
+
+\begin{itemize}
+  \item server sends packets according to its timing,
+  \item low latency,
+  \item needs real-time transport/control mechanisms,
+  \item often used for conferencing/live interactive media.
+\end{itemize}
+
+\textbf{Pull-based streaming} (\textbf{DASH}/\textbf{HLS} over HTTP):
+
+\begin{itemize}
+  \item client requests segments,
+  \item works with HTTP/CDNs/caches,
+  \item client selects bitrate based on throughput and buffer,
+  \item higher delay but scalable and robust for VoD/streaming.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 66}
+(AdapStrm) Analyze the role of the client-side buffer in the context of stability and Quality of Experience (QoE).
+\end{questionbox}
+
+
+The buffer stores already downloaded media in seconds. It absorbs throughput variation and jitter. Larger buffer improves stability but increases startup delay and latency.
+
+QoE depends on:
+
+\begin{itemize}
+  \item initial startup time,
+  \item rebuffering events,
+  \item duration of stalls,
+  \item segment quality,
+  \item quality switches.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 67}
+(AdapStrm) Define “Switching Penalty” and discuss its impact on perceived video quality.
+\end{questionbox}
+
+
+Switching penalty is the QoE loss caused by visible changes in quality between consecutive segments. A common score model is:
+
+
+$$
+J(n)=\lambda_1K_n-\lambda_2|K_n-K_{n-1}|-\phi(\Delta_n)
+$$
+
+
+where:
+
+\begin{itemize}
+  \item $K_n$ is segment quality,
+  \item $|K_n-K_{n-1}|$ penalizes switching,
+  \item $\phi(\Delta_n)$ penalizes rebuffering.
+\end{itemize}
+
+Frequent quality oscillations can be worse than stable slightly lower quality.
+
+\begin{tcolorbox}[colback=white, colframe=gray!50, height=4.5cm, sharp corners]
+\end{tcolorbox}
+
+
+
+\begin{questionbox}{Domanda 68}
+(AdapStrm) Explain the evolution of the playout buffer level $B(t)$ using a mathematical model. In your explanation, describe the dynamics of the “playback” (draining) phase and the “rebufferization” (stalling) phase.
+\end{questionbox}
+
+
+Buffer level $B(t)$ is measured in playback seconds:
+
+
+$$
+B(t)=L\cdot T_s
+$$
+
+
+where $L$ is number of stored segments and $T_s$ is segment duration.
+
+For coding \textbf{rate} $R_c$ and throughput $S$:
+
+
+$$
+\frac{dB}{dt}=
+\begin{cases}
+\frac{S}{R_c}-1 & \text{during playback}\\
+\frac{S}{R_c} & \text{during rebuffering}
+\end{cases}
+$$
+
+
+During playback, the buffer drains at one playback second per real second. During rebuffering, playout stops, so there is no output drain. Stable playback requires, on average:
+
+
+$$
+S>R_c
+$$
+
+
+
+
+\begin{questionbox}{Domanda 69}
+(AdapStrm) What is the primary motivation for using HTTP-based protocols for video streaming?
+\end{questionbox}
+
+
+HTTP streaming is stateless, CDN-friendly, firewall-friendly and easy to deploy at scale. \textbf{DASH}/\textbf{HLS} can use standard web infrastructure and let the client adapt representation quality.
+
+
+
+\begin{questionbox}{Domanda 70}
+(AdapStrm) What is the consequence of an \textbf{ABR} algorithm that systematically overestimates the available bandwidth?
+\end{questionbox}
+
+
+If \textbf{ABR} overestimates throughput, it requests segments with too high a bitrate. Download time grows, the buffer empties, and rebuffering/stalling occurs.
+
+
+
+\begin{questionbox}{Domanda 71}
+(AdapStrm) Which metric is a direct indicator of streaming QoE from the end-user’s perspective?
+\end{questionbox}
+
+
+Direct QoE indicators are startup delay, rebuffering duration/frequency, quality level and quality switches. For users, uninterrupted stable playback is usually more important than low-level network metrics.
+
+
+
+\begin{questionbox}{Domanda 72}
+(AdapStrm) At what stage in the session lifecycle does a \textbf{DASH} client process the Media Presentation Description (MPD)?
+\end{questionbox}
+
+
+The client processes the MPD at session start, before downloading media segments. The MPD lists periods, adaptation sets, representations, codecs, bitrates, resolutions and segment URLs.
+
+
+
+\begin{questionbox}{Domanda 73}
+Explain how an \textbf{ABR} (Adaptive Bitrate) algorithm works: \textbf{\textbf{rate}-based} vs \textbf{buffer-based} logic, and the risk of overestimating available bandwidth.
+\end{questionbox}
+
+
+An \textbf{ABR} algorithm is the client-side rule that selects the bitrate representation for the next media segment. Its goal is to maximize QoE by balancing quality, stability and stall avoidance.
+
+\textbf{\textbf{rate}-based} \textbf{ABR} estimates recent throughput and chooses a representation below the available bandwidth, often with a safety margin.
+
+\textbf{buffer-based} \textbf{ABR} uses buffer occupancy: if the buffer is low it chooses conservative bitrates, while if the buffer is high it can request higher quality.
+
+If available bandwidth is overestimated, the client requests segments that are too large. Download time increases, the buffer drains and playback can stall.
+
+---
+
+

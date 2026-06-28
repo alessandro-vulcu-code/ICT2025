@@ -1,0 +1,509 @@
+\chapter{Motion Estimation}
+
+\section{Table of Contents}
+
+\begin{itemize}
+  \item Core Idea
+  \item Key Concepts
+  \item Theory and Formulas
+  \item Visual Schemes
+  \item Examples
+\end{itemize}
+
+\section{Core Idea}
+
+\textbf{Motion Estimation (ME)} extracts displacement information between video frames. In Multimedia Communications its main role is \textbf{temporal prediction}: if a region in the current frame can be predicted from a reference frame, the codec stores a \textbf{motion vector} and a smaller residual instead of coding the full frame independently.
+
+The course focuses on \textbf{apparent motion}, also called \textbf{optical flow}, not on physical 3D motion. Apparent motion is the 2D displacement of image brightness patterns:
+
+\[
+\mathbf{v}(n,m)=
+\begin{bmatrix}
+u(n,m)\\
+v(n,m)
+\end{bmatrix}
+\]
+
+where $u$ and $v$ are horizontal and vertical pixel displacements.
+
+\begin{calloutbox}{red!70!black}{Physical motion vs. apparent motion}
+Physical motion is object movement in 3D space. Apparent motion is movement observed in the image plane. They can differ: a uniformly colored rotating object may have physical motion but no visible optical flow, while a moving light source may create apparent motion without object displacement.
+\end{calloutbox}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch07/apparent-vs-physical-motion.png}\end{center}
+The figure shows why optical flow is an image-domain concept: visible intensity patterns, not real object mechanics, determine the estimated motion.
+
+\section{Key Concepts}
+
+\subsection{Families of Motion Estimation Methods}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Family} & \textbf{Output} & \textbf{Model} & \textbf{Typical use} \\ \hline
+\textbf{Variational / gradient-based} & dense field, one vector per pixel & smooth optical flow & vision analysis, foundational theory \\ \hline
+\textbf{Block matching} & one vector per block & piecewise-constant translation & video compression standards \\ \hline
+\textbf{Parametric} & global or regional field & closed-form model, e.g. affine & camera/object motion models \\ \hline
+\textbf{Deep learning} & dense learned flow & CNN / recurrent correspondence model & optical-flow benchmarks, analysis tasks \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Motion-Compensated Prediction}
+
+Given a current frame $f_k$ and a reference frame $f_h$, the motion-compensated prediction is:
+
+\[
+\tilde{f}_k(n,m)=
+f_h\left(n+u_{h\to k}(n,m),\;m+v_{h\to k}(n,m)\right)
+\]
+
+The prediction residual is:
+
+\[
+e(n,m)=f_k(n,m)-\tilde{f}_k(n,m)
+\]
+
+In compression, good ME should reduce residual energy while keeping the motion-vector field cheap to encode.
+
+\subsection{How to Evaluate a Motion Field}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Criterion} & \textbf{Formula / measure} & \textbf{Meaning} \\ \hline
+\textbf{Prediction quality} & $\mathcal{E}=\frac{1}{NM}\sum e^2(n,m)$ & residual MSE after compensation \\ \hline
+\textbf{PSNR} & $10\log_{10}\frac{255^2}{\mathcal{E}}$ & quality of the predicted frame \\ \hline
+\textbf{MV coding cost} & entropy or coded bits of $(u,v)$ & bit cost of the motion field \\ \hline
+\textbf{Complexity} & blocks $\times$ candidates $\times$ cost evaluation & implementation cost \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{Compression tradeoff}
+The best geometric match is not always the best coding decision. A slightly worse prediction can be preferable if its motion vector is much cheaper to transmit.
+\end{calloutbox}
+
+\section{Theory and Formulas}
+
+\subsection{Variational Optical Flow}
+
+Gradient-based methods assume \textbf{brightness constancy}:
+
+\[
+f_k(n,m)=f_h(n-u,\;m-v)
+\]
+
+For small motion, Taylor expansion gives the optical-flow constraint:
+
+\[
+\nabla f \cdot \mathbf{v}+f_t=0
+\]
+
+or equivalently:
+
+\[
+f_xu+f_yv+f_t=0
+\]
+
+\begin{calloutbox}{red!70!black}{Aperture problem}
+The optical-flow equation gives one scalar equation for two unknowns $(u,v)$. Locally, an edge reveals only the motion component normal to the edge. Additional constraints are needed to estimate a full vector.
+\end{calloutbox}
+
+\subsection{Horn and Schunck}
+
+\textit{Horn and Schunck} adds a smoothness prior to the optical-flow equation. It estimates $u$ and $v$ by minimizing:
+
+\[
+E(u,v)=
+\iint_{\mathcal{R}}
+\left[
+\left(\nabla f \cdot \mathbf{v}+f_t\right)^2
++\lambda^2
+\left(
+|\nabla u|^2+|\nabla v|^2
+\right)
+\right]dn\,dm
+\]
+
+The first term enforces brightness constancy. The second term penalizes rapid spatial changes in the velocity field.
+
+\begin{calloutbox}{red!70!black}{Role of $\lambda$}
+Small $\lambda$ follows the data more closely and can be noisy. Large $\lambda$ enforces smoother flow but can blur motion boundaries.
+\end{calloutbox}
+
+The iterative update used in the slides is:
+
+\[
+u^{k+1}=\bar{u}^{k}
+-f_x
+\frac{f_x\bar{u}^{k}+f_y\bar{v}^{k}+f_t}
+{\lambda^2+f_x^2+f_y^2}
+\]
+
+\[
+v^{k+1}=\bar{v}^{k}
+-f_y
+\frac{f_x\bar{u}^{k}+f_y\bar{v}^{k}+f_t}
+{\lambda^2+f_x^2+f_y^2}
+\]
+
+where $\bar{u}^{k}$ and $\bar{v}^{k}$ are local averages.
+
+\begin{center}\includegraphics[width=0.6\linewidth]{ch07/optical-flow-input-frame.png}\end{center}
+Input video frame used to illustrate dense optical-flow estimation.
+
+\begin{center}\includegraphics[width=0.6\linewidth]{ch07/horn-schunck-dense-flow.png}\end{center}
+Dense optical flow estimated over the frame. The method gives one vector per pixel but tends to smooth across object boundaries.
+
+\subsection{Block Matching}
+
+\textbf{Block matching (BM)} divides the current frame into blocks and assigns one translation vector to each block. For a block $B_{p,q}$ and search window $\mathcal{W}$:
+
+\[
+(\hat{i},\hat{j})=
+\arg\min_{(i,j)\in\mathcal{W}}
+d\left[
+\mathbf{f}_k(B_{p,q}),
+\mathbf{f}_h(B_{p-i,q-j})
+\right]
+\]
+
+All pixels inside the block share the same vector:
+
+\[
+\forall(n,m)\in B_{p,q}:\quad
+\mathbf{v}(n,m)=(\hat{i},\hat{j})
+\]
+
+\textbf{Forward motion} uses a previous reference frame ($h=k-1$). \textbf{Backward motion} uses a future reference frame ($h=k+1$).
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch07/block-matching-reference-current.png}\end{center}
+Block matching searches in a reference frame for the block that best predicts the current block.
+
+\subsection{SAD and SSD}
+
+The general norm-based matching cost is:
+
+\[
+J_p(i,j)=
+\sum_{(n,m)\in B_{p,q}}
+\left|
+f(n,m,k)-f(n-i,m-j,h)
+\right|^p
+\]
+
+Two important cases:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Cost} & \textbf{Formula} & \textbf{Properties} \\ \hline
+\textbf{SAD} & \$\textbackslash{}sum & f\_k-f\_h \\ \hline
+\textbf{SSD} & $\sum (f_k-f_h)^2$ & directly minimizes squared residual energy, but more outlier-sensitive \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch07/sad-vs-ssd-motion-vectors.png}\end{center}
+SAD can give a more regular motion-vector field, while SSD may slightly improve PSNR because it matches the MSE objective.
+
+\subsection{Regularized Motion Estimation}
+
+Motion vectors can be regularized by penalizing vectors that differ from neighboring vectors:
+
+\[
+J_{\text{REG}}(i,j)=
+\left\|
+\mathbf{f}_k(B_{p,q})-\mathbf{f}_h(B_{p-i,q-j})
+\right\|_p^p
++\lambda R(i,j)
+\]
+
+Modern codecs use a rate-distortion form:
+
+\[
+J(v)=D(v)+\lambda_{ME}R(v)
+\]
+
+where $D(v)$ is prediction distortion and $R(v)$ is the number of bits needed to encode the vector.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch07/regularized-motion-vectors.png}\end{center}
+Regularization reduces MVF entropy by preferring smoother vectors, at the cost of a small prediction-quality loss.
+
+\subsection{Block Size Tradeoff}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Block size} & \textbf{Complexity} & \textbf{MV coding cost} & \textbf{Prediction error} \\ \hline
+larger blocks & lower & lower & higher \\ \hline
+smaller blocks & higher & higher & lower \\ \hline
+\end{tabular}}
+\end{center}
+
+Large blocks are efficient but cannot model detailed object boundaries. Small blocks are flexible but produce more vectors and higher overhead.
+
+\subsection{Search Strategies}
+
+For a full search window:
+
+\[
+\mathcal{W}=\{-A,\ldots,A\}\times\{-B,\ldots,B\}
+\]
+
+If $A=B=7$, full search tests:
+
+\[
+(2A+1)^2=15^2=225
+\]
+
+candidates per block.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Strategy} & \textbf{Main idea} & \textbf{Typical tests in source example} & \textbf{Risk} \\ \hline
+\textbf{Full Search} & test every candidate & 225 & high cost \\ \hline
+\textbf{Three Step Search} & decreasing step size & about 25 & local minima \\ \hline
+\textbf{Diamond Search} & large diamond, then small diamond & about 23 & local minima \\ \hline
+\textbf{Hexagon Search} & large hexagon, then small hexagon & about 17 & local minima \\ \hline
+\textbf{TZSearch} & predictors plus adaptive search & variable & more complex control \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch07/diamond-search-pattern.png}\end{center}
+Diamond Search uses a large pattern to move across the cost surface and a small pattern for final refinement.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch07/hexagon-search-pattern.png}\end{center}
+Hexagon Search reduces new tests per iteration and is used in H.264/AVC-style fast ME.
+
+\subsection{Subpixel Precision}
+
+Motion is not limited to integer pixels. Codecs usually refine integer vectors at half-pixel and quarter-pixel precision.
+
+For bilinear interpolation:
+
+\[
+f(n+a,m+b)=
+(1-a)(1-b)x
++a(1-b)y
++(1-a)bz
++abw
+\]
+
+where $x,y,z,w$ are the four neighboring integer samples.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch07/subpixel-motion-grid.png}\end{center}
+Subpixel vectors improve prediction quality but require interpolation filters and extra search steps.
+
+\subsection{Variable Block Size}
+
+Variable-size BM splits a block only when the rate-distortion cost improves:
+
+\begin{enumerate}
+  \item Estimate the best vector for the current block and compute $J(v)=D+\lambda R$.
+  \item Split the block into four sub-blocks.
+  \item Estimate each sub-block and compute $J_{\text{sub}}=\sum_i J_i$.
+  \item Keep the split only if $J_{\text{sub}}<J(v)$.
+  \item Recurse until no gain or the minimum block size is reached.
+\end{enumerate}
+
+This is the practical solution used by modern standards: flat regions keep large blocks, while object boundaries use smaller partitions.
+
+\subsection{Parametric Motion Models}
+
+Parametric ME represents the entire MVF with a small number of parameters.
+
+\textbf{Translation:}
+
+\[
+\mathbf{v}(\mathbf{p})=
+\begin{bmatrix}
+b_1\\
+b_2
+\end{bmatrix}
+\]
+
+\textbf{Affine model:}
+
+\[
+\mathbf{v}(\mathbf{p})=
+\mathbf{b}+\mathbf{B}\mathbf{p}
+=
+\begin{bmatrix}
+b_1\\
+b_2
+\end{bmatrix}
++
+\begin{bmatrix}
+b_3 & b_4\\
+b_5 & b_6
+\end{bmatrix}
+\mathbf{p}
+\]
+
+The affine model has six parameters and can represent translation, zoom, rotation, shear, and their combinations.
+
+\begin{center}\includegraphics[width=0.6\linewidth]{ch07/affine-motion-field-translation.png}\end{center}
+Pure translation gives a constant vector field.
+
+\begin{center}\includegraphics[width=0.6\linewidth]{ch07/affine-motion-field-zoom.png}\end{center}
+Zoom and related affine effects are represented by a position-dependent field.
+
+Parameter estimation can be:
+
+\begin{itemize}
+  \item \textbf{indirect}: estimate a dense flow first, then fit parameters by least squares;
+  \item \textbf{direct}: estimate parameters by minimizing the optical-flow residual or a SAD/SSD prediction error directly.
+\end{itemize}
+
+For an affine model, direct optical-flow fitting uses:
+
+\[
+\pi^*=
+\arg\min_\pi
+\sum_{(n,m)\in\mathcal{R}}
+\left[
+u_\pi(n,m)f_x+v_\pi(n,m)f_y+f_t
+\right]^2
+\]
+
+\subsection{Deep Learning Methods}
+
+Deep learning treats optical flow as a learned correspondence problem. Training can be supervised with synthetic ground truth or unsupervised with photometric reconstruction losses.
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Model} & \textbf{Year} & \textbf{Main contribution} & \textbf{Limitation} \\ \hline
+\textbf{FlowNet} & 2015 & first end-to-end CNN for dense optical flow & weak on fine details and small displacements \\ \hline
+\textbf{FlowNet 2.0} & 2017 & stacked networks and small-displacement module & large memory footprint \\ \hline
+\textbf{PWC-Net} & 2018 & pyramids, warping, cost volume & coarse-to-fine detail loss \\ \hline
+\textbf{RAFT} & 2020 & all-pairs correlation and recurrent GRU updates & high memory cost \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch07/flownet-architecture.png}\end{center}
+FlowNet introduced end-to-end CNN optical flow, including variants with simple concatenation and explicit feature correlation.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch07/flownet2-stacked-architecture.png}\end{center}
+FlowNet 2.0 improves accuracy by stacking networks and specializing modules for different displacement regimes.
+
+\begin{calloutbox}{red!70!black}{Compression vs. analysis}
+Learned dense flow dominates many analysis benchmarks. Block matching remains central in video compression because it is simple, controllable, standardizable, and naturally tied to rate-distortion optimization.
+\end{calloutbox}
+
+\section{Visual Schemes}
+
+\subsection{Motion-Compensated Coding Loop}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Current frame f_k] --> B[Block partition]
+    B --> C[Motion estimation]
+    R[Reference frame f_h] --> C
+    C --> D[Motion vectors]
+    D --> E[Motion compensation]
+    R --> E
+    E --> F[Prediction f_hat_k]
+    A --> G[Residual e]
+    F --> G
+    D --> H[MV coding]
+    G --> I[Residual coding]
+    H --> J[Bitstream]
+    I --> J
+\end{verbatim}
+
+The loop shows why ME is a codec tool: it creates a predictor, then only vectors and residual information must be transmitted.
+
+\subsection{Method Overview}
+
+\begin{center}\includegraphics[width=\linewidth]{ch07/motion-estimation-methods-overview.png}\end{center}
+The overview connects the main ME families: optical flow, block matching, parametric models, and learned methods.
+
+\subsection{Variable Block-Size Decision}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart TD
+    A[Block b] --> B[Estimate vector for b]
+    B --> C[Cost J = D + lambda R]
+    C --> D[Split into 4 sub-blocks]
+    D --> E[Estimate sub-block vectors]
+    E --> F[Cost J_sub = sum J_i]
+    F --> G{J_sub < J?}
+    G -- yes --> H[Keep split and recurse]
+    G -- no --> I[Keep parent block]
+\end{verbatim}
+
+This decision balances lower residual distortion against the extra rate required by more vectors and partition syntax.
+
+\section{Examples}
+
+\subsection{SAD vs. SSD on Flower Garden}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Criterion} & \textbf{MV rate} & \textbf{Prediction PSNR} & \textbf{Interpretation} \\ \hline
+SSD & 2143 bits & 22.46 dB & best MSE-oriented prediction \\ \hline
+SAD & 2103 bits & 22.30 dB & slightly lower PSNR, lower MV cost \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{green!55!black}{Exam takeaway}
+SSD optimizes squared error directly, so it can improve PSNR. SAD is often preferred in practice because it is cheaper, more robust to outliers, and can produce a more regular vector field.
+\end{calloutbox}
+
+\subsection{Regularized SSD}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Method} & \textbf{MV rate} & \textbf{Prediction PSNR} & \textbf{Effect} \\ \hline
+SSD & 2143 bits & 22.46 dB & no MV regularization \\ \hline
+Regularized SSD & 2008 bits & 22.35 dB & lower MV rate with small PSNR loss \\ \hline
+\end{tabular}}
+\end{center}
+
+Rate reduction:
+
+\[
+\frac{2143-2008}{2143}\approx 6.3\%
+\]
+
+The example shows the principle behind rate-distortion ME: a small distortion increase can be accepted if it saves enough motion-vector bits.
+
+\subsection{Search Complexity Example}
+
+For $A=B=7$, full search tests $225$ candidates. Fast search methods in the source example need about:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Method} & \textbf{Tests} & \textbf{Approximate saving} \\ \hline
+2D-log / Three Step & 25 & 89\% fewer \\ \hline
+Diamond Search & 23 & 90\% fewer \\ \hline
+Hexagon Search & 17 & 92\% fewer \\ \hline
+\end{tabular}}
+\end{center}
+
+Fast methods are efficient because natural-video cost surfaces are often locally well behaved, but they do not guarantee the global minimum.
+
+\subsection{Final Comparison}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Method} & \textbf{Strength} & \textbf{Weakness} \\ \hline
+Horn-Schunck & dense, convex, elegant theory & over-smooths boundaries \\ \hline
+Full-search BM & global optimum in search window & expensive \\ \hline
+Fast BM & very low complexity & possible local minima \\ \hline
+Variable-size BM & good codec tradeoff & partition overhead and control complexity \\ \hline
+Affine ME & compact global/regional field & needs suitable region/model \\ \hline
+FlowNet / PWC-Net / RAFT & accurate dense flow for analysis & training data, memory, generalization \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{What to remember}
+Motion estimation is a rate-distortion problem in video coding, not only a geometric matching problem. The best codec decision balances residual energy, motion-vector rate, search complexity, block partitioning, and interpolation precision.
+\end{calloutbox}

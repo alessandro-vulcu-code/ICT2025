@@ -1,11 +1,13 @@
 \section{Transform Coding and JPEG}
 \subsection{Introduction with Block Coding}
+Block coding groups $M$ source samples into a vector and allocates bits among its components. $R_k$ is the rate assigned to component $k$, measured in bits per vector component, while $R_{tot}=\sum_k R_k$ is the available bit budget for the whole vector.
 Take a $X = [x_1 \cdots x_M]^T$ random vector as source of information of size M.\\
 We suppose $\forall$ component to know the $\sigma^2_k = \text{var}(x_k)$. The distorsion of the $k$-th element then is $D_k = c_k\sigma_k^22^{-2R_k}$.\\
 Globally, across all vector, we have:
 $$D = \frac{1}{M}E\left[||X-Q(X)||^2\right] = \dots = \frac{1}{M}\sr{M-1}{k=0}D_k = \frac{1}{M}\sr{M-1}{k=0}c_k\sigma_k^22^{-2R_k}$$
 \subsection{Huang-Schulteiss (HS) formula}
-What is the optimal way to minimize distortion $D$? find rate vector $K$ with Constraint Optimization Problem:
+The Huang--Schultheiss formula is an optimal continuous bit-allocation rule under a high-resolution rate--distortion model. It distributes a fixed total rate so that high-variance or expensive components receive more bits and all active components end with equal distortion.
+The optimal allocation is found by minimizing distortion $D$ over the rate vector $\vec{R}$ under a total-rate constraint:
 $$\min D(K) = \frac{1}{M}\sr{M-1}{k=0}D = \frac{1}{M}\sr{M-1}{k=0}c_k\sigma^2_k2^{-2R_k} \qquad \text{s.t. }\sr{M-1}{k=0}R_k \leq R_{tot}$$
 % Integrated from Summaries: full Lagrangian derivation (exam asks to derive HS)
 \subsubsection{HS formula derivation}
@@ -39,6 +41,7 @@ $D^\star = c_{GM}\sigma^2_{GM}2^{-2\bar{R}}$: at fixed total rate, the R-D perfo
 $$R_k^\star = \bar{R} \qquad D^\star = c_X\sigma^2_X2^{-2\bar{R}} = D_{PCM}$$
 Block coding brings \textbf{no improvement} over sample-by-sample coding in this case. The signal must be \emph{sparse} (diverse variances) to benefit: the whole strategy of transform coding is to reduce $\sigma^2_{GM}$ while keeping energy constant.
 \subsection{Transform Coding}
+Transform coding converts correlated source samples into coefficients in another basis, quantizes those coefficients, and transforms them back during decoding. Compression improves when the transform concentrates energy into few coefficients and enables unequal bit allocation.
 IDEA: can we modify our signal where symbols have different distribution (sparse signal)?\\
 We use \textbf{Linear Transforms} (change in base of the vectors, like rotations) to reach \textbf{signal sparsification} (few big samples with many lower samples). We are looking for a transform T which is:
 \begin{itemize}
@@ -49,6 +52,7 @@ We use \textbf{Linear Transforms} (change in base of the vectors, like rotations
 \end{itemize}
 An example could be the Fourier Transform.
 \subsubsection{Orthogonal Transforms}
+An orthogonal transform is an energy-preserving linear change of basis whose inverse equals its transpose. This property makes reconstruction simple and ensures that squared error is unchanged by moving between source and transform domains.
 Recalling Orthogonal Matrix property: $T^{-1} = T^T$, we have that $Y = TX$ and $X = T^T Y$\\
 Orthogonal Transforms Isometry property also guarantees that $||Y||^2 = ||TX||^2 = ||X||^2$ and $D_X = \cdots = D_Y$
 \subsubsection{Orthogonal Transforms applied to Block Coding}
@@ -60,6 +64,7 @@ Let's use a generic O.T.: $$T : \begin{cases}
 \end{cases} \qquad \Longrightarrow \qquad D_Y = c_{GM,Y}\sigma^2_{GM,Y}2^{-2\bar{R}}$$
 If $X,Y$ are gaussian, we can also use $c_{GM,Y} = c_{GM,X }= c_{\mathcal{N}}$, so for any $T\to\sigma^2_{AM,Y} = \sigma^2_{AM,X} = \sigma^2_{X}$, and also:
 $$\text{Coding Gain: }G_{T} = \frac{D_{PCM}}{D_Y} =\frac{\sigma^2_{AM,Y}}{\sigma^2_{GM,Y}}  =\frac{\sigma^2_X}{\sigma^2_{GM,Y}} \qquad \Longrightarrow \text{Jensen's Ineq.}\to G_T \geq 1$$
+Transform coding gain is the distortion ratio between direct sample coding and transform coding at equal rate. It is dimensionless as a ratio and is often reported in dB as $10\log_{10}G_T$.
 \subsubsection{Transform Coding example}
 We have a 2D random vector constrained in $S$, we know joint probability:
 $$f_{x_1,x_2} = \begin{cases}
@@ -72,6 +77,7 @@ $$\vec{Y} = \frac{1}{\sqrt{2}}\left[\begin{matrix}
     1 & 1
 \end{matrix}\right]\vec{X} \qquad \Longrightarrow \qquad D_2 \ll \sigma^2 \Longrightarrow D = D_1$$
 \subsection{Practical Algorithms for Resource Allocation}
+Resource allocation selects how many bits each coefficient or subband receives under a total-rate constraint. An allocation is good when moving one additional bit to any other active component would not reduce total distortion further.
 \subsubsection{Greedy Algorithm}
 Requires nr. of iterations $\approx$ nr. of bits, steps:
 \begin{itemize}

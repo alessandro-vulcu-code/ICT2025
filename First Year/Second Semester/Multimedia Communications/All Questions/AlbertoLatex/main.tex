@@ -1,0 +1,89 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\setlength{\headheight}{14.5pt}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+\usepackage{tabularx}
+
+% TikZ libraries for flowcharts
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+
+\pagestyle{fancy}
+\fancyhead[L]{Multimedia Communications - Exam Answers}
+\fancyhead[R]{\today}
+\fancyfoot[C]{\thepage}
+
+% Custom colorbox for questions
+\newtcolorbox{questionbox}[1]{
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title=#1,
+    boxrule=0.5mm,
+    arc=4pt,
+    left=8pt,
+    right=8pt,
+    top=8pt,
+    bottom=8pt,
+    before=\vspace{10pt},
+    after=\vspace{10pt}
+}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+% Listings setup
+\lstset{
+    basicstyle=\small\ttfamily,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color[gray]{0.95}
+}
+
+\title{Multimedia Communications \\ Sample Exam Answers (Corrected)}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\input{01_multimedia_representation_and_perception.tex}
+\newpage
+\input{02_compression_prediction_and_lossless_coding.tex}
+\newpage
+\input{03_transform_coding_and_jpeg.tex}
+\newpage
+\input{04_wavelet-based_image_coding.tex}
+\newpage
+\input{05_learned_image_coding.tex}
+\newpage
+\input{06_audio_and_speech_coding.tex}
+\newpage
+\input{07_quality_evaluation_and_quantization.tex}
+\newpage
+\input{08_adaptive_streaming.tex}
+\newpage
+\input{09_motion_estimation_and_video_coding.tex}
+\newpage
+\input{10_modern_video_coding.tex}
+
+\end{document}

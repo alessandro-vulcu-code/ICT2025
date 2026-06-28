@@ -1,0 +1,413 @@
+\section{Motion Estimation and Video Coding}
+
+
+
+
+\begin{questionbox}{Domanda 74}
+\textbf{motion estimation}: give the principles of the block matching approach. Give at least one cost function. [Bonus]. Discuss the regularization issue.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{Block matching} → split frame into blocks $B_{p,q}$; search similar block in reference frame window.
+  \item Best displacement:
+\end{itemize}
+
+
+$$
+(\hat{i},\hat{j})=\arg\min_{(i,j)\in W}J(i,j)
+$$
+
+
+\begin{itemize}
+  \item SSD:
+\end{itemize}
+
+
+$$
+J_{\text{SSD}}(i,j)=
+\sum_{(n,m)\in B_{p,q}}
+[f(n,m,k)-f(n-i,m-j,h)]^2
+$$
+
+
+\begin{itemize}
+  \item SAD:
+\end{itemize}
+
+
+$$
+J_{\text{SAD}}(i,j)=
+\sum_{(n,m)\in B_{p,q}}
+|f(n,m,k)-f(n-i,m-j,h)|
+$$
+
+
+\begin{itemize}
+  \item Regularized:
+\end{itemize}
+
+
+$$
+J_{\text{REG}}(i,j)=
+\|\vec{f}_k(B_{p,q})-\vec{f}_h(B_{p-i,q-j})\|_p^p
++\lambda R(i,j)
+$$
+
+
+\begin{itemize}
+  \item Regularization → penalizes expensive/irregular motion vectors; balances prediction quality with motion-vector coding \textbf{rate}.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 75}
+Discuss the advantages and the disadvantages of Intra, Predictive, and Bidirectional images in a GOP for video coding.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{I images}:
+  \item intra only;
+  \item advantages → random access, error reset, no \textbf{motion estimation};
+  \item disadvantages → high \textbf{rate}, lower compression.
+  \item \textbf{P images}:
+  \item predicted from previous anchor frames;
+  \item advantages → good compression, moderate delay;
+  \item disadvantages → ME/MC complexity, error propagation.
+  \item \textbf{B images}:
+  \item predicted from past and future frames;
+  \item advantages → best compression;
+  \item disadvantages → highest complexity, structural delay, not ideal for low latency.
+  \item GOP structure controls compression efficiency, delay, random access interval, error propagation.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 76}
+(ME) Describe the difference between “motion field” and “optical flow”.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{Motion field} → projection of actual 3D scene motion onto image plane.
+  \item \textbf{Optical flow} → apparent motion of brightness patterns.
+  \item They often coincide, but can differ due to illumination changes, occlusions, texture ambiguities.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 77}
+(ME) Explain the Horn and Schunck algorithm’s core principle for dense optical flow estimation.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item Optical flow constraint:
+\end{itemize}
+
+
+$$
+u f_x + v f_y + f_t = 0
+$$
+
+
+\begin{itemize}
+  \item Horn-Schunck objective:
+\end{itemize}
+
+
+$$
+J=
+\iint_{\mathcal{R}}(u f_x+v f_y+f_t)^2\,dxdy
++\lambda\iint_{\mathcal{R}}(\|\nabla u\|^2+\|\nabla v\|^2)\,dxdy
+$$
+
+
+\begin{itemize}
+  \item First term → brightness consistency.
+  \item Second term → smooth dense flow field.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 78}
+(ME) Discuss the \textbf{\textbf{rate}-\textbf{distortion}} trade-off when selecting block sizes in \textbf{motion estimation}.
+\end{questionbox}
+
+
+
+$$
+J(v)=d(B_k^{(p)},B_h^{(p+v)})+\lambda_{ME}R(v)
+$$
+
+
+\begin{itemize}
+  \item Large blocks:
+  \item fewer motion vectors;
+  \item lower side information and complexity;
+  \item worse fit near object boundaries.
+  \item Small blocks:
+  \item better prediction and lower \textbf{distortion};
+  \item more motion vectors and partition bits;
+  \item higher complexity.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 79}
+(ME) Which of the following is a disadvantage of using the Sum of Squared Differences (SSD) as a matching criterion?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item SSD squares errors → outliers dominate cost.
+  \item Illumination changes, noise, occlusions → irregular motion vectors.
+  \item SAD → often more robust and cheaper.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 80}
+(ME) What is the main benefit of the Hexagon Search strategy compared to Full Search?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item Full search → tests all candidates; optimal within window, expensive.
+  \item Hexagon search → tests small hexagonal pattern iteratively; far fewer evaluations.
+  \item Benefit → faster search.
+  \item Cost → no guaranteed global optimum.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 81}
+(ME) What does an affine motion model allow that a pure translational model does not?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item Translation → constant displacement only.
+  \item Affine motion → rotation, zoom, shear:
+\end{itemize}
+
+
+$$
+\vec{v}(p)=\vec{b}+Bp
+=
+\begin{bmatrix}b_1\\b_2\end{bmatrix}
++
+\begin{bmatrix}b_3&b_4\\b_5&b_6\end{bmatrix}p
+$$
+
+
+\begin{itemize}
+  \item If $B=0$ → pure translation / block matching.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 82}
+Draw the block diagram of a hybrid video encoder (\textbf{motion estimation}/compensation + \textbf{DCT} + \textbf{quantization} + \textbf{entropy} coding + reconstruction loop with frame buffer). Explain why the encoder contains an internal decoder.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item Hybrid video encoder → codes prediction residual, usually not whole frame.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{images/Hybrid_video_encoder.png}
+\caption{Hybrid video encoder}
+\end{figure}\begin{tcolorbox}[colback=white, colframe=gray!50, height=4.5cm, sharp corners]
+\end{tcolorbox}
+
+\begin{itemize}
+  \item Mode decision → selects intra/inter predictor.
+  \item Transform + \textbf{quantization} → residual coding.
+  \item \textbf{lossless} coding → bitstream.
+  \item Inverse \textbf{quantization} + inverse transform → reconstructed residual.
+  \item Reconstructed block → frame buffer for later \textbf{motion compensation}.
+  \item Internal decoder needed → future predictions must use same reconstructed frames as decoder; otherwise drift propagates.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 83}
+(VCP) Why is the temporal prediction error usually more efficient to encode than the original video signal?
+\end{questionbox}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{images/Video_coding_principles.png}
+\caption{Video coding principles}
+\end{figure}\begin{tcolorbox}[colback=white, colframe=gray!50, height=4.5cm, sharp corners]
+\end{tcolorbox}
+
+\begin{itemize}
+  \item Video frames → highly correlated.
+  \item Motion-compensated prediction estimates current block from reference frames.
+  \item Encode only residual:
+\end{itemize}
+
+
+$$
+e=x-x_p
+$$
+
+
+\begin{itemize}
+  \item Residual → lower energy and more sparse than original frame.
+  \item Consequence → transform \textbf{quantization} and \textbf{entropy} coding more efficient.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 84}
+(VCP) Describe the function of the “Mode Selection” step in a hybrid video encoder.
+\end{questionbox}
+
+
+\begin{itemize}
+  \item Mode selection → choose coding mode minimizing R-D cost:
+\end{itemize}
+
+
+$$
+J = D+\lambda R
+$$
+
+
+\begin{itemize}
+  \item For blocks:
+\end{itemize}
+
+
+$$
+D=\sum_{k=1}^{K}D_k(i_k,Q),
+\quad
+R=\sum_{k=1}^{K}R_k(i_k,Q)
+$$
+
+
+
+$$
+J(\vec{i},Q,\lambda)=D(\vec{i},Q)+\lambda R(\vec{i},Q)
+$$
+
+
+\begin{itemize}
+  \item Block-wise suboptimal minimization:
+\end{itemize}
+
+
+$$
+i_k^\star=\arg\min_{i_k}J_k(i_k,Q,\lambda)
+$$
+
+
+\begin{itemize}
+  \item Empirical choices:
+\end{itemize}
+
+
+$$
+\text{MPEG-2: } \lambda=aQ^2+b
+$$
+
+
+
+$$
+\text{H.264: } \lambda=c\cdot2^{dQ+e},
+\quad
+\lambda_{ME}=\sqrt{\lambda}
+$$
+
+
+
+
+\begin{questionbox}{Domanda 85}
+(VCP) How does the “Channel Buffer” controller manage the trade-off between target \textbf{rate} and video quality?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item Channel buffer → controls \textbf{quantization} step to meet target \textbf{rate}.
+  \item Buffer occupancy high → increase \textbf{quantization} step → reduce \textbf{rate}, lower quality.
+  \item Buffer occupancy low → decrease \textbf{quantization} step → improve quality, higher \textbf{rate}.
+  \item Goal → avoid overflow/underflow while keeping quality high.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 86}
+(VCP) What is the primary role of an “I-frame” in a GOP structure?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item \textbf{I-frame} → intra-coded and independently decodable.
+  \item Roles → random access, GOP start, temporal error-propagation limit.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 87}
+(VCP) In the context of \textbf{motion vector} coding, why is a Median Predictor (MVP) used?
+\end{questionbox}
+
+
+\begin{itemize}
+  \item Neighboring motion vectors → correlated.
+  \item Median predictor estimates current vector from adjacent blocks.
+  \item Encoder sends only difference:
+\end{itemize}
+
+
+$$
+\text{MVD} = \text{MV} - \text{MVP}
+$$
+
+
+\begin{itemize}
+  \item MVD usually small → cheaper to encode.
+\end{itemize}
+
+
+
+\begin{questionbox}{Domanda 88}
+(VCP) What happens in the decoder when it receives an “Inter-coded” block?
+\end{questionbox}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{images/Hybrid_video_decoder.png}
+\caption{Hybrid video decoder}
+\end{figure}\begin{tcolorbox}[colback=white, colframe=gray!50, height=4.5cm, sharp corners]
+\end{tcolorbox}
+
+\begin{itemize}
+  \item Decoder reads side information → mode, reference index, \textbf{motion vector}.
+  \item \textbf{entropy} decoding → residual and side information.
+  \item Inverse \textbf{quantization} + inverse transform → reconstructed residual.
+  \item \textbf{motion compensation} / \textbf{intra prediction} → predictor.
+  \item Reconstruction:
+\end{itemize}
+
+
+$$
+\hat{x}=\text{prediction}+\hat{e}
+$$
+
+
+\begin{itemize}
+  \item Output stored in frame buffer.
+\end{itemize}
+
+---
+
+

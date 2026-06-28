@@ -1,0 +1,672 @@
+\chapter{Audio Coding}
+
+\section{Table of Contents}
+
+\begin{itemize}
+  \item Core Idea
+  \item Key Concepts
+  \item Theory and Formulas
+  \item Visual Schemes
+  \item Examples
+\end{itemize}
+
+\section{Core Idea}
+
+\textbf{Audio coding} compresses speech and general audio by exploiting both signal redundancy and human perception.
+
+Two main paradigms:
+
+\begin{itemize}
+  \item \textbf{Source-based coding}: model how sound is produced. Best for speech, where vocal tract physics gives strong structure. Main tools: LPC, CELP, ACELP.
+  \item \textbf{Sink-based coding}: model what listener cannot hear. Best for music/general audio. Main tools: psychoacoustic masking, MDCT, adaptive bit allocation.
+\end{itemize}
+
+\begin{calloutbox}{red!70!black}{Redundancy vs. irrelevancy}
+Speech coding mainly removes \textbf{statistical redundancy} through prediction and source modeling. Perceptual audio coding mainly removes \textbf{irrelevant information} hidden by auditory masking.
+\end{calloutbox}
+
+Modern codecs such as \textbf{Opus}, \textbf{EVS}, and \textbf{USAC} are hybrid: they switch or blend speech-oriented and music-oriented tools.
+
+\section{Key Concepts}
+
+\subsection{Speech vs. Music}
+
+Audio signals are locally stationary, but stationarity time varies:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Signal} & \textbf{Typical behavior} & \textbf{Coding implication} \\ \hline
+speech & quasi-stationary around 20 ms & LPC/CELP frame analysis works well \\ \hline
+tonal music & can be stable for hundreds of ms & long transform windows improve frequency resolution \\ \hline
+transients & can change in 2-5 ms & short windows avoid pre-echo \\ \hline
+complex game/effects audio & noise-like and mixed & parametric speech models fail \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{Window-length compromise}
+Long windows give good frequency resolution for stable tones. Short windows localize attacks and reduce pre-echo around transients.
+\end{calloutbox}
+
+\subsection{Empirical Signal Structure}
+
+Voiced speech has strong correlation between consecutive samples and harmonic spectral structure.
+
+\begin{center}\includegraphics[width=0.7\linewidth]{ch10/voiced-speech-correlation.png}\end{center}
+Consecutive voiced-speech samples align near a diagonal: strong time-domain redundancy supports prediction.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch10/vowel-spectrogram.png}\end{center}
+Vowel spectrogram: horizontal harmonics and formants justify source-filter speech modeling.
+
+Music can be less predictable in time domain, especially with beats and transients.
+
+\begin{center}\includegraphics[width=0.7\linewidth]{ch10/music-amplitude-histogram.png}\end{center}
+Music amplitudes can still be sparse, but structure is not tied to a single vocal-tract model.
+
+\subsection{Source-Filter Model}
+
+Speech production:
+
+\begin{itemize}
+  \item lungs provide air pressure;
+  \item vocal folds generate excitation;
+  \item vocal tract filters excitation through resonances.
+\end{itemize}
+
+Frequency-domain model:
+
+\[
+S(f)=E(f)H(f)
+\]
+
+where $E(f)$ is excitation spectrum and $H(f)$ is vocal-tract transfer function.
+
+\begin{center}\includegraphics[width=0.867\linewidth]{ch10/source-filter-model.png}\end{center}
+Source-filter model separates excitation from resonant vocal-tract envelope.
+
+\subsection{Voiced and Unvoiced Speech}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Type} & \textbf{Excitation} & \textbf{Signal} & \textbf{Codec parameter} \\ \hline
+voiced & periodic glottal pulses & harmonic, pitch period $T_0$ & pitch and gain \\ \hline
+unvoiced & turbulent noise & stochastic, noise-like & noise excitation and gain \\ \hline
+\end{tabular}}
+\end{center}
+
+Encoder must decide voiced/unvoiced per frame because synthesis excitation differs.
+
+\section{Theory and Formulas}
+
+\subsection{Linear Predictive Coding}
+
+LPC estimates current sample from past $P$ samples:
+
+\[
+\hat{x}(n)=-\sum_{i=1}^{P}a_i x(n-i)
+\]
+
+Residual:
+
+\[
+y(n)=x(n)-\hat{x}(n)=\sum_{i=0}^{P}a_i x(n-i),
+\qquad a_0=1
+\]
+
+Prediction-error filter:
+
+\[
+A(z)=\sum_{i=0}^{P}a_i z^{-i}
+\]
+
+\begin{calloutbox}{red!70!black}{LPC whitening filter}
+LPC removes vocal-tract spectral envelope. If prediction is good, residual $y(n)$ becomes white-noise-like for unvoiced frames or impulse-train-like for voiced frames.
+\end{calloutbox}
+
+Optimal LPC coefficients minimize residual variance. Yule-Walker system:
+
+\[
+\mathbf{R}_x\mathbf{a}=-\mathbf{r}_x
+\]
+
+$\mathbf{R}_x$ is Toeplitz, so Levinson-Durbin solves it in $\mathcal{O}(P^2)$.
+
+\subsection{LPC Analysis}
+
+LPC encoder extracts, usually every 20 ms:
+
+\begin{itemize}
+  \item LP coefficients $\{a_i\}$: vocal-tract spectral envelope;
+  \item gain $G$: residual energy;
+  \item voiced/unvoiced decision;
+  \item pitch period $T_0$ for voiced speech.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.7\linewidth]{ch10/lpc-analysis-process.png}\end{center}
+Autocorrelation supports filter estimation, pitch detection, voiced/unvoiced decision, and gain extraction.
+
+Short-time autocorrelation:
+
+\[
+R_x(k)=\sum_{n=0}^{N-1-k}x_w(n)x_w(n+k),
+\qquad k=0,\ldots,K
+\]
+
+Small lags estimate LPC coefficients; larger lags reveal pitch peaks.
+
+\subsection{LPC Synthesis}
+
+Analysis:
+
+\[
+Y(z)=A(z)X(z)
+\]
+
+Synthesis:
+
+\[
+X(z)=A^{-1}(z)Y(z)
+\]
+
+Time-domain decoder recurrence:
+
+\[
+x(n)=y(n)-\sum_{i=1}^{P}a_i x(n-i)
+\]
+
+The synthesis filter $1/A(z)$ is all-pole IIR. Its stability is critical.
+
+\subsection{LPC Coefficient Quantization and LSF}
+
+Direct scalar quantization of $a_i$ is dangerous:
+
+\begin{itemize}
+  \item coefficients have wide dynamic range;
+  \item small quantization errors can move poles outside unit circle;
+  \item unstable synthesis filter causes severe distortion.
+\end{itemize}
+
+\textbf{Line Spectrum Frequencies (LSF)} solve this by mapping $A(z)$ to auxiliary polynomials:
+
+\[
+P(z)=A(z)+z^{-(P+1)}A(z^{-1})
+\]
+
+\[
+Q(z)=A(z)-z^{-(P+1)}A(z^{-1})
+\]
+
+Properties:
+
+\begin{itemize}
+  \item roots of $P(z)$ and $Q(z)$ lie on unit circle;
+  \item roots can be represented by angles $\omega_i \in [0,\pi]$;
+  \item filter stability is equivalent to strict interlacing:
+\end{itemize}
+
+\[
+0<\omega_1^{(P)}<\omega_1^{(Q)}<\omega_2^{(P)}<\omega_2^{(Q)}<\cdots<\pi
+\]
+
+\begin{calloutbox}{red!70!black}{LSF coding advantage}
+LSFs make LPC quantization safer: decoder can detect and repair order violations by restoring interlacing, preserving filter stability.
+\end{calloutbox}
+
+Reconstruction:
+
+\[
+A(z)=\frac{P(z)+Q(z)}{2}
+\]
+
+\begin{center}\includegraphics[width=\linewidth]{ch10/lsf-formants.png}\end{center}
+Close LSF root pairs correspond to formants, so LSFs encode vocal-tract resonances in stable frequency coordinates.
+
+\subsection{Vector Quantization}
+
+Instead of quantizing each LSF independently, speech coders quantize full LSF vector:
+
+\[
+\boldsymbol{\omega}=[\omega_1,\ldots,\omega_P]
+\]
+
+Encoder searches a trained shared codebook and sends only index.
+
+\begin{calloutbox}{red!70!black}{VQ for speech}
+Vocal tracts can take only physically plausible shapes, so LSF components are correlated. Vector quantization exploits this structure better than scalar quantization.
+\end{calloutbox}
+
+\subsection{LPC-10 Bitrate}
+
+LPC-10 uses 54 bits per 22.5 ms frame:
+
+\[
+R=\frac{54}{0.0225}=2400\text{ bps}
+\]
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|r|r|}
+\hline
+\textbf{Parameter} & \textbf{Voiced bits} & \textbf{Unvoiced bits} \\ \hline
+LPC coefficients & 41, order $P=10$ & 20, order $P=4$ \\ \hline
+pitch period $T_0$ & 7 & 0 \\ \hline
+gain $G$ & 5 & 5 \\ \hline
+sync & 1 & 1 \\ \hline
+error protection & 0 & 28 \\ \hline
+total & 54 & 54 \\ \hline
+\end{tabular}}
+\end{center}
+
+Voiced frames spend bits on spectral detail and pitch. Unvoiced frames need fewer model bits and can spend more on protection.
+
+\subsection{CELP}
+
+LPC-10 sounds poor because excitation is too simple. \textbf{CELP} (\textit{Code Excited Linear Prediction}) improves excitation through:
+
+\begin{itemize}
+  \item vector codebook excitation;
+  \item analysis-by-synthesis search;
+  \item closed-loop selection of vector index and gain.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch10/celp-analysis-by-synthesis.png}\end{center}
+CELP encoder tests candidate excitations through synthesis filter and selects best perceptual match.
+
+\subsection{Perceptual Weighting in CELP}
+
+CELP minimizes perceptually weighted error, not raw waveform error:
+
+\[
+W(z)=\frac{A(z)}{A(z/\gamma)},
+\qquad 0<\gamma<1
+\]
+
+Pole shifting broadens formants and shapes error so noise is hidden under speech energy peaks.
+
+\begin{center}\includegraphics[width=0.867\linewidth]{ch10/celp-perceptual-weighting.png}\end{center}
+Weighting de-emphasizes error near formants and emphasizes error in spectral valleys.
+
+\subsection{CELP Excitation}
+
+Adaptive codebook models pitch by reusing past excitation:
+
+\[
+y_{\text{adapt}}(n)=y(n-Q)
+\]
+
+Long-term predictor:
+
+\[
+B(z)=g_p z^{-Q}
+\]
+
+Total excitation:
+
+\[
+y(n)=g_p y_{\text{adapt}}(n)+g_{c1}v_1(n)+g_{c2}v_2(n)
+\]
+
+Adaptive term captures voiced periodicity; fixed-codebook innovation captures new/noise-like content.
+
+\begin{center}\includegraphics[width=\linewidth]{ch10/g729-celp-architecture.png}\end{center}
+G.729 combines adaptive codebook, fixed codebook, gains, perceptual weighting, and synthesis filtering.
+
+\subsection{G.729 Bitrate}
+
+G.729 uses 80 bits per 10 ms frame:
+
+\[
+R=\frac{80}{0.010}=8000\text{ bps}
+\]
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|r|}
+\hline
+\textbf{Parameter} & \textbf{Update rate} & \textbf{Bits} \\ \hline
+LSF coefficients & 10 ms & 18 \\ \hline
+adaptive codebook index & 5 ms, twice & 14 \\ \hline
+fixed codebook index & 5 ms, twice & 26 \\ \hline
+codebook gains & 5 ms, twice & 14 \\ \hline
+parity/sync & 10 ms & 8 \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{AMR-WB and EVS}
+
+\textbf{AMR-WB} extends narrowband telephony to HD Voice:
+
+\begin{itemize}
+  \item bandwidth: 50-7000 Hz;
+  \item 9 bitrates from 6.6 to 23.85 kbps;
+  \item ACELP evolution with larger dictionaries.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch10/amr-wb-frequency-response.png}\end{center}
+Wideband speech preserves presence and fricatives missing in narrowband telephony.
+
+\textbf{EVS} for VoLTE/5G:
+
+\begin{itemize}
+  \item supports NB to full-band, up to 20 kHz;
+  \item bitrate range about 5.9-128 kbps;
+  \item hybrid ACELP for speech and MDCT for music;
+  \item robust jitter buffer, frame erasure concealment, DTX, comfort noise;
+  \item AMR-WB IO mode for backward compatibility.
+\end{itemize}
+
+\subsection{Psychoacoustic Coding}
+
+Perceptual coders remove inaudible components.
+
+\textbf{Absolute threshold of hearing} $S_a(f)$: minimum audible power varies with frequency; human ear most sensitive around 1-4 kHz.
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch10/absolute-threshold-hearing.png}\end{center}
+Anything below threshold can be discarded without perceived loss.
+
+\textbf{Critical bands}: cochlea behaves like overlapping bandpass filters; within one band, listener perceives total energy more than individual sinusoids.
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch10/critical-bands.png}\end{center}
+AAC approximates critical bands with scale-factor bands.
+
+\textbf{Frequency masking}: strong masker raises audibility threshold near its frequency.
+
+\[
+S_Q(f)<\Phi(f)
+\]
+
+Quantization noise below masking threshold $\Phi(f)$ is inaudible.
+
+\begin{center}\includegraphics[width=0.933\linewidth]{ch10/frequency-masking.png}\end{center}
+Masking is asymmetric and generally stronger above masker frequency.
+
+\textbf{Temporal masking}:
+
+\begin{itemize}
+  \item pre-masking: about 2-5 ms before loud onset;
+  \item post-masking: about 100-200 ms after loud sound.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.833\linewidth]{ch10/temporal-masking.png}\end{center}
+Temporal masking motivates window switching and pre-echo control.
+
+\subsection{MDCT}
+
+\textbf{MDCT} maps overlapped time samples to frequency coefficients.
+
+Key properties:
+
+\begin{itemize}
+  \item 50\% overlap;
+  \item TDAC (\textit{Time Domain Aliasing Cancellation});
+  \item critical sampling.
+\end{itemize}
+
+If input window has:
+
+\[
+N=2M
+\]
+
+samples, MDCT outputs:
+
+\[
+M
+\]
+
+coefficients.
+
+\begin{calloutbox}{red!70!black}{MDCT critical sampling}
+Overlap avoids blocking artifacts, but output coefficient count equals new time samples. No data expansion occurs.
+\end{calloutbox}
+
+\subsection{Perceptual Audio Coder}
+
+Encoder tasks:
+
+\begin{enumerate}
+  \item frequency transform;
+  \item psychoacoustic analysis;
+  \item bit allocation;
+  \item quantization;
+  \item Huffman/arithmetic coding.
+\end{enumerate}
+
+\begin{center}\includegraphics[width=\linewidth]{ch10/perceptual-audio-encoder.png}\end{center}
+Encoder uses auditory model to allocate bits where quantization noise would be audible.
+
+\begin{center}\includegraphics[width=0.9\linewidth]{ch10/perceptual-audio-decoder.png}\end{center}
+Decoder is simpler: inverse quantization and inverse frequency transform reconstruct signal.
+
+\subsection{Signal-to-Mask Ratio}
+
+For band $k$:
+
+\[
+SMR_k[\text{dB}]=S_k[\text{dB}]-\Phi_k[\text{dB}]
+\]
+
+Transparency condition:
+
+\[
+SNR_k>SMR_k
+\]
+
+This means quantization noise remains below masking threshold.
+
+\subsection{MP3 vs. AAC}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Feature} & \textbf{MP3} & \textbf{AAC} \\ \hline
+standard & MPEG-1 Audio Layer 3 & MPEG-2/4 Advanced Audio Coding \\ \hline
+transform & hybrid polyphase + MDCT & pure MDCT \\ \hline
+bands & 32 uniform subbands & 51 critical-band-like SFBs \\ \hline
+resolution & limited/fixed & flexible up to 1024 bins \\ \hline
+quantization & simpler & non-linear power law $X^{3/4}$ \\ \hline
+entropy coding & static Huffman tables & 12 dynamic Huffman table choices \\ \hline
+typical transparency & around 192 kbps & around 128 kbps \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{AAC advantage}
+AAC has finer control of quantization noise through scale-factor bands, so it can keep noise below masking threshold with fewer bits than MP3.
+\end{calloutbox}
+
+\subsection{HE-AAC, USAC, Opus, Neural Codecs}
+
+\textbf{HE-AAC} adds:
+
+\begin{itemize}
+  \item SBR (\textit{Spectral Band Replication}) for high-frequency reconstruction;
+  \item Parametric Stereo.
+\end{itemize}
+
+\textbf{USAC} switches between speech and music tools, combining AMR-WB-like and HE-AAC-like behavior.
+
+\textbf{Opus} combines:
+
+\begin{itemize}
+  \item \textbf{SILK}: LPC-derived speech coder, good around 8-12 kbps;
+  \item \textbf{CELT}: MDCT-derived audio coder, good for music/high rates;
+  \item hybrid mode around 16-32 kbps.
+\end{itemize}
+
+Opus can change bitrate, bandwidth, and mode on the fly, with frames as small as 5 ms, making it suitable for WebRTC.
+
+\textbf{Neural codecs} such as Lyra and EnCodec encode audio into learned latent variables and use generative decoders. They target very low rates, around 3-6 kbps, but may reconstruct plausible rather than sample-faithful audio.
+
+\subsection{Spatial Audio}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Approach} & \textbf{Representation} & \textbf{Use} \\ \hline
+channel-based & fixed speaker channels, e.g. 5.1 & classic cinema / TV \\ \hline
+object-based & mono object plus XYZ metadata & MPEG-H, Dolby Atmos \\ \hline
+scene-based & full sound field, ambisonics & VR/AR and 360 video \\ \hline
+\end{tabular}}
+\end{center}
+
+MPEG-H supports interactive objects, dialogue enhancement, and binaural rendering through HRTF.
+
+\subsection{Quality Assessment}
+
+Waveform SNR is weak for lossy audio because:
+
+\begin{itemize}
+  \item masked noise can be inaudible even with low SNR;
+  \item phase shifts can increase sample error without audible degradation.
+\end{itemize}
+
+Subjective tests:
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Test} & \textbf{Role} \\ \hline
+MOS & listeners rate 1-5, toll quality around 4+ \\ \hline
+MUSHRA & multiple samples against hidden reference and anchors \\ \hline
+ABX & double-blind transparency test \\ \hline
+\end{tabular}}
+\end{center}
+
+Objective metrics:
+
+\begin{itemize}
+  \item \textbf{POLQA}: ITU-T P.863, speech/telecom MOS prediction;
+  \item \textbf{ViSQOL}: spectrogram similarity, robust for VoIP and neural codecs.
+\end{itemize}
+
+\section{Visual Schemes}
+
+\subsection{Speech Coding Pipeline}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Speech frame] --> B[Windowing]
+    B --> C[Autocorrelation]
+    C --> D[LPC coefficients]
+    C --> E[Pitch + V/UV]
+    D --> F[LSF conversion]
+    F --> G[VQ index]
+    E --> H[Excitation parameters]
+    G --> I[Bitstream]
+    H --> I
+\end{verbatim}
+
+Speech coders transmit vocal-tract model plus compact excitation parameters.
+
+\subsection{CELP Analysis-by-Synthesis}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Original speech] --> B[Perceptual weighting]
+    C[Candidate excitation] --> D[Synthesis filter]
+    D --> E[Weighted synthesized speech]
+    B --> F[Weighted error]
+    E --> F
+    F --> G[Minimize error]
+    G --> H[Codebook index + gains]
+\end{verbatim}
+
+CELP encoder searches excitation that sounds closest after synthesis and perceptual weighting.
+
+\subsection{Perceptual Audio Coding}
+
+\begin{center}\footnotesize\itshape Diagram (Mermaid source):\end{center}
+\begin{verbatim}
+flowchart LR
+    A[Audio samples] --> B[MDCT / filterbank]
+    A --> C[Psychoacoustic model]
+    B --> D[Transform coefficients]
+    C --> E[Masking thresholds]
+    D --> F[Bit allocation]
+    E --> F
+    F --> G[Quantization]
+    G --> H[Entropy coding]
+    H --> I[Bitstream]
+\end{verbatim}
+
+Perceptual coder shapes quantization noise under masking threshold.
+
+\section{Examples}
+
+\subsection{Speech Codec Progression}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Codec} & \textbf{Paradigm} & \textbf{Bitrate} & \textbf{Main idea} \\ \hline
+LPC-10 & source model & 2.4 kbps & filter + simple excitation \\ \hline
+G.729 & CELP & 8 kbps & analysis-by-synthesis codebooks \\ \hline
+AMR-WB & ACELP wideband & 6.6-23.85 kbps & HD Voice bandwidth \\ \hline
+EVS & hybrid ACELP/MDCT & 5.9-128 kbps & speech + music + IP robustness \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{Perceptual Codec Progression}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Codec} & \textbf{Main tool} & \textbf{Typical use} \\ \hline
+MP3 & hybrid filterbank, SMR allocation & legacy music/storage \\ \hline
+AAC & pure MDCT, SFBs, improved Huffman & streaming/storage \\ \hline
+HE-AAC & AAC + SBR & low-bitrate music \\ \hline
+Opus & SILK + CELT & low-latency internet audio \\ \hline
+Neural codecs & learned latents + generative synthesis & ultra-low-rate fallback \\ \hline
+\end{tabular}}
+\end{center}
+
+\subsection{G.729 Rate Calculation}
+
+Given 80 bits every 10 ms:
+
+\[
+R=\frac{80}{0.010}=8000\text{ bit/s}=8\text{ kbps}
+\]
+
+\begin{calloutbox}{green!55!black}{Exam takeaway}
+Frame duration and bit allocation directly determine codec bitrate. Always convert frame duration to seconds before computing $R$.
+\end{calloutbox}
+
+\subsection{Why SNR Fails for Audio}
+
+Two signals can have large waveform error and still sound identical if:
+
+\begin{itemize}
+  \item error is below masking threshold;
+  \item phase differs but perceived spectral content is unchanged.
+\end{itemize}
+
+Audio codec evaluation therefore relies on MOS, MUSHRA, ABX, POLQA, and ViSQOL rather than plain SNR.
+
+\subsection{Final Exam Table}
+
+\begin{center}\fitwidth{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Concept} & \textbf{Must remember} \\ \hline
+source coding & model signal generator, best for speech \\ \hline
+sink coding & model listener, best for music \\ \hline
+LPC & predict sample from past values, code residual/excitation \\ \hline
+Yule-Walker & estimates optimal LP coefficients \\ \hline
+LSF & stable quantization representation for LPC filters \\ \hline
+CELP & codebook excitation plus analysis-by-synthesis \\ \hline
+perceptual weighting & hides CELP error around formants \\ \hline
+MDCT & overlapped, critically sampled transform \\ \hline
+masking & lets encoder place noise where inaudible \\ \hline
+SMR & band-wise headroom for quantization noise \\ \hline
+MP3/AAC & perceptual transform coders; AAC more flexible \\ \hline
+Opus/EVS & hybrid speech/music, network-aware codecs \\ \hline
+neural codecs & learned low-rate latent representations \\ \hline
+quality metrics & perceptual tests and models beat SNR \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{calloutbox}{red!70!black}{Main takeaway}
+Audio coding chooses model according to content: speech needs source models and low delay; music needs perceptual transform coding; modern communication needs hybrid adaptive codecs.
+\end{calloutbox}

@@ -1,9 +1,13 @@
 \section{Motion Estimation}
+Motion estimation finds a model that relates image content across frames. Its output predicts where pixels or blocks moved and is used to reduce temporal redundancy in video coding.
 \subsection{Variational Methods}
+Variational motion estimation defines motion as the field minimizing an energy functional. The objective balances agreement with observed frames against regularity assumptions such as spatial smoothness.
 \subsubsection{Velocity Vector Field - Optical Flow}
+Optical flow is a dense apparent-velocity field assigning a horizontal and vertical velocity to each image position. Velocity is measured in pixels per unit time, while displacement over one frame interval is measured in pixels.
 $$V : (x,y) \in \mathcal{J} \subset \mathbb{R}^2 \to (u,v)$$
 First part of the process is the formulation, then there is the discretization part.
 \subsubsection{Motion Vector Field}
+A motion vector field is the discrete displacement assigned to pixels or blocks between reference and current frames. In video coding it is side information, so its accuracy must be balanced against the bits required to transmit it.
 $$\forall \text{ point } \Longrightarrow \exists \text{ vector that represents pixel velocity of motion}$$
 Formulation:
 $$\arg\min_{(u,v)} \left\{D\left[f_0, f_1, (u,v)\right] + R(u,v)\right\} \qquad \text{ where}\begin{cases}
@@ -75,6 +79,7 @@ $$\text{Solutions }\qquad \longrightarrow \begin{cases}
 \end{cases}$$
 Horn and Schunck method provides a smooth motion estimation (smooth and coherent result), very used in practice for object tracking, video compression and motion analysis.
 \subsection{Block Matching}
+Block matching estimates motion by searching a reference frame for the block most similar to each current block. It produces one displacement vector per block rather than per pixel, reducing complexity and signaling rate at the cost of a coarser motion model.
 We split images into blocks $B_{p,q}$ with $(p,q) \in N \times M$\\
 We can estimate our global motion using simple motions of small blocks, simple to program.\\
 The idea is to compare a single block luminance $f_k(B_{p,q})$ with a subblocks in a block window $f_h(B_{p-i, q-j})$
@@ -99,6 +104,7 @@ How can we tell if the result we get is good enough?
 Main Tradeoff on complexity is to change block size $P \times Q$.\\
 Larger blocks reduce coding costs, complexity, and increase MSE
 \subsubsection{Block Matching criteria}
+The matching criterion is a distortion score used to rank candidate reference blocks. Lower SAD or SSD means a closer pixel match; a regularized criterion also charges the estimated number of bits needed to code the motion vector.
 \begin{itemize}
     \item \textbf{SSD} (Sum of Squared Differences), norm-based criteria $$J_{SSD}(i,j) = \sr{}{(n,m)\in B_{p,q}}\left[f(n,m,k) - f(n-i, m-j, h)\right]^2$$
     \begin{itemize}

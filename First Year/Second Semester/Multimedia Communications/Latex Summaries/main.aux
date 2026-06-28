@@ -1,0 +1,407 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction to Multimedia Compression}{1}{chapter.1}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Table of Contents}{1}{section.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Core Idea}{1}{section.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}Key Concepts}{1}{section.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}Multimedia Representation}{1}{subsection.1.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}Human Visual System}{2}{subsection.1.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.3}Color Perception and Color Spaces}{2}{subsection.1.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.4}Sound Perception}{3}{subsection.1.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.5}Chroma Subsampling}{4}{subsection.1.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.6}Compression Tools}{4}{subsection.1.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.7}Lossless vs. Lossy Compression}{4}{subsection.1.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.8}Machine-Centric Multimedia}{4}{subsection.1.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.4}Theory and Formulas}{5}{section.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.1}Quantization and Bit Depth}{5}{subsection.1.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.2}Rate and Compression Ratio}{5}{subsection.1.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.3}Objective Quality Metrics}{5}{subsection.1.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.4}SSIM}{6}{subsection.1.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.5}Learned Perceptual Metrics}{6}{subsection.1.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.6}Subjective Quality}{6}{subsection.1.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.7}Complexity, Delay, and Robustness}{6}{subsection.1.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.5}Visual Schemes}{7}{section.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.1}Visual and Auditory Perception}{7}{subsection.1.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.2}Color and Chroma Sampling}{9}{subsection.1.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.3}Compression Pipeline}{9}{subsection.1.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.4}Quality Assessment Chain}{10}{subsection.1.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.5}Video Perception}{10}{subsection.1.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.6}Examples}{11}{section.1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Scalar and Predictive Quantization}{12}{chapter.2}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Table of Contents}{12}{section.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Core Idea}{12}{section.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Key Concepts}{12}{section.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Scalar Quantizer Model}{12}{subsection.2.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Uniform Quantization}{13}{subsection.2.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Dead-Zone}{13}{subsection.2.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.4}Granular Noise vs. Overload Noise}{14}{subsection.2.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.5}Rate-Distortion Behavior}{14}{subsection.2.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.6}Optimal Scalar Quantization}{14}{subsection.2.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.7}Predictive Scalar Quantization}{15}{subsection.2.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.8}Drift Problem}{15}{subsection.2.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.9}Entropy Coding Impact}{15}{subsection.2.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Theory and Formulas}{15}{section.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}UQ of a Uniform Random Variable}{15}{subsection.2.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}High-Resolution UQ for a Generic Source}{16}{subsection.2.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}High-Resolution Optimal Scalar Quantizer}{16}{subsection.2.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.4}Lloyd-Max Conditions}{17}{subsection.2.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.5}Prediction Gain}{17}{subsection.2.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.6}Linear Prediction and Wiener-Hopf Solution}{18}{subsection.2.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.7}Local Adaptation and Side Information}{18}{subsection.2.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Visual Schemes}{19}{section.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}Scalar Quantizer Structure}{19}{subsection.2.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Rate-Distortion and Visual Artifacts}{21}{subsection.2.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.3}Predictive Coding Schemes}{22}{subsection.2.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.4}Drift and Correct Closed Loop}{23}{subsection.2.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.5}Entropy Coding Gain}{24}{subsection.2.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.6}Examples}{25}{section.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Lossless Coding}{28}{chapter.3}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Table of Contents}{28}{section.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Core Idea}{28}{section.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Key Concepts}{28}{section.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Codes and Decodability}{28}{subsection.3.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Information and Entropy}{29}{subsection.3.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Joint and Conditional Entropy}{29}{subsection.3.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Maximum Entropy}{30}{subsection.3.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Kraft and Prefix Codes}{30}{subsection.3.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.6}Shannon Source Coding Theorem}{30}{subsection.3.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.7}Huffman Coding}{30}{subsection.3.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.8}Block Coding}{31}{subsection.3.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.9}Arithmetic Coding}{31}{subsection.3.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.10}Context-Based and Adaptive Coding}{32}{subsection.3.3.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.11}Exponential-Golomb Coding}{32}{subsection.3.3.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.12}Dictionary Coding and LZW}{33}{subsection.3.3.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.13}Standards and Practical Codecs}{33}{subsection.3.3.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.14}Neural Lossless Coding}{33}{subsection.3.3.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Theory and Formulas}{34}{section.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Entropy Bound and Optimal Lengths}{34}{subsection.3.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Kraft Tree Interpretation}{35}{subsection.3.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Conditioning and Context Coding}{35}{subsection.3.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.4}Huffman vs. Arithmetic Overhead}{35}{subsection.3.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.5}House Image Result}{35}{subsection.3.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Visual Schemes}{36}{section.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Entropy Coding Pipeline}{36}{subsection.3.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}Entropy and Prefix Codes}{37}{subsection.3.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}Huffman and Predictive Coding}{38}{subsection.3.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.4}Arithmetic Coding}{39}{subsection.3.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.5}LZW Dictionary Coding}{40}{subsection.3.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.6}Prediction Results on House Image}{41}{subsection.3.5.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Examples}{42}{section.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Transform Coding}{46}{chapter.4}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Table of Contents}{46}{section.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Core Idea}{46}{section.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Key Concepts}{46}{section.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Block Coding and Rate Allocation}{46}{subsection.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Huang-Schulteiss Formula}{47}{subsection.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Orthogonal Transforms}{47}{subsection.4.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Coding Gain}{48}{subsection.4.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}Practical Rate Allocation}{48}{subsection.4.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.6}KLT}{48}{subsection.4.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.7}DFT}{49}{subsection.4.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.8}DCT}{49}{subsection.4.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.9}JPEG Overview}{50}{subsection.4.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.10}JPEG Quantization}{50}{subsection.4.3.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.11}JPEG Entropy Coding}{51}{subsection.4.3.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.12}JPEG File Structure}{51}{subsection.4.3.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Theory and Formulas}{52}{section.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}HS Derivation Sketch}{52}{subsection.4.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}AM-GM and Coding Gain}{52}{subsection.4.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Toy Rotation Example}{52}{subsection.4.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}KLT Energy Compaction}{53}{subsection.4.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.5}JPEG Rate-Distortion Notes}{53}{subsection.4.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Visual Schemes}{53}{section.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Transform Sparsification}{53}{subsection.4.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}KLT, DFT, and DCT}{55}{subsection.4.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}JPEG Pipeline}{57}{subsection.4.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.4}JPEG Artifacts}{59}{subsection.4.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Examples}{60}{section.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Wavelet Analysis}{63}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Table of Contents}{63}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Core Idea}{63}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Key Concepts}{63}{section.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Linear Transform by Projection}{63}{subsection.5.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Time-Frequency Uncertainty}{64}{subsection.5.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}STFT vs. Wavelets}{64}{subsection.5.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.4}Image Model}{64}{subsection.5.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.5}1D Filter Bank}{65}{subsection.5.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.6}Perfect Reconstruction}{65}{subsection.5.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.7}Orthogonality and Biorthogonality}{66}{subsection.5.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.8}Vanishing Moments}{66}{subsection.5.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.9}Border Problem}{66}{subsection.5.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.10}Haar and CDF Filters}{66}{subsection.5.3.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.11}1D and 2D Multiresolution}{67}{subsection.5.3.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.12}EZW}{67}{subsection.5.3.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.13}JPEG2000}{68}{subsection.5.3.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.14}EBCOT}{68}{subsection.5.3.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.15}Error Robustness}{69}{subsection.5.3.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Theory and Formulas}{69}{section.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Wavelet Scaling and Fourier Interpretation}{69}{subsection.5.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Perfect Reconstruction Matrix Form}{70}{subsection.5.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}EZW Zerotree Saving}{70}{subsection.5.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}JPEG2000 Exact Rate Control}{70}{subsection.5.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Visual Schemes}{70}{section.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Time-Frequency Resolution}{70}{subsection.5.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Trends and Anomalies}{72}{subsection.5.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}Filter Bank and Multiresolution}{74}{subsection.5.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.4}2D DWT}{76}{subsection.5.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.5}EZW and JPEG2000 Schemes}{77}{subsection.5.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Examples}{78}{section.5.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Learned Image Compression}{80}{chapter.6}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Table of Contents}{80}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Core Idea}{80}{section.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Key Concepts}{81}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Classical vs. Learned Transform Coding}{81}{subsection.6.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}KLT as Linear Limit}{81}{subsection.6.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.3}Rate-Distortion Objective}{81}{subsection.6.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.4}Artificial Neuron and MLP}{82}{subsection.6.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.5}Gradient Descent and Backpropagation}{82}{subsection.6.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.6}Why MLPs Fail on Images}{82}{subsection.6.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.7}CNNs for Learned Compression}{83}{subsection.6.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.8}GDN}{83}{subsection.6.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.9}Autoencoder Codec}{83}{subsection.6.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.10}VAE Interpretation}{84}{subsection.6.3.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.11}Quantization Training Problem}{84}{subsection.6.3.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.12}Hyperprior}{84}{subsection.6.3.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.13}JPEG AI}{85}{subsection.6.3.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.14}Current Limitations}{85}{subsection.6.3.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.15}Future Directions}{85}{subsection.6.3.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Theory and Formulas}{86}{section.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Classical-to-Neural Architecture}{86}{subsection.6.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Latent Tensor Size}{86}{subsection.6.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}Entropy Model and Arithmetic Coding}{86}{subsection.6.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.4}Additive Noise Approximation}{86}{subsection.6.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.5}GDN Interpretation}{87}{subsection.6.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Visual Schemes}{87}{section.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.1}Neural Network Basics}{87}{subsection.6.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.2}CNN Features}{88}{subsection.6.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.3}Autoencoder Codec}{89}{subsection.6.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.4}Hyperprior Codec}{90}{subsection.6.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.5}JPEG AI Dual Use}{90}{subsection.6.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.6}Examples}{90}{section.6.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Motion Estimation}{92}{chapter.7}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Table of Contents}{92}{section.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Core Idea}{92}{section.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Key Concepts}{93}{section.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Families of Motion Estimation Methods}{93}{subsection.7.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Motion-Compensated Prediction}{93}{subsection.7.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}How to Evaluate a Motion Field}{93}{subsection.7.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.4}Theory and Formulas}{94}{section.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.1}Variational Optical Flow}{94}{subsection.7.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.2}Horn and Schunck}{94}{subsection.7.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.3}Block Matching}{95}{subsection.7.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.4}SAD and SSD}{96}{subsection.7.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.5}Regularized Motion Estimation}{97}{subsection.7.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.6}Block Size Tradeoff}{97}{subsection.7.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.7}Search Strategies}{97}{subsection.7.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.8}Subpixel Precision}{98}{subsection.7.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.9}Variable Block Size}{99}{subsection.7.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.10}Parametric Motion Models}{99}{subsection.7.4.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.11}Deep Learning Methods}{101}{subsection.7.4.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.5}Visual Schemes}{102}{section.7.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5.1}Motion-Compensated Coding Loop}{102}{subsection.7.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5.2}Method Overview}{102}{subsection.7.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5.3}Variable Block-Size Decision}{102}{subsection.7.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.6}Examples}{103}{section.7.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6.1}SAD vs. SSD on Flower Garden}{103}{subsection.7.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6.2}Regularized SSD}{103}{subsection.7.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6.3}Search Complexity Example}{103}{subsection.7.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6.4}Final Comparison}{104}{subsection.7.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Video Coding Principles}{105}{chapter.8}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Table of Contents}{105}{section.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Core Idea}{105}{section.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.3}Key Concepts}{106}{section.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.1}Predictive Video Coding}{106}{subsection.8.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.2}Motion Estimation and Motion Compensation}{106}{subsection.8.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.3}Motion-Vector Field Coding}{107}{subsection.8.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.4}Intra, Inter, and Direct Modes}{108}{subsection.8.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.5}Frame Types and GOP}{108}{subsection.8.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.6}Hybrid Video Codec}{109}{subsection.8.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.7}Video Encoding Standards}{110}{subsection.8.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.4}Theory and Formulas}{111}{section.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}Motion Compensation and Residual}{111}{subsection.8.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}Entropy of Motion Vectors}{111}{subsection.8.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.3}Motion Estimation Design Parameters}{113}{subsection.8.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.4}GOP and Coding Order}{113}{subsection.8.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.5}Rate-Distortion Mode Selection}{113}{subsection.8.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.6}RD Plane Slope}{114}{subsection.8.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.7}Block Partition}{115}{subsection.8.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.8}Rate Control}{115}{subsection.8.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.5}Visual Schemes}{116}{section.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.1}Motion-Compensated Inter Coding}{116}{subsection.8.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.2}Hybrid Codec Concept Map}{116}{subsection.8.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.3}Block Partition Decision}{117}{subsection.8.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.4}Rate-Control Feedback}{117}{subsection.8.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.6}Examples}{117}{section.8.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.1}Raw Motion-Vector Coding}{117}{subsection.8.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.2}Predictive MV Coding Gain}{117}{subsection.8.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.3}Frame-Type Tradeoffs}{118}{subsection.8.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.4}Mode-Selection Interpretation}{118}{subsection.8.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.5}Final Exam Summary}{118}{subsection.8.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Modern Video Compression Standards}{119}{chapter.9}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {9.1}Table of Contents}{119}{section.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.2}Core Idea}{119}{section.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.3}Key Concepts}{120}{section.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.1}What Standards Define}{120}{subsection.9.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.2}Historical Evolution}{121}{subsection.9.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.3}Source 2026 Adoption Scenarios}{121}{subsection.9.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.4}Core Standard Tools}{122}{subsection.9.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.4}Theory and Formulas}{122}{section.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.1}Rate-Distortion Optimization}{122}{subsection.9.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.2}Space Partitioning Evolution}{122}{subsection.9.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{H.264/AVC: Macroblocks}{122}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{H.265/HEVC: CTU and Quad-Tree}{123}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{H.266/VVC: QT + MTT}{123}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{AV1: Superblock Partitioning}{124}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.3}RDO Search Burden}{124}{subsection.9.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.4}Intra Prediction}{125}{subsection.9.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.5}Most Probable Mode}{127}{subsection.9.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.6}Inter Prediction}{127}{subsection.9.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.7}Motion-Vector Prediction and Merge}{128}{subsection.9.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.8}Beyond Translational Motion}{128}{subsection.9.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.9}Transforms}{129}{subsection.9.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.10}Quantization and CABAC}{129}{subsection.9.4.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.11}In-Loop Filters}{130}{subsection.9.4.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.12}Slices}{130}{subsection.9.4.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.13}VCL, NAL, NALU, OBU}{131}{subsection.9.4.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.14}Annex-B vs Packetized Format}{132}{subsection.9.4.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.15}Network-Friendly Operations}{133}{subsection.9.4.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.16}Random Access}{134}{subsection.9.4.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.17}Tiles and WPP}{134}{subsection.9.4.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.5}Visual Schemes}{136}{section.9.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.1}Modern Hybrid Encoder Loop}{136}{subsection.9.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.2}Standard Abstraction}{137}{subsection.9.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.3}Transport Mapping}{137}{subsection.9.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.6}Examples}{137}{section.9.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.1}UVG HoneyBee Comparison}{137}{subsection.9.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.2}UVG Bosphorus Comparison}{137}{subsection.9.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.3}Partition Evolution Summary}{138}{subsection.9.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.4}Final Exam Table}{138}{subsection.9.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {10}Audio Coding}{139}{chapter.10}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {10.1}Table of Contents}{139}{section.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.2}Core Idea}{139}{section.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.3}Key Concepts}{139}{section.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.1}Speech vs. Music}{139}{subsection.10.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.2}Empirical Signal Structure}{140}{subsection.10.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.3}Source-Filter Model}{142}{subsection.10.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.4}Voiced and Unvoiced Speech}{142}{subsection.10.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.4}Theory and Formulas}{142}{section.10.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.1}Linear Predictive Coding}{142}{subsection.10.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.2}LPC Analysis}{143}{subsection.10.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.3}LPC Synthesis}{144}{subsection.10.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.4}LPC Coefficient Quantization and LSF}{145}{subsection.10.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.5}Vector Quantization}{145}{subsection.10.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.6}LPC-10 Bitrate}{146}{subsection.10.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.7}CELP}{146}{subsection.10.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.8}Perceptual Weighting in CELP}{146}{subsection.10.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.9}CELP Excitation}{147}{subsection.10.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.10}G.729 Bitrate}{148}{subsection.10.4.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.11}AMR-WB and EVS}{148}{subsection.10.4.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.12}Psychoacoustic Coding}{149}{subsection.10.4.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.13}MDCT}{151}{subsection.10.4.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.14}Perceptual Audio Coder}{151}{subsection.10.4.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.15}Signal-to-Mask Ratio}{152}{subsection.10.4.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.16}MP3 vs. AAC}{153}{subsection.10.4.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.17}HE-AAC, USAC, Opus, Neural Codecs}{153}{subsection.10.4.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.18}Spatial Audio}{153}{subsection.10.4.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.19}Quality Assessment}{153}{subsection.10.4.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.5}Visual Schemes}{154}{section.10.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.1}Speech Coding Pipeline}{154}{subsection.10.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.2}CELP Analysis-by-Synthesis}{154}{subsection.10.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.3}Perceptual Audio Coding}{154}{subsection.10.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.6}Examples}{155}{section.10.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.1}Speech Codec Progression}{155}{subsection.10.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.2}Perceptual Codec Progression}{155}{subsection.10.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.3}G.729 Rate Calculation}{155}{subsection.10.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.4}Why SNR Fails for Audio}{155}{subsection.10.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.5}Final Exam Table}{156}{subsection.10.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {11}Quality Assessment and Quality of Experience for Multimedia Services}{157}{chapter.11}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {11.1}Table of Contents}{157}{section.11.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.2}Core Idea}{157}{section.11.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.3}Key Concepts}{158}{section.11.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.3.1}Assessment Taxonomy}{158}{subsection.11.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.3.2}Subjective Testing}{159}{subsection.11.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.3.3}Stimulus Selection: SI and TI}{159}{subsection.11.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.3.4}Subjective Methodologies}{160}{subsection.11.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.3.5}Objective Metric Types}{161}{subsection.11.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.4}Theory and Formulas}{162}{section.11.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.1}Spatial Information}{162}{subsection.11.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.2}Temporal Information}{162}{subsection.11.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.3}MOS}{162}{subsection.11.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.4}Variability, Standard Error, Confidence}{163}{subsection.11.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.5}Human Visual System Effects}{163}{subsection.11.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.6}MSE and PSNR}{164}{subsection.11.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.7}Bjontegaard Metrics}{165}{subsection.11.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.8}Why PSNR Is Not Enough}{166}{subsection.11.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.9}SSIM}{167}{subsection.11.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.10}VMAF}{168}{subsection.11.4.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.11}AI-Based Metrics}{168}{subsection.11.4.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.12}Reduced-Reference Metrics}{169}{subsection.11.4.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.13}No-Reference Metrics}{169}{subsection.11.4.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.5}Visual Schemes}{169}{section.11.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.5.1}Subjective Quality Experiment}{169}{subsection.11.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.5.2}Objective Metric Pipeline}{169}{subsection.11.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.5.3}QoE Optimization Loop}{170}{subsection.11.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.6}Examples}{170}{section.11.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.6.1}Subjective Method Choice}{170}{subsection.11.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.6.2}SI/TI Content Interpretation}{170}{subsection.11.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.6.3}Objective Metrics Summary}{170}{subsection.11.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.6.4}Final Exam Table}{171}{subsection.11.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {12}Adaptive Streaming}{172}{chapter.12}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {12.1}Table of Contents}{172}{section.12.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.2}Core Idea}{172}{section.12.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.3}Key Concepts}{173}{section.12.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3.1}Service Classes}{173}{subsection.12.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3.2}One-to-Many Heterogeneity}{173}{subsection.12.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3.3}Push vs. Pull Multimedia Stacks}{174}{subsection.12.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3.4}Network-Friendly Video}{175}{subsection.12.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3.5}Scalable Video Coding}{176}{subsection.12.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3.6}HTTP, QUIC, and CDNs}{177}{subsection.12.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.4}Theory and Formulas}{179}{section.12.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.1}DASH Architecture}{179}{subsection.12.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.2}MPD Manifest}{180}{subsection.12.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.3}Segment Generation Rules}{181}{subsection.12.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.4}Low-Latency DASH/CMAF}{182}{subsection.12.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.5}Throughput}{183}{subsection.12.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.6}Delay and Jitter}{183}{subsection.12.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.7}Playout Buffer Model}{184}{subsection.12.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.8}Fluid Dynamics}{184}{subsection.12.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.9}QoE for Streaming}{185}{subsection.12.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.10}ABR Strategies}{187}{subsection.12.4.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.11}Example ABR Decision}{187}{subsection.12.4.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.5}Visual Schemes}{188}{section.12.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.5.1}DASH Pull Pipeline}{188}{subsection.12.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.5.2}Buffer State Machine}{188}{subsection.12.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.5.3}ABR Objective}{188}{subsection.12.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.6}Examples}{189}{section.12.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.6.1}Buffer Parameter Tradeoff}{189}{subsection.12.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.6.2}Exercise 1 Result}{189}{subsection.12.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.6.3}Exercise 2: Max Quality Causes Periodic Stalls}{190}{subsection.12.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.6.4}Exercise 2: Periodic Quality Reduction}{191}{subsection.12.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.6.5}Final Exam Table}{193}{subsection.12.6.5}\protected@file@percent }
+\gdef \@abspage@last{202}

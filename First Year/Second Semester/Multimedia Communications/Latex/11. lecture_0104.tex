@@ -1,4 +1,5 @@
 \section{Wavelet-based Image Compression}
+Wavelet-based image compression represents an image at several spatial resolutions using localized basis functions. It avoids fixed DCT block boundaries and supports progressive transmission by quality or resolution.
 \subsection{Signal Analysis}
 \subsubsection{Signal Analysis through Projection}
 Given an orthonormal basis with the $\varphi_k$ vectors, any signal can be represented as:
@@ -6,16 +7,19 @@ $$x(t) = \sr{}{k}c_k \varphi_k(t)$$
 We can see the transform as a scalar product:
 $$c_k = \left<x(t),\varphi_k(t)\right> = \int_{-\infty}^{+\infty}x(t) \cdot \varphi_k^\star(t)dt$$
 \subsubsection{Resolution Tradeoff: Time-Frequency Heisenberg-like Uncertainty principle}
+Time--frequency resolution describes how precisely an analysis identifies where an event occurs and which frequencies it contains. A narrow time window gives precise localization but coarse frequency discrimination; a long window gives the opposite.
 $$(A=\Delta f \cdot \Delta t) \geq \frac{1}{4\pi}$$
 The area remains constant, we cannot increase both at the same time.\\
 We can only change shape from (wide flat $\leftrightarrow$ narrow tall).
 \subsubsection{Frequency Analysis: STFT and Rigid Tilting}
+The Short-Time Fourier Transform (STFT) applies a Fourier transform inside a sliding fixed-size window. It localizes spectral content in time or space, but every frequency uses the same window resolution.
 Problem: JPEG uses 8x8 fixed size blocks, having fixed N we cannot change resolution.\\
 We need a flexible approach, using Wavelets we have Adaptive Multiresolution, Mother Wavelet generation:
 $$\psi_{a,b}(t) = \frac{1}{\sqrt{a}}\psi\left(\frac{t-b}{a}\right)$$
 Using the scaling property of the Fourier Transform:
 $$\mathcal{F}(x(t)) =X(f) \qquad \Longrightarrow \qquad \mathcal{F}\left\{x\left(\frac{t}{a}\right)\right\} = |a|X(af)$$
 \subsection{Discrete Wavelet Transform (DWT) and Multi Resolution Analysis (MRA)}
+The Discrete Wavelet Transform (DWT) decomposes a sampled signal into low-frequency approximations and high-frequency details through analysis filter banks and downsampling. Multi Resolution Analysis (MRA) repeats this decomposition at several scales.
 \subsubsection{1D-MRA}
 Objective: sparsification of the signal. We start from $x[k] = c_{i=0}[k]$ then going on with increasing the $i$ we get the $c_i$ becomes shorter in time, almost by a factor of $\frac{1}{i+1}$.
 We want a symmetric FIR perfect reconstructing filter, with 4th vanishing moment, such that we are able to work on a grade of 3:
@@ -24,12 +28,14 @@ We want a symmetric FIR perfect reconstructing filter, with 4th vanishing moment
     \item \textbf{Daubechies 5/3} (integer valued filter taps)
 \end{itemize}
 \subsubsection{2D-MRA}
+Two-dimensional MRA applies low-pass and high-pass filtering along image rows and columns. Each level produces one approximation subband $LL$ and three detail subbands $LH$, $HL$, and $HH$, which emphasize different edge orientations.
 Imagine a black-`squared'-ring, if we divide rows or column into the possible signals, we have only 2 possible signal: all black or a rectangular window.
 If the signal is constant the output is the same as the input, otherwise if we apply a LPF we get a smoother rect, while if we apply HPF we get some peaks near the color change.\\
 We can now build a square of the combination along H,V of the LPF and HPF: we get LL,HL,LH,HH subbands.\\
 We can also recursively apply this transform to the already transformed square.\\
 By applying it we further sparsify the signal. How to choose decomposition level? It is a tradeoff.
 \subsubsection{EZW: Embedded Zerotrees of Wavelet Coefficients}
+Embedded Zerotree Wavelet (EZW) coding is a progressive bitstream method for quantized wavelet coefficients. It exploits the fact that an insignificant coefficient at a coarse scale often has insignificant descendants at finer scales, coding an entire tree with one symbol.
 It exploits similarities among the subbands, it allows progressive quality while downloading/reading an image.
 \begin{itemize}
     \item Quality Scalability
@@ -40,6 +46,7 @@ It exploits similarities among the subbands, it allows progressive quality while
 \end{itemize}
 Idea: each new bit should convey the max possible information, first we encode big samples then progressive information about the subbands exploiting self similarity amond the subbands. Problem: localization overhead.
 \subsubsection{Recall: Bitplanes}
+A bitplane is the binary image formed by one bit position of every quantized coefficient. Sending bitplanes from most to least significant progressively refines numerical precision and reconstructed quality.
 Take the most significant bit $ b = \lfloor \log_2(\max(n))\rfloor$ of the value of the matrix, then we plot the $i$-th bitplane as a binary matrix made by the values ANDed with $2^{b+1-i}$. Example: $b=4$, first bitplane is made of $(x\ \&\  2^4)$.
 Bitplane is equivalent to a uniform quantization. We'll see the top left corner is the one that populates at first.
 \subsubsection{EZW Algorithm}
@@ -63,7 +70,7 @@ Idea: find out a smart way to reach big coefficients without expressing position
 \end{itemize}
 \subsection{JPEG2000}
 \subsubsection{Introduction}
-It is a standard and actually used in DB of very large images because of scalability: it allows to extract any combination of quality and resolution using some markers in the bitstream. It allows:
+JPEG2000 is a wavelet-based still-image coding standard designed for scalability, precise rate control, region-of-interest access, and lossy-to-lossless operation. Its embedded bitstream can be truncated to obtain a chosen bitrate, usually measured in bpp, without re-encoding. It is used in databases of very large images because it allows extraction of different quality and resolution levels. It allows:
 \begin{itemize}
     \item Region-of-interest (ROI) coding
     \item Lossy-to-lossless coding
@@ -76,6 +83,7 @@ How does it work? 2 Tiers:
     \item 2nd tier: EBCOT, scalability and ROI management
 \end{itemize}
 \subsubsection{Quantization}
+JPEG2000 rate control selects truncation points in independently coded coefficient blocks. Target bitrate is the final number of coded bits divided by image pixels, while distortion is usually measured as MSE; the selected points minimize distortion under that bit budget.
 DWT coefficient are encoded with very small quantization steps. We encode bitplanes for every codeblock (blocks of the actual image) using lossless coding, since it is lossless we have a lot of bits.\\
 To achieve compression we just truncate bits of the samples. How do we know which bits to truncate? Lagrange:
 $$\min\sum R_i \text{ s.t. }\sr{}{i}R_i \leq R_{tot} \qquad \Longrightarrow \qquad \frac{\partial J}{\partial R_i} = \frac{\partial D_i}{\partial R_i} + \lambda = 0 \qquad\Longrightarrow\qquad \frac{\partial D_i}{\partial R_i} = -\lambda$$
