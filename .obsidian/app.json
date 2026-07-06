@@ -9,5 +9,6 @@
     "downscalePercent": 70
   },
   "alwaysUpdateLinks": true,
-  "promptDelete": false
+  "promptDelete": false,
+  "spellcheck": true
 }
