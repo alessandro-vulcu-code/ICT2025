@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "First Year/Second Semester/Multimedia Communications/Lessons/3. Lossless coding.md",
-                "mode": "preview",
+                "file": "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/1. Types And Declarations.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3. Lossless coding"
+              "title": "1. Types And Declarations"
             }
           }
         ]
@@ -98,7 +98,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "First Year/Second Semester/Multimedia Communications/Lessons/3. Lossless coding.md",
+            "file": "First Year/Second Semester/Multimedia Communications/All Questions/Alberto/MMSampleAnswers.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -159,6 +159,15 @@
   },
   "active": "8e4b85eaec79ae67",
   "lastOpenFiles": [
+    "First Year/Second Semester/Multimedia Communications/MM_COMM_exam_questions_full.md",
+    "First Year/Second Semester/Multimedia Communications/All Questions/Alberto/MMSampleAnswers.md",
+    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/02. Pointers, Reference, Arrays.md",
+    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/2. Pointers, Arrays And References.md",
+    "First Year/First Semester/Modern CPP for Internet and Multimedia/Rewritten Lessons/1. Types And Declarations.md",
+    "First Year/Second Semester/Multimedia Communications/Summaries/Multimedia Communications - Complete Notes 1.md",
+    "First Year/Second Semester/Multimedia Communications/Lessons/7. Motion Estimation.md",
+    "First Year/Second Semester/Multimedia Communications/All Questions/main.md",
+    "First Year/Second Semester/Multimedia Communications/Lessons/3. Lossless coding.md",
     "First Year/Second Semester/Multimedia Communications/Lessons/2. Scalar and Predictive Quantization.md",
     "First Year/Second Semester/Multimedia Communications/Summaries/Multimedia Communications - Complete Notes.md",
     "First Year/Second Semester/Multimedia Communications/Summaries/2. Scalar and Predictive Quantization.md",
@@ -175,8 +184,6 @@
     "First Year/Second Semester/Multimedia Communications/Lessons/1. Introduction to Multimedia Compression.md",
     "First Year/Second Semester/Multimedia Communications/Lessons/8. Video Coding Principles.md",
     "First Year/Second Semester/Multimedia Communications/Lessons/12. Adaptive_streaming.md",
-    "First Year/Second Semester/Multimedia Communications/Lessons/3. Lossless coding.md",
-    "First Year/Second Semester/Multimedia Communications/Lessons/7. Motion Estimation.md",
     "First Year/Second Semester/Multimedia Communications/Lessons/5. Wavelet analysis.md",
     "First Year/Second Semester/Multimedia Communications/Lessons/11. Quality Assessment and Quality of Experience for Multimedia Services.md",
     "First Year/Second Semester/Multimedia Communications/Lessons",
@@ -197,13 +204,6 @@
     "First Year/Second Semester/Multimedia Communications/Summaries/Pics/10. Audio Coding",
     "First Year/Second Semester/Multimedia Communications/Summaries/Pics/4. Transform coding",
     "First Year/Second Semester/Multimedia Communications/Summaries/Pics/3. Lossless coding",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/Lab/Lab2.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/09. Memory management.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/13. Operators overloading.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/17. Smart Pointers.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/12. Derived classes and class hierarchies.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/15. Class hierarchies and run-time polymorphism.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/16. Templates.md",
-    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/02. Pointers, Reference, Arrays.md"
+    "First Year/First Semester/Modern CPP for Internet and Multimedia/Modern CPP Summaries/Lab/Lab2.md"
   ]
 }
