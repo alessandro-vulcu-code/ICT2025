@@ -1,0 +1,1591 @@
+% Compile with: latexmk -xelatex -shell-escape "Possible questions.tex"
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=1.7cm,headheight=18pt,footskip=18pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{minted}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{needspace}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{\small\textbf{Possible oral exam questions}}
+\fancyhead[R]{\small Modern CPP for Internet and Multimedia}
+\fancyfoot[L]{\scriptsize Questions marked \textbf{[Prof]} come from \texttt{5\_min\_questions.md} or the Q\&A extra questions.}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0.2pt}
+\newenvironment{questionblock}{%
+  \begin{minipage}[t][0.455\textheight][t]{\textwidth}%
+  \raggedright\small
+}{%
+  \vfill
+  \end{minipage}%
+}
+\newcommand{\sectionlabel}[1]{\textsc{#1}\par\vspace{0.35em}}
+\newcommand{\questionnumber}[1]{\textbf{#1.}\enspace}
+\begin{document}
+
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{1}What is the difference between a declaration and a definition?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{2}What are fundamental types? Give examples of integer, floating-point, character, Boolean, and \verb|void| types.\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{3}Why are fundamental type sizes implementation-defined, and how do \verb|<cstdint>| types help portability?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{4}What is a scope? Explain local, class, namespace, global, and statement scope.\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{5}What are hiding and shadowing? Give an example.\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{6}What is the \verb|auto| type specifier, and when should it be used?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{7}What is an lvalue? What is an rvalue?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{8}What happens if a name is declared without initialization?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{9}What is a C++ object?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{10}What is object lifetime?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{11}Compare automatic, static, free-store, \verb|thread_local|, and temporary object lifetimes.\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{12}What is brace initialization, and why does it help avoid narrowing?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{13}What is the difference between \verb|const| and \verb|constexpr|?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{14}What is a type alias, and why can aliases improve readability?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Types and Declarations}
+\questionnumber{15}\textbf{[Prof]} After the operations below, which is the value of \verb|c|?\par
+
+\begin{minted}[fontsize=\small,breaklines,autogobble]{cpp}
+uint_fast8_t a = 21;
+uint_fast8_t b = 11;
+uint_fast8_t c = a ^ b;
+\end{minted}
+
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{1}What is a pointer?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{2}What operations are possible with pointers?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{3}What is a raw pointer, and why does it not necessarily express ownership?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{4}What is \verb|void*|, and why does it lose type information?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{5}What is \verb|nullptr|, and why is it better than \verb|0| or \verb|NULL|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{6}What is the behavior of \verb|const| with pointers?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{7}\textbf{[Prof]} What is the difference between \verb|const std::string* s| and \verb|std::string* const s|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{8}What is an array, and how can it be initialized?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{9}What does it mean that arrays are contiguous?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{10}What happens when an array is passed to a function?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{11}What is pointer arithmetic, and when is it valid?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{12}What is an lvalue reference?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{13}What is an rvalue reference?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{14}\textbf{[Prof]} What is a reference? Provide an example.\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{15}How do references differ from pointers?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Pointers, Arrays and References}
+\questionnumber{16}Why are rvalue references important for move semantics?\par
+
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Structures and Enumerators}
+\questionnumber{1}What are primitive user-defined types?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Structures and Enumerators}
+\questionnumber{2}What is a \verb|struct|?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Structures and Enumerators}
+\questionnumber{3}How does a \verb|struct| differ from a \verb|class| by default access?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Structures and Enumerators}
+\questionnumber{4}What is aggregate initialization?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Structures and Enumerators}
+\questionnumber{5}What is an invariant, and can a \verb|struct| enforce one?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Structures and Enumerators}
+\questionnumber{6}What is Plain Old Data (POD)?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Structures and Enumerators}
+\questionnumber{7}What is memory padding, and why can member order affect object size?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Structures and Enumerators}
+\questionnumber{8}What is a bitfield, and when can it be useful?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Structures and Enumerators}
+\questionnumber{9}What is an \verb|enum class|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Structures and Enumerators}
+\questionnumber{10}Why is \verb|enum class| safer than plain \verb|enum|?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Structures and Enumerators}
+\questionnumber{11}What does it mean that \verb|enum class| is scoped and strongly typed?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Structures and Enumerators}
+\questionnumber{12}How can explicit enum values be useful?\par
+
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Statements}
+\questionnumber{1}What is a statement in C++?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Statements}
+\questionnumber{2}Why is a declaration also a statement?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Statements}
+\questionnumber{3}Why should variables be declared near first use and initialized immediately?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Statements}
+\questionnumber{4}How does an \verb|if| statement work?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Statements}
+\questionnumber{5}How does the ternary conditional operator work, and when is it appropriate?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Statements}
+\questionnumber{6}\textbf{[Prof]} Explain how the \verb|switch|-\verb|case| statement works, providing an example.\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Statements}
+\questionnumber{7}What is the role of \verb|break| in a \verb|switch| statement?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Statements}
+\questionnumber{8}How does a range-for loop work?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Statements}
+\questionnumber{9}Compare \verb|for|, \verb|while|, and \verb|do while| loops.\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Statements}
+\questionnumber{10}What are \verb|break|, \verb|continue|, and \verb|return|, and how do they affect control flow?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Statements}
+\questionnumber{11}What is short-circuit evaluation for \verb|&&| and \verb!||!?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Statements}
+\questionnumber{12}What makes a loop condition dangerous or unclear?\par
+
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Namespaces and Code Modularization}
+\questionnumber{1}What problem do namespaces solve?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Namespaces and Code Modularization}
+\questionnumber{2}How do namespaces support modularity?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Namespaces and Code Modularization}
+\questionnumber{3}What is name qualification with \verb|::|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Namespaces and Code Modularization}
+\questionnumber{4}What is the difference between a \verb|using| declaration and a \verb|using namespace| directive?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Namespaces and Code Modularization}
+\questionnumber{5}Why can \verb|using namespace std;| be dangerous in headers?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Namespaces and Code Modularization}
+\questionnumber{6}What is an interface in modular code?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Namespaces and Code Modularization}
+\questionnumber{7}Why should implementation details be hidden?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Namespaces and Code Modularization}
+\questionnumber{8}How do namespaces, classes, and functions work together to organize code?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Namespaces and Code Modularization}
+\questionnumber{9}What is argument-dependent lookup?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Namespaces and Code Modularization}
+\questionnumber{10}How can code be split across headers and source files?\par
+
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{1}What is a function declaration?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{2}What is a function definition?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{3}What are function name, argument list, and return type?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{4}What does \verb|void| mean as function return type?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{5}What is the difference between passing by value, by pointer, and by reference?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{6}\textbf{[Prof]} We want to pass a string \verb|s|, an integer \verb|i|, and a double \verb|d| as input parameters to a function. They cannot be modified by the function, and the function should be efficient. How do we pass them?\par
+
+\begin{minted}[fontsize=\small,breaklines,autogobble]{cpp}
+void fun(... s, ... i, ... d);
+\end{minted}
+
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{7}When should small values be passed by value?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{8}When should large read-only objects be passed by \verb|const| reference?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{9}When should a function use pointer parameters?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{10}What is function overloading?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{11}Why can functions not be overloaded only by return type?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{12}What is overload resolution?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{13}What are preconditions and postconditions?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{14}What is a function pointer?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{15}What are macros, and why are they less type-safe than functions or constants?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Functions}
+\questionnumber{16}What do \verb|inline|, \verb|constexpr|, and \verb|noexcept| mean for functions?\par
+
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{1}What is a class?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{2}What are representation, behavior, invariant, and interface?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{3}What is the difference between public and private members?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{4}Why does access control protect invariants?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{5}What is a member function?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{6}How can member functions be defined inside or outside class declaration?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{7}What is a constructor?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{8}What does \verb|explicit| prevent?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{9}What is a const member function?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{10}What is logical constness?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{11}What is \verb|mutable|, and when can it be justified?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{12}What is \verb|this|?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{13}What are static data members and static member functions?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{14}What is a concrete class?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Classes}
+\questionnumber{15}How should a class expose a clear interface without exposing representation?\par
+
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Compiler, Preprocessor and Linker}
+\questionnumber{1}\textbf{[Prof]} Explain the role of the preprocessor, compiler, and linker.\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Compiler, Preprocessor and Linker}
+\questionnumber{2}What is a translation unit?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Compiler, Preprocessor and Linker}
+\questionnumber{3}What does the preprocessor do with \verb|#include|?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Compiler, Preprocessor and Linker}
+\questionnumber{4}What are include guards, and why are they necessary?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Compiler, Preprocessor and Linker}
+\questionnumber{5}What is conditional compilation?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Compiler, Preprocessor and Linker}
+\questionnumber{6}What is the difference between compiler errors and linker errors?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Compiler, Preprocessor and Linker}
+\questionnumber{7}What does compiler optimization do?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Compiler, Preprocessor and Linker}
+\questionnumber{8}What are object files?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Compiler, Preprocessor and Linker}
+\questionnumber{9}What symbols does the linker resolve?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Compiler, Preprocessor and Linker}
+\questionnumber{10}What is the difference between static and dynamic libraries?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Compiler, Preprocessor and Linker}
+\questionnumber{11}Why are headers not compiled independently?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Compiler, Preprocessor and Linker}
+\questionnumber{12}Why do template definitions often need to be visible in headers?\par
+
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{1}What is object life cycle in C++?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{2}What does a constructor establish?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{3}What does a destructor do?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{4}What is RAII, and why is it important?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{5}What is the construction and destruction order for class members?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{6}Compare default initialization, value initialization, direct initialization, copy initialization, and list initialization.\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{7}Why is brace initialization often preferred?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{8}When can initializer-list constructors affect overload selection?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{9}What is aggregate initialization?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{10}What is copy construction?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{11}What is copy assignment?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{12}What should copying preserve: equivalence, independence, or both?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{13}Why is default shallow copy dangerous for owning pointers?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{14}What is move construction?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{15}What is move assignment?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{16}What state must a moved-from object be left in?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{17}Which default operations can the compiler generate?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{18}What does \verb|= delete| mean?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{19}What is the Rule of Three/Five idea?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Construction, Cleanup, Copy and Move}
+\questionnumber{20}Why do resource-owning classes need careful copy and move semantics?\par
+
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{1}What are the main memory regions in a C++ program?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{2}What is stack memory?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{3}What is free-store or heap memory?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{4}What are static and global storage areas?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{5}How do \verb|new| and \verb|delete| work?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{6}What is the difference between \verb|new|, \verb|delete|, \verb|new[]|, and \verb|delete[]|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{7}What is a memory leak?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{8}What is a dangling pointer?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{9}What is double deletion?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{10}Why is manual memory management error-prone?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{11}What is resource management?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{12}How does RAII make cleanup automatic?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{13}What is a handle class?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{14}Why do handle classes need correct copy and move behavior?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Memory Management}
+\questionnumber{15}Why are smart pointers preferred over raw owning pointers?\par
+
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{1}What is inheritance?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{2}What is an is-a relationship?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{3}What is the difference between implementation inheritance and interface inheritance?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{4}What does public inheritance mean for substitutability?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{5}What is object slicing?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{6}How are base and derived constructors/destructors called?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{7}What is a virtual function?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{8}What is runtime polymorphism through pointers and references?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{9}What does \verb|override| do?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{10}What does \verb|final| do?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{11}What is a pure virtual function?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{12}What is an abstract class?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{13}What is the difference between \verb|public|, \verb|protected|, and \verb|private| inheritance or access?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{14}What problem can multiple inheritance create?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Derived Classes and Class Hierarchies}
+\questionnumber{15}What is a virtual base class?\par
+
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{1}What is operator overloading?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{2}Why should overloaded operators preserve intuitive meaning?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{3}Which operators cannot be overloaded?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{4}What is the difference between member and non-member operator overloads?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{5}When must an operator be a non-member?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{6}How are binary operators represented as member and non-member functions?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{7}How are unary operators represented as member and non-member functions?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{8}Why should built-in types usually be passed by value and user-defined types by \verb|const| reference?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{9}How is \verb|operator<<| usually implemented?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{10}Why should \verb|operator<<| return \verb|std::ostream&|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{11}When is \verb|friend| useful for operator overloading?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{12}What is \verb|operator[]|, and what should it return?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{13}What is \verb|operator()|, and how does it create a functor?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Operator Overloading}
+\questionnumber{14}Why are functors useful with standard algorithms?\par
+
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{1}What is runtime polymorphism?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{2}What is an upcast?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{3}What is a downcast?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{4}What is a crosscast?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{5}What is RTTI?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{6}What does \verb|dynamic_cast| do?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{7}What happens when \verb|dynamic_cast| fails for a pointer?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{8}What happens when \verb|dynamic_cast| fails for a reference?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{9}Why should RTTI be used sparingly?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{10}Why is a virtual function often better than checking actual derived type?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{11}What is \verb|static_cast| used for?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{12}What is \verb|const_cast| used for?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{13}What is \verb|reinterpret_cast| used for?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Runtime Polymorphism and Casts}
+\questionnumber{14}What are smart pointer casts, such as \verb|dynamic_pointer_cast|?\par
+
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{1}What is generic programming?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{2}What is a template?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{3}What is a class template?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{4}What is a function template?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{5}What is template instantiation?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{6}Why do templates usually have no runtime overhead?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{7}Why do template definitions usually live in headers?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{8}What can a class template contain?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{9}What is a member template?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{10}What is a template specialization?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{11}What is a type alias for a template type?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{12}What is a variadic template?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{13}What problem do concepts solve in C++20?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{14}Why are template error messages often difficult?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Templates}
+\questionnumber{15}How are templates used in the Standard Library?\par
+
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{1}What problem do raw pointers create for ownership and lifetime?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{2}What is RAII, and how do smart pointers implement it?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{3}What is \verb|std::unique_ptr|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{4}What is exclusive ownership?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{5}When should \verb|unique_ptr| be used?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{6}\textbf{[Prof]} When should I use \verb|unique_ptr|, \verb|shared_ptr|, and \verb|weak_ptr|?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{7}\textbf{[Prof]} How do I pass a \verb|unique_ptr| to functions?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{8}What is \verb|std::move|, and why is it needed with \verb|unique_ptr|?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{9}What do \verb|release()| and \verb|reset()| do on a \verb|unique_ptr|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{10}What is \verb|std::shared_ptr|?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{11}What is reference counting?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{12}What does \verb|use_count()| mean?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{13}When is \verb|shared_ptr| appropriate, and when is it overused?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{14}What is \verb|std::weak_ptr|?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{15}\textbf{[Prof]} How do I use a \verb|weak_ptr|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{16}How does \verb|weak_ptr| help avoid ownership cycles?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{17}What does \verb|lock()| do on a \verb|weak_ptr|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{18}What are common wrong uses of smart pointers?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{19}\textbf{[Prof]} What is an lvalue?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Smart Pointers}
+\questionnumber{20}\textbf{[Prof]} What is an rvalue?\par
+
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{1}What is the C++ Standard Library?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{2}What categories of facilities does the Standard Library provide?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{3}What is the difference between containers, iterators, and algorithms?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{4}Why is \verb|std::vector| usually the default sequence container?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{5}Compare \verb|vector|, \verb|deque|, \verb|list|, and \verb|forward_list|.\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{6}Compare ordered associative containers and unordered associative containers.\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{7}What are \verb|map|, \verb|set|, \verb|unordered_map|, and \verb|unordered_set|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{8}What are container adaptors such as \verb|stack|, \verb|queue|, and \verb|priority_queue|?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{9}What is \verb|std::array|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{10}What is an iterator?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{11}What do \verb|begin()| and \verb|end()| represent?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{12}Compare input, output, forward, bidirectional, and random-access iterators.\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{13}What is an algorithm in the Standard Library?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{14}Why do algorithms operate on iterator ranges rather than directly on containers?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{15}Give examples of non-modifying and modifying algorithms.\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{16}What is \verb|std::string|, and why is it container-like?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{17}What are C++ streams?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{18}Compare \verb|cout|, \verb|cerr|, \verb|clog|, and \verb|cin|.\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{19}Compare \verb|ifstream|, \verb|ofstream|, and \verb|fstream|.\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Standard Library}
+\questionnumber{20}What are string streams, and when are they useful?\par
+
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{1}What is a socket?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{2}Why is a socket represented as a file descriptor in POSIX?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{3}What is the difference between an IP address and a port?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{4}What is the difference between UDP and TCP?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{5}What is \verb|SOCK_DGRAM|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{6}What is \verb|SOCK_STREAM|?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{7}What headers are needed for basic POSIX socket programming?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{8}What is \verb|sockaddr_in|, and which fields must be filled?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{9}Why are \verb|htons()| and \verb|htonl()| needed?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{10}What does \verb|inet_pton()| do?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{11}What does \verb|socket()| return?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{12}What does \verb|bind()| do?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{13}What does \verb|listen()| do?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{14}What does \verb|accept()| do?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{15}What does \verb|connect()| do?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{16}Compare \verb|send()|/\verb|recv()| with \verb|sendto()|/\verb|recvfrom()|.\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{17}What is typical UDP server/client flow?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{18}What is typical TCP server/client flow?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{19}Why must return values from socket calls be checked?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{20}What is \verb|SIGPIPE|, and why can it happen when sending on a closed socket?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{21}What does \verb|SO_REUSEADDR| do?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{22}Why is \verb|close()| important for sockets?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Socket Programming}
+\questionnumber{23}How can threads be useful in a socket chat program?\par
+
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{1}What is parallel programming?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{2}What is the difference between a process and a thread?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{3}Why are threads lighter than processes?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{4}What memory do threads share?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{5}\textbf{[Prof]} What's going on when multiple threads are running in parallel?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{6}How does \verb|std::thread| start a task?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{7}Why must a \verb|std::thread| be joined or detached before destruction?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{8}What is the difference between \verb|join()| and \verb|detach()|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{9}Why is \verb|join()| usually preferred?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{10}How are thread arguments passed by default?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{11}When should \verb|std::ref| be used?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{12}How can ownership be transferred to a thread?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{13}How can \verb|unique_ptr| or \verb|shared_ptr| be used with threads?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{14}What is a lambda function?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{15}What is a lambda capture list?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{16}Compare capture by value and capture by reference.\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{17}Why is lifetime important with lambda captures in threads?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{18}What is a callable object?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{19}Why can lambdas be useful with standard algorithms?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Threads and Lambdas}
+\questionnumber{20}Why does sharing memory between threads create risk?\par
+
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{1}What is shared memory communication?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{2}Why is \verb|a = a + 1| not atomic?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{3}\textbf{[Prof]} What is a race condition?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{4}\textbf{[Prof]} What happens if two or more threads access a critical region without any thread-safe mechanism?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{5}What is a critical region?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{6}What is a mutex?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{7}How do \verb|lock()| and \verb|unlock()| protect shared data?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{8}Why is manually calling \verb|lock()| and \verb|unlock()| risky?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{9}What is RAII locking?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{10}What is \verb|std::lock_guard|?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{11}What is \verb|std::unique_lock|, and why is it more flexible?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{12}What is busy waiting?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{13}Why is busy waiting usually inefficient?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{14}What is the producer-consumer problem?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{15}What is a condition variable?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{16}Why must condition variables be used with a predicate?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{17}What is a spurious wakeup?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{18}How does \verb|wait()| release and reacquire a mutex?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{19}What is an atomic variable?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{20}When are atomics appropriate?\par
+\end{questionblock}
+\newpage
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{21}Why are mutexes still needed for complex shared structures like queues?\par
+\end{questionblock}
+\vspace*{0.04\textheight}
+\begin{questionblock}
+\sectionlabel{Inter-thread Communication}
+\questionnumber{22}How does the final producer-consumer solution combine mutexes and condition variables?\par
+\end{questionblock}
+\end{document}
