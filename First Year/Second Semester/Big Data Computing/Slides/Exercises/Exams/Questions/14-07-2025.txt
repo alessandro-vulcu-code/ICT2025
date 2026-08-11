@@ -1,0 +1,5 @@
+Theory questions:
+1. Tell how you can partition N (0, x) pairs into √N partitions and show the expected size of resulting partitions.
+2. Tell how a coreset can be computed using MR-Farthest first traversal and state without proof how well it represents points in P. Tell one advantage and one disadvantage with respect to standard FFT.
+3. Tell how a Bloom filter is initialized and how a query is made. Show that it never returns false negatives.
+4. Define kd-tree and tell which problem can be solved efficiently using it.
