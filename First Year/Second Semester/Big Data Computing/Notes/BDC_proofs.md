@@ -26,6 +26,17 @@
   - [[#Count Sketch|Count Sketch]]
   - [[#Bloom Filters|Bloom Filters]]
   - [[#Locality-Sensitive Hashing Query Proof|Locality-Sensitive Hashing Query Proof]]
+- [[#Foundational Definitions|Foundational Definitions]]
+  - [[#MapReduce and Spark Definitions|MapReduce and Spark Definitions]]
+  - [[#Metric and Clustering Definitions|Metric and Clustering Definitions]]
+- [[#Additional Coreset and k-Means Results|Additional Coreset and k-Means Results]]
+- [[#Additional Streaming Results|Additional Streaming Results]]
+  - [[#Probabilistic Counting Guarantee|Probabilistic Counting Guarantee]]
+  - [[#Full Count Sketch Guarantees|Full Count Sketch Guarantees]]
+  - [[#Universal Hash Families|Universal Hash Families]]
+- [[#kd-Trees and Exact Similarity Search|kd-Trees and Exact Similarity Search]]
+- [[#LSH Families and Amplification|LSH Families and Amplification]]
+- [[#Supplementary Proof Exercises|Supplementary Proof Exercises]]
 - [[#Summary Table|Summary Table]]
 
 ## MTBF and Word Count
@@ -683,6 +694,49 @@ $$
 \geq \frac{1}{1+\epsilon'}\operatorname{div}^{\text{opt}}(P,k).
 $$
 
+> [!Important] Fact - Relation Between k-Center and Diversity
+>
+> $$
+> \Phi_{\mathrm{kcenter}}^{\mathrm{opt}}(P,k)
+> \leq
+> \frac{\operatorname{div}^{\mathrm{opt}}(P,k)}{\binom{k}{2}}.
+> $$
+
+> [!Important] Theorem - Diversity Coreset Quality
+> If the proxy clustering has radius
+>
+> $$
+> R\leq\frac18\Phi_{\mathrm{kcenter}}^{\mathrm{opt}}(P,k),
+> $$
+>
+> then
+>
+> $$
+> \operatorname{div}^{\mathrm{opt}}(T,k)
+> \geq\frac12\operatorname{div}^{\mathrm{opt}}(P,k).
+> $$
+
+**Proof.** Map each point $x\in S^*$ injectively to its same-cluster proxy
+$\pi(x)\in T$. Since $d(x,\pi(x))\leq2R$, every pair loses at most $4R$:
+
+$$
+d(\pi(x_i),\pi(x_j))\geq d(x_i,x_j)-4R.
+$$
+
+Summing over all pairs and using the fact above,
+
+$$
+\begin{aligned}
+\operatorname{div}(\pi(S^*))
+&\geq\operatorname{div}^{\mathrm{opt}}(P,k)-4R\binom{k}{2}\\
+&\geq\operatorname{div}^{\mathrm{opt}}(P,k)
+-\frac12\Phi_{\mathrm{kcenter}}^{\mathrm{opt}}(P,k)\binom{k}{2}\\
+&\geq\frac12\operatorname{div}^{\mathrm{opt}}(P,k).
+\end{aligned}
+$$
+
+Because $\pi(S^*)\subseteq T$, the optimum on $T$ is at least this value.
+
 ## Streaming Algorithms
 
 ### Boyer-Moore Majority Vote
@@ -808,7 +862,9 @@ The source refers to the $\epsilon$-AFI problem. Interpreting the OCR artifact
 > $O(1)$, and expected working memory
 >
 > $$
-> O\left(\frac{1}{\epsilon}\ln\frac{1}{\delta}\right).
+> O(r)=O\left(\frac{\ln(1/(\delta\phi))}{\epsilon}\right),
+> \qquad
+> r=\left\lceil\frac{\ln(1/(\delta\phi))}{\epsilon}\right\rceil.
 > $$
 
 **Working memory.** The working memory is proportional to the number of sampled
@@ -819,26 +875,32 @@ $$
 O\left(n\cdot\frac{r}{n}\right) = O(r).
 $$
 
-With
+Thus $E[|S|]\leq r$, proving expected memory $O(r)$.
+
+**Correctness proof.** Stored count $f_e(x)$ is always a lower bound on true frequency.
+Because output requires $f_e(x)\geq(\phi-\epsilon)n$, no item below this threshold can
+be returned.
+
+Now let $a$ be frequent. If one of its first $\lceil\epsilon n\rceil$ occurrences is
+sampled, all later occurrences increment its counter, giving
+$f_e(a)\geq(\phi-\epsilon)n$. Therefore
 
 $$
-r = \Theta\left(\frac{1}{\epsilon}\ln\frac{1}{\delta}\right),
+\Pr(a\text{ is missed})
+\leq\left(1-\frac rn\right)^{\epsilon n}
+\leq e^{-\epsilon r}.
 $$
 
-the expected memory bound follows.
-
-**Correctness idea.** For a truly frequent item $a$, the probability that none
-of its occurrences is sampled is bounded by
+There are at most $1/\phi$ frequent items. Union bound gives
 
 $$
-\left(1-\frac{r}{n}\right)^{f_a}
-\leq e^{-rf_a/n}.
+\Pr(\text{some frequent item is missed})
+\leq\frac1\phi e^{-\epsilon r}
+\leq\delta.
 $$
 
-Choosing $r$ large enough makes this probability small. A union bound over all
-frequent items gives probability at most $\delta$ that some frequent item is
-missed. False positives are avoided by returning only items whose estimated
-count is at least $(\phi-\epsilon)n$.
+Hence every frequent item is returned with probability at least $1-\delta$, and no
+deep false positive is ever returned.
 
 ### Flajolet-Martin Intuition for Distinct Counting
 
@@ -1205,6 +1267,778 @@ $$
 1 + np_2.
 $$
 
+## Foundational Definitions
+
+### MapReduce and Spark Definitions
+
+> [!Important] Definition - MapReduce Round
+> One **MapReduce round** transforms key-value pairs through three phases:
+>
+> 1. **Map:** each input pair is processed independently and produces zero or more
+>    intermediate pairs.
+> 2. **Shuffle:** intermediate pairs are grouped by key.
+> 3. **Reduce:** each group $(k,L_k)$ is processed and produces zero or more output pairs.
+>
+> One invocation of reduce on $(k,L_k)$ is called a **reducer**. Keys act both as object
+> addresses and as group labels.
+
+> [!Important] Definition - MapReduce Performance Indicators
+> - $R$: number of rounds.
+> - $M_L$: maximum local memory used by one map or reduce invocation.
+> - $M_A$: maximum aggregate space occupied at a phase boundary.
+>
+> Standard goals are $R=O(1)$, $M_L=O(|input|^\epsilon)$ for some $\epsilon<1$,
+> $M_A=O(|input|)$, and low work per invocation.
+
+For deterministic partitioning into $\ell$ balanced parts, the first aggregation uses
+$O(N/\ell)$ local memory and the second uses $O(\ell)$. Therefore,
+
+$$
+M_L=O\left(\frac{N}{\ell}+\ell\right),
+$$
+
+which becomes $O(\sqrt N)$ for $\ell=\sqrt N$. Random partitioning achieves the same
+bound with high probability by the Chernoff-and-union-bound proof given earlier.
+
+> [!Important] Probabilistic Tools
+> For events $E_1,\ldots,E_r$, the **union bound** is
+>
+> $$
+> \Pr\left(\bigcup_{i=1}^r E_i\right)\leq\sum_{i=1}^r\Pr(E_i).
+> $$
+>
+> For nonnegative $X$ and $a>0$, **Markov's inequality** is
+>
+> $$
+> \Pr(X\geq a)\leq\frac{E[X]}{a}.
+> $$
+>
+> If $X\sim\operatorname{Binom}(n,p)$ and $\mu=np$, the course uses
+>
+> $$
+> \Pr(X\geq\delta_1\mu)\leq2^{-\delta_1\mu}
+> \quad(\delta_1\geq6),
+> $$
+>
+> $$
+> \Pr(X\leq(1-\delta_2)\mu)\leq2^{-\delta_2^2\mu/2}
+> \quad(0<\delta_2<1).
+> $$
+
+> [!Important] Definition - Resilient Distributed Dataset
+> An **RDD** is an immutable, partitioned collection distributed across machines. It is
+> created from stable storage or other RDDs, evaluated lazily, and fault tolerant through
+> lineage.
+
+> [!Important] Definition - Spark Operations
+> - A **narrow transformation** maps each input partition to at most one output partition;
+>   no shuffle is needed. Example: `map`.
+> - A **wide transformation** may send one input partition to many output partitions;
+>   shuffle may be needed. Example: `groupByKey`.
+> - A **transformation** creates a new RDD lazily.
+> - An **action** returns a result and triggers materialization.
+> - `cache()` is `persist(StorageLevel.MEMORY_ONLY)`.
+> - `persist(StorageLevel.MEMORY_AND_DISK)` spills partitions that do not fit in RAM.
+> - `reduceByKey(f)` combines values by key using associative, commutative $f$, performing
+>   local aggregation before cross-partition aggregation.
+
+### Metric and Clustering Definitions
+
+> [!Important] Definition - Metric Space
+> A metric space $(M,d)$ satisfies, for all $x,y,z\in M$:
+>
+> 1. $d(x,y)\geq0$.
+> 2. $d(x,y)=0$ iff $x=y$.
+> 3. $d(x,y)=d(y,x)$.
+> 4. $d(x,z)\leq d(x,y)+d(y,z)$.
+
+Common distances are:
+
+$$
+d_{L_r}(X,Y)=\left(\sum_i|x_i-y_i|^r\right)^{1/r},
+$$
+
+$$
+d_{\mathrm{angular}}(X,Y)=
+\arccos\left(\frac{X\cdot Y}{\|X\|\|Y\|}\right),
+$$
+
+$$
+d_H(X,Y)=|\{i:x_i\neq y_i\}|,
+\qquad
+d_J(S,T)=1-\frac{|S\cap T|}{|S\cup T|}.
+$$
+
+> [!Important] Definition - Combinatorial Optimization and Approximation
+> A combinatorial optimization problem specifies instances $\mathcal I$, solutions
+> $\mathcal S$, feasible sets $\mathcal S_i$, and objective $\Phi$.
+>
+> For $c\geq1$, a $c$-approximation satisfies
+>
+> $$
+> \Phi(A(i))\leq c\min_{s\in\mathcal S_i}\Phi(s)
+> $$
+>
+> for minimization, and
+>
+> $$
+> \Phi(A(i))\geq\frac1c\max_{s\in\mathcal S_i}\Phi(s)
+> $$
+>
+> for maximization.
+
+> [!Important] Definition - Center-Based Clustering
+> A $k$-clustering is $(C_1,\ldots,C_k;S)$, where the $C_i$ partition $P$ and
+> $S=\{c_1,\ldots,c_k\}$ is the center set. With
+>
+> $$
+> d(x,S)=\min_{y\in S}d(x,y),
+> $$
+>
+> the principal objectives are
+>
+> $$
+> \Phi_{\mathrm{kcenter}}(P,S)=\max_{x\in P}d(x,S),
+> $$
+>
+> $$
+> \Phi_{\mathrm{kmeans}}(P,S)=\sum_{x\in P}d(x,S)^2,
+> \qquad
+> \Phi_{\mathrm{kmedian}}(P,S)=\sum_{x\in P}d(x,S).
+> $$
+
+> [!Important] Definition - Diameter and Diversity
+> The diameter of $P$ is
+>
+> $$
+> \Delta(P)=\max_{x,y\in P}d(x,y).
+> $$
+>
+> For $|S|=k$, max-sum diversity is
+>
+> $$
+> \operatorname{div}(S)=\sum_{\{x,y\}\subseteq S}d(x,y).
+> $$
+>
+> A subset $T\subseteq P$ is a $(1+\epsilon)$-coreset for diversity when
+>
+> $$
+> \operatorname{div}^{\mathrm{opt}}(T,k)
+> \geq\frac{1}{1+\epsilon}\operatorname{div}^{\mathrm{opt}}(P,k).
+> $$
+
+## Additional Coreset and k-Means Results
+
+> [!Important] Guarantee - k-means++
+> If $S$ is returned by k-means++, then for $\alpha=\Theta(\ln k)$,
+>
+> $$
+> E[\Phi_{\mathrm{kmeans}}(P,S)]
+> \leq\alpha\Phi_{\mathrm{kmeans}}^{\mathrm{opt}}(P,k).
+> $$
+>
+> The lecture also uses the constant-probability form
+>
+> $$
+> \Pr\left(\Phi_{\mathrm{kmeans}}(P,S)
+> \leq\alpha\Phi_{\mathrm{kmeans}}^{\mathrm{opt}}(P,k)\right)\geq\frac12.
+> $$
+
+> [!Important] Definition - Weighted k-Means
+> For weights $w(x)>0$,
+>
+> $$
+> \Phi^w_{\mathrm{kmeans}}(P,S)
+> =\sum_{x\in P}w(x)d(x,S)^2.
+> $$
+>
+> Weighted k-means++ samples $x$ with probability proportional to
+> $w(x)d(x,S)^2$. Weighted Lloyd's algorithm uses centroid
+>
+> $$
+> \frac{\sum_{x\in C}w(x)x}{\sum_{x\in C}w(x)}.
+> $$
+
+> [!Important] Definition - $\gamma$-Coreset for k-Means
+> Given proxy map $\tau:P\to T$, $T$ is a $\gamma$-coreset if
+>
+> $$
+> \sum_{p\in P}d(p,\tau(p))^2
+> \leq\gamma\Phi_{\mathrm{kmeans}}^{\mathrm{opt}}(P,k).
+> $$
+>
+> Each representative $t\in T$ receives weight
+> $w(t)=|\{p\in P:\tau(p)=t\}|$.
+
+> [!Important] Theorem - MR-kmeans Approximation
+> Suppose $\mathcal A_1$ is a $\gamma$-approximation for unweighted k-means on
+> each partition and $\mathcal A_2$ is an $\alpha$-approximation for weighted
+> k-means on the union $T$ of local centers. Then $T$ is a $\gamma$-coreset and
+>
+> $$
+> \Phi_{\mathrm{kmeans}}(P,S)
+> =O((1+\gamma)\alpha)
+> \Phi_{\mathrm{kmeans}}^{\mathrm{opt}}(P,k).
+> $$
+>
+> Local and aggregate space are
+>
+> $$
+> M_L=O\left(\max\left\{\frac N\ell,\ell k\right\}\right)
+> =O(\sqrt{Nk}),
+> \qquad M_A=O(N),
+> $$
+>
+> for $\ell=\sqrt{N/k}$.
+
+**Proof.** Let
+
+$$
+C=\sum_{p\in P}d(p,\tau(p))^2
+\leq\gamma\operatorname{OPT}.
+$$
+
+For any center set $Z$, squared triangle inequality gives
+
+$$
+\Phi(P,Z)\leq2C+2\Phi^w(T,Z).
+$$
+
+Apply this first to optimal centers $S^*$:
+
+$$
+\Phi^{w,\mathrm{opt}}(T,k)
+\leq\Phi^w(T,S^*)
+\leq2C+2\operatorname{OPT}
+\leq2(1+\gamma)\operatorname{OPT}.
+$$
+
+Since $\mathcal A_2$ is an $\alpha$-approximation,
+
+$$
+\begin{aligned}
+\Phi(P,S)
+&\leq2C+2\Phi^w(T,S)\\
+&\leq2\gamma\operatorname{OPT}
++2\alpha\Phi^{w,\mathrm{opt}}(T,k)\\
+&\leq\bigl(2\gamma+4\alpha(1+\gamma)\bigr)\operatorname{OPT}\\
+&=O(\alpha(1+\gamma))\operatorname{OPT}.
+\end{aligned}
+$$
+
+## Additional Streaming Results
+
+> [!Important] Definition - Streaming Model
+> Input is a one-way stream $\Sigma=x_1,x_2,\ldots$. At each arrival, an algorithm
+> updates memory-resident state; a query asks about the prefix seen so far. Standard goals:
+> one pass, sublinear memory, $O(1)$ update time, and query time independent of stream length.
+
+> [!Important] Definition - Majority Problem
+> Given $\Sigma=x_1,\ldots,x_n$, return an element occurring more than $n/2$ times when
+> one exists. Boyer-Moore returns a candidate; an optional second pass verifies it.
+
+> [!Important] Definitions - Sampling and Frequent Items
+> An $m$-sample of $n$ items is a size-$m$ subset $S$ satisfying
+> $\Pr(x\in S)=m/n$ for every item $x$.
+>
+> For threshold $\varphi$, frequent-items reporting returns every item with frequency at
+> least $\varphi n$. An $\epsilon$-approximate answer must include all such items and must
+> exclude every item below $(\varphi-\epsilon)n$.
+
+> [!Important] Definitions - Sketch and Frequency Moments
+> A **sketch** is a space-efficient data structure for approximate stream statistics.
+> For frequencies $f_u$,
+>
+> $$
+> F_k=\sum_{u\in U}f_u^k,
+> $$
+>
+> where $F_0$ counts distinct items, $F_1=n$, and $F_2$ is the second moment. The Gini
+> index is $1-F_2/n^2$.
+
+### Probabilistic Counting Guarantee
+
+> [!Important] Theorem - Flajolet-Martin Constant-Factor Guarantee
+> Let
+>
+> $$
+> R=\max_t\operatorname{tr}(h(x_t)),
+> \qquad \widetilde F_0=2^R.
+> $$
+>
+> For every $c>2$,
+>
+> $$
+> \Pr(\widetilde F_0<F_0/c)\leq1/c,
+> \qquad
+> \Pr(\widetilde F_0>cF_0)\leq1/c.
+> $$
+>
+> Hence
+>
+> $$
+> \Pr(F_0/c\leq\widetilde F_0\leq cF_0)\geq1-2/c.
+> $$
+>
+> Space usage is $O(\log|U|)$ bits.
+
+**Upper-tail proof.** For one distinct item,
+
+$$
+\Pr(\operatorname{tr}(h(x))\geq j)=2^{-j}.
+$$
+
+Union bound over $F_0$ distinct items gives
+
+$$
+\Pr(R\geq j)\leq F_0 2^{-j}.
+$$
+
+Taking $j=\log_2(cF_0)$ yields
+
+$$
+\Pr(\widetilde F_0>cF_0)\leq\frac1c.
+$$
+
+The lecture states the symmetric lower-tail bound but does not supply its proof.
+
+> [!Important] Median Trick
+> Run $\ell$ independent estimators and return their median. If one estimator has
+> one-sided failure probability at most $1/16$, the median fails only when at least half
+> the runs fail. Chernoff makes this probability exponentially small in $\ell$; choosing
+>
+> $$
+> \ell=\Theta(\log|U|)
+> $$
+>
+> reduces it to at most $1/|U|$.
+
+### Full Count Sketch Guarantees
+
+> [!Important] Definition - Count-Min Sketch
+> A count-min sketch has counters $C[d,w]$ and hashes $h_j:U\to[w]$. On item $x$,
+> increment every $C[j,h_j(x)]$. Query
+>
+> $$
+> \widetilde f_u=\min_j C[j,h_j(u)].
+> $$
+>
+> With $w=2/\epsilon$ and $d=\log_2(1/\delta)$, the earlier proof gives
+> $0\leq\widetilde f_u-f_u\leq\epsilon n$ with probability at least $1-\delta$.
+
+> [!Important] Definition - Count Sketch
+> Count sketch adds sign hashes $g_j:U\to\{-1,+1\}$. Update
+>
+> $$
+> C[j,h_j(x)]\leftarrow C[j,h_j(x)]+g_j(x),
+> $$
+>
+> and query
+>
+> $$
+> \widetilde f_{u,j}=g_j(u)C[j,h_j(u)],
+> \qquad
+> \widetilde f_u=\operatorname{median}_j\widetilde f_{u,j}.
+> $$
+
+> [!Important] Theorem - Count Sketch Frequency Accuracy
+> For $d=\log_2(1/\delta)$ and $w=O(1/\epsilon^2)$,
+>
+> $$
+> E[\widetilde f_{u,j}]=f_u,
+> $$
+>
+> and, with probability at least $1-\delta$,
+>
+> $$
+> |\widetilde f_u-f_u|\leq\epsilon\sqrt{F_2}.
+> $$
+>
+> Unbiasedness follows from signed collision terms having expectation zero, as proved in
+> the earlier Count Sketch section. Source notes omit proof of the high-probability error
+> statement.
+
+> [!Important] Theorem - Count Sketch Estimator for $F_2$
+> Define
+>
+> $$
+> \widetilde F_{2,j}=\sum_{r=0}^{w-1}C[j,r]^2,
+> \qquad
+> \widetilde F_2=\operatorname{median}_j\widetilde F_{2,j}.
+> $$
+>
+> Each row is unbiased:
+>
+> $$
+> E[\widetilde F_{2,j}]=F_2.
+> $$
+>
+> Source notes state the additional guarantee
+> $|\widetilde F_2-F_2|\leq\epsilon\sqrt{F_2}$ with probability at least
+> $1-\delta$, but omit its proof.
+
+**Unbiasedness proof.** Expanding one row gives
+
+$$
+\widetilde F_{2,j}
+=\sum_a f_a^2+2\sum_{a<b}
+f_af_b g_j(a)g_j(b)\mathbf1[h_j(a)=h_j(b)].
+$$
+
+For $a\neq b$, pairwise-independent signs make
+$E[g_j(a)g_j(b)]=0$. Every cross term therefore has expectation zero, while the
+diagonal sum is $F_2$. By linearity,
+
+$$
+E[\widetilde F_{2,j}]=\sum_a f_a^2=F_2.
+$$
+
+> [!Important] Definitions - Approximate Membership and Bloom Filter
+> Approximate membership must have no false negatives for inserted elements and a small
+> false-positive probability for absent elements. A Bloom filter uses an $n$-bit array and
+> $k$ hashes; insertion sets all $k$ addressed bits, and query returns positive iff all are
+> set. Its false-positive theorem and proof appear in the earlier Bloom Filters section.
+
+### Universal Hash Families
+
+> [!Important] Definition - $k$-Universality
+> A family $\mathcal H:U\to[m]$ is $k$-universal if, for distinct
+> $x_1,\ldots,x_k$,
+>
+> $$
+> \Pr(h(x_1)=\cdots=h(x_k))\leq\frac1{m^{k-1}}.
+> $$
+>
+> It is strongly $k$-universal if, for all $y_1,\ldots,y_k\in[m]$,
+>
+> $$
+> \Pr\left(\bigwedge_{i=1}^k h(x_i)=y_i\right)=\frac1{m^k}.
+> $$
+
+> [!Important] Theorem - Practical 2-Universal Family
+> Let $U=[u]$, let prime $p>u$, and define
+>
+> $$
+> h_{a,b}(x)=((ax+b)\bmod p)\bmod m,
+> $$
+>
+> for $a\in\{1,\ldots,p-1\}$ and $b\in\{0,\ldots,p-1\}$. Choosing $(a,b)$
+> uniformly gives a 2-universal family.
+
+**Proof.** Fix distinct $x,y<p$. The map
+
+$$
+(a,b)\mapsto(ax+b\bmod p,ay+b\bmod p)
+$$
+
+is a bijection from admissible $(a,b)$ to ordered pairs of distinct residues $(r,s)$.
+Indeed, from $r\neq s$ one uniquely recovers
+
+$$
+a=(r-s)(x-y)^{-1}\bmod p,
+\qquad b=r-ax\bmod p.
+$$
+
+For fixed $r$, at most $\lceil p/m\rceil-1$ residues $s\neq r$ satisfy
+$s\bmod m=r\bmod m$. Since
+
+$$
+\left\lceil\frac pm\right\rceil-1\leq\frac{p-1}{m},
+$$
+
+the collision probability after final reduction is at most $1/m$. This proves
+2-universality.
+
+For Mersenne prime $p=2^q-1$,
+
+$$
+x\bmod p=((x\bmod2^q)+\lfloor x/2^q\rfloor)\bmod p,
+$$
+
+so reduction uses bit masking, shifting, and addition.
+
+## kd-Trees and Exact Similarity Search
+
+> [!Important] Definition - $r$-Near Neighbor Search
+> In metric space $(M,d)$, let
+>
+> $$
+> B_r(q)=\{p\in M:d(p,q)\leq r\}.
+> $$
+>
+> Given $P\subseteq M$, an $r$-NNS structure returns a point in $B_r(q)\cap P$ when
+> this set is nonempty, and `null` otherwise.
+
+> [!Important] Definition - Range Reporting
+> For $P\subseteq\mathbb R^D$ and axis-aligned rectangle
+>
+> $$
+> R=[x_{1,1},x_{1,2}]\times\cdots\times[x_{D,1},x_{D,2}],
+> $$
+>
+> report every point in $P\cap R$.
+
+> [!Important] Definition - kd-tree
+> A kd-tree recursively partitions an enclosing rectangle. Each node represents the points
+> in its region; leaves contain one point. Splits cycle through coordinates and divide the
+> current point set into parts of sizes $\lfloor n/2\rfloor$ and $\lceil n/2\rceil$.
+
+> [!Important] Theorem - Range Reporting in $\mathbb R^2$
+> A kd-tree for $n$ points has $O(n\log n)$ construction time, $O(n)$ space, and
+>
+> $$
+> O(\sqrt n+k)
+> $$
+>
+> query time, where $k$ points are reported.
+
+**Proof sketch.** Let $Q_1(R)$ contain visited nodes whose regions intersect but are not
+contained in $R$, and let $Q_2(R)$ contain visited nodes whose regions lie inside $R$.
+Search visits only $Q_1(R)\cup Q_2(R)$, apart from the root. Standard kd-tree boundary
+analysis gives
+
+$$
+|Q_1(R)|=O(\sqrt n).
+$$
+
+Each node in $Q_2(R)$ contributes reported output and can be charged to one of the $k$
+reported points, so $|Q_2(R)|=O(k)$. Hence
+
+$$
+T_q=O(1+|Q_1(R)|+|Q_2(R)|)=O(\sqrt n+k).
+$$
+
+> [!Important] Theorem - Range Reporting in $\mathbb R^D$
+> For fixed dimension $D$, kd-trees use $O(Dn)$ space, take $O(Dn\log n)$ to build,
+> and answer a range query in
+>
+> $$
+> O(Dn^{1-1/D}+k).
+> $$
+>
+> As $D$ grows, the exponent approaches 1, expressing the curse of dimensionality.
+
+To reduce $r$-NNS in $\mathbb R^2$ to range reporting, query the smallest square enclosing
+$B_r(q)$, then test returned candidates against the ball. Cost depends on all $k_s$ points
+in that square, not only the $k_q$ points in the ball:
+
+$$
+O(\sqrt n+k_s).
+$$
+
+## LSH Families and Amplification
+
+> [!Important] Definition - $(c,r)$-Approximate Near Neighbor Search
+> If $B_r(q)\cap P\neq\emptyset$, return some $p\in P$ with $d(p,q)\leq cr$. If the
+> ball is empty, return either `null` or such a point. A point farther than $cr$ is never
+> legal.
+
+> [!Important] Definition - Locality Sensitive Hashing
+> A family $\mathcal H$ is $(c,r,p_1,p_2)$-locality sensitive when $p_1>p_2$ and
+>
+> $$
+> d(p,q)\leq r\implies\Pr(h(p)=h(q))\geq p_1,
+> $$
+>
+> $$
+> d(p,q)>cr\implies\Pr(h(p)=h(q))\leq p_2.
+> $$
+
+> No condition is imposed for distances in $(r,cr]$.
+
+> [!Important] Theorem - Basic LSH Performance
+> One table built from a $(c,r,p_1,p_2)$-LSH family solves $(c,r)$-ANNS with
+> success probability at least $p_1$. For $n$ points in $\mathbb R^D$:
+>
+> | Quantity | Bound |
+> |---|---|
+> | Construction | $O(Dn)$ |
+> | Space | $O(Dn)$ |
+> | Expected query | $O(Dnp_2)$ |
+>
+> Correctness and expected-scan proofs appear in
+> [[#Locality-Sensitive Hashing Query Proof|Locality-Sensitive Hashing Query Proof]].
+
+> [!Important] Theorem - Bit Sampling for Hamming Distance
+> For $x\in\{0,1\}^D$, choose coordinate $i$ uniformly and set $h_i(x)=x[i]$. Then
+>
+> $$
+> \Pr(h_i(p)=h_i(q))=1-\frac{d_H(p,q)}D.
+> $$
+>
+> Therefore bit sampling is $(c,r,1-r/D,1-cr/D)$-locality sensitive.
+
+**Proof.** Exactly $d_H(p,q)$ of the $D$ coordinates differ. A uniform coordinate differs
+with probability $d_H(p,q)/D$, so collision probability is its complement. For a near
+pair this is at least $1-r/D$; for a far pair it is below $1-cr/D$.
+
+> [!Important] Definition - LSH $\rho$ Factor
+>
+> $$
+> \rho=\frac{\log_2p_1}{\log_2p_2}
+> =\frac{\log_2(1/p_1)}{\log_2(1/p_2)}\in(0,1).
+> $$
+>
+> Smaller $\rho$ is better. Bit sampling has $\rho\sim1/c$.
+
+> [!Important] Definition - Euclidean Random-Projection LSH
+> Choose $a\sim N^D(0,1)$, $b$ uniformly in $[0,w]$, and define
+>
+> $$
+> h_{a,b}(p)=\left\lceil\frac{\langle a,p\rangle+b}{w}\right\rceil.
+> $$
+>
+> This gives Euclidean LSH with $\rho=O(1/c)$; stronger families achieve
+> $\rho=O(1/c^2)$.
+
+> [!Important] OR Construction - Independent Repetition
+> Across $\ell$ independent tables, a near point fails to collide everywhere with
+> probability at most $(1-p_1)^\ell$. Therefore success probability is at least
+>
+> $$
+> 1-(1-p_1)^\ell.
+> $$
+
+> [!Important] AND Construction - Concatenation
+> For $g=(h_1,\ldots,h_k)$ with independent $h_i\in\mathcal H$,
+>
+> $$
+> p_1'=p_1^k,
+> \qquad p_2'=p_2^k.
+> $$
+>
+> Choose
+>
+> $$
+> k=\log_{1/p_2}n.
+> $$
+>
+> Then $p_2^k=1/n$ and, by the definition of $\rho$, $p_1^k=n^{-\rho}$. Expected
+> far collisions per table are at most 1.
+
+> [!Important] Theorem - Amplified LSH Schema
+> Choose
+>
+> $$
+> k=\log_{1/p_2}n,
+> \qquad \ell=2p_1^{-k}=2n^\rho.
+> $$
+>
+> Build $\ell$ tables, each using an independent concatenated hash. Then success
+> probability is at least $1/2$, with expected bounds
+>
+> | Quantity | Bound |
+> |---|---|
+> | Construction | $O(Dn^{1+\rho}\log_{1/p_2}n)$ |
+> | Space | $O(Dn+n^{1+\rho}\log_{1/p_2}n)$ |
+> | Query | $O(Dn^\rho\log_{1/p_2}n)$ |
+
+**Proof.** In one table, a fixed near point collides with probability at least
+$p_1^k=n^{-\rho}$. It misses all tables with probability
+
+$$
+(1-p_1^k)^\ell
+\leq e^{-\ell p_1^k}
+=e^{-2}<\frac12.
+$$
+
+Thus success probability exceeds $1/2$. A far point collides in one table with
+probability at most $p_2^k=1/n$, so expected far collisions in one table are at most
+1 and across all tables at most $\ell=O(n^\rho)$. Computing $k$ component hashes for
+each table gives expected query time $O(Dk\ell)$, yielding the displayed bound.
+Construction stores each of $n$ points in $\ell$ tables and computes $k$ hashes per
+placement; space stores the original points plus table keys and references.
+
+For concatenated bit sampling, selecting $k$ independent coordinates gives
+
+$$
+p_1'=(1-r/D)^k,
+\qquad p_2'=(1-cr/D)^k,
+$$
+
+and leaves $\rho$ unchanged because both logarithms are multiplied by $k$.
+
+## Supplementary Proof Exercises
+
+> [!Example] k-Center Coreset Bound
+> Suppose $d(x,T)\leq\epsilon\operatorname{OPT}$ for all $x\in P$, where
+> $\operatorname{OPT}=\Phi_{\mathrm{kcenter}}^{\mathrm{opt}}(P,k)$, and let
+> $S=\operatorname{FFT}(T,k)$. Prove a bound for $\Phi_{\mathrm{kcenter}}(P,S)$.
+
+The FFT separation proof on $T$ can compare its $k+1$ selected/farthest points directly
+with the optimal clustering of $P$, because $T\subseteq P$. Hence
+
+$$
+\max_{t\in T}d(t,S)\leq2\operatorname{OPT}.
+$$
+
+For each $x\in P$, choose $t\in T$ with $d(x,t)\leq\epsilon\operatorname{OPT}$.
+Triangle inequality gives
+
+$$
+d(x,S)\leq d(x,t)+d(t,S)
+\leq(2+\epsilon)\operatorname{OPT}.
+$$
+
+> [!Example] Optimal k-Center Cost on a Subset
+> For $T\subseteq P$ and $k<|T|,|P|$, prove
+> $\Phi_{\mathrm{kcenter}}^{\mathrm{opt}}(T,k)
+> \leq2\Phi_{\mathrm{kcenter}}^{\mathrm{opt}}(P,k)$ and show tightness.
+
+Let $S^*$ induce optimal clusters of $P$. In each cluster containing points of $T$, choose
+one representative of $T$. Any other $t\in T$ in that cluster is within
+$2\operatorname{OPT}$ of its representative by triangle inequality. At most $k$
+representatives are needed, proving the bound. It is tight for
+$P=\{-1,0,1\}$, $T=\{-1,1\}$, and $k=1$ when centers must belong to the input:
+$\operatorname{OPT}(P,1)=1$ but $\operatorname{OPT}(T,1)=2$.
+
+> [!Example] k-means++ Probability Amplification
+> Run $t$ independent copies and return the solution with smallest objective. Each copy
+> succeeds with probability at least $1/2$.
+
+All copies fail with probability at most $2^{-t}$. Therefore
+
+$$
+t=\lceil\log_2N\rceil
+$$
+
+gives failure probability at most $1/N$ and success probability at least $1-1/N$.
+
+> [!Example] Merge Two Reservoir Samples
+> Let $S_1,S_2$ be independent $m$-samples from disjoint streams of equal length $n$.
+> Choose a uniform size-$m$ subset $S$ of $S_1\cup S_2$.
+
+For any original item $x$,
+
+$$
+\Pr(x\in S)
+=\Pr(x\in S_i)\Pr(x\text{ selected}\mid x\in S_i)
+=\frac mn\cdot\frac m{2m}
+=\frac m{2n}.
+$$
+
+Thus $S$ is an $m$-sample of the concatenated length-$2n$ stream.
+
+> [!Example] Unbiased Color-Count Estimator
+> Let $S$ be an $m$-sample from $n$ red/blue items, let $R$ be the number of red items,
+> and let $X_S$ count red sampled items.
+
+For each red item $i$, let $I_i=1$ when sampled. Then
+
+$$
+X_S=\sum_{i=1}^R I_i,
+\qquad E[I_i]=\frac mn.
+$$
+
+By linearity,
+
+$$
+E\left[\frac nmX_S\right]
+=\frac nm\sum_{i=1}^R E[I_i]
+=\frac nm\,R\frac mn
+=R.
+$$
+
 ## Summary Table
 
 | Topic | Main result | Cost / Bound | Key proof idea |
@@ -1216,11 +2050,15 @@ $$
 | FFT | 2-approximation for $k$-center | $\Phi(P,S)\leq2\Phi^{\text{opt}}(P,k)$ | Pigeonhole over $k+1$ far-apart points |
 | MR-FFT | Distributed $k$-center | $M_L=O(\sqrt{Nk})$ | Representatives plus triangle inequality |
 | Diversity coreset | Preserves near-optimal diversity | $(1-\epsilon)$ approximation when $R$ is small | Proxy mapping inside clusters |
+| MR-kmeans | Distributed weighted coreset solution | $O(\alpha(1+\gamma))$ approximation | Proxy cost plus squared triangle inequality |
 | Boyer-Moore | Finds majority element if one exists | $O(1)$ memory, one pass | Cancel pairs of distinct elements |
 | Reservoir sampling | Maintains uniform $m$-sample | $P[x_i \in S_t]=m/t$ | Induction on stream time |
 | Sticky sampling | Approximate frequent items | $O((1/\epsilon)\ln(1/\delta))$ expected memory | Sampling plus union bound |
-| Flajolet-Martin | Estimates distinct count $F_0$ | $2^R$ from max trailing zeros | $P[\operatorname{tz}\geq j]=2^{-j}$ |
+| Flajolet-Martin | Estimates distinct count $F_0$ | $c$-factor w.p. $1-2/c$ | Trailing-zero tail plus union bound |
 | Count-min sketch | One-sided frequency estimates | Error $\leq \epsilon n$ w.p. $1-\delta$ | Markov, then min over rows |
-| Count sketch | Unbiased signed estimates | Median reduces error probability | Symmetric signed collisions have expectation $0$ |
+| Count sketch | Frequency and $F_2$ estimates | Frequency error $\epsilon\sqrt{F_2}$ w.p. $1-\delta$ | Signed collisions have expectation $0$ |
 | Bloom filters | False positive probability | $(1-e^{-km/n})^k$ | Probability a queried bit is set |
-| LSH | Approximate near-neighbor query | Expected scan $1+np_2$ | Near collision prob. $p_1$, far collision prob. $p_2$ |
+| Universal hashing | Practical pairwise-independent family | Collision probability $\leq1/m$ | Affine bijection modulo prime $p$ |
+| kd-tree | Exact range reporting | $O(\sqrt n+k)$ in $\mathbb R^2$ | Boundary nodes plus output nodes |
+| Basic LSH | Approximate near-neighbor query | Expected scan $1+np_2$ | Near collision $p_1$, far collision $p_2$ |
+| Amplified LSH | Sublinear ANNS query | $O(Dn^\rho\log_{1/p_2}n)$ expected | AND reduces noise; OR restores success |

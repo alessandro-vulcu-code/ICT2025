@@ -1,13 +1,12 @@
 # Similarity Search
-## (Part 2)
 
-![[Pics/SimSearch2/SimSearch2-01.png]]
+*Part 2*
 
----
+<!-- PDF page 1; slide 1 -->
 
-## OUTLINE
+## Outline
 
-![[Pics/SimSearch2/SimSearch2-02.png]]
+<!-- PDF page 2; slide 2 -->
 
 1. Introduction to similarity search (Part 1)
 2. Similarity search in low dimensions (Part 1)
@@ -17,888 +16,615 @@
    - Approximate Near Neighbor (ANN) search
    - Locality Sensitive Hashing (LSH)
 
----
-
 ## Similarity search in high dimensions
 
-![[Pics/SimSearch2/SimSearch2-03.png]]
+<!-- PDF page 3; slide 3 -->
 
----
+### $r$-NNS in high dimensions
 
-## $r$-NNS in high dimensions
+<!-- PDF page 4; slide 4 -->
 
-![[Pics/SimSearch2/SimSearch2-04.png]]
+- Approximate approaches can tackle the curse of dimensionality.
+- Approximation can affect an $r$-NNS solution for query point $q$ and radius $r$ in two ways:
+  - The returned point $p$ is at distance greater than $r$ from $q$, producing a **false
+    positive**. This is acceptable only if $d(p,q)$ is not much larger than $r$.
+  - No $r$-near neighbor is returned even though one exists, producing a **false negative**.
+    This should be avoided.
 
-- The curse of dimensionality can be tackled resorting to approximate
-  approaches.
-- How can approximation affect the solution to the $r$-NNS problem for a query
-  point $q$ and radius $r$?
-  - The returned point $p$ is at distance $> r$ from $q$ (false positive). This
-    is acceptable only if $d(p, q)$ is not too larger than $r$.
-  - No $r$-near neighbors are returned while some exists (false negatives). This
-    should be avoided.
+### $(c,r)$-Approximate Near Neighbor Search
 
----
+<!-- PDF page 5; slide 5 -->
 
-## $(c, r)$-Approximate Near Neighbor Search
+> [!info] Definition - $(c,r)$-Approximate Near Neighbor Search
+> Given a set $P$ of $n$ points from a metric space $(M,d)$, construct a data structure that,
+> given a query point $q \in M$ and a distance threshold $r>0$, provides the following answer
+> for a constant $c \geq 1$:
+>
+> - If $B_r(q)\cap P$ is nonempty, return a point $p\in P$ such that $d(p,q)\leq cr$.
+> - If $B_r(q)\cap P$ is empty, return either `null` or a point $p\in P$ such that
+>   $d(p,q)\leq cr$, if one exists.
+>
+> In the second case, `null` is always acceptable, even when a point within distance $cr$
+> exists.
 
-![[Pics/SimSearch2/SimSearch2-05.png]]
+The data structure never returns a point farther than $cr$ from query point $q$.
 
-**Definition: $(c, r)$-Approximate Near Neighbor Search ($(c, r)$-ANNS)**
+#### Example with near points
 
-Given a set $P$ of $n$ points from the metric space $(M, d)$, construct a data
-structure that, given a query point $q \in M$ and a distance threshold $r > 0$,
-provides the following answer for a certain constant $c \geq 1$:
+<!-- PDF page 6; slide 6 -->
 
-- If there are points in $B_r(q) \cap P$, it returns a point $p \in P$ with
-  $d(p, q) \leq cr$;
-- If there are no points in $B_r(q) \cap P$ it may return either null or a
-  point $p \in P$ with $d(p, q) \leq cr$, if one exists.
+Points $A$, $B$, $C$, and $D$ are legal outputs because at least one point is within radius
+$r$, and all four lie within radius $cr$.
 
-**Remark**: In this case, a null answer is always acceptable, even if a point
-$p \in P$ with $d(p, q) \leq cr$ exists.
+![ANNS example containing near points](9SimSearch2526-2_images/page-006-near-points.png)
 
-**Observation**: in all cases, the data structure never returns a point far away
-from the query point $q$ (i.e., at distance $> cr$).
+#### Example with no near points
 
----
+<!-- PDF page 7; slide 7 -->
 
-## $(c, r)$-ANNS: example with near points
+No point lies within radius $r$. Legal outputs are $A$, $B$, or `null` because $A$ and $B$ lie
+within radius $cr$.
 
-![[Pics/SimSearch2/SimSearch2-06.png]]
+![ANNS example with no near points](9SimSearch2526-2_images/page-007-no-near-points.png)
 
-*(handwritten)*
+#### Example with only far points
 
-Legal outputs: any of the 4 points $A, B, C, D$.
+<!-- PDF page 8; slide 8 -->
 
----
+All points lie outside radius $cr$, so `null` is the only legal output.
 
-## $(c, r)$-ANNS: example with no near points
+![ANNS example containing only far points](9SimSearch2526-2_images/page-008-only-far-points.png)
 
-![[Pics/SimSearch2/SimSearch2-07.png]]
+## Locality Sensitive Hashing
 
-*(handwritten)*
+### ANNS with Locality Sensitive Hashing
 
-Legal outputs: $A, B$, null.
+<!-- PDF page 9; slide 9 -->
 
----
-
-## $(c, r)$-ANNS: example with only far points
-
-![[Pics/SimSearch2/SimSearch2-08.png]]
-
-*(handwritten)*
-
-Legal outputs: null.
-
----
-
-## ANNS with Locality Sensitive Hashing
-
-![[Pics/SimSearch2/SimSearch2-09.png]]
-
-We present a solution to $(c, r)$-ANN based on Locality Sensitive Hashing (LSH),
-a popular technique introduced in the late 90's, which is widely used for
-high-dimensional near-neighbor search in several applications: e.g.,
-recommender systems, detection of dublicates/plagiarism, search engines.
+Locality Sensitive Hashing (LSH), introduced in the late 1990s, provides a solution to
+$(c,r)$-ANNS. It is widely used for high-dimensional near-neighbor search in applications such
+as recommender systems, duplicate or plagiarism detection, and search engines.
 
 Main ideas:
 
-- The entire space is partitioned into regions through a hash function $h$
-  randomly extracted from a suitable family $\mathcal{H}$.
-- The partitioning ensures that: (1) two near points are likely to be mapped by
-  $h$ to the same region; (2) two far points are likely to be mapped by $h$ to
-  different regions;
-- The neighbors of the query point $q$ are searched for in the region identified
-  by $h(q)$.
+- A hash function $h$, selected randomly from a suitable family $\mathcal{H}$, partitions the
+  entire space into regions.
+- The partition ensures that near points are likely to map to the same region, while far points
+  are likely to map to different regions.
+- Neighbors of query point $q$ are searched for in the region identified by $h(q)$.
 
-**Observation**: standard hashing aims at minimizing the collision probability
-for any pair of elements, whereas LSH makes the collision probability positively
-related to the similarity between elements.
+Standard hashing aims to minimize collision probability for any pair of elements. LSH instead
+makes collision probability positively related to similarity.
 
----
+### Definition of LSH
 
-## Definition of LSH
+<!-- PDF page 10; slide 10 -->
 
-![[Pics/SimSearch2/SimSearch2-10.png]]
-
-Consider a metric space $(M, d)$ and a family of hash functions
+Consider a metric space $(M,d)$ and a family of hash functions
 
 $$
-\mathcal{H} = \{h : M \to S\},
+\mathcal{H}=\{h:M\rightarrow S\},
 $$
 
-where $S$ is a given domain (e.g., indices in some range $[0, t]$). For any two
-points $p, q \in M$ denote by
+where $S$ is a domain such as the integer range $[0,t]$. For points $p,q\in M$, denote by
 
 $$
-\Pr_{h \in \mathcal{H}}[h(p) = h(q)]
+\Pr_{h\in\mathcal{H}}[h(p)=h(q)]
 $$
 
-the probability that a hash function $h$ extracted from $\mathcal{H}$ uniformly
-at random maps $p$ and $q$ to the same value.
+the probability that a hash function selected uniformly at random from $\mathcal{H}$ maps $p$
+and $q$ to the same value.
 
-**Definition: $(c, r, p_1, p_2)$-Locality Sensitive Hashing**
+> [!info] Definition - $(c,r,p_1,p_2)$-Locality Sensitive Hashing
+> Given $c>1$, $r>0$, and $p_1,p_2\in[0,1]$ with $p_1>p_2$, a family $\mathcal{H}$ is
+> $(c,r,p_1,p_2)$-locality sensitive if, for every $p,q\in M$:
+>
+> - if $d(p,q)\leq r$, then $\Pr_{h\in\mathcal{H}}[h(p)=h(q)]\geq p_1$;
+> - if $d(p,q)>cr$, then $\Pr_{h\in\mathcal{H}}[h(p)=h(q)]\leq p_2$.
 
-Given parameters $c > 1$, $r > 0$, and $p_1, p_2 \in [0, 1]$, with
-$p_1 > p_2$, we say that $\mathcal{H}$ is $(c, r, p_1, p_2)$-locality sensitive
-if for any $p, q \in M$:
+### Comments on LSH
 
-- If $d(p, q) \leq r$, then
-  $\Pr_{h \in \mathcal{H}}[h(p) = h(q)] \geq p_1$.
-- If $d(p, q) > cr$, then
-  $\Pr_{h \in \mathcal{H}}[h(p) = h(q)] \leq p_2$.
+<!-- PDF page 11; slide 11 -->
 
----
+- Collision probability for points with distance in $(r,cr]$ is unspecified.
+- Collision probability between points $p$ and $q$ can usually be expressed as a monotonically
+  decreasing function of $d(p,q)$.
+- For example, an LSH for points with normalized Hamming distance $d\in[0,1]$ may have the
+  following collision-probability curve.
 
-## Comments of LSH
+![Collision probability as a decreasing function of Hamming distance](9SimSearch2526-2_images/page-011-collision-probability.png)
 
-![[Pics/SimSearch2/SimSearch2-11.png]]
+### LSH for $(c,r)$-ANNS
 
-- The collision probability for points with distance in $(r, cr]$ is not
-  specified.
-- Usually, the collision probability between two points $p, q$ can be expressed
-  as a monotonically decreasing function of $d(p, q)$.
-- Example: given a pair of points with Hamming distance $d$ (normalized in
-  $[0, 1]$), there exists an LSH with the following collision probability
-  ($d$ on x-axis, collision probability on y-axis):
+<!-- PDF page 12; slide 12 -->
 
----
+A $(c,r,p_1,p_2)$-LSH family $\mathcal{H}$ can solve $(c,r)$-ANNS on an input set $P$.
 
-## LSH for $(c, r)$-ANNS
+**Construction**
 
-![[Pics/SimSearch2/SimSearch2-12.png]]
+- Select $h$ uniformly at random from $\mathcal{H}$.
+- Insert all points of $P$ into a hash table $T$ using $h$.
+- Bucket $T[j]$ contains all points with hash value $j$:
 
-A $(c, r, p_1, p_2)$-LSH $\mathcal{H}$ can be used for solving $(c, r)$-ANNS on
-the input set $P$, as follows:
-
-**Construction of the data structure**
-
-- Randomly select $h$ from $\mathcal{H}$.
-- Insert all points of $P$ into a hash table $T$ using function $h$.
-  Let $T[j]$ be the (potentially empty) bucket containing all points in $P$ with
-  hash value $j$ (i.e., $T[j] = \{p \in P : h(p) = j\}$).
+$$
+T[j]=\{p\in P:h(p)=j\}.
+$$
 
 **Query**
 
-- For a given query $q$, scan $T[h(q)]$ until a point $p$ with
-  $d(p, q) \leq cr$ is found, and return it. If there is no such point, return
-  null.
+- Given $q$, scan $T[h(q)]$ until finding a point $p$ such that $d(p,q)\leq cr$, then return
+  it. Return `null` if no such point exists.
 
-*(handwritten)* We assume that the $T[j]$'s are implemented as LISTS.
+Assume that the buckets $T[j]$ are implemented as lists.
 
----
+### Boolean-vector example
 
-## Example
+<!-- PDF page 13; slide 13 -->
 
-![[Pics/SimSearch2/SimSearch2-13.png]]
+- Metric space: $M=\{\text{Boolean vectors of length }9\}$.
+- Distance function: Hamming distance.
+- Input: $P\subset M$, a set of $n=8$ vectors of length $9$.
 
-- Metric space: $M = \{$Boolean vectors of length 9$\}$
-- Distance function: Hamming distance
-- $P \subset M$ set of $n = 8$ vectors of length 9
-- For $0 \leq i < j < 8$, let $h_{i,j} : M \to [0, 3]$ be the hash function
-  mapping any vector $x \in M$ into the integer with binary configuration
-  $x[i]x[j]$. Define:
+![Eight Boolean vectors in the example input](9SimSearch2526-2_images/page-013-boolean-vectors.png)
 
-$$
-\mathcal{H} = \{h_{i,j} : 0 \leq i < j < 8\}
-$$
-
----
-
-![[Pics/SimSearch2/SimSearch2-14.png]]
-
-Construction: suppose that $h_{1,2} \in \mathcal{H}$ is selected.
-
-Query $q$:
-
-*(handwritten)*
-
-- $P$
-- Legal outputs only for $c \geq 2$
-- Legal outputs for any $c > 1$
-
----
-
-## ANNS with LSH
-
-![[Pics/SimSearch2/SimSearch2-15.png]]
-
-For a query point $q$, which points do we expect to see in $T[h(q)]$?
-
-- A near point $p$ (i.e., $d(p, q) \leq r$) will be in $T[h(q)]$ with
-  probability at least $p_1$, but it might also end up in a different bucket.
-- A far point $p'$ (i.e., $d(p', q) > cr$) might end up in $T[h(q)]$, but only
-  with probability at most $p_2$.
-
-Worst case scenario: $P$ contains
-
-- 1 near point $p \in P$ (i.e., with $d(q, p) \leq r$);
-- $n - 1$ far points $p'$ (i.e., with $d(p', q) > cr$).
-
-$\Rightarrow$ In expectation, at most $np_2$ far points collide with $q$.
-
----
-
-## ANNS with LSH: performance
-
-![[Pics/SimSearch2/SimSearch2-16.png]]
-
-We assume that $(M, d)$ is a space of dimensionality $D$ (e.g.,
-$M = \mathbb{R}^D$), for some (large) $D$, and that:
-
-- Each point of $M$ requires $O(D)$ words to be stored.
-- Hash values and distances can be computed in $O(D)$ time.
-
-**Theorem**
-
-Let $P$ be a set of $n$ points in a $D$-dimensional metric space $(M, d)$, and
-let $\mathcal{H}$ be a $(c, r, p_1, p_2)$-locality sensitive family of hash
-functions. Using $\mathcal{H}$ and the above approach to $(c, r)$-ANNS, a query
-$q$ is answered successfully with probability $\geq p_1$. Moreover the
-following performance is obtained:
-
-- Construction time: $O(Dn)$
-- Space: $O(Dn)$
-- Query time: $O(Dnp_2)$ in expectation.
-
----
-
-![[Pics/SimSearch2/SimSearch2-17.png]]
-
-*(handwritten)*
-
-Proof
-
-- **PROBABILISTIC CORRECTNESS**
-
-CASE 1: $B_r(q) \cap P \neq \emptyset$. In this case, any $p' \in P$ with
-$d(p', q) \leq cr$ is a legal output. Consider an arbitrary point
-$p \in B_r(q) \cap P$ (one must exist), and let $h \in \mathcal{H}$ be the
-extracted hash function. Then
+For $0\leq i<j<8$, let $h_{i,j}:M\rightarrow[0,3]$ map a vector $x\in M$ to the integer
+whose binary representation is $x[i]x[j]$. Define
 
 $$
-\Pr(\text{answer is correct})
-= \Pr(\text{answer} \neq \text{null})
-\geq \Pr(h(p) = h(q))
-\geq p_1
+\mathcal{H}=\{h_{i,j}:0\leq i<j<8\}.
 $$
 
----
+<!-- PDF page 14; slide 14 -->
 
-![[Pics/SimSearch2/SimSearch2-18.png]]
+Suppose $h_{1,2}\in\mathcal{H}$ is selected. Query $q$ hashes to bucket $3$. The annotated
+example distinguishes outputs legal for every $c\geq1$ from additional outputs legal only when
+$c\geq2$.
 
-*(handwritten)*
+![Hash-table construction and query for Boolean vectors](9SimSearch2526-2_images/page-014-hash-table-example.png)
 
-since $\mathcal{H}$ is $(c, r, p_1, p_2)$-locality sensitive.
+### Expected bucket contents
 
-CASE 2: $B_r(q) \cap P = \emptyset$. In this case, any answer (either a point
-$p$ with $d(p, q) \leq cr$ or null) is correct.
+<!-- PDF page 15; slide 15 -->
 
-- **CONSTRUCTION TIME**
-- **SPACE**
+For query point $q$, expected contents of $T[h(q)]$ are:
 
-straightforward
+- A near point $p$, with $d(p,q)\leq r$, belongs to $T[h(q)]$ with probability at least $p_1$,
+  although it may map to another bucket.
+- A far point $p'$, with $d(p',q)>cr$, may belong to $T[h(q)]$, but with probability at most
+  $p_2$.
 
-- **QUERY TIME**: The scan of the list $T[h(q)]$ is stopped as soon as a point
-  $p$ with $d(p, q) \leq cr$ is found, or the end of the list is reached.
+In the worst case, $P$ contains one near point $p$ and $n-1$ far points. Therefore, at most
+$np_2$ far points collide with $q$ in expectation.
 
----
+### Basic LSH performance
 
-![[Pics/SimSearch2/SimSearch2-19.png]]
+<!-- PDF page 16; slide 16 -->
 
-*(handwritten)*
+Assume $(M,d)$ has dimensionality $D$, for example $M=\mathbb{R}^D$, and:
 
-This implies that the query time is $O(D \cdot x)$, where $x$ is the number of
-points $p \in P$ such that $d(p, q) > cr$ and $h(p) = h(q)$. Clearly, $x$ is a
-random variable with $\mathbb{E}[x] \leq np_2$ since, by the properties of
-$\mathcal{H}$, for each $p \in P$ with $d(p, q) > cr$ (there are $\leq n$ such
-points) we have that
+- each point requires $O(D)$ words;
+- hash values and distances can be computed in $O(D)$ time.
+
+> [!info] Theorem
+> Let $P$ contain $n$ points in a $D$-dimensional metric space $(M,d)$, and let
+> $\mathcal{H}$ be a $(c,r,p_1,p_2)$-locality-sensitive family. Using the basic approach above,
+> a query is answered successfully with probability at least $p_1$. Performance is:
+>
+> - construction time $O(Dn)$;
+> - space $O(Dn)$;
+> - expected query time $O(Dnp_2)$.
+
+#### Proof
+
+<!-- PDF page 17; slide 17 -->
+
+**Probabilistic correctness, case 1.** Suppose $B_r(q)\cap P\neq\emptyset$. Any point $p'$
+with $d(p',q)\leq cr$ is a legal output. Choose an arbitrary
+$p\in B_r(q)\cap P$ and let $h\in\mathcal{H}$ be the selected hash function. Then
 
 $$
-\Pr(h(p) = h(q)) \leq p_2
+\Pr_h[\text{answer is correct}]
+\geq \Pr_h[\text{answer}\neq\texttt{null}]
+\geq \Pr_h[h(p)=h(q)]
+\geq p_1.
 $$
 
-$\Rightarrow$ The expected Query time is $O(D \cdot n \cdot p_2)$
+![First part of the handwritten basic-LSH performance proof](9SimSearch2526-2_images/page-017-performance-proof-1.png)
 
----
+<!-- PDF page 18; slide 18 -->
 
-![[Pics/SimSearch2/SimSearch2-20.png]]
+This follows because $\mathcal{H}$ is $(c,r,p_1,p_2)$-locality sensitive.
 
----
+**Probabilistic correctness, case 2.** Suppose $B_r(q)\cap P=\emptyset$. Every possible answer,
+either a point $p$ with $d(p,q)\leq cr$ or `null`, is correct.
 
-![[Pics/SimSearch2/SimSearch2-21.png]]
+Construction time and space follow directly from storing and hashing all points.
 
----
+For query time, scanning list $T[h(q)]$ stops as soon as a point $p$ with $d(p,q)\leq cr$ is
+found or when the list ends.
+
+![Second part of the handwritten basic-LSH performance proof](9SimSearch2526-2_images/page-018-performance-proof-2.png)
+
+<!-- PDF page 19; slide 19 -->
+
+Query time is $O(Dx)$, where $x$ is the number of far points $p\in P$ satisfying both
+$d(p,q)>cr$ and $h(p)=h(q)$. Variable $x$ is random and satisfies
+
+$$
+\mathbb{E}[x]\leq np_2,
+$$
+
+because every one of the at most $n$ far points collides with $q$ with probability at most
+$p_2$. Expected query time is therefore $O(Dnp_2)$.
+
+![Third part of the handwritten basic-LSH performance proof](9SimSearch2526-2_images/page-019-performance-proof-3.png)
+
+<!-- PDF pages 20-21; slides 20-21: blank -->
 
 ## LSH for Hamming and Euclidean distances
 
-![[Pics/SimSearch2/SimSearch2-22.png]]
+<!-- PDF page 22; slide 22 -->
 
----
+### Hamming distance: bit sampling
 
-## LSH for Hamming distance: bit sampling
+<!-- PDF page 23; slide 23 -->
 
-![[Pics/SimSearch2/SimSearch2-23.png]]
-
-- Metric space: $M = \{$Boolean vectors of length $D\}$
-- For $0 \leq i < D$, let $h_i : M \to \{0, 1\}$ be the hash function that maps
-  each vector $x \in M$ into its $i$-th bit $x[i]$. Define:
+- Metric space: $M=\{\text{Boolean vectors of length }D\}$.
+- For $0\leq i<D$, define $h_i:M\rightarrow\{0,1\}$ by $h_i(x)=x[i]$ and let
 
 $$
-\mathcal{H}_H = \{h_i : 0 \leq i < D\}.
+\mathcal{H}_H=\{h_i:0\leq i<D\}.
 $$
 
-- Given two points $p, q$, the probability of collision is
+For two points $p,q$, collision probability is
 
 $$
-\Pr_{h \in \mathcal{H}_H}[h(p) = h(q)] = 1 - \frac{d_H(p, q)}{D},
+\Pr_{h\in\mathcal{H}_H}[h(p)=h(q)]
+=1-\frac{d_H(p,q)}{D},
 $$
 
-where $d_H()$ denotes the Hamming distance.
+where $d_H$ is Hamming distance. Equivalently, a random hash function collides exactly when
+the selected coordinate satisfies $p[i]=q[i]$.
 
-*(handwritten)* $\frac{d_H(p, q)}{D}$: probability that a hash function $h_i$ is
-extracted with $p[i] \neq q[i]$.
+<!-- PDF page 24; slide 24 -->
 
----
+For any $p,q$:
 
-## LSH for Hamming distance: bit sampling
-
-![[Pics/SimSearch2/SimSearch2-24.png]]
-
-For any two points $p, q$ we have that:
-
-- If $d_H(p, q) \leq r$, then
+- If $d_H(p,q)\leq r$, then
 
 $$
-\Pr_{h \in \mathcal{H}_H}[h(p) = h(q)] =
-1 - \frac{d_H(p, q)}{D} \geq 1 - \frac{r}{D} \stackrel{def}{=} p_1
+\Pr_{h\in\mathcal{H}_H}[h(p)=h(q)]
+=1-\frac{d_H(p,q)}{D}
+\geq 1-\frac{r}{D}
+\stackrel{\mathrm{def}}{=}p_1.
 $$
 
-- If $d_H(p, q) > cr$, then
+- If $d_H(p,q)>cr$, then
 
 $$
-\Pr_{h \in \mathcal{H}_H}[h(p) = h(q)] =
-1 - \frac{d_H(p, q)}{D} < 1 - \frac{cr}{D} \stackrel{def}{=} p_2
+\Pr_{h\in\mathcal{H}_H}[h(p)=h(q)]
+=1-\frac{d_H(p,q)}{D}
+<1-\frac{cr}{D}
+\stackrel{\mathrm{def}}{=}p_2.
 $$
 
-Therefore $\mathcal{H}_H$ is
-$(c, r, 1 - r/D, 1 - cr/D)$-locality sensitive.
+Therefore, $\mathcal{H}_H$ is
+$(c,r,1-r/D,1-cr/D)$-locality sensitive.
 
-*(handwritten)* $p_1$ under $1-r/D$, $p_2$ under $1-cr/D$.
+### The $\rho$ factor
 
----
+<!-- PDF page 25; slide 25 -->
 
-## Observation
-
-![[Pics/SimSearch2/SimSearch2-25.png]]
-
-A $(c, r, p_1, p_2)$-locality sensitive family $\mathcal{H}$ of hash functions
-if effective when $p_1 >> p_2$.
-
-A parameter which is typically used to measure the quality of such a family is
-the $\rho$ factor defined as:
+A $(c,r,p_1,p_2)$-locality-sensitive family is effective when $p_1\gg p_2$. Its quality is
+typically measured by
 
 $$
-\rho = \frac{\log_2 p_1}{\log_2 p_2}
-= \frac{\log_2(1/p_1)}{\log_2(1/p_2)}
+\rho
+=\frac{\log_2 p_1}{\log_2 p_2}
+=\frac{\log_2(1/p_1)}{\log_2(1/p_2)}.
 $$
 
-Note that since $1 \geq p_1 > p_2 > 0$, we have $\rho \in (0, 1)$, decreasing
-with $p_1/p_2$, hence the smaller $\rho$ the better!
+Because $1\geq p_1>p_2>0$, $\rho\in(0,1)$. It decreases as $p_1/p_2$ increases, so smaller
+$\rho$ is better.
 
-The $\rho$ factor for bit sampling is:
-
-$$
-\rho = \frac{\log_2 p_1}{\log_2 p_2}
-= \frac{\log_2(1-r/D)}{\log_2(1-cr/D)}
-\sim \frac{r/D}{cr/D} = 1/c.
-$$
-
----
-
-## LSH for Euclidean distance: random projection
-
-![[Pics/SimSearch2/SimSearch2-26.png]]
-
-- Metric space: $M = \mathbb{R}^D$
-- For a fixed value $w > 0$ and parameters $a \in \mathbb{R}^D$ and
-  $b \in [0, w]$, define the following hash function
-  $h_{a,b}(p) : M \to \mathbb{Z}$:
+For bit sampling,
 
 $$
-h_{a,b}(p) =
-\left\lceil \frac{\langle a, p \rangle + b}{w} \right\rceil,
+\rho
+=\frac{\log_2(1-r/D)}{\log_2(1-cr/D)}
+\sim\frac{r/D}{cr/D}
+=\frac{1}{c}.
 $$
 
-where $\langle, \rangle$ denotes the inner product
+### Euclidean distance: random projection
 
-and define
+<!-- PDF page 26; slide 26 -->
+
+- Metric space: $M=\mathbb{R}^D$.
+- For fixed $w>0$, $a\in\mathbb{R}^D$, and $b\in[0,w]$, define
+  $h_{a,b}:M\rightarrow\mathbb{Z}$ by
 
 $$
-\mathcal{H}_E(w) =
-\{h_{a,b}(p) : a \in \mathbb{R}^D \text{ and } b \in [0, w]\}
+h_{a,b}(p)=
+\left\lfloor\frac{\langle a,p\rangle+b}{w}\right\rfloor,
 $$
 
-It can be shown that $\mathcal{H}_E(w)$ is $(c, r, p_1, p_2)$-locality
-sensitive with $\rho = O(1/c)$, assuming $a$ selected with normal distribution
-($N^D(0, 1)$), and $b$ with uniform distribution.
+where $\langle\cdot,\cdot\rangle$ is the inner product. Define
 
----
+$$
+\mathcal{H}_E(w)
+=\{h_{a,b}:a\in\mathbb{R}^D,\ b\in[0,w]\}.
+$$
 
-![[Pics/SimSearch2/SimSearch2-27.png]]
+If $a$ is sampled from the normal distribution $\mathcal{N}^D(0,1)$ and $b$ from the uniform
+distribution, then $\mathcal{H}_E(w)$ is $(c,r,p_1,p_2)$-locality sensitive with
+$\rho=O(1/c)$.
 
-*(handwritten)*
+#### Implementation observations
 
-**OBSERVATIONS**
+<!-- PDF pages 27-28; slides 27-28 -->
 
-- The hash functions of $\mathcal{H}_E(w)$ map points $p \in \mathbb{R}^D$ into
-  arbitrary integers. For practical purposes, once a function $h_{a,b}$ is
-  extracted from $\mathcal{H}_E(w)$ a further hash function $h$ is used to map
-  the non-empty buckets created by $h_{a,b}$ to indices in a small range. Then,
-  for a query $q$ the bucket $T[h_{a,b}(q)]$ is first retrieved among those
-  mapped by $h$ to the same index, and then
+The functions in $\mathcal{H}_E(w)$ map points in $\mathbb{R}^D$ to arbitrary integers. In
+practice, after selecting $h_{a,b}$, another hash function maps its nonempty buckets to a small
+index range. For query $q$, bucket $T[h_{a,b}(q)]$ is retrieved among buckets mapped to the same
+secondary index, then searched for a near neighbor of $q$.
 
----
+Better locality-sensitive families for Euclidean spaces achieve
 
-![[Pics/SimSearch2/SimSearch2-28.png]]
+$$
+\rho\in O(1/c^2).
+$$
 
-*(handwritten)*
+![First page of handwritten observations about Euclidean LSH](9SimSearch2526-2_images/page-027-euclidean-observations-1.png)
 
-this bucket is searched for a near neighbor of $q$.
+![Second page of handwritten observations about Euclidean LSH](9SimSearch2526-2_images/page-028-euclidean-observations-2.png)
 
-- For Euclidean spaces, better families of locality-sensitive hash functions
-  exist with $\rho \in O(1/c^2)$.
+#### Random-projection example
 
----
+<!-- PDF pages 29-32; animated slide 29 -->
 
-## Random projection: example
+The sequence projects points orthogonally onto direction $a$, partitions the projected line into
+intervals of width $w$, and shows query point $q$ in the final frame.
 
-![[Pics/SimSearch2/SimSearch2-29.png]]
+![Random-projection example before projection](9SimSearch2526-2_images/page-029-random-projection-1.png)
 
----
+![Points projected onto direction a](9SimSearch2526-2_images/page-030-random-projection-2.png)
 
-## Random projection: example
+![Projected line partitioned into intervals of width w](9SimSearch2526-2_images/page-031-random-projection-3.png)
 
-![[Pics/SimSearch2/SimSearch2-30.png]]
-
----
-
-## Random projection: example
-
-![[Pics/SimSearch2/SimSearch2-31.png]]
-
-*(handwritten)* $w$
-
----
-
-## Random projection: example
-
-![[Pics/SimSearch2/SimSearch2-32.png]]
-
-*(handwritten)* $q$
-
----
+![Query point q in the random-projection example](9SimSearch2526-2_images/page-032-random-projection-4.png)
 
 ## Improving the data structure
 
-![[Pics/SimSearch2/SimSearch2-33.png]]
+<!-- PDF page 33; slide 30 -->
 
-Ideally, LSH should have $p_1$ close to 1 and $p_2$ close to 0. However, a
-family $\mathcal{H}$ might not provide this type of guarantees.
+Ideally, LSH would have $p_1$ close to $1$ and $p_2$ close to $0$, but a family
+$\mathcal{H}$ may not provide these guarantees. Two improvements respectively increase the
+collision probability of near points and decrease the collision probability of far points.
 
-We now outline two improvements to respectively increase the collision
-probability of near points and decrease the collision probability of far points,
-which, combined together, yield better LSH.
+### Improvement 1: repetition
 
----
+<!-- PDF page 34; slide 31 -->
 
-## Improvement 1: increase collision probability of near points
+Repeat the search $\ell>1$ times using $\ell$ distinct hash tables built from independent hash
+functions selected uniformly from a $(c,r,p_1,p_2)$-locality-sensitive family $\mathcal{H}$.
+This is the **repetition**, or **OR**, construction.
 
-![[Pics/SimSearch2/SimSearch2-34.png]]
+- Collision probability between a near point $p$ and query $q$ in at least one table increases
+  with $\ell$.
+- Checking $\ell$ buckets, one per table, increases computational cost.
 
-**Idea**: repeat search $\ell > 1$ times using $\ell$ distinct hash tables based
-on independent hash functions chosen uniformly at random from a
-$(c, r, p_1, p_2)$-locality sensitive family $\mathcal{H}$.
+#### Repetition analysis
 
-This technique is called repetition or OR construction.
+<!-- PDF pages 35-36; slides 32-33 -->
 
-- The probability that a given near point $p$ (i.e., with $d(p, q) \leq r$)
-  collides with the query point $q$ in at least one hash table increases with
-  $\ell$ (see next slides).
-- However, checking $\ell$ buckets, one for each hash table, becomes
-  computationally expensive.
+Let $p$ satisfy $d(p,q)\leq r$.
 
----
-
-![[Pics/SimSearch2/SimSearch2-35.png]]
-
-*(handwritten)*
-
-Let $p$ be such that $d(p, q) \leq r$.
-
-- The probability that in one particular hash table $p$ and $q$ are in
-  different buckets is $\leq 1-p_1$.
-- The probability that in all of the $\ell$ hash tables $p$ and $q$ are in
-  different buckets is $\leq (1-p_1)^\ell$ by independence of the hash functions.
-
-$\Rightarrow$ The probability that given the query $q$, $p$ is found in the same
-bucket as $q$ in "at least" one hash table is
-
----
-
-![[Pics/SimSearch2/SimSearch2-36.png]]
-
-*(handwritten)*
+- In one table, the probability that $p$ and $q$ occupy different buckets is at most $1-p_1$.
+- By independence, the probability that they occupy different buckets in all $\ell$ tables is
+  at most $(1-p_1)^\ell$.
+- Therefore, the probability of finding $p$ in the same bucket as $q$ in at least one table is
 
 $$
-\geq 1 - (1-p_1)^\ell
+1-(1-p_1)^\ell.
 $$
 
-Note that for $\ell > 1$
+For $\ell>1$, $(1-p_1)^\ell<1-p_1$, so
 
 $$
-(1-p_1)^\ell < 1-p_1
+1-(1-p_1)^\ell>p_1.
 $$
 
-hence,
+![First part of the handwritten repetition analysis](9SimSearch2526-2_images/page-035-repetition-proof-1.png)
+
+![Second part of the handwritten repetition analysis](9SimSearch2526-2_images/page-036-repetition-proof-2.png)
+
+<!-- PDF page 37; slide 34: blank -->
+
+### Improvement 2: concatenation
+
+<!-- PDF page 38; slide 35 -->
+
+Create a family $\mathcal{G}$ by concatenating $k\geq1$ independent hash functions selected
+uniformly from $\mathcal{H}$:
 
 $$
-1 - (1-p_1)^\ell > 1 - (1-p_1) = p_1
+\mathcal{G}
+=\left\{g\in\mathcal{H}^k:
+g(p)=(h_1(p),\ldots,h_k(p)),\ h_i\in\mathcal{H}\right\}.
 $$
 
----
+For random $g\in\mathcal{G}$ and distinct points $p,q$:
 
-![[Pics/SimSearch2/SimSearch2-37.png]]
+- if $d(p,q)\leq r$, then $\Pr[g(p)=g(q)]\geq p_1^k$;
+- if $d(p,q)>cr$, then $\Pr[g(p)=g(q)]\leq p_2^k$.
 
----
+This is the **concatenation**, or **AND**, construction.
 
-## Improvement 2: decrease collision probability of far points
+<!-- PDF page 39; slide 36 -->
 
-![[Pics/SimSearch2/SimSearch2-38.png]]
-
-**Idea**: use a family $\mathcal{G}$ of hash functions obtained by
-concatenating $k \geq 1$ independent hash functions chosen uniformly at random
-from a $(c, r, p_1, p_2)$-locality sensitive family $\mathcal{H}$. Namely,
+Set
 
 $$
-\mathcal{G} = \{g \in \mathcal{H}^k\}
-= \{g(p) = (h_1(p), \ldots, h_k(p)), \text{ with } h_i \in \mathcal{H}\}
+k=\log_{1/p_2}n
+=\frac{\log_2 n}{\log_2(1/p_2)}.
 $$
 
-It is immediate to establish that for a random $g \in \mathcal{G}$ and any two
-points $p, q$ with $p \neq q$,
+Then, for random $g\in\mathcal{G}$ and distinct points $p,q$:
 
-- If $d(p, q) \leq r$, then $\Pr[g(p) = g(q)] \geq p_1^k$;
-- If $d(p, q) > cr$, then $\Pr[g(p) = g(q)] \leq p_2^k$.
+- if $d(p,q)\leq r$, then $\Pr[g(p)=g(q)]\geq p_1^k=1/n^\rho$;
+- if $d(p,q)>cr$, then $\Pr[g(p)=g(q)]\leq p_2^k=1/n$.
 
-This technique is called concatenation or AND construction.
+With this $k$, expected collisions between query $q$ and far points in its bucket are at most
+$1$.
 
----
+<!-- PDF page 40; slide 37 -->
 
-## Improvement 2: decrease collision probability of far points
-
-![[Pics/SimSearch2/SimSearch2-39.png]]
-
-Suppose that we set
+The identity $p_1^k=n^{-\rho}$ follows from
 
 $$
-k = \log_{1/p_2} n = \frac{\log_2 n}{\log_2(1/p_2)}.
+k
+=\frac{\log_2 n}{\log_2(1/p_2)}
+=\frac{\log_2 n}{\log_2(1/p_1)}
+ \frac{\log_2(1/p_1)}{\log_2(1/p_2)}
+=\rho\log_{1/p_1}n.
 $$
 
-Then, for a random $g \in \mathcal{G}$ and any two points $p, q$ with
-$p \neq q$,
+Equivalently, $p_1^{-k}=n^\rho$.
 
-- If $d(p, q) \leq r$, then $\Pr[g(p) = g(q)] \geq p_1^k = 1/n^\rho$;
-- If $d(p, q) > cr$, then $\Pr[g(p) = g(q)] \leq p_2^k = 1/n$.
+![Handwritten derivation for the concatenation parameter](9SimSearch2526-2_images/page-040-concatenation-derivation.png)
 
-**Remark**: With the above choice of $k$, the expected number of collisions of a
-query point $q$ with far points in the same bucket is at most 1.
+<!-- PDF page 41; slide 38: blank -->
 
----
+### General LSH schema for $(c,r)$-ANNS
 
-![[Pics/SimSearch2/SimSearch2-40.png]]
+<!-- PDF page 42; slide 39 -->
 
-*(handwritten)*
+Combine repetition and concatenation. Let $k$ and $\ell$ be parameters chosen later.
 
-$$
-k = \frac{\log_2 n}{\log_2(1/p_2)}
-$$
+**Construction**
 
-$$
-= \frac{\log_2 n}{\log_2(1/p_1)}
-\cdot
-\frac{\log_2(1/p_1)}{\log_2(1/p_2)}
-= (\log_{1/p_1} n) \cdot \rho
-$$
-
-$$
-\Rightarrow p_1^k = n^{-\rho}
-$$
-
----
-
-![[Pics/SimSearch2/SimSearch2-41.png]]
-
----
-
-## LSH and $(c, r)$-ANNS: a general schema
-
-![[Pics/SimSearch2/SimSearch2-42.png]]
-
-We merge the two improvements to get the following schema. Let $\mathcal{H}$ be
-a $(c, r, p_1, p_2)$-locality sensitive family of hash functions, and let $k$
-and $\ell$ be two values that will be set later.
-
-**Construction of the data structure**
-
-- Construct $\ell$ hash functions $g_1 \ldots g_\ell$: each $g_i$ consist of the
-  concatenation of $k$ hash functions randomly and independently selected from
-  $\mathcal{H}$.
-- For each $g_i$, construct a hash table $T_i$ of points in $P$ using $g_i$. We
-  let $T_i[j]$ be the (potentially empty) bucket containing all points in $P$
-  with hash value $j$ when using $g_i$.
+- Construct $\ell$ functions $g_1,\ldots,g_\ell$. Each $g_i$ concatenates $k$ hash functions
+  selected randomly and independently from $\mathcal{H}$.
+- For every $g_i$, construct a hash table $T_i$ for $P$. Bucket $T_i[j]$ contains all points
+  in $P$ with hash value $j$ under $g_i$.
 
 **Query**
 
-- Scan $T_1[g_1(q)], \ldots, T_\ell[g_\ell(q)]$ until a $cr$-near point $p$ is
-  found and return it; if no such point is found, return null.
+- Scan $T_1[g_1(q)],\ldots,T_\ell[g_\ell(q)]$ until finding a $cr$-near point $p$, then
+  return it. Return `null` if no such point is found.
 
----
+#### General-schema example
 
-## LSH and $(c, r)$-ANNS: example
+<!-- PDF pages 43-48; animated slide 40 -->
 
-![[Pics/SimSearch2/SimSearch2-43.png]]
+The animation incrementally creates hash tables $T_1,T_2,T_3,\ldots,T_i,\ldots,T_\ell$ from
+independent concatenated functions $g_i=h_{i,1}\circ\cdots\circ h_{i,k}$. The final accumulated
+frame is retained below; earlier frames contain subsets of the same diagram.
 
-Point set $P$
+![Complete LSH schema with multiple concatenated hash tables](9SimSearch2526-2_images/page-048-lsh-schema.png)
 
----
+### General-schema performance
 
-## LSH and $(c, r)$-ANNS: example
+<!-- PDF page 49; slide 41 -->
 
-![[Pics/SimSearch2/SimSearch2-44.png]]
+> [!info] Theorem
+> Let $P$ contain $n$ points in a metric space $(M,d)$, and let $\mathcal{H}$ be a
+> $(c,r,p_1,p_2)$-locality-sensitive family. Fix
+>
+> $$
+> k=\log_{1/p_2}n,
+> \qquad
+> \ell=2p_1^{-k}=2n^\rho,
+> $$
+>
+> where $\rho=\log_2p_1/\log_2p_2$. A query is answered successfully with probability at
+> least $1/2$. Performance is:
+>
+> - construction time $O\!\left(Dn^{1+\rho}\log_{1/p_2}n\right)$;
+> - space $O\!\left(Dn+n^{1+\rho}\log_{1/p_2}n\right)$;
+> - expected query time $O\!\left(Dn^\rho\log_{1/p_2}n\right)$.
 
-$$
-g_1 = h_{1,1} \circ \cdots \circ h_{1,k}
-$$
+<!-- PDF pages 50-53; slides 42-45: blank -->
 
-Point set $P$
+### Hamming distance: concatenated bit sampling
 
-$T_1$
+<!-- PDF page 54; slide 46 -->
 
----
+Concatenating $k$ bit-sampling hashes means selecting $k$ random coordinates. Collision
+probabilities become:
 
-## LSH and $(c, r)$-ANNS: example
+- $\Pr[h(p)=h(q)]\geq(1-r/D)^k$ if $d_H(p,q)\leq r$;
+- $\Pr[h(p)=h(q)]\leq(1-cr/D)^k$ if $d_H(p,q)\geq cr$.
 
-![[Pics/SimSearch2/SimSearch2-45.png]]
+Concatenation does not change $\rho$.
 
-$$
-g_1 = h_{1,1} \circ \cdots \circ h_{1,k}
-$$
+Bit sampling projects vectors onto a random subset of coordinates. Example:
 
-$$
-g_2 = h_{2,1} \circ \cdots \circ h_{2,k}
-$$
+```text
+x       00101001010        y       10101100010
+h(x)    011                h(y)    011
+```
 
-Point set $P$
+<!-- PDF page 55; slide 47 -->
 
-$T_1$, $T_2$
+Increasing $k$ lowers collision probability more sharply as relative Hamming distance grows.
+The plot compares $k=1$ and $k=3$ and marks thresholds $r$ and $cr$.
 
----
-
-## LSH and $(c, r)$-ANNS: example
-
-![[Pics/SimSearch2/SimSearch2-46.png]]
-
-$$
-g_1 = h_{1,1} \circ \cdots \circ h_{1,k}
-$$
-
-$$
-g_2 = h_{2,1} \circ \cdots \circ h_{2,k}
-$$
-
-$$
-g_3 = h_{3,1} \circ \cdots \circ h_{3,k}
-$$
-
-Point set $P$
-
-$T_1$, $T_2$, $T_3$
-
----
-
-## LSH and $(c, r)$-ANNS: example
-
-![[Pics/SimSearch2/SimSearch2-47.png]]
-
-$$
-g_i = h_{i,1} \circ \cdots \circ h_{i,k}
-$$
-
-$T_i$
-
----
-
-## LSH and $(c, r)$-ANNS: example
-
-![[Pics/SimSearch2/SimSearch2-48.png]]
-
-$$
-g_\ell = h_{\ell,1} \circ \cdots \circ h_{\ell,k}
-$$
-
-$T_\ell$
-
----
-
-## LSH and $(c, r)$-ANNS: performance
-
-![[Pics/SimSearch2/SimSearch2-49.png]]
-
-**Theorem**
-
-Let $P$ be a set of $n$ points in a metric space $(M, d)$, and let
-$\mathcal{H}$ be a $(c, r, p_1, p_2)$-locality sensitive family of hash
-functions. Fix
-
-$$
-k = \log_{1/p_2} n
-\quad \text{and} \quad
-\ell = 2p_1^{-k} = 2n^\rho,
-$$
-
-where $\rho = \log_2 p_1 / \log_2 p_2$. Using the above approach to
-$(c, r)$-ANNS, a query is answered successfully with probability $\geq 1/2$.
-Moreover the following performance is obtained:
-
-- Construction time: $O(Dn^{1+\rho}\log_{1/p_2} n)$
-- Space: $O(Dn + n^{1+\rho}\log_{1/p_2} n)$
-- Query time: $O(Dn^\rho \log_{1/p_2} n)$ in expectation.
-
----
-
-![[Pics/SimSearch2/SimSearch2-50.png]]
-
----
-
-![[Pics/SimSearch2/SimSearch2-51.png]]
-
----
-
-![[Pics/SimSearch2/SimSearch2-52.png]]
-
----
-
-![[Pics/SimSearch2/SimSearch2-53.png]]
-
----
-
-## LSH for Hamming distance: concatenating bit sampling
-
-![[Pics/SimSearch2/SimSearch2-54.png]]
-
-Concatenating $k$ bit sampling LSH consists in randomly selecting $k$ indexes,
-and yields the following collision probabilities:
-
-- $\Pr_{h \in \mathcal{H}_H}[h(p) = h(q)] \geq (1-r/D)^k$, if
-  $d_H(p, q) \leq r$;
-- $\Pr_{h \in \mathcal{H}_H}[h(p) = h(q)] \leq (1-cr/D)^k$, if
-  $d_H(p, q) \geq cr$;
-
-The concatenation does not change the $\rho$ value.
-
-**Bitsampling**: Project to random subset of dimensions.
-
-$$
-x = 00101001010 \qquad y = 10101100010
-$$
-
-$$
-h(x) = 011 \qquad h(y) = 011
-$$
-
----
-
-## LSH for Hamming distance: concatenating bit sampling
-
-![[Pics/SimSearch2/SimSearch2-55.png]]
-
-Bit sampling collision probablity
-
----
+![Bit-sampling collision probability for k equal to 1 and 3](9SimSearch2526-2_images/page-055-bit-sampling-chart.png)
 
 ## Exercises
 
-![[Pics/SimSearch2/SimSearch2-56.png]]
+<!-- PDF page 56; slide 48 -->
 
-**Exercise**
+> [!example] Exercise 1
+> Let $P$ be a collection of $n$ documents to store in a data structure that retrieves a
+> document similar to a query document $q$. Let $W$ contain $D$ relevant words, and suppose
+> similarity depends on the number of words from $W$ shared by two documents, ignoring relative
+> frequencies.
+>
+> 1. Describe a document representation and a data structure for $P$ based on a suitable
+>    locality-sensitive family, using one hash function for the data structure.
+> 2. Find $c$ and $r$ such that $(c,r)$-ANNS for $P$ is solved correctly with probability at
+>    least $1/2$ and expected query time $O(n)$. The trivial exact approach requires $O(Dn)$
+>    query time.
 
-Let $P$ be a collection of $n$ documents that you want to store into a suitable
-data structure so to retrieve, given a query document $q$, a similar document in
-$P$. Let $W$ be a set of $D$ relevant words and suppose that the similarity
-between two documents depends on the number of words of $W$ in common (ignoring
-their relative frequencies).
+<!-- PDF page 57; slide 49 -->
 
-1. Describe a representation of the documents and a data structure for $P$ based
-   on a suitable locality-sensitive family of hash functions (use only one hash
-   function for the data structure).
-2. Based on the above point, find values of $c$ and $r$ such that the
-   $(c, r)$-ANNS problem for $P$ can be solved correctly with probability at
-   least $1/2$ and expected query time $O(n)$. (Observe that the trivial exact
-   approach requires $O(Dn)$ query time.)
-
----
-
-![[Pics/SimSearch2/SimSearch2-57.png]]
-
-**Exercise**
-
-Let $P$ be a set of $n$ $D$-dimensional Boolean vectors. Suppose that $P$ is
-stored into a hash table $T$ built using a hash function $h$ randomly drawn from
-the bit-sampling LSH family $\mathcal{H} = \{h_i : 0 \leq i < D\}$. For
-$h \in \mathcal{H}$, let "not$(h(x))$" denote the negation of the binary value
-$h(x)$.
-
-1. Given two vectors $p$ and $q$, determine the probability
-   $\Pr_{h \in \mathcal{H}}[h(p) = \text{not}(h(q))]$ as a function of the
-   Hamming distance $d_H(p, q)$.
-2. Given a query vector $q$, we want to find an $r$-far vector $p \in P$, i.e.,
-   such that $d_H(p, q) \geq r$. Based on the above analysis, how would you
-   efficiently search such a $p$ in the table $T$? What probabilistic guarantees
-   does your method provide?
-
----
+> [!example] Exercise 2
+> Let $P$ contain $n$ Boolean vectors of dimension $D$. Store $P$ in a hash table $T$ using a
+> random bit-sampling hash $h$ from
+> $\mathcal{H}=\{h_i:0\leq i<D\}$. For $h\in\mathcal{H}$, let
+> $\operatorname{not}(h(x))$ denote negation of binary value $h(x)$.
+>
+> 1. Given vectors $p$ and $q$, determine
+>    $\Pr_{h\in\mathcal{H}}[h(p)=\operatorname{not}(h(q))]$ as a function of Hamming distance
+>    $d_H(p,q)$.
+> 2. Given query vector $q$, find an $r$-far vector $p\in P$, meaning $d_H(p,q)\geq r$.
+>    Explain how to search efficiently in $T$ and state the method's probabilistic guarantees.
 
 ## Summary
 
-![[Pics/SimSearch2/SimSearch2-58.png]]
+<!-- PDF page 58; slide 50 -->
 
-- Similarity search: $r$-NNS and RR problems.
-- $k$-d tree for similarity search in low dimensions.
+- Similarity search: $r$-NNS and Range Reporting problems.
+- kd-trees for similarity search in low dimensions.
 - Curse of dimensionality for similarity search.
-- $(c, r)$-ANNS problem.
-- LSH approach to the $(c, r)$-ANNS problem.
-  - Definition of $(c, r, p_1, p_2)$-locality sensitive hash functions.
-  - Solving $(c, r)$-ANNS through $(c, r, p_1, p_2)$-locality sensitive hash
-    functions.
-  - $(c, r, p_1, p_2)$-locality sensitive hash functions for Hamming and
-    Euclidean distances (bit sampling and random projection).
-  - Improving collision probabilities with repetition and concatenation, and
-    their combination.
-
----
+- The $(c,r)$-ANNS problem.
+- LSH for $(c,r)$-ANNS:
+  - definition of $(c,r,p_1,p_2)$-locality-sensitive hash functions;
+  - solving $(c,r)$-ANNS using locality-sensitive hash families;
+  - LSH for Hamming and Euclidean distances using bit sampling and random projection;
+  - improving collision probabilities with repetition, concatenation, and their combination.
 
 ## References
 
-![[Pics/SimSearch2/SimSearch2-59.png]]
+<!-- PDF page 59; slide 51 -->
 
-**LRU14** J. Leskovec, A. Rajaraman and J. Ullman. *Mining Massive Datasets*.
-Cambridge University Press, 2014. Section 3.6.
-
-**BCKO08** Mark de Berg, Otfried Cheong, Marc van Kreveld, and Mark Overmars.
-*Computational Geometry: Algorithms and Applications* (3rd ed. ed.).
-Springer-Verlag, 2008. Section 5.2
-
-**AI08** Alexandr Andoni and Piotr Indyk. 2008. Near-optimal hashing algorithms
-for approximate nearest neighbor in high dimensions. Commun. ACM 51, 1, 2008.
+- **[LRU14]** J. Leskovec, A. Rajaraman, and J. Ullman. *Mining Massive Datasets*.
+  Cambridge University Press, 2014. Section 3.6.
+- **[BCKO08]** Mark de Berg, Otfried Cheong, Marc van Kreveld, and Mark Overmars.
+  *Computational Geometry: Algorithms and Applications*, 3rd ed. Springer-Verlag, 2008.
+  Section 5.2.
+- **[AI08]** Alexandr Andoni and Piotr Indyk. "Near-optimal hashing algorithms for approximate
+  nearest neighbor in high dimensions." *Communications of the ACM* 51(1), 2008.
