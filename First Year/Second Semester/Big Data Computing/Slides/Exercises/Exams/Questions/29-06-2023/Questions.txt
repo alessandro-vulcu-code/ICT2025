@@ -1,0 +1,13 @@
+1) briefly explain the MR approx with node color from First homework. 
+2) average silhouette for C and how It captures Intra-cluster and Inter-cluster. 
+3)sticky sampling for epsilon-afi problem and why its Memory Is O(r). 
+4) def (c,r)-ANNS and the difference with NNS
+
+Ex1) 2 round MR to extract a T of l points of P. You have in input points (i,xi), a set of kcenters as global variable stored in S[] where S[1] Is center 1 and S[k] Is center k but the centers are not in P. You have to create Pi 1≤i≤l and extract 1 point for each Pi to create T. 
+
+Then he asked to analyze the MR and to get full points you Need to have Ml=o(N) (o-small) and Ma=O(n)
+And then how to use T to approximate the Dmax, so the approximation of the diameter
+
+Ex2) create a d x w data structure to compute approximate frequencies of products. The items come from a stream and each item Is (i,(oi,gi)) where i Is the id, oi Is the product and gi Is {0 if item Is returned or 1 if item is sold}
+Then he asked to analyze the approximation if p1=p2=p3=....=p so all the products have the same true freq with value p
+

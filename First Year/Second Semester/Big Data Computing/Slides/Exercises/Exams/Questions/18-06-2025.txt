@@ -1,0 +1,4 @@
+1. Explain lazy loading and how it affects quality of time measurements.
+2. Let D and D_S be the diameters of P and S subset of P respectively. Give an upper bound to D as function of D_S knowing that d(x, S) < R, where x is a point of P.
+3. Give the probabilistic guarantees for sticky sampling.
+4. Write the objective function of fair k-centers. Then suppose we are in one dimensional space and there are n-1 points of class A overlapping at coordinate 0 and 1 point of class B at coordinate 1. Tell where we should place an optimal center with respect to the standard k-center objective function, and then with respect to the fair objective func.

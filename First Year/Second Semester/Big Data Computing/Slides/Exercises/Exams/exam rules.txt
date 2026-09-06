@@ -1,0 +1,8 @@
+Written exam (28 points):
+
+    The written exam consists of a number of theory questions and exercises to be answered/solved in 2.5 hours.
+    There will be one written exam administered in each of the four exam sessions.
+    The written exam is taken individually by each student.
+    In order to pass the exam, a student must get at least 16 points in the written exam and 18 points as a sum of the homeworks/project and written exam evaluations.
+
+In the zipped folder ExamExamples.zip there are 5 examples of written tests from previous years. Please take into account that in previous years the written exam contributed 26 points and its duration was 2 hours, while this year it contributes 28 points and its duration is 2.5 hours. This year tests will have the same same structure as the examples but (possibly) a slightly increased length. Also, some questions regard previous years' homeworks, while questions on homeworks in the upcoming exams will clearly concern this year's homeworks.
