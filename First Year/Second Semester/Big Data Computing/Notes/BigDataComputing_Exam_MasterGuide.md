@@ -512,14 +512,17 @@ Sources: [[2.Spark2526]], [[3.WordCountSpark]], [[PROJECT_DESCRIPTIONS_EXAM]].
 ### 4.1 Architecture and RDDs
 
 **Spark** executes distributed data-processing operations. The **driver** runs the main
-application and schedules work. **Executors** run tasks and store partitions. The
+application, creates the **SparkContext** used to access Spark functionality, distributes tasks
+and monitors execution. Since Spark 2.0, `SparkSession` encapsulates `SparkContext` and exposes
+additional functionality. **Executors** run tasks and store partitions. The
 **cluster manager** allocates resources. An executor is a process, not necessarily an entire
 physical machine; several tasks may share its resources.
 
 A **Resilient Distributed Dataset (RDD)** is an immutable, partitioned collection that can
 be processed in parallel. Its **lineage** records how it was derived, allowing lost partitions
-to be recomputed when the required inputs remain available. A DataFrame adds named columns
-and a schema; this course's algorithm exercises mainly use RDDs.
+to be recomputed when the required inputs remain available. A **DataFrame** is a distributed
+collection organized into named columns and a schema. A **Dataset** extends DataFrames in Java
+and Scala with a type-safe, object-oriented interface. This course's algorithm exercises use RDDs.
 
 ![[Pics/Spark/Spark-001.png|650]]
 
@@ -550,6 +553,18 @@ If `algorithm` already executes an action and returns a local object, the action
 inside the timed call. If a reused RDD is not persisted, another action can recompute its
 lineage. State whether a measurement includes loading, caching and objective evaluation.
 
+Persistence has different storage policies:
+
+| Policy | If a materialized partition does not fit in RAM |
+|---|---|
+| `cache()` = `persist(StorageLevel.MEMORY_ONLY)` | It is not kept on disk and is recomputed when needed |
+| `persist(StorageLevel.MEMORY_AND_DISK)` | It is stored on disk and later read from there |
+
+`repartition(L)` redistributes records into $L$ partitions and therefore causes a shuffle.
+It can restore balance after transformations have produced skew, but moving all records has a
+cost. The lecture's practical rule is often two or three partitions per available core; the
+right value still depends on workload size, skew and per-partition memory.
+
 ### 4.3 Key operations
 
 | Operation | Meaning | Exam relevance |
@@ -558,7 +573,8 @@ lineage. State whether a measurement includes loading, caching and objective eva
 | `flatMap(f)` | Emit an iterable of outputs per record | Tokenize documents or replicate records |
 | `mapPartitions(f)` | Apply $f$ to an iterator over one partition | Local counts, local clustering, coreset extraction |
 | `groupByKey()` | Gather values sharing a key | May move and retain many raw values |
-| `reduceByKey(f)` | Combine values per key using an associative merge | Local combining reduces shuffle volume |
+| `mapValues(f)` | Transform each value while preserving its key | Apply a reducer after `groupByKey()` |
+| `reduceByKey(f)` | Combine values per key using an associative, commutative merge | Performs local combining before shuffle |
 | `collect()` | Return all result records to the driver | Safe only for small results |
 | `count()` | Count records and return a scalar | Triggers computation |
 | `cache()` / `persist()` | Reuse computed partitions under a storage policy | Useful for iterative algorithms |
@@ -566,6 +582,15 @@ lineage. State whether a measurement includes loading, caching and objective eva
 `mapPartitions` is not “map on one record” and not “map on one whole executor”. Its function
 can read many records, maintain local state and emit a smaller summary. Converting its
 iterator to a list requires the whole partition to fit memory.
+
+Spark APIs reflect the output type. In Java, `mapToPair` emits exactly one `Tuple2` per input
+and `flatMapToPair` emits zero or more; `JavaPairRDD<K,V>` represents an RDD of key-value pairs.
+Python uses `map` and `flatMap` for both ordinary and pair-valued outputs. Both languages accept
+named functions or anonymous functions; Python lambdas contain a single expression.
+
+`groupByKey().mapValues(f)` first materializes the values for each key and then applies $f$.
+`reduceByKey(f)` can combine values inside each partition before the cross-partition merge. Its
+binary function must be associative and commutative because aggregation order is not controlled.
 
 A **shuffle** redistributes records, typically by key. Narrow operations such as `map` and
 `filter` can operate within existing partitions. Grouping by a new key generally requires
@@ -618,6 +643,21 @@ An alternative computes a local dictionary inside each document or partition, em
 $(word,localCount)$ pairs, and then merges by word. The arithmetic is identical, but local
 combining can greatly reduce communication.
 
+The source notes give two concrete implementations of this two-level aggregation:
+
+1. **Random-key implementation.** After per-document counting, assign every
+   $(w,c_i(w))$ independently to a random key in $[0,L)$. `groupBy` creates the $L$ buckets;
+   a function such as `gatherPairs` sums equal words inside each bucket and emits at most one
+   partial count per word. A final `reduceByKey` sums those partial counts.
+2. **Existing-partition implementation.** After per-document counting, `mapPartitions`
+   scans one Spark partition, keeps a local dictionary and emits at most one partial count per
+   word from that partition. A final `reduceByKey`, or `groupByKey().mapValues(sum)`, combines
+   at most $L$ partial counts per word.
+
+In both implementations, local combining is what limits each word to at most one contribution
+per first-level partition. `repartition(L)` before this computation can improve balance, at the
+cost of an additional shuffle.
+
 For the exercise's two-round randomized MR algorithm:
 
 1. For each document $D_i$, compute local counts $c_i(w)$. Independently assign each
@@ -652,6 +692,15 @@ $$
 
 For a nonempty center set $S$, write $d(x,S)=\min_{s\in S}d(x,s)$.
 
+For $r\geq1$, the **Minkowski distance** on $\mathbb R^D$ is
+
+$$
+d_{L_r}(x,y)=\left(\sum_{j=1}^D|x_j-y_j|^r\right)^{1/r}.
+$$
+
+The condition $r\geq1$ is needed for the triangle inequality. Values $0<r<1$ define a
+quasi-distance in general, not a metric. The limit as $r\to\infty$ gives $L_\infty$.
+
 | Distance | Formula | Interpretation |
 |---|---|---|
 | $L_1$, Manhattan | $\sum_j\lvert x_j-y_j\rvert$ | Sum of coordinate differences |
@@ -665,6 +714,16 @@ Angular distance is a metric on directions or unit vectors, not on arbitrary vec
 distinct positive multiples are treated as different objects. Squared Euclidean distance is
 not a metric: for points $0,1,2$, $4>1+1$. When working with k-means, use the triangle
 inequality on distances and only then square with an appropriate inequality.
+
+A **combinatorial optimization problem** specifies a set of instances $\mathcal I$, a set of
+candidate solutions $\mathcal S$, a feasible subset $\mathcal S_i$ for each instance $i$, and
+an objective $\Phi$. Optimization selects a feasible solution minimizing or maximizing $\Phi$.
+
+A **$k$-clustering** of $P$ is $(C_1,\ldots,C_k;S)$, where the nonempty sets $C_i$ form a
+partition of $P$ and $S=\{c_1,\ldots,c_k\}$ contains one center associated with each cluster.
+In the discrete formulation $c_i\in C_i\subseteq P$; Euclidean k-means commonly permits
+centers in the ambient space. Given $S$, assigning every point to a nearest center minimizes
+the induced cost for all three objectives below, with ties broken consistently.
 
 The three central objectives are:
 
@@ -1330,8 +1389,11 @@ M_L=O(\max\{N/L,k,L\}),\qquad M_A=O(N+kL).
 $$
 
 For $L=\sqrt N$ and $k\leq\sqrt N$, the desired bounds hold. If $k>\sqrt N$ and
-$L$ is unchanged, aggregate space becomes $O(N+k\sqrt N)$. For $k=o(N)$, retuning
-$L\asymp N/k$ gives local space $O(k+N/k)=o(N)$ and aggregate space $O(N)$.
+$L$ is unchanged, aggregate space becomes $O(N+k\sqrt N)$. In this latter regime, when
+$\sqrt N<k=o(N)$, retuning $L\asymp N/k$ gives local space
+$O(k+N/k)=o(N)$ and aggregate space $O(N)$. For all $1\leq k=o(N)$, one uniform choice is
+$L\asymp\min\{\sqrt N,N/k\}$, giving local space $O(\max\{\sqrt N,k\})=o(N)$ and
+aggregate space $O(N)$.
 For $k=\Theta(N)$, the globally stored query array itself prevents sublinear local space
 in this design.
 
@@ -1367,8 +1429,11 @@ probabilistic; per query or simultaneously for every possible query. A structure
 size $d\times w$ can still require $O(dw\log n)$ bits because counters grow with $n$.
 
 The main tools are **sampling**, which keeps selected observations, and **sketching**, which
-stores randomized linear summaries. Sampling can return original items. A sketch normally
-answers queries but cannot enumerate all keys unless candidate keys are maintained separately.
+stores a compact, usually randomized synopsis sufficient for a target estimate. Sampling can
+return original items. A sketch normally answers queries but cannot enumerate all keys unless
+candidate keys are maintained separately. Count-Min and Count Sketch are linear in their
+frequency updates and compatible instances can be added componentwise; Probabilistic Counting
+updates a maximum register and is not a linear sketch.
 
 ![[Pics/Streaming/streaming-000.jpg|600]]
 
@@ -1524,8 +1589,10 @@ return every stored x with counter[x] >= (phi - epsilon)n
 > at least $1-\delta$: do not merge those statements.
 >
 > For unknown stream length, the lecture sketches geometrically growing batches and decreasing
-> sampling rates, with periodic downsampling of stored entries. Memorize the idea and say that
-> full details are omitted from the slides; do not invent a complete theorem unless asked.
+> sampling rates. It uses batches $B_i$ of size $2^ir$ and sampling rate $2^{-i}$ in batch
+> $B_i$, with periodic recalibration of the stored table. Memorize these two formulas and the
+> idea; full algorithmic details and analysis are omitted from the source notes, so do not
+> invent a complete theorem unless asked.
 >
 
 ### 6.5 Frequency moments and probabilistic counting
@@ -1589,7 +1656,9 @@ largest occupied level lies around $\log_2F_0$.
 The register $R$ uses $O(\log\log|U|)$ bits; the course quotes $O(\log|U|)$ bits including
 compact hash parameters. That compact implementation uses limited-independence hashing and
 the corresponding bound above. A fully random hash oracle is an idealized assumption;
-its full lookup table is not included in the register-space bound.
+its full lookup table is not included in the register-space bound. Under the course's bit-cost
+model, computing the hash/trailing-zero count and producing $2^R$ take $O(\log|U|)$ time;
+the stream is processed in one pass.
 
 ### 6.6 Count-Min Sketch
 
@@ -1650,6 +1719,24 @@ query(u):
 > needed because a matrix alone cannot enumerate universe keys.
 >
 
+**Join-size application.** Let tables $A$ and $B$ be joined on one attribute. If $a_u$ and
+$b_u$ are frequencies of key $u$, exact equijoin size is
+
+$$
+J=\sum_u a_ub_u.
+$$
+
+Build two Count-Min sketches with same dimensions and same row hashes. The course estimator is
+
+$$
+\widetilde J=\min_{0\leq j<d}\sum_{b=0}^{w-1}C_A[j,b]C_B[j,b].
+$$
+
+For one row, expansion contains $\sum_u a_ub_u$ plus nonnegative products caused by distinct
+keys colliding in same bucket. Thus each row can only overestimate; minimum chooses least
+contaminated row. Shared hashes are essential: equal join keys must reach corresponding cells.
+The source notes present this application but do not derive a separate probability theorem for it.
+
 ### 6.7 Count Sketch and signed updates
 
 Count Sketch uses row hashes $h_j$ and independent sign hashes
@@ -1699,6 +1786,9 @@ query(u):
 > Count Sketch handles signed turnstile updates naturally, while Count-Min's no-underestimate
 > property relies on nonnegative updates.
 >
+
+With $d$ rows, point updates and point queries take $O(d)$ time. Working memory is $O(dw)$
+counters, or $O(dw\log n)$ bits when counters require $O(\log n)$ bits.
 
 **Examples 2 and 4 - weighted or net frequencies.** For records $(u,z)$, where update weight
 $z$ can be $+1,-1,1/2$ or $1/3$, update every row by $z g_j(u)$. Then
@@ -1761,6 +1851,9 @@ not collision noise.
 > Pairwise signs suffice for unbiasedness; 4-wise signs justify this variance calculation.
 >
 
+Computing one $F_2$ row estimate scans $w$ counters; computing all $d$ rows and their median
+takes $O(dw)$ time. Updates remain $O(d)$.
+
 > [!Important] Source correction: second-moment accuracy
 >
 > Slide 47 and derivative notes print $\epsilon\sqrt{F_2}$ as error for estimating $F_2$.
@@ -1779,6 +1872,9 @@ zero, and $k$ independent hashes $h_j:U\to\{0,\ldots,n-1\}$.
 insert(x): set A[h_j(x)] = 1 for every j
 query(x): return PRESENT iff every A[h_j(x)] equals 1
 ```
+
+With constant-time hash evaluations, insertion and membership query take $O(k)$ time. The bit
+array uses $n$ bits; compact hash descriptions add their own storage when counted explicitly.
 
 > [!Important] [Theorem] Bloom-filter guarantees
 >
@@ -2115,6 +2211,17 @@ return any $p\in P\cap B_r(q)$ if this set is nonempty; return `null` if it is e
 **Nearest Neighbor Search (NNS).** Given $q$, return a point minimizing $d(p,q)$ over
 $p\in P$. It has no radius parameter.
 
+**$k$-Nearest Neighbor Search.** Given $q$ and integer $k\geq1$, return the $k$ points of
+$P$ closest to $q$. Neither NNS nor $k$-NNS receives a radius; the source notes observe that
+they can be reduced to multiple $r$-NNS instances using a suitable sequence of radii.
+
+**$r$-Near Neighbor Reporting.** Given $q$ and $r$, return every point in
+$P\cap B_r(q)$. This differs from $r$-NNS, which may stop after returning any one such point.
+
+**Similarity Join.** Given point sets $P,Q$ and radius $r$, return every pair
+$(p,q)\in P\times Q$ satisfying $d(p,q)\leq r$. A join compares two stored collections,
+whereas a search query compares one query point with preprocessed $P$.
+
 **Range Reporting (RR).** For $P\subseteq\mathbb R^D$, given an axis-aligned rectangle
 
 $$
@@ -2294,6 +2401,13 @@ the random shift avoids privileged bucket boundaries. Nearby points have higher 
 probability. Course notes state $\rho=O(1/c)$ for this family and mention improved Euclidean
 families with $O(1/c^2)$. Detailed integral derivation of $p_1,p_2$ is not part of supplied
 proof material.
+
+Because $h_{a,b}$ maps to arbitrary integers, a practical implementation can apply a secondary
+hash to nonempty primary bucket identifiers. On query $q$, retrieve candidates sharing the
+secondary index of $h_{a,b}(q)$ and then identify/search the relevant primary bucket. Secondary
+hashing only implements bucket storage: it does not replace the primary LSH value or make a
+secondary collision evidence of geometric proximity. Candidates still require exact-distance
+verification.
 
 ### 7.6 OR and AND amplification
 
@@ -2499,6 +2613,22 @@ Main tradeoff:
 - each partition converted to a list must fit executor memory;
 - `collect()` is safe only while $|T|=O(k'L)$ fits driver memory.
 
+The project notes record these implementation limitations:
+
+- code does not explicitly verify global preconditions $k_A\leq|U_A|$ and
+  $k_B\leq|U_B|$;
+- local quotas $k'_A=2k_A$ and $k'_B=2k_B$ can exceed group populations inside one
+  partition, even when global quotas are feasible;
+- previously selected records are not explicitly excluded, so duplicate coordinates or too
+  few local group members can lead to repeated selections;
+- parser treats every label different from `A` as `B`, rather than rejecting malformed labels;
+- saved `AllA` experiment asks for $k_B=4$ while $N_B=0$, violating feasibility; its returned
+  A-only set is not a valid solution for those requested quotas.
+
+Therefore, an ideal implementation must validate global quotas, select distinct records and
+define how a local call behaves when requested oversampling quotas are infeasible. Global
+feasibility alone does not guarantee feasibility of oversampled quotas in every partition.
+
 The final objective must be computed over the original distributed $U$, not only over $T$.
 If benchmarking only MR-Fair-FFT, materialize inputs first and keep loading and the final objective
 pass outside the timed region.
@@ -2530,6 +2660,19 @@ counters at least $(\phi-\epsilon)n$.
 **Count-Min branch:** increment $C[j,h_j(x)]$ for every row, estimate by row minimum, and add
 an observed item to candidate output once its estimate reaches $\phi n$. Since estimates only
 increase, an item crossing the threshold remains a candidate.
+
+The project implements
+
+$$
+h_j(x)=((a_jx+b_j)\bmod8191)\bmod w,
+$$
+
+where $8191=2^{13}-1$ is prime. This matches the assignment, but first reduction is a practical
+domain restriction: integers congruent modulo 8191, such as 1 and 8192, receive same value in
+every row before final modulo $w$. Adding rows cannot separate such keys. Consequently, the
+general universal-hashing guarantee from Section 6.10 applies directly only when its universe
+encoding condition $U\subseteq\{0,\ldots,p-1\}$ with $p>|U|$ is satisfied; arbitrary integers
+must first be encoded into the required domain or analyzed under the implemented collision pattern.
 
 | Aspect | Sticky Sampling | Count-Min |
 |---|---|---|
@@ -2573,7 +2716,15 @@ For $n-1$ A-points at 0 and one B-point at 1 with one arbitrary centroid $c$:
 The plain-text recollection labels this as fair k-center, while actual `ExampleWT-5.pdf` says
 fair k-means and shows this centroid setup. Trust the original exam PDF for that old question.
 
-### 8.4 How to answer a homework question
+### 8.4 Older silhouette question - source boundary
+
+[[ExamStyleQuestions]] records a 29 June 2023 prompt asking for the **average silhouette** of
+a cluster and how it captures intra-cluster and inter-cluster quality. No definition, formula
+or worked answer for silhouette appears elsewhere in `Notes/`. Therefore this guide records
+the topic as an old exam prompt but does not invent a formula unsupported by the supplied
+notes. Use the original lecture or homework material if that topic is restored to the syllabus.
+
+### 8.5 How to answer a homework question
 
 Use this order:
 
@@ -2845,6 +2996,7 @@ If one exists, success probability is at least $r/D$.
 | Sticky output | all $f_x\geq\phi n$ with joint probability $1-\delta$; none below $(\phi-\epsilon)n$ |
 | Probabilistic Counting | $R=\max\operatorname{tr}(h(x))$, $\widetilde F_0=2^R$ |
 | Count-Min | $w=\lceil2/\epsilon\rceil$, $d=\lceil\log_2(1/\delta)\rceil$, $0\leq\widetilde f_u-f_u\leq\epsilon n$ |
+| Count-Min join estimate | $\widetilde J=\min_j\sum_b C_A[j,b]C_B[j,b]$ with matching row hashes |
 | Count Sketch | $w=\Theta(1/\epsilon^2)$, $d=\Theta(\log(1/\delta))$, error $\epsilon\sqrt{F_2}$ |
 | Second moment with Count Sketch | 4-wise signs; $w=\Theta(1/\epsilon^2)$; error $\epsilon F_2$ |
 | Bloom filter | $p_0=(1-1/n)^{km}\approx e^{-km/n}$; $p_{FP}\approx(1-e^{-km/n})^k$ |
@@ -2945,6 +3097,9 @@ Example for Count-Min:
 - Calling Sticky counters unbiased; they are lower bounds after sampling begins.
 - Calling final Count-Sketch median unbiased; theorem proves row estimators unbiased.
 - Using Count-Min for signed updates while retaining no-underestimate claim.
+- Treating every sketch as linear; Probabilistic Counting updates a maximum register.
+- Using non-associative or non-commutative logic in `reduceByKey`.
+- Applying the HW2 modulo-8191 hashes to arbitrary integers without accounting for permanent collisions.
 - Forgetting exact-distance verification after LSH bucket lookup.
 - Confusing OR and AND amplification.
 - Reusing old fair k-means objective for current fair k-center homework.
@@ -3045,6 +3200,15 @@ had been present in the handwritten PDF.
    necessarily total time to evaluate them.
 10. **Sticky ceiling:** mathematically correct rate is
     $\lceil\ln(1/(\delta\phi))/\epsilon\rceil$ and sampling probability is capped at 1.
+11. **Spark reduction:** `reduceByKey` requires an associative and commutative operation;
+    it performs local combining before the cross-partition merge.
+12. **Sketch linearity:** Count-Min and Count Sketch are linear in frequency updates;
+    Probabilistic Counting is not, because it maintains a maximum.
+13. **Global-query partitioning:** choosing $L\asymp N/k$ gives sublinear local space only
+    in the stated regime $\sqrt N<k=o(N)$; use
+    $L\asymp\min\{\sqrt N,N/k\}$ uniformly for $1\leq k=o(N)$.
+14. **HW2 hash domain:** the initial reduction modulo 8191 permanently collides congruent
+    integers. More rows do not restore universality over arbitrary integer keys.
 
 ### Primary navigation links
 
