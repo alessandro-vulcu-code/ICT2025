@@ -1,0 +1,70 @@
+ Big Data Computing
+
+
+Written test 13/07/2022
+(SOLUTIONS of PART2)
+Big Data Computing: Written test 13/07/2022                                                   1
+
+
+Exercise 1 Let P be a set of points and let S = {c1 , c2 , . . . , ck } ⊂ P be the optimal
+solution to k-center with z outliers (the problem tackled by Homeworks 2-3). Call ZS the
+set of outliers, that is the set of z points of P farthest from S and, for 1 ≤ i ≤ k, define
+Ci as the set of points of P − ZS closest to ci (ties broken arbitrarily). Thus, the optimal
+value of the objective function is:
+
+                        Φopt = max d(x, S) = max max d(x, ci ).
+                               x∈P −ZS            1≤i≤k   x∈Ci
+
+Given an arbitrary set X of k + z + 1 points of P :
+  1. Show that there must exist a Ci that contains at least 2 non-outlier points of X (i.e.,
+     at least 2 points of X ∩ (P − ZS )).
+
+  2. Let dmin (X) be the minimum distance between any 2 points of X. Using (a), show
+     that dmin (X) ≤ 2Φopt .
+
+  3. Based on the claim of (b), derive a bound on the initial guess rmin used by the
+     sequential algorithm for k-center with z outliers implemented in Homework 2.
+
+Solution.
+  1. X must contain at least |X| − z = k + 1 points of P − ZS . Since the Ci ’s partition
+     P −ZS into k subsets, there must exist a Ci containing at least 2 points of X∩(P −ZS ).
+
+  2. Let p, q be two points of X ∩ (P − ZS ) belonging to the same subset Ci , which must
+     exist by virtue of (a). Clearly,
+
+                         dmin (X) ≤ d(p, q) ≤ d(p, ci ) + d(ci , q) ≤ 2Φopt ,
+
+     where inequality d(p, q) ≤ d(p, ci ) + d(ci , q) derives from the triangle inequality.
+
+  3. The sequential algorithm for k-center with z outliers implemented in Homework 2,
+     sets the initial guess rmin as dmin (X)/2, where X are the first k + z + 1 points of the
+     input dataset P . Since the previous point holds for an arbitrary subset X ⊆ P of
+     k + z + 1 points, we have that rmin = dmin (X)/2 ≤ Φopt
+                                                                                              
+
+Exercise 2 Let T be a dataset of transactions over a set of items I = I1 ∪ I2 , where I1
+and I2 are disjoint. An itemset X is said to be fair if it has even length and its items are
+half from I1 and half from I2 . For a given support threshold minsup, let F2k be the set of
+frequent fair itemsets of length 2k. Two itemsets X, Y ∈ F2k are compatible if they have
+in common exactly k − 1 items of I1 and k − 1 items of I2 . For k ≥ 2, define
+
+            C2k+2 = {X ∪ Y : X, Y ∈ F2k , such that X and Y are compatible}
+
+Show that F2k+2 ⊆ C2k+2 .
+Big Data Computing: Written test 13/07/2022                                                  2
+
+
+Solution. Let Z = Z[1]Z[2] · · · Z[2k + 2] be an arbitrary itemset of F2k+2 and, w.l.o.g.,
+assume that Z[i] ∈ I1 , for 1 ≤ i ≤ k + 1, and Z[i] ∈ I2 , for k + 2 ≤ i ≤ 2k + 2. Define the
+following two itemsets
+
+                             X = Z − {Z[k + 1], Z[2k + 2]}
+                             Y = Z − {Z[k], Z[2k + 1]}
+
+
+Note that Z = X ∪ Y and |X| = |Y | = 2k. By definition, both X and Y are subsets of Z
+and contain k items of I1 and k items of I2 (i.e., they are fair), hence X, Y ∈ F2k . Moreover,
+X and Y are compatible since they share exactly k − 1 items of I1 (Z[1]Z[2] · · · Z[k − 1])
+and k − 1 items of I2 (Z[k + 2]Z[k + 3] · · · Z[2k]). Therefore, Z = X ∪ Y must be included
+in C2k+2 .                                                                                   
+

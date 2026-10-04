@@ -1,0 +1,103 @@
+  Big Data Computing
+
+
+Written test 18/06/2025
+(SOLUTIONS of PART 2)
+Big Data Computing: Written test 18/06/2025                                                      1
+
+
+Exercise 1 Let G be a t × t grid of cells covering a region of a mobile network, and let P
+be a dataset of N connections to the cells of G. Each connection is represented by a pair
+(k, (i, j)) where k ∈ [0, N − 1] is a distinct integer key, and (i, j), with 0 ≤ i, j <t, are the
+                                                                                   √
+row and column indices of the cell used by the connection. Assume t = O               N .
+
+   1. Design a 3-round MapReduce algorithm that returns the rows of G such that more
+      than t/2 of their cells have been used by connections of P . For each such row i, the
+      algorithm must return a pair (i, ti ), where ti > t/2 is the number of distinct cells of
+      row i were used by connections of P . No assumptions must be made on the number
+      of connections per cell.
+
+   2. Analyze the local and aggregate space, ML and MA , of the algorithm. For full score,
+      you must get ML = o(N ) and MA = O (N ).
+
+Solution.
+   1. The MapReduce algorithm is the following.
+      Round 1:
+
+         • √
+           Map phase:       map each pair (k, (i, j)), into the intermediate pair (k mod
+             N , (i, j)).
+                                                  √
+         • Reduce phase: for each 0 ≤ h < N , let Lh be the list of values (i.e., cell
+           identifiers (i, j)) from the intermediate pairs with key h. For each (i, j) occurring
+           in Lh return as output one pair ((i, j), 0), where (i, j) acts as key.
+
+      Round 2:
+
+         • Map phase: empty.
+                                                                            √
+         • Reduce phase: for each key (i, j) let Li,j be the list of at most N values (i.e.,
+           0’s) of output pairs of Round 1 with key (i, j), and return the pair (i, j) where
+           i acts as key.
+
+      Note that at this point, for every row i we have exactly one pair (i, j) for every
+      distinct column j such that cell (i, j) was used by connections of P .
+      Round 3:
+
+         • Map phase: empty.
+         • Reduce phase: for each 0 ≤ i < t let Li be the list of values (i.e., distinct column
+           indices j) of the output pairs of Round 2. For what we observed above, |Li | = ti .
+           If |Li | > t/2 return (i, |Li |), otherwise return nothing.
+
+   2. Let us analyze the local space first. In the map phase of Round 1, each application
+      of the map function requires constant space; in the reduce√phase of Rounds 1 and
+      2 each reducer processes and produces in output at most N pairs; in the reduce
+Big Data Computing: Written test 18/06/2025                                                2
+
+
+     phase of Round 3, each reducer
+                             √      processes
+                                              at most
+                                                    √t pairs
+                                                               and produces at most
+                                                                                 √ one
+     pair. Therefore, ML = O    N + t which is O        N , since we assumed tO      N .
+     The aggregate space is MA = O (N ) since, as it is easily seen, the number of input,
+     intermediate, and output pairs of each round is O (N ).
+
+                                                                                           □
+
+Exercise 2 Let P be a set of n D-dimensional Boolean vectors. Suppose that P is stored
+into a hash table T built using a hash function h randomly drawn from the bit-sampling
+LSH family H = {hi : 0 ≤ i < D}. For h ∈ H, let ”not(h(x))” denote the negation of the
+binary value h(x).
+
+  1. Given two vectors p and q, determine the probability Prh∈H [h(p) = not(h(q))] as a
+     function of the Hamming distance dH (p, q).
+
+  2. Given a query vector q, we want to find an r-far vector p ∈ P , i.e., such that
+     dH (p, q) ≥ r. Based on the above analysis, how would you efficiently search such a p
+     in the table T ? What probabilistic guarantees does your method provide?
+
+Solution.
+
+  1. For 0 ≤ i < D, let pi and qi denote the i-th bit of p and q, respectively. It is clear
+     that
+                                hi (p) = not(hi (q)) ⇔ pi ̸= qi .
+     Therefore,
+                                                          dH (p, q)
+                                Pr [h(p) = not(h(q))] =
+                               h∈H                           D
+     .
+
+  2. Given a query vector q one can scan bucket T [not(h(q))] returning the first vector
+     p with dH (p, q) ≥ r, if one exists, or null otherwise. If there exists an r-far vector
+     x ∈ P , the probability of returning a correct solution is at least the probability that
+     x ends up in bucket T [not(h(q))]. Based on the previous analysis, this probability is
+                                                             r
+                                  Pr [h(x) = not(h(q))] ≥      .
+                                  h∈H                        D
+
+                                                                                           □
+

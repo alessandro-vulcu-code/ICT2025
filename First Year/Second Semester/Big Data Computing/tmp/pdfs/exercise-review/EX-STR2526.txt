@@ -1,0 +1,403 @@
+Big Data Computing: Exercises on Streaming                                                     1
+
+
+
+                            Exercises on Streaming
+
+Exercise 1 With reference to the Boyer-Moore algorithm which finds the majority in a
+stream Σ of n elements x1 , x2 , . . . , xn , if one exists, show that the following invariant is
+maintained by the algorithm. For every t ≥ 0, after processing xt (if t = 0 this is the start
+of the algorithm, before any element is processed) :
+
+   • There are count occurrences of cand in x1 , x2 , . . . , xt .
+
+   • Besides the count occurences of cand, the remaining t−count elements can be grouped
+     into (t − count)/2 pairs (e1 , e2 ) with e1 6= e2 .
+
+Solution. For t = 0, the invariant trivially holds since count = 0. Suppose that it holds
+after processing x1 , x2 , . . . , xt−1 , for some t − 1 ≥ 0, and let count = c and cand = e at
+that time. To show that it holds after processing xt , we distinguish among three cases:
+
+   • CASE 1: c = 0. In this case, after processing xt we have count = 1 and cand = xt .
+     Hence, we have 1 occurence of cand in x1 , x2 , . . . , xt , and, from the invariant assumed
+     to be true after processing xt−1 , we see that the elements x1 , x2 , . . . , xt−1 can be
+     grouped into (t − 1 − c)/2 = (t − 1)/2 pairs (e1 , e2 ) with e1 6= e2 .
+
+   • CASE 2: c > 0 and xt = e. In this case, after processing xt we have count = c + 1
+     and cand = e = xt . Hence, considering also xt we have c + 1 occurences of cand in
+     x1 , x2 , . . . , xt , and, from the invariant assumed to be true after processing xt−1 , we
+     see that the remaining elements can be grouped into (t − 1 − c)/2 = (t − (c + 1))/2
+     pairs (e1 , e2 ) with e1 6= e2 .
+
+   • CASE 3: c > 0 and xt 6= e. In this case, after processing xt we have count = c−1 and
+     cand = e. From the invariant assumed to be true after processing xt−1 , we obtain
+     that there are c − 1 occurences of cand in x1 , x2 , . . . , xt , and that the remaining
+     elements can be grouped into 1 + (t − 1 − c)/2 = (t − (c − 1))/2 pairs (e1 , e2 ) with
+     e1 6= e2 , where the additional pair (cand, xt ) has been added to them.
+
+                                                                                               2
+
+Exercise 2 Let Σ = x1 , x2 , . . . xn be a stream of n distinct integers in [1, n + 1]. Design
+a streaming algorithm that finds the missing number using O (1)-size working memory, 1
+pass, and O (1) update and query time.
+
+Solution. Assume that n is known to the algorithm and observe that n+1
+                                                                              P
+                                                                                a=1 a = (n +
+1)(n + 2)/2. Then it is sufficient to initialize a counter to 0, and to add each xi to it upon
+arrival. It is immediate to see that after processing xn , then (n+1)(n+2)/2−counter gives
+the missing number. The algorithm clearly requires O (1) working memory, 1 pass, and
+Big Data Computing: Exercises on Streaming                                                  2
+
+
+O (1) update and query time. If n is unknown, one can simply maintain another variable
+that counts the number of elements processed. Also, the approach can be extended to the
+case
+P` when there are 2 missing
+                         P` numbers:   it is sufficient to exploit the well-known properties
+  a=1 a = `(` + 1)/2 and
+                                2
+                           a=1 a = `(` + 1)(2` + 1)/6.                                    2
+
+Exercise 3 Let Σ = x1 , x2 , . . . xn be a stream of n items and let S be an m-sample com-
+puted on Σ using reservoir sampling. For a given frequency threshold φ ∈ (0, 1), consider
+a frequent item a, that is an item occurring at least φn times in Σ. Show that, if m ≥ 1/φ,
+at least one occurrence of a is in S, in expectation.
+
+Solution. Let ma be the number of occurrences of a in S. (Note that reservoir sampling
+does not check the identity of the items, so it may add several distinct occurrences of
+the same item to the sample.) Now, ma is a random variable and we need to show that
+E[ma ] ≥ 1. Suppose that a occurs k times in Σ, hence k ≥ φn, and let xij be the j-th
+occurrence of a in Σ, with 1 ≤ j ≤ k and 1 ≤ i1 < i2 < · · · < ik ≤ n. Define the following
+k Bernoulli variables:                 
+                                         1 if xij ∈ S
+                                  Yj =
+                                         0 else,
+for 1 ≤ j ≤P
+           k. By the property of reservoir sampling, we have that Pr(Yj = 1) = m/n.
+Since ma = 1≤j≤k Yj , we have that by linearity of expectation
+                          "        #
+                            X            X
+               E[ma ] = E        Yj =         E[Yj ] = km/n ≥ φm ≥ 1,
+                              1≤j≤k        1≤j≤k
+
+where the last inequality follows from the assumption m ≥ 1/φ.                              2
+
+Exercise 4 Suppose that S1 and S2 are two m-samples extracted from two streams Σ1
+and Σ2 of size n each. Given S1 and S2 , show how to construct an m-sample of the
+concatenation of the two steams Σ1 · Σ2 (assume that all elements of the two streams are
+distinct).
+
+Solution. An m-sample of Σ1 · Σ2 is a subset S of exactly m elements from Σ1 · Σ2 such
+that every x ∈ Σ1 · Σ2 has probability m/(2n) to be in S. Given S1 and S2 , the desired m-
+sample can be obtained by computing an m-sample S of S1 ∪ S2 . Indeed, for each element
+x ∈ Σ1 , we have:
+
+         Pr[x ∈ S] = Pr[x ∈ S1 ] · Pr[x ∈ S|x ∈ S1 ] = (m/n) · (m/(2m)) = m/2n.
+
+A similar argument holds for each x ∈ Σ2 . Therefore S is an m-sample of Σ1 · Σ2 .          2
+
+Exercise 5 Let S = {s1 , s2 , . . . , sm } be an m-sample extracted from a stream Σ of n items
+labeled either red or blue. Let R ∈ [1, n] be the number of red items in Σ and let XS be
+the number of red items in S. Show that (n/m) · XS is an unbiased estimator of R, that is
+that E[(n/m) · XS ] = R.
+Big Data Computing: Exercises on Streaming                                                      3
+
+
+Solution. Let a1 , a2 , . . . , aR be the red items in Σ, and, for 1 ≤ i ≤ R, define the Bernoulli
+random variable                                 
+                                                  1 if ai ∈ S
+                                        Xai =
+                                                  0 else
+               PR
+Clearly, XS = i=1 Xai . For any i, the expectation of any Xai is equal to Pr(Xai = 1)
+which, by definition of m-sample, is m/n. Therefore, using the linearity of expectation, we
+have that
+                                          " R      #            R
+                                           X                    X
+E[(n/m)·XS ] = (n/m)·E[XS ] = (n/m)·E            Xai = (n/m)·         E[Xai ] = (n/m)·R·(m/n) = R.
+                                           i=1                  i=1
+
+
+                                                                                                2
+
+Exercise 6 For a stream Σ of n items x1 , x2 , . . . , xn , consider the following algorithm:
+
+
+   • Run in parallel the Boyer-Moore majority algorithm and the Sticky Sampling algo-
+     rithm with ϕ = 1/2.
+
+   • Let cand be the candidate identified by the Boyer-Moore algorithm, and S the set of
+     items returned by the Sticky Sampling algorithm.
+
+                     If cand ∈ S then return cand otherwise return null.
+
+What can we say about the output of the algorithm? Distinguish among the case where Σ
+contains a majority element and the case where Σ does not contain a majority element.
+
+Solution. Let cand be the item returned by the Boyer-Moore algorithm, and S the set
+returned by the Sticky Sampling algorithm.
+
+   • If a majority item A exists in the stream, then we know that cand = A, but the
+     proposed algorithm will return it in output only if it is in S, which happens with
+     probability at least 1 − δ, where δ is the probability parameter used in Sticky Sam-
+     pling. Thus, the majority, if one exists, is returned with probability at least 1 − δ.
+
+   • If a majority element does not exist in Σ, then the algorithm returns null or an element
+     in S. However, Sticky Sampling guarantees that any element in S has frequency at
+     least ϕ − , that is, (1/2) − , since we set ϕ = 1/2. Then no element with frequency
+     lower than (1/2) −  is ever returned.
+
+As an aside, we observe that the algorithm needs only in 1 pass, and the working memory
+size and the processing time per element are dominated by those of Sticky Sampling:
+namely, the working memory size is O (log(1/(ϕδ))/) = O (log(2/δ)/), and the processing
+time per element is O (1) in expectation (using a Hash Table to implement the map). 2
+Big Data Computing: Exercises on Streaming                                                  4
+
+
+Exercise 7 (High Probability Guarantees (median trick)). Consider a stream Σ with
+elements from a universe U , and let F0 be the number of distinct elements in Σ. Suppose
+that you run ` independent instances of the probabilistic counting algorithm, obtaining `
+            (j)
+estimates F̃0 for F0 , with 1 ≤ j ≤ `. Assume ` odd and let F̃0 be the mediam value of the
+  (j)
+F̃0 ’s. Show that with a suitable choice of ` = Θ (log |U |) we have:
+
+                 Pr(F̃0 < F0 /16) ≤ 1/|U |   and         Pr(F̃0 > 16F0 ) ≤ 1/|U |.
+
+Hint: Use the analysis of the Probabilistic counting algorithm and the Chernoff bound.
+
+Solution. Let us first show that Pr(F̃0 < F0 /16) ≤ 1/|U |. Let m be the number of indices
+                         (j)
+j ∈ [1, `] such that F̃0 < F0 /16. It is immediate to see that F̃0 < F0 /16 if-and-only-if
+                             (j)
+more than half of the F̃0 ’s are < F0 /16, hence if-and-only-if m ≥ (` + 1)/2. For every
+                                                                  (j)
+j ∈ [1, `], let Xj be a Bernoulli random variable which is 1 if F̃0 < F0 /16, and 0 otherwise.
+By the analysis of the Probabilistic counting algorithm, we know that
+                         def                       (j)
+                        p = Pr(Xj = 1) = Pr(F̃0 < F0 /16) ≤ 1/16.
+
+Since the Xj ’s are independent and m = `j=1 Xj , we have that m is a Binomial random
+                                         P
+variable with parameters ` and p, hence its expectation is µ = ` · p ≤ `/16. Observe that
+since µ ≤ `/16, we have that (` + 1)/2 ≥ 6µ. Hence, by the above discussion and by
+applying the Chernoff bound we get that
+
+                     Pr(F̃0 < F0 /16) = Pr(m ≥ (` + 1)/2) ≤ 2−(`+1)/2 .
+
+By choosing ` such that (` + 1)/2 = log2 |U | (i.e., ` ∈ Θ (log |U |)) we obtain Pr(F̃0 <
+F0 /16) ≤ 1/|U |, as required.
+    The proof that Pr(F̃0 > 16F0 ) ≤ 1/|U | is symmetrical. Let m0 be the number of indices
+                       (j)
+j ∈ [1, `] such that F̃0 > 16F0 . By reasoning as above, we can show that
+
+   • F̃0 > 16F0 if-and-only-if m0 ≥ (` + 1)/2; and
+
+   • m0 is a Binomial random variable with parameters ` and p0 , and, from the analysis of
+                                                                    (j)
+     the Probabilistic counting algorithm, we known that p0 = Pr(F̃0 > 16F0 ) ≤ 1/16.
+
+Since the expectation of m0 is µ0 = ` · p0 ≤ `/16 and (` + 1)/2 ≥ 6µ0 , by applying the
+Chernoff bound we get that
+
+                     Pr(F̃0 > 16F0 ) = Pr(m0 ≥ (` + 1)/2) ≤ 2−(`+1)/2 .
+
+By choosing ` such that (` + 1)/2 = log2 |U | (i.e., ` ∈ Θ (log |U |)) we obtain Pr(F̃0 >
+16F0 ) ≤ 1/|U |, as required.
+   Finally, as an aside, we observe that the working memory requirements and the update
+and query time of the improved estimation algorithm are ` times larger than those of the
+standard probabilistic counting algorithm.                                              2
+Big Data Computing: Exercises on Streaming                                                               5
+
+
+Exercise 8 Consider a d × w count sketch C for a stream Σ of items from a universe U ,
+and let F̃2.j the estimate of the second moment F2 obtained from row j of C, namely
+                                                   w−1
+                                                   X
+                                           F̃2.j =     (C[j, k])2
+                                                       k=0
+
+
+for 0 ≤ j < d. Show that F̃2.j is an unbuiased estimate of F2 , that is, E[F̃2.j ] = F2 .
+
+Solution. For 0 ≤ j < d, let hj and gj be the two hash functions associated with row j of
+C. Also, for every item a ∈ U , let fa be the absolute frequency of a in Σ. For every pair
+of items a, b ∈ U with a 6= b we define the following random variable:
+                           
+                            fa fb    if hj (a) = hj (b) ∧ gj (a) = gj (b)
+                    Yab =     −fa fb if hj (a) = hj (b) ∧ gj (a) = −gj (b)
+                              0       else
+                           
+
+Note that Yab = fa fb with probability 1/(2w) and, likewise, Yab = −fa fb with probability
+1/(2w), while Yab = 0 with probability 1 − 1/w. Therefore, the expectation E[Yab ] is 0.
+Now, consider an arbitrary cell C[j, k] and let X ⊆ U be the items mapped by hj to this
+cell. Then, it is easy to see that
+                                          X          X
+                             (C[j, k])2 =   (fa )2 +       2fab .
+                                                a∈X              a,b ∈X, a6=b
+
+
+From this fact, we easily derive that
+                           X                     X                              X
+                   F̃2,j =    (fa )2 +                       2fab = F2 +                    2fab
+                           a∈U                a,b ∈U, a6=b                   a,b ∈U, a6=b
+
+
+Therefore,
+                                   "                     #
+                                          X                                X
+              E[F̃2,j ] = F2 + E                      2fab = F2 +                      2E[fab ] = F2 ,
+                                       a,b ∈U, a6=b                     a,b ∈U, a6=b
+
+
+where in the last passage we used the fact the E[fab ] = 0, which was observed before.                   2
+
+Exercise 9 Consider a stream Σ = x1 , x2 , . . . , xn of n measurements from sensors. Each
+measurement xi is a pair (ki , wi ), where ki is the ID of a sensor and wi is the value of the
+measurement (an integer). For a given sensor u occurring in Σ define
+                                               X
+                                     fu =               wi ,
+                                                  (ki ,wi )∈Σ : ki =u
+
+
+i.e., the aggregate measurements taken by u.
+Big Data Computing: Exercises on Streaming                                                           6
+
+                                                                                           2
+                                                                                P
+  1. Briefly describe a space-efficient unbiased estimator for H2 =                 u (fu ) , where the
+     sum is over all sensors occurring in the stream.
+
+  2. What can you say about the unbiasedness of your estimator?
+
+Solution.
+  1. The estimator is a simple variant of the count sketch. Let U be the universe to which
+     the IDs of the sensors belong. The sketch uses the following ingredients:
+
+       • a d × w array C of counters, all initialized to 0;
+       • d hash functions hj : U → {1, 2, . . . , w}, for 1 ≤ j ≤ d;
+       • d hash functions gj : U → {−1, +1}, for 1 ≤ j ≤ d.
+
+     When the element xt = (kt , wt ) of the stream Σ arrives, the array C is modified as
+     follows. For every 1 ≤ j ≤ d:
+
+                            C[j, hj (kt )] ← C[j, hj (kt )] + gj (kt ) · wt .
+
+     At the end of the stream, we define
+                                                 w
+                                                 X
+                                       H̃2,j =         (C[j, `])2 ,
+                                                 `=1
+
+     for every 1 ≤ j ≤ d, and define H̃2 P
+                                         to be the median of the H̃2,j ’s. We consider H̃2
+     as estimate of the true value H2 = u (fu )2 .
+
+  2. Consider a stream Σ0 of sensor IDs (i.e., elements of U ) obtained from Σ by substi-
+     tuting each pair (ki , wi ) with wi occurrences of ki . In order to distinguish betwen
+     Σ and Σ0 , we denote frequencies in the two streams as follows. For every sensor u
+     define
+                                                  X
+                                      fuΣ =                 wi
+                                                 (ki ,wi )∈Σ : ki =u
+                                      Σ0
+                                                     X
+                                     fu    =                      1.
+                                                 ki ∈Σ0 : ki =u
+
+
+                       0
+     Clearly, fuΣ = fuΣP , for every u. Hence, by letting F2 denote the second moment
+                               Σ0 2
+     of Σ0 (i.e., F2 =     u (fu ) ) we have that F2 = H2 . Moreover, it is immedate to
+     see that at the end of the stream Σ, the count sketch C is the same as the one
+     that
+       Pwwe would obtain      for Σ0 . By what we learned in class, we know that E[H̃2,j ] =
+     E[ `=1 (C[j, `])2 ] = F2 , for every 1 ≤ j ≤ d. Since F2 = H2 , we conclude that
+     E[H̃2 ] = H2 , which shows that the estimator is unbiased.
+                                                                                                     2
+Big Data Computing: Exercises on Streaming                                                    7
+
+
+Exercise 10 Let Σ = x1 , x2 , . . . , xn be a stream of n > 10 items (n even), which contains
+(n/2) − 5 occurrences of item a, (n/2) − 5 occurrences of item b, and 10 occurrences of
+other items 6= a, b. Let C be a Count-min sketch of size d × w for Σ. We define the
+following notation for item a:
+             fa = true frequency of a in Σ;
+            ˜
+            fa,j = the estimate of fa provided by row j of C, with 0 ≤ j < d;
+             f˜a = the final estimate of fa provided by the sketch C.
+Answer to the following points, assuming w = 2.
+  1. Suppose that in row j, a and b are mapped to a different counter. Give a tight upper
+     bound R to the relative error (f˜a,j − fa )/fa .
+  2. Inspired by the previous point, compute the following probabilities
+                                   
+        • Pr (f˜a,j − fa )/fa ) ≤ R , for any given row j, with 0 ≤ j < d.
+                                 
+        • Pr (f˜a − fa )/fa ) ≤ R .
+
+Solution.
+  1. If a and b are mapped to a different counter of row j, we must have
+                                          fa ≤ f˜a,j ≤ fa + 10.
+     Since fa = (n/2) − 5, we have that
+                                         f˜a,j − fa      10
+                                                    ≤           .
+                                              fa      (n/2) − 5
+     Therefore, a good upper bound is R = 10/((n/2) − 5).
+  2. We compute the required probabilities as follows.
+        • From the previous point, it is easy to see that the probability that ((f˜a,j −
+          fa )/fa ) ≤ R is (at least) the probability that a and b are mapped to different
+          counters, which is 1/2. Thus, for any given row j, with 0 ≤ j < d, we have
+                                                                1
+                                            ˜
+                                      Pr (fa,j − fa )/fa ) ≤ R ≥ ,
+                                                                    2
+          (The probability is exactly 1/2 when n is large.)
+        • Recall that the estimate for fa provided by the Count-min sketch C is f˜a =
+          min0≤j<d f˜a,j . Thus, (f˜a − fa )/fa = min0≤j<d (f˜a,j − fa )/fa . This immediately
+          implies that (f˜a − fa )/fa > R only if (f˜a,j − fa )/fa > R for all j’s, which, based
+          on the previous point, happens with probability ≤ (1/2)d . Hence,
+                                                                    1
+                                   Pr (f˜a − fa )/fa ) ≤ R ≥ 1 − d .
+                                                                     2
+                                                   d
+          (Again, the probability is exactly 1/2 when n is large.)
+Big Data Computing: Exercises on Streaming                                                        8
+
+
+                                                                                                  2
+
+Exercise 11 Consider a Bloom filter built to assess membership for a set S of m elements.
+The Bloom filter consists of an n-bit array A and k hash functions h0 , h1 , . . . , hk−1 , mutually
+independent and with values uniformly distributed in [0, n − 1]. Assume that n is even,
+and that each hash function hi is such that, for every e ∈ S, hi (e) mod n/2 is uniformly
+distributed in [0, n/2 − 1].
+
+   1. Show how to transform, in O (n) time, the given Bloom filter into a new Bloom filter
+      based on an n/2-bit array B, and describe how to assess membership with the new
+      Bloom filter.
+
+   2. Compute the probability that a given cell B[i] of the new array is 0.
+
+Solution.
+
+   1. We define the new array B as follows:
+
+                                      B[i] = A[i] OR A[i + n/2],
+
+      for every 0 ≤ i < n/2. It is immediate to see that the array B is exactly the same
+      as the one that would be constructed using the k hash functions h0j , for 1 ≤ j ≤ k,
+      where for each e ∈ S, h0j (e) = hj (e) mod n/2. An element x is claimed to be in S
+      if h0j (x) = 1 for each 1 ≤ j ≤ k. Note that the construction of B from A can be
+      accomplished in O (n) time without using the set S.
+
+   2. Since we assumed that for every e ∈ S and 0 ≤ j < k, hj (e) mod n/2 is uniformly
+      distributed in [0, n/2 − 1], the hash functions h0j ’s satisfy the hypotheses of indepen-
+      dence and uniform distribution made in the analysis of the Bloom filter presented in
+      class. By repeating that analysis, we can conclude that, for sufficiently large n, the
+      probability that any given cell B[i] is 0, is very close to e−km/(n/2) = e−2km/n .
+
+                                                                                                  2
+

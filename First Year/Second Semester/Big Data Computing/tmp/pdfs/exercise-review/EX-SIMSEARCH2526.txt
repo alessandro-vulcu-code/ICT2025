@@ -1,0 +1,154 @@
+Big Data Computing: Exercises on Similarity Search                                          1
+
+
+
+                    Exercises on Similarity Search
+
+Exercise 1 Let P be a set of n points in R2 and let T be a kd-tree for P . Suppose that
+each node v of T stores a point p arbitrarily selected among those associated with leaves
+of v’s subtree. Show how to adapt SearchKdTree so that, given a query rectangle    √ R, it
+returns an arbitrary point p ∈ P ∩ R, if one exists, or null otherwise, in time O ( n).
+
+Solution. For a node v ∈ T , let pv ∈ P denote the point stored in node v. Note that if
+v is a leaf, its subtree contains only v, hence pv is uniquely determined, while if v is an
+internal node, pv is arbitrarily selected from its subtree’s leaves. An example showing a
+dataset P , the corresponding kd-tree T , and a selection of points stored at the internal
+nodes, is given in the picture below.
+
+
+
+
+    To accomplish the requested task, the idea is to modify SearchKdTree so that it stops
+as soon as it reaches a node v such that pv ∈ R, returning pv , and it returns null if no such
+node is ever reached. The pseudocode is the following.
+Big Data Computing: Exercises on Similarity Search                                       2
+
+
+SearchKdTreeNew(v, R)     // first invocation: v = T.root
+Input: A node v in the kd-tree, and a rectangle R
+Output: An arbitrary point p ∈ R from the subtree of v, if one exists, or null otherwise
+   if (v is a leaf) then
+       if (pv ∈ R) then return pv ;
+       else return null;
+   if (pv ∈ R) then return pv ;
+   else
+       Let u, w be the left and right child of v, respectively;
+       Let Ru = region(u) ∩ R and Rw = region(w) ∩ R;
+       if (Ru 6= ∅) then
+           p ← SearchKdTreeNew(u, Ru );
+           if (p 6= null) then return p;
+      if (Rw 6= ∅) then return SearchKdTreeNew(w, Rw ) ;
+   return null
+
+As an exercise, in the example below, show the visited nodes and the output for the given
+query rectangle R.
+
+
+
+
+    The analysis of the query time is similar to the one done in class for SearchKdTree
+(see Slides 28-31 on Similarity Search - Part 1). Suppose that SearchKdTreeNew is initially
+invoked at the root of tree T . We have that the query time is proportional to the number
+of nodes v on which it is recursively invoked, since in each such invocation performs O (1)
+Big Data Computing: Exercises on Similarity Search                                         3
+
+
+operations (excluding the recursive calls). By construction, the algorithm is invoked only
+on nodes v whose associated region (region(v)) intersects R (except possibly the root).
+Define:
+
+               Q1 (R) = {v ∈ T : region(v) ∩ R 6= ∅ and region(v) 6⊆ R}
+               Q2 (R) = {v ∈ T : region(v) ∩ R 6= ∅ and region(v) ⊆ R}
+
+                                                    √
+Recall that in class we claimed |Q1 (R)| = O ( n). It is immediate to see that
+SearchKdTreeNew(T.root, R) will be recursively invoked on the root and at most all
+nodes Q1 (R) and one node of Q2 (R). This derives from the fact and if at some point
+SearchKdTreeNew is invoked on a node v ∈ Q2 (R), then pv ∈ R, hence the algorithm with
+return pv and v will be the last node on which√SearchKdTreeNew is invoked. The above
+discussion implies that the running time is O ( n).                                 2
+
+Exercise 2 Let P be a collection of n documents that you want to store into a suitable
+data structure so to retrieve, given a query document q, a similar document in P . Let W be
+a set of D relevant words and suppose that the similarity between two documents depends
+on the number of words of W in common (ignoring their relative frequencies).
+
+  1. Describe a representation of the documents and a data structure for P based on a
+     suitable locality-sensitive family of hash functions (use only one hash function for the
+     data structure).
+
+  2. Based on the above point, find values of c and r such that the (c, r)-ANNS problem
+     for P can be solved correctly with probability at least 1/2 and expected query time
+     O (n). (Observe that the trivial exact approach requires O (Dn) query time.)
+
+Solution.
+
+  1. Let W = {w0 , w1 , . . . , wD−1 }. We can represent a document p as a binary vector Vp ,
+     where Vp [i] = 1 if p contains wi , and Vp [i] = 0 otherwise, for 0 ≤ i < D. Then,
+     the distance d(p, q) between two documents p, q can be defined to be the Hamming
+     distance between Vp and Vq , that is,
+                                             def
+                                      d(p, q) = dH (Vp , Vq )
+
+     We can then use the bit sampling approach studied in class for binary vectors. Specif-
+     ically, we store P in a hash table T constructed by selecting a hash function uniformly
+     at random from the family HH defined as follows. For 0 ≤ i < D let hi : P → {0, 1}
+     be the hash function such that hi (p) = Vp [i], for every p ∈ P , and define
+
+                                    HH = {hi : 0 ≤ i < D}.
+Big Data Computing: Exercises on Similarity Search                                         4
+
+
+  2. Given two documents p, q, the probability of collision is
+                                                      dH (Vp , Vq )     d(p, q)
+                         Pr [h(p) = h(q)] = 1 −                     =1−
+                        h∈HH                              D               D
+     Therefore,
+          if d(p, q) ≤ r, then
+                                                             d(p, q)    r
+                                   Pr [h(p) = h(q)] = 1 −            ≥1− ,
+                                  h∈HH                         D        D
+          if d(p, q) ≥ cr, then
+                                                             d(p, q)    cr
+                                   Pr [h(p) = h(q)] = 1 −            ≤1− ,
+                                  h∈HH                         D        D
+     which implies that HH is (c, r, p1 , p2 )-locality sensitive with p1 = 1 − r/D and p2 =
+     1 − cr/D. Now, using the hash table T , we can solve the (c, r)-ANNS problem for a
+     query document q by returning an arbitrary document p in T [h(q)] with d(p, q) ≤ cr,
+     if one is found, or null otherwise. By the analysis shown in class (see Slides 15-19 on
+     Similarity Search - Part 2) we know that the probability that the output is correct is
+     ≥ p1 and the expected query time is O (Dnp2 ). So our final goal is to determine the
+     parameters c and r so to make p1 = 1/2 and p2 = O (1/D). To this purpose, we can
+     fix r = D/2 and c = 2(1 − a/D) for some constant a > 1 (which implies cr = D − a).
+     This yields p1 = 1/2 and p2 = a/D.
+                                                                                           2
+Exercise 3 Let P be a set of n D-dimensional Boolean vectors. Suppose that P is stored
+into a hash table T built using a hash function h randomly drawn from the bit-sampling
+LSH family H = {hi : 0 ≤ i < D}. For h ∈ H, let ”not(h(x))” denote the negation of the
+binary value h(x).
+  1. Given two vectors p and q, determine the probability Prh∈H [h(p) = not(h(q))] as a
+     function of the Hamming distance dH (p, q).
+  2. Given a query vector q, we want to find an r-far vector p ∈ P , i.e., such that
+     dH (p, q) ≥ r. Based on the above analysis, how would you efficiently search such
+     a p in the table T ? What probabilistic guarantees does your method provide?
+Solution.
+  1. For 0 ≤ i < D, let pi and qi denote the i-th bit of p and q, respectively. Clearly,
+                                     hi (p) = not(hi (q)) ⇔ pi 6= qi .
+     Therefore,
+                                                               dH (p, q)
+                                    Pr [h(p) = not(h(q))] =
+                                   h∈H                            D
+     .
+Big Data Computing: Exercises on Similarity Search                                         5
+
+
+  2. Given a query vector q one can scan bucket T [not(h(q))] returning the first vector
+     p with dH (p, q) ≥ r, if one exists, or null otherwise. If there exists an r-far vector
+     x ∈ P , the probability of returning a correct solution is at least the probability that
+     x ends up in bucket T [not(h(q))]. Based on the previous analysis, this probability is
+                                                            r
+                                  Pr [h(x) = not(h(q))] ≥     .
+                                  h∈H                       D
+
+                                                                                           2
+

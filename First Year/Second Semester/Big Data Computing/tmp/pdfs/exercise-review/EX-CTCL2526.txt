@@ -1,0 +1,597 @@
+Big Data Computing: Exercises on Coreset Technique and Clustering                             1
+
+
+
+     Exercises on Coreset Technique and Clustering
+
+Exercise 1 Show that the L1 (Euclidean) distance satisfy the four requirements for a met-
+ric space.
+
+Solution. Recall that given a set M with distance function d(·), (M, d) is a metric space
+if the following conditions hold for any x, y, x ∈ M :
+
+  1. d(x, y) ≥ 0;
+
+  2. d(x, y) = 0 if and only if x = y;
+
+  3. d(x, y) = d(y, x); (symmetry)
+
+  4. d(x, z) ≤ d(x, y) + d(y, z); (triangle inequality)
+
+Recall that the L1 distance between two points x, y ∈ <n is
+                                                n
+                                                X
+                                 dL1 (x, y) =          |xi − yi |,
+                                                 i=1
+
+where the xi ’s and yi ’s denote the coordinates. We observe that for any three real numbers
+a, b and c, we have |a − b| ≤ |a − c| + |c − b|, which can be easily proved considering all
+possible relative positions of a, b and c on the line. Now we prove that the four conditions
+above are satisfied.
+
+  1. dL1 (x, y) ≥ 0. It follows since all terms of the summation are ≥ 0.
+
+  2. dL1 (x, y) = 0 if and only if x = y.
+     Proof of the ”if” direction: if x = y, we then clearly have dL1 (x, y) = ni=1 |xi −yi | =
+                                                                             P
+     0 since |xi − yi | for each i ≥ 1.
+     Proof of the ”only if” direction: let dL1 (x, y) =
+                                                      P0n and assume by contradiction that
+     x 6= y (say that x1 6= y1 ). Then dL1 (x, y) = i=1 |xi − yi | > 0 since |x1 − y1 | > 0
+     and |xi − yi | ≥ 0 if i ≥ 2. We have a contradiction, and hence x = y.
+
+  3. dL1 (x, y) = dL1 (y, x). It follows since |a − b| = |b − a| for any two reals a and b.
+
+  4. d(x, z) ≤ d(x, y) + d(y, z). By the initial observation, we have that
+                                          n
+                                          X
+                          dL1 (x, z) =          |xi − zi |
+                                          i=1
+                                        n
+                                        X
+                                      =   (|xi − yi + yi − zi |)
+                                          i=1
+Big Data Computing: Exercises on Coreset Technique and Clustering                                       2
+
+                                             n
+                                           (1)
+                                             X
+                                           ≤   (|xi − yi | + |yi − zi |)
+                                                 i=1
+                                                  Xn                     n
+                                                                         X
+                                           = (         |xi − yi |) + (         |yi − zi |)
+                                                 i=1                     i=1
+                                           = dL1 (x, y) + dL1 (y, z).
+      In the step denoted with (1) we used the following inequality: |a + b| ≤ |a| + |b| for
+      any a, b ∈ R (the inequality follows since −|a| − |b| ≤ a + b ≤ |a| + |b|).
+                                                                                                       2
+Exercise 2 Consider a pointset P of N points represented as set of key-value pairs (IDx , x),
+where IDx is a distinct integer in [0, N ), and x is a point. Let also S be a set of k centers.
+Considering S as a global variable, show the assignment of each point to the closest center
+can be performed in MapReduce in 1 round using ML = O (k).
+Solution. We prescribe that for each input point (IDx , x) the output pair (IDx , (x, c(x)))
+is returned, where c(x) ∈ S is the center closest to x (with ties broken arbitrarily). We
+first consider the following straightforward algorithm.
+Round 1
+    • Map phase: map each pair (IDx , x) into (IDx , (x, c(x) = argminc∈S d(x, c))).
+    • Reduce phase: empty.
+We have that ML = Θ (k), since each application of the map function requires space Θ (k)
+for storing a copy of S.
+
+IMPORTANT OBSERVATION. If we ignore the space occupied by the copies of S, the
+aggregate space MA is clearly linear in N . In practice, one copy of S is stored at each
+worker executing the map phase (for example, in Spark this is the case if S is defined
+as a broadcast variable), and if the number of workers is O (N/k), which is a reasonable
+assumption in most practical scenarios, the aggregate space remains linear in N .      2
+Exercise 3 Show that the Farthest-First Traversal algorithm can be implemented to run
+in O (N · k) time.
+Solution. With each point p we maintain a value called curr-distp which, immeditaley
+after center ci is selected, contains the distance between p and the closest center among
+c1 , c2 , . . . , ci−1 . Initially, after the arbitrary selection of c1 , curr-distp is set equal to null.
+It is easy to see that, for every i ≥ 1, if the property holds after ci is selected, one scan of
+the pointset P (O (N ) time) is sufficient to update the value curr-distp with the distance
+between p and the closest center among c1 , c2 , . . . , ci , and to select the next center ci+1
+as the point p with minimum curr-distp . This immediately implies that Farthest-First
+Traversal can be implemented in O (N · k) time.                                                        2
+Big Data Computing: Exercises on Coreset Technique and Clustering                                     3
+
+
+Exercise 4 Let P be a set of N points in a metric space (M, d), and let T ⊆ P be a
+coreset of |T | > k points such that for each x ∈ P we have d(x, T ) ≤ Φopt  kcenter (P, k),
+for some  ∈ (0, 1). Let S be the set of k centers obtained by running the Farthest-First
+Traversal algorithm on T . Prove an upper bound to Φkcenter (P, S) as a function of  and
+Φopt
+  kcenter (P, k).
+
+
+Solution. By the hypothesis, we know that: (A) for each x ∈ P there exists y ∈ T such
+that d(x, y) ≤ Φoptkcenter (P, k). We now show that: (B) for each y ∈ T there exists c ∈ S
+such that d(y, c) ≤ 2Φopt   kcenter (P, k). By combining (A) and (B) using triangle inequality,
+we immediately obtain that for each x ∈ P there exists c ∈ S such that d(x, s) ≤ (2 +
+)Φopt
+   kcenter (P, k), which yields
+
+                               Φkcenter (P, S) ≤ (2 + )Φopt
+                                                         kcenter (P, k).
+
+In order to show (B) we mimic the analysis of MR-Farthest First Traversal. Let S =
+{c1 , c2 , . . . , ck }, where ci is the i-th center discovered when running Farthest-First Traversal
+algorithm on T , and let q be the point of T farthest from these centers. For convenience,
+we rename q = ck+1 (in fact, q would be the (k + 1)-st center selected by Farthest-First
+Traversal). Let also C1∗ , C2∗ , . . . , Ck∗ denote the k optimal clusters, induced by a set S ∗ of
+optimal centers, so that Φkcenter (P, S ∗ ) = Φopt     kcenter (P, k). By the pigeonhole principle there
+must exists two points ca , cb , with 1 ≤ a < b ≤ k + 1, that fall in the same optimal cluster
+Ci∗ , for some i, which implies that d(ca , cb ) ≤ 2Φopt        kcenter (P, k). We prove (B) through the
+following sequence of inequalities. For each y ∈ T :
+
+          d(y, S) =     d(y, {c1 , c2 , . . . , ck })
+                  ≤     d(q, {c1 , c2 , . . . , ck })
+                  ≤     d(q, {c1 , c2 , . . . , cb−1 })
+                  ≤     d(cb , {c1 , c2 , . . . , cb−1 }) (by the choice of cb made by FFT)
+                  ≤     d(cb , ca ) (since ca ∈ {c1 , c2 , . . . , cb−1 })
+                  ≤     2Φopt
+                           kcenter (P, k).
+
+Therefore, for each y ∈ T there exists c ∈ S such that d(y, c) ≤ 2Φopt
+                                                                   kcenter (P, k).                   2
+
+Exercise 5 Let P be a set of points in a metric space (M, d), and let T ⊆ P . For any
+k < |T |, show that Φopt                opt
+                     kcenter (T, k) ≤ 2Φkcenter (P, k). Is the bound tight?
+
+
+Solution. Let (C1 , C2 , . . . , Ck , c1 , c2 , . . . , ck ) be the optimal k-clustering for P (i.e.,
+Φkcenter (P, {c1 , c2 , . . . , ck }) = Φopt
+                                         kcenter (P, k)). From each cluster Ci , remove the points not
+in T and pick one arbitrary remaining point (if any) as a new center. Let S ⊆ T be the
+centers that have been picked in this fashion. (If |S| < k add arbitrary points of T to make
+|S| = k.) This is pictorially represented in Figures 1, 2, and 3.
+Big Data Computing: Exercises on Coreset Technique and Clustering                                     4
+
+
+
+
+                                  Figure 1: Optimal clstering of P
+
+
+
+
+                                          Figure 2: Subset T
+
+
+We have that
+
+       • For each y ∈ T there must be c ∈ S such that y and c belong to the same optimal
+         cluster Ci .
+
+       • For any x, z in the same optimal cluster Ci , d(x, z) ≤ 2Φopt
+                                                                   kcenter (P, k) (by triangulating
+         with the center ci of the cluster)
+
+Therefore, for each y ∈ T , d(y, S) ≤ 2Φopt
+                                        kcenter (P, k), which implies:
+
+                          Φopt                                  opt
+                           kcenter (T, k) ≤ Φkcenter (T, S) ≤ 2Φkcenter (P, k).
+                                                                               1
+
+
+Regarding how tight the upper bound is, consider the following example. Let
+
+                                 P = {−1, 0, 1, x, 2x, . . . , (k − 1)x}
+
+be a set of k + 2 points in <, for some large x > 1, and let
+
+                            T = {−1, 1, x, 2x, . . . , (k − 1)x} = P − {0}.
+
+Convince yourself that, for large x, Φopt                     opt
+                                      kcenter (P, k) = 1 and Φkcenter (T, k) = 2.                    2
+   1
+    Alternatively, we could have computed S using Farther-First Traversal, reaching the same conclusions
+by reasoning as in the previous exercise.
+Big Data Computing: Exercises on Coreset Technique and Clustering                               5
+
+
+
+
+                               Figure 3: Coreset (green points)
+
+
+Exercise 6 Consider a set P of N points from a metric space, represented by the key-value
+pairs (i, xi ), with 0 ≤ i < N and xi ∈ P . Let S be a set of k centers from the same metric
+space but not belonging to P , which are stored in a global array S[1], S[2], . . . , S[k]. For
+` = 1, 2, . . . , k, denote with P (`) the set of points of P whose closest center√is S[`]. Assume
+that each point in P has exactly one closest center in S, and that k = O( N ).
+
+  1. Design a 2-round MapReduce algorithm that, given P and S, computes a coreset
+     T ⊂ P containing one point from each non-empty P (`) .
+
+  2. Analyze the local and aggregate space required by your algorithm. For full score, your
+     algorithm must require o(N ) local space and linear aggregate space.
+
+  3. Show how to use T to approximate the value ∆(P ) = maxx,y∈P d(x, y), and estimate
+     the quality of the approximation in terms of R = maxx∈P d(x, S). (Recall that each
+     center S[`] is not in P , hence it cannot be in T .)
+
+Solution.
+
+   1. The MapReduce algorithm is the following.
+      Round 1:
+                                                                                 √
+         • Map phase: map each pair (i, xi ), into the intermediate pair (i mod N , xi ).
+                                               √
+         • Reduce phase: for each 0 ≤ j < N , let Lj be the list of values x from the
+           intermediate pairs with key j. For each center S[`], with 1 ≤ ` ≤ k, select on
+           point x ∈ Lj ∩ P (`) , if any, and output the pair (`, x). Hence, at most ` pairs
+           are output from Lj .
+
+      Round 2:
+
+         • Map phase: empty.
+         • Reduce phase: for each key `, let L` be the list of values x from the pairs with
+           key ` produced by Round 1, and return one arbitrary such value.
+Big Data Computing: Exercises on Coreset Technique and Clustering                                      6
+
+
+   2. In the map phase of Round 1, each application of the map function requires
+                                                                            √ constant
+      space; in the reduce phase of
+                              √   Round  1 each reducer processes at most   N elements
+      and needs O (K) = O        N space to store the centers; in the reduce phase of
+                                               √
+      Round 2 each reducer processes at most N elements. Therefore, the local space is
+                 √
+      ML = O       N . The aggregate space is O (N ) since input, output and intermediate
+      pairs in each round are O (N ).
+
+   3. We can approximate ∆(P ) with ∆(T ) = maxx,y∈T d(x, y). Clearly, ∆(P ) > ∆(T ).
+      An upper bound to ∆(P ) can be computed as follows. Let ∆(P ) = d(z, w) for some
+      z, w ∈ P , and let z ∈ P (`1 ) and w ∈ P (`2 ) for some indices `1 , `2 ∈ [1, k]. Clearly,
+      P (`1 ) and P (`2 ) are non-empty, so the coreset T will contain a point t`1 ∈ P (`1 ) and a
+      point t`2 in P (`2 ) . Note that d(t`1 , t`2 ) ≤ ∆(T ) and that, by the triangle inequality,
+      d(z, t`1 ) ≤ d(z, S[`1 ]) + d(S[`1 ], t`1 ) ≤ 2R and d(w, t`2 ) ≤ d(w, S[`2 ]) + d(S[`2 ], t`2 ) ≤
+      2R. By repeatedly using the triangle inequality, we easily obtain
+
+        ∆(P ) = d(z, w) ≤ d(z, t`1 ) + d(t`1 , t`2 ) + d(t`2 , w) ≤ d(t`1 , t`2 ) + 4R < ∆(T ) + 4R.
+
+      By putting all pieces together we get that
+
+                                      ∆(T ) ≤ ∆(P ) ≤ ∆(T ) + 4R.
+
+                                                                                                     2
+
+Exercise 7 Design an MR algorithm       √to compute
+                                                     the exact diameter of a set P of N points,
+which requires R = O (1), ML = O            N and MA = O (N 2 ). Assume that P is initially
+provided as the set of pairs (i, xi ), for 0 ≤ i < N , where the xi ’s are the points.
+
+Solution. The input-output specification of the problem is the following one:
+
+   • Input: Set P of N points represented by pairs (i, xi ), for 0 ≤ i < N .
+
+   • Output: (0, ∆(P ) = max0≤i,j<N d(xi , xj )).
+
+The idea is first to compute the distances between all possible pairs xi , xj with 0 ≤ i ≤
+j < N (this is done in the first 2 rounds), and then to compute
+                                                              √      the maximum among them
+in several rounds, processing distances in groups of size N . The details of the algorithm
+are below.
+Round 1
+                                                              √
+    • Map phase: map√  each  pair (i, xi ) into the following   N intermediate pairs: ((i, j), xi ),
+      with 0 ≤ j < N .
+      Reduce phase: empty
+
+Round 2
+Big Data Computing: Exercises on Coreset Technique and Clustering                             7
+
+                                                                       √
+   • Map phase:
+             √    map each pair ((i, j),√    xi ) into the following    N intermediate pairs:
+     ((i, j ∗ N + j 0 ), xi ), with 0 ≤ j 0 < N .
+     Reduce phase: empty
+
+Observation: At this point, for every xi we have N pairs ((i, j), xi ), for 0 ≤ j < N .
+Round 3
+
+   • Map phase: map each pair ((i, j), xi ) into the pair ((min{i, j}, max{i, j}), xi ).
+
+   • Reduce phase: for every 0 ≤ i ≤ j < N , let Li,j be the list containing the values of
+     the two pairs with key (i, j), namely xi and xj , and return pair (i ∗ N + j, d(xi , xj )).
+
+Observation: At this point we have all pairwise distances among points, represented in
+N (N + 1)/2 < N 2 pairs with distinct integer keys in [0, N 2 ). (Obs. Rounds 2 and 3 can
+be easily merged into one round, but we kept them separate for clarity.)
+Round 4
+
+   • Map phase: map each pair (k, d) into the intermediate pair (k 0 = k mod N 3/2 , d).
+
+   • Reduce phase: for each k 0 ∈ [0, N 3/2 ), let Lk0 be the list of values (i.e., distances)
+     from intermediate
+                  √    pairs with key k 0 , and return pair (k 0 , d0 = max{d ∈ Lk0 }). Note
+     that |Lk0 | ≤ N .
+
+Round 5
+
+   • Map phase: map each pair (k, d) into the intermediate pair (k 0 = k mod N, d).
+
+   • Reduce phase: for each k 0 ∈ [0, N ), let Lk0 be the list of values (i.e., distances) from
+                                    0                                          0 0
+                               √ k , and return pair and return pair (k , d = max{d ∈
+     intermediate pairs with key
+     Lk0 }). Note that |Lk0 | ≤ N .
+
+Round 6
+                                                                                    √
+   • Map phase: map each pair (k, d) into the intermediate pair (k 0 = k mod N , d).
+                                      √
+   • Reduce phase: for each k 0 ∈ [0, N ), let Lk0 be the list of values (i.e., distances) from
+                                     0                                            0
+                               √ k , and return pair and return pair (0, d = max{d ∈
+     intermediate pairs with key
+     Lk0 }). Note that |Lk0 | ≤ N .
+
+Round 7
+
+   • Map phase: empty.
+
+   • Reduce phase: let L0 be the list of values of all pairs produced by Round 6, into pair
+     (0, L), where L is the list of values from these pairs, and return (0, maxd∈L d) as final
+     output.
+Big Data Computing: Exercises on Coreset Technique and Clustering                          8
+
+
+It is easy to see that the above 7-round algorithm uses aggregate space proportional to
+the number of ordered pairs of points, that is, MA = O (N 2 ). Let us √    analyze the local
+space. Each map phase of Rounds      1 and 2 transforms a single pair into N intermediate
+                             √ 
+pairs, thus requiring O        N local space, while for the map phases of the other rounds
+O (1) local space is sufficient. Each non-empty reduce phase works separately on  lists of
+              √                                                                        √ 
+at most O      N values and produces one pair out of each list, thus requiring O         N
+                                                                    √ 
+local space. For the above considerations it follows that ML = O        N .                2
+
+Exercise 8 Let P be a set of N points from metric space (M, d). For an arbitrary x ∈ P
+show that
+                             ∆x = max{d(x, y) : y ∈ P },
+(which is a 2-approximation
+                √         to the diameter) can be computed in MapReduce using 2
+rounds, ML = O     N and MA = O (N ).
+
+Solution. We use the following input-output specification for the algorithm:
+
+   • Input: P = {(j, xj ) : 0 ≤ j < N } and index i ∈ [0, N ), assumed to be a global
+     variable.
+
+   • Output: (0, ∆i ).
+
+The algorithm is the following.
+
+Round 1.
+
+   • √
+     Map phase: map each pair (j, xj ), with j 6= i, into the intermediate√pair (j mod  √
+       N , (j, xj )), and map pair (i, xi ) into the set {(h, (i, xi )) : 0 ≤ h < N } of N
+     pairs.
+                                        √
+   • Reduce phase: for each h ∈ [0, N ), let Lh be the list of values (j, xj ) from inter-
+     mediate pairs with key h (note that Lh includes also (i, xi )), and return the pair
+     (0, max(j,xj )∈Lh d(xi , xj )).
+
+Round 2.
+
+   • Map phase: empty.
+
+   • Reduce phase: let L0 be the list of the values (i.e., partial maximum distances from
+     xi ) of the pairs produced by Round 1, and return pair (0, ∆i = max{d ∈ L}) as final
+     output.
+Big Data Computing: Exercises on Coreset Technique and Clustering                              9
+
+                                                                         √ 
+For what concerns the local space, the map phase of Round 1 requires O        N space to
+produce
+  √ the copies of (i, xi ), while
+                              √   the reduce phases of both rounds process lists of size
+O    N . Therefore, ML = O        N . As for aggregate space, the number of input, output
+and intermeditate pairs in each round is O (N ), hence the aggregate space is linear in the
+input size.                                                                              2
+Exercise 9 Recall that k-means++ is a randomized algorithm and the quality of the solu-
+tion is a random variable. Letting S be the set of centers returned by k-means++ for P it
+is known that there is a value α = Θ (ln k) such that
+                     Pr Φkmeans (P, S) ≤ α · Φopt
+                                                           
+                                              kmeans (P, k)   ≥ 1/2.
+Show that the above probability can be made ≥ 1 − 1/N , if we run several independent
+instances of k-means++, and return the set of centers which yields the minimum value of
+the objective function, among the ones computed in the various runs.
+Solution. Suppose that we execute t independent runs of k-means++ on P , and let
+Si be the set of centers returned by the i-th run, for 1 ≤ i ≤ t. For each i, observe
+that each Φkmeans (P, Si ) is a random variable and define the event Ei = ”Φkmeans (P, Si ) >
+α · Φopt
+       kmeans (P, k)”. Clearly, these events
+                                         Tt are mutually independent and, by hypothesis,
+Pr(Ei ) ≤ 1/2 for every i. Define E = i=1 Ei , and Smin as the set of centers, among the
+Si ’s, which minimizes the value of the objective function, namely,
+                             Smin = argminSi :1≤i≤t Φkmeans (P, Si ).
+It is immediate to see that event E occurs iff Φkmeans (P, Smin ) > α · Φopt
+                                                                         kmeans (P, k), and that:
+
+                      Pr(E) = Πti=1 Pr(Ei )
+                            ≤ 1/2t (by independence of the Ei ’s).
+By setting t = log2 N , we obtain that Pr(E) ≤ 1/N , hence,
+                  Pr(Φkmeans (P, Smin ) ≤ α · Φopt
+                                               kmeans (P, k)) = 1 − Pr(E)
+                                                              ≥ 1 − 1/N,
+as required.                                                                                   2
+Exercise 10 Let Q be the unit square in R2 , with bottom-left corner (0, 0), and consider
+Q subdivided into c2 square cells of side 1/c. Below is an example for c = 4.
+Big Data Computing: Exercises on Coreset Technique and Clustering                                  10
+
+
+Consider a set of points P from Q and a subset T ⊂ P of at most c2 points, which contains
+one point from each cell (if one exists). Let ∆(P ) be the diameter of P and ∆(T ) the
+diameter of T . Quantify how well ∆(T ) approximates ∆(P ).
+
+Solution. Since T ⊆ P , we clearly have that
+
+                                          ∆(T ) ≤ ∆(P ).
+
+To provide a lower bound to ∆(T ) we reason as follows (see on the Coreset Technique
+(Part 2)). Let z, w be the two points of P such that d(z, w) = ∆(P ), and let a and b be
+the points in T belonging to the same cells where z and w reside, respectively.
+                                                                          √      Let R be
+the maximum distance between two points in the same cell (i.e., R ≤ 2/c). We have
+d(z, a), d(w, b) ≤ R. Also, since a, b ∈ T , we have d(a, b) ≤ ∆(T ). Now, by repeatedly
+applying the triangle inequality, we obtain
+                                                                              √
+        ∆(P ) = d(z, w) ≤ d(z, a) + d(a, b) + d(b, w) ≤ ∆(T ) + 2R ≤ ∆(T ) + 2 2/c,
+
+therefore,                                            √
+                                     ∆(T ) ≥ ∆(P ) − 2 2/c.
+                                                                                                    2
+
+Exercise 11 Let P be a set of N points in a metric space (M, d), and let C =
+(C1 , C2 , . . . , Ck ; c1 , c2 , . . . , ck ) be a k-clustering of P . Initially, each point q ∈ P is
+represented by a pair (ID(q), (q, c(q))), where ID(q) is a distinct key in [0, N − 1] and
+c(q) ∈ {c1 , . . . , ck } is the center of the cluster of q.
+
+   1. Design a 2-round MapReduce algorithm that for each cluster center ci determines
+      the most distant point among those belonging to the cluster Ci (ties can be broken
+      arbitrarily).
+
+   2. Analyze the local and aggregate space required by your algorithm. Your algorithm
+      must require o(N ) local space and O (N ) aggregate space.
+
+Solution. The algorithm is the following:
+Round 1
+
+   • Map phase: each pair (ID(q), (q,   √ c(q))) is mapped into the intermediate pair
+     (j, (q, c(q))), with j = ID(q) mod N .
+                                          √
+   • Reduce phase: For each 0 ≤ j < N , let Lj be the list of values (q, c(q)) from
+     intermediate pairs with key j. For each center c occurring in Lj determine the most
+     distant point q such that (q, c(q) = c) ∈ Lj , and return the pair (c(q), q), where
+                                                                                   √     c(q)
+     is the key. (Observation: At the end of the round there will be at most N pairs
+     with the same key.)
+Big Data Computing: Exercises on Coreset Technique and Clustering                             11
+
+
+Round 2
+
+   • Map phase: empty.
+
+   • Reduce phase: for each center c, let Lc be the list of values (i.e., points) from the
+     pairs produced by Round 1 with key c, and return pair (qmax , c) where qmax =
+     argmaxq∈Lc d(c, q).
+
+Correctness immediately follows by the observation that for each center c, if the most
+distant point is q and (q, c(q) = c) ∈ Lj , the pair (c(q), q) will be returned at the end of
+the first round by the reducer processing Lj , hence q will beidentified as the most distant
+                                                                √ 
+point from c in the second round. Since each Lj has size Θ        N and, in the first round,
+          √                                                                     √ 
+at most N points are selected for each cluster, the local space is ML = Θ          N . Also,
+it is easy to see that input, output and intermediate pairs in each round are O (N ), hence
+the aggregate space linear in N .                                                          2
+
+Exercise 12 Let P be a set of N bicolored points from a metric space, partitioned into
+k clusters C1 , C2 , . . . , Ck . Each point x ∈ P is initially represented by the key-value pair
+(IDx , (x, ix , γx )), where IDx is a distinct key in [0, N − 1], ix is the index of the cluster
+which x belongs to, and γx ∈ {0, 1} is the color of x.
+
+  1. Design an efficient 2-round MapReduce algorithm that for each cluster Ci checks
+     whether all points of Ci have the same color. The output of the algorithm must be
+     the k pairs (i, bi ), with 1 ≤ i ≤ k, where bi = −1 if Ci contains points of different
+     colors, otherwise bi is the color common to all points of Ci .
+
+  2. Analyze the local and aggregate space required by your algorithm. Your algorithm
+     must require o(N ) local space and O (N ) aggregate space.
+
+Solution.
+
+   1. The 2-round MapReduce algorithm is the following.
+
+      Round 1:
+
+         • √
+           Map phase: map each pair (IDx , (x, ix , γx )), into the intermediate pair (IDx mod
+             N , (x, ix , γx )).
+                                                  √
+         • Reduce phase: for each 0 ≤ j < N , let Lj is the list of values from the
+           intermediate pairs with key j. For each cluster index i such that there exists
+           (x, ix = i, γx ) ∈ Lj , return the pair (i, bi (j)), where bi (j) = −1, if Lj contains
+           points from cluster Ci of different colors, otherwise bi (j) is the color common to
+           all points of Ci in Lj .
+
+      Round 2:
+Big Data Computing: Exercises on Coreset Technique and Clustering                                      12
+
+
+          • Map phase: empty.
+         • Reduce√phase: for each 1 ≤ i ≤ k, let Li be the list of values bi (j)’s, with
+           j ∈ [0, N ), from the pairs with key i produced by Round 1, and return (i, bi )
+           where bi = 0, if all bi (j)’s in Li are 0, bi = 1, if all bi (j)’s in Li are 1, and bi = −1
+           in all other cases.
+                                       √ 
+   2. The local space is ML = O            N since the map phase of Round 1 uses constant
+                                                                                  √
+      space, while the reduce phases of both rounds process at most N elements each.
+      The aggregate space is O (N ) since input, output and intermediate pairs in each
+      round are O (N ).
+                                                                                                        2
+Exercise 13 Let P be a set of N weighted points partitioned into k clusters C1 , C2 , . . . , Ck
+with respective centers c1 , c2 , . . . , ck . Each point x ∈ P is represented by the pair (x, (ix , wx )),
+where ix is the index of the cluster of x, and wx is the weight of x. For every cluster Ci its
+weighted closest neighbor is the cluster Cj , with j 6= i, which minimizes the following sum
+                              X
+                                      wx · d2 (x, cj )   (cj center of Cj ).
+                              x∈Ci
+
+   1. Design an efficient 2-round MapReduce algorithm that for each 1 ≤ i ≤ k computes
+      the index j of Ci ’s closest neighbor. You can assume k constant and that c1 , . . . ck to
+      be global variables.
+   2. Analyze the local and aggregate space required by your algorithm. For full score, your
+      algorithm must require o(N ) local space and O (N ) aggregate space.
+Solution.
+   1. The input-output specification of the algorithm is the following:
+          • Input: P = {(x, (ix , wx )) : x ∈ P, index ix , weight wx }
+          • Output: {(i, ji ) : 1 ≤ i ≤ k}, where ji denotes the index of Ci ’s weighted
+            closest cluster.
+      The algorithm is the following.
+      Round 1.
+          • Map phase: map each pair (x, (ix , wx√)) into the intermediate pair (rx , (x, ix , wx )),
+            where rx is a random integer in [0, N ).
+                                            √
+          • Reduce phase: for each h ∈ [0, N ), let Lh be the list of values (x, ix , wx ) from
+            intermediate pairs with key h, and for every cluster index i occurring in Lh
+            produce in output the k − 1 pairs (i, (j, sumh (i, j))), for 1 ≤ j 6= i ≤ k, where
+                                                    X
+                                sumh (i, j) =                wx · d2 (x, cj ).
+                                                    (x,ix =i,wx )∈Lh
+Big Data Computing: Exercises on Coreset Technique and Clustering                     13
+
+
+    Round 2.
+
+       • Map phase: empty.
+       • Reduce phase: for 1 ≤ i ≤ k let Li be the list of values (j, sumh (i, j))) from
+         the output pairs of
+                          PRound 1, and return the pair (i, ji ), where ji is the index j
+         which minimizes (j,sumh (i,j))∈Li sumh (i, j).
+
+  2. Recall that we assumed k to be a constant. For what concerns the local space: the
+     map
+       √phase
+              of Round 1 requires O (1) space, the reduce phase of Round 1 requires
+     O     N space with high probability (same analysis done in class for the 2-round
+     class countalgorithm  with random partitions), and √the reduce phase of Round 2
+                  √ 
+     requires O    N space. Overall, we have ML = O          N with high probability. As
+     for the aggregate space, the number of input, output and intermeditate pairs in each
+     round is O (N ), hence the aggregate space is linear in the input size.
+
+                                                                                       2
+

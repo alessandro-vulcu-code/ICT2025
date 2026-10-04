@@ -1,0 +1,59 @@
+Big Data Computing: Written exam: example 2                                               1
+
+
+
+
+                                      PART 1
+
+
+  1. [3 points] Spark API provides a method mapPartitionsToPair, in Java, or
+     mapPartitions, in Python, to transform an RDD (it was used in the WordCount
+     example, and in the homeworks). Briefly describe what the method does. You do
+     not need to write code.
+
+  2. [3 points] Consider the adaptation of algorithm k-means++ to solve the weighted
+     variant of k-means clustering for a pointset P , where each x ∈ P has weight w(x) ≥ 0.
+     Let S be the current set of selected centers at some point during the algorithm. What
+     is the probability that a given point y ∈ P − S is selected as a next center?
+
+  3. [3 points] Consider the -Approximate Frequent Items (-AFI) problem for a stream
+     Σ = x1 , x2 , . . . xn , with frequency threshold ϕ, and accuracy parameter  ∈ (0, ϕ).
+     For a desired confidence δ, the Sticky Sampling algorithm (n known) uses sampling
+     rate r = ln(1/(δφ))/. State and prove a bound on the expected working memory
+     required by the algorithm.
+
+  4. [4 points] Referring to similarity search
+
+      (a) Define the Range Reporting (RR) problem, and say how it differs from the Near
+          Neighbor Search (NNS) problem.
+     (b) Suppose that a kd-tree is used to store a set P of points in R2 . State the bounds
+         on its space requirements and its query time for the RR problem.
+Big Data Computing: Written exam: example 2                                                    2
+
+
+
+
+                                        PART 2
+
+
+  1. [6 points] Consider a set P ⊂ < of N points in [0, 1] and let k > 1 be an integer.
+     Assuming that for each 1 ≤ i ≤ k, the segment [(i − 1)/k, i/k] ⊂ [0, 1] contains at
+     least one point, show that Φopt
+                                 kcenter (P, k) ≤ 1/k.
+
+  2. [7 points] Let Σ = x1 , x2 , . . . , xn be a stream representing a sequence of transactions
+     of an e-commerce site. Each xi is a pair (pi , γi ), where pi is a product (from a universe
+     U ) and γi is a binary flag which indicates if in this transaction pi has been purchased
+     (γi = 1) or returned (γi = 0). For a product p ∈ U , define its net sales as
+
+     np = |{(pi , γi ) : 1 ≤ i ≤ n, pi = p, γi = 1}| − |{(pi , γi ) : 1 ≤ i ≤ n, pi = p, γi = 0}|
+
+      (a) Describe how to obtain a d × w array C of counters which can be employed to
+          provide, for any product p, an unbiased estimate ñp of its net sales np . Also,
+          say how ñp is computed.
+      (b) How accurate is the estimate ñp when p1 = p2 = · · · = pn = p?
+
+
+
+                                                                        Total time: 2 hours
+

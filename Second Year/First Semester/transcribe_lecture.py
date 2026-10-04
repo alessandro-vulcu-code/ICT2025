@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import ctypes
 import sys
 from pathlib import Path
 
@@ -117,6 +118,32 @@ def format_time(seconds: float) -> str:
     return f"{hours:02d}:{minutes:02d}:{secs:02d}"
 
 
+def select_device(requested: str) -> str:
+    """Check CUDA dependencies before loading a model or opening its output."""
+    if requested == "cpu":
+        return "cpu"
+
+    try:
+        if ctranslate2.get_cuda_device_count() == 0:
+            raise RuntimeError("No CUDA device is available to CTranslate2")
+        if sys.platform.startswith("linux"):
+            # CTranslate2 loads these lazily, during segment generation.
+            for library in ("libcublas.so.12", "libcudnn.so.9"):
+                ctypes.CDLL(library)
+    except (OSError, RuntimeError) as error:
+        message = (
+            f"CUDA unavailable: {error}. GPU inference needs cuBLAS for CUDA 12 "
+            "and cuDNN 9 for CUDA 12 on LD_LIBRARY_PATH, plus a working NVIDIA "
+            "driver. See https://github.com/SYSTRAN/faster-whisper#gpu"
+        )
+        if requested == "cuda":
+            raise RuntimeError(message + " Alternatively, use --device cpu.") from error
+        print(f"Warning: {message}\nFalling back to CPU.", file=sys.stderr)
+        return "cpu"
+
+    return "cuda"
+
+
 def main() -> int:
     args = parse_args()
     input_path = args.input.expanduser().resolve()
@@ -133,10 +160,11 @@ def main() -> int:
     output_path = output_path.resolve()
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    if args.device == "auto":
-        device = "cuda" if ctranslate2.get_cuda_device_count() > 0 else "cpu"
-    else:
-        device = args.device
+    try:
+        device = select_device(args.device)
+    except RuntimeError as error:
+        print(f"Error: {error}", file=sys.stderr)
+        return 1
 
     if args.compute_type == "auto":
         compute_type = "float16" if device == "cuda" else "int8"

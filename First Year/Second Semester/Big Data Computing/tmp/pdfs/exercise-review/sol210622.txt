@@ -1,0 +1,120 @@
+ Big Data Computing
+
+
+Written test 21/06/2022
+(SOLUTIONS of PART2)
+Big Data Computing: Written test 21/06/2022                                                    1
+
+
+EX-1 Variant A. Let P be a dataset containing N outcomes of slot machines, represented
+by the key-value pairs (i, (si , oi )), for 0 ≤ i < N , where si is a slot machine, and oi is an
+outcome of the machine. An outcome o is called frequent for a slot machine s if P contains
+≥ N/50 pairs with value (s, o), and a slot machine s is called biased if there is at least a
+frequent outcome o for s.
+
+  1. Design a 3-round MapReduce algorithm that for every biased slot machine s returns
+     exactly one pair (s, null). (HINT: in the first 2 rounds, compute the pairs (s, o)
+     where o is frequent for s.)
+
+  2. Analyze the local and aggregate space required by your algorithm.
+
+For full score, your algorithm must require o(N ) local space and O (N ) aggregate space.
+
+Solution.
+
+  1. The 3-round MapReduce algorithm is the following.
+
+      Round 1:
+
+          √
+           Map phase: map each pair (i, (si , oi )), into the intermediate pair (i mod
+             N , (si , oi )).
+                                                  √
+          Reduce phase: for each 0 ≤ j < N separately, let Lj be the list of values
+           (s, o) from the intermediate pairs with key j, and for each pair (s, o) occurring
+           in Lj return the pair ((s, o), ks,o (j)), where ks,o (j) is the number of occurrences
+           of (s, o) in Lj . (Note that (s, o) is the key of the pair.)
+
+      Round 2:
+
+          Map phase: empty.
+          Reduce phase:
+                       √ for each key (s, o) separately, let Ls,o be the list of values ks,o (j),
+           with j ∈ [0, N ), from the pairs with key (s, o) produced by Round 1, and if
+           the sum of values in Ls,o is ≥ N/50, then return (s, o) otherwise return nothing.
+
+      Round 3:
+
+          Map phase: empty.
+          Reduce phase: for each machine s separately, let Ls be the list of outcomes
+           o from the pairs (s, o) produced by Round 2 (i.e., Ls is the list of frequent
+           outcomes for s), and return (s, null).
+
+  2. In the map phase of Round 1, each application of the map function requires constant
+     space,
+     √      and in the reduce phases of Round 1 and 2, each reducer processes at most
+       N elements. As for Round 3, observe that for any each slot machine s there exist
+     at most 50 = O (1) frequent outcomes. Based on this observation, in the reduce
+Big Data Computing: Written test 21/06/2022                                                      2
+
+
+      phase of Round 3 each reducer processes at most 50 elements, hence it contributes
+                                                                             √        a
+      constant term to the local space. Therefore, the local space is ML = O    N . The
+      aggregate space is O (N ) since input, output and intermediate pairs in each round
+      are O (N ).
+
+                                                                                                
+
+EX-1 Variant B. Let P be a dataset of an online store containing N key-value pairs
+(i, (ci , pi )), for 0 ≤ i < N , where ci represents a customer, and pi represents a product
+purchased by ci in a visit to the store. A product p is frequent for a customer c if P
+contains ≥ N/50 pairs with value (c, p), and a customer c is called compulsive if there is
+at least a frequent product p for c.
+
+   1. Design a 3-round MapReduce algorithm that for every compulsive customer c returns
+      exactly one pair (c, null). (HINT: in the first 2 rounds, compute the pairs (c, p) where
+      p is frequent for c.)
+
+   2. Analyze the local and aggregate space required by your algorithm.
+
+For full score, your algorithm must require o(N ) local space and O (N ) aggregate space.
+
+Solution. The solution is identical to the one of Variant-A with the following changes of
+terminology:
+
+    slot machine → customer;
+
+    outcome → product;
+
+    biased slot machine → compulsive customer.
+
+                                                                                                
+
+EX-2. Let A1 and A2 be two n-bit arrays used as Bloom filters to assess the membership
+for two sets S1 and S2 , respectively, from the same universe U . Suppose that both arrays
+have been initialized by applying the same set of k hash functions h1 , h2 , . . . , hk , to S1 (in
+case of A1 ) and S2 (in case of A2 ).
+
+   1. Describe how to combine A1 and A2 into a new n-bit array A and how to use it
+      to assess membership for S1 ∪ S2 , with no false negatives (i.e., elements of S1 ∪ S2
+      erroneously claimed not to be in S1 ∪ S2 ).
+
+   2. Give an estimate of the probability that A[i] = 0, for any i ∈ [0, n − 1].
+
+Solution.
+Big Data Computing: Written test 21/06/2022                                              3
+
+
+  1. For every 0 ≤ i < n, set A[i] = A1 [i] OR A2 [i]. Let S = S1 ∪ S2 . For any element
+     y ∈ U , we claim y to be in S if and only if A[hj (y)] = 1, for 1 ≤ j ≤ k. Consider
+     an arbitrary element x ∈ S and suppose, without loss of generality, that x ∈ S1 ,
+     which implies that A1 [hj (x)] = 1, for 1 ≤ j ≤ k. From the above definition of A we
+     immediately conclude that A[hj (x)] = 1, for 1 ≤ j ≤ k, hence x will be correctly
+     claimed to be in S.
+
+  2. Let m = |S|. We have that A[i] = 0 if and only if for each x ∈ S and for each 1 ≤
+     j ≤ k, we have that hj (x) 6= i, which happens with probability (1 − 1/n)km ≃ e−km/n .
+
+                                                                                         
+

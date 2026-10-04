@@ -1,0 +1,631 @@
+[00:00:01] The rule is that it depends on the rule of distribution
+[00:00:05] of view using this particular model.
+[00:00:08] OK?
+[00:00:11] Would you like to see this thing is small?
+[00:00:18] So let's do that.
+[00:00:20] Are we on board with that?
+[00:00:22] Yes or no?
+[00:00:29] Now there are two.
+[00:00:31] We need to quantify what the small means mean.
+[00:00:39] And the other thing is this object
+[00:00:42] that we find by minimizing this cost
+[00:00:46] is something that depends on the particular sample
+[00:00:49] set that we have found.
+[00:00:51] This means that if I change your data set,
+[00:00:54] at least if I change z1 to 2zm,
+[00:00:56] another data set from the environment, the world,
+[00:01:00] this set changes.
+[00:01:03] If this set changes, this cost changes.
+[00:01:06] And its minimizer could change it.
+[00:01:08] Right?
+[00:01:09] So this minimizer depends on the particular data.
+[00:01:11] So it's a random object.
+[00:01:13] It just has the power data around it.
+[00:01:15] So this quantity can be sometimes small
+[00:01:19] and sometimes bigger if I change another set.
+[00:01:22] So I will not be able to guarantee
+[00:01:24] that this is always small or always bigger.
+[00:01:27] I will be able to make a statement in probability.
+[00:01:30] Isn't this small with high probability?
+[00:01:32] This is what I would like.
+[00:01:34] What does with high probability mean?
+[00:01:54] With high probability with respect to what?
+[00:01:58] I'm just repeating what I've just said.
+[00:02:02] Don't be worried to make mistakes now.
+[00:02:16] So every sort of mistake that you make now
+[00:02:19] is useful for everybody.
+[00:02:21] So it's an occasion to clarify things now.
+[00:02:24] All right?
+[00:02:25] So we are here to understand.
+[00:02:28] Any question is useful.
+[00:02:30] Is small an issue for that?
+[00:02:47] The probability should be high.
+[00:02:49] No.
+[00:02:50] There is to be small.
+[00:02:51] Fine.
+[00:02:52] But this quantity is not a deterministic quantity.
+[00:02:56] It's a random quantity because of the fact
+[00:03:01] because this is random.
+[00:03:03] And if I change the other sector,
+[00:03:06] I will get a different HS and, therefore, a different LT of HS.
+[00:03:11] So the probability is going to respect
+[00:03:13] to the probability of extracting
+[00:03:15] this particular data set from the environment.
+[00:03:18] So I'm going to say with high probability with respect
+[00:03:23] to the choice of the training set of a sequential.
+[00:03:32] So I will encode this statement in a second.
+[00:03:45] If you go back to the example
+[00:03:48] that we have seen on Wednesday,
+[00:03:51] we have seen that we can easily
+[00:03:53] construct a very toy example where we can make that.
+[00:04:03] We can solve this big disminimization problem,
+[00:04:06] find a certain HS of S that has zero empirical issue
+[00:04:12] that is worth doing a perfect job on the training set.
+[00:04:18] But it has a empirical issue which is 1 half in that case.
+[00:04:21] And 1 half in that case means completely useless
+[00:04:24] because it makes mistakes with probability 1 half.
+[00:04:30] And you have to choose between 0 and 1
+[00:04:32] and make a mistake with probability 1 half
+[00:04:34] and you just get an answer and run.
+[00:04:41] Right?
+[00:04:42] So useless.
+[00:04:44] So we need to make sure that this does not happen.
+[00:04:48] OK?
+[00:04:50] The work being done is equal to 0.
+[00:05:25] But as deep as something is equal to 0.
+[00:05:31] So we need to do something to make sure that this does not
+[00:05:45] happen.
+[00:05:46] So again, is the example clear?
+[00:05:48] Is it clear why this is larger?
+[00:05:51] Is it clear to everybody?
+[00:05:57] I see some faces that are happy with that
+[00:06:00] and some others that are not that much.
+[00:06:02] This is the result.
+[00:06:09] But we have to be clear.
+[00:06:12] You remember what Ld is?
+[00:06:14] Ld of the function s is equal to the expected values
+[00:06:18] with respect to the distribution d of the losses.
+[00:06:25] Right?
+[00:06:27] So this is a 0-1 loss.
+[00:06:31] So L is the
+[00:06:57] probability of getting 1.
+[00:07:04] What does this mean in a decision problem
+[00:07:07] i equal to 1?
+[00:07:08] It means I'm making a mistake in the decision.
+[00:07:14] It is equal to the probability with respect
+[00:07:16] to the distribution of making a wrong decision.
+[00:07:26] OK?
+[00:07:27] The probability of making a wrong decision
+[00:07:29] is 1 after.
+[00:07:30] So it doesn't mean we're not happy.
+[00:07:33] Right?
+[00:07:36] 1 half is larger because we're
+[00:07:38] talking about a decision problem with a 0-1 loss.
+[00:07:42] We put a different losses where 1 half would not
+[00:07:45] mean anything.
+[00:07:48] OK.
+[00:07:49] So the goal of this lecture is to go to,
+[00:07:52] well, first of all, give parenthesis.
+[00:07:55] You condition something which this does not happen.
+[00:07:59] And we go a bit farther and say, OK,
+[00:08:01] what should we ask on our training sector
+[00:08:05] to make sure that this thing happens,
+[00:08:08] that Ld is more and more enough
+[00:08:11] to quantify with large enough probability.
+[00:08:15] All right?
+[00:08:16] So this is the goal.
+[00:08:18] We start with a simple case, the simplest situation.
+[00:08:23] And then we try to, in some sense, relax assumptions
+[00:08:28] and consider more interesting scenarios.
+[00:08:31] But we start with the very simplest possible case,
+[00:08:34] that still, in its simplicity, has all the ingredients,
+[00:08:39] the important ingredients.
+[00:08:46] OK?
+[00:08:46] Something?
+[00:09:14] So let's work out.
+[00:09:16] So consider this case.
+[00:09:21] There are situations in which your empirical risk
+[00:09:25] at the empirical mean minus is 0.
+[00:09:28] So saying that this guy is smaller,
+[00:09:32] is it clear to say that this guy is close to that?
+[00:09:36] Which makes sense.
+[00:09:37] I mean, even if this is not 0, you solve the problem.
+[00:09:41] And my empirical risk has a certain value.
+[00:09:45] The empirical risk has to be an estimate of the true risk.
+[00:09:49] It's an empirical algorithm.
+[00:09:52] So can we guarantee that this guy is close to that?
+[00:09:55] We want to guarantee.
+[00:10:01] And we start another simplified assumption,
+[00:10:27] that the empirical risk at the minimizer
+[00:10:41] is exactly equal to 0, as it was in our example yesterday.
+[00:10:45] This quantity, the difference between the true risk
+[00:10:56] and the empirical mean minus.
+[00:10:58] And the empirical risk has a name in learning.
+[00:11:02] And this is called generalization gap.
+[00:11:16] And we should be meaning it's
+[00:11:20] a gap between the performance that you believe
+[00:11:23] that your model has on your training data,
+[00:11:27] because you can check on your training data,
+[00:11:30] and what will happen when you apply that
+[00:11:33] through the future.
+[00:11:35] It's a gap in performance.
+[00:11:37] So you don't want the gap to be large, right?
+[00:11:44] So now we want to find these two things.
+[00:11:55] Number one, we would like to add the change
+[00:12:14] at the mass to be smaller than a certain epsilon.
+[00:12:19] And two, we make a mark later,
+[00:12:29] but let me just go to the second.
+[00:12:33] I guess we denote that more small or equal to two parts.
+[00:12:38] And we want this to happen with epsilon b.
+[00:12:57] So now we have these two parameters,
+[00:12:59] epsilon, risk smaller.
+[00:13:04] It's a design parameter in some sense.
+[00:13:06] Your boss will come to you and say,
+[00:13:08] in the future, I would want to make mistakes
+[00:13:10] with at most this rate.
+[00:13:13] This must be the probability of error that they tolerate,
+[00:13:16] if it is a decision problem.
+[00:13:20] And you may also say, OK, I want
+[00:13:24] the probability with very high probability
+[00:13:26] with respect to what?
+[00:13:28] Let me put down here a subscript s.
+[00:13:35] That's the subscript s.
+[00:13:37] That's the distribution.
+[00:13:40] And that's explained similarly.
+[00:13:43] So this is the probability.
+[00:13:45] This is a random object because s is a random object.
+[00:13:49] S is the training set.
+[00:13:51] And what is the distribution of the training set?
+[00:13:54] Each data point in the training set at distribution d.
+[00:14:01] They are i, i, d.
+[00:14:03] So they are m data points from the same distribution.
+[00:14:08] If they are independent, what is the joint distribution?
+[00:14:15] The joint distribution of two independent random variables is?
+[00:14:18] Sum of the probabilities.
+[00:14:20] The product.
+[00:14:22] The product of the distribution.
+[00:14:25] So it's the first data point at distribution d.
+[00:14:29] The second point at distribution d.
+[00:14:31] The third point at distribution d.
+[00:14:33] The joint distribution is d times d times d.
+[00:14:37] For this reason, we use the symbol d power n.
+[00:14:40] So the 10 point, i, 8 become the same distribution.
+[00:14:43] We're spending a lot of time on this
+[00:14:50] because it's important that we understand
+[00:14:52] where randomness comes from, what is the uncertainty,
+[00:14:54] what are we taking from d with respect to alpha.
+[00:14:57] Because it's more important that we understand what we're doing
+[00:15:00] rather than understanding the single immediately,
+[00:15:03] the mechanics of the computations we do.
+[00:15:08] And that the computations come after.
+[00:15:10] Are we all worth it?
+[00:15:13] Questions?
+[00:15:14] Yes?
+[00:15:20] No?
+[00:15:21] Now I have a question for you.
+[00:15:36] I told you that these two, this parameter epsilon
+[00:15:39] and this parameter delta would be design parameters.
+[00:15:42] Will it be always true that I can choose that epsilon
+[00:15:48] arbitrary?
+[00:15:50] Of course, arbitrary, I would say,
+[00:15:53] arbitrary is small because I would say larger.
+[00:15:56] It's not very difficult.
+[00:16:08] It depends on the set.
+[00:16:10] It depends on it?
+[00:16:11] On the set, on the training set.
+[00:16:17] No.
+[00:16:18] It doesn't depend strictly on the training set.
+[00:16:21] But it depends on the distribution
+[00:16:24] and on the model class.
+[00:16:33] So, and this is the simplifying assumptions
+[00:16:37] that we made.
+[00:16:40] And then we shall relax the simplifying assumptions.
+[00:17:03] For real, this will be easy.
+[00:17:10] And this says that there exists an H here.
+[00:17:15] So there exists at least one function, one model
+[00:17:19] in my model class, such that the H, so before we continue,
+[00:17:40] let's try to see one example where this is true
+[00:17:45] and one example where this is not true.
+[00:17:47] Just to fix ideas.
+[00:17:50] And we can see this example.
+[00:17:55] We can see that the same simple integration
+[00:17:59] that we have on Wednesday.
+[00:18:04] Our data are generated according to this model.
+[00:18:25] And this is the same.
+[00:18:48] This specifies the way they are generated,
+[00:18:57] which means that this specifies the distribution D, right?
+[00:19:03] The axis are coming from a uniform.
+[00:19:08] This is the distribution over X.
+[00:19:10] And the label are the deterministic function
+[00:19:13] of the, so this conditional distribution
+[00:19:16] of Y given X is a delta function,
+[00:19:19] but it's an indicator function.
+[00:19:21] So this is, this thing specifies this object,
+[00:19:30] the distribution leader that generates D.
+[00:19:34] Then in order to verify whether this assumption is
+[00:19:38] verified or not, we need to specify a model class, an H.
+[00:19:42] So for instance, if I take example number one,
+[00:19:46] if I take the function, the class of all possible functions
+[00:19:49] from R2 to 0, 1.
+[00:19:52] The same that we did on Wednesday.
+[00:19:56] You remember that we had found,
+[00:19:59] Well, of course, you allow H to be all possible functions,
+[00:20:15] R2 to 0, 1.
+[00:20:26] But this particular function of the maps are XM to 1
+[00:20:30] if you're inside here, and 0 if you're outside this
+[00:20:34] as a function.
+[00:20:36] And if you take the expected value,
+[00:20:40] we call the function H A of X to be exactly the function.
+[00:20:50] It takes value 1 if X belongs to A,
+[00:20:53] and takes value 0 if X does not belong to A.
+[00:20:56] And I compute the expected value,
+[00:21:04] expected distribution of M D of H sub A.
+[00:21:09] We'll do again.
+[00:21:16] 0.
+[00:21:17] Let me do the math.
+[00:21:19] Is it to be assigned?
+[00:21:20] This is L D, because L D is my diagram,
+[00:21:29] variable, variable, mistake, and error.
+[00:21:31] So let me rewrite it.
+[00:21:34] This is L of H A comma G. And this
+[00:21:40] is equal to L D of H A.
+[00:21:44] So this is already the true risk.
+[00:21:46] This is the expectation, which is defined by this.
+[00:21:52] This is a Bernoulli random variable.
+[00:21:54] The expected value of Bernoulli is probably
+[00:21:56] because the random variable X bar equal to 1.
+[00:21:59] It's equal to the probability with respect to D
+[00:22:02] that this is equal to 1, which
+[00:22:09] is equal to the probability with respect to D
+[00:22:12] of H A of X is equal, is different from the corresponding
+[00:22:23] probability.
+[00:22:24] There's a probability of making a mistake.
+[00:22:28] But if the data takes data, each X
+[00:22:33] attaches to this decision.
+[00:22:36] It's exactly the same rule by which the Y enabled
+[00:22:40] when true under my mechanism.
+[00:22:43] But this never happens.
+[00:22:47] And the problem is never happens.
+[00:22:49] This problem is difficult.
+[00:22:50] It's a difficult circle.
+[00:23:05] Why don't we see that we have this?
+[00:23:08] So for those of you that have not
+[00:23:18] that have doubts, raise your hands, please.
+[00:23:23] What?
+[00:23:24] Noted?
+[00:23:25] Yeah, there are not in doubts.
+[00:23:27] No, there are in doubts.
+[00:23:32] So what is the issue?
+[00:23:33] Again, our question is to clarify for everybody.
+[00:23:38] So please be sure.
+[00:23:40] The question is, when the assumption
+[00:23:44] is true, that the true is true of H A.
+[00:23:50] Well, I'm proving it.
+[00:23:51] Yeah, because it starts from here.
+[00:23:54] Yeah, OK.
+[00:23:55] Because we are in a simple assumption.
+[00:24:00] So if X is a function that maps Y on F,
+[00:24:08] then it's D through H A.
+[00:24:13] So are you saying that this is obvious in some sense?
+[00:24:18] Yes.
+[00:24:19] Because the distribution of Y unionized
+[00:24:21] is exactly mapped on the function F.
+[00:24:26] Sure.
+[00:24:30] So the true function that labels the Y
+[00:24:33] is contained in my model class.
+[00:24:35] So my model class contains all possible functions.
+[00:24:37] So in particular, this function belongs to H A.
+[00:24:40] And therefore, I can find it.
+[00:24:42] So there is one.
+[00:24:44] But let's consider one case in which this is not true.
+[00:24:48] So let's take, now I consider this class of functions.
+[00:25:37] My class of functions now is parametrized by,
+[00:25:40] let me change this word.
+[00:25:42] It's another name.
+[00:25:43] Let's do it from doubt.
+[00:25:45] So my class of functions is parametrized by this vector
+[00:25:49] from doubt.
+[00:25:51] And it is a fine response.
+[00:25:53] It spins out Y.
+[00:25:55] Beta transpose X is greater than 0.
+[00:25:58] And 0, beta transpose X is smaller than 0.
+[00:26:04] So let's do the beta here.
+[00:26:08] Beta transpose X equal to 0 is a line in R2, right?
+[00:26:21] Do you agree?
+[00:26:24] Any line in R2 can be written as the beta transpose
+[00:26:29] X equal to 0.
+[00:26:33] And depending on your invasion of the vector beta,
+[00:26:36] it's saying that beta transpose X is positive here.
+[00:26:39] And beta transpose X is negative on the other side.
+[00:26:43] So now the class of possible functions
+[00:26:54] that I used to classify my points
+[00:26:57] is the set of all possible lines that go to the origin.
+[00:27:01] I can change the slope by changing beta.
+[00:27:04] But only those.
+[00:27:09] And then I ask you, does there exist a function defined
+[00:27:15] by such a beta in this class that achieves 0?
+[00:27:21] Listen.
+[00:27:25] In other words, a function in that class
+[00:27:28] will achieve the probability of error equal to 0.
+[00:27:31] You want to stay up with the different lines.
+[00:27:34] No, not possible.
+[00:27:35] Your function class is not rich enough.
+[00:27:38] And regardless of how you do this line,
+[00:27:40] you always make some errors.
+[00:27:41] You make some errors, some mistakes.
+[00:27:43] We proved no zero probability.
+[00:27:46] So this assumption is an assumption
+[00:27:49] of the model class that says it's rich enough
+[00:27:53] to be able to do a perfect job on your distribution,
+[00:27:57] not on your data, all right?
+[00:28:00] On the distribution.
+[00:28:04] So it's a very abstract and oftentimes unrealistic
+[00:28:10] assumption.
+[00:28:13] So we will relax in this assumption
+[00:28:15] because we don't like it.
+[00:28:17] And it's simple to start with.
+[00:28:21] It's just an assumption that says your model
+[00:28:23] class is rich enough to capture essentially
+[00:28:26] the essence of the problem.
+[00:28:28] And it's able to make the risk as more as possible.
+[00:28:32] So of course, now I go back to the question
+[00:28:39] that I gave the day after.
+[00:28:41] Can I choose an argument that is small,
+[00:28:43] epsilon, and still hope that this argument is enough?
+[00:28:48] Well, if this assumption is true,
+[00:28:50] you know that in your class, there
+[00:28:52] is at least one function that does a perfect job.
+[00:28:56] Then the question is, is the ability
+[00:28:58] for this minimizer principle getting that function or not?
+[00:29:04] But at least there is a possibility
+[00:29:06] to find one that does a perfect job.
+[00:29:08] And therefore, you can ask for action
+[00:29:10] to be small, as small as you like.
+[00:29:16] Because if the minimum was one-fourth,
+[00:29:20] there's no way you can ask for this to be like one-eighth.
+[00:29:24] There's no answer that does that job.
+[00:29:26] You cannot find it, regardless of the data you have.
+[00:29:32] So under the assumption, we can
+[00:29:37] take arbitrarily smaller epsilon and ask them for this one.
+[00:29:42] So this is what is called the formalization
+[00:29:56] of the PAC learning problem, in a very simple case.
+[00:30:01] And let me now write it down.
+[00:30:11] So again, as I stated a month on Wednesday,
+[00:30:15] PAC means probably, approximately, correct.
+[00:30:19] Approximately, because we allow for the risk
+[00:30:22] to be approximately zero.
+[00:30:27] This is related to this epsilon here.
+[00:30:31] It makes the thing approximately.
+[00:30:39] The problem is related to the statement in probability
+[00:30:52] that it is approximately with high probability problem.
+[00:30:57] And the fact that we are dealing with a simple case
+[00:31:00] is that we are dealing with a zero-one loss.
+[00:31:03] And we are going to need the assumption.
+[00:31:12] And that has to make a final solution
+[00:31:15] which allows us to get analysis.
+[00:31:18] So let me now summarize.
+[00:31:21] So definitions, from here, so that they
+[00:31:54] don't need to get impossible.
+[00:32:19] So we have to restate the assumption that we have here,
+[00:32:22] is that there exists an x such that y
+[00:32:27] is equal to f of x.
+[00:32:29] So these are the deterministic two-room labeling rule,
+[00:32:32] something that is not known to the learner.
+[00:32:39] There exists an h, if I move a class such
+[00:32:43] that the empirical is h.
+[00:32:46] So the true is that h is equal to zero.
+[00:32:48] And there is a relatively simple assumption over here.
+[00:32:51] And under this assumption, we say that the class h
+[00:33:12] is fact-learnable.
+[00:33:16] Let me write everything, and then I
+[00:33:33] will comment on that in detail.
+[00:33:35] There exists a function m, the theta,
+[00:33:39] that depends on the particular model class.
+[00:33:45] It's a function of epsilon and lambda.
+[00:33:48] The lambda is zero-one squared to the natural numbers.
+[00:33:55] Why zero-one squared?
+[00:33:56] Because both epsilon and lambda
+[00:33:59] are numbers that should be smaller,
+[00:34:01] and they say ideally, it means zero-one.
+[00:34:03] The lambda, for sure, is zero-one,
+[00:34:05] because it is associated with a probability.
+[00:34:08] So any probability larger than one doesn't make sense.
+[00:34:12] Epsilon, because it's small, and you
+[00:34:14] don't take any other interval, it doesn't really matter.
+[00:34:21] And there exists, if there exists an n,
+[00:34:24] and there exists a learning algorithm in s.
+[00:34:42] And again, a learning algorithm is
+[00:34:44] something that has to say that we
+[00:34:46] spring such that for all epsilon and lambda,
+[00:35:07] which is your boss comes to you,
+[00:35:10] and tells you performance that he wants.
+[00:35:13] For any given epsilon and lambda, you should leave.
+[00:35:26] So you don't want to make assumption
+[00:35:28] of how many data are generated.
+[00:35:31] These are the results in learning a pole distribution
+[00:35:34] independently.
+[00:35:35] So you just say, there is an underlying distribution,
+[00:35:38] but I don't know anything about it.
+[00:35:44] And for all that, of course, the two
+[00:35:47] are leaving function alpha.
+[00:35:48] You don't want to know, is it?
+[00:35:51] Then, and now we put the epsilon ingredients together.
+[00:35:58] Then this thing happens, but now we need a condition.
+[00:36:04] When does it happen?
+[00:36:06] For all n, for all number of data that is greater
+[00:36:11] than this number here.
+[00:36:12] We have to make sure we understand everything.
+[00:36:40] There's a lot of things that the vast majority
+[00:36:44] we already know.
+[00:36:45] But this will be implemented quite enough.
+[00:36:54] So the statement of vulnerability
+[00:36:56] regards a particular function class.
+[00:36:58] So you change the class, you
+[00:37:00] may need to change the statement.
+[00:37:04] This level of if there is a way to tell me
+[00:37:10] from the performance requirement that I have,
+[00:37:14] the approximation error, and the level of probability.
+[00:37:18] From this, I can attach a number, a natural number,
+[00:37:25] a positive integer, such that if the number of data
+[00:37:29] that I have is larger than this positive integer,
+[00:37:36] then I can guarantee that my algorithm, when
+[00:37:40] applied on future data, will be approximately correct,
+[00:37:44] and it is not broken.
+[00:37:46] Again, your boss comes and says,
+[00:37:52] I want action to be 0.01.
+[00:37:54] I want this to happen in probability at least 0.99,
+[00:37:58] that is that data against 0.001.
+[00:38:00] So you take this function, you plug in 0.001,
+[00:38:06] reach the number.
+[00:38:08] You say that this number is 15,000.
+[00:38:13] And OK, you have to know this value box.
+[00:38:15] You need to give me at least 15,000 data points
+[00:38:19] so that they can guarantee that this happens.
+[00:38:23] If you take 20,000, fine.
+[00:38:25] If you give me 5,000 data points,
+[00:38:30] you have to give up something.
+[00:38:32] You have to give up some performance.
+[00:38:34] You may have to give up some approximation level.
+[00:38:36] You may have to give up some probability of this
+[00:38:40] to happen, right?
+[00:38:43] So this is a function here.
+[00:38:46] It's called, does any of you know?
+[00:38:53] Have you heard how we call this already?
+[00:39:00] I've taken some of it.
+[00:39:04] It's called the sample complex of the model class H.
+[00:39:50] So it's a way to measure how complex
+[00:40:00] is the set of function, the set of hypotheses.
+[00:40:03] But not complex because it has two parameters,
+[00:40:06] three parameters, whatever.
+[00:40:08] It contains 1,000 functions.
+[00:40:11] No, it's something that attaches.
+[00:40:18] How many data, how many samples?
+[00:40:21] This is why it's called sample complexity.
+[00:40:24] What is the complexity in terms of the number of samples
+[00:40:27] you need to be able to learn
+[00:40:30] a function from that class by means of a certain algorithm?
+[00:40:36] This does not tell you anything of the algorithm
+[00:40:39] that you use.
+[00:40:41] AS could be anything.
+[00:40:43] It's just a bounder.
+[00:40:49] Then you have to come up with the algorithm
+[00:40:51] that does the job.
+[00:40:55] But if you have more samples than the sample complexity
+[00:40:58] tells you, then you can guarantee.
+[00:41:02] Of course, sometimes you wish to have a phrase,
+[00:41:15] meaning right here, the same thing.
+[00:41:20] So for example, we shall trace the distance.
+[00:41:23] So B is B. Then B of A has to be larger than epsilon.
+[00:41:29] It may want to be smaller than epsilon.
+[00:41:32] This is going to be complementary vector.
+[00:41:37] But we shall work on that.
+[00:41:44] I don't want to do that.
+[00:41:48] So let me just escape the design now.
+[00:41:51] And then we take a break.
+[00:41:53] So we have everything on the board.
+[00:41:57] Are you all with the definition of sample complexity?
+[00:42:03] So I can erase this part.
+[00:42:05] So now the theorem produces an extra assumption.
+[00:42:29] Let's assume that the function class H is finite.
+[00:42:42] What does finite mean?
+[00:42:43] It contains a finite number of elements, H1, H2, HK.
+[00:42:52] H is a symbol.
+[00:42:55] A symbol means cardinality of the class.
+[00:43:06] In the cardinality, the set is the number of elements
+[00:43:09] in the set.
+[00:43:10] So if we assume that the function class is finite,
+[00:43:17] I'm looking at lines in R2.
+[00:43:20] I don't look at all the lines in R2.
+[00:43:22] I just take eight possible lines.
+[00:43:24] So the final element is the orthogonal element
+[00:43:27] for eight lines.
+[00:43:31] The function class is at eight elements.
+[00:43:34] So if the function class is finite,
+[00:43:38] and we have, of course, the same function
+[00:43:40] that we did here in the initial.
+[00:43:42] So let's say there is two-dimensional function.
+[00:43:44] There is a video.
+[00:43:47] Then if n, the number of data in the training set
+[00:44:00] is greater or equal than 1 over epsilon times the logarithm
+[00:44:04] of the cardinality of the function class divided by
+[00:44:08] delta, then the probability of nd of As
+[00:44:16] when there exists an As is such that this way.
+[00:44:35] So again, you come to me.
+[00:44:38] You say, I want epsilon to be this number.
+[00:44:43] I want it to be this number.
+[00:44:46] And then we design the learning algorithm.
+[00:44:50] And we figure out that a certain model class
+[00:44:53] is OK for me.
+[00:44:59] This function class has a certain number of elements.
+[00:45:04] What I need at least this number of data points,
+[00:45:10] or at least if I have at least this number of data
+[00:45:13] points, I can guarantee that this happens.
+[00:45:16] Sometimes these bounds are very crude in the sense
+[00:45:19] that this number could be larger than even.
+[00:45:24] It's just sometimes they're very conservative.
+[00:45:29] So we don't be sharp here.
+[00:45:34] We're just having to give at least a necessary condition
+[00:45:38] for these two outcomes, sorry, sufficiently.
+[00:45:46] Just as a comment, of course, you
+[00:45:50] see that if you ask epsilon, the smaller epsilon,
+[00:45:53] so the more curious you ask, the larger angle.
+[00:45:58] The number of data grows the deepest proportionally
+[00:46:02] and then that will be a curious production.
+[00:46:06] However, we are a bit more biased with the growth
+[00:46:10] in terms of how many elements can the model class.
+[00:46:16] Which is the probability that you want to achieve.
+[00:46:21] It costs much less to be very sure about something
+[00:46:25] than to be very precise, very accurate, right?
+[00:46:31] Because I'm taking the log.
+[00:46:32] The log grows less than linear.
+[00:46:53] So in the second part, after the break up, we keep the 2.
+[00:46:57] But before doing so, let me just comment a bit.
+[00:47:00] So there are a number of very unrealistic assumptions.
+[00:47:03] The unrealistic assumptions are there
+[00:47:07] is a willingness probably to be more realistic.
+[00:47:11] How can you know that in your functional class,
+[00:47:14] if you design it, there will be a function
+[00:47:16] that does a perfect job.
+[00:47:19] When you don't know about the distribution.
+[00:47:21] You don't know how data are generated.
+[00:47:25] How can you know that your class of functions
+[00:47:28] is mixed enough?
+[00:47:30] And you cannot say, I made the functional class extremely
+[00:47:34] much because then you obtain, in this sense,
+[00:47:38] the more functions you add and the more data you use.
+[00:47:42] And you can certainly cannot use these bounds
+[00:47:46] if you have an infinite functional class.
+[00:47:48] If you have an infinite functional class,
+[00:47:52] then you see infinite here and bound to the bound
+[00:47:55] becomes useless.
+[00:47:56] So you need more than infinite data points.
+[00:48:00] So even a very simple regression problem
+[00:48:04] where the function that you're searching
+[00:48:06] are lines in R2 and there are infinitely many lines in R2.
+[00:48:10] Not even discrete, it's a continuous infinite.
+[00:48:15] So this does not even fall in this set up.
+[00:48:20] So we need a different way of measuring complexity.
+[00:48:25] Here we measure complexity of the model class,
+[00:48:27] just counting how many elements there are in the model class
+[00:48:30] and this enters here.
+[00:48:33] So the sample complexity of many data you need
+[00:48:37] depends on the complexity of the class,
+[00:48:39] and here complexity is the number of elements.
+[00:48:43] But if we go to continuous model classes, lines in R2,
+[00:48:47] parameterized by parameters, by two parameters,
+[00:48:51] then it's continuous and this doesn't work.
+[00:48:54] So we need a different way to quantify
+[00:48:56] the complexity of the space over these two sets.
+[00:49:00] So that's another complication.
+[00:49:02] That makes up the right part.
+[00:49:05] However, still in this very simple example,
+[00:49:08] we see the trade-off right here.
+[00:49:12] That's the main reason.
+[00:49:13] So I could say this is not a very practical result
+[00:49:18] in terms of it's hard to apply for these reasons
+[00:49:21] that I just mentioned and others
+[00:49:23] that are less critical perhaps.
+[00:49:26] But it's a pedagogical instance.
+[00:49:29] And then we can complicate it further by trying,
+[00:49:34] and we cannot do it.
+[00:49:50] Great.

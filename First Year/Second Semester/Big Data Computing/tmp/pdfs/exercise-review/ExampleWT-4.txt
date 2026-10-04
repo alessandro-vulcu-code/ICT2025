@@ -1,0 +1,80 @@
+Big Data Computing: Written exam: example 4                                              1
+
+
+Your Name and ID:
+
+Your class:  A (Prof. A. Pietracaprina)              B (Prof. F. Silvestri)
+
+
+REMINDERS:
+
+  • Write your Name and ID on every sheet that you return
+
+  • Excessively long answers will be penalized
+
+  • TOTAL TIME: 2 hours
+
+
+
+                                      PART 1
+
+
+  1. [3 points] Consider a MapReduce algorithm A that uses local space ML and aggregate
+     space MA . In order to run A successfully on a cluster, what characteristics must the
+     cluster have?
+
+  2. [3 points] Consider the execution of MR-Farthest-First Traversal to compute a solu-
+     tion to k-center for a set P of N points. Briefly describe Round 1 and Round 2, and
+     analyze their local space requirements as a function of the number ` of partitions.
+
+  3. [4 points] Consider a set P of n points from RD stored in a hash table T based on a
+     hash function h randomly selected from a (p1 , p2 , c, r)-locality sensitive family H.
+
+     (a) Explain how the hash table T can be used for answering a (c, r)-Approximate
+         Near Neighbor Search query.
+     (b) Show that the query requires O (Dnp2 ) time in expectation.
+
+  4. [3 points] Answer the following questions regarding the streaming framework.
+
+     (a) What are the performance metrics used to evaluate a streaming algorithm?
+     (b) As seen in Homework 3, the Spark Stream provides the items in batches. Briefly
+         explain how each batch is represented and how a standard streaming algorithm
+         (which processes one item at the time) can be implemented using Spark Stream.
+Big Data Computing: Written exam: example 4                                                           2
+
+
+
+
+                                           PART 2
+
+
+  1. [7 points] Let P be a set of N points in a metric space partitioned into k clusters
+     C1 , C2 , . . . , Ck , with respective centers c1 , c2 , . . . , ck . Each point x ∈ P is initially
+     represented by the key-value pair (IDx , (x, ix )), where IDx is a distinct key in [0, N −1],
+     and ix is the index of the cluster of x. For a cluster Ci , its furthest center is the center
+     c ∈ {c1 , c2 , . . . , ck } that maximizes the average distance
+                                              1 X
+                                                       d(x, c).
+                                             |Ci | x∈C
+                                                      i
+
+
+      (a) Design an efficient 2-round MapReduce algorithm that given P computes the k
+          pairs (i, c), where 1 ≤ i ≤ k and c is the furthest center for Ci . Assume that k
+          is a constant and that the centers c1 , c2 , . . . , ck are global variables.
+      (b) Analyze the local and aggregate space of your algorithm. (For full score, local
+          space must be o(N ) and aggregate space O (N ).)
+
+  2. [6 points] Let Σ be a stream of colored items (ui , γi ), with 1 ≤ i ≤ n, where ui is an
+     item from a universe U , and γi is its color (red or blue). We call fu,red the frequency
+     of the pair (u, red) in Σ, and fu,blue the frequency of the pair (u, blue) in Σ. Also, for
+     every u ∈ U define its weighted frequency fu0 as
+
+                                                  fu,red fu,blue
+                                          fu0 =         +        .
+                                                    2      3
+      (a) Describe how to obtain one d × w array C of counters which can be employed
+          to provide, for any u ∈ U , an unbiased estimate f˜0 u of its weighted frequency fu0 .
+      (b) Consider an item u ∈ U and suppose that in row j of C, no other item uses the
+          same cell as u. Does this row provide the exact fu0 ? Motivate your answer.
+

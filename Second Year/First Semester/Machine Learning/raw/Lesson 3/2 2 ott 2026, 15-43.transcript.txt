@@ -1,0 +1,184 @@
+[00:00:00] peaks and hypothesis in H.
+[00:00:06] If A sub S, A S, peaks and hypothesis in that class,
+[00:00:12] we are very, very large.
+[00:00:20] So what we would like to do is that the probability
+[00:00:23] that the algorithms peak and hypothesis in that,
+[00:00:34] what we call is a function of our data set.
+[00:00:45] There will be data set for which we apply the algorithm
+[00:00:48] and we'll give an hypothesis in that class.
+[00:00:51] There will be other data sets, data points
+[00:00:54] that you apply the algorithm and we'll not
+[00:00:56] give you an answer in that class.
+[00:00:59] So we call the data points as the possible trade
+[00:01:04] points that give an answer that when you apply the algorithm,
+[00:01:08] we give an answer in that class, misleading examples.
+[00:01:12] So there are examples that will lead you to choose
+[00:01:15] a function in that class.
+[00:01:53] It's equal to the training set, the set of possible data sets
+[00:02:03] such that there exists an H in Hp for which the training
+[00:02:13] table will give you the H is equal to 0.
+[00:02:27] Let's try to understand.
+[00:02:30] If I give you a data set, I give you a certain answer,
+[00:02:34] that falls in this class, what will be the problem?
+[00:02:38] For this particular data set that I gave you,
+[00:02:46] there is a function here for which the risk is equal to 0.
+[00:02:54] First of all, can the risk be smaller than 0?
+[00:02:57] No, because it's the algorithm of non-negative functions.
+[00:03:01] So 0 is the means that is the smallest
+[00:03:03] that you could possibly achieve.
+[00:03:06] Now, if you apply the empirical principle,
+[00:03:12] you will search for a function that minimizes the risk.
+[00:03:17] And you could possibly choose this one, sorry,
+[00:03:23] choose this function of Hp.
+[00:03:27] Of course, you can say, well, I
+[00:03:29] don't know because you might have two functions, H, that
+[00:03:32] makes the risk equal to 0.
+[00:03:34] One H that is in this Hp and another H that is not in Hp.
+[00:03:41] Let's just be conservative and say,
+[00:03:43] if this is what happens, the algorithm chooses the worst.
+[00:03:47] And then we make sure that it's not
+[00:03:49] going to happen, or at least we
+[00:03:51] should know the probability of the result.
+[00:03:54] So do you agree that this set is least meaningful?
+[00:03:57] There are functions that are bad
+[00:04:00] that make the risk under this data set exactly equal to 0.
+[00:04:06] So the minimum possible achievable.
+[00:04:18] So now take as algorithm, you minimize it.
+[00:04:35] So the theorem says that there exists an algorithm,
+[00:04:40] such that, and we choose a particular one,
+[00:04:43] the empirically minimized.
+[00:04:44] So if we find one algorithm that does the job,
+[00:04:46] we're going to think that it is at least one algorithm.
+[00:04:50] So we use this one.
+[00:04:53] And now we try to compute the probability
+[00:04:58] that any applied Hp sub s is greater than Hp.
+[00:05:09] So now we shall give a sequence of inequalities.
+[00:05:13] It's more or equal than something.
+[00:05:15] And then we want to, at the end,
+[00:05:19] give conditions under which the upper bound is more enough
+[00:05:21] so that we can get an equal to 1.
+[00:05:29] So this is equal.
+[00:05:30] I'm just rewriting these statements in different words,
+[00:05:34] in different words.
+[00:05:41] So let me go back to this formula.
+[00:05:46] One is, this is the probability with respect to what?
+[00:05:50] The probability has been discussed
+[00:05:51] in the previous presented different hours
+[00:05:54] with respect to the possible data set
+[00:05:57] that are distributed according to the end, right?
+[00:06:00] So that's the randomness that we are accounting for.
+[00:06:04] So this is, in other words, is the probability of data sets.
+[00:06:08] So it is the probability of the data set S such
+[00:06:14] that the ND of Hs is greater than Hp.
+[00:06:23] I've just rewritten the same identical thing.
+[00:06:26] So this is the same.
+[00:06:27] It's the probability with respect to data set.
+[00:06:36] Let's take, we call this set here,
+[00:06:54] let me call it S-band, with all possible training sets
+[00:07:02] that lead to a hypothesis that is better.
+[00:07:06] This is the first one, the set of all possible training
+[00:07:14] data that leads to this condition is contained in that.
+[00:07:38] And before you can actually make the statement,
+[00:07:42] I need to make a remark that I also taught you.
+[00:08:31] Remember, we're pointing out that there is a structure
+[00:08:33] that is such that we won't be close to any of this.
+[00:08:36] And in equation, there exists a function
+[00:08:40] that tells us a perfect job, true is equal to 0.
+[00:08:46] In other words, the function class
+[00:08:49] is rich enough such that you make mistakes
+[00:08:53] with probability 0.
+[00:08:56] OK?
+[00:08:59] Well, if you make mistakes with probability 0,
+[00:09:04] for any possible data set that I can give you,
+[00:09:06] if you choose that function, that function
+[00:09:10] will make zero mistakes, which
+[00:09:13] means that there is at least one function in your model
+[00:09:16] class set that achieves exactly 0 average
+[00:09:21] of the training set.
+[00:09:23] Do you agree?
+[00:09:25] With probability 1.
+[00:09:30] Since there is one function in the model class that
+[00:09:32] achieves 0 average, when you minimize the empirical list,
+[00:09:35] you will find one that has 0 error.
+[00:09:38] Because if you had found one that does not have 0 error,
+[00:09:40] you would be able to find another one which
+[00:09:42] has 0 error.
+[00:09:46] We'll see what we can do.
+[00:09:50] OK.
+[00:09:52] So now we are ready to be convinced that this is true.
+[00:09:58] Because for sure, you know that the minimizer
+[00:10:02] of the empirical list achieves this condition.
+[00:10:16] So what you have found must give 0 error.
+[00:10:24] What is this value?
+[00:10:33] This is the set of all possible functions that are in HD,
+[00:10:39] that is the given high-risk.
+[00:10:44] And this condition does mean that the H sub H sub is in HD.
+[00:10:49] For which, sir?
+[00:10:56] This is true.
+[00:11:00] So as we said earlier, it could happen,
+[00:11:02] the opposite, that you have some data that
+[00:11:06] has two minimizers, one inside HD, one outside HD.
+[00:11:13] And you could pick the other one that gave you a lucky one.
+[00:11:17] So you don't get high risk.
+[00:11:21] So the data set for this condition
+[00:11:23] is a subset of the bigger set over there.
+[00:11:26] What does it mean?
+[00:11:32] The probability of a smaller set
+[00:11:35] is more equal to the probability of a bigger set.
+[00:11:50] We go through this.
+[00:11:52] Because this makes our life a bit easier.
+[00:12:08] L1 is given here.
+[00:12:21] The inequalities goes here.
+[00:12:24] Let's just rewrite it.
+[00:12:26] The probability, what is L1?
+[00:12:30] It is the set of all possible training centers
+[00:12:33] such that they exist in HD, such that they
+[00:12:39] become HLSG.
+[00:12:51] So how can we rewrite this set as the union of something?
+[00:13:00] All possible other sets for which there exists one H.
+[00:13:04] So I can take all the functions in HD, fix one,
+[00:13:11] and look at all the data points that
+[00:13:14] give this condition.
+[00:13:16] Here is some data points.
+[00:13:20] Then you take H2, the second set,
+[00:13:22] the second function in this class,
+[00:13:24] and you look at the data that
+[00:13:25] leads you to this condition.
+[00:13:27] And you add them.
+[00:13:28] And you keep on doing the same.
+[00:13:31] So you do the union of all the data set
+[00:13:33] for each possible H in this set.
+[00:13:35] And you get all possible S for which there
+[00:13:38] exists at least one H that has this condition.
+[00:13:42] So I rewrite this set.
+[00:13:47] This is the union over H in HD of the data set S
+[00:13:55] such that Ls of H is equal to H.
+[00:14:01] So I'm doing the opposite.
+[00:14:02] I fix the function H in HD.
+[00:14:09] And then I take only the training set
+[00:14:12] that give this condition for this particular H that
+[00:14:16] is the probability of the union of sets.
+[00:14:29] How can I bound the probability in terms
+[00:14:34] of the probability of the sets?
+[00:14:36] The probability of the union, again area,
+[00:14:59] the area of this plus the area of that
+[00:15:04] minus the area of the intersection
+[00:15:09] because you can't apply straight.
+[00:15:11] So this is certainly more or equal
+[00:15:13] than the probability of A plus the probability of B.
+[00:15:18] The probability of the union of sets
+[00:15:23] is always more or equal than the probability
+[00:15:25] of the sum of the probabilities of A.
+[00:15:29] Or if you want to frame it in terms of area,
+[00:15:31] the area of the union is more or equal
+[00:15:33] than the sum of the area.
+[00:15:34] All right?
+[00:15:37] So this is the probability of the union
+[00:15:39] of the sets.
+[00:15:40] And I can bound it.
+[00:16:13] H is in HD.
+[00:16:14] Now we're doing B.
+[00:16:15] And the data set is a set of the greater
+[00:16:18] H is equal to H.
+[00:16:20] Now we have to compute for an even H
+[00:16:24] the probability of the set.

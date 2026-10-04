@@ -1,0 +1,377 @@
+Big Data Computing: Exercises on MapReduce                                                    1
+
+
+
+                         Exercises on MapReduce
+
+Exercise 1 (Similar to Exercise 2.3.1.(b) of [LRU14]) Let S be a set of N integers repre-
+sented by pairs (i, xi ), with 0 ≤ i < N , where i is the key of the pair and xi is an arbitrary
+integer.
+  1. Design a 2-round
+                √  MR algorithm to compute the arithmetic mean of the integers in
+     S, using O    N local space and O (N ) aggregate space.
+
+  2. Show how to modify the algorithm of the previous point to reduce the local space bound
+            1/4
+     to O N      , at the expense of an increased number of rounds.
+                                                  √
+  3. Can you attain ML = O (M ), for any M < N ?
+
+Solution.
+  1. The input-output specification of the problem is the following one:
+          Input: S = {(i, xi ) : 0 ≤ i < N }.
+                               P −1
+          Output: (0, (1/N ) N    i=0 xi ).
+
+      Observe that, in practice, in the output pair, key 0 would be omitted, unless it
+      is needed for subsequent uses. While the trivial 1-round algorithm uses Θ (N ) local
+      space, the space requirements can be substantially lowered using the following simple
+      2-round strategy. We assume that the value N is a global variable, knwon to all
+      map/reduce functions.
+      Round 1
+                                                                                √
+          Map phase: map each pair (i, xi ) into the intermediate pair (i mod N , xi ).
+                                         √
+          Reduce phase: for each j ∈ [0, N ), let Lj be the list of values
+                                                                      P     from the inter-
+           mediate pairs (j, x), and map pair (j, Lj ) into (0, sumj = x∈Lj x).
+      Round 2
+          Map phase: empty.
+          Reduce phase:
+                  √      let L0 be the list of values
+                                                 P sumj produced by Round 1, with
+           0 ≤ j < N , and return pair (0, (1/N ) sumj ∈L0 sumj ).
+      The map phase of Round 1requires  constant local space, while the reduce phases of
+                                  √                                        √
+      Rounds 1 and 2 require Θ     N local space, since each reducer adds N integers.
+                     √ 
+      Hence, ML = Θ       N . As for the aggregate space, we have MA = Θ (N ), since in
+      each round, O (N ) input, output and intermediate pairs of constant size are stored.
+      O (N ).
+Big Data Computing: Exercises on MapReduce                                                   2
+
+
+  2. The input-output specification is as before. The idea is to first to compute partial
+     sums relative to groups of N 1/4 integers, and then to repeatedly aggregate the partial
+     sums, in groups of size N 1/4 . The pseudocode is given below. (We assume, for
+     simplicity, that all quantities are integers.)
+     Round 1.
+
+        Map phase: map each pair (i, xi ) into the intermediate pair (i mod N 3/4 , xi ).
+        Reduce phase: for each j ∈ [0, N 3/4 ), let Lj be thePlist of values from the
+         intermediate pairs (j, x), and map pair (j, Lj ) into (j, x∈Lj x).
+
+     Observation: At this point, there are N 3/4 partial sums to be further added, which
+     are represented by pairs with distinct integer keys in [0, N 3/4 ).
+     Round 2.
+
+        Map phase: map each pair (i, s) into the intermediate pair (i mod N 1/2 , s).
+        Reduce phase: for each j ∈ [0, N 1/2 ), let Lj be thePlist of values from the
+         intermediate pairs (j, s), and map pair (j, Lj ) into (j, s∈Lj s).
+
+     Observation: At this point, there are N 1/2 partial sums to be further added, which
+     are represented by pairs with distinct integer keys in [0, N 1/2 ).
+     Round 3.
+
+        Map phase: map each pair (i, s) into the intermediate pair (i mod N 1/4 , s).
+        Reduce phase: for each j ∈ [0, N 1/4 ), let Lj be thePlist of values from the
+         intermediate pairs (j, s), and map pair (j, Lj ) into (0, s∈Lj s).
+
+     Observation: At this point, only N 1/4 partial sums are left be further added, which
+     are represented by pairs with key 0.
+     Round 4.
+
+        Map phase: empty.
+        Reduce phase: let L0 be the
+                                   P list of values s of the pairs produced by Round 3,
+         and return pair (0, (1/N ) s∈L0 s).
+
+     The map phases of Rounds 1, 2 and 3 requires constant local space, while the reduce
+     phases of all rounds require Θ N 1/4 local space, since each reducer adds N 1/4 in-
+     tegers. Hence, ML = Θ N 1/4 . As for the aggregate space, we have MA = Θ (N ),
+     since the number of input, output and intermediate pairs in each round is O (N ).
+
+  3. The above
+          √ algorithm can be easily generalized to satisfy ML = O (M ), for any given
+     M < N . To this purpose, we first compute the partial sums relative to groups of
+     M integers, and then we repeatedly aggregate the partial sums, again in groups of
+Big Data Computing: Exercises on MapReduce                                                    3
+
+
+      size M . Thus, Round 1 will transform the N input integers into N/M partial sums,
+      and each Round i, with i > 1, will transform N/M i−1 partial sums into N/M i partial
+      sums. At the end of Round i, with i = logM (N/M ) = (log2 N/ log2 M ) − 1, only M
+      partial sums are left, and one extra round is sufficient to compute the final mean. So
+      the number of rounds is log2 N/ log2 M .
+
+                                                                                              2
+
+Exercise 2 (Similar to Exercise 2.3.1.(d) of [LRU14]) Let S be a set of N integers repre-
+sented by pairs (i, xi ), with 0 ≤ i < N , where i is the key of the pair and xi is an arbitrary
+integer. We want to design an efficient MR algorithm to compute the number D of distinct
+integers in S.
+
+  1. Design a simple 2-round MR algorithm to compute D and analyze its local and ag-
+     gregate space requirements. Under what circumstances is the local space proportional
+     to N , thus not meeting the design goals of MR algorithms?
+                                                                             √ 
+  2. Design a better MR algorithm to compute D in O (1) rounds, using O         N local
+     space and O (N ) aggregate space.
+
+Solution.
+
+  1. The input-output specification of the problem is the following one:
+
+          Input: S = {(i, xi ) : 0 ≤ i < N }.
+          Output: (0, D), where D is the number of distinct integers in S.
+
+      We present a straightforward 2-round algorithm and a more space-efficient 4-round
+      algorithm. The 2-round algorithm does a simple removal of duplicates as follows:
+      Round 1.
+
+          Map phase: map each pair (i, xi ) into the intermediate pair (xi , i), that is, xi
+           becomes the key.
+          Reduce phase: for each integer x, let Lx be the list of indices from the interme-
+           diate pairs (xi = x, i), and map pair (x, Lx ) into (0, x).
+
+      Observation: At this point all duplicates have been removed.
+      Round 2.
+
+          Map phase: empty.
+          Reduce phase: Let L0 be the list of integers from all pairs (0, x) produced by
+           Round 1, and return (0, D = |L|).
+Big Data Computing: Exercises on MapReduce                                                   4
+
+
+    The aggregate space of the algorithm is MA = O (N ), since in each round O (N )
+    input, output and intermediate constant-size pairs are processed. To analyze the
+    local space, we define N1 as the maximum number of occurrences of the same integer
+    and recall that D denotes the number of distinct integers in the input set S. The map
+    phase of Round 1 requires O (1) local space, while the reduce phases of Rounds 1 and
+    2 require Θ (N1 ) and Θ (D) local space, respectively. Hence,
+                                                           √       ML = Θ (max{N1 , D}).
+    Note that since N1 · D ≥ N , we have max{N1 , D} ≥ N , however, both N1 and D
+    can grow as large as N , asymptotically, hence ML can be proportional to N in the
+    worst case.
+
+  2. The following alternative strategy reduces the local space to the desired bound. (The
+     input-output specification remains the same.)
+                                                √ The idea is first to remove all dupli-
+     cates working on subsets of size at most N each (Rounds 1 and 2), and then to
+     count
+     √     the number of surviving, and at this point distinct, integers, counting at most
+       N of them at once (Rounds 3 and 4)
+    Round 1.
+                                                                                  √
+       Map phase: map each pair (i, xi ) into the intermediate pair (i mod N , xi ).
+                                               √
+       Reduce phase: for each key j ∈ [0, N ), let Lj be the list of values from the
+         intermediate pairs (j, x), and map pair (j, Lj ) into the set of pairs (j, x), one for
+         every distinct integer x ∈ Lj .
+                                                                            √
+    Observation: after Round √   1, for every integer x there are at most N pairs (j, x),
+    one for each value of j ∈ [0, N ).
+    Round 2.
+
+        Map phase: map each pair (j, x) into the intermediate pair (x, j).
+        Reduce phase: for each x, let Lx be the list of indices j from the intermediate
+         pairs (x, j), and map (x, Lx ) into (x, j), where j is an index in Lx arbitrarily
+         selected.
+
+    Observation: √  after Round 2, for every√
+                                            integer x only one pair survives, and for each
+    value of j ∈ [0, N ) there are at most N pairs with value j.
+    Round 3.
+
+        Map phase: map each pair (x, j) into the intermediate pair (j, x).
+                                         √
+        Reduce phase: for each j ∈ [0, N ), let Lj be the list of values from the inter-
+         mediate pairs (j, x), and map (j, Lj ) into (0, cj = |Lj |). Note that cj is a partial
+         count of the distinct integers.
+
+    Round 4.
+
+        Map phase: empty.
+Big Data Computing: Exercises on MapReduce                                                   5
+
+
+         Reduce phase: Let L0 = P
+                                 c0 , c1 , . . . be the list of values of the pairs produced by
+          Round 3, and return (0, cj ∈L0 cj ) as final output.
+
+     It is easy to see that the above 4-round algorithm requires aggregate space MA =
+     Θ (N ). As for the local space, the Map phase of each round
+                                                              √ requires
+                                                                           constant local
+     space, while the Reduce phases of all rounds require O      N local space because
+                                    √
+     of the initial subdivision into N partitions and of the fact that,
+                                                                  √   after Round 1, at
+           √
+     most N copies of each integer survive. Therefore, ML = O        N .
+     The picture in Figure 1, describes the execution of the algorithm on a set S of N = 16
+     integers.
+
+
+
+
+           Figure 1: Execution of the algorithm on a set S of N = 16 integers
+
+
+                                                                                             2
+
+Exercise 3 Design a 2-round MR algorithm for the word count problem, using random
+partitioning, and analyze its local and aggregate space requirements.
+
+Solution. The algorithm takes inspiration from the class count algorithm with random
+partitioning presented in class. Below is the pseudocode which uses ` random partitions.
+Round 1.
+
+    Map phase: map each document Di into the set of pairs (x, (w, ci (w)), one for every
+     word w ∈ Di , where ci (w) is the number of occurrences of w in Di , and x is a random
+     integer in [0, `), chosen with uniform probability and independently for every word.
+Big Data Computing: Exercises on MapReduce                                                  6
+
+
+    Reduce phase: For each key x ∈ [0, `), let Lx be the list of values (i.e., word-count
+     pairs) from the intermediate pairs with key x. For each word w, occurring in Lx return
+     the pair (w, c(x, w)), where c(x, w) is the sum of the ci (w)’s from pairs (w, ci (w)) in
+     Lx .
+Round 2.
+    Map phase: empty
+
+    Reduce phase: for each word w, let Lw be the list of P
+                                                          values c(x, w) from the pairs
+     produced by Round 1, and return the pair (w, c(w) = c(x,w)∈Lw c(x, w)). Note that
+     |Lw | ≤ `.
+The analysis is similar to the one presented
+                                     √          in class for the class count algorithm with
+random partitioning. Let us fix ` = N , where N is the total number of word occurrences
+in the various documents (i.e., the aggregate size of all documents). Let also Nmax denote
+the maximum number of word occurrences in a document. Let mx be the number of
+intermediate pairs with key x produced by the map phase of Round 1 (i.e., mx = |Lx |),
+and let m = maxx mx . Note that the total number of intermediate pairs generated by
+the map phase is ≤ N . It is easy to see that the above 2-round algorithm requires local
+                               √
+space ML = O Nmax + m + N and aggregate space MA = O (N ). We can prove that
+        √ 
+m=O         N with probability ≥ 1 − 1/N 5 using exactly the same proof that was used
+for the theorem in the analysis of the class count algorithm with  random partitioning (the
+                                                            √ 
+details are left as an exercise). Hence, ML = O Nmax + N with high probability. 2
+
+Exercise 4 Design an O (1)-round MR algorithm for computing a matrix-vector
+                                                                       √    product
+W = A · V , where A is an m × n matrix, V is an n-vector, and m ≤ n. Your algorithm
+must use o(n) local space and linear, that is, O (mn) aggregate space.
+How would your solution change if m were larger?
+
+Solution. The input-output specification of the algorithm is as follows. We assume that
+A is represented through the mn pairs ((i, j), A[i, j]), with 0 ≤ i < m and 0 ≤ j < n,
+where (i, j) is the key, and that V is represented through the n pairs ((−1, j), V [j]), with
+0 ≤ j < n, where (−1, j) is the key. In this fashion we use the same representation for
+entries of A and V , and, in particular, we use keys from the same domain for both. As for
+W , we assume that in output it will be represented by the pairs (i, W [i]), with 0 ≤ i < m.
+    Note that W [i] is the inner product of a row of A and V , which are both vectors of size
+n. A straightforward 1-round approach would be to make m copies of V in the map phase,
+and then, in the reduce phase, to compute W [i], separately for i ∈ [0, m), by gathering
+row i of A and copy i of V , and computing their inner product. However, this approach
+requires√Θ (n) local space. In
+                             √ order to get o(n) local space, we can break V and each row of
+A into n segments of size n each. In the first round, we compute separately the product   √
+of each segment of each row i of A and the corresponding segment of V , which yields n
+Big Data Computing: Exercises on MapReduce                                                             7
+
+                                                                        √
+contributions to every W [i]. In the second round we just add up these n contributions,
+separately for every W [i]. The following algorithm implements this idea.
+Round 1.
+    Map phase:√ map each pair ((i, j), A[i, j]), with i ≥ 0, into the intermediate pair
+     ((i, s = bj/ nc), (i, j, A[i,
+                              √ j])), and each pair ((−1, j), V [j]) into the set of interme-
+     diate pairs {(i, s = bj/ nc), (−1, j, V [j])) : 0 ≤ i < m}.
+     Notation: we let A(i,s) denote segment s of row A(i) , and let V (i,s) denote segment            √
+     s of the i-th copy of V . Observe that both A(i,s) and V (i,s) contain (at most) n
+     entries.
+                                                                                 √
+    Reduce phase: for each key (i, s), with 0 ≤ i < m and 0 ≤ s < n, let Li,s be the
+     list of values from the intermediate pairs with key (i, s) (i.e., Li,s contains all entries
+     of A(i,s) and V (i,s) ), and map ((i, s), Li,s ) into the pair (i, Ws [i] = A(i,s) ◦ V (i,s) ). (The
+     operator ”◦” denotes the inner product.)
+Round 2.
+    Map phase: empty
+
+    Reduce phase: for each key i, let Li be the list of
+                                                       √ all values Ws [i] from the pairs
+     (i, Ws [i]) produced
+                 P         by  Round 1, with 0 ≤ s  <    n, and return the output pair
+     (i, W [i] = Ws [i]∈Li Ws [i]).
+For what concerns the local space, the map phase of  √Round 1 works on a single key value
+pair and transforms such a pair into 1 or m ≤ n intermediate pairs, depending√on
+whether it comes from A or V . The reduce phases √ of both rounds process sets of O ( n)
+entries each. Thus, we conclude that ML ∈ O ( n). As for the aggregate space, A is not
+replicated, while the m replicas of V occupy overall O (mn) space, that is, the same space
+as A. Thus, MA ∈ O (mn), that is linear in the input size.
+    If m were larger, the replication of each entry of V into m copies, which is performed
+in Round 1 of the above algorithm,
+                                 √ would now require several√ rounds, where in each round
+every current copy is replicated n times. For example, if n < m ≤ n, two rounds would
+suffice. Once the entry of V have been replicated, the rest of the algorithm remains the
+same. The details are left as an exercise.                                               2
+
+Exercise 5 Let P be a set of N temperatures measured by several sensors. Each element
+of P is a pair (i, (si , tempi )), where i ∈ [0, N − 1] is a distinct integer key, si is a sensor,
+and tempi is a temperature. No assumptions are made on the number of pairs in P from
+the same sensor.
+  1. Let K > 0 be an integer constant. Design a 2-round MapReduce algorithm that, given
+     P , returns a subset T of values (si , tempi ) from pairs in P , selected as follows. For
+     every sensor s, if in P there are ≤ K pairs (i, (si , tempi )) with si = s, then T must
+     contain the values of all these pairs, otherwise T must contain the values of exactly
+     K of them, arbitrarily selected.
+Big Data Computing: Exercises on MapReduce                                                 8
+
+
+  2. Analyze the local and aggregate space required by your algorithm. For full score, your
+     algorithm must require o(N ) local space and linear aggregate space.
+
+  3. How does the local and aggregate space of your algorithm change if K = log2 N ?
+
+Solution.
+
+  1. The 2-round MapReduce algorithm is the following.
+     Round 1.
+
+        √
+         Map phase: map each pair (i, (si , tempi )), into the intermediate pair (i mod
+           N , (si , tempi )).
+                                                     √
+        Reduce phase: for each key 0 ≤ j < N , let Lj be the list of values (i.e.,
+         pairs (si , tempi )), of intermediate pairs with key j. Return a subset L0j ⊂ Lj
+         selected as follows. For every sensor s occurring in some pair of Lj , L0j contains
+         all (si , tempi ) in Lj with si = s, if they are less the K, otherwise an arbitrary
+         selection of K of them. Note that the output of the Reduce phase are pairs
+         (s, temp), where s is the key.
+
+     Round 2.
+
+        Map phase: empty.
+         Reduce phase: for each sensor s, let Ls be the list of values (i.e., temperatures)
+          of the output pairs of Round 1 with key s. From (s, Ls ) return a set of pairs
+          (s, temp) with all distinct values temp occurring in Ls , if these are less than K,
+          otherwise an arbitrary selection of K of them.
+                                      √
+  2. In Round 1, there are at most N input pairs mapped to the same       √ key j, hence to
+     the same reducer, while in the reduce phase of Round 2 at most K  N pairs      gathered
+                                                                              √ 
+     for each sensor s. Therefore, the required local space is ML = Θ K N , which is
+       √ 
+     Θ     N , since K is constant. Also, throughout the algorithm data are only filtered
+     and never replicated. Therefore, the required aggregate space is MA = Θ (N ).
+
+  3. If K = log N , then the 
+                              previous analysis shows that the local space is ML =
+           √  2         √
+     Θ K N = Θ log N N , while the aggregate space remains linear in N .
+
+                                                                                           2
+

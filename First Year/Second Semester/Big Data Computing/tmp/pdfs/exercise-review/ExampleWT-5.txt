@@ -1,0 +1,75 @@
+Big Data Computing: Written exam: example 5                                             1
+
+
+Your Name and ID:
+
+Your class:  A (Prof. A. Pietracaprina)             B (Prof. F. Silvestri)
+
+
+REMINDERS:
+
+  • Write your Name and ID on every sheet that you return
+
+  • Excessively long answers will be penalized
+
+  • TOTAL TIME: 2 hours
+
+
+
+                                     PART 1
+  1. [3 points] With reference to the Resilient Distributed Dataset (RDD) of Spark, define
+     the notion of lazy evaluation and explain how it may negatively affect the quality of
+     time measurements.
+
+  2. [3 points] Consider a set P of N points from a metric space, and a subset T ⊆ P of
+     k centers such that for every x ∈ P , d(x, T ) ≤ R. Let ∆ and ∆T denote the diameters
+     of P and T , respectively. State and prove an upper to ∆ as a function of ∆T and R.
+
+  3. [3 points] Suppose that Sticky Sampling is used to determine frequent items in a
+     stream Σ of n items, with frequency threshold ϕ and parameters ε and δ. Let S be
+     the set of items returned by the algorithm. What are the probabilistic guarantees
+     regarding S?
+
+  4. [4 points] (QUESTION RELATED TO THE HOMEWORS) Consider a set of points
+     U ⊂ Rd , split into two demographic groups A and B, that is, U = A ∪ B. Given
+     a number of clusters k, fair k-means clustering aims at finding a set C of centroids
+     which minimize the fair objective function Φ(A, B, C).
+
+     (a) Define Φ(A, B, C).
+     (b) Suppose that 1 centroid must be chosen for the set of n points in R depicted in
+         the image below. If n → +∞, what is a good centroid for the standard k-means
+         objective and what is a good centroid for the above fair objective?
+Big Data Computing: Written exam: example 5                                              2
+
+
+
+
+                                      PART 2
+
+
+  1. [7 points] Let G be a t × t grid of cells covering a region of a mobile network, and
+     let P be a dataset of N connections to the cells of G. Each connection is represented
+     by a pair (k, (i, j)) where k ∈ [0, N − 1] is a distinct integer key, and (i, j), with
+     0 ≤ i, j < t, are the  row and column indices of the cell used by the connection.
+                      √ 
+     Assume t = O       N .
+
+     (a) Design a 3-round MapReduce algorithm that returns the rows of G such that
+         more than t/2 of their cells have been used by connections of P . For each such
+         row i, the algorithm must return a pair (i, ti ), where ti > t/2 is the number of
+         distinct cells of row i were used by connections of P . No assumptions must be
+         made on the number of connections per cell.
+     (b) Analyze the local and aggregate space, ML and MA , of the algorithm. For full
+         score, you must get ML = o(N ) and MA = O (N ).
+
+  2. [6 points] Let P be a set of n D-dimensional Boolean vectors. Suppose that P is
+     stored into a hash table T built using a hash function h randomly drawn from the
+     bit-sampling LSH family H = {hi : 0 ≤ i < D}. For h ∈ H, let ”not(h(x))” denote
+     the negation of the binary value h(x).
+
+     (a) Given two vectors p and q, determine the probability Prh∈H [h(p) = not(h(q))]
+         as a function of the Hamming distance dH (p, q).
+     (b) Given a query vector q, we want to find an r-far vector p ∈ P , i.e., such that
+         dH (p, q) ≥ r. Based on the above analysis, how would you efficiently search such
+         a p in the table T ? What probabilistic guarantees does your method provide?
+

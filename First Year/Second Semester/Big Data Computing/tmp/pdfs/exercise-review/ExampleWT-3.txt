@@ -1,0 +1,60 @@
+Big Data Computing: Written exam: example 3                                                     1
+
+
+                                        PART 1
+
+
+  1. [3 points] Answer the following questions:
+
+      (a) What are the design goals that a good MapReduce algorithm should target,
+          relatively to: number of rounds R, local space ML , and aggregate space MA ?
+      (b) Any sequential algorithm can be straightforwardly transformed into a 1-round
+          MapReduce algorithm which uses one reducer: explain why this does not yield
+          a good MapReduce algorithm.
+
+  2. [3 points] Refer to Round 2 of the algorithm for k-center with z outliers implemented
+     in Homework 3: briefly describe what the round does, and how the number of points
+     it processes is affected by increasing the parameter L (number of partitions).
+
+  3. [4 points] Let S = {c1 , c2 , . . . , ck } be the solution computed by Farthest-First Traver-
+     sal on a pointset P , and let Φkcenter (P, S) be its objective function value. Define q as
+     the point of P farthest from the centers. Using, without proof, the fact that d(q, S) is
+     less than or equal to the distance between any two points in {c1 , c2 , . . . , ck , q}, show
+     that Φkcenter (P, S) ≤ 2Φopt
+                              kcenter (P, k).
+
+  4. [3 points] Consider the computation of the distinct elements of a stream Σ =
+     x1 , x2 , . . . xn . Explain how the Probabilistic Counting algorithm processes an ele-
+     ment xj and how it derives the final estimate.
+Big Data Computing: Written exam: example 3                                                     2
+
+
+
+
+                                         PART 2
+
+
+  1. [7 points] Let P be a set of N temperatures measured by several sensors. Each
+     element of P is a pair (i, (si , tempi )), where i ∈ [0, N − 1] is a distinct integer key, si
+     is a sensor, and tempi is a temperature. No assumptions are made on the number of
+     pairs in P from the same sensor.
+
+      (a) Let K > 0 be an integer constant. Design a 2-round MapReduce algorithm
+          that, given P , returns a subset T of values (si , tempi ) from pairs in P , selected
+          as follows. For every sensor s, if in P there are ≤ K pairs (i, (si , tempi )) with
+          si = s, then T must contain the values of all these pairs, otherwise T must
+          contain the values of exactly K of them, arbitrarily selected.
+      (b) Analyze the local and aggregate space required by your algorithm. For full
+          score, your algorithm must require o(N ) local space and linear aggregate space.
+      (c) How does the local and aggregate space of your algorithm change if K = log2 N ?
+
+  2. [6 points] Let A1 and A2 be two n-bit arrays used as Bloom filters to assess the
+     membership for two sets S1 and S2 , respectively, from the same universe U . Suppose
+     that both arrays have been initialized by applying the same set of k hash functions
+     h1 , h2 , . . . , hk , to S1 (in case of A1 ) and S2 (in case of A2 ).
+
+      (a) Describe how to combine A1 and A2 into a new n-bit array A and how to use
+          it to assess membership for S1 ∪ S2 , with no false negatives (i.e., elements of
+          S1 ∪ S2 erroneously claimed not to be in S1 ∪ S2 ).
+      (b) Give an estimate of the probability that A[i] = 0, for any i ∈ [0, n − 1].
+

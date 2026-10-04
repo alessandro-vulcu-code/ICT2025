@@ -1,0 +1,68 @@
+Big Data Computing: Written exam: example 1                                             1
+
+
+
+
+                                     PART 1
+
+
+  1. [3 points] Consider the execution of a MapReduce algorithm on a cluster with 10
+     machines, each equipped with a RAM of 8 GB and a disk of 128 GB. Before and after
+     the Map and Reduce Phases of each round, data are stored into a HDFS built on the
+     union of the disks. Let ML and MA be the algorithm’s local and aggregate space.
+     What are the maximum values (in GB) for ML and MA which ensure a successful
+     execution of the algorithm?
+
+  2. [3 points] The coreset-based MapReduce algorithm for k-means computes the final
+     centers of the clusters by running a sequential algorithm A on a weighted coreset T .
+
+     (a) How are the points in T computed?
+     (b) For each point q ∈ T , what does its weight w(q) represent?
+
+  3. [4 points] Consider the execution of Reservoir Sampling on an unbounded stream
+     Σ = x1 , x2 , . . .. For t > m, let St be the set of m elements maintained by the
+     algorithm after processing xt , and suppose that xt has been added to St . For an
+     element xi with i < t, determine probability that xi ∈ St , given that xt ∈ St .
+
+  4. [3 points] Let P be a set of points from a metric space (M, d). Define the (c, r)-
+     Approximate Near Neighbor Search problem and explain how it differs from the exact
+     r-Near Neighbor Search problem.
+Big Data Computing: Written exam: example 1                                                  2
+
+
+
+
+                                       PART 2
+
+
+  1. [7 points] Let P be a dataset containing N outcomes of slot machines, represented
+     by the key-value pairs (i, (si , oi )), for 0 ≤ i < N , where si is a slot machine, and oi
+     is an outcome of the machine. An outcome o is called frequent for a slot machine s
+     if P contains ≥ N/50 pairs with value (s, o), and a slot machine s is called biased if
+     there is at least a frequent outcome o for s.
+
+      (a) Design a 3-round MapReduce algorithm that for every biased slot machine s
+          returns exactly one pair (s, null). (HINT: in the first 2 rounds, compute the
+          pairs (s, o) where o is frequent for s.)
+      (b) Analyze the local and aggregate space required by your algorithm.
+
+     For full score, your algorithm must require o(N ) local space and O (N ) aggregate
+     space.
+
+  2. [6 points] Consider a stream Σ = x1 , x2 , . . . , xn of n measurements from sensors.
+     Each measurement xi is a pair (ki , wi ), where ki is the ID of a sensor and wi is the
+     value of the measurement (an integer). For a given sensor u occurring in Σ define
+                                                X
+                                   fu =                   wi ,
+                                            (ki ,wi )∈Σ : ki =u
+
+
+     i.e., P
+           the aggregate measurements taken by u. Briefly devise a space-efficient estimator
+     for u (fu )2 , where the sum is over all sensors occurring in the stream. Give an
+     intuition about whether the estimator is biased or unbiased.
+
+
+
+                                                                       Total time: 2 hours
+
