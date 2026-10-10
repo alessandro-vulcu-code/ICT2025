@@ -1,0 +1,392 @@
+[00:00:00] of events over time.
+[00:00:03] And it is characterized by, first of all,
+[00:00:08] by the inter-arrival times or the generation instances.
+[00:00:13] These are equivalent representations
+[00:00:15] of a one process.
+[00:00:16] So we can either represent it by Ti,
+[00:00:18] where Ti is the absolute arrival times of these events.
+[00:00:40] Or we can represent it by the counting function,
+[00:00:44] MT.
+[00:00:46] The counting process is defined as, so time T
+[00:00:52] is the number of events that have occurred after time T.
+[00:00:56] Mathematically, it can be defined
+[00:01:07] in terms of the arrival times, because it is sufficient
+[00:01:11] to count the number of arrival times
+[00:01:15] if we fix time T here, for example, on the reference.
+[00:01:19] MT, in this case, will be equal to 3, right?
+[00:01:22] And therefore, we can define it as the sum for K
+[00:01:48] from time T infinity of the indicator function of the fact
+[00:01:53] that time T is larger than the K arrival time.
+[00:02:02] Or the indicator function sometimes
+[00:02:04] is indicated with a T, like in the blackboard,
+[00:02:07] or with a mod 1, as in the slides here, right?
+[00:02:14] Of course, the indicator function is 1.
+[00:02:16] If the condition is true, it's 0.
+[00:02:20] So we are counting the number of events after time T.
+[00:02:24] And given the counting process, or given
+[00:02:27] the sequence of arrival instance, is an equivalent.
+[00:02:31] So they are two equivalent representations
+[00:02:34] of the same process.
+[00:02:36] A third equivalent representation of the process
+[00:02:42] is the sequence of interval arrival times.
+[00:03:13] This is the time between arrivals.
+[00:03:18] All right, so this one is a open.
+[00:03:23] Actually, I have not been consistent
+[00:03:27] in what I've written here in the blackboard
+[00:03:29] and what is in the slides, because the indexes in the
+[00:03:33] slides are from 1 here, and the blackboard is from 0.
+[00:03:37] I don't remember what I have used in the book chapter,
+[00:03:40] but you have to pay attention to the indexes, right?
+[00:03:43] I don't see them.
+[00:03:45] But it's pretty intuitive that these three mutations
+[00:03:57] are equivalent.
+[00:03:58] So if I give you any of them, you
+[00:04:01] can design the draw of the arrival process.
+[00:04:09] So the time process represents the time
+[00:04:14] instance in which some events occur.
+[00:04:19] Each of these events, when we use this model
+[00:04:22] to represent a source, each of these events
+[00:04:24] corresponds to the generation of some new data.
+[00:04:30] And this generation of new data can also
+[00:04:32] be described by means of other two processes.
+[00:04:35] One describes the number of data units
+[00:04:39] that are generated at each event.
+[00:04:42] That is called the batch size.
+[00:04:46] The process B here represents the batch size.
+[00:04:52] So the number of data units generated at each event.
+[00:05:05] In the book chapter, I call them information units, so IU.
+[00:05:14] And each of these information units
+[00:05:18] brings to the system a certain word rule.
+[00:05:22] If we, in the simplest case where the source generates
+[00:05:26] data, then the arrival times are
+[00:05:30] the time in which a new bunch of packets is generated.
+[00:05:36] The batch size is the number of packets in this batch.
+[00:05:40] And the word rule is the size of each packet.
+[00:05:43] So the number of bits that have
+[00:05:45] to be delivered across the network.
+[00:05:48] So we have the I arrival time.
+[00:05:52] So packet generation time in this example.
+[00:06:11] Not the I, sorry, is the number of packets generated.
+[00:06:33] And Wij is the size of packet j of the jth packet.
+[00:06:54] A batch is a group of packets generated all together
+[00:06:58] or in a very small time interval.
+[00:07:03] In this batch, we might have packets
+[00:07:05] of different size of different portals.
+[00:07:08] So in the slides, we use a slightly more general
+[00:07:10] definition because the topic sources are not always
+[00:07:15] generating data.
+[00:07:16] They might generate other requests for resources.
+[00:07:21] So this formulation is slightly more general.
+[00:07:25] We don't talk about packets or packet size.
+[00:07:29] We talk about information unit.
+[00:07:32] And workloads, like the conferences.
+[00:07:40] If we add together the workloads
+[00:07:45] of all the information units generated in a certain batch
+[00:07:49] for all the arrivals up to time t, then what we get
+[00:07:54] is the total generated workload up to time t.
+[00:07:57] It's the aggregate generated workload up to time t here.
+[00:08:05] So for example, if we set time t here,
+[00:08:09] sgt, so the aggregate offered workload
+[00:08:12] will be sum of all these W's up to here.
+[00:08:19] If we divide the aggregate workload by time t,
+[00:08:23] we have the average offered value.
+[00:08:26] It's a big grade in this case, or better.
+[00:08:29] It's a grade.
+[00:08:32] If the workloads are indeed quantity of bits,
+[00:08:37] then it takes the form of a big grade.
+[00:08:45] So sg over t is the average rate
+[00:08:49] at which the source generates workload to the system.
+[00:08:55] Here, do you have any questions regarding this?
+[00:09:11] Although that we are going to use the model
+[00:09:15] and some fundamental results about this model
+[00:09:19] to represent traffic sources, is
+[00:09:22] the renewable process.
+[00:09:23] Do you remember anything about renewable processes?
+[00:09:26] I think it's funny that you read the stochastic course
+[00:09:29] from Professor Zola.
+[00:09:31] So very simply, a renewable process
+[00:09:34] is a generalization of a Poisson process.
+[00:09:39] If you remember, we discussed it in the second lecture.
+[00:09:44] Poisson process is a part of the process
+[00:09:47] because it describes discrete events in time,
+[00:09:51] with the unique characteristics that the empirical times are
+[00:09:58] as ID with exponential distribution
+[00:10:01] of a certain point of lambda.
+[00:10:04] And if this is satisfied, then the Poisson process
+[00:10:09] is a Poisson process, homogeneous.
+[00:10:31] Why homogeneous?
+[00:10:32] Do you remember?
+[00:10:33] Coming from lambda, it's constant.
+[00:10:41] It doesn't change in time.
+[00:10:42] If lambda changes over time, then the Poisson process
+[00:10:45] is no longer homogeneous.
+[00:10:47] If lambda is constant, so if the arrival rate doesn't
+[00:10:50] change over time, then we have a homogeneous Poisson
+[00:10:53] process.
+[00:10:55] Now, if we consider another process with zero characteristics,
+[00:11:00] so the empirical times are IID, independent identically
+[00:11:06] distributed.
+[00:11:07] But they don't have an exponential distribution.
+[00:11:09] If they have a generic distribution,
+[00:11:12] g with some parameter, something whatever you like,
+[00:11:17] then what we have is a renewal process.
+[00:11:30] For some process, if a renewal process belongs
+[00:11:36] to the class of renewal processes,
+[00:11:38] but not all renewal processes are consistent.
+[00:11:50] Sorry, guys, that may be consistent in the slide.
+[00:11:53] So let me denote the distribution with f.
+[00:11:57] f is the CDF of the inter-arrival times,
+[00:12:00] the homogeneous distribution function
+[00:12:02] of the inter-arrival times.
+[00:12:04] So this process, this type of processes
+[00:12:07] are called renewal processes because the process starts over
+[00:12:13] probabilistically at every event.
+[00:12:17] Whenever an event occurs, the next event
+[00:12:19] will occur after a time that is independent of the past.
+[00:12:23] So in some sense, the processes
+[00:12:26] starting again at every event.
+[00:12:31] Just to make an example, let me test your understanding.
+[00:12:40] I have an example here.
+[00:12:47] If you consider the figures of that field of machinery,
+[00:12:51] well, this can be modeled as a renewal process
+[00:12:54] because after each failure process, the machine is fixed.
+[00:12:59] And therefore, the time, the next failure, is independent.
+[00:13:03] After some time, independent of the time,
+[00:13:07] this is the biggest one.
+[00:13:13] The activity produced by a user surfing the web
+[00:13:16] follows a cyclic pattern of actions typically.
+[00:13:20] You click on a hyperlink, wait for the page
+[00:13:23] to be downloaded and shown in your screen,
+[00:13:26] read the web page for a while,
+[00:13:28] and then click on another link, and so on.
+[00:13:31] If the cycles are independent and identically distributed
+[00:13:36] in terms of duration, then the process is a renewal process.
+[00:13:41] Let me test you.
+[00:13:42] Consider this process.
+[00:13:48] What process where the interval of that time
+[00:13:50] are constant and equal to, let's say, five seconds?
+[00:13:56] Is it a renewal process, a Poisson process,
+[00:13:59] or a renewal process?
+[00:14:10] What is this?
+[00:14:12] This is a process with constant interval of events, right?
+[00:14:15] So it's a periodic process.
+[00:14:16] Every five seconds, something happens.
+[00:14:21] Is it Poisson?
+[00:14:27] Who is for yes, it's Poisson.
+[00:14:32] Who is for no, it is not Poisson.
+[00:14:36] What about the others?
+[00:14:39] So there are no third options.
+[00:14:41] Either it is or it is not Poisson.
+[00:14:44] Why is not Poisson someone who is for no Poisson?
+[00:14:53] What's the reason?
+[00:14:55] It's not exponential.
+[00:14:56] Why is it?
+[00:14:57] It's not exponential.
+[00:14:58] The interval of times are not exponential.
+[00:15:00] They are constant.
+[00:15:01] So it cannot be a Poisson process.
+[00:15:03] It's a renewal process, because interval of times
+[00:15:06] are independent and identically distributed.
+[00:15:10] The distribution is constant, so it's
+[00:15:12] a degenerate distribution, but it's still a distribution.
+[00:15:15] So this is a renewal process.
+[00:15:17] It's not Poisson.
+[00:15:18] Consider a process where the interval of times
+[00:15:30] is equal to the i with probability 0.1
+[00:15:39] and it's a random number between 0, 1
+[00:15:47] with probability 0.9.
+[00:15:55] Is it a Poisson process?
+[00:15:56] It's for yes.
+[00:15:59] It's for no.
+[00:16:02] No Poisson process.
+[00:16:03] I don't want to see third options here.
+[00:16:06] Is it Poisson or not?
+[00:16:09] Who is for yes, it is Poisson?
+[00:16:11] No one.
+[00:16:14] So I assume everyone is for no, it is not Poisson.
+[00:16:17] Is this correct?
+[00:16:18] Because of course, the interval of times are not
+[00:16:20] Poisson or some exponential distribution.
+[00:16:23] Is it a renewal process?
+[00:16:26] No.
+[00:16:27] Yes or no?
+[00:16:29] No.
+[00:16:30] Yes.
+[00:16:31] Why?
+[00:16:32] Because we know that intervals are disappearing.
+[00:16:35] Intervals?
+[00:16:36] We know that intervals are disappearing the same.
+[00:16:39] It's repeating the same?
+[00:16:41] But that's not the definition of a renewal process.
+[00:16:43] The characteristic of renewal process
+[00:16:45] is that interval of times are independent
+[00:16:48] and identical distribution.
+[00:16:50] Hence, if you define the next survival time
+[00:16:54] as a function of the previous one,
+[00:16:56] they are not independent.
+[00:16:58] So this is not a renewal process.
+[00:17:00] Because the integral of times are not independent.
+[00:17:03] Nor are identical distributed.
+[00:17:05] But most importantly, they are not independent.
+[00:17:07] Is it clear?
+[00:17:09] OK.
+[00:17:19] This is the formal definition of renewal process
+[00:17:22] but it's basically the same as what we saw before.
+[00:17:25] So the integral of times must be IID
+[00:17:28] positive and finite random variable.
+[00:17:33] The nth jump is just the total time
+[00:17:37] that you need to observe the nth arrival.
+[00:17:40] And the definition is exactly the one that we have given.
+[00:17:45] This is just another form of definition
+[00:17:48] using the sigma theta
+[00:17:51] but it's the same as the unit function.
+[00:17:55] Renewal process is very convenient
+[00:17:59] because we can assign to this renewal event
+[00:18:02] a certain reward, a gain.
+[00:18:05] So we can assume that any time the process
+[00:18:08] renews itself
+[00:18:10] then it brings a certain gain to the system.
+[00:18:15] And this is convenient
+[00:18:17] because there is a theorem
+[00:18:19] that will be presented next slide
+[00:18:22] that makes it very easy to compute the average gain
+[00:18:24] after a certain period.
+[00:18:27] So we can define this renewal reward processes
+[00:18:32] sorry, renewal reward processes
+[00:18:35] where we assign a reward to each renewal event.
+[00:18:39] The rewards are
+[00:18:42] modeled by means of another process
+[00:18:45] indicated by gi.
+[00:18:48] gi is a series of
+[00:18:50] IID random variables
+[00:18:52] once again, so independent, identically distributed
+[00:18:56] random variables.
+[00:18:58] And the process that we
+[00:19:00] indicated by yt
+[00:19:02] given by the sum
+[00:19:04] of these random variables
+[00:19:06] computed for a number of times
+[00:19:09] equal to the number of arrivals
+[00:19:11] after time t
+[00:19:14] is called renewal reward process.
+[00:19:16] So it's a process that counts
+[00:19:18] the total reward gain over time
+[00:19:20] of a renewal process
+[00:19:22] where at each renewal event
+[00:19:24] we gain something.
+[00:19:26] Okay.
+[00:19:30] So the process yt is defined by
+[00:19:32] is uniquely defined by
+[00:19:34] the integral error times
+[00:19:36] and the rewards that you get.
+[00:19:39] The pair given by the
+[00:19:41] integral error time and reward
+[00:19:43] must be IID.
+[00:19:45] Each pair must be IID.
+[00:19:47] So when we observe
+[00:19:49] a certain interval time
+[00:19:51] and a certain reward
+[00:19:53] then this pair
+[00:19:55] is this ai and this gi
+[00:19:58] this has to be independent
+[00:20:07] of the integral
+[00:20:09] time and reward by the next pair.
+[00:20:11] Independent and identically distributed.
+[00:20:17] Alright.
+[00:20:19] However, gi and ai
+[00:20:21] can be correlated.
+[00:20:23] But I don't understand why are we saying
+[00:20:26] that y of t
+[00:20:28] is defined by ai
+[00:20:30] and gi.
+[00:20:32] Why is there ai?
+[00:20:34] Why are we saying
+[00:20:36] that y of t
+[00:20:38] is defined by a of i and
+[00:20:40] g of i.
+[00:20:42] Okay. So g
+[00:20:44] enters because y is counting
+[00:20:46] the total number of rewards
+[00:20:48] that you gain after a certain time t.
+[00:20:50] But the number of rewards
+[00:20:52] depends on the number of renewal
+[00:20:54] that you have after that time.
+[00:20:56] The numerator here is not t
+[00:20:58] it's m of t.
+[00:21:00] So the number of renewal we have after time t.
+[00:21:02] So we need to specify both
+[00:21:04] the renewal process
+[00:21:07] that is given by ai and
+[00:21:09] the reward process that is given by gi.
+[00:21:11] So if you specify both
+[00:21:13] then you can do it by gi.
+[00:21:15] Is it clear?
+[00:21:17] So each interval is given by ai.
+[00:21:19] Correct.
+[00:21:21] You don't sum interval and reward.
+[00:21:23] You just sum the rewards.
+[00:21:25] But if you want
+[00:21:27] to do it
+[00:21:29] after interval
+[00:21:31] after interval
+[00:21:33] you gain a certain reward
+[00:21:35] and you add together
+[00:21:37] this reward.
+[00:21:39] You need to have the ai
+[00:21:41] because when you compute
+[00:21:43] the process after time t
+[00:21:45] you need to know how many intervals
+[00:21:47] are in that interval.
+[00:21:49] And each interval is actually the reward.
+[00:21:51] So that means you are right.
+[00:21:53] Correct.
+[00:21:55] So I was saying that the pairs
+[00:21:57] ai, gi have to be i.i.d
+[00:21:59] but ai, gi might be correlated.
+[00:22:01] So for example
+[00:22:03] just to make an example
+[00:22:05] the reward might be proportional
+[00:22:07] to the duration of the interval of time.
+[00:22:09] This might be the case
+[00:22:11] where if you study
+[00:22:13] the chapter on QS
+[00:22:15] you will find the definition of age
+[00:22:17] of information
+[00:22:21] is a principle requirement in which a certain piece
+[00:22:23] of data is more important
+[00:22:25] if it arrived or better.
+[00:22:27] The age of that piece of information
+[00:22:29] grows nearly in time
+[00:22:31] since the time it was generated
+[00:22:33] to the destination.
+[00:22:35] So if you represent
+[00:22:37] this process
+[00:22:39] indicating
+[00:22:41] by ai the time
+[00:22:43] between the reception of a packet
+[00:22:45] and the reception of the next one
+[00:22:47] then this age of information
+[00:22:49] is proportional to this interval.
+[00:22:51] Right?
+[00:22:53] Or maybe
+[00:22:55] if ai represents
+[00:22:57] the time between
+[00:22:59] two
+[00:23:03] papers of an industrial machine
+[00:23:05] and gi is the cost
+[00:23:07] that you pay to fix the machine.
+[00:23:09] There might be a correlation
+[00:23:11] between the duration of the
+[00:23:13] working of the machine and the
+[00:23:15] profit of the pay. The more the machine has been working
+[00:23:17] before failing
+[00:23:19] the higher the cost because maybe
+[00:23:21] you need to replace many pieces or something
+[00:23:23] but there might be correlation
+[00:23:25] between ai and gi.
+[00:23:27] But once you make a renewal
+[00:23:29] event
+[00:23:31] then what follows is independence
+[00:23:33] of one paper.
+[00:23:35] Alright?
+[00:23:39] Okay, we stop here for today.
