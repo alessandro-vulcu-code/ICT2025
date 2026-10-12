@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="570" viewBox="0 0 1000 570" role="img" aria-labelledby="title desc">
+  <title id="title">Three traffic patterns and observation scale</title>
+  <desc id="desc">Comparison of periodic CBR arrivals, VBR arrivals, and bursty traffic, with a sliding-window rate below.</desc>
+  <rect width="1000" height="570" fill="#fff"/>
+  <style>text{font:18px sans-serif;fill:#172334}.small{font-size:15px}.axis{stroke:#334155;stroke-width:2}.tick{stroke:#2563eb;stroke-width:4}.burst{stroke:#ea580c;stroke-width:4}.grid{stroke:#e2e8f0;stroke-width:1}.line{fill:none;stroke:#7c3aed;stroke-width:4}.mean{stroke:#0f766e;stroke-width:2;stroke-dasharray:9 7}</style>
+  <text x="25" y="38" font-weight="bold">Packet generation times on a common time axis</text>
+  <text x="25" y="92">CBR: fixed gap and size</text>
+  <line class="axis" x1="240" y1="110" x2="955" y2="110"/>
+  <g class="tick"><path d="M270 110v-28 M350 110v-28 M430 110v-28 M510 110v-28 M590 110v-28 M670 110v-28 M750 110v-28 M830 110v-28 M910 110v-28"/></g>
+  <text x="25" y="189">VBR: irregular arrivals</text>
+  <line class="axis" x1="240" y1="207" x2="955" y2="207"/>
+  <g class="tick"><path d="M270 207v-28 M325 207v-28 M438 207v-28 M490 207v-28 M620 207v-28 M678 207v-28 M810 207v-28 M910 207v-28"/></g>
+  <text x="25" y="286">Bursty: clusters and gaps</text>
+  <line class="axis" x1="240" y1="304" x2="955" y2="304"/>
+  <g class="burst"><path d="M270 304v-28 M288 304v-28 M306 304v-28 M324 304v-28 M523 304v-28 M541 304v-28 M559 304v-28 M802 304v-28 M820 304v-28 M838 304v-28 M856 304v-28"/></g>
+  <text x="957" y="310" class="small">t</text>
+  <line class="grid" x1="240" y1="345" x2="955" y2="345"/>
+  <text x="25" y="386" font-weight="bold">Rate measured over a sliding window T_ref</text>
+  <text x="25" y="415" class="small">A short window reveals peaks and gaps; a long window smooths them out.</text>
+  <line class="axis" x1="240" y1="550" x2="955" y2="550"/>
+  <line class="mean" x1="240" y1="498" x2="955" y2="498"/>
+  <path class="line" d="M240 547 L260 547 L275 460 L307 441 L330 499 L350 546 L477 546 L510 501 L530 450 L563 467 L585 545 L770 545 L798 487 L820 434 L857 458 L879 545 L955 545"/>
+  <text x="737" y="490" class="small" fill="#0f766e">long-run mean</text>
+  <text x="25" y="552" class="small">G(t,t+T_ref)</text>
+</svg>

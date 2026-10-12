@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="440" viewBox="0 0 1000 440" role="img" aria-labelledby="title desc">
+  <title id="title">Renewal cycles of a machine</title>
+  <desc id="desc">Each cycle has operational time X, maintenance time Y, duration A equal to X plus Y, and reward R equal to K X minus H Y.</desc>
+  <rect width="1000" height="440" fill="#fff"/>
+  <style>text{font:18px sans-serif;fill:#172334}.small{font-size:15px}.renew{stroke:#dc2626;stroke-width:2;stroke-dasharray:6 5}.work{fill:#bbf7d0;stroke:#15803d}.maint{fill:#fed7aa;stroke:#c2410c}.axis{stroke:#334155;stroke-width:2}.cum{fill:none;stroke:#2563eb;stroke-width:4}.rate{fill:none;stroke:#7c3aed;stroke-width:3}</style>
+  <text x="35" y="42" font-weight="bold">Renewal = start of operation after maintenance</text>
+  <line class="axis" x1="75" y1="212" x2="955" y2="212"/>
+  <rect class="work" x="100" y="126" width="195" height="65"/><rect class="maint" x="295" y="126" width="95" height="65"/>
+  <rect class="work" x="390" y="126" width="255" height="65"/><rect class="maint" x="645" y="126" width="75" height="65"/>
+  <rect class="work" x="720" y="126" width="145" height="65"/><rect class="maint" x="865" y="126" width="65" height="65"/>
+  <text x="171" y="165">X₁</text><text x="326" y="165">Y₁</text><text x="500" y="165">X₂</text><text x="670" y="165">Y₂</text><text x="779" y="165">X₃</text><text x="881" y="165">Y₃</text>
+  <g class="renew"><path d="M100 72v155 M390 72v155 M720 72v155 M930 72v155"/></g>
+  <text x="208" y="96">A₁ = X₁ + Y₁</text><text x="500" y="96">A₂ = X₂ + Y₂</text><text x="975" y="219" class="small">t</text>
+  <text x="35" y="262">Reward in cycle i:</text><text x="235" y="262" fill="#1d4ed8">Rᵢ = K Xᵢ − H Yᵢ</text>
+  <text x="35" y="315">Cumulative reward:</text>
+  <path class="cum" d="M100 388 L295 337 L390 351 L645 280 L720 292 L865 252 L930 263"/>
+  <path class="rate" d="M100 389 L930 263" stroke-dasharray="8 7"/>
+  <text x="625" y="375" class="small">mean slope → E[R] / E[A]</text>
+  <text x="35" y="414" class="small">Qualitative sketch: maintenance lowers reward when H &gt; 0.</text>
+</svg>

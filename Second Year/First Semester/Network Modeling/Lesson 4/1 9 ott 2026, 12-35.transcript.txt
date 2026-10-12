@@ -1,0 +1,345 @@
+[00:00:00] For some reason, yesterday I snapped the first three or four slides.
+[00:00:23] So I have three or four of those slides now, because they use that other concept.
+[00:00:57] So something that I didn't say yesterday that is important is that
+[00:01:03] the weakness with most of the source depends on our purpose and on the time interval that we consider in our analysis.
+[00:01:13] For example, if we observe a system over a relatively long time interval,
+[00:01:19] for example, we are interested on when a certain session starts and how long it lasts, for example, or maybe the whole.
+[00:01:29] So we want to just analyze what happens during a video call connection.
+[00:01:37] Then the generality of our observation is given across, so we observe a relatively long time interval.
+[00:01:47] And we might be interested on the traffic across during the time interval as an aggregate value, so average traffic over this interval.
+[00:01:58] If we look at a smaller time scale, then observing what happens during this session,
+[00:02:12] we might see that during the session we have moments where you have traffic,
+[00:02:17] followed by moments where traffic is much lower or zero, and so on and so forth.
+[00:02:23] So we might observe a more valuable traffic pattern.
+[00:02:26] For example, an on-off pattern like this one.
+[00:02:30] And this is a description of the activity level, so we describe when the source is generating traffic and when it is not, when it is out.
+[00:02:38] If we look at an even greater detail, so we can analyze what happens during the active phase,
+[00:02:45] and then here we can see that the source maybe generates a packet of a certain size at a certain time,
+[00:02:52] and then another one was more precise later on in such a fashion.
+[00:02:55] So depending on the level of the system, we might model the same source in different ways.
+[00:03:02] In this case, we need to model it as a point process that generates elements, packets of different sizes, of different instances.
+[00:03:11] Here we must model the beginning and the end of the session, and maybe the average traffic generated during the session.
+[00:03:18] So depending on what is our purpose, we can choose different models for the same source.
+[00:03:25] The rest is what we did yesterday.
+[00:03:28] So a very general description is by means of these maps and weighted point processes.
+[00:03:40] So maps, because we might have multiple events, I mean multiple generations associated with the same event.
+[00:03:48] So it's a point process because traffic is generated at different time instances that are called events.
+[00:03:55] At every generation time instance, we might have multiple information units that are generated in that time instance.
+[00:04:01] So this is the mark.
+[00:04:03] But the weight is the workload associated with each information unit.
+[00:04:10] We said that a specific type of point process is the renewal process,
+[00:04:14] where the iterative times are independent and identically distributed from variables.
+[00:04:21] We can associate to each renewal event a weight.
+[00:04:26] In that case, we get a renewal reward process that is fully characterized by the process defining the events
+[00:04:35] and the process defining the gain, the reward, associated to each event.
+[00:04:40] We said that the pair AIGI, the pairs have to be independent and identically distributed
+[00:04:48] to have a renewal reward process, but GI and AI might be correlated.
+[00:05:00] The renewal reward processes are very convenient as a model because of this property.
+[00:05:07] This property is the elementary renewal theorem, one form of the elementary renewal theorem.
+[00:05:14] It is convenient because it makes it possible to compute some average values by looking at one singular minimum interval.
+[00:05:30] So if you interpret this expression, it's saying yt is the cumulative reward up to time b.
+[00:05:39] When we compute yt over t, this is the average reward rate up to time t.
+[00:06:12] When we let t go to infinity, what we have is the Stevie state or long-term average reward rate.
+[00:06:33] This is theoretically, in practice, t that tends to infinity means as sufficiently as t,
+[00:06:50] to average out the first time-spinning dynamics of the system.
+[00:06:58] If you have a reward process that evolves like this, so the reward grows in time according to the events that go forward and so on.
+[00:07:19] Of course, yt is a non-decreasing function because assuming that the rewards are positive
+[00:07:26] and you keep activating the reward over time, when you compute yt over t, what you're doing is computing the average reward in time.
+[00:07:36] And you can see that the average reward, so yt over t, will exceed a behavior like this.
+[00:07:49] This might increase and increase, and then it tends to stabilize in long-term.
+[00:08:08] So after a while it will reach like this.
+[00:08:16] And this is the long-term reward.
+[00:08:22] So if you have a process and you want to estimate the average long-term reward,
+[00:08:28] you should observe the process for a very long time and then compute these values.
+[00:08:34] But because of this property, you can get the long-term reward, average reward rate by considering one single renewal each month.
+[00:08:44] And making the derivation between the average reward that you get in a renewal interval over the average duration of the renewal interval.
+[00:08:53] But this is very convenient.
+[00:09:01] For example, if you have a process like this, first let's describe, for example, the industrial machinery
+[00:09:21] which produces a revenue of k euros for every geometric random variable of probability t, it needs to stop.
+[00:10:22] And the stopping time, number of days, or y days, where y is a uniform random variable.
+[00:10:52] This is a uniform, discrete random variable from 1, 2, 3.
+[00:10:57] So it takes, uniformly, a value from 1, 2, or 3 days.
+[00:11:07] And you want to compute the average reward generated per day by such a machine.
+[00:11:17] How can you do that? First of all, can we model this process as a renewal process? Think about that.
+[00:12:05] So, is it a renewal process or not? Are we talking about x or y?
+[00:12:39] Depends on how you model the system.
+[00:12:42] I would say x is a renewal process.
+[00:12:49] It says every x stays, so it's a constant amount of intervals of time.
+[00:13:00] How do you model the system?
+[00:13:02] What's the state that describes your system?
+[00:13:05] That's the first question that you have to ask yourself.
+[00:13:10] How do I represent the system state?
+[00:13:19] How many states can I make?
+[00:13:21] Operational states can be the system you're working in.
+[00:13:24] Two, right?
+[00:13:26] So we need something that describes what is the state of the machine over time to decide whether it is making money or not.
+[00:13:35] So we can represent the state at time, at day d, at day n, with a variable omega, for example.
+[00:13:43] We can define omega n as the state of the machine.
+[00:13:51] It can either be 0, 1, or 0.
+[00:14:10] Is that right?
+[00:14:17] Is this a minimum state?
+[00:14:20] So if we observe our system for a certain number of days, suppose that it starts from state 1.
+[00:14:28] So it will stay in state 1 for some time.
+[00:14:35] Then it enters maintenance.
+[00:14:39] It stays in maintenance state for 1, 2, or 3 days.
+[00:14:44] It works for 1 day, then it goes back to state 1.
+[00:14:47] It stays in state 1 for some days, then it goes back to maintenance.
+[00:14:51] It may stay in maintenance for 3 days, then it goes back to the active state, then maybe again 9 months, and so on.
+[00:14:58] And during this video, it generates revenue.
+[00:15:02] While here, it doesn't.
+[00:15:06] So in order to compute the added revenue, we might observe the process.
+[00:15:13] And we know that the revenue is linear, so it goes linearly per day.
+[00:15:21] So it becomes, let me go up here, goes up linearly after this time.
+[00:15:39] This time, then it stays constant.
+[00:15:44] Because we have a maintenance, then it keeps going again with the same slope.
+[00:15:49] Then it becomes constant again, and so on.
+[00:15:52] And in order to compute the average rate, I should base this area and divide it by the number of days that I considered so far.
+[00:16:16] This is the average right here.
+[00:16:23] This is the empirical average.
+[00:16:26] We can get the same result by using this theorem if we prove that the process is a renewal reward process.
+[00:16:34] Which process?
+[00:16:36] The process that describes the state of the system.
+[00:16:39] So we have to wonder whether omega n is a renewal reward process.
+[00:16:59] And how can we define whether it is a renewal reward process?
+[00:17:02] We need to observe.
+[00:17:08] I'm missing a letter because it's even under the screen.
+[00:17:13] Easy.
+[00:17:19] So omega n is a renewal reward process if it satisfies the conditions that we mentioned before.
+[00:17:26] So if the process evolves according to discrete events, and these events are spaced apart by IID random times,
+[00:17:43] which kind of events can we consider in this process?
+[00:17:48] For example, if we focus our attention to the time when the machine starts working after a maintenance period,
+[00:18:01] so we focus on this event, this event, this event, and this event,
+[00:18:10] we have the time that separates two events.
+[00:18:16] The interval of times between these events, ai, are given by the sum of xi plus yi.
+[00:18:42] The duration of the duration of the machine is working, plus the maintenance following this period.
+[00:18:53] Do you agree?
+[00:18:55] And after such an interval, the machine starts again from an active period,
+[00:19:02] and then goes on for a certain time, and then goes on for a certain time.
+[00:19:06] So the question is, are these interval times ai IID independent and identically distributed?
+[00:19:18] Yes or no?
+[00:19:32] About the question that you need to answer to determine whether two random variables are independent.
+[00:19:40] Fortunately, two random variables x and y are independent if the joint probability of the two random variables
+[00:19:53] can be expressed as the product of their probabilities for every possible choice of x and y.
+[00:20:02] That's formal, but intuitively, how do you say that two random variables are independent or not?
+[00:20:09] Actually, it's easier to answer the second question.
+[00:20:12] When two random variables are not independent, they are not independent.
+[00:20:19] Whenever serving one, you have some intuition regarding the other one, the second one.
+[00:20:26] For example, you might wonder whether the event of a rainy day is independent of the distribution of the time that you take to reach the university.
+[00:20:50] Sorry, I said something wrong because I'm conveying a random variable to be a distribution that is a function.
+[00:20:58] More correctly, is the rainy day event independent of the time that it takes for you to reach the university?
+[00:21:07] Apologies, you're not serious. Is it independent or not?
+[00:21:10] No.
+[00:21:11] No. When it is rainy, there is congestion, so the time is typically larger.
+[00:21:16] Of course, if you can by training, it would be larger, but there is this correlation, right?
+[00:21:21] If I ask you, is the rainy day dependent or independent of the event of the stop option for NASA to go up or down?
+[00:21:52] It's slightly independent, right?
+[00:21:56] So in this case, these two events, two different intervals here, are dependent or independent of one another.
+[00:22:04] We are summing together x and y.
+[00:22:09] I haven't specified any dependence between x and y, right?
+[00:22:13] So that would be independent of one another, but this is not something completely necessary.
+[00:22:18] They might also be dependent in this specific case.
+[00:22:23] We will make an example later.
+[00:22:25] But the point is that if we don't specify anything else, given these assumptions,
+[00:22:32] every repetition of this cycle has a new value of x and a new value of y that are independent of the previous ones, right?
+[00:22:44] Maybe I should have written this.
+[00:22:46] Every x days, every x kilometers, it needs to stop.
+[00:22:50] I should specify this because it will come clear from the definition of x and y.
+[00:23:04] And here, I can also write y and y.
+[00:23:11] So in this condition, sphere 2 and 1 plus y are also independent and identically distributed among themselves, right?
+[00:23:22] So this is a renewal process.
+[00:23:30] Is it a reward process?
+[00:23:33] Yeah, it is a reward process because after every interval ai, we have a game gi that is given by k multiplied by ai, right?
+[00:23:43] So we have a game.
+[00:23:46] The game is not independent of aj, at all.
+[00:23:50] It is independent of the interval that.
+[00:23:52] The pair ai, ai is independent of any other pair aj, ai.
+[00:24:14] Because as a pair, knowing ai, gi doesn't tell me anything about aj, gj, right?
+[00:24:25] And why? Because knowing ai, gi, I don't know anything about aj.
+[00:24:29] And since gj depends on aj, you know, I don't know anything about gj.
+[00:24:34] So there is no dependency.
+[00:24:36] So the process made by this interval of time, that is a cycle,
+[00:24:42] active minus cycle, this cycle, plus the game that I have during the on-grading for the renewal reward process.
+[00:24:51] Therefore, I can apply the renewal reward theorem and estimate the local reward using that theorem.
+[00:25:04] So I can estimate y bar, the average reward for a unit time, or day,
+[00:25:16] as the expectation of the reward that I get over a cycle interval,
+[00:25:28] divided by the expectation of aj.
+[00:25:31] How do I compute this?
+[00:25:33] Well, the expectation, let me start from the denominator, ai is just xi plus yi, right?
+[00:25:45] yg pi is ai pi xi.
+[00:25:50] And then, k is a constant, so we can take it out of the expectation symbol.
+[00:25:58] And the expectation is linear, so the expectation of the sum is the sum of the expectations in there.
+[00:26:09] Do you remember the mean of a geometric random variable, or rather a t?
+[00:26:21] Do you remember? 1 over t, alright.
+[00:26:24] And here you have 1 over t plus, what's the mean of y?
+[00:26:49] The uniform random variable 1, 2, 3?
+[00:26:51] 1 over the sum of the 3 values.
+[00:26:56] And the sum of the 3 values?
+[00:26:58] I don't know, 1 over the...
+[00:27:00] What's the result?
+[00:27:01] It's 1 plus 2 plus 3 divided by 3, so it's 2.
+[00:27:09] You can find it, you can simulate the system, and you will see that the average number, it works,
+[00:27:25] if you simulate it for 100 days, it will be equal to that result.
+[00:27:29] Yeah? Please.
+[00:27:34] Whether g is specified, it would be k times xi, right?
+[00:27:41] Ah, you're right, you're right, thank you.
+[00:27:43] This one is actually xi.
+[00:27:54] Question for you now.
+[00:28:04] Let me introduce two changes in this problem setting.
+[00:28:14] So same setting with two differences.
+[00:28:16] First, y and n are still independent and identically distributed among themselves,
+[00:28:24] but they are not independent of each other.
+[00:28:28] And actually y and n is, let me write it this way, let me write it somewhere after this,
+[00:29:11] let's choose more here.
+[00:29:14] So you have copied everything, right, so I can clean the blackboard,
+[00:29:20] and rewrite y and n here.
+[00:29:31] Now y and n is 1 if x and n is equal to 1.
+[00:29:40] It's 2 if x and n is greater than 1 and less than or equal to 4, and it's 3 otherwise.
+[00:29:53] And moreover, suppose that during maintenance, the company has a loss of h euros per day.
+[00:30:20] Can you find now the average reward?
+[00:30:25] So we have introduced two factors.
+[00:30:27] First, y is not normally independent of x, right?
+[00:30:32] y depends on x, and it's not normally uniform because it depends on x.
+[00:30:37] Second, you have a reward during the x period, but you lose some money during the y period.
+[00:30:45] So the reward function, the overall reward function is also changed.
+[00:30:50] So can you modify a model in order to account for this change,
+[00:30:54] and compute the long-term average revenue that you get?
+[00:30:58] Start from the beginning.
+[00:31:36] Do you believe that we need to change the model to describe our system or not?
+[00:31:41] Can we keep describing it as a process that automates in cycles?
+[00:31:49] In every cycle, it has an active state and a state- demanding state.
+[00:31:55] Is this model still valid?
+[00:31:58] Yes, it is still valid, right?
+[00:32:01] Why?
+[00:32:04] Can we resort to a renewal process to describe the evolution of this model?
+[00:32:11] Your name?
+[00:32:22] Japanese.
+[00:32:24] Because y is not independent of x, but the pairs are independent of one another.
+[00:32:32] Perfect, that's right.
+[00:32:32] So we still have a process that automates between a low state and an active state.
+[00:32:40] If we describe our process, for example,
+[00:32:50] we try to describe the process in time instances where it changes the state,
+[00:32:55] then this process would not be a renewal model.
+[00:32:58] Because you would have events that are separated by time intervals
+[00:33:04] that are not independent and identically distributed.
+[00:33:07] We need to describe the process by looking at a specific time instance.
+[00:33:12] And we said that we look at a time instance where the process becomes active after the convergence period.
+[00:33:18] So if we observe just this time instance, then these times interval are i.i.e.
+[00:33:30] This process, the start process, is a renewal process,
+[00:33:39] while the cross process, this one that looks at every single state of state, is not a renewal process.
+[00:33:46] Keeping some peace, but they are not doing a good job.
+[00:34:12] Alright, is it clear?
+[00:34:14] Good.
+[00:34:15] So a1, a2, a3 are independent because it's true that a1 is given by x1 and y1,
+[00:34:23] and these two are correlated.
+[00:34:25] But, given a1, I cannot predict a plus 1 in any better way than by studying from concealed information.
+[00:34:35] So a i plus 1 is independent of a1.
+[00:34:40] Because so are these two values.
+[00:34:46] Alright, now, this is a renewal process.
+[00:34:50] Is it a renewal-reward process?
+[00:34:52] So to answer this question, we need to define gi, right?
+[00:34:55] There are rewards I have over an interval.
+[00:34:58] And, if you mention these rewards, it would be k times xy minus h times yi.
+[00:35:07] Is that correct?
+[00:35:09] Because I gain k when the machine is active, and I lose h whenever it is on the period.
+[00:35:16] Can we still say that the pair ai gi is independent of any other pair aj gj?
+[00:35:31] Yes or no?
+[00:35:35] Yes.
+[00:35:36] And therefore we can apply it again.
+[00:35:43] The renewal-reward theorem, average reward rate at the expectation of each i divided by the expectation of ai.
+[00:36:04] This one is the expectation of a xy minus a yi divided by the expectation.
+[00:36:18] Then we have k times 1 over p minus h times ny divided by 1 over p plus ny.
+[00:36:29] The only thing that we need to compute is ny.
+[00:36:36] And maybe I did this step very quickly.
+[00:36:41] We have the expectation of the sum, in a combination, of two random variables, right?
+[00:36:48] These random variables are not independent, because y depends on x by definition, right?
+[00:36:55] Can we still compute this expectation as the sum of the expectations?
+[00:37:00] Is this step allowed or not?
+[00:37:18] You are a little rusty with the statistical analysis, right?
+[00:37:28] Yes or no?
+[00:37:31] Let me shut it.
+[00:37:35] I would say that there is no wrong answer, but actually there is a wrong answer in this case.
+[00:37:40] This is allowed, because this property is because the expectation is a linear operator, right?
+[00:37:49] So you can always apply this property, even if yi and xi are interdependent.
+[00:37:56] There is no problem about this.
+[00:37:58] Much different if you have to compute the general probability, in case of general probability and its variables are inter-probability,
+[00:38:05] then you can now split the probability as the sum of the total probabilities.
+[00:38:11] But for the expectations, there is no problem.
+[00:38:13] As soon as there is a sum, the expectation is linear, so we can go straight.
+[00:38:18] Importantly, if you have the expectation of product, in this case you cannot split it in the product of the expectations, right?
+[00:38:29] If they are dependent on another, you cannot do that.
+[00:38:31] If they are dependent, you can, but if they depend on another, you cannot.
+[00:38:36] So this one is equal to the product of xy and yy, only if xy and yy, yi are independent.
+[00:38:56] Otherwise, you cannot do that.
+[00:39:02] So in this case, if we only have sums, we can do that.
+[00:39:05] So we can express the overall reward in this way.
+[00:39:11] We need to compute the mean of y.
+[00:39:18] This is just a simple exercise.
+[00:39:23] y is the fine dense of x.
+[00:39:25] It is a variable that can take only three values, one for three.
+[00:39:32] The expectation of y, we can apply the definition,
+[00:39:38] is therefore given by the sum of all possible values that we can take of the value,
+[00:39:49] we can apply y to the variable, that the random variable takes this value,
+[00:39:53] and since y depends on x, we can express the variable that y is equal to a,
+[00:40:13] as the variable that x belongs to the set, depending on the set of a,
+[00:40:23] the set of values for which y takes the value a.
+[00:40:28] So we define S1 as 1, S2 as 2, 3, and 4, and S3 as 5, and 4 are the values.
+[00:40:46] So if x belongs to S1, then y is equal to 1.
+[00:40:51] If x belongs to S2, then y is equal to 2.
+[00:40:54] If x belongs to S3, then y is equal to 3.
+[00:40:58] According to our definitions, then we just need to compute the probability that
+[00:41:02] x belongs to one of these three values, and multiply it by the corresponding a.
+[00:41:08] The probability that x belongs to S1 is simple.
+[00:41:12] You remember that we said that x is a symmetric random variable parameter p,
+[00:41:36] so the probability that x is equal to a certain value k
+[00:41:40] is 1 minus p to the power k minus 1 multiplied by p,
+[00:41:45] or k equal to 1, 2, and so on, and that's it.
+[00:41:55] So the probability that x belongs to S1 is just p.
+[00:42:01] The probability that x belongs to S2 is the sum of the probabilities
+[00:42:08] of x equal to 2, 3, or 4, which is p that multiplies
+[00:42:14] 1 minus p plus 1 minus p squared,
+[00:42:20] p equal to 2, 3, or 4, 1 minus p to the power 3.
+[00:42:34] And finally, the probability that x belongs to S3
+[00:42:39] is the sum of k equal to pi up to infinity
+[00:42:45] of 1 minus p to the power of p minus 1 multiplied by p.
+[00:42:55] And if you like, you can try to express it this way,
+[00:42:58] this manually, but it's better if you remember a little bit of theory.
+[00:43:05] You can write it as, you can collect p, 1 minus p to the power of 4,
+[00:43:12] and then what remains is the sum for r, for j, let's say from 0 to infinity
+[00:43:23] of 1 minus p to the power of j, right?
+[00:43:27] If you collect this term outside the summation,
+[00:43:31] what remains is only 1 minus p to the power of j
+[00:43:35] with j that goes from 0 to infinity.
+[00:43:38] And this one is a very well-known series
+[00:43:43] that converges to, if p is less than 1, as usually is, converges to what?
+[00:43:55] One.
+[00:43:56] One.
+[00:44:01] So, this summation here is the geometric series,
+[00:44:10] and this is the form I thought it was the last time.
+[00:44:14] And to m of k is equal to 1 minus 2 m plus 1 divided by 1 minus p, right?
+[00:44:23] If q is less than 1, then you can let m go to infinity,
+[00:44:29] and the result is 1 over 1 minus p.
+[00:44:32] In this case, therefore, this series, since q in this case is 1 minus p
+[00:44:37] and is certainly less than 1, this will converge to 1 over p.
+[00:44:42] 1 over 1 minus 1 minus p, this is 1 over p, right?
+[00:44:47] And as a matter of fact, you have the probability
+[00:44:53] that x belongs to, let me write it here,
+[00:44:56] x belongs to S3 is 1 minus p to the power of 4,
+[00:45:10] and that is exactly the probability that x is strictly larger than p.
+[00:45:24] And that's it.
+[00:45:25] Then you take this values, you multiply this one by one,
+[00:45:27] this one by two, this one by three,
+[00:45:29] that means you sum the results together,
+[00:45:31] and you have what you were looking for.
+[00:45:34] And that's it.
+[00:45:51] Okay?
+[00:45:53] Questions?
+[00:45:54] If you don't know how to do these kinds of things,
+[00:46:06] you better study your notes about probability theory or whatever,
+[00:46:10] because we are going to use this in the next lecture.
+[00:46:14] And you are going to be engineers, so you need to know these kinds of things.
+[00:46:17] Questions?
+[00:46:21] Shall we move on?
+[00:46:25] Do you want to take a break?
+[00:46:28] Okay.
+[00:46:29] Let's wait for a few minutes.
+[00:46:31] So let's...
