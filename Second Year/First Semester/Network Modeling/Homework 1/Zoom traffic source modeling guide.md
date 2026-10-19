@@ -33,13 +33,13 @@ Use a meeting with another participant or device so audio and video have a real 
 Keep network, interface, participants, and Zoom client fixed during the run. Record a
 simple activity timeline separately from the capture:
 
-| Phase | Suggested duration | What it helps reveal |
-|---|---:|---|
-| Zoom closed, capture running | 30–60 s | Background flows and baseline |
-| Meeting connected, microphone muted, camera off | 60 s | Signaling, keepalives, and idle traffic |
-| Microphone on, camera off; alternate speech and silence | 2–3 min | Audio packet spacing and possible silence suppression |
-| Camera on, speak normally | 3–5 min | Video size variation and packet clusters |
-| Camera off again | 60 s | Whether the suspected video flow/rate disappears |
+| Phase                                                   | Suggested duration | What it helps reveal                                  |
+| ------------------------------------------------------- | -----------------: | ----------------------------------------------------- |
+| Zoom open but all muted, capture running                |            30–60 s | Background flows and baseline                         |
+| Meeting connected, microphone muted, camera off         |               60 s | Signaling, keepalives, and idle traffic               |
+| Microphone on, camera off; alternate speech and silence |            2–3 min | Audio packet spacing and possible silence suppression |
+| Camera on, speak normally                               |            3–5 min | Video size variation and packet clusters              |
+| Camera off again                                        |               60 s | Whether the suspected video flow/rate disappears      |
 
 Record exact start/end times of each phase, camera state, microphone state, whether screen
 sharing was active, and whether the connection changed. For a **single stationary model**,
