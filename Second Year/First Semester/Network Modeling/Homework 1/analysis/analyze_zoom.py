@@ -153,18 +153,9 @@ def plots(t, l, train, observed, baseline, synthetic):
     ot, ol = observed
     pt, pl = baseline
     st, sl = synthetic
-    fig = plt.figure(figsize=(7.1, 4.5), layout="constrained")
-    grid = fig.add_gridspec(3, 6, height_ratios=[1, 1.05, 1])
-    a = fig.add_subplot(grid[0, :3])
-    b = fig.add_subplot(grid[0, 3:])
-    for tt, ll, label, color in [(ot,ol,"Observed",blue),(st,sl,"Batch model",red)]:
-        use = tt[1:] < 1
-        a.scatter(tt[1:][use], np.diff(tt)[use]*1000, s=5, alpha=.75, color=color)
-        use = tt < 1
-        b.scatter(tt[use], ll[use], s=5, alpha=.75, color=color)
-    a.set(yscale="log", title="(a) Packet gaps: first second", ylabel="Gap (ms)", xlabel="Time (s)")
-    b.set(title="(b) Packet sizes: first second", ylabel="Frame length (B)", xlabel="Time (s)")
-    panels = [fig.add_subplot(grid[1, i:i+2]) for i in [0,2,4]]
+    fig = plt.figure(figsize=(7.1, 3.65), layout="constrained")
+    grid = fig.add_gridspec(2, 3)
+    panels = [fig.add_subplot(grid[0, i]) for i in range(3)]
     for tt, ll, label, color, style in [(ot,ol,"Observed",blue,"-"),
                                       (pt,pl,"Poisson baseline",grey,":"),
                                       (st,sl,"Batch model",red,"--")]:
@@ -172,17 +163,28 @@ def plots(t, l, train, observed, baseline, synthetic):
         cdf(panels[1], ll, label, color, style)
         starts, ends = clusters(tt, ll)
         cdf(panels[2], ends-starts, label, color, style)
-    panels[0].set(title="(c) Packet-gap CDF", xlabel="Gap (ms, log scale)")
-    panels[1].set(title="(d) Packet-size CDF", xlabel="Frame length (B)")
-    panels[2].set(title="(e) Cluster-size CDF", xlabel="Packets / cluster")
-    for j, width in enumerate([.02,.1,1]):
-        ax = fig.add_subplot(grid[2, 2*j:2*j+2])
-        # Same first ten seconds and bin origin for each trace.
+    panels[0].set(title="(a) Packet inter-arrival CDF",
+                  xlabel="Inter-arrival time (ms, log scale)")
+    panels[1].set(title="(b) Packet-size CDF", xlabel="Frame length (B)")
+    panels[2].set(title="(c) Cluster-size CDF", xlabel="Packets / cluster")
+
+    ax = fig.add_subplot(grid[1, 0])
+    for tt, color in [(ot, blue), (st, red)]:
+        use = tt[1:] < 1
+        ax.scatter(tt[1:][use], np.diff(tt)[use]*1000, s=5, alpha=.75, color=color)
+    ax.set(yscale="log", title="(d) Packet inter-arrival times\nFirst second",
+           ylabel="Inter-arrival time (ms)", xlabel="Time (s)")
+
+    for j, (width, duration) in enumerate([(.1, 10), (1, TEST_DURATION)], start=1):
+        ax = fig.add_subplot(grid[1, j])
+        # Use the same bin origin and duration for both independent traces.
         for tt, ll, color, style in [(ot,ol,blue,"-"),(st,sl,red,"--")]:
-            edges, _, rate = binned(tt[tt<10], ll[tt<10], 10, width)
+            use = tt < duration
+            edges, _, rate = binned(tt[use], ll[use], duration, width)
             ax.stairs(rate, edges, color=color, lw=.7, ls=style)
-        ax.set(title=f"({chr(102+j)}) Rate: {width*1000:g} ms bins",
-               xlabel="Time (s)", ylabel="kbit/s", xlim=(0,10))
+        ax.set(title=f"({chr(100+j)}) Rate: {width*1000:g} ms bins\n"
+                     f"{'Full validation window' if duration == TEST_DURATION else 'First ten seconds'}",
+               xlabel="Time (s)", ylabel="kbit/s", xlim=(0,duration))
     for ax in fig.axes:
         ax.grid(alpha=.2)
     fig.legend(handles=[Line2D([],[],color=blue,label="Observed validation"),
@@ -192,6 +194,32 @@ def plots(t, l, train, observed, baseline, synthetic):
     fig.savefig(FIG / "zoom_model_comparison.pdf")
     fig.savefig(OUT / "zoom_model_comparison.png", dpi=180)
     plt.close(fig)
+
+    # Optional packet-size scatterplot, omitted from the report: its first-second
+    # snapshot adds little to the full-trace size CDF. Uncomment to export it.
+    # fig, ax = plt.subplots(figsize=(7.1, 2.0), layout="constrained")
+    # for tt, ll, label, color in [(ot, ol, "Observed", blue),
+    #                              (st, sl, "Batch model", red)]:
+    #     use = tt < 1
+    #     ax.scatter(tt[use], ll[use], s=5, alpha=.75, color=color, label=label)
+    # ax.set(title="Packet sizes: first second", ylabel="Frame length (B)",
+    #        xlabel="Time (s)")
+    # ax.legend(frameon=False)
+    # fig.savefig(FIG / "zoom_packet_size_scatter.pdf")
+    # plt.close(fig)
+
+    # Optional 20 ms rate plot, omitted from the report: overlapping spikes make
+    # comparison harder than at 100 ms and 1 s. Uncomment to export it.
+    # fig, ax = plt.subplots(figsize=(7.1, 2.0), layout="constrained")
+    # for tt, ll, label, color, style in [(ot, ol, "Observed", blue, "-"),
+    #                                    (st, sl, "Batch model", red, "--")]:
+    #     use = tt < 10
+    #     edges, _, rate = binned(tt[use], ll[use], 10, .02)
+    #     ax.stairs(rate, edges, color=color, lw=.7, ls=style, label=label)
+    # ax.set(title="Rate: 20 ms bins", xlabel="Time (s)", ylabel="kbit/s", xlim=(0, 10))
+    # ax.legend(frameon=False)
+    # fig.savefig(FIG / "zoom_rate_20ms.pdf")
+    # plt.close(fig)
 
 
 def main():

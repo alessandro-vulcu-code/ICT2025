@@ -102,7 +102,7 @@ Homework 1 -- Modeling Zoom video uplink traffic}
 \begin{abstract}
 I analyze one outbound UDP flow from a Zoom meeting between a PC and an iPad.
 Packets occur in tight clusters, which a Poisson source fails to reproduce.
-An empirical batch-renewal model captures packet-gap and size distributions and
+An empirical batch-renewal model captures packet inter-arrival and size distributions and
 matches the mean rate on a held-out segment. It does not reproduce the observed
 correlation of traffic over longer time scales.
 \end{abstract}
@@ -144,11 +144,13 @@ Camera transitions are inferred from traffic; audio-only phase boundaries are no
 \vspace{-1.2em}
 
 \section{Source model}
-In the training segment, packet gaps have mean 9.162 ms, median 5.38 $\mu$s,
+For packet timestamps $t_j$, define packet inter-arrival times as
+$A_j^{\mathrm{pkt}}=t_j-t_{j-1}$.
+In the training segment, these have mean 9.162 ms, median 5.38 $\mu$s,
 and coefficient of variation 1.711; 63.17\% are at most 1 ms.
-I first fit a Poisson baseline: $A_i\sim\mathrm{Exp}(109.145\,\mathrm{s}^{-1})$,
-$B_i\equiv1$, and independent packet sizes sampled from the training empirical
-distribution. Its exponential gaps cannot represent the concentration near zero.
+I first fit a Poisson baseline: $A_j^{\mathrm{pkt}}\sim\mathrm{Exp}(109.145\,\mathrm{s}^{-1})$,
+one packet per event, and independent packet sizes sampled from the training empirical
+distribution. Its exponential inter-arrivals cannot represent the concentration near zero.
 
 Following Lessons 3--4, I model the bursty VBR source with a marked and weighted
 renewal process, augmented with packet offsets.
@@ -164,8 +166,10 @@ Each complete training cycle stores the joint tuple
 I exclude the boundary clusters, leaving 7,233 cycles. To generate a trace,
 I draw cycles independently and uniformly from this empirical distribution,
 emit packets at $\tau_i+U_{i,k}$, then advance by $D_i$.
-Thus batch inter-arrivals satisfy $A_{i+1}=D_i$; weights, counts and offsets
-remain dependent within a sampled cycle. Offsets prevent artificial zero packet gaps.
+Here $D_i$ is the inter-arrival time between cluster starts, distinct from the
+packet inter-arrival time $A_j^{\mathrm{pkt}}$ plotted in Fig.~\ref{fig:comparison}.
+Weights, counts and offsets remain dependent within a sampled cycle.
+Offsets prevent artificial zero packet inter-arrivals.
 The fitted means are $E[D]=24.881$ ms and $E[B]=2.716$ packets, with predicted rate
 $E[\sum_k W_{i,k}]/E[D]=865.95$ kbit/s. Thresholds of 0.5 and 3 ms give mean
 batch sizes 2.707 and 2.774, close to the value at 1 ms.
@@ -176,8 +180,10 @@ batch sizes 2.707 and 2.774, close to the value at 1 ms.
 \includegraphics[width=0.96\textwidth]{zoom_model_comparison.pdf}
 \vspace{-1em}
 \caption{Held-out observations and independent 120 s simulations (seed 2026).
-Scatterplots show the first second; CDFs use the full traces; rate plots show the
-first ten seconds. Cluster sizes in (e) use the same 1 ms rule for every trace.
+CDFs (a--c) use the full traces; (a) and scatterplot (d) show packet inter-arrival
+times $A_j^{\mathrm{pkt}}$, not cluster intervals $D_i$. The scatterplot shows the
+first second. Cluster sizes in (c) use the same 1 ms rule for every trace.
+Rates use 100 ms bins over the first ten seconds (e) and 1 s bins over all 120 s (f).
 Synthetic events are not expected to align with observed events.}
 \label{fig:comparison}
 \end{figure}
@@ -194,7 +200,7 @@ Synthetic events are not expected to align with observed events.}
 Packet count & 12,491 & 12,927 & 13,102\\
 Mean frame length (B) & 1,029.57 & 989.97 & 990.38\\
 Mean rate (kbit/s) & 857.35 & 853.16 & 865.06\\
-Packet-gap CDF distance & --- & 0.611 & 0.050\\
+Packet inter-arrival CDF distance & --- & 0.611 & 0.050\\
 Count Fano factor, 100 ms bins & 1.115 & 0.995 & 2.475\\
 Lag-1 count correlation, 1 s bins & 0.684 & 0.151 & 0.049\\
 \hline
@@ -205,11 +211,13 @@ Both simulations use training data only and stop at 120 s; packet counts are
 stochastic, not forced to match observations. The batch simulation's mean rate
 is 0.90\% above validation. Across 30 seeds (2026--2055), its mean rate is
 864.30 kbit/s; the empirical 5th--95th percentile range is 847.42--879.97 kbit/s.
-Figure~\ref{fig:comparison} shows that the batch model preserves short packet gaps
+Figure~\ref{fig:comparison}(a) shows that the batch model preserves short packet inter-arrivals
 much better than Poisson: the maximum absolute empirical CDF difference falls
 from 0.611 to 0.050. This is a descriptive distance, not an independence-based
 significance test. The size-CDF distance is 0.089 for the batch model, reflecting
 some shift in sizes between training and validation.
+The full-window rate comparison in Fig.~\ref{fig:comparison}(f) exposes slower
+variations that are absent from the independently sampled cycles.
 
 \vspace{-0.6em}
 \section{Discussion}

@@ -2,6 +2,7 @@
 
 The completed source is `../Latex template/Homework-LaTex-template.tex`.
 The compiled two-page report is `../output/pdf/Homework-LaTex-template.pdf`.
+An identical copy is kept beside the source in `../Latex template/`.
 The Discord reference available in this folder was named `Report.pdf`.
 The original unfilled LaTeX template is preserved as
 `Homework-LaTex-template-original.tex`.
@@ -49,6 +50,15 @@ CDF distances are descriptive Kolmogorov distances; no i.i.d. significance test
 is asserted. The model's missing correlation and excessive 100 ms count Fano
 factor are reported rather than concealed.
 
+The report explicitly distinguishes packet inter-arrival times
+`A_j^{pkt} = t_j - t_{j-1}` from cluster-start intervals `D_i`.
+The comparison figure retains three full-trace CDFs, a first-second packet
+inter-arrival scatterplot, the first ten seconds of rate in 100 ms bins, and the
+entire 120-second validation window in 1 s bins. The packet-size scatterplot and
+20 ms rate plot remain as commented optional export blocks in `analyze_zoom.py`:
+the former adds little to the size CDF, while the latter is crowded by overlapping
+spikes. Statistical calculations at 20 ms are still performed.
+
 This construction uses the marked/weighted point-process and renewal-reward
 definitions in Lessons 3 and 4. It models a bursty VBR source during camera-on
 operation. A sequence of manually controlled camera changes does not supply
@@ -68,6 +78,7 @@ Compile from the template directory so its relative figure paths resolve:
 cd "Latex template"
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory=../output/pdf Homework-LaTex-template.tex
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory=../output/pdf Homework-LaTex-template.tex
+cp ../output/pdf/Homework-LaTex-template.pdf Homework-LaTex-template.pdf
 ```
 
 Outputs include the training/validation and synthetic CSV traces,

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.7)  19 OCT 2026 19:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.7)  21 OCT 2026 17:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -398,12 +398,12 @@ Package pdftex.def Info: ./figure/zoom_phase_timeline.pdf  used on input line 1
 
 {/opt/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/opt/texlive/2
 025/texmf-dist/fonts/enc/dvips/base/8r.enc} <./figure/zoom_phase_timeline.pdf>]
-<./figure/zoom_model_comparison.pdf, id=33, 513.11702pt x 325.215pt>
+<./figure/zoom_model_comparison.pdf, id=33, 513.11702pt x 263.78549pt>
 File: ./figure/zoom_model_comparison.pdf Graphic file (type pdf)
 <use ./figure/zoom_model_comparison.pdf>
 Package pdftex.def Info: ./figure/zoom_model_comparison.pdf  used on input line
- 176.
-(pdftex.def)             Requested size: 502.3195pt x 318.38101pt.
+ 180.
+(pdftex.def)             Requested size: 502.3195pt x 258.24236pt.
  [2
 
  <./figure/zoom_model_comparison.pdf>] (../output/pdf/Homework-LaTex-template.a
@@ -416,11 +416,11 @@ L3 programming layer <2025-11-14>
 Here is how much of TeX's memory you used:
  5369 strings out of 467538
  83881 string characters out of 5390376
- 513138 words of memory out of 5000000
+ 514138 words of memory out of 5000000
  34180 multiletter control sequences out of 15000+600000
  651147 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,6n,65p,449b,251s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,6n,65p,616b,251s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt
 /texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/texliv
 e/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></opt/texlive/2025/t
@@ -432,10 +432,10 @@ fonts/cm/cmsy7.pfb></opt/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a
 .pfb></opt/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></opt/texli
 ve/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></opt/texlive/2025/texmf-di
 st/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ../output/pdf/Homework-LaTex-template.pdf (2 pages, 205672 by
+Output written on ../output/pdf/Homework-LaTex-template.pdf (2 pages, 198835 by
 tes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
+ 106 PDF objects out of 1000 (max. 8388607)
  61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
