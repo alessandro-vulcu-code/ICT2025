@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="620" viewBox="0 0 1050 620" role="img" aria-labelledby="title desc">
+  <title id="title">Token-bucket level under average, peak and quiet traffic</title>
+  <desc id="desc">Bucket starts full, stays full at mean rate, empties at peak rate G_p with slope rho minus G_p, stays empty at mean rate, and refills when input falls below rho.</desc>
+  <rect width="1050" height="620" fill="#ffffff"/>
+  <style>text{font-family:Arial,sans-serif;fill:#172334;font-size:18px}.small{font-size:15px}.head{font-size:25px;font-weight:bold}.axis{stroke:#334155;stroke-width:2}.grid{stroke:#cbd5e1;stroke-width:1;stroke-dasharray:5 5}.level{fill:none;stroke:#2563eb;stroke-width:5}.rate{fill:none;stroke:#ea580c;stroke-width:4}.mean{stroke:#0f766e;stroke-width:2;stroke-dasharray:8 6}</style>
+  <text x="48" y="42" class="head">Token credit and source rate, continuous approximation</text>
+  <text x="48" y="66" class="small">One token permits one unit of data.</text>
+  <text x="48" y="95">Source rate G(t)</text>
+  <line class="axis" x1="145" y1="268" x2="1000" y2="268"/>
+  <line class="mean" x1="145" y1="188" x2="1000" y2="188"/>
+  <text x="1006" y="194" class="small">ρ</text>
+  <path class="rate" d="M150 188 H310 V117 H480 V188 H700 V224 H870 V188 H990"/>
+  <text x="368" y="108" class="small">peak G_p</text>
+  <text x="745" y="240" class="small">G(t) &lt; ρ</text>
+  <text x="48" y="344">Tokens b(t)</text>
+  <line class="axis" x1="145" y1="548" x2="1000" y2="548"/>
+  <line class="grid" x1="145" y1="387" x2="1000" y2="387"/>
+  <text x="110" y="395" class="small">b</text><text x="115" y="554" class="small">0</text>
+  <path class="level" d="M150 387 H310 L480 548 H700 L870 387 H990"/>
+  <text x="330" y="425" class="small">slope ρ − G_p</text>
+  <text x="741" y="456" class="small">slope ρ − G(t)</text>
+  <g class="grid"><path d="M310 117 V548 M480 117 V548 M700 188 V548 M870 188 V548"/></g>
+  <text x="350" y="579" class="small">T_burst = b / (G_p − ρ), if bucket starts full</text>
+</svg>

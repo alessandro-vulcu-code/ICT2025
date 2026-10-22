@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="445" viewBox="0 0 1040 445" role="img" aria-labelledby="title desc">
+  <title id="title">Leaky bucket and token bucket comparison</title>
+  <desc id="desc">Leaky bucket stores arriving data and sends at a limited rate. Token bucket stores transmission credit and allows bursts until tokens run out.</desc>
+  <rect width="1040" height="445" fill="#ffffff"/>
+  <style>text{font-family:Arial,sans-serif;fill:#172334;font-size:19px}.small{font-size:15px}.heading{font-size:25px;font-weight:bold}.box{fill:#f8fafc;stroke:#94a3b8;stroke-width:2}.blue{fill:#dbeafe;stroke:#2563eb;stroke-width:2}.orange{fill:#ffedd5;stroke:#ea580c;stroke-width:2}.arrow{stroke:#334155;stroke-width:3;fill:none;marker-end:url(#end)}</style>
+  <defs><marker id="end" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0 L10 3 L0 6 Z" fill="#334155"/></marker></defs>
+  <rect class="box" x="20" y="20" width="490" height="405" rx="18"/>
+  <rect class="box" x="530" y="20" width="490" height="405" rx="18"/>
+  <text x="45" y="63" class="heading">Leaky bucket: stores data</text>
+  <text x="555" y="63" class="heading">Token bucket: stores credit</text>
+  <text x="42" y="130">Incoming packets</text><path class="arrow" d="M220 122 H297"/>
+  <rect class="blue" x="300" y="93" width="153" height="120" rx="8"/>
+  <text x="321" y="137">Data queue</text><text x="335" y="166">capacity</text><text x="357" y="191">B<tspan baseline-shift="sub" font-size="13">d</tspan></text>
+  <path class="arrow" d="M375 214 V265 H450"/>
+  <text x="284" y="292" class="small">Output rate ≤ μ</text>
+  <text x="45" y="343" class="small">Full data queue → packets dropped.</text>
+  <text x="45" y="377" class="small">Bursts delayed and smoothed.</text>
+  <text x="554" y="114">Tokens generated at rate ρ</text><path class="arrow" d="M830 120 V153"/>
+  <rect class="orange" x="773" y="156" width="161" height="89" rx="8"/>
+  <text x="795" y="190">Token store</text><text x="812" y="218">capacity b</text>
+  <text x="555" y="298">Packet + enough tokens → conformant</text>
+  <text x="555" y="329" class="small">Tokens spent; packet can leave immediately.</text>
+  <text x="555" y="363" class="small">Not enough → mark, drop, or buffer.</text>
+  <text x="555" y="397" class="small">Idle time saves credit for later bursts.</text>
+</svg>

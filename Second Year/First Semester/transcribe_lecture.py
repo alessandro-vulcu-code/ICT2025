@@ -5,12 +5,14 @@ from __future__ import annotations
 
 import argparse
 import ctypes
+import os
 import sys
+import time
 from pathlib import Path
 
 import av
 import ctranslate2
-from faster_whisper import WhisperModel
+from faster_whisper import BatchedInferencePipeline, WhisperModel
 from faster_whisper.utils import _MODELS
 from huggingface_hub import snapshot_download
 from tqdm.auto import tqdm
@@ -25,6 +27,40 @@ class ModelDownloadProgress(tqdm):
             "{n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]"
         )
         super().__init__(*args, **kwargs)
+
+
+def configure_cuda_libraries() -> None:
+    """Expose CUDA 12 wheels to the dynamic linker, including cuDNN sublibraries.
+
+    A script-local installation takes priority over Python's installed wheels:
+    python -m pip install --target .transcribe-cuda nvidia-cublas-cu12 nvidia-cudnn-cu12
+    This avoids replacing CUDA 13 packages used by other applications.
+    """
+    if not sys.platform.startswith("linux"):
+        return
+
+    roots = [Path(__file__).resolve().parent / ".transcribe-cuda"]
+    roots.extend(Path(entry) for entry in sys.path if entry)
+    directories = []
+    for package, library in (
+        ("cuda_nvrtc", "libnvrtc.so.12"),
+        ("cublas", "libcublas.so.12"),
+        ("cudnn", "libcudnn.so.9"),
+    ):
+        for root in roots:
+            directory = root / "nvidia" / package / "lib"
+            if (directory / library).is_file():
+                directories.append(str(directory))
+                break
+
+    existing = os.environ.get("LD_LIBRARY_PATH", "").split(os.pathsep)
+    if directories and existing[:len(directories)] != directories:
+        environment = os.environ.copy()
+        environment["LD_LIBRARY_PATH"] = os.pathsep.join(
+            directories + [entry for entry in existing if entry and entry not in directories]
+        )
+        # LD_LIBRARY_PATH must be set before the interpreter starts for dlopen.
+        os.execvpe(sys.executable, [sys.executable, *sys.argv], environment)
 
 
 def enable_pyav_compatibility() -> None:
@@ -76,6 +112,18 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("input", type=Path, help="Audio or video file to transcribe")
     parser.add_argument(
+        "--batch-size",
+        type=positive_int,
+        default=None,
+        help="Parallel audio chunks (default: 4 on CUDA, 1 on CPU; 1 uses sequential decoding)",
+    )
+    parser.add_argument(
+        "--beam-size",
+        type=positive_int,
+        default=5,
+        help="Beam search width (default: 5; use 1 to prioritize speed over accuracy)",
+    )
+    parser.add_argument(
         "-o",
         "--output",
         type=Path,
@@ -96,7 +144,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--compute-type",
         default="auto",
-        help="CTranslate2 compute type (default: int8 on CPU, float16 on CUDA)",
+        help="CTranslate2 compute type (default: int8 on CPU, int8_float16 on CUDA)",
     )
     parser.add_argument(
         "--plain",
@@ -108,7 +156,17 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Disable voice activity detection",
     )
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.no_vad and args.batch_size is not None and args.batch_size > 1:
+        parser.error("--no-vad requires --batch-size 1")
+    return args
+
+
+def positive_int(value: str) -> int:
+    number = int(value)
+    if number < 1:
+        raise argparse.ArgumentTypeError("must be at least 1")
+    return number
 
 
 def format_time(seconds: float) -> str:
@@ -134,7 +192,10 @@ def select_device(requested: str) -> str:
         message = (
             f"CUDA unavailable: {error}. GPU inference needs cuBLAS for CUDA 12 "
             "and cuDNN 9 for CUDA 12 on LD_LIBRARY_PATH, plus a working NVIDIA "
-            "driver. See https://github.com/SYSTRAN/faster-whisper#gpu"
+            "driver. Install isolated CUDA 12 libraries beside this script with: "
+            "python -m pip install --target .transcribe-cuda "
+            "nvidia-cublas-cu12 nvidia-cudnn-cu12. "
+            "See https://github.com/SYSTRAN/faster-whisper#gpu"
         )
         if requested == "cuda":
             raise RuntimeError(message + " Alternatively, use --device cpu.") from error
@@ -152,6 +213,9 @@ def main() -> int:
         print(f"Error: input file not found: {input_path}", file=sys.stderr)
         return 1
 
+    if args.device != "cpu":
+        configure_cuda_libraries()
+
     output_path = (
         args.output.expanduser()
         if args.output
@@ -167,9 +231,11 @@ def main() -> int:
         return 1
 
     if args.compute_type == "auto":
-        compute_type = "float16" if device == "cuda" else "int8"
+        compute_type = "int8_float16" if device == "cuda" else "int8"
     else:
         compute_type = args.compute_type
+
+    batch_size = args.batch_size or (4 if device == "cuda" and not args.no_vad else 1)
 
     try:
         downloaded_model = download_model_with_progress(args.model)
@@ -180,14 +246,19 @@ def main() -> int:
     print(f"Loading model {args.model!r} on {device} ({compute_type})...")
     model = WhisperModel(downloaded_model, device=device, compute_type=compute_type)
 
-    print(f"Transcribing: {input_path}")
+    print(f"Transcribing: {input_path} (batch={batch_size}, beam={args.beam_size})")
     enable_pyav_compatibility()
-    segments, info = model.transcribe(
+    transcriber = BatchedInferencePipeline(model=model) if batch_size > 1 else model
+    batch_options = {"batch_size": batch_size} if batch_size > 1 else {}
+    started = time.perf_counter()
+    segments, info = transcriber.transcribe(
         str(input_path),
         language="en",
-        beam_size=5,
+        beam_size=args.beam_size,
         vad_filter=not args.no_vad,
-        condition_on_previous_text=True,
+        without_timestamps=False,
+        condition_on_previous_text=batch_size == 1,
+        **batch_options,
     )
 
     segment_count = 0
@@ -213,6 +284,8 @@ def main() -> int:
         f"(probability={info.language_probability:.2%})"
     )
     print(f"Transcript saved to: {output_path}")
+    elapsed = time.perf_counter() - started
+    print(f"Transcription time: {elapsed:.1f}s ({info.duration / max(elapsed, 1e-9):.1f}x real time)")
     return 0
 
 

@@ -1,0 +1,2 @@
+# Isolated CUDA 12 runtime for transcribe_lecture.py.
+.transcribe-cuda/
