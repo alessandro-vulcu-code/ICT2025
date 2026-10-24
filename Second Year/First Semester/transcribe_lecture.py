@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Transcribe an English university lecture with faster-whisper."""
+"""Transcribe an English lecture with silence and repetition-loop safeguards."""
 
 from __future__ import annotations
 
@@ -114,8 +114,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--batch-size",
         type=positive_int,
-        default=None,
-        help="Parallel audio chunks (default: 4 on CUDA, 1 on CPU; 1 uses sequential decoding)",
+        default=1,
+        help=(
+            "Parallel audio chunks (default: 1, sequential decoding with silence "
+            "safeguards; larger values are faster but bypass those safeguards)"
+        ),
     )
     parser.add_argument(
         "--beam-size",
@@ -235,7 +238,7 @@ def main() -> int:
     else:
         compute_type = args.compute_type
 
-    batch_size = args.batch_size or (4 if device == "cuda" and not args.no_vad else 1)
+    batch_size = args.batch_size
 
     try:
         downloaded_model = download_model_with_progress(args.model)
@@ -250,6 +253,20 @@ def main() -> int:
     enable_pyav_compatibility()
     transcriber = BatchedInferencePipeline(model=model) if batch_size > 1 else model
     batch_options = {"batch_size": batch_size} if batch_size > 1 else {}
+    if batch_size > 1:
+        print(
+            "Warning: batched decoding bypasses silence hallucination detection "
+            "and decoding fallback checks. Use --batch-size 1 if text repeats "
+            "or appears during silence.",
+            file=sys.stderr,
+        )
+    else:
+        # Silence hallucination detection requires word alignment. The batched
+        # pipeline ignores this threshold, so only enable it for sequential use.
+        batch_options.update(
+            word_timestamps=True,
+            hallucination_silence_threshold=2.0,
+        )
     started = time.perf_counter()
     segments, info = transcriber.transcribe(
         str(input_path),
@@ -257,7 +274,9 @@ def main() -> int:
         beam_size=args.beam_size,
         vad_filter=not args.no_vad,
         without_timestamps=False,
-        condition_on_previous_text=batch_size == 1,
+        # Do not feed invented text back into the next audio window: doing so
+        # can sustain repetition loops even after the original bad segment.
+        condition_on_previous_text=False,
         **batch_options,
     )
 
