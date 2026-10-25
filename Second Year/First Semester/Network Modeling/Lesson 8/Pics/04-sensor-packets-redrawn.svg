@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="315" viewBox="0 0 1120 315">
+<title>04-sensor-packets — clarified schematic diagram</title>
+<desc>Qualitative redraw of the student's original diagram. Positions are graphical coordinates, not measured numerical data.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.3"/></marker>
+<pattern id="orange" width="17" height="17" patternUnits="userSpaceOnUse" patternTransform="rotate(32)"><path d="M0 0 V17" stroke="#ff7829" stroke-width="3"/></pattern>
+<pattern id="purple" width="19" height="19" patternUnits="userSpaceOnUse" patternTransform="rotate(28)"><path d="M0 0 V19" stroke="#c548e8" stroke-width="3"/></pattern>
+<pattern id="grey" width="25" height="25" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0 V25" stroke="#8a8a8a" stroke-width="2"/></pattern>
+</defs><rect width="100%" height="100%" fill="white"/>
+<g font-family="DejaVu Sans, sans-serif" font-size="24" fill="#171717" stroke-linecap="round" stroke-linejoin="round">
+<text x="45" y="35" font-size="25" fill="#171717" text-anchor="start">Sensor packets: same size, different spacing</text>
+<text x="45" y="73" font-size="19" fill="#8693a3" text-anchor="start">W = 512 bytes per packet</text>
+<rect x="90" y="95" width="250" height="132" fill="#d9f0e7" stroke="none" stroke-width="0"/>
+<text x="215.0" y="120" font-size="19" fill="#171717" text-anchor="middle">Normal</text>
+<rect x="360" y="95" width="180" height="132" fill="#ffead6" stroke="none" stroke-width="0"/>
+<text x="450.0" y="120" font-size="19" fill="#171717" text-anchor="middle">Alarm</text>
+<rect x="560" y="95" width="250" height="132" fill="#d9f0e7" stroke="none" stroke-width="0"/>
+<text x="685.0" y="120" font-size="19" fill="#171717" text-anchor="middle">Normal</text>
+<rect x="830" y="95" width="180" height="132" fill="#ffead6" stroke="none" stroke-width="0"/>
+<text x="920.0" y="120" font-size="19" fill="#171717" text-anchor="middle">Alarm</text>
+<path d="M75 222 L1055 222" fill="none" stroke="#171717" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="1067" y="228" font-size="21" fill="#171717" text-anchor="start">t</text>
+<path d="M110 218 L110 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M205 218 L205 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M300 218 L300 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M375 218 L375 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M395 218 L395 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M415 218 L415 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M435 218 L435 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M455 218 L455 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M475 218 L475 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M495 218 L495 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M515 218 L515 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M580 218 L580 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M675 218 L675 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M770 218 L770 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M845 218 L845 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M865 218 L865 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M885 218 L885 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M905 218 L905 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M925 218 L925 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M945 218 L945 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M965 218 L965 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<path d="M985 218 L985 147" fill="none" stroke="#ed39d5" stroke-width="3"/>
+<text x="215" y="261" font-size="19" fill="#171717" text-anchor="middle">1 packet / minute</text>
+<text x="450" y="261" font-size="19" fill="#171717" text-anchor="middle">1 packet / second</text>
+<text x="685" y="261" font-size="19" fill="#171717" text-anchor="middle">1 packet / minute</text>
+<text x="920" y="261" font-size="19" fill="#171717" text-anchor="middle">1 packet / second</text>
+<text x="450" y="292" font-size="18" fill="#171717" text-anchor="middle">D = 30 s</text>
+<text x="920" y="292" font-size="18" fill="#171717" text-anchor="middle">D = 30 s</text>
+</g></svg>

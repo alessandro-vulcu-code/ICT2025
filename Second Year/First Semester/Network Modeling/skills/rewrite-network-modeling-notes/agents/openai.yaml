@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rewrite Network Modeling Notes"
+  short_description: "Integra appunti, trascrizioni e materiale Moodle"
+  default_prompt: "Usa $rewrite-network-modeling-notes per integrare gli appunti nella cartella della lezione, preservando sezioni, notazione e tutte le figure."

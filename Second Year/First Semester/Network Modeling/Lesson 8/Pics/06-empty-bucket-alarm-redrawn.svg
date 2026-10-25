@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="550" viewBox="0 0 1120 550">
+<title>06-empty-bucket-alarm — clarified schematic diagram</title>
+<desc>Qualitative redraw of the student's original diagram. Positions are graphical coordinates, not measured numerical data.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.3"/></marker>
+<pattern id="orange" width="17" height="17" patternUnits="userSpaceOnUse" patternTransform="rotate(32)"><path d="M0 0 V17" stroke="#ff7829" stroke-width="3"/></pattern>
+<pattern id="purple" width="19" height="19" patternUnits="userSpaceOnUse" patternTransform="rotate(28)"><path d="M0 0 V19" stroke="#c548e8" stroke-width="3"/></pattern>
+<pattern id="grey" width="25" height="25" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0 V25" stroke="#8a8a8a" stroke-width="2"/></pattern>
+</defs><rect width="100%" height="100%" fill="white"/>
+<g font-family="DejaVu Sans, sans-serif" font-size="24" fill="#171717" stroke-linecap="round" stroke-linejoin="round">
+<text x="45" y="35" font-size="25" fill="#171717" text-anchor="start">Two consecutive alarms: tokens run out between them</text>
+<path d="M100 63 L142 63" fill="none" stroke="#ed39d5" stroke-width="4"/>
+<text x="154" y="69" font-size="19" fill="#171717" text-anchor="start">Input G(t)</text>
+<path d="M330 63 L372 63" fill="none" stroke="#2463a7" stroke-width="4" stroke-dasharray="9 6"/>
+<text x="384" y="69" font-size="19" fill="#171717" text-anchor="start">Shaper output</text>
+<rect x="615" y="49" width="28" height="19" fill="#ffead6" stroke="#ff7829" stroke-width="1"/>
+<text x="655" y="69" font-size="19" fill="#171717" text-anchor="start">Buffered data</text>
+<path d="M75 330 L1050 330" fill="none" stroke="#171717" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M100 352 L100 110" fill="none" stroke="#171717" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="65" y="116" font-size="17" fill="#171717" text-anchor="end">Rate</text>
+<text x="1059" y="338" font-size="20" fill="#171717" text-anchor="start">t</text>
+<path d="M100 145 L1030 145" fill="none" stroke="#8693a3" stroke-width="1.3" stroke-dasharray="7 7"/>
+<text x="85" y="151" font-size="20" fill="#171717" text-anchor="end">λ<tspan baseline-shift="sub" font-size="70%">p</tspan></text>
+<path d="M100 250 L1030 250" fill="none" stroke="#8693a3" stroke-width="1.3" stroke-dasharray="7 7"/>
+<text x="85" y="256" font-size="20" fill="#171717" text-anchor="end">ρ = λ</text>
+<text x="85" y="306" font-size="20" fill="#171717" text-anchor="end">λ<tspan baseline-shift="sub" font-size="70%">L</tspan></text>
+<rect x="260" y="145" width="260" height="185" fill="#f6e4fb" stroke="none" stroke-width="0"/>
+<rect x="520" y="145" width="260" height="105" fill="#ffead6" stroke="none" stroke-width="0"/>
+<rect x="520" y="250" width="260" height="80" fill="#e2edf8" stroke="none" stroke-width="0"/>
+<path d="M100 300 H260 V145 H780 V300 H1040" fill="none" stroke="#ed39d5" stroke-width="3.5"/>
+<path d="M100 300 H260 V145 H520 V250 H1030" fill="none" stroke="#2463a7" stroke-width="4" stroke-dasharray="10 7"/>
+<text x="390" y="215" font-size="22" fill="#2463a7" text-anchor="middle">Forwarded</text>
+<text x="390" y="249" font-size="23" fill="#2463a7" text-anchor="middle">A = λ<tspan baseline-shift="sub" font-size="70%">p</tspan>T<tspan baseline-shift="sub" font-size="70%">b</tspan></text>
+<text x="650" y="186" font-size="21" fill="#ff7829" text-anchor="middle">Buffered</text>
+<text x="650" y="221" font-size="23" fill="#ff7829" text-anchor="middle">(λ<tspan baseline-shift="sub" font-size="70%">p</tspan> − ρ)T<tspan baseline-shift="sub" font-size="70%">b</tspan></text>
+<text x="650" y="300" font-size="20" fill="#2463a7" text-anchor="middle">Forwarded: ρT<tspan baseline-shift="sub" font-size="70%">b</tspan></text>
+<path d="M260 145 L260 349" fill="none" stroke="#8693a3" stroke-width="1.3" stroke-dasharray="5 6"/>
+<text x="260" y="377" font-size="18" fill="#171717" text-anchor="middle">0</text>
+<path d="M520 145 L520 349" fill="none" stroke="#8693a3" stroke-width="1.3" stroke-dasharray="5 6"/>
+<text x="520" y="377" font-size="18" fill="#171717" text-anchor="middle">D = T<tspan baseline-shift="sub" font-size="70%">b</tspan></text>
+<path d="M780 145 L780 349" fill="none" stroke="#8693a3" stroke-width="1.3" stroke-dasharray="5 6"/>
+<text x="780" y="377" font-size="18" fill="#171717" text-anchor="middle">2T<tspan baseline-shift="sub" font-size="70%">b</tspan></text>
+<text x="885" y="235" font-size="18" fill="#2463a7" text-anchor="start">queue drains</text>
+<path d="M260 396 Q260 408 275 408 L374.0 408 Q390.0 408 390.0 418 Q390.0 408 406.0 408 L505 408 Q520 408 520 396" fill="none" stroke="#171717" stroke-width="2.5"/>
+<text x="390.0" y="445" font-size="24" fill="#171717" text-anchor="middle">first alarm</text>
+<path d="M520 396 Q520 408 535 408 L634.0 408 Q650.0 408 650.0 418 Q650.0 408 666.0 408 L765 408 Q780 408 780 396" fill="none" stroke="#171717" stroke-width="2.5"/>
+<text x="650.0" y="445" font-size="24" fill="#171717" text-anchor="middle">second alarm</text>
+<text x="260" y="487" font-size="19" fill="#228971" text-anchor="middle">Full bucket</text>
+<text x="520" y="487" font-size="19" fill="#ff7829" text-anchor="middle">Empty bucket</text>
+<text x="100" y="532" font-size="20" fill="#171717" text-anchor="start">Second alarm: A = ρT<tspan baseline-shift="sub" font-size="70%">b</tspan> + (λ<tspan baseline-shift="sub" font-size="70%">p</tspan> − ρ)T<tspan baseline-shift="sub" font-size="70%">b</tspan>; no recovery time between alarms (δ = 0).</text>
+</g></svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="930" viewBox="0 0 1120 930">
+<title>07-board-two-alarms — clarified schematic diagram</title>
+<desc>Qualitative redraw of the student's original diagram. Positions are graphical coordinates, not measured numerical data.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.3"/></marker>
+<pattern id="orange" width="17" height="17" patternUnits="userSpaceOnUse" patternTransform="rotate(32)"><path d="M0 0 V17" stroke="#ff7829" stroke-width="3"/></pattern>
+<pattern id="purple" width="19" height="19" patternUnits="userSpaceOnUse" patternTransform="rotate(28)"><path d="M0 0 V19" stroke="#c548e8" stroke-width="3"/></pattern>
+<pattern id="grey" width="25" height="25" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0 V25" stroke="#8a8a8a" stroke-width="2"/></pattern>
+</defs><rect width="100%" height="100%" fill="white"/>
+<g font-family="DejaVu Sans, sans-serif" font-size="24" fill="#171717" stroke-linecap="round" stroke-linejoin="round">
+<text x="45" y="35" font-size="25" fill="#171717" text-anchor="start">Two alarms: token recovery, exhaustion and buffering</text>
+<path d="M100 63 L142 63" fill="none" stroke="#ed39d5" stroke-width="4"/>
+<text x="154" y="69" font-size="19" fill="#171717" text-anchor="start">Input G(t)</text>
+<path d="M330 63 L372 63" fill="none" stroke="#2463a7" stroke-width="4" stroke-dasharray="9 6"/>
+<text x="384" y="69" font-size="19" fill="#171717" text-anchor="start">Shaper output</text>
+<rect x="615" y="49" width="28" height="19" fill="#ffead6" stroke="#ff7829" stroke-width="1"/>
+<text x="655" y="69" font-size="19" fill="#171717" text-anchor="start">Buffered data</text>
+<rect x="850" y="49" width="28" height="19" fill="#d9f0e7" stroke="#228971" stroke-width="1"/>
+<text x="890" y="69" font-size="19" fill="#171717" text-anchor="start">Recovered tokens</text>
+<text x="45" y="106" font-size="21" fill="#171717" text-anchor="start">1  Traffic rates</text>
+<path d="M75 325 L1050 325" fill="none" stroke="#171717" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M100 347 L100 117" fill="none" stroke="#171717" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="65" y="123" font-size="17" fill="#171717" text-anchor="end">Rate</text>
+<text x="1059" y="333" font-size="20" fill="#171717" text-anchor="start">t</text>
+<path d="M100 140 L1030 140" fill="none" stroke="#8693a3" stroke-width="1.3" stroke-dasharray="7 7"/>
+<text x="85" y="146" font-size="20" fill="#171717" text-anchor="end">λ<tspan baseline-shift="sub" font-size="70%">p</tspan></text>
+<path d="M100 245 L1030 245" fill="none" stroke="#8693a3" stroke-width="1.3" stroke-dasharray="7 7"/>
+<text x="85" y="251" font-size="20" fill="#171717" text-anchor="end">ρ = λ</text>
+<text x="86" y="291" font-size="20" fill="#171717" text-anchor="end">λ<tspan baseline-shift="sub" font-size="70%">L</tspan></text>
+<rect x="290" y="245" width="210" height="40" fill="#d9f0e7" stroke="none" stroke-width="0"/>
+<rect x="580" y="140" width="80" height="105" fill="#ffead6" stroke="none" stroke-width="0"/>
+<path d="M100 285 H130 V140 H290 V285 H500 V140 H660 V285 H1040" fill="none" stroke="#ed39d5" stroke-width="3.5"/>
+<path d="M100 285 H130 V140 H290 V285 H500 V140 H580 V245 H870 V285 H1040" fill="none" stroke="#2463a7" stroke-width="4" stroke-dasharray="10 7"/>
+<text x="370" y="271" font-size="22" fill="#228971" text-anchor="start">b(δ)</text>
+<text x="620" y="190" font-size="22" fill="#ff7829" text-anchor="middle">β(δ)</text>
+<path d="M290 125 L290 790" fill="none" stroke="#8693a3" stroke-width="1" stroke-dasharray="4 7"/>
+<path d="M500 125 L500 790" fill="none" stroke="#8693a3" stroke-width="1" stroke-dasharray="4 7"/>
+<path d="M580 125 L580 790" fill="none" stroke="#8693a3" stroke-width="1" stroke-dasharray="4 7"/>
+<path d="M660 125 L660 790" fill="none" stroke="#8693a3" stroke-width="1" stroke-dasharray="4 7"/>
+<path d="M870 125 L870 790" fill="none" stroke="#8693a3" stroke-width="1" stroke-dasharray="4 7"/>
+<path d="M130 338 Q130 350 145 350 L194.0 350 Q210.0 350 210.0 360 Q210.0 350 226.0 350 L275 350 Q290 350 290 338" fill="none" stroke="#171717" stroke-width="2.5"/>
+<text x="210.0" y="387" font-size="24" fill="#171717" text-anchor="middle">first alarm</text>
+<path d="M290 338 Q290 350 305 350 L379.0 350 Q395.0 350 395.0 360 Q395.0 350 411.0 350 L485 350 Q500 350 500 338" fill="none" stroke="#171717" stroke-width="2.5"/>
+<text x="395.0" y="387" font-size="24" fill="#171717" text-anchor="middle">δ</text>
+<path d="M500 338 Q500 350 515 350 L564.0 350 Q580.0 350 580.0 360 Q580.0 350 596.0 350 L645 350 Q660 350 660 338" fill="none" stroke="#171717" stroke-width="2.5"/>
+<text x="580.0" y="387" font-size="24" fill="#171717" text-anchor="middle">T<tspan baseline-shift="sub" font-size="70%">b</tspan></text>
+<text x="45" y="442" font-size="21" fill="#171717" text-anchor="start">2  Tokens in the bucket</text>
+<path d="M75 560 L1050 560" fill="none" stroke="#171717" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M100 582 L100 455" fill="none" stroke="#171717" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="84" y="474" font-size="21" fill="#171717" text-anchor="end">b</text>
+<text x="68" y="566" font-size="19" fill="#171717" text-anchor="end">0</text>
+<path d="M130 470 L290 560 L500 515 L580 560 H870 L1040 523" fill="none" stroke="#228971" stroke-width="3.5"/>
+<path d="M290 560 L500 515 V560 Z" fill="#d9f0e7" stroke="none" stroke-width="0"/>
+<text x="410" y="493" font-size="22" fill="#228971" text-anchor="start">b(δ) &lt; b</text>
+<path d="M500 601 L580 601" fill="none" stroke="#2463a7" stroke-width="2"/>
+<path d="M500 595 L500 607" fill="none" stroke="#2463a7" stroke-width="2"/>
+<path d="M580 595 L580 607" fill="none" stroke="#2463a7" stroke-width="2"/>
+<text x="540.0" y="632" font-size="22" fill="#2463a7" text-anchor="middle">T′</text>
+<text x="45" y="678" font-size="21" fill="#171717" text-anchor="start">3  Input backlog</text>
+<path d="M75 790 L1050 790" fill="none" stroke="#171717" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M100 812 L100 690" fill="none" stroke="#171717" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="68" y="795" font-size="19" fill="#171717" text-anchor="end">0</text>
+<path d="M100 790 H580 L660 730 L870 790 H1040" fill="none" stroke="#ff7829" stroke-width="3.5"/>
+<path d="M580 790 L660 730 L870 790 Z" fill="#ffead6" stroke="none" stroke-width="0"/>
+<text x="686" y="717" font-size="23" fill="#ff7829" text-anchor="start">β(δ)</text>
+<text x="290" y="827" font-size="18" fill="#171717" text-anchor="middle">0</text>
+<text x="500" y="827" font-size="18" fill="#171717" text-anchor="middle">δ</text>
+<text x="580" y="827" font-size="18" fill="#171717" text-anchor="middle">δ + T′</text>
+<text x="660" y="827" font-size="18" fill="#171717" text-anchor="middle">δ + T<tspan baseline-shift="sub" font-size="70%">b</tspan></text>
+<text x="870" y="827" font-size="18" fill="#171717" text-anchor="middle">queue empty</text>
+<text x="100" y="873" font-size="24" fill="#171717" text-anchor="start">T′ = b(δ) / (λ<tspan baseline-shift="sub" font-size="70%">p</tspan> − ρ)</text>
+<text x="580" y="873" font-size="24" fill="#171717" text-anchor="start">β(δ) = (λ<tspan baseline-shift="sub" font-size="70%">p</tspan> − ρ)(T<tspan baseline-shift="sub" font-size="70%">b</tspan> − T′)</text>
+<text x="100" y="911" font-size="18" fill="#8693a3" text-anchor="start">Schematic case: 0 &lt; T′ &lt; T<tspan baseline-shift="sub" font-size="70%">b</tspan>; input queue initially empty.</text>
+</g></svg>
