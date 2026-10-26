@@ -1,0 +1,984 @@
+[00:00:01] Welcome to this lecture of Game Theory.
+[00:00:04] I'm Leonardo Badia, the lecturer for this course.
+[00:00:07] In this lecture, we discuss a new topic, dynamic games.
+[00:00:11] This is the first lecture in the second part
+[00:00:16] of the topics of this course.
+[00:00:18] We saw static games, and we saw them
+[00:00:20] with complete information.
+[00:00:22] Now it's time to add a time dimension
+[00:00:24] and to see what happens if games become dynamic.
+[00:00:27] So before going to the discussion about the structure of dynamic games, we need to
+[00:00:33] make a further distinction, because dynamic games, well, shortly put, involve
+[00:00:39] situations where there are some players moving before others, so time
+[00:00:45] matters. That's an easy definition, but we need to clarify what we mean with
+[00:00:52] information because in static games, we didn't need to make such a claim. We just say, well,
+[00:00:58] we have complete information, that's enough. Of course, we want that the players know the
+[00:01:02] rules of the game. What can we say in dynamic games is different because we still want complete
+[00:01:10] information, but that's not enough. We need a further distinction between two possible cases,
+[00:01:15] namely perfect information and imperfect information. And this seems kind of an oxymoron
+[00:01:21] because we say complete and perfect information.
+[00:01:26] Well, it's complete, how can it be imperfect?
+[00:01:29] Actually, it can.
+[00:01:31] Complete information, if you remember,
+[00:01:33] just means that everybody knows the rules of the game.
+[00:01:36] So I know my payoff and also the other players' payoffs
+[00:01:41] and I know that they know and they know that I know,
+[00:01:44] everybody knows that everybody knows, and so on and so forth.
+[00:01:47] That is the meaning of complete information.
+[00:01:49] Okay that's always true but there is a difference if we add a time dimension it might be that I move
+[00:01:59] without information about what the other players did or with also this information.
+[00:02:06] Well in a static game there is no need for such a difference because I move simultaneously
+[00:02:12] to the others so for sure I don't know what the others are going to do. So my information
+[00:02:18] ideally is always imperfect. I mean, I have complete information but also imperfect information
+[00:02:25] in that I don't know what the other players are going to play. In a dynamic game, it can be that
+[00:02:32] my information beyond being complete is also perfect because I know what the other players
+[00:02:38] did. And the classic example you might think of is chess. In chess, black move first,
+[00:02:43] sorry, white move first and black moves but knows what white did. So it's a dynamic game
+[00:02:50] that is complete information because clearly, I mean, we hope that the two players know the
+[00:02:55] rules of the game, they know that the, well, the bishop moves diagonally, the knight moves
+[00:03:02] in a strange way and so on and so forth. And they also are aware of the objective, so
+[00:03:07] rule for checkmate and their objective is to win. So they both know the thing but in normal chess
+[00:03:16] there are some variants of chess but in normal chess they move alternating their moves but
+[00:03:20] every time a player can naturally observe what the other player did before him or her.
+[00:03:27] So they have perfect information however there can be dynamic games in which some of the
+[00:03:36] the entire game being dynamic,
+[00:03:38] because there is a time dimension that matters,
+[00:03:40] there are some moves that are simultaneous.
+[00:03:41] We will see some examples.
+[00:03:43] Or there can be some intervention from nature.
+[00:03:46] So some external intervention,
+[00:03:48] some moves made by nature that are purely random,
+[00:03:51] and they are unpredictable.
+[00:03:53] So in that case,
+[00:03:55] the players don't have some players when they move,
+[00:03:57] don't have perfect information.
+[00:04:00] They don't have full awareness
+[00:04:01] of what happened in the past
+[00:04:03] or what's gonna happen in the game.
+[00:04:05] And so we can distinguish between these two cases.
+[00:04:07] We will see why this distinction matter.
+[00:04:11] So for example, let's revisit the game that we already saw,
+[00:04:15] the Battle of Sexes.
+[00:04:17] If we have, again, our friends, Anne and Brian,
+[00:04:20] and they agreed to meet at the movies.
+[00:04:22] So remember, just to recall, the game goes like this.
+[00:04:25] They agreed just to meet at the movies,
+[00:04:27] but they didn't say what movie.
+[00:04:29] So when they reached the movie theater,
+[00:04:31] they realize that there are two different rooms,
+[00:04:34] two different projection rooms,
+[00:04:36] and they don't know where to go.
+[00:04:38] So they can go to the romance or sci-fi movie,
+[00:04:40] and now for better clarity, let me change,
+[00:04:44] I'm following the notation of the analysis book.
+[00:04:46] I'm using lowercase for BrianMoves,
+[00:04:48] even though they are the same move,
+[00:04:50] but just to distinguish, I will use uppercase R for Anne
+[00:04:54] and lowercase R for Brian and same for us.
+[00:04:57] So this is a normal form game
+[00:04:59] in which they move simultaneous to each other,
+[00:05:02] which is not very realistic because, I mean,
+[00:05:04] we have to invent the situation.
+[00:05:06] Maybe this situation could have been popular
+[00:05:09] before cell phones were invented,
+[00:05:11] so we must assume that, well,
+[00:05:12] they are run out of battery,
+[00:05:15] so, oh, well, either of them has run out of battery,
+[00:05:17] so they cannot communicate,
+[00:05:19] and they must make this decision blindly,
+[00:05:22] which is kinda, well, not very realistic.
+[00:05:25] I mean, a more common situation would be
+[00:05:27] that one of the two says what movie they want to see and the other can decide whether to go
+[00:05:34] with the partner or not. So ideally, just for the sake, I'm not meaning that usually girlfriends
+[00:05:41] decide, I'm just claiming that for the sake of reasoning, let's say that Anne decides. So Anne
+[00:05:48] is the first to decide. Still Anne can say, well you know what, I'm proposing that I would
+[00:05:53] like to go and see the sci-fi movie or Anne can say well I want to go see the romance movie and
+[00:05:59] Brian can after receiving Anne's message decide whether to go to see the romance movie or the
+[00:06:06] sci-fi movie depending on what Anne said. In that situation Brian has complete and perfect
+[00:06:12] information because not only Brian knows there are two movies, knows that Anne prefers the
+[00:06:19] movie, and he also knows that he prefers the sci-fi movie, this is a given. This was also true
+[00:06:24] in the static version, but in this dynamic version, also Brian knows Anne's proposal,
+[00:06:31] and Brian can move accordingly. So the thing is, we can kind of predict what's going to
+[00:06:36] happen in this game, so remember that the preference of each player in this version
+[00:06:42] is to go with a partner at the movies.
+[00:06:45] So Anne has the most preference
+[00:06:49] is to go and see the movie with Brian.
+[00:06:52] And if possible, she would like to prefer
+[00:06:54] to see the romance movie with Brian.
+[00:06:56] But if not, she's content enough
+[00:06:57] in seeing the sci-fi movie with Brian.
+[00:06:59] And the worst outcome for her
+[00:07:00] is to go and see a movie alone without Brian,
+[00:07:03] whatever movie.
+[00:07:04] And same for Brian.
+[00:07:05] They both know this and they both are rational.
+[00:07:08] So we can predict that whatever Anne decides, Brian will say, well, you know what, I'm coming with you, because that is the preferred choice for Brian.
+[00:07:19] Now, we can anticipate this reasoning because, well, we know that Brian does so, and Anne is also smart enough to figure out that Brian is going to do so.
+[00:07:29] So, Anne will anticipate Brian's move and will say, well, you know what, today we're
+[00:07:36] going to see the romance movie because she anticipates that if she says we're going
+[00:07:40] to see the romance movie, Brian will say, okay, I come with you.
+[00:07:44] And if she says, we're going to see the, I'm going to see the sci-fi movie, Brian
+[00:07:48] will say the same, I'm going to with you.
+[00:07:50] So in both cases, Brian will come along and since Anne prefers the romance movie,
+[00:07:56] Ann being smart and selfish will say you know what I'm gonna see the romance movie I'm telling you
+[00:08:03] and so you know that now you have perfect information your decision is different so
+[00:08:06] notice that this scenario does not need to have any mixture because Brian is not undecided Brian
+[00:08:13] knows perfectly what Ann does so Brian can take a best response here that is a pure strategy
+[00:08:20] to play, in this case, the romance movie.
+[00:08:23] Well, we will see why there is this subtlety
+[00:08:26] that in this situation really don't need
+[00:08:29] any probabilistic outcome, we have a certain outcome.
+[00:08:33] However, the representation we can give
+[00:08:35] for this kind of game is insufficient now
+[00:08:37] because if we just use the table,
+[00:08:38] the table was good for a simultaneous choice.
+[00:08:42] So as we say, well, one player chooses the rows
+[00:08:44] and the other player chooses the columns.
+[00:08:46] And actually we will derive this representation back.
+[00:08:49] So I'm not saying this representation is wrong.
+[00:08:51] We will use it, but at the moment,
+[00:08:53] it seems inappropriate for a dynamic version
+[00:08:56] because if we have a biometrics,
+[00:08:58] well, one chooses the choice should be simultaneous, right?
+[00:09:01] And we miss the time dimension.
+[00:09:05] In reality, we need to connect Brian's decision
+[00:09:08] to the previous move made by Anne
+[00:09:11] because naturally I said, if you remember,
+[00:09:14] if Anne says, I'm gonna see the romance movie,
+[00:09:17] Brian says, I'm coming with you.
+[00:09:19] So I'm choosing the romance movie.
+[00:09:22] And if Anne says, I'm choosing the sci-fi movie,
+[00:09:24] then Brian will say, I'm choosing the sci-fi movie.
+[00:09:27] So Brian move is depending on what Anne does,
+[00:09:31] and we need a way to represent that.
+[00:09:34] So this is called an extensive form,
+[00:09:37] which is nothing but a structure that you've already
+[00:09:39] seen in the course as a decision tree.
+[00:09:43] So we use a tree, which is more precisely said,
+[00:09:46] a decision tree, which is in game theory called the extensive form of the game. The extensive
+[00:09:52] form of the game allows us to unfold the time structure of the game, because we see how the
+[00:09:59] game plays out over time. We see who moves first and who moves second. So just to, well,
+[00:10:07] be formal and rigorous, what are the elements of an extensive form? Because again, the tree
+[00:10:12] is actually the graphical representation.
+[00:10:14] In the same way that the normal form
+[00:10:16] is not really a matrix,
+[00:10:18] but it's formally defined as a list of things,
+[00:10:21] whose graphical representation is a matrix.
+[00:10:24] Similarly, the rigorous definition of an extensive form
+[00:10:26] is a list of things.
+[00:10:28] Again, very boring list.
+[00:10:30] But in reality, we will use its graphical representation.
+[00:10:32] We will see how these seven elements
+[00:10:35] can be represented all together in graphical form.
+[00:10:38] That would be nice.
+[00:10:39] So the first two ingredients we need are the set of players
+[00:10:42] and their payoff functions.
+[00:10:44] This we need, but we need it even for the static game.
+[00:10:46] So in normal form, we have these two
+[00:10:49] and there is no change with what we know already.
+[00:10:51] But now the extensive form allows
+[00:10:53] for three more elements.
+[00:10:56] First of all, it allows for representing
+[00:10:58] the order of the turns.
+[00:11:00] So what I said, we know who moves first
+[00:11:03] and who moves second, and also the actions allowed
+[00:11:06] to the players when they can move.
+[00:11:08] Well, this is important because in the static game, you have a set of actions available
+[00:11:15] and this set of action is always the same because you only have one move. So it makes
+[00:11:19] no sense to define many actions, but to say, well, actually you can't play some
+[00:11:25] of them. While in a dynamic game, depending on what previously happened in the game,
+[00:11:31] you can have different available moves. Think of chess at the beginning of the game,
+[00:11:37] you cannot move certain pieces because they are stuck. They cannot move because they're
+[00:11:42] blocked by others. And when the game unfolds, these moves become available, so more moves
+[00:11:48] become available. And so it doesn't make sense to just say, well, this is a set of
+[00:11:53] allowed action to a player, because a set of allowed action is very big. But it's more
+[00:11:58] important to define the set of actions that are allowed on a given specific circumstance,
+[00:12:03] on a given specific moment in the game,
+[00:12:06] so you might have different actions available.
+[00:12:10] And finally, the fifth element
+[00:12:12] that our decision tree allows to insert
+[00:12:15] is the information about the history of the game,
+[00:12:18] let's say, that the players have when they can move.
+[00:12:21] And remember the previous example,
+[00:12:23] this is clear from the battle of sexes
+[00:12:24] in the dynamic version.
+[00:12:27] If Ann says, I'm gonna see the romance movie,
+[00:12:30] then Brian makes his move with more awareness.
+[00:12:34] Brian knows the rules of the game,
+[00:12:35] knows the payoffs, knows that Ann knows,
+[00:12:38] and so on and so forth.
+[00:12:39] And also, he knows what Ann chose.
+[00:12:42] So he might choose depending also on what Ann chose.
+[00:12:47] So he has different information regarding Ann's move.
+[00:12:52] Because if Ann says, in fact,
+[00:12:54] if Ann says, I'm gonna see the romance movie,
+[00:12:56] then Brian will probably say,
+[00:12:58] well I'm gonna see the romance movie too, but if Ann says differently I'm gonna see the sci-fi movie
+[00:13:03] then Brian will go and see the sci-fi movie too. So Brian move depends on what Ann did and this
+[00:13:09] is the information that the players have when they can move. And finally we have other two
+[00:13:15] elements that we have also before they just describe complete information. This is not in
+[00:13:20] the graphical representation actually, it's just something that we need to assume otherwise we
+[00:13:24] can't solve the game.
+[00:13:26] We need, if we have some externality
+[00:13:29] that happens with a given probability, we need to know.
+[00:13:32] So that would be the probability
+[00:13:33] of any lottery in the game.
+[00:13:35] They might be well-defined.
+[00:13:37] It cannot be a sensible game
+[00:13:39] where you have some probabilities,
+[00:13:41] but you don't know the values, of course.
+[00:13:43] And also you need the assumption that everything,
+[00:13:46] not only the payoffs, but also the probabilities,
+[00:13:49] also that the players have information
+[00:13:51] is common knowledge.
+[00:13:52] So remember, common knowledge is a very strong assumption.
+[00:13:56] It does not just mean that we know the rules of the game.
+[00:13:59] Of course, that is something that is implied, but also we know that everybody knows the rules of the game.
+[00:14:05] And also, for example, Anne, remember the previous example, Brian knows Anne's move when he moves.
+[00:14:11] But Anne knows that Brian will know her move when he moves.
+[00:14:16] And this is why Anne, being smart, says, well, you know what, I'm proposing I'm going to see the romance movie.
+[00:14:21] So Brian come along. This is something that Ann implies in announcing her move. There's basically
+[00:14:30] something very common in a relationship between boyfriend and girlfriend.
+[00:14:35] Some of the partners can tell you, I'm going to do that without telling you what they want
+[00:14:42] you to do. They just imply that you are smart enough to understand what you should do.
+[00:14:49] So, Anne can play the role of someone who says, well, you know what? I'm going to see
+[00:14:55] the romance movie. You do what you want, but Anne knows perfectly well that Brian
+[00:14:59] wants to come with her. So, Anne will say, I'm coming to see the romance movie too.
+[00:15:04] Okay. This means that the complete information, common knowledge about the structure of
+[00:15:08] the game does not involve only the payoffs, but also everything that is written here
+[00:15:12] so that the players have information
+[00:15:15] about past moves or not,
+[00:15:17] and they know that they have past information
+[00:15:20] when they make their moves.
+[00:15:22] Okay, so this is the representation
+[00:15:24] of our sequential battle of sexes.
+[00:15:26] This is called the extensive form representation.
+[00:15:28] It's nothing but a decision tree.
+[00:15:30] So as we said, the players to move
+[00:15:33] are denoted in the nodes.
+[00:15:35] On the branches, we write down the available moves.
+[00:15:38] So in this situation,
+[00:15:40] you see this is the player to play,
+[00:15:41] And these are the actions.
+[00:15:43] So for example, this representation
+[00:15:45] allows us to describe that B at this point in the game
+[00:15:48] has two available actions, R or S.
+[00:15:51] He must choose between R or S.
+[00:15:53] And as usual, these are the payoffs.
+[00:15:56] These are denoted.
+[00:15:57] So there is nothing different with what we already
+[00:16:00] said about the decision tree in the beginning lectures.
+[00:16:04] But there are, well, two remarkable differences.
+[00:16:06] One is that we have multiple players now.
+[00:16:09] So it's important that we denote here play A mouse and then play B mouse.
+[00:16:14] So this represents basically that Anne announces her move, romance of sci-fi, and then Brian knows.
+[00:16:20] So Brian has two separate nodes in which he can move.
+[00:16:22] There is one node after Anne announced the romance movie or after Anne announced the sci-fi movie.
+[00:16:28] And Brian can move accordingly. So Brian is aware of what Anne chose and knows the final payoff.
+[00:16:33] So Brian moves is kind of immediate here, but we will discuss this later. And also the payoffs
+[00:16:40] are multiple because as every game we have multiple players and also multiple payoff
+[00:16:46] functions. So it's implicit that we represent them one by one, that's the normal representation.
+[00:16:52] It's important that we need to set the order because while this here is kind of obvious,
+[00:16:57] Ann and Brian are A and B, so Ann comes first and Brian comes second, but sometimes this can
+[00:17:01] be a bit confusing so don't get wrong who is the first player who's the second
+[00:17:05] player and so on and so forth. When you have multiple players you list all of them
+[00:17:08] stacked vertically so two is Anne's payoff and one is Brian's payoff. So you can
+[00:17:13] check that this is actually the same structure of the game we only made it
+[00:17:17] dynamic so now Brian does not move without knowing what Anne did and this
+[00:17:22] means that there is a certain outcome there is no uncertainty now here. Okay
+[00:17:26] very well in general we can have dummy players so the extensive form
+[00:17:30] representation might be a bit more complicated than this. In reality, you can have a very
+[00:17:36] big set of players, but some of these players don't really move. Maybe it's because they
+[00:17:41] don't have a chance to make a move. So for them, the game is a personality, if you
+[00:17:45] remember. So a game where your payoff is decided by the moves of the others, or
+[00:17:51] maybe some players can have the option to move in a certain circumstance while they
+[00:17:58] don't have any say in others.
+[00:18:00] Think, for example, of a football match.
+[00:18:02] Maybe you are a defender, and, well,
+[00:18:05] if your team is attacking, you don't have a say.
+[00:18:07] Still, you get a payoff, right?
+[00:18:09] But if now the ball comes to your court,
+[00:18:13] then you have a chance to make a move.
+[00:18:16] So this can be the case.
+[00:18:17] So in this situation, this represents a very, I mean,
+[00:18:21] cheesy game.
+[00:18:21] I don't want to discuss that.
+[00:18:22] It's just a graphic representation where
+[00:18:24] A is the first player to play,
+[00:18:26] but there are actually four players in this game, A, B, C, D.
+[00:18:29] And you see C never moves.
+[00:18:30] So C is really a dummy player.
+[00:18:32] C never has a chance to say anything in the game.
+[00:18:35] So still, we need to highlight a payoff.
+[00:18:38] So it's important we say that the layers are A, B, C, D.
+[00:18:40] So we know that the third number that we put here
+[00:18:42] is C, Payoffs.
+[00:18:43] Of course, C cannot choose that, but C still gets it.
+[00:18:47] And maybe some players can think
+[00:18:49] of choosing something that's good or bad for C.
+[00:18:52] But first of all, they want to choose what's best for them
+[00:18:54] because they're selfish.
+[00:18:55] Now, in this game, we are just representing
+[00:18:58] that player A chooses between X, Y, and Z.
+[00:19:01] That's a strategy choice that the action choices
+[00:19:04] of player A when he moves or she moves first.
+[00:19:07] And then depending on what player A does,
+[00:19:09] there are possible evolution of the game.
+[00:19:12] After player A plays X, it's player B's turn to move,
+[00:19:16] and B actually can choose between V and W,
+[00:19:19] but both moves end the game,
+[00:19:21] and so we have final payoffs.
+[00:19:22] Final payoffs that go for everyone, A, B, C, and D,
+[00:19:25] even though C and D never had a say in the game.
+[00:19:28] However, if A chooses Y, then it's D turn to move.
+[00:19:31] So now D can decide between E and F,
+[00:19:34] they're both concluding the game.
+[00:19:36] And you see, there is still a payoff for B and C,
+[00:19:39] even though B and C didn't have a say in the game.
+[00:19:41] And even worse, A can say, you can choose Z.
+[00:19:43] If A chooses Z, the game ends immediately.
+[00:19:46] And so in this case,
+[00:19:47] well, there are immediate final payoffs for A, B, C, and D.
+[00:19:50] I mean these are all possible situations that you can count in the game of course this game is not
+[00:19:55] does not make much sense but it's possible that the game is structured like this so certain
+[00:20:00] branches of the tree end earlier with final chaos and other branches of the tree end later
+[00:20:07] with more moves by other players it's possible by the way when we say that a player
+[00:20:12] doesn't have a say in the game it can even be that when I mean this here looks like player
+[00:20:19] B doesn't have a say. Well, it can even be that player B has only one allowed move. So maybe
+[00:20:26] after player A chooses X, player B has V and W as available options. But after player A chooses Y,
+[00:20:35] player B only has V. So this to say option W is allowed is activated only by A's choice
+[00:20:42] of playing X. Think of it. If it's like this, we can have a sort of equivalent representation
+[00:20:48] in which this line is not actually a straight line,
+[00:20:52] but there is another node B here,
+[00:20:55] but B can only choose one thing.
+[00:20:57] So it wouldn't change a thing
+[00:20:58] from the point of view of the tree representation.
+[00:21:00] The tree would be topological, identical.
+[00:21:02] Well, it will have one more node.
+[00:21:05] But that node is the degenerate node
+[00:21:06] in that it's on a path that has no alternatives.
+[00:21:10] So you can immediately say, well, this is like saying,
+[00:21:13] so saying that B has no choice
+[00:21:15] it's like saying B's choice is a singleton.
+[00:21:19] So you can rephrase the game,
+[00:21:21] depending on how you look at it,
+[00:21:22] either insert, so C never moves,
+[00:21:25] and in certain cases, so do B and D.
+[00:21:29] So B and D also never moves in certain cases.
+[00:21:32] Or you can say, well, actually they do move,
+[00:21:34] but they only have one choice.
+[00:21:36] So this is also very common in partnership relationships.
+[00:21:39] Like you go out with your girlfriend or boyfriend
+[00:21:42] or whatever, and they tell you, you know what,
+[00:21:44] you can come with me or you can come with me.
+[00:21:47] So that's a very good choice you have, right?
+[00:21:49] So if this happens, you really don't have a say.
+[00:21:52] But you can, if you want to feel better,
+[00:21:55] to mathematically model this as you only
+[00:21:57] have one possible move.
+[00:21:58] That would be the same, right?
+[00:22:01] OK.
+[00:22:01] Now, one important concept that we need to discuss
+[00:22:04] is that of information sets.
+[00:22:06] What's an information set?
+[00:22:08] We discussed that in the original battle of sexes,
+[00:22:11] well, not the original, the dynamic version
+[00:22:12] of the battle of sexes.
+[00:22:13] we have two different nodes where B moves.
+[00:22:16] And we need two different nodes
+[00:22:18] because we wanna emphasize
+[00:22:19] that B's choice can be different.
+[00:22:23] B's choice can be different
+[00:22:24] because the final payoffs are also different.
+[00:22:26] So of course, here in the green node,
+[00:22:29] B would like to go for R,
+[00:22:30] while in the orange node, B would like to go for S.
+[00:22:33] And so this explains why we have separate nodes
+[00:22:37] and also separate choices,
+[00:22:39] expectedly from B.
+[00:22:40] The reason is that in this new version B is aware of A's choice so remember the
+[00:22:47] difference so me ideally if A sends an SMS to B but B's phone is out of
+[00:22:54] battery and B does not get no signal so B is unable to
+[00:23:00] receive A's message we are back to the previous situation B does not know
+[00:23:04] what Anne decided. Well not really bad because Anne might expect that B
+[00:23:09] received the message but Brian didn't. So maybe Ann is already, I mean Ann must already see that
+[00:23:16] B is unable to receive the message because remember we have complete information. So we
+[00:23:21] cannot really represent the situation where Ann is kind of surprised to learn afterwards
+[00:23:26] that Brian didn't receive the message. Ann knows immediately that Brian is not connected.
+[00:23:32] Okay that's the previous situation. The situation we have now instead is that they
+[00:23:36] perfectly connected, they are into communication, so Brian makes his move after seeing Anne's decision
+[00:23:42] and Anne knows that. So the key point I want to highlight here is that it's very nice this
+[00:23:51] decision tree representation, this extensive form, because all you need to capture this
+[00:23:56] information that the player can have as the game develops is just captured by different
+[00:24:02] nodes. So you don't really need any mathematical external representation. It's just embedded
+[00:24:08] beautifully in the decision tree. So decision tree has different nodes and they currently
+[00:24:14] characterize that player B has different information about what happened in the game so
+[00:24:19] far. You just can go back backwards in the tree and see well the difference between the
+[00:24:24] green and orange nodes is that here B is aware that Anne proposed the romance movie and
+[00:24:30] here B is aware that Ann proposed a sci-fi movie. Only either of them could happen. So B, there
+[00:24:36] aren't really two nodes where B plays his move. There is only one, but still from the strategic
+[00:24:42] point of view B must plan his actions depending on what happens. Only one of them will be
+[00:24:50] effectively played, but B being rational will plan everything accordingly. So this can be
+[00:24:57] denoted, I mean the information sets can be better denoted by labeling the nodes.
+[00:25:04] So I mean this is a bit redundant because for example I'm even labeling
+[00:25:08] X0 as the root node which is kind of pointless. I mean I'm just doing this
+[00:25:12] for the sake of generality. So we can label any node in the tree as X
+[00:25:16] something. So X0 is the root of the tree and X1, X2 and X3, X4, X5, X6
+[00:25:23] are terminal nodes. So really we need to distinguish between x1 and x2 but in general if you want
+[00:25:29] to use a general representation there are all these nodes in the tree and we can also
+[00:25:34] use a precedence relationship so we can say who's the parent node of that node. So
+[00:25:40] x0 has no parent node, x1 and x2 they have x0 as parent node and so on. Note that
+[00:25:47] on the terminal nodes, we write the payoffs.
+[00:25:55] So here it doesn't really matter what happened in the past
+[00:25:58] because the game already ended.
+[00:26:00] And in the X0 node instead, the root node,
+[00:26:03] also the past doesn't really matter
+[00:26:05] because there is no past, that's the beginning
+[00:26:07] of the game, but X1 and X2 matter.
+[00:26:10] This is why this is a simple example I can think of
+[00:26:12] where you have some nodes where the past evolution
+[00:26:15] the game matters. Specifically here you have x1 and x2 and they make a difference depending on
+[00:26:21] what happened in the past, x1 and x2 lead to different outcomes in the game. So the notation
+[00:26:27] here is a bit heavy, so most of the times I won't use labeling all of the nodes. I will
+[00:26:33] just label the nodes for which this matter, in this case only x1 and x2, okay. Well now
+[00:26:40] Now, we see that this implies that nodes are more important
+[00:26:45] than just to tell you the round of the game.
+[00:26:49] So it's not like saying, oh, you don't remember
+[00:26:51] that this is the second move in the game.
+[00:26:54] So Anne moves first and then Brian moves second.
+[00:26:57] If you didn't remember that,
+[00:26:58] we put some nodes to remember you.
+[00:27:00] No, it's not just that.
+[00:27:01] They also describe in game theoretic jargon,
+[00:27:06] they describe the information set denoted with HI,
+[00:27:09] that is available to the player who is moving
+[00:27:12] at the present time.
+[00:27:14] So we can have different situations.
+[00:27:17] If the information set is a singleton,
+[00:27:20] so the information set HI consists of a single node XJ,
+[00:27:25] this means that the node is fully aware
+[00:27:27] of the previous nodes.
+[00:27:29] Okay, so remember that we saw a situation
+[00:27:32] where Brian did not know what ambient
+[00:27:36] was the original battle of sexes.
+[00:27:38] In the regional battle of sexes, Brian did not know Anne's choice.
+[00:27:42] Remember we discussed that even though the choices are maybe not simultaneous,
+[00:27:47] still if the other players does not know, and the first player knows or the second player does not know,
+[00:27:52] it's like identical to choosing them simultaneously.
+[00:27:56] So in the regional battle of sexes, we can say Brian has an information set that is not a singleton.
+[00:28:03] because when Brian moves, he must be at x1 or x2, right?
+[00:28:08] But not knowing, I mean, here Brian is at x1
+[00:28:12] and he knows he's at x1.
+[00:28:15] Here Brian is at x2 and he knows he's at x2.
+[00:28:18] But in the original battle of sexes, Brian didn't know.
+[00:28:22] Well, Brian knows something because Brian is not stupid.
+[00:28:25] Brian knows he must be at x1 or x2,
+[00:28:28] but he does not know which one.
+[00:28:30] So we can represent this with this notation.
+[00:28:33] This notation is used for the situation
+[00:28:36] where a player knows he must be somewhere,
+[00:28:39] so the information set contains these elements,
+[00:28:42] but he does not know which one precisely
+[00:28:45] is the current node.
+[00:28:47] So B moves here, and the important point is that
+[00:28:51] since B does not distinguish between X1 and X2,
+[00:28:55] well, we say, first of all,
+[00:28:57] the information set of player B is not a single.
+[00:29:01] Also, another important consequence is that
+[00:29:04] being unable to distinguish between the two,
+[00:29:07] B can't really say, I play something different
+[00:29:09] when I'm at X one, rather than when I'm at X two.
+[00:29:13] So Brian should make the same move in these two cases,
+[00:29:16] because Brian cannot distinguish.
+[00:29:18] I mean, he cannot be sure whether he's at X one or X two.
+[00:29:22] So Brian, in this case, Brian can say,
+[00:29:25] well here I play R where here I play S. Good for him because he makes the best choice. Here Brian
+[00:29:31] cannot say. So Brian cannot really say I play R when I'm at x1. Brian can say well when I'm at
+[00:29:38] this global information set when I reach my move. So you see we just wrote B once because
+[00:29:44] B only makes one move. B makes the move and says well when I reach my turn I'm either play R
+[00:29:52] or S, but they must always play the same thing.
+[00:29:54] Actually, in the end, we discussed
+[00:29:55] that B would be better off by mixing them.
+[00:29:59] This is why we needed mixed strategy.
+[00:30:01] And here, we don't need mixed strategy,
+[00:30:02] because B best choice is clearly unique.
+[00:30:05] Well, it doesn't have to be unique.
+[00:30:07] It can have same payoffs here, in which case
+[00:30:11] any of them would work.
+[00:30:13] So still, we don't need mixture of strategies.
+[00:30:16] OK, very good.
+[00:30:17] So well, just for the sake of clarity,
+[00:30:19] If this is another graphical representation
+[00:30:21] that's sometimes used, it really depends.
+[00:30:24] Because, well, I must say,
+[00:30:26] extensive form of representation are very nice
+[00:30:27] to write on pen and paper,
+[00:30:30] but sometimes they're very cumbersome,
+[00:30:31] especially if the game is very big.
+[00:30:33] These trees become very big,
+[00:30:34] so it's a bit uncomfortable to write them.
+[00:30:37] So if you have nodes,
+[00:30:38] sometimes it's more convenient graphically
+[00:30:41] to use this representation,
+[00:30:42] so you join them with a bubble,
+[00:30:45] meaning that these two nodes
+[00:30:46] are combined in the same information set.
+[00:30:48] Some other times, you can conjoin them
+[00:30:50] with a dashed line, not a solid line,
+[00:30:53] because that would be the tree.
+[00:30:54] This is just the same thing.
+[00:30:56] So this is just another alternative representation
+[00:30:58] to say, well, B moves without knowing
+[00:31:01] whether he's at x1 or x2.
+[00:31:03] So the information set HB is containing two nodes, x1
+[00:31:08] and x2.
+[00:31:08] So this is an equivalent representation.
+[00:31:10] Sometimes you find one, sometimes you find the other.
+[00:31:14] OK, now let's discuss this better.
+[00:31:17] So if you have a generic dynamic game,
+[00:31:21] every player has a collection of information sets.
+[00:31:25] So it means that every node is associated
+[00:31:30] to an information set.
+[00:31:32] So the information set, the elements
+[00:31:34] of an information set are possible nodes,
+[00:31:38] sorry, where a player is thinking I can be there.
+[00:31:44] So in general, in the general tree representation,
+[00:31:46] when it's your turn, you can have a singleton,
+[00:31:50] it means you know perfectly where you are
+[00:31:52] as the information set.
+[00:31:54] Or maybe your information set consists of multiple nodes.
+[00:31:58] It means when it's your turn to move,
+[00:32:00] you don't know if you are in any of these elements
+[00:32:04] of the information set, you are confused among them.
+[00:32:08] Well, generally it's sensible.
+[00:32:11] I mean, in all the sensible games we're gonna see,
+[00:32:14] of course, from the mathematical point of view,
+[00:32:16] you can even figure out games where you are totally wrong,
+[00:32:19] but then you won't have complete information
+[00:32:21] because you have a totally wrong information.
+[00:32:25] Like you are at node X1,
+[00:32:27] but your information set is at node X2.
+[00:32:30] This would violate the hypothesis of complete information.
+[00:32:32] So it makes sense to assume,
+[00:32:34] and it's even more so in practical setup,
+[00:32:37] in practical engineering setup,
+[00:32:38] at least you know,
+[00:32:40] you are confused among many possibilities,
+[00:32:43] but one of them must be the right one.
+[00:32:45] that, I mean, otherwise the game is very unfair to play.
+[00:32:49] So it makes sense to assume that XJ
+[00:32:51] belongs to the information set of XJ,
+[00:32:54] meaning when you are at XJ,
+[00:32:57] it can be that your information set,
+[00:33:00] HI of XJ, is a singleton,
+[00:33:02] so it means you find yourself at XJ
+[00:33:05] and you know that perfectly.
+[00:33:07] You are perfectly sure that you are at the right node.
+[00:33:10] Or you know that you are in a set
+[00:33:14] that contains more than one node, you don't know which one, but you know that one of them is the
+[00:33:20] right one, okay? So, in short, you must choose the same move for any node belonging to your
+[00:33:30] information set, because you don't distinguish between them. But in the case where, and also
+[00:33:36] for this reason, you must also impose mathematically speaking that if the information
+[00:33:42] set contains more than one node, the set of available actions at each node in the information
+[00:33:49] set must be identical. Otherwise, you go, haha, I know where I'm at, because I see
+[00:33:55] I have this many options, but I couldn't have this many options if I was at the
+[00:34:01] other node. So I know my node. So it must be for being real confused, you must have
+[00:34:06] the same options. This is something when you have a lucid dream, you realize that
+[00:34:11] well, I'm flying, oh, this cannot be.
+[00:34:13] So it means I'm flying.
+[00:34:14] You don't know if you are, sorry, it must be I'm dreaming.
+[00:34:18] You don't know if you're dreaming or you are awake,
+[00:34:21] that's your indecision,
+[00:34:22] but you see that something happens
+[00:34:24] to you, you have the ability to fly,
+[00:34:26] which you don't have normally in real life.
+[00:34:29] It makes you realize you are dreaming, okay?
+[00:34:32] So for the sake of mathematical precision,
+[00:34:35] we just say, well, the set of available moves
+[00:34:38] must be the same in all the nodes
+[00:34:42] belonging to the same information set.
+[00:34:44] Otherwise you can't possibly be confused.
+[00:34:46] Also, let me make a quick comment on this condition
+[00:34:49] that the two sets of available actions must be the same
+[00:34:53] because actually in many cases
+[00:34:55] we can change the game a little bit
+[00:34:57] and make sure that the two sets become the same,
+[00:35:01] even if they weren't.
+[00:35:03] And the trick is to exploit the fact
+[00:35:05] that some moves are supposedly forbidden.
+[00:35:07] And you see in this example, node X1 and X2
+[00:35:10] have player B to move,
+[00:35:12] but the set of available actions are different.
+[00:35:15] And the reason is that move F is not allowed at node X2.
+[00:35:19] This is to say that player A moves first
+[00:35:23] and the move of player A actually determines
+[00:35:27] whether node B has F as an available action or not.
+[00:35:33] And we say, well, actually F is always allowed,
+[00:35:36] But if F is allowed in node X2,
+[00:35:40] it gives a very negative payoff.
+[00:35:42] So player B does not want to do that.
+[00:35:45] Okay, this is actually not the same game.
+[00:35:48] It's slightly different.
+[00:35:49] The reason is that playing F,
+[00:35:51] any strategy where B plays F becomes strictly dominated.
+[00:35:57] So B will never play that.
+[00:36:00] That's the point.
+[00:36:00] But if you think from an engineering perspective,
+[00:36:02] this is more or less the same.
+[00:36:04] So like saying, well, in, I don't know, in chess, like moving without protecting the king, if somebody attacks the king, you have to defend yourself.
+[00:36:15] If you don't, well, it's forbidden not to do it.
+[00:36:18] Or let's say, well, you can actually do it, but you give to your opponent one billion dollars or one billion euros.
+[00:36:24] OK, so you don't want to do that, right?
+[00:36:26] It's more or less equivalent from an engineering perspective to say, well, this move is really, really forbidden.
+[00:36:31] So you can't do that.
+[00:36:33] It's not in the set of available actions.
+[00:36:35] Oh, it's actually allowed,
+[00:36:36] but to do so you have to pay a disproportionate fee.
+[00:36:40] Well, so you don't want to pay that and that's the same.
+[00:36:42] So in the end, it turns out it's not allowed.
+[00:36:45] So that's a trick you can play sometimes.
+[00:36:48] And in this case, if you want to make them equivalent,
+[00:36:51] you can say, well, these two games are equivalent.
+[00:36:54] And now the set of available actions
+[00:36:56] and the two nodes are the same
+[00:36:58] because it's always FGH, but F is very negative here.
+[00:37:04] Okay, so this justifies our initial claim
+[00:37:06] about perfect versus imperfect information.
+[00:37:10] In other words, we can use this to classify games
+[00:37:14] whether they have perfect or imperfect information.
+[00:37:17] Because if the dynamic game has perfect information,
+[00:37:21] it means that all the information sets are single-console.
+[00:37:24] So every player moves with full awareness
+[00:37:28] or where his or she is at in the game.
+[00:37:31] And also, there is no choice of nature.
+[00:37:34] If any of this is violated, we have imperfect information.
+[00:37:39] In imperfect information, it might be
+[00:37:40] because either the information sets
+[00:37:43] contains multiple nodes, or there is a choice of nature.
+[00:37:47] If there is a choice of nature,
+[00:37:48] we can say this is a game with exogenous uncertainty,
+[00:37:50] and this doesn't even have to be
+[00:37:53] a game with multiple players.
+[00:37:55] We saw the canteen lottery.
+[00:37:57] Remember, this was a game of single player,
+[00:38:00] but there was exogenous uncertainty.
+[00:38:02] Namely, nature decides whether ravioli or soup
+[00:38:05] are good or bad or whatever,
+[00:38:07] so the quality of the food at the canteen
+[00:38:09] is externally determined.
+[00:38:10] It's not a consequence of any player's actions,
+[00:38:13] and so there is only one player,
+[00:38:15] but the player decides what to get at the canteen,
+[00:38:18] but this is a random outcome.
+[00:38:21] It's more interesting when the uncertainty is endogenous,
+[00:38:24] meaning you are uncertain because you don't know what the other players are going to play.
+[00:38:31] And this is the original battle of sexes for example. The uncertainty in Anse and Brian's
+[00:38:36] behavior is determined by them not knowing what the other players have chosen, if they
+[00:38:42] know there is no uncertainty. And remember, every time you have uncertainty, players
+[00:38:46] in game theory form beliefs. So we will see the rise of beliefs again as a result
+[00:38:52] of uncertainty in the game.
+[00:38:54] Remember, so beliefs reflect that the players
+[00:38:58] play erratically, play randomly,
+[00:39:00] but this is not because they're crazy,
+[00:39:02] it's because they react to the moves of the other players
+[00:39:05] and they don't fully know that.
+[00:39:08] Okay.
+[00:39:09] Now, all of this discussion leads us
+[00:39:12] to redefine the concept of strategy.
+[00:39:14] We already did something like that
+[00:39:16] because we introduced mixer strategy, right, remember?
+[00:39:19] So we said it's not the same thing
+[00:39:20] to speak of actions or strategies,
+[00:39:24] because a strategy is a plan of action.
+[00:39:27] So if you play a single action,
+[00:39:30] your strategy would be, well, I play this,
+[00:39:32] or I play that.
+[00:39:33] Well, not so fast,
+[00:39:34] because we introduced the concept of mixed strategy
+[00:39:37] to say, instead of deciding deterministically
+[00:39:40] for this action or this action,
+[00:39:43] I want my want to randomize.
+[00:39:45] This is very important
+[00:39:46] because this allows us to have the nice theorem to hold.
+[00:39:50] But in dynamic games, we don't really need to have this constant mixture strategy to see that actions and strategies are a bit different.
+[00:40:00] Because there is an additional element, which is the history of play, which is again represented through the information sets.
+[00:40:07] So I can decide a different move depending on what the players did.
+[00:40:12] and this is natural, obvious.
+[00:40:16] Like, you don't play chess by saying,
+[00:40:18] well, whatever happens, I move the rook this way.
+[00:40:22] Maybe you're not even allowed to move the rook,
+[00:40:23] but you do that depending on what your opponent did.
+[00:40:28] So, you do the move that makes you win,
+[00:40:31] and this depends on what the other players did.
+[00:40:34] So, once again, your pure strategy
+[00:40:37] is now a plan of action
+[00:40:39] that does not contain any probabilistic behavior still,
+[00:40:43] but is in reaction of what the other players did.
+[00:40:47] So your pure strategy should predict what's your move
+[00:40:53] for every possible instance of the game.
+[00:40:55] It's an example that I've already made, I think.
+[00:40:58] It's very common when you plan for an exam,
+[00:41:01] well, this can be represented as a dynamic game.
+[00:41:05] Like a normal exam would be the professor
+[00:41:07] ask me a question and I answer like this. Or this can be also a job interview. The interviewer
+[00:41:13] asks me something and I reply with this answer. If you are very smart or very paranoid or
+[00:41:19] probably two things are the same, you plan your actions for every possible situation.
+[00:41:25] And this is what rational players do. So they consider a plan of action which
+[00:41:29] contains a possible action for every possible key story of play. And this is why we need to
+[00:41:34] keep things simple.
+[00:41:36] Because, well, in general, the possible evolution
+[00:41:38] of a game like chess are enormous.
+[00:41:41] But in this kind of game, luckily, we only have two.
+[00:41:44] So here, Brian can plan his strategy
+[00:41:47] depending on what Anne did,
+[00:41:48] and Anne can only have made only two things.
+[00:41:51] So Brian needs to predict what to do here
+[00:41:53] and also what to do here.
+[00:41:55] So this is actually very difficult to explain
+[00:41:59] to economists or social scientists
+[00:42:01] because they don't have this concept.
+[00:42:02] but luckily, information engineers have the concept of programming. They did some programming
+[00:42:08] in their life, hopefully, so they know the concept of if-then-else structures. So really,
+[00:42:15] a strategy is a long list of if-then-else structures, because the strategy, I mean,
+[00:42:22] an action is what you put inside the then or else, but the implication in a strategy are
+[00:42:29] if these conditions are met, I play this. Otherwise, I play that. And this, I mean,
+[00:42:36] you can switch many, many cases, like if this is met, I play this. Otherwise, if this is met,
+[00:42:40] I play that, and so on and so forth. And you program like a software in which you mention the
+[00:42:46] conditions represented through the history of play, and you decide what to do in those
+[00:42:51] circumstances. And the actions are what you put inside. So now the difference between action
+[00:42:57] and strategy should be clear now because it matters if, I mean, an action is just what
+[00:43:02] you do and a strategy is instead if something then I do this action, otherwise I do this
+[00:43:09] other action. So a strategy can be much more variegated than an action. I mean
+[00:43:13] in a static game you only have one plan so you can identify strategies and actions
+[00:43:20] one by one. But in a dynamic game you generally have multiple moves to plan depending on
+[00:43:25] circumstances, so you have one strategy comprising multiple actions to play. And as you see, this
+[00:43:32] means that the number of strategies is much bigger than the number of actions. For example,
+[00:43:38] let's consider the battle of sexes where Ann moves first. So it's true that the action set
+[00:43:43] is R and S for both. So Ann can choose between R and S, and Brian can choose between R and S.
+[00:43:50] So the set is the same. Actually, we denote this with lower case, upper case, we'll see why,
+[00:43:54] it doesn't matter, they have two alternatives, R or S.
+[00:43:57] However, Ann is the first move,
+[00:44:00] so Ann has only one information set.
+[00:44:02] So Ann decides R or S.
+[00:44:04] Ann can only make this decision once
+[00:44:06] because Ann only has one opportunity to make a move,
+[00:44:09] which is the beginning.
+[00:44:11] Brian, let's say Brian has two opportunities
+[00:44:14] in the game to move.
+[00:44:15] Actually, Brian only has one,
+[00:44:17] but only one is real.
+[00:44:19] But when Brian plans his strategy,
+[00:44:21] he should plan what happens in the, remember, green node
+[00:44:26] and in the orange node.
+[00:44:27] So Brian has two only actions, but four strategies,
+[00:44:31] because Brian can choose one possible action
+[00:44:33] for every possible information set.
+[00:44:36] So the strategy of Brian is now a pair of elements
+[00:44:39] of set A, meaning Brian can choose
+[00:44:42] to play different strategies as follows.
+[00:44:45] So the pair represents the first element
+[00:44:47] is what to do if A played R,
+[00:44:49] and this is what to do if A played S. So, for example, strategies can be, well, double S
+[00:44:56] can be one possible strategy of Brian. Brian plans in advance that whatever
+[00:45:00] Anne tells him, he will go to see the sci-fi movie. This is a possible strategy. Probably
+[00:45:07] it's not very smart, but it's a possible strategy, right? We are not here to judge
+[00:45:10] what strategies are good or bad. We will do so later, because remember, when we define a game,
+[00:45:17] we mention all kind of strategies, smart or stupid.
+[00:45:20] It's the same thing when we, then afterwards
+[00:45:22] we apply some elimination of dumb strategies.
+[00:45:25] So one possible strategy of Brian would be
+[00:45:28] I go to the sci-fi movie no matter what.
+[00:45:32] So my action is double S.
+[00:45:34] In the green node I play S,
+[00:45:36] in the orange node I play S.
+[00:45:38] Another strategy is RS, which is Brian simply decides
+[00:45:42] he will do whatever Anne says,
+[00:45:44] which is generally a good strategy for a boyfriend,
+[00:45:46] and well it's actually you can see that this will lead to good decisions for
+[00:45:52] Brian in both cases because in both subtrees he maximizes his payoff but we
+[00:45:57] will see this later. Another possible strategy is actually that Brian does
+[00:46:01] the opposite of Anne. Brian decides he wants to avoid Anne for some reason so
+[00:46:06] whatever Anne does, he does the opposite. Why not? I mean that's a
+[00:46:09] licit strategy. I'm not saying it's a particularly smart strategy. It's actually
+[00:46:12] going against Brian's objective, but it's a possible strategy. Okay, so the thing is if,
+[00:46:20] just to show you, if you have a different version of the game, let's consider another game. So
+[00:46:27] let's say Ann and Brian go to the movies for two consecutive nights,
+[00:46:31] but they play the original stats battle in both cases. So this time they don't communicate,
+[00:46:37] but they go to the movies for two times.
+[00:46:40] So it can be that Anne can think,
+[00:46:43] okay, first night we go see the romance movie.
+[00:46:45] That's my objective.
+[00:46:46] Second night, we make Brian happy,
+[00:46:49] we go see the sci-fi movie.
+[00:46:51] That is one possibility, if they go two nights, right?
+[00:46:55] So how to plan that?
+[00:46:57] Well, Anne's strategy could be,
+[00:46:59] well, first night I'm going to see
+[00:47:00] the romance movie in the first night,
+[00:47:03] and second night I'm going to see the sci-fi movie.
+[00:47:05] Well, not so fast because Anne in the second night has a more detailed history of play
+[00:47:12] because we assume that Anne does not always want to go see the sci-fi movie in the second
+[00:47:19] night.
+[00:47:19] Maybe she goes see the romance movie and she doesn't find Brian there.
+[00:47:25] So she's not happy and say, well, now that the outcome was not what I like, not
+[00:47:30] what I expected, I expected double R as the first outcome.
+[00:47:33] So if the first outcome is double R, I go see the sci-fi movie the second night.
+[00:47:37] But if the outcome is not double R, I keep going seeing this the romantic movie because I want really to see that
+[00:47:44] with Brian, if possible, and Brian has to come with me.
+[00:47:48] So you realize that in this game a strategy now becomes a quintuple of moves.
+[00:47:53] Because if you plot the game in an extensive form, I don't do that because I don't have room on the slides,
+[00:47:58] but the whole tree for this game would have
+[00:48:02] five nodes where Anne makes a move.
+[00:48:05] Like imagine this version, the original battle of sexes,
+[00:48:08] with static decision of Brian.
+[00:48:10] So Brian does not know what Anne did in the first choice.
+[00:48:13] But after each of these four outcomes,
+[00:48:16] you don't end the game,
+[00:48:17] but actually you play another three like this.
+[00:48:20] And only at the end, you compute a final payoff.
+[00:48:23] So you see that Anne has five points
+[00:48:26] where she moves, here and all these four points.
+[00:48:31] So one decision is the first decision to make.
+[00:48:34] And then Anne can make another decision
+[00:48:36] after the first night.
+[00:48:38] Of course, Anne knows after the first night.
+[00:48:40] Hopefully, she knows whether they
+[00:48:43] went to see the romance movie together,
+[00:48:45] or if she went alone, or she went to see the sci-fi movie
+[00:48:49] and she was alone, and so on and so forth.
+[00:48:52] So actually, of these five possibilities,
+[00:48:55] only two will be real.
+[00:48:56] the first one, and one of these four. But nevertheless, Anne wants to plan all possible
+[00:49:02] strategies. And so Anne must predict what to do in every possible situation that can happen.
+[00:49:10] Because it's like saying that Anne plans this from the beginning. Anne is very paranoid,
+[00:49:17] Anne is aware that she's going to play this game with Brian for two consecutive nights.
+[00:49:22] So she plans what to do in the first night and what to do in the second night.
+[00:49:25] And what to do in the second night is conditioned to what happened in the first night.
+[00:49:30] So there are five possible choices to make.
+[00:49:32] This is true for Anne and Brian as well.
+[00:49:35] And you see now another thing that is very tricky.
+[00:49:39] Players, so students often ask me, so the thing is the first move is one element
+[00:49:43] of Anne's strategy, and then Anne must have a strategy as the answer to what can happen
+[00:49:50] in the first outcome.
+[00:49:51] So, for example, one possible strategy of Anne could be, again, no matter what, or this
+[00:49:57] is Brian because I put lowercase, so the Brian strategy could be, well, no matter
+[00:50:02] what, I always go to see the romance movie in the first night and in the second night,
+[00:50:08] whatever happened in the first night.
+[00:50:10] Another possible strategy could be, as I said, well, I go to the romance movie in
+[00:50:14] the first night because I want to make Anne happy, and then if we eventually see
+[00:50:19] romance movie together, I go to the sci-fi movie in the second night, otherwise I go
+[00:50:24] to the romance movie. So that would be the first night is R, second night in the case
+[00:50:29] of double R is S, otherwise is R. That's another strategy. Okay, now you see again
+[00:50:35] a point that can be critical in the understanding because you might be confused. So basically
+[00:50:40] here, Brian is planning the first night to see the romance movie, okay? And in the second
+[00:50:48] night, he's planning to see, to decide what happens if the outcome of the first night
+[00:50:55] is double S, for example. That's the last entry in his strategy, correct? So he plans.
+[00:51:00] In the first night, I go see the romance movie. And in the second night, if the outcome
+[00:51:05] was double S, I also go to see the romance movie. So you might ask yourself, how is
+[00:51:09] possible that the outcome of the first night is double S if Brian decided to go see the romance
+[00:51:18] movie in the first night? This is not possible, right? Well, yes, this is true. Nevertheless,
+[00:51:25] remember that we are formalizing the whole set of possible strategies. So, of course, the fact
+[00:51:32] that this strategy cannot happen, I mean, sorry, this outcome cannot happen. It cannot happen
+[00:51:38] that Brian decides to see the romance movie
+[00:51:41] in the first night, and then the outcome is double S.
+[00:51:44] This is something that we realize when analyzing the game.
+[00:51:48] So that strategy will have something to be optimized,
+[00:51:52] let's say, but we'll discuss this later.
+[00:51:54] Now, here, I'm just defining the strategies.
+[00:51:57] So this is one possible strategy.
+[00:52:00] Remember, the strategy is just a list
+[00:52:01] of if, then, else conditions.
+[00:52:03] Some if close, it can happen that they are never met.
+[00:52:09] Who cares?
+[00:52:10] According to the definition, I mean,
+[00:52:11] to check that this if close is never true,
+[00:52:15] you need to analyze the game.
+[00:52:17] You only see it afterwards, logically speaking.
+[00:52:19] So from the formal point of view,
+[00:52:21] you just list all of them.
+[00:52:23] This is very important because most of the times
+[00:52:25] the students fail to realize that when I ask them
+[00:52:29] in an exam or when they need to program it
+[00:52:31] in a software, they need to list them all.
+[00:52:35] That's a correct formal way to proceed.
+[00:52:37] Afterwards, you remove some of them.
+[00:52:40] But you might remove some of them for several reasons,
+[00:52:42] not just because they are absurd.
+[00:52:44] And nevertheless, there is an inside logic procedure
+[00:52:49] into keeping into account that the first outcome could
+[00:52:53] have been double S, even though it's not possible.
+[00:52:57] It's the same difference that we argued between a case
+[00:53:00] that it's really not there or something
+[00:53:02] that happens with probability zero.
+[00:53:04] It's really subtle, but different.
+[00:53:06] So in this case, it's very important.
+[00:53:08] I'm making this disclaimer.
+[00:53:10] I want you to understand that the outcome that you
+[00:53:15] must plan the strategy for is always five,
+[00:53:18] even if some of these outcomes
+[00:53:20] are probably never happening.
+[00:53:22] But nevertheless, you have to plan the action for them.
+[00:53:25] Because otherwise, your strategy plan will be incomplete.
+[00:53:28] okay so in principle we can identify this as an algorithm because we say okay in the general case
+[00:53:41] we can list all the strategies is very mechanical so a computer can easily do that but when we are
+[00:53:47] doing this explanation among human beings is very boring to list all of the strategies so
+[00:53:52] mostly and also the list is very long so especially this justifies in a sense numerical
+[00:53:58] at least, why we often consider games with just two alternatives. Because imagine that a game has
+[00:54:03] three alternatives and two sequential moves. So now every player has 27 possible strategies.
+[00:54:12] So crazy, like I need to plan, like I have one player moving first with three alternatives.
+[00:54:18] And then depending on what the player did in the first alternative, the second player decides
+[00:54:23] and one of his three possible moves. Well, this very stupid game has 27 strategies, really many,
+[00:54:30] and it's very boring to list all of them. So we will, even though it is possible, there is a
+[00:54:34] notation here that justifies how to use them, it's very rare that we use such a notation. Most
+[00:54:40] of the times we resort to a word description, like ideally, you see, always go to R for both
+[00:54:46] knights, that would be 5R in a row, but it's more intuitive to describe it like this rather
+[00:54:51] than explicitly mention all the five hours. Of course, this is more compact for a computer,
+[00:54:55] but it's not very readable for a human being. So, depending on the circumstances, we will use
+[00:55:01] the wordy description most of the time. And still, if you are planning this to, I mean,
+[00:55:05] program a computer, a software like that, you must keep into account this notation. And also,
+[00:55:11] if you're writing this as the answer to a question in an exam, it's important that you
+[00:55:16] define very well the notation, because, well, most of the times, I see like, let's say,
+[00:55:19] I have a game like this, and say, what is the strategy where
+[00:55:24] Brian goes to the romance movie the first night
+[00:55:27] and the sci-fi movie in the second night
+[00:55:29] if the outcome was double R?
+[00:55:31] So wrong answers would be, well, R, S.
+[00:55:38] And no other situation, no, that's wrong.
+[00:55:40] You must list all the other situations.
+[00:55:42] Another, some students write R, S, R.
+[00:55:45] And they ignore the cases, as said,
+[00:55:48] where the outcome is SR or SS,
+[00:55:50] because they say, well, this cannot be,
+[00:55:52] because Brian shows, well, actually,
+[00:55:54] it cannot be that the outcome is RS or SS,
+[00:55:57] because Brian chose to go to see movie R
+[00:56:00] in the first map.
+[00:56:01] Okay, who cares?
+[00:56:02] That's not the representation.
+[00:56:04] Then the representation is five elements.
+[00:56:06] Then you decide that some of them are kind of pointless,
+[00:56:08] but you put them into the situation.
+[00:56:11] And finally, some students just write a list
+[00:56:14] without giving this explanation.
+[00:56:16] So it's always a good idea to say not just five letters in the answer to the exam, but also to list
+[00:56:23] what's the first letter, what's the second letter, what's the third letter, because sometimes students want to play smart and say, well,
+[00:56:29] they just put random letters and when I say, well, this is wrong.
+[00:56:32] Well, this is wrong anyways, because it didn't explain what the letters are. Say, no, okay,
+[00:56:36] but I meant this is the answer to this R and this is the answer to a double S,
+[00:56:41] so please state so clearly, because otherwise I cannot say this is the right answer, because, well,
+[00:56:46] or maybe you wanted to play it smart
+[00:56:50] and to say an answer that is valid
+[00:56:53] for different circumstances.
+[00:56:55] So please explain what your end tuple of actions means.
+[00:57:00] Okay, so this is to say that now we did define
+[00:57:02] the concept of strategy in a very complicated matter,
+[00:57:05] but it's the only way we can have.
+[00:57:07] So ideally, we can even say, as usual,
+[00:57:10] that I planned this all along.
+[00:57:12] When I said a strategy is a plan of action,
+[00:57:14] I had this in mind.
+[00:57:15] Of course, this degenerates quite easily in giving a single action for the static game,
+[00:57:22] but in a dynamic game, it can be a name-to-prove action according to an if-then-else plan.
+[00:57:30] That's a proper definition, and we are still in the realm of pure strategies.
+[00:57:34] We will see what to say for mixed strategies,
+[00:57:37] but this looks like a good point where to break this video.
