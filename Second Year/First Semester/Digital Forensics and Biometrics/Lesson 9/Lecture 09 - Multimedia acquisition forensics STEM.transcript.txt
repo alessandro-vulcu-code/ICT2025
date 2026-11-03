@@ -1,0 +1,1445 @@
+[00:00:01] Okay, so today we're going to carry on our part
+[00:00:04] that we started this term about the new forensics
+[00:00:08] and we're going to recap a bit some of the concepts
+[00:00:10] about signal processing that we're going to do.
+[00:00:13] We're going to use it in this course.
+[00:00:17] So once again, disclaimer,
+[00:00:19] you are going to discuss about signals.
+[00:00:24] Well, that is also here in signal processing
+[00:00:26] with media.
+[00:00:27] So here we are basically simplifying
+[00:00:30] the concepts that we needed to have in order to deal with biometric stuff and the forensic evidence.
+[00:00:39] So if you remember last time we talked about different types of signals that we used in forensics
+[00:00:48] for videos, audios and so on. And today we focus on what you can do on these signals.
+[00:00:55] So, one of the basic concepts that you want to know, okay, is digital systems are open.
+[00:01:02] So, if you have taken already a digital signal processing course, systems are simple as systems,
+[00:01:08] you already have led, okay, the system. Today, I'm trying to give you a different effect,
+[00:01:14] it's about filtering, okay, which is more interesting and more to be very, very
+[00:01:18] a little bit about what is the cost of a filter.
+[00:01:21] So, essentially, what is, in case of just a signal,
+[00:01:26] one good signal, so in a random sample,
+[00:01:29] what is the filter?
+[00:01:30] Well, the filter can be written in mathematical terms
+[00:01:34] like this equation here.
+[00:01:37] So you have the signal x is the input signal.
+[00:01:42] The signal, the function h, is the response of the filter
+[00:01:48] respect to the input in the system. And the output is y. Okay. And how do I get y? So how do I get y?
+[00:02:00] Well, first of all, what I can do, I define basically a shift, okay, which is defined by the sum of n.
+[00:02:09] I perform a reverse with h because I have h as a function of n minus i. So in fact,
+[00:02:15] minus I makes each right and then they compute the correlation between this
+[00:02:24] signal here we respect the signal here because I have a notification here and
+[00:02:28] so we can say that figuring is a correlation is a correlation of H with respect to H of R and I compute this
+[00:02:44] correlation of multiple samples multiple uses and this correlation is
+[00:02:49] the amount, how much on that position, on the patient end,
+[00:02:54] the signal x is correlated with h1 of xi.
+[00:03:00] If you wanted to say this, okay, in practical terms,
+[00:03:04] you can consider, okay, let's consider that this is x of i.
+[00:03:09] It's a very simple graph, so you know.
+[00:03:12] Let's consider that the impulse response of this filter
+[00:03:16] is h of i, it's a single triangle, okay?
+[00:03:21] Let's perform the flip.
+[00:03:23] So the flip h,
+[00:03:24] I use this symbol here that makes the flipping.
+[00:03:28] It's h of minus i, h of minus i,
+[00:03:30] which is the flip of the symbols on the right.
+[00:03:34] Okay? And then I compute basically
+[00:03:37] the multiplication and the
+[00:03:39] internal, okay, for multiple shifts, for multiple m.
+[00:03:44] So if you have here,
+[00:03:46] this is one value of m.
+[00:03:48] For this value of m,
+[00:03:50] This is shifting on this position.
+[00:03:53] So you can see here the red signals.
+[00:03:57] Here you have the blue, okay?
+[00:03:59] The input signal.
+[00:04:00] And if you compute basically
+[00:04:01] the multiplication between the red and the blue.
+[00:04:05] And you compute this sum.
+[00:04:07] Well, you will see that here,
+[00:04:10] the red is different from zero,
+[00:04:12] but the blue is perfectly equal to zero.
+[00:04:14] So I multiply zero by something different from zero.
+[00:04:18] and so I'm going to have zero.
+[00:04:20] On this term here, I will have that the red is zero,
+[00:04:23] the blue is different from zero.
+[00:04:25] Once again, this is zero,
+[00:04:27] multiply by this different from zero,
+[00:04:29] we will have zero in this case.
+[00:04:31] So for this position here, for this n value,
+[00:04:35] you will have that the multiplication of those two,
+[00:04:38] so one is going to be zero.
+[00:04:40] Okay, so the output y is going to be zero.
+[00:04:43] Let's use another shift, another n.
+[00:04:45] So from this end, we are here, basically.
+[00:04:48] You have that the triangle is overlapped a bit
+[00:04:52] with respect to the blue signal, okay?
+[00:04:55] So this area is basically what contributes
+[00:04:59] for this contribution.
+[00:05:01] This area gives you the correlation between the two.
+[00:05:05] And this is basically corresponds to this sample here.
+[00:05:08] So I will have that from this equation here.
+[00:05:11] I will have a value which is basically
+[00:05:14] and not totally full,
+[00:05:16] not totally corresponding to the full area,
+[00:05:19] but a small value that corresponds to this value here.
+[00:05:23] And notice that as I move, as I shift,
+[00:05:26] okay, the red triangle,
+[00:05:27] in order to get closer and closer
+[00:05:30] or more and more of the lab
+[00:05:32] with respect to the blue signal,
+[00:05:33] I will have the amount of area overlap
+[00:05:36] that contributes to this angle
+[00:05:38] is increasing over and over.
+[00:05:41] So I mean that, that has an increase.
+[00:05:44] I have more and more overlap until I get to the maximum.
+[00:05:46] The maximum is when you have that.
+[00:05:49] The red triangle is totally, at least,
+[00:05:52] the non-zero samples of the red triangle
+[00:05:55] are totally overlapped with the non-zero samples
+[00:05:57] of the blue rectangle.
+[00:06:00] And this is, this area is the green one,
+[00:06:02] and you have this circle here.
+[00:06:05] Then as I shift, okay, the red triangle,
+[00:06:07] I will have that the overlapping is going to decrease
+[00:06:11] and therefore the value is going to go down, down
+[00:06:14] until it goes to zero again.
+[00:06:18] Because the non-zero samples of the three are not
+[00:06:20] overlapping the non-zero samples of the newer table
+[00:06:23] and therefore is equal to zero on this equation here.
+[00:06:28] So once again, notice that the top here
+[00:06:31] you have when you have the higher overlap.
+[00:06:35] So kind of, let's say that filtering measures
+[00:06:38] and how you're actually using those.
+[00:06:41] And then, consider also,
+[00:06:44] is much simpler case in this one.
+[00:06:46] This is just to give you an idea
+[00:06:47] of what happens in the future.
+[00:06:49] This is a much simpler case.
+[00:06:50] Consider that you have the input signal,
+[00:06:53] which is T, and the red signal,
+[00:06:56] which is one filter, is basically R equal.
+[00:06:59] So we have two rectangles,
+[00:07:00] means this one and this one.
+[00:07:04] Okay. So to exactly that.
+[00:07:09] So what happens?
+[00:07:11] The red filter, basically as you change M,
+[00:07:13] you shift, okay, the red tool, start shifting.
+[00:07:16] So here the value is 0, 0, 0.
+[00:07:18] Then you have overlap.
+[00:07:21] And the process starts increasing.
+[00:07:23] Then you have an overlap decreasing,
+[00:07:25] the response is going to decrease.
+[00:07:27] So the result of this filter is this triangle here.
+[00:07:30] And you have the top of the filter, the top of the response,
+[00:07:34] the maximum values for this function,
+[00:07:36] is reached when you have the red triangle
+[00:07:38] corresponding exactly to the red triangle,
+[00:07:42] sorry, corresponding exactly to the blue rectangle.
+[00:07:46] So we can say, considering that we have
+[00:07:50] these types of numbers, and considering that we said
+[00:07:53] that filtering is a correlation,
+[00:07:55] we can say that the filter is an object
+[00:07:57] that tells you the maximum response,
+[00:08:01] and you see the highest response,
+[00:08:03] where the signal looks exactly like
+[00:08:07] in some physical impulsive response.
+[00:08:11] So a filter H is something that I can use
+[00:08:14] to look in those spots of X,
+[00:08:17] where X looks like exactly H, okay?
+[00:08:22] It's a kind of detector,
+[00:08:23] a detector of where those spots of the signal
+[00:08:27] that looks exactly the value, the H, the impulsive response of the fluid that I want to have, okay?
+[00:08:34] So, why this is important? This is important because if I have a set of filters that
+[00:08:43] really represents all the possible signals that I have in the world,
+[00:08:48] Imagine, for example, you can start with the eigenvalues or eigenvalues, you know eigenvalues.
+[00:08:55] Eigenvalues are vectors whose linear combinations are able to represent any vector inside of
+[00:09:03] the space.
+[00:09:04] So if you consider, if someone gives you a set of filters that represent any signals
+[00:09:12] in the world you can represent any signals using those filters. Because you can see that any signal is a
+[00:09:20] combination of those who pass with response. Let's see this in a moment.
+[00:09:28] Let's take this example from sounds, not because for time series from let's say games,
+[00:09:36] of the phone, or images are different.
+[00:09:40] So we consider sounds, okay,
+[00:09:41] this is in the same mode, but basically it is
+[00:09:47] exactly the same for any other types of signals,
+[00:09:50] from waves or to other stuff.
+[00:09:53] So consider, for example, a signal of signals,
+[00:09:56] which is the signal source, X zero,
+[00:09:59] sine of twice pi F zero T,
+[00:10:02] where F zero is the frequency of the sounds,
+[00:10:05] and see if it is going to be fine.
+[00:10:08] So this sounds like this, sorry for.
+[00:10:20] So this sounds like, okay.
+[00:10:24] It's a simple tone, okay.
+[00:10:26] Add a frequency of 400 or 400 hertz, okay.
+[00:10:30] It's not the C, but it's me,
+[00:10:34] so people that play music sound should like music only.
+[00:10:37] And then you have a simple sound like this.
+[00:10:41] Okay, let's add another sound.
+[00:10:43] For example, I make another sound, x1, okay?
+[00:10:47] Where x1 is a frequency of 2494.
+[00:10:51] So you can see here, the two sounds compare,
+[00:10:54] the blue one, the original one, and the red one,
+[00:10:57] okay, the new one that I had.
+[00:10:59] And suppose that I add this signal, x0 plus x1,
+[00:11:02] I sum these other components.
+[00:11:04] You can see that this green sound is much more complex.
+[00:11:07] okay so if you hear you have so you start from this very simple tone to a
+[00:11:19] much and add in this you get to the final result the green one so you have
+[00:11:26] the two sounds basically makes the sounds more complex more complete so you
+[00:11:31] can add a third sound to the fourth sounds for example here I add x2 and
+[00:11:39] x3 to get x0, x1. F2 has a frequency of 349. F2, 523 is the frequency. And you can see that the
+[00:11:49] resulting sounds, adding all the signals, is much more complex. So you start from this. So this is
+[00:11:59] basically the resulting sounds. And you can add with different amounts of these simple sounds.
+[00:12:06] So if you have different amounts, for example, I want the weight x0 with 0.5, x2 with 0.1,
+[00:12:13] 0.8, x2, 0.4, x3, okay? If you have different amounts of these cells,
+[00:12:18] you can get the cells like this. So as you notice, if I have a single signal,
+[00:12:25] then you have much more complex. Ideally, I can add many things that we want, many,
+[00:12:31] many sounds in the world, you can represent any sounds,
+[00:12:34] very, very, very complex sounds.
+[00:12:36] Okay, like your favorite sounds.
+[00:12:38] Okay, in time, by changing these weights,
+[00:12:40] in time, I might add in these elements.
+[00:12:44] So, knowing that, see here,
+[00:12:50] the depth points of the sounds
+[00:12:51] that looks like the capacity response, all right.
+[00:12:56] And knowing that, I can represent very complex sounds
+[00:12:59] using a combination of simple elements.
+[00:13:01] What I can do, I can decompose,
+[00:13:03] if I have a set of filters that can be represented
+[00:13:08] as impulsive as possible, like simple signs and cosines.
+[00:13:11] Well, I can represent any sounds, okay,
+[00:13:15] using this set of filters.
+[00:13:17] By computing the convolutions, by computing, okay,
+[00:13:20] the filtering with respect to this basis features.
+[00:13:23] And the basis features are the sine and the cosine.
+[00:13:25] So this is the case of the Fourier transform.
+[00:13:29] So how does this work?
+[00:13:30] If we transform basically uses a set of filters
+[00:13:34] or a set of basis functions which are cosine and sine.
+[00:13:38] And basically suppose that I'm using this filter here,
+[00:13:43] the sine of twice pi after zero.
+[00:13:45] Suppose that this is my input signal, okay,
+[00:13:49] and I perform the correlation, okay,
+[00:13:52] the filtering with respect to this H.
+[00:13:55] What I get, I get the coefficient 0.5.
+[00:13:58] I get the coefficient 0.5 that does mean
+[00:14:02] how much of this basis you have this filter here
+[00:14:06] is inside here, okay?
+[00:14:08] And in this case, if I have this filter in the results,
+[00:14:13] okay, the filter in here is not perfect,
+[00:14:16] but you can extract basically this element here,
+[00:14:19] which is the combinations, the contributions
+[00:14:21] of this filter with respect to this basis.
+[00:14:24] And I can change, okay, this H.
+[00:14:26] I can use H with F0, then with F1, F2, F3.
+[00:14:31] So given that you have these results,
+[00:14:34] and nobody tells you which is the decomposition, okay,
+[00:14:37] suppose that you have only the final cells,
+[00:14:40] you don't have, okay, you don't know which elements,
+[00:14:43] okay, contribute to create this.
+[00:14:45] So suppose that you have that,
+[00:14:47] by filtering with this H,
+[00:14:50] you can go back to the different coefficients,
+[00:14:52] 0.5, 0.2, 0.8, and 0.4.
+[00:14:56] A light for eigenvectors, you can approximate it,
+[00:15:00] depending on how many waves you are using,
+[00:15:02] you can approximate your C, okay?
+[00:15:07] You can approximate it with a certain error.
+[00:15:10] So, typically for Fourier transform,
+[00:15:12] we are using a complex function for eigenvector,
+[00:15:15] which is cosine plus J sine,
+[00:15:17] which is the explanation of minus J twice pi at zero T,
+[00:15:21] And given this, you can go basically
+[00:15:26] to the continuous time for the transform,
+[00:15:28] which is exactly this one.
+[00:15:31] What you are doing here is a simple filter.
+[00:15:33] You are filtering with respect to this filter here.
+[00:15:38] This is the input signal.
+[00:15:39] And the integral basically is equal to the sum, okay?
+[00:15:42] The summation that you have seen for the filter.
+[00:15:45] So this is continuous time.
+[00:15:47] And you represent your input signal XA
+[00:15:50] with the coefficients X, A, F,
+[00:15:54] which are so called the Fourier coefficients
+[00:15:56] of your signals.
+[00:15:58] You can do also for the split time.
+[00:16:00] So typically this is for completeness,
+[00:16:02] I think you will get the completeness time,
+[00:16:04] but we are only working in the discrete time,
+[00:16:07] so we need a finite RLE, our signals are sampled
+[00:16:11] and quantized, therefore, in the discrete time,
+[00:16:14] you have that a definite transform of this one,
+[00:16:17] and you have that from this signal,
+[00:16:19] you have a set of two coefficients XK.
+[00:16:22] Well, K is the units of frequency that you have, yeah.
+[00:16:27] And typically, you represent, okay, those coefficients,
+[00:16:31] those coefficients are normal, hard, complex numbers, okay?
+[00:16:36] You represent those coefficients typically
+[00:16:38] in terms of absolute value,
+[00:16:40] and you call this value magnitude,
+[00:16:42] and it is represented in the beginning.
+[00:16:44] So you have the total number of 10,
+[00:16:47] one by one, find your n,
+[00:16:49] and it's a little hard to spread out.
+[00:16:51] Or, and also, the phase, okay,
+[00:16:55] which is basically the phase on a complex number, okay?
+[00:17:01] So, my little phase represents your x,
+[00:17:04] which is the fully transformed inverse signals.
+[00:17:07] And you can also, the nice part of this transform
+[00:17:09] is that you can invert.
+[00:17:11] So, from the signal extent, using this basis,
+[00:17:14] you can go to the coefficients.
+[00:17:16] it's also possible that from the coefficients
+[00:17:18] using the inverse basis, you can go back to the signal.
+[00:17:22] It's a representation of the signal
+[00:17:24] that you can convert it from the signal
+[00:17:27] back to the coefficients of M3.
+[00:17:30] You can have basically some original perspective
+[00:17:33] about the signal that we used here today.
+[00:17:37] But it's a different way
+[00:17:39] to correct the coefficient of M3 and four.
+[00:17:42] In this course, basically what we need to know
+[00:17:44] we need to remember that you can represent the single
+[00:17:46] as a combination of simple,
+[00:17:50] of the terms simple elements.
+[00:17:52] The simple elements are these basis functions
+[00:17:55] and are weighted by the conditions of the theorem.
+[00:17:59] There are many properties.
+[00:18:01] For example, if the Fourier transform is active,
+[00:18:04] we can discover multiplication on the symbol
+[00:18:07] which is balanced on the Fourier transform
+[00:18:10] with our symmetries and so on.
+[00:18:13] Some example of Fourier transform.
+[00:18:17] For example, if you have this signal here,
+[00:18:21] which is an exponential,
+[00:18:24] okay, alpha m, mu dn,
+[00:18:27] so this mu dn is one infarctions.
+[00:18:32] So this can be basically
+[00:18:34] transformed into a Fourier transform,
+[00:18:38] which is the one on the right.
+[00:18:40] The sine or cosine,
+[00:18:42] which is, this is the signal, so you find,
+[00:18:45] corresponds to two depths, two peaks, okay,
+[00:18:48] in the free and the full.
+[00:18:50] So this is what happens.
+[00:18:51] As for a Gaussian, state Gaussian,
+[00:18:56] so the fully transformed, so the coefficients
+[00:18:58] of the fully decompositions is a Gaussian
+[00:19:01] also for the Gaussian signal.
+[00:19:02] And for direct, okay, which is the signal
+[00:19:05] that we have seen before,
+[00:19:07] you have basically a function which is called sinc,
+[00:19:09] which is a signal that is oscillating,
+[00:19:13] has a peak, okay, of zero,
+[00:19:15] then basically starts in the arm.
+[00:19:22] So these are basic functions for the audio.
+[00:19:25] As for audio, in this case,
+[00:19:28] this is the original signal here,
+[00:19:30] which is a signal like this.
+[00:19:35] Better go, he had counseled, sententiously.
+[00:19:38] It's a speech, okay,
+[00:19:40] And we're going to use, okay, this in biometrics.
+[00:19:44] And this in frequency domain corresponds to these coefficients here.
+[00:19:56] So these are the frequencies and these are the coefficients.
+[00:19:59] Where you have that top of the coefficients, typical stop are four units.
+[00:20:04] It's typically the bandwidth,
+[00:20:06] by the forms of neurons, of speech,
+[00:20:09] is where you have most of the speech in the eyes of the,
+[00:20:14] so this is for speech, human speech.
+[00:20:17] If you are talking about high effects of sounds,
+[00:20:21] you have a very, consider a much wider range
+[00:20:24] of the same as by the range of conditions,
+[00:20:27] because they're not able to represent,
+[00:20:29] to characterize the signals very well,
+[00:20:31] to see there's always more than of it.
+[00:20:33] So, the real host is a big signal, okay,
+[00:20:36] you know, characterized in the piece of stuff.
+[00:20:39] Other than, for example, some noises,
+[00:20:43] like impulsive noise or so on,
+[00:20:46] or kind of maybe the sounds,
+[00:20:49] maybe of some birds, some animals.
+[00:20:53] And so, for speech, we can go stays down
+[00:20:57] up to four, you know, I think this is enough.
+[00:21:00] If you go for music.
+[00:21:02] In this case, for this sound is much more complex,
+[00:21:12] you have a presentation that is basically like this.
+[00:21:14] So you have to go to up to 16th notes, 16th notes,
+[00:21:18] because you have more complex cells
+[00:21:20] and you have to represent in this way.
+[00:21:24] Another way to represent the signals, okay,
+[00:21:29] in fluorescence in my reference,
+[00:21:31] is the so-called spectrographs.
+[00:21:34] So what do we do in spectrographs?
+[00:21:35] Basically, my signal, Xn, can be extremely low.
+[00:21:41] What you do, you split these signals into frames,
+[00:21:45] okay, intervals, and for each interval,
+[00:21:49] you come into the field of time.
+[00:21:51] Okay, so what you do, you're basically adding,
+[00:21:54] in the Fourier transform, this function here,
+[00:21:58] which is what we call windowing function.
+[00:22:01] It's a function which is basically
+[00:22:03] and equal to zero in this interval here,
+[00:22:08] and then goes to one in the specific interval
+[00:22:11] that I want to consider, okay?
+[00:22:14] It's like if you select only a window,
+[00:22:17] okay, you have the zero.
+[00:22:18] And then you go to the Fourier transform on that zero.
+[00:22:21] Then you move the window, you shift the window,
+[00:22:24] and this is given by this operation here,
+[00:22:33] minus dr, so you shift the window,
+[00:22:34] and that you recomputed then different transform
+[00:22:38] on that new window.
+[00:22:40] And you keep on shifting and continuing the flow as well.
+[00:22:43] So you have, at the end, multiple coefficients
+[00:22:45] for energy shifts, you have one array of coefficients.
+[00:22:49] You place the coefficients along, for example,
+[00:22:52] the carbons on the matrix, and along the rows
+[00:22:57] you place the different sets of coefficients
+[00:22:59] that we are playing on different instances of the window.
+[00:23:02] What do we do?
+[00:23:03] We have what we call a spectrum.
+[00:23:06] Basically, in spectrograms, we won't totalize
+[00:23:08] the evolution of the frequencies in time, okay?
+[00:23:12] So let's see what happens.
+[00:23:14] Let's hear, okay, these sounds very simply.
+[00:23:35] So in this case, it's a progression, okay,
+[00:23:38] of frequencies, simple frequencies, simple sinusoids.
+[00:23:41] If you compute, okay, the spectrograms,
+[00:23:44] you will see that at this point,
+[00:23:47] you have the first note, then you have
+[00:23:49] second frequency, then you have the frequency and so on. As you can see here, you have that you can see visually
+[00:23:55] that from this interval of frames you stays on the single. On the single first of the note, the new note, the new note.
+[00:24:05] And you can see the 12th note of the C major of the scale. You can do this for a much more complex
+[00:24:15] team, for example, this is the final fantasies team.
+[00:24:23] This is largely done for the analysis of audio,
+[00:25:01] the simulation of audio,
+[00:25:03] the simulation of environmental audio,
+[00:25:05] meaning the final set of implications,
+[00:25:07] or the way that it's for the voice processing,
+[00:25:10] voice recognition, depending on the spectrograms.
+[00:25:14] So you can see that these are examples
+[00:25:16] of people doing voice recognition.
+[00:25:18] and you have special names of speakers and speakers
+[00:25:21] that are basically pronounced in the words
+[00:25:25] Pu-gu-jan-tu-nis-tu-sai-no.
+[00:25:28] So I don't know if this message was correct.
+[00:25:32] And basically you had that you can, by analyzing
+[00:25:35] the scapula which is the speaker of the corresponding.
+[00:25:41] This is for single images.
+[00:25:43] Single, no, one with single notes.
+[00:25:45] you can do this the same as for images or for signals,
+[00:25:48] and you can have signals.
+[00:25:49] For example, if you move, okay, to images,
+[00:25:52] you can get, okay, the two-dimensional Fourier transform.
+[00:25:57] So you have the continuous version here,
+[00:26:00] the inverse Fourier transform here,
+[00:26:02] the discrete versions,
+[00:26:03] and the inverse discrete versions, okay?
+[00:26:05] So the Fourier transforms,
+[00:26:06] you can do also for images and 3D values.
+[00:26:09] For images, just to remind you that
+[00:26:14] In images, okay, for example, we have a red 2D.
+[00:26:20] Red 2D is like the red that you have seen before,
+[00:26:23] but in two dimensions.
+[00:26:25] It looks like this, okay?
+[00:26:26] So here you have the intensity of the signal,
+[00:26:28] and here you have the first dimension,
+[00:26:31] let's say the vertical components,
+[00:26:33] on the vertical components, this is the image.
+[00:26:35] If you interpret this as an intensity,
+[00:26:40] basically the image corresponding to this is basically this one. Okay, this one you have the top value, one,
+[00:26:48] ultra and 55 is the top y, full y. And basically that is the zero into that.
+[00:26:57] So what happens if you apply, okay, the Fourier transform of this to you?
+[00:27:02] The Fourier transform of this is going to be, you know, 2D function, like this one,
+[00:27:06] which is basically the same two dimensional scene for a more complex
+[00:27:19] images like this you can see that this is the magnitude of the first four and
+[00:27:24] this is the face for this image here you have that there
+[00:27:36] here you can notice that most of the information is contained at low frequencies and this is a
+[00:27:44] special case so if you have a function like this a two-dimensional function
+[00:27:51] which is a cosine, a simple cosine that looks like this and whose fully
+[00:28:01] transport are two peaks okay two impulses at coordinates which depends
+[00:28:09] on this f0 coefficient here. What does this looks like?
+[00:28:34] This is why in bioreference you can see the only pictures of the field.
+[00:28:49] So you take a small unit of your bridges, then you can see the field transformed, you guys have the two peaks
+[00:28:56] and when you add the two peaks,
+[00:28:58] you know exactly all these numbers here.
+[00:29:00] So all these parameters here are known,
+[00:29:02] you know how to do it, and so on.
+[00:29:05] So that is basically an approximation,
+[00:29:07] a very good approximation of your fingers,
+[00:29:10] ridges of your tips.
+[00:29:14] Okay, so this concludes the part about the signals.
+[00:29:21] So in the previous domain,
+[00:29:23] you can also see the difference in the signals
+[00:29:26] in the frequency domains.
+[00:29:27] And given this representation,
+[00:29:29] you can see that in the frequency domain
+[00:29:31] you can also analyze, okay,
+[00:29:34] also the filter in the range.
+[00:29:35] So filtering time is a correlation.
+[00:29:37] In the frequency domain, it's a multiplication.
+[00:29:40] So what you do, you compute the full transform
+[00:29:42] of the signal, you compute the full transform
+[00:29:45] for the filter, and then what you do,
+[00:29:50] you can multiply the filter coefficients
+[00:29:53] for the single coefficients.
+[00:29:56] You get basically the Fourier coefficients
+[00:29:59] of the response of the filter.
+[00:30:02] So the response of the filter,
+[00:30:04] the Fourier response of the filter
+[00:30:05] is the multiplication of the Fourier transform.
+[00:30:07] And therefore what you can do,
+[00:30:09] you can work with is the Fourier domain filter.
+[00:30:12] So what you do, you compute the two filter transform,
+[00:30:15] Fourier transforms, you multiply the coefficients,
+[00:30:18] then you have this coefficient here,
+[00:30:19] you perform the inverse Fourier transform,
+[00:30:21] you go back to the signal y, okay?
+[00:30:26] You get exactly the signal y, which is the output here.
+[00:30:30] I mention this because typically we can distinguish
+[00:30:32] depending on the Fourier transform of the filter,
+[00:30:38] depending on which coefficients are different from zero,
+[00:30:41] and which are not, or very close to zero,
+[00:30:43] which are not.
+[00:30:44] You can have basically what is low pass,
+[00:30:46] bad pass, high pass, and bad reject filter.
+[00:30:49] In low pass filter, you have that most of the value
+[00:30:53] of the filter, the amplitude of the filter
+[00:30:56] is high at low frequencies.
+[00:30:59] This means that by filtering the signal
+[00:31:01] with that filter, you're going to keep
+[00:31:03] only the lowest frequencies.
+[00:31:05] Only those components, these are the components
+[00:31:07] that has a low F0, okay?
+[00:31:11] For high pass, you keep the one at high frequencies.
+[00:31:13] bandpass you select only this range of frequencies and this is that you remove
+[00:31:20] this range of frequencies. This is roughly general for instance, because we want to maybe select some special components by using a bandpass.
+[00:31:31] For example, suppose that all this is, you want to remove this component. For example, suppose that I have some recordings and I want to hear exactly what that guy is saying
+[00:31:42] And maybe that guy is close to some electric equipment,
+[00:31:47] for example, an engine fridge or air conditioning.
+[00:31:50] And this air conditioning is adding some noise
+[00:31:53] at a very specific frequency.
+[00:31:55] What they can do, they can select that frequency,
+[00:31:58] perform a band reject filtering,
+[00:32:00] and then they can remove that noise
+[00:32:02] so that they can hear what the guy is saying
+[00:32:04] in a more distinct way, okay?
+[00:32:07] This is why we need to have filtering, okay,
+[00:32:09] in many processing in, in, in, in, for instance.
+[00:32:14] Another way we're going to see that we're using
+[00:32:15] this filtering when you want to localize
+[00:32:17] some specific recording, some specific drops
+[00:32:21] and what you can do, you can select, okay,
+[00:32:24] dot component, so using a band pass filter
+[00:32:28] related to the electric color.
+[00:32:30] And we're going to see
+[00:32:31] when we're going to talk about DNF.
+[00:32:36] Okay, these are example of filtering.
+[00:32:38] Okay, you can use also do filtering to remove noise.
+[00:32:40] For example, I have this single filter here.
+[00:32:43] I add some motion noise.
+[00:32:45] I want to remove the noise very, very well.
+[00:32:48] I use a low pass filter, okay,
+[00:32:50] because typically this has very limited bandwidth.
+[00:32:54] The motion noise has a very wide bandwidth.
+[00:32:57] By using the low pass filtering,
+[00:32:59] I'm able to remove all the possible frequencies,
+[00:33:04] all the energy of the noise,
+[00:33:05] which is on this range of frequencies here.
+[00:33:07] Therefore, the image, the sounds is going to feel cleaner.
+[00:33:11] Okay, you're going to hear this cleaner.
+[00:33:14] And for fingerprints, for example, what I can do,
+[00:33:18] I can do 2D filterings that enhance the both of us.
+[00:33:23] So if you look at this impulsive response
+[00:33:25] of these filters, this impulsive response
+[00:33:28] is basically higher with respect to the surfing on the beach.
+[00:33:33] So remember that when we first run, we select the analysis, okay, those parts of the signals that are perfectly aligned,
+[00:33:44] comfortable actually in the fingers. So if I use this set of filters on different parts of my fingerprints,
+[00:33:51] what I will do, I'm going to analyze, okay, those parts that are oriented according to those limitations.
+[00:33:58] So I'm doing this filtering, you can see that
+[00:34:01] I can remove all this noise.
+[00:34:04] The image of the fingerprints is going to look neuter,
+[00:34:07] the ridges are more continuous,
+[00:34:09] and I'm able to, for example,
+[00:34:11] the technique is there, and I'm going to find
+[00:34:12] the difference, okay?
+[00:34:15] So this filtering is largely done, okay,
+[00:34:19] in many different applications,
+[00:34:20] where you have to announce the quality of the image.
+[00:34:26] And in the end, you can also represent, okay,
+[00:34:30] using this filtering of the image of the sound using a set of these filters this
+[00:34:36] is what we do in sub-value coding. Okay, so given this first collection, we conclude this very quick overview of single processing, just to give you an idea of the instruments, the elements, as you need to know, in order to, at the end, understand how we're going to perform the final analysis.
+[00:35:05] And therefore, we can focus, we can move, okay,
+[00:35:09] to the characteristics of each of the cables.
+[00:35:12] So, if you remember, we said,
+[00:35:16] you acquire your files, you get your files
+[00:35:19] from the analysis.
+[00:35:20] You get anything, and given an image,
+[00:35:23] you can bring out the axis.
+[00:35:25] But we are seeing that axis are not removed,
+[00:35:28] templated, altered, and so on.
+[00:35:30] So, is it possible to get information
+[00:35:34] from the pixels of the cameras?
+[00:35:37] From some noises, some non-linear,
+[00:35:41] non-versical operation that you do on the image?
+[00:35:45] And the answer is yes.
+[00:35:47] And we have many of them in given an image
+[00:35:50] that you maybe have taken your phone.
+[00:35:54] This many of them are distributed
+[00:35:57] across the different operating stages
+[00:35:59] and operating phases of image creation.
+[00:36:04] So how does this, so how an image is what?
+[00:36:08] Basically, you have the subject, the life is the subject,
+[00:36:12] life is reflected by the subject back into the camera.
+[00:36:16] The camera has a lens that focuses the rays of light
+[00:36:19] reflected by the object onto a photo-responsive plane,
+[00:36:23] which is the image plane.
+[00:36:25] In traditional animal cameras, this is basically the film
+[00:36:29] in each of the cameras is a matrix of sensors,
+[00:36:33] CCDs, okay, that corresponds, again, to your pixels, okay?
+[00:36:38] You have some filters in front of the sensors
+[00:36:41] because you can apply only intensity,
+[00:36:45] so if you want to react with the color back,
+[00:36:47] you need to have a set of filters
+[00:36:49] that distinguish the different components,
+[00:36:52] the right and the negative components, okay,
+[00:36:55] for such an intensity.
+[00:36:56] And then you have some electronics that
+[00:36:59] compensates this intensity because your CCD
+[00:37:03] measures some voltage of some charge.
+[00:37:06] And then this must be some how, since that,
+[00:37:09] and convert it into an intensity value,
+[00:37:14] an intensity value which is a number.
+[00:37:16] Typically we talked about a number
+[00:37:17] that goes from zero to 155.
+[00:37:20] And this is done by the ADC,
+[00:37:22] another which is a converter, okay?
+[00:37:24] So you have an image, which is then can be compensated,
+[00:37:28] you can compensate some distortions,
+[00:37:30] and then at the end, it is stored in some memory base,
+[00:37:35] which is maybe a little ASCII card on the phone
+[00:37:38] or in internal memory box.
+[00:37:42] Through all of these passages, okay,
+[00:37:46] you have got some elements, some traces
+[00:37:49] that gives you information about the knowledge
+[00:37:52] of that picture can be left, okay?
+[00:37:55] And let's see which are these.
+[00:37:58] So the first trace that we can look for
+[00:38:02] is related to this element here, the lens.
+[00:38:08] The lens, typically you have started in physics,
+[00:38:13] the thin lens, illustration, and so on,
+[00:38:16] but ideally the lens is not ideal.
+[00:38:18] In real, the lens is not ideal, okay.
+[00:38:21] So thin lens is ideal model in real life lens
+[00:38:25] has many many defects, which are not defects,
+[00:38:29] are peculiarities, which are not ideal,
+[00:38:31] and are unique because they are randomly created
+[00:38:35] by the properties.
+[00:38:38] And the first okay defect is related
+[00:38:42] to the alterations of parts.
+[00:38:45] So when light enters the lens,
+[00:38:49] the light is subjected to a propagation
+[00:38:52] into the lens, and from here into the lens,
+[00:38:57] and then to the lens, and then back into here, okay?
+[00:39:01] So, during this trial, across different types of video,
+[00:39:05] you know, from films too, that the lens
+[00:39:08] undergoes an effect of refraction and reflections.
+[00:39:12] Typically more reflection, we are focused on reflections.
+[00:39:15] So what is reflection?
+[00:39:16] Basically, you have that the ray, okay,
+[00:39:22] okay, of light incoming in the lens
+[00:39:25] is basically deviated from this original directions.
+[00:39:30] And the rule that defines the infractions
+[00:39:34] is what is the Fresnel equation.
+[00:39:37] It says that the incidence angle theta,
+[00:39:43] okay, with respect to this meeting here here,
+[00:39:47] is modified into the refracted angle theta f, okay,
+[00:39:52] which is basically depending on the material of the lens. So in this case
+[00:39:59] theta F and the two materials, the inner and the lens, are basically defined, are characterized by the two indices, M and NF.
+[00:40:12] So theta is the incident angle, theta F is the refraction angle. These are indexes that are characteristics of the material.
+[00:40:21] Notice that these values here are not unique for all frequencies.
+[00:40:26] So you know why there's different frequencies?
+[00:40:28] Okay, it's an X1, X2, X3 depth times two different frequencies.
+[00:40:33] But this refraction depends on the wavelength.
+[00:40:37] So assuming that red colors have different frequencies,
+[00:40:42] blue has different and other frequencies,
+[00:40:44] according to this frequency you have different types of angles.
+[00:40:47] Okay, because NF is going to change.
+[00:40:51] Okay so different colors, different wavelengths or frequencies, different reflections. So what happens is that when the light enters your lens, the color separates.
+[00:41:05] And this is something that you don't want to have. When you build a lens, you don't want to have that. You want to have this lens as in the art as possible.
+[00:41:14] so to keep okay the color to the left.
+[00:41:17] And this is why in practical terms,
+[00:41:20] you have that this is the effect
+[00:41:23] that you have on standard lenses.
+[00:41:24] Typically, these lenses are corrected
+[00:41:26] with some lenses that basically
+[00:41:29] remakes the color, different colors, re-converge.
+[00:41:33] Okay, so you want to compensate this.
+[00:41:36] So your lens in your phone
+[00:41:39] is a combination of diffraction,
+[00:41:50] which can be depending on the types of
+[00:41:52] layers that you have because it depends
+[00:41:54] how much you pay for the lens. The lenses have that limited distortion, very limited color
+[00:42:00] operations. If you pay less, if you have a cheaper lens, you won't have like this effect, it is much much
+[00:42:06] more so but this is important to say that this is not perfectly uniform to
+[00:42:17] out the rest is something that can change because it depends on how the
+[00:42:21] last minute of the rest of a duration in the fabrication process and this is
+[00:42:26] something that basically how can we do this well it is possible to
+[00:42:32] use some mathematical notation for this. So consider that, so the situation is this,
+[00:42:41] lens enter, light enter, lens refract, then outputs the lens refract again, so
+[00:42:48] you have that you can have a difference of angle as the lens comes in and the lens goes out, and this
+[00:42:56] difference of angle can be defined by the angle theta and theta R, okay, and theta R and theta R basically are
+[00:43:05] associated with different colors, for example theta R is related to red, theta B is related to blue, okay, so you have different
+[00:43:14] refraction indices and B and R goes down higher with two different colors. And it says this value are different because it depends on the color of the thickness of the windmills, right? You must have this
+[00:43:29] and this equality, mostly gamma, because it's three different elevations, you must have a compensation which is done by theta B H dot. So theta B dot changes for R and B for the red and blue color changes.
+[00:43:44] So starting okay from this equation here, you can divide okay by the cosine of theta R and theta B
+[00:43:51] and assuming that the angles are similar, so the differences are not much, there's not much difference between theta R and theta B,
+[00:44:01] you can say that the cosine of theta R is similar to the cosine of theta B.
+[00:44:06] So let's divide left and right by the cosine of theta R and theta B,
+[00:44:10] which are divided by the same quantity.
+[00:44:12] So sine of theta B divided by
+[00:44:14] the cosine of theta B becomes the tangent of theta B.
+[00:44:17] And the sine of theta R divided by the cosine of theta B,
+[00:44:20] which is equal to the cosine of theta R,
+[00:44:22] becomes the tangent of theta R.
+[00:44:26] So the equation tells you that
+[00:44:28] mB tangent of B, theta B,
+[00:44:30] is equal to mR tangent of theta R.
+[00:44:34] But what is the tangent?
+[00:44:36] Well, the tangent is basically
+[00:44:39] the ratio between this value here is coordinates and F.
+[00:44:45] F is the distance of the sensor with respect to the lens.
+[00:44:49] It's called this focal distance, okay?
+[00:44:52] It is what makes your image in focus in your cameras.
+[00:44:56] And it's called F, okay?
+[00:44:58] It's the distance between the lens
+[00:44:59] and the sensor, the CCD, okay?
+[00:45:02] Then XR is the deviation for the red, okay, ray,
+[00:45:06] on the right component, and xb is the deviation
+[00:45:09] from the blue component.
+[00:45:10] So this divided by this gives you the tangent.
+[00:45:13] So this makes that this is equal to mb xb over f
+[00:45:19] is the tangent of theta b.
+[00:45:21] And this tangent of theta r is equal to xr over f.
+[00:45:26] So you have that mb xb over f
+[00:45:30] is approximately equal to mr xr over f, okay?
+[00:45:36] This is the equation.
+[00:45:38] And if you take, if you remove F here
+[00:45:41] and you take basically MB and R
+[00:45:44] you bring it at the denominator
+[00:45:47] you get that XR is equal to MB over NR
+[00:45:51] multiplied by R.
+[00:45:55] So you have that the coordinates
+[00:45:58] of this red component is scaled
+[00:46:01] by a quantity MB over NR
+[00:46:04] that I call alpha
+[00:46:05] which depends on the refraction indices,
+[00:46:09] on the ratio of refraction indices,
+[00:46:11] with respect to the coordinates of the blue components.
+[00:46:15] Notice that these two were the same in the air.
+[00:46:20] So in the air, they are the same,
+[00:46:21] but on your final image, they are looks separate.
+[00:46:24] They are split.
+[00:46:27] So what happens?
+[00:46:29] It happens that this leads to this rainbow effect
+[00:46:33] that you haven't noticed.
+[00:46:34] So this is the image, it's a part of the wood,
+[00:46:40] but the color operation makes, okay, the color split.
+[00:46:46] And this splitting leads you to this kind of
+[00:46:48] rainbow effect where you see different types of colors.
+[00:46:52] This effect is more evident close to the end,
+[00:46:57] the edges of the lens.
+[00:46:59] Why?
+[00:46:59] Because we have different types of reflections,
+[00:47:01] because the lens typically is curved at the edges, okay?
+[00:47:05] and you have this separation more rather than
+[00:47:10] on the center part of the eye because it arrives
+[00:47:13] perfectly vertical and you have the eye.
+[00:47:17] You don't have this function because if you are vertical
+[00:47:19] theta is invisible and you don't have start problems.
+[00:47:26] So it is an effort that is close to the edges,
+[00:47:31] the borders of the images
+[00:47:33] and it is something that you can measure
+[00:47:36] because it's unique from lens to lens.
+[00:47:39] It is due to the characteristics of the materials,
+[00:47:42] but also it is true to some micro or microscopic effects
+[00:47:46] due to the fabrication process.
+[00:47:50] And therefore, from the previous equation,
+[00:47:53] we have seen that for the R component,
+[00:47:56] for the right component, we have alpha,
+[00:47:58] the blue components, so we have this multiplication.
+[00:48:02] Typically, you add some displacement,
+[00:48:07] okay, in respect to the center of the image,
+[00:48:08] because you have this effect is more evident on the borders.
+[00:48:13] And you have like this more complex model,
+[00:48:15] you are basically enter you do the center of operation.
+[00:48:19] You want to modulate the operation depending
+[00:48:21] on how much you are far from the center.
+[00:48:24] This is why you use that kind of other original model.
+[00:48:28] And once you estimate,
+[00:48:29] you can estimate this other original model from the lens,
+[00:48:32] you got basically a model and identifier
+[00:48:37] for that specific lens.
+[00:48:39] And identifying the lens,
+[00:48:41] allows you to identify as it is to the camera.
+[00:48:44] So you can get specific image.
+[00:48:47] You can authenticate the image itself.
+[00:48:51] This is true for colors.
+[00:48:55] And we can see, okay, after the break,
+[00:48:57] that it is true also for other types of distortions.
+[00:49:02] Okay, so colors are not the only element,
+[00:49:06] that is not the only element that is distorted by the lens.
+[00:49:09] And this distortion is unique, identifies, okay, the camera.
+[00:49:12] So see you in five minutes, even less.
+[00:49:20] Okay, so we start again.
+[00:49:40] Okay, so together with the chromatic aberration,
+[00:49:43] a particular appointment, we also have
+[00:49:54] a number of types of operation which is the spherical.
+[00:50:00] Why?
+[00:50:00] Typically you know from physics
+[00:50:02] that you have the thin lens model,
+[00:50:03] but your lenses are not thin, okay, they are curved.
+[00:50:09] There is a shape which is spherical, it can be inner,
+[00:50:13] okay, depends on the types of lenses.
+[00:50:15] But this spherical shape often produces some distortion
+[00:50:20] which is due to this geometry of the lens.
+[00:50:23] And this distortion is called basically
+[00:50:25] radial distortion or spherical distortion.
+[00:50:28] And this is characteristic from any lens in the world,
+[00:50:33] Depends, of course, on the type of lens systems.
+[00:50:37] But for the lens of your camera, you have opinions.
+[00:50:41] And this can be compensated directly by the teamwork
+[00:50:45] of your phone or your camera.
+[00:50:48] So you say, okay, this is the distortion of lens.
+[00:50:52] And then you see the thing, when you look at the images
+[00:50:56] you can see, you can see that there is no distortion,
+[00:50:59] there is no curvature on the lens.
+[00:51:00] This is because the firmware, the software,
+[00:51:03] inside the camera in front, already come and save.
+[00:51:06] So what you see, you see this, okay?
+[00:51:09] You don't see this, okay?
+[00:51:12] But this is what basically the lens,
+[00:51:14] the camera produces, okay?
+[00:51:17] And this is compensated by a model of distortion,
+[00:51:20] which is the radial distortion model,
+[00:51:23] or lens distortion model,
+[00:51:24] that introduce this, let's say curved shape.
+[00:51:28] So the straight lines are not saved anymore,
+[00:51:30] we have a nice kind of type of ball.
+[00:51:33] And we have two different types of distortion
+[00:51:36] because barrel distortion, because the lines
+[00:51:41] which are straight, it looks like the lines of the barrel
+[00:51:44] okay, or pin cushion distortion
+[00:51:47] because it looks like if there is the pin cushion
+[00:51:49] distortion that you have on a pin cushion.
+[00:51:51] And it can be more than I'm using this equation one.
+[00:51:56] And where this is the distance given the center of the index,
+[00:52:02] this is the radius and distance of the pixel,
+[00:52:06] okay, in respect to the center of the index.
+[00:52:08] You can see that the distortion
+[00:52:10] is something which is rather, okay?
+[00:52:13] So you can model distortion in terms of radius
+[00:52:15] with respect to the center of the index.
+[00:52:17] So this is the radius, okay,
+[00:52:20] which is altered by this coefficient K1, K2,
+[00:52:25] which are numerical coefficients
+[00:52:26] which can be estimated for your legs, okay?
+[00:52:33] So typically, K1, K2 are kind of finger prints
+[00:52:37] of your legs, okay?
+[00:52:39] Are proficient, but we can estimate
+[00:52:40] for that specific image, camera.
+[00:52:43] And therefore, if you take an image,
+[00:52:45] you measure the body distortion
+[00:52:47] that you have in this image,
+[00:52:48] and you extract K1, K2,
+[00:52:50] you can basically use K1, K2 to identify the lens.
+[00:52:55] Often there are some alterations, okay,
+[00:52:59] due to the fact that the lens is not perfect.
+[00:53:02] You may have different types of distortions, okay,
+[00:53:04] due to some alterations, okay, in the material of the lens
+[00:53:07] and therefore this can be not perfectly radial.
+[00:53:10] You can have some alterations
+[00:53:11] depending on the position of the image where you are.
+[00:53:15] You can relocate this, okay,
+[00:53:16] Susquehara interpretation works again by Joy D'Amour-Grom, okay, and this gives you
+[00:53:23] information about how less evaluation can characterize your image.
+[00:53:32] There is another, there is another Susis, so as you notice here, these types of traces, so the colors and the spherical durations, are traces which are
+[00:53:53] into the camera, the beginning steps of each of them.
+[00:53:58] So, staying in an image generation,
+[00:54:02] in the physical image generation,
+[00:54:05] we can have similar types of stresses,
+[00:54:08] also in other types of improvements.
+[00:54:11] So we're considering cameras, okay,
+[00:54:13] in these types of, in this discussion,
+[00:54:17] but this element that you find in cameras
+[00:54:19] can be also one of other types of media,
+[00:54:22] other types of devices.
+[00:54:24] For example, we can refer some of these elements,
+[00:54:28] these physical elements, to printers and scanners as well.
+[00:54:34] So, let's have short regressions
+[00:54:38] about printers and scanners.
+[00:54:40] So, basically we are talking about physical elements,
+[00:54:44] physical devices, something related to how light
+[00:54:48] or eventually ink propagates and is acquired
+[00:54:55] by the CCB sensors or acquired by the paper.
+[00:55:01] This is what we are talking about
+[00:55:02] in this part of the lectures.
+[00:55:05] So for printers and scanners, we can have fingerprints
+[00:55:09] like the ones that we have for lenses as well.
+[00:55:13] The advantage, because we have lenses
+[00:55:15] also in scanners and printers,
+[00:55:17] but also because we can use it in the same place.
+[00:55:20] So, let's see how things works for a printer,
+[00:55:32] for an inkjet printer.
+[00:55:34] For an inkjet printer, you have that basically
+[00:55:39] there is a nozzle that sprays some ink on the paper.
+[00:55:47] The ink gets sticky, okay, it gets sticky to the paper,
+[00:55:52] and then it does, and then you have the end of the dot.
+[00:55:55] The nozzle moves, okay, and the paper moves as well,
+[00:55:59] and by this moving, you can decide, okay,
+[00:56:02] to spray or not spray, depending on the form
+[00:56:05] of the green, like the black dot, or not, on the paper.
+[00:56:10] This is the ink jet.
+[00:56:13] In laser jet, the situation is a bit different,
+[00:56:15] so you have basically a cylinder which is kind of a photo-responsive and this
+[00:56:23] cylinder is impressed by a laser depending on the image and this laser
+[00:56:33] basically makes the powder stick okay make the ink which is a powder stick
+[00:56:42] on the paper so the laser basically becomes electrostatic in the cylinder
+[00:56:46] becomes electrostatic so the cylinder becomes electrostatic it makes okay the
+[00:56:52] instinct and then pressure and heat basically impress okay the ink on the
+[00:57:00] And in the fuser, okay, basically the paper
+[00:57:06] is printed with the image log program.
+[00:57:12] This is for laser and inkjet printers.
+[00:57:16] You may have something, when you are talking about
+[00:57:19] basically scanners, in scanners the situation
+[00:57:24] is completely different, you have a laser of light
+[00:57:26] or light when it has light, which is basically
+[00:57:30] focused on different parts of the paper and this focus on different part of the
+[00:57:35] paper is done by a mirror that moves and the right is reflected by the paper
+[00:57:43] and then the reflected light is acquired by what is an image. Basically you are making a picture
+[00:57:50] of the paper that you are acquired. So you still have the laser but in this case the laser is not
+[00:57:59] to make electrostatic, the cylinder is done
+[00:58:02] to basically eliminate the parts of the paper.
+[00:58:05] The laser or different parts of light.
+[00:58:08] So these things are summarized,
+[00:58:10] you don't find this on, you have that big version
+[00:58:13] of the parts, so you're going to have this
+[00:58:15] after the work done on the laptop,
+[00:58:17] that you have all this information.
+[00:58:18] So this is a very simple summarization
+[00:58:21] of what you have, how it happens
+[00:58:24] in the current situation, on a printer, on a scanner.
+[00:58:29] So, using knowing, okay, this elements here,
+[00:58:33] you can get lots of traces analyzing an image,
+[00:58:37] a printed image or a scanning or a scanned image.
+[00:58:41] You can have a lot of information
+[00:58:43] because for the scanners, you can look for the noise,
+[00:58:47] okay, of the CCB, of the sensors.
+[00:58:50] And this is something that we're going to develop
+[00:58:52] in depth, okay, in the next minutes.
+[00:58:55] So, seeing the scanners, we can say is that
+[00:58:57] you can consider in this case like a giant camera.
+[00:59:03] And so all the features that we have for cameras
+[00:59:05] is mostly used for scanners.
+[00:59:07] But it's also true that these cameras
+[00:59:09] also have some mechanical parts.
+[00:59:11] And therefore the motor and the timing
+[00:59:13] which can not be perfectly ideal, okay,
+[00:59:17] can induce some information.
+[00:59:21] Then you have information from the lens
+[00:59:23] from the glasses and mirrors.
+[00:59:24] lots of imperfections, scratches,
+[00:59:28] which has merged on the glasses.
+[00:59:30] Those information introduce something
+[00:59:33] that is not likely by the person who's in appointment.
+[00:59:38] But those artifacts are extremely interesting
+[00:59:40] for identification of the device
+[00:59:42] and that's a part of that specific image.
+[00:59:45] It also problem with the colors of the lens.
+[00:59:48] So typically this would be some kind of artifacts
+[00:59:51] on the pixels of the image,
+[00:59:53] which are used in modern realities for these types.
+[00:59:58] As for laser printers, well, printers have gears.
+[01:00:02] And these gears may be worn by the use,
+[01:00:08] may have non-reality becoming the plastic chain
+[01:00:12] in regards to printers.
+[01:00:15] And also, it's also a condition that change in value.
+[01:00:19] What is interesting, you can use these non-realities
+[01:00:23] not only to identify the printers,
+[01:00:26] but also to identify basically the level of use,
+[01:00:31] the amount, the age of the printer
+[01:00:34] that produced that specific image.
+[01:00:38] You can also use the polygon mirror wobble,
+[01:00:41] how the mirror moves,
+[01:00:43] and also some related to the OPC,
+[01:00:47] the optical photo conductor,
+[01:00:50] the velocity where the photo conductor is moving,
+[01:00:53] is turning in order to change, to impress, okay,
+[01:00:57] different parts of the cylinder.
+[01:00:59] You can basically have, use these non-linearities to.
+[01:01:05] As for the inkjet, we have the gear.
+[01:01:08] We have also, we don't have, okay,
+[01:01:10] the final mirror wobble, okay?
+[01:01:12] One of the questions of the exam is,
+[01:01:14] is the final mirror wobble
+[01:01:17] useful to identify the inkjet inter?
+[01:01:19] No, because we don't have final mirror wobble
+[01:01:21] in the inkjet, okay, well,
+[01:01:25] but together also with the gears, okay, we also have some additional information which is more related to the chemistry, more related to the ink that you are using.
+[01:01:36] For example, the shapes of the dots, so when you look at the dots on the paper, you would say it's a perfect circle.
+[01:01:44] No, it's not a perfect circle.
+[01:01:45] You can see that different types of printers
+[01:01:47] have creates different types of dots.
+[01:01:51] And this is due to the specific nozzle that you have.
+[01:01:54] The view also to the cleanliness of the nozzle.
+[01:01:58] So it's also related to the specific condition
+[01:02:00] of your printers.
+[01:02:02] The placement of the dots,
+[01:02:04] also the chemistry of the ink,
+[01:02:07] the specific characteristics of the ink you're using.
+[01:02:09] Moreover, the periodic variations due to misinjects
+[01:02:12] or paper advancements.
+[01:02:13] this is more related to the gears, okay.
+[01:02:17] So these are elements that you can use
+[01:02:19] in order to notify the inkjet printer.
+[01:02:22] If you want an overview, okay,
+[01:02:24] of the different printers kind of forensics,
+[01:02:26] you can go from that, yes?
+[01:02:35] The nail green is in there,
+[01:02:37] it's not in there, in there, in there, in there.
+[01:02:41] No, sorry, this is not so good.
+[01:02:54] But the point is that, yeah,
+[01:02:58] Now, this is typically what you obtain.
+[01:03:08] For example, this activity was done in the past.
+[01:03:12] We developed an activity map for our problem.
+[01:03:17] It was supposed to quantify the complex
+[01:03:23] to check one of the variables.
+[01:03:25] For example, you have one of the variables,
+[01:03:27] you have the real property of one of the variables.
+[01:03:36] So suppose that you find a value, okay,
+[01:03:42] and then you take the label, you stamp that label and you place it on the bottle. So using an app that you would write the printers, it was possible to say okay, this label here has been printed in a different printer with respect to the original label which is printed by the printer.
+[01:04:10] that specific society, that specific community.
+[01:04:15] So the authentic bottle of wine is basically
+[01:04:21] anything that has a specific reason.
+[01:04:23] So if I am a forger, I will try to avoid
+[01:04:26] those yellow marks, those yellow marks,
+[01:04:30] no matter where it is.
+[01:04:32] But no identities in adults, no identities in years,
+[01:04:36] there's no specific others that can help you out with it.
+[01:04:41] So it's extremely impossible for me to forge
+[01:04:44] the printer at that level,
+[01:04:46] so if you look, it goes specifically like that.
+[01:04:49] So yellow dots, invisible yellow dots, is useful
+[01:04:52] if you are in the condition you're in.
+[01:04:55] If you don't have that, you have to look for
+[01:04:57] much, much finer details, elements.
+[01:05:00] This is done not only for printers,
+[01:05:02] but also on the papers, okay?
+[01:05:19] There were many, many fake documents, okay, and analyzing the print papers of the documents,
+[01:05:29] we were able to understand, okay, these fake documents.
+[01:05:33] Those are one of the fake documents
+[01:05:34] when the president was involved with
+[01:05:37] the state that was in prison in the past year or so.
+[01:05:40] I'm going very quickly, so I will tell you the story
+[01:05:43] when we have time, if we have time.
+[01:05:46] But in any case, it's possible to use the printer,
+[01:05:48] the ink, and also the paper, okay?
+[01:05:50] But typically, the ink is something that is,
+[01:05:53] let's say, specific or not specific to ink.
+[01:05:58] Okay, so this is kind of physical.
+[01:06:01] I'm going to be comparing this one.
+[01:06:03] It's going to be very easy to explore
+[01:06:06] because we focus something which is more general
+[01:06:08] you can find on different types of glasses.
+[01:06:11] So it's part of the scanners
+[01:06:13] and it's part also of your camera or phone.
+[01:06:15] And most of the device or the analysis
+[01:06:17] that you do or material that you find online
+[01:06:20] is based on this.
+[01:06:21] So one of the big elements, big sources
+[01:06:24] of authentication that you have on an image
+[01:06:26] is especially digital image,
+[01:06:28] we're talking about digital forensics, okay?
+[01:06:29] is the noise, okay, the sensor noise.
+[01:06:35] So, as we said,
+[01:06:39] light is focused by the lens on a specific plane,
+[01:06:43] which is the image plane,
+[01:06:45] where there is a layer, a grid, sorry, not the layer,
+[01:06:49] grid of photo responsive elements,
+[01:06:52] which are here, that's the city of St. Louis,
+[01:06:54] and these photo responsive elements
+[01:06:55] acquire light in the intensity of light
+[01:06:57] and convert this light into another one.
+[01:07:00] How?
+[01:07:01] Well, there are two different types of technologies.
+[01:07:04] The first technology in most of the cameras,
+[01:07:08] the first technology is the CMOS.
+[01:07:11] In the CMOS, we have a set of three transistors, okay?
+[01:07:17] And basically, you have two signals,
+[01:07:21] low and low, are two signals
+[01:07:22] that activate that specific sensors.
+[01:07:25] And that specific sensors acquired the incoming light,
+[01:07:30] which activates okay the current across a diode.
+[01:07:33] And this current basically creates a voltage
+[01:07:36] which is measured, okay?
+[01:07:38] So in CMOS, you have that the process leads, okay,
+[01:07:43] to the creation of voltage, which is red.
+[01:07:46] Once the sensor receives two counter systems,
+[01:07:50] it sees the signals rose and colors.
+[01:07:52] So how does this work? So for the sake of clarity we have an animation. So you have
+[01:08:00] here your CMOS sensors, okay. So you have multiple cells under this layer of filter
+[01:08:07] that we're going to talk a few layers. So what you have here, you have that light
+[01:08:12] cam photons. This creates some currents in the photodiodes and then the system
+[01:08:18] receives the control signals okay that activates the systems and you create a
+[01:08:23] tensor tension sorry it is read progressively through the signal so in
+[01:08:31] this case you can see that the reading in the case of symbols is sequential, you start from the first row, you get your pixels and then you go progressively, you read all the
+[01:08:44] pixel values.
+[01:08:46] Instead for CCED, charge coupled device,
+[01:08:49] in this case, the situation is a bit different.
+[01:08:53] In this case, the sensor requires a charge.
+[01:08:57] So in this case, that's the largest number
+[01:08:59] to be set of charges, okay, like those,
+[01:09:03] which is transferred and is read to the mechanism,
+[01:09:06] which is the shift register, okay?
+[01:09:09] So if you want to have an animation,
+[01:09:11] So for this, my signal, you have that
+[01:09:17] under a big layer of filters,
+[01:09:20] you have this CCB elements,
+[01:09:22] and you have that the light comes,
+[01:09:24] creates a set of charges,
+[01:09:29] and these charges are captured
+[01:09:32] and transferred through a shift register.
+[01:09:36] Once the charge is basically acquired,
+[01:09:42] the intensity value of the pixel is fixed.
+[01:09:45] So in the previous example we have the readings question.
+[01:09:48] In order to face the intensity of the pixel values
+[01:09:50] you need to read it.
+[01:09:51] You need to read the control commands,
+[01:09:54] rows and rows in order to read the value.
+[01:09:56] In the CCD basically the reading is instantaneous
+[01:10:00] for all the pixels inside your matrix of sensors.
+[01:10:05] So why this is important?
+[01:10:07] This is important because this process is not ideal and there are differences in this process that can be exploited to identify your camera.
+[01:10:27] So, let's consider a simple example.
+[01:10:32] Imagine that your sensors are like buckets, okay?
+[01:10:40] Buckets that collect the rings.
+[01:10:42] The rings is the photos, the drop of rings is the photos,
+[01:10:45] and the sensors are buckets, okay?
+[01:10:48] So, the rain, the photos collapse, okay,
+[01:10:51] over our buckets, and then you collect the rain.
+[01:10:54] If the rain is uniform, imagine that you are acquiring
+[01:10:59] a white wall with a white uniform with no reflections,
+[01:11:04] no windows, no windows.
+[01:11:06] I expect that the pixel values are the same.
+[01:11:12] So, I take a pixel that was,
+[01:11:18] I expect that all the pixel values
+[01:11:21] of the intensity of my pixel
+[01:11:23] is going to be basically the same number.
+[01:11:25] But, and this is what happens if you have the rains
+[01:11:33] and you have buckets all with the same amount of water.
+[01:11:38] All the buckets fill with the same amount.
+[01:11:41] So if I measure the water after this rain,
+[01:11:44] basically I will have the same, exactly the same amount.
+[01:11:49] But what happens when the bucket changes?
+[01:11:56] So one of the buckets is largely so that the buckets have different sizes, different width,
+[01:12:04] but not perfectly uniform.
+[01:12:07] So the rain is uniform, but the buckets are not.
+[01:12:09] So what is going to happen is going to happen that the rains, okay, falls, but
+[01:12:15] we have different amounts of water inside each bucket.
+[01:12:18] It depends on the width.
+[01:12:20] and this are going to be basically the different intensity
+[01:12:25] which are going to be different depending on that balance.
+[01:12:29] This is what happens basically in most of your devices.
+[01:12:36] So instead of having an ideal signal
+[01:12:40] which is constant,
+[01:12:42] signal is going to be the same intensity,
+[01:12:45] the intensity is going to change.
+[01:12:47] The intensity is going to change due to the fact
+[01:12:49] that your CCB sensors have more differences, okay?
+[01:12:53] And why they have small differences?
+[01:12:56] You have small differences
+[01:12:57] because the fabrication process is not perfect.
+[01:13:00] Though in the linear solution,
+[01:13:02] you have some impurities that makes, okay,
+[01:13:04] the capacities that characterize, okay,
+[01:13:07] the transistors or CCB is not changed.
+[01:13:11] Small changes that make the amount of light,
+[01:13:15] amount of charge generated from the incoming light
+[01:13:19] basically different.
+[01:13:21] So the light is the same but the amount of charge
+[01:13:24] or the voltage is generally changed, it is varying.
+[01:13:28] And this creates a pattern which is unique.
+[01:13:32] And this is called photo response non uniformity.
+[01:13:36] The photo response should be uniform
+[01:13:37] but it is not uniformity.
+[01:13:39] So this is a noise that I persecuted image
+[01:13:42] and it is called photo response non uniformity
+[01:13:45] or PRME, okay?
+[01:13:47] Okay, this thing is unique in the sense that
+[01:13:51] it's like a DNA from your camera.
+[01:13:54] It's like the two sub-systems
+[01:13:58] generated the same thing in the same factory,
+[01:14:02] in the same hour,
+[01:14:03] cut from the same buffer of solution
+[01:14:05] because this is going to make large buffer of solution
+[01:14:08] and then cut of a different system.
+[01:14:12] They are going to have a different VR view, okay.
+[01:14:15] The noise is going to become the noise.
+[01:14:19] Estimating such noise is what basically
+[01:14:23] we call camera ballistic.
+[01:14:27] These types of activities, not always one,
+[01:14:30] but these are very, very simple examples
+[01:14:33] that we call camera ballistic.
+[01:14:35] Why camera ballistic?
+[01:14:36] Because it's very similar to what people
+[01:14:40] in CSI do for the bullets.
+[01:14:43] You can associate the bullet to the image.
+[01:14:47] You can associate the gun to the camera.
+[01:14:51] And what you want, you want to associate
+[01:14:53] the bullet to the gun.
+[01:14:55] So the picture, the image to the camera.
+[01:14:58] You want to say, okay, this picture
+[01:15:00] was taken by that specific camera.
+[01:15:04] So this is largely done for different types
+[01:15:07] of computations, okay?
+[01:15:10] And not only for camera authentication,
+[01:15:13] because we're going to see that in a few of these.
+[01:15:15] I don't know if you can use these types of PLNU,
+[01:15:18] this type of noise,
+[01:15:20] can be used for different types of application.
+[01:15:23] Typically, we use this to distinguish
+[01:15:26] between different devices.
+[01:15:28] So this image has been acquired by some images.
+[01:15:32] This is camera and PLNU.
+[01:15:34] We can use this if there are different devices,
+[01:15:38] It is possible to distinguish whether the image is good or not.
+[01:15:44] Typically, we have seen that AI generation,
+[01:15:53] so all the cameras, all the systems
+[01:15:55] that generate synthetic images from plants,
+[01:16:00] for those of you guys who are also here,
+[01:16:02] introduces, so GANs or diffusion models,
+[01:16:06] introduces a noise on the image,
+[01:16:09] which is depending on the architecture
+[01:16:13] and also on the data set that you have used
+[01:16:16] to train that specific architecture.
+[01:16:19] So there is a PRNU, not only on the images,
+[01:16:23] but also there is a PRNU on synthetic images
+[01:16:26] generated by some generic AI,
+[01:16:28] where the characteristic of PRNU is depending
+[01:16:33] on the data sets and all that data.
+[01:16:37] I'm not talking about the water market.
+[01:16:39] It's not the water market that you are basically,
+[01:16:44] that's being used today is imprinted
+[01:16:47] and actively imprinted on the image
+[01:16:49] when you generate the image.
+[01:16:51] This is a noise which is introduced
+[01:16:53] by the same, by the various structures.
+[01:16:55] And it's very difficult from the noise,
+[01:16:57] different from the noise
+[01:16:58] that you have generated with the camera
+[01:17:00] or if you have to use a different device scanner,
+[01:17:02] for example, you have different types of noise.
+[01:17:05] So how does this work?
+[01:17:09] It works in this way.
+[01:17:10] So suppose that you have an image, okay?
+[01:17:15] And the image I, as being on the pixel intensity I, okay,
+[01:17:19] is being acquired by your class.
+[01:17:22] This pixel intensity is depending on,
+[01:17:27] Let's say an ideal intensity that we call I zero.
+[01:17:32] It is the intensity that you should see,
+[01:17:35] there is no distortion, there is no noise,
+[01:17:38] if everything is perfect.
+[01:17:40] If everything is perfect, you have I zero, okay?
+[01:17:44] But things are not perfect.
+[01:17:47] You also have the PRNU.
+[01:17:49] You got PRNU for responsible uniformity noise
+[01:17:53] is a noise which is equal to I zero,
+[01:17:56] multiplied by K. K is the period mu, is the noise, that multiplies to zero. It is a multiplicative loss.
+[01:18:05] It is not something that I simply ask, but I need to multiply. Why? Because depending on whether the intensity of the light is
+[01:18:14] very strong on this pixel or very mild, the pixel is black, very mild intensity, or
+[01:18:21] and it's wide, very wide, high intensity,
+[01:18:24] you will have different impacts of the noise.
+[01:18:27] So it's a multiplicative noise
+[01:18:29] because it's a noise depending on photos, okay?
+[01:18:33] The more photos, this modulates the noise.
+[01:18:35] So I0K is a multiplicative noise,
+[01:18:38] which is the PR and U components of your image.
+[01:18:43] And then you may have other noise,
+[01:18:44] for example, thermal noise, Gaussian noise,
+[01:18:46] due to a reference, for example,
+[01:18:48] the fact that I have some symmetry, okay?
+[01:18:51] then it will use some alterations
+[01:18:53] of all the counts of the channels.
+[01:18:55] So, the model of the image is the clean image,
+[01:19:00] ideal image, plus the green, plus additional noise.
+[01:19:04] It is a multiplicative noise,
+[01:19:07] and all the other noise curves typically are assumed
+[01:19:09] with oceans, and are included,
+[01:19:12] short and without noise,
+[01:19:13] in the nodes that are fine with you.
+[01:19:15] We will play the course,
+[01:19:16] we will find a discussion a bit about normal noise.
+[01:19:19] but typically we collect them in the data, okay?
+[01:19:25] This is a very simple model,
+[01:19:28] a more complex modeling is basically this one,
+[01:19:32] where you have this is connected into one plus K,
+[01:19:35] so this is the term, you have the data,
+[01:19:38] but you add to this modulation terms,
+[01:19:40] which basically takes into account
+[01:19:42] that you have some schemes on the intensity of pixels.
+[01:19:47] When you have gamma correction,
+[01:19:48] and the pixel can be scaled by the femur of your current.
+[01:19:53] Okay, you're going to adjust this diagonals deluxe.
+[01:19:57] Plus, the compression knows,
+[01:20:00] because after the position, typically,
+[01:20:01] the picture that you take are in JPEG format.
+[01:20:07] JPEG is a compressed format.
+[01:20:09] This means that compression
+[01:20:11] introduces some small distortion,
+[01:20:13] small distortion, small distortion.
+[01:20:15] We're going to discuss this, okay,
+[01:20:16] in the following lectures.
+[01:20:19] But basically, your image can be modeled like this.
+[01:20:23] Ideally, it should be like I zero.
+[01:20:25] It is not I zero, it is this set of values.
+[01:20:30] Yes?
+[01:20:37] No, I zero is an image, and I zero is an image.
+[01:20:39] That's not the answer.
+[01:20:45] K is fixed for the theta.
+[01:20:47] The theta is probabilistic,
+[01:20:49] and it is basically modeled as a distribution
+[01:20:53] because it depends on the noise,
+[01:20:55] and so it's probabilistic.
+[01:20:57] And gamma, this is also depending on the configuration
+[01:21:00] of the camera that you have in the mobile.
+[01:21:06] Okay, so you may ask, how do I extract k?
+[01:21:12] How do I do it?
+[01:21:13] So, you have an image, okay?
+[01:21:16] And you have a set of images taken by your cameras.
+[01:21:20] And you would like to extract them, basically, the k.
+[01:21:24] Which is the same for all these images.
+[01:21:25] There is a k on those images.
+[01:21:27] so what we can do take the image here is I 0 but you can hide one I two I three
+[01:21:37] imagine you have more than one and then use a denoiser so remove all the noise
+[01:21:45] you can use a filtering for example there is some adaptive filtering like
+[01:21:49] you know filter you can use some networks neural networks to perform the
+[01:21:54] For example, in PRNU,
+[01:21:58] the very, the thing that's known
+[01:21:59] was very affectionate was DNCLN,
+[01:22:02] which is a convolutional network
+[01:22:04] that is used to remove noise, okay?
+[01:22:07] And what you get, you get I hat,
+[01:22:11] which is a denoised version of the image.
+[01:22:14] I consider I hat, basically, the noise-free image,
+[01:22:19] my I0, okay, in the models that I considered before.
+[01:22:22] so I assume that I can estimate L0 and therefore I computed the difference
+[01:22:27] between I the original image and the I hat and this difference is basically I
+[01:22:33] call this W, W from this border here if I subtract I0 from I well this
+[01:22:47] This removes, I get basically this term, okay?
+[01:22:54] So this term is equal to I, the image,
+[01:22:59] multiplied by K plus the noise that here I call sigma, okay?
+[01:23:05] I use different numbers here
+[01:23:07] because theta at the beginning was,
+[01:23:09] here I'm considering this as a Gaussian,
+[01:23:12] as a deep noise, okay?
+[01:23:15] So you have many images.
+[01:23:16] you can do this and compute the difference and therefore you have different w's for
+[01:23:23] different images. Notice okay from these expansions that wi is equal to the difference so it is equal
+[01:23:35] to and suppose that to do this difference I add ik and minus ik so I add and subtract
+[01:23:43] i multiplied by k.
+[01:23:47] So what happens?
+[01:23:48] It happens that this becomes i k,
+[01:23:52] so this belongs here,
+[01:23:54] plus this is expanded to i zero
+[01:24:00] plus k i plus eta, okay?
+[01:24:05] Minus i zero, so i zero is very small.
+[01:24:09] I have this collects this component of KI
+[01:24:13] and this component here, here, plus, okay,
+[01:24:17] the omega and this theta, which is basically
+[01:24:20] that comes from that component, from this function.
+[01:24:25] Okay, this minus this, if I assume my norm
+[01:24:30] is very, very small, is basically negligible.
+[01:24:35] This minus this is also very, very negligible
+[01:24:38] by K, I assume also the K is in small nodes,
+[01:24:41] this is theta, therefore this is a combination
+[01:24:45] of differences multiplied, small differences,
+[01:24:47] multiplied by K, basically can be gathered
+[01:24:50] into a sigma term, which is basically a portion.
+[01:24:57] Okay, and contains all these node idealities,
+[01:25:00] which if I have done it correct,
+[01:25:02] is the name of my domain in this source,
+[01:25:05] so I assume that K to be, is a very, very, very small.
+[01:25:09] So wi is equal to ik, okay, plus sigma, these nodes. And if I have ik plus, okay, some rows which is assumed to be motion, I can estimate the k by computing w1, w2, wn, and by performing a least square estimation, which gives me that the k hat, least negatively, is equal to the sum of i equals 4, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 22, 23, 24, 25, 26, 27, 28, 29, 29, 30, 30, 31, 31, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32,
+[01:25:37] I assume to have n images.
+[01:25:40] For n images, I can use w1,
+[01:25:43] w a, w i, i i,
+[01:25:46] divided the sum of i over one to n
+[01:25:49] of the square value of i i and square.
+[01:25:55] So from this square,
+[01:25:57] this is obtained by combining all this
+[01:25:59] the composition that you have for w.
+[01:26:02] So, operatively, and then we go for conclusions,
+[01:26:06] so how can you do this?
+[01:26:07] What you do?
+[01:26:08] you basically, you have one image to be authenticated for a specific image. And you have the camera.
+[01:26:18] You have the bullet and you have the dedicated camera. And you want to associate this image,
+[01:26:25] this camera, to that specific book. So what you do, you take the camera, you take
+[01:26:31] a set of images of very very flat surfaces. So faces that are basically smooth, you can
+[01:26:37] the same like white walls.
+[01:26:41] The surface must have some in the middle range color,
+[01:26:45] not too white, very, very shiny white, not too dark.
+[01:26:49] And you have take multiple picture
+[01:26:52] of those constant elements, that constant image.
+[01:26:56] These multiple pictures basically allows you
+[01:26:59] to compute W I for every image that you have taken
+[01:27:04] And then combined with this W I into this equation here,
+[01:27:08] you can get it to K hat.
+[01:27:10] So you have a K hat for those picture
+[01:27:14] that you have taken in the lab from the original camera.
+[01:27:18] And then you can compute basically this correlation here.
+[01:27:22] So you can compute W for the image
+[01:27:25] that you want to authenticate.
+[01:27:27] So you have the image I,
+[01:27:29] the real image that they want associated with the cameras.
+[01:27:31] I compute the W and I compute the correlation between W
+[01:27:37] and the K hat that is estimated with respect to the image.
+[01:27:43] So I estimate that from very wide count of images.
+[01:27:48] And then I have J, which is the image
+[01:27:50] that they want to associate to the camera.
+[01:27:52] I multiply J by K hat.
+[01:27:55] I extract WJ from the image using the rosin.
+[01:27:59] And then the correlation gives me,
+[01:28:02] if the image has been taken with the camera or not, okay?
+[01:28:09] So, J is another image from the same camera,
+[01:28:12] the one that you want to indicate.
+[01:28:14] This is now through autography,
+[01:28:18] photography, photogrammetry.
+[01:28:22] In order to perform the correlation,
+[01:28:24] we have two measurements.
+[01:28:26] One is the LCC, normalize cross-correlation,
+[01:28:30] which is basically standardization
+[01:28:32] of the standard Pearson correlation.
+[01:28:33] Instead of using the LCC,
+[01:28:36] we can use a more complex equation,
+[01:28:38] which is PCE, the peak to correlation energy,
+[01:28:42] which uses basically LCC because you have no square here,
+[01:28:46] but you perform this on basically windows.
+[01:28:49] That is the main difference.
+[01:28:51] Computational complexity is higher for PCE,
+[01:28:55] but PCE is more robust to nodes.
+[01:28:59] Okay, so PCE gives you a more reliable
+[01:29:02] measurements of the correlation with respect to LCC.
+[01:29:06] That is why PCE is largely preferred to LCC
+[01:29:09] when you want to compute the correlation between W
+[01:29:12] and the K hat G.
+[01:29:18] So, I summarize and I stop.
+[01:29:22] Basically, you have the smartphone.
+[01:29:24] You have some picture that you want associated
+[01:29:26] with your smartphone, take the plastic film images, okay?
+[01:29:30] w k hat, take the j, compute k hat j, compute w,
+[01:29:37] and then correlate your text.
+[01:29:39] You can detect whether it matches or not.
+[01:29:43] So we have a demo, but we are going to see this
+[01:29:45] next time because it's 10 past two.
+[01:29:48] So see you outside.
