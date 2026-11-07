@@ -1,0 +1,201 @@
+[00:00:00] when we have random variables that have a very strange or physical or unusual distribution,
+[00:00:07] or when we sum together these random variables, as we will see later on.
+[00:00:11] But just to fix the ideas, we can use a very well-known random variable
+[00:00:15] and see how far is the bound on the actual data.
+[00:00:18] If we apply the submission bound,
+[00:00:23] then we know that we need to work a little bit,
+[00:00:26] Because we need to, the solution one applies to the probability that modulo of x minus nx modulo is greater than a, right?
+[00:00:37] We need to write this expression in this form, so we can write it.
+[00:00:46] If you work from these, this means the probability that x minus nx for a larger than 0 is larger than a
+[00:00:56] or minus mx plus a plus x minus x plus mx is larger than a.
+[00:01:17] So we can remove the module and write the two conditions.
+[00:01:22] We deviate from x on the right or on the left.
+[00:01:25] These two events are designed so the probability
+[00:01:28] of the union is the sum of the probabilities,
+[00:01:52] and here I picked the signs.
+[00:01:56] If we now consider A equal to 4 times mx,
+[00:02:03] which is at least here, there, sorry,
+[00:02:06] then we have that first term becomes x,
+[00:02:09] and the leader is 5 times mx.
+[00:02:22] To be precise, we can have A equal everywhere,
+[00:02:27] plus the probability that x is less than or equal to
+[00:02:38] We have placed A with this value for MS, and what we see is that this probability is of course zero.
+[00:02:57] So to get this result, I have to place A here, let me call this A in another manner,
+[00:03:07] Let me call it a tilde from the other three.
+[00:03:15] I have to set a tilde equal to 3 times mx so that I end up
+[00:03:22] with the same inequality that I had before.
+[00:03:27] This becomes 4, and this becomes 2,
+[00:03:30] or a certain state.
+[00:03:35] So starting from this inequality with these steps,
+[00:03:39] when a tilde is equal to 3 times mx, that is positive.
+[00:03:43] So all the steps are valid.
+[00:03:46] we end up with these two probabilities.
+[00:03:48] This one is 0, because x is an exponential,
+[00:03:51] and y is positive, cannot be negative.
+[00:03:54] And so we end up with the equation
+[00:03:57] that we want to consider.
+[00:04:04] But since we started from this,
+[00:04:05] and the quality that we can apply the exceptional value,
+[00:04:10] that says that this one is less than or equal to sigma
+[00:04:12] x squared divided by a squared, a t squared, right?
+[00:04:25] The variance of an exponential random variable
+[00:04:29] is lambda squared, right?
+[00:04:33] a t, I guess, was 3 times 1 over lambda.
+[00:04:47] And therefore, this ratio is equal to 1 over x, OK?
+[00:04:55] to get it.
+[00:05:03] And 1 over 9, as you can see, is smaller than 1 over 4.
+[00:05:09] It's still much larger than the actual probability,
+[00:05:11] but we have a bound that is stricter than the bound
+[00:05:14] that we have found before.
+[00:05:16] So if you plot on a graph, the probability that x
+[00:05:25] is larger than a, for a time is
+[00:05:31] We know that this one is equal to minus lambda A.
+[00:05:36] And we know that it goes down exponentially very fast.
+[00:05:51] The Markov band gives me a very good list.
+[00:05:59] 1 over lambda A. It goes down like this.
+[00:06:12] This is the Markov band.
+[00:06:19] And the Chebyshev band gives me a value
+[00:06:22] that is lambda squared divided by a squared, which
+[00:06:50] might be something like this.
+[00:07:01] It might be something like where I do it.
+[00:07:04] It might be larger for a certain point,
+[00:07:06] but then it goes down as a squared.
+[00:07:08] So it goes down more quickly than the other one.
+[00:07:14] So the Chebyshev band can be a better band under certain conditions.
+[00:07:22] Of course, this band becomes, in this case, becomes interesting when A is larger than lambda.
+[00:07:31] Depending where lambda is greater or smaller than 1, it can be right on the left of this value.
+[00:07:37] So the nice thing of the Markov and traditional bounds is that they both apply to any random variable with finite mean and finite variance.
+[00:07:57] Actually, the Markov bound applies to any random variable with finite mean, even with infinite variance, while the traditional bound requires a finite variance.
+[00:08:08] In general, they apply to a very large set of variables.
+[00:08:12] Unfortunately, we cannot find a better bound than the traditional bound for generic random variables.
+[00:08:23] So the traditional bound, even if it is not that strict, is the best we can do if we don't set any conditions on the random variable.
+[00:08:33] How can we prove this? Try to think about that.
+[00:08:37] So how can we prove that a bound is strictly possible for a class of random variables?
+[00:08:44] And we cannot find any better bound for that class of random variables.
+[00:08:55] But if you have a property that applies to a certain set of processes of random variables,
+[00:09:05] whatever else it is, for example, the traditional bound that applies to all random variables
+[00:09:12] with finite mean and finite variance.
+[00:09:21] Guys, I'm saying finite mean and finite variance, and I write expectation of x less than infinity,
+[00:09:29] which means that the mean is finite.
+[00:09:32] But then I write expectation of x squared less than infinity.
+[00:09:37] Is that the same thing as saying that the variance is finite?
+[00:09:39] This is the statistical power of the random variable, and writing these two conditions, or writing the expectation of squares is fine.
+[00:09:58] This is the variance, right? It's exactly the same because we know that the variance, the power, is the power minus the weight to the power 2.
+[00:10:19] So it is said that this is fine, this is fine, the difference is fine.
+[00:10:25] This is very different.
+[00:10:27] Probability theory, step one, to guard this in mind.
+[00:10:31] So I was saying, if a property has to apply for all the variables in this set,
+[00:10:37] all of them, right?
+[00:10:38] And then we say, the distribution bound cannot be improved for the whole set of variables.
+[00:10:45] In order to prove this statement, it is sufficient to find one element in the set for which the bound is strict,
+[00:10:52] so you can now do better than the bound.
+[00:10:55] So the bound gives you the probability of that variable.
+[00:10:59] If this is the case, it means that there cannot be a stricter bound for the whole set,
+[00:11:05] because otherwise this variable should have an estimate of its probability that is different from its probability that does not exist.
+[00:11:12] So the tangential bound is the best we can do for the whole set of variables
+[00:11:19] because there are some variables within this set for which the bound is actually
+[00:11:23] strict. When I say strict it means that it holds with equality. So we can write
+[00:11:30] there exists some variables x
+[00:11:32] such that the probability that x is
+[00:11:37] mod of x minus its mean
+[00:11:41] is larger than a is actually equal to
+[00:11:45] the variance of the variable divided by a.
+[00:11:49] So if the bound is 6,
+[00:11:54] which means that it holds to the quality,
+[00:11:56] then we cannot do better than that.
+[00:11:59] And to find such a variable is relatively easy
+[00:12:02] Because if you consider a variable x that takes three values with any symmetric,
+[00:12:19] because that is the derivative density function is variable is like this minus 1, 1, 0, 1, 4, 1, 4, 1, 5.
+[00:13:03] Over there, in the 1 over 9, wouldn't it be 1 over 9 to lambda to the fourth?
+[00:13:10] So, 1 over 9 multiplied by lambda squared.
+[00:13:15] No, actually, because you have sigma x squared is lambda squared.
+[00:13:24] That's my mistake. It's 1 over lambda squared.
+[00:13:38] So the lambda x squared simplifies out to be lambda squared.
+[00:13:41] Right.
+[00:13:42] Sorry, guys, I made a mistake. Thank you for not seeing me talk.
+[00:13:47] OK, so going back here, we have this random variable with these probabilities.
+[00:14:25] We want to compute the expectation of the random variable.
+[00:14:28] The expectation, since the random variable is symmetric, is clearly zero.
+[00:14:33] We can compute it explicitly if we want, but of course the result is zero,
+[00:14:37] which is minus one-fourth, that's zero times one-two plus one-fourth.
+[00:14:43] So the field divides the random variable, in this case,
+[00:14:50] equal to the expression of the square of the random variable.
+[00:14:54] So it's 1 up.
+[00:14:57] Right?
+[00:14:58] Because it's minus 1 squared, multiplied by 1 over 2,
+[00:15:05] plus 0 squared, multiplied by 1 over 2, plus 1 squared,
+[00:15:17] If you compute the probability that the model of the random variable T minus its name is
+[00:15:46] larger than the regular processing A, then we have the probability that the model of
+[00:15:52] The name is 0.
+[00:15:56] It's rather than 3.
+[00:15:59] And this has to be less than or equal to sigma x squared
+[00:16:06] divided by b squared.
+[00:16:08] That is, in our case, over 4 times b squared.
+[00:16:21] And if you say that if a is equal to 1,
+[00:16:25] Then you have that sigma 4 is 1, sigma squared is 1, right?
+[00:16:43] Otherwise it would not work.
+[00:16:46] Alright, if you evaluate this inequality in a certain way,
+[00:16:51] A equal to 1, then what you get is the probability that
+[00:16:54] modulo x is larger than or equal to 1,
+[00:16:57] to be less than or equal to 1 over 2. But if we compute this probability, we know that this one is exactly 1 over 2.
+[00:17:08] So this inequality falls within 4, which means that if you plot the probability that
+[00:17:20] mod of x is larger than or equal to a, this probability is for a equal to 0, this probability is 1, right?
+[00:17:44] As soon as A is greater than zero and less than one, so in this interval,
+[00:17:51] this probability is one count.
+[00:17:58] And when we accept one, this probability becomes zero.
+[00:18:03] This is the exact probability.
+[00:18:05] The bound tells you that the bound decreases like this, so it's very large here.
+[00:18:13] And then, such is the actual probability here, and then it goes to zero.
+[00:18:19] But in this point, the gap is zero.
+[00:18:22] So we cannot include the bound any better than this.
+[00:18:27] Because there is a point where the gap is non-defined.
+[00:18:30] So, this is the last bound we can find for this set of random variables.
+[00:18:36] So random variables that have finite means and values.
+[00:18:45] What we can do better is we can find better bounds if we restrict our set.
+[00:18:53] So rather than considering the set of all possible variables with these very loose constraints,
+[00:18:58] we look at a subset, and in a subset we can find a better bound.
+[00:19:04] So in the subset, of course, we exclude all the variables for which the challenging bound
+[00:19:10] is straight.
+[00:19:11] It's abstracted to the policy.
+[00:19:13] We leave them aside.
+[00:19:14] We find a subset of division one where we still have space for the challenging bound
+[00:19:19] and therefore we can find better bounds.
+[00:19:23] One such better bound is the challenging bound
+[00:19:29] However, I leave for the next lecture
+[00:19:33] because we are endocyanic, and it's pretty long and cumbersome.
+[00:19:38] So you can leave for the next lecture.
+[00:19:41] However, since we deleted this from our discussion,
+[00:19:47] let me conclude with bringing you back to our original idea.
+[00:19:52] So we are discussing stochastic polynomial control strategies.
+[00:19:58] Stochastic strategy means that the polynomial control should predict the probability of a certain event.
+[00:20:04] The exact prediction might be very difficult to implement.
+[00:20:07] And therefore, rather than confusing the exact probability of a certain event,
+[00:20:10] we can use some of these bounds to upper bound this probability.
+[00:20:15] So, if our constraints is that the probability of a certain event that we call it buffer or probe
+[00:20:20] has to be less than x, rather than computing this exact probability, if it is difficult to be computed,
+[00:20:37] I can actually replace this exact probability with a bound, so I can apply
+[00:20:45] to upper bound this probability with something that we can compute
+[00:20:51] as an example, sigma x squared divided by x squared
+[00:20:58] something that we can compute
+[00:21:00] and I set the constraint on this value
+[00:21:06] if we dimension the system such that the constraint is satisfied with the bound
+[00:21:16] then for sure it will also be satisfied with reality, when we consider the exact probability.
+[00:21:23] What's the price that we pay is that since the bound is typically loose,
+[00:21:28] so there is a big distance between the value of the bound and the value of the actual probability,
+[00:21:33] we are probably over-constraining our system.
+[00:21:37] We are still keeping a lot of margins.
+[00:21:39] So in reality, we will not experience enough,
+[00:21:42] not as probability of epsilon,
+[00:21:44] another probability of epsilon, but much lower.
+[00:21:47] Which is okay, right?
+[00:21:48] Because epsilon could be the maximum probability of a bad event.
+[00:21:54] If we do better than that, we are happy.
+[00:21:56] But of course, we pay something back in
+[00:21:57] terms of efficiency of the system, okay?
+[00:22:00] So next week we will see the channel bound,
+[00:22:03] the descriptor, the descriptor of all the other bounds
+[00:22:07] that we are discussing, and we will see how to apply this to dimension, or to solve some
+[00:22:13] polynomial components that leverage these stochastic properties.
+[00:22:18] Okay?
+[00:22:20] Thank you.
+[00:22:21] If you have questions, I'm here to...

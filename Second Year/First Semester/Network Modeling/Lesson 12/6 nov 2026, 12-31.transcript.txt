@@ -1,0 +1,858 @@
+[00:00:00] We want to start with the performance of a volume
+[00:00:03] with a control algorithm.
+[00:00:05] And we want to estimate the number of traffic flows
+[00:00:13] that are blocked in a certain time period.
+[00:00:17] You run this simulation multiple times.
+[00:00:19] You measure these numbers multiple times.
+[00:00:22] And you get a sequence of observations
+[00:00:25] of this random variable.
+[00:00:26] So that part is not simple to mark the difference between a capital and a small x,
+[00:00:36] but the capital X represents the random variable, so the outcome of your experiment can be a variable,
+[00:00:42] while small x represents an observation that you perform after an experiment.
+[00:00:54] It's a realization of the random variable.
+[00:00:57] So if you perform the experiment 10 times, you measure n values, like xi,
+[00:01:04] and you can estimate the mean of your random variable empirically
+[00:01:15] as the mean of the values that you have observed.
+[00:01:21] 1 over n, values that are on the mean values,
+[00:01:32] so the mean number of holes that are blocked during the acceleration,
+[00:01:35] you can observe outcomes of the experiment and compute this empirically
+[00:01:42] I have a question for you, if you repeat the experiment again
+[00:01:47] I mean, you repeat the end of the experiment again
+[00:01:50] so you run again your simulation n times
+[00:01:54] so you collect n new observations
+[00:01:58] you repeat the experiment and you collect another set
+[00:02:07] So first experiment, you run the simulation n times,
+[00:02:15] you collect x1, x2, xn, you compute x tilde 1
+[00:02:23] equal to 1 over n by the sum of those equations.
+[00:02:30] Then you run the experiment a second time,
+[00:02:34] And you collect another series of variables, another series of observations, and from this you can compute the empirical mean just in time.
+[00:03:11] So the question is, do you expect that this empirical mean and this second empirical mean are the same, are equal?
+[00:03:25] You have three possible answers, yes, no, or maybe.
+[00:03:37] It depends actually, it's the physical answer of the engineers.
+[00:03:40] In this case, it doesn't depend, so you only have yes or no.
+[00:03:47] Is the question clear?
+[00:03:51] You have a simulator, a simulator simulates a system,
+[00:03:56] you run this simulator n times, you collect n observations,
+[00:04:00] you compute the mean, you get a value, and you repeat the experiment
+[00:04:04] and you run x simulator again, n times
+[00:04:06] you collect the outcomes
+[00:04:07] you compute the mean, and you get
+[00:04:10] this other value
+[00:04:11] R is
+[00:04:14] x to the one equal to
+[00:04:16] x to the two, or no
+[00:04:20] who is for yes, who is for no
+[00:04:28] Raise your hands, don't be shy
+[00:04:30] alright, the other guys have to
+[00:04:32] actually say oh yes
+[00:04:34] either yes or no, you cannot
+[00:04:36] do not decide anything
+[00:04:39] So, this left-hand side of the classroom is actually more high.
+[00:04:45] So, are these two values the same or not?
+[00:04:51] Come on, don't be shy.
+[00:04:53] Yes or no?
+[00:05:00] Understand now?
+[00:05:07] With no other opinions here?
+[00:05:10] From, or in front of you, you guys?
+[00:05:13] In ideas, yes or no?
+[00:05:15] No.
+[00:05:16] No, no ideas or no, they are not here probably?
+[00:05:19] No, I think they are not here.
+[00:05:21] They are not here, alright.
+[00:05:22] So, apparently no one is winning over a yes, and now it's y.
+[00:05:28] So, Asad, why did you say no?
+[00:05:30] I think, if I understood well, it depends on the observation,
+[00:05:35] and the average, since there are completely average,
+[00:05:40] I think it's probably going to be different,
+[00:05:43] but I am not sure how to motivate that.
+[00:05:47] Okay, so basically, these are observations, as you correctly said,
+[00:05:52] So, the realization of the random variables. These are other realizations of the random variables.
+[00:05:58] These are numbers because you just compute the mean of these realizations.
+[00:06:03] And since the random variable is random, right?
+[00:06:06] This second set of realizations might be completely different from the first one.
+[00:06:12] So, there is no reason why X2 should be equal to X1.
+[00:06:17] except in very particular cases the two means that you compute that are not the same.
+[00:06:23] So this is a problem because if your path was to estimate the actual mean of this random variable,
+[00:06:30] like you want to estimate the expectation of X,
+[00:06:36] that is one single number,
+[00:06:38] the only way that you can do that in practice is by observing multiple realizations of the random variable
+[00:06:44] and computing this expected mean, this empirical mean, right, this empirical mean.
+[00:06:50] So you want to repeat the experiment as many times as possible
+[00:06:56] in order to have an empirical mean that is as close as possible to mu.
+[00:07:00] So what you have is that if you increase the number of samples that you observe,
+[00:07:10] Then the estimated mean, that we call it,
+[00:07:19] I steal the offense to remark that it depends on the number of samples that we collect.
+[00:07:26] Suppose that this one is the real statistical mean of your random variable that is unknown.
+[00:07:34] So if you observe one single sample, of course you have no guarantee that the observation is equal to the mean,
+[00:07:40] so you might have something like here, then maybe you observe two samples and you compute the mean and you get something here,
+[00:07:49] then three samples and you get something here, then here, then here, then here.
+[00:07:53] As the number of samples increases, then the empirical mean gets closer and closer to the actual mean, right?
+[00:08:02] But the way in which the empirical mean gets close to the actual mean is random.
+[00:08:10] Because if you repeat the experiment, you might get a different pattern.
+[00:08:14] And if you repeat it again, you might have yet another different pattern.
+[00:08:19] The only point is that if you take enough samples, so if n is large enough,
+[00:08:24] then the difference between these empirical values becomes more and more.
+[00:08:29] How do we know that?
+[00:08:30] Well, because if you define a variable s as the mean of n i.i.d. random variables,
+[00:08:49] so this is a random variable defined as the mean of n i.i.d. random variables,
+[00:08:55] then you know that the expectation of s.n. that we can call mu of s,
+[00:09:04] U of s, n, to be precise.
+[00:09:07] But this one is equal to 1 over n,
+[00:09:10] the expectation of the sum of random variables.
+[00:09:19] The expectation of the sum is equal to the sum
+[00:09:21] of the expectations.
+[00:09:31] And since these random variables are i, i, d,
+[00:09:35] their expectations are all equal to mu.
+[00:09:41] And therefore, you have.
+[00:09:44] So the statistical mean of this random variable
+[00:09:47] is exactly equal to the mean of the original random variables.
+[00:09:52] That is called the variance
+[00:09:54] in this view, which is very simple, but the variance is actually
+[00:10:03] equal to the variance of the original random variable divided by n.
+[00:10:13] Which means that, after you increase the number
+[00:10:17] of samples that you collect, the variance of the mean
+[00:10:24] tends to zero. It even becomes low for its cover
+[00:10:36] according to this hyperbolic function
+[00:10:40] which means that for a certain
+[00:10:44] if you plot the distribution of Xn
+[00:10:48] the distribution of Xn will be
+[00:11:16] Xn is a random variable, the mean is mu
+[00:11:20] the distribution will be something that might say
+[00:11:25] it's not necessarily a quotient, it depends on actually
+[00:11:27] the distribution of division are non-valuable.
+[00:11:31] It has a certain variance.
+[00:11:33] This variance keeps decreasing as n increases.
+[00:11:36] So if you collect a new certain mean
+[00:11:40] with a certain value of n,
+[00:11:42] let's suppose n equal to n zero,
+[00:11:46] you get a certain distribution.
+[00:11:47] If you increase the number of samples,
+[00:11:49] maybe you double it,
+[00:11:51] you will have a distribution that is much
+[00:11:52] more picky around the mean, and so on.
+[00:11:59] By increasing the number of samples, the uncertainty that you have on the estimate of the actual
+[00:12:08] mean of the random variable becomes slower and slower, so you progressively convert,
+[00:12:12] the empirical mean progressively converges to the actual mean.
+[00:12:17] Now the question that I left you with at the end of the last lecture was how many
+[00:12:25] to be sure that the distance between the empirical mean, that is s and the actual mean,
+[00:12:39] is not larger than a certain threshold or better.
+[00:12:46] In other words, how many times do I have to repeat my experiment
+[00:13:08] and collect observations in order to compute an average value that is reasonably close
+[00:13:18] to the actual mean value of this random variable with an error that is not larger than epsilon.
+[00:13:26] Sorry, I should define this thing a little bit better.
+[00:13:31] My question is how many times do I need to repeat my experiment
+[00:13:35] to be sure that the difference between the empirical mean and the actual mean
+[00:13:39] is larger than a certain value of A only in less than X number 7 of the cases.
+[00:13:50] In other words, I want to compute the value of N to be sure that the
+[00:13:56] deviation between what I measure and what I should measure exceeds a certain
+[00:14:02] error, a, in less than epsilon percent complicated substitution.
+[00:14:08] If I plot my distribution of the invariant mean,
+[00:14:22] this is something like this for example, I set a and I want to compute the value of 10
+[00:14:39] to be sure that the probability of b in this part of the distribution is
+[00:14:43] less than epsilon, less than or equal to epsilon.
+[00:14:50] If I increase n, this distribution becomes more and more picky around the mean, and
+[00:14:57] therefore the probability of the tails becomes smaller, right?
+[00:15:01] So by increasing n, I can find the value of n such that this area becomes smaller than epsilon.
+[00:15:08] That was my question.
+[00:15:11] Now, how to solve this question?
+[00:15:13] How to answer to this question? Anything about the distribution of X answers this question.
+[00:15:41] Don't be certain, we cannot do things very precisely. However, if we know
+[00:15:46] something about X, then we can do some reasoning. For example, if we know that X
+[00:15:53] as a kind of balance, for example, it's less than a certain threshold, let me call it.
+[00:16:29] So if we can bound the balance of the conditional random variable,
+[00:16:36] then we can also find a bound of this probability,
+[00:16:53] that depends on it, and then we can find a minimum value of n
+[00:16:56] that guarantees that this bound is satisfied.
+[00:16:58] Now, let's see how to do that.
+[00:17:02] So suppose that we know this, we have this information, OK?
+[00:17:06] So we know that the variance of the single random variable
+[00:17:09] is D and is less than a certain threshold, s squared.
+[00:17:15] Then we can write the following.
+[00:17:17] So we know that s n is 1 over n, count the random variables.
+[00:17:30] Then we can write, we know that the expectation
+[00:17:34] If the expectation of Sn is equal to mu, we don't know the value of mu, but we know that the expectation will be equal to mu,
+[00:17:42] then we can conclude the probability that the model of Sn minus mu is larger than a in S.
+[00:17:50] We can write this probability that is the one that we want to find, right?
+[00:17:59] And since now we know that the mean is finite,
+[00:18:10] and the variance is finite because it is upper bound by sigma squared.
+[00:18:15] We can apply the curvature bound.
+[00:18:22] And the upper bound is probability by the variance of s n squared divided by p squared.
+[00:18:30] Remember, the curvature bound we have seen in last time.
+[00:18:36] We know that sigma s n squared is sigma s squared divided by n.
+[00:18:42] So we get this value, and by our assumption, we know that this pin here is upper bounded by s squared divided by n times.
+[00:19:09] So we know that this probability is upper bounded by this.
+[00:19:13] So if we set the bound, rather than setting the bound to this constraint here, to the probability, we set the constraint to this upper bound.
+[00:19:22] So we impose that this one is less than or equal to x.
+[00:19:25] Then we find a value of n that is conservative,
+[00:19:30] that's for which we are sure that also this combination will be satisfied, right?
+[00:19:36] So if we consider this last inequality,
+[00:19:40] we get either make that n has to be larger than or equal to
+[00:19:44] s squared divided by a squared x.
+[00:19:51] So this is the minimum number of,
+[00:19:55] This is not the mean. We are sure that if the number of samples exceeds this value,
+[00:20:01] then the empirical mean that we compute will deviate from the actual mean by no more than a
+[00:20:10] with a probability that is larger than one minus epsilon.
+[00:20:15] Or in other words, that the empirical mean that we find differs from the actual mean by more than a
+[00:20:22] in no more than epsilon percent of the mean.
+[00:20:27] If you study this result, it is also pretty intuitive
+[00:20:35] because you see that the number of samples that we need to collect
+[00:20:39] increases with the variance of the
+[00:20:42] random variable, which makes sense because if the random variable
+[00:20:46] has a large variance, it means that it is less predictable
+[00:20:50] so it jumps widely in the range
+[00:20:54] and therefore computing the mean is more difficult, so we need to collect more samples
+[00:20:58] to reduce the uncertainty.
+[00:21:00] So the number of samples in proportion to the device,
+[00:21:02] this makes sense, is inversely proportional to the error that we accept,
+[00:21:09] so if we want to have an estimate that is very close to mu,
+[00:21:12] which means that A is small, then we need to collect more samples,
+[00:21:16] quite practically more.
+[00:21:18] And it is also inversely proportional to epsilon,
+[00:21:20] So if we want to limit the probability that the error is greater than a threshold below a certain value,
+[00:21:30] then we also need to collect more samples.
+[00:21:34] So this is a very simple equation that gives you a rough idea of the minimum number of samples that you need.
+[00:21:41] Again, it's not the meaning, let's say it's a conservative minimum number of samples
+[00:21:50] that you need to collect in order to satisfy that condition.
+[00:21:54] Why have I corrected myself?
+[00:21:57] Because we actually post the pressure on the band, not on the toroidal.
+[00:22:04] Which means that with this value of 10, it is very likely that the original condition
+[00:22:11] is satisfied with a probability that is much lower than epsilon.
+[00:22:21] It is probably satisfied by a probability epsilon prime that is lower than epsilon.
+[00:22:28] We don't know how much we are far away from epsilon.
+[00:22:31] We are sure that we are within the number.
+[00:22:34] As you are really super late.
+[00:22:37] Sorry, that one was late, unfortunately.
+[00:22:45] Alright, you okay? Is it clear? Any questions?
+[00:22:54] Let's see, that's good.
+[00:23:32] What's that you are running an experiment to measure the, as I mentioned before,
+[00:23:37] the fraction of incoming traffic flows that are blocked by a call and mission control algorithm?
+[00:23:53] So you have a scenario where arrivals occur on the top of some process.
+[00:23:58] So new calls arrive on the top of some process.
+[00:24:01] New information flows by a point for some process of rate lambda per second.
+[00:24:23] So for that, this call lasts for a certain time.
+[00:24:33] Lasts for an initially distributed tau.
+[00:24:47] I get in from the other calls and each call corresponds to CDR flow, R bits per second.
+[00:25:19] These flows are processed by, are actually filtered by a polynomial control algorithm
+[00:25:27] that decides whether these flows are accepted or not in the system depending on some
+[00:25:32] internet ID arrive here. Here you have a CEC in your system.
+[00:26:03] And some calls are blocked by the CEC. They are not allowed in your system.
+[00:26:13] They are blocked by lambda.
+[00:26:16] Now, you are interested in computing the fraction of calls that are actually blocked.
+[00:26:25] You want to compute the blocking, that is, lambda vrp divided by lambda.
+[00:26:47] With this probability, you implement the system, or maybe you simulate the system,
+[00:26:54] and you measure something, right?
+[00:27:00] You simulate the system for a certain time, suppose that you simulate the simulation of time,
+[00:27:22] which means that you run the system to simulate a period of time equal to t
+[00:27:34] which means that the simulation might last a fraction of this time if it is
+[00:27:39] very fast or maybe much longer time, it depends on the complexity of your system.
+[00:27:45] So the actual time that is taken by the simulation to perform this
+[00:27:50] simulation, the simulator to perform this simulation is almost independent of the
+[00:27:56] the time that you simulate. This is a simulated time.
+[00:27:59] Is it there, the difference between the actual time and the simulated time?
+[00:28:03] Yes or no?
+[00:28:16] Wrong game, where you pretend to be
+[00:28:19] a computer that is close to something, right?
+[00:28:23] And the games,
+[00:28:25] every game works in rounds,
+[00:28:28] and the round events happen, but
+[00:28:30] the actual time that such events would take
+[00:28:33] in real life is totally independent of the time that it takes to simulate the events when played.
+[00:28:41] That's the same concept. When you simulate a system, the simulation takes a certain physical time, real time,
+[00:28:48] but what matters is the time that the simulator times, the time that you simulate going by during the simulation.
+[00:29:01] Depending on the complexity of the simulator, one second might take ten minutes to be simulated, or maybe one minute to be simulated.
+[00:29:12] So you simulate the system for time t of simulated time.
+[00:29:19] So in this time, you have a number arrived at a certain value of a of t.
+[00:29:32] And we know that a of t statistically is a Poisson random variable of parameter lambda t.
+[00:29:39] But of course, what you observe after a simulation is a realization of this value, right?
+[00:29:43] So what you observe is a certain value, let's say.
+[00:29:49] You observe a certain number, for example 131.
+[00:30:04] It can be any number, it depends on the parameters that we set in the system.
+[00:30:08] If you repeat the experiment another time, you will serve another method, like mobile analytics.
+[00:30:19] If you simulate it a third time, it might be 98, and so on, right?
+[00:30:26] So, any time you repeat the simulation, you will get slightly different values.
+[00:30:32] That's normal. If the system is stochastic, it's not deterministic,
+[00:30:36] any running of the system, you will have a different outcome.
+[00:30:40] Okay, so first question, how do you estimate this probability
+[00:30:44] at every run? Don't be shy.
+[00:31:07] Which values do you need to collect from this simulation
+[00:31:11] in order to estimate the code blocking probability?
+[00:31:22] Understand, if you remain silent because you don't know the answer
+[00:31:26] or because you are shy. So if it is because you don't know the answer
+[00:31:30] If it is because you are shy, you have a problem. Don't be shy.
+[00:31:34] This is a safe place, so don't worry to say something wrong.
+[00:31:38] There is anything wrong. We are here to learn and to discuss.
+[00:31:42] Don't be shy.
+[00:31:45] Let me repeat my question for the last time.
+[00:31:49] You have to estimate the number of customers or calls
+[00:31:52] that are blocked by the automation control.
+[00:31:55] I give you the simulator. You don't need to program anything.
+[00:31:58] Everything is done.
+[00:31:58] I give you the simulator, you just need to run it.
+[00:32:02] You run it and you can collect values of the simulator.
+[00:32:07] One such value is the number of calls that arrive in a certain time.
+[00:32:15] This can be collected.
+[00:32:18] What other value do you need to collect in order to estimate the fraction of calls that are not admitted into the system?
+[00:32:26] that are not the codes that are starting, the codes that we are starting, the codes that we are starting, like starting, that's a good point.
+[00:32:47] So maybe, the one that I have written there is this one by A.D.
+[00:32:51] the number of cores that arrive in the system.
+[00:32:54] Your name?
+[00:32:55] Hey, Manuel is saying we should also
+[00:32:57] collect number of cores that are here,
+[00:32:59] right, or here.
+[00:33:01] So maybe let me call them
+[00:33:04] we can call them
+[00:33:09] CT compliant cores,
+[00:33:11] alright, because
+[00:33:14] maybe septal cores
+[00:33:15] but it would be a FBE
+[00:33:16] so let me change the letter
+[00:33:18] we can call them CT, right,
+[00:33:21] same here or here.
+[00:33:22] Cp is the number of calls that are accepted.
+[00:33:32] How do we compute the blocking probability?
+[00:33:38] This is an estimate, of course, because we compute it based on observations
+[00:33:42] so it's not a random variable.
+[00:33:44] It's a number.
+[00:33:49] The fraction of calls that are not admitted to the system
+[00:33:52] is divided by Cp.
+[00:34:04] And this is the blocking probability?
+[00:34:15] This is what has been accepted.
+[00:34:19] Right, and then how do you correct this equation?
+[00:34:22] One minus one.
+[00:34:24] One minus, yeah.
+[00:34:26] In other words, the number of codes that are blocked
+[00:34:30] divided by the number of codes that are right.
+[00:34:47] Okay, easy.
+[00:34:49] So we collect these two values, we collect aT, we collect cT or bT.
+[00:34:55] You can choose, nothing changes.
+[00:35:03] And we have one instance of this value.
+[00:35:08] So we collect the knocking probability for this realization of the process.
+[00:35:13] But we run the process again, and we obtain new values of aT, bT,
+[00:35:19] and consequently of Btilde blocking, and so on, right?
+[00:35:29] So we also have that this estimate of Btilde block
+[00:35:32] is relevant in the sense that it changes any time
+[00:35:35] we run the experiment again.
+[00:35:38] And then the question is, how many experiments
+[00:35:40] do I need to perform in order to be reasonably sure
+[00:35:44] that the value of B block that I measure
+[00:35:47] is close to the real component of my system?
+[00:35:54] So the question is, what's the value of n such that the
+[00:36:02] blocking probability that I compute over n experiments
+[00:36:06] and basically blocking probability.
+[00:36:08] All right.
+[00:36:10] I actually skipped one step.
+[00:36:12] If I repeat the experiment n times,
+[00:36:14] I collect n values of At.
+[00:36:17] Let me call them AD1, AD2, ADN, N of BK, right, AD1, AD2.
+[00:36:36] Then, from each of these, you can compute N values of the locking probability,
+[00:36:41] block 1, block 2.
+[00:36:51] Now, out of these N experiments, you want to find a final value of T-block
+[00:37:01] using all the outcomes that you have collected in these n experiments.
+[00:37:07] You repeated the experiment sometimes, so you have a lot of values that you can use to compute your p-block.
+[00:37:13] How do you compute p-block? Do you take the average of this one? Maybe.
+[00:37:20] Or? The highest value.
+[00:37:26] The highest value? Oh, that's interesting. This is something I didn't think about.
+[00:37:30] So, option 1, we compute p-block as 1 over 10 times the p-block of p, right?
+[00:37:45] So we compute the mean of the values that I obtain at every instance.
+[00:37:53] Second option, you're calling the same.
+[00:37:57] Emanual, right?
+[00:37:59] We take the max min.
+[00:38:00] What are the options?
+[00:38:19] Compare needs.
+[00:38:23] This is what you have?
+[00:38:39] The variance.
+[00:38:41] The variance, maybe.
+[00:38:43] Oh, the variance of what?
+[00:38:45] This?
+[00:38:46] Yes.
+[00:38:47] I don't know if it makes sense.
+[00:38:52] You're suggesting to estimate t block as the variance.
+[00:38:58] Well, the standard deviation of the variance.
+[00:39:00] Yeah, no problem.
+[00:39:00] and so s d d, the standard deviation of p block k d.
+[00:39:30] Any other idea?
+[00:39:32] I like it.
+[00:39:33] So after this, we can comment on the different solutions.
+[00:39:41] OK.
+[00:39:42] I put one on the table.
+[00:39:46] And I have another possibility saying, well,
+[00:39:49] I can compute p block as the sum of all the rivals
+[00:39:53] that they got over t divided by, vice versa, sorry,
+[00:39:56] all the blocks, calls divided by all the arrivals, okay?
+[00:40:24] Which one is the best, assuming that there is a best?
+[00:40:29] Let's try to comment together and understand together
+[00:40:32] what are the pros and cons of all different solutions.
+[00:40:37] So let's start from the first one.
+[00:40:42] Can you see any problem with this one?
+[00:40:52] Well, there applies.
+[00:40:55] That's right.
+[00:40:56] Or in other words,
+[00:41:00] First, if you have an outlier, so if one experiment has been particularly, I mean, strange, let's say,
+[00:41:09] and you got for that specific case maybe a very high number of holes that have been blocked.
+[00:41:17] For some reason, maybe the system was congested, if that occasion, a very unlikely sequence of events happened,
+[00:41:24] and therefore you blocked a number of holes,
+[00:41:26] So then you might have one of these values that is much higher than all the others.
+[00:41:32] And in this case, this would affect the mean.
+[00:41:36] So you might have a bias, and this type of estimation is more sensible to possible outliers as your colleagues have noticed.
+[00:41:45] Even though if you increase n, so far, a sufficiently large number of values, also the outliers are,
+[00:41:53] the effect of the outliers is much more limited.
+[00:41:56] So this is a good methodology to estimate PBRP.
+[00:42:06] It is good, but it doesn't satisfy individual results, right?
+[00:42:15] All these methods are required to run the simulation multiple times.
+[00:42:21] If you only have one simulation, you have one value, and that's it.
+[00:42:25] but you cannot make any sort of decision.
+[00:42:28] If you want to see if this value is stable or not, you repeat the simulation multiple times
+[00:42:32] and you compare the different values.
+[00:42:34] If they are all very similar, you know that it's very likely that the value is the right one,
+[00:42:42] but if you keep observing valuable outcomes,
+[00:42:46] then it means that you need to perform multiple simulations in order to find something that is more reliable.
+[00:42:52] What's the problem with this one?
+[00:42:57] That was suggested by you, right?
+[00:43:01] What's the problem with this one?
+[00:43:04] You're taking into account only one case.
+[00:43:07] The worst case.
+[00:43:07] That's right.
+[00:43:08] Also, in case of outlier, as we said before,
+[00:43:11] this is very dangerous because if for some reason
+[00:43:15] one experiment are now to be particularly unlucky,
+[00:43:20] even if you keep simulating and generating new values,
+[00:43:23] The next thing will always be the same.
+[00:43:26] This is certainly not a good way to simulate, to estimate the lock.
+[00:43:36] What about the third one?
+[00:43:37] Other lists are known, right?
+[00:43:41] What do you think about the third one?
+[00:43:43] What's the problem with it?
+[00:43:44] If there is a problem, I'm not sure.
+[00:43:47] Can you see any, not only you guys, but everyone,
+[00:43:50] can you see problems with this definition of the estimate of the lock?
+[00:43:57] There is one clear problem, that if you take the standard deviation, you are getting rid of the mean.
+[00:44:05] You are losing the real value that you want to estimate, that is the mean of the estimate.
+[00:44:12] Doing that, you are estimating the uncertainty that you have in the estimate of the mean.
+[00:44:19] This is not an estimate of the block, but an estimate of the uncertainty.
+[00:44:23] Okay, is it clear? Okay, so we don't consider this. What's about the last one?
+[00:44:39] In the last one we are just aggregating all physical simulations.
+[00:44:47] We put together all the values that we get in terms of dropped calls, all the
+[00:44:55] by calls and we are considering the average of these two values, shouldn't have the same problems as the first one, because we can also have some bias.
+[00:45:10] Alright, this is a good observation, actually.
+[00:45:19] Yeah, basically I'm not doing ratio between two, it's not a relation to the ratio between here.
+[00:45:30] Yeah, it's the ratio between the aggregate number of hosts that are blocked over the categories of rivals.
+[00:45:36] The problem is the difference between the first one and the following one.
+[00:46:04] In 1, folder B is B1.
+[00:46:22] Right?
+[00:46:23] In the last one, you have that B of A is equal to A B of B1 plus A B of A B.
+[00:46:49] Of course, it's vice versa.
+[00:46:54] So, to the minus one.
+[00:46:55] Because it's b over a, not a over 2.
+[00:47:04] Oh, let me write it correctly.
+[00:47:06] Yeah, because it's the smallest group.
+[00:47:26] We have a and b.
+[00:47:33] Thank you.
+[00:47:37] So suppose that in a certain experiment for the first one
+[00:47:41] you have that bt1 is very close to a t1, OK?
+[00:47:48] So here you have a 1.
+[00:47:51] And then for the other phases, you have bth.
+[00:47:54] that is much smaller than APH.
+[00:48:02] Because in reality, the blocking probability is very low.
+[00:48:06] Just to fix the idea, suppose that APH is a time APH.
+[00:48:15] Of course, this is a very specific case.
+[00:48:18] It starts to reason about the result.
+[00:48:21] So in the first case, you would have 1 over m,
+[00:48:24] 1 plus m e minus 1 alpha as the estimate of your blocking
+[00:48:35] probability.
+[00:48:36] In the second case, you would have 1 plus m e minus 1 alpha
+[00:48:43] divided by m e.
+[00:48:48] Is that right?
+[00:49:11] I'm doing a little bit more complicated.
+[00:49:13] This one is A e1 plus alpha A e to the i.
+[00:49:49] So here, in the first case, you have 1 over n plus 1 over n
+[00:49:57] alpha, 1 over n plus alpha minus alpha over n.
+[00:50:41] In the second case, you have the block
+[00:50:47] Okay, so in the second case,
+[00:51:19] I separated the first term and the other ones.
+[00:51:24] The first term is just
+[00:51:25] 81 divided by the sum of all the 80s,
+[00:51:28] plus alpha that multiplies this one divided by this.
+[00:51:32] If you divide the numerator and denominator by this term here,
+[00:51:36] you have the denominator,
+[00:51:37] 81 divided by the sum of all the 80s
+[00:51:41] and then it should come to up to n plus one.
+[00:51:44] Now, what's the estimate that is closest to the correct one?
+[00:52:03] Well, first of all, we notice that in both cases,
+[00:52:06] if n grows to infinity, we get R.
+[00:52:13] That is the actual blocking probability
+[00:52:17] that we have in this example, right?
+[00:52:19] If n grows to infinity, we have that this time
+[00:52:24] is constant, this time keeps growing, so it goes to 0.
+[00:52:27] And here you have same thing, this goes to zero, and we get the alpha here, right?
+[00:52:33] So in both cases, the true base index goes to zero, sorry, goes to the real value of alpha.
+[00:52:40] Now, which one is more sensitive to local deviations from the correct value?
+[00:52:46] So it's more sensitive to this error here.
+[00:52:55] Not easy to say, it depends on actually the realization of the variables.
+[00:53:00] So, if you consider, for example, that all the number of arrivals are constants in all
+[00:53:07] experiments, so if At i are equal to At for every i, then you get an expression that
+[00:53:17] is not very different from the previous one.
+[00:53:20] you will have here 1 over n plus alpha divided by 1 plus 1 over n minus 1.
+[00:53:45] You see that you get the same expression you found before.
+[00:53:51] So in certain cases, the two approaches are basically equivalent.
+[00:54:09] In other cases, depending on the variety of different variables,
+[00:54:11] one might be better than the other.
+[00:54:14] According to my experience, the second one is more robust than the first one
+[00:54:21] when you have valuable outcomes and have an experiment
+[00:54:27] because it tends to limit the impact of the outliers.
+[00:54:33] But as you can see, if N is sufficiently large
+[00:54:36] of course this can also be put formally
+[00:54:39] if n is huge and large, both these approaches lead to the same estimate of the correct blocking problem.
+[00:54:49] Okay? Now, consider questions, first of all.
+[00:54:57] Now, consider the first approach, this one,
+[00:55:03] and find the value of n that guarantees that your estimate
+[00:55:12] doesn't deviate from the actual value of the dropping probability
+[00:55:22] by more than, let's say, 0.10 to the minus 2, or better.
+[00:56:07] Find the number of times such that the probability that they estimate
+[00:56:10] the deviates from the actual value by more than 0.01 is less than 1%.
+[00:56:25] How many simulations do I need to perform
+[00:56:28] In order to collect enough data to compute this probability,
+[00:56:32] in such a way that this estimate is sufficiently close to the actual value,
+[00:56:39] so it deviates from the actual value by more than 0.01, only 1% of the cases.
+[00:56:54] I might formulate the same problem in a slightly different manner, I can also write.
+[00:57:00] Find the value of n such that the probability that the absolute error between your estimate and the actual value of PBLK is less than or equal to 10 to the minus 2, at least in 99% of the cases.
+[00:57:24] These two formulations are exactly identical.
+[00:57:30] Sorry, but there can be a case where we should
+[00:57:38] put also an upper limit when,
+[00:57:43] because maybe if we do too much simulation,
+[00:57:48] maybe we will find more out.
+[00:57:53] No. I mean, the answer is no.
+[00:57:57] In the sense that the more data you have,
+[00:57:59] the better. Whenever it comes to statistical estimate,
+[00:58:05] Outliers, actually, it depends on your definition. What is an outlier, in your mind?
+[00:58:19] Something that goes pretty far from the beginning?
+[00:58:23] An outlier, by definition, is something that is out of the model.
+[00:58:29] So, when you observe a certain process that should follow a certain model,
+[00:58:35] an outlier is something that doesn't comply with the model.
+[00:58:39] When you simulate a system, you don't have outliers, because a system is the one that
+[00:58:44] you define.
+[00:58:46] In reality, when you develop your system and you start it working, then you might
+[00:58:52] observe something that doesn't fit into the model for two reasons.
+[00:58:56] Either the model is wrong, so it doesn't capture everything, or there's something
+[00:59:00] wrong in the system.
+[00:59:02] Typically, when you perform data analysis on real data, you have outliers.
+[00:59:08] Why? Because the sensors that collect data from time to time provide something that is
+[00:59:13] meaningless, but because of the problem of the sensor.
+[00:59:17] In these examples, I've referred to the previous case in which you have
+[00:59:23] one iteration that provides a value that is very unlikely to be observed.
+[00:59:29] That's not exactly an outlier. This is just an unusual event that however belongs to the model.
+[00:59:37] And the more simulations you do, the less the effect of these unusual, rare events.
+[00:59:44] Okay, this is the question. How can we find the value of n that allows us to satisfy these constraints?
+[00:59:57] We might use texture, good?
+[01:00:01] So what's the variance of PBLK?
+[01:00:10] So we need to either have a bound on the value of PBLK
+[01:00:14] in order to use texture, or knowing the actual value of the variance of PBLK that we don't.
+[01:00:21] However, in this case we can use another result that is pretty cool.
+[01:00:25] It's called O-H-Bing.
+[01:00:30] And it states that if you have n variables xi that you know
+[01:01:04] are limited in a certain interval,
+[01:01:06] so they can take values within a certain interval ai, bi.
+[01:01:19] You set, you call the new i, the expectation
+[01:01:26] of this random variable that is finite.
+[01:01:29] Of course, if the boundary of the interval is fine,
+[01:01:33] they expect it to be certainly fine.
+[01:01:35] But we specify it as true.
+[01:01:40] And you define the g-domain of this random variable
+[01:01:48] such that the expectation of S n
+[01:02:20] is equal to n of the new line.
+[01:02:51] Then the probability that we write it here
+[01:02:54] The probability that S n minus mu n is larger than a certain value upper bounded by the exponential of minus 2 times h squared
+[01:03:24] divided by the sum over all the n original random variables
+[01:03:35] of delta i squared, where we define delta i
+[01:03:41] as the amplitude of the interval within which
+[01:03:46] the variable falls.
+[01:04:12] That's not what I was just talking about.
+[01:04:22] We need to add an n somewhere here.
+[01:04:32] Sorry, guys, I forgot an n here.
+[01:04:34] That means n squared here.
+[01:04:47] Otherwise, without the n, we would not
+[01:04:50] and not be able to determine it, so of course we can pass that line here.
+[01:04:57] If you want me to digest this inequality, then you can comment it.
+[01:05:16] Okay, so if you look at this inequality, you see that the right hand side is an exponential and a negative exponent,
+[01:05:25] which means that the larger this term, the smaller the bound, so the stricter this probability.
+[01:05:35] And we see that the bound decreases graphically, actually, exponentially with the square of n.
+[01:05:45] So by increasing the number of samples, well, it's not really the square of n, because also the denominator increases with n.
+[01:05:53] So we will see that by increasing n, the bound becomes smaller and smaller,
+[01:05:58] and therefore your estimate becomes better and better exponentially with that.
+[01:06:08] If you consider the case where all the variables have the same bounds
+[01:06:20] so if that i is equal to delta for every i
+[01:06:24] which means that basically bi and ai are constant for all the trans variables
+[01:06:32] are IID, then the bound becomes
+[01:06:36] simpler, and it's like this.
+[01:07:12] Okay, so the bound becomes this one, and you see that
+[01:07:15] if the kid is exponentially then, that is very good.
+[01:07:19] We can also observe that, as usual, if A is large
+[01:07:23] then the bound becomes smaller because we are
+[01:07:27] relaxing our requirement about the closeness of the
+[01:07:31] to the actual mean. Notice that here we don't have the absolute value, right?
+[01:07:36] Here is an upper bound probability that the estimated is larger than the mean.
+[01:07:42] We can extend this bound by considering any deviation from the mean,
+[01:07:48] either on the right or on the left.
+[01:07:52] So here, by taking the absolute value of the difference between the
+[01:07:56] and this is exactly the same, just multiplying the bound by two, two times the bound that
+[01:08:05] we found before.
+[01:08:13] So the triangle theorem is the same, you see that it goes down exponentially with
+[01:08:17] m, so by increasing the number of simulations the bound becomes different and stricter, so
+[01:08:21] the estimate becomes progressively more accurate.
+[01:08:25] Of course, if the original random variables can take values in a very large interval,
+[01:08:30] So if delta is big, then the bound becomes looser,
+[01:08:35] because the variables can move very quickly,
+[01:08:39] I mean, very randomly in a large interval,
+[01:08:41] and therefore, estimating their mean becomes more difficult.
+[01:08:44] So the larger delta, the worse the bound.
+[01:08:47] The larger n, the better the bound.
+[01:08:49] Here, do you trust this bound, or should we prove it?
+[01:09:00] The proof is pretty good, but a little long.
+[01:09:19] Do you want to take a breath before we eat?
+[01:09:23] Yes or no?
+[01:09:25] When I asked for a breath everyone asked me a few years ago, right?
+[01:09:28] It was for yes.
+[01:09:37] Half a breath, seven minutes.
+[01:09:54] What's your problem?
+[01:09:56] It's okay.
+[01:09:57] Does the formula for the probability of being restricted to one second?
+[01:10:01] Yes, because when the data is in the field, there is a point in the field where the data is in the same place
+[01:10:06] and the data is in the same place.
+[01:10:08] And what is the point?
+[01:10:09] Yes, in the field.
+[01:10:10] Okay.
+[01:10:11] So it doesn't have to be...
+[01:10:13] In the field, no?
+[01:10:16] No, it doesn't have to be because it's not in the field.
+[01:10:19] Because here, we can see that the data is in the field.
+[01:10:22] Ah, okay.
+[01:10:23] So when the data is in the field, there is a point in the field
+[01:10:29] OK.
+[01:10:30] Got it.
+[01:11:59] Thank you very much.
+[01:14:02] Thank you very much.
+[01:16:48] OK, guys, following a question that I
+[01:16:52] locked in the back, I want to remark that this is
+[01:16:54] between this name and this one.
+[01:16:56] We call both of them names, but this one
+[01:16:58] is actually the name.
+[01:17:00] And expectation, this one is a rhythmic name
+[01:17:03] for in this one.
+[01:17:04] OK?
+[01:17:05] So why do we consider both of them?
+[01:17:07] This is a model.
+[01:17:09] This variable here, it's a random variable.
+[01:17:12] and models the empirical mean that we can compute by observing realizations of the
+[01:17:21] actual random variables.
+[01:17:23] This model basically models the fact that, as I mentioned in the beginning, if you
+[01:17:28] compute the statistics of this, for example, empirical mean multiple times, you get
+[01:17:33] different values, right?
+[01:17:38] Because it depends on the realization that we observe.
+[01:17:58] This is a number, a Christian number. There is no value here, but if you repeat the experiment, you obtain different numbers.
+[01:18:08] This one variable represents this variable.
+[01:18:12] So before computing the empirical mean by observing the process, you can model the outcome using this parameter.
+[01:18:22] This statistical mean is just the expectation of this random variable.
+[01:18:28] So, if you observe this random variable multiple times and you compute the empirical mean,
+[01:18:38] if the number of observations is sufficient, you will converge to this statistical mean,
+[01:18:44] assuming that the processes are valid.
+[01:18:50] Better? More clear?
+[01:18:53] Let's go back to our off-things inequality.
+[01:18:57] As I said, the proof of the off-things inequality is very interesting.
+[01:19:04] But we can take it short by starting from the off-things rule of lemma.
+[01:19:19] That states something that, as a first sight, it doesn't make much sense.
+[01:19:30] The whole thing of the lemma says that a certain random variable X with time mean.
+[01:19:47] And for any parameter in theta that is non-negative,
+[01:19:52] then it holds that the expectation of the exponential of theta that multiplies
+[01:20:02] X minus its mean is upper bounded by the expectation of theta to the power of 2.
+[01:20:24] I forgot to write something important here.
+[01:20:39] Multiply by delta squared divided by 8.
+[01:20:42] Sorry, there is another condition that I have written here.
+[01:20:46] X also has to belong to a finite interval a b.
+[01:20:52] And we define delta as the length of this interval.
+[01:20:58] Under these conditions, this lemma holds.
+[01:21:02] So we can upper bound the expectation of the explanation of this term with that value.
+[01:21:20] Now, the proof of the lemma is long.
+[01:21:24] It's not particularly complex, but it requires a number of steps.
+[01:21:32] then I would rather skip here, so I ask you to trust it. If you want to prove it, you can try it.
+[01:21:42] It's not simple in the sense that the steps are all very simple, but finding the right steps is not that simple.
+[01:21:51] So it's the process to be a little bit involved.
+[01:21:58] I will upload maybe the solution if you are interested in Moodle.
+[01:22:04] So we give it for granted, and instead we prove that
+[01:22:09] all the inequality in disease must be simple.
+[01:22:16] Starting from the lemma, the inequality depends on simple proof.
+[01:22:21] So the same conditions that we mentioned before,
+[01:22:23] Also we have a random variable xi that belongs to a certain nature of ai, bi.
+[01:22:31] We call mu i the expectation of this random variable.
+[01:22:39] And we have that the probability, sorry, we define s and s.
+[01:22:52] that the arithmetic mean of these random variables
+[01:22:56] we call the mean as the expectation of SN
+[01:23:06] that is also referred to as the mean of random variables
+[01:23:15] the arithmetic mean of the expectation of the given random variables
+[01:23:20] and we have the probability
+[01:23:23] that the model of s n minus mu s rather than a
+[01:23:30] is upper bounded by 2 times e to the power of a squared times
+[01:23:36] n divided by n squared divided by some time past b i minus a
+[01:23:55] n.
+[01:24:03] And here we have a minus and a 2 that I forgot.
+[01:24:06] For this one, we start from the C that we first proved it
+[01:24:51] for half of it.
+[01:24:53] So we took that Sn minus mu is greater than a certain value
+[01:25:00] a.
+[01:25:01] We find a bound to this value,
+[01:25:03] and then we find a bound for the opposite case,
+[01:25:08] for the other, on the left-hand side,
+[01:25:10] a of the distribution.
+[01:25:11] So here, we can write that this probability is actually
+[01:25:19] for every theta that is non-negative,
+[01:25:23] we can write this probability as the probability
+[01:25:28] of the exponential function of theta
+[01:25:32] multiplied by s n minus mu s.
+[01:25:37] So that must be equal to the exponential theta t.
+[01:25:42] This is always possible because the function
+[01:25:50] eta x is monotonic increasing when theta is actually
+[01:26:02] larger than 0, not equal to 0.
+[01:26:07] And therefore, if the function is monotonic increasing,
+[01:26:10] the probability doesn't change when you apply the function
+[01:26:13] on both sides of the equation.
+[01:26:15] Why do we do that?
+[01:26:22] because now this term on the left is for sure is still a random variable because
+[01:26:31] SM is a random variable, but since we've taken this random variable and placed it as the
+[01:26:39] exponential function, we know for sure that this random variable will be positive
+[01:26:51] because the exponential function is always bigger than zero.
+[01:26:55] And if the random variable is greater than zero,
+[01:26:58] then we can apply the Markov inequality.
+[01:27:01] So we can upper bound this probability
+[01:27:05] with the expectation of the random variable,
+[01:27:15] which means the expectation of T, eta, s, n,
+[01:27:20] to the s limit.
+[01:27:22] And the value is by the threshold
+[01:27:27] that we have considered on the right-hand side,
+[01:27:29] that is e to the 8th, and we are basically done now,
+[01:27:43] because it's just a matter of developing this relation
+[01:27:48] and using the whole thing to do that.
+[01:27:57] So we now can write the right-hand side term
+[01:27:59] can be written as of the expectation of e
+[01:28:05] to the power of theta, so that multiplies sn minus mu.
+[01:28:11] Sn-u can be written as 1 over n by the sum of xi minus ui, right?
+[01:28:35] We just replace Sn with its expression, Sn and un with their expression, so we get these values.
+[01:28:42] Then the exponential of a sum is the product of the exponentials.
+[01:28:49] so we can write this one as the expectation of e theta times 1 over n
+[01:28:57] that multiply the product for pi equal to 1 up to n of e theta
+[01:29:05] this thing here e theta times 1 over n that multiplies i psi minus mu pi
+[01:29:24] xi minus xi minus mu pi that e to the a theta
+[01:29:41] Then, since the random variables are independent, then we can write the expectation of the product as the product of the expectations over N.
+[01:30:14] that multiplies x5 minus nu i, and we can multiply everything
+[01:30:22] by e to the minus a theta so that we take the denominator,
+[01:30:26] we bring it up to the numerator.
+[01:30:34] And here we can use the Orr-Schmidt Lemma
+[01:30:40] to upper bound this term.
+[01:30:57] You see this one is similar to the one
+[01:30:59] that we have written here.
+[01:31:02] we have the expectation of the exponential of P divided by N
+[01:31:07] that is just another constant
+[01:31:10] multiplied by a random variable minus its mean.
+[01:31:13] So we are exploring the condition of the
+[01:31:17] Euler-Tubin's Lemma
+[01:31:18] so we can upper bound this term
+[01:31:20] with that value there.
+[01:31:22] So we can write that this one is
+[01:31:24] less than or equal to P to the P over N
+[01:31:28] squared, multiplied by delta I, here we have the product, and then we multiply by 8 to the power of 2, divided by 8, sorry, I copied only part of the right hand side of the line, I still have to copy everything.
+[01:32:11] on the right-hand side of the platform, and we keep writing.
+[01:32:26] The right-hand side of the equation, this one,
+[01:32:33] can now be written.
+[01:32:34] We go back by expressing this product
+[01:32:38] as an exponential with the sum of the exponents.
+[01:32:43] So we write the right-hand side as T,
+[01:32:51] E to the sine, equal to 1 up to n, of theta squared divided by n squared, that multiplies
+[01:33:09] delta i squared divided by 8, and we write minus a theta.
+[01:33:38] On this bound, okay, we know that the original probability that I have now deleted,
+[01:33:43] But we started from the probability that s n minus nu x was greater than a, and we found this one.
+[01:33:54] So this one is less than or equal to e to the minus e theta plus the sum of this theta squared over n squared times z times theta squared divided by a.
+[01:34:13] Now, this bound is valid for n theta greater than zero
+[01:34:25] and since we are interested on the strictest possible bound
+[01:34:30] we can find the value of theta that
+[01:34:34] minimizes the numerator of the index for mutual
+[01:34:37] so that the bound is as strict as possible
+[01:34:40] to do that we analyze this function here
+[01:34:44] this is a function of theta
+[01:34:46] So we define f theta as the exponential here.
+[01:34:55] And we study f theta, how it changes to theta.
+[01:35:10] So you can see that f theta is a complex function,
+[01:35:15] because it's basically a square function.
+[01:35:17] It's theta squared, so we can multiply it here.
+[01:35:20] It's theta squared divided by n squared
+[01:35:23] sine of theta r squared minus a theta r.
+[01:35:28] So it's a square function like this.
+[01:35:33] This is theta, something like this.
+[01:35:41] And we want to minimize this value.
+[01:35:42] So to minimize the value, we compute
+[01:35:44] the first derivative, and we set it to 0
+[01:35:46] to find the minimum value.
+[01:35:50] So by computing the derivative of theta,
+[01:35:54] all right, theta, in setting this to zero,
+[01:35:59] we obtain 2 times theta divided by n squared
+[01:36:05] multiplied by the sum of theta squared minus a of 0,
+[01:36:15] which gives our optimal value of theta equal to a
+[01:36:30] divided by, oh, sorry, a multiplied by n squared
+[01:36:35] divided by 2 times the sum of the delta I.
+[01:36:46] So maybe it's a mistake, I don't think so.
+[01:36:48] Or maybe it's a mistake.
+[01:36:56] Sorry, because we have theta squared, so
+[01:36:59] No, it's fine.
+[01:37:03] There is a key that I forgot somewhere here.
+[01:37:13] Because this one was over time.
+[01:37:14] Let me write it in a proper manner.
+[01:37:18] It's actually delta I divided by A here.
+[01:37:22] Sorry, I forgot this term.
+[01:37:24] that is important. These two simplifies with this a and we get as a final result
+[01:37:38] 4 a n squared divided by the sum of zeta i squared.
+[01:37:52] Now, since the time is over, I will go click on the last few steps, but they are very trivial.
+[01:38:02] So you replace this value of theta star in the inequality
+[01:38:07] that we found in the quarter, and you get the strictest
+[01:38:12] bound that you can find for any value of theta.
+[01:38:15] So you use theta star here, and you get your final bound
+[01:38:22] probability that s n minus mu s is larger than a turns out
+[01:38:27] will be less than or equal to d minus of a times theta
+[01:38:34] star plus theta square divided by a times theta square times
+[01:38:48] theta star divided by theta square.
+[01:38:52] You have raised theta star here.
+[01:38:56] And you will continue the difference.
+[01:38:58] and you will find your final expression
+[01:39:01] that is the one that I have written on the beginning.
+[01:39:05] You find after some easy math
+[01:39:09] the final expression that is e to the minus 2 times
+[01:39:14] m a squared divided by
+[01:39:18] m squared a squared divided by the sum
+[01:39:23] of theta and theta squared.
+[01:39:28] And then you can prove that by following the XOR in the same step,
+[01:39:32] you find the XOR in the same bound also for the probability that
+[01:39:36] minus S n minus mu S is, or better, sorry,
+[01:39:44] the probability that the deviation on the other side,
+[01:39:48] so that mu S minus S n is larger than mu,
+[01:39:53] this one is also less than or equal to that mu,
+[01:40:01] which proves our lemma
+[01:40:04] with this lemma
+[01:40:07] with this inequality
+[01:40:08] you can find the solution to the previous problem
+[01:40:11] you can find the number of
+[01:40:14] experiments that you need to estimate
+[01:40:17] the blocking probability
+[01:40:19] why? because
+[01:40:21] the blocking probability
+[01:40:23] the estimate that you make
+[01:40:25] of the blocking probability, your p-block
+[01:40:28] is always between
+[01:40:31] 0 and 1, right?
+[01:40:33] So it's always needed in an interval, so you have that data is equal to 1.
+[01:40:39] And therefore you can use this button with data equal to 1, and you find the number of experiments that you need to perform to be sure that this probability is less than or equal to a certain value of this distance.
+[01:40:56] I understand that the 3 and 5 minutes are the same, because you wrote first s n minus
+[01:41:02] mu s and then mu s minus s n. Is it the same?
+[01:41:08] This one is actually, the one that you need to do, you find that this inequality
+[01:41:14] is actually the regression of this one. So you are looking, with this one you are
+[01:41:22] that the actual estimate that you perform is larger than the mean, by more than a.
+[01:41:29] Here you are wondering what the probability that the estimate that they make is smaller than the mean by more than a.
+[01:41:34] If you follow the same reasoning, you will find the same value,
+[01:41:37] which means that the probability that the deviation of S-N,
+[01:41:42] if you refer to the mean in module,
+[01:41:45] so either on the right or on the left,
+[01:41:47] is larger than e, then it's upper bounded by two times this value here.

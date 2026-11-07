@@ -1,0 +1,234 @@
+[00:00:00] We have, so far, revised, let me start from the beginning, we have revised some of the models for stochastic processes.
+[00:00:12] So we have random variables and random processes that we use to model some stochastic processes.
+[00:00:17] Then we use some of these models to represent traffic sources.
+[00:00:24] So those that generate social requests to our system.
+[00:00:29] Then we introduce this policy-certainty-shipper mechanism to control somehow the output of
+[00:00:37] a proxy source before it enters the system.
+[00:00:40] And then we start talking about another model that is the code of initial control.
+[00:00:55] That's the model in charge to determine whether or not a new request can be accepted in the system.
+[00:01:08] As we mentioned in a few lectures back, the CSE typically works together with the resource manager,
+[00:01:16] that is, the model in charge of the individual responsibility and resources.
+[00:01:20] But in this simplified setting, we can discuss some CSE methods also,
+[00:01:27] spend a lot without considering the resource manager,
+[00:01:29] or rather considering very simple and basic resource manager mechanisms.
+[00:01:36] then later on we'll also introduce you as the social manager mechanism a little bit more advanced,
+[00:01:41] and maybe you can revise the CSE, unfortunately.
+[00:01:45] So the direct concept is that we have a certain system with a pool of resources.
+[00:01:51] These resources are used by some users that consume those resources based on their need.
+[00:01:58] And then we have a new request to access the system.
+[00:02:01] And this guy, this module, needs to decide
+[00:02:05] whether this request can be accepted
+[00:02:08] without disrupting the order of service of the customers
+[00:02:12] that are already in the system.
+[00:02:14] So there are different approaches regarding CSE.
+[00:02:18] And really, we will just ask the simple ones,
+[00:02:21] just to give you the idea, that you can develop new ones
+[00:02:25] or you can find the issues throughout a very large range
+[00:02:27] of CSE strategies.
+[00:02:31] But let's consider, just to fix the idea, let's consider a case where sources, traffic sources, right,
+[00:02:44] that can be modeled as on-off processes that generate during the on phase, there is a constant between
+[00:03:05] Well, it's the same model that we introduced before, Lambda p.
+[00:03:28] It's not there.
+[00:03:29] Then in off, you get the dot from the right-hand side.
+[00:03:36] Suppose that the function p on p is fixed for the time being.
+[00:03:42] So we also put numbers, no, not needed.
+[00:03:53] So p off will be our constant.
+[00:03:54] This is a very simple case.
+[00:04:01] We have sources that all follow the same pattern.
+[00:04:04] Well, the pattern, I mean, the values of Lambda p,
+[00:04:09] the on and the off might be different for the different sources, but the sources
+[00:04:14] follow the area according to this periodic pattern, pattern. So these are just two examples of sources that follow this on a pattern with different parameters, okay?
+[00:04:41] So we indicate by i the parameters of the source number of i, okay?
+[00:04:50] Suppose that these sources, S1, S2, S3, they generate traffic
+[00:05:07] and this traffic is multiplexed into a buffer that
+[00:05:17] is then connected to a channel with a certain capacity.
+[00:05:21] If you like, you can think about this as a leaking bucket filter,
+[00:05:27] with buffer B and a certain weight B that we indicated C, right?
+[00:05:37] So in this context it makes more sense to talk about a real resource
+[00:05:42] that is a channel of links with a certain weight.
+[00:05:52] But we can imagine that this traffic is shaped by a leaking bucket filter
+[00:05:57] if you like, that is actually probably the same thing as this set, at least with a buffer.
+[00:06:20] Now the question is, suppose that these sources are already in the system,
+[00:06:25] they are enjoying all of your service,
+[00:06:28] and then a new one, as it was class one,
+[00:06:31] comes into the system and asks to enter.
+[00:06:37] The CSC needs to decide whether to accept this source or not.
+[00:06:45] In order to determine whether this source can be accepted or not
+[00:06:49] the system you can apply different strategies. And we can distinguish between stochastic
+[00:06:57] balance, sorry, deterministic balance and stochastic balance. So a deterministic approach will
+[00:07:18] accept a new source only if it can deterministically predict the resources given to the different sources.
+[00:07:28] So you can, with certainty, tell how the different sources will enjoy the service.
+[00:07:37] There is no uncertainty.
+[00:07:42] While a stochastic approach is more elastic, more modern,
+[00:07:47] you can say, well, our criterion, mission criterion, will be such that
+[00:07:52] all sources will be satisfied with a probability larger than a certain fraction.
+[00:08:00] So it admits that, in some cases, customers might be dissatisfied by the service.
+[00:08:10] Of course, why should we consider an approach like the stochastic ones,
+[00:08:16] if it leads to a situation where some customers might be unsatisfied?
+[00:08:24] Why don't we only use a deterministic one?
+[00:08:26] because of one of the things we said at the beginning of the course like
+[00:08:32] economical advantages I mean if I use a stochastic approach I have I can
+[00:08:42] maximize the efficiency of my system
+[00:08:56] efficiency in the way their sources are used very much,
+[00:08:59] even though from time to time, some users
+[00:09:02] might be dissatisfied.
+[00:09:04] With a deterministic approach, instead,
+[00:09:06] I typically need to sacrifice some of the resources
+[00:09:08] in order to be sure that all users will have what they
+[00:09:12] need.
+[00:09:13] It's the same example that we made a few lectures back
+[00:09:16] regarding the over-moving means in the flight.
+[00:09:21] Same type of thing.
+[00:09:22] So let's start with deterministic functions.
+[00:09:25] What I would do is to say, well, if I have a traffic that is valuable in time, is a UBR-type traffic,
+[00:09:36] then a very conservative assumption is to consider the worst case.
+[00:09:42] So I will admit a new source in the system, only if when it transmits at its peak rate,
+[00:09:50] I have enough capacity to host it. So under this strategy, a new source is accepted in the system only if some of the big grades of all the
+[00:10:30] resources in the system is lower than the
+[00:10:33] aggregate rate of, let me use c here,
+[00:10:36] consistently there, no more.
+[00:10:40] It's lower than the capacity of our channel.
+[00:10:50] Very conservative approach.
+[00:10:52] If we apply this approach and
+[00:10:55] we for example consider a situation where
+[00:11:03] c is equal to, we use the same numbers
+[00:11:06] like that here,
+[00:11:07] is 10 megabits per second and all sources have the same peak rate that is 1 megabits per second
+[00:11:27] T on is 1 megabits per second
+[00:11:32] then in this case I will be able to accept the total maximum of 10 clusters
+[00:11:53] customers, or to be consistent with the name that we give to this module, call admission control,
+[00:12:04] we can accept up to 10 calls. Of course the name comes from the Tibetanish word,
+[00:12:13] where the call admission control was used to determine whether a call should be accepted in the Tibetan system or not.
+[00:12:21] And then it has been extended to a more general detail of profit flows in the age.
+[00:12:29] Of course, if we apply this strategy, the efficiency that we use in our system is very low.
+[00:12:38] Why? Because the sources transmit at a peak rate for only a tiny fraction of the time.
+[00:12:46] About 1 per 1000 are their old times, right?
+[00:12:54] Because it can be for one millisecond,
+[00:12:56] it can be created over 1.1 second of period,
+[00:13:01] more or less, a little bit longer.
+[00:13:05] So in this case, the efficiency
+[00:13:07] of which the sources use this variable.
+[00:13:11] Better than this approach is to model the sources using
+[00:13:19] token bucket feedback, for example.
+[00:13:21] So we can assume that resources are described by talking about computer or are actually shaped by talking about computer.
+[00:13:34] And that the traffic after the exit traffic of the talking about computer is mixed up.
+[00:14:07] This is something that has been done in the research, actually not in the literature, but in the instruments of a curious background.
+[00:14:16] So whenever you require a connection with a service,
+[00:14:20] you need to guarantee that the number of rows in the system
+[00:14:26] does not exceed a certain schedule.
+[00:14:28] Otherwise, the resources will not be mapped for all sources.
+[00:14:32] And therefore, you might agree with the users
+[00:14:35] to apply a certain token-back filter
+[00:14:38] to shape their process into the system.
+[00:14:41] So the token-back filter, of course,
+[00:14:43] as we learned, has to be designed according to the characteristic of your source.
+[00:14:47] So if you take a source that is one-off with lambda pi during the on period,
+[00:14:56] and then at last for a certain period theon,
+[00:15:00] and then you add a zero during the off period,
+[00:15:07] then you can assign the source to a token by theta
+[00:15:11] with a token generation rate that is
+[00:15:17] pion, multiplied by pion, divided by pion, plus pion.
+[00:15:20] That is the average rate of the source.
+[00:15:27] And a bucket size that is equal to the number
+[00:15:30] of tokens that are generated to do the peak period.
+[00:15:40] And this has to be equal to lambda
+[00:15:43] p i times broad times p i.
+[00:15:48] Right?
+[00:15:57] Lambda p i is the generation with the peak period.
+[00:15:59] Broad is the top generation rate.
+[00:16:00] So it's a commutative information, a way that should always be provided to the source.
+[00:16:05] This difference is that extra structure generated in the inverse,
+[00:16:08] that should be marked as important and let's forward it to let's pass to the leaf.
+[00:16:23] Okay, so suppose that now the source is associated to a certain,
+[00:16:28] talking about the figure with this characteristic, so a certain rho i and a certain b i,
+[00:16:34] or the wave here just to avoid that b i is confused with the input buffer.
+[00:16:47] So we specify, we describe the different sources by means of these two parameters,
+[00:16:51] the parameters of the negative filter, rho i and b j.
+[00:16:55] Therefore, what we need to guarantee now is that the sources that are set in the system,
+[00:17:03] So that's why there's two conditions.
+[00:17:14] The first condition is that the sum of the committed rates
+[00:17:18] has to be less than or equal to the link capacity, right?
+[00:17:32] And two, that the buffer that we have a link that we call
+[00:17:37] this capital B is sufficient to accommodate all numbers.
+[00:17:49] Since in the worst case, all these sources
+[00:17:52] transmits their DJ tokens all together, the condition that they need to respect is that
+[00:18:08] the total number of bytes assumed that one token is worth one byte that can be transmitted
+[00:18:15] in a shot by all sources is less than or equal to the buffer.
+[00:18:21] So I have an unpathered to pass all this piece of rock here.
+[00:18:29] These two conditions have to hold simultaneously.
+[00:18:34] And if these conditions are satisfied,
+[00:18:36] then we can accept all these sources in the system.
+[00:18:40] Is it clear?
+[00:18:42] If I add an additional source to the system,
+[00:18:45] I need to check whether the new source will violate either one or two.
+[00:18:49] If it does violate E1, it means that affecting this source, the average traffic will exceed
+[00:18:56] the main capacity, and therefore all sources will, after a while, will be buffered.
+[00:19:01] We will have some bytes buffered here and eventually dropped.
+[00:19:06] So we are violating our determinacy constraints.
+[00:19:10] Conversely, if the new source violates this conclusion, it means that it might happen.
+[00:19:16] Notice that in the first case, if we violate this constraint,
+[00:19:21] it's sure that sooner or later the source will start blocking packets.
+[00:19:27] Because if the average traffic to remember the source is larger than the capacity,
+[00:19:32] then the buffer will fill up progressively in time,
+[00:19:35] and sooner or later it will overflow.
+[00:19:39] No question about it.
+[00:19:40] In this case we said, this is a very conservative constraint.
+[00:19:46] We are saying that if all sources transmit simultaneously
+[00:19:51] all their buckets, I mean all their big profit,
+[00:19:58] but they have to do that simultaneously,
+[00:20:01] and some of this BI exceeds B, then some of these bytes might be dropped.
+[00:20:06] But this is a very extreme condition that in reality might never happen.
+[00:20:09] So it's very conservative.
+[00:20:21] If you compute the value of rho and b for the examples that we considered before,
+[00:20:29] you have that rho has to be equal to the average traffic.
+[00:20:33] That was, the peak traffic was, what was it?
+[00:20:38] Did I give you the value of the peak traffic?
+[00:20:39] 1 megabits per second, right, was 10 to the power of 6 multiplied by 1 milli-second
+[00:20:51] divided by 1 plus 1 milli-second, okay, this one becomes basically negligible, and so this one is approximately equal to 10 to the power of 3, that is 1 milli-bit per second.
+[00:21:08] This is the average traffic.
+[00:21:10] So, based on this constraint,
+[00:21:13] we can have set
+[00:21:14] a mass,
+[00:21:16] c over rho
+[00:21:18] is equal to
+[00:21:21] c was
+[00:21:22] 10 megabits per second, right?
+[00:21:25] So,
+[00:21:26] it's 10,000
+[00:21:28] users.
+[00:21:44] If we consider this second constraint, however,
+[00:21:46] we need to compute b.
+[00:21:48] b in this case
+[00:21:49] This is, we said, lambda p minus rho times T1,
+[00:21:57] which is lambda p is 1 negative per second minus 1
+[00:22:03] negative per second multiplied by 20 times T to the minus 3.
+[00:22:18] Again, at the first approximation,
+[00:22:20] we can neglect this term here
+[00:22:23] that is much lower than 10 to the power of 6.
+[00:22:25] So we have approximately 20 kilobits.
+[00:22:38] So the number, let me call this n rate.
+[00:22:45] And this one, n buffer.
+[00:22:47] So the total number of users that I
+[00:22:50] can accept by looking at the buffer is limited to b over dI.
+[00:22:57] And depending on the value of b that we provide, this can be much larger or much smaller than
+[00:23:14] 3,000.
+[00:23:16] Suppose that with the value that I have here in my notes, I don't remember how b
+[00:23:20] was set to 1 megabyte, megabit.
+[00:23:24] With this value, we get something like 1,000 possible sources in the system.
+[00:23:38] Between the two, the one that dominates is this one.
+[00:23:42] So we can, with this criterion,
+[00:23:44] we can accept up to 1,000 sources in the system.
+[00:23:47] That is much more than the 10 that we
+[00:23:50] accepted through only a degree.
+[00:23:52] But probably much lower than
+[00:23:55] the total number of sources that we can accept
+[00:23:57] by relaxing a little bit this method.
+[00:24:00] By accepting that in very rare cases,
+[00:24:04] some sources might lose some value.
+[00:24:06] If we relax this constraint,
+[00:24:08] we can engage this number and
+[00:24:11] customers
+[00:24:11] that we can accept in our system.
+[00:24:14] And we will
+[00:24:16] address this point
+[00:24:18] on Friday.

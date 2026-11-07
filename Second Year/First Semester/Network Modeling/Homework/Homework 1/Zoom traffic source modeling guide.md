@@ -2,7 +2,7 @@
 
 This is a **working guide**, not a report or a set of measured results. It translates the
 [homework brief](Homework1-SourceModel.pdf) into a reproducible Zoom experiment using
-the point-process notation from [Lesson 3](../Lesson%203/Lesson%203%20-%20Network%20abstraction%20and%20traffic%20source%20models.md)
+the point-process notation from [Lesson 3](Lesson%203%20-%20Network%20abstraction%20and%20traffic%20source%20models%20old.md)
 and the source models from [Lesson 4](../Lesson%204/4.%20Traffic%20source%20models.md).
 
 ## 1. What the assignment actually requires
