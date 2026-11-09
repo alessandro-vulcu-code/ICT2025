@@ -1,0 +1,1326 @@
+[00:00:03] Okay, so let's start.
+[00:00:14] So welcome to lecture number three of Mr. Forensics.
+[00:00:17] Okay, so before we start, just a few communications.
+[00:00:21] So what we have, just as I was suggested to invite you
+[00:00:26] about the election of student representatives
+[00:00:30] at the moment we have one of the two students
+[00:00:32] has graduated, therefore, you need to elect
+[00:00:35] another representative of the students for cybersecurity.
+[00:00:38] So this is cybersecurity program.
+[00:00:41] And so here you can see the dates,
+[00:00:43] so you can submit your communities, okay.
+[00:00:46] And then there's going to be a voting
+[00:00:47] which is being going to be online.
+[00:00:49] So if you are basically interested
+[00:00:53] in joining as student representatives,
+[00:00:56] you can join, okay, the meetings with the professors
+[00:00:59] during the council of the cybersecurity degree.
+[00:01:03] So please share this information to all your colleagues and also consider if you want to act as representatives to join Zenith together in this activity.
+[00:01:19] Okay, last time we have seen, okay, the issues related to handling of digital
+[00:01:25] evidences. We talked about at the end of the lecture about the chain of custody and the
+[00:01:32] preservation of the evidence. So in the end we conclude, okay, these parts related to the
+[00:01:42] of different phases of digital ending acquisitions
+[00:01:46] to some tips and some tips for the correct
+[00:01:52] maintenance of a chain of cash.
+[00:01:55] So first of all, we need to use proper tools
+[00:01:58] for the task analysis that we have to do.
+[00:02:01] We lose the key blocks to never access
+[00:02:04] or create the evidence.
+[00:02:05] And also this must be kept together with the timestamps
+[00:02:09] so everything must be related in the timeline.
+[00:02:11] together also within the hashing of the information.
+[00:02:15] Moreover, all your teams, all the people that works with
+[00:02:18] you must be trained, okay, to handle such, such stuff.
+[00:02:23] If there are alterations, which is possible sometimes,
+[00:02:26] you have to document and justify why.
+[00:02:29] You also have, if you release, okay, the items
+[00:02:32] from the original one to anyone,
+[00:02:34] this must be recorded.
+[00:02:37] And also, you must keep, okay,
+[00:02:40] make everything in a safe place.
+[00:02:42] All the operations must be done with a copy.
+[00:02:46] And of course, if you're not entitled to access
+[00:02:49] the evidence, you should keep that away, okay?
+[00:02:53] So these are the general guidelines.
+[00:02:55] So the guidelines that are valid for all the evidence
+[00:02:58] is whether you are handling with a harvest,
+[00:03:01] with an image, with the videos.
+[00:03:03] So typically this has very, very, very generic approach.
+[00:03:06] So in the next, okay, lectures,
+[00:03:09] we're going to focus on each specific types of objects.
+[00:03:14] So we're going to start with our disks,
+[00:03:17] because as we said in the first lecture,
+[00:03:20] this is the beginning of this preferences.
+[00:03:22] So you're back in the 80s and we updated, okay,
+[00:03:25] the notions that we have with the analysis of our disks
+[00:03:30] when we had to handle,
+[00:03:33] we started to handle with the solid state devices,
+[00:03:36] which has the different types of electronics
+[00:03:38] and working with respect to the condition of this.
+[00:03:41] And therefore you need to update, okay,
+[00:03:43] the forensic operation that you can do on that.
+[00:03:46] Then we're going to move our network traces,
+[00:03:49] network forensics, because lots of information
+[00:03:52] is available on packet sweeps.
+[00:03:55] And when you have to log, okay, packet sweeps,
+[00:03:57] you have to log the access to the servers.
+[00:04:00] This information is extremely important,
+[00:04:01] especially in cybersecurity operations.
+[00:04:04] And then we're going to move on in multimedia.
+[00:04:08] So images, all the files,
+[00:04:11] and together also with information
+[00:04:13] when this spread, for example,
+[00:04:15] through social media as well.
+[00:04:17] And then we're going to talk
+[00:04:17] about multimedia forensics and social media forensics.
+[00:04:22] Okay, in this first part, as I said,
+[00:04:25] we are concentrated about the acquisition of the evidence.
+[00:04:30] and then and what is the information that we can get okay from the evidence
+[00:04:35] then the second part of the course will be more about the analysis and what kind
+[00:04:40] of information what kind of strategies we need okay to use in order
+[00:04:45] to extract information about that so let's start okay for looking okay
+[00:04:54] Let's start with looking for evidences about data storage.
+[00:05:00] And typically when you have to acquire this information,
+[00:05:05] you need first to evaluate how many storage places
+[00:05:09] you will need to analyze, you need to acquire.
+[00:05:12] And what kind of computer we have to do,
+[00:05:17] because typically there is a decision
+[00:05:19] about the volatility of information.
+[00:05:21] So, for example, if I have a computer, okay,
+[00:05:25] that is switched, you know, is a laptop.
+[00:05:29] If I detach the power cable,
+[00:05:32] and it shows that the laptop has not recovered.
+[00:05:35] I mean, it is a laptop, it has a battery,
+[00:05:37] so there's some different stuff.
+[00:05:40] What is the size of the storage that I need to acquire?
+[00:05:43] Or if there are specific issues related to the nature,
+[00:05:48] the intrinsic nature of the support
+[00:05:50] that we're going to acquire.
+[00:05:51] It is an SSD, it's their encryption, and so on.
+[00:05:56] So let's start, okay, first,
+[00:05:59] with the problem, okay, of getting data,
+[00:06:03] store all of the stored values.
+[00:06:04] So we needed to retrieve all the relevant information.
+[00:06:09] And all the relevant information can be something
+[00:06:11] which is stored on the files,
+[00:06:12] but also something which is not stored on the files.
+[00:06:16] And so this poses some problems with these activities.
+[00:06:20] First of all, the number of files you can get is extremely.
+[00:06:26] I know some of you has tried to recover the information
+[00:06:28] after some questions that we see from our disks
+[00:06:31] using some tools like form of the scalpel, whatever.
+[00:06:36] You will gather that you gain lots of information,
+[00:06:40] lots of files, and this is a big of a problem,
+[00:06:42] the overabundance of information.
+[00:06:45] Then, therefore, you need to look for what
+[00:06:49] is relevant to your specific case,
+[00:06:51] to what you're looking for.
+[00:06:52] And this can be given by the need of looking on
+[00:06:56] your impact on certain specific pieces of information,
+[00:07:00] or because you don't want to spend the whole night
+[00:07:03] or the whole week about analyzing this.
+[00:07:07] And moreover, you may have lots of tools
+[00:07:11] to work on these operations.
+[00:07:15] Indeed, in forensic, the use of free and open source tools
+[00:07:19] is kind of lack of value, okay?
+[00:07:22] Because this means that your operations
+[00:07:25] are perfectly with a useful call and process.
+[00:07:31] And therefore, you also need, okay,
+[00:07:34] to choose operation in a very accurate way.
+[00:07:38] So, okay, given this, we needed to define
+[00:07:40] what to look for and how to look for.
+[00:07:44] So where is information stored in a hard disk
+[00:07:48] that you are going to analyze?
+[00:07:50] In order to understand this, we need first to focus
+[00:07:53] about how a traditional hard disk information is stored.
+[00:07:58] The information stored in traditional hard disks
+[00:08:00] is very similar to how the musical tracks
+[00:08:03] are recorded on CD or the DVD disk.
+[00:08:07] It is to say that information is written along any trace,
+[00:08:14] any simpler traces.
+[00:08:16] Indeed, okay, the disk is divided into basically tracks,
+[00:08:22] okay, which is this simpler trace here.
+[00:08:25] And the disk is divided also in a sector,
+[00:08:29] angular sector, which is basically called
+[00:08:32] through the medical sector and one specific track, okay,
+[00:08:36] within the part of the track,
+[00:08:39] within a specific sentence called track sector.
+[00:08:42] In the end, each track sector is basically
+[00:08:45] gathered together in what we call a cluster.
+[00:08:49] And the cluster is going to be our, let's say,
+[00:08:53] quantum unit in writing data inside a harness.
+[00:08:59] Indeed, so just the space, if you're having memory,
+[00:09:03] what you have to remember is the space-allocated memory
+[00:09:06] is divided into cluster.
+[00:09:08] And when I'm going to write information,
+[00:09:11] files, what so ever, on this or this,
+[00:09:13] I'm going to write this on each specific cluster.
+[00:09:17] Okay, multiples over cluster.
+[00:09:21] Given these first premises, basically,
+[00:09:25] this is done to optimize the distribution.
+[00:09:27] This is what we are trying to see,
+[00:09:28] is the desired value of this.
+[00:09:31] But given these premises,
+[00:09:32] we can divide and distinguish, okay,
+[00:09:34] clusters or memory or the harvest
+[00:09:37] into two main classes.
+[00:09:39] Allocated memory, which is the memory
+[00:09:41] where you have some formation stone,
+[00:09:43] and non-allocated memory,
+[00:09:45] where, basically, there is a plastic ribbon, okay?
+[00:09:49] So when you erase some files,
+[00:09:52] you move some parts of the memory
+[00:09:53] from allocating to T.
+[00:09:56] This is not very, very, very careful about this statement
+[00:10:01] because together with these two parts here,
+[00:10:04] we also have lots of spaces which have been
+[00:10:09] allocated or are not used in a strong formation
+[00:10:12] but similarly for which we start.
+[00:10:16] For example, one special part or special space
+[00:10:18] that we have on the RDS is basically this lack of space.
+[00:10:23] So the fact that you are quantizing the size on your disks in custom dividing
+[00:10:31] okay, yeah, performing sort of quantum divisions on the size of a disk on multiple, on a certain amount of clusters, some of them scale down.
+[00:10:47] Let's consider this example here. Suppose that you have clusters of 4 kilobytes.
+[00:10:52] This is an example associated to enterprise devices.
+[00:10:55] So a cluster of four kilobytes.
+[00:10:57] Suppose that you have a file with nine kilobytes, okay?
+[00:11:01] So what you have, you have that in order to store a file
+[00:11:04] of nine kilobytes, you need at least three clusters.
+[00:11:09] Two are not enough, three, okay, you take those three,
+[00:11:12] you can store up to 12 kilobytes, okay?
+[00:11:16] So let's reserve for this file here, three clusters.
+[00:11:20] This one, this one, this one.
+[00:11:22] And then let's write the files on this,
+[00:11:24] So this and this,
+[00:11:26] and a part of this cluster is basically used.
+[00:11:29] This means that three kilobytes
+[00:11:32] of the third cluster are basically not used.
+[00:11:37] So these are these amount of space,
+[00:11:39] which is totally spoiled.
+[00:11:41] I cannot use that because
+[00:11:43] these three clusters are associated to this file.
+[00:11:46] So I cannot write other information here.
+[00:11:49] Until I remove, okay, the file is allocated.
+[00:11:54] So let's consider, for example, this example here.
+[00:11:59] So you have to consider, if you want to perform
+[00:12:01] an association, mental association,
+[00:12:03] you can associate each cluster to a row in your text.
+[00:12:10] And imagine that for every period,
+[00:12:11] every sentence that you write, you cannot, okay?
+[00:12:15] You need the first to start the period
+[00:12:17] at the beginning of each row.
+[00:12:18] So this means that if the first sentence here stops,
+[00:12:23] okay, at the middle of the room,
+[00:12:24] you cannot stop right in the second row.
+[00:12:26] Yeah, but you have to go basically on a new line.
+[00:12:29] It's exactly the same thing, okay?
+[00:12:33] So why it is important to remember this?
+[00:12:36] Because suppose now that you have three clusters.
+[00:12:39] In this cluster, we have memorized the file A
+[00:12:43] with the 12 kilobytes.
+[00:12:44] So basically file A covers exactly three clusters here.
+[00:12:50] And there is no free space, there is no stack space
+[00:12:52] in this file system.
+[00:12:54] Suppose now that you want to remove, okay, file A.
+[00:12:59] You want to remove file A, typically removal implies
+[00:13:03] that you leave, okay, the clusters available
+[00:13:07] for the file system to write new data over that.
+[00:13:10] Removal does not mean formatting.
+[00:13:12] and simply you remove a critical pointer to these files.
+[00:13:16] So this means that the systems know
+[00:13:18] that you can write some of these locations here.
+[00:13:21] So what happens?
+[00:13:22] It happens that suppose that you want to move
+[00:13:26] file A, 12 kilobytes, and you wanted to write
+[00:13:29] file B, nine kilobytes on the same location.
+[00:13:33] What is going to happen?
+[00:13:34] It's going to happen that file B
+[00:13:41] is going to be written on this location here.
+[00:13:46] But file B is occupying nine kilobytes.
+[00:13:49] It means that three kilobytes are basically not used.
+[00:13:54] And these three kilobytes contain information
+[00:13:56] about file A.
+[00:13:58] So basically what it happens,
+[00:13:59] it happens that information about file A
+[00:14:01] is still present.
+[00:14:02] So even if I remove the file,
+[00:14:05] some information in the slot space
+[00:14:09] This is why, when you perform some,
+[00:14:15] using some, you will get lots of files,
+[00:14:20] lots of files that you have lots of information.
+[00:14:26] So the fact is that, in this example,
+[00:14:29] that before the spaces were written,
+[00:14:32] you can take a lot of time.
+[00:14:33] And until you do not overwrite in that space,
+[00:14:37] the information is still there.
+[00:14:38] So, you can erase file A.
+[00:14:41] If nothing is written on file A,
+[00:14:42] file A is still there.
+[00:14:44] I can recover file A completely.
+[00:14:47] When there is an overwriting,
+[00:14:48] if there is a partial overwriting,
+[00:14:50] then part of the file A can still be.
+[00:14:55] So, typically we call, okay, these parts, okay,
+[00:15:01] the so-called G list, okay.
+[00:15:03] So G-list depends on the books, okay?
+[00:15:07] Some people say that the G-list are
+[00:15:09] all the parts of the memory
+[00:15:10] where you can't read information.
+[00:15:12] Some other things that G-list,
+[00:15:14] okay, this is G-list, is the part of
+[00:15:16] the memory where you have damaged information.
+[00:15:19] Therefore, they cannot be read anymore
+[00:15:22] from a standard, okay, operating systems.
+[00:15:24] But using proper tools,
+[00:15:26] you can still get information about those data.
+[00:15:31] So statistics say that
+[00:15:33] the 45 percent of the data that you can read for
+[00:15:36] our risks are basically in this,
+[00:15:39] let's say, slag, non-indexed spaces.
+[00:15:44] Okay, you have lots of information.
+[00:15:46] If you want an example about our text,
+[00:15:50] so as I said,
+[00:15:51] basically, when you remove a file,
+[00:15:53] in this case, if you remove a file,
+[00:15:58] you basically simply remove the link, okay, to those files.
+[00:16:06] Okay, so what it happens, you remove the link,
+[00:16:09] therefore this is kept, these are removed, the link,
+[00:16:12] so this space is available for writings,
+[00:16:15] but still the information is there.
+[00:16:17] I have not erased, okay, the information there.
+[00:16:20] And when you write the new files,
+[00:16:23] these files basically overwrite, okay, over the old text.
+[00:16:28] But still, some information is still available.
+[00:16:31] So you have this lag space, okay,
+[00:16:33] still available on the files.
+[00:16:35] Yes?
+[00:16:36] The maxine that you can repeat from the previous class
+[00:16:38] is still too much for a CSS.
+[00:16:40] No, no, that is a mistake.
+[00:16:42] It depends on how your classes are done,
+[00:16:44] it depends on the outputs.
+[00:16:46] That is a simple toy example
+[00:16:48] to make you understand the concept.
+[00:16:50] But this depends on the configuration you have.
+[00:16:52] But if you have the smaller classes,
+[00:16:54] you have the more difficult problem.
+[00:16:59] the small class that you have,
+[00:17:01] the lower is the probability of having such a large space.
+[00:17:04] So something that your operating system is sufficient.
+[00:17:08] So it depends also.
+[00:17:11] Yeah, ideally, you could write bit by bit,
+[00:17:15] you know, this, but it could take, let's say,
+[00:17:20] ages, you know, just to see the write or read a file.
+[00:17:23] Okay, so it depends on optimization of the address.
+[00:17:29] So, this works, okay, for solid-state traditional objects.
+[00:17:36] So, people have moved, okay, to different types
+[00:17:40] of objects, recently, which are basically
+[00:17:42] a linear disk, not a solid-state, so, as I said.
+[00:17:45] Solid-state and disks, we have different types
+[00:17:48] of ideologies.
+[00:17:49] So, we don't have a disk spinning,
+[00:17:51] which is read by a magnetic sensors.
+[00:17:55] We have, basically, non-memory cells.
+[00:17:57] It means that your bits are not any more magnetic writings,
+[00:18:05] polarizations on the disks,
+[00:18:06] but they are charges,
+[00:18:08] charges which are basically stored inside a non-gate.
+[00:18:12] This is an example of a non-gate.
+[00:18:15] And the amount of charge that you have inside each gate is,
+[00:18:22] sorry, each memory cell,
+[00:18:24] so it is not correct to say gate,
+[00:18:25] but memory cell is basically related to bits.
+[00:18:31] In the simplest, okay, the so-called SLC,
+[00:18:35] single cell memory cells,
+[00:18:37] you have that your charge is associated to one bit.
+[00:18:41] So the bit is equal to one,
+[00:18:43] the bit is charged, zero, and it's zero charge.
+[00:18:46] These are very, very, let's say, a robust,
+[00:18:50] and it's not very robust, they are very, very expensive.
+[00:18:52] just when you sell, you just don't sell.
+[00:18:55] If you have MLC, you have two bits per cell,
+[00:18:59] so you can just make, two bits means four different values
+[00:19:04] and you can associate these four different values
+[00:19:06] with the multiple charges.
+[00:19:08] You can go to triple level cells, three bits,
+[00:19:12] quad level cells, four bits, okay?
+[00:19:15] In any case, you have to, in this case,
+[00:19:17] you have that your information is associated
+[00:19:20] to do some touches.
+[00:19:24] So, why people want to use this?
+[00:19:27] Well, this is the mechanism that you have
+[00:19:29] on your mouse with them.
+[00:19:30] This is the mechanism that you have on your,
+[00:19:32] on the SSD that you have on your laptop.
+[00:19:35] We do this, we do this,
+[00:19:37] because SSD disks are very, very quick.
+[00:19:42] There is no mechanical part,
+[00:19:44] there is not something spinning,
+[00:19:45] there is no something hitting,
+[00:19:46] so this reduces the probability of failure.
+[00:19:50] They're much more robust.
+[00:19:52] And also they're much, much flexible.
+[00:19:55] So this is nice, okay, from this point of view.
+[00:19:58] But this poses several problems
+[00:20:01] when we want to do fine recovery.
+[00:20:05] And let's see why.
+[00:20:06] So, this characteristics, this types of devices
+[00:20:12] has this material.
+[00:20:15] Basically, you cannot write, okay, so too many times.
+[00:20:19] If you write too many times in the same cells,
+[00:20:20] this is all too awful.
+[00:20:22] This is going basically to make, okay,
+[00:20:24] the performance of the cells less real.
+[00:20:27] Less real.
+[00:20:29] So that is why, since there is no need, okay, to,
+[00:20:42] since there is no need to basically store, okay,
+[00:20:54] same bits in the same equation so in the same time, in the same position, basically I can
+[00:21:01] spread the writing of the different normal cells on different locations.
+[00:21:06] In order to make this writing even.
+[00:21:09] So I want to write the same cells, the same amount of time.
+[00:21:13] And this is called wearing level because you are leveling the level of wearing of
+[00:21:18] the different cells.
+[00:21:20] And therefore, as a result, you have that drug
+[00:21:23] but not in this equation that you can expect.
+[00:21:29] It is true to say that not also in the RBS,
+[00:21:31] you are trying to maintain the file,
+[00:21:32] so not all the files are written in this equation.
+[00:21:35] But this is something that is basically
+[00:21:38] needed in the flag.
+[00:21:40] And there is also another problem.
+[00:21:42] Given these characteristics,
+[00:21:45] when you want to read the information,
+[00:21:47] you read the charge.
+[00:21:49] When you want to erase the information,
+[00:21:51] you basically remove the charge and then by discharging okay the memory cell and
+[00:21:59] then you've righted the information back so these discharge cells
+[00:22:12] so it's not okay because you need basically to erase
+[00:22:23] So, overriding is not an issue here in SSD
+[00:22:28] because of these characteristics.
+[00:22:31] So, how does this happen in practice?
+[00:22:35] Well, for SSD, we have this command
+[00:22:37] which is the basically trim command, okay?
+[00:22:41] It depends also on the types of hard disks
+[00:22:44] in other systems or scan system.
+[00:22:47] We have some differences between the different systems
+[00:22:50] that you have, but the trim command is a command
+[00:22:53] which is issued by the main systems,
+[00:22:56] could be controller of the artist,
+[00:22:58] so that basically, he says which block,
+[00:23:04] what is that, I don't want it.
+[00:23:07] So, since having, okay, it's the beauty,
+[00:23:11] these blocks in a way, and also having them
+[00:23:15] all ready, basically, there is this name,
+[00:23:17] they will have this command which signals which are
+[00:23:20] the information which is not used anymore on the address.
+[00:23:26] And then after this command there is another operation
+[00:23:28] which is called garbage collection,
+[00:23:31] which is very similar to garbage collection
+[00:23:33] that in analogy, does not seem that about analogous
+[00:23:37] to the garbage collection that you have seen
+[00:23:39] if you have studied Java, okay.
+[00:23:41] Basically in garbage collection you have that you are
+[00:23:43] clearing, purging, all the data blocks,
+[00:23:46] which are marked as the legend not used anymore.
+[00:23:50] This is implemented on the disks itself.
+[00:23:55] So the problem with this operation,
+[00:23:58] often these are private,
+[00:23:59] but the same controls of the classes.
+[00:24:02] And therefore, even if you have not plugged in,
+[00:24:05] okay, the hard disk to the computer,
+[00:24:08] where maybe if the artist is powered by something,
+[00:24:14] well, this operation can start.
+[00:24:17] So this restarts, okay, when you have a power door,
+[00:24:21] if you attach the right socket,
+[00:24:22] it's possible to sound this.
+[00:24:25] So these are problems, okay,
+[00:24:28] related to the position of the formation by the SSD,
+[00:24:31] because the information is continuously read, written,
+[00:24:35] erased, okay, all the time.
+[00:24:37] In addition, because this characteristic are not enough,
+[00:24:42] you also have to consider the encryption of infection.
+[00:24:45] This is a problem for both SSDs
+[00:24:47] and also for traditional disks.
+[00:24:49] And the result is that if you close, okay,
+[00:24:53] typically when the operating system is working,
+[00:24:55] you have the files, all the information is unencrypted.
+[00:25:00] It's visible.
+[00:25:01] But it is possible that when you close the application
+[00:25:09] and you are not sure that when you do follow up anything,
+[00:25:14] you are able to do that.
+[00:25:16] Maybe you do it wrong,
+[00:25:17] because you are also going to stay.
+[00:25:21] So this problem, okay, I was answering this problem,
+[00:25:25] the virtual data block is unavoidable.
+[00:25:27] So you can lose, okay, this information.
+[00:25:30] So what are the solution when you're talking about
+[00:25:37] SSD?
+[00:25:37] Well, there are many limitations to TRIMs.
+[00:25:40] So TRIMs are not universal,
+[00:25:42] it's supported in different ways and different manners.
+[00:25:46] For example, in some cases,
+[00:25:48] the TRIM command is not supported
+[00:25:50] by the controller of the RPS, okay?
+[00:25:53] This is true for measuring and stabilizing.
+[00:25:55] It is issued, it needs to be issued
+[00:25:57] by the operating system in that design of the RPS, okay?
+[00:26:01] And you are alone, okay, by the model of the SSD,
+[00:26:06] and therefore this saves the data to save the information.
+[00:26:12] You may have that if you have external SSD like NAS,
+[00:26:17] right, you have it to get connected to some interfaces
+[00:26:20] that does not, okay, that blocks somehow prevent,
+[00:26:24] okay, through, and therefore this is the case,
+[00:26:27] for example, if you connect, okay, the SSD through,
+[00:26:30] yes, maybe, I'm not sure if there is a problem with that.
+[00:26:33] You can have some bad firmware in the SSD,
+[00:26:36] or basically it is possible that you have some corruption
+[00:26:40] and therefore the file is still there.
+[00:26:42] It is not deleted, but the problem,
+[00:26:45] basically, you can still make a problem
+[00:26:47] if you have some problems.
+[00:26:50] These are some examples of different things from them
+[00:26:54] that depends on the change, okay,
+[00:26:58] depending on specific protocols and protocols.
+[00:27:04] If you want to have an overview
+[00:27:06] of the different types of strategies to recover
+[00:27:10] from the information of the SD.
+[00:27:12] These are very, very specific on the type
+[00:27:15] of a disability approximate.
+[00:27:17] You can read, okay, this overview of 2019
+[00:27:20] about how to perform information recovery
+[00:27:23] in the SSD, okay, guys.
+[00:27:26] In our lab, we are not working directly
+[00:27:33] on the SD physical, so these problems here
+[00:27:35] we are working with the physical devices,
+[00:27:38] the physical storage in the morning.
+[00:27:40] In the lab, we are going to work directly on the image.
+[00:27:43] Okay, so basically in the gene recovery,
+[00:27:46] similar to, or to a good car input,
+[00:27:48] and similar to these types of operation,
+[00:27:50] but we operate the units directly on the image.
+[00:27:56] So, how to exploit these things?
+[00:28:00] Well, first of all, never use the primary channel.
+[00:28:02] Use the secondary channel to interact with the cell.
+[00:28:06] so that we've had basically the issuing of three commands
+[00:28:12] that may, basically lead to, okay, this is the
+[00:28:14] previous information.
+[00:28:16] Check if the disk is close to four.
+[00:28:19] Why?
+[00:28:20] Because if the disk is very close to four,
+[00:28:23] it's very likely that the disk will find
+[00:28:27] failure and choking, okay?
+[00:28:29] And it is more likely that your disk is going to
+[00:28:32] remove parts of the memory that are not used.
+[00:28:35] So, all the trim commands, all the garbage collector
+[00:28:38] are more and more likely to be distributed
+[00:28:42] if you have the database is basically
+[00:28:49] follow up some specific stuff
+[00:28:51] can also be related to trim
+[00:28:53] and also to garbage collector
+[00:28:54] depending on the model of the objects.
+[00:28:57] So, some of these tools where you are using TSD
+[00:28:59] are strongly dependent on the type of devices
+[00:29:01] that you are dealing with.
+[00:29:05] Okay, so here we are talking about
+[00:29:09] of how the information is stored electronically.
+[00:29:14] So how they are basically included inside the ARK disk.
+[00:29:22] So but what about their logical organization?
+[00:29:25] So the information on your ARK disks
+[00:29:27] are typically organized by what is the file system
+[00:29:30] structure and we have different types
+[00:29:32] of file system structure and each file system
+[00:29:35] organized the data for the two, for the oldest one, okay.
+[00:29:56] There are, anyway, most of these file system
+[00:29:59] handle the data in fragments.
+[00:30:03] It means that the file is not related
+[00:30:06] by a single pointer.
+[00:30:08] But basically it's split into several parts
+[00:30:10] and each part is made from a folder.
+[00:30:12] And there's a table that links all the parts of the files
+[00:30:17] and allows you to walk through the files
+[00:30:19] to recover the third part, we can put the files
+[00:30:22] and we can open the links.
+[00:30:25] So, information is fragmented into multiple parts
+[00:30:29] and therefore, when you want to remove this information,
+[00:30:32] you erase basically all this analysis in the table.
+[00:30:36] So, even is when the files are moved
+[00:30:40] to another directory, you have these rewritings
+[00:30:43] of the links, this does not, okay,
+[00:30:46] remove the information until you form a data.
+[00:30:51] So, data then are still cannot land there
+[00:30:57] until the moment where they are not overwritten
+[00:31:00] or removed by a widely softener.
+[00:31:04] So, if the data is still there,
+[00:31:06] you can recover this information
+[00:31:08] in this house specifically.
+[00:31:11] And this information can be, for example,
+[00:31:13] it's possible to recover.
+[00:31:15] It is possible to recover information
+[00:31:17] which has been released.
+[00:31:18] It is possible to recover information which is not,
+[00:31:22] has been erased, but has been erased in a bad manner,
+[00:31:26] so it's kind of corrupted with the files.
+[00:31:30] And during the first lab, we are going to understand
+[00:31:31] all these different situations,
+[00:31:33] so what you can recover, what information you can get,
+[00:31:37] okay, when you have the capability to do this information.
+[00:31:40] For example, you have a doc file,
+[00:31:42] Well, you've got a file on your hard disk,
+[00:31:46] made by text and images.
+[00:31:48] Maybe you can go over here, because you can make it.
+[00:31:57] So these operations are called data carving,
+[00:32:01] because you are carving information out of the bits,
+[00:32:05] written out of the memory,
+[00:32:06] which is written on your hard disk.
+[00:32:10] And how data carving works?
+[00:32:12] Well, what you're looking, you're looking for patterns,
+[00:32:16] specific patterns that you have available
+[00:32:19] in the data streams.
+[00:32:22] For example, there are some specific patterns
+[00:32:24] that for certain files, for certain parts of those files
+[00:32:27] are kind of code and fixed.
+[00:32:32] For example, PDF is a file that starts always
+[00:32:37] with the string percent and ends always
+[00:32:45] with the string percent EOR.
+[00:32:50] So, if I am scanning a part of a hard disk
+[00:32:55] and I'm scanning this byte by byte,
+[00:32:58] at a certain point, I find out
+[00:32:59] that there is the string percentage PDF.
+[00:33:04] Well, I may assume that there was a PDF stored
+[00:33:08] that has been removed.
+[00:33:10] And if I read the following bytes,
+[00:33:13] it is possible then to recover, okay,
+[00:33:16] the information that most of, even if it is used.
+[00:33:21] Then JPEG, similar, starts with the 0x,
+[00:33:26] so the exe-legible numbers, FFDA eta and FFB term,
+[00:33:32] which means that inside the JPEG,
+[00:33:34] you cannot have those two things.
+[00:33:36] Don't define the beginning and the end files.
+[00:33:38] And I can do the same thing.
+[00:33:40] I find all of the extended FFDA eta,
+[00:33:43] so that there is a view of the magic,
+[00:33:45] rather than is a geotab.
+[00:33:47] These numbers here are both nice numbers,
+[00:33:50] are basically common numbers that identify
+[00:33:52] five types and those specific factors,
+[00:33:55] meaning the area, other parts of the files.
+[00:33:58] Another carving is the process of extracting
+[00:34:00] a very simple machine explaining this and other timing.
+[00:34:05] In forensic analysis, we use this
+[00:34:08] on non-allocating spaces,
+[00:34:10] And notice that this is kind of independent of this level.
+[00:34:19] Data carving, you analyze the file system like this tree.
+[00:34:26] If you want to analyze this,
+[00:34:28] you can use the commands in Linux X edit or X,
+[00:34:31] okay, to view the byte structures of a file.
+[00:34:35] And if you do this on the image of a hard disk,
+[00:34:38] you can get, okay, to these types of analysis.
+[00:34:42] So data carving allows you to recover
+[00:34:45] the loss of information, because still,
+[00:34:48] even if the JPEG file isn't,
+[00:34:50] maybe it covers half of the JPEG file,
+[00:34:52] not the total one, but half of that.
+[00:34:54] You can recover part of the document.
+[00:34:56] So basically, it allows you to recover
+[00:34:58] lots of data provided by some working conditions.
+[00:35:02] So the basic condition to have a good,
+[00:35:05] effective data carving is that to have,
+[00:35:08] as I understand, the header and the filter of the files
+[00:35:13] avoid fragmentation, and also avoid the compression
+[00:35:16] because with the compression, if you don't,
+[00:35:19] basically, you can start to correct it
+[00:35:21] if you're missing part of the mechanism.
+[00:35:27] And you also need the final thing
+[00:35:28] to be between the head and the foot.
+[00:35:30] If you have all these four conditions,
+[00:35:32] you are basically, you can only pull the file.
+[00:35:39] It is possible still to recover something
+[00:35:42] if the fragment will not be perfectly sequential,
+[00:35:45] if they are not under it,
+[00:35:47] Or at least you have some mistakes.
+[00:35:49] There's some before which you can still be detected.
+[00:35:53] For example, as I mentioned it,
+[00:35:55] well, I know if you have tried to cut
+[00:35:59] in two, an MP3 files,
+[00:36:03] you can still listen to the song
+[00:36:04] up to the moment when you cut the file.
+[00:36:07] Also for the images, okay,
+[00:36:08] if you took it at a certain point,
+[00:36:11] probably you're not going to open anymore the file
+[00:36:14] because it looks like corrupted,
+[00:36:16] so your browser or your reader is not going to support that.
+[00:36:21] But with the proper tools,
+[00:36:22] you can still read half of the file, half of the JPEG.
+[00:36:27] Okay, you can start half of the image
+[00:36:29] by reading, okay, information which is contained there.
+[00:36:34] So you can use,
+[00:36:36] you can start using the code and delete it
+[00:36:37] from the file.
+[00:36:39] It is performed on devices or in the image.
+[00:36:42] This is a little bit, this on the hard, on this.
+[00:36:47] and you can miss, okay, the footer or the header,
+[00:36:50] and you have also to be careful about the false positives,
+[00:36:54] because when you use tools like Formos, Scalpel,
+[00:36:56] Autolab, these are examples of open source
+[00:37:01] you're using for another company,
+[00:37:03] you're going to have lots, huge amount of files,
+[00:37:06] okay, to recover.
+[00:37:08] One typical problem when you wanted to recover,
+[00:37:10] okay, the JPEG, you recover the thumbnail of the file,
+[00:37:13] but not basically the full JPEG file.
+[00:37:16] So this is something that you have to be careful
+[00:37:19] to use about.
+[00:37:21] So an example is Foremost, okay,
+[00:37:25] which basically does not consider, okay,
+[00:37:28] the file system may create an audit file,
+[00:37:31] which is kind of the log file.
+[00:37:32] We're going to see how it works.
+[00:37:36] But you report, okay, only some photos
+[00:37:38] that you have found on the file,
+[00:37:40] and based on the height and significance.
+[00:37:45] It can be useful to recover data from disk and formatted.
+[00:37:49] Remember also that if you format your disk, okay,
+[00:37:55] or USB pen, you have different results.
+[00:37:59] So if you do fast formatting or long formatting.
+[00:38:03] So even if you do fast formatting,
+[00:38:05] it's possible that the format should be good by degree.
+[00:38:11] And the names of the files are not recorded.
+[00:38:16] Basically, it names the files.
+[00:38:19] For example, using this notation here.
+[00:38:23] So like this.
+[00:38:26] Okay, so you have files which are basically named
+[00:38:29] with the index of the sector where they are indexed.
+[00:38:37] How can we use this?
+[00:38:39] Well, here's an example of commands.
+[00:38:41] Suppose that you have mounted, okay,
+[00:38:43] your USB 10 on that location.
+[00:38:47] You can use foremost, even input the mount location
+[00:38:52] and the output can be this data recovery.
+[00:38:55] You can decide to look only for JPEG or GIF files.
+[00:38:59] You can decide to look for other types of information
+[00:39:02] and so on.
+[00:39:02] So these are examples of the use of foremost.
+[00:39:05] But seeing that, okay,
+[00:39:06] commerce can be done on the other side.
+[00:39:10] And this is an example of an audit file.
+[00:39:13] So you can see you have when you define how when you run okay the file where is the input okay information here
+[00:39:21] Where the output has been written and you listen you leave a list. Sorry on
+[00:39:27] Which sector you found the file which type of file in this case you find a jpg image on sector
+[00:39:36] 621 you don't know the name the original name, but you can recover basically the size of the files itself
+[00:39:45] You can do users together with foremost also photo rec
+[00:39:49] Which is basically a recovery tool for many types of file
+[00:39:54] As this is also open open source, and then you also have autopsy our
+[00:40:00] Kid, which is another series a suite of tools that you can use also this case to recover
+[00:40:07] The autopsy allows you to do a lot of information
+[00:40:11] and analyze the disks, generate the timeline,
+[00:40:15] and then hashes, so you have also these possibilities
+[00:40:19] to hash information and recover,
+[00:40:22] look for specific contents,
+[00:40:23] and also looks for memory files.
+[00:40:31] So before we go on the issue related to disk encryption,
+[00:40:35] okay, we are finally exposed.
+[00:40:37] Are there any questions so far?
+[00:40:43] So this, I understand these are kind of,
+[00:40:45] let's say, over viewing, okay?
+[00:40:48] We're going to have practical hands-on
+[00:40:50] on these types of issues
+[00:40:51] when we're going to have on October 31st
+[00:40:54] when we're going to have the first lab experience.
+[00:41:06] Okay, five minutes post.
+[00:41:22] So, part of the problem in the acquisition
+[00:41:27] is what happens when you have some of these.
+[00:41:29] So, we have kept,
+[00:41:32] and this work is worth mentioning a few things about.
+[00:41:39] So, typical encryption,
+[00:41:42] It doesn't mean that they are not attending
+[00:41:43] to the policy or stuff.
+[00:41:46] It's where you basically, you store the information
+[00:41:49] in a site for more than so, in Papaliki,
+[00:41:52] which is basically makes, okay,
+[00:41:54] the information out of the box.
+[00:41:56] For sure, the information is readable, okay,
+[00:41:59] when you are operating on a file.
+[00:42:01] You're writing a document, okay,
+[00:42:03] even if your list is encrypted,
+[00:42:05] the document can be read.
+[00:42:08] When you shut down, let me see,
+[00:42:10] At that point, I mean, it's, it's encrypted.
+[00:42:15] So the problem is this.
+[00:42:18] Typically, and this is why, if you remember,
+[00:42:22] when we present the p-
+[00:42:25] you cannot do any more strategy
+[00:42:41] strategy of shutting down the PC,
+[00:42:44] bringing the largest to your lab,
+[00:42:46] and then acquiring the artist
+[00:42:48] with an external front system.
+[00:42:51] Because in the content is
+[00:42:52] in the ability to not do that anymore.
+[00:42:55] So the average solution that you have is to
+[00:42:56] perform a lab position on
+[00:42:58] the very moment when you acquire the artist.
+[00:43:01] So this is one of the issues that we have.
+[00:43:04] We want to go deeper
+[00:43:05] in the problem of this conviction.
+[00:43:08] And typically for encryption we have three different types
+[00:43:13] of systems.
+[00:43:14] System where you have a hardware encryption.
+[00:43:17] The encryption protocol is basically nested,
+[00:43:21] is defined by the framework that's going to go through that.
+[00:43:25] It's a kind of something that comes with either of us.
+[00:43:29] Instead what we can do is software encryption.
+[00:43:32] Software encryption is something that we perform
+[00:43:34] with these tools and applications that we have.
+[00:43:39] Typically, software is run on an application.
+[00:43:42] It is lower.
+[00:43:44] Typically, it will perform software encryption
+[00:43:46] not for the sector,
+[00:43:48] when you need some folders, some other parts.
+[00:43:51] And it also related it to a set of keys, okay?
+[00:43:55] And depending on the protocol, the official protocol,
+[00:43:58] it can be something based on the EFLman
+[00:44:00] or other types of protocol.
+[00:44:02] So you can have one encryption key,
+[00:44:04] couple of pad, you combine the key, and so on.
+[00:44:07] But basically, the characteristics of this set of keys
+[00:44:12] is that the keys are not bound specifically to us.
+[00:44:17] If I take a file, I inherit this file,
+[00:44:19] and then I send the file to another guy,
+[00:44:24] and I give also the key to this other guy.
+[00:44:26] This guy is going to be able to decrypt,
+[00:44:28] decipher the files into no problems, okay?
+[00:44:33] It's not depending on my machine.
+[00:44:35] So software is kind of once you exchange the keys,
+[00:44:39] basically you can do the same approach
+[00:44:40] on another machine in the laptop.
+[00:44:44] An example of this software is, for example, 2QIT.
+[00:44:47] When you are referring to hardware encryption,
+[00:44:50] this operates, as I said, a thermal needle,
+[00:44:53] and typically this is handled by the TPM chip,
+[00:44:57] which is a great testing machine, platform of chips,
+[00:45:00] and this basically performs the encryption
+[00:45:04] all the time that you do everything.
+[00:45:09] So you have this on the boot sector,
+[00:45:11] on the braking system, on the technology file,
+[00:45:14] scope files, everything is okay.
+[00:45:17] It is much, much faster because it is optimized
+[00:45:19] in the framework and basically it is controlled
+[00:45:23] by the total system of the VHD.
+[00:45:26] So this means that I cannot use, okay,
+[00:45:30] a silicon band, some operation using
+[00:45:32] let's say, for instance, it means that both elements.
+[00:45:40] So you have that, this is software systems,
+[00:45:44] but can lead to specific hardware.
+[00:45:47] It has DPM values on that.
+[00:45:49] And you can have that the access
+[00:45:51] can be in transparent mode,
+[00:45:54] but user can be authenticated with the,
+[00:45:57] or you can also be authenticated.
+[00:45:59] For example, with local.
+[00:46:00] So, this system tries to combine both systems.
+[00:46:08] So, how to handle your data extractions
+[00:46:14] when you have to do with some, some, some encryption.
+[00:46:24] So, after some encryption, basically what you can do,
+[00:46:28] you can perform a code, in a code reboot basically,
+[00:46:32] you basically explore the fact that some part of the
+[00:46:37] language doesn't exist.
+[00:46:40] So you can use a malicious operating system
+[00:46:43] that extract information from this library,
+[00:46:46] including, moreover, in software encryption,
+[00:46:54] you may have that some pieces of files
+[00:46:58] can be outside the encrypted area.
+[00:47:02] So looking at this unencrypted area,
+[00:47:06] this is a table of storage, we do not need that.
+[00:47:10] And therefore, if you look at this unencrypted area,
+[00:47:14] you can basically get informations about cybernet.
+[00:47:22] The same type of strategy
+[00:47:24] can be used also for hardware encryption.
+[00:47:27] So you can have pieces of files that are outside,
+[00:47:30] and you can do that for, let's say,
+[00:47:32] fast and clean or fast to hide them, right?
+[00:47:35] Moreover, if you avoid the slips or shutting down,
+[00:47:38] you cannot bring up this is the meaning for the
+[00:47:44] live acquisition that is before if your art is
+[00:47:47] there is a control of your art.
+[00:47:51] Moreover, some recovery key can be at the level
+[00:47:56] and this recovery key typically are stored
+[00:47:58] in your view that the mix that they go to.
+[00:48:04] So I know that this sounds like a shooter
+[00:48:10] and it will create something that you make a recovery key
+[00:48:13] which is not encrypted, I think I don't know about that.
+[00:48:16] This happens sometimes.
+[00:48:17] Or there can be some bugs or weaknesses
+[00:48:20] inside of the key.
+[00:48:23] Anyway, as I mentioned to your friends of yours,
+[00:48:26] encryption can be extremely useful to destroy evidences
+[00:48:30] because suppose that you encrypt something,
+[00:48:34] you remove the key,
+[00:48:36] nothing, that information cannot be recovered anymore.
+[00:48:39] For example, there was these suggestions in the past.
+[00:48:43] So, as we said, suppose that you have one file,
+[00:48:46] which is a statement, and the file is stable,
+[00:48:50] it means that even if you shut down the PC
+[00:48:52] and you only power the PC,
+[00:48:54] this file is not going to change.
+[00:48:57] So, even if the disk is encrypted,
+[00:49:00] but you have a lot of extra little issues,
+[00:49:02] it will end up in the library.
+[00:49:04] What you can do, you can finish it,
+[00:49:06] power down in the PC, you can take power down in the PC,
+[00:49:10] you can get the power.
+[00:49:12] But, if you take your encrypted partition,
+[00:49:16] and you make inside this encrypted partition,
+[00:49:21] another encrypted partition, so you have two
+[00:49:24] nested encrypted partitions, well, in that case,
+[00:49:28] you can basically remove one of the three
+[00:49:30] of the opportunities in the other ones.
+[00:49:31] You cannot improve, you cannot change them.
+[00:49:34] So if you wanted to destroy it with that function,
+[00:49:37] it's better, since it's a removal.
+[00:49:39] So formatting is not a solution, you can fix that.
+[00:49:43] If you needed to destroy something very quickly,
+[00:49:45] for double encryption, then you may not need
+[00:49:47] double encryption, you cannot pick over the function.
+[00:49:51] Because one key to the cipher is inside another
+[00:49:54] computer path, you cannot pick over that.
+[00:49:57] It's like it's not a silicon.
+[00:50:03] Okay.
+[00:50:04] Okay, before we move to mobile 4.96,
+[00:50:09] which is going to basically analyze all the stuff
+[00:50:15] where we have to move to the mobile device.
+[00:50:19] And we see what other information is available
+[00:50:23] when we handle with some mobile devices.
+[00:50:26] I want you to take a little small quiz
+[00:50:35] about the acquisition of digital evidences.
+[00:50:38] okay okay you can you can scan this QR code and we're going to have a few
+[00:51:28] okay questions about what we have seen okay let's go everybody ready okay let's
+[00:52:24] Let's move.
+[00:52:28] Okay.
+[00:52:31] Select, given this scene,
+[00:52:34] select on all the possible digital identities,
+[00:52:37] so it's very similar to the person that we told you.
+[00:52:41] In this case, we want you to select
+[00:52:43] all the possible digital identities
+[00:52:44] that can be acquired.
+[00:52:57] How many, can you choose only one, or?
+[00:52:59] No, no, there are more than ones.
+[00:53:03] I'm gonna choose one.
+[00:53:04] Choose one.
+[00:53:08] It's lame.
+[00:53:16] This is just a circle, okay?
+[00:53:20] because something is not really presented to us.
+[00:54:05] Okay, so let's see what are basic solutions here.
+[00:54:15] Okay, so you have a phone here, you have a laptop.
+[00:54:23] Good one for those that have seen this.
+[00:54:26] It was a kind of, let's say, it's a router.
+[00:54:32] During the past years, some people also
+[00:54:36] Exchange this for Amazon Alexa.
+[00:54:40] So, it can be, basically it needs to be,
+[00:54:45] if you want to see this as an Amazon Alexa,
+[00:54:47] you can also have Amazon Alexa.
+[00:54:51] Yes, basically you have the TV, it's correct,
+[00:54:53] also TV is my TV, they have information from the store.
+[00:54:56] So all these are basically your digital identities.
+[00:55:03] Other question, is my opposition needed for this?
+[00:55:08] So suppose that we are doing a search into that tool.
+[00:55:34] so,
+[00:55:35] response to four, okay?
+[00:55:44] Okay, so three,
+[00:55:52] no options on this one.
+[00:55:54] Okay.
+[00:56:04] If I may,
+[00:56:05] what's the first line of this one?
+[00:56:07] So yeah,
+[00:56:08] I can't evaluate the first one.
+[00:56:23] Okay.
+[00:56:25] So, the answer is,
+[00:56:29] No, that's true, in this sense, so you answer the question.
+[00:56:35] No need, because basically you have, it's a SSD,
+[00:56:40] okay, so it's safe, it's unpowered.
+[00:56:45] You have also to be careful when you repower
+[00:56:47] because of the reasons that we mentioned,
+[00:56:49] but the fact that it is connected to USB cable,
+[00:56:52] that is a connection which is safe
+[00:56:55] according to what we have seen about SSD.
+[00:57:02] Which of the following issues does not affect
+[00:57:05] the acquisition of a smart assistant?
+[00:57:08] Smart assistant, sorry.
+[00:57:12] So which of these issues,
+[00:57:13] so let's read what are these issues.
+[00:57:16] Issue number one, most of the data is stored on a server
+[00:57:22] whether data is not recorded, okay.
+[00:57:26] It's state can be either from remote,
+[00:57:29] images could have been deleted.
+[00:57:36] So which of, in your opinion, this type of issues is
+[00:57:42] basically not related to all three issues.
+[00:58:27] So, this does not make sense, okay?
+[00:58:30] This is why not to select the images
+[00:58:32] that are out there, because mostly, okay,
+[00:58:36] there can be some small systems that may be
+[00:58:38] probabilistic, but apparently there are lots
+[00:58:42] in terms of privacy, and also, this is the problem
+[00:58:53] that if they do the recording,
+[00:58:55] but when we refer to the recording,
+[00:58:57] it's not a system where for something
+[00:58:59] which is acquiring information,
+[00:59:04] which is something which is contributing something.
+[00:59:07] Instead, it is possible that, for example,
+[00:59:09] if you think about the algorithm,
+[00:59:11] you can have some random algorithm
+[00:59:13] that you've done, and you don't know
+[00:59:18] what is actually listen to.
+[00:59:23] The state can be altered from a normal display.
+[00:59:27] Moreover, most of the data store on the server
+[00:59:29] is also true without no connection.
+[00:59:38] This is one of the big problem that we're going to
+[00:59:40] see when we're going to talk about, yes.
+[00:59:54] Now, the point is that it's not some data can be
+[00:59:57] erased, the problem of images can be erased, okay?
+[01:00:01] So I'm not talking of the same about
+[01:00:03] the audio.
+[01:00:05] Okay, for more, I'm going to send it down here,
+[01:00:08] and I'll set it right down here.
+[01:00:10] And Alexa could be standing,
+[01:00:12] playing my favorite song,
+[01:00:13] so this is the Alexa girl,
+[01:00:15] she's running those 45 minute songs.
+[01:00:17] So, there is a refer to images.
+[01:00:26] So, in the visual process view,
+[01:00:28] which of the following issue is the most
+[01:00:30] determinant in acquisition of a digital evidence,
+[01:00:33] in this case, a visual evidence?
+[01:00:36] Storage also is good before, yeah.
+[01:00:42] If you're talking about the new deck,
+[01:01:22] the reminder that we're going to replace,
+[01:01:31] how will it be?
+[01:01:50] And what is it?
+[01:01:51] How will it start?
+[01:01:52] Well, again, some of the questions,
+[01:02:01] you know, I guess, right?
+[01:02:19] It'd be either most of the information
+[01:02:20] when you perform this derivation
+[01:02:22] is kind of squared through set.
+[01:02:25] Just imagine what you do.
+[01:02:27] This depends on the policy or the company
+[01:02:29] that you are doing.
+[01:02:31] It also depends, for example, on the,
+[01:02:34] Yeah, also a specific company.
+[01:02:38] Because the thing is about when you perform an interrogation
+[01:02:41] on child GPT or codex whatsoever,
+[01:02:46] those kinds of questions can be then stored
+[01:02:49] and processed by the company as they like.
+[01:02:54] Okay, one second, one more.
+[01:03:01] Okay, so what are the problems?
+[01:03:05] So, I need to acquire a little sequence from this video.
+[01:03:10] So, here's one of these attacks, you know.
+[01:03:12] And I want to perform this in this position.
+[01:03:14] So, what should I do?
+[01:03:17] So, what should I take care of?
+[01:03:20] Perform a very quick live opposition.
+[01:03:23] Isolating the road.
+[01:03:25] Avoiding switching off the devices.
+[01:03:27] Looking for biological fixes.
+[01:03:38] So, which in your opinion is,
+[01:03:40] I will also make available one quiz.
+[01:03:54] Okay.
+[01:04:11] Okay, three, two, one.
+[01:04:42] Of course, if I am on the middle of the road,
+[01:04:49] maybe it's better if I ask later on,
+[01:04:51] but it's not necessarily.
+[01:04:52] From a digital radius point of view.
+[01:04:58] About switching off the device.
+[01:05:01] Typically, video designers can ask,
+[01:05:03] you can't do a video without,
+[01:05:05] so it takes a lot of focus, so it's not an issue.
+[01:05:08] Look, if I were on two traces,
+[01:05:11] so unless the guy has climbed over the camera,
+[01:05:16] and left some video in,
+[01:05:17] then I'm not going to tell you what this is all about.
+[01:05:23] Instead of performing a very quick live opposition,
+[01:05:26] it is true because in video surveillance camera
+[01:05:32] the amount of time you can keep recording is not easy.
+[01:05:38] Typically, for video surveillance cameras,
+[01:05:41] you have to keep recording up to 30,000 files.
+[01:05:47] Then recording is a moment of failure.
+[01:05:51] So basically, it's a mandatory from the local view.
+[01:05:55] This is the kind of information that you want to have
+[01:05:57] and if you're a good expert, normally you know it.
+[01:06:00] A video surveillance track needs to be stored
+[01:06:03] for a limited amount of time
+[01:06:05] because of privacy regulations.
+[01:06:07] So this means that the device keep on working.
+[01:06:11] And you cannot say, okay, the accident will happen.
+[01:06:14] I want to access the recordings and then, okay,
+[01:06:16] I will do this in a week.
+[01:06:17] No, in a week probably, but only in a week.
+[01:06:22] So this is why you need to perform this
+[01:06:25] from the very moment you make this.
+[01:06:27] And this is why the correct one is number one.
+[01:06:38] Which of the following problems
+[01:06:39] can see the seizure of the depicted device?
+[01:06:44] This one.
+[01:06:44] The roof.
+[01:06:48] Okay, so battery exhaustion.
+[01:06:52] Encryption, volatile dependence is very easy.
+[01:06:56] So it will go very, very, very, very quickly
+[01:06:58] because they expect some flash answer okay some very quick answer so three two
+[01:07:11] Two, one, all the high data.
+[01:07:20] Encryption is not a division,
+[01:07:22] there can be some encryption in this system,
+[01:07:25] but typically, the problem with network devices,
+[01:07:29] network units, is that they need to work like that,
+[01:07:34] and encryption is something which is not.
+[01:07:38] So, it is also why, typically,
+[01:07:42] for many years and also now,
+[01:07:45] root tests are, let's say,
+[01:07:46] in the weak points from the security point of view
+[01:07:48] into a network.
+[01:07:50] Because they need to work very, very quickly,
+[01:07:52] and therefore they do not have a high level of protection.
+[01:07:57] And also together with other staff,
+[01:07:59] we are going to discuss this, okay,
+[01:08:00] next week in the network analysis.
+[01:08:03] But basically the encryption is not a big issue
+[01:08:06] to all router, and typically router are not battery powered
+[01:08:11] unless some very specific devices that we use
+[01:08:14] to create some hardware networks.
+[01:08:17] We also had one company that performs
+[01:08:20] battery-powered routers,
+[01:08:23] but it is a really good situation
+[01:08:25] that is done for emergency area.
+[01:08:27] So suppose that there is a single hardware
+[01:08:30] getting collapsed and you need to create
+[01:08:33] to monitor and organize the rest of the teams.
+[01:08:36] All the communication goes down
+[01:08:39] and you don't determine the battery power, okay.
+[01:08:42] And this is very, very, very specific.
+[01:08:43] Typically, the most reasonable issue is the number two.
+[01:08:55] So do not worry, you're not going to be evaluated
+[01:08:58] for how many answers correctly are done.
+[01:09:04] Is live acquisition necessary for this DE?
+[01:09:10] At least not today, during the exam, yes.
+[01:09:16] So basically, you need to perform live acquisitions.
+[01:09:19] This is very, very easy.
+[01:09:22] we are talking about something some information which is stored inside a hospital if you remember
+[01:09:28] the picture here data medical data so three two one yes you need to perform a live acquisition
+[01:09:40] because you may have not entitled to read everything read everything and then you may
+[01:09:51] They also have the problem so you cannot
+[01:09:54] block the power off of the device
+[01:09:57] or you cannot take the device out at all.
+[01:10:03] Okay.
+[01:10:13] So this was just a quick recap
+[01:10:16] just to give you a flavor to see
+[01:10:20] and repeat maybe some of the concepts
+[01:10:22] that we have seen last week.
+[01:10:24] here, and also today here.
+[01:10:26] If you want to enhance art of this information,
+[01:10:30] there is going to be one quiz like this available,
+[01:10:34] which will be online.
+[01:10:39] We are going to have several quizzes of these quizzes
+[01:10:41] during the course,
+[01:10:46] and you can use them to check your preparation
+[01:10:50] while we're studying, after the lecture,
+[01:10:52] so if you're not going to do something,
+[01:10:53] or you can also check this
+[01:11:02] So what happens when we are considering the acquisitions of a mobile device?
+[01:11:18] And when we're talking about mobile devices, well, we have two issues, okay, with respect
+[01:11:27] to acquiring a single device.
+[01:11:28] The first issue is that there is a connection going on.
+[01:11:32] And to this connection, it's like if you have some guy,
+[01:11:37] you cannot see, it is tampering,
+[01:11:41] it is altering, changing information in your eyes.
+[01:11:44] So if you do not take proper measurements
+[01:11:46] from this connection, you have a problem.
+[01:11:50] And this is one thing that we are going to discuss.
+[01:11:54] Next, next time.
+[01:11:57] There is another problem with my five and six
+[01:12:00] is that you have to be careful about all the information
+[01:12:05] which is properly stored on the device.
+[01:12:09] But also you have information that is related
+[01:12:12] to the intent of the device based on the fact
+[01:12:16] that this device is kind of connected to mobile.
+[01:12:24] So when you are referring to mobile devices,
+[01:12:31] you want to recover files, that's true,
+[01:12:35] register values, but also IDs which are connected
+[01:12:41] to the specific device.
+[01:12:44] And by ID, you can refer to the identity that the device
+[01:12:48] has within the network, you can have the identity
+[01:12:52] related to the specific network card,
+[01:12:55] or specific transmission card, which is stored as well.
+[01:13:00] Because this information is extremely interesting.
+[01:13:02] and everything else you have to do.
+[01:13:04] So the traces are, for example, the ID,
+[01:13:08] the database we have SIM cards,
+[01:13:10] the images we have stored, the email,
+[01:13:13] and the steps are basically the same that you have to see
+[01:13:16] but when you're referring to these types
+[01:13:18] of mobile devices, you have to pay some extra attention.
+[01:13:23] So one of the first ways that they can collect
+[01:13:27] from a mobile device together with the files
+[01:13:30] in production, is for example, the ID of the power.
+[01:13:35] And this ID of the other device,
+[01:13:37] this ID of the device is the so-called I-made code.
+[01:13:42] The I-made code, look, which is international
+[01:13:44] mobile equipment identifier, okay,
+[01:13:47] is a code that you can simply get if you dial
+[01:13:51] on your numbers, you dial basically the code,
+[01:13:56] star, sharp, zero, six, sharp.
+[01:13:59] If you do this on your phone, you will get this.
+[01:14:02] It is a unique code that identifies exactly your phone,
+[01:14:08] your device, not the network.
+[01:14:10] If you change your vendors, if you go from with a thread
+[01:14:14] to an overall phone whatsoever, okay, you will change,
+[01:14:19] okay, you'll see.
+[01:14:19] However, you're not changing your main code,
+[01:14:21] you just prefer the device.
+[01:14:23] It is also reported on the staples
+[01:14:26] that you find on the back of your face. Typically the IMA code is composed of
+[01:14:33] information between the vendor, the model and the nation where the phone is sold.
+[01:14:40] And if you go on numberingplus.com or track your IMA, what you can do, you
+[01:14:45] can pause your IMA, you will get informations about for example the
+[01:14:49] type of device, the country and so on. So this information which is stored
+[01:14:56] your identity. I think we have also another number which is related to the type of contract,
+[01:15:05] mobile contract that you have, and typically this number is the so-called ICCID, which is basically
+[01:15:14] the integrated service card identification. It's a number which is associated to the SIM card,
+[01:15:20] which is the card that you need in order to access the mobile devices on your phone,
+[01:15:24] and once again also the SIM card you can get information if you enter the
+[01:15:29] number, for example the number in class, you can get data, for example, this is 3G in Italy and other information related to it.
+[01:15:41] Note that the SIM card stores not only, okay, not only this information,
+[01:15:51] in this idea, but also stores information about the,
+[01:15:58] about the, in science, you can find information
+[01:16:00] about the images, the number that you call,
+[01:16:03] the type of content that you have,
+[01:16:05] what is the number that you have called,
+[01:16:09] what can be the date, messages, and so on.
+[01:16:12] Okay, so these two elements identify a specific device.
+[01:16:18] And then what we can do, we can analyze and collect
+[01:16:23] the basic device following a specific set of operations
+[01:16:29] by seeing the identification, season, and positions.
+[01:16:38] In the case of my device, it is worth splitting
+[01:16:41] a big list of operations in a more detailed sense
+[01:16:44] of steps.
+[01:16:47] At first, we needed to secure the uniform parameter,
+[01:16:49] We might be spending now for breaking also fault,
+[01:16:53] basically, and we had other people for this prevention
+[01:17:04] must be referred to people.
+[01:17:10] Eventually, I'll update this for the facts,
+[01:17:14] because these facts may lead to the device to not work.
+[01:17:20] And this is a problem that you have to pay attention,
+[01:17:23] because this is here, the device is basically leaving
+[01:17:26] you, which is very appropriate for a broken display.
+[01:17:29] It is a problem.
+[01:17:31] Document all the operations that you do using pictures,
+[01:17:36] videos, and also reactions.
+[01:17:39] Of course, allow us to verify if it is switched
+[01:17:42] on and off.
+[01:17:43] If the device is off, leave it off.
+[01:17:46] If it is on, typically, leave it off.
+[01:17:50] But then, you have to pay attention to this.
+[01:17:57] So, in case the phone is on,
+[01:18:00] First of all, take a picture of what you can understand with the app which is valuable.
+[01:18:05] If it is possible, register the date and the time of the device because it is possible
+[01:18:10] that the device and all the information which is locked on the device has different times
+[01:18:16] with respect to who can send your records out.
+[01:18:20] This is something which is not so frequent, okay, nowadays, because typically the time
+[01:18:27] is set up by the network.
+[01:18:29] So if your phone is connected to your network,
+[01:18:31] the time of your phone is given by
+[01:18:33] the spend and the buy networks.
+[01:18:35] But it is possible that these two things,
+[01:18:37] the time of the networks and the time of the phone
+[01:18:39] are the time.
+[01:18:41] This is also one reason why when you are
+[01:18:44] authenticating a picture, a JPEG picture,
+[01:18:48] taking the phone, it is more reliable
+[01:18:51] than taking the picture, the image of the picture,
+[01:19:00] because typically if you look at the exit steps, so the metadata of the picture, those
+[01:19:06] metadata are basically, some of those are basically written using the tiles of the method, which is optional.
+[01:19:17] Instead, if you take your picture, this is the camera, you can change the data, you can change the timer
+[01:19:25] as you like, and then you will see that on the picture
+[01:19:27] the picture is going to be in time, so it's going to be easy.
+[01:19:36] I've always navigated on the manual,
+[01:19:37] but in the messages we mentioned, okay,
+[01:19:39] last time, I've always changed the state of the device.
+[01:19:43] If you navigate, if you look at the images,
+[01:19:45] if you scroll, if you look at how,
+[01:19:47] what is the wonderful picture that this guy drew, okay,
+[01:19:51] they're going to alter the state of the device.
+[01:19:54] And you need also to isolate the device from the microconnection, which are, for example,
+[01:20:02] the tube, the pipe, the mobile connections, together with other types, for example, the
+[01:20:09] application, let's see.
+[01:20:11] So all these are connections that could alter the device.
+[01:20:15] So how can you perform the isolation?
+[01:20:18] So we have three different solutions.
+[01:20:27] Just introduce them later on.
+[01:20:30] So our first solution is to basically use a jammer.
+[01:20:34] A jammer is a transmitting antennas
+[01:20:38] that basically corrupts the signal,
+[01:20:43] the radio signal with this processor.
+[01:20:45] For example, if I use a jammer here,
+[01:20:47] I will be able to corrupt to disturb the signal
+[01:20:51] related to your frauds, hopefully within this rule.
+[01:20:57] What is the problem?
+[01:20:58] This is illegal because, at least in Italian regulations,
+[01:21:03] messing up with the radio channels,
+[01:21:05] is that something that police would like?
+[01:21:07] Police can't do that, nothing, okay?
+[01:21:10] So the point of the using example is that
+[01:21:12] you are basically messing up on the radio channels,
+[01:21:17] and it's very difficult to control the area
+[01:21:21] that you basically understood.
+[01:21:23] For example, if you use,
+[01:21:26] for example, here is what is involved in the war,
+[01:21:29] but I'm not glad that maybe I need to do it,
+[01:21:31] also the thorns, or the people who have survived.
+[01:21:35] It's a big of a problem.
+[01:21:38] Also that this requires lots of power,
+[01:21:41] also you need something that has lots of power.
+[01:21:44] Alternatively, use what we mean
+[01:21:47] is basically the paradigm of economics.
+[01:21:50] The Faraday cage is a term which is used for some specific envelope that are used
+[01:21:57] basically to isolate the
+[01:22:05] So you can also share data from the outer world with respect to the device and the people or the object which are inside this hardware.
+[01:22:19] And then think about the Faraday case that you have at all, because I'm sure that when you go home, you have at least two Faraday cases in your home.
+[01:22:32] to a foil, a foil, foil for me, another one, a microwave.
+[01:22:45] Basically these are two.
+[01:22:47] In microwave you want to keep things inside.
+[01:22:50] This is why there were some,
+[01:22:51] in the past some nerdy experiments.
+[01:22:53] I want to cook, and then put in the egg
+[01:22:56] in the microwave, and throw the eggs into this.
+[01:23:00] Looks okay.
+[01:23:02] But inside of the foil, the foil basically
+[01:23:05] shows the radiation from the outside.
+[01:23:11] For example, there were some people in the past that were,
+[01:23:16] some people in our department were very angry
+[01:23:18] about the students and thought they were disturbed
+[01:23:21] by some firearm or they shoot again
+[01:23:28] if you don't know what some are doing there.
+[01:23:30] But it was not something that they liked.
+[01:23:33] So, fire leakage isolated the phone.
+[01:23:38] Another way, if you don't have the fire leakage,
+[01:23:40] if you don't have aluminum foil,
+[01:23:42] Typically police use these envelopes, not the real one.
+[01:23:46] But basically, an envelope like this where you have this
+[01:23:50] is used to power the device.
+[01:23:56] It's like the aluminum foil, it's like the aluminum foil,
+[01:23:59] but the difference is that you also have some cable
+[01:24:00] here to power up, to prevent the phone from falling down.
+[01:24:06] Because one of the problem with this solution here,
+[01:24:09] this solution here, is that the phone cannot connect,
+[01:24:12] the phone tries to connect keep on transmitting power transmitting power
+[01:24:16] until the battery is exhausted is exactly what you do when you go to some
+[01:24:20] low not reachable area you have that the phone power goes into exhausted battery
+[01:24:29] alternative if you don't can you use this you can use airplane mode the
+[01:24:33] airplane mode is a way very the last solution you can use is to prevent
+[01:24:39] with the phone from connecting to any kind of network.
+[01:24:43] The problem is that it is required that you need
+[01:24:45] to know the phone, you need to know how to work on that.
+[01:24:48] You need to interact with the phone
+[01:24:50] so you are basically changing the system.
+[01:24:53] It's not at least a couple of,
+[01:24:54] scroll down menu, click, you have to do that
+[01:24:57] on the phone, so you are basically
+[01:24:58] altering the system.
+[01:25:00] But if you don't have other solutions,
+[01:25:03] you can go for that.
+[01:25:05] See you next time.

@@ -1,0 +1,1442 @@
+[00:00:02] Okay, welcome to lecture number 10.
+[00:00:07] Okay, this is a forensic course, a mathematics course.
+[00:00:10] So today we carry out our part
+[00:00:12] related to the device authentication.
+[00:00:16] Just a recap about the last thing that we have seen.
+[00:00:21] Okay, last time.
+[00:00:22] So we have safety, and it's possible
+[00:00:25] to authenticate the device from some cameras
+[00:00:28] by basically first, suppose that you have the device.
+[00:00:32] phone, and a picture. What you can do, you can extract, okay, the noise, the
+[00:00:40] component on the image. Then for the smartphone, you take multiple
+[00:00:45] reflectance images and you estimate the component k. Then you compute the
+[00:00:51] correlation between k and image with respect to the w component of the
+[00:00:58] image, which is the image minus the noisy.
+[00:01:02] And then this correlation, which can be done using PCC.
+[00:01:05] Oh, sorry, PCC, normalized cross correlation, or PCE, okay?
+[00:01:10] It is possible to have basically a match and not match.
+[00:01:13] So let's make an example, okay, comparative one.
+[00:01:18] So suppose that you have this image here, okay?
+[00:01:21] This is our bullet, okay?
+[00:01:24] And we want basically to
+[00:01:30] Given this image, we would like to estimate, okay,
+[00:01:35] the parameters.
+[00:01:35] So what do we do?
+[00:01:37] You compute, okay, the difference, okay,
+[00:01:39] between the image and the noise image,
+[00:01:43] and you have basically the noise, okay?
+[00:01:45] So this is W.
+[00:01:47] Okay, given W, you want to verify
+[00:01:52] whether this image is being taken by a specific camera.
+[00:01:56] So what you can do,
+[00:01:57] you can basically take multiple flat field images.
+[00:02:01] So what is a flat field image?
+[00:02:02] Basically, it's an image of a uniform area.
+[00:02:06] Any part of the wall can be some plain uniform.
+[00:02:11] So we should avoid the differences
+[00:02:13] in terms of the definition.
+[00:02:15] And this must be taken using an image
+[00:02:18] which is basically kind of the middle.
+[00:02:22] So it must not be a subject which is too bright
+[00:02:24] and not the subject too dark, okay?
+[00:02:27] Because in that sense, you are going basically
+[00:02:29] to the upper level, so some clipping effects on the pixel,
+[00:02:34] or in the other case, you're going to the lowest level.
+[00:02:36] So in this case, you're going to lose a lot
+[00:02:38] of thermal noise, which affects the intensity of the pixels.
+[00:02:42] So you must have something in the middle, okay?
+[00:02:47] And this, given this, we take a certain amount
+[00:02:51] amount of images, typically 20 images are enough,
+[00:02:55] 10, 20 images are enough to perform a reliable estimate.
+[00:02:59] So what you can do here, you basically take,
+[00:03:02] okay, in this case, we want to verify
+[00:03:04] whether the picture has been taken with the phone.
+[00:03:06] You take multiple of these pictures
+[00:03:09] and then you compute your k.
+[00:03:11] You compute your k by performing the noisy
+[00:03:16] and then performing a least square estimation of k.
+[00:03:19] So, from these images,
+[00:03:23] which is basically due to the flat field,
+[00:03:25] you have basically got the period U,
+[00:03:28] and then you can compute the correlation
+[00:03:30] between this and this, okay?
+[00:03:32] In this case, the correlation is measured with the PCE,
+[00:03:36] okay, the peak correlation energy.
+[00:03:38] This is done for multiple positions,
+[00:03:40] because you want it to localize correctly, okay,
+[00:03:43] the period U.
+[00:03:45] And what you can see, you can see that
+[00:03:46] in any positions, in any shifts, okay,
+[00:03:49] the correlation is extremely low.
+[00:03:51] The PCE is about from 0.5 to 0.5, it's not big, okay?
+[00:03:56] There is not a position where I have a value higher
+[00:04:00] than the others, okay?
+[00:04:02] And this gives you the PCE, I mean PCE is minus 1.2.
+[00:04:07] The probability of false alarm is extremely high, okay?
+[00:04:12] So the probability that this is not matching with this,
+[00:04:16] So this is not the device used to take this camera is very high
+[00:04:21] so what happens if
+[00:04:23] we
+[00:04:24] Basically use the proper camera. Okay, so we use this camera has been taken to take this image so I can do the same
+[00:04:37] And I compute the correlation between W and K I
+[00:04:42] Okay
+[00:04:42] In this case, PCE has this shape here.
+[00:04:46] So there is one position, one shift, where I have a peak.
+[00:04:50] Okay, and this peak shows that for that configuration,
+[00:04:53] for that setups, for that alignment,
+[00:04:56] I have high energy, basically high correlation energy.
+[00:05:00] So the PCE is extremely high, is about 213,
+[00:05:04] and therefore, we can say that there is a match.
+[00:05:08] Okay, for that position, you have that the two noises
+[00:05:10] are corresponding.
+[00:05:11] And the probability of false alarm here is one,
+[00:05:15] 10 to the minus 48, so basically it's zero, okay?
+[00:05:19] So you have that for this condition here,
+[00:05:24] you have that the correlation is extremely high.
+[00:05:26] So you can conclude that this image probably
+[00:05:30] has been taken with this camera here.
+[00:05:32] So this is the correct camera.
+[00:05:34] We have identified the gun, okay?
+[00:05:36] That shot, the bullet.
+[00:05:39] What are the problems, okay, that you have in this?
+[00:05:43] So first of all, often you don't have images, okay?
+[00:05:48] You have confident images if you have the device.
+[00:05:52] But sometimes, as we have done works,
+[00:05:55] using this kind of images.
+[00:05:57] So it's possible to compute, okay, this PRNU,
+[00:06:00] if you have a set of general images, okay,
+[00:06:03] standard image, not profiled.
+[00:06:05] The only problem is that the quality
+[00:06:08] the term is going to be a bit lower, because you must be sure that the noise removes everything,
+[00:06:17] but sometimes it is not. For example, in the work we have done, we have estimated, okay,
+[00:06:26] the fact-filled images by taking images from the flicker, assuming that person takes pictures
+[00:06:36] So if you assume this, you can say that all those
+[00:06:39] you will discover on the same device. And this, anyway, these are
+[00:06:45] standard images. So it's a bit poor point. Then there is
+[00:06:49] another problem. Hearing you is assumed useful, it is
+[00:06:53] the DNA of your camera, of your phone.
+[00:06:55] The problem is that it can be very failed if you apply
+[00:06:58] okay, compression.
+[00:07:01] In the past, we had one lab of physics about the mu, okay,
+[00:07:05] and the final task was, okay, take your image,
+[00:07:08] you have to take the mu, you have to match the image
+[00:07:11] as soon as the signal is relaxed, okay.
+[00:07:13] Now, take this image, transmit this image via WhatsApp,
+[00:07:17] okay, and then given this image, you have to be
+[00:07:20] aware of WhatsApp, you recompute the pair of mu
+[00:07:23] and it matches on the graph, on the graph.
+[00:07:27] You will see that the PMU is not matching anymore.
+[00:07:30] So you go, you're not in this condition,
+[00:07:32] you move from this condition to the previous one.
+[00:07:36] And the reason is that any time you take an event,
+[00:07:39] you upload, or you go on social media,
+[00:07:42] or you upload to some website,
+[00:07:44] that image moves under compression.
+[00:07:46] Compression of basically work as a kind of remover,
+[00:07:51] an algorithm, there it is, or maybe it is.
+[00:07:55] And we're going to say this today,
+[00:07:57] but basically the reason is due to the quantization
+[00:07:59] that we have in compression,
+[00:08:01] most of the compression systems.
+[00:08:03] And this quantization removes,
+[00:08:04] again, this part of the noise,
+[00:08:06] definitely cannot explore that specific place,
+[00:08:09] I mean more than anything else.
+[00:08:11] So, this camera is good, it works,
+[00:08:13] it works also for generating images,
+[00:08:15] synthetic images, directed by AI.
+[00:08:18] The problem is that it can be removed,
+[00:08:20] okay, very easy,
+[00:08:21] we need some mild, medium compression.
+[00:08:26] Despite this, it is used, okay,
+[00:08:27] In many, many legal procedures,
+[00:08:30] it is widely adopted and accepted
+[00:08:32] by the court, by police and by other institutions,
+[00:08:35] for example, from theology or a specific image.
+[00:08:41] Okay.
+[00:08:43] So, remember we talked about the tracing
+[00:08:46] that you can get from lenses, okay, operations.
+[00:08:50] Tracing that can be found from the matrix
+[00:08:53] of sensitive sensors or zero sensors that you have,
+[00:08:55] okay, for providing pixels, we can have other traces.
+[00:09:00] For example, one traces can be related to colors,
+[00:09:03] not due to the aberration of the lens,
+[00:09:05] but due to how colors are in the point.
+[00:09:09] So, from the general knowledge about computers,
+[00:09:15] we know that colors on computers
+[00:09:18] are basically obtained by synthesizing three components,
+[00:09:22] the red and green and blue, okay?
+[00:09:24] And these three components basically model, okay,
+[00:09:29] the colors, why?
+[00:09:30] Because within the visible spectrum, okay,
+[00:09:33] within the range of frequencies
+[00:09:34] that are belong to the visible spectrum,
+[00:09:36] we can divide, okay, this range into three main areas.
+[00:09:40] One area is where colors are mostly dedicated
+[00:09:42] to the blue components, to the blue hue,
+[00:09:45] then you have the green, and then to the red one, okay?
+[00:09:49] So these three colors made all the visible colors
+[00:09:52] see therefore we can synthesize okay any colors by combining these three components RGB
+[00:09:59] that is why typically your image or your computer are basically called 24
+[00:10:04] bits images because we have three components RGB, we have eight bits for each of these three components and then we have 24 bits colors and this are basically we have many colors the problem is that how do you
+[00:10:22] acquire the colors.
+[00:10:23] Because this element here,
+[00:10:25] simply acquires, you can see,
+[00:10:27] you can see the line.
+[00:10:28] So you can see it's a little bit more than one charge.
+[00:10:32] So it is possible to do this
+[00:10:34] in basically two different ways.
+[00:10:39] One way, very expensive,
+[00:10:41] not very round films that we all use,
+[00:10:43] only on very high quality, high cost cameras,
+[00:10:47] is basically to split, okay,
+[00:10:49] the beam of light into three,
+[00:10:51] And for each beam, you acquire basically one color.
+[00:10:55] How do you acquire the color?
+[00:10:57] You have a sensor, and in front of this sensor,
+[00:11:00] you place basically a filter that lets us
+[00:11:03] only the green components, only the blue,
+[00:11:06] only the red components, okay?
+[00:11:08] It's like if you wear some glasses,
+[00:11:10] which has a specific color blends in front of that.
+[00:11:14] So what you can do for some devices,
+[00:11:17] you take the beam of light, keeping this,
+[00:11:19] you split into three with a prism,
+[00:11:20] and then you have three different sensors, okay?
+[00:11:23] Each one acquiring one color from that beam of light.
+[00:11:27] And it is for one pixel.
+[00:11:28] So for that pixel, you have three components
+[00:11:31] acquired from the real beam of light
+[00:11:33] hitting that specific pixel.
+[00:11:35] This is extremely costly.
+[00:11:37] And therefore, what is done in most of the devices,
+[00:11:42] your phone, is to use a scheme
+[00:11:44] which is called biomass or mosaic mass, okay?
+[00:11:49] What is a binary mask?
+[00:11:50] Well, you place, okay, in front of your CCD sensors,
+[00:11:54] so these are the color sensors,
+[00:11:56] a pattern, a checkable pattern with different colors.
+[00:12:00] And for each pixel, you acquire just one color.
+[00:12:04] You acquire either green, either blue, either red, okay?
+[00:12:08] And so, you have that your image,
+[00:12:13] after the acquisition by the sensors,
+[00:12:15] is a image defined by this.
+[00:12:17] for each pixel you have just one color okay for example for this pixel I have
+[00:12:21] the red color for this I have the green the red and the green the blue the
+[00:12:26] green the blue the green blue okay so one color only for each pixel okay but the
+[00:12:33] problem is if you look at the image this is going to look like this this is
+[00:12:39] going to look like this okay so it's not something which is okay visible so
+[00:12:44] So how can you bring this image into a traditional image,
+[00:12:49] where for each piece I have three colors?
+[00:12:52] What I can do, I can do interpolation.
+[00:12:55] So what I can do, I can simply, for example,
+[00:13:01] take this green color here, this green color here,
+[00:13:04] so these positions have only this color.
+[00:13:06] What I can do, I can take these values
+[00:13:08] and generate the missing values, okay,
+[00:13:10] by performing some simple interpolation.
+[00:13:12] For example, if I do an average between 12 and 10,
+[00:13:18] the average is 11, okay.
+[00:13:20] Therefore, the green components,
+[00:13:21] the color that is missing here is 11, okay.
+[00:13:24] So I'm using the neighboring colors from this pattern
+[00:13:29] to generate the missing one, okay.
+[00:13:33] So this is mostly the configuration that we have
+[00:13:36] in most of the cameras, it's single chip, okay, set up.
+[00:13:39] So in the single chip that's set up,
+[00:13:41] I needed to perform an interpolations of the biomass.
+[00:13:44] And therefore, I can do this, a vertical, horizontal.
+[00:13:50] After doing this interpolation,
+[00:13:51] I can generate three different matrices.
+[00:13:54] So for every pixel I have three colors,
+[00:13:56] like RGB, where one of
+[00:13:58] the cards will be the authentic one.
+[00:14:01] We actually acquire each pixel,
+[00:14:03] and then two of them are going to be interpolated.
+[00:14:07] And which one is acquired,
+[00:14:08] which is interpolated, it depends on the positions.
+[00:14:10] On some position, I will have that the red component
+[00:14:13] is authentic or acquired.
+[00:14:16] The green component is acquired in other positions
+[00:14:19] and so on.
+[00:14:21] So the interpolation strategy can change.
+[00:14:29] So for example, I can perform a vertical interpolation.
+[00:14:34] For example, here I'm taking the green components,
+[00:14:36] performing a vertical interpolation.
+[00:14:38] here I'm taking the ring component performing
+[00:14:42] a result of interpolation.
+[00:14:43] So this and this is useless to make this work, okay?
+[00:14:47] Or I can have more complex ones
+[00:14:49] or more complex combinations.
+[00:14:52] So the interpolation changes.
+[00:14:53] Typically, the interpolation must follow
+[00:14:58] the characteristics of the readers.
+[00:15:00] And there is no fixed strategies
+[00:15:03] to perform this interpolation.
+[00:15:05] for example companies okay has designed different types of interpolation filter
+[00:15:12] using different types of interpolation strategies depending on a specific image
+[00:15:16] that you are interpreting and these strategies are patented and being patented this makes that these strategies are
+[00:15:28] are typical of that specific camera, okay?
+[00:15:33] So, not only for that specific camera,
+[00:15:36] that specific camera, that model,
+[00:15:39] and that specific firmware version,
+[00:15:41] because sometimes in the operation that is changed,
+[00:15:43] then you update the firmware software.
+[00:15:47] So this is nice because if you can identify
+[00:15:50] the interpolation strategy,
+[00:15:52] you are not notified of specific camera,
+[00:15:57] but at least you identify the model
+[00:15:59] and that you merge.
+[00:16:01] So this is information that can be good, okay,
+[00:16:04] for the authentication of the card.
+[00:16:08] And this basically, so what you mean,
+[00:16:11] you need to estimate the interpolation.
+[00:16:12] This can be applied to any types of interpolation
+[00:16:14] that you have done on image.
+[00:16:16] So not only for this CFA.
+[00:16:17] This CFA interpolation, the common interpolation,
+[00:16:20] but if you have any type of interpolation on image,
+[00:16:22] it is interesting to do.
+[00:16:23] It's possible to recollect, okay,
+[00:16:26] this interpolation easily, okay, on these strategies.
+[00:16:29] You have here an example of different strategies
+[00:16:32] of color interpolation.
+[00:16:34] So here we have the original image.
+[00:16:36] Here we have a linear interpolation.
+[00:16:38] So we have the sampling, okay,
+[00:16:40] using that specific pattern by a pattern,
+[00:16:43] and we do the linear interpolation.
+[00:16:44] What you can see here on these elements,
+[00:16:47] which are highly vertical with the high frequencies,
+[00:16:49] what you can see,
+[00:16:50] you can see that there is some rainbow effects,
+[00:16:53] which happens due to the fact that in this case,
+[00:16:56] you would like to use a more vertical interpolation
+[00:16:58] a rather general result of that.
+[00:17:00] And you have these kinds of fringes as well.
+[00:17:03] Awesome.
+[00:17:03] So if you use the first method which is adapted
+[00:17:06] that follows, okay, the directions of interpolation,
+[00:17:08] you can see that these colors disappear,
+[00:17:10] these colors disappear here,
+[00:17:12] and there's another method, more complex,
+[00:17:14] adapted method, you can see that there is
+[00:17:16] no alterations at all.
+[00:17:17] So here shows you that different methods
+[00:17:19] have different performance,
+[00:17:21] and therefore, estimating the methods allows you
+[00:17:23] to get the information about
+[00:17:26] which is the origin of the image.
+[00:17:29] Okay, so interpolations allows you to,
+[00:17:34] can be applied not only on colors,
+[00:17:37] can be applied only on images to verify
+[00:17:39] whether an image is being, let's say,
+[00:17:42] altered or changed.
+[00:17:44] For example, if you need to accommodate, okay,
+[00:17:47] one piece of another image into another one, okay,
+[00:17:50] you need basically to perform some inspection
+[00:17:53] and this magnifying or shrinking of the image
+[00:17:58] is an interpolation operation, okay?
+[00:18:01] So if you enlarge some images when you enlarge a detail,
+[00:18:04] you're basically performing an interpolation.
+[00:18:08] And so detecting interpolations on those parts
+[00:18:10] allows you to detect, for example,
+[00:18:13] the alterations on the image.
+[00:18:18] So, the nice part about detecting interpolation
+[00:18:23] is that the current interpolation
+[00:18:25] is a bit more robust than what I've done here.
+[00:18:27] So, if you are detecting these types of features,
+[00:18:32] even after a compression, okay,
+[00:18:35] you can still be able, okay, to detect interpolation.
+[00:18:38] So, it is less set of operations.
+[00:18:43] That is why, when you can remember
+[00:18:45] it is being completely removed, okay,
+[00:18:47] from some eddies, you can go, okay, from interpolation.
+[00:18:53] So, how can we estimate interpolation?
+[00:18:55] So, this CFA is an interpolation
+[00:19:00] But locally, it's a periodic operation.
+[00:19:04] And this creates some periodic alterations in the image
+[00:19:08] that can be exploited in those things.
+[00:19:14] This is due to the fact that my interpolation
+[00:19:15] is a weighted sum, weighted average of pixels
+[00:19:19] within a small table in a local table.
+[00:19:23] It is easy to parameterize and can be approximated
+[00:19:27] in the case of a, in case one of those.
+[00:19:29] So we treated the colors independently
+[00:19:32] and if the correlation is known,
+[00:19:34] the parameters of linear model, then it is very simple.
+[00:19:38] Suppose that I give you the algorithm
+[00:19:41] with the problem of correlation.
+[00:19:43] What you can do, you can reset the image,
+[00:19:45] apply the algorithm, you see that the result
+[00:19:48] is exactly equal to the image that you have obtained.
+[00:19:54] So you don't need,
+[00:19:57] If you know the algorithm interpolation algorithm,
+[00:20:00] you don't need X estimation, strange estimation.
+[00:20:05] The point is that these algorithms are authentic.
+[00:20:09] So you cannot have an interpolation algorithm
+[00:20:10] inspired by same comments.
+[00:20:12] So what you do, you need to work knowing
+[00:20:15] that you have unknown interpolation.
+[00:20:18] You don't know whether the pixel is interpolated
+[00:20:20] or not.
+[00:20:21] So you don't know the weights of your interpolation
+[00:20:24] algorithm that you used to complete the average.
+[00:20:26] you don't know whether the pixel is interpolated or not.
+[00:20:32] So, how can you detect the interpolations?
+[00:20:36] So here, we work for a specific component,
+[00:20:42] RGB, so in this case we take okay the green,
+[00:20:45] but it is possible to do the same
+[00:20:47] representation for all the others.
+[00:20:48] So for the same representation,
+[00:20:50] we keep on working on a single component,
+[00:20:53] and it can be applied also if you are doing
+[00:20:55] in a simple interpolation of an image,
+[00:20:57] not doing it without interpolation.
+[00:20:59] So this is why we make it okay, this generalization.
+[00:21:01] But you can do the same for all the colors
+[00:21:03] and all the possible characteristics of your interpolation.
+[00:21:07] So how can we detect okay such interpolation?
+[00:21:10] So let's consider my signal, my intensity here,
+[00:21:15] which is I-hat-D-X-Y, which is, in this case,
+[00:21:20] it's an image, so it's just two-dimensional computations.
+[00:21:25] of a weighted sum of the i,
+[00:21:29] which are the authentic acquired pixels,
+[00:21:32] multiply weighted by the weights alpha.
+[00:21:36] So alpha basically is a parameter
+[00:21:40] that weights the different index.
+[00:21:43] So my interpolation can be seen,
+[00:21:46] can be modeled in a general way by this equation here.
+[00:21:50] So image id, here i hat d,
+[00:21:53] is the image that comes from my device.
+[00:21:57] Okay, and given this, the error,
+[00:22:02] okay, the idea error R that I need to estimate,
+[00:22:05] because I don't know R,
+[00:22:06] is the difference between the acquired image I
+[00:22:11] minus, okay, the interpolated ones.
+[00:22:15] Okay, so the original image
+[00:22:16] minus the estimated image I add
+[00:22:20] gives me, okay, the residual error
+[00:22:22] of such interpolation.
+[00:22:25] Notice that in this equation here,
+[00:22:27] I don't know the parameters alpha U, B, okay?
+[00:22:33] So this defines, okay, the parameters.
+[00:22:36] So finding the parameters corresponds
+[00:22:38] to the defining interpolator.
+[00:22:42] The problem in addition to this is that I don't know,
+[00:22:46] okay, which pixel are authentic
+[00:22:48] and which basically are the interpolators.
+[00:22:51] I need to perform this check.
+[00:22:53] If I am sure that these are authentic
+[00:22:56] and I'm sure that this is interpolated,
+[00:22:58] I can compute, okay?
+[00:22:59] Find out the parameter.
+[00:23:01] And then if this is very small,
+[00:23:05] I'm sure that I found out basically
+[00:23:07] the interpolation strategies using these parameters.
+[00:23:10] Okay?
+[00:23:11] So the parameters identifies the interpolation strategy.
+[00:23:15] This is the problem that I needed to get to find a way,
+[00:23:17] the reliable way to estimate these parameters.
+[00:23:19] Once I get these numbers, I have a certain signature,
+[00:23:22] an ID, a DNA for a specific camera model
+[00:23:25] or camera firmware.
+[00:23:27] So in order to do this,
+[00:23:29] we can use basically an approach
+[00:23:31] which is expectation maximization.
+[00:23:34] In expectation maximization,
+[00:23:36] I don't know how many of you have seen
+[00:23:38] expected EM algorithms, if you don't know.
+[00:23:46] Okay, so in order to have a complete discussion
+[00:23:50] all the prunes, all the theorems about EM,
+[00:23:53] you can go on the books, okay,
+[00:23:54] our position, or statistical learning
+[00:23:57] about the eyes of Michael Jordan,
+[00:24:02] statistical learning, you can find it in
+[00:24:04] statistical visualization, also maybe more
+[00:24:06] about Malcolm Bergen, you can find some information.
+[00:24:11] But, so this is basically just to give you
+[00:24:12] the flavor of the diagram and how the diagram works.
+[00:24:16] So, suppose that you have a set of points,
+[00:24:20] sort of pixels, sort of values,
+[00:24:21] generated by two sources,
+[00:24:25] pixel interpolating the pixel which is on the right.
+[00:24:28] We call these two sources A and B.
+[00:24:31] We assume that these are Gaussian.
+[00:24:34] So we can perform an estimation, okay,
+[00:24:40] of the model that defines these sort of points
+[00:24:46] by dividing up the estimation into two steps.
+[00:24:49] An e-step or estimation step
+[00:24:51] where you estimate the probability for each point,
+[00:24:56] and then the m-step, the maximization,
+[00:24:59] where you recompute the models
+[00:25:00] fitting for these graph characteristics.
+[00:25:04] For example, in the case of the two sources, A and B,
+[00:25:08] for each point, you give a probability value,
+[00:25:12] probability of belonging to A,
+[00:25:13] probability assuming that the points belong to B,
+[00:25:16] and then given these probabilities that you compute,
+[00:25:18] you can recompute the models so
+[00:25:22] that the movement feed the data more precisely.
+[00:25:27] In terms of equation,
+[00:25:31] it's a method that it is useful when you
+[00:25:34] have to work using the fact that we have
+[00:25:37] missing data in many pixels,
+[00:25:40] we don't have the original pixels,
+[00:25:42] we have the debraded bars in others,
+[00:25:45] and we don't know which one has been
+[00:25:46] interpolated to, which is not.
+[00:25:49] And therefore, we can use, in this case, the EM solver.
+[00:25:54] So suppose that the probability of each pixel X
+[00:25:59] is depending on the parameters theta,
+[00:26:02] and can be basically modulated as P of X given theta.
+[00:26:07] Okay, given, conditioned by the parameters theta.
+[00:26:09] And this probability, okay, is for each pixel,
+[00:26:13] independently whether it belongs, okay,
+[00:26:14] going to print pixels or not. What you can do, you can marginalize this probability by
+[00:26:21] defining this as the sum of all the probability given, the parameter z. The parameter z is,
+[00:26:32] let's say, hidden parameters that we can use to split the probability. So, the p of x is
+[00:26:38] is equal to the sum over z of the probability of x and z,
+[00:26:42] okay, and theta.
+[00:26:45] Therefore, we can associate with that probability
+[00:26:47] a likelihood, a log likelihood,
+[00:26:50] which is the sum of all the,
+[00:26:54] for all the points that have all the pixels that I have,
+[00:26:56] i is the index of the pixels,
+[00:26:58] the sum of the logarithm of the probability
+[00:27:00] of xi condition, depending on theta,
+[00:27:04] which is equal, since this is the logarithm
+[00:27:06] of this probability is equal to the sum of the logarithm of the sum of z i over p of x i z i.
+[00:27:17] So, from the bias rule that we have seen, okay, when we introduced it to Schaeffer, we can write
+[00:27:23] that the logarithm of p of x is equal to the logarithm of the sum over z of p of x and z,
+[00:27:30] And it's logarithm of q of z, probability of z,
+[00:27:35] multiplied by the probability of x, z,
+[00:27:38] divided by q of z.
+[00:27:40] This is the conditional probability of x given z.
+[00:27:45] This is the probability of z.
+[00:27:47] Some, it gives you the joint probabilities of x and z.
+[00:27:51] And basically this leads back, okay,
+[00:27:54] to the original probability.
+[00:27:55] This is what we have done.
+[00:27:57] So, this is simple from bias rule.
+[00:27:59] you can define the probability of x and z as a combination of the probability of z
+[00:28:06] for the conditional probability of p of x given z over q of z. Okay, given this,
+[00:28:16] this is a probability and this is a probability and therefore it means that
+[00:28:24] for all the values that are sums of all the z,
+[00:28:29] that probability is the sum goes to one.
+[00:28:33] So this makes, okay, this linear combination,
+[00:28:37] a convex linear combination.
+[00:28:40] A convex linear combination means that, okay,
+[00:28:42] this, okay, the sum of these weights is equal to one.
+[00:28:45] So being convex implies this inequalities, okay,
+[00:28:49] in your summing,
+[00:28:51] which implies that this is greater or equal
+[00:28:56] to basically the logarithm, okay,
+[00:29:00] that is applied here to this equation here.
+[00:29:02] So the logarithm of a linear combination
+[00:29:06] is greater or equal than the linear combination
+[00:29:09] of the logarithm.
+[00:29:10] It is what basically is the theorem.
+[00:29:13] And this is due to the fact that this is,
+[00:29:15] this function here, the log is convex, okay?
+[00:29:19] So a complex function of linear combinations,
+[00:29:22] I can write also in terms of equations,
+[00:29:26] gives you the possibility to
+[00:29:29] express this as greater or equal than this one.
+[00:29:34] So what I can say, I can say
+[00:29:35] that my initial probability,
+[00:29:39] the log of the initial probability p of x of
+[00:29:41] theta is greater or equal than this,
+[00:29:45] basically the double sum,
+[00:29:46] sum over z, the sum of all the points,
+[00:29:49] of the probability of this hidden variable
+[00:29:52] for the logarithm of the conditional probability
+[00:29:55] of xi given zi or the ratio between the joint probability
+[00:30:00] and the probability of zi.
+[00:30:03] Notice that this is the posteriori distributions.
+[00:30:07] Typically, it is the probability of zi, okay,
+[00:30:12] given xi and theta.
+[00:30:16] So this is something, so you have two probabilities,
+[00:30:19] this probability here, this probability here,
+[00:30:21] and in the expectation of optimization problem,
+[00:30:25] what you do, you estimate the first model,
+[00:30:28] you face the model, you estimate the others,
+[00:30:29] you face the others, you estimate the model,
+[00:30:31] you go all this way, back and forth.
+[00:30:36] And so given this, okay, you can approximate, okay,
+[00:30:41] Q of Z as the probability of Z given X and theta.
+[00:30:46] This is equal to this ratio.
+[00:30:49] We can explore this as the sum over Z
+[00:30:52] and the P of X given Z,
+[00:30:53] and multiply by P of Z.
+[00:30:55] This is the joint probability of X and Z.
+[00:30:58] And this is split into condition
+[00:31:00] and multiply by P of Z.
+[00:31:03] And you can do the same also here.
+[00:31:05] You can condition with respect to Z.
+[00:31:07] So the probability of X and Z given theta
+[00:31:10] is the probability of X given theta and Z,
+[00:31:13] multiplied by g of z.
+[00:31:17] And therefore, in this way,
+[00:31:20] this, if you associate, basically,
+[00:31:25] your output, okay, to z,
+[00:31:28] and you associate, okay, the modalities, okay,
+[00:31:30] the modal to theta,
+[00:31:32] theta defines the modal,
+[00:31:33] you can express, okay, these equations also in this way.
+[00:31:39] So, since the modals that we have are equally probable,
+[00:31:45] So it's probable that my pixel has been interpolated at least till it is authentic, okay.
+[00:31:50] So both of them are equally probable.
+[00:31:54] You can say that Qz is equal, basically, to the probability of X on the mode, okay,
+[00:32:00] and given the sum of X in the mode plus Qx given R.
+[00:32:06] Basically, I'm dividing, okay, this and this here.
+[00:32:12] And this is equal, basically, to the value between the quid and the likelihood of modalities
+[00:32:18] and the output.
+[00:32:19] So this is due to the model,
+[00:32:21] this is due to the positions.
+[00:32:23] We have the distributions between the values
+[00:32:25] between model and the output.
+[00:32:27] Then, given these simplifications,
+[00:32:30] okay, you can put this into the algorithm,
+[00:32:33] and therefore you have in the E-steps,
+[00:32:35] what you do, you compute basically the probability,
+[00:32:39] ratio between L-mode and L-mode plus L-out, okay?
+[00:32:43] Given this, which is response to the sum
+[00:32:45] for all the points, the average
+[00:32:47] for all the points of the probability of z i given x i, i.
+[00:32:52] So in this case, you freeze, okay, the points,
+[00:32:55] and then you estimate the probability of the model.
+[00:32:59] And then you maximize, again, such a probability
+[00:33:01] by filling these estimates into these equations,
+[00:33:05] and you maximize, basically,
+[00:33:07] the value of probability of x i given z i.
+[00:33:12] And this is done multiple times.
+[00:33:15] You freeze one element in the others
+[00:33:18] until you get to convergence.
+[00:33:19] And this gives you the final estimations
+[00:33:22] of your problem with this.
+[00:33:25] You can find a tutorial on this video here.
+[00:33:30] If you need further information,
+[00:33:33] you can also check this on books.
+[00:33:35] There are many, many examples,
+[00:33:36] especially for binary values, okay?
+[00:33:38] Where you can split your values into virus.
+[00:33:41] this is a general, okay, very quick idea about
+[00:33:44] expectation optimization.
+[00:33:47] And in the Mosaician, okay, what you do,
+[00:33:51] basically, you assume, okay, that the probability
+[00:33:54] of observing a sum generated by weights is motion, okay,
+[00:34:00] and the probability of the other, okay,
+[00:34:03] of pixel which has not been generated is uniform.
+[00:34:08] And therefore, you can assume, okay, the values, okay,
+[00:34:13] W xi to be equal to the probability of alpha of that specific weights given the
+[00:34:20] residual of these deviations. And this probability given on these samples is
+[00:34:26] equal to the ratio between the exponential minor R squared over sigma
+[00:34:30] and R squared over sigma plus one over theta. One over theta is the uniform
+[00:34:34] probability of having a different model with respect to the world distances, okay.
+[00:34:43] Then this is the preview, the e-step, okay. Then given these values here that
+[00:34:48] you have computed in the e-steps, you compute, okay, the residual, where this is the
+[00:34:54] probability of alpha, and in the m-steps you compute, okay, the weights.
+[00:35:00] So basically, you estimate the sum, okay,
+[00:35:05] that the weighted sum of the difference,
+[00:35:08] this is the residual difference, dr squared,
+[00:35:10] okay, that you have and you estimate basically
+[00:35:12] this value of weights that minimize, okay.
+[00:35:21] Okay, examples, so here you have examples of an image.
+[00:35:27] This has been interpolated,
+[00:35:28] this has not been interpolated.
+[00:35:30] the probability for each pixels that you have is basically
+[00:35:36] for the colors that you have is this one
+[00:35:38] for the interpolated one,
+[00:35:40] and for not interpolated one this is for not interpolated
+[00:35:45] as you can see it's much more uniform
+[00:35:47] in terms of probability.
+[00:35:49] And if we compute the fully transformed
+[00:35:53] you can see that in the case of the interpolated image
+[00:35:58] you have that this is the free form.
+[00:36:00] So you have some very peaks, okay, in the commodities.
+[00:36:05] This is due to the fact you have a periodical, okay,
+[00:36:07] with the position that is in the purchase here.
+[00:36:09] And this periodical position interviews, okay,
+[00:36:13] like a signal that is periodic, like a sine or cosine.
+[00:36:17] And that is why you have a looks like this
+[00:36:19] in the free performance.
+[00:36:20] That is the cosine that you have signal start.
+[00:36:23] If you're in generic image,
+[00:36:25] you can see that the results is much, much more,
+[00:36:27] and there is much, much more regularity.
+[00:36:29] This is because there is no interpolation.
+[00:36:32] There is not a periodic computations of the pixels
+[00:36:34] which is repeated through the image.
+[00:36:39] So there is a larger discussion about EM
+[00:36:43] in the files that I uploaded on the MUGO.
+[00:36:46] So if you go from the notes,
+[00:36:48] from the media files,
+[00:36:49] you can find a whole discussion about noise
+[00:36:52] that you have in the humanist.
+[00:36:54] and also you have information about the PDEM
+[00:36:59] I've already applied for image distributions.
+[00:37:03] If there are issues,
+[00:37:04] if you have questions for complexities,
+[00:37:06] okay, you can contact me, okay.
+[00:37:09] In the end, EM is a nice element to know
+[00:37:11] because it has been used for many, many,
+[00:37:13] many different types of applications.
+[00:37:15] So it is important to have that.
+[00:37:20] Okay, so we have reached 10 past nine.
+[00:37:24] so before we start with the version,
+[00:37:27] we have five new posts.
+[00:37:46] I sent the, for my projects, the order.
+[00:37:52] Yeah?
+[00:37:52] I sent my preferences, but I don't know it.
+[00:37:58] Okay, so we start again.
+[00:38:00] So, in the pipeline of your processing of the image,
+[00:38:10] we have seen that there are traces left by the lens,
+[00:38:14] traces left by the circuitry,
+[00:38:15] This is left by the type of interpolation,
+[00:38:19] which is generated here, okay, so sampling done on this,
+[00:38:23] but the interpolation is done by the fingers of the cameras
+[00:38:26] and finally, this image we said is stored,
+[00:38:30] stored in memory.
+[00:38:31] So the final step that introduce artifacts, okay,
+[00:38:36] into the image that can be used for this application
+[00:38:41] is the progression.
+[00:38:43] so just a quick okay overview reminder that these traces are left by
+[00:38:54] So we have operations that are,
+[00:38:56] let's introduce distortion, okay?
+[00:38:59] Some last information.
+[00:39:01] So compression, we're talking about last compression
+[00:39:03] because we introduced distortion.
+[00:39:06] The interpolation, we have lost information
+[00:39:10] because we don't have three colors on all the pixels.
+[00:39:13] So sorry, all the pixels.
+[00:39:17] So we have lost it.
+[00:39:21] So whenever there is some lost information
+[00:39:23] we need to perform these names.
+[00:39:25] Okay, this introduces artifacts
+[00:39:30] So as for the compression okay in the compression we basically wants to
+[00:39:35] shrink the image typically this is something which is done for images
+[00:39:40] videos audios most of the signals that we have to do
+[00:39:43] in our daily life are compressed.
+[00:39:48] Typically they are compressed with a lossless compression.
+[00:39:51] Why, how?
+[00:39:53] If you, typically distinguish between
+[00:39:55] lossless and lossless compression.
+[00:39:56] Lossless compression is a compression
+[00:39:58] where you can reconstruct the data
+[00:40:02] before decompressing in a particular way.
+[00:40:05] For example, zip, rar are lossless compressions
+[00:40:10] because you take a file, you take a document,
+[00:40:12] when you take a video, you run the video,
+[00:40:15] you run the documents, and then when you RRR,
+[00:40:18] you get exactly the same video that you had in the video.
+[00:40:21] There is no change.
+[00:40:22] But you reduce the size.
+[00:40:24] As an example, you can think about the Morse code.
+[00:40:29] This Morse code is one of the first examples
+[00:40:32] of compassion.
+[00:40:35] Because typically, you assign a number of symbols,
+[00:40:39] which can be other dots or lines,
+[00:40:41] which depends on the frequency of the letter.
+[00:40:44] So, as you can see, e, this is the most frequent, okay,
+[00:40:49] letter, message, well, it's a sign with one dot, okay?
+[00:40:55] So, and for the least frequent elements,
+[00:41:00] like for example, j, it is a sign with a full symbol,
+[00:41:05] dot, line, line, line, okay?
+[00:41:06] Okay, so the most probable are basically the shorter words
+[00:41:13] and the least probable are the longer words.
+[00:41:15] Why do we do this?
+[00:41:16] Because you minimize the amount of serenity.
+[00:41:20] And this is done by lossless, by Morse code
+[00:41:24] and the same principle, the same concept is,
+[00:41:26] for example, used in APMA code, okay,
+[00:41:30] which are basically the files from the GPU index products.
+[00:41:34] Or it's also done for zip,
+[00:41:35] where you give, okay, frequently,
+[00:41:38] elements with the shorter amounts of bits,
+[00:41:42] shortness in what bits, in the listable elements
+[00:41:44] you can build, okay, around the coding
+[00:41:46] you know which has.
+[00:41:50] So these are basically lossless coding.
+[00:41:54] In lossy coding, we do the same.
+[00:41:57] So lossy coding has elements of the lossless coding,
+[00:42:00] so this variable length, mappings, and so on.
+[00:42:03] But the problem is that you can achieve higher compressions,
+[00:42:10] so stronger compression ratios,
+[00:42:13] by using some of these tools,
+[00:42:14] by simplifying the complicated signals.
+[00:42:17] And this simplification is done with quantization.
+[00:42:20] So this simplification makes the signal less adherent,
+[00:42:27] less matching with the original one,
+[00:42:30] but makes my bitstream much, much shorter.
+[00:42:34] We're going to see this in a few spots.
+[00:42:38] The problem is that by performing this simplification,
+[00:42:41] you're introducing a distortion,
+[00:42:43] because the signal is not any more than the third one.
+[00:42:46] The CCD is not any more than the third one.
+[00:42:48] You have to pay this compression
+[00:42:51] with some reduced quality.
+[00:42:54] How much?
+[00:42:55] It depends.
+[00:42:56] The more I want to compress,
+[00:42:57] That's the more I need to reduce the quality of the image,
+[00:43:05] of the video, of the audio,
+[00:43:07] of the data that you want to represent.
+[00:43:10] Typically this distortion is measured by MSE.
+[00:43:15] So this is the difference between the original image
+[00:43:18] and the image after reconstruction, after compression.
+[00:43:22] And this is, well, this is MSE, this denominator here.
+[00:43:25] Now, this measurement here is a simple way
+[00:43:29] or a versed way of looking at MSC, okay?
+[00:43:32] But it's, in MSC, the higher is the MSC,
+[00:43:36] the higher is the distortion.
+[00:43:38] If you, instead of using the MSC,
+[00:43:40] use the PSNR, which is the peak signal demonstration,
+[00:43:43] the higher is the peak signal demonstration,
+[00:43:45] the lower is the distortion.
+[00:43:46] So what MSC is a distortion measurements,
+[00:43:49] PSNR is a quality measurement, okay?
+[00:43:52] But basically, they are very, very related.
+[00:43:55] So we have this other quality measurements,
+[00:43:58] other quantum metrics, which is called SSIM.
+[00:44:02] There is also some subjective measurements,
+[00:44:05] no reference measurements.
+[00:44:06] So typically this, you need to have the original image
+[00:44:11] and perform a comparison with the original one
+[00:44:13] with respect to the ones that you have reconstructed.
+[00:44:17] Other metrics they do not need,
+[00:44:19] they have no reference metrics.
+[00:44:21] And this is something that you can measure,
+[00:44:23] that you can do for any lossy compression, okay.
+[00:44:27] What are lossy image format?
+[00:44:29] JPEG, GIF, JPEG 2000 can be lossless and also lossy.
+[00:44:34] Video format, MPEG-124, H2-67 with the four, five,
+[00:44:38] HEVC, HEVC.
+[00:44:40] Now we have H2-66 or BBC, okay,
+[00:44:44] which is the latest on what's from IGVX.
+[00:44:49] We have FLD, YARG, Webroom.
+[00:44:50] all these are lossy video formats.
+[00:44:54] Typically, video is always lossy.
+[00:44:57] Images, it depends.
+[00:44:59] It is possible to acquire raw images.
+[00:45:01] For example, professional photographers
+[00:45:03] acquire raw images, and then edit this in the video
+[00:45:07] and use the software.
+[00:45:08] But most of the images you find on the web
+[00:45:11] are for lossy format and video format.
+[00:45:17] So why do you lose quality?
+[00:45:19] So you have an example here of two images.
+[00:45:23] So the amount of compression, this is G-cagnosis,
+[00:45:26] the amount of compression is ruled by the quality factor
+[00:45:29] or QF, QF equal to 100, okay, that goes from zero to 100.
+[00:45:35] And 100 means very, very low compression,
+[00:45:38] so if you have QF equal to 90, you have a PSNR,
+[00:45:42] so if you want to measure it equal to 0.1,
+[00:45:44] which is very, very good.
+[00:45:46] The bit per pixel, so the amount of bit rate,
+[00:45:48] the number of bits we get for each pixels,
+[00:45:49] is 2.1 on average,
+[00:45:53] and therefore you have a compression
+[00:45:54] which is about one to 10.
+[00:45:57] Assume that you have 24 bits of pixels,
+[00:46:01] two colors in RGB,
+[00:46:03] eight plus three plus eight minus 24.
+[00:46:05] The compression ratio in this case is about one to 10.
+[00:46:09] You can see that the quality is very, very good.
+[00:46:11] The image is very close to the G dot one.
+[00:46:14] If I use a quality factor equal to 10,
+[00:46:17] Okay, this scenario in this case goes down to 31.98,
+[00:46:23] but, so lower quality, but the middle pixel
+[00:46:26] in this case is 0.31, okay,
+[00:46:30] so it's much, much shorter to play
+[00:46:32] with a compression ratio, which is one to 77, okay?
+[00:46:37] If you look at the image, you have basically a square,
+[00:46:41] market decisions, all these artifacts, okay?
+[00:46:45] due to the fact that there are some compressions
+[00:46:47] on the symbols.
+[00:46:49] So how does JPEG works?
+[00:46:51] But this is basically a pipeline that can be applied
+[00:46:54] and is analyzed to different types of image compression,
+[00:46:58] different types of video compression streams.
+[00:47:00] So you start with an image with a three matrices RGB.
+[00:47:04] You mix a color conversion,
+[00:47:06] you want to represent the image as luminance,
+[00:47:10] which means grayscale of the image,
+[00:47:13] plus the two various components.
+[00:47:17] And then you divide the image into eight by eight
+[00:47:20] pixel blocks.
+[00:47:22] On each eight by eight pixel blocks,
+[00:47:24] you apply a transform.
+[00:47:26] We use in JPEG the visity transform,
+[00:47:28] which is similar to the Fourier transform that we have
+[00:47:31] seen, you'll notice it is better in a few slides.
+[00:47:34] And then we represent, in one single,
+[00:47:36] using the coefficients of the subset's formation.
+[00:47:41] You quantize the coefficients,
+[00:47:42] you basically map the coefficients quantized into integrals
+[00:47:47] and you convert these integrals into basically
+[00:47:50] a binary streams by using some PTC encoding
+[00:47:55] around like coding into something binary, binary streams.
+[00:48:01] So what is the fundamental?
+[00:48:02] Okay, this is just to summarize for completeness,
+[00:48:05] but what's the fundamental to remember
+[00:48:06] is this operation here,
+[00:48:08] because this is what it used by forensic traces,
+[00:48:11] by fancy elements into the, they can exploit, okay,
+[00:48:16] on the image.
+[00:48:17] So, as we said, okay, you take the image,
+[00:48:20] you divide into blocks, eight by eight blocks,
+[00:48:23] and for each blocks, you apply the Fourier transform.
+[00:48:27] If you apply the Fourier transform,
+[00:48:29] the Fourier transform looks like this, okay?
+[00:48:31] So the Fourier transform of the same as looks like that.
+[00:48:34] If you use DCT, you can see that DCT
+[00:48:38] compress a lot, okay, the signal.
+[00:48:40] So, why do I prefer the CT?
+[00:48:42] Because I have a fewer coefficient different from zero.
+[00:48:47] Therefore, I have fewer information to use this about.
+[00:48:50] So, what I can say in CMAT is that
+[00:48:54] I can write down in the midstream only this information
+[00:48:57] and then I can say all that information is zero, okay?
+[00:49:01] So, it's better to have a transform that compress,
+[00:49:03] compact, okay, the information for this basis.
+[00:49:05] So, given these blocks, okay, of the original pixel data, these are the pixel intensities,
+[00:49:11] I apply the VCT, the resulting block is this one. So, you can see that from 8 by 8 blocks,
+[00:49:18] you can get to only four coefficient different from zeros. Then I perform quantization
+[00:49:26] because I'm not, I'm still not happy, okay, with this question. So, what we can do,
+[00:49:31] I basically perform a quantization that we are,
+[00:49:34] I divide basically by a quantization step.
+[00:49:37] In this case, the quantization step is two.
+[00:49:39] And this takes, okay, this value here
+[00:49:41] and convert this into basically an integer.
+[00:49:46] So this is, in this case, I'm using the floor operation.
+[00:49:50] You can do a round, okay,
+[00:49:51] depends on the specific strategies.
+[00:49:53] So starting the set of pixel values
+[00:49:55] or in this case coefficient values or sample values,
+[00:49:59] so this is to vary, which is equal to 39, 38, 37, 38.
+[00:50:03] I can divide by two, I divide it by two
+[00:50:07] performing the quantization, this becomes 19
+[00:50:11] because 39 divided by two makes 19,
+[00:50:15] make 19.5 on the floor, 19.
+[00:50:18] Then I have 38 divided by two is 19,
+[00:50:22] and the floor is 19, 37 divided by two goes to 18, 19,
+[00:50:27] and so on, this is the quantization.
+[00:50:30] I can reconstruct the original signals, yes,
+[00:50:33] by multiplying by the quantization stat Q.
+[00:50:36] So 19 multiplied by two, I got 38, 19 by two, 38,
+[00:50:41] 18 by two, 36, 19, and so on.
+[00:50:46] Notice that I have distortion.
+[00:50:50] I have distortion because this was 39,
+[00:50:54] but I reconstruct 38.
+[00:50:55] I have a difference equal to one. This one 38 is reconstructed as 38 okay the
+[00:51:01] difference is 0. This is 18 it is reconstructed at 36 the difference is 1.
+[00:51:08] Okay so depending on the specific samples I can have correct
+[00:51:16] reconstruction or not. This is quantization. So those blockiness defined on the image
+[00:51:22] compressed with JPEG is the patterning of these effects here,
+[00:51:26] all the quantization.
+[00:51:27] The strong is the quantization.
+[00:51:29] The strongest are the other parts,
+[00:51:31] the blocks that they see on the binary image.
+[00:51:35] And this introduce ringing effects, like this,
+[00:51:41] or blocking effects, blocks, as you can see,
+[00:51:44] are due to strong quantization
+[00:51:45] that you are operating on that image.
+[00:51:49] Okay, after doing this, after quantization,
+[00:51:51] you write this into a binary midstream,
+[00:51:53] so you take the index, the integers,
+[00:51:56] and you write this into binary midstreams,
+[00:51:58] which is encapsulated into a specific format,
+[00:52:01] okay, in a file format.
+[00:52:03] If you remember, so in the data carving lecture,
+[00:52:08] we talked about that every event file
+[00:52:10] starts with this special number,
+[00:52:12] and ends with that special number.
+[00:52:15] Now, if you go between those special numbers,
+[00:52:18] you can see there is a much more nested
+[00:52:22] and specified constructions on these frames.
+[00:52:26] For precisely, you start in the frame,
+[00:52:28] for this you have a header,
+[00:52:29] contents at the end of the frame,
+[00:52:31] then you have a scanning information
+[00:52:34] that contains all this header,
+[00:52:36] it contains the image size, the components,
+[00:52:39] the distribution formats,
+[00:52:40] then you have the identity of each different components,
+[00:52:43] and everything basically is a store
+[00:52:46] to the inside of the database.
+[00:52:47] There is a specific containment,
+[00:52:50] container structures for JPEG.
+[00:52:53] And this is true also for mediums.
+[00:52:55] For any other types of things,
+[00:52:58] I mean, the difference between the structures,
+[00:53:00] I mean, of all the packets,
+[00:53:02] I mean, the frames, sometimes the slices.
+[00:53:07] Okay, this is something that depends
+[00:53:10] on the specific standards, okay?
+[00:53:12] And this gives you basically the final results,
+[00:53:16] the final data.
+[00:53:16] So this is true for JPEG. When you work on other types of media, so you're not compressing images, you're compressing audio or video, we have similar strategies.
+[00:53:28] So the strategies of transforming information, quantizing, and then managing those strategies are always kept.
+[00:53:37] But there can be differences depending inherent with the nature of the audio of the signals that are the signals generic that you are using.
+[00:53:46] For example, for audio, for the MPEG standards, we have that we are dividing the signals
+[00:53:57] using filter banks, so we are selecting different ranges of frequencies, and then for each
+[00:54:04] range of frequencies we are performing.
+[00:54:09] So this is done because you want to give different qualities to different sub-ranges
+[00:54:16] of frequencies, okay?
+[00:54:18] So it is more efficient if you divide
+[00:54:20] what you see and what you see for different field styles.
+[00:54:25] And this is why in JPEG we perform
+[00:54:28] basically these types of coding.
+[00:54:31] So we then, this mapping to filter bag,
+[00:54:34] we use psychoacoustic models,
+[00:54:36] which basically says that this information can be heard,
+[00:54:39] this information cannot be heard.
+[00:54:41] If this information is not supposed to be heard,
+[00:54:43] basically we have that we can move them there is no point for example we know
+[00:54:53] from music if you have one note which is extremely strong and a very close
+[00:54:58] note which is played and you can remove the second note. There are frequencies which can be removed from the sequence and doing this this
+[00:55:09] depends on the cycle custom models which depends on the type of music that
+[00:55:13] that you are basically synthesizing
+[00:55:15] and also all types of signals that you are synthesizing.
+[00:55:18] So this allocated different quantization
+[00:55:22] on the different signals
+[00:55:23] and then this is created in the bit series.
+[00:55:29] Notice, so this quantization leaves traces.
+[00:55:34] Okay, so quantization leaves traces on the image,
+[00:55:36] quantization leaves traces on the signals.
+[00:55:39] And as for video, in video we have exactly
+[00:55:42] the same strategy that we have for JPEGs
+[00:55:45] and the same scheme transformed quantized
+[00:55:48] by the big sims, but in the videos,
+[00:55:51] what we know, we know there's a correlation
+[00:55:53] between one frame and the next one.
+[00:55:55] For example, if you consider a video,
+[00:55:58] oh, this is really extremely dark, okay?
+[00:56:04] Basically, this is a frame from Lord of the Rings,
+[00:56:07] okay, that the Legolas is jumping
+[00:56:10] from this part of this other,
+[00:56:11] So this motion can be modeled as a translation.
+[00:56:15] So I can take these blocks and move these blocks
+[00:56:18] across different frames.
+[00:56:20] This is called motion composition or motion prediction.
+[00:56:26] And therefore, you can start in the current frame
+[00:56:29] to be coded.
+[00:56:31] You have some frames that you already are available
+[00:56:34] on the buffer because you already have decoded this.
+[00:56:37] You can perform some prediction using this moving,
+[00:56:40] okay, the blocks, for example, I can move, okay,
+[00:56:43] these blocks here a bit more, and then I can generate,
+[00:56:46] okay, this, which is basically a prediction.
+[00:56:50] So this is supposed to be a predictions
+[00:56:51] of this frame here, okay?
+[00:56:54] And therefore, I can compute the difference
+[00:56:56] with respect to this one, and instead of coding
+[00:56:59] this image, this is an image, I'm encoding this image,
+[00:57:03] using, for example, to do that,
+[00:57:05] or the schema is needed to do that.
+[00:57:07] So this difference basically makes this signal here,
+[00:57:13] which is much simpler to be compressed.
+[00:57:15] Motion vector are information that you can use
+[00:57:19] to detect the specific conduct that has been used.
+[00:57:27] And the conduct is an element that you can detect,
+[00:57:31] you can exploit it to verify the model of the camera,
+[00:57:42] and so these are the standards okay there is a bit of summarization but okay
+[00:57:54] Okay, so we have seen that most of the information
+[00:57:58] for images, videos, is stored in the reference information
+[00:58:02] report, is stored in the progression, transition,
+[00:58:06] and in the motion prediction, okay?
+[00:58:09] Let's focus on JPEG, okay, a bit about what is shown,
+[00:58:13] because composition is something which is useful
+[00:58:17] for media identification, for image identification.
+[00:58:20] We also mentioned that you have blocking artifacts
+[00:58:22] with artifacts and this looking at this artifacts
+[00:58:28] allows you to determine, to characterize
+[00:58:32] the specific code, defect code,
+[00:58:35] or version of defect code that you have.
+[00:58:40] Because typically, most of the coding standards
+[00:58:44] are made multiple code, are made by details
+[00:58:48] which are specified by the standards.
+[00:58:50] and details which are not specified by the standards.
+[00:58:54] So the standards typically,
+[00:58:56] and if you read the standards of compression,
+[00:58:58] the standards specify this code,
+[00:59:02] specify how the big strings need to be read.
+[00:59:07] And once you write a big string,
+[00:59:11] which is compatible into 10 standards,
+[00:59:13] you get back from your code in the M3,
+[00:59:16] you are done, you are happy with that.
+[00:59:19] as we talked about, we are not talking about it.
+[00:59:21] The code, you can re-insicate the product,
+[00:59:26] the product is correct, and you can reproduce that.
+[00:59:29] If you're able to do something really ugly,
+[00:59:32] that is your problem.
+[00:59:34] So the fact that you want to write a bit thing
+[00:59:37] that is extremely good, extremely complex,
+[00:59:40] that reproduce an image or a video which looks nice.
+[00:59:43] So typically, these standards are made
+[00:59:44] by many non-normative elements.
+[00:59:48] The codec is made by many non-normative elements.
+[00:59:52] I'm not telling you how to compress this theory.
+[00:59:56] You decide to compress this problem.
+[00:59:58] I'm not telling you how to perform motion predictions.
+[01:00:01] You decide, the ones that prepare,
+[01:00:03] okay, the four of you decides
+[01:00:04] how to estimate the motion vectors.
+[01:00:07] I'm not telling you, like I'm not telling you
+[01:00:09] how to perform the current interpolation from CFA.
+[01:00:12] You decide how to perform that current interpolation.
+[01:00:15] If you have a very good strategy, you're going to win.
+[01:00:21] but once the bit stream is perfectly readable from JPEG, okay, that is done. So this is why
+[01:00:29] these artifacts, which are depending on how you do quantization, are useful because art
+[01:00:37] are traces that you can explore in any part of the object
+[01:00:40] and then say, how can we do that specifically?
+[01:00:44] Moreover, if you look at the statistics of this data,
+[01:00:52] you can also detect some interesting part.
+[01:00:54] For example, if the image has been compressed twice.
+[01:00:58] Imagine that I want to take a picture of you
+[01:01:01] and I want to remove a part from your picture
+[01:01:05] and change, okay, on this picture or some other.
+[01:01:07] For example, I want to show you taking the sun on the beaches instead of carrying it
+[01:01:17] with a pencil and a cloth.
+[01:01:19] Okay?
+[01:01:20] So, basically you take your face, place this on your body, place this into a picture,
+[01:01:28] made of beaches, using the op-shot.
+[01:01:32] And then you create a jetpack.
+[01:01:35] So suppose that the beach beaches are basically not compressed a certain
+[01:01:43] amount of times and your picture is authentic not compressed. In the final
+[01:01:48] picture you have elements compressed in different amounts of times. So looking
+[01:01:54] in four parts or picture that have been compressed more than once,
+[01:01:59] gives you tools that's about the amount of height
+[01:02:02] discussed in this diagram.
+[01:02:04] And how can you look at this?
+[01:02:06] Well, imagine that here we have a source.
+[01:02:09] This is a Gaussian source, which has been quantized.
+[01:02:14] And after quantization multiplied by the quantization
+[01:02:16] step, you have the quantization
+[01:02:18] gives you these great structures on statistics.
+[01:02:22] So this is the probability.
+[01:02:23] okay, it's a property distribution, Gaussian.
+[01:02:26] I quantize, okay, these values.
+[01:02:28] What I get, I get the statistics that looks like this.
+[01:02:31] This is zero because I don't have values here.
+[01:02:34] Quantization gives me output on certain values.
+[01:02:38] Suppose now that I take these values here
+[01:02:40] and I perform a second quantization
+[01:02:42] with a different quantization status.
+[01:02:45] Look at the statistics.
+[01:02:47] The statistics is not following anymore.
+[01:02:49] So this is a single quantized source.
+[01:02:52] This is a double quantized source.
+[01:02:54] We see there are a lot of oscillations.
+[01:02:57] And these oscillations, analyzing these oscillations,
+[01:02:59] allows you to say that this image has been compressed
+[01:03:03] twice, or this source has been compressed twice.
+[01:03:07] And also, you can estimate also the population status
+[01:03:11] for the first quantization and the second one.
+[01:03:14] So this is why, together also with the distortions
+[01:03:17] that you can perform, you can also
+[01:03:20] So estimate from the statistics of the quantized elements
+[01:03:23] in the case of using back coefficients,
+[01:03:26] you are talking about the DCT coefficients.
+[01:03:29] So look at the statistics of different G-fact values.
+[01:03:33] It is possible to get physical information
+[01:03:35] about the quantization, how many quantizations,
+[01:03:39] which were the quantizer step that you have used,
+[01:03:42] and why this is important.
+[01:03:45] Well, this is important because, for example,
+[01:03:47] after the quantization steps is something that reveals
+[01:03:52] which code has been used and where that index
+[01:03:55] is originally defined.
+[01:03:58] For example, in this work by FusionNet,
+[01:04:01] it is by looking at the quantization steps
+[01:04:04] used to quantize an image,
+[01:04:06] it is possible to understand which social network
+[01:04:11] has been, is the origin of that specific image, okay?
+[01:04:16] because we mentioned at the beginning of this journey
+[01:04:20] of the forensics is that when you upload an image,
+[01:04:24] Facebook is going to take the image,
+[01:04:26] it's going to recompress the image in its own algorithm
+[01:04:30] and then post this in that way.
+[01:04:32] That recompression will produce some artifacts, okay,
+[01:04:35] on the statistics, on the coefficients,
+[01:04:38] that allows us to estimate, okay, the origin, Facebook,
+[01:04:41] with 91.31 percent of this.
+[01:04:46] So it's possible to distinguish different sources
+[01:04:49] very very well looking at the artifacts of combustion.
+[01:04:53] And this is extremely important
+[01:04:54] if you have to claim some property.
+[01:04:57] So from a bigger point of view,
+[01:05:00] it's possible to do this for codex of the machine
+[01:05:04] or the forms that you have.
+[01:05:06] So this is something which is used
+[01:05:07] in order to authenticate and trace the origin
+[01:05:10] of the image.
+[01:05:13] So, most of this introduction has been done on images
+[01:05:16] because we mostly communicate visually,
+[01:05:20] mostly we communicate just images and videos.
+[01:05:22] It is possible to have very similar approaches on audio.
+[01:05:29] And therefore, let's see what are the traces
+[01:05:33] you can explore in order to authenticate an audio.
+[01:05:38] So, if information is about audio,
+[01:05:41] So it's the sound pressure which is acquired
+[01:05:43] by the microphone.
+[01:05:44] The microphone has an array which is basically
+[01:05:47] the equivalent of the here, that's the inverse.
+[01:05:53] And this vibration here is converted into signals.
+[01:05:57] The same, the microphone converts these vibrations
+[01:06:00] into a voltage, okay, which is basically acquired
+[01:06:06] by an ADC unit.
+[01:06:10] Notice that, so you have the sounds, okay.
+[01:06:16] Voltage, the voltage is converted into a numerical,
+[01:06:22] signals by an ADC, so it is sampled,
+[01:06:26] and converted using a final riser,
+[01:06:28] so digitized into bits.
+[01:06:30] So you have a sequence of numbers, okay,
+[01:06:32] like we have stated at the beginning.
+[01:06:36] The sample frequencies is basically,
+[01:06:39] you control how frequently you sample through the signals.
+[01:06:43] And this depends on the characteristics of the signals
+[01:06:46] that you want to represent.
+[01:06:48] It depends also on the specific quality that you have.
+[01:06:54] For example, CD is sampled at around 44 kilohertz.
+[01:06:59] For phone communication, eight kilohertz are enough
+[01:07:02] because the voice ranges into a range of 80 kilohertz so this is basically an
+[01:07:09] animation to reproduce basically the how your microphone your phone works and
+[01:07:16] it's possible to reverse okay the process so given the signal you can
+[01:07:23] interpolate the signal into a continuous voltage which is sent to the
+[01:07:28] loudspeaker, and the loudspeaker, basically,
+[01:07:32] using this voltage signal, this makes oscillates,
+[01:07:36] this magnetic, okay, circuits,
+[01:07:38] and this makes, okay, the voice,
+[01:07:41] the signal will be reproduced, okay, in the air.
+[01:07:45] Okay, given this, what are the traces
+[01:07:48] that we can look in code?
+[01:07:52] Typically, for audio, we also have,
+[01:07:56] for images, we want to authenticate the audio,
+[01:07:58] identify the sensor that has been acquired,
+[01:08:02] identify also other contextual components,
+[01:08:05] the characteristics of the rooms.
+[01:08:07] We want to localize that specific audio.
+[01:08:09] And we also want to verify the integrity of the audio,
+[01:08:13] so the depth discontinuities or specific attacks
+[01:08:16] that by the way, we should not access.
+[01:08:19] A few years ago, it was possible, an example,
+[01:08:22] to sign a contract with voice. For example, someone calls you, okay, what about these new forms, new services, and then you lift up the phone, and when you lift up the phone, you answer yes, okay.
+[01:08:41] I want to tell you, I'm going to take that yes and then propose a form of foreign composition
+[01:08:48] and pretending that we are also to ask a set of questions by myself.
+[01:08:54] For example, if you agree to sign a form of yes, okay,
+[01:08:58] you can do foreign composition in many cases in the legal issues for this
+[01:09:06] that were created in order to make little money,
+[01:09:12] make some little, okay, from the point of view.
+[01:09:16] Because at the moment, the contract signed
+[01:09:18] in the voice by phone was valid.
+[01:09:21] In some legal systems, it is not valid.
+[01:09:24] So, when you find the integrity, it's going to go.
+[01:09:27] As well as detecting an integrity from a law view
+[01:09:31] that is basically fake, for example.
+[01:09:35] So, how can we detect this?
+[01:09:37] How can we find this?
+[01:09:38] Well, we have different types of features.
+[01:09:41] We have features related to the codex,
+[01:09:43] the MP3 codex, that's two,
+[01:09:45] so we have all those interpolation features
+[01:09:48] that can be used as well for audio.
+[01:09:52] Specifically, to audio, we need to measure
+[01:09:54] these three elements here.
+[01:09:57] The electric and network frequencies,
+[01:09:58] is the kind of base, consistency analysis
+[01:10:03] of some lot of phenomena,
+[01:10:04] together also with the microphones response,
+[01:10:07] which is, let's say, is the PRNU equivalent,
+[01:10:09] the equivalent of PRNU for microphones.
+[01:10:12] So let's start with the first one, the ENM.
+[01:10:17] So, and I conclude with this.
+[01:10:24] So if everybody stays silent,
+[01:10:33] what kind of noise can you hear?
+[01:10:47] Suppose I remove the air, but there is something more negative than that, which is the power supply.
+[01:11:34] The power supply, when electricity comes to the supply, is somehow producing a very small hum, which is acquired by the electrical device.
+[01:11:47] So if I use a recorder here, and I record some sounds,
+[01:11:51] these sounds is going to contain also the noise.
+[01:11:57] It's not the noise, but it's a signal, a region,
+[01:12:01] which is in the field of the power supply.
+[01:12:05] And in order to detect this, I need to go around,
+[01:12:09] well, the frequency, I should say, around the clock.
+[01:12:11] Typically, in most of the countries around the world,
+[01:12:15] The power supply is easy and it is provided if you don't see.
+[01:12:29] And therefore, the point is that,
+[01:12:35] ideally, this signal is a smooth joint.
+[01:12:39] Okay, ideally, power supply,
+[01:12:41] automated current is a smooth joint.
+[01:12:45] The problem is that it is not smooth joint.
+[01:12:47] it's always a little bit, it is altered.
+[01:12:54] And it is altered by all the back from here,
+[01:13:03] the equipment which is, so the noise is not precise.
+[01:13:12] It's a kind of a background hump,
+[01:13:14] which is not a perfect one.
+[01:13:18] The nice part about this is that
+[01:13:20] these imperfections are unique in every case of the world.
+[01:13:24] It says that I can look at these signals,
+[01:13:28] look at the imperfections,
+[01:13:32] and therefore I can use this imperfection
+[01:13:34] to characterize, basically, the location
+[01:13:37] where that specific sound has been acquired.
+[01:13:40] An example of this is, for example,
+[01:13:42] you have here different values of the ENF
+[01:13:46] for an Ife, Ireland, Lebanon, Turkey, France, India.
+[01:13:51] So these are basically alterations.
+[01:13:53] In this case, you are around, okay, 50 years.
+[01:13:56] And it's possible to see that,
+[01:13:58] these are the frequencies, okay, in time.
+[01:14:01] It's possible to see that the frequency is changing
+[01:14:04] in time in a regular way.
+[01:14:08] And it's something that's characterized
+[01:14:11] that's the same thing.
+[01:14:12] I can also do a linear categorization
+[01:14:15] in a lot of things in English,
+[01:14:16] whether you're just being a part of history,
+[01:14:18] from B to C and D to C,
+[01:14:20] different types of particles in there, okay.
+[01:14:25] So this is the electrical network frequencies
+[01:14:28] and it is something that can be used
+[01:14:30] to localize specific particles.
+[01:14:33] One example of this, during the Watergate scandal, okay,
+[01:14:38] they had some patients go in
+[01:14:40] and using, okay, this kind of strategies
+[01:14:43] was possible to localize the record
+[01:14:45] in the recording or speaking
+[01:14:47] and then, okay, we are going to do that first.
+[01:14:50] So, there are similar cases, this has been used
+[01:14:52] in many different situations.
+[01:14:56] Some people use, okay, this information to detect
+[01:14:58] whether an audio is uptime e can be generated
+[01:15:01] by some neural networks or not.
+[01:15:07] The problem with this type of strategy
+[01:15:09] is extremely difficult to create, to extract
+[01:15:11] or create a signal.
+[01:15:13] Let's see how, what is the process.
+[01:15:15] First of all, what you do,
+[01:15:16] where you divide the sequence into frames, okay,
+[01:15:19] parts of the signals, like for central nodes, you have seen.
+[01:15:23] You compute the two-written form,
+[01:15:25] and you select the coefficients
+[01:15:29] around the frequency of 50 or 60 hertz,
+[01:15:31] because typically the signal is
+[01:15:33] around that specific frequency.
+[01:15:38] And then you create a weighted spectrum,
+[01:15:40] and this you can compute on this weighted spectrum.
+[01:15:43] the mean values, some auto-reversing molars on that,
+[01:15:48] some variances, so you can compute some features
+[01:15:51] that can be sent to a machine that outputs the signal.
+[01:15:57] So this allows you to localize,
+[01:15:59] authenticate the specific signals,
+[01:16:01] and this can be done also for images,
+[01:16:04] because sometimes some flickering of some light bulb,
+[01:16:09] apart from neon, it's dark,
+[01:16:13] but some flickering of light bulb as well
+[01:16:15] will be reflected in this solution view to here.
+[01:16:20] So it is possible to get this also
+[01:16:21] from some video operations.
+[01:16:25] And then, so this localized, basically my audio,
+[01:16:28] it's a feature that they can localize,
+[01:16:30] they can localize the room, okay,
+[01:16:33] where the audio has been acquired.
+[01:16:36] It is also possible to localize the audio
+[01:16:41] by the audio, by estimating the environments,
+[01:16:44] estimating the reverberations, the reflections
+[01:16:48] that you have in the environment.
+[01:16:51] The sound propagates through the air, okay,
+[01:16:55] and the sounds is reflected by the object like walls,
+[01:16:58] by yourself, by myself.
+[01:17:00] For example, if I am here, okay,
+[01:17:05] so there is a listener here,
+[01:17:06] and the sound is generated by that specific loudspeaker.
+[01:17:11] Imagine that sounds is like a ring,
+[01:17:14] So we mentioned to model light propagation rays,
+[01:17:17] the wavelength waves that are not quite enough.
+[01:17:21] So part of the waves basically
+[01:17:24] are traveling directly to the listener.
+[01:17:28] And this is the green path.
+[01:17:30] And the waves arrive with a distance,
+[01:17:32] well, south propagates are typically 340 meter per seconds
+[01:17:37] and therefore we can say that
+[01:17:39] it takes 0.3 seconds to get to the listener.
+[01:17:42] these are numbers just for the examples okay there is another wave that is
+[01:17:47] reflected by the floor and then bounced back to the listener in this case the
+[01:17:53] path is longer and therefore the sound takes one seconds and then there is
+[01:18:00] another one that goes on the ceiling then on the back door and then on the
+[01:18:04] floor and then back and mistakes 2.9 seconds okay so what happens it
+[01:18:09] And it happens that the sounds arrives
+[01:18:13] with a set of different, the same sounds,
+[01:18:17] generated by the same source,
+[01:18:18] arrive with a set of different delays, okay,
+[01:18:22] created by multiple mouse and multiple functions.
+[01:18:27] And these delays introduce some special effects, okay,
+[01:18:31] on the sounds that begins the move,
+[01:18:33] and basically allows you to identify the environment.
+[01:18:37] For example, if you are in a big cathedral there is a lot of reverberation, sounds
+[01:18:46] travels a lot, goes very very far on the far walls and then reflected back
+[01:18:52] and the result is a high reverberation which is this.
+[01:19:04] in a vast environment with lots of walls closed and this creates this kind of
+[01:19:12] effect. It's an effect that depends on the specific geometry of the
+[01:19:16] environment, it depends on the size of the environments and the fact that it is
+[01:19:20] closed. Suppose that you do the same outdoor. So suppose that you are on a
+[01:19:25] path and therefore you are in the middle of the forest and the woods, there is
+[01:19:33] because the leaves and grass basically do not reflect the sound.
+[01:19:39] The waves around, it is dispersed by the regular geometry of the leaves and so on
+[01:19:45] and therefore you all don't have these components coming back to you.
+[01:19:49] And the sound looks like this.
+[01:19:53] Sounds like this.
+[01:19:59] So, as you can see here, it's not that sharp.
+[01:20:02] There is no repetition, no vibrations.
+[01:20:04] It looks like you are in a different environment.
+[01:20:07] The list of replicas, so the different taps here,
+[01:20:14] for this environment is like this.
+[01:20:17] Only a small amount of replicas very, very close
+[01:20:20] to the original one, to the first one.
+[01:20:22] Instead here you have lots of replicas
+[01:20:25] which are done by the multiple reflections,
+[01:20:27] multiple replicas that you have,
+[01:20:29] and therefore this creates that kind of
+[01:20:30] reverberation effect.
+[01:20:33] So how can you do this?
+[01:20:36] Well, you can, this is basically a filter.
+[01:20:41] So you have, you take, okay, the neat speech,
+[01:20:44] you filter with this, okay,
+[01:20:47] and then you've got basically the reverberated
+[01:20:51] versions of the speech.
+[01:20:53] So estimating that reverberation is still useful
+[01:20:56] because it allows you to identify the environments,
+[01:21:01] identify where the audio has been acquired.
+[01:21:04] And also, it can also authenticate the environment and compensate that.
+[01:21:15] So, final word, and then we conclude. The response of the microphones is something
+[01:21:24] which is really, really specific. So the electrical characteristics of the
+[01:21:27] microphones, the type of transducer, the sensitivity, the frequency response,
+[01:21:33] allows us to define where that audio has been acquired. For example, you can
+[01:21:37] So you see here, the magnitude response
+[01:21:39] of different microphones for different phones.
+[01:21:42] We have an iPhone, iPhone 3G, iPhone 3GS.
+[01:21:46] You can see that depending on the specific phone model,
+[01:21:51] you have that the microphone has different responses.
+[01:21:55] And also, not only due to the specific sensitivity
+[01:21:59] at a different frequency,
+[01:22:00] but also the specific acquisition path.
+[01:22:03] So using these types of features,
+[01:22:05] it is possible to identify the origin of the object.
+[01:22:08] So that order will supply that specific recorder,
+[01:22:12] with that specific phone,
+[01:22:13] or with that specific digital camera.
+[01:22:16] And how can you do this?
+[01:22:18] You extract, okay, the features,
+[01:22:20] which are typically frequency coefficients.
+[01:22:23] So we go from male frequency, just the coefficients,
+[01:22:27] and we're going to see them more in detail
+[01:22:29] when we talk about voice recognition.
+[01:22:31] and these features can be then processed by some machine learning
+[01:22:36] strategies and it's possible to identify the specific device. As for
+[01:22:43] these frequency values, you can see that the frequency response for
+[01:22:46] different types of models of phones are completely different. So looking at this response allows
+[01:22:52] you to identify basically that phone has been acquired, used to acquire that sound specific element.
+[01:23:05] Okay so we will go back a bit about the characteristics of the sounds of the
+[01:23:11] Okay, next time. Right now, okay, we are going to move this time to some parts which can be useful to perform a little analysis of the report because we are going to focus on how we can see images through analysis.
+[01:23:44] So, see you in Room TA, okay, on Tuesday.

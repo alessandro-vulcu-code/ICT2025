@@ -1,0 +1,1400 @@
+[00:00:01] Okay, so last time, from what we have seen,
+[00:00:08] we have introduced, okay, the part of this forensics.
+[00:00:12] And we also have introduced, okay, some details,
+[00:00:18] some knowledge about mobile forensics,
+[00:00:20] composition of mobile forensics.
+[00:00:24] As you will see during this course,
+[00:00:27] each different field, so mobile forensics,
+[00:00:29] together with this forensics, multimedia forensics,
+[00:00:33] are not exactly what they suffer.
+[00:00:36] So there is going to be that some tools,
+[00:00:40] some details that you find within one field
+[00:00:43] are basically reused or combined within the next field.
+[00:00:48] For example, in a mobile device,
+[00:00:51] I can have a disferencity,
+[00:00:54] which is why I have one tool.
+[00:00:55] there can be something related to network forensics
+[00:00:59] because it's connected to that transmission.
+[00:01:03] There can be images, okay, so you have
+[00:01:06] multimedia forensics that are related.
+[00:01:08] So if you find some materials online,
+[00:01:11] okay, some books, some manuals,
+[00:01:13] often these things are kind of mixed up, okay,
+[00:01:16] because typically you find a book that's about
+[00:01:18] hardware forensics, there's another book
+[00:01:20] about mobile forensics, but it's enough
+[00:01:22] but let's say probabilistic treating
+[00:01:25] and discussions about these materials.
+[00:01:27] So today, we're going to focus on mobile forensics
+[00:01:31] in this course, basically this part is a bit limited
+[00:01:35] because most of the notions that we have
+[00:01:37] in mobile forensics are to be related
+[00:01:40] to this network and multilevel forensics as well.
+[00:01:45] There is a discussion which is about,
+[00:01:48] this is work we've been thinking
+[00:01:50] about the different operating systems,
+[00:01:52] how do you find files, whether you have a device
+[00:01:55] which is an Android or it is an iOS,
+[00:01:58] you have different issues depending on how
+[00:02:01] the operating system is organized
+[00:02:03] and how the files are related to that.
+[00:02:07] But, these things basically are more specific,
+[00:02:11] more and more specific to the system.
+[00:02:14] The principles, okay, general ideas, okay,
+[00:02:19] that guides the forensics and position forensics analysis on mobiles are to be found also on mobile devices, mobile devices, mobile mobile forensics and network forensics.
+[00:02:32] So last time in three members we said, okay, first of all you have to remember that a mobile device is connected in the network,
+[00:02:41] and therefore the first step you have to make sure that you have to isolate this.
+[00:02:44] How to isolate this?
+[00:02:46] You have three methods, using a jammer,
+[00:02:48] very costly from a point of battery.
+[00:02:51] You can use a finite cage,
+[00:02:53] you have to be careful about the finite cage.
+[00:02:56] If you don't have these two devices,
+[00:02:58] you can put the device in airplane mode,
+[00:03:00] but the problem is that you are altering
+[00:03:03] the state of the device,
+[00:03:04] you are interacting with the device.
+[00:03:08] So in a nutshell, okay,
+[00:03:12] so switching the device off basically
+[00:03:14] is a problem, so after doing the isolation,
+[00:03:17] you can eventually switch, okay, the device off,
+[00:03:19] but the problem is that you lock the phone.
+[00:03:23] So if you want to unlock the phone,
+[00:03:25] you need either the pin code or the hook code
+[00:03:27] if you do this, if it's more than once.
+[00:03:30] So using the isolation allows you to keep, okay,
+[00:03:33] the phone working without needing to unlock this.
+[00:03:37] Of course, airplane mode is not without the risk.
+[00:03:40] It happens sometimes that the four kinds of log,
+[00:03:44] okay, so that we have to guess the password.
+[00:03:47] And among the different, there are some methods, okay,
+[00:03:52] that allow you to hold some password guesses
+[00:03:54] from, let's say, logical methods
+[00:03:57] up to eventually physical methods.
+[00:03:59] Some people guess the password.
+[00:04:00] For example, looking at the stains of grease
+[00:04:02] that you have on your screen, for example.
+[00:04:05] To check which are the elements
+[00:04:08] that are more frequently pressed.
+[00:04:12] Okay, so what do you find?
+[00:04:14] So what do you look, what are you finding
+[00:04:19] into a system like this?
+[00:04:21] Well, you can have information
+[00:04:22] about which are the communications.
+[00:04:24] So SMS, chats, emails, contacts.
+[00:04:27] So these are related to specific messages,
+[00:04:29] but also can be related to some app that you're using.
+[00:04:33] For example, just things about the message,
+[00:04:35] how it works out.
+[00:04:37] The type of activity.
+[00:04:38] So, yeah, blogs, notifications, when you use the phone,
+[00:04:43] what kind of operation you do, okay,
+[00:04:45] this is too important in order to trace the habits
+[00:04:49] and eventually correlate the people,
+[00:04:51] one user with respect to another.
+[00:04:53] We will discuss this about the correlation
+[00:04:54] of activity where we are,
+[00:04:56] and we will analyze, okay, the forensic analysis
+[00:05:00] for privacy preserving networks,
+[00:05:03] like for example, two networks.
+[00:05:05] So, when you have something which is separate,
+[00:05:06] it is possible still to link, okay,
+[00:05:09] different elements, different activities in the networks
+[00:05:13] by correlating the timelines.
+[00:05:15] And this is extremely useful if you have something that,
+[00:05:18] some activity which is hidden, you cannot know.
+[00:05:20] For example, it has been used and deciphered.
+[00:05:23] But there is another activity which is connected to this
+[00:05:25] which is basically available that you can inspect, okay.
+[00:05:30] Then you can find media, okay, images, videos.
+[00:05:33] Typically people, usually students in this course,
+[00:05:36] when you say, how can you authenticate,
+[00:05:38] how can you define an image, or define yards, or views?
+[00:05:42] Well, very well, I can use a real exit.
+[00:05:44] With multimeter forensics, we know,
+[00:05:46] we understand that the exits are good,
+[00:05:51] but often they can be very, very, very easily altered.
+[00:05:56] So, you, at a certain point,
+[00:05:58] you cannot rely on an exit, okay?
+[00:06:00] Because many, many informations available on the exit
+[00:06:03] are not available.
+[00:06:04] And then you can find information about the location,
+[00:06:07] just amazing about all the connections related to GPS.
+[00:06:10] So like the latitude, but when you connect to a network,
+[00:06:15] like Wi-Fi network or a Bluetooth device,
+[00:06:17] or for example, a cellular networks,
+[00:06:20] well, these connections is very well localized
+[00:06:22] in space and time.
+[00:06:24] So this means that if you are connected to the cells,
+[00:06:27] the cellular cells of the antenna
+[00:06:31] which is on the top of the theater.
+[00:06:34] Well, we know that you are staying
+[00:06:36] within an area in a certain range, okay?
+[00:06:40] So each cell has a specific range.
+[00:06:43] Typically, in outer area,
+[00:06:44] the range of the cells is bigger.
+[00:06:46] In a city area, the range of the cells is smaller.
+[00:06:51] Okay, so a single antenna is connected,
+[00:06:53] is covered in a smaller area
+[00:06:54] because it depends on the number of users that you have.
+[00:06:57] And this gives you information about the location.
+[00:07:03] What do you find, okay?
+[00:07:05] What are basically, where do you find this information?
+[00:07:08] Well, you can scan, okay, the file systems.
+[00:07:12] You can also look, okay, okay,
+[00:07:15] also secure storage where you can find
+[00:07:18] credential, tokens, cryptographic key,
+[00:07:20] the backups on the phone,
+[00:07:23] the system to the list for event-winning scenes,
+[00:07:28] and then you have system locks.
+[00:07:30] There are details, events, crashes, and disruptions.
+[00:07:34] For sure, each of these details,
+[00:07:36] each of these methods, when we wanted to look at this,
+[00:07:39] well, may have some limitations.
+[00:07:42] For example, the access to the file system
+[00:07:45] depends on whether the data are locked
+[00:07:49] and security storage, you have also the problem
+[00:07:52] of encryption.
+[00:07:55] In backups, well it depends on how you play backups.
+[00:07:59] So typically backups do not store everything
+[00:08:02] for let's say optimizations and results,
+[00:08:08] and therefore you may have that some protected file
+[00:08:11] which are of your interest cannot be found.
+[00:08:14] And the system locks, it is possible
+[00:08:16] that this information is overwritten,
+[00:08:19] so the amount of retention time, okay,
+[00:08:22] is limited and therefore you cannot find any information
+[00:08:26] because it has been changed in overwritten.
+[00:08:30] These things strongly depends on the operating system
+[00:08:33] that you have on your mobile device.
+[00:08:35] And typically, mobile device, we have two mains, okay,
+[00:08:38] operating systems, which is Android and iOS.
+[00:08:41] I will not go into details of the operating system
+[00:08:43] and because there are other exercises,
+[00:08:45] there are other courses that are specific
+[00:08:47] and they give you the analysis, okay,
+[00:08:50] and security in operating systems, mobile systems.
+[00:08:55] I just recollect a few very, very quick details
+[00:08:58] about Android and iOS.
+[00:09:00] In Android, we have a system which is Linux-based
+[00:09:03] and there are many, many, many different versions
+[00:09:06] because typically Android is adopting
+[00:09:09] for a wide variety of different, okay,
+[00:09:12] devices any device which is not and these systems are basically as being
+[00:09:21] designed in order to be safe so typically every application is
+[00:09:26] encapsulated within a protection field and it is why when you use basically
+[00:09:34] the Android, you have an app, you install an app,
+[00:09:36] and you have to allow the app to access this
+[00:09:38] and this and this and this.
+[00:09:40] Typically, the Android apps lives within a safe,
+[00:09:43] secure environment, and therefore,
+[00:09:46] in order to allow the app to go outside
+[00:09:48] that specific environment,
+[00:09:49] we need to give lots of permission.
+[00:09:52] And so this is a security mechanism.
+[00:09:57] Sometimes it can be tricky
+[00:09:58] because when you give all these permissions,
+[00:10:00] basically you are not careful about what you have access to because you are allowing the app to go outside its specific limited areas.
+[00:10:14] And then you have a DB, you have backups, you have Android and also pre-release access so you can create different paths.
+[00:10:22] Instead of iOS, we have a tighter hardware software integration.
+[00:10:26] So while Android is more, let's say,
+[00:10:28] a classic generic, can be installed
+[00:10:30] on different types of devices, okay,
+[00:10:33] iOS is basically dedicated to Apple devices,
+[00:10:37] and therefore, there is a higher, stronger optimization
+[00:10:41] between software and hardware.
+[00:10:45] There are app containers, keychains,
+[00:10:47] encrypted backups, and the pairing records
+[00:10:51] and the settings of the backups
+[00:10:53] strongly affect the access in that system.
+[00:10:58] So, why acquire this information on mobile devices
+[00:11:09] is a problem.
+[00:11:10] Well, let's go on and talk about what are the problems
+[00:11:13] in accessing mobile devices.
+[00:11:16] So, first of all, the first problem is
+[00:11:20] what we call the set box.
+[00:11:21] so what I mentioned before.
+[00:11:23] So the apps has a receive, sorry,
+[00:11:28] an insulated storage room.
+[00:11:30] It can interact and work on a limited domain.
+[00:11:36] And therefore, if you want to have cross artifacts,
+[00:11:39] okay, something that you can explore
+[00:11:40] and analyze, okay, the device.
+[00:11:44] Well, you need to have a sit-down analysis.
+[00:11:48] What is a cross app artifact?
+[00:11:50] just imagine that you want to compare the timeline of some specific images
+[00:11:59] okay with some connection with some for example just imagine a person that
+[00:12:04] downloaded some images from the web so in this case you need to connect the logs from
+[00:12:09] the same browser with the connection with the logs and the
+[00:12:21] Performing this cross correlation needs to have
+[00:12:23] access to multiple areas of your device itself.
+[00:12:29] Then you have that, there are lots of limitations
+[00:12:32] in the permission, you cannot access everything.
+[00:12:35] Typically, especially for our devices,
+[00:12:38] your app is going to ask you permission
+[00:12:40] to access this and this and this every time, okay?
+[00:12:44] And either you give access with no restrictions,
+[00:12:47] okay, this is one way of solving things,
+[00:12:49] or you can give access, you can allow these conditions
+[00:12:52] only when the app is working or in that specific time.
+[00:12:55] So you can have different types of algorithms.
+[00:12:58] And also you have encryption, like for now,
+[00:13:01] this is how we see encryption, you look like that.
+[00:13:04] You may cipher, okay, parts of the information.
+[00:13:08] What was the root and general break?
+[00:13:10] Well, typically, this is something was very, very,
+[00:13:14] very concerning in the past.
+[00:13:15] typically, many devices are customized by a specific vendor, by a specific provider.
+[00:13:23] For example, I am a mobile services provider, together with your subscription
+[00:13:28] I will give you the phone, because the whole device is included together with your subscription.
+[00:13:38] And basically, I lock the phone so that you can use that specific device only
+[00:13:44] with the one SIM card of my provider.
+[00:13:47] So this means that the device is kind of closed.
+[00:13:53] Okay, you cannot do this, you cannot use the device
+[00:13:56] on any types of SIM that you want.
+[00:13:58] You cannot change the provider.
+[00:14:01] And typically the reason for they did this
+[00:14:03] is that when they provide you,
+[00:14:05] basically the device, typically they give you the device
+[00:14:12] the cheaper price with respect to the actual market price.
+[00:14:16] And therefore, I give you this price,
+[00:14:18] this special discount, because you have to build
+[00:14:21] into your device subscription.
+[00:14:25] So what people did, well basically,
+[00:14:27] people started doing jailbreaking.
+[00:14:29] So they buy the phone, okay,
+[00:14:31] that he buys from a window, let's say, for example,
+[00:14:35] because it makes a very, very convenient price.
+[00:14:38] And then, to generate, basically, they unlock the phone,
+[00:14:43] and then they put analysis in the provider
+[00:14:46] which is more convenient for them.
+[00:14:50] So, this basically allows you to give to the phone
+[00:14:54] to the operating system, it prevents access
+[00:14:57] to different data.
+[00:14:58] So basically you are breaking some bounds
+[00:15:00] which are closed on phones.
+[00:15:02] But, so this is nice because it gives you more freedom.
+[00:15:06] It's also true that you increase the risk
+[00:15:10] okay, of having open some malicious software,
+[00:15:14] access the phone and also you risk the fact
+[00:15:17] that it's not anymore in the world,
+[00:15:19] so you cannot claim it if the phone goes breaks,
+[00:15:23] you cannot claim it for a beer.
+[00:15:26] So basically there is a problem of admissibility,
+[00:15:29] irreprobability and this is nice
+[00:15:31] from a fluorescent point of view
+[00:15:32] because you can get information
+[00:15:34] through all the different things
+[00:15:35] but still you have to deal with the fact
+[00:15:38] that you can mess up a lot with the information. So given this, okay what are
+[00:15:46] the possible acquisitions of the information that you can get on your
+[00:15:49] by phone. So the first things as we mentioned is that you look what's on
+[00:15:53] the screen. So we can call this manual acquisitions. What's in the
+[00:15:57] screen, what are the settings, what are the app which is working, what is
+[00:16:01] running. So it's something that is typically done at the very moment when
+[00:16:06] you will see when you hire in front of the price.
+[00:16:08] It has a problem because you cannot repeat, okay?
+[00:16:12] So you do this in the ready moment,
+[00:16:13] you can actually call that,
+[00:16:14] that acquisition cannot be done in any way.
+[00:16:18] And it is very, really at the beginning,
+[00:16:21] so it's the initial acquisition.
+[00:16:23] This is good for the orientation.
+[00:16:25] Then what you can do,
+[00:16:26] you can do what we do on the artists.
+[00:16:28] So you can do a logical acquisition,
+[00:16:31] so you can perform the caps and export records, okay?
+[00:16:35] and often this logical acquisition,
+[00:16:37] which is what we do for,
+[00:16:39] typically it's a partial acquisition,
+[00:16:41] we can miss lots of protected information.
+[00:16:45] Okay, so like metadata and so on.
+[00:16:47] So what you can do, you can do a deeper acquisition,
+[00:16:50] like the one that we have presented in this time.
+[00:16:53] So directly interacting with the file systems,
+[00:16:56] so you look for the directories,
+[00:16:57] for the apps, for the containers,
+[00:17:00] and of course, of course here you will have
+[00:17:02] a slower acquisition with the specialized equipments,
+[00:17:06] a careful validation, okay, so this is to be done
+[00:17:09] in the most specialized way, and then, in the end,
+[00:17:12] you can have a physical acquisition,
+[00:17:15] so basically you have a room acquisition
+[00:17:17] of the full device, and this,
+[00:17:19] so you acquire the register values,
+[00:17:22] all information which is stored in specialized software,
+[00:17:27] and it is typically much, much rarer nowadays
+[00:17:31] is because devices are getting more and more loved.
+[00:17:36] And typically require specialized hardware,
+[00:17:38] a special idea.
+[00:17:41] What are the tools that we can use?
+[00:17:43] So we have different types of suits.
+[00:17:45] For example, commercial suits.
+[00:17:47] We have Cellebrite, which is one of the most
+[00:17:50] widely used for the acquisition.
+[00:17:55] Magnetexiums, Oxygen.
+[00:17:57] These are possible tools that we can use
+[00:17:59] for the acquisition.
+[00:18:02] Together with the commercial suits,
+[00:18:03] we have open source solutions like autopsy,
+[00:18:06] ad-lib, ad-lib, and together also with some specific skits
+[00:18:10] that you can buy for yourself.
+[00:18:14] We also have some artifact viewers,
+[00:18:17] like, as you like, typically,
+[00:18:20] they scan, okay, these artifacts,
+[00:18:21] these elements, you know, can be devised,
+[00:18:23] and then get a list, typically, this list.
+[00:18:28] You can also use exit reader,
+[00:18:30] I guess, exit two.
+[00:18:31] Exit two is a command, so control,
+[00:18:33] so that allows you to get the exit
+[00:18:35] which are stored in an image,
+[00:18:38] and moreover, given these three elements,
+[00:18:41] you can write your own script,
+[00:18:43] you can write your own passing software
+[00:18:45] that performs the analysis.
+[00:18:48] More recently, we also have
+[00:18:51] what we call data scraper, which are AI based.
+[00:18:55] We're going to talk about this
+[00:18:56] when we are going to have a dig into the AI world.
+[00:19:01] But recently, it is possible to have
+[00:19:04] searching mechanism which are driven by AI. So what you do, you write the prompt on your device
+[00:19:11] and as on your software and your software starts searching by hard disk, starts searching a log file
+[00:19:18] considering the prompt that you write. This can be done for video, for images, so you can take
+[00:19:25] a video surveillance stream and ask okay the AI systems, the VLMs, find me the frame where
+[00:19:33] where there is a guy stabbing another guy,
+[00:19:36] or where there is a person stealing an object
+[00:19:39] from the shell, okay?
+[00:19:41] And automatically, these VLMs parse all the frames
+[00:19:44] within the video sequence and very precisely
+[00:19:47] identify that this event happens in this variable.
+[00:19:51] It's extremely useful.
+[00:19:53] And this can be done also for our disks,
+[00:19:55] so for a lot of network logs.
+[00:19:56] So you can write search queries,
+[00:19:59] very clean text, using prompts,
+[00:20:01] and this identifies correctly the front of your device.
+[00:20:07] So, as you notice here, some of these devices
+[00:20:10] are a bit weak because part of this
+[00:20:13] are being already presented okay,
+[00:20:16] and we're going to have the labs
+[00:20:18] for the hard disk systems.
+[00:20:21] For the exit and the media part,
+[00:20:24] we're going to deal with in the multimedia forensics part
+[00:20:28] in a couple of weeks.
+[00:20:30] and also other stuff are more related to the network,
+[00:20:34] okay, interaction of the network stuff.
+[00:20:39] Okay, so considering the fact that the mobile device
+[00:20:46] is a hardware, so let's say, now it's a hardware,
+[00:20:50] and therefore the position that you do on a mobile
+[00:20:52] device is the same as you should do for five systems,
+[00:20:56] what remains, remains that when you do a position
+[00:20:59] on a mobile device, you need also to consider
+[00:21:01] the connections and therefore when we talk about connections we talk about
+[00:21:07] network forensics. In network forensics we talk about yes back to the stream TCPEP but
+[00:21:14] in network forensics we also have wireless forensics. So we don't need the recognition of the radio channels. We talk
+[00:21:21] about also with the locks typically so the server locks or the locks on
+[00:21:27] your phone or the locks on your device because of connections are
+[00:21:31] are basically typically part of network forensics.
+[00:21:33] We also deal with the trace back of indication.
+[00:21:39] So you want to know which is the part of the packets
+[00:21:41] across multiple network forensics.
+[00:21:45] All these devices, all these analyses,
+[00:21:48] all these evidences are dealt,
+[00:21:51] are discussed within network forensics.
+[00:21:55] And so network forensics is extremely important
+[00:22:01] from the point of view of cyber security
+[00:22:02] because most of the threats,
+[00:22:05] most of the problems that you have
+[00:22:07] in the system are typically conducted from a node.
+[00:22:12] So typically, most of the issues that you get
+[00:22:17] you get because a person, a computer,
+[00:22:19] or a person can interact with that.
+[00:22:25] So acquiring evidences from network strings
+[00:22:29] is extremely important,
+[00:22:30] but it is much, much more difficult
+[00:22:33] than acquiring evidences from a digital device.
+[00:22:37] The problem is that, well,
+[00:22:40] if you can read the connection,
+[00:22:43] the information exchanged between device,
+[00:22:46] are typically volatile.
+[00:22:48] Once the connection, once the interaction is over,
+[00:22:52] basically most of that information goes lost.
+[00:22:55] And moreover, it is not locked.
+[00:22:58] It is not logged because the amount of information
+[00:23:01] that you would log is going to be overwhelming, okay?
+[00:23:05] And it is not logged also because many of these devices
+[00:23:08] need to work very, very quickly in real time,
+[00:23:11] and therefore logging implies,
+[00:23:13] we're going to see this better in a few slides,
+[00:23:16] logging implies slowing down the whole process.
+[00:23:19] And if you have some connection
+[00:23:21] that needs to work in real time very, very quickly,
+[00:23:24] imagine that you have a remote control.
+[00:23:26] So, imagine a remote surgeon that is controlled
+[00:23:30] from a remote location.
+[00:23:32] Or imagine when you are watching in real time
+[00:23:36] a TV cast on a football match,
+[00:23:39] or you are streaming, for example,
+[00:23:40] your favorite TV shows or series.
+[00:23:43] Basically, you need to perform this
+[00:23:45] in a very short amount of time.
+[00:23:47] You cannot expect that, for instance,
+[00:23:52] software performs all the analysis, okay,
+[00:23:54] and then gives you the leverage of the package.
+[00:23:57] So, these are the two main reasons why
+[00:24:00] network forensics is more tricky than device forensics.
+[00:24:05] And also, this is also a resource
+[00:24:07] that has been developed in the past.
+[00:24:09] First idea is about computer forensics,
+[00:24:12] when we talk about computer forensics
+[00:24:14] is device forensics, memory forensics.
+[00:24:17] Starts in the 70s, 80s,
+[00:24:19] and then this was developed in the 80s.
+[00:24:22] So, what do we use, okay, network forensics.
+[00:24:26] Well, we use this for different types of applications.
+[00:24:29] For example, for security, this is fundamental
+[00:24:33] because you can use okay network forensics
+[00:24:35] to monitor conclusions and gather network evidence
+[00:24:39] that allows you to understand how the
+[00:24:41] attack was performed.
+[00:24:43] At the beginning of the course, I said typically
+[00:24:45] digital forensics happens after that incident occurred.
+[00:24:52] And this means that, basically, when there is a break,
+[00:24:58] okay, there is a breakthrough,
+[00:25:00] someone violates your system and needs to understand how.
+[00:25:04] This can be done if you have a correct acquisition
+[00:25:06] of evidences and you can analyze the evidences properly.
+[00:25:11] It is also used in law enforcement.
+[00:25:14] For example, we want to assemble a file
+[00:25:17] which are transferred, especially from a legal opinion,
+[00:25:19] look for keywords, parse messages,
+[00:25:23] and then looking for market filters,
+[00:25:25] firewall, existing systems.
+[00:25:27] These are done in order to trace, for example,
+[00:25:29] the origin of a specific attack,
+[00:25:31] identify an attacker, identify a criminal, and so on.
+[00:25:36] Typically, it is possible to analyze network streams
+[00:25:40] and understand the activity of some groups of persons
+[00:25:42] by looking at the attack statistics
+[00:25:45] without knowing, okay, what's inside?
+[00:25:48] because maybe they have safer than the text.
+[00:25:53] Okay, so network forensics perform multiple
+[00:25:57] types of operations, so these are the operations
+[00:26:00] that we do in network forensics.
+[00:26:04] So first operation is basically multi-sales of
+[00:26:06] that operation.
+[00:26:08] So imagine that in a network, the network is protected
+[00:26:12] by a set of tools like inclusion of the virtual system,
+[00:26:16] IDS, it is also, you have firewalls,
+[00:26:20] inside the network you also have routers,
+[00:26:22] and that was to lock servers,
+[00:26:25] that was to optimize the working of the network.
+[00:26:28] So all these elements are kind of probes
+[00:26:32] inside your networks, and these probes
+[00:26:35] monitor the situation of the network,
+[00:26:37] optimize the network, and how they do this?
+[00:26:39] Well, they sense the information,
+[00:26:41] build statistics, and get the feedback for that.
+[00:26:44] Then, some of these sensors are also connected
+[00:26:49] to the individual attacks.
+[00:26:51] So, when it's something which is something malicious,
+[00:26:55] okay, these elements raise a lot of risk.
+[00:26:57] So, together with this analysis,
+[00:26:59] you also have mechanisms that,
+[00:27:03] basically, reflect some specific issues.
+[00:27:07] And within this course, we're going to have
+[00:27:10] some insights about what is anomalous, what is not,
+[00:27:13] how it is possible to work like this.
+[00:27:15] Because if you already know an attack, okay,
+[00:27:19] okay, you can be the signature, like you do for viruses.
+[00:27:22] You know how the virus behaves, you can be the signature.
+[00:27:25] Then you write the signature,
+[00:27:28] say if it is in your anti-virus structure
+[00:27:30] or in a safety system because of the networking IDS.
+[00:27:33] And when the IDS feels or sees the attack
+[00:27:35] that brings this pattern, okay, raise the alarm.
+[00:27:39] So this is good if you know already what is going on.
+[00:27:43] if you know how that attack is performed.
+[00:27:45] But as I mentioned at the beginning of the course,
+[00:27:48] this is the practice is more about what you do not know.
+[00:27:52] Not what you know, okay?
+[00:27:54] So you want to be able to spot,
+[00:27:57] to identify something which is anomalous, okay?
+[00:28:01] Unusual, unusual, without the risk
+[00:28:04] of specifying unusual as everything that flags,
+[00:28:08] that deviates from the standard behavior.
+[00:28:10] So this is done by identification in the text
+[00:28:13] and we are going to show this for anomaly detection
+[00:28:16] in a few weeks.
+[00:28:19] And then we have the attack reconstruction.
+[00:28:20] So the analysis, so something happens,
+[00:28:22] you detected something happens
+[00:28:24] and then you want to know how, okay, this has happened.
+[00:28:28] This is one of the five W plus H
+[00:28:32] that the forensic analysis wants to answer
+[00:28:36] when analyzing situations.
+[00:28:38] together also with the tristate attribution.
+[00:28:41] So this is the H, how, this is one of the W, this is who.
+[00:28:47] Okay, so you want to know where that attacker started,
+[00:28:50] who performed the attacks, and what's the origin of it.
+[00:28:57] All this must be done within the field
+[00:29:00] of incident response.
+[00:29:02] So basically, quickly, when the alert begins,
+[00:29:05] you won't be able to operate directly,
+[00:29:08] you should have an analysis without,
+[00:29:09] and without compromising okay analysis.
+[00:29:12] And at the same time, it's also,
+[00:29:15] booting should get put in a safe way,
+[00:29:18] not as quick as possible.
+[00:29:20] For example, I already mentioned
+[00:29:21] that some of the possible tests
+[00:29:22] that we have done in the past
+[00:29:24] are basically integrating these types of systems
+[00:29:26] in software of government companies.
+[00:29:28] So that the company can operate directly
+[00:29:31] when the incident happens very, very quickly,
+[00:29:33] automatically locking all the formations for forensic inspections and then
+[00:29:37] putting a remedy on the possible way. So in network forensics the four phases
+[00:29:46] that we have seen for these devices are basically kind of expanded. So we have
+[00:29:52] the same principles but we can expand the data in this part. So first we
+[00:29:58] we have identification.
+[00:30:00] So we want to recognize an incident
+[00:30:02] based on the vector indicators.
+[00:30:05] Then we need them to secure and isolate
+[00:30:06] the physical and logical systems.
+[00:30:09] So preservation in this case is not
+[00:30:12] in terms of conservation,
+[00:30:14] but preservation here is in terms of
+[00:30:17] separation and isolation of the device.
+[00:30:20] Then we want to collect the elements of the systems.
+[00:30:24] Examine during this, perform the analysis.
+[00:30:28] and then present how, summarize and show
+[00:30:32] how this has been done.
+[00:30:35] Finally, since typically this is related to some leakage,
+[00:30:41] some problem that you have in the network,
+[00:30:43] typically these elements are required
+[00:30:46] in order to respond, okay?
+[00:30:48] As information you needed to use
+[00:30:50] in order to respond to the specific attacks.
+[00:30:55] Okay, how many of you has taken
+[00:30:57] a communication course, network, computer networks course,
+[00:31:01] before that, this.
+[00:31:04] Telecommunication is okay with that.
+[00:31:08] Okay, so for those of you that has not,
+[00:31:11] so many of these are going to find this very, very boring.
+[00:31:16] Okay, so this is a very big gap,
+[00:31:19] for those that have not seen network structures.
+[00:31:25] Typically, all the network communications
+[00:31:27] are combined with each other,
+[00:31:29] And the model that we use in order to define these layers
+[00:31:33] is the so-called Aussie step model.
+[00:31:37] It means that every layer is step, okay?
+[00:31:41] At different level of abstraction, okay?
+[00:31:45] And communication happens level by level.
+[00:31:48] What does this mean?
+[00:31:49] It means that when you are organizing a device,
+[00:31:52] okay, that means communicating with another device.
+[00:31:56] This device, the communication system of this device,
+[00:31:59] is divided into each multiple device
+[00:32:03] and the same also is valid for the other parts
+[00:32:06] and we assume that this part, okay,
+[00:32:09] this level of communication of that device
+[00:32:11] communicates with this other level of the other device.
+[00:32:16] So between two devices, only layers, only levels
+[00:32:20] are the same part of the same type
+[00:32:22] communicate among each other.
+[00:32:24] For example, imagine that we take a device
+[00:32:29] and we divide the communication systems into 74 words.
+[00:32:36] We have the physical layer, which is basically
+[00:32:39] the layer, anything electrical, electrical.
+[00:32:46] So if you think about a computer cellular phone,
+[00:32:50] the physical layer is the radio signal
+[00:32:52] that from the phone goes to the antenna, okay?
+[00:32:56] So this is the free story.
+[00:32:58] The data link layer is basically the layer
+[00:33:01] that takes logical information, bits, okay,
+[00:33:05] and organize bits into small frames,
+[00:33:07] and then give the frames to the specific physical layers.
+[00:33:12] Network layer is that the network which is dedicated
+[00:33:15] to creating packets,
+[00:33:17] and routing packets across all the internet.
+[00:33:21] Transfer layer is the layer that is basically
+[00:33:24] in dealing with such packets
+[00:33:27] and dealing with the fact that packets
+[00:33:29] are not correctly a crossword,
+[00:33:32] not correctly transmitted in the system,
+[00:33:35] session is what you use
+[00:33:38] in order to control a stream of packets.
+[00:33:41] So imagine that you are asking
+[00:33:45] on your cellular phone
+[00:33:47] for one video stream of the series, okay,
+[00:33:52] from Netflix. So what you do, you start a session, so that you start the
+[00:34:09] session, the server starts streaming packets, the packets are transmitted to your device and the packets are not correctly transmitted, are not correctly sent, basically this is handled by the task of the year, the path from the
+[00:34:28] the California servers of Netflix, not on the board,
+[00:34:32] but California servers of Netflix, up to your device,
+[00:34:35] is controlled by the routing system I mentioned earlier.
+[00:34:39] The small packets that arrive to your device,
+[00:34:42] your phone, is controlled by the labeling
+[00:34:44] and the range of signals that has been to these packets
+[00:34:48] from the antenna up to your device
+[00:34:50] is the, basically, physical here.
+[00:34:54] On the top of this, we have presentation.
+[00:34:57] so the type of data, okay, to have,
+[00:35:01] and also the application, basically,
+[00:35:03] is the, I'm sure, is the browser,
+[00:35:06] the app, the Netflix app, that you have in your phone.
+[00:35:12] So these are typically software layers.
+[00:35:15] This is the hard, okay, two communications,
+[00:35:18] you know, having the hard things.
+[00:35:20] This is more related to the communication.
+[00:35:23] So it is important to remember this,
+[00:35:25] So this is all this take zero to not so zero,
+[00:35:30] okay, in five minutes.
+[00:35:35] If you want to know something more,
+[00:35:37] you need to take a computer network course, okay?
+[00:35:43] But it is important that we have this layer,
+[00:35:45] layer of the definition, layer of the divisions,
+[00:35:48] because in computer forensics, well,
+[00:35:54] and this defines different levels of analysis.
+[00:35:58] So you can analyze your streams at the different steps,
+[00:36:01] and we're going to see how.
+[00:36:04] Typically, we can divide network forensics
+[00:36:09] into four different levels, and then we start again.
+[00:36:15] So the first level is equivalent analysis.
+[00:36:17] In equivalent analysis, you are analyzing
+[00:36:21] the small frames, the small packets,
+[00:36:23] which are exchanged at this level, at that time.
+[00:36:29] This is done locally, and it is done for both monitoring,
+[00:36:35] so this is what is done, for example,
+[00:36:37] for inclusion detection system.
+[00:36:38] Some IDS are now using this item of analysis,
+[00:36:43] and it is useful for some types of investigations.
+[00:36:48] Then you have PIP routing analysis.
+[00:36:51] So, this is done for data tracking, very useful for authentication because you want to find,
+[00:36:58] for example, the origin of a specific attack or you want to know whether there are multiple
+[00:37:03] attacks coming down.
+[00:37:06] This fundamental proceeding also affects the router among the weakest elements inside
+[00:37:13] the router.
+[00:37:14] Typically, the router has to be very very quick, they cannot have strong protection
+[00:37:18] like this.
+[00:37:19] They also are difficult to be updated,
+[00:37:23] just imagine the router, which is under the sea
+[00:37:25] of pollution, how do you change that?
+[00:37:30] And that is why this is crucial in net effects.
+[00:37:34] It doesn't get a lot of information on servers,
+[00:37:37] on logs, this is for fault detection,
+[00:37:42] but also to verify attacks.
+[00:37:44] Finally, at this, so in this case,
+[00:37:47] This router operates at this level here.
+[00:37:51] We stand for the locks,
+[00:37:53] well basically you are working at the highest level.
+[00:37:56] For wireless 4SX, for wireless 4SX,
+[00:37:59] we are working, we are analyzing at physical layer.
+[00:38:04] Okay, so we are analyzing the radio spectrum.
+[00:38:08] Okay, and it is not located,
+[00:38:11] largely investigated for safety resources.
+[00:38:16] So five minutes pause then.
+[00:38:18] So these are the four steps for different,
+[00:38:21] big macro analysis for that four and six.
+[00:38:25] We're going to dig into each of them
+[00:38:27] in the next minutes and also in the next lecture.
+[00:38:35] Five minutes pause.
+[00:38:57] Okay, so in a network forensics,
+[00:39:16] as we said, we have different level of analysis.
+[00:39:18] And we also have the need to acquire information
+[00:39:25] which as we said at the beginning is volatile.
+[00:39:28] So this implies that you do not have too much time
+[00:39:36] to think because maybe the information will change
+[00:39:39] in time because maybe the information is passing
+[00:39:42] by through under your nose, okay.
+[00:39:45] So, you have to basically operate very, very quickly.
+[00:39:51] And it's like if you have a river, fish is in there,
+[00:39:55] then you have to catch them, you don't want to catch them.
+[00:39:59] So, we have two different types of strategies
+[00:40:03] in this approach, which is typically,
+[00:40:05] we call catch as you can, or stop the catch.
+[00:40:10] In catch as you can, you are basically collecting
+[00:40:13] and all the packets, imagine that you wanted to apply it,
+[00:40:16] you register the logs, all the packs pass into a network.
+[00:40:21] In countries, you can recover all the packets.
+[00:40:25] So it's okay, you see packets, you collect them.
+[00:40:28] You see, it's like if you see a fish, you collect them.
+[00:40:31] Okay?
+[00:40:32] And of course, this operation is very simple.
+[00:40:37] It is extremely quick, because you don't need
+[00:40:41] to perform any type of analysis with that.
+[00:40:44] It is the analysis we learn at the second stage.
+[00:40:51] But the problem is that you need a large storage.
+[00:40:56] You need a large container to keep all the fishes.
+[00:40:58] You need a large hard disk
+[00:41:00] to store all the packs that you collect.
+[00:41:04] And therefore, this can be done
+[00:41:07] for a small amount of time.
+[00:41:09] So you cannot think about doing it
+[00:41:12] as you can for a month, okay, continuously.
+[00:41:15] Unless you virtually move your packets.
+[00:41:19] So this is done for a small amount of time,
+[00:41:22] and then you do this because you don't know
+[00:41:25] exactly what you're looking for,
+[00:41:27] and therefore you want to perform this analysis
+[00:41:31] later on in the research, okay?
+[00:41:34] So there is another strategy which is called
+[00:41:36] come look at recent in this case it starts it is more complex because in
+[00:41:42] this strategy you want to select the package it is like if you have a net to
+[00:41:49] fish but you want to fish only certain types of fishes or on certain spaces
+[00:41:55] or a certain only fishes of a certain age so we are more selective and you
+[00:42:04] need some equipment which is more specialized,
+[00:42:07] because this equipment should analyze each packet
+[00:42:10] and verify if the packet is a packet to be acquired.
+[00:42:14] For example, imagine if I want to acquire
+[00:42:15] all the packets belonging to the protocol CPME.
+[00:42:20] I don't want those more packets.
+[00:42:22] Or maybe suppose that I want to filter
+[00:42:25] or acquire all the packets which are dedicated
+[00:42:28] to a specific main server,
+[00:42:33] So it can be only SMTP, protocol server.
+[00:42:37] So you don't have to do mail.
+[00:42:39] And this, because maybe I'm analyzing some malware
+[00:42:42] specifically for that kind of server.
+[00:42:44] So these types of operation can be done
+[00:42:46] if you have faster processors
+[00:42:48] that is able to analyze each packet in common.
+[00:42:52] So you store only the words that are of your interest.
+[00:42:56] You don't need large storage.
+[00:42:58] But on the other side, you need a more power
+[00:43:02] and we have more powerful analysis
+[00:43:05] and because we need to inspect
+[00:43:08] back-to-back tactics in the real time.
+[00:43:13] So typically, in catch it as you can,
+[00:43:17] in the past, we call this approach a light sniffer.
+[00:43:21] It is true to say that current sniffer,
+[00:43:23] current analyzer, they also perform sun analysis.
+[00:43:25] If you do, for example, some analysis
+[00:43:29] with some knitting software like Snort or OneShark, okay?
+[00:43:35] In that case, you can select the specific packets,
+[00:43:39] for example, associated with some protocols
+[00:43:41] or dedicated to some IP address,
+[00:43:44] so it is possible to filter out in this situation.
+[00:43:48] Let's have an example.
+[00:43:50] So the example, for example, this was an application
+[00:43:53] that we developed a few years ago, okay?
+[00:43:57] and suppose that we have one network which is a wireless network Wi-Fi and we
+[00:44:07] have one phone which is connected to access point and we have one PC which
+[00:44:19] which is sensing the radio channels
+[00:44:22] and is able to sniff to detect all the packets, okay,
+[00:44:28] associated transmitted from the phone to the access point.
+[00:44:37] So by sniffing all the packets to the phone,
+[00:44:41] we decided that we learned a few years ago,
+[00:44:44] it was possible to understand what kind of application
+[00:44:50] and what kind of operation within this application,
+[00:44:55] the user, the user of the cell phone,
+[00:44:57] was using, even if the traffic was open.
+[00:45:01] So in this type of system,
+[00:45:04] we assume that the communication protocol
+[00:45:08] in many apps for AI and AI-based TPS.
+[00:45:12] So there's a secure, it was not possible to see
+[00:45:16] what's inside the information,
+[00:45:21] but analyzing the package statistics,
+[00:45:24] even if we do not know what's inside,
+[00:45:26] we can have information about what kind of protocol,
+[00:45:31] what kind of operation it was possible.
+[00:45:33] For example, in this case, it was possible to understand
+[00:45:36] what kind of app the user was using,
+[00:45:38] Facebook, Twitter, Gmail.
+[00:45:41] What kind of operation was doing on Facebook?
+[00:45:44] Is checking the messages, is looking under the Facebook
+[00:45:48] wall, is posting something, okay.
+[00:45:51] So these types of analysis,
+[00:45:52] it is possible to do this,
+[00:45:54] even if the string is cipher.
+[00:46:00] For example, there are other words,
+[00:46:03] okay, literature that performs
+[00:46:04] these types of analysis, okay, encrypted domain.
+[00:46:08] For example, there is an article
+[00:46:10] where according to the statistics
+[00:46:12] of packets or media packets,
+[00:46:15] it is possible to infer,
+[00:46:17] even if they are cipher,
+[00:46:18] it is possible to infer which type
+[00:46:22] of TV series you are watching,
+[00:46:25] which episode of your family series you are watching from.
+[00:46:30] So in this case, we have a shorter, smaller version
+[00:46:36] for our lab experience.
+[00:46:38] More precisely, the first lab experience
+[00:46:41] a few years ago goes to verify whether
+[00:46:45] to understand whether the user is using Twitter
+[00:46:49] or Facebook, it goes also to the time of Twitter.
+[00:46:57] So, Twitter or Facebook,
+[00:47:00] according to the statistical factor,
+[00:47:02] more precisely, according to the average length
+[00:47:06] and the variance of the packet source.
+[00:47:10] So, according to the,
+[00:47:11] if you see in this diagram here,
+[00:47:14] you have, each point is a string, okay,
+[00:47:17] exchanged by the phone with respect to the network.
+[00:47:23] And if you look, okay, for here you have the mean packet length for that string, and here
+[00:47:31] you have the variance of the packet length for that specific string.
+[00:47:36] And since you plot this, so each point is a single string, you can see that there is
+[00:47:40] a clear distinction between the strings which are associated to Twitter and the strings
+[00:47:48] which are associated to Facebook.
+[00:47:51] And this makes sense because at that time Twitter
+[00:47:56] was not completely open, so at that time Twitter
+[00:47:59] has still the limits of 126 characters per message.
+[00:48:06] So this means that messages were all the same,
+[00:48:10] do not change, the functionalities were limited
+[00:48:13] and therefore, as you can see, the variance
+[00:48:16] of the packet lengths and also the mean values
+[00:48:20] is more or less the same, it's not changing too much.
+[00:48:25] Different from Facebook, in Facebook you have
+[00:48:27] a wide variety of different types of operation,
+[00:48:30] you can see that the average length
+[00:48:32] changes a bit more, the variance also changes
+[00:48:35] a bit more for each things, this is the fact
+[00:48:38] that you have higher variability of operation
+[00:48:40] of information exchange in the network for this,
+[00:48:43] So this made, that made sense.
+[00:48:46] So this was done back in 2016.
+[00:48:49] And later, in predatory worm,
+[00:48:53] we had something similar by considering video traffic.
+[00:48:59] Video surveillance traffic.
+[00:49:00] So we had, imagine that you have
+[00:49:02] video surveillance camera, wifi, okay.
+[00:49:05] Imagine that you sniff, okay, the software
+[00:49:09] exchanged by this video surveillance wifi.
+[00:49:11] the packets are encrypted so I cannot see what's inside, okay, I cannot look at it
+[00:49:16] now because everything is a cipher, okay, but what we noticed is that if you have
+[00:49:24] a guy which is walking in the scene, for example this guy is approaching this camera, you can see that the average packet length is going to increase, the average packet length for the swims.
+[00:49:43] And if the guy is going away,
+[00:49:46] the packet length is going to decrease.
+[00:49:49] And you have also different patterns
+[00:49:51] depending on whether you are going
+[00:49:53] on the right or on the left.
+[00:49:55] So in this way, analyzing the packet strings
+[00:49:58] is possible to understand if there is a person
+[00:50:01] inside that specific room.
+[00:50:03] And also it is possible also to infer
+[00:50:05] where this person is going.
+[00:50:06] We're able to track, okay, the persons
+[00:50:08] all around the environments
+[00:50:10] by using this analysis of the packet
+[00:50:13] without looking what's inside the packets.
+[00:50:16] We're sitting in, I need the packets
+[00:50:18] and give the statistics to some deep learning solutions.
+[00:50:24] In this approach,
+[00:50:25] why you would like to do proof through this?
+[00:50:27] Well, imagine that I sneak the packets
+[00:50:32] from a video surround the cameras of the band.
+[00:50:35] I know you can inside and someone.
+[00:50:37] so I can decide whether to break into the bank
+[00:50:43] or not depending on this, so this is a legal obligation.
+[00:50:46] Or, for a legal obligation, is that,
+[00:50:50] imagine that you want to track information,
+[00:50:54] track people, from legal surveillance camera,
+[00:50:57] without having access to the IPP obligations.
+[00:51:02] So I wanted to track away the movements
+[00:51:05] of some professional guys without having access
+[00:51:08] because I'm not entitled to have that specific video,
+[00:51:13] streaming video of some of their supermarkets.
+[00:51:15] This is the case for many application,
+[00:51:18] for example, within supermarkets,
+[00:51:20] when you want to track people to know
+[00:51:21] how people move, to know which part of the supermarket
+[00:51:25] are more, let's say, of interest in respect to others,
+[00:51:30] you know what they buy, what they do not buy.
+[00:51:32] you cannot do this because this is not the clean visible because this is a
+[00:52:06] The only problem is that whether the camera,
+[00:52:09] the movement of the camera is not there.
+[00:52:13] You can estimate the movement of the camera,
+[00:52:15] but you need it to have the clean video streams,
+[00:52:19] so there is no point.
+[00:52:21] But if you know the movement,
+[00:52:22] because the camera is apparently open,
+[00:52:24] so you have that with the eye of the moon,
+[00:52:25] the two stops are amazing.
+[00:52:32] We have done this with two people, yeah.
+[00:52:35] So you guys know how it goes with people.
+[00:52:37] Ideally, I would say that if you have that,
+[00:52:40] two people are very close,
+[00:52:41] you cannot be close, or there is no people there,
+[00:52:49] but if there are two people which are the task
+[00:52:51] or if you have two people who are the task for example,
+[00:52:55] crossing by that you can't distinguish that
+[00:52:57] because you analyze the situation in time
+[00:53:00] and you can see that at a certain point
+[00:53:02] you have this kind of blooming,
+[00:53:04] starting the packet's length and then you have that.
+[00:53:10] But this was mainly done for cardinals.
+[00:53:14] So for cardinals it was very well
+[00:53:15] because you have a very,
+[00:53:18] the motion is very, very well defined.
+[00:53:24] It's of your interest because typically
+[00:53:26] that you cannot monitor inside the boxes
+[00:53:30] because it's a false simulation.
+[00:53:31] So people work a smooth data lab,
+[00:53:34] you have a camera inside the whole of this,
+[00:53:36] but in the corridors you can have
+[00:53:37] for multiple scenarios.
+[00:53:39] And also you have the data that the path
+[00:53:42] is basically not defined so you know exactly how it is.
+[00:53:46] We have done this on a real system.
+[00:53:48] So this is a CGI,
+[00:53:49] but because we are trained, okay, this is the CGI
+[00:53:52] and we applied on a real scenario.
+[00:53:55] So we have a real scenario.
+[00:53:56] We reproduce the real scenarios
+[00:53:58] because the idea was that suppose that I'm a criminal
+[00:54:00] and I wanted to have this design something like that.
+[00:54:04] I don't have access to the real scenario.
+[00:54:06] And what they can do,
+[00:54:07] I can simulate the approach to the system in CGI,
+[00:54:10] train my systems on CGI,
+[00:54:12] and then apply the systems on real data.
+[00:54:14] And it's possible to have the direct distribution
+[00:54:16] of real data, even if all the applications
+[00:54:18] will be trained on CGI.
+[00:54:21] So what they simply need to know to perform this attack
+[00:54:23] is to have a map of the environment.
+[00:54:27] And then I will produce this from CGI,
+[00:54:30] perform, I have some puppet workings,
+[00:54:33] I create a classifier,
+[00:54:34] and then I have basically three working systems.
+[00:54:37] This is an example.
+[00:54:38] We can do this, lots of this.
+[00:54:40] So basically, we have a similar system
+[00:54:42] to perform biomolecular identification from the working.
+[00:54:45] There are systems, okay, in micro-forensics
+[00:54:47] that are able to track, okay,
+[00:54:50] people using the radio channels.
+[00:54:52] For example, a few years ago, there were lots of papers
+[00:54:55] that appears about tracking people
+[00:54:58] from your Wi-Fi groups or 5G networks.
+[00:55:03] Since you are moving in an environment,
+[00:55:05] your body is changing the electromagnetic
+[00:55:09] fingerprints of this environment.
+[00:55:12] Since you are changing the electromagnetic fingerprints
+[00:55:14] by notifying, analyzing these changes,
+[00:55:17] it is possible for me to track where people is
+[00:55:20] using a wireless feature.
+[00:55:23] So that is wireless forensics as well.
+[00:55:25] But with NetPage, you're working on the wireless.
+[00:55:32] Okay, so these are basically examples.
+[00:55:35] These are two examples that we worked on by
+[00:55:37] people from the United States.
+[00:55:43] In the evidences, okay,
+[00:55:46] but typically, some of the closure of the past years
+[00:55:49] connected with the net forensics
+[00:55:51] are basically related to a normal detection
+[00:55:53] from a forensics-detecting movement
+[00:55:55] and attacks by the virus.
+[00:56:00] This, okay, anyway, will be a topic of discussion
+[00:56:04] in a couple of weeks, should be weeks.
+[00:56:08] Today, right now, we focus on basically
+[00:56:11] what kind of identities, what kind of information
+[00:56:13] we can collect.
+[00:56:16] So that is why the first types
+[00:56:19] that we're going to discuss today,
+[00:56:22] then the other three,
+[00:56:25] the first type of analysis that we wanted to do
+[00:56:29] is basically an effort.
+[00:56:31] So we wanted to collect evidences at the net levels.
+[00:56:40] So how does this work?
+[00:56:41] So at the net, remember the data you have in your stack.
+[00:56:48] At the net is one of the first layers of the stack.
+[00:56:52] Basically, how does this work?
+[00:56:55] The other is the protocol, the technology
+[00:56:58] that is used to extend information in local networks.
+[00:57:02] What do you mean by local networks?
+[00:57:05] Well, local network is, let's say, the networks
+[00:57:09] made by audio PC connected with ULAX.
+[00:57:15] Or maybe you have a cable here,
+[00:57:18] connected to a switch, to a router,
+[00:57:21] and all your computer are connected to this cable.
+[00:57:24] This is basically a local network.
+[00:57:28] And the communication within this local network
+[00:57:31] is basically ruled by ethernet protocols,
+[00:57:35] which exchange data in packets,
+[00:57:38] which are not called packets,
+[00:57:40] they are called ethernet and product frames,
+[00:57:42] to distinguish them from protocol.
+[00:57:50] And in an ethernet frame, basically,
+[00:57:52] it's a packet where you have
+[00:57:53] different types of information.
+[00:57:56] Most important information is basically
+[00:57:58] the destination address, DA,
+[00:58:01] the source address, SA,
+[00:58:03] which are basically defined which computer sends who okay and then you
+[00:58:10] have basically the data the information you have some control data DFCS and you
+[00:58:16] have a preamble which is useful. So how does this work? So in this configuration each computer sends data with those data. So you have destination, source and data.
+[00:58:35] And in the class you go,
+[00:58:38] I don't know, in the class that we will show,
+[00:58:40] but we will share the media, we will show.
+[00:58:43] You have that, you have to imagine that
+[00:58:49] all the computers are connected to the same bus.
+[00:58:52] So communication packets is transferred to this bus.
+[00:58:56] When this computer, for example,
+[00:58:58] wants to communicate with this other computer,
+[00:59:00] Well, he prepared a frame with his home address,
+[00:59:07] okay, the SUSE address,
+[00:59:08] and the destination address of this computer.
+[00:59:14] Preparing this frame with his SUSE address
+[00:59:17] and the destination address of this computer,
+[00:59:19] then he sent this frame, sent this file.
+[00:59:24] All the other computers listened to the bus.
+[00:59:29] When they detect there is a packet being transmitted,
+[00:59:33] they check the destination address
+[00:59:34] of this packet being from the group.
+[00:59:37] If they see that the destination address belongs to themselves,
+[00:59:42] well, they collected the packet, they really liked it.
+[00:59:45] If they see that the destination address is different
+[00:59:47] from the network address, they really liked it.
+[00:59:51] It is like, I don't know if you are living
+[00:59:53] in a student dormitory room, Suhava,
+[00:59:56] it's like when all the, or a post,
+[01:00:00] all the materials arrive in your dormitory,
+[01:00:03] and then that plays there together and then every students will come home and check out the envelope
+[01:00:10] and then you see if the envelope is the others. If they are me, the envelope is connected to the other one.
+[01:00:22] As you notice, in this way, the performance keeps dropping.
+[01:00:27] As long as we think analysis in this configuration is very easy.
+[01:00:32] I simply need to have a machine that does not care about this machine.
+[01:00:36] Collect all the packets, regardless of the destination address, and it is done.
+[01:00:42] So it can perform all the collections.
+[01:00:46] We can say that this way of working, which is collect all the packets,
+[01:00:53] is called Lomisco's model.
+[01:00:56] And it is one working model which is enabled to do so.
+[01:01:02] Yes, because, what is the destination address?
+[01:01:05] The address, the destination address is the ID
+[01:01:08] of your network card, the network card of your PC.
+[01:01:13] So, this address is written in that specific network card,
+[01:01:17] but we can make, okay, the network card,
+[01:01:20] network card, work in a promiscuous code,
+[01:01:24] so it means that the network card
+[01:01:26] is basically collecting all the time
+[01:01:28] because this collection mechanism
+[01:01:30] is ruled directly by the network card.
+[01:01:35] Okay, the point is that in the modern element,
+[01:01:38] we don't have this.
+[01:01:41] So packets are not connected to the bus.
+[01:01:44] We have a more complex system,
+[01:01:46] which is introducing some switches.
+[01:01:48] We introduce switches because of efficiency, okay?
+[01:01:52] Because in this way,
+[01:01:54] we can minimize the probability of failure, okay?
+[01:01:59] Imagine that this computer was to continue.
+[01:02:02] and put the packet on the bus.
+[01:02:05] Suppose that also this computer was
+[01:02:07] going down at the same time
+[01:02:08] and put the packets on the bus.
+[01:02:10] It is a collision.
+[01:02:11] And this collision introduces re-transmission.
+[01:02:14] So this is not a very efficient way to operate.
+[01:02:19] What you can do, you can have better configuration
+[01:02:24] where you have that computer A is connected
+[01:02:25] to this switch, computer B is connected to this switch,
+[01:02:28] computer C is connected to this switch,
+[01:02:30] This switch are connected by local system and what happens?
+[01:02:33] Suppose that computer A wants to communicate
+[01:02:35] to computer B, very well, he sends the packets.
+[01:02:40] The packets has destination address is B.
+[01:02:42] This switch C does destination address is B.
+[01:02:45] Very well, this switch knows that he has to forward
+[01:02:47] the packets on this segment and not on this segment.
+[01:02:52] So this means that if this communicates with this,
+[01:02:56] this segment remains free.
+[01:02:58] And therefore, if he wants to communicate
+[01:03:00] without a packet, for example, the computer bit,
+[01:03:02] he can do this.
+[01:03:04] He can still communicate with the computer bit
+[01:03:05] without having any issues.
+[01:03:08] So, modern algorithms, we have, basically,
+[01:03:14] this situation, these devices,
+[01:03:17] like a repeater, hubs,
+[01:03:18] which basically they repeat into the signals,
+[01:03:20] together also with bridges and switches,
+[01:03:23] that perform a selectable modeling of the packets.
+[01:03:26] and this optimize the stability and avoid, okay,
+[01:03:31] chokings and congestive situations.
+[01:03:34] So, while in this case, the eavesdropping is very easy,
+[01:03:40] you have a network card that basically listens
+[01:03:44] all the packets, looks at all the packets.
+[01:03:46] Like if you have your roommate that reads your mail.
+[01:03:51] It'd be a wall, if you carry your roommates,
+[01:03:53] open your envelope, with the nails, with your toes.
+[01:03:58] So this is what you do for that.
+[01:04:00] But how is it possible to do this
+[01:04:04] if the envelope does not
+[01:04:08] fall under the nose of your room?
+[01:04:10] Suppose that your envelope is directly delivered
+[01:04:13] to your room, does not stay
+[01:04:17] in the entrance of your dominance.
+[01:04:21] So it can be done,
+[01:04:26] exploding some vulnerabilities,
+[01:04:28] and this is how sniffer works.
+[01:04:33] So it works in this way.
+[01:04:35] First of all, they exploit, in one case,
+[01:04:38] they exploit the vulnerabilities of the AR.
+[01:04:41] ARB is a protocol, which is the address,
+[01:04:49] which is basically the protocol that we use
+[01:04:52] to map the address, the universal IP address of a PC
+[01:04:57] to the specific map,
+[01:04:58] to the address of the aftermath card, okay?
+[01:05:02] Indeed, in this operation, you need the switch,
+[01:05:08] okay, these elements needs to know
+[01:05:11] that in order to reach this, this is the correct path.
+[01:05:15] Okay, it needs to know.
+[01:05:17] And how can you discover this?
+[01:05:20] How can you associate, okay,
+[01:05:22] the universal address to the specific mock address?
+[01:05:25] by using that specific protocol here at the ARP.
+[01:05:31] ARP is basically a protocol that allows you
+[01:05:35] to store a memory that associate each universal IP address
+[01:05:40] of the machine to a specific address card,
+[01:05:45] network card address, because typically the IP address
+[01:05:49] is something which is universal.
+[01:05:52] The address card works only locally.
+[01:05:54] Okay, the address of your eternet card
+[01:05:57] is something that's not in the map.
+[01:06:00] Is this like the difference between, okay,
+[01:06:03] you can see the EIP, like the address
+[01:06:07] that of your home and street address,
+[01:06:10] while the eternet card is basically
+[01:06:14] the number of your rooms, I think that's it.
+[01:06:19] So in this way,
+[01:06:22] you need to store a captain, locally,
+[01:06:24] a gap in between IP and MAC.
+[01:06:27] And this is done by using this protocol.
+[01:06:31] Suppose that this machine do not know
+[01:06:36] which is the MAC associated to a specific IP address.
+[01:06:39] So suppose that you have that,
+[01:06:43] it does not know this machine is here,
+[01:06:45] does not know the MAC address of this machine.
+[01:06:47] So what does this machine, what does this machine can do?
+[01:06:51] Well, first of all, it checks the cache,
+[01:06:53] it knows, okay, I don't know this guy here.
+[01:06:55] I have no idea which is the MAC address of this guy.
+[01:06:58] What you can do is send a request,
+[01:07:01] which is called ARP request store of the request,
+[01:07:05] through the other network.
+[01:07:08] And the request is broadcasted to all the computers
+[01:07:11] in the local networks.
+[01:07:13] And say this request is saying, okay, okay guys,
+[01:07:16] which is the MAC address of the computer with this IP?
+[01:07:21] okay this computer here received the request and say okay this is my IP okay
+[01:07:29] I have to answer and he said but we go in this AMP reply okay the computer says okay
+[01:07:40] The MAC address associated with this IP is mine, is this one.
+[01:07:47] He writes down, basically, this IP.
+[01:07:50] At the same time, since this was not knowing this,
+[01:07:54] he also added in the MAC address of this computer
+[01:07:56] here, actually, is basically an IP table.
+[01:07:59] Because it's also possible that the MAC address
+[01:08:17] associated to the IP.
+[01:08:19] So what does the sniffer does?
+[01:08:24] Well, the sniffer basically sends a fake ARP reply.
+[01:08:32] So without having a request, the sniffer sends
+[01:08:35] a fake ARP reply saying, if you want to send packets
+[01:08:40] to this IP, you have to send packets on this MAC address.
+[01:08:44] And the MAC address is his own MAC address.
+[01:08:47] So in this case, the sniffer works as a relay.
+[01:08:49] is what we would say is a man in the middle of that.
+[01:08:54] It means that all the packets which are addressed
+[01:08:57] to this PC are forwarded to the sniffer first.
+[01:09:01] And that sniffer resend the packet set
+[01:09:03] to the total destination.
+[01:09:05] In this way, these two guys do not know
+[01:09:09] there's lift by this PC, okay,
+[01:09:13] and everything works, the communication works.
+[01:09:16] This works and basically affects
+[01:09:20] all the possible network devices inside the network
+[01:09:23] and therefore, you have a sniffing
+[01:09:25] even if you have these types of configurations.
+[01:09:31] A second method is called ARP spoofing.
+[01:09:35] There is a Linux command, ARP spoofing for this.
+[01:09:39] And all the traffic, the ideas that you want to make,
+[01:09:43] in all the traffic passing through the use locker.
+[01:09:48] There is another way to perform this.
+[01:09:50] It is to bring in all the switches,
+[01:09:54] all the bridges inside the network
+[01:09:56] to works in fail-open mode.
+[01:10:00] What is fail-open mode?
+[01:10:02] When the switch receives the packets,
+[01:10:06] it needs to analyze the packets
+[01:10:08] and then understand how to forward
+[01:10:10] to the network, these packets here.
+[01:10:12] If the amount of requests is too big,
+[01:10:17] so if this keeps on sending packets, packets, packets,
+[01:10:21] okay, the switches cannot process quickly all the packets.
+[01:10:25] And therefore, when it's not able to perform
+[01:10:28] all the filtering or the forwarding,
+[01:10:30] it starts the fail-open mode,
+[01:10:32] which means that it simply replicates
+[01:10:35] all the packets to all the segments.
+[01:10:38] We can say that the switch starts working as a half.
+[01:10:42] It's a simple repeater with no brain,
+[01:10:45] with no analysis of where the package should be for work.
+[01:10:48] It forwards everything on every sentence.
+[01:10:51] So this means that in fail-open mode,
+[01:10:54] this works like this.
+[01:10:57] It is like if you have everything, same by every back.
+[01:11:00] Okay, it's exactly the same situation.
+[01:11:02] And so, by flooding all the, flooding the Mac,
+[01:11:09] so basically sending a huge amount of packets,
+[01:11:13] okay, to the network packages, switches for example,
+[01:11:19] with the false Macs.
+[01:11:21] Well, the switches cannot keep up
+[01:11:22] and therefore enters the failed mode.
+[01:11:24] And then this works like hub,
+[01:11:27] and basically you have, you can have the same
+[01:11:31] the configuration of the shared network.
+[01:11:34] What's the problem with this method?
+[01:11:36] Is that this method degenerates in network services.
+[01:11:40] You have reductions of the performance of the network
+[01:11:45] because you are basically injecting a lot of rubbish
+[01:11:49] inside the networks and therefore the throughput
+[01:11:51] of the network is basically reduced a lot.
+[01:11:55] This is why that this kind of configuration
+[01:11:57] is very easily detectable by the network manager
+[01:12:01] and therefore you cannot use this in a very for a long time
+[01:12:05] and because it can be disguised
+[01:12:08] and also you are basically compromising the network services
+[01:12:12] this can be done with a business command make your graph
+[01:12:17] so this is why typically these methods
+[01:12:20] are called a nips dropping
+[01:12:23] typically current software of nips dropping
+[01:12:25] like varchar can operate at different levels
+[01:12:28] So here we associated with this which is the simplest
+[01:12:33] the first part, but you can use the first
+[01:12:36] for a different levels of use.
+[01:12:41] This can be a definition protocol and you can work
+[01:12:46] and configure this different in different.
+[01:12:51] What kind of software do we have for sniffing?
+[01:12:54] So we have ZP-dub,
+[01:13:03] Wireshark, Snore, Tetherial,
+[01:13:06] you can use it to sniff.
+[01:13:08] These are possible types of possible solutions.
+[01:13:12] Some open source, some others are not.
+[01:13:15] Okay? For sniffing patterns.
+[01:13:18] And some of them include
+[01:13:21] also methods to detect the sniffer.
+[01:13:25] So how can we understand if there is a sniffer
+[01:13:28] on the method.
+[01:13:30] Because we still have Zniffer used to find
+[01:13:33] forensic analysis, for the forensics.
+[01:13:36] But maybe Zniffer can use those to find a criminal
+[01:13:39] if you want to start to know
+[01:13:41] from some other method.
+[01:13:43] So how can you verify if someone
+[01:13:45] has attached a Zniffer on their method?
+[01:13:48] Well we have different types of methods.
+[01:13:52] In some of them, I also included
+[01:13:55] in some of these software slides as well for example.
+[01:13:57] So some of these methods for sniffer detection.
+[01:14:01] So there are different types of analysis that we can do.
+[01:14:08] So the first analysis is the ping packet.
+[01:14:12] So as we said that the sniffer is a computer
+[01:14:16] that buys, that process all the packets,
+[01:14:20] even the packet that I'm not assigned to him or her.
+[01:14:29] But, so there's a different process of the package,
+[01:14:34] this means that the amount of processing,
+[01:14:37] this is processing all the packages, you know,
+[01:14:39] the amount of processing that the issue needs to do,
+[01:14:44] basically is huge.
+[01:14:47] So what happens, if you send a Bing packet,
+[01:14:50] Bing packet is a simple packet
+[01:14:51] that you send to receive to get an answer.
+[01:14:54] You want to know if the machine is always
+[01:14:56] going to be able to send a clue.
+[01:14:58] So if you send a simple ping packet to that specific machine that uses that, this is different.
+[01:15:05] Well, this machine will basically answer.
+[01:15:11] Okay. Now, suppose now you send a packet, a pinging packet, with the IP address of the machine,
+[01:15:22] under the ground map.
+[01:15:25] So the map is ground, and the IP is collected.
+[01:15:30] If the computer is working correctly,
+[01:15:34] he perceives the back, he says it does not
+[01:15:35] respond to the IP, well therefore it's not possible.
+[01:15:40] Because there's a solution in the IP map, right?
+[01:15:42] Or the map is different from its source.
+[01:15:46] Instead, the machine that has us differ,
+[01:15:48] since the machine is collecting all the packets,
+[01:15:51] no matter what the packet contains,
+[01:15:55] no matter whether the packet is wrong or not,
+[01:15:57] or is going to offset.
+[01:15:59] So with the ping method, the idea is to
+[01:16:03] switch higher, wrong macros,
+[01:16:06] all the ping methods will actually be
+[01:16:08] addressing, okay, the machine,
+[01:16:11] which is basically running a filter.
+[01:16:13] If you get an elsewhere, this means that
+[01:16:15] the machine is answering, even if it should not answer.
+[01:16:19] and therefore you can edit it.
+[01:16:22] Then you have the ERP method.
+[01:16:25] You can basically explore the fact
+[01:16:27] that the ERP cache is compromised.
+[01:16:30] So what you can do, you can send a non-broadcast ERP
+[01:16:35] where you basically explore the fact
+[01:16:38] that this ERP is cached by a machine
+[01:16:41] which is in production.
+[01:16:43] Then what you do, you send a broadcast packet
+[01:16:46] with a correct IP, but different hardware.
+[01:16:53] In this case, all the other machines, okay,
+[01:16:57] which has a different back, I'm not able to answer.
+[01:17:01] I'm not able to answer because only the machine
+[01:17:04] with the correct MAC address, which I set up
+[01:17:07] using the non-broadcast RP, is going to answer.
+[01:17:11] If the machine, basically, answer this means
+[01:17:13] that this is different.
+[01:17:14] that is overcoming all the limitations.
+[01:17:21] You can check, okay, the local host.
+[01:17:24] If there is a strange suspicion
+[01:17:26] like here, it talks out all, so don't assume.
+[01:17:28] You may suspect that a hacker
+[01:17:30] has left a sniffer on the machine.
+[01:17:32] You can check this with A4P.
+[01:17:34] You can use also the latency methods,
+[01:17:38] which indicates the fact that the machine
+[01:17:40] is processing all the packets, huge amount of packets.
+[01:17:43] This means that if you do some pins, okay, with latency,
+[01:17:48] you will have that the machine is answering slowly.
+[01:17:52] So if you have five machines,
+[01:17:55] and you have, you've been called five machines,
+[01:17:58] and four of them is answering very quickly,
+[01:18:01] while the fifth one is answering with a higher delay,
+[01:18:04] you may suspect there is a sniffer on the fifth machine.
+[01:18:08] Because the machine is processing all the packets
+[01:18:10] and it takes time to ask for you.
+[01:18:13] You can also check the ERP table.
+[01:18:16] This ERP watch that are software that perform,
+[01:18:19] or for example, if you watch the command
+[01:18:21] that performs a check of the ERP.
+[01:18:23] So what happens, it happens that
+[01:18:24] if you have the ERP changes allowed,
+[01:18:27] if you compare the ERP that you have now
+[01:18:29] together with the ERP that you have in 10 minutes,
+[01:18:31] where you have seen there are differences,
+[01:18:33] you may suspect that something happened.
+[01:18:36] And moreover, you also have IDS.
+[01:18:38] Intuition detection systems basically monitor the packets,
+[01:18:43] the traffic crossing the network
+[01:18:45] and there is something suspicious.
+[01:18:47] You basically raise an alarm.
+[01:18:53] How can you prevent sniffing in an iPhone?
+[01:19:00] Basically, you can use some specific software,
+[01:19:06] for example, that protect, okay,
+[01:19:08] again, this magnetic attack.
+[01:19:10] But cryptography is a good protection against sniffing,
+[01:19:15] because even if they steal your pet,
+[01:19:17] the attacker cannot bring them inside.
+[01:19:21] Even if there is still some leakage,
+[01:19:24] as I show you in the jig example,
+[01:19:27] you get also some sniffing detection on tools,
+[01:19:29] like snort and sniff and you watch the pet,
+[01:19:33] or you can have some specifics,
+[01:19:35] as long as you can do mechanisms
+[01:19:36] on the two protocols that you can export.
+[01:19:42] okay um so we are going to conclude this
+[01:19:52] next time so by now
+[01:20:53] Okay, so the idea is to share the private data, because the request is not there.
+[01:20:59] The request is not there.
+[01:21:03] That is why, if you check, but if you check...
+[01:21:12] ... if you ask, no.
+[01:21:26] I mean, maybe in a second log or something, something has to do with the transaction.
+[01:21:39] The idea is that the request is not there.

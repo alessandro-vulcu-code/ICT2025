@@ -1,0 +1,1057 @@
+[00:00:01] Okay. Welcome to lecture number eight.
+[00:00:11] This is the forensic course.
+[00:00:13] And today we'll do a small exercise
+[00:00:16] about tensor shuffle.
+[00:00:19] Okay, so how we can apply
+[00:00:21] tensor shuffle in the ideal case.
+[00:00:24] So in this case we have
+[00:00:26] a network which is basically
+[00:00:29] controlled by three different IDS, okay?
+[00:00:35] And these three different IDS are sensor A,
+[00:00:38] sensor B, sensor C.
+[00:00:40] And we have different masks associated with each option.
+[00:00:44] The options are, the activity is under attack,
+[00:00:47] and the activity is safe.
+[00:00:50] So sensor A, we have mask 0.3,
+[00:00:54] for the attack 0.2 for safe.
+[00:00:57] And we have the don't know option which means basically the set A and S which has an option
+[00:01:07] for zero point.
+[00:01:09] Then you have that so B has a mass effect of zero point 35, saves zero point 35, don't
+[00:01:16] know zero point four.
+[00:01:18] So C has a mass for attack of zero point 35, saves zero point one, don't know zero
+[00:01:24] point five.
+[00:01:25] So the question is, what is
+[00:01:27] the likelihood that the network is under attack?
+[00:01:34] So let's try to, okay,
+[00:02:32] so you have the mass attack,
+[00:02:42] say, I don't know,
+[00:02:47] which is a 0.3, 0.2, 0.5,
+[00:02:59] B, 0.35, 0.05, 0.4, okay?
+[00:03:19] And then we may think about fusing together, okay, sensor A, sensor B, okay?
+[00:03:27] And therefore we can make, okay, one table which is A plus B.
+[00:03:38] And let's see what happens for A plus B.
+[00:03:41] So in A plus B, we have three options.
+[00:03:46] options, be safe, be safe, be safe.
+[00:03:55] So, the option A is given by the intersection.
+[00:04:01] So, remember what we've seen in the combination rule,
+[00:04:04] we need to intersect the two sets and say that,
+[00:04:07] see which of the intersections correspond to this.
+[00:04:11] So, which intersection gives me exactly the option A.
+[00:04:14] So if I intersect the A with A, I got A.
+[00:04:18] So I have this intersection, therefore I multiply this
+[00:04:22] 0.3 by 0.35, using X.
+[00:04:33] Then, I can have A if I intersect this with this.
+[00:04:37] So 0.3 is 0.4, and I have intersections of this A here
+[00:04:52] with this unknown here, which is 0.35, 0.5.
+[00:05:08] This, if you do all the sammings,
+[00:05:12] this is basically equal to 0.44.
+[00:05:26] Then, same similar things for the optional safe.
+[00:05:29] For the optional safe, if I intersect this with this,
+[00:05:33] sorry, I have this with this, same with the safe.
+[00:05:36] So, 0.25 plus this with this,
+[00:05:45] which is 0.2 0.4 plus this with this which is 0.25 by 0.5 and equal 0.25 this one
+[00:06:17] like I said the instantaneously is basically equal to the section of it's given by the
+[00:06:24] section of ANS with ANS, so it is 0.5 times 0.4, which is equal to 0.4, and I will write this.
+[00:06:45] So some of all these options is not equal to one, so it can normalize. So if you compute k,
+[00:06:52] which is equal to 0.4 plus 0.2550, 0.2.
+[00:07:03] This gives you 0.8550.
+[00:07:12] And therefore, if I divide, okay,
+[00:07:14] these options here, normalization, okay,
+[00:07:20] I will get my final mass from this summing.
+[00:07:27] 0.4 is 678, okay, so here I could keep only two,
+[00:07:34] a decimal option, or you can say 0.4.
+[00:07:43] 0.3, 30, and 0.23.
+[00:07:59] So, now you have basically the summing
+[00:08:07] of A and B, sensor B, but you have a third sensor,
+[00:08:11] which is the sense of C, so here we have A plus B,
+[00:08:34] B is the path, C is the, I'm sorry, okay?
+[00:08:43] Option C has a mass, B equal from C to the path,
+[00:08:49] C is equal to V, which is equal to 35,
+[00:08:59] zero point one, zero point two five, okay?
+[00:09:13] So if I do A plus B plus C,
+[00:09:26] then we have attack C is uncertain.
+[00:09:30] Once again, A is given by the intersection of
+[00:09:34] this and this, this and this, this, this, okay?
+[00:09:40] So if you do all the computations, all the crossing,
+[00:09:44] If you want we can do this, 0.735 plus 0.35 by 0.83 plus 0.47 by 0.55.
+[00:10:11] Now this gives me a number which is 0.50.
+[00:10:28] then you have 0.30, 0.1 plus 0.30 by 0.55, 0.1 by 0.33
+[00:11:07] and if you do the computation you will get 0.32
+[00:11:14] and the final one which is 0.55 by 0.23 this is equal to 0.13 so if you do all
+[00:11:38] the normalization, 0.59, 0.26, and 0.15.
+[00:12:11] So the first configuration we had with the three sensors,
+[00:12:16] we are not sure about the text of the network,
+[00:12:18] combine them together.
+[00:12:20] You can see that at the end of the combination,
+[00:12:23] then you have a higher mass associated with your analysis.
+[00:12:28] What you can do is you can also try to do different orders.
+[00:12:32] So to combine first A and C,
+[00:12:35] and then B and C and then A,
+[00:12:37] so basically changing the orders,
+[00:12:39] you will get that the intermediate results
+[00:12:42] will be basically different,
+[00:12:45] but the final one should be this.
+[00:12:48] Apart from the approximations,
+[00:12:50] but basically the order that you use
+[00:12:52] to combine. Okay. So this is one exercise.
+[00:13:01] There's another exercise that we can do.
+[00:13:06] Okay. Yeah. Question.
+[00:13:13] So there is a system failure.
+[00:13:15] So the text of this exercise is this one.
+[00:13:17] We're not otherwise.
+[00:13:20] There is a system failure.
+[00:13:22] There are two experts, John and Paul.
+[00:13:25] that there are two experts, Joe and Paul,
+[00:13:39] that have different opinions
+[00:13:42] about what is responsible to the computer
+[00:13:49] and where the attacks start to fall,
+[00:13:51] or where the problems start to fall.
+[00:13:53] They are evaluating different hits and needs.
+[00:13:57] And therefore we have different terminals.
+[00:14:00] The system failure could be caused by the terminal A,
+[00:14:04] the terminal B, or the terminal C.
+[00:14:07] Then John believes that
+[00:14:10] the failure is due to terminal A
+[00:14:14] with a mass equal to 0.8.
+[00:14:18] And think that it has been the terminal B
+[00:14:23] with a mass equal to 0.1.
+[00:14:26] And so the T is a 0.1.
+[00:14:28] So John, see, so we have three terminals.
+[00:14:47] And therefore, in our power set,
+[00:14:50] that we should have a and b, b and c, a and c.
+[00:15:15] So John says basically that zero point a,
+[00:15:18] I believe, John says that I believe
+[00:15:20] that it's a problem with terminal a.
+[00:15:22] So this mass is equal to zero point a.
+[00:15:28] Then maybe it could be that there is terminal problem
+[00:15:30] with terminal b, and therefore the mass in this case,
+[00:15:32] I think, uncertainty, it is zero point one.
+[00:15:39] And so the thing is, the others are all zero, okay?
+[00:15:52] It is possible that John has no opinions
+[00:15:55] about all the other possible configurations.
+[00:15:59] So these are all zero,
+[00:16:00] when I wrote this for X and C, the next one completeness,
+[00:16:05] but then you don't need, okay, to report
+[00:16:09] in the table all the possible zero configurations.
+[00:16:14] But here it is important just for clarity, okay?
+[00:16:16] So I will keep this in this way.
+[00:16:19] There is a second expert,
+[00:16:21] which name is Paul.
+[00:16:24] And the second expert says that
+[00:16:26] he's not agreeing with John.
+[00:16:29] Has a different opinion about maths.
+[00:16:31] So Paul thinks that the failure
+[00:16:37] is due to computer C, okay,
+[00:16:41] with maths 0.9, okay.
+[00:16:44] So he's extremely sure about this.
+[00:16:47] So we have A, B, C.
+[00:16:51] A and B, B and C, and then you have a strategy here.
+[00:17:03] Okay, as for all Cs, the mass of the alpha C is 0.9.
+[00:17:13] The others are zero.
+[00:17:19] Okay, so 0.9, and the other, okay,
+[00:17:26] and it thinks that the others, the others two,
+[00:17:29] A and B, are responsible, could be responsible
+[00:17:32] for a mass equal to 0.05.
+[00:17:37] In this case, the other two are this substance here.
+[00:17:42] Okay, I'm not saying, so Paul does not believe
+[00:17:46] that it is computer A or computer B.
+[00:17:49] I don't know what is possible it is one of the other two with a mask 0.05. I'm not distinguishing
+[00:17:59] between A and B okay and uncertainty is 0.05 so this one so the final the final number
+[00:18:12] is the certainty which is ABC 0.05. So these are the distributions of the masses in this
+[00:18:20] well so what happens when you combine these two you should have one value for
+[00:18:37] every okay so let's consider the option a the
+[00:19:05] option A is found by intersecting this with this okay so you have 0.8 but here
+[00:19:12] this is 0 so you multiply 0.8 by 0 then option A can be given by this with this
+[00:19:21] okay and in this case you have 0.8 multiplied by 0.05 okay then you have
+[00:19:37] this with this, but this is zero, so no option.
+[00:19:43] And this with this, okay, ABC,
+[00:19:46] so you have 0.8 by 0.05.
+[00:20:01] I should have considered also the intersection
+[00:20:04] of this A with this, okay,
+[00:20:07] but the problem is that this value here is zero,
+[00:20:10] so any kind of intersection is going to be multiplied by zero.
+[00:20:15] So you have that this is equal to 0.8 by 0.1,
+[00:20:18] and therefore it is a 0.08. Option B, so in this case B is found by
+[00:20:30] intersecting this with this and that is equal to zero okay so there's no effect
+[00:20:38] this with this yes so it's 0.1 by 0.05. We have this with this, this with this, this with this, this with this, this with this is okay so
+[00:20:55] is basically the same if we go to 0.0, the option C.
+[00:21:08] Okay, the option C here, it is zero,
+[00:21:10] so I will not have any contribution
+[00:21:12] by intersecting this with this.
+[00:21:14] Let's consider this intersecting with this also,
+[00:21:18] in a good intersection, which gives me C.
+[00:21:20] So this intersecting with this
+[00:21:23] is going to have a C intersection
+[00:21:26] only when I consider this with this.
+[00:21:29] so it is 0.9 by 0.1 so I said C is R this one this one 0.9 by 0.1 plus okay no
+[00:22:18] others no others because C could be intersected with this one but this is
+[00:22:25] Therefore, no effect.
+[00:22:27] This can be intersected with this.
+[00:22:29] This gives you C, yes, but this is zero,
+[00:22:31] so there's no contribution.
+[00:22:33] So that is the only contribution, 0.9 by 0.1.
+[00:22:37] And the result is equal to 0.09.
+[00:22:44] Then you have AC.
+[00:22:46] AC is given by the intersection of this with this, zero.
+[00:22:51] This with this, this is zero, so there's no effects.
+[00:22:55] this with this, basically there is no intersection.
+[00:23:02] AB same thing because this is zero, this, zero, this.
+[00:23:08] You have one option given by AB intersecting with this.
+[00:23:14] AB here intersecting with this gives you AB
+[00:23:18] and it's not trivial, okay.
+[00:23:20] So you have that AB is given by 0.05 multiplied
+[00:23:25] right to the point and the final one. Am I right? So this is zero. The same thing is for Bc. Bc is given by this, this, this, this, this, this. Okay, but one of the two is always zero. Okay, so this is equal to zero now. And the final intersection, so final uncertainty, is ABC with ABC, which
+[00:24:09] is 0.1 by 0.05.
+[00:24:21] You normalize, so you sum all the values,
+[00:24:24] you divide by all the values, what you will get,
+[00:24:28] you will get that 0.42, that's one,
+[00:24:38] 0.05, roughly, 0.47, and 0.03, 0.05.
+[00:25:03] the correct one, this one or this one?
+[00:25:33] For C, here, because C,
+[00:25:40] well, which other intersection will give you C?
+[00:25:45] Okay, we don't consider this one.
+[00:25:46] So this, this, yeah.
+[00:26:03] C with this gives you one intersection,
+[00:26:06] which is equal to C.
+[00:26:08] And it's different from C.
+[00:26:10] Because this always intersecting
+[00:26:13] with any intersection here is zero, does not contribute.
+[00:26:15] this you have with this zero, no contribution,
+[00:26:20] this you have with this and this, no contribution,
+[00:26:23] this with this is the only contribution
+[00:26:25] that gives you a number different from zero, okay?
+[00:26:31] So this is 0.9 by 0.1.
+[00:26:36] So you exclude if you don't have a section,
+[00:26:40] and you exclude if you have one of those
+[00:26:42] in between zero and zero point.
+[00:26:49] Zero that came right, you know the value is equal to zero.
+[00:26:52] but basically it's going to be long for the sake of home.
+[00:26:57] So what is interesting here to say is that
+[00:27:01] the two sides, sorry, the two experts at the beginning,
+[00:27:05] they had different opinions, okay?
+[00:27:08] Different opinions about who's the computer
+[00:27:12] responsible for the attack.
+[00:27:16] We have A, strongly concerned, sorry,
+[00:27:18] John is strongly concerned with A, Paul is strongly concerned with C, but if I look at the final results you have
+[00:27:31] there is a higher concern about C, there is still a concern about A, but in this condition, the two opposite opinions did not pass, okay?
+[00:27:47] The two opposite opinions did not cancel
+[00:27:49] because you have that prior results
+[00:27:52] concludes basically slightly too much together.
+[00:27:55] So it's a bit different from the example
+[00:27:58] that you have seen last time.
+[00:28:00] Last time we said, if you have the two experts
+[00:28:03] has completely different opinions
+[00:28:06] and they strongly believe that C cannot be responsible.
+[00:28:10] There is no uncertainties, okay.
+[00:28:12] This was the examples of that we have seen last time.
+[00:28:16] Those conditions that cancel totally,
+[00:28:19] the opinions of the two experts, of the two sensors,
+[00:28:24] is basically safe here, it's a safe area.
+[00:28:26] Because you have a part of the uncertainty
+[00:28:29] allowed to encapsulate, okay, this uncertainty,
+[00:28:33] the opinions of the others, okay, that is the idea.
+[00:28:37] And the final result is that
+[00:28:38] you have a strong concern about C,
+[00:28:41] but you still have a higher concern also with A.
+[00:28:44] Okay, so more or less, yeah, C is a bit higher,
+[00:28:48] but A is not so small.
+[00:28:55] So, in this case, you should have further evidences.
+[00:28:59] You should add another expert, add another surveillance
+[00:29:02] that provides you information about
+[00:29:06] what's happening on the left.
+[00:29:09] I'm going to post on the Google page of the course
+[00:29:13] one file with some other exercises.
+[00:29:16] You're going to have all the exercises of course.
+[00:29:19] So basically, the first part of it,
+[00:29:21] you need to drift along in action with folks.
+[00:29:25] And then, you anyway find exercise,
+[00:29:33] and they are short, so you can handle it.
+[00:29:36] And then, if you have crisis,
+[00:29:40] we can also have, typically before
+[00:29:41] the first intermediate action,
+[00:29:43] we are going to have one exercise sessions, okay,
+[00:29:46] which is not compulsory, okay, but if you want,
+[00:29:49] we can have an extra hour where we solve the exercises
+[00:29:55] and we'll see our questions there.
+[00:29:59] So let's go back to our slides.
+[00:30:03] Any questions so far?
+[00:30:26] I will also upload also the solutions.
+[00:30:29] Okay, so we'll find us the solution
+[00:30:31] for these two exercises.
+[00:30:37] Okay.
+[00:30:42] Okay, so today I'm going to see
+[00:30:53] basically the part related to another type of audiences.
+[00:30:57] So, so far, we have acquired the files,
+[00:31:02] we have acquired network streams, okay?
+[00:31:04] And we have seen what type of information
+[00:31:06] that they can get from a network stream, from a file.
+[00:31:10] So we showed metadata, we showed other parts, okay,
+[00:31:19] related to the stream, so at least I've seen
+[00:31:24] that length of the packet, even if I don't know
+[00:31:29] Okay, the content of the packets may give me information,
+[00:31:35] IP addresses, registers in the devices.
+[00:31:39] So now, what happens, what can we do,
+[00:31:42] what type of information that we can get, okay,
+[00:31:45] from something which is going to be,
+[00:31:48] some multimedia file, which can be a piece of text,
+[00:31:52] an image, a video, another file.
+[00:31:56] Typically, most of the analysis that you do
+[00:31:59] in forensics evidences are very, very frequently
+[00:32:04] concerned in the media files.
+[00:32:07] And the reason is that, typically,
+[00:32:10] many surveillance information, many data comes, okay,
+[00:32:15] from acquisition of data from all the devices
+[00:32:18] which are around us.
+[00:32:21] In the end, when you analyze, okay,
+[00:32:25] and move the files, do modeling for instance,
+[00:32:30] you basically try to reconstruct the story of that file.
+[00:32:37] From, this is because you don't know, okay,
+[00:32:40] when the physiology of the file,
+[00:32:44] what the file is for, okay,
+[00:32:46] you needed to have a full reconstruction
+[00:32:48] of the story of the file.
+[00:32:51] So, as you know, the file starts from a real scene,
+[00:32:53] okay you have a situation and then somebody acquired information from that
+[00:33:01] scene which can be all the registration speech or can be an image like in this example here
+[00:33:08] using some device, device can be your device, can be video surveillance camera and
+[00:33:14] this information is processed directly on their device and stored on
+[00:33:21] on the device, okay?
+[00:33:23] So, from the very acquisitions,
+[00:33:25] still there is some processing,
+[00:33:27] some additional modifications, okay,
+[00:33:29] which is done on the image.
+[00:33:32] And then, you may think about that,
+[00:33:36] basically, for many companies, then they,
+[00:33:38] so when the image is downloaded,
+[00:33:41] or in the case of video surveillance,
+[00:33:44] it is extracted, okay, from the device,
+[00:33:46] from the equipment, there can be some editing,
+[00:33:48] and some additional modifications on that.
+[00:33:52] And then you upload.
+[00:33:54] You upload this, maybe, otherwise, or image,
+[00:33:58] and this upload implies another extra modification.
+[00:34:01] For example, when you upload an image on Facebook,
+[00:34:05] the image is,
+[00:34:07] so when you upload an image on Facebook,
+[00:34:14] the image is decompressed,
+[00:34:16] and Facebook happens to recompress the image
+[00:34:20] with your own file, okay?
+[00:34:24] This was done because sometimes this web sharing platform
+[00:34:28] supported all these formats, some of these formats.
+[00:34:33] For example, the beginning Snapchat
+[00:34:36] was supporting all the squares in this, okay?
+[00:34:41] So if you have a particular images,
+[00:34:43] you need to take the image, they'll know the shape,
+[00:34:46] and then they'll know.
+[00:34:47] Sometimes this is done also because in this way
+[00:34:49] you can add the form, the data to add the form information
+[00:34:54] so that you can bring a copy of a tracing or video.
+[00:35:05] And then this image maybe,
+[00:35:07] these things that I mentioned earlier
+[00:35:08] that you have taken on your phone,
+[00:35:10] goes viral, there can be many people
+[00:35:12] that download this image and look at this image.
+[00:35:15] Other platforms can take the image
+[00:35:17] and re-send this on their platforms.
+[00:35:21] Some guy can also make some pics, okay?
+[00:35:24] take some big image from some iteration
+[00:35:29] and then re-upload the fake versions of the image.
+[00:35:33] And then maybe other people may distribute
+[00:35:35] or take care of the people that distribute
+[00:35:38] and download in the real image.
+[00:35:40] We may have also people that distribute
+[00:35:43] and re-download the modified versions of the image.
+[00:35:48] So, that is why we have several problems, okay?
+[00:35:52] So first of all authenticate the file, who created that file. Then what is the origin, so where
+[00:36:06] that file was taken. So typically when you process some multimedia files or
+[00:36:11] forensics you want to associate that file, which is associated with this file in the real place, the real location where that file was
+[00:36:34] And is the file authentic in the sense that
+[00:36:37] it's reproducing exactly what the scene
+[00:36:42] reproduced in reality.
+[00:36:44] So was this file not fire?
+[00:36:45] And if the file was not fire,
+[00:36:47] which changes when created?
+[00:36:49] How much of that file is original?
+[00:36:52] How much has been changed?
+[00:36:55] In the current era, we are asking
+[00:36:59] of the file is being generated by AI,
+[00:37:03] or it is actually being captured.
+[00:37:06] And then we have another subtle distinction.
+[00:37:11] Is the file being edited with AI?
+[00:37:14] So currently, the question is that,
+[00:37:17] has it been generated, edited, or original?
+[00:37:22] Because they can use AI to simply edit the file,
+[00:37:24] for example, the clean.
+[00:37:25] does this makes the file fake? Not necessarily. If I use AI to blur or reduce the amount of noise this does not necessarily change the
+[00:37:38] semantic meaning of that file. And therefore all these questions are related to the fact that I can entrust the content.
+[00:37:52] These are the big questions that we need to pose. And then we can also pose another question for
+[00:37:59] For example, if we go back, if we go deeper
+[00:38:04] into the scene, into the real scenario
+[00:38:06] where this file was taken, we want to know
+[00:38:12] what can I understand, okay, from the reality,
+[00:38:16] from the place where the file was taken,
+[00:38:18] okay, from this information.
+[00:38:20] How much this scene, this image,
+[00:38:24] or this object tells me about the scene.
+[00:38:26] And it's possible to relate, okay,
+[00:38:28] this file to other contents. Imagine when you have some events, like some hardware,
+[00:38:41] and you have different people uploading different files to their own images or videos on the web.
+[00:38:49] Then you can collect all the information on the web, put them together, and have a clearer idea,
+[00:38:56] with more of your idea on what is happening, okay?
+[00:39:01] Or I can use basically this relation to other contents
+[00:39:04] to perform a verification.
+[00:39:08] If the file is authentic, if the event,
+[00:39:11] okay, the situation that the file is depicting
+[00:39:13] has been documented by other independent files,
+[00:39:17] well, I can perform some cross-check, okay,
+[00:39:21] in order to verify the validity of the news.
+[00:39:24] And then I can relate to this file
+[00:39:28] and the file's been generated and edited.
+[00:39:31] I can relate on the reality of the software device
+[00:39:35] that's generated and edited.
+[00:39:42] So, the first question that we pose in the media
+[00:39:48] is basically the process of authentication.
+[00:39:51] So given an image, you want to associate this image
+[00:39:55] to a device, typically when you associate this image
+[00:39:58] the device you also see the person that has that device. So if you want to do this
+[00:40:07] this association to associate the image or the audio of the file to a specific device
+[00:40:13] because you want to validate the evidence or you want to track the origin of the data.
+[00:40:19] This is largely done for terrorism of agenda or for example for type load and you want to know
+[00:40:26] whether which device has captured that personal file.
+[00:40:33] For example, if you do a seizure in an apartment
+[00:40:35] and then you find lots of typography material,
+[00:40:38] and you see that some of this picture
+[00:40:40] has been taken with a camera that is present
+[00:40:44] in that apartment.
+[00:40:51] Moreover, it's also possible to ask this question,
+[00:40:55] who owns the data?
+[00:40:57] So whenever you have one data
+[00:40:59] which can be copy right here,
+[00:41:01] but there are millions of big data by itself.
+[00:41:03] You can, you want it, okay, to track this image.
+[00:41:06] You want it to track, okay, the ownership
+[00:41:08] of that specific file.
+[00:41:11] And this is the case sometimes,
+[00:41:12] this is done passively, analyzing the file.
+[00:41:15] Also, if you want to protect the ownership of that file,
+[00:41:19] what you want, you want to do with a watermark.
+[00:41:23] This is done for the ownership,
+[00:41:25] this is done for copyright issues.
+[00:41:28] For example, most of the images that we generate
+[00:41:32] when we're using the AI generation platform,
+[00:41:40] huge journals, huge journals, and so on,
+[00:41:46] all those images are basically watermarked.
+[00:41:50] Means that there is a message, okay,
+[00:41:52] these are messages included there,
+[00:41:56] in order to track the origin of the image.
+[00:41:59] And this watermark says that this image
+[00:42:01] that's being generated by the user X,
+[00:42:04] you know, you, okay,
+[00:42:07] using, okay, stabilized using the LED or so.
+[00:42:11] And this is to ensure that the terms of use
+[00:42:16] of that specific platform are respected
+[00:42:18] by those persons that use the image in the studio.
+[00:42:23] This is also done for another reasons.
+[00:42:26] Recently, there is a huge theory of production
+[00:42:29] of in-guide and in-guide devices.
+[00:42:31] For example, in music, higher amount, more than 50%
+[00:42:39] of the music that's here in platforms like Spotify,
+[00:42:42] Instagram, or Sahaba, is music which is being created.
+[00:42:49] And the company, basically users, do not like this,
+[00:42:53] you know, are real people,
+[00:42:56] or at least have to have different types of pricing
+[00:43:00] for real music with respect.
+[00:43:08] So that is why most of the platforms are introducing
+[00:43:14] watermarking on the files so that you can see it.
+[00:43:24] Moreover, this allows you tracing, finding out the traces
+[00:43:31] that gives you information about the origin of the files.
+[00:43:36] It is important because this gives you also
+[00:43:37] information about if the file is being manipulated or not.
+[00:43:42] For example, if I put it in the same file,
+[00:43:45] I find some elements, some parts of the files
+[00:43:49] that leads me to one device.
+[00:43:52] And there are other parts of the same image
+[00:43:54] that leads me to another device.
+[00:43:57] Okay, so we have traces from one device
+[00:43:58] and traces from another device.
+[00:44:00] I may think that on that specific content,
+[00:44:06] so the guys have been proposed to be different parts
+[00:44:09] from different sources.
+[00:44:12] Okay, then we're going to move us to that announcement.
+[00:44:25] But we are finding the truth.
+[00:44:29] Are there any questions so far?
+[00:44:58] Yes.
+[00:45:03] If the leaves are super firm,
+[00:45:05] if the leaves are super firm,
+[00:45:08] should I prepare or should I put the...
+[00:45:10] If you put the leaves on both sides,
+[00:45:12] should I put the leaves on both sides?
+[00:45:14] Start the installation.
+[00:45:15] Let's go.
+[00:47:25] He lived, not totally in the same place.
+[00:47:27] He lived to be able to speak.
+[00:47:29] He was able to speak by himself, but he didn't speak.
+[00:47:34] He spoke in the same way, but he didn't speak in the same way.
+[00:47:37] It's important to remember that you are living in a place like this.
+[00:47:39] It's not good, we're living in a place that is independent of our own.
+[00:47:44] You can live in an intersection, like in the Po'o'atira,
+[00:47:46] but the problem is that we're living in an intersection.
+[00:47:48] We're living in a place where there is no one,
+[00:47:51] and that's not a possible thing.
+[00:48:22] No, no a you finish what would be
+[00:48:25] The
+[00:49:55] That's good.
+[00:50:03] Can you handle the...
+[00:50:13] Yes.
+[00:50:20] I'm gonna... No, the shot...
+[00:50:23] Oh, no. Oh, no. Oh, no.
+[00:58:38] Okay.
+[00:58:46] Okay, so, together also with the authentication,
+[00:59:07] we also have the problems of cleaning the data.
+[00:59:12] So what we call the data announcement,
+[00:59:14] we're going to have a meeting by Amperd,
+[00:59:19] and this company works on forensic Photoshop,
+[00:59:23] and basically, most of the activities,
+[00:59:25] is cleaning images, cleaning videos,
+[00:59:27] because most of the time, when you acquire,
+[00:59:31] for example, the frame from video surveillance footage,
+[00:59:37] you do not know when you don't have IPI conditions.
+[00:59:42] The image or the frame in video can be acquired at night.
+[00:59:47] No disinflation.
+[00:59:49] The person that you won't identify
+[00:59:51] is really far from the camera.
+[00:59:54] There can be noise, compression,
+[00:59:56] because maybe the system has a limited memory
+[00:59:59] there is a strong compression mechanism on the system is over. You have problems on the lens.
+[01:00:10] So all these elements impair the visibility, the clarity of the evidence. And it is why
+[01:00:18] you need to process this evidence to announce your quality, providing, granting that the quality
+[01:00:26] stays high and you do not alter the content.
+[01:00:32] You must do this in a forensically sound,
+[01:00:36] forensically robust way.
+[01:00:38] And you may also do this to localize isolated events.
+[01:00:43] For example, you want to extract the voice
+[01:00:45] of the person inside an environment that is dropping.
+[01:00:52] And you can find object persons who eventually
+[01:00:54] get information about what's happening in that scene.
+[01:00:57] On your file you want to detect the gun shot, for example,
+[01:01:03] and reconstruct the sequence of gun shots
+[01:01:06] that you have in that other file.
+[01:01:08] Or, given a video surveillance footage,
+[01:01:11] you want to read the license plate of a car, okay?
+[01:01:15] So you want to associate,
+[01:01:17] most of the times this approach is good,
+[01:01:19] in the image, because you want, or the content,
+[01:01:22] because you want to associate this contact
+[01:01:24] with something real, okay?
+[01:01:26] or something that happened earlier.
+[01:01:29] Then we have the problem of fakes, okay?
+[01:01:33] So in the past, fakes were done by composition, okay?
+[01:01:37] Now, and this can be done for many different reasons,
+[01:01:40] artistic reasons, advertisements, fake news,
+[01:01:44] and together also with frauds, okay?
+[01:01:47] Now we do a lot, okay, using, okay, good learning.
+[01:01:50] But still, you can find also these types of applications.
+[01:01:54] And what you want to do, you want to trace the reality.
+[01:01:59] It's the reality of some context.
+[01:02:01] Typically when something is most of it,
+[01:02:04] not information, you find it from that,
+[01:02:07] you know, the social platform and this information
+[01:02:09] is associated to mind, but not in spite
+[01:02:12] of a rapid task, or if not a rapid task,
+[01:02:15] it can be near to the details, like this one, that.
+[01:02:19] Because people start editing, changing, and so on.
+[01:02:22] So tracing the origin of this is important
+[01:02:27] because you know, which is the original one,
+[01:02:29] that's all this content,
+[01:02:31] and who's the person that posted that material first?
+[01:02:36] It's getting done for copyright tracing back,
+[01:02:39] only trace back origin.
+[01:02:41] Or you can do this for the trace back
+[01:02:43] of something big on the page, okay?
+[01:02:46] For example, we mentioned, okay, the typography,
+[01:02:51] Okay, but consider this, suppose if you have software
+[01:02:55] and someone steals your software,
+[01:02:57] you find one picked up, is it possible that you claim
+[01:03:02] proof that that software is yours?
+[01:03:05] Okay, so using some of these strategies
+[01:03:07] or dilution, it is still possible.
+[01:03:13] This is done also for viruses,
+[01:03:14] because the following example from software.
+[01:03:17] For viruses, it's even more than it's doing in space
+[01:03:46] back or for example you can also understand what is the type of viruses
+[01:03:52] and the types of human abilities
+[01:03:53] that virus is going to exploit.
+[01:03:58] So an example for this traceback is,
+[01:04:01] for example, this sequence here.
+[01:04:05] This is from the, because of being in Boston,
+[01:04:09] we have families in the local market.
+[01:04:12] And basically, by taking multiple screencasts
+[01:04:18] from multiple videos from different news,
+[01:04:23] we were able to reconstruct the top-up sequence.
+[01:04:30] We were able to understand that it was a single,
+[01:04:38] okay, it was then shot by single users,
+[01:04:43] then we were able to reconstruct it.
+[01:04:48] Or related to the softwares, in this case here,
+[01:04:53] we applied this to audio files,
+[01:04:55] and we applied this to this in primary,
+[01:04:58] because we were processing all the files from
+[01:05:00] electronic media from the deep feeds.
+[01:05:03] And we had lots of tapes that it was not possible
+[01:05:07] to do attributes, okay?
+[01:05:08] And by doing standard analysis, it was possible
+[01:05:11] to attribute a single tape of all the files
+[01:05:13] to a specific chain, so we were able to understand
+[01:05:17] that if you are, if you made different versions
+[01:05:20] of that file and compensate event or differences,
+[01:05:24] though maybe this information was stored
+[01:05:26] on different types of sports, from karam with the smoother,
+[01:05:30] up to kamak with the kicks, and so on.
+[01:05:32] We have done this also for software from Vietnam.
+[01:05:37] So we were able to trace back all the branches
+[01:05:40] or the branches from the software.
+[01:05:42] So we have the software, we have all the software
+[01:05:45] from now on we have the buyer and we don't have
+[01:05:46] to search for, it was possible to associate
+[01:05:51] this software from other softwares,
+[01:05:54] creating a kind of logarithmic tree.
+[01:05:57] The logarithmic tree insists that you can create
+[01:06:00] these types of contents like evolution
+[01:06:03] or living organisms, like human biology.
+[01:06:06] And therefore, you can say, okay,
+[01:06:08] this software has been generated from these servers,
+[01:06:11] which is then generated by these servers,
+[01:06:12] so you can have a full genealogy of the softwares,
+[01:06:15] from simple function calls, system calls, registers,
+[01:06:19] cache needs, all these elements
+[01:06:21] are useful to them to find software with the same compiler in the platform and
+[01:06:28] compilers. Okay so these things as what you can do okay and I mean you can do
+[01:06:38] this okay it is extremely crucial in forensics because the lifetime of an
+[01:06:44] image of a content is basically infinite.
+[01:06:48] Okay, we can last forever.
+[01:06:50] And we post it online multiple, multiple times.
+[01:06:54] And so what are we looking?
+[01:06:57] So what, still, so considering that we use,
+[01:07:00] okay, we analyze these types of contents,
+[01:07:02] what are, okay, the three other key elements that we,
+[01:07:08] well, as we said before,
+[01:07:11] hard disk we have to have data
+[01:07:13] for networks to have L-stamps,
+[01:07:18] RPE, estimations, and information and so on.
+[01:07:24] For container contents, we have this
+[01:07:27] and we are using what we call misprints.
+[01:07:31] So these are the modifications
+[01:07:33] which are introduced on the contents.
+[01:07:37] And this modification is the ceiling
+[01:07:41] of that operation that you do
+[01:07:43] on the internet.
+[01:07:46] For example, when you acquire an image,
+[01:07:48] this modification can be built by electronics.
+[01:07:54] This modification can be built by the specific software
+[01:07:57] that it uses to produce that image, or image.
+[01:08:01] And the same also for the web platform,
+[01:08:03] that those modifications are basically introduced
+[01:08:05] by the API.
+[01:08:07] These modifications are not all over.
+[01:08:11] to do not perform this as a relation to these norms of purpose.
+[01:08:18] Apart from open mind, open mind is a next.
+[01:08:21] We do that next.
+[01:08:29] But in this case, these mirror prints
+[01:08:31] are left to be unintentional by all these elements.
+[01:08:35] And these mirror prints is what you're looking for
+[01:08:37] because this gives you a trace, a clue
+[01:08:40] to reconstruct the full trace, the full story
+[01:08:43] of the device.
+[01:08:51] So, typically, when I ask this question in this course,
+[01:08:56] how can you say, we are now going to find information
+[01:08:59] about the image?
+[01:09:00] More to the time, you can say, look or exit data,
+[01:09:05] and find this in the name, I don't know,
+[01:09:12] the first thing is the image,
+[01:09:18] is to imagine that this information
+[01:09:25] can be the focal length exposure.
+[01:09:27] The GPS location, you find latitude and longitude,
+[01:09:30] if you have GPS, you can find the type of sampling,
+[01:09:35] the software that is being used.
+[01:09:36] If you have edited the image,
+[01:09:38] also the software includes metadata.
+[01:09:41] So if you edit the image in Photoshop,
+[01:09:43] Photoshop leaves, there are some traces.
+[01:09:47] So the problem is that this cannot be reliable
+[01:09:53] and this can be wiped out very very easily, if you open, I mean so much is taken from the file, convert it into matrix of numbers and if you rewrite the matrix only, if you take the index and convert it into a tensor and then open up the data and done, so it's very easy to remove a tensor steps, moreover
+[01:10:33] However, the exit text cannot be reliable.
+[01:10:38] Okay, now we'll make you an example about that.
+[01:10:41] For example, let's have this example here.
+[01:10:48] I have two images, okay, on my file.
+[01:10:59] So one image is, this is an image,
+[01:11:10] HEIC is in a format of an iPhone,
+[01:11:13] and this image is JPEG, okay.
+[01:11:16] This image has been taken with a very old camera.
+[01:11:25] And this image has been taken with an iPad.
+[01:11:30] So I can see the EXIF tags using the tool
+[01:11:33] which is EXIF tools.
+[01:11:35] It's an open source of tools for reading these images.
+[01:11:40] Using EXIF tools, EMG, let's do this
+[01:11:44] for the iPhone image, you can get this information here.
+[01:11:57] So all this information is contained inside the file.
+[01:12:04] So you have the names,
+[01:12:06] the basically file modification date, time,
+[01:12:10] access date, time, the iLog change date, time, okay.
+[01:12:15] You have the file type, the format, okay,
+[01:12:19] which is HEVC, high conversion format, okay?
+[01:12:26] The by-torter, the toolkit, the example toolkit,
+[01:12:31] the resolution of the image, okay?
+[01:12:33] Then the camera model name, the iPhone, 14 Pro Max,
+[01:12:39] and if this has been modified,
+[01:12:42] you can add some modification date,
+[01:12:43] so you can see that this has been taken according to that on the 23 of October
+[01:12:52] okay and you have that need but before that creation has been modified on the
+[01:13:02] 26, 25 of April and here the time original, daytime original, 25 of
+[01:13:13] So as you notice there are dates referring to the opposition and dates referring to the
+[01:13:20] specific alterings of this. So there's been some openings, some other operations of that file.
+[01:13:28] What you have for example in this, I want you to show you in this exit files,
+[01:13:37] Okay, all these informations are available.
+[01:13:40] I want you to basically have information
+[01:13:44] about the creator and so on.
+[01:13:48] I want you to go on the timing.
+[01:13:52] So suppose that you are looking for the timing,
+[01:13:56] it is possible to verify that for this format here,
+[01:13:59] you also have the offset,
+[01:14:01] which is in this case is the time shift.
+[01:14:04] In this case, this is central European time.
+[01:14:06] so it was last June and so you see that this is very rich okay let's see the
+[01:14:14] other okay the other which is a no the other is for 715 so you notice see you
+[01:14:40] have lots of information but so this is a cannon so it's that you have
+[01:14:49] have modified date, okay, October two.
+[01:14:53] What is date time original?
+[01:14:55] October two, created date, October two, okay?
+[01:15:01] What is important to notice is that in this case,
+[01:15:11] you have different types of dates
+[01:15:18] and these different types of dates
+[01:15:20] instead are not reporting okay in the image
+[01:15:23] taken by the camera.
+[01:15:28] And so typically the guidelines say that
+[01:16:13] phones are more reliable,
+[01:16:16] and typically the guidelines say when you do this
+[01:16:18] accident or an image, you should look for
+[01:16:20] more reliable, I will post you some guidelines
+[01:16:30] of data, basic guidelines for the image analysis.
+[01:16:37] Basically create date is the one which is updated
+[01:16:39] like your colleagues said, using the information from the network.
+[01:16:44] Instead, for an opinion, well, the data is set by itself.
+[01:16:48] So if I want to pretend that the data is, let's say, five years ago,
+[01:16:53] nobody could tell me about seven years.
+[01:16:58] And I thought, I can.
+[01:16:59] So now today, for example, once the company that used to have some software that expired,
+[01:17:05] This is the data, but we didn't change the date of your computer so that the software
+[01:17:12] could know that it was always useful to start using something where it would bring back
+[01:17:24] the clock so that you can use the software.
+[01:17:28] So that is possible on all devices.
+[01:17:30] It is possible on the camera.
+[01:17:31] It's not possible on the phone.
+[01:17:33] So you have to be very careful about that.
+[01:17:37] Sometimes, I'm telling you.
+[01:17:44] okay so still the active data so can be removed or can be kind of let's say
+[01:17:56] misleading for your so what you can do you can basically explore which are
+[01:18:14] basically characterizing the signal. So for an image pixel, so dot red
+[01:18:21] information about the device is in the pixel, pixel value. And for another file that
+[01:18:27] information that characterizes the device or elements are in the sample, all the samples.
+[01:18:33] And we're going to see this in the next slides, how we can do this.
+[01:18:38] Still for investigation you can still do something for using the axis. So I'm not saying that
+[01:18:43] actually have no use at all.
+[01:18:45] We use a lot of access,
+[01:18:47] and still some access is a useful contribution.
+[01:18:52] So this is basically one table
+[01:18:55] that we have generated using code.
+[01:18:59] The word has been done and done.
+[01:19:03] The idea is possible for access to understand
+[01:19:09] whether a numerator is being uploaded
+[01:19:11] or something similar to a platform,
+[01:19:14] And the answer is yes.
+[01:19:17] Looking at the access, so the different AVs,
+[01:19:20] using, used by the device,
+[01:19:23] introduced their own exit test,
+[01:19:25] their own data data image,
+[01:19:27] and it was possible to say that if that image
+[01:19:29] was uploaded on Pinterest, on Snapchat,
+[01:19:34] WhatsApp, or WeChat,
+[01:19:36] it was possible to reconstruct this.
+[01:19:38] Not only, we can start which platform
+[01:19:41] that image come from.
+[01:19:42] It's also possible to distinguish
+[01:19:44] whether you uploaded image from a computer
+[01:19:47] or from a phone or from some specific phone
+[01:19:52] because the exit introduced by the different APs
+[01:19:57] were different, okay.
+[01:19:59] For sure, this reproduced the situation
+[01:20:04] at the time of the business.
+[01:20:06] So I don't know if tomorrow,
+[01:20:07] MEGA is going to change the policies of the software,
+[01:20:13] and then EXIF, as I introduced in the image,
+[01:20:19] are the users of it.
+[01:20:21] So, it's something which is a big deal.
+[01:20:24] But still, from this information,
+[01:20:27] it is possible to distinguish, okay,
+[01:20:29] the origin of the image.
+[01:20:32] And so, EXIF tags are reliable,
+[01:20:36] can be used, okay, for the signature,
+[01:20:38] for notifications, but if you don't find
+[01:20:43] that someone tampered with them,
+[01:20:45] well, you have to use different types of solutions.
+[01:20:50] So that is why we need to focus on the signals,
+[01:20:55] on the pixels, on the audio files, and so on.
+[01:20:58] And that is why in the next minutes,
+[01:21:03] I will give you a quick recap about signal processing.
+[01:21:08] This is a zero to zero, okay,
+[01:21:10] introduction to signal processing.
+[01:21:13] I have now, with the illusion of being,
+[01:21:17] and I will give you, okay, the basic notion of that.
+[01:21:26] You need to know, in order to turn the course, okay,
+[01:21:29] work on these types of things in a forensic way.
+[01:21:33] So, most of our signals, or media, are digital.
+[01:21:38] It means an audio file,
+[01:21:39] is basically an audio, analogical audio.
+[01:21:42] So it is like a function in continuous domain, time,
+[01:21:47] and with continuous value, the real values,
+[01:21:50] which is then samples, okay, and contacts,
+[01:21:56] because I need to handle, okay,
+[01:21:59] these samples within a computer,
+[01:22:01] and therefore, my audio file, my sound,
+[01:22:05] is basically an array, an array of samples,
+[01:22:11] numbers, which can be created in numbers,
+[01:22:14] in a specific decision, depends on the fidelity
+[01:22:20] that you want to have, okay?
+[01:22:22] And typically, in this one time, in this sample,
+[01:22:25] so it means that for every second,
+[01:22:27] I sense, okay, the signal, a certain amount of time.
+[01:22:31] How many times?
+[01:22:33] It depends on the images.
+[01:22:34] You can have one, okay, one array,
+[01:22:38] because you have the positions,
+[01:22:40] you start at a certain instant and end at that instant.
+[01:22:42] Or you can have two arrays if you have a stereo system,
+[01:22:45] so you have one array from the left here and one array.
+[01:22:49] For the image, it's the same.
+[01:22:51] So the image is something which is projected, okay,
+[01:22:54] on your retina.
+[01:22:56] But we have a similar system as for the cameras,
+[01:22:59] but instead of having a continuous image,
+[01:23:02] we have pixels.
+[01:23:04] Means that light stimulates one focal response, okay,
+[01:23:07] for any elements.
+[01:23:08] And therefore, this gives, okay,
+[01:23:11] this is converted into a number.
+[01:23:13] So for each element of this grid, we have a number,
+[01:23:16] and therefore we can represent an image as an array,
+[01:23:21] sorry, a video matrix, of integral values.
+[01:23:26] As I said, these values are integral
+[01:23:28] because we quantized the values.
+[01:23:30] So we cannot represent real numbers,
+[01:23:32] we quantized these values.
+[01:23:33] Typically for an image, we quantize, okay,
+[01:23:36] like this intensity into a finite integer number
+[01:23:41] with different amount of bits.
+[01:23:43] Typically, we use eight bits, okay?
+[01:23:46] And therefore, the integer number goes
+[01:23:47] from zero to 255.
+[01:23:50] It's a byte, a huge chunk of the programming.
+[01:23:57] There are images with 12, 16, 10 bits.
+[01:24:00] Typically, these are done for medical imaging
+[01:24:04] because a surgeon must be very, very precise
+[01:24:06] in affecting small boxes,
+[01:24:09] if you do have too much rows,
+[01:24:12] one position, you are basically
+[01:24:14] not affecting these differences.
+[01:24:17] And for every pixel, you have three values, RGB,
+[01:24:21] because you want to represent all the colors.
+[01:24:23] Okay, so in order to synthesize all the colors,
+[01:24:26] okay, you need to compose RGB,
+[01:24:29] so red, green, and blue are the three components
+[01:24:31] that defines the colors.
+[01:24:33] This is an example, so high value,
+[01:24:37] so close to 12 to 55 means very wide,
+[01:24:40] something in the middle, gray, okay,
+[01:24:43] and very, very, very dark,
+[01:24:45] the intensity of the pixel goes to zero.
+[01:24:49] This is a single channel, so you don't have RGB,
+[01:24:52] so if you don't have the RGB,
+[01:24:54] you can say that the image is grayscale, okay,
+[01:24:57] and it means that you have one integer per pixel, okay?
+[01:25:01] If you have an image which is color,
+[01:25:03] you have three integrals for every pixel
+[01:25:05] because you have one integral for the red,
+[01:25:08] one for the ring, one for the ring.
+[01:25:11] But signals are not only eight bits.
+[01:25:15] You can have for this issue which is one bit.
+[01:25:18] And where?
+[01:25:19] Fingerprints.
+[01:25:20] In fingerprints, typically, you want to process
+[01:25:25] something which is basically made of lines.
+[01:25:28] And therefore, you need an image
+[01:25:30] and it is made by a pixel which can be either zero or one.
+[01:25:34] So one bit, okay.
+[01:25:36] Because I wanted to look at the regions,
+[01:25:39] I don't care about the indexing itself.
+[01:25:43] This is just totally true.
+[01:25:45] For example, the word that we are doing here,
+[01:25:47] we are working on the finger prints
+[01:25:50] that are taken from the architect by Antonio Carova.
+[01:25:55] And since the finger prints are left on the by justice,
+[01:25:58] and we want to obtain the key to create the key artifacts,
+[01:26:02] it is extremely difficult, okay,
+[01:26:04] to work to get images like this.
+[01:26:07] And therefore, we keep, okay,
+[01:26:09] all the green spaces, all the colors.
+[01:26:12] Because you want to work on pinnipus,
+[01:26:15] which are really, really difficult.
+[01:26:19] But in any case, traditional stuff is that
+[01:26:21] you start with an image,
+[01:26:24] then you apply some filtering
+[01:26:26] in order to clean up the smudges
+[01:26:28] So make, okay, the reach is neat, and then you binarize.
+[01:26:32] So you convert every pixel into zero or one.
+[01:26:36] Okay, using all similar information, all the numbers.
+[01:26:40] All binary signals are also used
+[01:26:42] for the authentication of gates.
+[01:26:45] We're going to see this at the end of the course.
+[01:26:47] We're going to see that in order to classify the gate,
+[01:26:49] you define a person from a digital footage.
+[01:26:52] What they can do,
+[01:26:52] they can extract, okay, the silhouette of the person,
+[01:26:55] and then process the video given by this many data recognition people
+[01:27:01] identification of approaches using the working they use this binary approach
+[01:27:06] therefore every pixel is 0 for 1 moreover you also have that this is
+[01:27:19] done okay for silhouette and for visualization you also have that when
+[01:27:23] when you process DNA, DNA is not a signal using vertices.
+[01:27:28] Typically DNA is a sequence of four different bases,
+[01:27:33] A, G, C, D, okay, four different bases.
+[01:27:37] And typically, so this is a signal that takes four values.
+[01:27:42] So I would need to use two bits, okay,
+[01:27:45] to represent these signals.
+[01:27:46] But there is one representation,
+[01:27:49] which is the most representation,
+[01:27:50] that split this information into four signals,
+[01:27:57] one for the A, one for the Z, one for the C, one for the E.
+[01:28:01] Okay, and then you have zero, one,
+[01:28:03] whether that position is occupied
+[01:28:05] by one of these amino acids.
+[01:28:09] But together with the number of levels,
+[01:28:12] okay, you can have different numbers of levels.
+[01:28:14] Because, for example, another type of signals
+[01:28:17] is the tithing pattern.
+[01:28:19] The typing pattern is basically the information that characterizes the speed the way you type
+[01:28:27] in a specific test. So we are interesting about the speed of the typings, the duration of the
+[01:28:35] press, the pressure values. So the typing patterns can be characterized by multiple
+[01:28:42] numbers. So for every sample, which can be the letter that you press, you may have different types
+[01:28:49] of numbers you see.
+[01:28:51] So in this case, the signal can be multi-dimensional, okay?
+[01:28:56] It is a time series, but it is multi-dimensional.
+[01:29:02] Other types of information.
+[01:29:04] So we've talked about timing patterns,
+[01:29:08] or 1D signal, like audio timing patterns.
+[01:29:11] We've talked about images,
+[01:29:14] but we can also have 3D information,
+[01:29:16] especially in biometrics.
+[01:29:18] So in 3D information, you can use biometrics
+[01:29:21] to identify the persons.
+[01:29:24] To identify a person, because you can use the 3D,
+[01:29:26] for example, of the face of a person,
+[01:29:28] you can understand better, okay, some details,
+[01:29:34] or you can also compensate changes
+[01:29:38] in the orientation and look.
+[01:29:42] Moreover, in biometric, we use, okay,
+[01:29:45] this 3D estimation because you want
+[01:29:48] to detect some presentation attacks.
+[01:29:52] The presentation attack, you take a picture of a person,
+[01:29:55] then you show the face of the person
+[01:29:57] in front of the authentication, then you can authenticate.
+[01:30:01] What's the difference?
+[01:30:01] The difference is that the picture is flat.
+[01:30:04] The face, the real face of the person is 3D.
+[01:30:06] So some anti-presentation attacks,
+[01:30:10] anti-spoofing mechanisms, they detect whether
+[01:30:13] the person which is the image you showed
+[01:30:16] is an element of 3D elements,
+[01:30:18] or an element from a 3D image.
+[01:30:22] That is why 3D is used, okay,
+[01:30:26] and typically 3D most of the time
+[01:30:28] is used in the form of depth images.
+[01:30:32] A depth image is basically like an image,
+[01:30:35] a standard image,
+[01:30:36] but the only difference is that
+[01:30:38] the intensity of the pixel
+[01:30:41] is associated with the distance
+[01:30:43] of that point with respect to the camera.
+[01:30:47] So intensity is not real intensity, it is a number
+[01:30:51] which measure a metric, okay, a distance.
+[01:30:55] So that is why, for example, for this face,
+[01:30:58] you have that the point of the nose is basically
+[01:31:05] brighter because the nose is the part of the face
+[01:31:08] which is closer to the camera, okay?
+[01:31:11] And the same you can do for the mouth, for other parts.
+[01:31:16] While the cheeks are basically darker,
+[01:31:19] because the cheeks are those part of the face
+[01:31:22] which are farther from the camera.
+[01:31:24] And this is why they are associated with darker color.
+[01:31:28] So the intensity of the color
+[01:31:29] is associated with the image, the visuals.
+[01:31:32] The right way closer, or darker, or farther,
+[01:31:36] depends on the combination that we use.
+[01:31:40] you can also have meshes okay signals but what is more important we associate
+[01:32:02] okay, every part of the body with a point,
+[01:32:07] and then from this part of the body,
+[01:32:09] you can associate at this point with the three coordinates.
+[01:32:12] For example, I'm watching a 2D of the main videos,
+[01:32:19] I can associate it in time, in spots.
+[01:32:24] By looking at the evolution in time of these coordinates,
+[01:32:27] I can identify, and this is why sometimes
+[01:32:31] in bio-biome, in forest, we also have
+[01:32:34] these types of time series associated
+[01:32:36] that to this camera.
+[01:32:39] This is done in computer graphics, okay,
+[01:32:42] and this is largely done to characterize
+[01:32:44] the motion of characters in CGI or movies,
+[01:32:50] but it's also done to understand, okay,
+[01:32:52] the motion of the body of the person, okay.
+[01:32:55] This is done for medical, okay, application,
+[01:32:58] and it's also done for four and six,
+[01:33:00] for authentication, so all the persons.
+[01:33:05] Typically, these joints, these points,
+[01:33:09] are associated to parts of the body,
+[01:33:12] to bones, or even going to sensors.
+[01:33:15] Typically, if I want to identify you from your gait,
+[01:33:20] and you have your phone,
+[01:33:23] I want you to get the signals from your phone,
+[01:33:25] which is in your pocket,
+[01:33:27] then the 3D point associated, for example,
+[01:33:30] of your position here around the sensor that you have.
+[01:33:45] In the past, we had one project.
+[01:33:47] We were collaborating with Lusotica,
+[01:33:50] and they were, they had no notions of the,
+[01:33:55] and we wanted to identify person from their sensor,
+[01:33:59] which is basically on the top,
+[01:34:03] on this part of the glass.
+[01:34:06] The sensor, which was placed here with an IMU,
+[01:34:08] and then it was possible to identify the person,
+[01:34:10] identify the activity of the person.
+[01:34:12] by processing information on the point, okay,
+[01:34:17] which is basically located on the side of the head.
+[01:34:21] So what I would say is that the points
+[01:34:24] can be associated with the parts of the body
+[01:34:26] or through the imbalance of the flower.
+[01:34:34] So this element here gives you different time series
+[01:34:40] and which can be acquired, okay,
+[01:34:42] using specific sensors or using some specific equipments.
+[01:34:45] In this case, this is the points acquired
+[01:34:49] by Microsoft Kinect version two.
+[01:34:54] So basically, when you play with Xbox using Kinect,
+[01:34:59] you are basically performing a detection of your body,
+[01:35:04] associating points to some parts of the body
+[01:35:07] and then processing the time series associated with that.
+[01:35:11] Okay, so we have came, so here we have an examples
+[01:35:21] of what are basically the signals
+[01:35:23] that we process in multimeter forensics.
+[01:35:27] On Monday, we're going to see what are the processing
+[01:35:30] and then we're going to start with the how
+[01:35:33] we can extract information, for example,
+[01:35:35] for the acquisition.
+[01:35:38] See you next time.

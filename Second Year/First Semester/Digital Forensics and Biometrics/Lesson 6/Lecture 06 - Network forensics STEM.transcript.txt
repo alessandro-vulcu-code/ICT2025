@@ -1,0 +1,1444 @@
+[00:00:01] So you can start with the part related to metaphorensics.
+[00:00:18] We're going to have a few exercises also that can be
+[00:00:22] examined.
+[00:00:25] And you're also presenting the projects
+[00:00:30] that you can take at the end of the course.
+[00:00:33] So at first we start with the projects
+[00:00:37] and I will switch a bit to the presentation and okay so you will find
+[00:00:47] the handouts of this file on section projects of course where you can find
+[00:00:54] also the form that you can fill in order to communicate your preferences
+[00:00:59] We're going to have more project assignments
+[00:01:01] at the end of the month,
+[00:01:03] probably around the end of October,
+[00:01:06] end of November and December, January.
+[00:01:10] The rule for assignment is first come, first serve,
+[00:01:13] so depends on the chronological order.
+[00:01:18] There is no need to fill in anyway now.
+[00:01:22] Basically, can't wait for the project labs sessions.
+[00:01:28] Notice that we will assign the projects
+[00:01:31] and you can communicate also your groups.
+[00:01:33] So if you want to take the project
+[00:01:35] together with another person,
+[00:01:37] you can communicate the name of the other guy.
+[00:01:40] Just one of the two means to fill in the form.
+[00:01:42] So you don't need to have duplicates.
+[00:01:44] It's not necessary.
+[00:01:47] So what are the project titles?
+[00:01:49] So these are basically programming projects.
+[00:01:51] In order to take these projects,
+[00:01:53] you need to basically prepare a code,
+[00:01:58] typically it's Python code,
+[00:02:01] and you need to hand in the code to the notebook, okay,
+[00:02:07] before the exam dates.
+[00:02:09] When you take the exam date,
+[00:02:10] when you present the project,
+[00:02:11] you have 10 minutes time to perform a presentation,
+[00:02:14] then you prepare a PowerPoint presentation,
+[00:02:18] and then 10 minutes are dedicated to the discussion,
+[00:02:20] so we ask questions.
+[00:02:22] When you work on the project it is important that you distinguish what you
+[00:02:26] have done. So I want to know, if you are into, I want to know who did what, okay. So
+[00:02:32] basically if you add some, three, okay, four sentences, okay, to the projects where
+[00:02:39] you say, okay, John has taken the dataset preparation tests, so prepared
+[00:02:45] this part of the code, Mary prepared these other parts of the code, okay, so
+[00:02:49] So we need to attribute, okay, what you have done.
+[00:02:53] So the first project title is very generic.
+[00:02:56] It's anomaly detection.
+[00:02:58] We're going to have one part indicated
+[00:02:59] to anomaly detection to the discovery
+[00:03:01] of problems on evidences, okay?
+[00:03:04] We have a bit hinted to the problem
+[00:03:06] of anomaly detection when we talked
+[00:03:08] about IDS trigger last time.
+[00:03:11] Anomaly detection, basically you have the analysis
+[00:03:14] of the traffic and then you signal
+[00:03:17] whether it is something strange.
+[00:03:18] In this project here, you are going to process
+[00:03:20] different types of data sets.
+[00:03:22] We can go for data sets that are basically signals,
+[00:03:28] signals from ECG, okay, or signals from audio, whatever.
+[00:03:34] And then you want to find out
+[00:03:35] the numbers we have here on the signal.
+[00:03:37] Or it can be tabbed data.
+[00:03:39] For example, in the network, we have all the recordings
+[00:03:43] of all the connections, okay, the IP addresses,
+[00:03:47] okay, on that machine, or the logs of a server,
+[00:03:51] and you want to find out which of these entries
+[00:03:54] which of these elements are known, okay.
+[00:03:58] So this is the idea.
+[00:04:00] You can use standard practices, standard techniques
+[00:04:02] that you have studied doing machine learning,
+[00:04:05] or it can be also some more complex structure.
+[00:04:07] So if you have taken deep learning,
+[00:04:10] some of you have already taken deep learning,
+[00:04:12] you can use those deep learning strategies.
+[00:04:15] Some of these strategies, machine learning strategies
+[00:04:18] for anomaly detections are going to be reviewed
+[00:04:20] in this course.
+[00:04:22] More precisely, we're going to have one specific
+[00:04:25] lab session dedicated to anomaly detection,
+[00:04:27] which is lab session number two in November.
+[00:04:32] More details, you can work more on the later
+[00:04:37] presentation, how you represent this data.
+[00:04:40] Okay, so how you create some features
+[00:04:42] that are distinctive, okay, of anomalies,
+[00:04:45] or it can be dedicated on features, okay,
+[00:04:48] space using a resolution force as well.
+[00:04:51] We have different types of data sets,
+[00:04:53] we will be assigned one of these data sets by ourselves.
+[00:04:57] But these are, for example, an example.
+[00:04:59] So as you notice, we have network traffic anomaly,
+[00:05:02] anomaly for G cellular networks.
+[00:05:05] We have, for example, anomaly in the motion
+[00:05:09] on the robotic arm in the IMU, the robotic arm, and so on.
+[00:05:14] For the UAVs, in the case of drones, and so on.
+[00:05:19] Second type of project is just footprints.
+[00:05:22] So in net recording forensics, we often, as we have seen,
+[00:05:28] network data, social media data,
+[00:05:30] moving the data to identify the person.
+[00:05:34] And in this type, so that's if you want
+[00:05:36] to identify the identity of the person,
+[00:05:39] or eventually to get the behavior of this specific person.
+[00:05:44] For example, we have different types of data sets, okay.
+[00:05:48] One is for, basically the,
+[00:05:51] my personal footprints is the ID of the person,
+[00:05:55] but you can also refer to the social media engagement
+[00:05:58] related to specific data sets,
+[00:06:00] or it can be to the classification of users
+[00:06:03] such as bots, which you won't see in English.
+[00:06:05] whether a user is real or it is basically a fake,
+[00:06:10] is a bot on the network.
+[00:06:12] So you can do any kind of classification,
+[00:06:15] you can do a normal classification also
+[00:06:16] on these types of solutions.
+[00:06:18] You can do this in Matlab and Python.
+[00:06:21] Basically these are two main projects we can build in.
+[00:06:24] We will assign you the datasets
+[00:06:26] and this is basically the second types of project.
+[00:06:31] The idea, you can build an embedding.
+[00:06:34] Okay, using any kind of solutions.
+[00:06:38] Of course, you gotta use part of the code
+[00:06:40] so you can find some codes on the map about this.
+[00:06:44] Necessarily, you need to have
+[00:06:46] some original contribution of yours.
+[00:06:48] It is not a problem if you reuse codes from the web.
+[00:06:53] Important part is that you need to quote the code
+[00:06:56] so you have to proper reference every books,
+[00:07:00] every references, every parts of the code that you use
+[00:07:02] and you also add some original contribution of yours.
+[00:07:07] Number three, case of dynamics.
+[00:07:10] So in this data set here, this is a data set
+[00:07:12] which is about typing patterns.
+[00:07:14] Or precisely, given the typing patterns,
+[00:07:18] it is possible to get lots of information.
+[00:07:20] For example, in that data set,
+[00:07:22] the data set is referred to the
+[00:07:25] Modificational Patterns Analysis.
+[00:07:27] Or precisely, they want to monitor
+[00:07:31] the progression of the illnesses
+[00:07:34] due to the fact of how you type.
+[00:07:36] Indeed, in this data set here,
+[00:07:38] we are using these data sets to perform
+[00:07:40] people identification.
+[00:07:41] So we want to identify the person
+[00:07:44] from the typing pattern, so the ID of the person.
+[00:07:48] We are basically in the data sets,
+[00:07:50] you have the pleasure that you press
+[00:07:52] and also the time of the entity you have,
+[00:07:55] for instance, and giving this information
+[00:07:57] it's possible to get back at the identity of the gap.
+[00:08:02] And the middle between forensics and biometrics,
+[00:08:06] so it's a biometrical traces that you can work on.
+[00:08:11] Also in this case, you can work on the embeddings
+[00:08:14] of the features or eventually on the classification,
+[00:08:17] can be done with deep learning or RNN or simple SDM.
+[00:08:21] Okay, you can use those anomaly detection.
+[00:08:24] It is possible to have a variation of the project
+[00:08:27] if you communicate as you know so what the possible variation is that you can
+[00:08:34] work on the inference so given that I have a pacifier that gives me an outcome
+[00:08:39] of Parkinson disease so whether a person has affected by Parkinson disease
+[00:08:49] or not is it possible to attack okay this pacifier so it is possible to
+[00:08:54] have a met-machine inference attack,
+[00:08:55] which means that given a pattern of a guy,
+[00:09:00] I can learn and can infer if the guy
+[00:09:02] has been used to train that specific classifier.
+[00:09:05] So here the attack is the machine learning strategy.
+[00:09:09] So it's an attack done on the classifier.
+[00:09:12] Okay, you want to know, you want to infer
+[00:09:15] if the classifier has been trained
+[00:09:18] on your data, on the data of that person.
+[00:09:20] So this attack is met-machine inference,
+[00:09:22] because if you're interested in,
+[00:09:23] you can have further details if you contact us.
+[00:09:27] Number four, classification of environmental sounds.
+[00:09:30] We want to distinguish whether the sound is real or not.
+[00:09:34] In the past, last year, we had classification of voices
+[00:09:37] so it's the same, so we want to know
+[00:09:39] if this voice is real or generated by different methods.
+[00:09:44] In this case, it's the same thing,
+[00:09:45] but we are using environmental sounds.
+[00:09:48] Is the sound something real
+[00:09:49] or the sample which is fake, artifacted.
+[00:09:52] And this, there are softwares already available.
+[00:09:55] Okay, you can basically look at the headset itself.
+[00:10:03] Then, also with sounds, you have audio events.
+[00:10:07] Audio events are basically you want to classify
+[00:10:10] what happens in the audio.
+[00:10:11] This is largely done in forensics,
+[00:10:14] especially when you perform an eavesdropping
+[00:10:16] of the environments you want to put events in order
+[00:10:21] in order to give a sequence for what to happen.
+[00:10:23] And this classification can be done
+[00:10:25] using an automatic procedure.
+[00:10:28] It can be done using deep learning.
+[00:10:29] It can be done using simple machine learning
+[00:10:31] or a solution that will be presented in the labs.
+[00:10:35] I forgot to say that this can be related
+[00:10:39] to lab number four or five, that's the order we do.
+[00:10:43] and this also can be related to lab number three or five.
+[00:10:56] Finally, also in this case,
+[00:10:59] this is very similar to the keystroke dynamics,
+[00:11:01] but in this case, we are not using keystrokes.
+[00:11:04] We are using the motions,
+[00:11:05] the activities done by the gamer.
+[00:11:08] So you want to define the gamer by mouse movements,
+[00:11:12] clicks, and so on,
+[00:11:13] and you want to get the code of the gamer
+[00:11:16] using these types of information.
+[00:11:18] This type of analysis is largely done in gaming,
+[00:11:23] so this is done to monitor from health-related problems
+[00:11:27] because analyzing how a person moves
+[00:11:31] allows you to get information about his health state.
+[00:11:34] But also, it can be also done
+[00:11:36] to verify if you are a bot or not,
+[00:11:39] to verify if the person is real
+[00:11:40] or it is moving like an automatic machine
+[00:11:43] or an automatic mechanism.
+[00:11:48] Okay, finally, if you do not want to perform
+[00:11:51] a creative project, what you can do,
+[00:11:54] you can perform a legal report.
+[00:11:57] So, during the course we're going to explain
+[00:11:58] how to write a legal report,
+[00:12:00] what are the elements, what are the things
+[00:12:04] that we expect you to write down in a legal report,
+[00:12:09] and as a final word, you can hand in a legal report,
+[00:12:12] that is related to some specific pieces of evidence.
+[00:12:16] What is the pieces of evidence?
+[00:12:18] This here, so so far, we have these images,
+[00:12:21] so we give you an image and you want to extract,
+[00:12:23] find out what are the files which are inside,
+[00:12:26] or you can have an audio file.
+[00:12:29] An audio file can be a file with some sentences,
+[00:12:33] or nouns, and then the sentences is disturbed
+[00:12:36] by some noise, by some whole events,
+[00:12:39] and you need to green out, okay,
+[00:12:41] maybe all the events from this part.
+[00:12:44] So for this image, we have number one next week.
+[00:12:48] For the audio file, we have one extra sample
+[00:12:51] that we will provide in the lecture,
+[00:12:53] how to clean the module file.
+[00:12:55] In the lecture, we have examples about how to clean,
+[00:12:58] how to process an image and clean the image.
+[00:13:03] So you need to perform the operations,
+[00:13:04] the important part,
+[00:13:09] apart from the correctness or the successfulness
+[00:13:12] of the operation is important on how you write a report.
+[00:13:15] So it's a writing style, it's a size.
+[00:13:19] And as for the report, you write a report,
+[00:13:22] you hand in the report, you need it to enroll,
+[00:13:25] okay, on a specific list that you find on the web
+[00:13:28] in order to have the report evaluated.
+[00:13:31] And then, but you do not need it to present, okay?
+[00:13:34] So basically, you show the report and present a report
+[00:13:37] and that is going to be evaluated.
+[00:13:41] Okay, so that's all.
+[00:13:43] any questions the project preference website is going to be available until
+[00:14:32] beginning of January at the beginning after the first week first ten days of
+[00:14:37] January the project form is going to be closed and then you will if you
+[00:14:43] you still have, you can still communicate your preferences
+[00:14:46] but you will do that via email.
+[00:14:50] Because I assume that by the beginning of January
+[00:14:53] everybody that needs to take the course has to communicate
+[00:14:58] and if there can be someone late it's not a problem
+[00:15:01] but you communicate that via email.
+[00:15:06] The form is going to disappear, okay that's the point.
+[00:15:09] So until the beginning of January
+[00:15:10] you can have the form to communicate us.
+[00:16:09] yes
+[00:16:10] Today, we're going to have our part
+[00:16:14] related to network forensics.
+[00:16:20] Last year, sorry, last week, last time,
+[00:16:23] we, not last week, last night,
+[00:16:25] but on Tuesday, we introduced the
+[00:16:29] how can I signal there is a problem, you are late.
+[00:16:34] And there is this part,
+[00:16:38] so we have these two ways,
+[00:16:40] signal-to-base and these use detection
+[00:16:42] and together with a normal detection profile based.
+[00:16:47] And we, I stated that it's possible
+[00:16:50] to combine both strategies, okay,
+[00:16:52] in order to get some results.
+[00:16:57] And how, okay, so how can we use this?
+[00:17:00] What are the possible operations
+[00:17:02] that you want to do in order to get this information?
+[00:17:07] Well, this is important because you can get, okay,
+[00:17:10] but it's possible to get much, much more information,
+[00:17:13] and we're going to discover this in two weeks.
+[00:17:17] Together also with the alarm,
+[00:17:19] another operation that we can get with the evidences
+[00:17:22] is the so-called traceback.
+[00:17:25] In the traceback, you are using,
+[00:17:28] never for instance, the evidences
+[00:17:30] to find out the origin of specific strings,
+[00:17:33] or let's say, you can read them like that, okay,
+[00:17:38] but it can be used as some assumption
+[00:17:39] why that could be used.
+[00:17:42] You want basically to give, okay,
+[00:17:44] the originating, find out the originating terminal.
+[00:17:47] And this is extremely important if you have a DOS attack
+[00:17:52] or a distributed DOS attack because this allows you
+[00:17:56] to isolate, okay, the origin of the attacks
+[00:17:59] or eventually attribute the attack
+[00:18:01] from a legal point of view.
+[00:18:03] So, an example, okay, for example,
+[00:18:08] you want to give an attack on the victim,
+[00:18:11] you want to perform a trace back,
+[00:18:12] so to go back from the victim computer
+[00:18:15] to the first nodes back to the specific attacker.
+[00:18:19] Okay, so this is the idea of a trace back.
+[00:18:23] So, in this operation,
+[00:18:26] we're going to see two different strategies, okay.
+[00:18:29] Then we're going to see some possible strategy
+[00:18:31] that does not require some cooperation of the devices.
+[00:18:35] But basically we have some assumption,
+[00:18:37] which are basically the attackers
+[00:18:38] are able to generate the packets,
+[00:18:41] or if you have multiple packets,
+[00:18:42] you can assume there is a coordination, okay?
+[00:18:45] And we're going to see often packets
+[00:18:48] and if you have some soaking attack
+[00:18:50] and you want to soak the computer,
+[00:18:52] there's gonna be a coordination on that.
+[00:18:54] You can also assume that the packet is aware
+[00:18:57] of the trace back ability, okay?
+[00:19:00] And routers have limited processing time,
+[00:19:03] so you cannot expect on the computer
+[00:19:04] to have too much information.
+[00:19:06] We assume that the rooters work properly, okay,
+[00:19:12] or eventually not all the rooters are comparable,
+[00:19:16] so you can exploit some of the rooters
+[00:19:18] as a support mechanism for the attacks.
+[00:19:23] And notice also that packets, okay, suspicious packets,
+[00:19:29] are basically made of a few, okay,
+[00:19:32] so the idea is an assumption that makes sense
+[00:19:36] because typically you won't know that you won't
+[00:19:37] decide the attack with respect to other big.
+[00:19:43] So we must be compatible with the network protocols.
+[00:19:47] We will see that there are some routers
+[00:19:49] that support, okay, the situation.
+[00:19:51] The number of functions of a transit router
+[00:19:54] must be minimal together also with,
+[00:19:56] it is possible to have a support
+[00:19:58] for incremental implementation,
+[00:20:00] partial deployment scalability.
+[00:20:02] Moreover, we want a minimal overhead.
+[00:20:04] together also with a quick convergence,
+[00:20:07] quick getting of the ID,
+[00:20:09] and minimum involvement of tools of everything
+[00:20:13] that requires the collaboration from external actors,
+[00:20:17] like the inbound service providers.
+[00:20:20] We want to do this because basically,
+[00:20:22] this is extremely, extremely,
+[00:20:28] extremely, very less likely
+[00:20:31] that you have a collaboration from external.
+[00:20:34] Okay, so the first way to perform a trace back,
+[00:20:39] it's a very simple activity, okay.
+[00:20:45] So basically we will see this in a simulation
+[00:20:48] after the break, it is possible to trace back
+[00:20:53] string from one source node to a destination node
+[00:20:58] by exploiting, for example, control packets.
+[00:21:01] So we can exploit time to leave, okay.
+[00:21:05] And by exploiting time to leave,
+[00:21:07] it is possible to reconstruct the full path, okay,
+[00:21:10] from SUSE A to the SUSE B, okay.
+[00:21:14] This is something that does not require any collaboration.
+[00:21:17] We are working the standard function, okay,
+[00:21:20] of the networks.
+[00:21:23] And we will see how we do.
+[00:21:25] But the idea is to plan the different time to leave
+[00:21:28] so that the packet expires at the different routers.
+[00:21:33] And where the packet expires at the different routers,
+[00:21:36] the router sends back, okay, a message
+[00:21:41] back to the specific, to the originating source.
+[00:21:45] And this message back gives information
+[00:21:48] about the idea of the router
+[00:21:50] that we can have a good start with the router.
+[00:21:54] Instead, it is possible to have the collaboration
+[00:21:56] of some networks, this is totally passive,
+[00:22:01] so you don't need specific equipments
+[00:22:03] that perform logins across the network.
+[00:22:07] If you have some specific equipments across the networks,
+[00:22:10] I mean, routers, switches, and so on,
+[00:22:12] that perform some operation, we can exploit this.
+[00:22:16] And this extreme operations are two types.
+[00:22:19] You can have login and a packet mode.
+[00:22:24] So in logging, basically, routers keep a lock and register
+[00:22:29] of what passes by.
+[00:22:31] In logging packets, some routers, some mining devices,
+[00:22:35] basically allows you to say, okay,
+[00:22:37] this packet has passed through me.
+[00:22:40] And if you have this pass that belongs to an attack,
+[00:22:43] this router can tell you
+[00:22:44] where an attack passed through this path.
+[00:22:47] And therefore, you need to perform an acquisition,
+[00:22:50] So, when I see the position on that foot.
+[00:22:54] It's also possible to have some
+[00:22:57] marking elements on the packets.
+[00:23:00] In packet marking, every pointer,
+[00:23:02] every passage to the network,
+[00:23:04] basically places a stamp,
+[00:23:06] like if it is a box, okay,
+[00:23:10] or a packet that is sent through the mail, okay?
+[00:23:13] So every passage is given a stamp,
+[00:23:16] every counter that we cross gives a stamp,
+[00:23:18] and therefore you have a full path.
+[00:23:21] So the packets carry the full path,
+[00:23:23] the full journey to the networks inside itself.
+[00:23:29] And it is possible to have some hybrid approaches
+[00:23:32] that integrates both logging and marking.
+[00:23:36] Why?
+[00:23:36] Because logging is extremely heavy from the root
+[00:23:41] and point of view.
+[00:23:43] Marking is something that may be supported or not.
+[00:23:46] Okay, so in the packets, we can be able to move
+[00:23:50] in the packets.
+[00:23:51] So basically, this is some, you can move,
+[00:23:54] some mixed between those two.
+[00:23:56] Of course, this requires, okay,
+[00:23:58] the collaborations of the routers.
+[00:24:00] So this implies that your router
+[00:24:01] is specifically designed for the marking and the logging.
+[00:24:06] And this is a way that you can do, okay,
+[00:24:08] in retrospect, we're going to see an example
+[00:24:10] of a traceback in, after the break.
+[00:24:13] Very short, simple toy simulation.
+[00:24:17] The second way, the second activity that we do
+[00:24:21] in metaphoristics, together also with identification
+[00:24:24] of ideas and the attribution,
+[00:24:26] is basically the reconstructions of the activities.
+[00:24:32] So this is something which is a bit more complex
+[00:24:36] with respect to trace back and detection system
+[00:24:39] like the detection system,
+[00:24:40] because you want to have a story, okay?
+[00:24:44] So you want to have a sequence of operation
+[00:24:46] which is done in order to perform this attack.
+[00:24:49] But this is extremely useful, okay,
+[00:24:53] because you are able to know
+[00:24:56] if there are some vulnerabilities in your system.
+[00:25:00] Or it is also possible to understand the strategies
+[00:25:04] which are used by the attackers.
+[00:25:06] So this is like analyzing loss.
+[00:25:09] So like we do for anomaly detection.
+[00:25:11] But what is important here is that in place, okay,
+[00:25:13] each information, each activity in time,
+[00:25:16] in proper positions, in proper sequence
+[00:25:19] of the operations in time.
+[00:25:21] And how can you do this?
+[00:25:23] Well, you can analyze, okay, the machine,
+[00:25:30] you can analyze the logs of the server
+[00:25:33] and get this information.
+[00:25:35] But there is a problem.
+[00:25:37] The problem is that you're assuming
+[00:25:41] that your machine has been attacked.
+[00:25:42] and maybe you also assume that the attack
+[00:25:45] has been successful.
+[00:25:46] So this means that you have already problem in your bed.
+[00:25:52] So how can we solve this?
+[00:25:54] Well, we create and introduce in the networks
+[00:25:58] some special machine which are called honey pots.
+[00:26:02] A honey pot is a machine or it can be in general
+[00:26:05] is a more generic term.
+[00:26:07] It can be a machine, it can be a set of services.
+[00:26:10] sometimes in the analysis of the habits on social networks, for example, a
+[00:26:16] honeypot can be a user, it can be an element inside social networks, so it can be very, very generic as a term.
+[00:26:26] So, honeypot is a set of services, machines and so on, that is built to attract
+[00:26:35] intruders, and contain them.
+[00:26:38] And we do this because you want to study
+[00:26:41] how the intruder, how the attacker behaves.
+[00:26:44] So it is designed to be compromised.
+[00:26:46] It is monitored by the rest of the network
+[00:26:50] because we know that this is the frail,
+[00:26:52] the frail elements inside the networks.
+[00:26:54] And therefore, there must not be essential activity
+[00:26:57] on that machine, and it must be very well
+[00:27:00] contained within the network, so we must be sure
+[00:27:02] that on that part of the network,
+[00:27:05] from that machine, the attacker cannot go to other parts,
+[00:27:09] more successful parts of the network.
+[00:27:12] And also, you must record everything.
+[00:27:16] So in the end, you log all the information
+[00:27:18] on my attacker, are basically recorded and then started.
+[00:27:26] Sometimes, the honeypot are used as a way
+[00:27:30] to throw away the intruders
+[00:27:33] from other crucial parts of the networks.
+[00:27:35] So it's kind of, let's say, a sacrifice, okay,
+[00:27:40] that you do in order to protect other parts
+[00:27:43] which are more crucial in the net.
+[00:27:46] So there are some problems.
+[00:27:48] First of all, from a practical point of view,
+[00:27:55] basically you are kind of attacked.
+[00:28:00] So it's like if you want to keep away tips
+[00:28:03] that you open the doors of your house.
+[00:28:05] So, and you can let the teams get inside.
+[00:28:12] So, it's really, okay, kind of risky.
+[00:28:16] Because you must be sure that from that machine,
+[00:28:21] intruder cannot attack, cannot go to other parts
+[00:28:23] of the networks.
+[00:28:24] And it's something that you cannot take from ground.
+[00:28:27] Then, there's another problem.
+[00:28:31] From a legal point of view, okay,
+[00:28:33] Okay, in order to prosecute from illegally an intruder,
+[00:28:37] you must prove that there's going to be a damage.
+[00:28:40] Okay, if you got it, at least in Italian systems,
+[00:28:43] the five elements that you must have,
+[00:28:46] well, the five elements that you must have
+[00:28:48] in order to have a crime to be prosecuted illegally,
+[00:28:51] there is, okay, the fact that it has been a damage.
+[00:28:54] You can quantify it, okay?
+[00:28:56] So, intervention, damage, and so on.
+[00:28:58] So basically, damage, if the machine is not relevant,
+[00:29:03] is not something that contains relevant permissions.
+[00:29:06] For my company, what is the damage?
+[00:29:10] That is not, you cannot quantify,
+[00:29:12] you cannot quantify a certain value, okay, to that.
+[00:29:17] Moreover, you may be, this idea of the honeypot
+[00:29:22] may be challenged as an unfair entrapment.
+[00:29:25] So basically, you lured me into coming into the networks,
+[00:29:29] and basically, this is not something
+[00:29:31] which is kind of, let's say, fair from that point of view.
+[00:29:37] So, yes?
+[00:29:51] Okay, fair is a little more like, let's say, subtle.
+[00:29:55] We've got basically,
+[00:30:01] oh, so it's not easy, it's okay.
+[00:30:02] So basically, the information, I didn't know it was,
+[00:30:09] it was not legal and so on,
+[00:30:13] And usually, there is a very, very, let's say,
+[00:30:21] kind of not very clear from the legal point of view.
+[00:30:25] I will make you an example of what is not very clear
+[00:30:28] from the legal point of view.
+[00:30:31] If I place something on the web, okay,
+[00:30:34] and I get it to that,
+[00:30:35] because maybe that is publicly available,
+[00:30:38] but it's not addressed to me,
+[00:30:40] you would say it is publicly available, I can get it.
+[00:30:44] so I cannot be legally consecutive for that.
+[00:30:47] I'm not breaking any password.
+[00:30:49] For example, there was this case of these two guys,
+[00:30:51] okay, during the call.
+[00:30:53] You know, they had the green pass.
+[00:30:54] The green pass was personal.
+[00:30:56] The problem with the health company here
+[00:30:59] is that they publish the green pass on public.
+[00:31:03] So when you have your test,
+[00:31:06] okay, you got a URL address,
+[00:31:09] and was HTTP, at the end, you add a code, okay.
+[00:31:12] And with that code, you extract the PDF.
+[00:31:14] If you change randomly the numbers of this code,
+[00:31:17] you can get a green pass from another guy.
+[00:31:19] Okay, it was no password, it was no need or nothing,
+[00:31:24] so basically you change the type of different URL
+[00:31:26] on your browser, you get a green pass from another guy.
+[00:31:29] And this is what these two guys,
+[00:31:31] okay, there were these two students that did this,
+[00:31:33] okay, they get the green pass from another student.
+[00:31:36] Well, they were legally prosecuted
+[00:31:37] because they weren't supposed to access that stuff.
+[00:31:40] and basically we had to go to court and explain that okay it was a problem of
+[00:31:48] the agency not of the students because they did not protect correctly. So we
+[00:31:56] know this as engineers we know this so we make that this is not
+[00:32:01] something that we can claim in court but in court it happens they were
+[00:32:04] legally prosecuted by the nation so basically what they mean are fair
+[00:32:08] So the fact that you can have the lawyer
+[00:32:11] who says that you have placed that available
+[00:32:13] but it was not, this is not fair
+[00:32:16] because you can work on this gray areas of law.
+[00:32:20] Indeed, this instead is more crucial
+[00:32:23] because if you want a criminal case,
+[00:32:26] if you want to prosecute a criminal case,
+[00:32:28] you must prove that there is a detention
+[00:32:29] to perform the crime, there is damage from the crime,
+[00:32:33] there was a planning, and depending on how much
+[00:32:35] of these different elements you have,
+[00:32:37] you have different types of crimes like for example in Italy we have three
+[00:32:42] different types of murder, voluntary, I don't know actually I'm not a lawyer, but typically in Italy it's
+[00:32:52] it's a polontario, pretenentencionale, and colposo.
+[00:32:55] Polontario, polontario means that they want to kill.
+[00:32:58] Colposo, I didn't want to, but I produced that.
+[00:33:02] Pretenentencionale means that I kill someone
+[00:33:05] I didn't want to, and it was not my intention.
+[00:33:08] I did not put damages, a dangerous situation
+[00:33:12] in order to create the killings.
+[00:33:13] So depending on these elements, you have different crimes.
+[00:33:16] And therefore, that is why you may have
+[00:33:18] that the person is charged with a lot.
+[00:33:22] Anyway, apart from this,
+[00:33:26] digressions about, okay, the crimes,
+[00:33:30] we are going to have after a break, okay,
+[00:33:32] a few examples, okay, and examples about place back.
+[00:33:37] And what happens when you have
+[00:33:40] a privacy preserving network?
+[00:33:42] So what happens when your data are exchanged on network
+[00:33:46] which is designed to protect the privacy
+[00:33:49] of the nodes involved in the communications.
+[00:33:55] Typically, this is the case of many communication
+[00:33:59] that goes through the dark web, okay?
+[00:34:02] So, we mentioned the case of the Silk Road
+[00:34:06] at the first, in the first lectures.
+[00:34:10] We also have other types of communications.
+[00:34:15] And the amount of information
+[00:34:18] which is typically exchanged through the network networks,
+[00:34:24] is extremely huge, okay.
+[00:34:26] So it is characterized by anonymity,
+[00:34:30] okay, these types of communications.
+[00:34:32] Moreover, you also have problems about jurisdictions.
+[00:34:36] Since these networks are basically designed
+[00:34:39] to confound traffic through the web,
+[00:34:42] also it's very difficult to attribute, okay,
+[00:34:43] the proper legal system, the proper legal, okay,
+[00:34:48] proper legal actors, okay, depending on the country
+[00:34:51] where this line is located.
+[00:34:54] Okay, so there is a huge amount of investments
+[00:34:59] on these types of analysis.
+[00:35:03] And we need, okay, to also design new methods
+[00:35:07] to navigate the web, collect the data,
+[00:35:11] also what most of the actors are also developing malware
+[00:35:15] to compromise service in order to get these informations
+[00:35:19] and was performing, profiling, also the users
+[00:35:22] from market rates and also some other practices.
+[00:35:25] Moreover, offline investigators relies on human errors
+[00:35:27] like the case of sick roads.
+[00:35:30] Basically, they were able to get, okay, just in time,
+[00:35:34] exploiting of contacts, communication that are revealed.
+[00:35:41] So typically, this is a diagram that tells you
+[00:35:47] how much of the information is basically contained
+[00:35:50] in the web, which is not publicly searchable.
+[00:35:54] So this information is what you can link
+[00:35:56] through Google or Yahoo or whatever.
+[00:35:59] And this information is present in the web,
+[00:36:02] but is not linked.
+[00:36:04] And as you can see, there is a huge part
+[00:36:06] which is in the dark web.
+[00:36:07] So basically this is kind of obscured, okay?
+[00:36:11] So protected by some specific networks.
+[00:36:15] So how does this network works?
+[00:36:17] We take in an account of the Tor protocol of mutations,
+[00:36:22] just to give you some idea,
+[00:36:24] but then you can have some differences
+[00:36:25] depending on the specific protocols that you are using.
+[00:36:30] So in the Tor, which is a specific protocol
+[00:36:33] based on the only routing mechanism,
+[00:36:35] the idea is to encrypt the data multiple times
+[00:36:41] and every time you cross, okay, some routers
+[00:36:44] or some parts inside the network,
+[00:36:46] you have a specific encryption.
+[00:36:48] So at the end, your packets that starts from here
+[00:36:50] and goes here is encrypted in a nested way.
+[00:36:55] So the data is encrypted by the key,
+[00:36:57] key three, key two, key one.
+[00:36:59] And there is a message, a mechanism of exchanging, okay,
+[00:37:03] with the keys so that, basically,
+[00:37:06] the key are not known, okay,
+[00:37:10] by one rooter and the others.
+[00:37:12] Moreover, nobody in the networks knows
+[00:37:15] either the ID of sorts and the ID of the destination.
+[00:37:20] So this is the idea.
+[00:37:22] You cannot have both.
+[00:37:23] You cannot have the destinations and the address,
+[00:37:28] the final address at the same time.
+[00:37:29] This is how this performs.
+[00:37:33] This is also a cypher.
+[00:37:36] In addition, there's also the cyphering.
+[00:37:38] It is possible to send some padding, okay,
+[00:37:41] so that the length of the packets is changed, okay,
+[00:37:46] through the network.
+[00:37:47] And it's also possible to aggregate the traffic
+[00:37:49] so that different routers are exchanging data
+[00:37:52] from different sources, and therefore,
+[00:37:54] it is not possible to profile, okay, the traffic
+[00:37:57] as we have shown with eavesdropper
+[00:37:59] and also with our strategies of analysis.
+[00:38:03] So how can we do, how can we perform forensics
+[00:38:07] in these conditions here?
+[00:38:09] Well, this network here has some weak elements.
+[00:38:15] The weak elements are, well basically,
+[00:38:19] the exit node, at a certain point,
+[00:38:22] you must exit from the tour network
+[00:38:25] and that is standard traffic, not contact traffic.
+[00:38:29] So focusing on the exit nodes,
+[00:38:31] you can perform the analysis that we have seen
+[00:38:33] for a standard network forensics.
+[00:38:36] This is the first time.
+[00:38:37] The second element that you can exploit is the timing.
+[00:38:41] The timing of communications allows you to link,
+[00:38:44] to connect nodes, okay, across the networks.
+[00:38:48] And this gives you the idea to correlate
+[00:38:50] and I will infer whether that is the source
+[00:38:54] of these basically destinations.
+[00:38:58] So by combining all the elements,
+[00:39:00] the timing and the weakness index and notes,
+[00:39:01] you can perform some k-pending,
+[00:39:03] stopping of the beta,
+[00:39:09] connected to the fact that typically
+[00:39:13] most of the real cases where we have
+[00:39:16] a forensic analysis of these kind of networks,
+[00:39:19] people access the device.
+[00:39:21] So basically you get, like in the case of Cisco,
+[00:39:24] you get the device, okay, open,
+[00:39:27] of the person that you want to perform your position.
+[00:39:33] So typically what you can find in a total browser,
+[00:39:37] so you can find out information in the map,
+[00:39:41] in the file systems, and in the networks.
+[00:39:44] So you can say that we are performing
+[00:39:47] forensic analysis on Tor.
+[00:39:49] Therefore, we are both combining information
+[00:39:52] from the disks and computers to the memory mechanisms.
+[00:39:55] We consider both of them to be both sources.
+[00:39:59] So in the RAM, there is most of the information
+[00:40:03] because you have lots of dumps.
+[00:40:06] You may also have artifacts like the URL
+[00:40:09] connected by the guy, the links, dot on your links,
+[00:40:13] emails, the search terms, the data,
+[00:40:16] everything is present in the RAM.
+[00:40:17] It is highly volatile, but if you are able to get to the PCB port, you can perform scanning
+[00:40:25] of that.
+[00:40:26] And the software that the tools that we can use, we have the bank software and the conductor,
+[00:40:31] you can use some Xdamp, Volatility is another software that you can use as well
+[00:40:36] as we call it.
+[00:40:38] These are softwares that you can use to get the information from the run and
+[00:40:43] why or before the guide closes everything.
+[00:40:47] We have also information in the file system, in the register, in the storage of
+[00:40:52] the PC, for example there are some prefetch informations from the
+[00:40:57] websites together also with the information about the installation of
+[00:41:00] Tor and register on Windows and its configurations. This information is
+[00:41:04] present in the PC, it's less volatile than the RAM and there are some
+[00:41:16] So, these are basically local information that you can get from the PC that is using Tor.
+[00:41:28] You can also correlate this information with the network analysis.
+[00:41:32] So, what you can do, you can use WaterShark to get packets from the PC.
+[00:41:36] for example, the last link, which is the weak one.
+[00:41:40] You can use the honest sniffer, net stats.
+[00:41:42] These are all solutions that allows to get
+[00:41:45] informations about the connections,
+[00:41:47] the length of the packets and timestamps.
+[00:41:49] The timestamps are crucial
+[00:41:51] to perform the timing analysis.
+[00:41:53] And also, you can also scan the ports.
+[00:41:55] Typically, 9,150 or 9,151 are the two ports
+[00:42:03] that are used to disable power browsers.
+[00:42:05] So scanning is for the listen to that you can get informations about the
+[00:42:10] traffic going on and perform the analysis. Other solutions that they can use
+[00:42:19] these are more advanced okay for acquiring evidences from the networks
+[00:42:25] so you can use some dark web crawler okay that collect the informations
+[00:42:31] all the websites, okay.
+[00:42:35] You can also analyze the link and the contents,
+[00:42:38] measure similarity between contents.
+[00:42:41] And this is for example,
+[00:42:43] we have some analysis and we present some examples
+[00:42:47] of the media analysis where you can correlate
+[00:42:51] some data with other data.
+[00:42:55] And especially when you have multiple copies,
+[00:42:57] you can get to do each one, okay.
+[00:42:59] You can basically analyze the topology of the networks
+[00:43:04] together with some modeling this topology as a graph
+[00:43:08] and forming some analysis like on leaks,
+[00:43:13] on resolution of cells.
+[00:43:16] And then you can also find out,
+[00:43:20] this is related with timing techniques,
+[00:43:23] so to find out the correlation, coherence,
+[00:43:27] between different types of activities and interactions.
+[00:43:31] Okay, so, the interaction patterns lacks a relation.
+[00:43:36] This is largely done in both things,
+[00:43:39] because you cannot get access to the information.
+[00:43:43] But if you think that there is a user
+[00:43:44] that starts a specific activity,
+[00:43:47] at a certain time, with certain types of protocols,
+[00:43:50] with some type of application,
+[00:43:52] in that, if you have another user that is safe,
+[00:43:55] you can tolerate that,
+[00:43:55] in that kind of link.
+[00:44:00] Right, the style, okay.
+[00:44:02] This is largely done if you have that network
+[00:44:06] are basically, this is largely done also in Belize
+[00:44:09] where you have to focus on specific networks,
+[00:44:14] where maybe all the people joining these networks
+[00:44:17] are characterized by, let's say,
+[00:44:19] some regional prominence or some, let's say,
+[00:44:23] a connection to some places of the origin,
+[00:44:27] and sentiment analysis as well.
+[00:44:29] This is largely done not only for the criminal activities,
+[00:44:35] but also to analyze the sentiments of the networks,
+[00:44:38] the situation with respect to specific topics.
+[00:44:43] Okay, so far any questions?
+[00:44:54] Okay, part of these issues, for example,
+[00:44:56] sentiment analysis, trace back are going to be seen
+[00:44:59] during you can experience okay doing the approach on that you can focus on
+[00:45:07] some of these aspects that you maybe prefer to focus on so five minutes
+[00:45:13] pause and then we are going to carry out with the combining evidences okay
+[00:45:28] an example of trace routes okay as I said I was able to recover this so
+[00:45:34] So this is a very simple example
+[00:45:36] where you have that this IP address is secret,
+[00:45:42] this IP address is secret, secret,
+[00:45:44] and basically, and this is the target destination.
+[00:45:47] I don't know which is the path, okay,
+[00:45:49] performed by the packets to go here,
+[00:45:53] from here to here.
+[00:45:56] Let's see if we do everything.
+[00:46:03] So basically you have this packet
+[00:46:06] goes from Alice to Google,
+[00:46:09] and you don't know okay which is this source here and Alice wants to discover
+[00:46:18] the names okay of this guy here which have been protected and secret so what
+[00:46:25] does Halis can Halis do well basically the Halis send a packet which is
+[00:46:33] designed like this go from Alice to Google and set the TTL time to leave
+[00:46:38] and equal to zero.
+[00:46:40] So this packet is not going to get to Google,
+[00:46:44] because it's going to die earlier.
+[00:46:46] So if I send this packet,
+[00:46:49] this packet is sent here,
+[00:46:52] and then back, sorry,
+[00:46:58] this packet expires here,
+[00:47:01] and what you have, you have a control packet, okay,
+[00:47:05] which is as a TTL equal to zero,
+[00:47:08] and the control packet is sent back
+[00:47:10] saying there was an error and the error reveals the ID of this computer here
+[00:47:18] okay so I know that the name of this computer is water then I can send a
+[00:47:23] second packet in this case I send this packet from Alice to Google with a TTL
+[00:47:28] equal to 1 so in this case if I send this packet here what you will get
+[00:47:33] you will get the packets survives the first bounce and then goes back here
+[00:47:42] you have you have that never packet sent back to Alice saying that it doesn't
+[00:47:49] expire the packets and the source IP of this expiring which is this note here
+[00:47:56] reveals also the name of the server which in this case is Toronto and I
+[00:48:02] can do the same also for this packet here so if I used it here
+[00:48:05] equal to two I will get exactly this of a packet here New York and then I can
+[00:48:23] send also this other packet here in the TTL which is equal to three and this
+[00:48:28] goes up to here to the final server here and I get the name of the final
+[00:48:35] server Mounted View okay so this is an example of how I can perform
+[00:48:42] by using TTL, explosive TTL, it can discover
+[00:48:46] or ADAD of the server by basically getting
+[00:48:50] the control packets back when something happens.
+[00:48:55] If you, in this, this is a very toy, okay,
+[00:48:59] for network forensics and network analysis,
+[00:49:01] you can perform different types of attacks, okay?
+[00:49:04] In this, it is not something,
+[00:49:08] you can also reproduce using some network simulators
+[00:49:10] It looks like an S2, an S3, okay?
+[00:49:13] We're doing some stuff.
+[00:49:14] This is very simple because it's very quick to show,
+[00:49:16] to explain, okay, how the attack works.
+[00:49:18] But basically, you can have other attacks
+[00:49:23] if you go on the main,
+[00:49:26] on the main level list.
+[00:49:38] It's low, so you have different types of
+[00:49:42] tough, okay, to have man in the middle attacks, okay?
+[00:49:46] So in this attack here, you can change,
+[00:49:48] to KDRP table, so here you can do some spoofing, okay?
+[00:49:53] So here we can basically mix, okay,
+[00:49:55] the packets from here to here, okay, to be forwarded.
+[00:49:58] It is important also the timing,
+[00:50:00] so it's not only a matter of changing,
+[00:50:02] messing up with the API,
+[00:50:03] this is also to do this in proper time.
+[00:50:06] So for example, if we do a load,
+[00:50:10] you have that this packet here is going basically here.
+[00:50:16] so the router and you can basically play a bit
+[00:50:23] with this packet, you can send the packet
+[00:50:25] and this packet and this is other thing.
+[00:50:30] Basically you have a key response
+[00:50:32] so that it's from Bob to Alice
+[00:50:36] and you can also send this packet here
+[00:50:39] which is another packet that is sent to this
+[00:50:42] and in this way you communicate these two servers
+[00:50:46] to be sent to send the information
+[00:50:48] and through that method itself.
+[00:50:52] Okay, so what happens when you do this?
+[00:50:54] You have this packet is in your things.
+[00:50:58] Basically, this is a message with a new packet
+[00:50:59] back in the format.
+[00:51:01] Anyway, you can play.
+[00:51:02] So I went a bit quick on this
+[00:51:03] because I didn't want to spend too much time.
+[00:51:07] This is an example of press return attacks.
+[00:51:31] Okay, so we had collected, I didn't see so far.
+[00:51:43] As we said, it is important that you have multiple work.
+[00:51:47] So, we have seen for some networks,
+[00:51:50] you have identities from the network, from the disks.
+[00:51:54] We have seen also for IDS,
+[00:51:56] you may have network IDS, offense IDS,
+[00:51:59] you can have identities and CEOs of values
+[00:52:01] from different sources inside the networks.
+[00:52:04] We have seen also, we are going to shed this
+[00:52:06] also for IoT.
+[00:52:08] So, for instance, we need to combine different sources,
+[00:52:13] because typically you may have that different, okay,
+[00:52:18] elements, different designs have different types
+[00:52:21] of all of them, and then you need to combine them together.
+[00:52:25] So most of the time, in current forensics,
+[00:52:29] what you need to do, you need to perform
+[00:52:31] a transnational analysis.
+[00:52:32] You need to analyze the evidences in a joint group, okay.
+[00:52:36] So how can you combine evidences?
+[00:52:40] Well, we have two different ways to do this using correlation and we're going to see this in the next lectures.
+[00:52:51] Or eventually we'll have a more mathematical, theoretical way to combine analysis.
+[00:52:57] So in combining evidence, we use, so for anomaly detection, you build the statistics and given the statistics,
+[00:53:11] if you find something which is very far from the statistics
+[00:53:14] to say that this is very unlikely,
+[00:53:16] therefore it is a normal, okay.
+[00:53:19] So it is always based about
+[00:53:22] behind the mobility
+[00:53:24] and getting how much misbehaving this evidence is from.
+[00:53:29] How much this evidence support
+[00:53:31] to be that specific conclusion.
+[00:53:34] Given this traffic, how much is probable
+[00:53:36] that the network is under attack,
+[00:53:38] this traffic is under attack, okay.
+[00:53:39] Okay.
+[00:53:40] So this, when you have multiple indices, okay,
+[00:53:47] we can combine in this probabilistic framework.
+[00:53:51] This, and the idea,
+[00:53:56] the core elements that we start from is the Bayesian.
+[00:54:03] If you have done some course about probability,
+[00:54:05] you know, okay, that conditional probability
+[00:54:10] is basically the probability of hidden length
+[00:54:13] assuming that you know something, okay.
+[00:54:16] Assuming that today is a very bright Sunday,
+[00:54:20] which is your probability that you have a kebab
+[00:54:23] or probably higher if it is raining a lot, okay.
+[00:54:30] So, basically this is kind of an example
+[00:54:33] of conditional probability, you know something,
+[00:54:34] you have an evidence, you have some facts,
+[00:54:37] what is the probability that that fact
+[00:54:41] supports a certain intent, a certain conclusion?
+[00:54:44] And if you add more facts that support that conclusion,
+[00:54:49] it's a very nice thing,
+[00:54:52] the camera is very close,
+[00:54:53] I have a very nice part,
+[00:54:55] I'm together with my boyfriend
+[00:54:57] or I'm talking to your girlfriend,
+[00:54:58] basically, no one is very likely to go out, okay?
+[00:55:03] Okay, so, the important part,
+[00:55:07] we're to combine the different tendencies
+[00:55:09] is basically the reversal of any problem.
+[00:55:12] So suppose now that you have H is the hypothesis.
+[00:55:15] For example, the computer is infected, okay?
+[00:55:18] Suppose that the evidence, for example,
+[00:55:20] you have the logs, the network calls, and so on.
+[00:55:24] So E is your evidence.
+[00:55:26] It is possible to say that the probability
+[00:55:29] that the computer is infected, the probability of H,
+[00:55:31] given the system calls,
+[00:55:34] can be decomposed into the product
+[00:55:37] of absolute probability of infection, P of H,
+[00:55:41] multiplied by the probability
+[00:55:42] of the evidence given infection.
+[00:55:45] So, where is the fact?
+[00:55:47] Okay, how much, what is the probability
+[00:55:49] that I measure this value here, this evidence here?
+[00:55:53] That is the inverse of the conditional probability.
+[00:55:56] Divided by the probability of that evidence.
+[00:55:58] How much probable is that evidence?
+[00:56:02] So we call P of H the prior, okay,
+[00:56:06] before seeing the evidence.
+[00:56:07] It's the prior basically about the probability
+[00:56:09] that the computer gets infected.
+[00:56:11] P of H is the probability of seeing the evidence, okay,
+[00:56:15] as we said, and then P H of E
+[00:56:17] is the posterior probability, okay,
+[00:56:20] if the hypothesis, only hypothesis being true.
+[00:56:24] Okay, so this is simple decomposition of probability.
+[00:56:28] if you know this from bias.
+[00:56:30] But what happens if you have multiple evidences?
+[00:56:33] So if you have P of H given that the evidence is E1 to Em.
+[00:56:38] E1 can be, for example, the time steps,
+[00:56:41] or E2, the IP evidences.
+[00:56:43] E3, the browser artifacts.
+[00:56:45] E4 can be maybe the value of the registers, and so on.
+[00:56:49] So given this set of evidences,
+[00:56:51] how much is the probability
+[00:56:52] that the computer is in fact equal, okay?
+[00:56:55] so this can be decomposed is proportional to the prior of H multiplied
+[00:57:03] by the probability of H given 1 2 3 a why it is nice if you reverse it is
+[00:57:15] nice because if these events are independent given this this can be
+[00:57:24] basically decomposed into that product.
+[00:57:28] E of H multiplied by the product of P of H even here.
+[00:57:32] So if you're in one, two E of N,
+[00:57:35] are observing measurements from different signals,
+[00:57:39] different probes, different ideas,
+[00:57:42] network ideas, another host-based ideas,
+[00:57:45] protocol-based ideas, which are independent,
+[00:57:48] okay, separating them, okay,
+[00:57:50] can recombine all the single probabilities
+[00:57:53] is for each IDS, for each sensors,
+[00:57:56] together in order to get the final probability
+[00:57:58] that the network is under attack,
+[00:58:01] or the computer is in attack.
+[00:58:03] This is the biased probability.
+[00:58:07] And so you may say, it is very nice, okay,
+[00:58:10] so everything works.
+[00:58:13] But there are a few problems
+[00:58:15] in these types of mobilization.
+[00:58:17] First of all, this implies that you know
+[00:58:20] all the probabilities.
+[00:58:22] So you know, you know how to estimate the probabilities,
+[00:58:24] the probabilities are reliable, okay?
+[00:58:27] It means that your ideas are basically,
+[00:58:30] basically reliable all the times.
+[00:58:33] Moreover, you assume that there is an independence, okay?
+[00:58:38] And this can be true if you have
+[00:58:41] that your sensors are very far.
+[00:58:42] For example, two ideas in two different parts
+[00:58:44] of the letters may measure things
+[00:58:47] that we can assume independently.
+[00:58:49] But such dependence is not valid.
+[00:58:54] It cannot be granted maybe
+[00:58:56] if the two ideas are not close to the networks.
+[00:58:58] There can be some dependencies,
+[00:59:00] some statistical dependencies between the two measurements.
+[00:59:06] So how can we solve this?
+[00:59:09] Well, for example, let's have an example, okay,
+[00:59:12] of this, of how to solve this.
+[00:59:15] So let's suppose that you have e1, e2, e3.
+[00:59:18] are the three evidences, which is basically
+[00:59:21] the firewall locks, DNS locks, proxy locks, okay.
+[00:59:25] The prior, the P of H for PC 17 infected is 5%, 0.05.
+[00:59:31] So let's assume that the probability of E1 given H
+[00:59:36] is 0.9, but probability of E1 given not H is 0.1.
+[00:59:43] So, in this case, H is infected,
+[00:59:48] but P1, basically there is a contact between PC17
+[00:59:52] and the IP that is my suspect for the infection.
+[00:59:58] So what I can do, I can write the P of H of E1
+[01:00:01] is equal to the probability E1 of an H
+[01:00:04] multiplied by PH, divided by probability of E1
+[01:00:09] multiplied by H, even H, multiplied by PH,
+[01:00:12] plus probability of E1 not H multiplied by P of not H.
+[01:00:17] Given this, I have that the probability of H
+[01:00:20] of being infected after including my probability
+[01:00:24] the E1, the evidence one, goes to 0.321, okay?
+[01:00:31] So it is like to say the probability of PC
+[01:00:34] is infected with 5%.
+[01:00:38] I know that the PC had some exchange of information
+[01:00:43] with the, with the Suspect IP.
+[01:00:47] And I know that the Suspect IP
+[01:00:48] is basically infected by people.
+[01:00:53] Okay, knowing this,
+[01:00:55] I have that the probability of being infected
+[01:00:57] goes from 5% to 32%, okay?
+[01:01:02] I'm not sure that the PC is infected, okay?
+[01:01:06] Because what I say, E1 says,
+[01:01:08] although there's actually some exchange of information
+[01:01:10] with infecting PC.
+[01:01:13] But for sure, the probability goes up.
+[01:01:16] Consider that DMS logs show that PC 17
+[01:01:21] are installed in no malware domain.
+[01:01:23] This is the evidence E2.
+[01:01:25] P of E2 given age 0.85,
+[01:01:28] P of E2 not age is 0.05.
+[01:01:31] Okay, given this probability,
+[01:01:33] combine this into the value,
+[01:01:36] rise up the probability to 88 percent so I combine this with this evidence and
+[01:01:46] the probability of H given evidence one evidence two the contact with the
+[01:01:52] suspect IP and the DNS raise up the probability to 88.9 finally if you
+[01:02:00] a proxy information where in this case,
+[01:02:03] P of E3 given H is a 0.8,
+[01:02:06] P of E3 given not H is a 0.08.
+[01:02:09] If you combine using the same rules,
+[01:02:12] you get to 0.98.
+[01:02:14] So the probability of H being in fact is 5%,
+[01:02:17] but if you combine all the three evidences,
+[01:02:19] you get the 0.02,
+[01:02:21] very close to certainty that this E has been given.
+[01:02:25] So this is a way that we can basically multiply,
+[01:02:28] sum up the different evidences together. The problem in these things is
+[01:02:36] that you assume that you have all these measurements, so you assume that you
+[01:02:41] have all your probabilities very well characterized, which is not in practice
+[01:02:47] not always true. And it is why people in time have introduced a way to handle
+[01:02:56] in a more flexible way, the probabilities,
+[01:03:00] the so-called theory of evidences,
+[01:03:03] or Dumpster-Shaffer theory.
+[01:03:06] In order to introduce Dumpster-Shaffer theory,
+[01:03:07] since it's a bit less intuitive,
+[01:03:09] like this fact from Dumpster-Shaffer theory,
+[01:03:12] we start with an example.
+[01:03:15] So suppose that you have four people
+[01:03:17] who sign an apartment, Barbara, John, Sean, and Ken.
+[01:03:22] and one morning, Ken is found dead.
+[01:03:28] He is stabbed with a knife, okay.
+[01:03:32] It is not a suicide, so we know that one of them
+[01:03:35] has been the guilty one and no one ever yells
+[01:03:43] and there is only one killer, as soon as there's no.
+[01:03:54] So, we have two witnesses, two illnesses, okay,
+[01:03:58] they would say is different witness number one,
+[01:04:00] outside the house, say that I'm 80% sure
+[01:04:06] that I heard man arguing or stuff.
+[01:04:10] And there's another witness says that I'm 60% sure
+[01:04:12] that Ken was going to lend some money to Sean, okay?
+[01:04:17] So Sean has no reason to kill Ken
+[01:04:22] because he was going to give him money.
+[01:04:26] So how is it possible to solve this?
+[01:04:28] considering that he heard men.
+[01:04:34] So it's not saying I'm
+[01:04:35] 80 percent sure that I heard,
+[01:04:38] let's say Barbara arguing, I'm sorry.
+[01:04:43] John argued with Ken.
+[01:04:46] He said, men doesn't know what to do.
+[01:04:50] And also it has some probability.
+[01:04:53] It's also probabilistic, okay?
+[01:04:54] So it has no precise way to characterize this.
+[01:04:58] So the idea is to follow basically this theory which is called theory of elements and works like this.
+[01:05:06] It's not a full looking method, proper methods for finding elements, but it can be a general framework for using known indices.
+[01:05:16] It's called also theory of belief functions.
+[01:05:17] So the idea is this, suppose that you have a set
+[01:05:26] of possible situations or possible outputs
+[01:05:32] and this set of possible outputs which can be for example
+[01:05:35] for a sensor, metal is under attack, metal is not
+[01:05:39] under attack, okay, you can basically have
+[01:05:42] different types of configuration of things.
+[01:05:45] So given this set of possible outcomes network under attack or hypothesis and
+[01:05:54] we call this set of hypothesis X is the set of possible hypothesis we define
+[01:06:00] what is called the power set. The power set is the set of all the possible
+[01:06:05] subsets given X. So for example if your set X is AB the power set is
+[01:06:13] set the set of single value a and b and the set of a and b together with all the
+[01:06:20] possible combinations. Sometimes we use okay the terms Omega sometimes if X is
+[01:06:27] the starting set we define the power set as 2 to the X. It's a simple notation. Okay so
+[01:06:36] suppose that this is we have the power set we call the power set the
+[01:06:41] the circle, the frame of the circle.
+[01:06:44] And we introduce the power set because you want
+[01:06:47] to consider that the option A is valid,
+[01:06:52] the option B is valid, but also the option A and B
+[01:06:56] together are valid.
+[01:06:58] And I do not want to distinguish between option A and B.
+[01:07:02] For example, the guilty person is John,
+[01:07:07] the guilty person is Barbara,
+[01:07:10] or I do not know between John and bummer okay so you can have this uncertainty
+[01:07:18] these are certainly can be related to the total set or a subset and that is
+[01:07:24] why we use the power cell because you can attribute beliefs also to two or
+[01:07:29] three elements in the set of possible options and be aware that by
+[01:07:35] you are doing this, you are not distinguishing.
+[01:07:38] So when I'm saying that I'm 80% sure I heard the man,
+[01:07:44] basically he's saying that I'm convinced at 80%
+[01:07:48] that the guilty person are John or Sean, okay?
+[01:07:53] But I'm not saying 40% John, 40% Sean.
+[01:07:56] It's John or Sean together.
+[01:07:57] So you can keep them together without discriminating
+[01:08:00] because this discrimination is arbitrary, okay?
+[01:08:05] to perform this estimation.
+[01:08:09] Okay, so given that when we define the power set,
+[01:08:12] we can introduce one concept,
+[01:08:14] which is the concept of basically support or mass,
+[01:08:20] which is the idea of elements, evidences,
+[01:08:23] amount of values that give,
+[01:08:28] that support the truth of that specific outcomes.
+[01:08:33] And this is, for example,
+[01:08:35] in the case of the network attack case, you can have one support for the zeros
+[01:08:40] on that design, support for the single attack, support for the normal, or support for the s1.
+[01:08:48] So what you can say, you are allowing your sensor to say that I 80% sure
+[01:08:54] that the network is under attack, I'm 10% sure that the network is not under attack, and there is
+[01:09:00] 10% of probability left for the uncertainty.
+[01:09:05] I cannot decide, okay, that's the point.
+[01:09:08] So, notice that this is very different
+[01:09:11] from standard probability, because in probability,
+[01:09:16] you must have that at least one of the option
+[01:09:18] must be true, okay?
+[01:09:20] Probability is defined for every element in your set.
+[01:09:24] The probability is given, the net is under attack
+[01:09:26] or is not under attack.
+[01:09:29] And typically you have the probability of
+[01:09:32] attack is a certain value.
+[01:09:34] The probability of not under attack is
+[01:09:36] one minus this value.
+[01:09:38] The sum of probability must
+[01:09:39] be basically a hundred percent.
+[01:09:43] Okay, so that is, there is no uncertainty.
+[01:09:45] There is not a possibility of things that are
+[01:09:48] not very well defined between the two options.
+[01:09:51] Okay. In this formulation,
+[01:09:52] we can introduce, okay, this possibility.
+[01:09:55] And that is why we
+[01:09:57] change the value of probability in what we define the mass function. The mass
+[01:10:03] function takes an input, a value, from this set, the power set, omega or 2 to the x
+[01:10:13] and gives a value that goes from 0 to 1. Notice that the mass associated
+[01:10:21] to the empty set is 0 and the sum of all the probabilities in the power set
+[01:10:26] must be equal to 1. We call it mass because we define this on the power set
+[01:10:31] not on the original set that we consider. And the idea about mass, what is mass, the mass is
+[01:10:41] the proportion of evidences that supports that evidence. And evidences may say okay this is the thing, this is the structure, or maybe two of the possible options that support the evidence.
+[01:10:56] the person might be supported by the mass.
+[01:11:00] Together with the mass,
+[01:11:01] we introduce also the concept of belief,
+[01:11:04] which is the sum of the masses of all the values
+[01:11:08] that are included into A.
+[01:11:11] So given A, suppose that my guilty persons
+[01:11:14] can be either John or Sean, very well.
+[01:11:18] All the values such that these values
+[01:11:20] is included in John and Sean gives me the value of mass
+[01:11:24] in the sum of the masses is the value
+[01:11:26] that John and Sean are dealing with.
+[01:11:29] And now you have plausibility.
+[01:11:31] Plausibility is the same, but to sum the masses,
+[01:11:34] so that the intersection with John and Sean
+[01:11:36] is different from zero.
+[01:11:40] So, notice we can introduce this inequality here.
+[01:11:45] It says that the plausibility is higher
+[01:11:48] than the probability of single events,
+[01:11:51] which is higher than the belief.
+[01:11:54] Plausibility says that something is possible,
+[01:11:57] but does not tell me how much evidences
+[01:12:00] I have to support that possible solutions.
+[01:12:04] Belief instead is strictly related to the evidences.
+[01:12:09] And if I have other evidences,
+[01:12:10] I can get as much as close to the probability
+[01:12:12] of being evident.
+[01:12:16] We also have a disbelief,
+[01:12:18] which is one minus the belief of the opposites.
+[01:12:20] And we also have this transformations,
+[01:12:23] which is the Mobius transforms
+[01:12:24] where you can connect the mass to the belief.
+[01:12:30] Okay, so now, if you're powerful, raise your hand.
+[01:12:38] I said it in here.
+[01:12:43] Because I need you to give some examples,
+[01:12:44] practical examples to have interpretation.
+[01:12:49] Well, interpretation.
+[01:12:56] You can think about a mouse.
+[01:12:59] So how do you interpret a mouse, okay?
+[01:13:04] Imagine that you have a switch
+[01:13:06] that goes from on and off,
+[01:13:09] and it's kind of moving between on and off.
+[01:13:14] The mass, okay, the function, and represents
+[01:13:18] the amount of time that you spend in one position.
+[01:13:21] You can have that the switch is on the position on,
+[01:13:25] the switch is on position off,
+[01:13:26] or something in the middle.
+[01:13:29] Either on or off.
+[01:13:31] And this is, if you bring this in time,
+[01:13:34] if you do not quantize, okay, it stays,
+[01:13:36] but you quantize the time, you define the time.
+[01:13:38] You have that, the time that you spend in the middle,
+[01:13:41] that is the mass of both on and off or what you know that an example suppose
+[01:13:53] that M represents the proportional votes for each of the seven results of the
+[01:13:58] indices suppose that you have that when you can vote for a full list or you
+[01:14:04] can vote you can have two candidates may have time or the animal think
+[01:14:13] Think about the sealed envelope,
+[01:14:16] and the probability of what the content is basically
+[01:14:19] is the envelope.
+[01:14:19] It's very close to what the two of you see
+[01:14:21] in the shirt and the haircut.
+[01:14:24] So something that can be something in the middle,
+[01:14:27] depending on, but you also have the two options.
+[01:14:29] So in the shirt again, you have only the superpositions
+[01:14:33] and a different list than you have one in the states.
+[01:14:36] In this case, you are basically taking superposition
+[01:14:38] in the states in the same setup, in the same side.
+[01:14:43] so given belief so belief is the probability that A is provable is
+[01:14:49] supported by the evidences so belief is strictly related by the evidences
+[01:14:53] plausibility you basically that A is compatible with the evidences so
+[01:14:59] without knowing what the evidences are so we can say that if you have an
+[01:15:04] event A that has a belief equal to zero and plausibility equal to one
+[01:15:11] We call this total ignorance.
+[01:15:14] I mean that what this zero one does use
+[01:15:17] that the event is possible
+[01:15:21] and the evidences can give me information
+[01:15:24] about the possibility of the probability of that event.
+[01:15:27] But I have no evidences that support events
+[01:15:29] so I don't know.
+[01:15:32] Is that zero zero means that the belief
+[01:15:34] that there are no evidences
+[01:15:36] but also there are no things
+[01:15:38] that makes the event possible
+[01:15:40] which means that it's totally possible to basically not we can say that a is
+[01:15:48] false for sure is that one one means that we have all the evidence is point
+[01:15:53] towards that or the it is possible so we are sure that a is sure if you have
+[01:16:08] zero, zero point eight, there is a partial disbelief.
+[01:16:10] Partial fact is not possible, but there are no illnesses.
+[01:16:13] And typically, most of the time, you have this condition
+[01:16:16] where you have a partial belief and partial disbelief.
+[01:16:21] So let's go back to our example.
+[01:16:26] Let's go back to our example.
+[01:16:31] And so I have this setup.
+[01:16:34] The possible power set, suppose that my set
+[01:16:36] of duty persons is Barbara, John, or Sean, okay?
+[01:16:41] The power set is Barbara, John, Sean, single.
+[01:16:47] Barbara and John, Barbara and Sean,
+[01:16:49] John and Sean, Barbara and John and Sean.
+[01:16:52] Okay, this is the total uncertainty.
+[01:16:55] Okay, when I have some evidence that support this,
+[01:16:59] well basically these are not very useful
+[01:17:02] because I'm totally, totally unaware
+[01:17:05] of what are basically the possible attributions
+[01:17:09] okay to the tree and for example you can see here some values okay for the
+[01:17:18] mass for the belief and the plausible values you can see this for example
+[01:17:24] suppose that John is guilty the mass is 0.2 it is plausible because it is in
+[01:17:31] the room there was no arguing so but the belief are very very low why
+[01:17:36] because we know that John was going to lend money and Ken was going to lend
+[01:17:41] money to John, so basically there is no point for John to kill him. Or for example suppose
+[01:17:47] that John or Sean, the two men, there was a witness saying that he heard the
+[01:17:53] man arguing, so basically there is a mass of 0.3, let's say, there is a high
+[01:17:58] belief and high possibility, it's plausible and there is also a higher belief because the
+[01:18:04] the killer must be a man, must be a male.
+[01:18:08] So as you have here,
+[01:18:12] the question is now,
+[01:18:14] suppose that you have different types of elements,
+[01:18:15] suppose different leaves, you can have different trees,
+[01:18:18] how can I combine the elements?
+[01:18:20] And the combination of all that we are following
+[01:18:25] is that didn't the value of c, the hypothesis c,
+[01:18:32] consider all the single hypothesis for the two sensors,
+[01:18:36] for the two witnesses separately,
+[01:18:38] witness one, witness two.
+[01:18:40] Consider all the hypothesis such that
+[01:18:42] the intersection is equal to c, okay?
+[01:18:44] So all the sets that include c inside,
+[01:18:48] and multiply them, and then sum.
+[01:18:53] After this multiplication and summing,
+[01:18:56] we perform a normalization.
+[01:18:58] This is a way to combine the different tendencies.
+[01:19:01] Let's see this in the example of the killings.
+[01:19:05] So witness number one,
+[01:19:07] I'm 80% sure I heard men argue.
+[01:19:09] So in this case, the masses for
+[01:19:11] the witness number one are this one.
+[01:19:13] So you have the mass for John and Sean is 0.8.
+[01:19:18] The mass for Barbara, John and Sean,
+[01:19:19] so total uncertainty is 0.2.
+[01:19:22] The other masses for all
+[01:19:23] the other combination are zero.
+[01:19:24] I do not report them for the sake of conciseness.
+[01:19:27] But you, you may assume that there are
+[01:19:29] all the possible other options okay John, Sean, Barbara and John, all zero, all zero.
+[01:19:37] Witness number two, I'm 60% sure that Ken was going to lend some money to Sean, no
+[01:19:42] reason for him to kill him, so since I'm 60% sure that Sean, sorry, is not
+[01:19:49] guilty, very well, Barbara and John are possible, possible responsible people
+[01:19:55] And therefore, what you can do,
+[01:19:58] you can give to Barbara and John a mass equal to 0.6.
+[01:20:05] Barbara, John and Sean,
+[01:20:07] I can give the probability of 0.4.
+[01:20:11] Okay, so given these masses,
+[01:20:13] how can I combine the masses following this rule here?
+[01:20:17] So suppose now, the event John.
+[01:20:19] So, the event John is, like this equation,
+[01:20:27] is included inside the intersections of,
+[01:20:33] so it corresponds to the intersection of John and Sean,
+[01:20:39] and Barbara and John.
+[01:20:41] So this with this, so I multiply 0.8 with 0.6.
+[01:20:48] then the event John and Sean.
+[01:20:51] John and Sean can be obtained if I intersect
+[01:20:55] this with this, and therefore I have 0.8 by 0.4.
+[01:21:02] Barbara and John is found by intersecting this with this
+[01:21:05] 0.6 by 0.2, and okay, the intersection of this
+[01:21:10] with this gives me 0.2, 0.3, 0.0, okay?
+[01:21:15] So in this case, I fuse them together.
+[01:21:20] I have several values.
+[01:21:22] In this case, I can sum up, okay, these values.
+[01:21:25] In this case, the sum is one.
+[01:21:28] But in the end, you can see that by fusing together
+[01:21:33] the different evidences, the weakness one and weakness two
+[01:21:36] I have a stronger evidence against the physical job.
+[01:21:41] So I started with uncertainty, okay?
+[01:21:45] so the two single witnesses are not sure about who's the person responsible but
+[01:21:50] the fusion gives me a higher concern against okay job so combining two
+[01:21:59] ideal witnesses okay you are able to identify one responsible person so you say okay
+[01:22:09] this is entity yes it is entity if you look at witnesses but you have to
+[01:22:13] mathematically formulate this because you have to write an algorithm on that okay so let's
+[01:22:18] Let's see how it works for sensor fusion.
+[01:22:20] Suppose that you have two sensors,
+[01:22:22] two IDS in your network,
+[01:22:24] and options are attack, normal,
+[01:22:27] the power set tells you zero, attack,
+[01:22:30] normal, or uncertain.
+[01:22:32] Suppose that you have a first sensor
+[01:22:33] that says that I have a 0.32 support or mass for attack,
+[01:22:39] 0.25 for normal,
+[01:22:40] and I'm certain it's 0.43.
+[01:22:43] So it's, the uncertainty is higher than two other options.
+[01:22:48] Okay, here you have attack 0.35, normal 0.1,
+[01:22:53] and the certainty is 0.55.
+[01:22:56] Also in this case, the uncertainty is higher
+[01:22:58] than two other options.
+[01:23:00] So if you consider the average of the sensor,
+[01:23:04] or the bias of the sensor,
+[01:23:05] basically you're not going to get the conclusion,
+[01:23:07] because there is higher uncertainty than two other options.
+[01:23:11] What happens if I perform the combination
+[01:23:13] that I have described so far?
+[01:23:15] So intersection between A and A is equal to A and therefore we have the product
+[01:23:22] which means 0.11. A with the error multiplication is 0.09 so we have all the possible
+[01:23:29] multiplications okay. So consider that the mass of A. The mass
+[01:23:36] of A, A is given by the intersection of this with this, this with this, and this
+[01:23:43] with this okay so I have 0.11 0.15 18 and 0.15 so the red star gives you the
+[01:23:54] element that contributes to the belief that the network is under attack this
+[01:23:59] gives you 0.44 the belief the network is not under attack well and is
+[01:24:05] defined by the intersection of this this this with this and this with this
+[01:24:11] So you have the red, green triangle, so it is 0.025, 0.04, 0.14.
+[01:24:20] So you have 0.205.
+[01:24:23] And the belief of uncertainty, the uncertainty is given by the intersection of this and this.
+[01:24:27] It's all in this blue square, which is 0.24.
+[01:24:33] If you normalize everything, you end up with that probability of attack is 0.5, 0.03, 0.97.
+[01:24:40] So from a situation where
+[01:24:42] the uncertainty was the higher option,
+[01:24:46] you are by combining indices,
+[01:24:48] you say, yeah, you are in
+[01:24:50] a situation where you have
+[01:24:51] the higher probability that is for the attack.
+[01:24:54] So you are more
+[01:24:55] inclined to think that there is an attack.
+[01:24:57] Okay? If you consider them separate,
+[01:25:01] look, it's not attack.
+[01:25:02] What's the advantage with respect to bias?
+[01:25:04] I do not know how this relates to this.
+[01:25:07] You don't know how much it is
+[01:25:08] dependence or not we're not considering dependence and also you are not you are
+[01:25:12] not sure you don't know in advance how much to trust sensor A or sensor B you
+[01:25:19] are basically you have some uncertainties as well you can do this
+[01:25:24] for multiple of these sensors so you can combine sensor one two three four
+[01:25:29] five six combined one two then the result is combined with three then
+[01:25:34] the results in the fourth, then in the fourth.
+[01:25:36] In the end, by combining multiple of them,
+[01:25:38] we get to the final results,
+[01:25:40] where at the beginning, you have sensors
+[01:25:41] that say different things, are not perfectly sure,
+[01:25:44] but in the end, you can get, basically,
+[01:25:47] a situation where the attack is kind of predominant.
+[01:25:55] So, advantage of such problems,
+[01:25:58] there is a higher potential to manage some entity,
+[01:26:01] probabilities, you move a lot of requirements.
+[01:26:04] We already assume a full attack means a normal attack.
+[01:26:08] You have that computational complexity increase
+[01:26:10] because you have a power set,
+[01:26:12] so the amount of possible options increases a lot.
+[01:26:15] But remember that if you have a few states
+[01:26:18] from the sensor, attack, not attack,
+[01:26:21] can be done very easily,
+[01:26:23] and also the order does not matter.
+[01:26:26] So if you combine the sensor in different ways,
+[01:26:28] a different order should get exactly to the same
+[01:26:31] final result.
+[01:26:32] So you don't care about which is the order
+[01:26:34] that you combine with the NSS, EED, the sensors.
+[01:26:39] There are some ill-posed conditions
+[01:26:41] that you have to take care of.
+[01:26:43] For example, witness number one says,
+[01:26:46] John is responsible.
+[01:26:48] Sean is likely responsible.
+[01:26:51] Barber is innocent.
+[01:26:53] Witness two says, John is innocent.
+[01:26:56] Barber is responsible.
+[01:26:57] Shawn is as likely as possible but there's very very few evidences of support from John for Shawn.
+[01:27:05] Well, you could find them. Well, John. John is found by intersection of this with this.
+[01:27:11] 0.99, 0.0, 0. Barbara. Barbara is intersection of this with this. 0, 0.99, equal to 0.
+[01:27:21] And Sean is this with this, and 0.01, 0.01, 0.01, normalize.
+[01:27:29] This is certainly the choice of course.
+[01:27:31] So when you have the sets that are very, very,
+[01:27:33] very different, okay, you may have issues
+[01:27:36] in this combination rule, and this is why
+[01:27:38] people have proposed different combination rules
+[01:27:41] with respect to the words that we have seen.
+[01:27:43] And you can see this in the articles
+[01:27:45] that I post, okay, on the Google page of the course.
+[01:27:49] But there are a few examples, a few exercise that we can do this but we will do this next
+[01:27:54] time because time has run out.
+[01:27:56] Are there any questions so far?

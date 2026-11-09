@@ -1,0 +1,1303 @@
+[00:00:01] We start, we are going to have
+[00:00:06] the assignments of projects and
+[00:00:11] viewpoints on the move of digital course.
+[00:00:18] Then we carry on our part
+[00:00:19] with the multimedia forensics to see
+[00:00:22] how this types of strategies on
+[00:00:25] the feature that we have studied in
+[00:00:27] the past lectures can be used to
+[00:00:29] verify the integrity of the image.
+[00:00:32] And then we're going to use
+[00:00:33] some of the active methods that you can have in multiple references. What does this mean, okay,
+[00:00:40] verify the integrity? The mean is basically to verify whether an image is fake or not and this
+[00:00:48] is important in information so whenever you have fake news or you want to alter somehow
+[00:00:55] information but also this is also possible in science, okay, where you can alter in some
+[00:01:03] images in medical education is extremely troublesome
+[00:01:07] because some of the practice in medical fields is
+[00:01:14] established whenever independent researchers
+[00:01:18] or labs get the same information.
+[00:01:21] So if you're thinking, okay, the results,
+[00:01:23] it's compromised, okay, this verification.
+[00:01:27] And there is a work,
+[00:01:28] there was a work done a few years ago
+[00:01:30] by the minister in the United States,
+[00:01:37] such that with 80% of many publications
+[00:01:42] and 80% of the papers that they revised
+[00:01:46] were having to have physical forms of images.
+[00:01:49] And also this is also done for frauds, okay,
+[00:01:52] in insurance.
+[00:01:53] This is also done for advertisements.
+[00:01:57] for example which of these images are in your opinion computer graphics and which
+[00:02:06] are instead so synthetic which are real for example do you think this is real
+[00:02:11] raise your hands please real okay the other fakes who thinks this is fake
+[00:02:24] Okay, one, who thinks this is real?
+[00:02:29] Who thinks this is real?
+[00:02:33] Real?
+[00:02:36] Fake?
+[00:02:39] Real?
+[00:02:40] Are these real?
+[00:02:42] Who thinks these are real?
+[00:02:44] Who thinks these are not real?
+[00:02:49] Okay, they are both wrong.
+[00:02:51] It says that, so this is computer graphics,
+[00:02:53] this is not real.
+[00:02:56] Computer graphics, this is real.
+[00:02:58] This is computer graphics, this is real.
+[00:03:00] These are, the face is real.
+[00:03:02] and the body is done.
+[00:03:05] This is the ability, it was a campaign
+[00:03:08] in Switzerland, if I'm not wrong,
+[00:03:12] because it's really costly to take different ropes,
+[00:03:17] okay, and make the models wear different ropes,
+[00:03:19] okay, all the time.
+[00:03:20] So what you have done, you use the synthetic body,
+[00:03:23] okay, with the ropes on.
+[00:03:25] This goes down basically to the graphics
+[00:03:28] and then they take the face of the model
+[00:03:30] and then they place the face of the model
+[00:03:32] on top of the body.
+[00:03:35] So, image forgery, okay, this image forgery
+[00:03:41] is basically a manipulation.
+[00:03:43] So you wanted to change the image, objects, contents,
+[00:03:46] part of the image object, so that you wanted to give
+[00:03:49] a pretty different semantic meaning.
+[00:03:52] Typically, one of the most used techniques, okay,
+[00:03:55] before AI, introduction, was the splicing.
+[00:03:59] What do you mean by splicing?
+[00:04:00] You take an element from a different picture
+[00:04:02] and then you stitch this element in another picture,
+[00:04:06] and then you apply some filtering, some smoothing
+[00:04:09] so that the element is included in the picture.
+[00:04:13] An example of this stitching is this image here,
+[00:04:15] which has been appeared many, many times, okay,
+[00:04:19] where basically this was basically the original one,
+[00:04:24] these were original elements,
+[00:04:25] and this probably, this was original, this was copied,
+[00:04:28] okay, just to increase the amount,
+[00:04:31] with the effects of the missile which was launched.
+[00:04:34] This is another forgery, this was done in 2014.
+[00:04:38] This was an image diffused by, I think it was
+[00:04:44] a Russian satellite, where basically they wanted
+[00:04:47] to make this belief that the air was basically
+[00:04:51] entering a specific area of the regions.
+[00:04:56] So how does this, can we verify in identity
+[00:05:01] but any kind of signals, any kind of contacts.
+[00:05:04] Well, the homogeneity principle.
+[00:05:06] In the end, if an image is homogeneous,
+[00:05:09] and we know that when you take an image,
+[00:05:11] when you acquire an image with a camera,
+[00:05:13] you have basically some features
+[00:05:17] which are typical of that specific camera,
+[00:05:20] I will find the same types of characteristics,
+[00:05:22] the same types of features all over the image.
+[00:05:27] So when you feel that these characteristics,
+[00:05:29] these features change moving from one region to another.
+[00:05:32] For example, you're looking for PRNU,
+[00:05:35] you find that in one region of the image,
+[00:05:37] you have one PRNU,
+[00:05:38] in another region of the image, you have one PRNU.
+[00:05:40] Well, it may assume that there was a splice.
+[00:05:44] This is also true sometimes for,
+[00:05:46] also for images composed from AI-generated images,
+[00:05:50] because as we said,
+[00:05:51] there is a PRNU also for AI-generated images,
+[00:05:54] and this PRNU is very, very peculiar,
+[00:05:57] very different from a real image.
+[00:05:58] So when you feel that there is an object included in a different
+[00:06:02] area, you may assume that there was some manipulation on that.
+[00:06:07] So an example to give a concept of this.
+[00:06:10] So you have this image here. You want to take an element
+[00:06:14] from this image. Okay. And the element of this image
+[00:06:18] you want to include, in this case, the butterfly, you want to put the butterfly
+[00:06:22] over the image that you have here. And what you can do
+[00:06:26] you can basically divide okay in regions okay the first image and the second
+[00:06:30] image it will have different features so for this yellow rectangle you have
+[00:06:35] some features let's say that you have a certain PRU, PRU2 and then you have
+[00:06:39] different features okay for this rectangle here so if you do the same
+[00:06:45] analysis okay on splicing what you will see you will see that on these
+[00:06:48] features you will have the blue features okay so we have the PR new of one CFA
+[00:06:56] the pollution 31 the double JPEG features okay and then on the rest of
+[00:07:03] the image you will have the values so if you perform detection here here
+[00:07:09] here here over the places you will have that here the PR new value will
+[00:07:14] be different okay and the same also for the other features so you can check
+[00:07:18] the homogeneity of PRNU or CFA interpolation characteristics
+[00:07:24] typically because interpolation protection is important because when
+[00:07:28] you have to splice an image into another you need some help with that.
+[00:07:39] So this introduce interpolation and therefore the
+[00:07:43] characteristics of interpolation that you have on that portion that has been
+[00:07:46] in forms that is different
+[00:07:48] are different from the characteristics of
+[00:07:49] the interpolation that you have on the rest of the image.
+[00:07:52] Coding parameters, you may have
+[00:07:54] different number of compressions on the image,
+[00:07:57] depending on how you combine.
+[00:07:59] So double, multiple,
+[00:08:00] that's a single compression.
+[00:08:02] Editing traces.
+[00:08:03] Okay, so if there has been
+[00:08:04] some smoothing, interpolation.
+[00:08:07] Moreover, you can look also for
+[00:08:08] the consistency in something physical.
+[00:08:11] So as we said, these are
+[00:08:12] features related to signals.
+[00:08:14] But then, in this course,
+[00:08:16] we always bring, okay, the information that we get to reality, okay? It's an online
+[00:08:21] coincidence. Therefore, bringing it to reality, you may say, okay, this image or this
+[00:08:27] function has been acquired in a specific scene. So, there were some specific conditions,
+[00:08:32] some physical conditions. So, checking physical condition is another way. And these are related
+[00:08:38] to the physical phenomenon. So, illumination, there must be shadows, there must be reflections,
+[00:08:43] and motion, okay, something that is related
+[00:08:46] to that specific surreal scene,
+[00:08:49] which may not be consistent with the image
+[00:08:51] because maybe the shed has changes
+[00:08:53] from one part to another.
+[00:08:55] Geometrically consistent is perspective.
+[00:08:57] For example, I'm not following properly, okay,
+[00:09:00] in the generated image.
+[00:09:02] Similarity also the similarity between parts.
+[00:09:05] So maybe you can find that the same object
+[00:09:08] maybe is very, very similar,
+[00:09:10] are practically the same with another object
+[00:09:12] that we found on line, another image that we found on line.
+[00:09:15] So they say that probably this guy has taken images
+[00:09:18] on line and then has taken some details
+[00:09:21] and controlled them in order to create a default image.
+[00:09:24] So similarity between parts and within images
+[00:09:27] is another way to verify the specific alterations
+[00:09:32] on the image.
+[00:09:34] You can also find, okay, these are similarities
+[00:09:36] within the same image.
+[00:09:37] This is the so-called copy move, okay, the texture, okay?
+[00:09:41] For example, imagine that you wanted to hide, okay,
+[00:09:45] the presence of this track here, the track.
+[00:09:49] So what you can do, you can take some parts, okay,
+[00:09:52] on this leaves here, and then cover, okay, this track.
+[00:09:57] So what you got, you create basically a covering, okay,
+[00:10:00] coverage of the track itself.
+[00:10:03] So what you can do, what you can basically verify,
+[00:10:05] scan okay the original image into multiple parts so for each image you
+[00:10:13] check okay the image on this part then you match okay the similarity between
+[00:10:18] these images with respect to the other images you can do this using for
+[00:10:22] example see from the scriptures what you find you find that these parts
+[00:10:25] are too much similar to this part they are particularly the same am I
+[00:10:30] taking similarities it's possible to say that probably this part has been
+[00:10:34] copy from this part it's really impossible to have exactly the same
+[00:10:42] leaves in the same positions looking the same way within a subject like this
+[00:10:47] so you may assume here that there's been some copy moves unfortunately so
+[00:10:52] you can see this okay your productivity for example a real image
+[00:10:56] so there is this tool which integrates okay most of the
+[00:11:01] informations that we have and we can see
+[00:11:11] operatively how this works okay so this
+[00:11:18] is a forensically is a software okay
+[00:11:20] for image tampering so you have this
+[00:11:25] image here okay so you can see the
+[00:11:27] magnification so these are different
+[00:11:29] picture of this image okay so you have
+[00:11:31] different tools here okay so what you
+[00:11:36] You can see, you won't know if this image is real or not.
+[00:11:41] So let's look at different places that we have mentioned
+[00:11:44] in order to see how this image works.
+[00:11:48] So there are many sources that allows you to do this,
+[00:11:50] not many, but a few sources that allow you to do this.
+[00:11:53] This is a really simple, okay, you can find them,
+[00:11:56] it's a little bit easy.
+[00:11:58] But for example, 1.5, I found the same,
+[00:12:00] much, much more filters and much more, more temperatures.
+[00:12:03] So the first stuff that you can do,
+[00:12:07] we can do some clone detection.
+[00:12:09] Clone detection means that what we have seen
+[00:12:11] for the track covered by this.
+[00:12:13] I want to see if there are parts within the C-Max
+[00:12:16] that looks too much similar to other parts.
+[00:12:18] And so what you can do,
+[00:12:19] you can perform basically some clone detection.
+[00:12:26] And then what you can see,
+[00:12:29] you can basically verify what looks similar to others.
+[00:12:33] So what you can see what this element here is telling you is that this cloud
+[00:12:38] here is very similar to this other cloud here. Quite impossible. This cloud here is
+[00:12:45] basically the same as this other cloud here. Very impossible. This other cloud is very similar to the other clouds here.
+[00:12:51] You find some similarities also between this part and this part. But this can be maybe
+[00:12:55] played a bit if you change for example the block size so you can
+[00:13:00] play with these parameters.
+[00:13:02] For example, you want to define the minimal similarity.
+[00:13:05] You want to raise the minimal similarity.
+[00:13:07] So you allow only to have, OK, now we have recomputed a bit.
+[00:13:15] So OK.
+[00:13:16] So you can see that dissimilarity here
+[00:13:18] has basically disappeared.
+[00:13:20] So it's a matter of setting the threshold properly.
+[00:13:24] So this is very similar.
+[00:13:26] And if I increase the minimal similarity and see
+[00:13:29] will tap else still okay these parts are basically matches so you can see that by
+[00:13:39] raising the thresholds of the minima similarity so I wanted to have only
+[00:13:43] those parts that are more similar very very very similar still those parts
+[00:13:48] basically remains okay this similarity checks remains so I can say that
+[00:13:53] probably this part here are similar are the same so the guy has taken this
+[00:13:58] clouds here and let's copy it here. We don't know if this cloud was copied here or
+[00:14:05] this cloud was copied here, okay, it's going to discriminate this, but we know that
+[00:14:10] it's called a forgery, okay, there has been a forgery in this part. Okay, so this is for
+[00:14:14] clone detection. Another stuff is to work on the error level analysis. So
+[00:14:19] what you do, you perform a JPEG compression on the image and then you
+[00:14:24] to reconstruct the image of the JPEG compression,
+[00:14:26] and then you basically check the difference,
+[00:14:29] the difference between the original image
+[00:14:32] and the image that you have reconstructed.
+[00:14:34] So you wanted to basically measure the error
+[00:14:37] introduced by GKE.
+[00:14:39] And what you can see here,
+[00:14:41] you can see that there are very, very different elements,
+[00:14:44] very different errors associated to this part of the image
+[00:14:48] and these other parts of the image.
+[00:14:51] You can see that from this difference,
+[00:14:52] So I can change the JPEG quality.
+[00:14:54] For example, it can be less aggressive.
+[00:14:58] So with the JPEG quality to a 95, in this case,
+[00:15:03] no difference.
+[00:15:04] If I get more aggressive, let's say 76,
+[00:15:08] you can see that this now happens.
+[00:15:10] So what happens is that by being more and more aggressive,
+[00:15:14] it makes sense that you have more details appears.
+[00:15:17] Because this means that the compression noise, the noise
+[00:15:20] But the distortion to this by compression
+[00:15:22] is getting more and more evident.
+[00:15:25] So the difference with respect to the original image
+[00:15:28] as I reduce, this is basically increasing.
+[00:15:32] But what it happens that at a certain point
+[00:15:34] when I get to the number of 90,
+[00:15:38] you can see that there is a huge disomogeneity
+[00:15:46] in the area.
+[00:15:47] So suddenly, only these parts remains,
+[00:15:50] and not the other disappears. So this means that probably this part has been
+[00:15:56] coded and compressed in different ways, it comes from a different image. So there is a
+[00:16:01] disomogenity in the compressions between this part and this part as well as from
+[00:16:05] this part and this other part. Then what you can do, you can perform
+[00:16:12] analysis of noise, and you have to see here that the level of noise of the
+[00:16:17] Pixels is very different from this part
+[00:16:22] in respect to this part, okay?
+[00:16:24] So notice that this part is not so different, okay?
+[00:16:28] So this is extremely different, extremely separate.
+[00:16:32] And then you can make it also the level suite, okay?
+[00:16:35] And you can also check, okay, the gradients.
+[00:16:38] For the luminous gradients, you don't see many things.
+[00:16:41] More or less, you can see that most of the elements
+[00:16:44] are more or less the same.
+[00:16:45] So you have the same gradients.
+[00:16:47] So this means that the two images were equalized
+[00:16:51] in terms of intensity and also details.
+[00:16:56] It is possible, sometimes it happens
+[00:16:59] that for some forgery, okay, this luminous gradient
+[00:17:01] gives you, okay, information about the forgery itself.
+[00:17:07] If you perform a placebo component,
+[00:17:09] this is not very significant, okay.
+[00:17:11] This is usually done where you have changes in the color.
+[00:17:15] Okay, but if you change, for example, the gradients,
+[00:17:18] you perform a luminous components analysis,
+[00:17:20] you can see that more or less, okay,
+[00:17:23] there are no big difference due to the,
+[00:17:25] how the quality is done.
+[00:17:30] Meta data, meta data, this is another stuff
+[00:17:33] that you can check, okay?
+[00:17:36] Typically this is the first stuff that you check.
+[00:17:38] What you can see here,
+[00:17:40] you can see that this is done with the Sony model
+[00:17:43] and the look you can look for the GPS tab and look where basically the tagging
+[00:17:54] is located so if you look at where the time is located if the image has been
+[00:17:59] forced probably it is possible that if you look okay this location using for
+[00:18:05] example Google Earth you will see something different okay maybe this
+[00:18:10] This means that the image has been altered.
+[00:18:13] You can verify exactly, okay,
+[00:18:15] that's in response to what happens in the react.
+[00:18:18] So this is the geotags.
+[00:18:21] So you can see that in this case, okay,
+[00:18:24] we are reporting a place which is on yelps.
+[00:18:27] Okay, it makes sense.
+[00:18:30] And the thumbnail.
+[00:18:33] Remember that that's a free pad,
+[00:18:35] typically embedded in the file.
+[00:18:36] There is also a smaller version,
+[00:18:38] which is typically done when we wanted to scroll, okay,
+[00:18:41] the files in your folder.
+[00:18:43] And this smaller portion is basically a recompressed, okay,
+[00:18:47] and you're shaped an image on the original image itself.
+[00:18:51] So this image, so it's a low-party version of the image
+[00:18:55] but when you edit, okay, the image usage,
+[00:18:57] you hide it as possible,
+[00:18:58] but the software that compresses the image
+[00:19:01] does not change the thumbnail.
+[00:19:04] So you change, okay, the image,
+[00:19:05] but you don't change the thumbnail.
+[00:19:06] so if you look at the thumbnail you can see okay how maybe the original image
+[00:19:11] looks like. If you look at the thumbnail you can see that the original image
+[00:19:15] reported in the valley or the Alps reported the sliding, the parachute there
+[00:19:24] but you can see that you have an idea what that image is looking about
+[00:19:27] basically the big thing. So you can see that here this part was carved,
+[00:19:34] Shrinked, moved here.
+[00:19:38] Clouds were basically
+[00:19:39] placed all around to cover these parts.
+[00:19:41] And then you stitched the spaceship,
+[00:19:46] the flying saucer on the top of this box.
+[00:19:50] So you can get here what happened
+[00:19:51] it by the fact that the guy that
+[00:19:53] forged the image did not iterate it out there.
+[00:19:57] So that is another important source of
+[00:19:59] information for the, for the, for the show differences.
+[00:20:08] You see here the differences and also the tabular difference between tabular and so on.
+[00:20:14] Okay? So these are basically some of the possible tools that you can work on.
+[00:20:22] So the signals to verify if there was a forgery or not.
+[00:20:28] Other types of solutions are related,
+[00:20:31] as I said, to the physics of
+[00:20:33] the place where you have taken the image itself.
+[00:20:36] Now, I won't answer all of them, but I will do my best.
+[00:21:18] So how do we make that data, or what is the story?
+[00:21:27] Okay, um...
+[00:21:27] We expect to answer all of the questions.
+[00:21:36] Yes, we did.
+[00:21:37] It kind of uses a kind of meta-data, so it's in the form of a meta-data.
+[00:21:41] It's not highly defined by the software, so it's possible to find it.
+[00:21:48] It's also depending on the software that you use for the meta-data.
+[00:21:54] that some softwares introduce their own metadata,
+[00:21:57] but they keep the original one.
+[00:22:02] Okay, so it is possible that this guy
+[00:22:04] is also going to use your camera.
+[00:22:05] Some other softwares you can maybe wipe out.
+[00:22:12] For example, if I take your JPEG file,
+[00:22:15] I load it using local series.
+[00:22:17] The camera is, and then I reset the image
+[00:22:19] from home to see if the camera is done.
+[00:22:22] Okay, so it's completely,
+[00:22:23] depends on the force and the types of alteration
+[00:22:25] that you have done, depends on the software.
+[00:22:27] But you have to look, that's why you have to look
+[00:22:29] more than one, because you cannot be sure
+[00:22:32] where the trace is, where the revealing element is located.
+[00:22:37] It depends on the software, it depends also
+[00:22:39] on what kind of alteration you have done on AI.
+[00:22:45] Let's talk about this.
+[00:22:48] So for the AI editing, as you said,
+[00:22:50] basically you can do maybe the same, okay?
+[00:22:52] If you have done included elements generated from AI.
+[00:22:57] If you have generated completely the AI,
+[00:22:58] typically now what do you do?
+[00:22:59] So you give an image to an AI,
+[00:23:02] or a couple of images if you want to do a composition,
+[00:23:04] and then you say, for example,
+[00:23:07] bring this object into this other image,
+[00:23:11] and AI reforged completely the image itself.
+[00:23:15] So this is typically done by regenerating the image,
+[00:23:17] so the full image is going to have
+[00:23:19] a characteristic of an AI-generated images.
+[00:23:22] In that case, you will detect
+[00:23:26] that the image has been generated in AI.
+[00:23:27] So it's not original picture, okay?
+[00:23:32] It is more complex if you, if the guy tells you,
+[00:23:35] yes, this image has been generated with AI,
+[00:23:38] but I have edited an image using AI.
+[00:23:41] Because I wanted, let's say,
+[00:23:43] to announce the complex modified image.
+[00:23:46] So in that sense, it's more subtle
+[00:23:48] because there are traces of AI entities,
+[00:23:51] but you do not know how much of the real
+[00:23:58] image is inside that. So, what you can do, you can look for physical elements, for example these elements, which
+[00:24:06] sometimes are not well-moderated by AI softwares, okay. So, the guy, for example, one way is to look for physical elements related to limitations.
+[00:24:19] So, lights, the position of lights, shadows, okay, shadows, the perspective, okay, so if you're
+[00:24:28] correcting, and reflections, anyway, if you have motions, for videos, you have also motions.
+[00:24:34] For example, in this image here, you can see that this is an image of
+[00:24:42] So then inside, okay, some tents, some camp.
+[00:24:46] And you can look, okay, at the shadows,
+[00:24:50] basically, or where the shadows, okay, are falling.
+[00:24:54] And if you take a point, okay, from the shadows,
+[00:24:58] and draw the lines, okay, with respect to the object
+[00:25:01] that generated that point,
+[00:25:03] you would expect that this lines
+[00:25:05] goes towards the light source, okay?
+[00:25:09] And if you do this for a lightable object,
+[00:25:13] inside the scenes, you would expect, okay, that this object that should be
+[00:25:20] basically, this line that you draw, should be going towards, okay, the
+[00:25:24] original scene, the original position of the light. And this is extremely useful, okay, when you have to
+[00:25:30] check this for integrity, for example. I will not dissipate a bit, okay, the
+[00:25:34] slides. So this is basically what I'm talking about. So suppose that you have an image,
+[00:25:41] okay and this image has been generated by some real objects and the real object
+[00:25:47] basically the image has been generated by projected rays okay of lights from
+[00:25:51] the point the real point on the pixels okay so let's say that pixels
+[00:25:56] reproduce exactly okay the reality or the elements in the scene using a
+[00:26:04] perspective projection okay so you can see that in the pixel you will see
+[00:26:09] the object pixel, object value, this one,
+[00:26:13] and also the shadows, basically,
+[00:26:17] the shadows of the object itself,
+[00:26:18] which in this case are the points Y1,
+[00:26:21] which is mapped into the pixel X1 for the real point,
+[00:26:25] and Y1 for its shadow.
+[00:26:28] And you can do this, okay, for the same stuff,
+[00:26:31] for other objects.
+[00:26:32] For example, for the object two,
+[00:26:34] you can find the point X2,
+[00:26:36] and its shadows Y2 and in reality if you draw a line from Y1, X1 and Y2, X2 you will see that
+[00:26:46] the lines intersect exactly in the position of the light source and this is supposed to be the
+[00:26:53] same also for the image so if you draw a line from the pixels of the image and the pixels of
+[00:27:01] object, you should see that these lines intersect on the position of the shadows.
+[00:27:06] For example, take this image. So, we have these four guys which are skiing,
+[00:27:11] okay, and snow. Take the shadows here, the shadows of the knee, together with
+[00:27:16] the knee itself, no align. The shadows in this case of the hands, and the hands, the
+[00:27:21] sole, no align. You see that most of the lines are basically converging into the
+[00:27:26] points, okay, in the single points. If you use more than once, so you consider a
+[00:27:32] code, okay, of life versus, you will see that mostly they intersect in this region
+[00:27:37] where the Sun is located. But if you take a forced image and you perform the
+[00:27:44] same operation, you can see that the shadows of the backpack here and the
+[00:27:48] shadow of the head here do not properly, as well as the shadows of
+[00:27:52] these three here, do not properly converge to get to the same location.
+[00:27:57] And especially, they do not converge to the wide origin. So it may say that this image is fake.
+[00:28:05] It is as if it has been generated by AI. Okay, that's how you can detect this.
+[00:28:12] Another stuff, this is another example of shadows. So you can see here, this is not
+[00:28:19] generated by the eye, this was done using forgery, but sometimes when you forge
+[00:28:23] an image, you have to make sure that the two images, when you take an
+[00:28:27] element from an image, you have to make sure that the lights on the two
+[00:28:33] images are the same. It is very, very difficult. So you can see here that on this guy, you have
+[00:28:40] a side illumination. For these two eyes, the illumination is on the top.
+[00:28:48] Okay, so you can see that this image has been altered.
+[00:28:53] And another stuff is also related to the reflections.
+[00:28:59] When you check reflections, you can see that
+[00:29:03] if the image is being forged or generated by AI,
+[00:29:06] it is possible that if you have a reflective element,
+[00:29:09] that these elements are not reflected properly.
+[00:29:14] So the situation is the same.
+[00:29:17] So you have the object, okay, defined by the two points, x1, x2. You have the reflected object, y1,
+[00:29:24] y2. And you have that both the reflection, both the original object are projected on the image.
+[00:29:33] And if you draw the lines, okay, on this image, you will see that these lines are
+[00:29:38] basically converging towards the vanishing points, which is the current points. So in this
+[00:29:43] case, this is a rotating image, you will see that if you draw the lines from the
+[00:29:48] face of the woman and the face, the reflected face, you will see that all the lines are
+[00:29:53] basically reflecting or converging towards a single point, which is the
+[00:29:57] vanishing point. Well, this image is big. But, if you do this on a generated image, which looks,
+[00:30:04] let's say, natural or everything, you will see that the reflection does
+[00:30:10] not work properly, do not converge on the same points. For example, the point on
+[00:30:14] the shoulders is not correctly properly converging inside the same
+[00:30:18] reflection points that you have for the brush and also for the shoulder here.
+[00:30:25] And this is also the case in these other examples when if you have
+[00:30:29] reflections, reflections should be basically consistent, but in this case
+[00:30:33] they are not, and these inconsistencies are not working. You can also
+[00:30:40] word for errors okay so splicing you've seen that the errors from JTAG is or you
+[00:30:49] can do also this also for video so if you look at this video here you have
+[00:30:56] that it's a ghost okay situation where basically there is no one opens but if I
+[00:31:06] check okay the error what you can see so I perform a compression then I
+[00:31:10] and check the difference.
+[00:31:12] But you can see there is something strange happening.
+[00:31:15] So on this pixel here I have a stronger difference
+[00:31:18] with respect to the others.
+[00:31:21] And if I look at the original image,
+[00:31:22] which has been forged,
+[00:31:23] and the original sequence which had been forged,
+[00:31:26] basically the sequence moved as well.
+[00:31:30] In this case we took, okay,
+[00:31:34] part of the, this part of the sequence
+[00:31:36] and we reverse, okay, the part of the sequence.
+[00:31:39] So the elevator is closing,
+[00:31:43] and therefore we took the elevator is closing,
+[00:31:45] we reverse the data sequence,
+[00:31:46] so we made the elevator openings,
+[00:31:48] and then we created the image
+[00:31:49] where the elevator is basically opening
+[00:31:52] with no one inside.
+[00:31:54] So this is related to illumination.
+[00:31:57] It is possible also to relate, okay,
+[00:32:00] these traces to the environment.
+[00:32:03] So to the environment, this can be done
+[00:32:08] considering for example multiple sources of information for example the sound and
+[00:32:15] for example what they can do I can check for example the reverberation and if
+[00:32:20] you're checking the environment from the images and the images tells you that
+[00:32:24] the sound has a different reverberation with respect to the
+[00:32:29] environment that you see the images you may say that there is a forging so
+[00:32:33] So, this is a very, very, very crappy forgery,
+[00:32:50] which is different from the open air.
+[00:32:52] If you look at it very simply,
+[00:32:55] you have one of the versions of fire in the wind,
+[00:32:58] then you have a different version of that sound.
+[00:33:00] So, you understand, looking at this,
+[00:33:03] that there was a forgery,
+[00:33:05] together also with other traces as well.
+[00:33:08] And it's also possible to check the geometry of motion
+[00:33:13] or physics interaction.
+[00:33:14] For example, this sequence here.
+[00:33:22] Okay, so this sequence is fake because what you can do, you can trace the trajectory of the ball
+[00:33:34] into the different frames and then be the physical golden or parametric, parametric motion
+[00:33:42] for that ball. And if they do not match, if there is a lot of correspondence, you know,
+[00:33:47] so you don't say anything else.
+[00:33:49] In this case, you can basically track the ball,
+[00:33:56] which is basically these red dots, okay, you see here,
+[00:34:00] but the physics tells you something different.
+[00:34:03] Tells you basically the yellow trajectory.
+[00:34:06] And by checking this, okay,
+[00:34:08] you will get a difference in that.
+[00:34:12] And then you can compare,
+[00:34:13] so since we said that it's possible
+[00:34:14] that the image is similar to other images
+[00:34:16] that you find online, you can compare the similarities
+[00:34:19] between images that you find basically on other places,
+[00:34:24] on other positions.
+[00:34:25] For example, you can check, okay, this image,
+[00:34:29] you have, okay, the examples and tests of nuclear bombs,
+[00:34:35] okay, then Earth and all that.
+[00:34:37] You have a similar image where, in this case,
+[00:34:41] we wanted to say, to report that the metamodium bio,
+[00:34:45] Okay, it was done in this way.
+[00:34:47] This was instead a lion, which was doing in a zoo,
+[00:34:51] it was doing a MRI, okay, for some of the checks.
+[00:34:56] So these types of checks are basically also can be done.
+[00:35:00] And what you can do, basically in this case,
+[00:35:03] you take, okay, similarity between different objects
+[00:35:06] and then build, okay, graph of similarities on that.
+[00:35:10] We're going to say this, okay, for social media,
+[00:35:12] of the analysis because this is largely done when you have
+[00:35:16] a visualization of some of the tests.
+[00:35:19] And you have multiple copies or you have duplicates
+[00:35:22] approximate copies over the same materials.
+[00:35:26] What happens when we have, so what we have in learning
+[00:35:31] we already mentioned the fact that
+[00:35:35] it is possible to check those similar places
+[00:35:38] that the files are introduced by neural networks.
+[00:35:42] Typically, deep learning is not only something illegal, okay?
+[00:35:46] In the sense that the use of deep learning is illegal,
+[00:35:48] or the use of deep fakes is illegal.
+[00:35:51] For example, we know that from the IAC
+[00:35:53] that a non-essential use of the art,
+[00:35:57] or deep fakes, a non-essential creation of deep fakes,
+[00:36:01] is prohibited, is pursued by law.
+[00:36:06] And therefore, legal uses are the use of deep fakes
+[00:36:09] from propaganda, revenge porn, illegal from child production,
+[00:36:13] derivative of fake or defiles, okay?
+[00:36:15] For example, most of the child pornography
+[00:36:17] that we have nowadays, okay, online,
+[00:36:20] is contingent or illegal, okay?
+[00:36:23] And it is kind of a problem, okay?
+[00:36:27] Because it's up to two things.
+[00:36:30] It's kind of tricky, okay, to find yourself a legal.
+[00:36:36] Because one thing is that,
+[00:36:37] and if I catch you with an image of something illegal,
+[00:36:46] but if I catch you with a fraud
+[00:36:49] that you inject into an AI engine
+[00:36:53] is going to generate an image of something illegal,
+[00:36:57] is this right?
+[00:37:01] So we are only on the border between, okay,
+[00:37:04] the crime of illegal diffusion of illegal events,
+[00:37:12] especially illegal.
+[00:37:12] So, we are just, it's a kind of treatment
+[00:37:16] we have with that.
+[00:37:18] There are many legal uses, for example,
+[00:37:21] in Manon, everything reflects the effects,
+[00:37:23] many, many movies, just amazing,
+[00:37:26] and in the farm, okay, in the garage house,
+[00:37:29] and just being, let's say, younger,
+[00:37:34] who's maybe younger, in the AI,
+[00:37:36] the same, I should say, more successful.
+[00:37:39] So, okay, five minutes to pause.
+[00:37:52] So, what we do is the detections on images
+[00:38:28] generated by artificial intelligence.
+[00:38:39] We have faces generated with AI.
+[00:38:47] And in this part, we are basically focusing
+[00:38:57] on the possibility of detecting so.
+[00:39:02] So, last year, as usually we did,
+[00:39:04] we presented the strategies, okay,
+[00:39:06] to detect the face images that we know.
+[00:39:09] And then we discussed this.
+[00:39:12] So now, we reverse the process.
+[00:39:14] So, I want you to try to figure out, okay,
+[00:39:17] why an image is fake and say how.
+[00:39:25] So, why you want to say this.
+[00:39:27] So, without, we know we can't ask each other questions.
+[00:39:30] These images are basically taken from GANs.
+[00:39:33] So, the quality that we can have for fake image
+[00:39:36] is extremely higher right now, okay?
+[00:39:41] Typically, we will use still some of the elements
+[00:39:44] that we are still using, okay?
+[00:39:50] Okay, so we start, okay, with this course here,
+[00:39:56] and we squeeze here.
+[00:40:16] So, the point is that in the C-match,
+[00:40:20] one more reel.
+[00:40:22] Okay, so reel of eight, so one, one is reel,
+[00:40:26] two is big.
+[00:40:28] So now 20 seconds, okay,
+[00:40:31] we need an image, we need an image,
+[00:40:33] and then checks in whether this image is real or not.
+[00:40:36] Look at the details,
+[00:40:38] and check whether there are some really details,
+[00:40:41] that will lead to some correct answers or not.
+[00:40:49] Okay, so bolts are closed,
+[00:40:53] have moved. So basically is this real or fake, in your opinion? So the correct answer, it's not
+[00:41:14] my fault, are basically so both. It's half and half, the correct one is fake. So the reason is that if you look
+[00:41:32] okay at the back of the image, it is possible to see that there are some
+[00:41:41] Oh, I don't know.
+[00:41:56] Some imperfections, okay, on the forehand.
+[00:42:00] And also the, some hairs, some of the hairs
+[00:42:04] that meets the stage, okay.
+[00:42:06] You have also the shapes, it's a bit different.
+[00:42:09] Okay, so, is this image real or fake?
+[00:42:17] So look at the image, okay, go for vaults.
+[00:42:55] So yes, it's for fake, no for no.
+[00:42:57] the correct answer is fake so if you look at this image for example you can
+[00:43:07] see there are some motivations okay due to the fact that the engines case the
+[00:43:12] gas was not able to generate properly these parts of the okay so is this
+[00:43:24] image real or fake? Look at this image here. Is it fake or not? Okay, yes, this is real.
+[00:44:12] Image real or fake? This girl with mustache. Look at details, hairs. Okay, go for
+[00:44:44] Boats, it's real, it's not fake.
+[00:45:03] This guy here is a bit sweaty, okay, but is this real
+[00:45:17] or fake, really true work?
+[00:45:37] Boats, almost fake, and it's fake because if you look,
+[00:45:54] for example, at this location here,
+[00:45:56] unless he has a bump or an accident,
+[00:45:59] it's possible to see, for example, also the shadows,
+[00:46:03] okay which are not somehow orienting the same you have some layers some lights
+[00:46:09] okay which are not properly all the reflections are not properly working and also if
+[00:46:14] you look at some layers here we're not properly generating. Is this image real or fake?
+[00:46:33] Look at the faces and reflections, the skins.
+[00:46:56] Okay, three, two, one.
+[00:47:15] Okay, the answer is no, it's real.
+[00:47:22] Even the reflections are basically consistent.
+[00:47:25] There are many, many, many details
+[00:47:27] that leads you to say that this is real
+[00:47:29] because you have, it's really difficult, okay,
+[00:47:32] to forge all of them and then there is why
+[00:47:35] it is a real image in itself.
+[00:47:39] Is this real or not? So, yes, it is fake. Okay, one, two is fake. Okay, it's real or not.
+[00:47:49] So look carefully, okay, look at the hairs, okay, backgrounds and fabrics and so on.
+[00:47:59] You can decide whether this is real or not. So, lots of you thinks this is fake,
+[00:48:20] because then it is real. This is real, okay, the guy who only had the hair not
+[00:48:28] tied in because she placed the glasses on top. And the last one, is this real or fake?
+[00:48:45] There is something really remarkable that can tell you if this is real or if there are lots of fine details that tells you that this image is real.
+[00:48:59] So, let's go for vaults.
+[00:49:16] So, in this case, you can see that the glasses
+[00:49:19] are the most evident.
+[00:49:21] Okay, alterations, that makes that easier to see.
+[00:49:24] You see that it's a strange stuff.
+[00:49:27] Also, there is a strange reflection here on the lenses.
+[00:49:30] And also, it has short hair,
+[00:49:34] so maybe this is kind of hair,
+[00:49:35] so it's not very nice.
+[00:49:39] But in the end, okay, the lens is more or less.
+[00:49:41] Also some reflections, details on the notes
+[00:49:45] are basically suggesting that the face is basically fake.
+[00:49:52] Okay, so let's go.
+[00:50:07] So basically, correct answer is about 60%, okay?
+[00:50:15] Which is kind of the average, I think it is.
+[00:50:40] So, this is introduced, okay, the topic of images generated with AI. So, in order to create, okay, to perform the thing, okay, or create images with AI, we have lots of things.
+[00:51:10] So these are tools for the fake, okay?
+[00:51:14] So to, in this case, the fake is different.
+[00:51:18] The fake means that you have one body,
+[00:51:21] one person that is moving,
+[00:51:24] and you want to use the same motions
+[00:51:25] or the fakes of this person on the other person.
+[00:51:29] So you want to create what we call a puppeteer.
+[00:51:32] So you want to use, okay,
+[00:51:34] the model of the other person as a puppet that you move,
+[00:51:38] and then you want to reproduce it in your book.
+[00:51:43] Then there is also the generations of videos from AI
+[00:51:49] where you use a text prompt
+[00:51:51] and you basically create a video using, okay,
+[00:51:56] from that, from any, from an engine of this type.
+[00:52:03] So typically what is the difference?
+[00:52:05] So in one case you have a puppet,
+[00:52:07] But in the other case, you have what is more like
+[00:52:09] a digital group of the person.
+[00:52:12] Typically, all the engines that use AI to generate videos,
+[00:52:18] they propose the videos into one image,
+[00:52:20] they have one image for the person,
+[00:52:21] but this is for the app.
+[00:52:22] Like how the AI becomes kind of modular of the approach.
+[00:52:30] How can you detect whether a video,
+[00:52:33] an image is being done using the app?
+[00:52:36] For example, you can use it for one of these cases again,
+[00:52:38] or a diffusion moment.
+[00:52:40] Well, typically for the oldest elements,
+[00:52:43] you build the solutions,
+[00:52:45] you have to look for hard defects,
+[00:52:47] typically on a high frequency elements.
+[00:52:50] So typically, the gallons are of a general,
+[00:52:55] so diffusion moments are low class numbers.
+[00:52:59] They feel, generally, high frequency details,
+[00:53:03] like air to your pores, very fine details in the details.
+[00:53:08] And that is why, if you look at those details,
+[00:53:13] you may find out that these details are, let's say,
+[00:53:17] not properly distributed.
+[00:53:19] So you have that if you look at the eyes,
+[00:53:22] glasses, fashionable, you can see that these elements
+[00:53:25] are not properly distributed.
+[00:53:28] Recent works, they generate these elements.
+[00:53:31] as well, or even what we can do.
+[00:53:46] And this array is okay to find here.
+[00:53:49] So let's say that compression was like a low pass filter.
+[00:53:52] So we lose all the details,
+[00:53:54] of course it depends on how much you compress the image
+[00:53:56] but this is a kind of removal of these details.
+[00:54:01] So what can we work out?
+[00:54:03] Well, you can work and you can focus
+[00:54:06] on behavioral elements.
+[00:54:08] For example, the way you move, or for example,
+[00:54:12] the link pattern.
+[00:54:16] This is something that can be associated.
+[00:54:19] Okay.
+[00:54:21] Of course, it is possible that the technology evolves
+[00:54:26] and we're going to have, as we have better
+[00:54:28] and better generation models.
+[00:54:31] We have also new detectors, but the detectors
+[00:54:34] like to go to the latest generation of generative models.
+[00:54:39] And typically the ratio between people working
+[00:54:41] in the synthetic generation and people working
+[00:54:44] on detection is one hundred.
+[00:54:48] So for one person working on the detection of defects,
+[00:54:51] there are typically a hundred person
+[00:54:52] working on generation of defects.
+[00:54:55] So it's a kind of physical stuff.
+[00:54:57] But still, you can basically work working on this.
+[00:55:01] For example, the example of blimp.
+[00:55:03] At the beginning of the deepfake era,
+[00:55:06] of the GAL era,
+[00:55:08] there was this guy said,
+[00:55:09] okay, this paper, he said,
+[00:55:10] okay, it's very easy.
+[00:55:12] It's very easy to detect the deepfake.
+[00:55:15] If you look at deepfake video,
+[00:55:17] the guy that reads,
+[00:55:19] so picture the person that reads.
+[00:55:22] Two weeks after this paper was published,
+[00:55:25] there was a new energy,
+[00:55:27] or there was a deepfake,
+[00:55:28] where the person reads.
+[00:55:34] So training a specific network
+[00:55:37] with the feature that we want to produce,
+[00:55:41] may lead to the capability of
+[00:55:43] generating that specific characteristics.
+[00:55:45] And therefore you cannot use
+[00:55:46] that characteristics anymore.
+[00:55:49] Not at all.
+[00:55:50] More recently we're still using linking.
+[00:55:52] But what we're looking,
+[00:55:54] we're looking at the arrival of the pattern of link.
+[00:55:59] So at the beginning, linking or not,
+[00:56:02] okay, the technique is different or not.
+[00:56:05] Then we have the face of the four beliefs, very well.
+[00:56:07] But is this pattern of motion
+[00:56:11] related to a real person?
+[00:56:13] Is this something that is natural, okay,
+[00:56:17] from the personal point of view?
+[00:56:20] So the technique, this pattern of belief,
+[00:56:21] currently is a way to verify
+[00:56:23] whether the image, the video,
+[00:56:25] of that person is real or not, okay?
+[00:56:28] And we're still going on the physical part.
+[00:56:30] So when we have removed the elements related to noise,
+[00:56:37] thing, facial hair, moles, details,
+[00:56:41] whenever those elements do not work anymore,
+[00:56:43] we know all these elements,
+[00:56:45] on the motion, on the optical flow of the video,
+[00:56:48] on how the person moves,
+[00:56:50] and on the small details
+[00:56:51] that cannot be physically possible.
+[00:56:53] For example, we measured before the light,
+[00:56:57] okay, the light still checking shadows,
+[00:56:59] checking the elimination is something we can use
+[00:57:01] for the actual images.
+[00:57:04] This also depends on the specific engine
+[00:57:08] that we are using, okay?
+[00:57:10] For example, there was this test done a couple of years
+[00:57:15] ago, I mean two, about different images,
+[00:57:19] the technique used for the lights, shadows and so on,
+[00:57:24] generated by these lights, okay?
+[00:57:27] What they have found is that the accuracy was very good.
+[00:57:32] For most satisfied for structures like stable fusions.
+[00:57:41] Open AI.
+[00:57:42] Okay.
+[00:57:43] It was clear.
+[00:57:44] It was good.
+[00:57:47] If you were using mid journey,
+[00:57:49] mid journey was basically normal.
+[00:57:54] And the reason is,
+[00:57:55] if you look at the products used by the journey,
+[00:57:59] the products were more like a computer graphic instruction.
+[00:58:04] So in the products that we use to generate that same image,
+[00:58:07] you give it to us about the series,
+[00:58:09] you give it to us about where the carbonate strokes,
+[00:58:11] you give it to us about one of the limitations,
+[00:58:13] you give it to us about every,
+[00:58:15] so the more you specify,
+[00:58:16] the more you have an elastic series.
+[00:58:18] And if it was more difficult, okay?
+[00:58:20] It was the main difference, okay?
+[00:58:22] Why from that lead people wrote a problem
+[00:58:24] which was really, really quick, okay.
+[00:58:27] For mid journey people use that to generate images
+[00:58:30] with the higher quality.
+[00:58:32] And also it was possible to see that in the brands
+[00:58:34] that was used in most many, many, many years.
+[00:58:37] Specifying all the physical elements
+[00:58:39] that should be included in this language.
+[00:58:42] So, performing this, okay,
+[00:58:44] this detection depends also on the engine,
+[00:58:46] depends on how the product was generated.
+[00:58:48] It also depends on what is the feature
+[00:58:50] that you want to use in order to verify
+[00:58:52] whether it's real or not.
+[00:58:56] It is possible to use some statistical anomalies.
+[00:58:59] Okay, so verify this, okay, by checking the statistics
+[00:59:03] of coefficients, okay, on,
+[00:59:07] which in fact coefficients of the image,
+[00:59:09] for example, big image, you know, not so big, right?
+[00:59:11] What is interesting about this anomalies
+[00:59:14] is that, let's take three images,
+[00:59:17] three different classes of images.
+[00:59:19] CGI images real images real images and it's possible to see that the deviation
+[00:59:30] from the anomaly has an increasing pattern so the more you go towards okay
+[00:59:38] a real image, the more have less stable,
+[00:59:42] more deviating elements.
+[00:59:45] So in this case, less deviating elements.
+[00:59:47] So the more you go here,
+[00:59:49] the more you perform the statistics.
+[00:59:52] In the middle, you have the fates.
+[00:59:56] So the fates are kind of in the middle
+[00:59:57] between CGI computer graphics and real images.
+[01:00:04] You have many detection methods, okay,
+[01:00:07] that you can find online.
+[01:00:10] And also there are also detectors that are on web.
+[01:00:14] You can, recently people works a lot on the,
+[01:00:17] for videos, on the, the components between the voice,
+[01:00:22] or the video, the lips, the motion of the lips,
+[01:00:25] and what does it says, okay,
+[01:00:27] how much we are aware, okay,
+[01:00:29] aligned, okay, because typically this,
+[01:00:31] you have to generate on the video,
+[01:00:33] you have to generate the voice,
+[01:00:34] and then you have to align them.
+[01:00:37] And as for all of the fakes, we work a lot on noises, okay?
+[01:00:42] And if you would like to work on these types of subjects,
+[01:00:46] okay, we are, like, okay, this is a typical goal,
+[01:00:50] or goal of this goal for fake motion, fake audio,
+[01:00:56] and so on.
+[01:01:05] So, I would like then to conclude, okay, this part,
+[01:01:09] okay related to with some active strategies
+[01:01:17] which are presented
+[01:01:22] if you notice here we have different types of
+[01:01:27] protections
+[01:01:29] but even if we presented the strategies
+[01:01:32] in that device
+[01:01:33] it's not that in the analysis,
+[01:01:36] the applications can be crossed to see where it goes.
+[01:01:42] One example is water mining.
+[01:01:45] In water mining, we are basically applied
+[01:01:49] an active protection on the data, okay?
+[01:01:54] Let's have an example.
+[01:01:58] Suppose, so water mining basically
+[01:02:01] falls within a little bit of a statistical analysis.
+[01:02:08] So you want to include the message into an algorithm.
+[01:02:15] Think for example this text.
+[01:02:17] My friend Bob, until yesterday,
+[01:02:18] I was using mid-opera for stargazing.
+[01:02:20] Today, I decided to try my new telescope,
+[01:02:22] the Galaxy C11, which is very unbelievable.
+[01:02:25] Next, I'm going to check out some lemolas and so on.
+[01:02:28] Take the initials of every word.
+[01:02:34] Then filter with the key pi, okay?
+[01:02:37] 3.14, so it's not 0.14, it's 3.14.
+[01:02:42] So the key pi, so you take every term of a letter,
+[01:02:48] gives you basically, as I added that,
+[01:02:51] to that sequence of letters.
+[01:02:55] Then take the previous letter,
+[01:02:57] okay, with respect to this sequence here,
+[01:02:59] and what you got?
+[01:03:00] You got basically the message.
+[01:03:02] So this digital array was the size,
+[01:03:05] and that was to hide the objects and messages
+[01:03:09] into another, okay, using some specific algorithm.
+[01:03:14] So if you have that algorithm and you have the key,
+[01:03:17] okay, you can reconstruct, okay, such object.
+[01:03:20] And watermarking falls, okay, within this field.
+[01:03:25] This was done in the art, okay, in the past,
+[01:03:28] was a kind of tricky.
+[01:03:30] In general, okay, watermarking is part
+[01:03:32] of the giant family of data hiding.
+[01:03:36] Data hiding typically divides into steganography,
+[01:03:38] watermarking, and covert communications, okay.
+[01:03:42] As for watermarking, we have different types
+[01:03:45] of watermarking, like fingerprinting,
+[01:03:49] reversible watermarking, and semi-fragile watermarking.
+[01:03:52] We will focus mostly on the fingerprinting,
+[01:03:54] on the hard watermarking.
+[01:03:56] Reversible, semi-fragile is something
+[01:03:58] that we are going to discuss and introduce how it works.
+[01:04:01] The applications are made, for example, for copyright protection, threat of tracing,
+[01:04:07] then you also have medical, military, and reversible watermarks. For command communication, you also have
+[01:04:12] the rotation and semi-constraint watermarking is very useful for the authentication and for
+[01:04:18] the reconstruction for traceback, the reconstructions of the key or modification
+[01:04:22] applied on that image or on that contents. So, remember these terms in order to discuss the watermarks.
+[01:04:31] For the watermark, it is a message.
+[01:04:34] It is a message which is basically
+[01:04:36] stitched into a dot.
+[01:04:38] Leave it, load the file.
+[01:04:41] Sometimes we also have the possibility
+[01:04:43] to watermark DNA.
+[01:04:47] This is because most 80% of our DNA is junk.
+[01:04:54] It's not useful.
+[01:04:58] And therefore, if you are playing with that part of DNA,
+[01:05:00] the change will be the basic sequence of DNA.
+[01:05:19] So why would you like to put a market like crazy in the slightest?
+[01:05:59] So you have a living organ that has been given to you by some seeds, some healthy things.
+[01:06:21] Yeah, we have done this for bacteria.
+[01:06:26] Because there are some bacteria that are used to eat petrol.
+[01:06:31] So when you have some oil spilling on the sea, they use some bacteria which is specialized in eating this oil and then converting it into your own toxic products.
+[01:06:44] And they are patented. They have been developed in the lab, so there is a patent on those bacteria and therefore they want to protect the molecular property.
+[01:06:51] But it can be also done for seeds.
+[01:06:53] If I have some special plants that I developed in the lab,
+[01:06:56] and then maybe I have this apple that is extremely sweet
+[01:07:03] or whatever, I want it red, but I have to say the apple,
+[01:07:06] and then I can have a day or all the seeds of the apple.
+[01:07:11] It's also true if I'm working on some pathogens,
+[01:07:16] like many labs, and there is a leakage,
+[01:07:20] and this pattern just goes out from my lab
+[01:07:23] and then make some troubles, I want to defend myself.
+[01:07:26] So I want to prove that that is not my bacteria,
+[01:07:30] that is not my virus.
+[01:07:32] It is something that has been generated by another lab.
+[01:07:36] So it is possible also to eventually think about this
+[01:07:39] in defense.
+[01:07:41] So on the ending of DNA, there is a lot of work.
+[01:07:46] For example, a lot of people are using DNA
+[01:07:51] to, as a memory, as a storage.
+[01:07:54] So there is some works, there is a committee
+[01:07:56] within the JPEG of the standards,
+[01:07:59] that is working on the possibility of storing images,
+[01:08:03] storing videos, into sequences of DNA.
+[01:08:07] And why?
+[01:08:08] Because DNA can be used as a,
+[01:08:10] it's not easy, okay, to store, right?
+[01:08:13] is not easy to retrieve, but this is intended as a long term.
+[01:08:20] So if you want to do something and you want to avoid
+[01:08:24] the demagnetization, long form, and some deterioration
+[01:08:29] that either digital device have in time.
+[01:08:34] So if you burn a CD, that CD is not going to be forever.
+[01:08:38] For example, if you have burned some CDs in the test,
+[01:08:42] If you listen to them, probably now they're not
+[01:08:44] working anymore, okay?
+[01:08:45] Because there is some deterioration of those supports.
+[01:08:50] So if you want to avoid this, you can use,
+[01:08:52] for example, DNA.
+[01:08:53] Like in Jurassic Park, for example,
+[01:08:55] they used, okay, to extract the DNA of the dinosaurs
+[01:08:58] from the mosquitoes inside the gamut of the cymbals.
+[01:09:04] They say, no, it's not cymbals.
+[01:09:05] So you can store, okay, something DNA
+[01:09:07] that can last for a long time.
+[01:09:10] We have DNA that comes back from many ancient times
+[01:09:14] from the historical fields.
+[01:09:17] And this allows you, basically, to store informations.
+[01:09:20] But the way that you process your DNA
+[01:09:22] is not like you process a digital bits,
+[01:09:25] sequence of bits on your PC.
+[01:09:27] It's kind of different, okay?
+[01:09:29] So, there are lots of works.
+[01:09:30] So, but it's possible, apart from this equation,
+[01:09:33] the watermark, okay, many different things.
+[01:09:35] And the watermark is basically a sequence
+[01:09:38] that tells the protocol.
+[01:09:40] It can be visible or invisible.
+[01:09:43] Typically, you want to have a watermark that does not
+[01:09:46] alter the appearance of the original object.
+[01:09:50] Because, for example, if I want to add a watermark
+[01:09:52] already left, I want to distribute this image, OK?
+[01:09:56] But what I want, I want to add the watermark,
+[01:09:59] because I want that that image is something
+[01:10:00] that is included to my code.
+[01:10:02] So this is why, if I rule the image
+[01:10:05] in some additional details, that is a problem.
+[01:10:08] So that is why we focus on invisible
+[01:10:09] or imperceptible watermarking.
+[01:10:12] Sometimes in steganography, you want to hide the message.
+[01:10:15] So you don't want the possibility
+[01:10:17] because you don't want the person
+[01:10:19] to reconcile the message.
+[01:10:21] This is the big difference between watermarking
+[01:10:23] and steganography.
+[01:10:25] Watermarking, you want to hide the message,
+[01:10:27] but you want to allow the possibility
+[01:10:30] to recover the message, to verify the message.
+[01:10:34] And in steganography, you want to hide the message,
+[01:10:37] but you want to make the retrieval more complex,
+[01:10:40] because you wanted to communicate that information
+[01:10:44] only to a person.
+[01:10:47] And the attack is an operation that
+[01:10:48] wants to eliminate, distort, or compromise this process.
+[01:10:52] For example, an attack on watermark,
+[01:10:54] I wanted to spoil the image, to ruin the image,
+[01:10:57] so that the watermark cannot be extracted anymore.
+[01:11:00] so the image cannot be attributed to me anymore so why not but
+[01:11:10] cryptography is not solution why because cryptography you basically cannot use
+[01:11:16] the image cannot see the image if you don't have a key so the cryptography
+[01:11:22] basically allows you to distribute the image only to the person that you
+[01:11:25] I have the key.
+[01:11:28] But the problem, and so you have a conditional access,
+[01:11:31] okay, to the systems, to the image.
+[01:11:34] But once you give the access,
+[01:11:36] basically the cryptography is useless.
+[01:11:39] So you give me your image, I decrypt the image,
+[01:11:42] and then I sell the image on the internet
+[01:11:44] because I work back.
+[01:11:46] Once I have access to the image,
+[01:11:47] I can move whenever I want.
+[01:11:49] So the integrity protections and the legal use
+[01:11:52] is extremely difficult for me, but it can be done,
+[01:11:55] That is why we need the watermarking.
+[01:11:57] So the two technologies are basically complementary,
+[01:12:01] not competing.
+[01:12:03] Typically, watermarking is blurry.
+[01:12:06] You can recover the vessel without having
+[01:12:08] the original image.
+[01:12:10] It is robust, resilient to basically
+[01:12:13] tension or potential attacks, and imperceptible.
+[01:12:16] So typically, we are looking for a watermarking
+[01:12:19] that cannot be seen from the versions.
+[01:12:22] The axis, okay, for cryptography,
+[01:12:24] if you have security and keys,
+[01:12:27] and also for motor marking,
+[01:12:30] motor marking must be also a conflict result,
+[01:12:32] so you must, it should be possible
+[01:12:34] to have multiple motor marks.
+[01:12:37] Imagine when we talked about the packet marking,
+[01:12:40] packet stamping that we have for rootless.
+[01:12:43] Packet goes to the rootless,
+[01:12:45] every rooter leaves a place.
+[01:12:47] It can be the same for rootless.
+[01:12:49] So every time we go through a specific stage of processing,
+[01:12:53] this stage leaves its own watermark.
+[01:12:56] Once you retrieve all the watermarks,
+[01:12:58] you can recover the full path of aberrations,
+[01:13:01] the full path of processing
+[01:13:02] that was applied to that specific image.
+[01:13:05] So, it's a trace back, okay, idea
+[01:13:08] about, okay, the multiple watermark.
+[01:13:10] Moreover, this addition of watermark
+[01:13:14] must not enlarge too much the image.
+[01:13:18] So the image, the size of it must stay within,
+[01:13:21] the specific original, the size of the original image itself.
+[01:13:28] So, typically watermark is an operation
+[01:13:33] that they've made a sequence and what you want to do,
+[01:13:36] you want to do an hypothesis testing on the watermark.
+[01:13:39] You want to verify whether the watermark
+[01:13:41] is present or not.
+[01:13:42] So you have basically a rock curve.
+[01:13:46] For sure, the number of bits that you can include
+[01:13:54] in that image may change, it depends on the image,
+[01:13:57] it depends on the algorithm that you have.
+[01:14:00] And therefore, this is what data hiding takes care of,
+[01:14:03] to embed multiple bits, okay, a message of image itself.
+[01:14:08] And in this case, you measure, okay,
+[01:14:12] the performance of this data hiding strategies
+[01:14:14] as the number of possible bits in camera 3
+[01:14:16] without having errors, okay, from the image itself.
+[01:14:21] So, in water market, we have two talents.
+[01:14:26] An increased fat spectrum and quantization weights.
+[01:14:29] In an increased fat spectrum,
+[01:14:31] we add, okay, the water amount to the house signal.
+[01:14:34] And this is to understand that the allies,
+[01:14:37] in quantization, it is related to the specific
+[01:14:40] quantizer in watermarks.
+[01:14:42] It is more and more difficult to understand
+[01:14:45] and difficult to relax.
+[01:14:47] Typically, the activity spreads by two is the most widely used data elements.
+[01:14:53] A combination of both is the spreads transform data modulation as DVM.
+[01:14:58] So how does watermarking works?
+[01:15:00] Suppose that you have an image.
+[01:15:03] On this image, you perform a perceptual analysis.
+[01:15:06] So you locate the places, the points, where you can add information without compromising too much.
+[01:15:15] the appearance of the image.
+[01:15:18] And therefore, you modulate this information
+[01:15:20] so that you can create a watermark,
+[01:15:23] starting from the method that you want to do.
+[01:15:26] The method is a key, okay?
+[01:15:29] So from this key, the message creates, okay,
+[01:15:31] some noise that you add on the image.
+[01:15:34] Then you send, okay, this image with the watermark
+[01:15:38] across the network.
+[01:15:40] There can be attacks, compressions, alterations,
+[01:15:44] and so on. Despite these attacks you receive the image given the key you can
+[01:15:49] extract back. For example this image is property of University of public. So how
+[01:15:58] does this work? We have one bit. We have the luminous of the pixel X and
+[01:16:10] And the peak that we want to embed is b.
+[01:16:14] We use b equal to minus 1 plus 1 instead of 0, 1
+[01:16:19] for the sake of simplicity.
+[01:16:21] So assume that 0 is minus 1.
+[01:16:25] But it's a binary function in the case.
+[01:16:28] So what you can do, you can replace the intensity x
+[01:16:31] with intensity y, which is x plus b multiplied by alpha.
+[01:16:37] Okay, alpha is a mean, multiply by alpha, is the water mark.
+[01:16:43] So this part here, we call this w, water mark,
+[01:16:47] is the water mark, I mean, okay.
+[01:16:51] The parameter alpha defines how much invisible,
+[01:16:54] how much you want to alter the original image.
+[01:16:57] The larger is alpha, the more visible,
+[01:17:00] the more altering is the water mark.
+[01:17:02] How can you extract the message?
+[01:17:04] Well, if you know X, if you have X, you can compute the difference. Y minus X, you get this.
+[01:17:11] Compute the sign, positive or negative, you get B. But at the beginning, we said
+[01:17:17] that we do not want to have the original image. We want to extract the
+[01:17:22] message without having the original image. So what can you do? If X is not known, the
+[01:17:28] is to apply this B not on a single point, but using for example a region. So what you can do, you can estimate it
+[01:17:41] instead of having X, you can estimate the average value of X. So assuming that X
+[01:17:47] on a region of the image stays the same, you can compute the mean of this
+[01:18:00] an approximation estimation of x.
+[01:18:03] So this works depending on the value of alpha
+[01:18:07] and depending on the value of the nodes, which
+[01:18:10] is present on the image.
+[01:18:11] So if the variation y minus mu is much, much higher
+[01:18:19] than alpha, OK, you may have some works.
+[01:18:24] But if those limits are not respected, if in this case,
+[01:18:28] you have that you have some some problems so what you need to do you need to spread
+[01:18:33] the spectrum so what is this what you do take an image divide the image into partitions regions
+[01:18:46] okay tiles and these tiles are basically a ti okay so the image the total image
+[01:18:57] is basically done by the union of all the tiles. And each tile is this joint,
+[01:19:03] basically. Let's say that we have M tile, okay, or an image that for the sake of simplicity
+[01:19:10] equals C on the image squared. So the image has a size equal to M by M, okay? So M by M
+[01:19:17] is the size of the image, and the image is made by the pixel at coordinates M1 and M2.
+[01:19:21] Okay so given this for each tile you generate an embedding pass. An embedding pass is a signal
+[01:19:32] which is equal to alpha n1 n2 s n1 n2 if the pixel belongs to the tile. If the
+[01:19:44] pixel is outside the tile the signal is equal to zero. So basically we have a pulse which is
+[01:19:50] basically zero outside the tile, within the tile, the pulse is equal to this
+[01:19:57] signal here, which is composed by this part, which is the embedding mask, the
+[01:20:03] perceptual mask, and this signal S, which is a pseudorandom signal. Imagine that you have a random number generator, that generates values, that values, those values are X.
+[01:20:15] push it right there, right there, round, whatever,
+[01:20:21] you have basically this signal here.
+[01:20:25] So it is a random signal that is only selected
+[01:20:32] all the points defined by that perceptron mask.
+[01:20:36] And why?
+[01:20:37] Because we know from perception
+[01:20:41] that the distortion that you perceive depends on where you apply that distortion. So the
+[01:20:51] distortion is going to be less evident on some parts of the image and more evident on others.
+[01:20:58] Example, consider this image here, if I start applying some changes in the pixels on a smooth
+[01:21:07] this area, I will have a higher distortion.
+[01:21:12] I will perceive that because it's
+[01:21:13] like if I have something smooth,
+[01:21:15] you'll see that this light is kind of flickering.
+[01:21:18] I hope that there is something that is not quite going well on that part.
+[01:21:22] But if I apply these changes across five details,
+[01:21:28] okay, like this part, the graph,
+[01:21:31] if I change a bit some pixels, nobody's going to notice.
+[01:21:34] If I apply these changes on pixels on this part,
+[01:21:36] nobody's going to notice.
+[01:21:37] So if I apply these distortions on those small parts,
+[01:21:40] that distortion is going to be unnoticed.
+[01:21:44] That is the reason for the Perceptual Mask, also here.
+[01:21:50] For example, I can have lots of distortion on this part,
+[01:21:54] the glass, but the distortion cannot be high
+[01:21:58] on the bridge, okay.
+[01:22:03] So using this mask, this property,
+[01:22:05] it is possible to encapsulate, okay,
+[01:22:08] this perceptual mask into the modulation pulse.
+[01:22:14] And this encapsulation allows me to change
+[01:22:16] only those pixels of the mask,
+[01:22:18] those pixels where the changes are not noticed, okay?
+[01:22:23] So given P, I assign it to each tile,
+[01:22:27] to each blocks, one bit.
+[01:22:29] So we have one bit for tile of pixel, okay?
+[01:22:33] And this bit is equal to bi.
+[01:22:37] And therefore, the total watermark
+[01:22:38] is basically the sum of the bits
+[01:22:42] multiplied by the pulse bi.
+[01:22:46] We still use it across the total image.
+[01:22:50] So the final image is given by the original image x
+[01:22:54] plus this watermark, which basically is trans-spectrum y.
+[01:22:58] Because this operation here spread the spectrum
+[01:23:02] will stay on multiple pixels.
+[01:23:03] The information is not localized on a single pixel.
+[01:23:07] It is spread to a whole tile, or not a whole tile,
+[01:23:11] but a certain mass pixel within that tile.
+[01:23:14] And for that tile, you have one bit.
+[01:23:17] Of course, the more bits, the smaller
+[01:23:20] is going to be the tile.
+[01:23:22] So and also, the freighter is going to be the watermelon.
+[01:23:26] If you have a few bits, you're
+[01:23:29] going to have that the tiles can be larger.
+[01:23:31] and you can be more robust, in my point of view.
+[01:23:34] So, that is why,
+[01:23:39] given this, okay, I will cut this with you,
+[01:23:42] but final detection, how can you detect this?
+[01:23:45] Well, what you do, basically,
+[01:23:48] you have the image Y in the watermark,
+[01:23:51] you pre-process the image,
+[01:23:53] then you find out, okay, the ZN, okay,
+[01:23:57] you demodulate, okay, the watermark,
+[01:23:58] And so you extract this information by computing the key
+[01:24:03] that generated these signals here.
+[01:24:06] So the modulation, the noise,
+[01:24:09] you get basically the information's added here.
+[01:24:13] You demodulate, and then you have basically the message
+[01:24:17] and you can verify whether the message is present
+[01:24:20] or not, okay?
+[01:24:23] So how can this be done?
+[01:24:24] More simplistically, you take a video image,
+[01:24:26] you multiply this image by the sequence,
+[01:24:29] you sum and then you threshold.
+[01:24:32] Why it works like this?
+[01:24:34] It works like this because these are random generated.
+[01:24:39] So if I multiply this image with another sequence,
+[01:24:42] another one generated,
+[01:24:43] it's going to be concurrently generated.
+[01:24:45] So if I multiply this S with another S,
+[01:24:48] differentially generated with a different seed,
+[01:24:51] it is going to be basically a nice sum of the value.
+[01:24:54] This is going to be zero.
+[01:24:56] And this is why by performing this multiplication and summing, I can select only the formation
+[01:25:04] related to time one, time two, time three, time four, time five, time eight, time nine.
+[01:25:07] It's alike of the noise.
+[01:25:09] But basically you are decolonizing, okay, the different components of the watermark.
+[01:25:18] And so this is how you can detect the watermark and you have to find the balance
+[01:25:22] and then I conclude between the number of pixels
+[01:25:29] per information bits, okay, and the error, the probability.
+[01:25:35] So as you increase the number of bits per information,
+[01:25:39] so it means that you have larger tiles,
+[01:25:42] lower amount of bits, okay, to inside the image,
+[01:25:45] you have that the probability of the error,
+[01:25:47] the probability of not recovering
+[01:25:49] the original information reduces.
+[01:25:51] If you reduce, okay, the number of pixels
+[01:25:54] this probability of having errors increase, okay.
+[01:25:59] Sure, if I have a larger image
+[01:26:01] and I cited this image one bit,
+[01:26:05] I have more information than the last bit
+[01:26:07] that goes up instead of it.
+[01:26:09] If I have a smaller tile,
+[01:26:11] I have less information than the last bit
+[01:26:12] that goes up, therefore, the error probability goes up.
+[01:26:17] So, what you need, this depends also on the images.
+[01:26:21] Okay, these are types of images,
+[01:26:23] so you have different curves.
+[01:26:25] So you have to find a good trade-off
+[01:26:27] between the robustness, so low there,
+[01:26:31] low bit error probability, visibility,
+[01:26:34] in fact, if I look at the world of our cases,
+[01:26:37] something straight on the image, and the preload.
+[01:26:39] So the amount of this particular load
+[01:26:41] will include the number of tiles inside.
+[01:26:44] If you increase the preload, okay,
+[01:26:48] so it means that you want to have lots of tiles,
+[01:26:50] the tiles are going to be smaller,
+[01:26:52] therefore the robustness goes up.
+[01:26:54] If you want to reduce,
+[01:26:57] okay, the payload,
+[01:26:58] okay, the robustness goes up.
+[01:27:00] But also it is true that if I have
+[01:27:01] a stronger error, stronger in social,
+[01:27:04] the visibility is going to increase as well.
+[01:27:08] So as you notice, basically,
+[01:27:10] it's a three-way problem
+[01:27:14] that we've needed to find, okay,
+[01:27:16] the correct balance between
+[01:27:17] all the three elements into the most part.
+[01:27:21] So there can be many attacks, added noise, filtering,
+[01:27:27] compression, rotational scaling, the disturbance.
+[01:27:29] And these are multiple watermarks.
+[01:27:31] And multiple watermarks, if you have more watermarks,
+[01:27:34] you may have a problem.
+[01:27:36] And when you say that, sometimes
+[01:27:39] you want what you want, watermarks, you have to survive.
+[01:27:43] Sometimes you want watermarks to change the evidence.
+[01:27:47] This is the case of self-agile, fragile watermarks.
+[01:27:50] This Phrasein watermark is a watermark that is explicitly designed to be changed by alterations.
+[01:27:59] Because by analyzing the changes in watermark, it is possible to reflect what kind of processing has been done on that specific watermark.
+[01:28:07] And this is the case of Phrasein and Phrasein strategies.
+[01:28:10] You want to add the watermark, but you want this watermark to reveal what happened to that device.
+[01:28:15] It's a kind of, let's say, step, a seal that you place on the hibachi, and once it's broken,
+[01:28:22] you know that something happened about that. Okay, see you on Tuesday.
