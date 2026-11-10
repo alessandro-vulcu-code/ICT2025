@@ -1,0 +1,346 @@
+{
+  "search_duration_s": 300,
+  "duration_s": 1800,
+  "replications": 10,
+  "search_seed": 2026,
+  "configuration_count": 192,
+  "feasible_count": 28,
+  "selected": {
+    "rho": 180000,
+    "b": 4096,
+    "bi": 16384,
+    "mu": 220000,
+    "bo": 4096
+  },
+  "selected_cost": 5.5,
+  "targets": {
+    "loss_pct": 1.0,
+    "mean_ms": 30.0,
+    "p95_ms": 50.0,
+    "p99_ms": 100.0,
+    "jitter95_ms": 30.0
+  },
+  "ci95": {
+    "loss_pct": {
+      "mean": 0.16851367520164676,
+      "half95": 0.013550571735457678,
+      "minimum": 0.14086862227447086,
+      "maximum": 0.19078532326665174
+    },
+    "mean_ms": {
+      "mean": 16.711744652680288,
+      "half95": 0.07112558473326128,
+      "minimum": 16.559463334084466,
+      "maximum": 16.861430015570843
+    },
+    "p95_ms": {
+      "mean": 44.889395875356385,
+      "half95": 0.2941084933043013,
+      "minimum": 44.27590234555505,
+      "maximum": 45.661505601947255
+    },
+    "p99_ms": {
+      "mean": 68.27956931495805,
+      "half95": 0.6503735908296692,
+      "minimum": 66.86566798271372,
+      "maximum": 69.66948927064347
+    },
+    "jitter95_ms": {
+      "mean": 18.39580981768755,
+      "half95": 0.05473121709218101,
+      "minimum": 18.277272727251415,
+      "maximum": 18.527707540897612
+    },
+    "byte_delivery_pct": {
+      "mean": 99.80519300365437,
+      "half95": 0.015594661502040941,
+      "minimum": 99.77965780270041,
+      "maximum": 99.83777791481384
+    },
+    "offered_kbps": {
+      "mean": 865.1964293333333,
+      "half95": 1.774321701547095,
+      "minimum": 861.6462177777778,
+      "maximum": 869.7831422222222
+    },
+    "throughput_kbps": {
+      "mean": 863.5021764444443,
+      "half95": 1.7874778680958854,
+      "minimum": 859.9510133333333,
+      "maximum": 868.3304133333334
+    }
+  },
+  "replications_results": [
+    {
+      "seed": 3026,
+      "packets": 196556,
+      "loss_pct": 0.19078532326665174,
+      "byte_delivery_pct": 99.78055145311369,
+      "offered_kbps": 865.9281155555556,
+      "throughput_kbps": 864.0278488888888,
+      "mean_ms": 16.787645001141797,
+      "p95_ms": 45.28951384645552,
+      "p99_ms": 69.66948927064347,
+      "jitter95_ms": 18.277272727251415,
+      "drain_s": 0,
+      "peak_bi": 16384,
+      "peak_bo": 4038,
+      "drop_reasons": {
+        "input_overflow": 375
+      }
+    },
+    {
+      "seed": 3027,
+      "packets": 196460,
+      "loss_pct": 0.18833350300315585,
+      "byte_delivery_pct": 99.78064374578425,
+      "offered_kbps": 866.5112711111111,
+      "throughput_kbps": 864.6105244444444,
+      "mean_ms": 16.72227557996135,
+      "p95_ms": 44.84731224988536,
+      "p99_ms": 68.96251433179461,
+      "jitter95_ms": 18.383877418199294,
+      "drain_s": 0,
+      "peak_bi": 16380,
+      "peak_bo": 4038,
+      "drop_reasons": {
+        "input_overflow": 370
+      }
+    },
+    {
+      "seed": 3028,
+      "packets": 195926,
+      "loss_pct": 0.14086951195859662,
+      "byte_delivery_pct": 99.83777791481384,
+      "offered_kbps": 863.0692222222223,
+      "throughput_kbps": 861.6447822222221,
+      "mean_ms": 16.559463334084466,
+      "p95_ms": 44.27590234555505,
+      "p99_ms": 66.86566798271372,
+      "jitter95_ms": 18.278906200021087,
+      "drain_s": 0.02175476595107284,
+      "peak_bi": 16382,
+      "peak_bo": 4038,
+      "drop_reasons": {
+        "input_overflow": 276
+      }
+    },
+    {
+      "seed": 3029,
+      "packets": 196590,
+      "loss_pct": 0.16175797344727605,
+      "byte_delivery_pct": 99.81218651411746,
+      "offered_kbps": 867.1700088888889,
+      "throughput_kbps": 865.5160044444444,
+      "mean_ms": 16.77792248881959,
+      "p95_ms": 44.95454545450457,
+      "p99_ms": 67.85337263854106,
+      "jitter95_ms": 18.448575636369924,
+      "drain_s": 0.026098174488424775,
+      "peak_bi": 16384,
+      "peak_bo": 4038,
+      "drop_reasons": {
+        "input_overflow": 318
+      }
+    },
+    {
+      "seed": 3030,
+      "packets": 195518,
+      "loss_pct": 0.16929387575568489,
+      "byte_delivery_pct": 99.80325980553638,
+      "offered_kbps": 861.6462177777778,
+      "throughput_kbps": 859.9510133333333,
+      "mean_ms": 16.599930211511932,
+      "p95_ms": 44.41646763594917,
+      "p99_ms": 67.2070510468482,
+      "jitter95_ms": 18.428003636259405,
+      "drain_s": 0,
+      "peak_bi": 16383,
+      "peak_bo": 4038,
+      "drop_reasons": {
+        "input_overflow": 331
+      }
+    },
+    {
+      "seed": 3031,
+      "packets": 195969,
+      "loss_pct": 0.17553796773979558,
+      "byte_delivery_pct": 99.79775183152951,
+      "offered_kbps": 865.1439422222222,
+      "throughput_kbps": 863.3942044444444,
+      "mean_ms": 16.861430015570843,
+      "p95_ms": 45.661505601947255,
+      "p99_ms": 69.01533715451934,
+      "jitter95_ms": 18.527707540897612,
+      "drain_s": 0,
+      "peak_bi": 16383,
+      "peak_bo": 4038,
+      "drop_reasons": {
+        "input_overflow": 344
+      }
+    },
+    {
+      "seed": 3032,
+      "packets": 195745,
+      "loss_pct": 0.1900431684078776,
+      "byte_delivery_pct": 99.77965780270041,
+      "offered_kbps": 863.1059733333334,
+      "throughput_kbps": 861.1881733333333,
+      "mean_ms": 16.70737577336855,
+      "p95_ms": 44.882078607997755,
+      "p99_ms": 68.89663899324431,
+      "jitter95_ms": 18.431624681613805,
+      "drain_s": 0.013508847237972077,
+      "peak_bi": 16384,
+      "peak_bo": 4038,
+      "drop_reasons": {
+        "input_overflow": 372
+      }
+    },
+    {
+      "seed": 3033,
+      "packets": 196502,
+      "loss_pct": 0.17404403008620778,
+      "byte_delivery_pct": 99.80139239446251,
+      "offered_kbps": 866.5864844444444,
+      "throughput_kbps": 864.8653777777778,
+      "mean_ms": 16.738523177555404,
+      "p95_ms": 44.97327814848403,
+      "p99_ms": 68.76550043397289,
+      "jitter95_ms": 18.403467463610937,
+      "drain_s": 0,
+      "peak_bi": 16378,
+      "peak_bo": 4038,
+      "drop_reasons": {
+        "input_overflow": 342
+      }
+    },
+    {
+      "seed": 3034,
+      "packets": 195960,
+      "loss_pct": 0.15360277607675035,
+      "byte_delivery_pct": 99.82372390829492,
+      "offered_kbps": 863.0199155555556,
+      "throughput_kbps": 861.4934222222222,
+      "mean_ms": 16.5864427643234,
+      "p95_ms": 44.537150608874754,
+      "p99_ms": 67.61801611651164,
+      "jitter95_ms": 18.356318173223933,
+      "drain_s": 0.004861429029233477,
+      "peak_bi": 16381,
+      "peak_bo": 4038,
+      "drop_reasons": {
+        "input_overflow": 301
+      }
+    },
+    {
+      "seed": 3035,
+      "packets": 197347,
+      "loss_pct": 0.14086862227447086,
+      "byte_delivery_pct": 99.83498466619064,
+      "offered_kbps": 869.7831422222222,
+      "throughput_kbps": 868.3304133333334,
+      "mean_ms": 16.776438180465536,
+      "p95_ms": 45.056204253910416,
+      "p99_ms": 67.94210518079127,
+      "jitter95_ms": 18.422344699428095,
+      "drain_s": 0.01273460400921067,
+      "peak_bi": 16384,
+      "peak_bo": 4038,
+      "drop_reasons": {
+        "input_overflow": 278
+      }
+    }
+  ],
+  "robustness": {
+    "homework1_offsets": {
+      "packets": 196556,
+      "loss_pct": 0.19078532326665174,
+      "byte_delivery_pct": 99.78055145311369,
+      "offered_kbps": 865.9281155555556,
+      "throughput_kbps": 864.0278488888888,
+      "mean_ms": 16.77899447006553,
+      "p95_ms": 45.27848284647007,
+      "p99_ms": 69.65296233264564,
+      "jitter95_ms": 18.266395327331242,
+      "drain_s": 0,
+      "peak_bi": 16384,
+      "peak_bo": 4038,
+      "drop_reasons": {
+        "input_overflow": 375
+      }
+    },
+    "held_out_capture": {
+      "packets": 12491,
+      "loss_pct": 0.04002882075094068,
+      "byte_delivery_pct": 99.95243503907022,
+      "offered_kbps": 857.3538000000001,
+      "throughput_kbps": 856.8786,
+      "mean_ms": 13.635412968207165,
+      "p95_ms": 31.230155318205277,
+      "p99_ms": 44.06026365457508,
+      "jitter95_ms": 16.693423254460523,
+      "drain_s": 0.001697842545482331,
+      "peak_bi": 16094,
+      "peak_bo": 4038,
+      "drop_reasons": {
+        "input_overflow": 5
+      }
+    }
+  },
+  "controls": {
+    "underprovisioned": {
+      "config": {
+        "rho": 90000,
+        "b": 1341,
+        "bi": 4096,
+        "mu": 100000,
+        "bo": 4096
+      },
+      "metrics": {
+        "packets": 196556,
+        "loss_pct": 29.160646329799143,
+        "byte_delivery_pct": 67.80611647999973,
+        "offered_kbps": 865.9281155555556,
+        "throughput_kbps": 587.1522266666667,
+        "mean_ms": 27.794249125356256,
+        "p95_ms": 48.97582626667827,
+        "p99_ms": 53.35222222220182,
+        "jitter95_ms": 27.48263990010855,
+        "drain_s": 0,
+        "peak_bi": 4096,
+        "peak_bo": 1312,
+        "drop_reasons": {
+          "input_overflow": 57317
+        }
+      }
+    },
+    "large_buffers": {
+      "config": {
+        "rho": 110000,
+        "b": 8192,
+        "bi": 65536,
+        "mu": 120000,
+        "bo": 65536
+      },
+      "metrics": {
+        "packets": 196556,
+        "loss_pct": 1.1024847880502249,
+        "byte_delivery_pct": 98.7679336543953,
+        "offered_kbps": 865.9281155555556,
+        "throughput_kbps": 855.0839777777778,
+        "mean_ms": 236.35587569558103,
+        "p95_ms": 546.6215947397359,
+        "p99_ms": 587.4641739267827,
+        "jitter95_ms": 29.52242171669921,
+        "drain_s": 0.35211017655137766,
+        "peak_bi": 65536,
+        "peak_bo": 8111,
+        "drop_reasons": {
+          "input_overflow": 2167
+        }
+      }
+    }
+  },
+  "all_confirmation_runs_pass": true
+}
