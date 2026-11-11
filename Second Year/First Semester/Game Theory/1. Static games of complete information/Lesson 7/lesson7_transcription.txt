@@ -1,0 +1,551 @@
+[00:00:05] Welcome to this lecture of Gen Theory and the
+[00:00:08] lecture alone out of India. In this lecture, we discuss how to expand the D. R. Nash equilibrium.
+[00:00:16] Why?
+[00:00:16] Why do we need to expand it? Because in the previous lectures, just to recap, we gave this
+[00:00:21] very important definition of Nash equilibrium and...
+[00:00:24] and it's a very powerful predictive instrument.
+[00:00:27] Unfortunately, there are games for which this seems to be none.
+[00:00:32] No Nashikulibermato.
+[00:00:34] And why so?
+[00:00:34] Think, for example, of the Aotenimus game.
+[00:00:38] How can an Nashikuliberm
+[00:00:41] ...
+[00:00:40] to possibly be there.
+[00:00:42] It is unlikely that we have a situation where no players
+[00:00:48] has regrets because the two players I mean they end the game in the condition where one is wiener
+[00:00:55] and the other one is loser.
+[00:00:56] So the loser of course always has regrets on how they play.
+[00:01:01] And this is also true from the perspective of the
+[00:01:04] of playing a best response to the beliefs and all the beliefs being correct.
+[00:01:10] This seems also unlike
+[00:01:12] because of course well I said player I mean if I'm a player in Northern even and
+[00:01:17] I believe something about my opponent
+[00:01:20] I know what to play. It's very easy to compute my best response.
+[00:01:23] Still, it turns out that our beliefs mean a...
+[00:01:28] and my opponents can't be both correct at the same time. So this is a
+[00:01:36] very unpleasant situation and it feels something is missing because we cannot
+[00:01:42] use the idea of Nash equilibrium.
+[00:01:44] room to make predictions. Actually in a game like the Austin Evans game, the
+[00:01:50] prediction I can make is that's what
+[00:01:52] well, it's very hard to predict how the game will be played.
+[00:01:57] And this may be correct, actually, because the purpose of this
+[00:02:00] is to be a little bit more careful.
+[00:02:00] game is actually to simulate a coin toss. So in reality there might be something that is actually correct.
+[00:02:08] But still, we don't like the idea of not having an Ash equilibrium.
+[00:02:13] Well, it turns out there is an Ash equilibrium.
+[00:02:16] even in this case.
+[00:02:17] But to explain what the Nash equilibrium is,
+[00:02:20] we have to extend the concept scene so far.
+[00:02:24] And.
+[00:02:24] and to introduce the idea of mixed strategies.
+[00:02:27] And mixed strategies are actually the toughest concept
+[00:02:31] to digest.
+[00:02:32] in the course because so far all the definitions we gave Nash equilibrium but also strict
+[00:02:39] I'm going to go meet a
+[00:02:40] strategies or parrot efficiency. Well, these definitions are intuitive in a sense. They might be tricky, but
+[00:02:48] they reflect some intuitive behavior.
+[00:02:52] Mixed strategies are not very intuitive.
+[00:02:55] And actually, the same
+[00:02:56] to be alive because we started this course by saying,
+[00:03:00] well, rational players do not like random.
+[00:03:04] And in reality mixed strategies are a way to introduce uncertainty or
+[00:03:10] randomness in the game.
+[00:03:12] Still, we didn't lie in that rational players do not like external.
+[00:03:20] randomness. They want to be in control of the game. It does not mean that they want the game to be
+[00:03:27] entirely deterministic.
+[00:03:28] Sometimes players want to randomize but to be themselves in control of this randomness.
+[00:03:36] And so mixed strategies are a way to reflect that the players would like to make the game become random.
+[00:03:44] And this also makes the game more interesting and practical, but it's not an external randomness.
+[00:03:52] like we saw in the field of lottery.
+[00:03:55] Still, some of the adaptation is very similar.
+[00:03:58] And we have also similar conclusions.
+[00:04:00] We have a similar conclusion.
+[00:04:00] will see this in a while but it's very important to understand that whatever I
+[00:04:04] will discuss today will probably require you to stop the video.
+[00:04:08] and to concentrate better to understand all the concerts, which are honestly not very easy.
+[00:04:16] easy to solo at least at first glance.
+[00:04:22] Let's see the game of Audinate.
+[00:04:24] arts and events. The game was originally like that. So this is the original game of arts and events.
+[00:04:31] And
+[00:04:32] We say that here there is no Nash equilibrium, but apparently one can think of X-ray
+[00:04:40] extending the game a bit.
+[00:04:43] And actually, this would change the game.
+[00:04:46] So we already remarked that it
+[00:04:48] is
+[00:04:49] a
+[00:04:50] two
+[00:04:51] two
+[00:04:52] two
+[00:04:53] two
+[00:04:54] two
+[00:04:55] two
+[00:04:56] two
+[00:04:57] two
+[00:04:58] two
+[00:04:59] two
+[00:05:00] two
+[00:05:01] two
+[00:05:02] two
+[00:05:03] two
+[00:05:04] two
+[00:05:05] two
+[00:05:06] two
+[00:05:07] two
+[00:05:08] two
+[00:05:09] two
+[00:04:48] if we allow other strategies to be played,
+[00:04:52] well, this changes the game.
+[00:04:54] So for the moment,
+[00:04:56] we'll be right back.
+[00:04:56] Let's assume that the players are allowed to play something intermediate between 0 and 1.
+[00:05:02] And since it is intermediate, let's call it...
+[00:05:04] one half. So this strategy one half is kind of strange because what happens if
+[00:05:12] you blow
+[00:05:12] strategy one half. Well, we can assume and we will describe this in a very intuitive fashion.
+[00:05:19] We'll formalize.
+[00:05:20] this afterwards. Well, ideally if I play strategy one half, the outcome will be
+[00:05:27] something into
+[00:05:28] immediate between what happens if I play zero and what happens if I play one.
+[00:05:33] That seems logical.
+[00:05:35] So my.
+[00:05:36] let's say I play odd my payoff will be somehow intermediate between the numbers here. So instead of
+[00:05:44] getting minus four when I play zero or plus four when I play one, let's say I get something
+[00:05:49] intermediate which is zero and the same happens for play
+[00:05:52] even. So I can write zero zero here and also you can check this is true for every other situation.
+[00:05:59] This is intermediate.
+[00:06:00] between this plus four and minus four, so you get zero.
+[00:06:03] And in the middle, when it is one half, one half,
+[00:06:06] you also get zero.
+[00:06:07] So if we...
+[00:06:08] meet this third strategy which changed the role of the game of course there's
+[00:06:13] another game but in this situation
+[00:06:16] strategy one half, one half played together by both players would be a
+[00:06:21] mashy equilibrium because no one has an incentive.
+[00:06:24] to deviate, a unilateral incentive to deviate.
+[00:06:29] Well, it also happens that this is Nash equilibrium
+[00:06:32] is a very cheeky Nash equilibrium in that if you play one half on half, you don't want
+[00:06:37] to deviate simply because there is no point in deviating.
+[00:06:40] get payoff zero anyways. So this is why you don't want to deviate but still according to
+[00:06:45] definition this is a Nash equilibrium. Okay.
+[00:06:48] So let's try to formalize this in a better way.
+[00:06:51] So the point is we want to define mixed strategies
+[00:06:56] in the.
+[00:06:56] way. Mr. strategies are very similar to lotteries so we say a mixed strategy
+[00:07:04] First of all, we say a probability distribution of any non-empty discrete set A is...
+[00:07:12] a function p from A to 01, such that the sum of all p values is 1.
+[00:07:18] This is how the definition is should
+[00:07:20] be already known and just putting here for the sake of completeness but I'm sure you've
+[00:07:25] seen this in your probability course.
+[00:07:28] out.
+[00:07:28] Also, you might have seen, if not, well, let's use this terminology, that the set of all possible
+[00:07:35] right distribution.
+[00:07:36] over set A is called the simplex of A.
+[00:07:40] And we denote it as delta A.
+[00:07:42] Now, the point is that
+[00:07:44] If we have a normal fun game, a normal fun game is described by listing all the storage
+[00:07:50] sets and all the utilities.
+[00:07:52] Well, we define that a mixed strategy is a probability distribution MI over success.
+[00:08:00] I for play I. So now we are kind of pretending that a player instead of
+[00:08:08] choosing one of the elements of set SI, which is a strategy,
+[00:08:14] can somehow make a mix.
+[00:08:16] of the elements of set SI. So instead of playing a single strategy, he plays the
+[00:08:23] mixture of them.
+[00:08:24] And if you remember, we called the elements of SI,
+[00:08:29] we called them pure strategies.
+[00:08:32] And so...
+[00:08:32] a mixed strategy is nothing but a probability distribution over set SI.
+[00:08:39] Well, this is going to be a good example.
+[00:08:40] the mix of strategy also because the feeling that we want to express is that this player is somehow mixed.
+[00:08:48] using these or hair options.
+[00:08:52] Instead of having options A, B, C,
+[00:08:54] a player can also play
+[00:08:56] a
+[00:08:56] a linear combination of them.
+[00:08:58] But this linear combination is actually
+[00:09:01] the result of a coin flip.
+[00:09:04] or a probability distribution. So the player has some random generator and according to this random
+[00:09:11] generator the size
+[00:09:12] what to play. This is still a bit ambiguous because how can the player decide this random
+[00:09:20] behavior. And it looks counterintuitive in that we say that the players want to play something
+[00:09:26] Russian are not something random.
+[00:09:28] Still, let's pretend for the moment that play I chooses what strategy to play according to
+[00:09:36] given probabilities. So this is his or her mixed set strategy. So MI is nothing but a probability
+[00:09:43] distribution.
+[00:09:44] Where the probability of playing SI1 is MI of SI1 the probability of playing SI2 is MI of
+[00:09:52] SI2 and so on and so forth. So it's like saying play I before moving well
+[00:09:59] toss a
+[00:10:00] die or flips a coin or does something random or takes a card from a deck and that would be
+[00:10:08] move. Of course, there is still some rational behavior in that the deck of cards, for example,
+[00:10:13] was programmed by the play itself.
+[00:10:16] So if you know about, I don't know, some collecting card games, like magic.
+[00:10:24] the gathering, this is the example we have in mind. The player is still rational in that he takes a card out of the deck, which is
+[00:10:32] random but the deck of cards was programmed by the play itself and by the way actually
+[00:10:38] games like Mezzet the Gathering were in
+[00:10:40] by game theorists, by mathematicians, who designed the game this way.
+[00:10:45] It's actually more complicated than the game theory was seen this course.
+[00:10:48] again so I'm not endorsing studying Magic the Gathering in your course project but
+[00:10:54] still the idea would be identical.
+[00:10:57] Now let's see what happens then.
+[00:10:59] If I play a mix search strategy M,
+[00:11:03] I'm basically taking
+[00:11:04] the
+[00:11:05] the
+[00:11:06] the
+[00:11:07] the
+[00:11:08] the
+[00:11:09] the
+[00:11:10] the
+[00:11:11] the
+[00:11:12] the
+[00:11:13] the
+[00:11:14] the
+[00:11:15] the
+[00:11:16] the
+[00:11:17] the
+[00:11:18] the
+[00:11:19] the
+[00:11:20] the
+[00:11:21] the
+[00:11:22] the
+[00:11:23] the
+[00:11:24] the
+[00:11:25] the
+[00:11:04] making a probability over pure strategy.
+[00:11:08] So I can compute my expected payoff.
+[00:11:11] My expected payoff.
+[00:11:12] would be the expectations of the strategy I can play, the payoff I can get.
+[00:11:20] So the idea of the utility can be extended to these mixed strategies.
+[00:11:26] So let's see in two ways.
+[00:11:28] One is the real expectation in a random process.
+[00:11:33] My moves, let's say a random
+[00:11:36] And therefore, I get an expected payoff that depends on the probability of what strategy do I play?
+[00:11:44] not only what strategy do I play, but also strategies played by the others.
+[00:11:48] And these are also random because every player is choosing
+[00:11:52] mix a strategy. That is one way of seeing it. The other way of seeing it is well let's consider this as a simple
+[00:12:00] which is if I want to extend utility, you would...
+[00:12:08] be a function of pure strategies in reality.
+[00:12:13] The arguments in the dominion set of you
+[00:12:16] are.
+[00:12:16] is s1 times s2 times s3 times and so on until sn. Well, what if I want
+[00:12:24] to represent this utility function as a function that is computed in delta.
+[00:12:32] which is delta one times to the two times delta S and this set. Can I do that?
+[00:12:38] Well, yes.
+[00:12:40] as long as I do this procedure, which is to take expectations.
+[00:12:45] UI computed for an element of this.
+[00:12:48] set, which is denoted as m1 to mn, is computed this way.
+[00:12:52] First of all, I consider one possible global strategy S.
+[00:12:56] S is an element of the Cartesian product S1 to Sn, without the delta.
+[00:13:02] This S is set.
+[00:13:04] here. Now, given this S, I can compute the probability that under the choice of
+[00:13:12] of these mixed strategies, I actually play strategy S. What is the probability that
+[00:13:18] the Gs is actually the show
+[00:13:20] and joint strategy. Well the choice of the players are all independent. This is what happens in a
+[00:13:26] static game of complete information.
+[00:13:28] correct? So the probability that S is chosen is m1 of S1 times m2 of S2.
+[00:13:36] times until mn of sn, correct?
+[00:13:40] So this orange one is the probability that s
+[00:13:44] is actually the chosen joint strategy.
+[00:13:47] And since S is a joint strategy, a joint pure strategy,
+[00:13:51] I can easily compute the
+[00:13:52] payoff. So this payoff is easy to compute is correct according to the definition because I can
+[00:13:58] certainly compute UI of
+[00:14:00] Okay, but then I can make the weighted sum of the UI of us.
+[00:14:07] All this you.
+[00:14:08] and this is nothing but the expected utility.
+[00:14:12] This is very utility that we end.
+[00:14:16] encountered already in lotteries and we proved or we claim we can prove that
+[00:14:23] expectivity
+[00:14:24] it satisfies many nice mathematical properties.
+[00:14:27] Actually, it is the only way to satisfy
+[00:14:30] certain mathematical properties.
+[00:14:32] So.
+[00:14:32] So in short, we don't want to discuss this idea,
+[00:14:36] but let's say just that taking expectations
+[00:14:39] is the right thing.
+[00:14:40] do in game theory. So if we do so, we can certainly compute UI of a mixed strategy. And so we saw it to
+[00:14:48] One is the physical meaning of expectations is nothing but the probability of what we expect, the expected value.
+[00:14:56] And the other is the mathematical concept that if we do so, we fulfill some mathematical properties.
+[00:15:04] Okay, very well. Now the thing is, what is the intuition behind this whole stuff?
+[00:15:12] Consider once again the odds and evens game.
+[00:15:15] So let's say that play out and play even instead of playing the
+[00:15:20] the two strategies, which are zero and one for both.
+[00:15:23] They decide to play a mixed strategy.
+[00:15:26] What is a mixed strategy for play out?
+[00:15:28] Well, play-out can decide to play zero with an even probability, and then one with another probability.
+[00:15:35] And since it is...
+[00:15:36] a binary choice, you should know this already from information theory, for example, if you've seen it.
+[00:15:42] Well, if player audio...
+[00:15:44] chooses to play 0 with probability Q, then naturally he is also choosing to play 1 with
+[00:15:51] probably the one minus skip.
+[00:15:53] And for player even, we can say the same,
+[00:15:56] player even plays zero with player and
+[00:15:59] log.
+[00:16:00] play even plays one with probability one minus R.
+[00:16:05] So Q and R are the two parameters that we need to set.
+[00:16:08] and we can arbitrarily say that well the correct definition of a mixed strategy would be
+[00:16:15] the full definition.
+[00:16:16] So play art is playing a mix of strategy where 0 is played by the Q and 1 is played by the
+[00:16:24] rating.
+[00:16:24] one minus q, but since this is uniquely determined
+[00:16:27] by the choice of q, we just say, okay,
+[00:16:29] play odd, play strategy q.
+[00:16:32] Q.
+[00:16:32] is a mix strategy, correct, and play even plays art. What happens if play art plays strategy Q?
+[00:16:40] and even play strategy app.
+[00:16:42] It depends, there are four possible outcomes in reality.
+[00:16:45] So this table is not the normal form of any.
+[00:16:48] game is just a representation of what four possible outcomes we can get. We can get the outcome 0-0
+[00:16:56] with probability so odd to the zero probability q and even to the zero with probability r so
+[00:17:02] zero zero can
+[00:17:04] happen with ROTQ-R, right, because these two numbers are chosen independently. And the payoff we get is
+[00:17:12] is minus four for play out and plus four for play even in this case.
+[00:17:17] So the contribution to that weighted sum we wrote.
+[00:17:20] before is minus 4QR for play out and plus 4QR for play even and we can do the same for all the other combinations.
+[00:17:28] and these is actually the representation of the single global strategy QR. So QR
+[00:17:36] as a joint strategy M gives all these possibilities.
+[00:17:41] And we can collect all of them and some of them, right?
+[00:17:44] So for example, we can say odds pay off will be the sum of all these terms.
+[00:17:49] And if you do a little bit of math after you trust me.
+[00:17:52] I'll stop the video and look that the math is correct. You can see that artspay off is actually this,
+[00:17:59] which you can I mean you can compute
+[00:18:00] and then collect some terms and basically write down that all payoffs is
+[00:18:05] Ospy off is minus four times two cube minus
+[00:18:08] one times 2R minus one. And you can do the same computation for play even. Well
+[00:18:13] this is actually easy because play...
+[00:18:16] even always get minus what play out gets. So, if we play even we can write plus 4 2 q minus 1 2.
+[00:18:24] minus one. Okay, so this means that if you have this representation
+[00:18:32] you can get the real graphical form of the normal form.
+[00:18:40] in this way. So this one, once again, this one is not, don't get confused. This is just a table that I draw to help me
+[00:18:48] compute.
+[00:18:48] the numbers, this would be the normal form. Actually, I cannot represent the
+[00:18:52] normal form because I have infinitely many choices between the
+[00:18:56] zero one, all ranging in terms of Q. So Q is an intermediate number between zero
+[00:19:02] one so I should write a new
+[00:19:04] infinite matrix in which every column goes like this.
+[00:19:08] And at the intersection between the choice Q and the choice R,
+[00:19:12] We have this cell, which is highlighted here, where I write both playoffs of the players.
+[00:19:18] First, the payoff of playoff and then the payoff of playoff.
+[00:19:20] play even so I write these numbers right this is the payoff of play odd and
+[00:19:25] this is the payoff of play even okay so
+[00:19:28] If we do something like that, we see that this matches with intuition that we had before.
+[00:19:33] So this is actually a generalized version.
+[00:19:36] of this where here I only have one intermediate degree where I had this one
+[00:19:42] half right but in the
+[00:19:44] I can write this for any intermediate value, not just for one half. And of course, we already shown that
+[00:19:52] But the best intermediate value to get is one half because if we are allowed to get one
+[00:19:56] half, we get a Nash equilibrium according to the definition.
+[00:20:00] Okay, so this is the extension of our game now you might have noticed
+[00:20:08] that even choosing 0 or 1 as value for R
+[00:20:16] and odd choosing 0 or 1 as value for Q, I mean they were already present.
+[00:20:22] So you can say what happens if...
+[00:20:24] Q is equal to zero.
+[00:20:25] Well, this is like odd playing a pure strategy
+[00:20:29] and Q playing Q equal to
+[00:20:32] one is also another to strategy. So, in reality is the other way around. So, Q is
+[00:20:37] intermediate between zero and one, but as according to my definition.
+[00:20:40] Q is the probability that I play zero, so don't get confused. Anyways, if I chose
+[00:20:48] a value q equal to 1 or 0, I'm basically playing a pure strategy. Also, let me give you
+[00:20:56] on definition. I say that given a genetic mixed strategy, I define the support of this
+[00:21:04] strategy as the set of all pure strategies that can be played with non-zero probability.
+[00:21:12] So in the specific example of the odds and events game,
+[00:21:18] I can have a support that can
+[00:21:20] I said be both zero and one if I am really truly mixing
+[00:21:25] between them.
+[00:21:26] So if I'm choosing Q, which is
+[00:21:28] between strictly between zero and one,
+[00:21:30] sometimes I'm playing zero,
+[00:21:32] some other times I'm playing one.
+[00:21:34] And same goes for even.
+[00:21:36] But if Q is equal to zero or one precisely, I'm playing a few strategies.
+[00:21:42] So my support will be...
+[00:21:44] a single term because there is only one pure strategy I'm gonna play. Okay, very
+[00:21:50] good. So in reality
+[00:21:52] I can identify pure strategies with the generate mix of strategies.
+[00:21:59] This is something.
+[00:22:00] trivial, a similar remark was already made for lotteries. And of course if I have a
+[00:22:08] probability where a probability distribution where I play 100% of the
+[00:22:12] times I play something and 0% of the times I play the rest.
+[00:22:16] Well, it's like saying you're always playing, you're only playing the thing you're playing
+[00:22:21] with 100% probability.
+[00:22:23] There is a subtle...
+[00:22:24] in this scenario, an acute strategy is actually, well,
+[00:22:29] you can only play.
+[00:22:32] a given pure strategy. A mixed strategy, the generation of pure strategy, it coincides with probability one.
+[00:22:40] So it's something that is almost always equivalent.
+[00:22:43] If you remember some definition
+[00:22:45] that you might have seen in information theory once again.
+[00:22:49] the difference is subtle. The difference is between something that only contains one element and
+[00:22:56] something that contains multiple elements but all the other elements but one hat
+[00:23:02] Robbie is zero.
+[00:23:04] And these can be avoided by speaking of the support of a mutual strategy.
+[00:23:08] So the support of a mutual strategy only ignores the
+[00:23:12] You know.
+[00:23:12] all the pure strategies that are never played, that are played with probability zero, and the support only contains the probit day
+[00:23:20] pure strategies that are actually played.
+[00:23:23] Well, now we have a problem in that the previous definitions we gave
+[00:23:28] a
+[00:23:28] about dominance or Nash equilibrium,
+[00:23:30] we gave them for the peer strategy case.
+[00:23:33] But I was lying, I was cheating.
+[00:23:36] you because when I said, well, a strategy can be a strict dominant.
+[00:23:44] I didn't say it was a pure strategy.
+[00:23:47] I just said a strategy.
+[00:23:49] And now we are playing words by saying,
+[00:23:51] well, strategies can
+[00:23:52] be both pure and mixed.
+[00:23:54] Actually, when we think of a strategy,
+[00:23:56] we think of a mixed strategy,
+[00:23:58] because pure strategies are just a special case.
+[00:24:00] So the question is, can our definition still be valid if we replace the idea of
+[00:24:08] of strategies.
+[00:24:09] And when we mentioned that for the first time,
+[00:24:12] it looked like we meant a few strategies,
+[00:24:15] but actually,
+[00:24:16] we meant mix structure. Can this still be true? Let's see. The definition of strict and
+[00:24:24] week.
+[00:24:24] actually holds fairly well. We can define a game and we say that a mixed strategy,
+[00:24:31] MI prime,
+[00:24:32] strictly dominates MI if this condition holds true for every M minus I.
+[00:24:38] The same definition, I mean, there's nothing...
+[00:24:40] to be changed. It's just now the elements do not belong to us but to Delta S. And we can
+[00:24:48] dominance in the same way. So nothing wrong here. If you just take the previous definitions and well now you know
+[00:24:56] that my idea had in mind when I mentioned subdominance or weak dominance was not that of a
+[00:25:04] strategy but mixed strategy why not well there is a problem still when I say you
+[00:25:10] need to make this comparison for a
+[00:25:12] m minus i, well m minus i is a very big sec. So already in a finite game
+[00:25:20] with finitely many strategies for all the players.
+[00:25:23] But this, the set of the strategy,
+[00:25:27] joint.
+[00:25:28] strategy of all the opponents, might belong to a fairly big set because I should consider
+[00:25:34] all the combinations of strategy
+[00:25:36] chosen by my opponents, which might be many.
+[00:25:41] Well, in the case of mixed strategies,
+[00:25:43] they...
+[00:25:44] element m minus i belongs to an infinitely big set, because there are infinitely many m minus i's.
+[00:25:52] because the elements of set delta is one times delta is n.
+[00:25:56] So how can I be sure?
+[00:25:58] How can I verify this condition?
+[00:26:00] It's a bit tricky to verify.
+[00:26:03] It's not actually not very impractical.
+[00:26:06] So we cannot use the.
+[00:26:08] definition as is. I mean the definition formally is correct but is impractical. Well luckily
+[00:26:16] we can prove something better.
+[00:26:18] We can say that MI prime
+[00:26:22] straightly dominates MI and
+[00:26:24] These are mixed strategies.
+[00:26:26] If this holds true for every S minus I that belongs to S,
+[00:26:30] so no delta, these are two strategies.
+[00:26:32] So we can limit our search to verify if two subjects, I mean amount to such is one domain is the others
+[00:26:39] well
+[00:26:40] just looking at the pure strategies of the opponents. These are very nice results and even though it seems
+[00:26:47] hard to prove.
+[00:26:48] It's very intuitive and I don't prove it formally but just give you the intuition why this holds true.
+[00:26:54] Well, remember this...
+[00:26:56] This must be true for every possible choice of M-I.
+[00:27:00] But the utility I applied to a mixed strategy M-I.
+[00:27:04] this MIM minus i is a joint mix of certainty.
+[00:27:08] This is a linear combination of all the choices
+[00:27:11] based on the
+[00:27:12] probabilities. And once again I have a combination must be true for every
+[00:27:19] are short. Let's see.
+[00:27:20] I keep MI prime and MI, the orange and blue one fixed.
+[00:27:25] And I only want to see this must be.
+[00:27:28] through for every choice of the black part.
+[00:27:31] Well, what does the choice of the black part imply?
+[00:27:35] It implies a given
+[00:27:36] probability that the other players play something. So I'm saying that this must be true for every possible
+[00:27:44] linear combination of what happens when the other players are playing the pure
+[00:27:51] strategies.
+[00:27:52] So of course if I'm saying that well
+[00:27:56] to
+[00:27:58] two numbers, I mean
+[00:28:00] the left-hand number is always bigger than the right-hand number.
+[00:28:04] And by always, I mean that the left-hand number is a
+[00:28:07] Come be
+[00:28:08] a linear combination of certain values.
+[00:28:13] And the right hand number is a linear combination
+[00:28:15] of other values.
+[00:28:16] And this must be true for every linear combination.
+[00:28:22] Every...
+[00:28:24] possible choice of probabilities.
+[00:28:27] Well, therefore, it must be that the individual elements
+[00:28:32] that
+[00:28:32] but make up the linear combination
+[00:28:34] must satisfy the same inequality.
+[00:28:36] So it's easy to prove, either way,
+[00:28:38] that this implies
+[00:28:40] a
+[00:28:43] s
+[00:28:46] s
+[00:28:51] s
+[00:28:56] s
+[00:28:40] that the strict strategy, the push strategies are also implied. It's easy because I can choose among the possible
+[00:28:48] m minus i, I can choose the pure strategies. These are degenerate mixed strategies. On the
+[00:28:54] hand if this holds true for
+[00:28:56] the pure strategy it holds true for any linear combination of them and the linear combination of
+[00:29:01] them are nothing but the mixed strategies.
+[00:29:04] So this gives me a practical criterion.
+[00:29:07] If you want to see if two major strategies are such that one dominates the other,
+[00:29:12] you see...
+[00:29:12] simply have to check the definition against pure studies of the opponent. So keep this in mind.
+[00:29:18] Okay, now let's see what happens for an
+[00:29:20] We can say that a game has a joint mixed strategy that is an element of the
+[00:29:28] the Cartesian product of all delta Si,
+[00:29:31] this is a Nash equilibrium if all the eyes,
+[00:29:36] all the...
+[00:29:36] players, the utility i of m is greater than or equal to,
+[00:29:41] this remember, this inequality streak is not
+[00:29:43] Street in the night.
+[00:29:44] automatically, even in me, it can also be weak.
+[00:29:47] This must be greater than or equal to Ui of n i prime n
+[00:29:52] minus.
+[00:29:52] I'm sorry for every M-I prime.
+[00:29:56] So also including M-I itself.
+[00:29:59] But of course, the idea is that
+[00:30:00] if you get a unilateral deviation for play I, you don't get any better. At least you stay equal.
+[00:30:08] to stay. So this is an extension of the basic concept. So when you
+[00:30:16] ask players if they don't have regrets or if they don't want to change their move.
+[00:30:23] You apply this...
+[00:30:24] same thing with the only difference that the choice of a player. So you ask, well, do you regret what?
+[00:30:32] you chose or do you want to change your choice? Well, this is still true. It's still the case. So,
+[00:30:39] the concept behind the
+[00:30:40] Nashikle even is still the same, it's just that you now are cheating and changing the meaning of choice.
+[00:30:47] What is the
+[00:30:48] choice of a player, a player can choose a mix of strategy now.
+[00:30:53] And therefore, when we say the player that
+[00:30:56] does not want to change his or her choice, which says he does not want to choose another
+[00:31:02] and then mix this up.
+[00:31:05] And so if you're back to the example of us in events,
+[00:31:09] we say we proved that the payoff is
+[00:31:12] always this and the opposite for even in this term.
+[00:31:17] And we prove that.
+[00:31:20] So you can see that if Q is one half and R is equal to one half.
+[00:31:25] So if I said of them is one half.
+[00:31:28] both plays happy of the era because you know this product, right? So it's enough that only one of them plays one half.
+[00:31:36] And if they both play one half, well,
+[00:31:39] no player has an incentive to change.
+[00:31:41] So for example, if I say, well, play a.
+[00:31:44] is playing one half. But play even is not playing one half. Play even is playing one.
+[00:31:49] Then play all that has an incentive.
+[00:31:52] to not play 1-half but to play zero because that would be the winning the best response
+[00:32:00] players play one half, we see they are playing a best response to each other simply because
+[00:32:05] all the most are identical.
+[00:32:07] So not play...
+[00:32:08] a thousand incentive to change and this confirms the intuition that one half one half was the
+[00:32:14] Nash equilibrium in our game.
+[00:32:16] So this is our true Nash
+[00:32:24] but maybe you need to readjust the thing because the concept is a bit tricky.
+[00:32:31] Also we
+[00:32:32] can prove, I mean, this is, I said the Nash equilibrium, but actually that's not
+[00:32:38] correct because...
+[00:32:40] who said there is only one Nash equivalent? Well, luckily in this specific game, you can prove that.
+[00:32:46] So an exercise to...
+[00:32:48] understand that to verify that you understood the things correctly is well
+[00:32:53] you can prove that one half one half is
+[00:32:56] the only Nash equilibrium. And to show that you can consider three cases as applied here.
+[00:33:04] So this can be a simple exercise.
+[00:33:06] You can make us homework.
+[00:33:08] I mean, in your free time, you can check that example.
+[00:33:12] Example 3 is also an even scheme, is a situation where you only have one Nash equilibrium, which
+[00:33:18] is one half one half.
+[00:33:21] Okay, now this seems to be a good point where to stop and take a break
