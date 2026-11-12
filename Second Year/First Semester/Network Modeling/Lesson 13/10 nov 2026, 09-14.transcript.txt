@@ -1,0 +1,525 @@
+[00:00:01] And of course, this right-hand side function
+[00:00:04] will change with theta.
+[00:00:06] In particular, if we have this moment-generating function
+[00:00:10] that depends on theta.
+[00:00:12] And of course, the way in which the bound changes to theta
+[00:00:14] depends on the random variables xi that we consider.
+[00:00:20] Because depending on xi, we have
+[00:00:22] a different moment-generating function
+[00:00:25] that changes in a different way with theta.
+[00:00:29] So depending on the random value that we have, that we are considering, that we are computing the mean of,
+[00:00:36] right here again, this term on the right hand side might become larger or smaller as you increase tilde from 0 to infinity.
+[00:00:44] And of course, since you are interested on the strictest possible bound,
+[00:00:51] then what you consider is the
+[00:00:54] maximum value of the t-value that maximizes the right-hand side
+[00:01:00] of this expression, right?
+[00:01:03] So that's the exponential is the meaning.
+[00:01:05] Which means that this thing here, you always
+[00:01:08] I'm sorry, the strictness of the right-hand term here
+[00:01:14] is obtained when you consider
+[00:01:37] theta star such that for the theta star that is the argument that maximizes this term.
+[00:02:25] If this term is maximized, then the explanation function gets the smallest possible value
+[00:02:38] and you get the strictest possible value.
+[00:02:43] Okay, so here, that's the reason why
+[00:02:48] in the Schrodinger bound, we write that the probability
+[00:02:52] is upper-bounded by e to the minus n
+[00:02:56] that multiplies the superior, or theta equal to zero
+[00:03:00] of e to the minus log theta,
+[00:03:04] the log n theta, saying that
+[00:03:08] the strictest bound that we can find
+[00:03:10] is obtained for the value of theta that
+[00:03:14] maximizes this form, right?
+[00:03:16] The superior value that this function can take
+[00:03:19] for any t-degree of theta. Is it clear?
+[00:03:28] So, this is a very powerful bound.
+[00:03:33] It makes it possible to
+[00:03:35] limit the probability that the critical mean
+[00:03:37] of a group of independent and identical distributed random variables
+[00:03:41] exceeds a certain threshold
+[00:03:43] and this bound, as you can see,
+[00:03:46] depends on the distribution
+[00:03:48] of the original random variables.
+[00:03:56] A nice example that is also
+[00:04:00] a threshold case of this bound
+[00:04:03] is a thing when the random variables are binary
+[00:04:06] which means that
+[00:04:19] they can take value zero or value one.
+[00:04:23] Notice that
+[00:04:25] I'm not saying that xi can take any value in 0, 1.
+[00:04:30] I'm saying that xi is either 0 or 1,
+[00:04:32] but it's a binary random variable.
+[00:04:36] Suppose that the probability that xi is equal to 1
+[00:04:40] is denoted by p.
+[00:04:43] Of course, the probability that it is equal to 0
+[00:04:46] is 1 minus p that we can indicate p by q just for simplicity.
+[00:04:53] then the moment-generating function of the random variable,
+[00:05:03] I leave this to you.
+[00:05:07] What's the expression of the moment-generating function
+[00:05:10] of a random variable, of a binary random variable?
+[00:05:40] Is this one half?
+[00:05:48] So it cannot be one half,
+[00:05:49] because we said that the moment-generating function
+[00:05:51] is always zero, sorry, always one
+[00:05:54] when you replace a parameter with zero.
+[00:05:57] It cannot be one half, right?
+[00:05:59] It has to be a function of theta.
+[00:06:02] Or it has to be constantly equal to 1
+[00:06:05] that they generate a constant 1 by 2.
+[00:06:11] So this is certainly performed.
+[00:06:14] You have to apply it, but thank you for applying it.
+[00:06:17] It's important, actually, guys.
+[00:06:20] So any other idea?
+[00:06:22] We need to apply it to our expectations.
+[00:06:25] The expectation of a discrete one, no matter.
+[00:06:28] This is just a function.
+[00:06:30] So we have a binary random variable, 0, 1, it can only take values 0 and 1.
+[00:06:42] And we want to compute the expectation of, first of all, the expectation of the random
+[00:06:47] variable itself is p, right?
+[00:06:56] Because it's a discrete random variable, so the expectation is the value that it
+[00:07:01] can take, 0 multiplied by the probability that xi is equal to 0 plus 1 multiplied
+[00:07:08] by the probability that xi is equal to one,
+[00:07:12] zero by anything, zero,
+[00:07:14] one by anything is anything.
+[00:07:16] And in this case, these are anything
+[00:07:17] that is the probability that xi is equal to one,
+[00:07:20] that is equal to one, okay?
+[00:07:23] The original function of a random variable,
+[00:07:28] of a binary random variable
+[00:07:30] is just the same thing,
+[00:07:32] is the function zero
+[00:07:34] multiplied by the probability of zero.
+[00:07:38] plus the function to the new one, by the probability that xi is equal to 1.
+[00:07:46] Alright, so in this case it would be f0 multiplied by 1 minus p, plus f1 multiplied by p.
+[00:07:58] This is just a function of xi, right?
+[00:08:03] It's an exponential function of xi, so we can apply that solution.
+[00:08:07] So it's the function computed in zero, multiplied by one minus p, plus the function computed in one,
+[00:08:18] multiplied by p. This is one, and this is e to the power of theta.
+[00:08:32] So the result is p e to the power of theta plus one minus p.
+[00:08:39] However, guys, if you don't remember these things, you need to go back to your books, right?
+[00:08:44] This is elementary for this course. You don't pass the course if you don't know these things, right?
+[00:08:49] It's very trivial, so go back to your books and review these concepts because they are common and so on.
+[00:09:00] I'm not saying that there are any functions that might be a little bit slightly advanced,
+[00:09:04] but these kind of things, these must be super clear to everyone.
+[00:09:11] All right, so for binary random variables,
+[00:09:17] the long-generation functions get this form, very simple,
+[00:09:22] p to the, p multiplied by e to the power of theta,
+[00:09:27] plus 1 is p.
+[00:09:29] OK?
+[00:09:30] Then, the board?
+[00:09:48] One second?
+[00:09:49] Yeah, thank you.
+[00:10:25] All right, now, if we evaluate this bound,
+[00:10:29] then if we express our turn-off value using this moment generating function we get this
+[00:11:03] equation this function it's not an equation it's just a function we need to compute the sphere
+[00:11:09] of this right hand side term we call it g of theta just for simplicity right it's a
+[00:11:19] function of theta, then we need to find the maximum value of this function.
+[00:11:27] So if we analyze this function, we see that when theta is equal to zero, this term becomes
+[00:11:35] zero, here we have p plus one minus p, so one, and the logarithm of one is zero.
+[00:11:41] So it starts from zero, then you have a term, but there was linearity with theta,
+[00:11:47] So it looks like this, theta, A, or depending on what is A.
+[00:11:56] You have a term that is the logarithm here,
+[00:11:59] that when theta becomes larger and larger,
+[00:12:02] you have these exponential terms to dominate the others.
+[00:12:06] So the logarithm function is initially a logarithm.
+[00:12:12] and pay attention that it's
+[00:12:15] the beginning is zero
+[00:12:18] and then when T dot grows
+[00:12:22] since the argument becomes
+[00:12:24] larger than one
+[00:12:26] so the logarithm is positive
+[00:12:28] but we have a minus sign
+[00:12:30] and therefore it becomes progressively
+[00:12:32] smoother
+[00:12:34] and when T dot is very large
+[00:12:37] T dot is very large
+[00:12:45] then you have that log, which becomes almost equal to log of p to theta,
+[00:13:02] because this terms became negligible, right?
+[00:13:07] Because this one will dominate.
+[00:13:09] And then you have log of p plus log of theta,
+[00:13:21] which is almost equal to theta, right?
+[00:13:25] like this one can be taken from the logarithm.
+[00:13:30] And since the log of theta not applied by, by one.
+[00:13:36] So this one becomes theta
+[00:13:38] because it's log of e to the power of theta,
+[00:13:41] so it is theta.
+[00:13:43] And since theta is very large,
+[00:13:45] it will dominate over the log of p.
+[00:13:47] So after a while,
+[00:13:49] initially it is logarithmic,
+[00:13:51] and after a while it goes down linearly.
+[00:13:55] like this, the function of this theta is just the sum of the two, so it might be something
+[00:14:04] like this.
+[00:14:06] Right?
+[00:14:07] So it has to admit a, or we can call this constant of a certain point, it admits a
+[00:14:14] maximum somewhere, and to find the maximum we can just compute the derivatives of g
+[00:14:38] theta and set it to zero.
+[00:14:39] We solve this equation to find the maximum, right?
+[00:14:55] This is theta star, where will be the maximum value of g theta.
+[00:15:10] By computing the derivatives, we get a minus the derivative of the algorithm
+[00:15:18] is 1 over the error length divided by the derivative of the algorithm itself.
+[00:15:27] in the case of this term with respect to theta, this is a constant, so it is zero, and then you have t, and this I get money, right?
+[00:15:42] Remember that when I put the passing mark, the passing mark on top of a certain symbol, I mean that I'm imposing this condition,
+[00:15:53] So I'm finding the value of theta from which this condition holds.
+[00:15:59] Right.
+[00:15:59] This is simple to be solved.
+[00:16:01] So we can write a b b theta plus a 1 minus b plus 0.
+[00:16:18] And then we get b b theta is equal to that is about c.
+[00:16:37] If we collect the term p, we have the right hand side of the equation, we get the result.
+[00:16:47] And from this we can find the optimum value of p.
+[00:16:52] And find that p star is equal to the log of a 1 minus p divided by p 1 minus 2.
+[00:17:26] Rightfully.
+[00:17:26] Then we can compute G of theta star. It is the maximum value taken by this function.
+[00:17:43] We know that G is taken in response to theta star.
+[00:17:47] Then we replace theta star in the function g theta.
+[00:17:51] And to develop the expression, we obtain theta star multiplied by A minus the log of theta star
+[00:18:05] plus one minus two by eta star as that expression, so it's A times the log of A one minus B
+[00:18:18] divided by B one minus A minus here I can replace directly P eta star with this expression
+[00:18:32] I just skip one step with that
+[00:18:38] So we know that p e theta star has that value,
+[00:18:44] so it's a one minus p divided by one minus a
+[00:18:47] plus one minus p, okay?
+[00:18:58] And then it's just a matter of making some simple math.
+[00:19:02] So this one, you take the minimum from, anyway,
+[00:19:16] you multiply one minus p by one minus a,
+[00:19:18] you have the same denominator,
+[00:19:20] and you will see that this term simplifies to this one,
+[00:19:24] And what you get at the end is a, 1 minus b, 1 minus b,
+[00:19:34] minus 1 minus a, divided by 1 minus a.
+[00:19:43] This simplifies out to this.
+[00:19:47] And so here you get just 1 minus b divided by 1 minus a.
+[00:19:53] Here again, a log of a, 1 minus b divided by b,
+[00:20:29] Alright, and now here we can write this logarithm
+[00:20:39] that is the product of two fractions.
+[00:20:42] This fraction can be written as a over p
+[00:20:47] multiplied by one minus b
+[00:20:49] multiplied by one minus a.
+[00:20:52] The log of the product is the sum of the logs.
+[00:20:54] So we can write it as a log of a over p
+[00:20:59] plus a log of 1 minus b divided by 1 minus a times log of 1
+[00:21:12] minus b divided by 1 minus a.
+[00:21:14] And then we are almost done with just at least one step.
+[00:21:18] And here we recognize that these two terms are the same.
+[00:21:24] So we can write this in quality, h over t, sorry, plus a minus 1 dot of 1 minus a divided by 1 minus b is a minus, I'm sorry, this is a plus.
+[00:22:14] And then, the very last step, we switch the sign of this one,
+[00:22:26] and we swap the fraction within the logarithm.
+[00:22:32] So we multiply by minus 1 this term and this term,
+[00:22:35] so that the cell doesn't change.
+[00:22:37] But this allows me to write this equation in this form.
+[00:22:46] So I guess it goes and sneaks in the final expression
+[00:22:50] with the intermediate one.
+[00:22:55] Here we have, according to that one, 1-p divided by 1-a, when we multiply by minus 1, the logarithm,
+[00:23:04] is asked to raise the argument to the minus 1, which means to flip the fraction, so we get 1-p divided by 1-p.
+[00:23:15] Why do I do that? Because I write to a very symmetric and elegant expression,
+[00:23:21] A that multiplies a lot of A divided by P, plus 1 and C that multiplies a lot of 1 and C divided by 1 and C.
+[00:23:30] Right? This is the symmetry.
+[00:23:32] And this expression should somehow remind you, but this is, I admit this is unlikely,
+[00:23:45] but this is the expression of the pullback laborer, K-L divergence.
+[00:24:01] Have you ever heard about the KL divergence? Yes or no? No. The KL divergence is just a measure of how much two distributions differ one another.
+[00:24:18] In this case, this is the Courbat labor-labellar distance convergence of two binary distributions
+[00:24:30] with probabilities Ps and As.
+[00:24:35] And tells you how much A differs from B, from a binary distribution with parameter.
+[00:24:43] You can see that if A is equal to P,
+[00:24:54] then the pullback later convergence is 0.
+[00:25:02] Whereas if A deviates from P, then the pullback later
+[00:25:05] divergence becomes larger.
+[00:25:08] So we have that very specific case of the Chernoff button
+[00:25:14] when the Xi are binary, and the A value 1
+[00:25:21] with probability P, then the probability
+[00:25:27] You can see that the sum, the beginning of the random variable is larger than a is less than n times this Courbat labeler.
+[00:25:48] Actually, typically the Courbat labeler divergence is written with the symbol capital D.
+[00:25:56] It's the capital D of b given, or a given b.
+[00:26:07] Let me check the notation here.
+[00:27:03] Ok, so it was a bit embossed, I admit it, but you are right to this very nice expression
+[00:27:09] where the divergence of a certain function directed to another one, the divergence of
+[00:27:32] the distribution of x in reference to f of y is by definition the interval from
+[00:28:09] This is for continuous functions.
+[00:28:12] That's the definition of the tool that later reasons between two functions.
+[00:28:16] If they are continuous, if they are discrete,
+[00:28:18] you just replace the integral with the summation over all possible values of the random variable.
+[00:28:30] So if the random variable is binary,
+[00:28:33] you only have two values and you get this expression.
+[00:28:39] And it's basically, and that's the, I mean,
+[00:28:42] it's a measure of the difference of this distribution with respect to this one.
+[00:29:00] All the inequalities that we need for this course,
+[00:29:04] there are many more inequalities in the literature,
+[00:29:07] and they are all very interesting.
+[00:29:09] In fact, we can spend all our course about
+[00:29:12] deriving these statistical bounds.
+[00:29:15] We just derived those that might be useful for our course.
+[00:29:18] Can I move on? Do you have any questions before we move on?
+[00:29:23] Yeah, we'll take a break.
+[00:29:25] Actually we can now because we started 15 minutes later than you go.
+[00:29:29] I don't know, is there a lecture after hours on Tuesday, right? There's people waiting outside.
+[00:29:35] All right, let's do that. Let's have five minutes break and today we will have a short lecture.
+[00:29:40] All right.
+[00:29:56] Is the house open?
+[00:29:59] Yes, it's open.
+[00:30:01] It's open, but it's been a few minutes.
+[00:30:05] Okay.
+[00:30:06] Oh, it's open.
+[00:30:09] I have a job, I don't want to take it.
+[00:30:12] Okay.
+[00:30:13] Okay.
+[00:30:14] Okay.
+[00:30:19] Okay.
+[00:30:20] Okay.
+[00:30:20] I'm working on this project from India,
+[00:30:23] and we're going to have a session with you.
+[00:30:28] I'm going to talk to the rest of you,
+[00:30:31] if you want to share with me.
+[00:30:32] Oh, my God.
+[00:30:46] No way.
+[00:30:48] Really?
+[00:35:32] Thank you.
+[00:36:05] OK, let's see if we can do that.
+[00:36:07] going to be the new lock.
+[00:36:13] And nobody will be faster.
+[00:36:15] Now that we have bought our commission, our hands,
+[00:36:19] we can consider, again, our whole niche model program.
+[00:36:24] Let me consider a few types, a few vector stats.
+[00:36:27] When you have multiple sources,
+[00:36:33] they try to access certain systems.
+[00:36:37] We are interested in managing the congestion across a niche.
+[00:36:44] The link has a capacity to see.
+[00:36:46] We have a certain buffer, B, that
+[00:36:48] can be used to actually link the ancestral traffic
+[00:36:53] whenever it happens.
+[00:36:54] And we have a number of sources here.
+[00:36:56] S1, S2, S3, that wants to use the same link
+[00:37:01] and translate it here, the problem, right?
+[00:37:13] So in the book chapter that I uploaded in the Moodle,
+[00:37:32] you find the analysis of the case where the sources are on-off, right, well it's
+[00:37:39] also pretty simple. If all sources are on-off, and for example we assume that the
+[00:37:52] traffic in the on-phase is constant and equal to a certain value lambda, and the off-phase is zero, and that the duration of the on-phase on average is a certain, let me
+[00:38:08] T on and the average relation of T off is T off. Then you know that the average traffic generated by N sources, so the average traffic generated by E source, and the average traffic generated by one such source is G on,
+[00:39:12] So the traffic generated in the on phase multiplied by the fraction of time the source remains in the on phase.
+[00:39:21] That can be computed as the ratio between the on phase and the sum of the on and off phase, right?
+[00:39:28] This is the on.
+[00:39:29] The fraction of time the source is in the on phase.
+[00:39:35] We have seen these things multiple times previously.
+[00:39:39] So if all sources are statistically identical,
+[00:39:45] we have that they offer the traffic,
+[00:39:47] let's see, just n times is i,
+[00:39:53] that is n times lambda,
+[00:39:55] multiplied by p-thong,
+[00:39:58] divided by p-thong.
+[00:40:04] And, of course, this traffic is sustainable
+[00:40:08] if it is strictly less than the capacity of my data.
+[00:40:14] Otherwise we are offering more traffic than the link can, on average, than the link can sustain
+[00:40:19] and for sure some traffic will be lost, right?
+[00:40:23] So, traffic is sustainable versus it is a necessary condition and sources to be admitted.
+[00:40:52] It would be admissible, right?
+[00:40:59] In other words, if this condition is not met, then there is no way we can admit any sources
+[00:41:05] a body congestion, we will certainly have a congestion.
+[00:41:09] If this condition is met, we still might have congestion, right?
+[00:41:14] So this is a necessary condition, it's not sufficient.
+[00:41:17] It depends on the characteristics of the sources.
+[00:41:22] And the amount of sources that we get means
+[00:41:25] a body congestion depends, as I said, by characteristics of the sources
+[00:41:30] but also by the buffer.
+[00:41:32] In particular, if we have no buffer, this is an extreme condition, like we don't have any buffer.
+[00:41:49] So in this case, the maximum number of sources we can have made.
+[00:42:08] We can have made Y guarantee a consistent probability less than a certain threshold.
+[00:42:38] And it can be easily computed because as follows.
+[00:42:59] If we have no buffer, we will have consistent whenever the aggregate generated by the active sources exists the link capacity.
+[00:44:06] So we can define as g of t as the sum of g on
+[00:44:19] by the probability, I mean, sorry, the indicator function
+[00:44:24] of the fact that source i is on, g on is lambda.
+[00:44:46] So the traffic that is offered to the system
+[00:44:48] at a certain time t is just given by the sum
+[00:44:50] of the rates of these sources that are active at time t.
+[00:44:55] If we look at the running time t,
+[00:45:06] the probability that the source is active
+[00:45:19] is just the on probability, right,
+[00:45:22] that we computed as the average time in on
+[00:45:27] divided by the average period on off period.
+[00:45:36] And if the sources are independent,
+[00:45:39] and one another, and maybe with identical parameters,
+[00:45:44] then the number of sources that are active at time t
+[00:45:49] can define a t, the number of active sources
+[00:46:02] by t, that is nothing else than the sum
+[00:46:11] of the indicator functions that we
+[00:46:14] had in the bigger equations.
+[00:46:31] Well, this is the sum of indicator functions.
+[00:46:37] Indicator functions can take value 0 or 1.
+[00:46:45] So they are binary random variables.
+[00:46:49] If the sources are independent, these are independent binary random variables,
+[00:46:53] so we can call them xi.
+[00:47:00] This is an x, this is a t, right?
+[00:47:02] Two different symbols, right?
+[00:47:04] Minus, right?
+[00:47:06] And so a t is the sum of m independent identically distributed binary random variables.
+[00:47:14] Which means that a of b is a Bernoulli running variable
+[00:47:21] if for instance m ends b points.
+[00:47:35] When we sum together independent identically distributed binary random variables
+[00:47:40] we get as a newly random variable.
+[00:47:45] The newly random variable is just a model that tells you how many
+[00:47:49] of the original random variables are 1
+[00:47:52] over the total number of random variables that we have.
+[00:47:58] And then, that condition,
+[00:48:00] the congestion is when the
+[00:48:04] upper traffic at a certain time P
+[00:48:06] exceeds the mean capacity,
+[00:48:08] which can be written as the
+[00:48:10] probability that lambda multiplied by
+[00:48:13] a t is larger than c, right?
+[00:48:17] So this is the congestion condition.
+[00:48:20] The instantaneous traffic at a certain time
+[00:48:22] exceeds the mean capacity.
+[00:48:24] We don't have buffer.
+[00:48:26] So in these conditions, some traffic will be lost,
+[00:48:28] and then we are in a congested situation.
+[00:48:32] g of t, as been expressed in this way,
+[00:48:34] is lambda, that is a constant,
+[00:48:38] is the sum of lambda times c.
+[00:48:40] Lambda can be taken out of this summation.
+[00:48:43] And then we have lambda that multiplies
+[00:48:45] the sum of the key that is just a t, as defined before.
+[00:48:50] This lambda by the number of sources that are active
+[00:48:53] at a certain time t.
+[00:48:55] But now we know the distribution of a t.
+[00:48:58] We know that it is not binomial.
+[00:49:00] So what we need to compute is the tail of this binomial.
+[00:49:04] So the probability that a certain binomial, a number,
+[00:49:07] is larger than a certain threshold.
+[00:49:11] And this can be expressed quite easily as the sum goes from the setting of 0 to lambda
+[00:49:23] up to n of the binomial of n over k, b on the power of k, lambda and b on.
+[00:49:41] Alright, so I know that the original distribution function of At is binomial,
+[00:49:47] so it takes this form.
+[00:49:50] And we need to compute the probability
+[00:49:51] that this random variable is bigger than C over lambda.
+[00:49:55] A.T. is a discrete random variable,
+[00:49:57] so I can start from the integral number
+[00:50:01] that is the closest to C over lambda
+[00:50:04] being not smaller than C over lambda.
+[00:50:08] So it's the ceiling of this ratio, right?
+[00:50:11] These are not square brackets.
+[00:50:13] We don't have the hyphen on the bottom.
+[00:50:18] It's just a sort of half square bracket
+[00:50:23] with only the upper part here, which means saving time.
+[00:50:27] So I'm taking the integral that
+[00:50:29] is the closest to c over lambda
+[00:50:31] without exceeding c over lambda.
+[00:50:34] Oh, sorry.
+[00:50:35] Without being smaller than c over lambda.
+[00:50:37] So I take the integral that is the closest to c over lambda
+[00:50:41] without being smaller.
+[00:50:42] ends, I consider this value up to n, the total number of
+[00:50:46] sources that I can tell, and this is the probability of having k-th active sources out of n, right?
+[00:50:53] Of course, this makes sense if c over lambda is less than n.
+[00:51:11] If c over lambda is larger than n, it means that even if all sources are active,
+[00:51:19] we don't separate the channel, and therefore we don't have congestion.
+[00:51:25] This expression, of course, holds only if C or lambda is less than n.
+[00:51:30] If it is larger than n, here we have zero.
+[00:51:33] For real, the context is zero.
+[00:51:35] Okay?
+[00:51:39] That was the easy part.
+[00:51:41] Now we need to add the buffer.
+[00:51:48] So, of course, this is a little bit bothersome to be computed
+[00:51:50] because it involves some of binomials.
+[00:51:53] We can also use one of our bounds if you like
+[00:52:01] Because 80 is the sum of random variables
+[00:52:06] that are independent and limited between 0 and 1.
+[00:52:09] We can use, for example, the Chebyshev bound,
+[00:52:11] we can use the Chernoff bound, we can use the Eulerian bounds.
+[00:52:16] Of course, in this case, we don't really need to use bounds
+[00:52:19] because we have the exact probability so we can use it.
+[00:52:22] But for some reason, if this probability is not easy to be computed,
+[00:52:26] maybe n is very large and we are not able to compute the binomial here,
+[00:52:29] by not here, we can use one of these bounds.
+[00:52:32] And my invitation for you guys is to compare
+[00:52:36] the exact probability against the different bounds
+[00:52:39] by changing the parameters, and see, you know,
+[00:52:42] how the bounds are close to the actual probability
+[00:52:46] in the different conditions and different cases, okay?
+[00:52:50] But in this specific case, the bounds are not strictly needed
+[00:52:53] because we can compute the exact probability
+[00:52:56] in close form.
+[00:53:00] Is it clear?
+[00:53:02] Now, when we add the buffer, things become a little bit more complicated, and there we need to use the balance.
+[00:53:09] In particular, because we can extend the analysis to a general case.
+[00:53:24] I will just show you the case where we have a buffer, a certain capacity B, that can buffer some traffic, even if the instantaneous traffic exceeds C.
+[00:53:57] So with B, we can also, when I say congesting here in this setting, I mean packet dropping
+[00:54:06] because there are no enough resources to hold the queue or the traffic generated by
+[00:54:15] the sources.
+[00:54:16] That's congesting.
+[00:54:17] So if you don't have buffer, the congestion is absurd anytime that instantaneous traffic
+[00:54:23] generated by the sources exceeds the capacity.
+[00:54:26] If you have buffer, that condition is not longer sufficient
+[00:54:28] because the excess traffic can be cured for some time.
+[00:54:33] Of course, if the source keeps transmitting at a higher rate,
+[00:54:37] then see that the queue becomes full and you start losing hours.
+[00:54:41] So in this case, the congestion condition is not longer this one, but it works.
+[00:54:55] How do we define congestion in this case?
+[00:54:57] When do we have congestion in that case?
+[00:55:07] when the traffic is exceeded the bandwidth of it?
+[00:55:13] So this is the condition that you were mentioning, right?
+[00:55:16] Practical instantaneous traffic exceeds the bandwidth.
+[00:55:18] This is necessary but not sufficient
+[00:55:22] because if, let me show you,
+[00:55:25] suppose that you are in a condition like this,
+[00:55:27] this is time,
+[00:55:30] this is instantaneous traffic,
+[00:55:32] and C is here, right?
+[00:55:34] This is the average rate of the output data.
+[00:55:37] So without buffer, if the source traffic is like this,
+[00:55:45] here and here you have congestion without buffer.
+[00:55:48] But with a buffer, if this traffic is less than b,
+[00:55:55] then it can be buffered, and without dropping any bytes.
+[00:55:59] So we don't really have congestion in this case.
+[00:56:01] You will have congestion if the input traffic exits
+[00:56:08] for a sufficiently long time to fill the buffer.
+[00:56:14] Once the buffer is full, then you don't have any more space
+[00:56:18] to pass the excess traffic, and some traffic will depart.
+[00:56:22] Does that clear?
+[00:56:24] So this condition holds only when you don't have buffer.
+[00:56:28] It becomes a necessary condition when you do have buffer,
+[00:56:32] but it's not under sufficient.
+[00:56:35] So what's the condition for congestion in this case?
+[00:56:38] that the buffer is full, but it's not, and we are
+[00:56:49] on a passive, so the probability that
+[00:56:53] Q of t is equal to b
+[00:56:57] and that
+[00:56:59] Q of t, alright, this makes sense.
+[00:57:05] However, before you write this
+[00:57:08] you can write it, but
+[00:57:10] it is a little bit simpler to analyze
+[00:57:14] this condition when we consider as the
+[00:57:18] congestion condition, the fact that QT is larger than a certain B, let me call it B tilde.
+[00:57:27] So we can set a sort of threshold here, B tilde, that is maybe slightly before the actual capacity of my link.
+[00:57:38] And whenever we exceed B tilde, we can assume we are in a congestion situation.
+[00:57:43] Why? Just because, in this way, you get rid of one of the terms.
+[00:57:47] So it's just a way to simplify the analysis, right?
+[00:57:51] Also because this condition,
+[00:57:55] basically saying, well, the buffer is full,
+[00:57:58] and you are pumping more.
+[00:58:00] So we can set the threshold at the end of the buffer
+[00:58:02] and say, and pretending we have still buffer here,
+[00:58:06] but we know that the packets that would be buffered
+[00:58:09] are actually dropped.
+[00:58:10] it's just a simple trick to get rid of one
+[00:58:15] term in this probability function.
+[00:58:18] So whenever you have a link and a buffer
+[00:58:24] also because consider this pattern
+[00:58:27] the purpose of this analysis typically is to determine the amount of
+[00:58:31] buffer that you want to provide to your system to limit the congestion probability
+[00:58:35] below a certain threshold. So you need something that is
+[00:58:39] as a function of b.
+[00:58:41] And you might say, well,
+[00:58:44] my condition now to avoid congestion
+[00:58:46] is that
+[00:58:47] the q over a certain
+[00:58:50] time interval becomes
+[00:59:00] larger than my threshold,
+[00:59:02] b, only
+[00:59:05] in
+[00:59:07] no more than
+[00:59:08] epsilon percent
+[00:59:14] with a probability that doesn't exceed
+[00:59:17] epsilon. So this bounds
+[00:59:19] the congestion probability to epsilon.
+[00:59:21] Okay, do you agree with this?
+[00:59:24] Cool.
+[00:59:25] Then we stop here, because it's going to be a little bit longer and boring.
+[00:59:32] So it's not boring, but it's a bit long, so I prefer to stop here today and maybe
+[00:59:38] complete this part alongside it with some code.
