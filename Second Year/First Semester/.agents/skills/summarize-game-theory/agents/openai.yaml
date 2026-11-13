@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Theory Study Notes"
+  short_description: "Clear lesson notes for a written open-book exam"
+  default_prompt: "Use $summarize-game-theory to summarize this Game Theory lesson folder into concise English notes with beginner explanations, worked examples, cropped figures, and a printable exam reference."
