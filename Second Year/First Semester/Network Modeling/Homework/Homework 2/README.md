@@ -20,21 +20,55 @@ empirical batch-renewal Zoom video model. The original Homework 1 files are unch
 
 ## Environment and commands
 
-Python 3.10 or newer; no compilation needed for either application. Install
-dependencies with `python -m pip install -r requirements.txt`. NumPy is required
-by the source; SciPy and Matplotlib support the experiments. PDF compilation
-requires `pdflatex` (TeX Live with standard packages).
+The applications run on Windows, macOS and Linux with Python 3.10 or newer,
+including `pip` and the `venv` module. Neither Python application needs compilation.
+NumPy supports the source; SciPy and Matplotlib support the experiments.
 
-Run these commands **from this directory**. The interpreter used here was
-`/home/alessandrovulcu/.conda/envs/sklearn-env/bin/python`; substitute it for
-`python` if needed on this machine.
+Copy or extract the complete homework directory, including `data/` and `analysis/`,
+to any location. Open a terminal **in the directory containing this README,
+`source.py`, `shaper.py` and `requirements.txt`**. The included CSVs are sufficient
+to run the experiments; a separate Homework 1 installation is not required.
+
+Create and activate a virtual environment using the instructions for your system.
+
+On **macOS or Linux**, using Bash or Zsh:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+On **Windows**, open **Command Prompt (`cmd.exe`)**:
+
+```bat
+py -3 -m venv .venv
+.venv\Scripts\activate.bat
+set "MPLCONFIGDIR=%TEMP%\tokenbucket-matplotlib"
+```
+
+If the Windows Python launcher `py` is unavailable, use `python` instead of
+`py -3`, provided it starts Python 3.10 or newer. The cache setting above makes
+Matplotlib use the Windows temporary directory. On Linux, install your
+distribution's Python `venv` package if the module is not included.
+
+After activation, use `python` for the remaining commands on every platform:
+
+```text
+python --version
+python -m pip install -r requirements.txt
+```
+
+Rebuilding the PDF additionally requires a LaTeX installation with `pdflatex`
+available on `PATH`, English Babel support, Times fonts, and the standard packages
+used in `report-vulcu.tex`, including `amsmath`, `graphicx`, `booktabs`, `geometry`
+and `enumitem`. Check availability with `pdflatex --version`. LaTeX is only needed
+for the report build step; the source, shaper, tests and experiments use Python.
 
 Generate the submitted input and process it with the selected shaper:
 
-```bash
+```text
 python source.py --duration 1800 --seed 3026 --output Input_Traffic_Trace.txt
-python shaper.py --input Input_Traffic_Trace.txt --output Output_Traffic_Trace.txt \
-  --rho 180000 --b 4096 --bi 16384 --mu 220000 --bo 4096
+python shaper.py --input Input_Traffic_Trace.txt --output Output_Traffic_Trace.txt --rho 180000 --b 4096 --bi 16384 --mu 220000 --bo 4096
 ```
 
 All five shaper parameters are configurable through the flags above. Rates are
@@ -44,7 +78,7 @@ also supports `--help`. For a different training file, use `source.py --training
 
 Reproduce the full search, submission traces, statistics, figures and report:
 
-```bash
+```text
 python -m unittest -v test_shaper.py
 python experiments.py
 python build_report.py --source report-vulcu.tex
