@@ -1,0 +1,256 @@
+[00:00:00] Welcome to this third and last part
+[00:00:03] of this Gain Theory lecture
+[00:00:06] and the lecture of Leonardo Badia.
+[00:00:09] In this last part, we discuss a side topic.
+[00:00:13] That is the computational complexity
+[00:00:15] of finding the Nash equilibrium
+[00:00:16] because recall that we had a result
+[00:00:20] that is the theorem of Nash
+[00:00:23] that says that the Nash equilibrium must exist.
+[00:00:26] But this is just an existence theorem.
+[00:00:28] it does not tell how hard this is to find.
+[00:00:32] So we wonder is this computationally easy or hard?
+[00:00:37] Well, the thing is we would love to know
+[00:00:39] because we regard Nash equilibria
+[00:00:43] as the logical natural evolution of the system.
+[00:00:47] So there are some results for certain specific games.
+[00:00:51] We saw potential games and we claim
+[00:00:54] that fictitious play converges to the Nash equilibrium.
+[00:00:57] And so in that specific case,
+[00:00:58] finding a Nash equilibrium is easy.
+[00:01:01] As soon as we can prove that this is a potential game,
+[00:01:05] we just set fictitious play in motion
+[00:01:08] and it will converge to the Nash equilibrium, easy.
+[00:01:12] However, in general, we have a negative result,
+[00:01:16] which is that finding a Nash equilibrium
+[00:01:18] is computationally hard.
+[00:01:20] There are some, let's say, recent papers,
+[00:01:22] they were, well, recent meaning
+[00:01:24] they were in the 21st century.
+[00:01:26] Papadimitriou et al. made a series of papers where they proved that finding a Nash equilibrium is computationally hard.
+[00:01:35] And if you are into, I mean, they have many clever ideas to prove that.
+[00:01:42] Actually, this led to a novel complexity class, because generally when you say this problem is hard, you say it means it's NP-hard or NP-complete.
+[00:01:54] However, these cannot be NP-complete
+[00:01:57] because NP-complete by definition,
+[00:02:00] I mean, a problem can be NP-complete
+[00:02:02] if it takes a non-polynomial time in the worst case
+[00:02:07] to say that whether the solution exists or not.
+[00:02:11] In the problem of finding Nash equilibrium,
+[00:02:13] which we can call the Nash problem,
+[00:02:16] we know it already.
+[00:02:17] So it takes no time to say
+[00:02:19] whether the solution exists or not.
+[00:02:21] We know a solution must exist.
+[00:02:22] So it's not a matter of saying, well,
+[00:02:25] does the solution exist or not?
+[00:02:26] This is very easy.
+[00:02:28] It takes no time.
+[00:02:29] However, there might be multiple solutions
+[00:02:32] and to actually find them is not that easy.
+[00:02:36] So we cannot say this is NP-complete,
+[00:02:39] but nevertheless, we can claim there is
+[00:02:42] a novel basically complexity class,
+[00:02:44] which is the PPAD-complete.
+[00:02:47] PPAD stands for polynomial parity arguments
+[00:02:50] on directed graphs.
+[00:02:51] And that's the definition.
+[00:02:53] This class was introduced by Papadimitri in 1994.
+[00:02:55] And PPAD sounds a lot like PPAP, Pen Pineapple, Apple Pen
+[00:03:02] versus something else entirely.
+[00:03:04] It's a complexity class,
+[00:03:06] which is somehow intermediate between P and NP.
+[00:03:10] So if we roughly simplify things,
+[00:03:13] we can say that PPAD is somewhere in between P and NP.
+[00:03:18] And since there is a lingering question
+[00:03:21] or whether P is equal to NP,
+[00:03:23] which is one of the biggest standard solves questions.
+[00:03:26] I mean, if we can prove that P is equal to NP,
+[00:03:29] then also PPAD for the theorem of the two soldiers
+[00:03:36] is comprised between P and NP.
+[00:03:38] So it also becomes an easy problem.
+[00:03:41] But well, why do we need to introduce another class
+[00:03:45] and cannot simply say, well, for sure,
+[00:03:48] this means that PPAD is more complex
+[00:03:50] than polynomial problems.
+[00:03:53] It's also slightly less complicated than NP-complete problems
+[00:03:56] because of the reason that I explained,
+[00:04:00] we know the solution must exist.
+[00:04:01] So this is already something.
+[00:04:02] In general, in an NP-complete problem,
+[00:04:04] you don't know whether the solution exists or not.
+[00:04:06] Here we know that the solution must exist,
+[00:04:08] but that's all we know.
+[00:04:10] And the thing is how to prove in general
+[00:04:13] that a problem is NP-complete.
+[00:04:15] Well, there are some classical problems
+[00:04:17] that are known to be NP-complete.
+[00:04:20] So when you have a new problem,
+[00:04:21] the easiest way to find and to prove it's NP-complete
+[00:04:25] is to find an equivalent problem
+[00:04:27] that is known to be NP-complete.
+[00:04:29] So when you can map with an isomorphic association,
+[00:04:32] one by one, every element of the problem
+[00:04:34] of the new problem to the corresponding element
+[00:04:37] of the old problem, also the complexity matches.
+[00:04:39] And so the complexity must be NP-complete.
+[00:04:42] Now, we can do the same reasoning
+[00:04:45] for the problem of finding the Nash equilibrium,
+[00:04:48] only it won't be isomorphic to an NP-complete problem
+[00:04:52] because it's not NP-complete.
+[00:04:54] The thing that we do is to find that the Nash problem
+[00:04:57] is equivalent to the end of line problem.
+[00:05:01] The end of line problem is the key element
+[00:05:04] of this class introduced by Papadimitriou
+[00:05:06] of polynomial parity arguments on directed graphs.
+[00:05:10] Let's say, what do I mean
+[00:05:11] by polynomial parity arguments on directed graphs.
+[00:05:15] It means when I have a directed graph
+[00:05:17] and I wanna find the end of a line,
+[00:05:20] well, it takes me a very long time to find it.
+[00:05:23] Sometimes I need to explore the whole graph.
+[00:05:26] Let's see what this means in graphics.
+[00:05:30] So we have this problem,
+[00:05:32] which is known as the end of the line problem.
+[00:05:34] We have a directed graph and by end of the line,
+[00:05:37] I mean we have an unbalanced node.
+[00:05:39] So like this orange node is unbalanced, because it has one outgoing link more than the ingoing
+[00:05:46] links.
+[00:05:47] So there is an arrow going out.
+[00:05:49] And where does it end?
+[00:05:50] I mean, this cannot be the end of the line, this node, because it has as many incoming
+[00:05:55] links as outgoing links.
+[00:05:57] So the balance is zero.
+[00:05:59] So there is an unbalancement anyways, it must be compensated somehow.
+[00:06:03] So the only way to find it is to travel the entire line.
+[00:06:06] this is unbalanced, but this is balanced, so we should go forward. This is still balanced,
+[00:06:12] this is balanced until we reach here, so this is the answer. And to find the answer,
+[00:06:18] well, this is only possible if we travel the entire graph, in general at least. Sometimes
+[00:06:25] we know we have a certain regular graph and we don't need to travel the entire graph,
+[00:06:30] But in general, we need to find the,
+[00:06:34] we can find the last point of this line
+[00:06:38] only by traversing the entire graph more or less.
+[00:06:41] But the problem is we know for very simple
+[00:06:44] topological reasons, there must exist an end of the line
+[00:06:47] because if this node is unbalanced by parity principle
+[00:06:50] is a parity argument, this is why PPAD.
+[00:06:54] Because of parity, well, this violates the parity.
+[00:06:56] This is unbalanced and this is balanced, this is balanced.
+[00:06:58] So there must be somewhere else, another unbalanced node.
+[00:07:02] Only we don't know what it is, and finding it
+[00:07:05] is far from trivial.
+[00:07:07] OK, this is a problem of topology.
+[00:07:09] So what has this to do with our Nash equilibrium problem?
+[00:07:13] How is this isomorphic in finding the Nash equilibrium?
+[00:07:17] Well, if you're interested, I actually
+[00:07:20] recommend to check for the papers by Papadimitriou.
+[00:07:23] The proof is very imaginative.
+[00:07:26] They provide a facilitation of the plane in triangles
+[00:07:31] and they make coloring algorithms for triangle.
+[00:07:35] All, I mean, it's a very nice construction
+[00:07:37] and it's all about matching
+[00:07:40] the Nash equilibrium problem with the PPA.
+[00:07:42] Why?
+[00:07:43] Because if you remember, the problem of Nash
+[00:07:48] is actually to find a fixed point of the B R function.
+[00:07:52] Well, better say the B R correspondence.
+[00:07:54] is a function in the sense it maps elements, sorry, elements into sets.
+[00:08:00] Okay, so finding this fixed point can be shown to be analogous to finding a proper path,
+[00:08:07] the end of a proper path on a directed graph. So the proof is actually not very difficult,
+[00:08:13] it's surprisingly interesting, but it's very very long. So I recommend it for, well, when
+[00:08:18] you have a free evening you can enjoy a nice reading and take a look at the proof.
+[00:08:25] It involves compact partitioning which means a facilitation of the plane in
+[00:08:29] triangles and graph coloring so the three side of the triangle are
+[00:08:33] colored with different colors and then this proves some property. All in
+[00:08:37] all it's kind of applying the Kakutani theorem to see that well the
+[00:08:42] fixed point can be found only as a similar end of the line problem so
+[00:08:48] So in the end, it all boils down to navigating
+[00:08:51] through these triangles.
+[00:08:52] I mean, imagine the plane divided into small triangles.
+[00:08:55] And you can move from one triangle
+[00:08:57] to another, a adjacent one, similar to how
+[00:09:00] we moved in the graph before.
+[00:09:02] So finding the Nash equilibrium
+[00:09:04] is like finding the triangle in which you stay inside.
+[00:09:07] That's a fixed point.
+[00:09:09] And to find it, you can, if you're lucky,
+[00:09:12] you immediately find it.
+[00:09:13] But in general, you might need to explore the whole plane.
+[00:09:16] And this is why this is analogous.
+[00:09:17] I mean, at least from a qualitative point of view, if you can trust me, this is analogous
+[00:09:23] to the problem of finding the end of the line.
+[00:09:28] Okay, so this is a bad result that if we say, well, Nash equilibrium is so cool and
+[00:09:38] nice and we want it, yeah, but it might be hard to find. So this is not entirely
+[00:09:45] negative. In reality the fact that the problem is complicated is something that we as engineers
+[00:09:51] like a lot in that well the first consequence is that given that finding the national equilibrium
+[00:09:58] in general is difficult claiming that we have a procedure a constructive procedure can be a good
+[00:10:07] result. So very often I mean I must tell you very often when you see engineering
+[00:10:14] problems where gain theory is applied all that the authors do is well we can
+[00:10:19] prove there is a Nash equilibrium and we want to use that. Well that
+[00:10:22] shouldn't be the end of the story for an engineer because an engineer
+[00:10:25] should also provide you a way with by which to find the Nash equilibrium.
+[00:10:31] It's not enough to say well there exists a Nash equilibrium, good. Well of
+[00:10:34] Of course, the existence is guaranteed by the Nash theorem,
+[00:10:37] but finding is entirely another thing.
+[00:10:39] So most of the times engineers can try their brains
+[00:10:44] into finding a practical procedure
+[00:10:47] to find a Nash equilibrium, given the problem.
+[00:10:49] Sometimes might be very hard
+[00:10:50] because these are the unlucky cases
+[00:10:53] where the end of the line is very complicated to find.
+[00:10:55] Some of the times it can be easier
+[00:10:57] and it would be a good result
+[00:10:59] if you can prove this beyond just the mere existence
+[00:11:02] of the Nash equilibrium.
+[00:11:04] Also, another engineering approach could be like that.
+[00:11:08] Well, in reality, you very often don't need to be
+[00:11:12] in the exact Nash equilibrium.
+[00:11:14] So the computational complexity is very high
+[00:11:16] if you really want to find the Nash equilibrium.
+[00:11:19] If you're happy enough by being close
+[00:11:23] to the Nash equilibrium, so you can adopt a realization.
+[00:11:27] So you can define the epsilon Nash equilibrium,
+[00:11:30] which is in practice maybe more useful from an engineering perspective. The idea
+[00:11:35] is well in the Nash equilibrium there is no incentive for unilateral deviation.
+[00:11:39] So there is no unilateral deviation that makes you better even by a small
+[00:11:42] amount. But if you consider an epsilon Nash equilibrium you say well maybe
+[00:11:46] there is deviation but this deviation improves the utility only by so much, by
+[00:11:53] epsilon. If epsilon is very small you can say well so it's not worth the
+[00:11:57] effort. This is like saying many people, I mean, when you pay in a shop, maybe the check
+[00:12:03] is 8 euros 53 and you have a euro 50 and maybe the clerk says, well, it's okay. Eight
+[00:12:11] fifties. Okay. I don't want the 3 cents because now there are small coins and they
+[00:12:16] look like they are towards the trouble to, I mean, collecting these small coins in
+[00:12:21] reality. So that's the approach. Engineering wise, it might make sense. Of course, engineers
+[00:12:25] is actually very cheap, so they want the one cent.
+[00:12:28] But in general, engineering-wise, you can say,
+[00:12:30] well, maybe it's not worth the effort
+[00:12:33] to make this general deviation
+[00:12:35] if the improvement is not big enough.
+[00:12:37] This might fall maybe within the numerical resolution
+[00:12:41] of my algorithm.
+[00:12:42] So even though in principle, the reason improvement
+[00:12:44] is so small, it falls below the numerical precision
+[00:12:48] of my machine, so it doesn't even compute.
+[00:12:50] So the message here is that if you apply this reasoning
+[00:12:54] of the epsilon Nash equilibrium, you might find that there is no high computational complexity.
+[00:13:00] Actually finding an epsilon Nash equilibrium in which you're happy enough without being, well,
+[00:13:07] tolerating unilateral deviation as long as they are below an improvement of epsilon, then this
+[00:13:13] well solves the problem this belongs to plus p of complexity. And in general it's an easy
+[00:13:19] problem. So it's easier to find with some numerical methods the Nash equilibrium. But in general
+[00:13:25] finding the Nash equilibrium is hard. So be aware of this result and keep it in mind because that's
+[00:13:31] a regular objection that you can make from an engineering standpoint. You can claim well you
+[00:13:36] know what you find you claim there is a Nash equilibrium a good one in this kind of problem
+[00:13:40] but I challenge you to find it. That can be very hard so it's always good at least from
+[00:13:47] from an engineering perspective to keep an eye fixed
+[00:13:51] on the computational complexity of your procedure.
+[00:13:53] And in reality, the computational complexity here
+[00:13:55] is very tricky because it's neither B nor NP.
+[00:13:59] Nevertheless, it's in general, very hard,
+[00:14:02] a very hard problem.
+[00:14:04] So you must make sure that you are not
+[00:14:06] in one of these unlucky cases
+[00:14:09] where your computational complexity prevents actually
+[00:14:11] from finding the natural equilibrium.
+[00:14:12] So having a practical way is good.
+[00:14:15] Otherwise, you should settle down for a numerical approximation,
+[00:14:19] which is what engineers do, and in this case turns out to be a good stretch.
+[00:14:23] And this concludes the lecture of today.

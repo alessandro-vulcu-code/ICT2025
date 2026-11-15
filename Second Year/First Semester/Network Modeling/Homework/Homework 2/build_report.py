@@ -1,11 +1,42 @@
-"""Generate and compile the three-page report from measured experiment results."""
+"""Compile an existing report, or generate the legacy report from experiment results."""
+import argparse
 import json
 from pathlib import Path
+import shutil
 import subprocess
 from source import ROOT
 
 
+def compile_report(source):
+    source = (ROOT / source).resolve()
+    if not source.is_file():
+        raise FileNotFoundError(source)
+    output = ROOT / 'output/pdf'
+    output.mkdir(parents=True, exist_ok=True)
+    for _ in range(2):
+        completed = subprocess.run(
+            ['pdflatex', '-interaction=nonstopmode', '-halt-on-error', '-synctex=1',
+             '-output-directory=' + str(output), source.name],
+            cwd=source.parent, capture_output=True, text=True)
+        if completed.returncode:
+            raise RuntimeError(completed.stdout[-4000:])
+    pdf = output / (source.stem + '.pdf')
+    for destination in (ROOT / pdf.name, ROOT / 'report.pdf', output / 'report.pdf'):
+        if destination != pdf:
+            shutil.copyfile(pdf, destination)
+    for suffix in ('.aux', '.log', '.synctex.gz'):
+        shutil.copyfile(output / (source.stem + suffix), ROOT / (source.stem + suffix))
+    print(ROOT / pdf.name)
+
+
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--source', type=Path,
+                        help='Compile an existing .tex file without regenerating its text')
+    args = parser.parse_args()
+    if args.source is not None:
+        compile_report(args.source)
+        return
     results = json.loads((ROOT/'analysis/results.json').read_text())
     ci = results['ci95']
     rows = []
@@ -26,7 +57,7 @@ def main():
     for name, label in [('underprovisioned','Underprovisioned'), ('large_buffers','Large buffers, low rates')]:
         x=control[name]['metrics']
         comparisons.append(f'{label} & {x["loss_pct"]:.2f} & {x["p95_ms"]:.2f} & {x["throughput_kbps"]:.2f}'+r' \\')
-    for name,label in [('homework1_offsets','Original within-batch offsets'), ('held_out_capture','Held-out 120 s capture')]:
+    for name,label in [('homework1_offsets','Original within-batch offsets'), ('held_out_capture','Held-out 120 s segment')]:
         x=results['robustness'][name]
         comparisons.append(f'{label} & {x["loss_pct"]:.2f} & {x["p95_ms"]:.2f} & {x["throughput_kbps"]:.2f}'+r' \\')
     text = r'''\documentclass[10pt,a4paper]{article}
@@ -91,19 +122,30 @@ accept a packet even with $B_o=0$.
 The event clock jumps to the next arrival, head eligibility, or completion.
 At equal times it handles LBF completion first, then eligible queued TBF packets,
 then input rows in file order. Buffered packets cannot be bypassed. Both queues
-drain after source shutdown, avoiding artificial terminal loss. Eight automated
+drain after source shutdown. Token eligibility is rounded upward to a representable
+time supplying the full packet, avoiding repeated-clock stalls without borrowing
+tokens through a fixed tolerance. Ten automated
 checks cover exact timing, FIFO, both overflows, oversize rejection, input validation,
-source reproduction, conservation, and the TBF release envelope. All pass.
+source reproduction, conservation, the TBF envelope, small token deficits, and
+clock translations up to $10^9$ s. All pass.
 \clearpage
 \section{QoS budgets and experimental method}
-Zoom video is interactive: excessive waiting harms responsiveness; variation
-in delay raises receiver buffering needs, and loss removes video data. I propose
-the shaping-only budgets in Table 1, leaving room for propagation, other queues,
-codec processing, and playout. These are experimental design targets, not vendor
-requirements or an end-to-end quality guarantee. Mean delay measures typical
-waiting, the 95th and 99th percentiles expose tails, and loss prevents misleadingly
-good delay results obtained by discarding traffic. Byte delivery of at least 99\%
-also prevents selective losses of large packets from hiding behind packet counts.
+Zoom video is interactive: waiting harms responsiveness, delay variation raises
+receiver buffering needs, and loss removes video data. Table 1 gives six shaping-only
+QoS budgets; offered rate and throughput are additional descriptive measures, not
+acceptance criteria. The budgets leave room for propagation, other queues, codec
+processing, and playout; they are design choices, not Zoom specifications.
+
+For a concrete design yardstick, a nominal 30-frame/s cadence gives 33.3 ms per
+frame; this is illustrative, not a frame rate measured in Homework 1. Mean delay
+$\leq30$ ms keeps average added latency below one such interval. The p95 limit
+of 50 ms allows at most 1.5 intervals for 95\% of delivered packets; p99
+$\leq100$ ms tolerates rare bursts up to three intervals. A p95 delay-variation
+limit of 30 ms keeps 95\% of successive delivered-packet delay changes below
+roughly one interval, reducing pressure on the playout buffer. Loss $\leq1\%$ and byte delivery
+$\geq99\%$ require preservation of at least 99 out of every 100 packets and bytes,
+respectively, preventing low delays achieved by dropping traffic or selectively
+losing large packets. These targets do not guarantee decoded video quality.
 
 For each delivered packet $j$, $d_j=t_j^{\rm out}-t_j^{\rm in}$. Delay variation is
 $v_j=|d_j-d_{j-1}|$ for consecutive delivered packets, including pairs across lost
@@ -123,8 +165,6 @@ B_o&\in\{4096,16384\}\ \mathrm{B}.&&
 \end{aligned}
 \]
 Common input isolates parameter effects. Of these, @FEASIBLE@ satisfy every budget.
-The initial lower-rate grid found no feasible setting, so the final grid includes
-higher rates; this exploration uses only the search trace.
 Among feasible candidates I minimize the explicit normalized resource score
 \[
 C=\frac{\rho}{10^5}+\frac{\mu}{10^5}+\frac{b+B_i+B_o}{16384}.
@@ -196,7 +236,7 @@ The underprovisioned control uses $(90000,1341,4096,100000,4096)$: low delay alo
 hides severe losses. A low-rate setting with large buffers,
 $(110000,8192,65536,120000,65536)$, still fails QoS and raises delay substantially.
 More storage alone is therefore insufficient. Restoring Homework 1's packet offsets
-barely changes the representative result. Processing the independent held-out capture
+barely changes the representative result. Processing the held-out segment of the same capture
 also meets all budgets, but this short check does not replace the longer model runs.
 
 The confidence intervals quantify Monte Carlo variability conditional on the fitted
@@ -224,15 +264,7 @@ are included in the homework directory.
     for key,value in replacements.items():
         text=text.replace(key,value)
     (ROOT/'report.tex').write_text(text)
-    output=ROOT/'output/pdf'
-    output.mkdir(parents=True,exist_ok=True)
-    for _ in range(2):
-        completed=subprocess.run(['pdflatex','-interaction=nonstopmode','-halt-on-error',
-                                 '-output-directory='+str(output),'report.tex'],
-                                cwd=ROOT,capture_output=True,text=True)
-        if completed.returncode:
-            raise RuntimeError(completed.stdout[-4000:])
-    print(output/'report.pdf')
+    compile_report(Path('report.tex'))
 
 
 if __name__ == '__main__':

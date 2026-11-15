@@ -1,0 +1,1328 @@
+[00:00:03] Welcome to this second lecture of the course of game theory
+[00:00:07] for the master degree in ICT for internet and multimedia.
+[00:00:10] I'm the lecturer, Ronaldo Beria.
+[00:00:14] So in this lecture, we will discuss something
+[00:00:18] that I would like to call a plug-in for game theory.
+[00:00:21] So a subject that sometimes we add to the problem.
+[00:00:27] And so it is a very good topic
+[00:00:29] to discuss at the very beginning
+[00:00:31] because most of the times we won't have lotteries in our problems. If we do you
+[00:00:38] just recall lecture number two and you insert into your problem and then once
+[00:00:43] you solve the randomness of the lottery then you go on as usual and
+[00:00:48] this is why I call it a plug-in because it's something that you can
+[00:00:52] insert in your problem when needed and if you don't have any randomness
+[00:00:58] in your problem then you don't need to use the like the concepts that we see in the lecture of
+[00:01:04] today. Very good. So what do I mean by lottery? The point is sometimes when we evaluate
+[00:01:14] the good that comes out from something we are not sure. There might be different outcomes
+[00:01:23] due to chance, due to randomness.
+[00:01:27] And this is why I made the example in the previous lecture
+[00:01:31] when going at the canteen and getting some food.
+[00:01:35] Well, the food you get at the canteen
+[00:01:37] is very variable in quality, let's say.
+[00:01:40] Sometimes it might even be decent,
+[00:01:42] some other times it's very bad.
+[00:01:44] So you don't really know.
+[00:01:46] So in our assumption, if you recall,
+[00:01:49] our students go to the canteen
+[00:01:51] and they are offered a choice
+[00:01:53] between eating ravioli or eating soup.
+[00:01:57] And the thing is, the soup might be different every day,
+[00:02:01] there is a different soup every day.
+[00:02:03] And the student does not know
+[00:02:06] what soup is today's special.
+[00:02:09] And so it's really hard to say
+[00:02:12] if ravioli or soup is better.
+[00:02:16] And since we deal with rational players,
+[00:02:19] our decision makers are rational.
+[00:02:23] Generally a rational player does not like this randomness
+[00:02:26] because you want a precise preference order, right?
+[00:02:31] You want to know if A is better than B
+[00:02:34] or B is better than A.
+[00:02:36] Remember that is the rational requirement
+[00:02:38] of a utility function.
+[00:02:40] And also rational users are supposedly able
+[00:02:45] to infer consequences of their action.
+[00:02:48] So they know that if they are ordering ravioli,
+[00:02:52] they're getting a better or worse food than soup.
+[00:02:57] But in reality, if you have randomness,
+[00:03:00] you are not fully able to infer consequences.
+[00:03:03] So this also violates somehow the rationality of the users
+[00:03:08] and therefore we don't like this.
+[00:03:10] And the idea that we will see today
+[00:03:13] is how to remove randomness from our model.
+[00:03:15] So if we do have some random element, we remove it,
+[00:03:20] and we are falling back to our deterministic problem,
+[00:03:24] which we solve as usual.
+[00:03:26] If our problem is already deterministic,
+[00:03:28] well, there is no need of today's lecture.
+[00:03:30] So you just can skip today's lecture,
+[00:03:32] and you go on as usual with the deterministic problem.
+[00:03:37] Okay, so let's see an example to clarify things.
+[00:03:42] Suppose that Ravioli, well, they do not always
+[00:03:47] have utility equal to 5.
+[00:03:49] So UR is not always equal to 5.
+[00:03:52] This is only true 50% of the time.
+[00:03:55] Another 50% of the time, Ravioli give you utility 2.
+[00:04:00] And also, soup does not always give you utility 1.
+[00:04:04] So utility US is not always 1.
+[00:04:07] This is only true 80% of the time, so most of the times.
+[00:04:10] But sometimes, it gives utility 10.
+[00:04:15] So sometimes, you have a very, very good and tasty soup.
+[00:04:19] And so we say that we model the choice between R and S
+[00:04:23] as a choice between two lotteries.
+[00:04:26] The choice R doesn't mean you get a given utility,
+[00:04:31] but you get a coin toss.
+[00:04:34] You flip a coin, and you get a utility
+[00:04:36] that is different depending on what the coin toss got. If the coin toss shows heads then you get
+[00:04:45] utility five, if the coin toss shows tails you get utility two. And similarly you can say S is
+[00:04:53] like participating in a lottery, well the lottery S is something where there is more difference
+[00:04:59] actually, because there is a high probability of getting low utility and a small probability
+[00:05:07] of getting high utility. So this is sometimes more interesting, right? This resembles better
+[00:05:12] the real life lotteries. Most real world lotteries are like this. You have a very
+[00:05:17] big probability of winning nothing or winning, getting very low utility and a very small
+[00:05:24] probability of becoming super rich.
+[00:05:27] OK, so in general, how do we define a lottery?
+[00:05:32] We say a lottery over a set of outcomes,
+[00:05:36] and that I call big X, X1 to Xn,
+[00:05:39] is a probability distribution p over x,
+[00:05:42] which means that we simply assign
+[00:05:44] a probability distribution.
+[00:05:45] And you should be familiar with probability distributions.
+[00:05:48] It's a very basic concept of statistics and something
+[00:05:51] that you see even if you even just took a very basic course in probability you
+[00:05:57] know for sure what the probability distribution is then you might have
+[00:06:00] trouble in remembering like continuous variables or compound distributions or
+[00:06:06] something like that but for sure it's very clear so this is why this
+[00:06:10] subject does not require the advanced math but nevertheless it
+[00:06:14] requires some math you need probability distributions so a lottery is just a
+[00:06:18] a probability distribution, nothing else.
+[00:06:20] And to be formal, we define that p
+[00:06:22] is a function from the set x to the set of real numbers.
+[00:06:28] But pxk must always be non-negative.
+[00:06:32] And the sum of all pxk must be equal to 1,
+[00:06:36] because that's a probability distribution, correct?
+[00:06:38] So they are all less than or equal to 1,
+[00:06:42] but they also sum to 1.
+[00:06:43] That's sometimes called the normalization condition,
+[00:06:46] something like that. Okay now in reality I use this notation of px but if actions are involved
+[00:06:56] so this x is an outcome that is a result of an action you took then you should consider
+[00:07:04] conditional probabilities so you might have different xk given that you took action a so you
+[00:07:10] see why I use this symbol, okay?
+[00:07:13] So I'm actually would like to stay relaxed on the notation
+[00:07:17] because I don't want it to be too heavy.
+[00:07:18] So most of the times we'll just mention probabilities
+[00:07:21] but to be strict, they're actually
+[00:07:23] conditional probabilities.
+[00:07:26] And if you think carefully,
+[00:07:28] you can also see the deterministic case.
+[00:07:30] So the case where you have no randomness.
+[00:07:33] So if you remember our first problem was
+[00:07:35] if you choose ravioli, the utility is five,
+[00:07:39] no matter what.
+[00:07:41] Well, you can also consider this to be a lottery,
+[00:07:44] but a very strange lottery, a degenerate lottery,
+[00:07:47] where you only have one possible event.
+[00:07:49] If you choose ravioli,
+[00:07:51] there is only one possible outcome
+[00:07:53] that you get utility five.
+[00:07:55] So you say the probability of XK is equal to one
+[00:07:58] for a given K and zero for all other options.
+[00:08:02] And the event XK is the one that you get utility five.
+[00:08:08] Okay, so to model this in our games in the decision process, let's say, game theorists
+[00:08:16] think that these random choices are made by one player. So when you have a game with
+[00:08:25] two players and there is also some random intervention, game theorists often formalize
+[00:08:32] this as well actually there are three players in the game the two original players and there is
+[00:08:38] nature that is another player so every time you have some random intervention you consider it as
+[00:08:45] the effect of having yet another player in the game and this player is called nature that's a
+[00:08:51] very let's say philosophical way of putting it and i don't want to delve into that but it's
+[00:08:57] just having one more player.
+[00:09:00] And this one more player actually follows his own choices,
+[00:09:04] but from the perspective of the other players,
+[00:09:08] nature is just choosing according to the lottery.
+[00:09:11] So you can actually represent this in the decision tree
+[00:09:14] by including some blind choices made by nature.
+[00:09:18] And the way to do that is as such.
+[00:09:20] So you consider that you remember player P
+[00:09:24] at the beginning decide between ravioli and soup.
+[00:09:26] so between R and S. But the game does not end there, the decision actually does not end there.
+[00:09:31] You don't have an immediate result because now it's nature turn to make a move. So nature N
+[00:09:38] is another player that makes a decision and the decision of nature is now poorly random. So
+[00:09:45] differently from player P who wants to maximize its own utility, you don't show nature's
+[00:09:51] utility because nature does not have a utility as follows. Nature just chooses according to the
+[00:09:56] So there is a slight extension to the notation.
+[00:09:59] Whenever you see a letter here,
+[00:10:01] it means an action a player makes.
+[00:10:03] But nature just chooses blindly.
+[00:10:05] They don't choose an action, a precise action.
+[00:10:08] So nature just chooses a probability.
+[00:10:09] So this is to mean that nature N
+[00:10:11] chooses with probability 0.5, chooses this branch,
+[00:10:15] and probability 0.5 chooses this other branch.
+[00:10:18] So that is the final outcome.
+[00:10:20] If it's a tasty ravioli, the utility is five.
+[00:10:24] if a bad ravioli utilities two. And similarly nature can choose that the soup is tasty,
+[00:10:29] utility 10, or the soup is bland, utility one. Okay so that is the model, the impact of nature's
+[00:10:37] choices. Again let me remember, let me remind you this is a number differently from that.
+[00:10:43] So if you have a number here it means a probability. Okay good. So in reality
+[00:10:50] I made this representation because it's simpler
+[00:10:52] to consider a discrete space of events.
+[00:10:57] And for ravioli, I said, well, there is 50% probability
+[00:11:00] of good ravioli and 50% probability of not so good
+[00:11:04] of bland ravioli.
+[00:11:05] But in reality, you can do that also
+[00:11:08] for continuous spaces of events.
+[00:11:11] It's just a bit more complicated and it's very similar
+[00:11:15] to what you saw in probability theory.
+[00:11:17] probability theory probably the first mind blow moment you have in your engineering life
+[00:11:24] is when you learn about continuous random variables because the first thing that the
+[00:11:29] professor tells you is well you know if you consider a continuous space of events
+[00:11:35] then the specific outcome of a single value has probability zero. This is strange how come
+[00:11:42] yeah because the space measure on a continuous interval of a single point is zero so the
+[00:11:49] probability that you get exactly that value is zero and to deal with that you replace
+[00:11:54] probability densities with probability distributions and this is just basically a setup
+[00:12:01] to make things work instead of considering probability values you consider probability
+[00:12:07] densities which hold for an interval, right, and this is something that I want to deal
+[00:12:14] with most of the times in the course. Most of the times game theorists are lazy, as
+[00:12:19] we said, so they like to think of discrete variables and discrete spaces of events,
+[00:12:27] which is just a simplification. If you happen to ever stumble across a continuous
+[00:12:32] space of events. Well, no worries, you can still solve your problem, you just have to redo all
+[00:12:39] your steps that you did once in your life when the professor of probability theory talked to you
+[00:12:45] the continuous variables. So you have to replace discrete probability distributions with
+[00:12:52] continuous probability densities and so on and so forth. So overall, nothing changes,
+[00:12:57] It's something you already know.
+[00:12:59] But it makes things much more cumbersome.
+[00:13:02] And for this reason, I want to keep things simple.
+[00:13:05] And basically, there is no real instance of examples
+[00:13:10] that we will show besides very few deviations
+[00:13:13] where we consider continuous variables
+[00:13:14] and continuous events.
+[00:13:16] But by no means, I'm claiming that we cannot apply this
+[00:13:20] theory to continuous events.
+[00:13:20] It's just more complicated, and we
+[00:13:23] want to keep things simple.
+[00:13:26] In particular, well, you don't have a tree because, well,
+[00:13:28] you should have a tree with a continuous range
+[00:13:31] of alternatives if you have a continuous base of events.
+[00:13:33] Okay, so now how to evaluate the consequences
+[00:13:37] of our choices.
+[00:13:39] Consider first a simple example,
+[00:13:42] which is a different lottery
+[00:13:43] than what I showed you before.
+[00:13:45] Consider that you have ravioli and soup,
+[00:13:47] and they both give the same utility.
+[00:13:50] It's only the probabilities that's changing.
+[00:13:53] So you have tasty ravioli or bland ravioli,
+[00:13:57] tasty soup or bland soup, and they both give utility 10 or 1.
+[00:14:02] So this is another example than before,
+[00:14:05] but the probabilities are different.
+[00:14:07] So ravioli has a 50% probability of being tasty,
+[00:14:11] you see, and soup has only 20% probability
+[00:14:15] of being tasty.
+[00:14:17] So what do you prefer?
+[00:14:18] This is a no-brainer.
+[00:14:19] I think everyone would say, OK, in this case,
+[00:14:22] I choose ravioli because I'm rational,
+[00:14:25] and I prefer a higher chance to get 10,
+[00:14:30] to get the tasty situation.
+[00:14:33] Okay, so if the final values are the same,
+[00:14:38] but the only thing that changes is the probability,
+[00:14:41] well, you go for the higher probability
+[00:14:44] of getting the better outcome, correct?
+[00:14:47] And so this should give you already a hint
+[00:14:49] of how we compare different utilities.
+[00:14:53] So now, consider the regional case.
+[00:14:56] In the regional case, you don't really know what is better,
+[00:15:00] R or S, because now the utility of getting a tasty ravioli
+[00:15:06] is just five, while the utility of getting a tasty soup
+[00:15:10] is 10, so you might even think to say,
+[00:15:12] oh, well, I want to take the risk.
+[00:15:14] I mean, I know it's a lower chance
+[00:15:16] of getting something tasty, but if it is tasty,
+[00:15:20] soup is really, really good, decent utility 10.
+[00:15:24] So what do you prefer?
+[00:15:25] A fair coin toss between five and two
+[00:15:28] or a slim chance of getting 10?
+[00:15:32] And the most likely outcome is you will get one
+[00:15:34] if you choose a soup.
+[00:15:35] What do you prefer?
+[00:15:36] It depends, right?
+[00:15:37] There is no clear-cut answer.
+[00:15:40] But the usual methodology is to take expectations.
+[00:15:44] And this is actually a good way
+[00:15:47] to compare lotteries with certainties.
+[00:15:49] This actually follows the expected utility theory,
+[00:15:53] which was developed by two mathematicians,
+[00:15:56] von Neumann and Morgenstern.
+[00:15:58] So this is sometimes called the VNM,
+[00:16:01] or the initials of von Neumann and Morgenstern initials.
+[00:16:06] So the VNM utility.
+[00:16:09] According to this theory of VNM utility,
+[00:16:12] or expected utility, just simple to say,
+[00:16:15] you take expectations.
+[00:16:16] So the idea behind this is that if you
+[00:16:20] try to make this decision a very high number of times,
+[00:16:26] you will eventually, by the law of large numbers,
+[00:16:30] you will get your expected payoff.
+[00:16:33] So to compare alternatives where there is randomness,
+[00:16:37] I take the expected payoff from the lottery.
+[00:16:40] So you see, you can write the expected utility
+[00:16:44] if you are subject to payoff P, ask simply the weighted sum
+[00:16:50] of all the utilities you can get weighted
+[00:16:52] on their probabilities.
+[00:16:54] This is very intuitive and probably
+[00:16:56] is the conclusion you were already pondering in your mind.
+[00:17:00] I mean, if you have 50% chance of getting 5
+[00:17:03] and 50% chance of getting 2, on average, you will get 3.5.
+[00:17:09] And so in the other case, you had 20% chance
+[00:17:13] of getting 10 and 80% chance of getting one.
+[00:17:17] So the expected utility was 2.8.
+[00:17:22] OK, so this is also related to preference relationship.
+[00:17:27] Because if we have the expected utility theory,
+[00:17:31] we can put in connection the utility with the preference
+[00:17:35] again.
+[00:17:37] So you now want to define the preference relationship.
+[00:17:40] you know, remember this curly greater than or equal to sign among lotteries. And you want to
+[00:17:47] see if there is a way to represent the preference through utilities. So instead of having your
+[00:17:56] original set of alternatives A, you have a different set of lotteries. So the theory of
+[00:18:02] B and M utilities is a framework where you assume that this preference must satisfy,
+[00:18:08] Well, first of all, rationality, which you already saw,
+[00:18:12] is completeness and transitivity.
+[00:18:13] We want our preferences to be rational.
+[00:18:17] In this way, they are represented by a utility.
+[00:18:22] And they also added two other actions.
+[00:18:25] And these are actions.
+[00:18:26] So they say, OK, we want the utility
+[00:18:29] to satisfy these two actions.
+[00:18:31] Let's discuss them briefly.
+[00:18:33] I mean, you don't need to recall them, because we'll
+[00:18:35] just jump to the results in the end.
+[00:18:36] but what is the continuity action?
+[00:18:38] The continuity action means that if you have three lotteries,
+[00:18:43] P, Q, and R, it must hold that these two sets are closed.
+[00:18:49] What does this mean?
+[00:18:51] It means that if you have arbitrary small variation
+[00:18:54] in the gamble, you don't change the preference
+[00:18:57] over the lotteries.
+[00:18:59] Remember, you're not comparing lotteries.
+[00:19:01] You want to know what lottery is better.
+[00:19:03] So you have a linear combination of lotteries p and q,
+[00:19:07] and you know that this is better than r.
+[00:19:10] Also, you have the set of linear combinations
+[00:19:14] for which r is better than the linear combination of p
+[00:19:18] and q.
+[00:19:18] These two sets must be closed.
+[00:19:21] And by this, I mean they don't have holes.
+[00:19:24] So the value a in the interval of linear combination
+[00:19:29] does not have holes.
+[00:19:31] I mean, it might seem a bit hard to digest,
+[00:19:34] but if you look carefully, it's a very simple assumption.
+[00:19:36] It says that if I change the weights in the linear
+[00:19:40] combination, I cannot have a sudden change in preferences.
+[00:19:44] I mean, there is a border of the weight.
+[00:19:46] There is a value a for which the linear combination is
+[00:19:51] better, and there is a value a for which the linear
+[00:19:54] combination is worse.
+[00:19:55] Well, these values are continuous intervals.
+[00:19:58] So once you switch from referring the linear combination
+[00:20:03] to the referring the non-linear combination,
+[00:20:06] the fixed lottery R, well, you don't go back immediately.
+[00:20:11] So you have intervals.
+[00:20:13] And this basically means that you
+[00:20:15] don't change your preferences among lotteries
+[00:20:19] for arbitrary small variations.
+[00:20:23] So let's say, for sure, this example may be clarifying
+[00:20:26] things. You want to have a safe walk in the park. Of course, everybody loves a walk in the park,
+[00:20:35] but you want to be safe. You don't want to be mugged in the park. So you prefer walking there
+[00:20:41] rather than staying home. And this was especially true during quarantine, right?
+[00:20:46] You prefer to go and have a walk outside rather than being at home. But maybe you're
+[00:20:52] you're afraid that the park is dangerous,
+[00:20:54] maybe it's nighttime, it's dark outside,
+[00:20:57] and you're afraid of being mad.
+[00:20:59] Well, that's reasonable.
+[00:21:01] So you evaluate going to the park like a gamble,
+[00:21:05] like a lottery.
+[00:21:06] You have a probability of being mad,
+[00:21:08] which means your utility will be very low,
+[00:21:11] or you enjoy the walk in the park,
+[00:21:13] which means you have a good utility.
+[00:21:16] If you stay home, you say, well, my utility is zero.
+[00:21:18] Maybe I don't have any improvement.
+[00:21:20] I just stay as I am.
+[00:21:21] Okay, so if you know that your probability of getting marked is 0%, you're 100% sure
+[00:21:30] that you're going to be safe in the park, you prefer going there. You prefer going
+[00:21:35] to the park, of course, because you get an expected positive utility, which is better
+[00:21:41] than zero. Now, every time you weigh the probability of getting marked, you decrease
+[00:21:47] this utility, right?
+[00:21:48] But this goes continuously.
+[00:21:50] So if you increase the probability of getting mad,
+[00:21:54] at a certain point, you prefer to stay home rather
+[00:21:59] than going to the park, because the risk of getting mad
+[00:22:02] is too high.
+[00:22:04] And so what this action means is
+[00:22:06] that you don't change preferences every single value.
+[00:22:10] Like for this A, maybe A, the probability of getting mad
+[00:22:15] is 0.001. Well, you still prefer going to the park. The probability of getting mad is 0.002.
+[00:22:24] Well, you still prefer going to the park. Now the probability of getting mad is 0.003.
+[00:22:31] Well, now you prefer staying home because the risk to you 0.3% is too high probability of
+[00:22:38] getting mapped.
+[00:22:40] OK, now if I say that for 0.004 probability,
+[00:22:45] you now prefer to go into the park,
+[00:22:48] well, now you are not following this action.
+[00:22:52] You're doing something stupid.
+[00:22:53] Because if you now change for the linear combination
+[00:22:57] the preference towards staying home,
+[00:23:00] well, now if you still keep going increasing
+[00:23:03] the probability, now you always want to stay home.
+[00:23:06] That makes sense, correct?
+[00:23:07] So if you don't have something like that,
+[00:23:10] you violate the continuity action.
+[00:23:14] OK, and what is the independence action?
+[00:23:17] The independence action is something similar.
+[00:23:20] Again, you have a linear combination
+[00:23:21] with a given weight a.
+[00:23:23] You say you have three lotteries, p, q, and r.
+[00:23:27] And you prefer lottery p over lottery q.
+[00:23:31] Well, if you do, then you also
+[00:23:34] prefer the linear combination between p and r
+[00:23:36] and the linear combination of Q and R with the same weight.
+[00:23:40] That also makes sense, right?
+[00:23:43] So in short, I say, OK, you prefer a lottery.
+[00:23:46] What lottery?
+[00:23:47] Maybe you prefer betting on football
+[00:23:49] rather than horse races.
+[00:23:52] These are two lotteries.
+[00:23:54] You prefer because maybe you enjoy football
+[00:23:56] more because your odds of winning at football
+[00:24:00] are better than horse races, whatever.
+[00:24:03] Then I'm proposing to you, OK, you know what?
+[00:24:05] There is a third lottery, which is playing roulette.
+[00:24:08] I'm going to flip a coin.
+[00:24:11] In one case, if coin shows tails, we play football.
+[00:24:16] And if coin shows heads, we play roulette.
+[00:24:21] That's alternative one.
+[00:24:23] Alternative two is, again, we flip a coin.
+[00:24:26] So 50-50 probability, once again.
+[00:24:28] Probabilities must be the same.
+[00:24:29] But now the alternatives are betting on horse races
+[00:24:33] or playing roulette.
+[00:24:35] So in 50% of the cases, you play the same game.
+[00:24:39] You play the same lottery.
+[00:24:41] In 50% of the cases, you play another lottery.
+[00:24:45] And so you prefer still the lottery that is better for you.
+[00:24:50] So independence action simply means
+[00:24:52] if you add another independent lottery in the mixture,
+[00:24:56] this does not change the order of preferences.
+[00:24:59] Also, this is a sensible assumption.
+[00:25:01] And this is very common in, well,
+[00:25:04] all that surrounds game theory.
+[00:25:05] It's actually not game theory.
+[00:25:06] It's utility theory or preference theory.
+[00:25:09] But in this case, it's a very mathematical procedure.
+[00:25:12] Let me just digress for a moment.
+[00:25:15] Mathematicians, and in this case,
+[00:25:17] they are very similar to engineers in this respect,
+[00:25:20] sometimes they do things like that.
+[00:25:21] Well, we need some actions.
+[00:25:23] So we take some actions that look sensible to us,
+[00:25:27] and we try to infer consequences from this.
+[00:25:30] And the three actions that von Neumann and Morgenstern
+[00:25:33] started with were, well, continuity, independence,
+[00:25:38] and as you guess, they are rational.
+[00:25:41] They are logical actions.
+[00:25:42] And plus, they had, of course, rationality.
+[00:25:45] And from these three actions, they
+[00:25:47] tried to figure out what kind of utility you can get.
+[00:25:50] Well, the thing is, there are many theorems you can prove.
+[00:25:56] We're not going to do that.
+[00:25:57] but if you search online you surely find these theorems. There are theorems showing that if
+[00:26:03] you have a preference that satisfies the four actions which are, well, completeness and
+[00:26:10] transitivity, so rationality, that's two actions formally, and continuity and independence,
+[00:26:16] you can represent this by utility U which is just the expected utility. And this is also
+[00:26:26] called the von Neumann mortgage and utility, the VMM utility.
+[00:26:30] So the only way you have to satisfy the four actions
+[00:26:35] is to take expectations.
+[00:26:38] There is this theorem which, in short,
+[00:26:41] proves that expected utility is the right way to go.
+[00:26:45] So we can even skip this, because from the engineering
+[00:26:49] perspective, we need to know what to do,
+[00:26:52] not what is the mathematical theorem behind it.
+[00:26:55] But since I'm good, I'm also showing you the theorem
+[00:26:58] and telling you how this happens.
+[00:27:03] So why do we take expectations?
+[00:27:05] So you can just remember this because Leonardo told me
+[00:27:09] so during my lectures.
+[00:27:11] But you can also remember there is a reason for that.
+[00:27:14] It's not because you are told to do so.
+[00:27:16] And the reason is because if you do so,
+[00:27:18] that's the only way to satisfy the four actions.
+[00:27:21] And this is something that these two guys from Neumann
+[00:27:24] and Morgenstern proved rigorously.
+[00:27:27] So we have a good confidence.
+[00:27:29] And I can even show you the full theorem.
+[00:27:31] I mean, it's just very long.
+[00:27:33] It's not difficult, but it's very, very long,
+[00:27:36] and it will steal too much of our time.
+[00:27:38] We better go into, well, more interesting game theory.
+[00:27:42] But if you want to know, well,
+[00:27:44] you can check on online resources
+[00:27:47] where there are several proofs of this theorem,
+[00:27:50] or the regional proof of online Morgenstern
+[00:27:51] and some variations.
+[00:27:52] and you can really understand that the only way of satisfying, let's say, sensibility actions
+[00:27:59] is to take expected utilities. So, if you have a lottery, you just take expectations
+[00:28:05] because that's a sensible thing to do. In particular, one lemma that you can prove is
+[00:28:12] that, well, you can prove that this preference can represent by expected utility
+[00:28:21] only if it's a linear map.
+[00:28:23] And to show that it's a linear, and expectations
+[00:28:26] are a special case of linear maps.
+[00:28:30] So you can take expectations as after some limits.
+[00:28:34] But just to prove it's linear, just consider, OK,
+[00:28:38] I need to exploit the actions I just
+[00:28:42] saw for any degenerate lottery.
+[00:28:45] So if I have a degenerate lottery,
+[00:28:47] so it's not really a lottery, but it's a certain outcome,
+[00:28:49] this must be true, right?
+[00:28:51] So to prove this, you need to show,
+[00:28:54] to satisfy the continuity action,
+[00:28:56] you need to have a linear relationship.
+[00:28:59] So that's very easy to prove.
+[00:29:00] And once you prove this a linear relationship,
+[00:29:03] you also prove it's not any generic linear relationship
+[00:29:07] but is the expectation, which is a linear relationship
+[00:29:10] and so on and so forth.
+[00:29:11] In reality, this also shows that there is no fixed utility
+[00:29:17] I mean, so expectation is not the only utility
+[00:29:22] that satisfies the theorem, but any linear transformation
+[00:29:26] of the utility works.
+[00:29:27] And this is why I mentioned this linear property.
+[00:29:30] So you can say, I have this expected utility.
+[00:29:33] So the choice between 5 and 2 gives me utility 3.5.
+[00:29:38] I mean, if the 5 and 2 have equal probability.
+[00:29:42] And the choice between 10 and 1 with equal probability,
+[00:29:46] again, give me 5.5. Okay, so this is because I took expectation. What if I took twice the expectation?
+[00:29:54] Well, in that case, the alternative between 5 and 2 gives utility 7, and the alternative with
+[00:30:01] equal probability between 1 and 10 gives you 11. You see, the preference is still the same.
+[00:30:07] If you multiply everything by 2, you don't change preferences. So in reality, utilities
+[00:30:13] are really indifferent to linear transformation.
+[00:30:16] So you can rescale them and change them.
+[00:30:19] But there is another point.
+[00:30:22] So let's go back to our example
+[00:30:24] and compare now ravioli and soup.
+[00:30:26] Now we know how to compare them.
+[00:30:29] We compare them by taking expectations.
+[00:30:32] So the expected utility, if you get ravioli,
+[00:30:35] is 3.5, as we already computed.
+[00:30:38] And the expected utility, if you
+[00:30:40] get the soup with these two probabilities is 2.8.
+[00:30:43] So it seems that a rational player, a rational user
+[00:30:47] should prefer ravioli.
+[00:30:50] Okay, good.
+[00:30:51] But what happens if you have multiple choices?
+[00:30:55] So instead of going to a direct consequences
+[00:30:59] of nature choice, you have further choices.
+[00:31:04] Maybe nature chooses multiple times.
+[00:31:08] So, maybe, if you have good, if you have bland ravioli, the utilities too. So, if you choose ravioli,
+[00:31:17] there is 50% ravioli, it's bland. It gives you immediate utility too. And with 50%
+[00:31:24] probability, you get a further choice. Because maybe tasty ravioli are also, I don't know,
+[00:31:31] it can be allergic to tasty ravioli, or not everyone likes them. So, raviolis are tasty,
+[00:31:37] But with 20% probability, you get 25 utility,
+[00:31:42] very high utility.
+[00:31:43] But with 80% probability, well, you cannot eat them.
+[00:31:46] So you get utility 0.
+[00:31:48] And same for soup in this case.
+[00:31:50] You have, let's say, 50% probability of getting 20
+[00:31:53] and 50% probability of getting 0.
+[00:31:55] So what can you do in this case?
+[00:31:58] Well, in this case, you can take compound expectations.
+[00:32:01] Because if you remember from probability and statistics,
+[00:32:05] if you take the expectation of the expectation,
+[00:32:09] it's like taking one single expectation.
+[00:32:12] So once again, the VNM framework tells you what to do.
+[00:32:16] You just take one single expectation.
+[00:32:19] It does not really matter
+[00:32:20] if you are taking expectations for one choice
+[00:32:24] or then another expectation for the subsequent choice,
+[00:32:28] or just take one big single expectation.
+[00:32:31] Well, this of course implies
+[00:32:32] that nature's choices are independent, one of another, but that might be reasonable
+[00:32:40] because we assume that nature is just a blind decider that takes the numbers to make the
+[00:32:47] decision randomly and independent of each number. Okay, so if this is the case, you can
+[00:32:54] check that this is actually the same lottery as before. I mean, here in the previous version
+[00:32:59] you had five, now you have the choice between 20% of 25 and 80% of zero. So that also gives
+[00:33:08] you an expected value of five. So it's the same decision as before. So again, you can
+[00:33:14] compare five versus two and determine that the expected utility of the upper branch
+[00:33:19] of the choice of R is still 3.5 and the expected utility of choosing S is still
+[00:33:24] 2.8. So in that case even the compound expectation is not difficult. What happens if you have a
+[00:33:32] continuous case? I told you that we won't consider continuous case most of the times but what
+[00:33:38] happens if you have a continuous case and you cannot avoid it? Well actually the representation
+[00:33:44] is identical it's just it's more difficult for me to represent this graphically because I
+[00:33:49] need a tree with infinitely many branches,
+[00:33:53] which is hard to represent.
+[00:33:56] But let's see an example to clarify things.
+[00:33:58] Let's say you want to dig a well, and you select how deep.
+[00:34:02] So the depth of the well is d meters,
+[00:34:06] and d is a continuous variable.
+[00:34:08] You can dig 0.1 centimeters.
+[00:34:10] You can dig 0.2 up to the Earth radius.
+[00:34:14] So you can dig like 6,000 kilometers and so on.
+[00:34:19] OK, well, this means that you get a continuous action.
+[00:34:24] And for the sake of evaluating, consider
+[00:34:28] that the cost of digging a well is d squared over 2.
+[00:34:32] Why d squared?
+[00:34:33] Because the deeper you dig, the more fatigued you are.
+[00:34:38] So to represent that, let's consider
+[00:34:40] that the effort you put into digging the well
+[00:34:43] is a quadratic function of the depth.
+[00:34:47] I mean, the reason is that's modeling.
+[00:34:49] It depends on your problem.
+[00:34:50] But some engineers told you that the effort
+[00:34:53] you must put into digging the well
+[00:34:54] is proportional to the square of d.
+[00:34:58] And the water you extract instead is random,
+[00:35:00] because you don't know how much water you're
+[00:35:02] going to extract.
+[00:35:03] You know how difficult it would be to dig the well.
+[00:35:06] That's not random.
+[00:35:07] But the benefit you get for digging the well is random.
+[00:35:12] It depends on whether you find water or not.
+[00:35:14] So we can say it's a uniform distribution between zero
+[00:35:18] and 20, meaning that you can even get zero,
+[00:35:21] even if you dig a very deep well,
+[00:35:25] or you can get more water.
+[00:35:27] Of course, if you dig a very deep well,
+[00:35:31] and there is a lot of water, you dig more water,
+[00:35:36] the deeper the well.
+[00:35:38] So the utility for digging the well is water minus effort.
+[00:35:42] So this is another example, a very short example,
+[00:35:45] of a modeling approach.
+[00:35:47] So this is what you need to awake in your mind
+[00:35:50] when approaching this course.
+[00:35:52] You learn the theorems, you memorize the concepts,
+[00:35:55] but now maybe in your mind you
+[00:35:56] have an engineering problem you
+[00:35:58] are facing for your master's thesis,
+[00:36:00] for your final project, for your internship, or whatever.
+[00:36:03] And you should think, OK, this problem
+[00:36:06] can be solved by this approach.
+[00:36:09] Now, who told you that the utility is water minus effort?
+[00:36:13] Nobody, I'm telling you.
+[00:36:14] So if you want to solve this, what
+[00:36:16] is the optimal decision to make?
+[00:36:18] Well, for example, you can say the utility,
+[00:36:21] given that you dig at depth d, is 10d minus d squared
+[00:36:25] half, correct?
+[00:36:26] It's the formula I put before.
+[00:36:28] Why 10d?
+[00:36:29] Because 10d is the expected value
+[00:36:32] of a uniformly distributed variable between 0 and 20d,
+[00:36:37] Correct?
+[00:36:38] OK, so if so, you can say that the utility, well,
+[00:36:42] the expected utility of digging 3.2 meters is this.
+[00:36:45] You just put 3.2 in this formula.
+[00:36:48] And so you can also show what is the rational best choice.
+[00:36:51] You just take the maximum of this function.
+[00:36:53] It's a very easy computation to make,
+[00:36:56] because you just take the first order derivative,
+[00:36:59] you set it to 0, you know the drill.
+[00:37:01] You know how to maximize a single variable function, right?
+[00:37:04] So you see that the best choice is to dig 10 meters.
+[00:37:08] 10 meters giving you 30 to 50,
+[00:37:10] meaning if you dig a well that is less than 10 meters,
+[00:37:15] you, well, don't get enough water maybe,
+[00:37:18] but after digging more than 10 meters,
+[00:37:20] the additional water you get on average
+[00:37:23] is not worth the effort.
+[00:37:25] Okay, this example hopefully clarifies things,
+[00:37:28] how to do this in the continuous case.
+[00:37:31] We won't see this very often.
+[00:37:33] actually probably will see only once in the entire course. But there is another thing that might be
+[00:37:39] bad in your mind now because I mentioned in previous lecture that utilities have no absolute
+[00:37:45] meaning. They only have an ordinal meaning and this is not entirely true. In general I said if
+[00:37:52] you want to compare three choices and you know the utility of each choice you don't really
+[00:37:58] care about the value.
+[00:38:00] If I tell you the values are, let's say, 3, 2, and 1,
+[00:38:04] well, what's the best one is the one that
+[00:38:06] gives you utility 3, so the first one.
+[00:38:08] And this is the same thing as saying, well, the three
+[00:38:11] alternatives give me different utilities that
+[00:38:14] are 10,000 billions, 0, and minus 20.
+[00:38:19] You still go for the first one
+[00:38:20] because the one with highest utility.
+[00:38:22] The real numbers don't really matter.
+[00:38:24] It just matter what is the biggest number.
+[00:38:29] Well, this is not true if you have
+[00:38:31] random elements in your game, in your decision problem.
+[00:38:34] Whenever you have random elements,
+[00:38:37] the absolute values do matter.
+[00:38:40] And to see so, consider that, again, in this problem,
+[00:38:44] you have S that gives you 100 is very tasty.
+[00:38:49] So you can say, well, the comparison between tasty soup
+[00:38:53] and bland soup is 10 versus one.
+[00:38:57] And somebody claims no is actually 100 versus one
+[00:39:00] because I really love the tasty soup
+[00:39:03] and that's my favorite one.
+[00:39:05] Well this changes your rational decision
+[00:39:07] because in this setup the rational decision
+[00:39:10] was to get the ravioli
+[00:39:11] because ravioli gives you a higher expected utility.
+[00:39:14] But if you put 100 here,
+[00:39:16] well now the expected utility you get from S is 20.8.
+[00:39:21] So it's much better to get the soup.
+[00:39:24] And this reflects that the utility of the tasty soup
+[00:39:27] is really, really high.
+[00:39:30] So this is a deviation from what
+[00:39:32] we argued that absolute values of the utility
+[00:39:36] don't matter.
+[00:39:37] The ordinal relationship is what matters.
+[00:39:40] But that's not true in the random setup.
+[00:39:42] Because in the random setup, if I replace 5, 2, 10, and 1
+[00:39:47] with 5, 2, 101, the order is still the same.
+[00:39:50] This case is the one with highest utility.
+[00:39:53] But is this high utility enough to change the preference
+[00:39:57] or not?
+[00:39:58] This is very important to discuss.
+[00:40:01] So when I say that if you add random elements,
+[00:40:05] you can extract expectations.
+[00:40:08] And after that, be back to the deterministic case.
+[00:40:11] Well, there are two things to say.
+[00:40:12] One is how to fall back to the deterministic case.
+[00:40:15] You just take expectations.
+[00:40:17] So you have no more lotteries.
+[00:40:19] You have choices that differ in terms of utility.
+[00:40:23] And this utility is the expected utility.
+[00:40:25] That's the rational thing to do, the smart thing to do.
+[00:40:28] But when you compute expectations,
+[00:40:31] you must be careful in that the value you insert
+[00:40:34] into the expectations you compute,
+[00:40:36] you might overlook them and say, well,
+[00:40:38] they don't really matter.
+[00:40:40] All that matters is the order.
+[00:40:41] Not true.
+[00:40:42] If this is an aggregation of expectations
+[00:40:45] to avoid the randomness.
+[00:40:47] And the problem is, well, after that, they really don't matter.
+[00:40:51] Because once you compare 3.5 versus 2.8 of expected
+[00:40:55] utility, you get the ravioli.
+[00:40:57] And what if the result was 3.5 versus 2.7?
+[00:41:02] Well, nothing changed, because the preference
+[00:41:05] is still the same.
+[00:41:06] You prefer ravioli over soup, because utility is higher.
+[00:41:09] So for the preference of ravioli versus soup,
+[00:41:13] after you computed expectation, so you remove randomness,
+[00:41:16] It's true that the absolute values don't matter.
+[00:41:20] But before doing so, before removing randomness,
+[00:41:24] and in order to remove randomness,
+[00:41:26] the absolute values do matter.
+[00:41:28] This is very important, and you have to remember.
+[00:41:31] So in short, in some problems, you
+[00:41:35] don't have any random element.
+[00:41:37] So you can be very, I mean, liberal in assigning utilities.
+[00:41:41] You don't care, as long as you
+[00:41:43] put numbers that reflect the order.
+[00:41:46] In other problems, where there is some random element,
+[00:41:50] you need to model your utilities carefully.
+[00:41:52] It's not enough to say, I prefer A over B.
+[00:41:56] You also need to mention how much you prefer.
+[00:41:59] And this is sometimes very tough,
+[00:42:01] because if you are comparing between two,
+[00:42:05] I don't know, destinations for your holidays,
+[00:42:08] well, maybe you prefer going to the beach
+[00:42:10] rather than going to the mountains.
+[00:42:12] But sometimes, when randomness occurs,
+[00:42:14] you have to weigh how much you love going to the beach
+[00:42:19] versus how much you love going to the mountains.
+[00:42:22] So this is very difficult to model.
+[00:42:24] And this is the task where the engineer inside you
+[00:42:29] comes into play.
+[00:42:33] So another thing that is relevant to the discussion
+[00:42:36] is risk attitude.
+[00:42:38] And this is also meant to dispel a confusion
+[00:42:40] that many students have in terms of comparing alternatives. So consider a scenario where
+[00:42:48] you can get three possible outcomes. One possible outcome is you win nothing. Another
+[00:42:53] possible outcome is you win one euro and another possible outcome is you win 20 euros.
+[00:42:59] And consider two lotteries. In one lottery you get one euro, period. There is no uncertainty,
+[00:43:06] is a degenerate lottery.
+[00:43:09] In Lottery B, you have 5% chance of winning 20 euros
+[00:43:14] and 95% chance of winning nothing.
+[00:43:19] So the expected outcome is always the same.
+[00:43:24] But this is not to be confused
+[00:43:27] with expected utilities, because expected utility is not
+[00:43:31] the same.
+[00:43:32] It depends.
+[00:43:32] The speciality is u of x2 for lottery A,
+[00:43:37] and 95% of ux1 plus 5% of ux3 for lottery B.
+[00:43:42] So this is very important.
+[00:43:43] And this justifies why people play lotteries.
+[00:43:47] Because from the expected money point of view,
+[00:43:51] the money you can expect from the two lotteries is the same.
+[00:43:55] But this is actually a representation
+[00:43:57] of what happens in real life.
+[00:43:58] You have one year in your pocket,
+[00:43:59] You see the lottery, the grand lottery, and you are tempted to buy a ticket.
+[00:44:07] And they tell you, if you buy a ticket, you pay one euro only, but you can win 20 euros.
+[00:44:13] Well, and the probability of winning 20 euros is actually, in this case, 5%.
+[00:44:17] So this is a fair lottery. Well, actually, many lotteries are not fair.
+[00:44:21] But yet, people might prefer to play the lottery, to play the real lottery and not the degenerate lottery.
+[00:44:26] The generator lottery means you keep your money.
+[00:44:29] But many people prefer to play the lottery.
+[00:44:31] Why?
+[00:44:32] Because the expected money you get is maybe the same,
+[00:44:38] or maybe it's lower in real world lottery.
+[00:44:40] The expected money you get is lower
+[00:44:42] because the probability of winning are very, very low.
+[00:44:45] But you think, yeah, but if I win, I get a lot of money.
+[00:44:49] And this has to do with the utility
+[00:44:52] you have when getting a lot of money.
+[00:44:54] The idea is that many people think, well,
+[00:44:56] my utility of one euro in my pocket
+[00:44:58] is not zero, of course, because one euro, I can buy things.
+[00:45:02] I can buy a coffee, really.
+[00:45:03] Not much.
+[00:45:04] So my utility is not very high.
+[00:45:07] And so utility of having one euro in my pocket
+[00:45:10] is close to the utility of having zero euro in my pocket.
+[00:45:14] But utility of having 20 euros sounds kind of interesting.
+[00:45:18] I can buy more things with 20 euros.
+[00:45:20] And in real world lotteries,
+[00:45:22] You have to compare the utility of having one euro in your pocket with the utility of having a
+[00:45:30] Billion euro as the award for the lottery you win the super prize, right? So you are super super rich and that's a very high utility
+[00:45:39] So, of course the probability of getting that high utility is very low
+[00:45:44] But if you make the way the combination
+[00:45:46] And some people might think my personal utility,
+[00:45:49] what do you know about my personal utility?
+[00:45:51] My personal utility of being super rich is very high.
+[00:45:54] So it depends.
+[00:45:57] This has nothing to do with rationality
+[00:45:59] because a rational player always prefers
+[00:46:02] the highest utility.
+[00:46:03] But the question is,
+[00:46:05] what is your utility of getting X euros?
+[00:46:09] So you can classify this into risk attitude.
+[00:46:12] And important, this has nothing to do with rationality.
+[00:46:16] I'm not saying that rational player
+[00:46:18] have a given risk attitude.
+[00:46:21] They're all different attitudes
+[00:46:23] that rational player might have.
+[00:46:25] Rationality only means you go for higher utility.
+[00:46:28] And that's something everybody does.
+[00:46:31] The question is, what is your higher utility?
+[00:46:35] Okay, so if you are risk neutral,
+[00:46:38] you see A and B as perfect substitute.
+[00:46:41] So they are perfectly equivalent. You don't see any difference in winning one euro, guaranteed,
+[00:46:49] or betting for 20 euros with five percent probability. So if you are evaluating everything
+[00:46:56] from the strict mathematical point of view, they are of course fair choices, this is a fair
+[00:47:00] game. If you are a risk averse player, you say well I don't like taking chances, so I prefer
+[00:47:07] one euro with constant probability of one, there is no uncertainty, give me one euro, I don't want
+[00:47:13] to play the lottery. Then you say you are a risk averse and instead some other players might be
+[00:47:19] risk loving, so they prefer betting in order to win more money even though the probability
+[00:47:25] is lower. And you see in this case the lottery is perfectly fair, so the alternatives
+[00:47:31] is give the same expectation in terms of value.
+[00:47:36] But what you should compare is not the expected value,
+[00:47:40] but the expected utility of the values you can get.
+[00:47:44] And this justifies why people play lottery,
+[00:47:46] because they are risk-loving.
+[00:47:48] They love the good feeling that risking something,
+[00:47:52] betting something gives.
+[00:47:55] And other people say, well, no, I don't like risking money.
+[00:47:59] I want my steady money here, okay?
+[00:48:03] So important to compare that this is based on the outcomes
+[00:48:09] and not on the utilities.
+[00:48:11] So the utilities can be used like this.
+[00:48:15] So if you have a linear utility,
+[00:48:19] then you are risk neutral,
+[00:48:20] because you evaluate things
+[00:48:23] as the linear combination of the expectation.
+[00:48:26] Remember, you take expected utility.
+[00:48:28] So if your utility is already linear,
+[00:48:31] well, the linear combination is the expectation
+[00:48:33] of a linear function is, again, linear.
+[00:48:37] So then you are risk neutral.
+[00:48:38] If you compare the two outcomes,
+[00:48:41] they have the same utility for you,
+[00:48:42] because they have the same expected outcome and also
+[00:48:45] the same expected utility.
+[00:48:47] Then instead, if you have a concave U,
+[00:48:51] it means you don't like very much.
+[00:48:54] I mean, you don't like as much, this much money.
+[00:48:57] so you actually are risk-averse. You prefer less money, but with higher probability.
+[00:49:04] And if your utility is convex, so it's rapidly increasing, then you are risk-loving, because you prefer
+[00:49:11] having more money, albeit with lower probability.
+[00:49:15] So in general, the point here is, again, I mentioned, if you have a linear
+[00:49:20] function of utility, well, this changes nothing. If you have a linear transformation of your utility, it changes nothing.
+[00:49:27] But any monotonic transformation of your utility
+[00:49:30] does not change the preference order.
+[00:49:33] If I have utilities in order 1, 2, 3,
+[00:49:36] and I apply a transformation, instead of mapping them
+[00:49:39] to 1, 2, 3, I map them to the square.
+[00:49:43] So they become 1, 4, 9.
+[00:49:45] The order is still the same.
+[00:49:46] The higher the number, the higher it's square.
+[00:49:49] And also, if I take the logarithm,
+[00:49:50] which is instead a concave function,
+[00:49:53] And I don't change the preference, right?
+[00:49:57] So the order of preference is still the same.
+[00:49:59] So what does change?
+[00:50:02] It's the risk attitude that changes.
+[00:50:05] Because if you have a convex utility, it changes your risk.
+[00:50:09] You become more risk-loving.
+[00:50:11] And if you have a concave view,
+[00:50:13] then you are more risk-averse, you see.
+[00:50:17] And this is very important.
+[00:50:18] It might take some time to digest.
+[00:50:20] So think, and if you are watching the video, pause it
+[00:50:23] and think carefully about it.
+[00:50:26] The thing is, just to remember, so I'm not
+[00:50:29] claiming that expected utility theory claims
+[00:50:34] that it's the same to bet two euros on a coin flip
+[00:50:40] or getting one euro always.
+[00:50:42] I never said that.
+[00:50:43] This depends on your risk attitude.
+[00:50:46] But expected utility theory means
+[00:50:48] that if your utility function is ux equal to x,
+[00:50:52] so your utility is exactly the value then you don't have a preference you are indifferent between
+[00:50:59] the two lotteries the one where you gamble or the one we have the steady money with a fair lottery
+[00:51:05] okay but if you are risk averse or risk loving so you have a different risk attitude you
+[00:51:12] might prefer one lottery over the other because they give a different utility for the same
+[00:51:17] expected value, different expected utility,
+[00:51:21] but same expected value.
+[00:51:23] So you don't compare the values unless your utility
+[00:51:26] is equal to the value.
+[00:51:27] You compare the utilities.
+[00:51:29] That's another interesting topic related to this,
+[00:51:33] which is decision over time.
+[00:51:36] So we already saw what happens
+[00:51:37] if we have multiple choice made by nature in a row.
+[00:51:41] We just take compound expectations.
+[00:51:43] And what happens if we have multiple choices made
+[00:51:46] by a single player in a row, well, we just
+[00:51:49] merge and collapse all of them in a single decision made
+[00:51:52] once in a row.
+[00:51:53] What happens if the player's decision and nature's
+[00:51:57] decision alternate?
+[00:51:59] And to consider that, we see one example.
+[00:52:03] So let's face, again, the canteen problem.
+[00:52:06] The canteen problem is, well, you go to the canteen.
+[00:52:08] You have, again, the choice between ravioli and soup.
+[00:52:12] If you order ravioli, then the canteen lady
+[00:52:14] tells you do you want extra cheese on top and this is a difficult choice because well generally
+[00:52:21] if you add extra cheese on top the ravioli become even tastier so why not but well the quality of
+[00:52:30] the cheese of the canteen is not so good sometimes the cheese of the canteen is spoiled
+[00:52:35] and if they put extra cheese on top of your ravioli and the cheese is spoiled
+[00:52:39] well, you throw away the food, you don't eat it,
+[00:52:43] so your utility will be zero.
+[00:52:46] So let's give these numbers just to estimate
+[00:52:48] a sensible problem.
+[00:52:50] Assume that the cheese is of good quality
+[00:52:52] with 60% probability.
+[00:52:53] This might be a bit of an overestimate
+[00:52:55] of how often they have good cheese at the canteen,
+[00:52:59] but whatever.
+[00:53:00] And if you add good cheese on top of the ravioli,
+[00:53:04] if the ravioli were tasty,
+[00:53:06] remember ravioli had 50% probability of being tasty
+[00:53:09] by themselves, and 50% probability of being bland.
+[00:53:12] Well, if they are tasty, the natural utility they had
+[00:53:15] was five, but with cheese on top, they become super good,
+[00:53:18] and the utility becomes 10.
+[00:53:21] Instead, if they are bland, well,
+[00:53:23] they get better with good cheese on top,
+[00:53:25] but not so good, the utility is three.
+[00:53:28] But if you put bad cheese on top, it's always zero,
+[00:53:33] because you want it to eat the ravioli.
+[00:53:35] So now this gives the following tree.
+[00:53:39] First, P chooses between ravioli and soup.
+[00:53:42] The nature determines if, well, if you choose ravioli,
+[00:53:45] if ravioli are good or bad,
+[00:53:47] and if you choose a soup, if soup is good or bad.
+[00:53:49] And this is asked before,
+[00:53:51] but the game ended there before.
+[00:53:53] Now we have a first choice by player P,
+[00:53:56] where player P is asked, you want extra cheese?
+[00:53:58] So extra cheese is E, and no cheese is N.
+[00:54:01] So if no cheese, again, the decision ends,
+[00:54:05] and we have a final outcome, giving utility five or two,
+[00:54:09] depending on the cases, whether the ravioli are good or bad.
+[00:54:15] But if player B decides to put extra cheese on top,
+[00:54:19] then there is a further choice by nature between bad cheese
+[00:54:23] and good cheese.
+[00:54:24] Actually, between good cheese, probably 60% of bad cheese.
+[00:54:26] And the utilities are 10 and 0 or 3 and 0.
+[00:54:29] So this is very difficult to solve now,
+[00:54:31] because we cannot take compound expectation.
+[00:54:33] We cannot merge these two expectations, these two
+[00:54:36] evaluation of natures, these two random choices
+[00:54:38] into a single one, because we don't know if we're going
+[00:54:42] to add the second one.
+[00:54:43] If the first one we have for sure, but after that,
+[00:54:47] there is P's decision to make.
+[00:54:49] And if P decides not to go for extra cheese,
+[00:54:52] there is no further choice by nature, so we cannot combine
+[00:54:55] them.
+[00:54:56] So there is a procedure to solve this kind of problems,
+[00:55:00] which is very common in engineering.
+[00:55:02] It's also very known, but with a different name.
+[00:55:03] So engineers often call this dynamic programming,
+[00:55:07] because they explore this tree.
+[00:55:09] And for every branch of the tree,
+[00:55:10] they make the best decision in a dynamic fashion.
+[00:55:12] But there is a standard procedure
+[00:55:14] to solve this in economics, in game theory, which
+[00:55:17] is called backward induction.
+[00:55:19] It's the same thing, actually, as dynamic programming.
+[00:55:21] But it is called like that, because game theories
+[00:55:25] are mathematicians.
+[00:55:26] So they call it induction, because it sounds
+[00:55:28] more math-y, and they also, it goes backwards.
+[00:55:34] So this is why we call it backward induction.
+[00:55:36] So let's see how it works.
+[00:55:38] It goes like this.
+[00:55:39] So first of all, you classify all nodes
+[00:55:43] where there is an action made by P.
+[00:55:48] And we classify them into groups.
+[00:55:51] Group one is made of all the nodes
+[00:55:53] after which there is no further action by P.
+[00:55:57] there is no further possible action by p.
+[00:56:01] So after that node, it's only choices made by nature
+[00:56:06] or end nodes, so you reach the end of the tree, OK?
+[00:56:11] Instead, group k, in general, are
+[00:56:14] nodes that are followed by at least one group k minus 1
+[00:56:19] without any higher order node.
+[00:56:22] So first of all, we identify group 1 nodes,
+[00:56:25] and then the nodes that are not group one,
+[00:56:30] they might be group two if they are only followed
+[00:56:32] by nodes with order higher than, sorry,
+[00:56:37] not higher than one.
+[00:56:39] So in the previous examples, we just have two groups.
+[00:56:42] So let's see this.
+[00:56:44] We have the orange nodes and the yellow node
+[00:56:46] where there is a move made by P.
+[00:56:50] Well, these two nodes are clearly group one, right?
+[00:56:55] because after P moves here or here,
+[00:56:58] there is no further choice by P.
+[00:57:00] There might be a choice, but made by nature.
+[00:57:03] So this is group one.
+[00:57:05] Well, this yellow node is group two instead
+[00:57:07] because it is followed by group one nodes.
+[00:57:11] You can claim, well, but actually if you choose S,
+[00:57:14] there is no group one node.
+[00:57:15] Well, it doesn't matter.
+[00:57:17] Group, these are group two nodes
+[00:57:18] because there are possibilities
+[00:57:20] where this node is followed by group one.
+[00:57:22] So it must be a group two.
+[00:57:25] And if there is another node backward in the tree,
+[00:57:28] like upwards in the tree, then it
+[00:57:30] would be a group three node, and so on.
+[00:57:33] So this is how we classify the nodes.
+[00:57:37] And now the reasoning goes like this.
+[00:57:39] Group one nodes are like our original program.
+[00:57:43] They don't involve multiple decisions.
+[00:57:45] If we ever reach an orange node, a group one node,
+[00:57:49] player P knows what to do.
+[00:57:51] because player P can solve the problem the usual way.
+[00:57:56] Of course, this is made in two steps.
+[00:57:58] First of all, taking expectations of all natural choices.
+[00:58:01] So we remove all natural choices
+[00:58:03] and then we go for high utility.
+[00:58:05] So this is something that player P
+[00:58:07] is always able to do in the orange nodes.
+[00:58:10] It cannot be done in the yellow node
+[00:58:11] because we cannot take expectations right now.
+[00:58:15] Okay, so what happens is that rational P
+[00:58:19] can remove all the group one nodes
+[00:58:23] and solve them by maximizing the expectability.
+[00:58:27] After doing so, you can basically remove
+[00:58:31] all group one nodes because they are no longer there.
+[00:58:33] They are no more decision points.
+[00:58:36] And this means that there are no more
+[00:58:39] group one nodes in the tree.
+[00:58:41] And this means that all group K nodes
+[00:58:43] become group K minus one.
+[00:58:45] Let's see why this works in practice.
+[00:58:49] In this scenario, well, player P at this node
+[00:58:52] knows what to do.
+[00:58:54] Well, she should compare E versus N.
+[00:58:56] What's best?
+[00:58:57] Well, N gives always five.
+[00:58:59] E we don't know yet because we need to take expectations.
+[00:59:02] What's expectation?
+[00:59:03] Easy, expectation is six.
+[00:59:06] The expected utility when choosing E is six.
+[00:59:08] So six is better than five,
+[00:59:10] which means that player P should not choose N.
+[00:59:14] So now you see this orange node
+[00:59:15] is no longer a decision point.
+[00:59:17] Player P has no choice.
+[00:59:20] I mean, this goes straight to this point.
+[00:59:23] And same happens below, but the choice is different
+[00:59:25] because here the comparison is between 1.8,
+[00:59:28] expected utility versus two, which is better.
+[00:59:31] So we remove this, okay?
+[00:59:33] So now at this stage,
+[00:59:34] we basically removed the orange nodes,
+[00:59:38] meaning that they are no longer choices to be made.
+[00:59:42] This is a rational player will always make this choice
+[00:59:45] to go for E here and to go for N here.
+[00:59:51] Very good, so at this point,
+[00:59:53] we are left with the expectations
+[00:59:55] and we know what to get.
+[00:59:57] If we go in this orange node,
+[00:59:59] we get an expected six.
+[01:00:01] In this orange node, we get an expected two.
+[01:00:04] And now we can reduce the problem
+[01:00:06] by eliminating the orange nodes.
+[01:00:09] Remember the yellow node was a group two node
+[01:00:11] because we said it cannot be a group one node
+[01:00:14] because it is followed by group one nodes,
+[01:00:17] some group one nodes, but we removed the group one nodes.
+[01:00:20] So now the yellow node, the root node, is now group one.
+[01:00:25] And there is only one point
+[01:00:26] where this decision is to be made,
+[01:00:28] which is the yellow node, which is a group one node.
+[01:00:31] Okay, let's see how this goes.
+[01:00:34] So now you have this problem.
+[01:00:36] You eliminated the orange nodes.
+[01:00:38] You are left with the root node only.
+[01:00:41] And this is, again, a very simple problem.
+[01:00:42] you compare the expected utility of R, which is 4 now,
+[01:00:47] with the expected utility of S, which is still 2.8.
+[01:00:49] And you go for S. So R is preferred of S
+[01:00:52] because it gives higher expected utility.
+[01:00:56] So this is, again, something that is easy to implement.
+[01:01:01] And once you've got it, it's actually very mechanical.
+[01:01:03] It's also clear why it's called backward induction
+[01:01:06] because you eliminate every layer of nodes,
+[01:01:10] every group of nodes one by one. Even if we had like group three nodes we keep iterating the
+[01:01:16] procedure until you eliminate and by induction law you go eliminating all the layers and you
+[01:01:22] have no more uncertainty, no more decision to be made because you know what rational players
+[01:01:27] will do. And you go backwards in the tree because you go from leaf nodes up to the root.
+[01:01:33] Okay. Well, one quick remark is also that since we claim that these decisions happen over time,
+[01:01:42] in reality sometimes you can always have a discount factor just to add something in the mix.
+[01:01:48] We mentioned the discount factor, maybe a better engineering way of modeling the
+[01:01:52] problem would be okay but you want extra cheese on top, right? Yeah, but extra cheese takes time
+[01:01:58] to be delivered maybe.
+[01:01:59] And so maybe extra cheese on top is tastier,
+[01:02:03] but also takes time.
+[01:02:04] So you're not sure that the utility is gonna be 10,
+[01:02:07] maybe it's 10 delta,
+[01:02:09] where delta expresses how much it takes
+[01:02:12] for the food to be delivered.
+[01:02:16] You have a longer delay
+[01:02:18] because they have to get extra cheese one on top.
+[01:02:21] So maybe you can say, well, sorry,
+[01:02:22] forget about the extra cheese because it takes too long.
+[01:02:25] So this really depends on the value you put here.
+[01:02:28] So even though this is not really game theory,
+[01:02:31] it's more decision theory, it's more generic,
+[01:02:33] I mean, you can expect also the question
+[01:02:35] of what is the discount factor
+[01:02:37] that changes the preference,
+[01:02:38] because you see, preference here was E versus N
+[01:02:43] in this orange node,
+[01:02:45] because six, the expected activity was better than five.
+[01:02:48] But if delta is lower than one,
+[01:02:49] it might be that you no longer prefer
+[01:02:52] to have extra cheese on top,
+[01:02:53] because it takes too long.
+[01:02:54] And so this changes really the dynamics of the decision.
+[01:02:58] And this can be very interesting to see in practice
+[01:03:01] while not in the canteen problem, which is kind of silly,
+[01:03:03] but in an engineering problem.
+[01:03:06] Clearly, the value of delta has an impact.
+[01:03:09] And so sometimes you might want
+[01:03:12] to model the problem carefully by considering
+[01:03:14] the value of delta and also this value of utility
+[01:03:16] because maybe the value you get is not 10 but very high.
+[01:03:20] And so you are even willing to accept
+[01:03:24] a very low discount factor.
+[01:03:26] You don't care.
+[01:03:26] You wait a lot, but still, you will get a very good result
+[01:03:30] in the end.
+[01:03:31] Who knows?
+[01:03:31] So this also depends on these parameters.
+[01:03:37] Good.
+[01:03:38] And the final things we discuss in this lecture
+[01:03:40] is the value of information.
+[01:03:43] The value of information, I mention it
+[01:03:44] because it's in the catalysis book.
+[01:03:46] And it is a nice addition to information theory.
+[01:03:50] So already, you might have seen information theory
+[01:03:52] in your bachelor courses, or you might wondering
+[01:03:54] if you take information theory in your master courses.
+[01:03:57] Well, information is a tricky thing to define.
+[01:04:00] And so we are not referring here
+[01:04:02] to information in the information theory sense,
+[01:04:05] in the Shannon's sense.
+[01:04:07] We are referring this to another way of computing
+[01:04:10] the value of information.
+[01:04:12] The value of information in information theory
+[01:04:14] telecommunications is something that
+[01:04:17] quantifies how much novelty you gain,
+[01:04:20] and it's related to the unlikelihood.
+[01:04:23] I mean, if there is an event with very low probability
+[01:04:26] that happens, you get a lot of information, right?
+[01:04:30] Well, here we take another perspective,
+[01:04:31] which is more economic based.
+[01:04:35] So we said that rational players
+[01:04:39] make their decision on average.
+[01:04:42] And this is because they don't know
+[01:04:46] the utility they can get from their actions,
+[01:04:51] they just know what to expect.
+[01:04:53] And so they make a bet in some way anyways,
+[01:04:57] because they assume that it's best to take the expectation.
+[01:05:02] I mean, the reason why we take the expectation
+[01:05:04] is justified by the mathematicians,
+[01:05:07] by von Neumann and Morgenstern.
+[01:05:08] But still, it does not reassure us entirely,
+[01:05:12] Because, I mean, if we compare, remember the example
+[01:05:16] of the ravioli and soup, you say, well, the basic,
+[01:05:19] let's go back to the basic example of ravioli and soup.
+[01:05:22] You say ravioli and soup, well, this is the best example.
+[01:05:25] We end up in taking ravioli.
+[01:05:27] Well, too bad, maybe you were in the situation
+[01:05:31] where today at the canteen, ravioli were not so good
+[01:05:35] and soup was super good.
+[01:05:37] Sometimes this happens.
+[01:05:38] So sometimes you realize you made the wrong decision,
+[01:05:42] but before that, it was the right decision to make
+[01:05:46] because the expected utility framework guarantees
+[01:05:49] that if you do this a billion times,
+[01:05:53] you will end up better in choosing ravioli than soup.
+[01:05:56] Still, it doesn't mean that every single time
+[01:05:59] choosing ravioli is better.
+[01:06:00] Sometimes choosing ravioli is worse.
+[01:06:02] And the problem is you don't know in advance.
+[01:06:05] So this discussion about the value of information
+[01:06:08] is actually related to what happens if you do know.
+[01:06:12] So what if you knew in advance what to choose?
+[01:06:18] Okay, so the idea would be like this.
+[01:06:20] Let's go to the canteen.
+[01:06:21] And on our way to the canteen,
+[01:06:24] we meet a friend who has already been to the canteen
+[01:06:27] and he has already tried the food.
+[01:06:30] So he's willing to tell us,
+[01:06:33] well you know today you should really order the ravioli or today the soup is better he knows
+[01:06:40] but i mean since an engineer he's willing to tell us for a price so how much should we pay him
+[01:06:48] for this information so the thing is well maybe he does not we don't pay him in monetary
+[01:06:57] returns, we just give him some benefit,
+[01:07:00] like we give him a free coffee or whatever.
+[01:07:04] We are grateful to him.
+[01:07:05] So he's happy.
+[01:07:06] But how much should we reward our friend
+[01:07:10] that tells us in advance how good is the ravioli,
+[01:07:14] how good is the soup in exchange for this information?
+[01:07:18] How much?
+[01:07:20] Well, there is a way of phrasing this.
+[01:07:22] So if we anticipate this, we know that, okay,
+[01:07:28] the friend knows we don't, but we as rational,
+[01:07:32] we are smart, we can take expectation.
+[01:07:35] So the only difference in our decision,
+[01:07:38] if we know the information that our friends know
+[01:07:41] or we don't, is that we don't need to take expectation
+[01:07:44] still some random elements is there.
+[01:07:47] So you see the trick is really that knowing
+[01:07:50] or not knowing does not change the problem at stake. There is still ravioli, there is still
+[01:07:56] a canteen, there is still soup. Sometimes the soup is better, sometimes ravioli is better.
+[01:08:01] The only thing that changes is the moment where we make our decision. We make our decision
+[01:08:09] after knowing nature's choice or before knowing nature's choice. So the thing is we can
+[01:08:16] change the problem if we know, because our friend told us,
+[01:08:20] if Ravioli is better, we know what is NATO's choice.
+[01:08:24] So you see, this is an equivalent situation,
+[01:08:28] but in which the player moves after NATO's choice.
+[01:08:32] So the player is fully aware of what NATO has chosen.
+[01:08:36] And remember, NATO has two choices to make, actually.
+[01:08:41] NATO chooses good or bad Ravioli,
+[01:08:43] and it has probability 50-50, and good and bad soup.
+[01:08:46] Probities are 20% and 80%.
+[01:08:49] So if these choices of nature are independent of each other,
+[01:08:54] it means there are four possible cases.
+[01:08:57] Good ravioli and good soup, good ravioli and bad soup,
+[01:09:00] and so on and so forth.
+[01:09:02] So good ravioli and good soup has probability 10%.
+[01:09:05] And same bad ravioli and good soup has probability 10%.
+[01:09:09] And then bad ravioli and bad soup has probability 40%,
+[01:09:13] and good ravioli and bad soup is probably 40%.
+[01:09:16] So these are the four events that can happen.
+[01:09:19] So you see here, for example, they're both good.
+[01:09:23] Probability 10%.
+[01:09:24] So if you choose ravioli, it's 5, 2 soup is 10.
+[01:09:27] And this you can check.
+[01:09:29] This is true for every other point in the tree.
+[01:09:32] But the point is here that now p moves after n.
+[01:09:37] And this is meant to represent that p knows what
+[01:09:40] of the four situations are we in.
+[01:09:43] You see, now p choice is very easy.
+[01:09:46] p doesn't even need to take expeditions.
+[01:09:48] p can always choose that in the first branch,
+[01:09:51] you choose 10.
+[01:09:53] In the second, you choose s, that gives you 10.
+[01:09:55] In the second case, you choose still s, that gives you 10.
+[01:10:00] In the third branch, you choose r.
+[01:10:02] In the fourth branch, you choose r.
+[01:10:03] So how often does the first scenario happen?
+[01:10:07] Only 10% of the cases.
+[01:10:09] And in the second scenario, also 10% of the cases.
+[01:10:12] The third scenario, 40% of the cases, and so on.
+[01:10:15] So what is your expected utility in this different situation?
+[01:10:18] This is a different decision.
+[01:10:19] You decide after net worth choice.
+[01:10:22] Your expected utility is 4.8.
+[01:10:25] There is no gambling.
+[01:10:26] There is no expectation to make.
+[01:10:27] But you can compute expectation based
+[01:10:30] on the four possible cases.
+[01:10:32] Each one weighted on their probability.
+[01:10:33] So you see that knowing is, well, knowledge is power.
+[01:10:39] Knowing more is better, it improves your situation
+[01:10:42] because now you get 4.8 opposite to 3.5
+[01:10:48] which was your expected utility.
+[01:10:50] In the previous case where you didn't know this one,
+[01:10:54] you always choose R, you always get,
+[01:10:57] well, on average you get 3.5,
+[01:10:59] sometimes you get five, sometimes you get two.
+[01:11:01] you never get a soup, not even when it is tasty.
+[01:11:05] In this case, you know when the soup is tasty
+[01:11:08] and you take it, so you get a bigger utility.
+[01:11:10] And this bigger utility is representative
+[01:11:13] of your improved welfare due to knowledge.
+[01:11:17] And so this can be used as a representation
+[01:11:20] because if you do know, so the expected utility,
+[01:11:24] given that you have knowledge is 4.8
+[01:11:26] and the expected utility of not knowing
+[01:11:29] when we don't know, is 3.5.
+[01:11:31] You always select r, and you get 3.5 on average.
+[01:11:35] So this means that an equivalent way
+[01:11:37] of representing the value of information, which
+[01:11:39] is, again, not to be confused with Shannon's theory,
+[01:11:42] but it's just a way of monetarily evaluating
+[01:11:46] the information that someone else have,
+[01:11:49] and you want to include into your problem.
+[01:11:54] So if you do, you get into a different decision problem,
+[01:11:59] where the order of decision is reverted.
+[01:12:03] You decide after knowing what nature's choices were.
+[01:12:08] And this gives you a bigger utility
+[01:12:10] because you have no more uncertainty.
+[01:12:13] And this can be seen as the incremental value
+[01:12:17] you have to pay.
+[01:12:18] So if you meet your friend after the canteen
+[01:12:20] and the friend is willing to tell you
+[01:12:21] if ravioli is good, if soup is good,
+[01:12:23] But he tells you for a price, how much should you pay him?
+[01:12:27] Well, you should give him 1.3, whatever it is, 1.3.
+[01:12:31] It depends if this is measured in euros.
+[01:12:33] It's measured in, I don't know,
+[01:12:35] pizzas, if it's measured in, I don't know,
+[01:12:40] girth number you want to share with him.
+[01:12:42] So this is the reward you should
+[01:12:44] give to this friend in exchange for this added value
+[01:12:47] he brings you with his knowledge.
+[01:12:49] And this is important because you can quantify it.
+[01:12:54] But besides, consider this as a nice extension,
+[01:12:58] not really, I mean, this is not related to in any way
+[01:13:01] to other engineering concepts,
+[01:13:02] but is sometimes a useful evaluation
+[01:13:05] that also explains to you why knowing
+[01:13:08] and avoiding randomness can be beneficial
+[01:13:10] because you made a more informed decision
+[01:13:13] and a better one.
+[01:13:14] Okay, and this actually concludes the lecture for today.

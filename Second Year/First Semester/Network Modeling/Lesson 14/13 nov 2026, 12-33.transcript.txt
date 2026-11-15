@@ -1,0 +1,719 @@
+[00:00:01] On the link, the link was equipped with a buffer,
+[00:00:10] capacity C. The buffer on the certain side,
+[00:00:16] here we have a combination control
+[00:00:17] that decides whether to assign a new call in the system
+[00:00:24] or not.
+[00:00:27] We were wondering how to compute the buffer size in
+[00:00:33] in order to link the congestion probability,
+[00:00:49] is less than or equal to a certain threshold.
+[00:00:58] So we said that we have a congestion whenever
+[00:01:01] the incoming traffic, like we can call it time t here,
+[00:01:07] exceeds the capacity and the buffer is full.
+[00:01:26] But here, t denotes the time t.
+[00:01:42] So the amount of data that are buffered by time t.
+[00:01:48] But at the end of the paper's lecture I said that a convenient way to compute an upper bound is to pretend that the queue has an upper as an infinite capacity
+[00:02:02] and analyze the case of the probability that with this, an upper bound, if you write it explicitly,
+[00:02:13] an upper bound forming capacity, and analyzing the probability that
+[00:02:57] if it exceeds a certain threshold that we set equal to the actual, to the buffer size that we want.
+[00:03:07] Why is it more convenient to do that? Because if we consider a system where the buffer is actually needed to be to a certain value,
+[00:03:23] then the process describing the queue size is transferred.
+[00:03:30] I mean that QT cannot exceed B, because whenever the buffer is full, you cannot add more Qs.
+[00:03:42] And this somehow requires you to also consider explicitly the arrival process together with QT
+[00:03:53] in order to determine the congestion condition.
+[00:03:55] If you remove this condition, so if you assume that the buffer has actually an infinite capacity
+[00:04:02] then you can observe the process beauty without any cut
+[00:04:09] so without any sensory event, you can analyze its dynamics in time
+[00:04:22] and it is easier to describe this process than to describe the theorem
+[00:04:27] this process and this one
+[00:04:30] doing that, so by pretending that the queue is infinite
+[00:04:34] and then just considering the congestion probability
+[00:04:38] at the probability that the prevented queue is larger than the certain threshold
+[00:04:42] at this side
+[00:04:43] otherwise you are not bound to the actual congestion probability
+[00:04:46] why? because if you consider
+[00:04:50] That's an intuitive explanation, but I'll give you the idea.
+[00:04:55] So suppose that you have a situation like this.
+[00:04:58] This is the link capacity C.
+[00:05:04] And your input traffic is like this.
+[00:05:08] So it goes above C for a certain time.
+[00:05:15] Then suppose that now that we have an infinite field,
+[00:05:18] OK.
+[00:05:20] Then it was in the load value of C for some time.
+[00:05:24] Then it was up again in some place.
+[00:05:27] So if we are leaving Q, all this excess traffic
+[00:05:32] will be cured in the Q. And then it will progressively
+[00:05:36] be transmitted here.
+[00:05:38] If you go Q of Q, 0 after this time.
+[00:05:49] Then when the input traffic exists at capacity,
+[00:05:52] you start accumulating some data here.
+[00:06:00] At this point, the Q continues growing,
+[00:06:11] but with the task after this point.
+[00:06:17] Here you reach the maximum size for this time.
+[00:06:22] And then here the lead rate drops below the capacity
+[00:06:26] of the loop.
+[00:06:27] And so the output rate will remain equal to C
+[00:06:31] because we have the attack in the buffer,
+[00:06:34] that the Q will progressively be empty, right?
+[00:06:37] So after a while, the Q will be emptied, maybe at this point.
+[00:06:43] If this area is equal to this one,
+[00:06:46] then at this point it will be empty, right?
+[00:06:56] From A, and this one is also A.
+[00:06:59] So at this point, it is empty,
+[00:07:01] and then it will be sealed, right?
+[00:07:04] And from here, it starts pulling up again.
+[00:07:07] This is the behavior that you have assuming that the buffer is infinite.
+[00:07:14] If you wonder, is this set of thresholds, this buffer with Q here, right?
+[00:07:24] You have a certain probability that the Q goes beyond this threshold.
+[00:07:31] Linking your observation to this time interval here,
+[00:07:35] well, the probability from beyond threshold is given by the time the Q is above the threshold over the overall time.
+[00:07:42] So the probability will be given by the length of this interval
+[00:07:46] divided by the length of the observation period capital T.
+[00:07:52] This is the fraction of time in which the Q is above the threshold.
+[00:07:59] If you consider a system where the battery is actually limited to B,
+[00:08:08] then in that system the Q will stay at the very B
+[00:08:14] because it's locked, right?
+[00:08:20] I can't change color, but I will just
+[00:08:23] go with a thicker line.
+[00:08:25] So up to this point, the behavior
+[00:08:27] would be the same that we observed.
+[00:08:30] But beyond this point, the thing is cool.
+[00:08:33] So this extra traffic is actually lost.
+[00:08:36] Let me call this one.
+[00:08:48] Here we are, OK?
+[00:08:50] So this traffic cannot anchor the view.
+[00:08:58] But this means that I want to go a bit too fast, OK?
+[00:09:08] So this topic will be, at a certain point, will be dropped,
+[00:09:12] right?
+[00:09:13] So at this point, you go to the graph.
+[00:09:22] Here, sorry, guys.
+[00:09:26] You start with the maximum size of the cube,
+[00:09:33] and then here you start with the cube.
+[00:09:35] And at this point, the cube is like this.
+[00:09:38] Again, and then it starts with the graph again.
+[00:09:41] Then set right from here.
+[00:09:43] So with a really limited buffer, the queue fits up indeed,
+[00:09:50] but then it stops.
+[00:09:51] It cannot get any longer.
+[00:09:53] So as long as the traffic remains above capacity,
+[00:10:01] the queue doesn't empty.
+[00:10:05] This is the traffic.
+[00:10:06] The input traffic was beyond capacity,
+[00:10:07] and the queue starts emptying.
+[00:10:10] But now we need to empty this amount of backlog,
+[00:10:15] not the original one.
+[00:10:16] so the Q attempt is before the time it anchored in the previous space
+[00:10:22] and then it stays zero and it goes up again
+[00:10:26] so what you have is that with a real system, with a limited buffer
+[00:10:31] the fraction of time during which the system is congested
+[00:10:38] is actually less than the previous one
+[00:10:40] but because you will lose more packets
+[00:10:43] If you consider the time during which the queue is full and the input traffic is above threshold,
+[00:10:50] then you only have this time interval,
+[00:10:53] while in the famous case you have this time interval
+[00:10:57] that you assign to the congestion interval,
+[00:11:00] that you consider to be a congestion interval.
+[00:11:04] In other words, by assuming that the buffer is infinite,
+[00:11:08] And setting a threshold to this buffer
+[00:11:12] and considering the probability that the view is
+[00:11:14] above this threshold gives you an upper bound
+[00:11:17] to the actual congested probability
+[00:11:20] that you observed in the real system
+[00:11:22] where the buffer is limited to me.
+[00:11:25] OK?
+[00:11:27] Is this clear?
+[00:11:29] We are just relaxing our conditions.
+[00:11:36] and if we accept that this probability is less than a certain interaction,
+[00:11:42] then we are sure that also the probability of this event is certainly less than action.
+[00:12:11] To analyze the congestion probability,
+[00:12:14] or better, to determine an upper bound for the congestion probability,
+[00:12:17] we relaxed the assumption on the size of the buffer,
+[00:12:20] so we assumed the buffer is infinite,
+[00:12:22] so the QT, the backlog, is never half, but we analyze the fraction of time
+[00:12:30] using which this backlog probably is larger than that.
+[00:12:33] And doing that, we obtain another one to the actual congestion probability
+[00:12:37] in the region in the real Q that has a higher value.
+[00:12:42] Now, to analyze this property,
+[00:12:46] So that's this probability under the assumption that the buffer is in.
+[00:12:51] We can study, can make some simplifying assumption, again, to make the analysis more practical.
+[00:13:00] By, when we'll introduce you in theory, we can perform a more precise analysis,
+[00:13:05] but for the time being, we are happy to get an idea of how the congestion probability scales with v2.
+[00:13:13] So we consider, first of all we consider a discrete, so rather than considering the
+[00:13:26] traffic and the behavior of the system continuously time, we assume that it behaves in discrete steps.
+[00:13:34] Why? Because it's slightly simpler to work on in the discrete domain than in the continuous domain,
+[00:13:40] at least with this methodology that I'm explaining now.
+[00:13:44] So with the right time in each of us, as we call a slot,
+[00:13:52] a slot has a fixed situation, which was tau.
+[00:13:57] During a slot, the channel can transmit tau equal to the capacity of the link divided by tau bits.
+[00:14:32] This is the total number of bits that can be transmitted in a slot,
+[00:14:36] if c is the big break and tau is the slot time.
+[00:14:40] Then we denote by Q of t, the backlog at the beginning of each spot in 0.
+[00:15:20] We denote by where the T of t is the amount of traffic generated by the each source in the slot.
+[00:15:55] Here we have Q0, here we have A1.
+[00:16:34] A2 is the aggregate traffic generated by all sources in the soft key.
+[00:17:01] Let's start with an empty queue.
+[00:17:02] We suppose that at the very beginning the queue is empty.
+[00:17:08] Then, to compute the queue at the beginning of the next class,
+[00:17:12] We observe that we received a1 data to be much bigger.
+[00:17:23] And in a slot we can transmit c tau data, right?
+[00:17:31] Sorry, c tau that we have to know to pass.
+[00:17:39] So the q at the beginning of the next slot is given by this.
+[00:17:48] a0, right?
+[00:17:53] Repeat again, sorry?
+[00:18:09] I thought you had observed another thing that actually should be correct in this expression.
+[00:18:18] There are two errors in this expression.
+[00:18:22] One should be clear, the other one is a little bit more difficult.
+[00:18:27] Can you guess?
+[00:18:34] Isn't it supposed to be absolute value?
+[00:18:37] Up to?
+[00:18:38] Absolute value.
+[00:18:42] Your clause is not really absolute value.
+[00:18:45] But why did you propose the absolute value?
+[00:18:48] Because it's not logical to be a negative result.
+[00:18:53] That's right.
+[00:18:53] It doesn't make sense to have a negative queue.
+[00:18:56] When do you have a negative queue?
+[00:18:58] When do you generate a number of data
+[00:19:00] less than the capacitor length. What does it happen in this case? What's the Q again of the solve?
+[00:19:06] Here's the source. The sources do not generate enough data to fill the body.
+[00:19:14] So first correction is to write, I sometimes use this notation here to indicate the maximum between the value and this.
+[00:19:37] This seems to be correct, because if the sources generate more traffic than what can be transmitted in a slot,
+[00:19:47] then we have a positive backlog, so the queue will be positive on the end of this log.
+[00:19:52] In the contrary case, the queue will be smaller.
+[00:19:56] There is another small error here that we will neglect in this analysis, but we need to be aware of.
+[00:20:05] And what is it? Can you see it?
+[00:20:19] This question seems to be correct, but actually it is not. It is an approximation of the actual view that we have at the beginning of the next law.
+[00:20:31] We will consider it as correct, so we can collect this small error, we will add an assumption,
+[00:20:38] but it is good to know that we are making an assumption here, we are making an approximation.
+[00:20:43] Can you see what we are approximating, what we are neglecting?
+[00:20:51] Let me show you.
+[00:20:52] Let me zoom the first lot.
+[00:20:56] Time, time 0, time tau.
+[00:21:00] Q is empty here.
+[00:21:04] We are wondering what is the Q size here.
+[00:21:07] We know that in this period we received a0 bits.
+[00:21:12] Let me write the a as an a, otherwise my a and my tau might be confused.
+[00:21:23] And we say that Q1 is 0 if a0 is less than c tau and f is a0 minus c tau otherwise.
+[00:21:43] This expression and this one are probably the same.
+[00:21:48] Do you see the approximation that we are making by writing this equality here?
+[00:21:54] What's c tau?
+[00:22:06] capacity of the channel
+[00:22:07] capacity of the channel
+[00:22:08] which means the natural base
+[00:22:10] that we can transmit over the channel
+[00:22:13] in tau
+[00:22:15] so
+[00:22:17] if we have those bits
+[00:22:19] in this interval of time
+[00:22:21] we can transmit all of them
+[00:22:22] in other words, if you observe
+[00:22:32] the output fraction
+[00:22:35] you will see
+[00:22:37] the amount of flux that is
+[00:22:39] transmitted across the channel at a time in tau, you will have to search something like this.
+[00:22:45] It's linear with a slope that is c, and it reaches the value of c tau after tau.
+[00:22:52] But this requires that you have enough data to be transmitted from the beginning.
+[00:22:57] Because if this a0 data are not distributed uniformly over tau, but maybe they arrive here,
+[00:23:06] They are generated across to the end of the interval.
+[00:23:14] Then for all this time you will not have any output traffic
+[00:23:19] because you don't have any data to transmit.
+[00:23:22] And in this case the traffic will start increasing linearly only from this point.
+[00:23:28] And here you have something less than...
+[00:23:31] You have transmitted less than C tau and the Q will be longer.
+[00:23:35] In other words, by writing Q1 in this way, we are assuming that A0 is either uniformly distributed over tau or better.
+[00:23:51] Actually, it's not even sufficient to be uniformly distributed over tau.
+[00:23:57] So the ideal is uniformly distributed over tau, or if you prefer, we pretend that all
+[00:24:04] this traffic is generated at the beginning of the interval.
+[00:24:07] So it's already available at the beginning of the interval.
+[00:24:10] So in this case we know that we can use the link at its full capacity for the entire
+[00:24:16] period of time.
+[00:24:17] It's a small approximation, it's not a relevant one if we have the interval tau that is
+[00:24:22] sufficiently small.
+[00:24:23] But we need to be aware that we are making an approximation here.
+[00:24:30] We assume that the traffic generated in an interval is actually available at the beginning of the interval.
+[00:24:38] And in this case, a big equation for the queue length is correct.
+[00:24:50] So we have that q1 can be written in that way.
+[00:24:53] What about q2?
+[00:24:55] Q2 would be again the maximum between 0 and what we had at the beginning of the slot.
+[00:25:18] The profit generated in that slot minus what I can transmit.
+[00:25:27] So Q2 here, the backlog that I have here is the backlog that I had in the previous slot
+[00:25:33] plus the new profit that has been generated minus what has been transmitted in the previous slot.
+[00:25:38] We use backlog plus new product minus what I want to get there.
+[00:25:44] Do you agree? Yes or no?
+[00:25:52] Yes or no?
+[00:25:53] Yes.
+[00:25:54] Now, we can replace 2, 1 with each expression.
+[00:26:00] So we have the max instead of 0.
+[00:26:02] And the max of 0 and a0 minus ct.
+[00:26:14] Class A1, use a very simple fact, so the mass of A and C plus B.
+[00:26:44] This expression has the same form of this one.
+[00:26:55] It is zero, B is zero, C is this thing here, and B is this thing here.
+[00:27:00] And it's easy to understand that this maximum here
+[00:27:04] is equal to the maximum between a plus b, b plus b.
+[00:27:16] So we can remove the maximum inside this other maximum
+[00:27:21] by considering the arguments of the inner maximum
+[00:27:25] and adding to each of them the outer curve, right?
+[00:27:32] That's pretty obvious because you
+[00:27:35] If you keep the maximum between the two, the maximum is either b, in this case you have b plus b, or is c, in this case you have c plus d.
+[00:27:43] So in this expression you always take the maximum that you have here, and you compare it with a.
+[00:27:51] So you get the same result as that.
+[00:27:56] So if we apply this, if we replace this maximum in this way, what we can write here is that Q2 is equal to, let me write it here,
+[00:28:31] Q2 can be written as the maximum between zero, then zero plus A1 minus tau, so A1 minus zeta,
+[00:28:43] and this term plus this term
+[00:28:48] so a0 plus a1 minus 2 times c tau
+[00:28:57] and we start seeing a pattern here
+[00:29:07] q2 is given by q1 was the maximum between 0 and 0 minus c tau
+[00:29:14] q2 is the maximum between 0, r1 minus c tau, i.e. a0 plus a1 minus 2 times c tau.
+[00:29:22] If we decrease the reasoning for recursively, then we can easily write that
+[00:29:28] you will easily find that Q t plus 1 here.
+[00:29:37] Can I square the board here?
+[00:29:48] You have that Q t plus 1 is the maximum between 0 and 80 minus sigma out.
+[00:30:03] And then you replace Q t with this expression that recursively gets this form
+[00:30:09] and you get the maximum, which is 0, c tau, a t plus a t minus 1, minus 2 times c tau
+[00:30:30] and so on until you arrive at a t, a t plus a t minus 1, plus, till a t minus a t plus 1.
+[00:30:52] So if you repeat this reasoning recursively, you will end up with an expression like this.
+[00:31:11] It makes sense if you think about that, because we are wondering what's the probability that
+[00:31:17] our q at time t exceeds a certain threshold, for me that we have a congestion at that time.
+[00:31:25] And you need to consider what happens in all the intervals after that time.
+[00:31:31] So you start from zero, then you have one interval where you have a certain backlog that might be positive or negative.
+[00:31:41] Then you consider two consecutive slots, and the backlog over these two slots can be positive or negative.
+[00:31:49] And you consider all the possible cases.
+[00:31:53] So, going back to our initial condition, the probability that QT is larger than b,
+[00:32:03] this can be written as the probability that the maximum between 0...
+[00:32:10] Now, well it doesn't really matter, a times one minus c times one up to the sum from zero to g of a times three minus three times c times one is not different.
+[00:32:43] Ok, here I should stop at t minus one, sorry.
+[00:33:01] The maximum of a number of random variables is larger than b
+[00:33:40] In this case, when any random variable is larger than b
+[00:33:51] What we can write is this
+[00:33:55] Suppose that the maximum is 0
+[00:33:56] 0 is larger than b
+[00:33:58] Also we can forget about 0
+[00:34:01] a t minus one minus c tau is larger than b, we don't know, so we consider the case
+[00:34:08] a t minus one minus c tau is larger than b.
+[00:34:15] This is an event that continues to this probability.
+[00:34:21] Or, if this one is false, we should consider the other event,
+[00:34:24] That is, a t-1 plus a t-2 plus c tau is better than b.
+[00:34:38] Or, and so on, the support for all the events included in this maximum function,
+[00:34:48] the last one being a t-1 of a j minus b c tau must be larger than b.
+[00:35:03] If this probability is equal to this one, it does not consider the goal possible for me.
+[00:35:27] And if you like, this one is in a slightly more common manner or way to express it.
+[00:35:35] If you have the probability of the maximum of random variables,
+[00:35:41] x1, x2, xn, greater than a certain value a,
+[00:35:48] and this probability is greater than the probability that each of them,
+[00:35:53] No, any of them is bigger than...
+[00:36:19] This is always true for any selection from variables that we want to consider.
+[00:36:30] And in this specific case, we have that we can write
+[00:36:34] the misprobability, the probability of the union
+[00:36:38] for n that goes from 0 to T.
+[00:36:50] I might adjust this extreme synonym,
+[00:36:53] Let me write it first, and then check them.
+[00:36:56] Of what of the events according to which the sum of p
+[00:37:02] equals k to n minus 1 of a b minus c tau is larger than b.
+[00:37:40] So let me see if the indexes are correct.
+[00:37:44] So when n, if n starts from 0,
+[00:37:47] So here we have this cluster that is correct.
+[00:37:52] If n is equal to t is definitely too much,
+[00:37:57] it has to stop at t minus.
+[00:38:02] Is this a of, sorry, I made a mess with the indexes.
+[00:38:07] Sorry guys.
+[00:38:08] Here we have to use h, h.
+[00:38:23] So if n is equal to t minus 1,
+[00:38:29] then we have a t-1 minus c tau, this is this one.
+[00:38:37] Alright, so with this expression we capture all of these values, right?
+[00:38:46] Now we have the probability of a union of different values.
+[00:38:50] Can we express this probability as the sum of the probabilities?
+[00:38:58] Let me write it, and then can we write this as the sum equal to 0
+[00:39:08] to p minus 1 of the probability of the single event.
+[00:39:14] So is this equality correct?
+[00:39:40] Basically, the probability of a union
+[00:39:42] is the sum of the probabilities of the events.
+[00:39:46] Is that correct or not?
+[00:39:58] Because right here, it does not independent,
+[00:40:03] because the p is not independent.
+[00:40:05] It's not a lot of intimacy, but a lot of overlap.
+[00:40:10] So in this case, the variables are not disjoint, so the probability of their union is not the sum of the probabilities.
+[00:40:21] If they were independent but disjoint, then the quality holds.
+[00:40:36] Because you might remember when you started the probability theory,
+[00:40:39] if you have an event like this and another event that overlaps with the first one,
+[00:40:45] like A and B, the probability of A being an event
+[00:40:51] is the probability of the drawing event like this.
+[00:40:55] But if you sum the probability of A and the probability of B,
+[00:41:00] you are counting two times this part here, because they are overlapping.
+[00:41:06] If they are disjoint, this doesn't happen.
+[00:41:08] So you can, the root of the units is the sum of the probabilities.
+[00:41:12] But any time you are overlapping, you are counting two times this one.
+[00:41:17] So by expressing this probability,
+[00:41:20] this expression is actually another bound of this one,
+[00:41:24] because we are counting two times any overlapping between these events.
+[00:41:29] So what we can write here is not inequality, but rather an inequality, like this.
+[00:41:37] So we know for sure that the right hand side is no smaller than the left hand side.
+[00:41:43] In many cases when you have overlapping, this is larger, but for sure it cannot be smaller.
+[00:41:53] So guys, just a quick recap for you.
+[00:42:11] This is the union of events, so you need to subtract
+[00:42:16] the probability of the intersection because you are counting two times
+[00:42:21] this probability one here and one here, so you need to subtract
+[00:42:25] one bit. The probability
+[00:42:29] of the product of three events, so P
+[00:42:33] A M in the three events
+[00:42:39] of course simultaneously, only if the A and B are independent.
+[00:43:03] Actually, this is the definition of independence.
+[00:43:09] To run rivals to events are independent
+[00:43:12] if the probability of the intersection of events
+[00:43:17] is just the product of the probabilities of the single events.
+[00:43:21] It's by definition this also.
+[00:43:24] Otherwise there is no relation.
+[00:43:26] you cannot say that this is equal.
+[00:43:31] Typically, if you are dependent on the probability of the joint event,
+[00:44:03] you don't have any specific relation.
+[00:44:07] So if they are independent, these are probability holds, otherwise present holds.
+[00:44:13] So in this case we have the union and therefore these are the probability holds.
+[00:44:17] So you have that here, you see the probability of the union
+[00:44:22] is equal to the sum of the group,
+[00:44:23] only if the intersection is 0.
+[00:44:26] Otherwise, this sum is always larger than d,
+[00:44:30] where this probability is non-negative, of course.
+[00:44:37] OK, so we can write on that team, and we are almost done.
+[00:44:40] Sorry.
+[00:44:41] Yeah?
+[00:44:41] Before, I don't understand why in the first question
+[00:44:46] we had to put the index and get the sum.
+[00:44:50] We put the d because actually, well, now I read it.
+[00:44:58] But any time, you see, you have expression like this.
+[00:45:01] So whenever you express the maximum of the different
+[00:45:03] You have to add, remember, I wrote max of a of max of d c plus d.
+[00:45:14] This one is equal to max of a b plus d and c plus d, right?
+[00:45:24] When you do this recursively, you have that in D you have something like p-1c tau plus the sum of all the other p's
+[00:45:35] and in one of these you have another minus c tau.
+[00:45:38] So when you add this one with this one, the right hand part becomes one more.
+[00:45:43] You see here you have minus one, but here you have two a-turns and two-times tracking
+[00:45:52] because you are considering two points.
+[00:45:55] So in other words, each of these...
+[00:45:57] Okay, my question was about why you would have p and both actions.
+[00:46:03] I see what you are talking about.
+[00:46:05] I see. I see. Alright.
+[00:46:10] Here you see, basically you are adding the arrivals over slots from n to t-1
+[00:46:19] So the number of arrivals, the total number of slots here is t-1 times n plus 1
+[00:46:24] t minus n slots
+[00:46:26] And you add in this loss here, at most this amount of traffic
+[00:46:31] So you just count the total traffic over that time
+[00:46:38] Right, this is important guys, so if you consider the index here, you see that this one is the total arrival, aggregate arrival traffic arriving in the current traffic arriving from slot N up to T minus 1, so in total you have T minus N slots.
+[00:47:16] And this one is the maximum amount of data translated.
+[00:47:30] So if the total topic that arrives in the d-manifold is larger than the buffer size of this class,
+[00:48:00] you have an overflow.
+[00:48:02] Because at maxing you can transmit this amount of data,
+[00:48:06] you have space for bits in the buffer,
+[00:48:10] if you generate more than this value, you have an overflow.
+[00:48:14] That's pretty simple.
+[00:48:15] to our final result.
+[00:49:00] But now, you see, each of these expressions here
+[00:49:07] have this form.
+[00:49:08] They are probability of the sum for the change index
+[00:49:13] from j equal to 1 to 10, jj, rather than b plus something.
+[00:49:29] Now, it is n times 2.
+[00:49:37] You see, all of them at this corner,
+[00:49:40] don't pay attention to these indexes,
+[00:49:44] because these random variables are IID,
+[00:49:49] or identically independent and identically distributed.
+[00:49:53] So the fact that I consider that n random variables,
+[00:49:57] the first random variable doesn't change anything.
+[00:49:59] So this probability is exactly the same
+[00:50:02] that I have given there.
+[00:50:03] If you consider the problem of the difference, it is not probably this probability, right?
+[00:50:15] The probabilities in these expressions have all this formula, right?
+[00:50:20] Changing the value of m.
+[00:50:23] If you consider, let me also use another simple term, that would be more confusion.
+[00:50:29] So here we can write, I think, t, for example.
+[00:50:32] So if you change k from 1 to k-1, you will have all these terms here.
+[00:50:44] You will recover all those terms here, right?
+[00:50:47] In other words, we call this one k, and you can write that expression.
+[00:50:56] And why is it interesting? Because these random variables are independent and identically distributed.
+[00:51:03] that we have a sum of independent identically distributed random variables,
+[00:51:07] so we can apply the same problem that we learned in the last lecture,
+[00:51:12] so we know that this factor here is less than or equal to e to the power of theta
+[00:51:23] multiplied by the expectation of e to the power of theta multiplied by the sum of the random variables
+[00:51:34] divided by e to the power of e, then multiplied by this time
+[00:51:50] e plus kc tau.
+[00:51:56] And you recall, so we did it last time,
+[00:52:01] this explanation can be written as the problem
+[00:52:11] from variables are now iid.
+[00:52:25] And this is nothing else than the terms here
+[00:52:30] That is the moment generation function of our random variable.
+[00:52:35] That is the moment generation function of the random variable A in theta
+[00:52:46] divided by B plus A C tau.
+[00:53:01] And finally, you remember that
+[00:53:05] For a certain slot T, it was often asked
+[00:53:16] that the sum of the arrivals of the n sources,
+[00:53:28] since these processes are assumed to be i.i.d., independent
+[00:53:31] and identically distributed, then the moment generating
+[00:53:36] function of A is the moment generating function
+[00:53:40] of the original random variable A s raised to the power of n,
+[00:53:44] because they are all the same, and therefore if you compute the expectation of a t by a t
+[00:53:57] this is the product of the expectation of a t by a s
+[00:54:03] and therefore the monotonating function of a is just the monotonating function of a s
+[00:54:08] raised to the power of n.
+[00:54:10] So all of this to say that this expression can be written as
+[00:54:14] the non-inflating function of s in theta raised to the power of n
+[00:54:21] multiplied by k, multiplied by e minus theta b plus k times c.
+[00:54:35] This is just another formula of the Schrodinger boundary that we derived in the last lecture.
+[00:54:41] is actually the same bound, because it's sufficient to express this term as the exponential of the logarithm of the same quantity
+[00:54:56] and then we can write e minus theta d plus a c tau d to the n a log of n a f theta of...
+[00:55:21] Here we recognize the check of 1. However, we have to write this bound just for one value of p.
+[00:55:51] In the expression that I cleverly just erased from the blackboard, we actually have a sum of these terms.
+[00:56:02] We started from the expression of qt larger than b,
+[00:56:07] And then through a number of steps and inequalities,
+[00:56:11] we arrive to the sum for n that goes from 0 to t minus 1
+[00:56:19] of the probabilities that had this format here.
+[00:56:27] So what we have here is the sum for n from k,
+[00:56:31] So it's from 0 to t minus 1 of that sort of probability there
+[00:56:37] of the probability of the sum with a equal to 1
+[00:56:41] to k of a c tau, and then we found this one here.
+[00:56:57] And this one is less than ks eta n to the power of k
+[00:57:13] that multiplies p minus theta, right?
+[00:57:26] So I just replace this expression,
+[00:57:33] the equation that we found a relative step here,
+[00:57:36] the place of this probability.
+[00:57:38] Why do I do that?
+[00:57:39] Because now here you can recognize that we have some terms
+[00:57:42] placed in power k, in a sum over k.
+[00:57:46] So we can collect these terms that have an exponent k
+[00:57:50] multiplied by theta c tau, everything raised to the power of k multiplied by c minus theta.
+[00:58:19] In writing of this expression, I expressed the exponential as a product of the two terms
+[00:58:32] and then collected this term into this one and raised everything to the power of k.
+[00:58:38] Why do I do that?
+[00:58:39] Because again, since this is the sum of positive terms,
+[00:58:44] then I can upper bound this one with a sum that
+[00:58:48] goes from 0 to then stopping at t minus 1.
+[00:58:57] I can go on till infinity.
+[00:58:59] I'm still adding positive terms.
+[00:59:02] So I will have another upper bound.
+[00:59:05] But doing that, if the term there is less than 1,
+[00:59:16] we know that it will converge.
+[00:59:18] So this sum here is equal to...
+[00:59:42] So if the term in brackets here is less than 1,
+[00:59:53] this series will converge to, let me call it theta.
+[01:00:10] If r theta is less than 1, then this sum,
+[01:00:13] that is the sum for a that goes from 0 to infinity
+[01:00:17] of rt, like the value of k, is a geometric series and therefore it converges to over 1 minus r.
+[01:00:56] The problem is that, sorry guys, I had to start it from 1 here, not from 0,
+[01:01:07] because we are considering the events over k slots, right?
+[01:01:14] With k that goes from 1 to t-1, not from 0, it doesn't make sense to have 0 slots.
+[01:01:20] So this changes a little bit because if we start from 1, this makes a bit of a difference
+[01:01:39] because when we sum from 1, this series converges to 1 over 1 minus rt, minus the term in 0
+[01:01:48] because we need to start from 0 to get these results.
+[01:01:52] If we start from 1, we need to remove the first term.
+[01:01:56] That is, r theta to the power of zero, that is one.
+[01:02:01] We arrive at this result, minus one.
+[01:02:09] p minus theta, p plus one, plus r theta, divided by one minus r theta.
+[01:02:19] Alright. Now I recognize the result.
+[01:02:22] I recognize the result.
+[01:02:25] And this result holds only if Rt gets less than one.
+[01:02:30] Oh, we have done it.
+[01:02:33] It was a lot of process, but eventually we are live through our destination.
+[01:02:39] Let's see first of all when this result holds.
+[01:02:48] Let me rewrite this Dirichletian work on the format.
+[01:02:52] So we have found that the probability of all of this
+[01:02:56] I think congestion event is upper bounded by p minus theta p
+[01:03:03] that multiplies its r theta divided by 1 minus r theta
+[01:03:09] provided that r theta is less than 1.
+[01:03:20] So we have found this bound, this bound also only for the values of theta
+[01:03:24] that are greater than 0 and for which r theta is less than 1.
+[01:03:32] out of this range of values, then we can find the value of theta that minimizes this expression
+[01:03:39] and we find the strictest possible value
+[01:03:48] Now let's consider this condition
+[01:03:52] What does it mean?
+[01:03:55] So this is nothing else than the term of balance that we used multiple times
+[01:04:00] to relate the different probabilities in the cube size
+[01:04:07] So we said that this one is true if R theta is less than 1.
+[01:04:13] But R theta is, by definition, is that parameter.
+[01:04:18] So it is the momentary function of the generation
+[01:04:23] process of one single source raised to the power of 10,
+[01:04:29] because we have n simultaneous sources in the system,
+[01:04:32] multiplied by e to the power of a minus theta times c tau.
+[01:04:40] Now this can be written as e to the power of c tau
+[01:04:51] plus n times the log of n a plus tau.
+[01:04:58] As usual, so we rewrite this one
+[01:05:02] as the exponential of the logarithm of the expression.
+[01:05:08] This is possible because the expression is always positive.
+[01:05:13] And these are combined.
+[01:05:13] So we can always find this thing.
+[01:05:22] It's not necessarily because y is just positive.
+[01:05:24] Of course, the logarithm of what do you say?
+[01:05:31] The logarithm of something raised to the power of 10
+[01:05:33] can be written as n times the logarithm of this term.
+[01:05:41] And we get there, right?
+[01:05:45] Now, this one is less than 1 if minus theta
+[01:05:59] sigma plus n times log of n theta is less than 0.
+[01:06:15] Nothing wrong here.
+[01:06:23] 0, that's right.
+[01:06:27] An exponential is less than 1 only
+[01:06:29] if the argument of the explanation is less than 0,
+[01:06:33] which means that log of n as of theta divided by theta
+[01:06:42] is less than c tau divided by n.
+[01:06:49] So taking this term on the right-hand side
+[01:06:52] and dividing both terms by n and by theta,
+[01:06:57] you get this result.
+[01:06:58] is called the effective bandwidth of one source.
+[01:07:44] So notice that here we have a statistical distribution
+[01:07:47] of the generation process of one single source.
+[01:07:52] As is one of the end sources, right?
+[01:07:55] The number of sources is here.
+[01:07:57] So the term on the left refers
+[01:07:59] to the statistical characterization
+[01:08:01] of one single source.
+[01:08:04] This ratio here depends on tilde, and this bound holds when this ratio is less than c over m.
+[01:08:14] So c tau is the number of bits that I can transmit in a time interval tau.
+[01:08:19] m is the number of sources.
+[01:08:21] Then c over tau is, on average, the number of bits for one source that I can transmit in a slot.
+[01:08:28] So it's that soft bitrate that I can assign to one single source.
+[01:08:37] The bound here is valid whenever the bitrate that I can assign to one source
+[01:08:44] exceeds the effective capacity of the source.
+[01:08:48] In other words, if the effective capacity of the source is lower than the equal share of the channel,
+[01:08:56] then we have a button that you can see for any given theta that satisfies that condition
+[01:09:02] tells you that the outest probability decreases exponentially with the buffer size.
+[01:09:10] That is a very nice result that we get, right?
+[01:09:13] Because if you find, if you choose a theta, you minimize this value here
+[01:09:20] So if you like it implicitly, so let theta star be such that theta star is 0 and theta star is an art, or theta star, and theta star will be this thing here.
+[01:09:56] So if theta star is such that theta star is less than 1,
+[01:10:10] So if we satisfy this condition, then we have a band that is the strictest that we can find with this approach
+[01:10:19] that tells us that the L-test probability is after-banded by theta-star times B
+[01:10:33] multiplied by these other two things.
+[01:10:46] So we can choose B in order to decrease this band as much as we want.
+[01:10:52] Because as we increase b, this term does not depend on b, so it remains fixed.
+[01:11:00] This term decreases exponentially.
+[01:11:02] So with a sufficiently long buffer, we can leave the upper bound of the output to be as much as we want.
+[01:11:11] That is an excellent result.
+[01:11:16] One might wonder why.
+[01:11:20] What if data star doesn't satisfy the constraint, so our data star is a solid human?
+[01:11:31] In that case we need to stop before.
+[01:11:35] We need to take the data star that minimizes this product by perfecting the constraint.
+[01:11:42] No other way.
+[01:11:44] if you consider the effective bandwidth
+[01:12:04] and you see how this value changes with theta
+[01:12:21] let's consider two extreme cases
+[01:12:23] let's assume that theta goes to zero
+[01:12:32] but if theta goes to zero
+[01:12:34] the moment generating function
+[01:12:38] tends to one, do you remember?
+[01:12:42] because the moment generating function is
+[01:12:44] is defined as the expectation of the exponential of theta
+[01:12:49] multiplied by the random variable.
+[01:12:52] And if theta goes to 0, then the exponential becomes 1.
+[01:12:56] And therefore, you have this huge result.
+[01:12:59] But then you have log of 1 over 0.
+[01:13:03] That is a case of 0 over 0 that you cannot determine.
+[01:13:08] So in order to determine the result of this limit,
+[01:13:11] you have to apply the optical rule, you remember it, so whenever you have a field of 0 or 0 infinite or infinite
+[01:13:20] and you want to see if this limit can actually solve, you can apply the optical rule
+[01:13:28] which consists in taking the derivative of the numerator and the derivative of the numerator
+[01:13:35] the limit for these two derivatives, right?
+[01:13:38] So you have the limit for theta equals to zero
+[01:13:41] of the derivative of this first term.
+[01:13:45] This is the derivative of a lot function
+[01:13:47] that is one over the argument,
+[01:13:50] multiplied by the derivative of the argument,
+[01:13:55] while the derivative of theta is one, right?
+[01:13:59] So we have the limit for theta equals to zero
+[01:14:03] of m prime of s theta divided by m times s theta.
+[01:14:11] And if you remember, when I introduced the moment
+[01:14:15] generating function, I proved that the derivative
+[01:14:18] of the moment generating function in 0
+[01:14:20] is just the first order mean of the run by those
+[01:14:27] with the expectation of shetas, while this one is 1.
+[01:14:31] So it converts to the mean value of 8x.
+[01:14:41] What does it mean?
+[01:14:42] It means that if you take this expression
+[01:14:48] and you check its value for a data that is very, very small,
+[01:14:52] then this ratio converges to the mean number, the mean traffic generated by a source.
+[01:15:00] And the condition depends that the mean traffic generated by a source
+[01:15:03] has to be less than or equal to C tau over m.
+[01:15:10] I think that's exactly the stability conditions
+[01:15:13] that we have mentioned multiple times.
+[01:15:15] So the capacity has to be at least larger than m times
+[01:15:25] the traffic generated by one single source
+[01:15:27] if you want to sustain m sources.
+[01:15:30] If C doesn't respect this constraint,
+[01:15:33] So if C-tau is actually less than n times the min then there is no way to limit the congestion probability.
+[01:16:01] Because in this condition, if the channel that you provide is not sufficient even for the mean traffic generated by the sources
+[01:16:08] you are sure that you will lose track of this probability one.
+[01:16:13] There is no way you can avoid this.
+[01:16:17] We find a condition that we have given for granted previously, but we can now prove it formally.
+[01:16:25] If this condition is not satisfied, then it is not upper bound.
+[01:16:32] But formally speaking, this doesn't mean that it is equal to 1.
+[01:16:37] You only have an upper bound that is not meaningful.
+[01:16:42] So this doesn't imply that the cube is going above any threshold.
+[01:16:49] But still, it gives you an indication.
+[01:16:52] Let's consider the other cases.
+[01:16:55] Theta is close to a very large value.
+[01:16:58] What does it have?
+[01:16:59] Well, we have that tank A s of theta
+[01:17:04] that, remember, is the expectation of E theta A s.
+[01:17:10] So, can we read and ask the sum for suppose that A s takes value in a certain set,
+[01:17:25] suppose that the traffic that can be generated by a source can only take values in this set,
+[01:17:31] so alpha 0, alpha 1, up to a certain alpha n,
+[01:17:34] we can suppose that these values are ordered,
+[01:17:43] then we can denote by p0, p1, and pn the probability that alpha s takes the value 0, 1, n,
+[01:17:54] respectively. So these expectations can be written as the sign, or I think here's another
+[01:18:01] symbol, otherwise this sign might be confusing. Let me call it a capital line.
+[01:18:09] So just the symbol L to the right of the probability of getting the value of k
+[01:18:22] This is just the definition of expectation.
+[01:18:26] The expectation of a function of a random variable can be computed by emulating all the possible values of the random variables
+[01:18:34] and computing the function for that value weighted by the probability of getting that value.
+[01:18:40] So we are here.
+[01:18:42] When theta tends to infinity, all these terms will go to infinity,
+[01:18:49] But one of these terms will go faster than the others.
+[01:18:53] Which one?
+[01:18:53] The one corresponding to the maximum value
+[01:18:57] of the variable, 1 plus.
+[01:19:00] So this one tends to t l e to theta l
+[01:19:09] plus something that is normal and can be neglected.
+[01:19:14] The limit as theta goes to infinity of the log of n theta
+[01:19:31] divided by theta.
+[01:19:34] This one tends to be the log of theta e to theta alpha
+[01:19:42] l divided by theta.
+[01:19:45] And this log of theta is almost equal to log of tL e to the t1 of L divided by theta.
+[01:20:24] This one is log of tL plus log of L divided by theta.
+[01:20:37] This becomes divisible and it converges to the part of L.
+[01:20:41] What we have is that for tilde that becomes very, very large, then the effective bandwidth, or effective capacity of one source
+[01:20:58] tends to, and therefore the condition under which you have a bandwidth, T over m, has to be larger than alpha m.
+[01:21:31] which means that we are dimensioning our capacity
+[01:21:38] with respect to the peak rate rather than the average rate.
+[01:21:59] In this case, you can see if this condition is satisfied,
+[01:22:07] you can take a theta that is very, very large.
+[01:22:10] In this case, the bound becomes very, very small
+[01:22:12] because if you have a capacity that is larger than the peak
+[01:22:18] rate of the different nodes, you don't have buffer.
+[01:22:21] So you don't wish to have any buffer on the node.
+[01:22:24] So this makes sense.
+[01:22:28] And finally, we can say that for any value of C
+[01:22:34] that is included between these two strings,
+[01:22:43] so if C is larger than the mean value of A
+[01:22:52] than the peak value, then the matrix is a theta positive, but less than infinity.
+[01:23:14] So a theta is strictly less than one, and therefore the value is zero.
+[01:23:51] If you select a c that is on the left of this, there is no way you can limit your buffer.
+[01:24:02] If you go on the right of this limit, you don't need any buffer.
+[01:24:05] that congestion probability is zero.
+[01:24:07] For any intermediate value, you have a certain congestion
+[01:24:10] probability that you can balance
+[01:24:12] by selecting a value of buffer sufficiently large.
+[01:24:18] That's the result.
+[01:24:19] And it's an interesting result, because it's not granted.
+[01:24:23] So it means that as soon as you have a capacity that
+[01:24:26] is even slightly larger than the meaning that you require
+[01:24:30] for stability, you can always
+[01:24:32] limit the buffer overflow probability
+[01:24:35] by choosing a sufficiently large buffer.
+[01:24:41] We have 10 minutes.
+[01:24:43] I'll stop here, but I'll stop with a question,
+[01:24:46] and then I'll let you go, sorry, while I can be angry.
+[01:24:52] The process is clear.
+[01:24:56] Suppose that, given these results,
+[01:24:59] we see that we can limit the congestion probability
+[01:25:04] up a lot, right?
+[01:25:06] With a sufficiently large key,
+[01:25:07] we can reduce this congestion probability to a very small value.
+[01:25:12] Is there any control value in this?
+[01:25:19] Given this result, why don't I always choose the link capacity
+[01:25:24] to be very close to this lower bound?
+[01:25:27] Because the link capacity is positive, right?
+[01:25:29] So it is convenient to have a smaller possible link value.
+[01:25:33] And I put some buffer in the link in order to decrease the congestion probability.
+[01:25:41] What's the delay? The delay actually. Have a nice weekend.

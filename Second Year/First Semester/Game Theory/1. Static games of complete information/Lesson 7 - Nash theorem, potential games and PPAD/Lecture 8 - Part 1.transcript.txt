@@ -1,0 +1,598 @@
+[00:00:01] Welcome to this lecture of game theory and the lecture of Leonardo Badia.
+[00:00:07] So this lecture is actually fairly attached to the previous one so that I have broken basically
+[00:00:17] a very long lecture in two but I think it is important because the main concept that we saw
+[00:00:25] in the past lecture which is that of mixed strategies is probably the most difficult and
+[00:00:30] less intuitive in the entire course. So it's proper that you do a reasoned understanding
+[00:00:39] of what mixed strategies are, because on the one hand they allow for a very powerful result,
+[00:00:46] which is the Nash Theorem, which is where we start from today. But at the same time they
+[00:00:51] require some leap of faith, in that we are now considering the definition of strategy
+[00:00:57] to be something entirely different from what we started from. We started by saying, well,
+[00:01:03] strategy is nothing but an action because in a static game of complete information,
+[00:01:08] you have an action to play and that is your strategy. So you can only decide what
+[00:01:13] action to play. And if that's the case, it seems a bit redundant. So why do we
+[00:01:18] have a double definition of actions and strategies? In reality, strategies are more
+[00:01:24] complicated than that. Strategies are a general plan of action and if we allow
+[00:01:30] the players to play randomly, well a strategy can also involve strange
+[00:01:36] things like flipping a coin and deciding according to the coin flip what
+[00:01:40] action to play. Of course this is not what we started from and it's kind of
+[00:01:48] difficult to swallow because you have the idea well I'm kind of cheating on
+[00:01:52] you, and saying, well, this is one definition,
+[00:01:56] and then I'm changing the definition.
+[00:01:58] Well, in reality, it's not like that.
+[00:02:01] It was the intention all along.
+[00:02:03] But we started slow.
+[00:02:05] So the kind of reasoning is similar to when
+[00:02:09] you define real numbers.
+[00:02:12] And you start, when you have kids,
+[00:02:14] you start with defining integral numbers.
+[00:02:16] And they are easy to understand.
+[00:02:17] Real numbers are actually a quite complicated concept,
+[00:02:20] because think carefully.
+[00:02:21] Because the whole idea of a number with infinitely many decimal digits is not really very intuitive.
+[00:02:28] Well, integral numbers are very intuitive. They are what we use to count.
+[00:02:32] So even my kids know integral numbers. But real numbers are a difficult thing.
+[00:02:37] But you need real numbers to be able to solve equations where there seem to be no solution.
+[00:02:45] And the reasoning about mixed strategies is kind of analogous.
+[00:02:48] So we have pure strategies that are like
+[00:02:51] integral numbers, but we allow for something
+[00:02:54] intermediate between the pure strategies,
+[00:02:56] same as we allow for real numbers,
+[00:02:59] also in between integral numbers,
+[00:03:01] to allow for a solution where there seems to be none.
+[00:03:05] And in particular, we are able to prove
+[00:03:08] this interesting theorem, which is the main theorem
+[00:03:11] of game theory, that every game with finite
+[00:03:14] strategy set has at least one Nash equilibrium.
+[00:03:16] equilibrium. So there always is a Nash equilibrium if you allow for mixed strategies. And possibly
+[00:03:21] the only, well, the Nash equilibrium existing involves mixed strategies. And there might
+[00:03:27] be more than one. And also this is an existence theorem. So it does not tell you, and we
+[00:03:31] will discuss, well, how easy it is to find such Nash equilibrium. So with all
+[00:03:37] these three caveats, which is, well, there is a Nash equilibrium only if we always
+[00:03:43] allow for mixed strategies, and there might be more than one, and we are not sure how to find it,
+[00:03:49] still it's a very powerful result. And this is why you can also say, well, even if you don't
+[00:03:56] believe in mixed strategies, or you don't think they're very easy to understand,
+[00:04:00] well, at least allow them from the perspective of an engineer, because this way,
+[00:04:06] you are solving the theorem, you're getting always a solution in the theorem. So in a sense,
+[00:04:12] this is a practical meaning why you use it and we discussed that mixed strategies have
+[00:04:21] possible different interpretations and the main interpretation that we gave in the last lecture
+[00:04:27] is about beliefs so it is true it does not make much sense to assume that players play
+[00:04:34] randomly because well are they crazy probably not so why should they play random in the end
+[00:04:40] they know what to do and they decide a given action with probability one in the end when
+[00:04:46] the game is revealed. You cannot really go to the chalkboard in the example of the
+[00:04:53] static game of complete information and write down something like maybe I play A,
+[00:04:58] maybe I play B. You have to tell what to play. And same if you play rock, paper,
+[00:05:03] scissors or arts and events, you can't really in the end say, well, I'm not telling
+[00:05:07] what I'm playing. I'm not playing odd, nor I'm playing even. You have to play something.
+[00:05:13] Still, until you do, your opponents might form beliefs about what they're going to do. And in
+[00:05:21] this sense, in this spirit, the probability distribution that we are defining perfectly
+[00:05:26] captures the fact that the beliefs are intrinsically uncertain. So my choice is really
+[00:05:36] holds for me, I know that my opponents are choosing in the end a pure strategy,
+[00:05:40] but I don't know which one, so I can assume a probability distribution. And by the way,
+[00:05:45] pure strategies also are special cases of mixed strategies. So if it happens that
+[00:05:51] the strategy in the end is really pure, nothing's wrong. Same as an integral number
+[00:05:57] can also be seen as a special case of a real number. So five is an integral number,
+[00:06:02] but it's also the special case of 5.0000.
+[00:06:06] So that is a real number.
+[00:06:08] OK.
+[00:06:09] Now, are we ready to discuss the theorem?
+[00:06:12] But let me tell you something about the beliefs.
+[00:06:14] Because since we changed all the definitions,
+[00:06:17] and we changed the definition of dominance,
+[00:06:19] we changed the definition of Nash equilibrium,
+[00:06:21] well, we are also changing the definition of beliefs,
+[00:06:24] because we said a belief is a possible profile
+[00:06:28] of the opponent strategy.
+[00:06:28] That's still true.
+[00:06:30] But now we give a different meaning to this,
+[00:06:32] because we said when we define it for the first time we said well I believe
+[00:06:35] is simply an element of set s minus i because minus denotes the
+[00:06:41] opponents so the strategy set s minus i contains
+[00:06:44] all the strategies of my opponents of the opponents of
+[00:06:47] layer i well that's no longer true because we redefine strategies and so
+[00:06:52] the belief is an element of set delta s minus i
+[00:06:55] so it is still true it is a possible profile of the opponent's
+[00:06:59] strategy so the difference is that the strategy
+[00:07:01] now has a different meaning. A strategy is an element of the strategy set of the opponents
+[00:07:05] and the strategy set of the opponents contains also mixed strategies. Okay, it's the same
+[00:07:11] thing, but we change this back. Okay. Now, we can also define a best response
+[00:07:16] and a best response correspondence is still something that maps s minus i into s i, but
+[00:07:23] since we allow for mixed strategies, we should say that d i is a correspondence from
+[00:07:28] delta s minus i to the set of the parts of delta s i.
+[00:07:32] So notation is a bit heavy, but I
+[00:07:34] hope that we have seen it layer by layer
+[00:07:36] and we know what we mean.
+[00:07:38] So it's a correspondence, so it's not
+[00:07:40] a uniquely associated function.
+[00:07:44] And this is why we don't map delta s minus i to delta s
+[00:07:47] i.
+[00:07:48] That would be wrong, because we cannot map one to one.
+[00:07:50] But we map delta s minus i to the set of parts,
+[00:07:53] so a subset of delta s i.
+[00:07:56] because possibly there can be multiple best responses.
+[00:07:59] So we take a subset.
+[00:08:00] If the best response is unique,
+[00:08:02] then we have a singleton in this map.
+[00:08:04] But if not, in general, best responses are not unique,
+[00:08:08] so we can have an element,
+[00:08:11] well, a set with multiple elements.
+[00:08:14] Okay, so that's just nitpicking.
+[00:08:15] But it's important to mention
+[00:08:17] that we extended the definition, so everything changes.
+[00:08:20] But so far, everything fits nicely
+[00:08:22] because we just extended the definition,
+[00:08:24] but everything is still as before. Now what does it mean that we can identify the Nash
+[00:08:32] equilibrium as best responses? Remember the whole idea of John Nash was well Nash equilibria are
+[00:08:37] situations where everybody is playing the best response to his or her beliefs and the beliefs
+[00:08:42] do not to be correct. So consider this example I mean I think it would be useful to
+[00:08:48] consider a specific example because it will give us much of the intuition. So, in general,
+[00:08:55] if we have two players, Art and Bia in this example, they can play different strategies
+[00:08:59] and they will like to play a best response to the opponent's mixed strategy, right?
+[00:09:06] So Art believes that Bia is playing some mixed strategy, then he will play a best
+[00:09:13] response to her mixed strategy.
+[00:09:17] And same with B for Bia.
+[00:09:20] So Bia will choose a best response
+[00:09:24] to Art's mixed strategy.
+[00:09:26] Of course, Art's best response to Bia's mixed strategy
+[00:09:29] can be a mixed strategy as well.
+[00:09:31] And same for Bia.
+[00:09:32] But if we can find Art's best response that
+[00:09:35] is a mixed strategy and the best response
+[00:09:38] to Bia's mixed strategy, and the opposite holds.
+[00:09:41] so Bia plays a mixture strategy that is the same that Art was thinking, and it happens to be a
+[00:09:48] best response to what Art's gonna play, then this will be a Nash equilibrium. The key problem
+[00:09:54] is exactly that in this specific game there is no dominated strategy, right? Because for example
+[00:10:00] of Art, U does not dominate D, and vice versa. And for Bia, F does not dominate G,
+[00:10:07] and nor does G dominate that.
+[00:10:09] So you are left with, and also you can see,
+[00:10:12] well, this game is not really,
+[00:10:14] there is no really winner or loser,
+[00:10:16] but if Art plays U, then B, our best response will be G.
+[00:10:22] But then Art will say, well, if you play G,
+[00:10:24] my best response will be to play D.
+[00:10:26] And you see there is a sort of a cycle
+[00:10:27] similar to the odds and evens, but it's more general
+[00:10:30] because it's not really there is a winner and loser
+[00:10:32] because for example, in DF, Art is not doing that bad,
+[00:10:35] he gets two, but he will prefer to move to U.
+[00:10:39] So even DF is not a Nash equilibrium.
+[00:10:41] So there is no unilateral deviation.
+[00:10:42] So this is a good example in that we have
+[00:10:45] arbitrary numbers, but still we don't have
+[00:10:47] a Nash equilibrium in pure strategies.
+[00:10:49] And we are guaranteed by the Nash theorem
+[00:10:51] that there must be at least a mixed strategy,
+[00:10:55] Nash equilibrium.
+[00:10:56] Let's see.
+[00:10:57] Well, the point is that in this kind of situation,
+[00:10:59] Bia ignores what Art will play,
+[00:11:01] is exactly the key point of her belief.
+[00:11:04] So Bia does not know.
+[00:11:06] But the main assumption she can make, being rational,
+[00:11:09] she can assume that art will play U with probability Q,
+[00:11:13] and therefore will play D with probability one minus Q.
+[00:11:17] So these are some of the reasoning we made
+[00:11:18] for the odds and evens, right?
+[00:11:20] Once you define the value Q,
+[00:11:23] you uniquely identified a strategy,
+[00:11:25] a mixture strategy for art.
+[00:11:27] And saying art can think Bia will play F with probability R
+[00:11:32] and therefore G will be played by BR with probability one minus R. Q and R uniquely identify
+[00:11:38] arts and BR's strategy respectively. Okay now for example assume that BR is known for some reason
+[00:11:47] to always play F. So in this case this is like saying well BR is actually playing R equal to one.
+[00:11:56] So if art believes so and remember the meaning of believing something does not really mean
+[00:12:01] you have to put your blind faith in it in Game Theoretics.
+[00:12:05] It means that you simply assume this.
+[00:12:07] So if Art assumes that Bia is playing F,
+[00:12:12] well Art knows what his best response will be
+[00:12:16] because the best response to play F from Bia's side
+[00:12:19] is that Art plays U.
+[00:12:21] So you can say the best response
+[00:12:23] to choosing R equal to one is to choose Q equal to one.
+[00:12:28] Okay?
+[00:12:29] In general, Art's utility depends on Art, right?
+[00:12:34] If Art plays you, Art does not know what will happen.
+[00:12:38] Sometimes when playing you, sometimes Art gets six,
+[00:12:43] some other times he gets zero.
+[00:12:46] And when Art plays D, sometimes he gets two,
+[00:12:49] and some other times he gets four.
+[00:12:51] What do I mean by sometimes and some other times?
+[00:12:53] Well, it depends on what Bia does.
+[00:12:54] And Bia plays according to a mixed strategy where this is played with probability R and this is played with probability 1 minus R.
+[00:13:02] So Art knows and can predict what happens, for example, if he plays D.
+[00:13:06] If Art plays D, well, he gets 2 if Bia plays F. That happens with probability R.
+[00:13:13] Or gets 4 with probability 1 minus R.
+[00:13:15] So you can write this down. This is nothing but total probability theory.
+[00:13:19] You consider all the cases that are just two cases.
+[00:13:22] one happens with probability r, and the other happens
+[00:13:24] with probability 1 minus r.
+[00:13:25] And you can write down this expected utility value.
+[00:13:29] Note that this is an expectation for art's payoff,
+[00:13:32] because art decided to play d, but he does not
+[00:13:36] know what b i will do.
+[00:13:37] So he can estimate the expected payoff he gets.
+[00:13:41] And same for when art is playing u,
+[00:13:43] he gets 6r, or plus 0 times 1 minus r.
+[00:13:46] So these are the two payoffs.
+[00:13:48] So the point is, what's better for art?
+[00:13:50] Is it better to play D or to play U?
+[00:13:52] R is rational, so he can compare these two numbers
+[00:13:55] and can tell what's bigger.
+[00:13:57] And he will play the one with higher payoff.
+[00:13:59] Easy as that, because R is really rational.
+[00:14:01] R doesn't have to do much more than to compare
+[00:14:03] these two numbers.
+[00:14:04] But these two numbers depend on R.
+[00:14:06] So it turns out that this number is bigger
+[00:14:10] if R is greater than 1 half.
+[00:14:12] You can check.
+[00:14:13] Otherwise, D is the best response.
+[00:14:16] And if R is equal to 1 half, they give the same payoff.
+[00:14:19] they give a payoff equal to three. Okay, now we have found that art's best response
+[00:14:25] depends on r, so we call it q star of r. So don't get confused, r is the parameter because
+[00:14:32] the art's best response depends on r. And we call it q star because it is a choice of q,
+[00:14:39] right? r strategy depends on choosing q. So once you choose q, you know r strategy. So we are
+[00:14:47] saying that Art can choose his optimal value of q, this y q star, as a function of r correctly.
+[00:14:54] So then we can plot this. If we plot q star as a function of r, we get this. Remember,
+[00:15:01] what is this function? Art's response is either u or d, which means that q star of r is either
+[00:15:07] one or zero, because q is the probability that Art is playing u. So q star is actually one or
+[00:15:14] 0 only.
+[00:15:16] And therefore, we can write q star as a stepwise function.
+[00:15:20] q star is equal to 0 if r is less than 1 half,
+[00:15:23] and q star is 1 if r is greater than 1 half.
+[00:15:27] So you have this function.
+[00:15:28] You see you have a stepwise function.
+[00:15:30] Actually, if r is equal to 1 half,
+[00:15:33] every strategy played by art is the same.
+[00:15:37] So all these points are best responses.
+[00:15:39] But that's not important, because as we mentioned,
+[00:15:43] And well, in continuous function analysis,
+[00:15:46] single points don't matter.
+[00:15:47] So here we have a discontinuity, actually.
+[00:15:50] But the main behavior is that for r less than 1 half,
+[00:15:54] you have q star equal to 0.
+[00:15:56] And then this goes up to 1 for r greater than 1 half.
+[00:16:00] So you have a stepwise function.
+[00:16:01] I hope you got convinced.
+[00:16:03] Well, actually, you can do the same reasoning for B-R.
+[00:16:07] Because if you repeat the computations, B-R, well,
+[00:16:13] her UB when playing F or when playing G.
+[00:16:18] And these are the expressions.
+[00:16:19] You can check with the metrics.
+[00:16:20] If you don't believe me, stop the video
+[00:16:22] or look at the slides and see that this is the payoff
+[00:16:25] that BR gets.
+[00:16:27] And once again, we can compare what's bigger,
+[00:16:29] because BR is also a rational player.
+[00:16:31] So BR can say, well, do I prefer to play F or G?
+[00:16:35] It depends on what's bigger.
+[00:16:37] And what's bigger, in turn, depends on the value of Q.
+[00:16:40] So BR's best response, we denote it
+[00:16:42] with r star of q, which is also a stepwise function.
+[00:16:46] r star of q for the same reasoning.
+[00:16:48] q is the parameter.
+[00:16:49] And r star means that's the best choice of r for v.
+[00:16:52] And you can see that r star of q is equal to 1
+[00:16:55] if q is less than 5 over 8.
+[00:16:58] Otherwise, r star q is equal to 0.
+[00:17:00] So it's, again, a stepwise function.
+[00:17:01] So let's try plotting this on this graph.
+[00:17:03] Well, how to do that?
+[00:17:04] Well, you need to turn your head,
+[00:17:07] because now this is the x-axis,
+[00:17:09] is, and this is the y-axis, right?
+[00:17:13] And not only it is turned, but it's also mirrored.
+[00:17:16] But nevertheless, consider a plot
+[00:17:18] where you start changing Q from 0 to 1.
+[00:17:22] What happens is this function, OK?
+[00:17:25] You have this function for that.
+[00:17:27] You have this function going like this, right?
+[00:17:30] It's the same thing, but imagine the diagram
+[00:17:32] to be turned.
+[00:17:34] OK, now, so this point where the two meets,
+[00:17:37] where two blue and orange line meet,
+[00:17:40] means that these are joint strategy.
+[00:17:42] Q equal to 1.5 and R equal to 5.8,
+[00:17:45] that is a Nash equilibrium.
+[00:17:46] Why?
+[00:17:46] Because in this point,
+[00:17:48] both players are playing a best response
+[00:17:50] to their beliefs,
+[00:17:52] and therefore their beliefs turn out to be correct.
+[00:17:54] They identify that this is the Nash equilibrium.
+[00:17:57] So every player is playing a best response
+[00:18:00] to the other player's choice.
+[00:18:02] And we can find this point quite mechanically
+[00:18:04] by seeing where the two lines intersect. Okay. And this gives us an intuition, because, well,
+[00:18:13] look at these two lines. I mean, art blue line goes from zero to one. It has to be so. I mean,
+[00:18:22] sometimes art best response can be constantly equal to zero or constantly equal to one.
+[00:18:27] This would mean that the other strategy is strictly dominated, because the other one is
+[00:18:32] never a best response.
+[00:18:33] So if there is no strictly-dominated strategy,
+[00:18:37] one is sometimes the best response,
+[00:18:39] some other times is the other.
+[00:18:40] So you must switch from 0 to 1.
+[00:18:43] And same for BIA.
+[00:18:44] So BIA also goes from 0 to 1.
+[00:18:46] And there are some topological principles,
+[00:18:48] which I will discuss in a while.
+[00:18:49] I will give a formal proof of Nash theorem.
+[00:18:54] According to which, if you go from 0 to 1,
+[00:18:57] well, you must go and you go it continuously.
+[00:19:00] I mean, this is discontinuity.
+[00:19:01] but you see, I mean, this vertical line means that you never break the line. So you have a contact
+[00:19:09] point somewhere in the middle, right? This is a principle that you might have called the
+[00:19:15] bothano-varistras theorem, maybe, or the zero theorem. I mean, there are theorems in a
+[00:19:22] calculus where you say, well, I have a continuous function. I know that I have a negative
+[00:19:28] value here and a positive value there. So since the function is continuous, in between, there must
+[00:19:34] be a point where the value is zero. Why? Because if you go from below the axis to above the axis
+[00:19:39] and you go so continuously, you must intersect the axis. So that's the same principle at work
+[00:19:44] here. The blue line goes from zero to one, so it must intersect with the orange line at
+[00:19:50] point. So this is why the inner reason why there must be a Nash equilibrium. And actually,
+[00:19:57] you can have some more complicated situations because this is the existence of at least one
+[00:20:04] intersection point. But who said there's only one? Maybe the lines goes up and down
+[00:20:09] and so there are multiple intersections. For example, in the Battle of Seses,
+[00:20:13] you can redo the computations and that's a bit tricky but you can compute. I mean,
+[00:20:18] You can check my computations here.
+[00:20:21] They are perfectly analogous to the example of art and beer.
+[00:20:24] Utility of an when playing R, and assuming
+[00:20:27] that Brian chooses a value R to go to the romantic movie,
+[00:20:31] then this gives you this value.
+[00:20:33] So you have, again, a stepwise function.
+[00:20:36] Well, the function depends on R.
+[00:20:38] And this is H, meaning the Heaviside function, a unit
+[00:20:41] step, basically.
+[00:20:42] So this is a unit step that goes down on 1 third.
+[00:20:45] because, remember, we proved that Anne
+[00:20:48] wants to go in the mix of Nash equilibrium,
+[00:20:52] she wants to go to the romance movie with probability 2 3rds.
+[00:20:57] And Brian wants to go to the romance movie
+[00:20:59] with probability 1 3rds.
+[00:21:00] So you have this situation.
+[00:21:02] This is what you get for the two points.
+[00:21:07] So in reality, here you have also two intersections here.
+[00:21:11] You have two intersections because Anne and Brian also
+[00:21:14] or have a Nash equilibrium when Q and R are equal to 0,
+[00:21:18] and both equal to 0, and both equal to 1.
+[00:21:22] Remember, this is the probability
+[00:21:24] that Anne chooses the romantic movie, and also Brian.
+[00:21:28] So they go both seeing the sci-fi movie.
+[00:21:30] Or the probability they both go see the romantic movie,
+[00:21:33] with both probability 1.
+[00:21:35] And with probability 2 third, Anne
+[00:21:37] goes to see the romantic movie.
+[00:21:39] And with probability 1 third, Brian does so.
+[00:21:41] So they meet in this other mix of Nash equilibrium.
+[00:21:43] So you have three intersection points here.
+[00:21:46] And you can have more than that.
+[00:21:47] You can have multiple ups and downs,
+[00:21:49] and you have multiple points.
+[00:21:51] Actually, in this game, because you
+[00:21:53] have just two alternatives, you can't do many turns.
+[00:21:57] You can only have three intersections in reality.
+[00:21:59] But if you have a more complicated game
+[00:22:00] with multiple strategies, you can
+[00:22:02] have a stepwise function that goes up and down and up
+[00:22:04] and down again, and you have multiple Nash equilibria.
+[00:22:08] But the point is that you need
+[00:22:10] to have at least one intersection.
+[00:22:12] And well, the theorem generalized this reason.
+[00:22:15] So you have these three Nash equilibria here.
+[00:22:17] Remember, this is just to highlight them.
+[00:22:20] But you might have intersections
+[00:22:22] as many as Nash equilibria.
+[00:22:24] So let's try to formalize this with a theorem.
+[00:22:27] And we are going to be a bit more mathematical now.
+[00:22:29] But if you've got intuition, it will be easy to follow.
+[00:22:32] If you have a game written in normal form,
+[00:22:35] remember we define the best response to play i.
+[00:22:38] this is a function from the delta s minus i
+[00:22:42] to the set of the parts of delta s i.
+[00:22:46] And this is defined so that b r of m minus i
+[00:22:50] is one m i belonging to delta s i
+[00:22:53] such that u i of m i, m minus i is maximum.
+[00:22:57] So this means that b r of i is not an element,
+[00:23:01] is a set of all the elements
+[00:23:04] for which you get the best response.
+[00:23:05] Okay, this is the definition of best response for player I.
+[00:23:10] Now we define this best response in bold,
+[00:23:13] so the best response of everyone,
+[00:23:15] where we go from delta S
+[00:23:17] to the set of the parts of delta S.
+[00:23:20] This is defined as the best response of a value M,
+[00:23:24] meaning it is the best response of player one
+[00:23:26] for M minus one,
+[00:23:28] times the best response of player I for M minus I,
+[00:23:31] up to best response of player N for M minus N, meaning B R of M, the bold one,
+[00:23:39] contains the Cartesian product of all the best responses of all the players,
+[00:23:43] where you compute them on all the strategies of the opponents. This is why B R of 1
+[00:23:49] contains as input M minus 1. So basically, when you compute B R of 1, you take M1 out of this M.
+[00:23:57] If you take B R2, you take M2 out of this M. And you take all of these sets, because
+[00:24:03] these are sets, and you combine with all the alternatives. So if this set has two elements,
+[00:24:09] and this other one has three, then you have six possible combinations. All of them
+[00:24:13] are in this big set B R. Okay, so B R is a very big set, but ideally if those
+[00:24:20] are all singletons, this is just a collection of best responses, the only best response,
+[00:24:24] easy. But if you have multiple best responses, you can see they're all possible combinations.
+[00:24:29] The key point here is that this br bold always has something, okay? It cannot be empty,
+[00:24:36] because there always is at least one best response. Sometimes there are more than one.
+[00:24:40] Okay, now, so this is to say, this again to summarize, br i, m minus i, is the set
+[00:24:47] of best responses to i. And if we aggregate all of them, we get br bold.
+[00:24:52] Also, we can easily prove from the definition, I mean this is not even a proof, just follows
+[00:24:58] from the definition, that M is a Nash equilibrium if M belongs to the BR of M, right? So this
+[00:25:05] is what mathematicians call a fixed point. M must be a fixed point of BR bold. So if
+[00:25:12] we apply this transformation BR bold to a value m,
+[00:25:17] we find m inside BR m.
+[00:25:21] So BR m is a set of joint mixed strategies, right?
+[00:25:27] Among these mixed strategies, there is m,
+[00:25:30] then m is a Nash equilibrium.
+[00:25:33] So if m falls inside BR of m itself,
+[00:25:38] it means m is a best response to itself.
+[00:25:41] So it is a Nash equilibrium, okay? It's a bit involuted, but it's kind of trivial so far. I mean,
+[00:25:46] this part is nothing surprising. It's just a definition of Nash equilibrium, just remodeled
+[00:25:52] and manipulated a bit. But by, if we agree on the definition of this Br bold, we must admit
+[00:25:58] that a Nash equilibrium is nothing but a fixed point of Br bold. Okay, note that Br
+[00:26:05] BR has some properties.
+[00:26:08] In particular, it's always non-empty.
+[00:26:10] This is very important.
+[00:26:11] There always is a best response.
+[00:26:13] And so, BR has something for every player to play.
+[00:26:17] Okay, it cannot be, well, I don't know what to play,
+[00:26:19] I don't have a best response.
+[00:26:20] No, every player must have at least one best response.
+[00:26:23] Sometimes they have more than one,
+[00:26:24] but they cannot have zero best responses.
+[00:26:28] Also, as a remark, this BR I of N minus I
+[00:26:31] always contains at least a pure strategy.
+[00:26:34] Why so?
+[00:26:35] Well, if you have a mixed strategy that is a best response, also all the best, all the
+[00:26:42] pure strategies that belong to its support are also best responses. Remember, we saw
+[00:26:48] that with a theorem, because if you say that a mixed strategy, which is nothing but
+[00:26:52] a linear combination of pure strategies, is a best response, but some of the pure
+[00:26:57] strategies in its support are not best responses, you get a contradiction, because
+[00:27:02] it means you are mixing between A and B. So the mixture is the best response, but A is not the
+[00:27:09] best response. Then you would do better by increasing the weight of B and decreasing
+[00:27:15] the weight of A, and you get an even better response. So against the assumption that the
+[00:27:20] mixture between A and B is the best response. Okay, so it must be that A and B individually
+[00:27:25] must be best responses. So as a remark, I mean this is just a remark that confirms
+[00:27:30] the theorem that we saw in the previous lecture.
+[00:27:34] Okay, now, let's discuss the Brouwer fixed-point theorem,
+[00:27:38] which I won't prove,
+[00:27:39] is you can consider it to be just an extension
+[00:27:42] of Bolthano-Weierstrass theorem.
+[00:27:44] I mentioned that if you have, like in this graph,
+[00:27:47] you have two curves and one star below the other
+[00:27:50] and ends up above the other and they are continuous,
+[00:27:52] they must intersect in some point.
+[00:27:55] Okay, now, Brouwer fixed-point,
+[00:27:56] that's Bolthano-Weierstrass.
+[00:27:58] Brouwer fixed-point is something similar.
+[00:28:00] it says that if you have a continuous function that
+[00:28:03] maps an interval to itself, and that we are still
+[00:28:06] talking about the real numbers.
+[00:28:09] So that's a theorem, not a game theory, just
+[00:28:11] a theorem of calculus.
+[00:28:13] Brouwer theorem says, well, you
+[00:28:15] can manipulate both anovirus or the zero theorem
+[00:28:19] by saying, well, it must also
+[00:28:21] be so that a continuous function must have a fixed point.
+[00:28:25] So there exists an x star belonging to this interval
+[00:28:29] such that the function of x star is equal to x star itself.
+[00:28:33] And that's easy to prove, because if you consider,
+[00:28:36] well, for example, let's consider
+[00:28:37] the interval equal to 0, 1.
+[00:28:39] And what you're basically saying
+[00:28:40] is that if a function has f0, which is greater than 0,
+[00:28:44] and f1, which is less than 1, you apply the Boltzano-Varaso
+[00:28:48] theorem to fx minus x.
+[00:28:50] So there must be a point.
+[00:28:52] I mean, this starts negative then.
+[00:28:55] And it starts positive and becomes negative.
+[00:28:58] So it must be that it has value zero at a certain point.
+[00:29:03] And the value for which, the value x for which this is zero
+[00:29:06] means f x star is equal to x star.
+[00:29:08] Easy, right?
+[00:29:09] So in reality, the fixed point theorem
+[00:29:11] is easy on real numbers.
+[00:29:14] So Nash just needed this ingredient,
+[00:29:16] but it doesn't work this well
+[00:29:18] because we don't have numerical intervals,
+[00:29:21] we have strategy sets,
+[00:29:23] and especially we don't have functions.
+[00:29:25] Remember, the best response is not unique.
+[00:29:28] Okay.
+[00:29:29] Well, luckily there is this theorem,
+[00:29:32] Kakutani's fixed point theorem, which I won't prove,
+[00:29:35] but it's just an extension of Brower's fixed point theorem.
+[00:29:38] So it's just the extension,
+[00:29:39] I mean, Brower's theorem works for numbers.
+[00:29:42] And this works for more complicated things.
+[00:29:45] And luckily it's what we need.
+[00:29:47] So, Kakutani's fixed point theorem states that
+[00:29:50] if A is a non-empty compact and convex subset
+[00:29:54] of r to the power of n. And you have a correspondence from f, f from a to a, and this,
+[00:30:01] remember, I use the symbol, the double arrow, to mean a correspondence. Remember, the best response
+[00:30:05] is not a function, it's a correspondence, because it's not necessarily unique. But it doesn't matter.
+[00:30:10] If this correspondence is such that for all x belonging to a, f of x is non-empty, this is
+[00:30:17] important and complex.
+[00:30:19] And you have some property, additional property.
+[00:30:23] Essentially, the property we need
+[00:30:25] are if you have sequences xi and yi in Rn,
+[00:30:29] and these sequences converge to x and y respectively,
+[00:30:33] then if yi belongs to f xi, then also y
+[00:30:39] belongs to f of x.
+[00:30:40] Well, what does this mean?
+[00:30:42] What's the intuition behind this?
+[00:30:43] This is a bit complicated, apparently,
+[00:30:44] but nothing strange.
+[00:30:45] So the point here is that, well, if we had functions,
+[00:30:50] so the point is f is a correspondence.
+[00:30:52] If we have f as a function, we would say, well,
+[00:30:56] this is analogous to Cauchy condition, right?
+[00:31:00] If you have a sequence that xi, that tends to x,
+[00:31:05] and you compute f x1, f x2, f x3,
+[00:31:09] this converges to f of x.
+[00:31:12] This is the assumption.
+[00:31:13] This is what you wanted, actually.
+[00:31:14] not something you want to prove. This is the assumption. If this happens, then you have
+[00:31:20] certain properties. Well, the only point here is that we don't compute f of x as a function,
+[00:31:27] because f is not a function. f is a correspondence. So this is why we say y belongs
+[00:31:33] to f of x, because f of x is actually a set of possible values. There are multiple values.
+[00:31:38] yet yi is one of them. So you can imagine a trajectory of a graph and you compute this
+[00:31:47] graph on different x values. Okay, the point is you don't have really a line because you
+[00:31:54] don't have a function. You have a cloud of points. But among these points there
+[00:31:59] is one point y that tends to certain limit y. Okay, yi is the sequence and y is the
+[00:32:06] limit point. Well, it happens that if X, the sequence X, Y tends to X, and the sequence
+[00:32:14] Yi tends to Y, then this is contained into the mapping of F. So the graph of F, which
+[00:32:23] is not really a graph in the sense of a line, but it's a cloud of points in general,
+[00:32:28] well contains Y. Contains the limit value of the sequence. So you can reach Y either
+[00:32:35] by choosing the limit of xi and computing f,
+[00:32:39] or you can compute all the fx, and you take the limit,
+[00:32:45] and this goes to y.
+[00:32:47] OK, that was tough, but it's just the assumption we needed.
+[00:32:52] And luckily, this holds true for the game theory,
+[00:32:59] for the best response, y, I'll tell in a while.
+[00:33:03] But the theorem states that if this is true,
+[00:33:06] so if the graph of f is closed, so as soon as you approach
+[00:33:10] the limit point, you cannot escape.
+[00:33:13] That's the idea.
+[00:33:14] Well, if this is true, then there
+[00:33:16] must exist an x star that is the fixed point.
+[00:33:19] And note this x star is not like Brouwer fixed point
+[00:33:23] theorem is equal to f x star,
+[00:33:25] but belongs to f x star once again
+[00:33:27] because f is a correspond.
+[00:33:28] Well, Nash theorem is nothing but this theorem applied
+[00:33:32] to the global best response VR.
+[00:33:34] Why the best response VR satisfied these properties?
+[00:33:37] Well, that is non-empty with a match.
+[00:33:39] Every other property, convexity, compactness,
+[00:33:42] and also the closed graph property,
+[00:33:46] hold true simply because we take the expected utility.
+[00:33:51] Remember that von Neumann and Morgenstern
+[00:33:53] defined a BNN utility as having certain good properties.
+[00:33:57] And these good properties are actually satisfied
+[00:34:00] if we take expected utilities.
+[00:34:02] Why?
+[00:34:02] Because expected utilities are nothing
+[00:34:04] but a linear combination.
+[00:34:05] So it's naturally true.
+[00:34:07] You can easily prove it.
+[00:34:08] We won't go through the proof in detail.
+[00:34:09] But it's easy to prove that all of these results
+[00:34:12] are true.
+[00:34:13] All these necessary conditions for the theorem
+[00:34:16] to be true are valid.
+[00:34:17] Because, well, compactness and convexity and the fact
+[00:34:21] that you don't escape from the graph naturally follow
+[00:34:24] from the condition of the expected utility.
+[00:34:27] It is basically defined as a weighted sum,
+[00:34:29] a linear combination.
+[00:34:30] So you have this quite trivially, actually.
+[00:34:33] So Nash remarked that and said, well,
+[00:34:34] if I apply Kakutani's theorem, and Kakutani's theorem
+[00:34:37] is actually a variant of a simpler theorem in calculus,
+[00:34:41] on the best response, I get what I need.
+[00:34:43] That is, there must exist at least one point
+[00:34:46] that belongs to the set of its best response,
+[00:34:49] meaning this point is a Nash equilibrium.
+[00:34:52] OK, very good.
+[00:34:53] So, this was tough and this can be a good point where to stop.

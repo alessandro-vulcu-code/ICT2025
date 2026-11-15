@@ -1,0 +1,279 @@
+[00:00:01] Welcome back to this second part of the third lecture
+[00:00:06] of the course on game theory.
+[00:00:08] I'm Leonardo Badia, the lecturer for this course.
+[00:00:12] We were left before the pause with this concept
+[00:00:18] of Pareto efficiency and Pareto dominance,
+[00:00:21] which hinders a comparison of strategies.
+[00:00:25] And we might wonder, is there a way
+[00:00:27] to make this comparison more useful for our purposes because the idea of operator dominance
+[00:00:33] is just an evaluation of well this strategy is not very it does not result in a very good
+[00:00:40] outcome but there is another concept of strict dominance which we want to explore so we call
+[00:00:49] a strategy to be strictly dominated by another strategy so we have this orange strategy we say
+[00:00:56] it is strictly dominated by this blue strategy.
+[00:00:58] In the labels there, SI and SI crime,
+[00:01:02] those are strategy for the i-th user.
+[00:01:04] We say that the orange one is strictly dominated
+[00:01:09] if the payoff of play i when playing the blue one
+[00:01:13] is greater than, strictly greater than,
+[00:01:15] so we don't have the equal sign,
+[00:01:17] than when playing the orange one for any other move
+[00:01:21] of the other players.
+[00:01:22] So formally, we need ui of s1, s2, up to si prime, and sn.
+[00:01:30] This must be greater than ui of s1, s2, dot, dot, dot,
+[00:01:34] si, up to sn, for any choice of s1 up to si minus 1.
+[00:01:42] And then we skip si, si plus 1, up to sn.
+[00:01:46] This belongs to the Cartesian product
+[00:01:48] of all the strategy sets.
+[00:01:50] So this is the definition.
+[00:01:51] but the conclusion is very important.
+[00:01:53] If you are a rational player,
+[00:01:55] you do not play this strategy.
+[00:01:59] Playing the orange one is kind of dumb
+[00:02:02] because your objective, remember,
+[00:02:05] if you're rational is to maximize your utility.
+[00:02:08] And you know, you know because you're smart,
+[00:02:11] because you fully know the rules of the game
+[00:02:13] and you know all the implications.
+[00:02:14] You know that whatever the other players choose,
+[00:02:17] you are always worse off by playing the orange one versus when playing the blue
+[00:02:25] one. So why should you play the orange one? It's always strictly worse. So this
+[00:02:32] is slightly different than the Pareto dominance or Pareto efficiency because
+[00:02:39] that was a concept where you look at all the players. Here instead you only
+[00:02:45] consider one player, and you say this player being smart,
+[00:02:51] he will notice that there is no point for him
+[00:02:55] in playing the orange strategy, because he does not
+[00:02:59] know yet what will happen.
+[00:03:01] But he knows, and you see the point where rationality
+[00:03:04] comes into play, the capability of anticipating
+[00:03:08] the consequences of the actions.
+[00:03:11] The rational players does not know
+[00:03:14] what the other players do but the rational player knows that whatever he or she does
+[00:03:21] sorry whatever the other the others do he or she is always worse off in choosing the orange one
+[00:03:30] versus when choosing the blue one so the orange one is really a stupid strategy
+[00:03:36] it's a dominated strategy actually strictly dominated so there is really no point in playing
+[00:03:41] it. Let's see an example. In the first example I showed you, there is one such strategy.
+[00:03:50] The D strategy is strictly dominated by strategy M. Why? Because when playing D,
+[00:03:58] player A can either get zero or two depending on the choice of player B.
+[00:04:03] And when playing M, he respectively gets one or four, so always strictly better.
+[00:04:10] And note, this does not mean M is always better than B.
+[00:04:15] Because a stupid player can say, well, D
+[00:04:18] can be better than M. True.
+[00:04:21] Because if you play D and the other players play R,
+[00:04:25] you get two.
+[00:04:26] If you play M and the player B plays L, you only get one.
+[00:04:32] So it's not true to say M is always better than B.
+[00:04:37] Some outcomes when playing M are worse than some outcomes when playing D.
+[00:04:45] But the point is that the corresponding outcome when playing M is always better than the corresponding outcome when playing D.
+[00:04:55] So if you do just the comparison of corresponding outcomes, the ones with M are always strictly better than the ones with D.
+[00:05:04] and this is why we say that D is strictly dominated,
+[00:05:08] strictly dominated by M.
+[00:05:11] So what happens is that you can even say,
+[00:05:14] well, rational players do not consider D.
+[00:05:17] So the game, so you see, this is still left.
+[00:05:20] This cancellation is transparent
+[00:05:23] because the real game has three strategies.
+[00:05:26] But when player A considers what strategies
+[00:05:30] can he or she play, well, D is not even considered.
+[00:05:34] you can easily overlook D and nothing happens because if you're rational you will never play
+[00:05:39] D. This is a very important consequence. Why? Because in reality after you cancel this D out
+[00:05:48] you can find out other dominated strategies. For example you now notice that well player B
+[00:05:56] now notices that playing L is kind of stupid because L always gives zero while R is either
+[00:06:05] five or three, so always better. Note that this was not originally true. In the original version
+[00:06:11] of the game, L sometimes gives seven. L can give seven to player B if player A plays D.
+[00:06:20] The point is, player A will never play B, because D is a dominated strategy. So now
+[00:06:27] we invoke the iterative procedure by which we say, okay, player A knows that D is a
+[00:06:35] dominated strategy. So player A knows he or she doesn't want to play B. Well, player
+[00:06:44] player B, remember, is also fully aware of the rules of the game. And all the utilities
+[00:06:50] are common knowledge. And player B is rational. So player B is fully informed about the game,
+[00:06:57] also capable of jumping to conclusions. So player B will realize this as well. So
+[00:07:03] this cancellation that we made about strategy D does not work only for player A, it works
+[00:07:09] also for player B. So player B is able to figure out this cancellation as well.
+[00:07:15] And given that, player B can also infer that L is really a stupid strategy for himself or herself.
+[00:07:23] Because playing L would only work out if player A chooses D. But player A will never choose D.
+[00:07:33] As a result, also L is a stupid strategy and we can cancel it as well.
+[00:07:39] And now you can eliminate also U for play A,
+[00:07:44] because now M dominates strategy U.
+[00:07:48] M didn't dominate strategy U in the beginning,
+[00:07:51] but now that we eliminated L, we
+[00:07:54] realize that U is kind of stupid, too.
+[00:07:57] Because playing U works very well if player B plays L.
+[00:08:02] But player B doesn't play L. Why doesn't player B play L?
+[00:08:07] Well, we already figured out because L is dominated.
+[00:08:11] Well, L is not really dominated.
+[00:08:13] It works well if player A plays D.
+[00:08:17] But player D doesn't play D.
+[00:08:19] So we can discover this
+[00:08:23] after iterating the procedure of elimination.
+[00:08:26] So remember, here we can exploit
+[00:08:29] the fact that all the players know the rules.
+[00:08:32] All the players know that they know the rules.
+[00:08:35] All the players are rational, all the players know that they are rational, all the players
+[00:08:41] know that they know they are rational, and so on and so forth.
+[00:08:44] So we have this very powerful assumption of complete information so everybody knows
+[00:08:49] everything, which is not really true, it's not that everybody knows everything, because
+[00:08:54] player A at the beginning does not know what player B will play.
+[00:08:58] That's the beauty of the game, this is still unknown.
+[00:09:01] But after figuring out that player B wants to do anything stupid and player B does the
+[00:09:07] same for player A, they eliminate these strategies.
+[00:09:11] So this is like more or less like Sherlock Holmes does in the mystery novels.
+[00:09:18] Sherlock Holmes eliminates what's impossible and what's left is the only option.
+[00:09:23] So here we see that the game must be played by rational players by choosing M and R.
+[00:09:31] So the only reasonable outcome, the only rational outcome is M R, which results in utility 4 for player A and utility 3 for player B.
+[00:09:41] You see, we were able to make predictions.
+[00:09:45] So, even though, in principle, the two players are playing a perfect game, so they don't
+[00:09:51] know what the other is doing, we can make predictions on what they're going to play,
+[00:09:56] and they can predict themselves. So, player A is able to predict, player B is playing
+[00:10:01] R, and player B is able to predict, player A is playing M, and they will actually
+[00:10:06] play M R. So, their prediction is working well in this situation. So, we see that
+[00:10:13] sometimes we are able to make predictions.
+[00:10:15] Another example is the prisoner's dilemma.
+[00:10:20] When you have two prisoners, we can
+[00:10:21] see that playing F dominates M for both Al and Bob, which
+[00:10:27] means that the outcome is double F.
+[00:10:30] And this justifies the dilemma.
+[00:10:32] So this is why it's called the prisoner's dilemma.
+[00:10:36] Why?
+[00:10:37] Because once you eliminate the dominated strategy,
+[00:10:40] you're left with the only reasonable option,
+[00:10:43] which is they both confess.
+[00:10:46] But when they both confess,
+[00:10:48] they get a very negative result.
+[00:10:51] And this does not seem very efficient.
+[00:10:53] Actually, if you compare the orange and blue one,
+[00:10:57] you see that the double M outcome,
+[00:11:01] Pareto dominates the blue outcome,
+[00:11:05] because you have a way of making both players better
+[00:11:11] Strictly better.
+[00:11:12] So why don't you do that?
+[00:11:14] Well, that's difficult because everyone,
+[00:11:18] I mean, to make them both better,
+[00:11:20] you need to convince them to play M.
+[00:11:23] But since they're rational, they won't play M.
+[00:11:26] So we will discuss why this happens better.
+[00:11:29] But for now, let's notice that the reason
+[00:11:33] of the dilemma is even worse because in principle,
+[00:11:36] So MF, that gives minus 21 to Al, but zero to Bob.
+[00:11:42] Zero is the best that Bob can get.
+[00:11:44] So MF is also Pareto efficient, even though, I mean,
+[00:11:48] it's very bad for Al, but very good for Bob.
+[00:11:51] And similarly, FM is very good for Al, but very bad for Bob.
+[00:11:55] So these are Pareto efficient.
+[00:11:57] And of course, double M is also Pareto efficient,
+[00:12:01] because there is no way of improving one player
+[00:12:04] without making the other worse.
+[00:12:06] So the only non Pareto efficient,
+[00:12:09] meaning it is Pareto dominated by something else,
+[00:12:12] is double F.
+[00:12:14] So double F, which is the only reasonable outcome,
+[00:12:18] is also the only stupid outcome, in a sense.
+[00:12:21] Only inefficient outcome.
+[00:12:23] Because it turns out there is,
+[00:12:25] it is possible, theoretically speaking,
+[00:12:27] to make everybody better without making anyone worse.
+[00:12:32] but we don't get to it.
+[00:12:34] And this is actually very, has very serious implications
+[00:12:37] in what happens in, I don't know,
+[00:12:39] management of the environment.
+[00:12:40] There are ways of management of society.
+[00:12:42] There are good ways to make everyone feel good,
+[00:12:46] but we don't take that.
+[00:12:48] We actually go for ways where everybody is miserable.
+[00:12:51] Okay, we will discuss this and why this happens.
+[00:12:54] But anyways, the procedure that we applied has a name,
+[00:12:58] which is called iterated elimination
+[00:13:01] of strictly dominated strategies.
+[00:13:03] Because yeah, it's what we did.
+[00:13:06] We started by eliminating strictly dominated strategies
+[00:13:09] and we iterated the procedure.
+[00:13:11] So let me call it ISDS for short.
+[00:13:15] Sometimes this procedure is very useful
+[00:13:17] because if you're able to eliminate,
+[00:13:19] I mean, if there is one dominated strategy
+[00:13:21] and it must be a strictly dominated strategy,
+[00:13:24] well, we get a smaller game and if you're lucky,
+[00:13:27] we go on with elimination
+[00:13:29] until we reach a single reasonable outcome,
+[00:13:32] a single rational outcome,
+[00:13:34] which is the prediction that we can make about the game.
+[00:13:38] There's a problem though.
+[00:13:39] I mean, otherwise we would have already ended
+[00:13:42] the course here.
+[00:13:43] The problem is that this ISDS doesn't always work.
+[00:13:47] Sometimes it fails to provide a solution.
+[00:13:50] Let's see some example.
+[00:13:51] There was an example two,
+[00:13:53] which had similar numbers.
+[00:13:55] similar situation is a three times three matrix. Here, you can try, but you won't find any
+[00:14:03] dominated strategy. There is no strategy of the players that dominates the others. However,
+[00:14:09] it seems that if you are rational, you should be incentivized to play
+[00:14:14] DR, because DR gives the best utility to both players. So, I mean, player A can say, well,
+[00:14:23] Well, player A is not sure to play D, because playing D cannot be the best choice. For
+[00:14:30] example, player A can consider, if I play D, but player B, so I'm assuming that player
+[00:14:36] B will play R. That would be the sensible choice. I mean, they are both rational.
+[00:14:41] Can't they see this is the best outcome for both? Why don't they play this? Well,
+[00:14:45] they cannot be sure. That's the problem. Because player A can consider that player
+[00:14:51] B is playing R, but right now play A is not sure. Play A can still, to me, assume that
+[00:14:58] play B can play L, because L is no strictly dominated strategy. You see, in the previous
+[00:15:04] sample, playing L was always bad. Here, playing L is not so bad. Playing L can
+[00:15:09] give you 5, can give you 7, sometimes gives you 0. But this is not always the
+[00:15:14] worst option.
+[00:15:15] I mean, playing R is not strictly better.
+[00:15:19] Playing R gives sometimes nine, very good.
+[00:15:22] Sometimes gives three, which is better than zero,
+[00:15:24] but worse than five.
+[00:15:25] So playing R is not dominating L, and L is not dominated.
+[00:15:31] This is why we can't really, right now,
+[00:15:34] comfortably exclude L from the game.
+[00:15:37] And we are not left with, I mean,
+[00:15:38] the game does not reduce, it goes like this.
+[00:15:41] there is no way, even though it seems sensible,
+[00:15:44] and we will see that this is actually the case,
+[00:15:46] as the two players being smart,
+[00:15:48] they anticipate that they're gonna play the R.
+[00:15:50] Right now, we can't prove it.
+[00:15:53] And there are other situations
+[00:15:55] in which things are even worse.
+[00:15:57] So here, in the odds and evens,
+[00:16:00] this is the situation,
+[00:16:02] and here, nice zero or one strictly dominate the other.
+[00:16:07] You see, if you play zero,
+[00:16:08] well you can be end up in being very well or can end up in being very bad and
+[00:16:16] same is for one. So whatever you play and whatever player you are
+[00:16:21] there is no better strategy than the other. Nice zero one dominates the
+[00:16:26] other so you cannot eliminate the other one. And things are even worse
+[00:16:31] for the battle of sexes because here there are two strategies seems good and
+[00:16:37] Well, there are not two strategies. I mean, R seems to be good for Anne as long as Brian
+[00:16:43] complies and plays R. But what if Anne plays R but Brian goes to S? Well, that's bad.
+[00:16:50] So there is no dominated strategy to eliminate. You cannot be sure that playing R is always
+[00:16:56] strictly better for Anne. Sometimes it's better, sometimes it's not. So you cannot
+[00:17:01] eliminate S for Anne, nor you can eliminate R for Anne or S for Brian and so on and so
+[00:17:06] forth. So nothing to eliminate here. Still, it seems that double R or double S are good
+[00:17:11] outcomes. You should end up in either if you're smart, but maybe you don't, who knows?
+[00:17:18] So in short, we have this that tells us that this concept is insufficient. We
+[00:17:26] cannot say that the IESDS is the procedure that we need to use.
+[00:17:34] Sometimes it works.
+[00:17:35] If it does, use it.
+[00:17:37] Feel free to.
+[00:17:38] But you should find another way
+[00:17:40] to make predictions that does not limit to IESDS.
+[00:17:46] Let me summarize again.
+[00:17:48] We identified IESDS, which is a procedure that,
+[00:17:51] if possible to use, should be used, definitely.
+[00:17:54] It makes the game smaller, actually changes the game.
+[00:17:59] So you get another game.
+[00:18:00] Because remember, in the normal form,
+[00:18:02] you list all strategies, you list all utilities.
+[00:18:04] Now you are reducing the set of strategies.
+[00:18:06] So you're changing the game, basically.
+[00:18:07] But you get another game that is smaller,
+[00:18:10] where you eliminated all the damn strategies.
+[00:18:13] And you have rational players, so there is nothing wrong
+[00:18:15] in doing that.
+[00:18:17] However, this strategy is not guaranteed to work.
+[00:18:20] Sometimes it works, and good for you.
+[00:18:22] And sometimes, I mean, there is nothing to eliminate.
+[00:18:25] So it is not wrong, but insufficient
+[00:18:29] to arrive up to a prediction.
+[00:18:31] And in the next lecture, we'll see what we're gonna do
+[00:18:33] if we wanna make some better predictions.
+[00:18:36] For that, for now, this is the end of our lecture.

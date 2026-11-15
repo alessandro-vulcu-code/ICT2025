@@ -1,0 +1,1146 @@
+[00:00:00] So in this lecture, we will discuss static games
+[00:00:03] of complete information.
+[00:00:05] It's a very long name for the simplest form
+[00:00:08] of multiplayer games.
+[00:00:10] Whereas in the first lectures,
+[00:00:12] we argued that it's interesting
+[00:00:14] when we have multiple players,
+[00:00:16] but we didn't have multiple players yet.
+[00:00:19] So what we're gonna do today is basically to introduce
+[00:00:22] the effect of multiple players involved in the game.
+[00:00:27] And we wanna do that in the simplest possible way.
+[00:00:30] So, how do we have multiple players interact?
+[00:00:35] Well, we assume that each one of them
+[00:00:38] has a payoff function, which is a utility function.
+[00:00:41] And because they're rational players,
+[00:00:44] they move to maximize this utility function.
+[00:00:47] So each one of them has a different utility,
+[00:00:50] and this is why they have different objectives in mind.
+[00:00:53] If I'm playing a game, I want to maximize my own utility
+[00:00:57] and I don't care about the others utility and the others do the same reasoning each one of them
+[00:01:03] wants to maximize his or her own utility I do not care about mine so what is the simplest
+[00:01:11] interaction we can have of this kind so to focus on that each one of us wants to maximize
+[00:01:21] his or her own utility and don't care about the others but we don't have other aspects that
+[00:01:27] complicate the problem even further.
+[00:01:29] Of course, this is the same difference that we saw
+[00:01:33] between an individual sport and a team sport,
+[00:01:37] but sports are a difficult example,
+[00:01:39] because we mentioned that in sports,
+[00:01:42] there are also random elements.
+[00:01:43] And so we won't see any form of games like that
+[00:01:47] in the course.
+[00:01:48] And same if we have like a game in which there are,
+[00:01:53] I don't know, chance elements.
+[00:01:55] In general, for starters,
+[00:01:57] we don't consider any random element.
+[00:01:59] And by the way, if we do have some random elements,
+[00:02:03] we just plug in the previous lecture,
+[00:02:06] which shows how to fall back into the deterministic case.
+[00:02:11] So maybe you think, okay, a board game
+[00:02:14] can be a prime example of games
+[00:02:17] where multiple players are involved.
+[00:02:19] But we are still approaching the right solution,
+[00:02:23] but even board games are generally not the simplest possible case. Actually board games can be very
+[00:02:30] complex and board games have a general issue which is that players have turn in taking moves
+[00:02:38] and this changes the role because it's well known that well for example in chess
+[00:02:45] white has a strategic advantage because white moves first and in chess moving first is
+[00:02:51] are an advantage.
+[00:02:53] So the players actually should be identical,
+[00:02:57] are supposed to be identical in chess,
+[00:02:58] but they're not because of this timing issue.
+[00:03:02] So to keep things simple, we don't want any timing issue.
+[00:03:07] And this is why the simplest form of games
+[00:03:10] that we can consider in the multiplayer scenario
+[00:03:13] are the so-called static games of complete information.
+[00:03:18] And this is a very long name, but clarifies
+[00:03:20] all the aspects that you want to keep in account. So static means that all players move together.
+[00:03:28] So very often we will say that players move simultaneously, but that's not actually the case.
+[00:03:34] We will see what we do mean by static. We don't really mean that they move together
+[00:03:40] at the same time, but sort of. I mean, as long as the effect is equivalent to have all
+[00:03:47] all the players moving simultaneously at the same time, okay?
+[00:03:52] They don't really have to do like that
+[00:03:54] as long as whatever they do,
+[00:03:56] it's equivalent to them playing simultaneously.
+[00:03:59] And also we want complete information.
+[00:04:02] Complete information means that we know the rules,
+[00:04:05] but not only that,
+[00:04:06] anybody's payoff function is known to everybody else.
+[00:04:09] So even though I don't know what the others want to play,
+[00:04:15] I know their payoff functions.
+[00:04:17] if I'm a player.
+[00:04:18] So this means that I know the objective they have in mind.
+[00:04:23] And we will relax this assumption
+[00:04:25] because complete information is a very strong assumption.
+[00:04:28] It means that the only uncertainty I have
+[00:04:30] about the others is their actual move.
+[00:04:32] But I know what is their objective.
+[00:04:35] Of course, the objective they have in mind
+[00:04:37] might depend on my choices.
+[00:04:39] So there is a mutual effect, as we discussed.
+[00:04:42] But in principle, I know what they want to do.
+[00:04:44] And if you look at the examples,
+[00:04:49] the textbook examples of these games,
+[00:04:51] most of the times you see artificial games,
+[00:04:54] which are nothing but theoretical artificial models.
+[00:04:58] In reality, there are some actual games
+[00:05:01] you can think that fit this category.
+[00:05:03] So these are the simplest games you can think of.
+[00:05:06] So one is odds and evens or matching pennies.
+[00:05:10] Odds and evens and also rock, paper, scissors.
+[00:05:12] So Odds and Events, I would like to focus on that.
+[00:05:15] I comment on that because apparently
+[00:05:17] it's very well known in Italy,
+[00:05:20] but I discovered that outside of Italy
+[00:05:22] is not very famous, but that is a very simple game.
+[00:05:25] And Matching Pennies is the version
+[00:05:27] you find in many textbooks.
+[00:05:28] I mean, written by American or British authors.
+[00:05:34] So the game of Odds and Events goes like this.
+[00:05:39] There is one player that is play odd,
+[00:05:41] and another player that is play even,
+[00:05:44] and they toss down together a number with the digits.
+[00:05:49] So they just, I don't know, sometimes they make a chance,
+[00:05:53] sometimes they just go together at the same time,
+[00:05:56] like rock, paper, scissors.
+[00:05:57] And actually rock, paper, scissors is in Italy,
+[00:06:02] is called, I mean, the odds and evens,
+[00:06:04] sometimes it's called the mora game,
+[00:06:06] and rock, paper, scissors is called the Chinese mora.
+[00:06:08] Don't ask me why it's thought to be Chinese,
+[00:06:10] but that's a fun part of it.
+[00:06:14] Matching pennies is a very similar game,
+[00:06:16] and I will discuss this in a while,
+[00:06:17] but what's the purpose of odds and evens?
+[00:06:19] So the two players toss a number,
+[00:06:23] and the number is summed.
+[00:06:26] So if the number is odd, then player odd wins.
+[00:06:31] If the player even,
+[00:06:34] if the number is even, player even wins.
+[00:06:36] And we will discuss that there is a symmetry
+[00:06:39] with the game of matching pennies, the game of matching pennies goes like this. Two players
+[00:06:45] use a coin and one of the players wants the coin to match and the other player wants
+[00:06:53] the coins to differ. And the two players select without showing each other heads or
+[00:06:59] tails. So if after this operation they both show two heads or two tails, the matching
+[00:07:05] in player wins, otherwise the other player wins.
+[00:07:09] And this actually, if you think carefully,
+[00:07:11] is isomorphic to the odds and evens.
+[00:07:15] Odds and evens means, I mean,
+[00:07:17] by topological properties of the integer numbers,
+[00:07:22] if the two numbers are both odd or both even,
+[00:07:25] so if they match, then player even wins.
+[00:07:29] If the two numbers are different, then player odd wins.
+[00:07:32] We will show this game later on.
+[00:07:33] So it's actually the same as matching pennies.
+[00:07:35] So it just strikes me that in Italy,
+[00:07:38] we play this game without coins.
+[00:07:40] And in Great Britain, they play this game with coins.
+[00:07:45] I wonder why, maybe because Italians are poor,
+[00:07:47] they don't have coins to play this game.
+[00:07:49] So they figured out a way to play without money.
+[00:07:52] But another thing that is important
+[00:07:54] is that technically speaking,
+[00:07:56] this game is not really static
+[00:07:58] because this game has two rounds in reality.
+[00:08:01] There is a first round where you decide who is player odd and who is player even or in matching pennies
+[00:08:07] Who is the player matching and who is the player not matching but we can simplify this by assuming this is
+[00:08:14] Assigned from the beginning. I don't know from nature from God because in reality
+[00:08:18] This is something that does not affect the game for symmetry reasons
+[00:08:25] Same as, but well, so the simplest example
+[00:08:27] will be actually rock, paper, scissors.
+[00:08:29] But arts and events is a bit simpler
+[00:08:31] because in rock, paper, scissors,
+[00:08:33] you have three alternatives
+[00:08:34] and I guess you know the rules.
+[00:08:36] You can even say, you can even claim,
+[00:08:38] well, that's not the nerdiest version
+[00:08:40] that is rock, paper, scissors, lizards, Spock.
+[00:08:43] And that's another version where you have five
+[00:08:45] alternatives and same rules basically
+[00:08:47] with different results of the outcomes.
+[00:08:50] But arts and events is the simplest version
+[00:08:52] because it has just two sets, two elements in the set of alternatives. Okay, whatever we see,
+[00:09:01] what do we mean with this assumption? So let's discuss what happens in static games of complete
+[00:09:07] information. What happens is that each player simultaneously and independently chooses an action
+[00:09:15] from its own set of available actions, which we denote by AI.
+[00:09:21] So the set A can sometimes be written
+[00:09:24] as the Cartesian product of A1 times A2 times A3
+[00:09:27] and so on and so forth.
+[00:09:28] So the outcome of the game is nothing
+[00:09:31] but the combination of these actions.
+[00:09:33] So it's one element from set A1, another element
+[00:09:36] from set A2, which is the end
+[00:09:39] to pull of the actions chosen by the players.
+[00:09:42] So the outcome, we don't really need to model it.
+[00:09:44] is just end table of all the actions put together.
+[00:09:48] But remember, we mentioned that the outcome,
+[00:09:52] the joint outcome, determines the utility.
+[00:09:56] And the utility is different for every player.
+[00:09:59] So we have a function for player I, a function UI,
+[00:10:04] which is a function of A1, A2, up to AM.
+[00:10:08] So the tricky thing is that we have individual actions
+[00:10:13] and individual utilities.
+[00:10:15] But the utilities are function of the joint actions
+[00:10:19] of this, of the outcome.
+[00:10:21] So there are three ingredients, actions, the outcome,
+[00:10:26] and the utilities.
+[00:10:27] And it goes like, actions are independently
+[00:10:29] chosen by each player.
+[00:10:31] They are put together, they are collected together
+[00:10:33] in the outcome, and then evaluated independently again.
+[00:10:37] So this is the mechanism of the game.
+[00:10:38] And this is why we claim this is the simplest form
+[00:10:41] game because we have something that is taken from each player from each one of the players
+[00:10:48] and then it's collected together this is where the magic of the game happens the actions are
+[00:10:54] all put together to form the outcome but the outcome is then once again independently evaluated
+[00:11:00] by the players so the individuality of the players is present at the beginning then put
+[00:11:07] together in the collective game, and then once again,
+[00:11:11] collected from the individual utility.
+[00:11:15] This is the mechanism.
+[00:11:17] And I describe it in a very philosophical manner,
+[00:11:20] but it will be natural in describing a game.
+[00:11:23] We will see some examples.
+[00:11:25] The main point is that this is what
+[00:11:27] makes the problems interesting.
+[00:11:30] That we need to have a convergence of the actions
+[00:11:33] to add a common outcome, a single outcome that describes
+[00:11:36] all the individual choices of the players.
+[00:11:39] And then this is further individually evaluated
+[00:11:42] by each of the players.
+[00:11:44] Very good, so before moving on,
+[00:11:49] I make an important distinction
+[00:11:50] between actions and strategies.
+[00:11:53] And at this stage in the course,
+[00:11:56] it might seem odd because, yeah,
+[00:11:59] let me introduce the definition of strategy.
+[00:12:01] What is the strategy?
+[00:12:02] Well, the same thing as the action.
+[00:12:03] And why do I make this odd definition?
+[00:12:07] Well, because later on in the course,
+[00:12:09] we're gonna redefine the concept of strategy.
+[00:12:12] It won't be a single action anymore.
+[00:12:16] We will redefine many concepts
+[00:12:18] that are based on the idea of strategy
+[00:12:20] by changing the definition of strategy.
+[00:12:22] So what will happen is that we will redefine strategies
+[00:12:27] and the concepts that are based
+[00:12:29] on the definition of strategies
+[00:12:30] will be in turn redefined.
+[00:12:32] But everything will be nice and coherent.
+[00:12:35] That's the trick.
+[00:12:36] So let me play this trick.
+[00:12:38] So for now, we don't speak about actions.
+[00:12:42] We speak about strategies.
+[00:12:43] And what is a strategy?
+[00:12:44] Well, a strategy is formally defined as a plan of action.
+[00:12:49] So it is a manual, it is a handbook
+[00:12:53] where we decide what actions are we going to play.
+[00:12:58] Well, in a static game of complete information,
+[00:13:01] what kind of complicated strategy can you play?
+[00:13:04] Let's say you have three actions available.
+[00:13:08] Action A, action B, and action C.
+[00:13:10] So your possible strategies, well, let me think.
+[00:13:14] My strategy is, well, to play action A.
+[00:13:17] That's my strategy.
+[00:13:18] That's all I need to tell,
+[00:13:19] because I have one single move
+[00:13:22] based on the choice of one action
+[00:13:24] among my available actions.
+[00:13:26] So there is a one-to-one correspondence
+[00:13:28] between strategies and actions.
+[00:13:29] Another strategy can be, well, you know what, I plan to play action. That's all I need to
+[00:13:38] tell you. So that's my strategy. And that's also my action. So basically, in static games,
+[00:13:44] there is a one to one correspondence between actions and strategies. A strategy is a much
+[00:13:49] more refined concept because a strategy is, well, an algorithm describing what action
+[00:13:57] are you gonna play?
+[00:13:58] If certain conditions are met, we will discuss this.
+[00:14:01] For now, in static games, there is nothing to tell.
+[00:14:04] It's just, well, the action is the strategy
+[00:14:07] and vice versa.
+[00:14:08] But in order for this definition to be modified
+[00:14:12] later on in the course, I will talk about strategies.
+[00:14:17] So in other words, right now,
+[00:14:20] we only have deterministic plans of actions,
+[00:14:24] certain plans of actions.
+[00:14:25] because in a static game of complete information you know everything you just decide together with
+[00:14:32] the others your move so you cannot really say well i change move depending on what the others
+[00:14:37] do you don't know what the others do so you are gonna decide your action and that is your
+[00:14:43] simple strategy to play even worse to complicate things we call this pure strategies so a pure
+[00:14:52] strategy is nothing but a deterministic plan of actions.
+[00:14:55] So in a static game of complete information,
+[00:14:58] well, it's not entirely true,
+[00:15:00] but your only available strategy is a pure strategy.
+[00:15:05] You can decide what action to take, right?
+[00:15:08] Well, not really.
+[00:15:09] We will relax this further in the course.
+[00:15:12] For now, the only strategy you can think
+[00:15:15] is to choose one action and stick to it deterministically.
+[00:15:18] Like if you play rock, paper, scissors,
+[00:15:20] okay, what strategies do you have?
+[00:15:22] Well, either to play rock or to play scissors
+[00:15:25] or to play paper.
+[00:15:26] There is no alternative, right?
+[00:15:29] So that would be your possible strategy.
+[00:15:31] You have three available pure strategies.
+[00:15:35] Very good.
+[00:15:36] So another concept, another formal concept
+[00:15:39] that we introduce is the concept
+[00:15:41] of normal form representation.
+[00:15:43] Well, normal form representation can be defined
+[00:15:47] in different ways.
+[00:15:50] many times we will give a graphical representation
+[00:15:53] of the normal form.
+[00:15:54] But formally speaking,
+[00:15:55] the normal form representation is like this.
+[00:15:58] Remember, each player will simultaneously choose
+[00:16:01] a strategy from a set of your strategies.
+[00:16:04] This is rephrasing what we said about choosing an action
+[00:16:07] from the set of available actions,
+[00:16:10] because we, from this point on,
+[00:16:12] we will talk about strategies and not actions.
+[00:16:17] Actually, the strategy results in a given action,
+[00:16:20] so it's the same thing.
+[00:16:21] But just to keep things formal,
+[00:16:22] let's say each player chooses a strategy.
+[00:16:26] And the strategy determines the action.
+[00:16:28] The actions all together determine the outcome,
+[00:16:31] and the outcome determines the payoff for each player.
+[00:16:35] So what are the ingredients
+[00:16:37] of a normal form representation?
+[00:16:39] Well, to represent all of this,
+[00:16:42] which is the normal form, is nothing
+[00:16:45] by the collection of the strategy sets
+[00:16:48] and the collections of the utilities,
+[00:16:50] under the assumption that the utilities Ui are all
+[00:16:55] functions that are applied to the n-tuple of the chosen
+[00:16:58] strategies.
+[00:16:59] So you have a combination of moves,
+[00:17:01] that is the n-tuple S1 to Sn,
+[00:17:05] and all the payoffs are evaluated on this n-tuple.
+[00:17:08] So player i gets a payoff that is ui of the n-tuple,
+[00:17:12] and it is a real number.
+[00:17:14] And again, the value of this number is kind of arbitrary,
+[00:17:19] meaning that it does only reflect
+[00:17:22] the preference of the user.
+[00:17:24] The bigger the utility, the more preferred outcome.
+[00:17:28] And well, we already mentioned that if we
+[00:17:30] have random outcomes, we can give values
+[00:17:34] based on probabilities.
+[00:17:35] because you remember, you take expected utilities.
+[00:17:39] So if there is some randomness,
+[00:17:41] your utility does not only have an ordinal meaning,
+[00:17:46] but can have an absolute meaning
+[00:17:48] based on how you weigh on the probabilities.
+[00:17:51] But this is the plugin we saw in lecture two.
+[00:17:55] So if we have that plugin,
+[00:17:57] but besides that, in the deterministic setup,
+[00:17:59] once the utilities are set,
+[00:18:02] the utilities only have an ordinal meaning.
+[00:18:05] the higher the utility, the more preferred the outcome.
+[00:18:08] So the normal form of the game, formally speaking,
+[00:18:11] is just a collection of the strategy sets
+[00:18:15] and the collection of the utilities.
+[00:18:17] Well, in reality, if you look at the textbooks,
+[00:18:18] for some weird reason, they actually mention
+[00:18:21] the results of the set of players.
+[00:18:23] But the set of players is, well, kinda obvious,
+[00:18:27] implicit in this description, because another thing
+[00:18:30] you have to specify is how many players you have.
+[00:18:32] And yeah, some formalization mentioned this explicitly.
+[00:18:37] So the first number, there are three ingredients.
+[00:18:39] The number of the players and as many strategies
+[00:18:42] as players and as many utilities as players.
+[00:18:46] But yeah, in my mind it was kind of pointless
+[00:18:48] because yeah, I'm an information engineer
+[00:18:50] so there is no need to give redundant information.
+[00:18:54] The number of players is already implicit in these numbers
+[00:18:57] because if I give you S, N sets and N functions,
+[00:19:01] well, it's kind of obvious there are endpoints.
+[00:19:04] Anyways, the normal form tells you how many players you have,
+[00:19:08] what are the strategy sets, and what are the activities.
+[00:19:11] And collecting all of this, you get the normal form.
+[00:19:13] That is the mathematical representation.
+[00:19:16] And this is like saying, maybe when
+[00:19:19] you define the graph of a function in calculus,
+[00:19:24] if your lecturer was very rigorous,
+[00:19:27] he or she probably told you, you know,
+[00:19:29] the graph of a function is a subset of R2, so a set of numbers. And I say, oh no, the graph is
+[00:19:38] not a set of numbers, the graph is, well, a drawing, because that's why it's called a graph.
+[00:19:44] Not true. Actually, the graph is what you mean by graph in terms of drawing, is the graphical
+[00:19:50] representation of the set of numbers according to the Cartesian isomorphism, because Descartes
+[00:19:57] I identified an isomorphism between the pairs
+[00:20:02] of real numbers and the points on the plane.
+[00:20:04] So when you draw the graph of a function,
+[00:20:08] you're actually not drawing the graph,
+[00:20:10] but the graphical representation of the graph,
+[00:20:12] which seems kind of redundant,
+[00:20:13] but the graph, if you look at your calculus handbook,
+[00:20:16] the graph is really a set of numbers,
+[00:20:18] not a graphical representation.
+[00:20:20] And same as here, the normal form is not graphical
+[00:20:23] in any way, it's just a list.
+[00:20:25] Okay, so this is also true for sets.
+[00:20:27] Maybe you saw the Euler Venn representation of sets.
+[00:20:31] So you do a bubble with points in it, and that's a set.
+[00:20:34] No, that's a graphical representation of set.
+[00:20:36] The set is just a list of its elements.
+[00:20:39] So the normal form is this list.
+[00:20:42] But very often, you give a graphical representation
+[00:20:45] of the normal form.
+[00:20:47] But before seeing this graphical representation,
+[00:20:50] let's discuss this simultaneous and independently
+[00:20:52] in the definition.
+[00:20:54] What do we mean by simultaneous? I mentioned that when we say these moves
+[00:21:00] are simultaneous, we don't really mean that. I mean, simultaneity does not
+[00:21:06] really exist in the real world. It's just a mathematical abstraction. If you
+[00:21:12] do two things simultaneously, like you watch, I don't know, a Michael Jackson
+[00:21:16] video and you see a very nice choreographed dance in which you see
+[00:21:20] everyone moving together?
+[00:21:23] No.
+[00:21:23] If you just go with very slow motion,
+[00:21:26] you see that somebody is moving one instant earlier,
+[00:21:29] somebody else is moving one instant later.
+[00:21:31] Because simultaneity in the real world does not exist.
+[00:21:36] And the reason is that simultaneous
+[00:21:37] should mean that in a continuous time,
+[00:21:40] two events really happen at the same time.
+[00:21:44] This is impossible because two events happening
+[00:21:48] at the exact same time in continuous space time,
+[00:21:51] it has zero likelihood.
+[00:21:54] You should know that, right?
+[00:21:55] So continuous variables have zero value of,
+[00:21:59] zero value of probability for a given value.
+[00:22:02] What happens in reality is that they have a density.
+[00:22:05] So when you see two events happening simultaneously,
+[00:22:09] you mean they happen close to each other
+[00:22:13] with a distance which is within an interval
+[00:22:16] based on your perception.
+[00:22:18] And this is why if you do slow motion,
+[00:22:20] you enlarge this interval of perception
+[00:22:22] and you see that they don't move together.
+[00:22:25] And that's also true for the theory of relativity.
+[00:22:28] According to Einstein,
+[00:22:30] two events really happen at the same time.
+[00:22:32] I mean, you can't really say they happen
+[00:22:34] at the same time because they are far in distance.
+[00:22:38] So they happen together according to the speed of light.
+[00:22:42] So you see like this,
+[00:22:44] the same reason why when you see there is, I don't know,
+[00:22:48] burst in Betelgeuse, Betelgeuse is 400 light years
+[00:22:53] from here, so when you see Betelgeuse exploding,
+[00:22:57] you don't really see Betelgeuse exploding.
+[00:22:59] You see that Betelgeuse exploded 400 years ago.
+[00:23:04] So that's the simultaneity of the event, right?
+[00:23:08] So given all that, this gives kind of a hint
+[00:23:11] when we can really say the two events of strategy choices
+[00:23:16] are simultaneous.
+[00:23:18] Consider this classical example.
+[00:23:21] There was a game in the, well,
+[00:23:24] it's still, you can still find it now
+[00:23:26] in, I don't know, YouTube channels.
+[00:23:28] But back in the day, there was a game
+[00:23:30] where they had, initially they had husband and wife.
+[00:23:33] And then they say, well, not really,
+[00:23:35] they don't need to be married,
+[00:23:36] or they don't need to be male and female,
+[00:23:38] or sometimes they did the same game
+[00:23:40] with parents and children, whatever.
+[00:23:42] But the game is there are two person,
+[00:23:44] and they have to answer a question.
+[00:23:49] And the question might be something personal,
+[00:23:51] so it makes things more funny.
+[00:23:53] And they have to answer the question independently
+[00:23:55] of each other.
+[00:23:56] So what do they do in the transmission on the show
+[00:24:00] is usually they give them a chalkboard.
+[00:24:03] And so consider these two versions.
+[00:24:06] In one version, they're writing their answers
+[00:24:08] on the opposite side of the board at the same time.
+[00:24:11] So the moves are really simultaneous.
+[00:24:14] In another version, they have one player writing
+[00:24:17] and the other doesn't see, the other is blindfolded
+[00:24:20] or he doesn't see anyways.
+[00:24:22] So the first player writes the answer, his answer.
+[00:24:26] Like the question can be,
+[00:24:28] who was the last person you had sex with?
+[00:24:32] And in this, there's a very crude question
+[00:24:34] that makes people laugh, right?
+[00:24:36] So sometimes there are two fiancés,
+[00:24:39] and well, first, maybe the boy answers,
+[00:24:43] well, it was with her one week ago.
+[00:24:48] And then the girl answers in the chalkboard,
+[00:24:52] yeah, it was with his brother yesterday.
+[00:24:54] So this makes people laugh because they, well, they
+[00:24:58] didn't answer the same thing, correct?
+[00:25:00] So the point is, I don't care about the game itself,
+[00:25:03] actually.
+[00:25:03] What I care is, when can you say their writing is simultaneous?
+[00:25:09] In version A, they write this on the two sides of a chalkboard at the same time.
+[00:25:14] Or they put it separate, far apart, and they write it together, whatever.
+[00:25:18] In version B, you ask player 1 to write first.
+[00:25:22] And you don't let player 2 see what player 1 writes.
+[00:25:28] After player one has finished, so at an entirely different time, player two writes his answer
+[00:25:34] or her answer. So player two writes without knowing what player one wrote. So player
+[00:25:42] two's move is done unbeknownst to player one's move. In this situation, it's like
+[00:25:52] if they were simultaneous. They are not really simultaneous in the sense happening
+[00:25:56] at the same time, but they are certainly
+[00:25:58] independent of each other and, let's say,
+[00:26:01] unbeknownst to each other.
+[00:26:02] So in that situation, we can say the game is static.
+[00:26:06] Anyways, because we don't really care,
+[00:26:07] we don't check if their decision is
+[00:26:10] made at the very same time.
+[00:26:12] The only thing we care is if the two people wrote
+[00:26:17] the answers or made a choice without knowing
+[00:26:20] each other's choice.
+[00:26:21] That's very important, because the moment they
+[00:26:24] know the other's choice, they can have a more complex strategy. The strategy is not only,
+[00:26:31] I want to do this. The strategy can be a reaction about what the other players did. So we will see
+[00:26:37] this kind of games later on. They are more complicated. The simplest form of games is
+[00:26:41] when you don't know what the others did. And this is why, again, rock-paper-scissors are
+[00:26:46] a good example. Rock-paper-scissors, you toss your symbol, rock-paper-scissor,
+[00:26:50] took more or less at the same time together with the other,
+[00:26:54] but not simultaneous.
+[00:26:55] I mean, if you slow-mo your video of you
+[00:27:01] playing rock, paper, scissors, you're
+[00:27:02] going to see people don't really
+[00:27:05] toss at the very same time.
+[00:27:06] But you don't care.
+[00:27:07] The reaction time is so short,
+[00:27:10] they cannot really change their move once it's tossed.
+[00:27:14] Sometimes you can try and do it.
+[00:27:16] Like, when you play with kids,
+[00:27:17] and these are slow in tossing the symbol,
+[00:27:20] you can see some smart kids trying to change their move
+[00:27:24] because they realize what the other kid did.
+[00:27:28] But in reality, if you play it very fast, fast enough,
+[00:27:30] you don't have the time to change your move.
+[00:27:33] So in that case, your strategy is just your move.
+[00:27:35] If you have time to change your move,
+[00:27:37] you might consider changing your move
+[00:27:39] so your strategy is more complicated
+[00:27:41] and the game is no more static.
+[00:27:44] In a static game instead, you just make your move
+[00:27:48] and after you do, there is no way of changing it.
+[00:27:50] So that's also your strategy.
+[00:27:53] Okay, and another concept that we need to explore
+[00:27:57] before seeing the graphical representation
+[00:27:58] is the idea of common knowledge.
+[00:28:01] What does common knowledge means?
+[00:28:03] Okay, common knowledge means that,
+[00:28:06] well, we say that something is common knowledge
+[00:28:09] if everybody knows it and everybody knows
+[00:28:12] that everybody knows it and so on and so forth.
+[00:28:16] Well, this is a very powerful assumption
+[00:28:18] that is not very obvious because it does not only require
+[00:28:23] that I am fully aware of the consequences as we mentioned,
+[00:28:26] which is a very strong assumption.
+[00:28:28] I'm also implying that, well, not only I do know,
+[00:28:33] but I know that everybody else knows
+[00:28:36] and maybe I'm not sure about that.
+[00:28:38] Like, let's say an example, yesterday was raining in Padula.
+[00:28:43] So if you go outside, you think, oh, it's raining.
+[00:28:47] So you realize it's raining.
+[00:28:49] So for sure, you know it's raining.
+[00:28:52] Are you sure that everybody else knows it's raining?
+[00:28:56] Cause maybe you wanna show that
+[00:28:59] it's raining is common knowledge.
+[00:29:02] And for it to be in a common knowledge,
+[00:29:04] you require not only to notice it's raining
+[00:29:06] because maybe you are the only one who notices it. Maybe the others around you notice as well.
+[00:29:12] Who knows? Well let's assume for the sake of reasoning that they notice because maybe it's
+[00:29:16] raining very heavily so it's basically impossible that they didn't notice. So you start assuming
+[00:29:22] that everybody noticed that it's raining. Okay good. So is it enough? No. Because you also
+[00:29:31] need to assume not only that everybody knows it's raining, you are also assuming, if you
+[00:29:37] say it's raining is common knowledge, you're also assuming that everybody knows that everybody
+[00:29:43] knows it's raining. So maybe, well maybe I can even assume, I know it's raining,
+[00:29:48] and I can assume that everyone knows it's raining. But are you sure that everybody
+[00:29:55] knows that you are aware that it's raining or maybe are you sure that that guy is aware
+[00:30:04] that this lady knows it's raining it really requires a lot of abstraction so not only
+[00:30:11] you know a fact but you know that everybody else knows it and you're also aware that
+[00:30:18] everybody is aware that everybody is aware of something.
+[00:30:21] It's very powerful.
+[00:30:23] So this means that complete information has
+[00:30:31] an effect on common knowledge.
+[00:30:33] The game being complete information, as mentioned,
+[00:30:36] does not simply mean everybody knows the rules.
+[00:30:39] Well, that's always true.
+[00:30:41] Everybody knows the rules, and also everybody
+[00:30:44] nobody knows the set of actions of the players and the set of utilities of the other players,
+[00:30:51] which is a radius of assumption. But not only that, so not only do I know the preferences
+[00:30:59] of the other players, so maybe, I mean, in football, I'm playing football, I'm one
+[00:31:05] of the 11 players of the right team, I'm playing against the blue team. So well,
+[00:31:10] I kinda assume that I know my goal. My goal is to score the other team's net and maybe my teammates
+[00:31:21] have the same goal and I know it, hopefully. Well, maybe I don't only need that, I need that.
+[00:31:30] I know the objective of every player, my teammates need to score there, my opponents will score
+[00:31:35] there I know that and everybody knows that everybody knows that so it's even more complicated
+[00:31:42] and in a static game of complete information I'm basically assuming that
+[00:31:48] all the actions are common knowledge all the possible outcomes resulting from these actions
+[00:31:52] are common knowledge the preferences of all the players about these outcomes are common
+[00:31:57] knowledge but we go beyond that everything is common knowledge including that player
+[00:32:03] rationality is common knowledge.
+[00:32:05] So I know the utility of the others, and they know mine.
+[00:32:08] And I know that they know.
+[00:32:10] And I know I want to pursue my maximum utility.
+[00:32:14] The other players know that I'm doing that.
+[00:32:16] And I know that they know that I know.
+[00:32:18] So it's very, very complicated.
+[00:32:21] So to complicate things even further,
+[00:32:24] we have this comic strip, which always make me laugh.
+[00:32:26] Because, well, there are these two characters,
+[00:32:29] and that's very silly and surreal situation
+[00:32:32] in which they're playing some game like they're playing with water balloons and they have
+[00:32:38] some mastermind line in mind and yeah one character says I know your plan and the
+[00:32:45] other says well I know that you know my plan and they ask well I know it all along
+[00:32:50] so I know that you know that I knew and they go on like that for a very long time
+[00:32:56] And so this is very common in, well,
+[00:33:00] part of the situation of some strategy masterminds,
+[00:33:04] where you know that the others know, but at a certain point,
+[00:33:08] somebody does not know.
+[00:33:09] There is always the stupid guy that does not know.
+[00:33:13] I mean, they know the plan, and they
+[00:33:15] know that the others know the plan,
+[00:33:16] but they don't know that the others know that they know.
+[00:33:19] Something like that, OK?
+[00:33:21] So that's the point.
+[00:33:22] you see this emphasizes that to have common knowledge
+[00:33:27] of the player's rationality is really a tough assumption
+[00:33:31] because we need to assume that everybody knows
+[00:33:35] that everybody knows that everybody knows
+[00:33:37] and so on ad lib between.
+[00:33:40] Okay, now we're ready for the graphical representation
+[00:33:44] because in an end player games, you can have a function,
+[00:33:50] everything is a function in the set of the strategies,
+[00:33:54] right, so you can use a matrix representation
+[00:33:58] because the outcomes are elements
+[00:34:01] in the Cartesian product of S1 times S2 times Sn.
+[00:34:07] And if you have the sets of the strategies as discrete,
+[00:34:12] this is a very important requirement,
+[00:34:14] but as mentioned, we will very often
+[00:34:17] focus on discrete cases only.
+[00:34:19] so discrete time, discrete set of strategies,
+[00:34:22] and so on and so forth.
+[00:34:24] If this is true, then the outcome of a game
+[00:34:28] is an element on the Cartesian product,
+[00:34:32] S1 times S2 times R to Sn,
+[00:34:35] and this can be an element, an entry,
+[00:34:38] in an n-dimensional matrix.
+[00:34:40] So the point is, for that entry
+[00:34:42] in the n-dimensional matrix,
+[00:34:45] you need to evaluate all the utilities.
+[00:34:47] Okay, this is true in general, but most of the times,
+[00:34:50] let's try to understand, to get the gist for two players,
+[00:34:55] because most of the times we're gonna see two players.
+[00:34:58] We can have some graphical extension of the
+[00:35:01] representation for more than two players,
+[00:35:03] but most games only have two players.
+[00:35:04] And even the examples I made,
+[00:35:06] like the rock paper scissors have two players.
+[00:35:09] When you have two players,
+[00:35:11] the N dimensional matrix is actually a normal matrix.
+[00:35:14] So you have a matrix and sometimes game theorists
+[00:35:19] really call it a matrix.
+[00:35:21] Even the textbook says, well,
+[00:35:23] even though it's not really a matrix,
+[00:35:24] we call it a matrix.
+[00:35:25] Well, why it's not really a matrix?
+[00:35:27] Because you have the outcomes
+[00:35:31] that are entries on a matrix,
+[00:35:32] but you want to represent the utilities
+[00:35:35] and the utilities are evaluation of that entry.
+[00:35:40] But how many utilities do you have?
+[00:35:42] you have two players, you have two evaluations for each entry in the matrix. So it's like having
+[00:35:47] a table, but in each entry of the table, there are two numbers. The first number is the utility
+[00:35:53] of player one, and the second number is the utility of player two. So technically speaking,
+[00:35:58] this is not a matrix. These are matrix where each entry is two numbers, not just one.
+[00:36:05] So you can see it as a bi-matrix. This is the name, the official name is bi-matrix,
+[00:36:10] which is actually nothing but two matrices superimposed
+[00:36:15] to each other.
+[00:36:16] Because you can consider the matrix
+[00:36:18] made only of the first numbers, or the matrix
+[00:36:22] of only the second number of each entry,
+[00:36:25] and you put them together.
+[00:36:27] So that would be a bi-matrix.
+[00:36:29] Let's see what they mean with an example.
+[00:36:31] So the idea is that you can define player 1 strategies.
+[00:36:35] Usually, you put player 1 strategies
+[00:36:37] on the rows of the matrix.
+[00:36:38] It's just a convention.
+[00:36:39] but technically speaking, it's very common
+[00:36:42] to see the first player displayed on the rows,
+[00:36:46] I mean the strategies of the first player
+[00:36:47] displayed on the rows, and the second player strategies
+[00:36:50] displayed on the columns.
+[00:36:53] So these are the strategies.
+[00:36:55] So I denote them by S11, S12, S13, and so on.
+[00:37:00] And this is S21, S22, S23, and so on.
+[00:37:04] So this entry, for example, is S11, S22.
+[00:37:08] So it's what happens if player 1 decides to play s11,
+[00:37:12] and player 2 decides to play s22.
+[00:37:14] The outcome is s11, s22.
+[00:37:18] And this outcome has two different and independent
+[00:37:21] evaluations.
+[00:37:22] For player 1, the evaluation is u1 of s11, s21, s22.
+[00:37:27] And for player 2, the evaluation
+[00:37:29] is u2 of s11, s22.
+[00:37:32] So you see, these are two numbers,
+[00:37:34] because every ui of something is a number.
+[00:37:37] And even worse, it's an arbitrary number
+[00:37:39] that just tells you how good or bad
+[00:37:42] that outcome is for the player.
+[00:37:44] So in general, this entry of the bi-matrix,
+[00:37:48] but here after, we will call it a matrix, still.
+[00:37:51] I mean, we don't need to be nitpicking
+[00:37:53] and say this is a bi-matrix, if you want,
+[00:37:55] but if you call that matrix, it's not really wrong.
+[00:37:57] I mean, it looks like a matrix,
+[00:37:58] but it's not a matrix
+[00:37:59] because it has two numbers in itself.
+[00:38:03] So you can really regard this
+[00:38:05] as a superposition of two matrices.
+[00:38:06] And every entry of this by-matrix is two numbers.
+[00:38:10] First number is the utility of play one,
+[00:38:11] second number is the utility of play two.
+[00:38:13] And the outcome in this case, for example,
+[00:38:15] is S1i, S2j, whatever this is.
+[00:38:19] So the outcome is S1i, S2j.
+[00:38:22] The first utility is U1, S1i, S2j,
+[00:38:25] and the second utility is U2 of S1i, S2j, okay?
+[00:38:29] And this is the payoff of user one,
+[00:38:31] and this is the payoff of user two, okay?
+[00:38:34] Let's see an example then.
+[00:38:35] So the examples we're gonna see are very stupid examples,
+[00:38:39] very made up examples.
+[00:38:40] So let's consider a game where player A
+[00:38:43] has three strategies, U and B.
+[00:38:45] What do they mean?
+[00:38:46] Nothing.
+[00:38:47] I mean, it doesn't matter.
+[00:38:49] Player B has two strategies, L and R.
+[00:38:52] So this is to say player A can choose one row
+[00:38:55] of the metrics, what row?
+[00:38:57] The upper, the middle, or the down row.
+[00:39:00] And player B can choose the left or right column.
+[00:39:02] Okay, so player A chooses the row,
+[00:39:05] and player B chooses the column
+[00:39:06] because that's the convention.
+[00:39:08] The first player is the row player,
+[00:39:10] the second player is the column player.
+[00:39:12] And how do they choose this?
+[00:39:14] Player A moves first, but no,
+[00:39:15] they choose together simultaneously
+[00:39:17] and independent of each other.
+[00:39:19] Okay, so that's the game.
+[00:39:20] So let's say player A, well, decides,
+[00:39:22] well, I don't know, they know the matrix.
+[00:39:24] That's the point.
+[00:39:25] This is common knowledge.
+[00:39:26] The matrix is common knowledge.
+[00:39:27] And also, they know that they know,
+[00:39:30] and so on and so forth.
+[00:39:30] But player A looks at the matters and decides for some reason to choose M.
+[00:39:35] Is it smart? Maybe, maybe not.
+[00:39:38] Player B chooses L. What's the result?
+[00:39:40] What the result is that the outcome is ML and the utilities is 1 for player A, 0 for player B.
+[00:39:48] Keep in mind that very often I hear people saying the result of the game or the outcome of the game is 1-0.
+[00:39:55] Wrong. The outcome is just the combination of strategies.
+[00:40:00] One, zero are the two utilities of that outcome, okay?
+[00:40:05] Sometimes it's a, well, justifiable confusion,
+[00:40:09] but really the strategies are U and D and L, R.
+[00:40:13] The outcomes are U, L, U, R, M, L, M, R, and so on,
+[00:40:18] all the pairs of strategies,
+[00:40:20] and the utilities are the numbers written here.
+[00:40:23] Remember, these are utility of play A, utility of play B.
+[00:40:27] Okay, let's see another example.
+[00:40:28] maybe we just put other numbers.
+[00:40:31] These are the example.
+[00:40:32] Now we give three strategies to player B2.
+[00:40:35] So we also have a center option.
+[00:40:37] And again, we have two numbers for each cell.
+[00:40:39] So the two players choose a strategy
+[00:40:42] and this choice of strategy made independent
+[00:40:44] of each other leads to a cell in the matrix.
+[00:40:47] And that cell of the matrix already denotes
+[00:40:50] what are the utilities of the two players.
+[00:40:53] You see, this is the normal form of representation.
+[00:40:56] And again, it's a graphical representation
+[00:40:58] of the normal form.
+[00:40:59] Because from this table, you have all the ingredients.
+[00:41:02] You have who the players are, you have the strategy sets,
+[00:41:05] and you have the full description of the utilities.
+[00:41:08] Well, by the way, this full description is available
+[00:41:10] only if the strategy is discrete,
+[00:41:12] because then you have a finite table.
+[00:41:14] But it is a complete description anyways.
+[00:41:19] Okay, now let's see the game I mentioned.
+[00:41:22] Let's say we have player odds
+[00:41:24] and the game of odds and events.
+[00:41:25] So there are two players, play odd and play even.
+[00:41:28] So let's say these two players bet four euros.
+[00:41:31] Why four?
+[00:41:32] Just because I don't want to cause a confusion
+[00:41:36] between the strategies that I denote with numbers,
+[00:41:40] zero and one, and the outcome.
+[00:41:42] So the utilities they get,
+[00:41:44] so the outcome is double zero, for example.
+[00:41:47] The utility of double zero is minus four plus four
+[00:41:50] and so on.
+[00:41:51] Let's see why.
+[00:41:52] First of all, what strategies do the player have?
+[00:41:55] In reality, in the real game of odds and evens, they can choose any number.
+[00:42:00] So I can choose five, you choose three, the result is eight.
+[00:42:04] But if you are not totally damned, you have immediately realized that there are just
+[00:42:10] two categories that you can play, an even number or an odd number.
+[00:42:15] If you play an odd number and the other guy plays an odd number, the result is even.
+[00:42:20] If you play an even number and the other guys
+[00:42:22] play an odd number, the result is odd, and so on.
+[00:42:26] So all that you need is the, well they say
+[00:42:28] the modulo two of your choice.
+[00:42:30] So we can represent zero for even numbers
+[00:42:34] and one for odd numbers, and that's it.
+[00:42:36] So zero, zero actually means player odd choose,
+[00:42:40] chose an even number and player even
+[00:42:42] choose an even number, the result is even,
+[00:42:45] so player odd loses and player even wins.
+[00:42:47] And this is why the utility is minus four plus four.
+[00:42:51] Again, note that this is true if the utility of the two
+[00:42:54] players is equal to the monetary value.
+[00:42:58] Maybe they are risk averse.
+[00:43:00] In this case, they're risk neutral.
+[00:43:02] So in this case, the two players
+[00:43:04] get a value of plus four or minus four,
+[00:43:07] and the utility of them is also plus four or minus four.
+[00:43:12] OK, as I said, this is similar to the game
+[00:43:14] of matching pennies where you decide between heads and tails.
+[00:43:18] And this might be similar.
+[00:43:19] Then this can lead to many other games.
+[00:43:23] Well, this is also similar to the penalty kick, for example.
+[00:43:28] The example I already made several times
+[00:43:30] with the football match, there is a kicker facing a goalie.
+[00:43:34] It can be a penalty.
+[00:43:35] It can be that the kicker is running towards the goal,
+[00:43:39] but there is the goalie in between, the goalkeeper.
+[00:43:42] so the kicker shoots left or right and the goalie dies left or right. Actually the kicker and the
+[00:43:52] goalie are facing opposite side so if they do choose the same thing well the kicker wins
+[00:43:58] because the ball goes to the right of the kicker and the goalie dies to his right which
+[00:44:05] is the left of the kicker.
+[00:44:07] And therefore, this allows the kicker to score.
+[00:44:11] If instead they choose different things,
+[00:44:14] the goalie saves.
+[00:44:16] So the goalie wins.
+[00:44:18] And you can do other similarities with poker.
+[00:44:21] The poker similarity is more stretched.
+[00:44:24] But in poker, you might consider a situation
+[00:44:27] where two players have nothing.
+[00:44:30] So they can bluff or bet.
+[00:44:32] If they both bluff, and they both have nothing,
+[00:44:35] so maybe they have the same thing,
+[00:44:37] maybe if one bluffs and the other bets,
+[00:44:41] so you say, OK, I bluff.
+[00:44:44] And then I see your bluff.
+[00:44:46] So the bluffers, the bluff goes away, and you win.
+[00:44:51] So when you have different things,
+[00:44:54] there is one winner, and so on and so forth.
+[00:44:55] So you can identify something that is.
+[00:44:58] Then I'm stretching this, because what
+[00:45:00] they wanted you to do is to identify
+[00:45:01] a similar situation you have in any program of your life.
+[00:45:05] Maybe you are presenting to studying, I don't know,
+[00:45:08] control for drone transmission.
+[00:45:11] And you have the same situation.
+[00:45:13] Maybe you have two drones, and you don't.
+[00:45:15] One drone wants to transmit together with another,
+[00:45:18] and the other drone wants to transmit not together
+[00:45:20] with the other, something like that.
+[00:45:21] So in this kind of game, there
+[00:45:23] is one player that does the same thing,
+[00:45:28] and the other player that wants different thing.
+[00:45:31] So this is called, actually, formally speaking,
+[00:45:33] this is called a Discordination Game,
+[00:45:35] because one player wants to do different things
+[00:45:39] than the others, and the other one,
+[00:45:42] the other wants to do the same thing as the others.
+[00:45:45] Okay, this is more or less the same situation
+[00:45:49] for Rock Paper Scissors.
+[00:45:51] Rock Paper Scissors, again, you have two players,
+[00:45:53] A and B, and they bet four euros.
+[00:45:55] So now the studies are RPS, rock, paper, scissors.
+[00:46:00] And then you have a game where they do,
+[00:46:02] well, if they do the same, they get nothing.
+[00:46:04] So the utility, or better the value,
+[00:46:07] but we assume that the value is also the utility here,
+[00:46:09] is zero for both.
+[00:46:11] And if player A chooses rock,
+[00:46:14] and player two chooses paper,
+[00:46:16] then player B wins, and player A loses.
+[00:46:19] So the bet is going minus four, plus four,
+[00:46:22] and so on and so forth.
+[00:46:23] And again, if you want an exercise,
+[00:46:25] you can draw the same table for rock paper scissors
+[00:46:28] with a spot, which is a version with five possible strategies.
+[00:46:32] Now, let's see other two historical and important
+[00:46:35] examples.
+[00:46:36] And we're going to discuss this throughout the course.
+[00:46:39] And sometimes you see a paper,
+[00:46:41] and it makes explicit reference to these examples.
+[00:46:45] So it's important to know them by name.
+[00:46:48] Unfortunately, the first name, the first example,
+[00:46:50] this example number five, has a very unfortunate name.
+[00:46:55] Let me tell you, this is called the battle of sexes,
+[00:46:59] because the classical version is husband and wife
+[00:47:03] that want to go out for, well, after dinner.
+[00:47:07] They want to go to a local pastime
+[00:47:09] of the local Borgese.
+[00:47:12] So they want to have some, well,
+[00:47:17] pastime for rich people.
+[00:47:18] So, this example was invented in the 30s, 40s of the last century.
+[00:47:26] So the two pastimes they want to take, I mean, the wife wants to go to the opera
+[00:47:31] and the husband wants to go to a box match.
+[00:47:37] Well, I rephrase this in a more modern version.
+[00:47:42] Also, the odd thing is that at that time, husband and wife, I mean, they don't talk
+[00:47:48] to each other.
+[00:47:49] They just go there and make the decision independently
+[00:47:52] because they are rich people.
+[00:47:53] They don't communicate.
+[00:47:55] So if we want to translate this problem in modern days,
+[00:47:59] in my version is Ann and Brian, which are two partners,
+[00:48:04] and they agreed to meet at the movies.
+[00:48:07] They go to the theater, but yeah,
+[00:48:10] for some reason in the modern day version,
+[00:48:12] you wonder, well, they should send an SMS to each other
+[00:48:15] or a WhatsApp, even better.
+[00:48:17] But let's say one of them has the phone, which
+[00:48:21] is out of battery.
+[00:48:22] So they cannot communicate.
+[00:48:24] And they realize that there are two movies in the theater,
+[00:48:27] and they don't know what movies to choose.
+[00:48:30] And they choose independent of each other.
+[00:48:31] So you see why the game is simultaneous.
+[00:48:34] OK, now, in my version, which is more modernized,
+[00:48:37] there are two movies.
+[00:48:38] One is the romance movie.
+[00:48:40] Maybe this is, I don't know, the bridges
+[00:48:42] of the fairy land with wonder and romantic love.
+[00:48:49] And the other movie is a sci-fi movie.
+[00:48:51] Let's say it's mutant aliens from outer space four.
+[00:48:56] OK, whatever.
+[00:48:57] So the idea is that in my version,
+[00:49:00] Anne prefers movie R, and Brian prefers movie S.
+[00:49:04] But I don't want to be stereotypical.
+[00:49:06] I'm not claiming in any way that all girls prefer
+[00:49:10] romance movie and all boys prefer sci-fi movie. For sure I know that many of the
+[00:49:15] girls watching this video are huge nerds and they prefer the sci-fi movie and
+[00:49:18] maybe some of the boys who are watching this video are romantic guys and they
+[00:49:22] prefer well fairy tale with love over space alien from outer space. I don't
+[00:49:28] care. So the only point I'm gonna make here is that this problem is
+[00:49:32] called the battle of sexes and there is this historical background that might
+[00:49:35] sound gender-stereotypical nowadays,
+[00:49:38] and I totally reject any accusation
+[00:49:41] of being stereotypical myself.
+[00:49:43] I really don't care, but I want
+[00:49:44] to stick to the classical example.
+[00:49:46] If you check the textbooks, there
+[00:49:48] are some funny version of this, because in some textbooks
+[00:49:50] they revert this.
+[00:49:52] So they say there are two movies,
+[00:49:54] so there is opera and box match,
+[00:49:57] and the lady wants to go to the box match,
+[00:50:00] and the man wants to go to the opera, which
+[00:50:03] is even more sexist in my version because, yeah, actually there is nothing wrong with
+[00:50:09] men wanting to see the opera. I like the opera very much. It's kind of funny that
+[00:50:13] there is a lady that wants to go to the box match and this is supposedly more gender
+[00:50:19] neutral. I don't know. I mean, it looks like the lady wants to see two half naked
+[00:50:23] men fighting. And so that's the reason why she wants to go there. So even worse.
+[00:50:28] And the Tadelis' book does a very clever thing,
+[00:50:32] but kind of unjustified.
+[00:50:34] Because in Tadelis' version, the battle of sex
+[00:50:37] is played not by Anne and Brian,
+[00:50:40] but the two characters are named,
+[00:50:42] if I remember correctly, the name Alex and Chris.
+[00:50:46] So you can figure out, OK, Alex,
+[00:50:48] is it Alexander or Alexandra?
+[00:50:52] And Chris is Christian or Christine.
+[00:50:55] So you don't know.
+[00:50:56] they can be one boy and one girl, or one girl and one boy,
+[00:51:00] or maybe two gay men, or two lesbians.
+[00:51:03] You don't know.
+[00:51:04] That's the beauty of it.
+[00:51:05] But the point is, at this stage,
+[00:51:07] then you wonder why this problem is
+[00:51:09] called the battle of sexes.
+[00:51:10] Because if you don't know the background,
+[00:51:12] they can even have, I don't know.
+[00:51:14] And also, I think Chris' name is also kind of,
+[00:51:18] it's not maybe gender neutral, but also kind of stereotypical
+[00:51:23] of Western culture.
+[00:51:24] So, if they really want to do it truly, they should have used, I don't know, maybe one
+[00:51:29] character is Danish and Turkish, which is gender neutral, and the other name is, I
+[00:51:35] don't know, Jyoti in Indian, whatever, some gender neutral name.
+[00:51:40] So it's funny that still gender neutral, but very Americanized, whatever.
+[00:51:46] So since I actually think that political correctness is kind of stupid, in my version,
+[00:51:52] I don't care, they're called Anne and Brian.
+[00:51:55] And in my version, Anne likes romance movie
+[00:51:57] and Brian likes sci-fi movie.
+[00:51:59] My only point here is that by no means,
+[00:52:02] I think that this is stereotypical of any gender.
+[00:52:06] Okay, it's just this Anne and Brian character
+[00:52:08] happens to like romance and sci-fi movie anyways.
+[00:52:13] And actually, the point of the game
+[00:52:15] is that they make their decision,
+[00:52:17] which is kind of strange game actually.
+[00:52:19] It's very interesting for the development
+[00:52:21] and for the applications.
+[00:52:22] But from the modeling perspective, it's very weird.
+[00:52:24] Because the two characters cannot communicate,
+[00:52:27] and the movies are going to start.
+[00:52:29] So what do they do?
+[00:52:30] Well, they enter one of the theater at random,
+[00:52:35] one of the movie at random.
+[00:52:36] Well, not really at random.
+[00:52:37] They try to maximize their own utility.
+[00:52:40] So they choose one of the movie
+[00:52:42] based on what is their preference.
+[00:52:44] And what is their preference?
+[00:52:46] So this is represented by utility.
+[00:52:47] So the point is that besides them having a preferred movie, their objective is actually
+[00:52:57] to meet at the theater.
+[00:52:59] So if they don't meet, the utility is zero because, yeah, the idea was to go with your
+[00:53:05] partner at the movies.
+[00:53:07] Then you go there and you watch the movie alone.
+[00:53:09] I mean, how is it bad?
+[00:53:11] So then if they choose different movies the utility is always here. If they choose the
+[00:53:20] same movie the utility is different and it depends on how do they like the movie. So these are the
+[00:53:26] numbers. Generally it's assumed that double R, R and R, the outcome where they both go to see
+[00:53:32] the romance movie, gives utility 2 to Anne and 1 to Brian because Anne likes this very much.
+[00:53:39] she goes with her boyfriend and they watch the romance movie. Instead double S
+[00:53:46] is one two so it's the best outcome for Brian but only the second best for
+[00:53:51] Arm and the two outcomes where they go to different movies it doesn't matter
+[00:53:55] they always get zero to both. So this is actually often called a
+[00:53:59] coordination game because the purpose the main purpose of them is to meet at
+[00:54:05] movies. So to coordinate and choose the same thing. But this is a problem because they cannot
+[00:54:10] communicate. I mean if they communicate and they send an SMS and say oh why don't we go to the
+[00:54:15] romance movie and Brian says no let's go to the spy movie. This is no longer a static game.
+[00:54:20] They have more interactions. They need to only have one simultaneous interaction. Okay, remember
+[00:54:26] so the game is simple if you keep it static. Only one interaction and they move without
+[00:54:33] without knowing what the other does.
+[00:54:35] So that's the game we have here.
+[00:54:38] OK, so in this situation, they choose not really randomly,
+[00:54:43] but blindly, because they don't know what the others did.
+[00:54:46] Like, if Brian knows that Anne chose Anne, well,
+[00:54:51] even though Brian prefers movie S,
+[00:54:54] Brian will go to see Anne, because he
+[00:54:56] is sure to find Anne there.
+[00:54:58] So you see the intricacy of this problem.
+[00:55:00] We will discuss this.
+[00:55:02] And there is another historical interesting problem, which is the prisoner's dilemma.
+[00:55:08] In the prisoner's dilemma, you can have a simple and a complicated version.
+[00:55:12] The simple version is you have two characters named Al and Bob, and you ask them, well, you know what, you can both choose between.
+[00:55:20] You lose $1, you pay $1, or you let the other pay $20.
+[00:55:26] So the choice M is you lose $1, the choice F
+[00:55:30] if you let the other pay $20.
+[00:55:32] So the result are that they both have,
+[00:55:35] it's impossible for them to have a positive utility,
+[00:55:38] but they try to have the utility that is not so negative.
+[00:55:43] So if they both choose M, they both pay $1.
+[00:55:45] If one chooses M and the other chooses F,
+[00:55:48] the one choosing M ends up in paying $21
+[00:55:53] and the other pays nothing.
+[00:55:55] If they both choose F, they get minus 20 for more.
+[00:56:00] OK, why this strange setup?
+[00:56:01] Besides, I mean, that can be strange as the battle of sexes.
+[00:56:06] Why do we call the prisoner's dilemma?
+[00:56:09] The historical version actually goes like this.
+[00:56:11] Al and Bob are not just two random characters.
+[00:56:13] They are two thieves.
+[00:56:16] That's why they're shady characters.
+[00:56:18] They are caught by the police.
+[00:56:20] And they can choose between mum and think,
+[00:56:23] because they are caught on the crime scene with some evidence. The evidence is enough
+[00:56:30] to question them in jail but not enough to send them to jail eventually and they know that.
+[00:56:37] The police does a very smart thing. The police put them in separate jails and this is common.
+[00:56:43] I mean you see why criminals are often or suspected criminals are often put in separate
+[00:56:49] cells and they cannot communicate with each other because if they communicate with each other they
+[00:56:54] can agree on what to say they interact more and they can they can agree on a lie to tell the police
+[00:57:01] if they are put in separate cells they don't know what the others did so in this version
+[00:57:08] they can they are put in separate cells and they offered this option you can confess
+[00:57:16] or you can stay silent. So you can mum, which means you stay silent, or you can think. And
+[00:57:22] think means you sing like a bird. Think is a bird. So if you choose to mum, you stay
+[00:57:29] silent. But the other confesses and accuses you. This, it happens that you who stayed
+[00:57:38] silent are sent to jail. And the other one who collaborated with justice is set
+[00:57:44] free so in MF situation like before the one choosing M gets the worst and these
+[00:57:53] the negative numbers are because the utility here is the number of months or
+[00:57:58] years well maybe it's months because after all is just a test is a grand
+[00:58:02] test maybe but is a BNE but not I mean nobody's killed still they spent
+[00:58:07] some months in jail.
+[00:58:09] So if M F, Al spends nine months in jail and Bobby set free.
+[00:58:16] But if they both say M, the police has nothing to prove.
+[00:58:20] So they keep them for a while.
+[00:58:22] They have some picklock tools, but it's
+[00:58:26] not enough to incriminate them
+[00:58:27] for the crime of breaking and entering and grand theft.
+[00:58:31] So they just give them one month in jail.
+[00:58:35] If they both confess, well, not for the theft,
+[00:58:43] and so they spend six months in jail each.
+[00:58:46] So you see this?
+[00:58:47] I mean, you can't claim, but these are not the numbers
+[00:58:49] that we had before.
+[00:58:51] Numbers are different.
+[00:58:52] True.
+[00:58:52] But remember, here the numbers don't really mean a thing.
+[00:58:56] It's the order that's important,
+[00:58:58] and the order is the same.
+[00:59:00] You see?
+[00:59:01] OK, good.
+[00:59:02] So before going on, let's define a last concept.
+[00:59:07] And there is an important concept,
+[00:59:10] which is Pareto efficiency.
+[00:59:12] We say that the joint strategy S is Pareto dominated
+[00:59:16] by another joint strategy S prime, if this happens.
+[00:59:21] So first of all, you want that the utility
+[00:59:25] of a player I for S prime is greater than
+[00:59:29] or equal to the utility of S for every player,
+[00:59:33] and some player has this inequality as strict.
+[00:59:38] If this happens, then S, the orange one,
+[00:59:42] is Pareto-dominated by the yellow one, S prime.
+[00:59:48] If instead you have a joint strategy that is not
+[00:59:51] Pareto-dominated by any other joint strategy,
+[00:59:55] you say this strategy is Pareto-efficient.
+[00:59:58] So operator-efficient strategies are not really
+[01:00:01] value-efficient per se.
+[01:00:02] They're just not dominated by any other strategy,
+[01:00:07] meaning that in a Pareto-efficient situation,
+[01:00:12] that's a joint strategy where you cannot make everyone
+[01:00:16] better.
+[01:00:17] If you improve someone, you're making someone else worse.
+[01:00:22] Instead, the operator-dominated strategy
+[01:00:24] are a situation which is kind of dumb
+[01:00:26] because you have the option of choosing something else,
+[01:00:30] and everyone is at least equal,
+[01:00:34] but somebody is strictly better.
+[01:00:37] Okay, so let's say you are distributing some resources.
+[01:00:40] You are assigning homeworks, or cars,
+[01:00:44] or goods to the population.
+[01:00:46] And you have a way to redistribute the goods
+[01:00:48] where everybody is as happy as before,
+[01:00:51] and somebody is even happier.
+[01:00:53] This means that the previous way of distributing the resources is not efficient. The previous
+[01:00:59] way is dominated, well Pareto dominated, according to the mathematician Pareto, which
+[01:01:04] was Italian, who proposes definition. In reality, the Pareto efficient allocation
+[01:01:10] is not unique. There might be multiple Pareto efficient strategies, and this simply means
+[01:01:19] that no one Pareto efficient strategies
+[01:01:22] dominates the others.
+[01:01:25] So if you have two possible ways of doing things,
+[01:01:29] and one makes player one happy, but player two sad,
+[01:01:33] and the other one makes player one sad
+[01:01:36] and player two happy, well, they're both Pareto efficient.
+[01:01:39] Because if you change one with the other,
+[01:01:41] you make somebody happier, but also somebody else sadder.
+[01:01:45] So there is no way of making everybody as happy as before,
+[01:01:48] and improving somebody else.
+[01:01:51] Okay, this part of the definition is kinda tricky,
+[01:01:55] but we're gonna use it in the following.
+[01:01:57] So, not today actually, but in the next lecture.
+[01:01:59] So let me mention this here
+[01:02:00] because it's also worth observing.
+[01:02:03] And now this seems like a good point
+[01:02:05] to take a break from this lecture.
+[01:02:07] So this concludes the first part.

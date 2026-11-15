@@ -11,7 +11,10 @@ empirical batch-renewal Zoom video model. The original Homework 1 files are unch
   experiment, seed 3026, selected configuration below.
 - `Input_Trace_File.txt` and `Output_Trace_File.txt`: identical copies using the
   filenames specified in the assignment's deliverables section.
-- `output/pdf/report.pdf`: three-page report; editable source in `report.tex`.
+- `report-vulcu.pdf`: final three-page English report; editable source in
+  `report-vulcu.tex`.
+- `report.pdf` and `output/pdf/report.pdf`: identical copies of the final report,
+  synchronized by the report build command below.
 - `analysis/`: search results, independent replications, KPI summaries, plots,
   buffer/token history and drop log.
 
@@ -44,7 +47,7 @@ Reproduce the full search, submission traces, statistics, figures and report:
 ```bash
 python -m unittest -v test_shaper.py
 python experiments.py
-python build_report.py
+python build_report.py --source report-vulcu.tex
 ```
 
 The experiments regenerate both pairs of trace filenames. Individual module runs
@@ -52,8 +55,11 @@ write only their requested trace paths; the shaper also writes an adjacent
 `*_drops.csv` file. Rebuild the report after regenerating experiments.
 `experiments.py --search-duration 300 --duration 1800 --replications 10` spells out
 the defaults; shorter runs are exploratory and do not reproduce reported statistics.
-`build_report.py` uses the final, documented grid and configuration in its narrative;
-revise that narrative if changing the grid or selection rule.
+`python build_report.py --source report-vulcu.tex` compiles the final English source
+and synchronizes `report-vulcu.pdf`, `report.pdf`, and `output/pdf/report.pdf`.
+Review its narrative and table values if changing experiments or the selection rule.
+Running `build_report.py` without `--source` instead regenerates the legacy
+`report.tex` from its embedded template and builds that version.
 
 ## Source reuse and batch convention
 
@@ -109,8 +115,11 @@ timestamps. It accepts blank lines and `#` comments.
   new input rows in file order. Existing FIFO packets cannot be bypassed.
 - Packet transmission takes `length/mu` simulated seconds. No real-time sleeps,
   threads, payloads, or elapsed execution time affect the simulation.
-- Both queues drain after source shutdown. A numerical token tolerance of
-  `1e-7` bytes prevents floating-point deadlocks at exact eligibility times.
+- Both queues drain after source shutdown. Token comparisons require the full
+  packet length, without a fixed token tolerance. If floating-point rounding
+  places an eligibility event too early, its time advances with `math.nextafter`
+  until token accumulation at that representable instant covers the packet.
+  This prevents repeated-clock stalls even at large simulated timestamps.
 
 `analysis/buffer_trace.csv` records waiting bytes and tokens after each event;
 `analysis/drops.csv` identifies each discarded packet and its stage. The shaper's
@@ -122,6 +131,18 @@ The proposed shaping-only budgets are loss at most 1%, byte delivery at least
 99%, mean delay at most 30 ms, p95 delay at most 50 ms, p99 delay at most 100 ms,
 and p95 absolute successive delivered-packet delay variation at most 30 ms.
 These are chosen experimental targets, not Zoom specifications.
+
+A nominal 30-frame/s cadence (33.3 ms per frame) provides an illustrative design
+yardstick, not a frame rate measured in Homework 1. The 30 ms mean-delay budget
+keeps average added latency below one such interval; p95 at 50 ms and p99 at
+100 ms allow about 1.5 and 3 intervals for 95% and 99% of delivered packets.
+The p95 delay-variation budget of 30 ms limits successive delay changes to
+roughly one interval for 95% of delivered pairs. At most 1% packet loss and at
+least 99% byte delivery require preservation of 99 out of every 100 packets and
+bytes, preventing selective large-packet losses from hiding behind packet counts.
+These budgets allocate only the shaping contribution to latency and loss; they
+do not imply an end-to-end or decoded-video quality guarantee. Offered rate and
+output throughput are descriptive context, not additional QoS acceptance criteria.
 
 Search uses one common 300 s trace, seed 2026, across 192 configurations. Of
 these, 28 pass every budget. Feasible settings minimize the explicitly chosen
@@ -151,13 +172,19 @@ The reported statistical precision concerns simulation randomness conditional on
 this fitted model. It excludes training uncertainty and does not establish Zoom
 QoS generally. As Homework 1 reported, independent cycle sampling loses slow
 traffic correlation and overstates some short-window variability. The held-out
-120 s capture and original-offset checks are additional descriptive checks.
+120 s segment of the same capture and original-offset checks are additional
+descriptive checks; the adjacent training and validation windows are not claimed
+to be statistically independent.
 The shaper does not model encoder adaptation, propagation, decoding or playout.
 
 ## Validation
 
-Eight unit tests cover hand-calculated token/serialization times, FIFO behavior,
+Ten unit tests cover hand-calculated token/serialization times, FIFO behavior,
 input/output overflows, exclusion of in-service bytes, event ties, oversized
 packets, configuration and trace validation, source reproduction, packet
 conservation, bounded queues, nonoverlapping service and TBF release envelopes.
+Regression cases translate packet arrivals to 8,192 s, 36,000 s and 10^9 s,
+checking equivalent outcomes within clock precision and enforcing a subprocess
+timeout so a numerical stall fails the suite. A separate case checks that a
+small real token deficit is not treated as permission to transmit early.
 The final PDF is three pages and was rendered for visual inspection.

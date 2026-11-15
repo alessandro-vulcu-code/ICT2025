@@ -11,5 +11,6 @@
     "mermaid-pdf-export"
   ],
   "theme": "obsidian",
-  "interfaceFontFamily": "Noto Sans Malayalam UI"
+  "interfaceFontFamily": "Noto Sans Malayalam UI",
+  "showRibbon": true
 }

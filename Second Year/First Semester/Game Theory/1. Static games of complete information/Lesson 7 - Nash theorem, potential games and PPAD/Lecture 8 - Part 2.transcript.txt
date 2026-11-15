@@ -1,0 +1,797 @@
+[00:00:02] Welcome back to the second part of this lecture,
+[00:00:05] game theory, I'm Leonardo Badia.
+[00:00:08] And this lecture is the last one
+[00:00:11] about static game of complete information.
+[00:00:14] So we might want to give a miscellaneous
+[00:00:18] of terminology and situations that can be encountered.
+[00:00:24] And one approach is the one we see now,
+[00:00:27] which is adding a time dimension.
+[00:00:29] And we wonder if we still can talk of static games,
+[00:00:35] even though we add some dynamic process,
+[00:00:37] some dynamic-like process.
+[00:00:39] It's not really a dynamic process,
+[00:00:40] but it's an iterative process in the time dimension.
+[00:00:45] This is better known as fictitious play.
+[00:00:48] Fictitious play is, as the name suggests,
+[00:00:52] is a way to fictitious solve static games
+[00:00:56] in which you assume that the regrets are actually possible way of changing the moves.
+[00:01:04] So this is like back to the future. What happens if you can't change the past?
+[00:01:10] And in reality, we need some order in that because if everybody can independently go back in the past and change the past, it will be a mess.
+[00:01:20] So the procedure, the standard procedure that we think of is,
+[00:01:23] Well, you decided one strategy and each player did so.
+[00:01:28] So you see the outcome and we ask one player,
+[00:01:31] play I if he has regrets.
+[00:01:33] And when asking whether play I has regrets,
+[00:01:36] we assume that minus I, so all the other players
+[00:01:40] keep the same strategy.
+[00:01:43] And well, all the strategies I'm talking about
+[00:01:45] are possibly mixed.
+[00:01:47] So play I sees the mixed strategy he decided beforehand
+[00:01:50] and also now knows the mix of strategies
+[00:01:54] played by all the other players.
+[00:01:57] Now, we asked Play Aye, like in a post-match interview,
+[00:02:00] do you have regrets?
+[00:02:01] And if Play Aye says he does,
+[00:02:04] we ask, or she does, we ask Play Aye,
+[00:02:07] well, maybe only for you, we can allow you to change.
+[00:02:11] And this actually denies full rationality
+[00:02:13] because the thing is, well,
+[00:02:16] if Play Aye's prediction was correct
+[00:02:18] and he played the best response, then play i does not have regrets. So i said play i did not play
+[00:02:26] a best response or play i's belief were incorrect, giving play i the opportunity of taking back
+[00:02:33] his or her move is somehow denying the fact that we believe play i was rational.
+[00:02:40] Well still if we can do so, so we ask play i if we want to change the move, and then we move
+[00:02:47] with every time choosing a play at random.
+[00:02:49] So we iterate this procedure,
+[00:02:51] play can be chosen at random,
+[00:02:53] say, oh, we go round-dropping fashion,
+[00:02:55] we go play one, play two, play three,
+[00:02:57] and we see how the game evolve.
+[00:03:00] The thing is, in this situation,
+[00:03:03] we can check that Nash equilibrium points
+[00:03:06] are absorbing states.
+[00:03:08] Meaning, if we ended up in a Nash equilibrium,
+[00:03:12] nobody has regrets,
+[00:03:13] and every time we ask in the post-match interview,
+[00:03:17] everybody's happy. So nobody wants to deviate. What happens if we don't end up in a Nash equilibrium
+[00:03:24] and we ask people if they want to change the move? Do we converge to a Nash equilibrium point?
+[00:03:29] Well not necessarily because there are examples in which the situation is so tricky that players
+[00:03:36] keep cycling. So think of rock-paper-scissors for example. If I have rock-paper-scissors,
+[00:03:42] let's say I am playing against an opponent, and I decided rock, and my opponent decided
+[00:03:48] paper, so I lost. And when they come to me and ask me, well, do you want to change?
+[00:03:53] I say, well, of course, knowing that now that I know that my opponent played paper,
+[00:03:58] I want to play scissors, no more rock, but scissors. Well, what happens now? If
+[00:04:02] they ask my opponent, now the game changed to scissors for me and paper for my opponent,
+[00:04:08] And then my opponent is not happy.
+[00:04:10] So my opponent has reds now,
+[00:04:12] and he wants to change and play rock instead.
+[00:04:15] And you can see that it can go on indefinitely
+[00:04:18] because we keep changing and changing,
+[00:04:21] and we never reach a stable point.
+[00:04:24] Okay, so in reality, fictitious play is again,
+[00:04:27] one thing that does not always work,
+[00:04:29] but there are some special cases
+[00:04:31] where fictitious play works.
+[00:04:34] Well, one possibility is the game can be solved
+[00:04:36] by IDSDS.
+[00:04:38] So if the game is solved by IDSDS, fictitious play works.
+[00:04:42] Another special case is potential games.
+[00:04:45] We will discuss this in a while.
+[00:04:46] And also there are other cases,
+[00:04:49] like there are games of two times N
+[00:04:52] with generic payoffs,
+[00:04:54] which means that every outcome has a different payoff
+[00:04:56] all the players.
+[00:04:58] And in this situation, I mean,
+[00:04:59] if you have two alternatives
+[00:05:02] and then you keep changing between one or the other,
+[00:05:05] if the payoffs are all different,
+[00:05:06] you can prove the fictitious play convergence.
+[00:05:08] Why is it important
+[00:05:09] whether fictitious play converges or not?
+[00:05:11] Because fictitious play,
+[00:05:13] fictitious play is the name
+[00:05:15] that economists gave for this procedure.
+[00:05:16] But actually, this is what engineers
+[00:05:19] would call a distributed algorithm.
+[00:05:22] Because if you think of
+[00:05:23] Bellman-Ford implementation for routing,
+[00:05:26] one advantage is that it allows
+[00:05:28] for distributed implementation.
+[00:05:29] What does it mean?
+[00:05:30] It means you don't need a synchronized move
+[00:05:33] where everybody does the choice.
+[00:05:37] Ideally, the Bellman-4 algorithm would work in a situation
+[00:05:40] in centralized scenario,
+[00:05:41] where the moves are decided once and for all.
+[00:05:44] But in reality, the Bellman-4 algorithm has advantage,
+[00:05:47] if you remember,
+[00:05:47] I mean, if you know what Bellman-4 algorithm is,
+[00:05:49] you should know that it also works if I decide my move
+[00:05:54] and then another player decides their move afterwards,
+[00:05:58] even after seeing my move.
+[00:05:59] It works still.
+[00:06:01] I mean, it converges to a Nash equilibrium.
+[00:06:02] And this is the same for fortuitous play.
+[00:06:05] I mean, if fortuitous play converges
+[00:06:07] to a Nash equilibrium, that's good,
+[00:06:08] because it means we can implement
+[00:06:12] the Nash equilibrium solution concept
+[00:06:13] by simply letting people decide what they want.
+[00:06:16] Well, this is always the case.
+[00:06:18] So ideally, in the battle of sexes,
+[00:06:20] we can reasonably assume that the two players
+[00:06:24] are smart enough to decide to play
+[00:06:26] a Nash equilibrium problem.
+[00:06:27] There is more than one.
+[00:06:28] And how do we know what Nash equilibrium they decide?
+[00:06:32] So let's say Brian thinks, well, you know what?
+[00:06:36] We're gonna play a Nash equilibrium,
+[00:06:37] so I think we're gonna play the Nash equilibrium double S.
+[00:06:40] So Brian confidently goes to the sci-fi movie.
+[00:06:43] And then Anne thinks confidently in the same way
+[00:06:46] that Brian will go to the romantic movie.
+[00:06:48] So they end up in different movies.
+[00:06:50] So even though they supposed to play a Nash equilibrium,
+[00:06:53] they don't.
+[00:06:54] They play a S that is not a Nash equilibrium.
+[00:06:57] In fictitious play, we have something better, because it's like saying, well, if Anne and
+[00:07:02] Brian ends up in our S, we can implement a distributed solution where we pick at random
+[00:07:08] one of them, like Anne, for example, and Anne notices Brian is not there, Brian is
+[00:07:13] nowhere to be found. So Anne, being smart, understands Brian went to the other theatre.
+[00:07:19] So Anne exits the romantic movie theatre and goes to the other one. Problem solved.
+[00:07:24] So, you see, this is a real implementation, not just postulating that the national limit
+[00:07:30] will be reached, but if we are allowed to enable fictitious play, it's more of a way
+[00:07:35] of implementing it.
+[00:07:37] It doesn't always work because you see sometimes you have games, like what we
+[00:07:40] perceive, where you keep cycling.
+[00:07:42] But if you can prove that fictitious play works, then it's very good, because you
+[00:07:46] can say from the engineering perspective, and this is why I mentioned this, this procedure
+[00:07:49] is actually kind of stupid.
+[00:07:51] it might be very confusing because fictitious play
+[00:07:54] can cause you confusion and think and make you think,
+[00:07:57] well, is this game static or dynamic?
+[00:08:00] Does it allow for a time evolution or not?
+[00:08:03] Well, in reality, that's not.
+[00:08:04] But what I'm claiming here is that
+[00:08:06] if you have a static game
+[00:08:08] and you know you have a solution
+[00:08:12] that can be found through fictitious play,
+[00:08:14] then bingo, you have an implementation mechanism.
+[00:08:17] Not only you can postulate
+[00:08:19] the player is going to play a Nash equilibrium, but you also have an algorithm, a program, a protocol
+[00:08:24] that you can embed in your device to reach it and that algorithm will be simply
+[00:08:29] well let's announce what you are going to play and your announcement is not definitive
+[00:08:33] it's something you claim you want to play but then somebody will best respond to that
+[00:08:38] and you will best respond to the best response and so on and so forth until
+[00:08:41] you reach a Nash equilibrium. In particular this is true for potential games so potential
+[00:08:46] games are a very special case and for this reason if you happen to prove that
+[00:08:51] your game is a potential game you are very good because you are saying well
+[00:08:54] this game allows for Nash equilibrium and also for a practical implementation
+[00:08:58] of reaching the Nash equilibrium. What are potential games? Let's give the
+[00:09:02] definition. Well there are different kinds of potential games actually. One
+[00:09:06] potential game is well the exact potential game well before saying
+[00:09:11] what's a potential game let's say what's a potential period. So if we have
+[00:09:14] gain in normal form, again we list the strategies, we list the utilities, and we say S is the Cartesian
+[00:09:19] product of all the strategy sets, we say that omega is an exact potential if it is a function
+[00:09:26] that its differences correspond to the differences in the utility. So better said, omega of S prime
+[00:09:33] S minus I minus omega of S I S minus I is equal to the delta utility for play I, when
+[00:09:40] changing from SI prime from SI to SI prime. So basically changing move for player I from SI to
+[00:09:49] SI prime causes a difference in utility that is equal to the difference in potential.
+[00:09:55] Well this seems kind of dumb because well Omega simply must be equal to UI. Well the
+[00:10:00] thing is UI is a different function for every player. Omega must be the same for every player
+[00:10:05] And we'll see an example, what do I mean.
+[00:10:08] Actually, there is a trick here because we said,
+[00:10:11] well, this must be exact potential.
+[00:10:13] But in reality, maybe we don't need
+[00:10:16] the exact difference of utilities,
+[00:10:18] but we are good enough if we have a weighted potential.
+[00:10:22] What does weighted potential mean?
+[00:10:23] It's the same thing,
+[00:10:24] but the difference is not exactly equal to delta UI,
+[00:10:27] but it's weighted with the vector W.
+[00:10:30] W is a vector that contains weights for every user,
+[00:10:32] so the difference of play i is weighted times wi and finally you can have an ordinal potential
+[00:10:40] which is a third kind in which you don't have a different quantitative delta but it's just a
+[00:10:47] qualitative measure so it's an ordinal potential meaning that every time you increase the
+[00:10:52] utility you also increase the potential and vice versa so the potential when changing when
+[00:10:59] making a unilateral deviation, the potential increases
+[00:11:02] even only if the utility of the player
+[00:11:04] making the deviation increases.
+[00:11:06] And in general, we can say that a game,
+[00:11:09] a potential game, an ordinal potential game,
+[00:11:11] an exact potential game, is a game that has a potential.
+[00:11:15] Okay, so this can be true
+[00:11:17] for all kind of these potential definitions, okay.
+[00:11:21] So a potential game is in short,
+[00:11:23] a game that emits a potential.
+[00:11:24] And this potential function, well,
+[00:11:27] reflects the concept of potential energy so the idea is like well the entire game can be
+[00:11:33] represented through let's say a gravitational map so it's like having a well a planimetry with
+[00:11:39] hills mountains and valleys and what you want to get is an equilibrium point that is the top
+[00:11:45] of a mountain because an equilibrium would be the local maxima for the potential the local
+[00:11:51] maxima for the potential is a place from which you cannot move without decreasing the
+[00:11:55] utility of whoever makes that move.
+[00:11:58] And therefore, you don't have incentive
+[00:12:00] for unilateral deviation.
+[00:12:02] Okay, clear.
+[00:12:02] So the thing is, the only difference is,
+[00:12:06] well, this potential must be agreed
+[00:12:08] and must be the same for every player.
+[00:12:10] That's the point.
+[00:12:11] So why does potential games work this way?
+[00:12:15] Because if you have a potential game,
+[00:12:17] and you see this map of mountains and hills,
+[00:12:21] well, you wanna be top of the mountain.
+[00:12:23] And everybody wants to be top of the mountain
+[00:12:25] because that would be a Nash equilibrium.
+[00:12:26] So if you are moving on the slope of the mountain,
+[00:12:30] everybody agrees it is a good move to move uphill.
+[00:12:34] And this is what happens in the distributed approach
+[00:12:37] in the fictitious play.
+[00:12:39] Every move in the fictitious play concept
+[00:12:42] is like saying, well, from what I can do,
+[00:12:44] I will push the position uphill the most I can.
+[00:12:50] Maybe I can push it up to this point,
+[00:12:52] and then another player can push it once again above my position until the top of the hill is reached.
+[00:13:00] And when we reach the top of the hill, we are in a local maximum and so nobody wants to deviate.
+[00:13:05] So you see the idea of potential gains is fairly similar to what we do in like having people moving a boulder uphill
+[00:13:14] and they want to move it by pushing it and everybody agrees that the move must be uphill.
+[00:13:20] So potential games, in short, are special games in which, by physical meaning, I mean, when you have the intuition, then you can prove.
+[00:13:27] So to be a potential game, you have to find the potential. So if you suspect that your game is a potential game, you have to find the function omega.
+[00:13:36] And once you prove that there is this function omega, you are very happy because you automatically found a way to solve the game.
+[00:13:43] So whatever problem you have, this can be an inspiration for your project.
+[00:13:45] Let's say you have a project and you are facing a problem,
+[00:13:49] and you think, well, maybe,
+[00:13:51] can it be that this is a potential game?
+[00:13:53] That would be awesome.
+[00:13:54] Because if it's a potential game, I know how to solve it.
+[00:13:57] I do fictitious play, period.
+[00:13:58] That's very standard.
+[00:13:59] The only problem is to prove this is a potential game.
+[00:14:02] So you have to prove the existence
+[00:14:03] of such a function omega.
+[00:14:05] Okay, and well, this is mathematics.
+[00:14:07] So you have to see if the utilities you define
+[00:14:10] satisfy this condition, either of these three.
+[00:14:12] Well, you don't go blindly and check if your game is a potential game, because some games are clearly not a potential game.
+[00:14:20] For example, Rock, Paper, Scissors is clearly not a potential game, because there is one winner and one loser, so this kind of negates the fact that there is a potential.
+[00:14:29] If I make a move in the direction of moving the boulder uphill, for me, it means I'm penalizing
+[00:14:37] my opponent. So my opponent doesn't want the boulder to be brought uphill, he wants it
+[00:14:43] to be brought downhill. So it's like saying, well, we have an entirely different kind
+[00:14:46] of game, which is definitely not potential, in which I'm pushing up and my opponents
+[00:14:49] are pushing down. So there cannot be a local maximum in this way. And we never agree
+[00:14:54] that fictitious play will reach a position
+[00:14:56] that is a local maximum.
+[00:14:58] But when do we suspect that our game is a potential game?
+[00:15:02] So the potential game can have certain meanings,
+[00:15:08] and they are not always immediate.
+[00:15:11] But the idea is that a potential game can be replaced.
+[00:15:16] I mean, you change the game from G to G prime,
+[00:15:19] but you have the same set of Nash equilibria
+[00:15:22] by replacing all the utilities, instead of U1, U2, UN,
+[00:15:27] you get omega for all the players.
+[00:15:30] So the structure of the game to be suspicious
+[00:15:33] that there is a potential involved
+[00:15:35] must be that the utilities must somehow agree.
+[00:15:39] And you must have a situation where you can use
+[00:15:42] the same utility function for all the players, okay?
+[00:15:46] And by the same utility function,
+[00:15:48] I actually mean not only, I mean,
+[00:15:50] not only that the game is smelly
+[00:15:51] because in the rock-paper-scissors,
+[00:15:53] the two players, in a sense, have the same utility.
+[00:15:55] I mean, rock beats scissors and scissors beats paper,
+[00:15:59] and that's true for everyone.
+[00:16:00] The problem is that my rock beats your scissors,
+[00:16:04] so that's not the same utility,
+[00:16:05] because the utility of rock-scissors
+[00:16:08] is different from the utility of scissors-rock,
+[00:16:11] and actually it's the opposite,
+[00:16:12] and this is why rock-paper-scissors
+[00:16:14] is not a potential game.
+[00:16:15] But if we can replace all the utilities
+[00:16:18] with the same function,
+[00:16:19] with the same order of the arguments,
+[00:16:21] then we have reached,
+[00:16:23] we have proved that this is a potential game.
+[00:16:25] And then this means
+[00:16:27] that instead of a multi-person optimization,
+[00:16:29] we have a single-person optimization,
+[00:16:31] which is easy to solve.
+[00:16:33] And as I mentioned,
+[00:16:34] it's like the Bellman-Ford algorithm
+[00:16:36] can work to distribute optimization
+[00:16:38] because, well, you simply let every individual player
+[00:16:41] to improve the potential a bit,
+[00:16:43] and that's beneficial for everyone.
+[00:16:46] So let's say we are playing a game
+[00:16:48] which is like, let's, I don't know, clean a room.
+[00:16:54] Well, I do a bit of cleaning.
+[00:16:55] That's good for everyone.
+[00:16:56] Nobody will complain.
+[00:16:58] So the national equilibrium is that the room
+[00:16:59] is eventually cleaned,
+[00:17:00] because if there is a place that is still dirty,
+[00:17:03] whoever has the right to move will clean it a bit.
+[00:17:06] So ideally, if we agree that our potential is what
+[00:17:09] we like, everybody likes to have a clean room,
+[00:17:12] then the potential is how clean the room is.
+[00:17:16] And you see now you have utilities that somehow agree
+[00:17:19] on a common objective.
+[00:17:21] So it's entirely different from the tragedy of commons
+[00:17:24] where you have selfish objectives.
+[00:17:26] Like here you have a selfish objective,
+[00:17:28] but somehow this selfish objective
+[00:17:30] reflects an external good.
+[00:17:32] And actually the physical meaning of the potential
+[00:17:34] can be very different and not always immediate.
+[00:17:37] Cause I can claim, and you might be surprised,
+[00:17:41] the prisoner dilemma is a potential game.
+[00:17:43] And you might say, well, what is the potential?
+[00:17:45] Well, not only is it potential, but the potential
+[00:17:47] is even exact.
+[00:17:48] You see that if I have this game, I'm playing this game,
+[00:17:51] I can claim that Allen-Baugh satisfied this potential.
+[00:17:54] And you see, double M has potential 0, M, F, or F,
+[00:17:59] M have potential 1, and double F have potential 4.
+[00:18:03] And this seems very strange.
+[00:18:04] But if you check, this is actually true.
+[00:18:05] This satisfies the definition.
+[00:18:06] The potential is exact, meaning
+[00:18:08] that the difference in potential
+[00:18:10] in every change you make on this table
+[00:18:12] is also equal to the difference in utility
+[00:18:14] that you make on this table.
+[00:18:15] Of course, this table has two numbers.
+[00:18:17] This is only one,
+[00:18:18] but you have to check the same number for both layers.
+[00:18:20] So if you move from double M to M F,
+[00:18:23] who does the change?
+[00:18:24] Well, Bob does.
+[00:18:26] So Bob changes from minus one to zero,
+[00:18:28] meaning his payoff increases by one,
+[00:18:31] which is true because the potential increases by one.
+[00:18:34] And if we move from M F to double F,
+[00:18:36] who does the change?
+[00:18:38] Well, Al does.
+[00:18:39] So it's Al changing the utility and increasing it by three.
+[00:18:42] And it's exactly the same thing in this case,
+[00:18:45] because the potential is increased from one to four,
+[00:18:47] it's increased by three.
+[00:18:49] And this confirms the intuition,
+[00:18:51] why double AF is a Nash equilibrium,
+[00:18:53] because of the highest potential point.
+[00:18:54] And from this point, nobody wants to deviate.
+[00:18:57] So the thing is, well,
+[00:18:59] even though this is correct, mathematically speaking,
+[00:19:02] well, this modeling doesn't seem very pleasant
+[00:19:04] because well, what's the common objective here?
+[00:19:06] Is the common betrayal, what's the point?
+[00:19:08] I mean, in reality, yeah,
+[00:19:10] Here, the situation is not very efficient, but it's a potential, maximum potential anyways.
+[00:19:16] So there must be some dummy part somewhere. Okay, we will see where this dummy is. There is
+[00:19:24] some dummy part. We will discuss this later. Another situation with this potential is the
+[00:19:30] Cournot oligopoly. Well, the Cournot oligopoly is actually an ordinal potential game.
+[00:19:35] Recall what happens in Cournot duopoly.
+[00:19:38] There are two firms and they choose the quantity
+[00:19:41] and the market clearing price is A minus the total quantity
+[00:19:44] and the unit cost is C,
+[00:19:46] which means that the utility of each firm,
+[00:19:49] utility I for example, is QI times A minus QI
+[00:19:52] minus QJ minus C.
+[00:19:54] This is something we derive.
+[00:19:55] Well, you can quantify an ordinal potential function
+[00:19:59] as this, QI, QJ times A minus QI minus QJ minus C.
+[00:20:03] you can check that if you change your quantity,
+[00:20:07] your potential follows that omega.
+[00:20:11] So, well, it follows the direction of increasing
+[00:20:15] or decreasing only, not the absolute value,
+[00:20:17] not the absolute magnitude,
+[00:20:18] but if you increase your utility,
+[00:20:22] it also means you increase your omega.
+[00:20:24] And this is simply because qi and qj can't be negative,
+[00:20:29] can't be beyond a.
+[00:20:31] so there are numbers between zero and eight.
+[00:20:33] And therefore, omega must increase
+[00:20:35] if your utility is increased,
+[00:20:37] because your utility is simply,
+[00:20:38] I mean, utility of player I
+[00:20:39] is simply omega divided by QJ.
+[00:20:42] And the utility of player J
+[00:20:44] is simply omega divided by QI.
+[00:20:46] And so QI and QJ, once they're given,
+[00:20:49] if you change it by key play,
+[00:20:51] you should let your key add to player I
+[00:20:52] and play it fixed.
+[00:20:53] So it's by dividing your utility
+[00:20:57] with the value that is always possible.
+[00:21:00] And therefore, they have an ordinary potential.
+[00:21:04] Well, there's a theorem, which is easy to prove, actually.
+[00:21:08] It follows from the discussion we just had.
+[00:21:10] Every finite ordinary potential game
+[00:21:13] has at least a pure strategy Nash Agreement.
+[00:21:16] Well, the beauty of the theorem is just,
+[00:21:18] well, every static game of information
+[00:21:22] must have at least one Nash Agreement.
+[00:21:24] That's even, it means that's not Nash Theorem, right?
+[00:21:26] And we proved that.
+[00:21:27] But the point was, we need to admit mixture strategies.
+[00:21:33] If the game is potential, we do not need mixture strategies
+[00:21:36] because we can prove that there is at least
+[00:21:39] one pure strategy Nash equilibrium.
+[00:21:41] And this Nash equilibrium can be found deterministically.
+[00:21:44] So there is no randomness involved, which is pleasant.
+[00:21:47] And how to find it?
+[00:21:48] Well, simply, you adopt the procedure of fictitious play.
+[00:21:52] You just define an order in which the player
+[00:21:54] that are making the fictitious move,
+[00:21:56] which can be one, two, three, and so on in round robin.
+[00:22:00] And every time they do the best they can
+[00:22:03] to maximize the potential,
+[00:22:05] which means they do the best they can
+[00:22:07] to maximize the utility
+[00:22:09] because the two things coincide in a potential game.
+[00:22:11] So this is iterated until you reach a local maximum.
+[00:22:15] So you find there must exist a local maximum.
+[00:22:18] The key is that this must be a finite game.
+[00:22:21] And so you must reach a local maximum
+[00:22:24] sooner or later, because otherwise you run out of strategies, you can't keep cycling.
+[00:22:28] Okay, after you keep iterating through all the possible strategies you want to play,
+[00:22:32] the pure strategies which are finite, finitely many, then you reach a maximum. That's it,
+[00:22:37] right, because every finite set has a maximum. Okay, very good. So, this is the importance of
+[00:22:44] potential games. In particular, a special case of potential games is congestion games.
+[00:22:48] Congestion gains are a special case in which it simply means you want to use the resource
+[00:22:55] without congestion.
+[00:22:56] And this is common in natural problems.
+[00:22:58] So this is another suggestion, another hint for your project.
+[00:23:02] If you are expert of network theory, either in terms of graphs and connectivity or in
+[00:23:10] terms of natural protocols, so you are into technological aspects of networks, you
+[00:23:14] see that every time you have congestion and you can recall the last considerations we
+[00:23:19] made about road traffic. That's also scenario for network and congestion. Ideally, that
+[00:23:25] is a situation where you say, well, I don't want to have road traffic, but even more
+[00:23:29] importantly, it can happen for data network traffic. So you don't want to have congestion.
+[00:23:36] Remember what happens when you have congestion dependent costs, something bad happens because
+[00:23:41] Because people want exclusive usage of resource, but they end up in causing congestion.
+[00:23:45] That's a case of tragedy of the commons.
+[00:23:47] But you can adopt another perspective, which is the one adopted in TCP, for example, in
+[00:23:53] which you want to avoid congestion.
+[00:23:56] So there are many problems where you want to contribute to the welfare of the network
+[00:24:02] by decreasing the congestion to remove.
+[00:24:04] So your move is simply, well, I want to avoid trouble in the network.
+[00:24:08] And you just aim at decreasing the congestion the most you can with every move of yours.
+[00:24:15] And this results in a congestion-free network if you are designing the protocol well.
+[00:24:18] So this is something that happens in general in network problems like finding a route or minority games.
+[00:24:25] Minority games are a special case of game in which, well, simply put, let's say there are two pizzerias in front of you.
+[00:24:33] and you want to decide where to have a pizza.
+[00:24:36] Well, where do you go?
+[00:24:39] Ideally, you should go,
+[00:24:40] I mean, the two pizzas are equally good,
+[00:24:41] so you should go to the least crowded pizzeria
+[00:24:44] because of COVID,
+[00:24:46] or because you don't want to wait too much, right?
+[00:24:48] The two pizzas are identical,
+[00:24:49] so the only difference is the time you wait
+[00:24:51] before getting your pizza delivered.
+[00:24:54] So you go for the pizza with fewer customers, right?
+[00:24:58] And the point is, if everybody does this reasoning,
+[00:25:00] well, that's congestion situation, right?
+[00:25:02] because you want to go to the least congested hysteria and everybody does so thereby causing
+[00:25:08] congestion in the least congested hysteria. So this kind of problem is analogous to potential.
+[00:25:14] It's actually the other way around in that instead of maximizing potential you minimize
+[00:25:18] congestion and you can prove that there is an analogy that every congestion gain is also
+[00:25:24] potential gain in which you have the same potential which is actually the congestion with
+[00:25:28] with this minus sign in front of it.
+[00:25:30] So, whenever you see that your technical project
+[00:25:32] is about solving a congestion in a network,
+[00:25:35] you should adopt this kind of approach, okay?
+[00:25:39] Now, another game that I mentioned
+[00:25:42] is the coordination game.
+[00:25:43] I mean, I'm just giving a bit of terminology here,
+[00:25:45] because I think in terms of inspiring you for a project,
+[00:25:49] it can be useful to notice that many games
+[00:25:52] are actually similar,
+[00:25:53] even though the setup is entirely different.
+[00:25:54] And as I mentioned, one good idea for the project
+[00:25:57] it would be what I call a repaint of an existing program.
+[00:26:01] So you have a game that is the battle of sexes.
+[00:26:03] Well, you probably don't want to discuss your project
+[00:26:06] about two fiancees going to a movie theater.
+[00:26:09] That's not very interesting information engineering wise
+[00:26:12] because information engineers rarely have a girlfriend
+[00:26:15] or boyfriend.
+[00:26:15] So it's not a very realistic scenario.
+[00:26:18] But so it's not at least a very information
+[00:26:21] engineering scenario.
+[00:26:22] But yeah, you might find that the situation
+[00:26:25] the battle of sexes is quite common in many other scenarios especially it is called coordination
+[00:26:31] gain which corresponds to a game where players are rewarded if they make the same choice so
+[00:26:37] this can be for example a typical example of analogous to the battle of sexes is two nodes
+[00:26:42] choosing a channel on where to transmit they should round on the same channel because if there
+[00:26:48] are two channels available but the one transmitter is meeting on channel a and the receiver is
+[00:26:52] receiving on channel B, well they don't communicate. So they are identical to the
+[00:26:58] two fiancés in the battle of sexes. They should agree on the same channel but
+[00:27:01] how do they know? All they can do is well to randomly choose one channel and
+[00:27:06] well too bad I noticed that the other node is on the other channel so
+[00:27:11] I cannot communicate. Another classical example again where people should
+[00:27:17] coordinate is the historical stag hunt. This was proposed by Jean-Jacques Rousseau,
+[00:27:22] the French philosophers. So actually this is a game theory problem. I mean,
+[00:27:26] I gained theory formalization of us in the real life scenario before game theory
+[00:27:30] was even invented.
+[00:27:31] But Rousseau noted that maybe in the ancient times there were people
+[00:27:36] deciding to go for hunting and actually Rousseau exploit this to well,
+[00:27:42] to derive some philosophical consideration that are outside of interest here.
+[00:27:46] But an important remark is that game theory is very prone to many
+[00:27:49] philosophical consideration. I might do some of them occasionally. Here the idea
+[00:27:54] of Rousseau, I mean we cited Hume with the subject of Commons and Rousseau
+[00:27:58] instead used a sort of game theory reasoning to explain why people are
+[00:28:02] supposed to cooperate, why are we social beings as human beings. And the
+[00:28:08] model proposed by Rousseau thinks okay if we have two hunters, the two
+[00:28:12] hunters may decide to hunt a deer or to hunt a hare. The hare is easier to
+[00:28:18] you can hunt it alone, and the hare is worth seven.
+[00:28:23] The deer has much more value because, well,
+[00:28:26] the deer is a bigger animal, so there is more meat to eat,
+[00:28:28] there is skin, there are, I mean,
+[00:28:30] a lot of things you can do with,
+[00:28:32] you can, your family can be fed for longer
+[00:28:35] if you have a deer than with the hare.
+[00:28:38] But the problem is the deer is too big,
+[00:28:40] so if you are hunting a deer alone,
+[00:28:42] you go and come, you come and go empty-ended.
+[00:28:45] So you want to hunt with another hunter, this way you don't come empty-handed, you get, well, half of the deer because you have to share, right?
+[00:28:55] So what's the payoff in Russo setup? Well, there are two hunters which I promptly named Brunt and Grant.
+[00:29:02] If they both decide to hunt the stag, they get both, they both get 10.
+[00:29:08] If they both go for the hare, they get 7-7.
+[00:29:11] If they go H and S, or S and H,
+[00:29:15] well the one hunting the hare gets seven,
+[00:29:17] and the other one gets nothing.
+[00:29:19] So you can see this is a potential gain.
+[00:29:23] And this actually does not solve the issue of cooperation
+[00:29:25] because again, there are two coordination points.
+[00:29:29] So all that can be shown from the gain theory
+[00:29:31] perspective is that the equilibrium point
+[00:29:33] are double S or double H.
+[00:29:35] So this is a coordination.
+[00:29:36] And you have multiple pure strategy Nash equilibria.
+[00:29:39] And so the idea here is that this is similar to Anne and Brian, if they do the same thing, they're happy.
+[00:29:46] If they do different things, well, somebody has regrets.
+[00:29:49] In Anne and Brian's case, both have regrets.
+[00:29:52] Here, I mean, if you do hare and I do stag, well, I have regrets because I'm the only one hunting a deer and I am getting nothing.
+[00:30:00] So I regret doing this.
+[00:30:03] So maybe you also regret this because you know that you could have gotten the stag.
+[00:30:07] So the Nash equilibria are double S and double H,
+[00:30:11] which are where the two players do the same thing.
+[00:30:14] Still the problem is tricky here in racial perspective
+[00:30:17] is that there are two identically good Nash equilibria,
+[00:30:21] not really identical.
+[00:30:22] One is slightly better is double.
+[00:30:25] I mean, double S gives 10 instead of seven.
+[00:30:28] So it's not, I mean, in the Ann and Brian setup,
+[00:30:31] the problem is symmetric in that one
+[00:30:33] few such Nash equilibrium favors Ann
+[00:30:35] and the other favors Brian.
+[00:30:36] Here, there is one Nash equilibrium that is better for the two players, which is double S.
+[00:30:44] It is Pareto efficient. It is Pareto dominant, actually, because it's the best outcome for everyone.
+[00:30:49] You cannot possibly get more than 10.
+[00:30:52] So not only you don't want to unilaterally deviate, you really don't want to go anywhere else than double S.
+[00:30:58] This was so plain, and this is why society is happy when we contribute.
+[00:31:02] because if there is perfect harmony,
+[00:31:05] everybody contributes with everybody else.
+[00:31:07] No one wants to deviate from that.
+[00:31:10] Well, too bad.
+[00:31:11] According to the potential omega,
+[00:31:13] double S is not the highest potential point.
+[00:31:16] The highest potential point is double H.
+[00:31:18] You can see that there is an exact potential
+[00:31:21] and the potential maxima are double S and double H.
+[00:31:24] These are local maxima,
+[00:31:25] but actually double H is an even better local maxima
+[00:31:29] in the sense of having a higher value
+[00:31:31] of the potential.
+[00:31:33] So if you just go for saying, well,
+[00:31:35] you need to maximize the potential.
+[00:31:36] Well, it's not obvious what equilibrium should we end up in.
+[00:31:40] Maybe we end up in double S. Maybe we end up in double H.
+[00:31:43] It depends on the path followed by the fictitious play.
+[00:31:46] The only thing we proved is that the fictitious play converges.
+[00:31:49] We didn't say to what.
+[00:31:51] And even worse, it might be it converges to one point.
+[00:31:54] And it's arguable if it's better or worse.
+[00:31:56] You can say, well, what's better here
+[00:31:58] is to converge to the maximum potential point.
+[00:32:00] Or maybe not.
+[00:32:01] It's better to converge to the maximum social wealth
+[00:32:02] upon how to discriminate between that.
+[00:32:05] And that's also a problem with Anne and Brian, in that, well,
+[00:32:08] you expect them to go to the same movie theater.
+[00:32:10] But what movie theater?
+[00:32:11] Because one is better for Anne than the other one
+[00:32:13] is better for Brian.
+[00:32:14] These are open problems.
+[00:32:15] They are not solved by game theory.
+[00:32:17] They require an external intervention
+[00:32:18] by an engineer designing the protocol.
+[00:32:20] So among the multiple national equilibria,
+[00:32:22] what you think is better and better being explained
+[00:32:25] by some engineering reason, by some design choice,
+[00:32:28] is choice, is awarded, is achieved.
+[00:32:31] And that is not obvious at all.
+[00:32:34] So even though you find a Nash equilibria,
+[00:32:37] you haven't ended the problem at all.
+[00:32:39] You need a procedure and maybe you say,
+[00:32:41] well, let's do fictitious play.
+[00:32:42] That's not the end of it.
+[00:32:43] Maybe you also want to tell
+[00:32:45] what Nash equilibrium you want to aim at.
+[00:32:50] Another similar game I mentioned
+[00:32:52] just for the sake of terminology is anti-coordination game,
+[00:32:55] which is the sort of the opposite of coordination game.
+[00:32:59] A classic example is Hulk and Duck,
+[00:33:02] and also the chicken game.
+[00:33:03] We will see the chicken game later on in the course.
+[00:33:05] Now let's give the Hulk and Duck version,
+[00:33:06] which is similar.
+[00:33:08] And here in an anti-coordination scenario,
+[00:33:11] the players try not to select the same thing.
+[00:33:13] The classic example here is what was used
+[00:33:17] to propose to Kennedy during the Cuban missiles crisis.
+[00:33:22] Because the idea was, well, should we escalate nuclear weapons or not?
+[00:33:27] And so there are two possible strategies in international politics.
+[00:33:30] One is to escalate, to angrily face the other and being a hawk.
+[00:33:34] And this expression is often used in American politics, like you say some presidents
+[00:33:37] behave like hawks and others behave like doves.
+[00:33:41] And generally, when you see in the Senate, every senator in the United States Senate
+[00:33:46] is classified as a hawk or a dove depending on his attitude towards the choice here.
+[00:33:50] So the hawk is somebody that says well, you know what we should build more nuclear weapons and that instead wants to be peaceful and
+[00:33:58] This example also holds for the chicken game
+[00:34:00] The chicken game is what you see in many teenager movies where you drive and you see another car coming in your direction
+[00:34:07] This can be intentional can be accidental, but you don't want to deviate from your path. So
+[00:34:13] Being a hawk means you hold the wheel you keep going straight
+[00:34:17] hoping that the other will deviate and he will steer out
+[00:34:22] and so he will be a chicken
+[00:34:25] and he will be rewarded and gain respect.
+[00:34:28] And the DAVE instead, you don't care, you go away.
+[00:34:31] So you see, if you have two DAVEs,
+[00:34:33] well, they get no respect, but also they don't win,
+[00:34:36] everybody's peaceful, so zero-zero.
+[00:34:38] A hook playing versus a DAVE wins the game.
+[00:34:42] So you can represent the payoffs
+[00:34:43] as plus 10, minus 10, something.
+[00:34:45] I mean, something positive for the hook
+[00:34:46] something negative for the DAF. But if they both play hawk like they both escalate nuclear weapons
+[00:34:53] you have a third world war or you have a car accident which is not a pleasant situation so
+[00:34:58] you can definitely say that both play players playing hawk ends up in minus 99.
+[00:35:03] This kind of game I mentioned only because we will see some instances of games like that
+[00:35:09] and of course the classic sample you can think in engineering communications here is channel access
+[00:35:14] because ICE mentioned that transmission reception
+[00:35:18] must happen on the same channel.
+[00:35:20] But instead, if you have two transmitters,
+[00:35:22] they should ideally choose different channels.
+[00:35:24] So if they choose the same channels,
+[00:35:26] they get a negative AR because they get into collision.
+[00:35:29] If they choose different channels,
+[00:35:31] they are free to communicate.
+[00:35:32] So that's another engineering example.
+[00:35:35] And a side note is that odds and events
+[00:35:38] seem to be a similar game, actually it's not.
+[00:35:41] Because in odds and events,
+[00:35:42] you'll have what is called a discordination game. So don't get confused. Coordination is like
+[00:35:48] the battle of sexes. You want to play the same thing. That's easy to remember. Anti-coordination
+[00:35:52] game is the exact opposite. You want to play something different. So it's like a coordination
+[00:35:58] game but reversed because, well, you can simply swap these two columns and you will have
+[00:36:03] a coordination. A discordination game is in reality entirely different in that if you want,
+[00:36:10] So this is true for arts and events, but also for the penalty kick, or for the matching pennies.
+[00:36:15] Here you want one player, I mean one player wants to get the same thing,
+[00:36:19] because he will win when the two decisions are the same,
+[00:36:22] and the other player will win when the two decisions are different.
+[00:36:25] Okay, so this is not a coordination game, nor is an anti-coordination game.
+[00:36:31] It's called a discordination game, it's a third category.
+[00:36:34] It's another category in talent.
+[00:36:36] Okay, and I mentioned that a potential game like The Prisoner's Dilemma had some dummy in it.
+[00:36:44] Well, you can define what a dummy game is and actually you can really call it like that. It's
+[00:36:49] called a dummy game or sometimes it is called a pure externality game. Externality is an
+[00:36:54] economic jargon in that when you compute the revenue of your company you say well
+[00:36:59] there was a revenue which was a consequence of our marketing strategy, good for us, and then
+[00:37:04] was an externality which was not our fault. We couldn't control that. So externality in economics
+[00:37:10] is what engineers call noise. So an external signal that you cannot control is an input signal
+[00:37:16] but you don't control it and COVID-19 would be an externality. I mean every company has to
+[00:37:22] balance some losses because of COVID-19 and that is nothing they could do. It's unavoidable.
+[00:37:29] Okay, so a game can only be decided by externality.
+[00:37:33] It's not a very interesting game if it happens,
+[00:37:35] so this is why we call it a dummy game.
+[00:37:37] A dummy game, therefore, is a game
+[00:37:39] where whatever play I chooses,
+[00:37:42] his utility is always the same.
+[00:37:43] So utility, I mean, is actually a function of all the Ss,
+[00:37:46] but the S that matters are only the S minus I.
+[00:37:50] If you fixed S minus I, you get the same value of UI,
+[00:37:54] regardless of SI.
+[00:37:55] So if you change a side by side prime, it doesn't matter.
+[00:37:58] So in this kind of situation,
+[00:38:00] Nash equilibria are kind of stupid
+[00:38:01] because no player has incentive for unilateral deviation
+[00:38:05] because his moves or her moves don't matter anyways.
+[00:38:09] So what's the point of changing my move?
+[00:38:12] I mean, I get the same activity anyways.
+[00:38:13] So every situation is a Nash equilibrium
+[00:38:15] and that's not a very interesting game.
+[00:38:18] So you can show that as a result,
+[00:38:21] analytical result you can show.
+[00:38:22] I mean, trust me on that.
+[00:38:23] every potential gain is a sum of pure coordination
+[00:38:27] and a dummy gain.
+[00:38:28] We can see this with an example.
+[00:38:31] We saw that Al versus Paul, the Parisian dilemma,
+[00:38:33] is a potential gain, and this seems strange
+[00:38:35] because the potential doesn't really have the meaning
+[00:38:38] of a particularly good situation.
+[00:38:40] What's the matter?
+[00:38:41] Well, because this corresponds to a coordination gain,
+[00:38:45] which is the greedy part,
+[00:38:47] I mean, they want to get out of jail,
+[00:38:50] so, as soon as possible.
+[00:38:52] So they realize they better do the same because, well, if I betray you, your best response would be to betray me as well.
+[00:39:02] So the best thing is either we both stay silent or we both confess. That's in the meaning of the game.
+[00:39:08] Well, we can model like this as a coordination game. So in this coordination game on the diagonal, we put different and zero values.
+[00:39:16] In this case, the only good coordination
+[00:39:19] is we both confess.
+[00:39:21] And when they both stay silent, they get a negative payoff.
+[00:39:26] So that's not a Nash equilibrium.
+[00:39:27] So this would be a point where nobody wants to be,
+[00:39:30] this one.
+[00:39:31] And this one instead is a good point
+[00:39:33] where everybody wants to be.
+[00:39:35] However, to cause the dilemma, we sum an externality.
+[00:39:39] So you see, we give a minus 9 externality
+[00:39:43] if the player confesses.
+[00:39:45] So playing F gives minus nine to the other.
+[00:39:48] So this is a pure externality player, externality game,
+[00:39:51] in that if I play the orange game here,
+[00:39:54] I'm basically determining the payoff of the other player.
+[00:39:57] And remember, in one of the formulation,
+[00:39:58] the equivalent formulation of the prisoner dilemma,
+[00:40:00] we said something like that.
+[00:40:01] We said, well, the prisoner dilemma is equivalent
+[00:40:03] in saying, do you want to pay one dollar or one euro,
+[00:40:08] or have the other guy pay 20 euros?
+[00:40:11] If you do so, you are causing an externality for him,
+[00:40:14] because you decide that he has to pay.
+[00:40:16] So there's a nationality, clearly.
+[00:40:18] And in this situation, there's a nationality.
+[00:40:19] I mean, here, the difference is minus nine.
+[00:40:21] So let's say, well, the dummy part here is,
+[00:40:23] do you want the other guy to pay nine dollars
+[00:40:25] or to spend nine months in jail?
+[00:40:27] If you say no, he will spend zero months in jail.
+[00:40:30] If you say yes, he will spend nine months in jail.
+[00:40:32] So this is a very psychological experiment.
+[00:40:34] It's like the electroshock button experiment
+[00:40:37] they're doing some psychological testing.
+[00:40:39] And apparently, there is an inner saddest in many of us.
+[00:40:42] So even though, I mean, there is no reason for that, we do.
+[00:40:46] We cause pain to others without any reason sometimes.
+[00:40:49] So again, that's not a rational behavior,
+[00:40:51] but that's not really rational or irrational.
+[00:40:53] It's irrelevant because this depends on your utility, right?
+[00:40:56] So if your utility is, well, you like,
+[00:40:58] you enjoy causing pain to others,
+[00:41:00] that's what you should do.
+[00:41:01] Your rational player will press the button and say,
+[00:41:03] well, you get a 300 volt shock, who cares?
+[00:41:07] So if you combine these two games,
+[00:41:09] where originally in the coordination game,
+[00:41:11] playing double f was the good thing, was the maximum potential, was the Nash equilibrium.
+[00:41:16] And you combine with an externality that if you play f, you give minus nine to the other,
+[00:41:21] you get a dilemma. Because the point where you still converge is still double f,
+[00:41:26] but double f is an operator inefficient. That's the reason why the dilemma, okay? Because
+[00:41:31] there is this externality behavior. And that's also reflected in the setup where the
+[00:41:35] two divs, if I confess, I cause the other going to jail.
+[00:41:39] So again, it's a consequence of the externality,
+[00:41:43] not a consequence of the potential part.
+[00:41:44] The potential part is somehow correct.
+[00:41:46] I mean, if you see it in red light,
+[00:41:49] you give it the right meaning.
+[00:41:51] But the externality ruins the thing
+[00:41:52] that causes the dilemma.
+[00:41:54] Okay, this could be a good point
+[00:41:57] where to stop for the last part of this lecture.

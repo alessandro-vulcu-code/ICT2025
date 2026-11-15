@@ -1,6 +1,7 @@
 \documentclass[10pt,a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
 \usepackage{times,amsmath,graphicx,booktabs}
 \usepackage[top=1.8cm,bottom=1.8cm,left=1.8cm,right=1.8cm]{geometry}
 \usepackage{enumitem}
@@ -9,79 +10,108 @@
 \setlist{nosep,leftmargin=*}
 \begin{document}
 \begin{center}
-{\Large Network modeling -- AY 2026/2027}\\[4pt]
-{\large Homework 2 -- Composite shaping of Zoom uplink traffic}\\[5pt]
-Alessandro Vulcu -- ID 2185190, University of Padua
+{\Large Modellazione delle reti -- A.A. 2026/2027}\\[4pt]
+{\large Compito 2 -- Shaping composito del traffico Zoom in uscita}\\[5pt]
+Alessandro Vulcu -- Matricola 2185190, Università di Padova
 \end{center}
 \begin{abstract}
-I implement a simulated-time token bucket followed by a constant-rate leaky bucket,
-using the empirical Zoom source fitted in Homework 1. A grid search balances rate
-reservations and storage under explicit loss and delay budgets. Independent
-30-minute replications confirm the selected configuration. Results describe the
-fitted traffic model and shaping contribution to QoS, rather than total call quality.
+Implemento un token bucket seguito da un leaky bucket a velocità costante, entrambi
+in tempo simulato, usando la sorgente empirica Zoom stimata nel Compito 1. Una ricerca
+su griglia seleziona velocità e capacità dei buffer nel rispetto di vincoli su perdita
+e ritardo. Repliche indipendenti di 30 minuti confermano la configurazione scelta.
+I risultati quantificano il contributo dello shaper alla QoS per il modello di traffico
+stimato, anziché la qualità complessiva della chiamata.
 \end{abstract}
-\section{Source and implementation}
-Homework 1 selected a camera-on outbound Zoom UDP flow. The first 180 s formed the
-training sample (19,645 packets); the next 120 s were held out. Sizes are captured
-Ethernet frame lengths, not media payload. I reuse the training CSV, with a 1 ms
-clustering threshold and both boundary clusters excluded. The resulting 7,233
-complete cycles store $(D_i,\{U_{i,k},L_{i,k}\}_{k=1}^{B_i})$: cluster interval,
-packet offsets, and lengths. Uniform independent sampling of whole tuples preserves
-dependence between interval, count, and lengths. The fitted mean rate is 865.95 kbit/s;
-the maximum packet is 1,341 B. No new capture or refitting on validation is needed.
+\section{Sorgente e implementazione}
+Nel Compito 1 ho selezionato un flusso UDP Zoom in uscita, con videocamera attiva.
+I primi 180 s costituiscono il campione di addestramento (19\,645 pacchetti); i successivi
+120 s sono stati riservati alla validazione. Le dimensioni corrispondono alle lunghezze
+delle trame Ethernet catturate, non al payload multimediale. Riutilizzo il CSV di
+addestramento, con una soglia di clustering di 1 ms ed escludendo entrambi i cluster
+ai bordi della traccia. I 7\,233 cicli completi risultanti sono rappresentati da
+$(D_i,\{U_{i,k},L_{i,k}\}_{k=1}^{B_i})$: intervallo tra cluster, offset temporali
+dei pacchetti e lunghezze. Il campionamento uniforme e indipendente di tuple complete
+preserva le dipendenze tra intervallo, numero di pacchetti e lunghezze. La velocità
+media stimata è 865.95 kbit/s; il pacchetto più grande misura 1\,341 B. Non occorrono
+nuove catture né una nuova stima sui dati di validazione.
 
-To meet this assignment's simultaneous-batch convention, all $B_i$ packets are
-emitted at the cycle epoch, on separate rows with identical timestamps. The next
-epoch is advanced by $D_i$. This retains the cluster-interval, batch-size, and
-length distributions, while deliberately removing the short within-cluster offsets
-used in Homework 1. A separate option restores those offsets for sensitivity analysis.
-The source stops on $[0,T)$ and assigns consecutive unique packet identifiers.
+Per rispettare la convenzione del compito sui batch simultanei, tutti i $B_i$ pacchetti
+vengono emessi all'inizio del ciclo, su righe separate con lo stesso timestamp.
+L'inizio del ciclo successivo è spostato in avanti di $D_i$. Si conservano così le
+distribuzioni degli intervalli tra cluster, del numero di pacchetti per batch e delle
+lunghezze, eliminando deliberatamente i brevi offset interni ai cluster usati nel
+Compito 1. Un'opzione separata ripristina questi offset per l'analisi di sensibilità.
+La sorgente genera pacchetti in $[0,T)$ e assegna identificatori univoci consecutivi.
 
-\texttt{source.py} generates the input file; \texttt{shaper.py} reads it and writes
-the output. Both use three whitespace-separated fields: identifier, timestamp in
-seconds, length in bytes. Input times are generation times; output times are
-transmission completion times. IDs and lengths survive unchanged. Dropped IDs
-appear only in a separate drop log. No payload or wall-clock waiting is involved.
+\texttt{source.py} genera il file di ingresso; \texttt{shaper.py} lo legge e scrive
+il file di uscita. Entrambi usano tre campi separati da spazi bianchi: identificatore,
+timestamp in secondi e lunghezza in byte. I tempi in ingresso sono gli istanti di
+generazione; quelli in uscita sono gli istanti di completamento della trasmissione.
+Identificatori e lunghezze restano invariati. Gli identificatori dei pacchetti scartati
+compaiono soltanto in un registro separato degli scarti. Non si elaborano payload
+e non si attende in tempo reale.
 
-The token bucket starts full, with real-valued continuous tokens:
+Il token bucket parte pieno, con un saldo di token a valori reali e reintegro continuo:
 \[
 q(t+\Delta)=\min\{b,q(t)+\rho\Delta\},\qquad
 t_{\rm eligible}=t+\max\{0,L_{\rm head}-q(t)\}/\rho.
 \]
-One token covers one byte. Only the FIFO head can leave; a transfer consumes its
-entire length. Packets exceeding $b$ are explicitly dropped. Insufficient tokens
-cause FIFO buffering in $B_i$; insufficient free storage causes a tail drop.
-There is no backpressure: a transfer to a full LBF queue is discarded and its
-tokens remain consumed. The LBF transmits one packet at a time for $L/\mu$ seconds,
-non-preemptively; its waiting queue has capacity $B_o$. Queue capacities count
-waiting bytes; the packet in service is excluded. An idle transmitter can therefore
-accept a packet even with $B_o=0$.
+Un token copre un byte. Può uscire soltanto il pacchetto in testa alla FIFO; il
+trasferimento consuma un numero di token pari alla sua intera lunghezza. I pacchetti
+che superano $b$ vengono scartati esplicitamente. Se i token non bastano, i pacchetti
+vengono accodati nel buffer FIFO di capacità $B_i$; se manca spazio, il pacchetto
+in arrivo viene scartato (tail drop). Non c'è backpressure: un pacchetto trasferito
+verso una coda LBF piena viene scartato e i suoi token restano consumati. Il LBF
+trasmette un pacchetto alla volta per $L/\mu$ secondi, senza interruzioni; la coda
+di attesa ha capacità $B_o$. Le capacità delle code contano i byte in attesa ed
+escludono il pacchetto in servizio. Un trasmettitore inattivo può quindi accettare
+un pacchetto anche con $B_o=0$.
 
-The event clock jumps to the next arrival, head eligibility, or completion.
-At equal times it handles LBF completion first, then eligible queued TBF packets,
-then input rows in file order. Buffered packets cannot be bypassed. Both queues
-drain after source shutdown, avoiding artificial terminal loss. Eight automated
-checks cover exact timing, FIFO, both overflows, oversize rejection, input validation,
-source reproduction, conservation, and the TBF release envelope. All pass.
+La simulazione procede per eventi: l'orologio avanza direttamente al primo tra
+l'arrivo di un pacchetto, la disponibilità dei token necessari per quello in testa
+alla coda e il completamento di una trasmissione. Quando più eventi coincidono,
+si gestisce prima il completamento LBF, poi il trasferimento dei pacchetti già
+accodati nel TBF che dispongono dei token necessari e infine i nuovi arrivi,
+nell'ordine del file. Si rispetta così l'ordine FIFO, senza permettere ai nuovi
+pacchetti di scavalcare quelli in attesa. Dopo l'arresto della sorgente, la
+simulazione prosegue fino allo svuotamento di entrambe le code. Per evitare blocchi
+dovuti alla precisione numerica, l'istante in cui diventano disponibili i token
+viene arrotondato per eccesso a un tempo rappresentabile con token sufficienti
+per l'intero pacchetto, senza usare una tolleranza fissa per accettare piccoli deficit.
+
+L'implementazione supera dieci controlli automatici su tempi esatti, ordine FIFO,
+overflow di entrambi i buffer, scarto dei pacchetti troppo grandi, validazione
+dell'ingresso, riproduzione della sorgente e conservazione. I controlli verificano
+anche l'inviluppo TBF, la gestione di piccoli deficit di token e il comportamento
+con traslazioni dell'orologio fino a $10^9$ s.
 \clearpage
-\section{QoS budgets and experimental method}
-Zoom video is interactive: excessive waiting harms responsiveness; variation
-in delay raises receiver buffering needs, and loss removes video data. I propose
-the shaping-only budgets in Table 1, leaving room for propagation, other queues,
-codec processing, and playout. These are experimental design targets, not vendor
-requirements or an end-to-end quality guarantee. Mean delay measures typical
-waiting, the 95th and 99th percentiles expose tails, and loss prevents misleadingly
-good delay results obtained by discarding traffic. Byte delivery of at least 99\%
-also prevents selective losses of large packets from hiding behind packet counts.
+\section{Vincoli di QoS e metodo sperimentale}
+Nelle chiamate Zoom, l'attesa riduce la reattività, le variazioni del ritardo
+richiedono più buffering al ricevitore e le perdite eliminano dati video.
+La Tabella 1 riporta sei vincoli di QoS per il solo shaping e due misure descrittive:
+velocità offerta e throughput. I vincoli lasciano margine per propagazione, altre
+code, elaborazione del codec e riproduzione.
 
-For each delivered packet $j$, $d_j=t_j^{\rm out}-t_j^{\rm in}$. Delay variation is
-$v_j=|d_j-d_{j-1}|$ for consecutive delivered packets, including pairs across lost
-IDs. Its 95th percentile is reported as jitter; it is not an RTP jitter estimator.
-Throughput counts completed bytes within $[0,T)$ divided by $T$; delivery fractions
-and delay include the final drain. Delays describe survivors only and are always
-interpreted alongside losses. All rates use captured bytes, not codec goodput.
+Per fissare i limiti, prendo come riferimento una cadenza ipotetica di 30 fotogrammi/s,
+pari a 33.3 ms per fotogramma. Un ritardo medio $\leq30$ ms mantiene la latenza media
+aggiunta sotto un intervallo tra fotogrammi. Il limite di 50 ms sul p95 ammette
+al massimo 1.5 intervalli per il 95\% dei pacchetti consegnati, mentre p99 $\leq100$ ms
+consente picchi rari fino a tre intervalli. Il limite di 30 ms sul p95 della variazione
+del ritardo mantiene il 95\% delle variazioni tra pacchetti consegnati successivi
+entro circa un intervallo e riduce il buffering necessario in riproduzione.
+I limiti sulla perdita ($\leq1\%$) e sui byte consegnati ($\geq99\%$) evitano che
+ritardi bassi nascondano traffico scartato o perdite selettive di pacchetti grandi.
 
-I evaluate 192 configurations on one common 300 s trace, seed 2026:
+Per ogni pacchetto consegnato $j$, il ritardo è $d_j=t_j^{\rm out}-t_j^{\rm in}$.
+La variazione è $v_j=|d_j-d_{j-1}|$, calcolata tra pacchetti consegnati consecutivi
+anche in presenza di perdite intermedie. Come jitter uso il 95° percentile di questa
+variazione. Il throughput si ottiene dividendo per $T$ i byte la cui trasmissione
+si completa in $[0,T)$. Per le percentuali di consegna e i ritardi considero anche
+lo svuotamento finale delle code. I ritardi riguardano soltanto i pacchetti consegnati
+e vanno quindi letti insieme alle perdite. Tutte le velocità sono calcolate sui byte
+catturati.
+
+Valuto 192 configurazioni sulla stessa traccia di 300 s, con seed 2026:
 \[
 \begin{aligned}
 \rho&\in\{110,140,180,220\}\times10^3\ \mathrm{B/s},&
@@ -91,105 +121,115 @@ B_i&\in\{4096,16384\}\ \mathrm{B},&
 B_o&\in\{4096,16384\}\ \mathrm{B}.&&
 \end{aligned}
 \]
-Common input isolates parameter effects. Of these, 28 satisfy every budget.
-The initial lower-rate grid found no feasible setting, so the final grid includes
-higher rates; this exploration uses only the search trace.
-Among feasible candidates I minimize the explicit normalized resource score
+Usare la stessa traccia permette di isolare l'effetto dei parametri. Le configurazioni
+che rispettano tutti i vincoli sono 28; tra queste scelgo quella che minimizza
+l'indice normalizzato di consumo delle risorse
 \[
 C=\frac{\rho}{10^5}+\frac{\mu}{10^5}+\frac{b+B_i+B_o}{16384}.
 \]
-Each rate reservation and the total storage carry equal unit weights at the stated
-scales. Bucket capacity counts as a burst allowance, not literal stored payload.
-The score expresses a design preference, not a monetary cost. A positive weight
-on every resource gives a non-dominated feasible grid choice; it is not a global
-optimum or a unique preference-independent solution.
+Le due velocità riservate e la capacità totale hanno peso unitario dopo la
+normalizzazione. La capacità del bucket rappresenta il margine per i burst,
+mentre quelle dei buffer misurano lo spazio di attesa. Poiché ogni risorsa ha
+peso positivo, la minimizzazione seleziona una configurazione ammissibile e
+non dominata all'interno della griglia.
 
-I then freeze the choice and run ten independent 1,800 s replications, seeds
-3026--3035, without reselecting on those results. Each run contains about 196,000
-packets, or approximately 72,000 sampled cycles, and lasts ten times the training
-window. I retain full-start transient behavior because a call begins with empty
-queues and a full token bucket. The long duration makes this short transient small.
-All ten runs satisfy every budget. Table 1 gives the mean of each run-level
-statistic and a Student-$t$ 95\% confidence interval,
-$\bar x\pm t_{0.975,9}s_x/\sqrt{10}$. For quantiles this estimates the mean
-run quantile, not a confidence interval for an individual packet or a pooled quantile.
-Replications, not correlated packets, are the independent statistical units.
+Mantengo fissa la configurazione scelta ed eseguo dieci repliche indipendenti di
+1\,800 s, con seed 3026--3035. Ogni replica contiene circa 196\,000 pacchetti,
+pari a circa 72\,000 cicli campionati, e dura dieci volte la finestra di addestramento.
+Includo il breve transitorio iniziale, partendo con code vuote e token bucket pieno
+come all'inizio di una chiamata. Tutte e dieci le repliche rispettano i vincoli.
+La Tabella 1 riporta la media delle statistiche ottenute nelle repliche e i relativi
+intervalli di confidenza al 95\%, calcolati con la $t$ di Student:
+$\bar x\pm t_{0.975,9}s_x/\sqrt{10}$. Per i quantili, l'intervallo si riferisce
+alla media dei quantili delle singole repliche. Le unità statistiche indipendenti
+sono le repliche, poiché i pacchetti sono correlati.
 
 \begin{table}[h]
 \centering\small
-\caption{Independent confirmation: means and 95\% confidence half-widths.}
+\caption{Conferma indipendente: medie e semiampiezze degli intervalli di confidenza al 95\%.}
 \begin{tabular}{lrr}\toprule
-KPI & Proposed budget & Mean $\pm$ half-width\\\midrule
-Packet loss (\%) & $\leq 1$ & $0.169 \pm 0.014$ \\
-Delivered bytes (\%) & $\geq 99$ & $99.805 \pm 0.016$ \\
-Mean delay (ms) & $\leq 30$ & $16.712 \pm 0.071$ \\
-95th delay percentile (ms) & $\leq 50$ & $44.889 \pm 0.294$ \\
-99th delay percentile (ms) & $\leq 100$ & $68.280 \pm 0.650$ \\
-95th delay-variation percentile (ms) & $\leq 30$ & $18.396 \pm 0.055$ \\
-Offered rate (kbit/s) & Descriptive & $865.196 \pm 1.774$ \\
-Output throughput (kbit/s) & Descriptive & $863.502 \pm 1.787$ \\
+Indicatore & Vincolo proposto & Media $\pm$ semiampiezza\\\midrule
+Pacchetti persi (\%) & $\leq 1$ & $0.169 \pm 0.014$ \\
+Byte consegnati (\%) & $\geq 99$ & $99.805 \pm 0.016$ \\
+Ritardo medio (ms) & $\leq 30$ & $16.712 \pm 0.071$ \\
+Ritardo, p95 (ms) & $\leq 50$ & $44.889 \pm 0.294$ \\
+Ritardo, p99 (ms) & $\leq 100$ & $68.280 \pm 0.650$ \\
+Variazione del ritardo, p95 (ms) & $\leq 30$ & $18.396 \pm 0.055$ \\
+Velocità offerta (kbit/s) & Descrittivo & $865.196 \pm 1.774$ \\
+Throughput in uscita (kbit/s) & Descrittivo & $863.502 \pm 1.787$ \\
 \bottomrule\end{tabular}
 \end{table}
 \clearpage
-\section{Results, trade-offs, and limits}
-The selected parameters are
+\section{Risultati, compromessi e limiti}
+I parametri selezionati sono
 \[
 (\rho,b,B_i,\mu,B_o)=(180000,4096,16384,220000,4096),\qquad C=5.50.
 \]
-This reserves 1.44 Mbit/s at the TBF and a 1.76 Mbit/s serialization rate. Total
-waiting storage is 20,480 B; adding the burst allowance gives 24,576 resource units.
-Both rates exceed the roughly 0.866 Mbit/s mean source load: short bursts, not only
-mean-rate stability, govern the delay budget. The full bucket admits a small burst
-before enforcing the long-term rate; the transmitter then serializes it.
+La configurazione riserva 1.44 Mbit/s al TBF e 1.76 Mbit/s per la serializzazione.
+I buffer offrono complessivamente 20\,480 B di spazio di attesa; aggiungendo la
+capacità del bucket, il totale considerato nell'indice è 24\,576 B. Entrambe le
+velocità superano il carico medio della sorgente, circa 0.866 Mbit/s, perché per
+contenere il ritardo occorre gestire anche i burst brevi. Il bucket inizialmente
+pieno lascia passare un piccolo burst prima di imporre la velocità di lungo periodo;
+il trasmettitore ne invia poi i pacchetti in sequenza.
 
 \begin{figure}[h]
 \centering\includegraphics[width=\textwidth]{analysis/results.pdf}
-\caption{Search trade-off, delivered-packet delay distribution, and input/output
-rates for the selected setting. Star: minimum-score feasible candidate. Rate samples
-use 100 ms bins; packet completions can still cluster around bin boundaries.}
+\caption{Compromesso tra risorse e ritardo, distribuzione del ritardo dei pacchetti
+consegnati e velocità di ingresso e uscita per la configurazione scelta. La stella
+indica la configurazione ammissibile con indice minimo. Le velocità sono calcolate
+su intervalli di 100 ms; i completamenti possono concentrarsi vicino ai loro bordi.}
 \end{figure}
 
-The representative delivered trace (seed 3026) contains 196,181 of 196,556 packets,
-with 375 input-buffer drops and no output-buffer drops. Peak input occupancy is
-16384 B and peak output waiting occupancy is 4038 B. The small output queue
-works because the TBF spreads the offered bursts before the faster transmitter.
-A bigger $b$ can relieve input waiting but also pushes a larger burst into the output
-queue; increasing $B_i$ prevents some losses while allowing longer delay. Increasing
-$B_o$ cannot recover packets already discarded at the input. Higher $\rho$ reduces
-token waiting; higher $\mu$ shortens serialization and output waiting. Their benefits
-depend on which stage is the bottleneck.
+La replica rappresentativa (seed 3026) consegna 196\,181 pacchetti su 196\,556:
+i 375 scarti avvengono tutti nel buffer di ingresso. L'occupazione massima è
+16384 B in ingresso e 4038 B nella coda di attesa in uscita. Il buffer di uscita
+può essere piccolo perché il TBF distribuisce i burst nel tempo prima di passarli
+al trasmettitore, che è più veloce.
+
+Aumentare $b$ può ridurre l'attesa in ingresso, ma riversa un burst più grande
+nella coda di uscita. Un $B_i$ maggiore evita alcune perdite, al prezzo di ritardi
+potenzialmente più lunghi; aumentare $B_o$, invece, non recupera i pacchetti già
+scartati in ingresso. Aumentare $\rho$ riduce l'attesa dei token, mentre aumentare
+$\mu$ abbrevia la serializzazione e l'attesa in uscita. L'effetto di ciascun
+intervento dipende quindi dallo stadio che limita il sistema.
 
 \begin{table}[h]
 \centering\small
-\caption{Controls and robustness checks, using seed 3026 where synthetic.}
+\caption{Casi di controllo e verifiche di robustezza, con seed 3026 per i casi sintetici.}
 \begin{tabular}{lrrr}\toprule
-Case & Loss (\%) & p95 delay (ms) & Output (kbit/s)\\\midrule
-Underprovisioned & 29.16 & 48.98 & 587.15 \\
-Large buffers, low rates & 1.10 & 546.62 & 855.08 \\
-Original within-batch offsets & 0.19 & 45.28 & 864.03 \\
-Held-out 120 s capture & 0.04 & 31.23 & 856.88 \\
+Caso & Perdita (\%) & Ritardo p95 (ms) & Uscita (kbit/s)\\\midrule
+Sottodimensionato & 29.16 & 48.98 & 587.15 \\
+Buffer grandi, velocità basse & 1.10 & 546.62 & 855.08 \\
+Offset intra-batch originali & 0.19 & 45.28 & 864.03 \\
+Segmento di validazione di 120 s & 0.04 & 31.23 & 856.88 \\
 \bottomrule\end{tabular}
 \end{table}
 
-The underprovisioned control uses $(90000,1341,4096,100000,4096)$: low delay alone
-hides severe losses. A low-rate setting with large buffers,
-$(110000,8192,65536,120000,65536)$, still fails QoS and raises delay substantially.
-More storage alone is therefore insufficient. Restoring Homework 1's packet offsets
-barely changes the representative result. Processing the independent held-out capture
-also meets all budgets, but this short check does not replace the longer model runs.
+Nel caso sottodimensionato, $(90000,1341,4096,100000,4096)$, il ritardo rimane basso
+ma le perdite sono elevate. Anche la configurazione con velocità basse e buffer
+grandi, $(110000,8192,65536,120000,65536)$, viola i vincoli di QoS e produce ritardi
+molto maggiori: aumentare soltanto i buffer non compensa velocità insufficienti.
+Ripristinando gli offset dei pacchetti del Compito 1 si ottengono risultati molto
+simili a quelli della replica rappresentativa. Anche il segmento della stessa
+cattura riservato alla validazione rispetta tutti i vincoli, ma la sua breve durata
+non sostituisce le simulazioni più lunghe.
 
-The confidence intervals quantify Monte Carlo variability conditional on the fitted
-empirical source. They exclude uncertainty from the 180 s training sample, different
-users or network paths, and the missing slow temporal correlation identified in
-Homework 1. Independent cycle resampling loses that correlation and overstates some
-100 ms variability; repeated synthetic hours do not create new observed evidence.
-The shaper also does not feed congestion signals back to Zoom's adaptive encoder.
-The resource choice is thus defensible for this model, grid, and cost preference;
-deployment would require more captures and end-to-end quality measurements.
+Gli intervalli di confidenza descrivono la variabilità delle simulazioni basate
+sulla sorgente empirica stimata. Non includono l'incertezza dovuta al campione di
+addestramento di 180 s, a utenti o percorsi di rete diversi e alla correlazione
+temporale lenta individuata nel Compito 1. Campionando i cicli in modo indipendente
+si perde questa correlazione e si sovrastima parte della variabilità su intervalli
+di 100 ms. Ripetere le simulazioni non aggiunge nuove osservazioni del traffico reale.
+Inoltre, lo shaper non invia segnali di congestione al codificatore adattivo di Zoom.
+La scelta resta quindi legata al modello, alla griglia e al criterio di costo usati.
+Per validarla in condizioni reali servirebbero altre catture e misure di qualità
+end-to-end.
 
-\textbf{Reproduction.} \texttt{README.md} documents both module CLIs, training-data
-provenance, trace aliases, test commands, and full reproduction with
-\texttt{python experiments.py} followed by \texttt{python build\_report.py}.
-Source code, measured tables, buffer/drop traces, figure source, and this report
-are included in the homework directory.
+\textbf{Riproducibilità.} \texttt{README.md} descrive i comandi dei due moduli,
+la provenienza dei dati di addestramento, gli alias delle tracce e i test.
+Per riprodurre tutti gli esperimenti si esegue \texttt{python experiments.py},
+seguito da \texttt{python build\_report.py}. La cartella del compito contiene
+codice sorgente, tabelle dei risultati, tracce dei buffer e degli scarti,
+sorgente della figura e questa relazione.
 \end{document}

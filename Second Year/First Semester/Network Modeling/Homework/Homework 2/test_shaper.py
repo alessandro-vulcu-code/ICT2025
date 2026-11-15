@@ -1,5 +1,8 @@
 """Hand-computed queue cases and end-to-end conservation/envelope checks."""
+import json
 import math
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -13,6 +16,47 @@ class ShaperTests(unittest.TestCase):
                           Config(100, 100, 200, 200, 0), True)
         self.assertEqual(result.output, [(1, .5, 100), (2, 1.5, 100), (3, 2.5, 100)])
         self.assertFalse(result.drops)
+
+    def test_clock_translation_and_progress(self):
+        # A child-process timeout turns a repeated-clock regression into a
+        # test failure instead of hanging the entire suite.
+        script = '''
+import json
+from shaper import Config, simulate
+runs = []
+for bucket, count in [(1341, 2), (4096, 5)]:
+    for offset in [0.0, 8192.0, 36000.0, 1e9]:
+        result = simulate([(i, offset, 1341) for i in range(1, count + 1)],
+                          Config(b=bucket), record=True)
+        runs.append([bucket, count, offset, result.output, result.releases, result.drops])
+print(json.dumps(runs))
+'''
+        child = subprocess.run([sys.executable, '-B', '-c', script],
+                               cwd=Path(__file__).resolve().parent,
+                               capture_output=True, text=True, timeout=5, check=True)
+        baselines = {}
+        for bucket, count, offset, output, releases, drops in json.loads(child.stdout):
+            with self.subTest(bucket=bucket, offset=offset):
+                self.assertFalse(drops)
+                self.assertEqual([p[0] for p in output], list(range(1, count + 1)))
+                if offset == 0:
+                    baselines[bucket] = output, releases
+                # Accumulated rounding is bounded by a few clock ULPs per
+                # event; exact translation is impossible at large offsets.
+                tolerance = max(1e-12, 8 * count * math.ulp(offset))
+                for shifted, baseline in zip((output, releases), baselines[bucket]):
+                    self.assertEqual(len(shifted), len(baseline))
+                    for packet, original in zip(shifted, baseline):
+                        self.assertEqual((packet[0], packet[2]), (original[0], original[2]))
+                        self.assertAlmostEqual(packet[1], offset + original[1], delta=tolerance)
+
+    def test_no_early_release_for_small_token_deficit(self):
+        result = simulate([(1, 0.0, 100), (2, 1.0 - 5e-10, 100)],
+                          Config(100, 100, 100, 1000000, 0), record=True)
+        self.assertFalse(result.drops)
+        self.assertEqual([p[0] for p in result.output], [1, 2])
+        self.assertGreaterEqual(result.releases[1][1], math.nextafter(1.0, 0.0))
+        self.assertAlmostEqual(result.releases[1][1], 1.0, delta=1e-14)
 
     def test_both_overflows(self):
         trace = [(i, 0, 100) for i in range(1, 6)]

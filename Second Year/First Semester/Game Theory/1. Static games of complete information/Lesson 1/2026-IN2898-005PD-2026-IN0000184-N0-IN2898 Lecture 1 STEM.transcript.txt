@@ -1,0 +1,570 @@
+[00:00:00] Okay, welcome to this course in Game Theory, which is a course for Information Engineering.
+[00:00:06] In this first unit, I'm going to tell you about technical details about the course.
+[00:00:13] Okay, so first of all, who is the instructor?
+[00:00:15] The instructor is Leonardo Badia.
+[00:00:17] That's me.
+[00:00:18] This is my email address, leonardo.badia.gmail.com.
+[00:00:23] I of course, I also have the uniPD.IT email, and you can use either of them.
+[00:00:30] are identical because they redirect to the same folder. And this is to say that sometimes
+[00:00:37] students tell me, yeah, I wrote an email on your personal email or on your university email,
+[00:00:45] you can write to either of them. It's just the Gmail is always working. The Unipd account
+[00:00:50] every now and then is slow and so, but yeah, slow in the sense that it gets the email like
+[00:00:57] 15 minutes after usually,
+[00:00:59] but since it's a synchronous communication,
+[00:01:02] it doesn't really matter.
+[00:01:04] You can contact me either way.
+[00:01:07] If you don't get an answer,
+[00:01:09] the most likely explanation is not that your email address was
+[00:01:12] wrong, it's just like I was swamped with emails.
+[00:01:17] This happens unfortunately very often,
+[00:01:19] so don't be scared if I don't answer to you immediately.
+[00:01:22] The solution to this is to be patient and possibly persistent.
+[00:01:26] Don't be afraid of contacting me twice or three times
+[00:01:30] if I don't answer immediately.
+[00:01:33] I mean, sometimes it happens.
+[00:01:34] Maybe I just lose track of your email
+[00:01:36] and it's nothing personal.
+[00:01:39] Sometimes I answer real time, really.
+[00:01:41] It very much depends on what I'm doing at the moment
+[00:01:43] and how busy I am right now.
+[00:01:46] So there are many, many reasons.
+[00:01:48] Anyways, my main research area
+[00:01:50] is mathematical modeling applied to R-S networks.
+[00:01:53] And this mathematical modeling
+[00:01:54] also involves game theory, which is the subject of this class.
+[00:01:59] But also I have other interests, especially in epidemiology,
+[00:02:04] of course data epidemiology, I'm not a physician,
+[00:02:07] social networking, digital signal processing,
+[00:02:09] and I'm also teaching fundamentals of telecommunications.
+[00:02:12] So these are the prime connections of this subject
+[00:02:17] to other subjects that you might have experienced
+[00:02:19] because I taught or I'm actually teaching all of this,
+[00:02:22] But more in general, there are other subjects
+[00:02:27] that you might find a connection with game theory.
+[00:02:32] As I said, very important message.
+[00:02:34] There are two courses of game theory
+[00:02:36] being taught at the Department of Information Engineering.
+[00:02:40] One is called game theory, just game theory,
+[00:02:43] which is the one taught by me.
+[00:02:45] The other one is called game theory and strategic behavior
+[00:02:48] and is taught by professors Mercuro and Bora.
+[00:02:52] They take turns in teaching, so one is teaching the online classes, the other one is teaching
+[00:02:57] the in-classroom classes.
+[00:03:00] And aside from that, in this case instead I'm teaching both, alternating one online lecture
+[00:03:07] and one in-classroom lecture.
+[00:03:11] However, the two courses have the exact same program, the exact same structure, the
+[00:03:17] exact same dates.
+[00:03:18] The main reason why you must split according to your design course is just bureaucracy,
+[00:03:25] because I know for a fact, as students tell me, yeah, I would like to attend with your lectures.
+[00:03:30] Well, first of all, Professors Marcior and Bora are super good, so you don't need to.
+[00:03:35] But my lectures is best for, I don't know, I play tennis, I do judo, whatever,
+[00:03:42] so it's more convenient for me to attend your classes, maybe,
+[00:03:46] but I strongly doubt that you will have
+[00:03:49] such a convenient schedule.
+[00:03:50] The main reason, as I said, is that then in the end,
+[00:03:54] if your professors are professors Marcior and Bora,
+[00:03:58] they are in charge of recording your grade.
+[00:04:00] They are in charge to grading your exam.
+[00:04:04] And so for this very reason,
+[00:04:05] it's important that you follow the course
+[00:04:08] with the one that is your official lecture, okay?
+[00:04:13] There will be no difference whatsoever beyond that, because besides the timetable and some
+[00:04:20] minor differences, of course I am super brilliant and nice, but beyond that the course and
+[00:04:28] the exam will be exactly the same, it will really be on the same dates.
+[00:04:33] And Professor Mark Ioro, who is the official lecturer, and also Professor Bora and I are
+[00:04:38] in full agreement, we are very tightly coordinated, okay?
+[00:04:42] So for what concerns attendance to the lecture, keep in mind that as usually in Italy, the presence to the lecture is not mandatory.
+[00:04:54] So this means that you might be tempted to say, OK, then I'll study on my own. However, it is highly recommended.
+[00:05:01] And what do I mean by highly recommended? Yeah, of course, you can take your time.
+[00:05:06] don't have to justify, sorry professor, I missed one lecture because I was busy or was sick. It
+[00:05:11] doesn't matter. You can easily recover your lectures from other appointments, like from the
+[00:05:19] material that I'm gonna give you from your classmates, whatever. That's totally fine and
+[00:05:24] justifiable. That's not a problem. But especially I encourage your presence, in particular
+[00:05:30] for practical activities, especially the project discussions. So there's gonna be two, three
+[00:05:35] lectures where your presence is highly welcome, let's say,
+[00:05:40] and other opportunities where your presence is just advised.
+[00:05:46] In general, it's always recommended
+[00:05:47] because it is my understanding that if you attend the lectures
+[00:05:50] for real, you get a better track of the course,
+[00:05:54] even for fully recorded lectures.
+[00:05:57] Because this is like watching a TV series.
+[00:06:01] If you keep track of one episode a week,
+[00:06:04] you follow the pace of the story better, okay?
+[00:06:08] And what else you should do, you should enroll the Moodle
+[00:06:12] because the Moodle contains all the material
+[00:06:14] that allows you to attend the class to the fullest.
+[00:06:18] In particular, there's gonna be video recordings
+[00:06:21] of the online lectures and also many video recordings
+[00:06:25] also of lectures that are actually given live,
+[00:06:28] but I'm gonna put some video recording of past years.
+[00:06:32] The lecture is always the same.
+[00:06:33] Maybe I won't be saying the exact same words.
+[00:06:37] So with the caveat that the recording is old,
+[00:06:40] you're going to have a decent video recording of the lecture
+[00:06:44] anyways if you want to recover it at a later time.
+[00:06:48] And finally, I do office hours.
+[00:06:51] Yes, students ask me, when do you do office hours?
+[00:06:54] Generally by appointment.
+[00:06:56] In that, since the course is also half online,
+[00:07:00] I welcome very much that you contact me to find a spot
+[00:07:04] because I'm not always at the department.
+[00:07:06] Some students think I live in my office at the department.
+[00:07:09] Luckily, I don't.
+[00:07:10] And so some students come at my office and say,
+[00:07:12] Well, I didn't find you. How come?
+[00:07:14] Yeah, no surprise.
+[00:07:15] I was teaching online, so I was from home right now.
+[00:07:18] And in general, it is very advised that you send me an email
+[00:07:22] because I really don't like to do individual office hours
+[00:07:27] unless there is a special reason, like you want to tell me something extremely important,
+[00:07:32] but if it is about asking on a specific topic, I very much encourage you to, I don't know,
+[00:07:39] group and come in groups to my office hours and possibly do this online.
+[00:07:45] That would be even better.
+[00:07:47] And even, even better would be to use the discussion forum.
+[00:07:51] On the Moodle, I created a discussion forum
+[00:07:55] in which I put some, I mean, it's open forum.
+[00:08:00] So it's a way for you to ask questions.
+[00:08:04] And this has the advantage.
+[00:08:05] I know students are nowadays very shy.
+[00:08:08] Back in the day before COVID happened,
+[00:08:10] students were very active on discussion forum.
+[00:08:14] Nowadays, students are not that active.
+[00:08:17] Don't know why, but maybe COVID made us all shy
+[00:08:20] and afraid of going out, and this also works for writing things on a discussion forum. But if you
+[00:08:26] have a doubt, the best place where to ask would be the discussion forum, because if you join the
+[00:08:33] discussion forum, then you can answer one another. So you don't have to wait for the professor to
+[00:08:38] answer you, maybe the professor is super busy, but you can also exchange ideas and maybe find
+[00:08:43] together the answer. And also together you can find the group for the project, which is
+[00:08:49] something that I'm gonna discuss later.
+[00:08:52] Okay, so even though I'm always available
+[00:08:55] to give you clarifications,
+[00:08:56] like before the lecture, after the lecture,
+[00:08:58] I would suggest that you avoid asking me questions
+[00:09:02] privately without the other students knowing
+[00:09:07] because you will get a better answer
+[00:09:12] if this is recorded in some way.
+[00:09:14] Then I have a question from Giovanni
+[00:09:16] that I didn't really get.
+[00:09:18] Is it possible to get this year's Monday recordings on other days as well?
+[00:09:22] Yes, of course. The recording is meant to be, well, to stay.
+[00:09:26] Not that you get the recording on that very day and then it's going to be deleted,
+[00:09:30] so you can watch them afterwards.
+[00:09:32] They're not going to stay forever, like for 20 years from now,
+[00:09:36] but ideally, I will leave the recording for you to rehearse the classes even before the exam, if you want.
+[00:09:43] Okay, I hope this answered the question.
+[00:09:45] OK, so back to the classes, the schedule, as I said,
+[00:09:51] is every Monday official lecture will be 4.20 online,
+[00:09:55] but this lecture I started a bit later.
+[00:10:01] I would say that, let's say, 4.20, I
+[00:10:04] will be online, available to ask questions.
+[00:10:07] But most of the times, Monday's lecture will be,
+[00:10:10] there is a video, watch the video
+[00:10:11] and ask me questions about it.
+[00:10:12] So, if I remember it, I will put the video online even in the morning so you have time
+[00:10:18] to watch in advance or you can have time to watch it later.
+[00:10:22] So it's not really synchronous in the sense that you have to watch it live or nothing.
+[00:10:27] But I would encourage to keep the pace of the lectures because really the course
+[00:10:32] is meant to unfold over time and if you watch video by video, then you get the full
+[00:10:40] understanding of the subject.
+[00:10:41] And on Wednesday, we're going to have an in-classroom lecture at 2.30.
+[00:10:46] So that would be the best way to interact physically, to interact in person.
+[00:10:52] And all these lectures are always Italian time.
+[00:10:54] The duration is actually about 80 minutes.
+[00:10:56] I will go straight without any pause because, yeah, come on, we are the master degree level,
+[00:11:01] so there is probably no need to do a break.
+[00:11:04] The pace is going to be bearable, I think.
+[00:11:06] And also you're going to have recording, so there is no need to make a pause in between.
+[00:11:12] I guess especially it's convenient to end earlier and so to go catch the train or whatever.
+[00:11:18] The calendar will go like this until December.
+[00:11:22] Then I will have some minor adjustments because in December we're going to have some changes
+[00:11:28] because I have a big conference, there is a holiday.
+[00:11:32] So probably in December the schedule will be a bit more erratic.
+[00:11:35] but the plan is to end before Christmas anyways, so a very important thing, the
+[00:11:43] lectures, if everything goes well, unless I get very sick or whatever, the
+[00:11:47] lectures are gonna end before Christmas, okay? And for the study
+[00:11:52] material, let me tell you, there is no strongly recommended study material in
+[00:11:58] that you don't need to buy a book but there are two good resources plus
+[00:12:03] everything else. Gain Theory, luckily, is a very standard course in American universities, so you
+[00:12:09] can find books from MIT, Harvard, Stanford, whatever big university you think of, they have a good
+[00:12:17] textbook on Gain Theory. The one I recommend is Tadelis' book, which is a good reference, it's
+[00:12:22] edited by Princeton, so another top university, but Tadelis' book, I like it because it's very
+[00:12:28] funny, but also very down to earth. It's very simple to understand. There is not much math,
+[00:12:33] actually, I will integrate it a little bit with more precise math at times, because this is
+[00:12:40] designed for economists, not for engineers. So I will integrate with more rigorous math every
+[00:12:45] now and then, but in general is a good outline. But in reality, all the textbooks
+[00:12:51] of game theory follow the same pattern, which is the one that we follow in the course,
+[00:12:56] like starting with static games,
+[00:12:58] then dynamic games, then Bayesian games.
+[00:13:00] These are the basic content of the course.
+[00:13:02] And then there are more advanced concepts of game theory
+[00:13:05] which are not explored here.
+[00:13:07] They are for more advanced courses.
+[00:13:10] So in general, for many subjects,
+[00:13:13] you can refer to the book,
+[00:13:14] but some extra contents I added over time.
+[00:13:18] So you won't find them
+[00:13:19] in the game theory book of Tadelis,
+[00:13:21] but you will find them in the slides of the lectures,
+[00:13:24] which are gonna be available online on the Moodle.
+[00:13:27] So if you take the book, if you want,
+[00:13:29] but if you follow the slides from the lecture,
+[00:13:31] you have a full coverage of all the subject.
+[00:13:35] Now, there is another book that I strongly recommend
+[00:13:38] because it's mine, it's written by me
+[00:13:40] and Professor Macchioro, so we make a lot of money
+[00:13:43] out of it, as you can imagine.
+[00:13:44] Now, in reality, I think we make one cent per copy sold,
+[00:13:48] so it's not really that I incentivize you to buy
+[00:13:50] because I become rich.
+[00:13:51] Actually, I think the author's rights I get from this book are in the order of 30 euros
+[00:14:00] total from the time I've written it.
+[00:14:02] So it's not 30 euros per year.
+[00:14:04] So I really did not do it for the money.
+[00:14:07] I did it because I think it's convenient for you to have a map of past exams.
+[00:14:13] So all the exercises that you find in this textbook are past examinations.
+[00:14:18] And so in this way, you can get the gist
+[00:14:21] of what to expect at the written exam.
+[00:14:25] Now, this does not mean this is gonna be identical.
+[00:14:28] Actually, I strongly discourage
+[00:14:31] the reverse engineering of exams.
+[00:14:33] So very often I find an exercise in,
+[00:14:38] I mean, there is an exercise in the book
+[00:14:39] that looks similar to the one I gave in the exam.
+[00:14:42] And I find the verbatim copy paste from the textbook
+[00:14:46] without noticing that there was some important difference
+[00:14:50] in the exam and the student didn't notice
+[00:14:52] and so they just copy-pasted.
+[00:14:54] And needless to say, they get a fail if they do like that.
+[00:14:58] So I really encourage you to use the book
+[00:15:01] to have a reference on how to solve certain exercises,
+[00:15:05] but to not think that the exercises
+[00:15:07] are gonna be identical to the one in the book.
+[00:15:10] Of course, they're gonna be adjustments,
+[00:15:11] but the category of exercises is gonna be similar.
+[00:15:16] Okay, and finally, as I said, the timeline is that I plan the lectures to be over by
+[00:15:22] Christmas, and even the exam can be done before Christmas, kind of, because there is some
+[00:15:28] adjustment.
+[00:15:28] There is a preliminary written test, which is scheduled on December 23rd.
+[00:15:34] Now, this is still to be confirmed, because I need to find a classroom that is big
+[00:15:39] enough for you to take the exam.
+[00:15:41] For sure, we're going to use the classroom of the lectures, but that's not big enough for an exam,
+[00:15:46] so I am desperately looking for another classroom, at least, to fit you all. But the point is,
+[00:15:53] and this also works for the other students of the other course of gain theory and strategic
+[00:15:57] behavior, so the idea here is that there is going to be a written exam, and you will see
+[00:16:07] how in principle you can finish everything before Christmas, which I find this to be very convenient
+[00:16:14] for students because you have a lot of exams and maybe having an exam that you can finalize,
+[00:16:21] at least, I mean it's not officially recorded because it can be officially recorded only mid-January,
+[00:16:25] but it will be finalized for sure before Christmas. And then there are four dates for the
+[00:16:38] June 15 and August 27.
+[00:16:41] So these are the regular written exam.
+[00:16:43] The point is the course also has a project
+[00:16:47] and the rule is you can sit for a regular written exam
+[00:16:51] only if you deliver your project first.
+[00:16:55] This is different from what we did in the past years
+[00:16:58] because in the past years there was,
+[00:17:00] now I'm gonna tell you about the project,
+[00:17:02] but in the past years there was an optional project
+[00:17:05] involved with the course.
+[00:17:07] Now, this year, from this year on,
+[00:17:09] we made the project to be mandatory.
+[00:17:12] And the reason is clear.
+[00:17:13] I mean, in this time and age,
+[00:17:15] with Charge EPT or AI anyways, or LLM,
+[00:17:20] it's kinda easy to write a project.
+[00:17:24] Of course, if you write the project entirely with AI,
+[00:17:27] I mean, it's more convenient not to do it, okay?
+[00:17:31] So the project is kinda mandatory,
+[00:17:34] but it can be optional because either you don't do it
+[00:17:38] and you get zero points for the project,
+[00:17:39] or you write it entirely with AI
+[00:17:44] and you also get zero points.
+[00:17:46] So, I mean, there is no difference,
+[00:17:47] so it's not worth the effort.
+[00:17:50] Don't tell ChachiPT, please write me a project
+[00:17:53] for the game theory course
+[00:17:54] and then you take it and deliver it.
+[00:17:56] But really, the effort to do so would be zero
+[00:18:00] and so the grade that you get will be also zero.
+[00:18:03] but in general, if you have a good idea and you ask Chai GPT or Gemini or Claude or whatever
+[00:18:09] to develop it for you, it will be very quick to write the project.
+[00:18:17] Now I'm going to explain, I have questions like Vlad is asking if you can, this I'm going to
+[00:18:22] answer in a moment, and Berke, Jem is asking if I'm going to upload the lesson slides to
+[00:18:27] the Moodle. Yes, of course, I think they are already uploaded actually. But anyways, the
+[00:18:32] A question about, if you see here,
+[00:18:35] you can see it for a regular written exam
+[00:18:37] only if you deliver the project first.
+[00:18:39] So the exception to this rule
+[00:18:41] is the preliminary written test
+[00:18:43] because this is not a regular written test.
+[00:18:45] It's a preliminary written test.
+[00:18:46] So the idea is like this.
+[00:18:49] The exam has a mandatory research project,
+[00:18:52] which is in reality can be delivered empty.
+[00:18:56] So if you deliver an empty project, you get zero point.
+[00:19:00] It's mandatory that you do it,
+[00:19:01] you say, well, sorry, I don't want to do a project. Zero points for you, but it's allowed.
+[00:19:06] A project should be an original essay of five to eight pages and can be carried out either solo
+[00:19:13] or in groups of two. So this means that if you have a good friend, you can do the project
+[00:19:19] together, otherwise you do it solo. In principle, you can do even a group of three if there are
+[00:19:25] really some strong motivations.
+[00:19:29] Like, the project is so complicated
+[00:19:30] that it requires three people,
+[00:19:32] but in my experience, a project with three authors
+[00:19:35] is always, I mean, there is always somebody
+[00:19:38] who didn't do a thing in reality.
+[00:19:39] But anyways, the project will be
+[00:19:42] on a certain possible topic,
+[00:19:45] and the list of possible topics
+[00:19:47] will be delivered by the first week of November.
+[00:19:51] Why?
+[00:19:51] Because I have a list of topics in mind,
+[00:19:54] and so does Professor Macchioro. The list of topics will be more or less the same,
+[00:19:58] even though probably since Professor Macchioro has data scientists and I do have physicists,
+[00:20:05] maybe some topics will be specific to a certain degree, but in reality you can choose whatever.
+[00:20:10] I mean, I don't care if you are a physicist but you want to do cyber security, you can,
+[00:20:15] or if you are a mathematician and you want to do computer engineering project, you can.
+[00:20:18] And also, it's very hard to say this project pertains to cybersecurity or to networking.
+[00:20:25] I mean, cybersecurity is a branch of networking, after all.
+[00:20:28] So, the distinction is very blurred.
+[00:20:31] But this is to say that you are also free to propose a certain subject for a project.
+[00:20:39] This does not mean I'm going to say, okay, this is a valid subject.
+[00:20:42] Very often, I will be saying, no, this is not a valid project.
+[00:20:46] But you are allowed to say.
+[00:20:47] You have a say in this.
+[00:20:49] So very often, I found that students
+[00:20:52] can propose very nice projects.
+[00:20:54] But of course, this has to be vetted by the professors.
+[00:20:59] So this is why, by the first week of November,
+[00:21:02] you have a rough idea of what the course is about,
+[00:21:06] and you can propose a subject.
+[00:21:08] Because if you propose a subject right now, for sure,
+[00:21:10] you're going to say, well, you know what?
+[00:21:12] I study, I don't know, Russian language. Can I do a project about Russian language?
+[00:21:19] I say, and the idea would be what? I don't know, to use game theory for Russian language. Okay,
+[00:21:25] this is not a coherent idea. To have a coherent idea, you need to have attended at least
+[00:21:31] three, four weeks of lectures, and then you know how to propose a coherent project. Okay,
+[00:21:37] that's the idea. So by the first week of November, I will propose a list of topics. You are free to
+[00:21:43] say, well, I would like to do one more and I am free to say, yeah, this is not going to work,
+[00:21:49] so don't do that. Do one of the lists. So in general, I strongly advise to follow the list
+[00:21:55] of subjects that I'm proposing. But since I know that some of you are studying history or
+[00:22:01] ancient history or psychology or whatever from Erasmus programs, so for all of you, I leave
+[00:22:07] door open, but of course try to be sensible in your proposal and very often for 99% of you
+[00:22:14] the most convenient solution will be to find a topic in the list of the subjects I propose
+[00:22:21] and stick to that one. Also, you are welcome to interact. Yeah, I was about to say this
+[00:22:29] question that Marwin is asking. Are multiple groups allowed to do the same topic? Of course,
+[00:22:34] for two reasons.
+[00:22:36] One is that topics are generally broad enough.
+[00:22:39] I don't expect that the development would be the same.
+[00:22:43] If the topic is, for some reason,
+[00:22:46] chosen in the same direction by both groups,
+[00:22:50] okay, it happens,
+[00:22:51] but very often it's easy to differentiate.
+[00:22:54] So very often it's kind of easy
+[00:22:56] that the group say,
+[00:22:57] well, we all would like to do the same project.
+[00:23:00] maybe I do this aspect of this subject
+[00:23:04] and you do this other aspect.
+[00:23:07] Generally, this has never been a problem.
+[00:23:09] So it's not like there are,
+[00:23:10] I mean, they're gonna be like 12 subjects
+[00:23:13] plus maybe one, two extra proposals from the classroom,
+[00:23:18] and maybe this will be the final list.
+[00:23:20] So you have to choose one of these 14, 15 topics.
+[00:23:26] But of course, I expect more than 15 groups.
+[00:23:29] So very likely there's going to be more groups working on the same subject.
+[00:23:36] Now, this project must be delivered...
+[00:23:41] No, you just need to deliver it, but after you deliver the project,
+[00:23:48] I'm possibly involving you in a discussion about the project.
+[00:23:52] So this again pertains about the use of AI.
+[00:23:57] Let me say something about this.
+[00:23:58] So, the project does not need to be defended,
+[00:24:02] so you don't need to present it in front of the classroom.
+[00:24:05] The project itself is its presentation.
+[00:24:08] However, I need to make
+[00:24:10] sure that the project comes from you and not from somebody else.
+[00:24:15] So, the moment I'm suspicious about something,
+[00:24:18] well, of course, I'm
+[00:24:21] going to ask you to explain what is written in the project.
+[00:24:23] So, you must be aware that what you wrote
+[00:24:26] is your own original work, and more on this in a moment.
+[00:24:31] And you have to deliver everything
+[00:24:33] involving the project, not just the project itself.
+[00:24:36] You have to deliver the code that you wrote,
+[00:24:40] supplementary material.
+[00:24:41] And in particular, if the project
+[00:24:45] is done with the help of AI, this is allowed.
+[00:24:48] Very important.
+[00:24:49] I mean, I'm not saying, no, you
+[00:24:51] have to do the project yourself.
+[00:24:52] The code must be written by you and every single line
+[00:24:55] you don't.
+[00:24:55] you're not even allowed to proof check the English spelling.
+[00:25:00] Of course, everybody is using AI for that nowadays.
+[00:25:03] What is not allowed is to ask Charge EPD,
+[00:25:06] please write me the project entirely.
+[00:25:08] So whatever you're using the AI for must be disclaimed.
+[00:25:13] So there must be a section in your project where you say,
+[00:25:16] look, for the simulation,
+[00:25:18] I asked Charge EPD to write a Monte Carlo simulation,
+[00:25:22] and then I run the simulations myself.
+[00:25:24] Or I ask Chai GPT or Gemini or Claude or whatever
+[00:25:29] to verify the correctness of a certain theorem.
+[00:25:34] That's also okay.
+[00:25:37] What is not, I mean,
+[00:25:38] it's also allowed to be upfront and say, you know,
+[00:25:41] actually everything was done by Chai GPT.
+[00:25:43] And in that case, I'm gonna say, okay,
+[00:25:45] then you get zero points, of course.
+[00:25:47] I hope this is clear.
+[00:25:49] Anyways, the project is gonna be,
+[00:25:52] must have some original elements.
+[00:25:54] Of course, I'm gonna grade your original contribution,
+[00:25:57] but asking assistance from,
+[00:26:01] asking AI for assistance is not forbidden.
+[00:26:03] It's actually very much encouraged,
+[00:26:05] because I know you have many projects to deliver
+[00:26:08] at the end of the semester, and you're gonna get swamped.
+[00:26:11] So don't be afraid.
+[00:26:12] You can ask help from AI.
+[00:26:15] Also, everybody's doing that even without admitting it.
+[00:26:18] Even researchers are using AI in their research,
+[00:26:20] and there is nothing to be ashamed of.
+[00:26:22] The only problem is when you claim
+[00:26:24] this is your original work
+[00:26:25] and it is, in reality, the AI's work.
+[00:26:28] So using AI and disclaiming it
+[00:26:31] and being honest about it, very much welcome.
+[00:26:34] Lying about using AI, very big no-no.
+[00:26:38] In that case, you're gonna end up
+[00:26:39] to the ethical committee
+[00:26:40] and you're probably gonna get kicked out of the university
+[00:26:44] so not worth doing.
+[00:26:45] Let me tell you about something in general about AI.
+[00:26:49] There are many good reasons why not to use AI when it is not allowed.
+[00:26:54] First reason, of course, is ethically bad.
+[00:26:57] It's evil because you are cheating.
+[00:26:59] But many of you say, well, in game theory,
+[00:27:01] we will learn that cheating is not evil per se,
+[00:27:04] but because there are consequences.
+[00:27:07] Yeah, there are two big consequences.
+[00:27:09] One is the addiction to using AI.
+[00:27:12] If you don't do your original work,
+[00:27:13] then how can you hope to be a good engineer in the future?
+[00:27:19] Because then your boss, maybe during your work,
+[00:27:22] will ask you, oh, I see you got a very good grade
+[00:27:25] in game theory, so you know game theory,
+[00:27:27] and it won't be possible for you to say,
+[00:27:31] well, actually, I did everything with chat GPT.
+[00:27:34] Then you get fired.
+[00:27:35] So I don't advise you to do that.
+[00:27:38] And second of all, but probably most important of all,
+[00:27:41] there are serious consequences.
+[00:27:42] and believe me, you don't want to go there. There are students who have been kicked out of the
+[00:27:48] university, not really kicked out but suspended for nine months, meaning they lose the scholarship,
+[00:27:53] they graduate nine months earlier and then nine months later and in general you don't want to
+[00:27:59] go there. You can even face jail time if the offense is serious. So really, I strongly
+[00:28:05] advise you against this. But back to the technical aspects, the delivery of the project,
+[00:28:10] deadline is January 25, so before the sitting for the written exams of February. So if you
+[00:28:21] didn't deliver the project, there is no point for you in sitting for the exam. If you pass the exam
+[00:28:27] in December with a written test, then you're gonna get a grade, a partial grade, and then
+[00:28:32] you might decide to take the project to finalize the grade. Okay, that's the only exception.
+[00:28:39] So in reality, this means that the grading system
+[00:28:45] works like this.
+[00:28:45] There is a written test plus the project.
+[00:28:48] The written test gives you up to 27 points,
+[00:28:50] but you need at least 15 to pass, okay?
+[00:28:54] The project gives you from zero to nine points,
+[00:28:59] and the sum of the two must be greater than 18 to pass.
+[00:29:03] And if you get more than 30, you get honors, okay?
+[00:29:06] So ideally, you can even pass the written preliminary test
+[00:29:12] with 20.
+[00:29:13] 20 is a pass.
+[00:29:14] And then you say, you know what?
+[00:29:16] 20 for me is a good enough grade.
+[00:29:18] I don't want to do the project.
+[00:29:20] OK, don't do it.
+[00:29:22] That's better than doing a stupid entirely AI-generated
+[00:29:26] project.
+[00:29:27] It's a waste of time for the both of us.
+[00:29:30] So in that case, you're going to get 20 as your final grade.
+[00:29:34] This is why, that's the simplest way, not the best way,
+[00:29:37] but the fastest way to pass the exam.
+[00:29:40] If you really want a good grade,
+[00:29:42] you deliver a project afterwards, and that's doable.
+[00:29:45] And in that case, you're gonna get the sum of the two.
+[00:29:49] Okay, if you pass the exam in December,
+[00:29:53] maybe you don't pass the test in December,
+[00:29:55] you still need to deliver the project
+[00:29:58] to sit for the exams in February.
+[00:30:02] If you didn't deliver the project,
+[00:30:03] don't even sit. It's not allowed to pass the written exam in February and then do the project
+[00:30:09] at a later time. Actually, the exam can be retaken as many times as you want, but the
+[00:30:15] project can be taken only once. Okay, that's important. So once you deliver the project,
+[00:30:20] that's your project rate. Maybe you do a super good project, so you start from nine points.
+[00:30:27] Maybe you do a bad project, you start from four points. You can retake the written
+[00:30:32] exam as many times as you want until you get a sufficient grade. So there are many ways to pass
+[00:30:38] exam. One, as I said, is to pass the preliminary test in December. If you pass the preliminary
+[00:30:43] test in December, essentially you already passed exam. You can deliver the project by
+[00:30:48] the generated line. You can even decide, well, I deliver an empty project. In that case, you
+[00:30:52] will pass if the grade of the preliminary test is greater than 18. Or either you don't
+[00:31:00] want to sit for the preliminary test,
+[00:31:02] or you fail the preliminary test in December.
+[00:31:04] This might happen, unfortunately.
+[00:31:05] In that case, if you want to sit for the February call,
+[00:31:08] either call, you have to deliver the project
+[00:31:11] by the January deadline.
+[00:31:12] Anyways, the alternative is, OK, you still
+[00:31:16] deliver the project by the January deadline,
+[00:31:18] but you don't sit for your own reasons,
+[00:31:21] or you fail the exam even in February.
+[00:31:24] OK, then you can take the exam in June or August.
+[00:31:28] That's also allowed, but you still already have done your project.
+[00:31:33] So you still, you see, you don't have to do the project afterwards.
+[00:31:38] Or you can say, well, you know what, I did nothing,
+[00:31:41] but then I changed my mind,
+[00:31:43] game theory was actually the best subject ever.
+[00:31:45] How can I do the exam in August, for example?
+[00:31:49] Well, you still need, we will give you the deadline,
+[00:31:53] but you still need to deliver the project
+[00:31:55] before sitting for the written test in June or August. If you haven't delivered the written test,
+[00:32:03] you cannot sit for the exam. I hope this is clear. Okay, so questions about this?
+[00:32:10] Yeah, the other question is if you deliver the project, it's valid from one solar year from
+[00:32:16] the moment? Yeah, the reality is yes, in that if you deliver the project, it stays valid from
+[00:32:24] one solar year.
+[00:32:25] And the reason is that the rules of every course,
+[00:32:29] according to UniPD rules, internal rules,
+[00:32:31] are valid for one year, for one academic year,
+[00:32:34] not one solar year.
+[00:32:36] So if you deliver the project in 20th of August,
+[00:32:40] and then you fail the exam in August,
+[00:32:43] technically you would have to do another project.
+[00:32:47] And the reason is that it's not even clear
+[00:32:50] if there's gonna be a game theory class next year
+[00:32:53] until this is approved.
+[00:32:54] And even if it's approved,
+[00:32:56] it's not sure the lecture will be me.
+[00:32:58] And even if the lecture is me,
+[00:33:00] maybe I change my mind and the rules are different.
+[00:33:02] So you see, the project might be useless
+[00:33:04] after the 1st of October.
+[00:33:07] The official start of the academic year in Padova
+[00:33:10] is the 1st of October.
+[00:33:12] So if you deliver the project,
+[00:33:16] but fail the exam in August,
+[00:33:19] probably it's bad, of course,
+[00:33:21] But don't despair, because I suppose you can be allowed to take an exam.
+[00:33:29] If everything goes well, you can take the exam in the next opportunity by keeping the previous project as valid.
+[00:33:36] But this requires that the lecturer is still me.
+[00:33:39] And also the rules are still the same.
+[00:33:42] And also there is a lot of fuss about extraordinary calls for exams for graduation only.
+[00:33:48] So what I would expect to happen is that students who didn't pass the exam in August, but they really need it badly to graduate, sooner or later they're going to get some extra examination officially.
+[00:34:02] Right now it's just because the professor is kind, but there's going to be some solution to that.
+[00:34:08] But anyways, I wouldn't mind right now, of it now, the big answer is don't fail the written exam.
+[00:34:15] That's the most useful suggestion. And again, to answer Berke, yes, you are not required to present
+[00:34:23] the project, but you are required to justify the project. Like, if I suspect that you don't deliver
+[00:34:29] the original work, you cheated or whatever, I'm gonna call you up. Or even just because I'm
+[00:34:34] curious about it, not necessarily because I suspect foul play, but just because I
+[00:34:39] liked your project maybe, so also that's an option, but I would expect that you explain to me
+[00:34:45] what is in the project. Not necessarily with a neural examination, but you are required to.
+[00:34:50] Otherwise, you go straight to the ethical committee. Okay, so this was the end of the technical part.
+[00:34:57] Let me actually stop the recording because this way we're going to have two separate recordings.

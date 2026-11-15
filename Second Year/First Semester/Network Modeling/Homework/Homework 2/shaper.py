@@ -63,7 +63,15 @@ def simulate(packets, config, record=False):
 
     while index < len(packets) or qi or busy is not None:
         arrival = packets[index][1] if index < len(packets) else math.inf
-        ready = clock + max(0.0, qi[0][2] - tokens) / c.rho if qi else math.inf
+        ready = math.inf
+        if qi:
+            length = qi[0][2]
+            ready = clock + max(0.0, length - tokens) / c.rho
+            # Round eligibility upward until this representable time supplies
+            # the full packet. A fixed token epsilon can stall at large clocks
+            # or release packets early; neither is needed with this guard.
+            while tokens + c.rho * (ready - clock) < length:
+                ready = math.nextafter(ready, math.inf)
         now = min(arrival, ready, completion)
         tokens = min(float(c.b), tokens + c.rho * (now - clock))
         clock = now
@@ -75,7 +83,7 @@ def simulate(packets, config, record=False):
                 completion = now + busy[2] / c.mu
             else:
                 busy, completion = None, math.inf
-        while qi and tokens + 1e-7 >= qi[0][2]:
+        while qi and tokens >= qi[0][2]:
             packet = qi.popleft()
             used_i -= packet[2]
             tokens = max(0.0, tokens - packet[2])
@@ -86,7 +94,7 @@ def simulate(packets, config, record=False):
             length = packet[2]
             if length > c.b:
                 drops.append((packet[0], now, length, 'larger_than_bucket'))
-            elif not qi and tokens + 1e-7 >= length:
+            elif not qi and tokens >= length:
                 tokens = max(0.0, tokens - length)
                 to_lbf(packet, now)
             elif used_i + length <= c.bi:

@@ -1,3 +1,4 @@
 __pycache__/
 output/pdf/*.aux
 output/pdf/*.log
+output/pdf/*.synctex.gz
