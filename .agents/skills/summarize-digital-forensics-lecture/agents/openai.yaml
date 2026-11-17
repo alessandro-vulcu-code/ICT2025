@@ -1,0 +1,4 @@
+interface:
+  display_name: "Summarize Digital Forensics Lecture"
+  short_description: "Concise Digital Forensics notes with cropped figures"
+  default_prompt: "Use $summarize-digital-forensics-lecture to merge the transcript, slides, extended notes, and solved exercises in this lesson folder into concise English Markdown notes for handwriting on iPad, preserving original section titles and lecture order, with cropped original figures."

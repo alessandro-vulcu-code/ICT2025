@@ -1,0 +1,1260 @@
+[00:00:01] Can you please close the door.
+[00:00:07] So today, we're going to carry on with our talk.
+[00:00:11] OK, so we postponed the labs because we
+[00:00:14] need to have some extra videos to say that I'm a kid.
+[00:00:23] And this is why we postponed it in two weeks.
+[00:00:27] So we're going to have labs November 17 on schedule
+[00:00:33] at the end of the year.
+[00:00:34] And then we are going to have an extra lab, OK,
+[00:00:36] in December or the end of November, okay?
+[00:00:40] So we're going to have the usual five labs.
+[00:00:43] Today, so we carry on with the traditional part,
+[00:00:46] okay, we're going to move on to the lecture.
+[00:00:50] And before we do this, we have some very quick quiz,
+[00:00:56] okay, which is going to be about
+[00:01:00] multimedia forensics, so you need to log in
+[00:01:08] and using your account.
+[00:01:28] Okay, so you can scan the workflow here
+[00:01:31] and then join the data in this.
+[00:01:36] And this is about multimedia forensics.
+[00:01:40] And we're going to have this, okay,
+[00:01:42] in the, about what we have seen so far.
+[00:01:51] So hopefully you've seen so far about this.
+[00:02:03] So you will receive, okay, the assignments
+[00:02:09] if you have not submitted your preferences
+[00:02:15] in the form that the ITOS of the project will be successful.
+[00:02:23] So we are finalizing the elements assignments,
+[00:02:28] and then we are going basically to preview the KDI analysis.
+[00:02:34] And today, in the part that we have considered after,
+[00:02:42] we basically overview, okay,
+[00:02:44] some of the possible techniques that we can use
+[00:02:48] in order to write and edit the reports.
+[00:02:50] So the lecture today is going to be
+[00:02:52] about reprocessing of the other evidences,
+[00:02:54] especially of both of the evidences,
+[00:02:56] and then how to write a report, sound of a format.
+[00:03:06] So, now join, we can start, okay,
+[00:03:09] with this first questions, okay,
+[00:03:12] which is about, this part here.
+[00:03:21] So which of the statement is the best match
+[00:03:25] for each unit?
+[00:03:26] So we have three images, one, two, three,
+[00:03:29] and we have three statements, A, B, C.
+[00:03:33] So the first question is that,
+[00:03:35] which of these is the best for
+[00:03:39] PLU state estimation,
+[00:03:41] which is not in the proper range for PLU estimation,
+[00:03:44] which is extremely noisy for PLU estimation.
+[00:03:47] So we have three images,
+[00:03:49] and you can assign, okay,
+[00:03:51] each of these images to one of the three statements
+[00:03:55] that you have seen so far.
+[00:03:57] So you needed to collect, okay, image.
+[00:04:01] So you have this document, a grayscale image,
+[00:04:06] and then we have a sample image.
+[00:04:08] Okay, this tree needs to be linked into the tree.
+[00:04:13] So you have to select which is the best
+[00:04:17] for peeling estimation, which is not in the proper range
+[00:04:19] for peeling estimation, which is noisy, okay,
+[00:04:23] before we are in the estimation.
+[00:04:26] So, if you do,
+[00:04:31] we have seen from here.
+[00:04:35] And, which is the fault of responsible uniformity,
+[00:04:40] due to circuitry that we have a little bit.
+[00:04:43] And therefore, three, two, one.
+[00:04:48] So, still there are people devising.
+[00:05:01] Three, two, one.
+[00:05:03] Let's go.
+[00:05:09] Okay, so this is not in the hardware range
+[00:05:11] for the estimation, it's too dark.
+[00:05:13] and therefore there's a lot of other additional
+[00:05:16] noise sources that compromise the distribution of k and mu.
+[00:05:20] This is the best, that's true.
+[00:05:22] It's a gray scale, perfect for the middle.
+[00:05:24] This is noisy because, of course,
+[00:05:26] you can't do k and mu estimation on this image.
+[00:05:28] Okay, it's possible.
+[00:05:31] The point is that you have some noise.
+[00:05:35] Okay, you have lots of noise
+[00:05:36] due to the fact that you have an image.
+[00:05:39] And therefore, it's very difficult.
+[00:05:40] You need to separate the noise components
+[00:05:43] from the image components, which is extremely difficult
+[00:05:45] for standard images.
+[00:05:47] So you can do that, you can estimate,
+[00:05:49] but probably there is going to be parts of the image
+[00:05:52] which is basically included inside of the image
+[00:05:56] that you estimate.
+[00:05:57] So it is possible that you don't have a reliable estimate
+[00:06:02] but it is still, as I mentioned to some of you
+[00:06:06] last time, it is possible to do a KDS
+[00:06:08] using standard images.
+[00:06:09] For example, you can do a KPLD estimation
+[00:06:13] of feature account on images that you post online.
+[00:06:15] Assuming that you have taken those images
+[00:06:17] with the same camera, of course.
+[00:06:20] Okay, next slide is,
+[00:06:25] okay, you have three images.
+[00:06:27] I don't know if this is visible,
+[00:06:31] but these have been compressed with JPEG.
+[00:06:34] Okay, so these are compressed images.
+[00:06:36] we know that g-tech will be raised, okay,
+[00:06:40] far above the mu, and we need to associate
+[00:06:43] the proper quality factor, okay, in which is the same.
+[00:06:47] In this case, this is very simple.
+[00:06:48] We have quality factor 99, and we hide 30, okay,
+[00:06:53] lower quantity 10, the lowest quantity.
+[00:06:56] So, which is, in your opinion,
+[00:06:58] the image with the quantity 10,
+[00:07:00] which is quantity 30, which is quantity 90.
+[00:07:03] So, you have to look at the images, check for some artifacts, okay, which are visible
+[00:07:11] from the back, smoothing the legs of the details and things like that, and you have
+[00:07:20] to progress the size of each image to these elements, okay.
+[00:07:28] So, it's very easy to see the layers of quality, you can follow from the very back.
+[00:07:36] Maybe the other two, you have to be a bit finer.
+[00:07:42] So three, two, one.
+[00:07:51] So it is easy to see that the polarity is here
+[00:07:54] because strong compression has completely removed
+[00:07:56] high frequency details, which are, for example,
+[00:07:59] these wires.
+[00:08:00] These wires have completely disappeared in this image
+[00:08:02] due to strong compression.
+[00:08:06] So instead, in this case, you can
+[00:08:09] see that this part is a bit more smooth there, there are higher artifacts than this part here,
+[00:08:15] but there are lots of many fine details which are related to the highest quality performances.
+[00:08:23] So typically, when you want to see, you will look okay for fine tails. If you have
+[00:08:28] fine tails, you have lower compression rate and lower compression ratio, therefore higher
+[00:08:34] quality. But the problem is that when you have lower fire details, you have also how
+[00:08:40] do you are removing noise, that is what you would like to avoid in a forensic analysis.
+[00:08:48] You hope that the forensic operations that are going on this much are very, very clear
+[00:08:52] and therefore you have that the artifacts are distinctive of that specific image you are
+[00:08:59] Okay, so, next one.
+[00:09:07] So, which is the least reliable for PRNU estimation
+[00:09:11] of these three images.
+[00:09:12] In this case, we have three.
+[00:09:15] Okay, three images.
+[00:09:18] Standard images, so we don't have that field, okay.
+[00:09:22] Images taken from standard face dimensions.
+[00:09:26] And you have to estimate PRNU,
+[00:09:28] and then you have three possible options.
+[00:09:30] So this is a standard image, this is the least reliable,
+[00:09:34] and this is basically, okay, but not enough light.
+[00:09:38] Okay, you see.
+[00:09:39] So which image corresponds to which of these three sentences?
+[00:09:44] Okay, so which is the least reliable,
+[00:09:46] which is standard, in terms of intensity,
+[00:09:49] not enough light, okay, in one of these two images.
+[00:10:00] So image selections, like before,
+[00:10:04] two, three, two, one. Okay, so this is standard. This is okay, but the problem you can see there are shadows, the light is not extremely good, so we can have some issues, and this is basically the least reliable, like 66% of you selected.
+[00:10:37] It's the least reliable because you have very, very dark
+[00:10:42] and extremely bright.
+[00:10:44] So you have the two opposites in CMH.
+[00:10:46] Some pixels are saturated at the highest level, okay?
+[00:10:51] And these are varying instead, very, very low
+[00:10:53] in terms of intensity.
+[00:10:54] So you are the two opposites and you want to avoid
+[00:10:56] those opposites in order to estimate the reliable PRNU.
+[00:11:03] Okay, so given a audio file,
+[00:11:07] the digital files that you have to start
+[00:11:09] selecting frequency around 60 hertz. Since A or she thinks that the recording was taken in Rome, Guadalupe, Montréal, Montréal, and New York.
+[00:11:25] So you have to select which image, which is in it. You believe, so you have to, the guy is trying to localize this whole part.
+[00:11:34] Using the electric network frequencies.
+[00:11:37] Remember last time we talked about the momentum frequencies and stated that if you can use
+[00:11:44] a lag, you don't want to add a signal around the signal frequency because the information
+[00:11:53] is related to the time supply of that signal place. So, which cities? So, three. So,
+[00:12:09] We have Rome, Kuala Lumpur, Montreal, and Nairobi.
+[00:12:14] Three, two, one.
+[00:12:23] Because in Kenya, Indonesia, and Italy,
+[00:12:28] we are frequencies around me.
+[00:12:35] Let's say I'm a sexual.
+[00:12:36] Let's start, let's use policies
+[00:12:38] basically United States and Canada
+[00:12:43] for power supply distribution.
+[00:12:48] So next one, we should do the last one.
+[00:12:56] Here in a move jet printer,
+[00:12:58] which of the following elements leaves traces
+[00:13:00] that can be used for device certifications?
+[00:13:04] So which of these elements leaves traces, okay,
+[00:13:08] in a move jet printers?
+[00:13:12] So it should be more than one.
+[00:13:17] Basically you have lens, inks,
+[00:13:20] paper embedments or dot shapes.
+[00:13:23] Okay, so considering what we have said about printers,
+[00:13:30] what we explained last time about printers,
+[00:13:32] you can select and the right answers, okay,
+[00:13:44] between lens, inks, paper advancements, and dot shapes
+[00:13:49] is basically this trick.
+[00:13:56] Lens is not correct, you don't have lenses
+[00:14:01] and you don't process lights in an inkjet.
+[00:14:06] Chemistry by this correct, you have the inks,
+[00:14:09] which is specific of the model of the printer
+[00:14:12] and also depends also the condition,
+[00:14:14] the kind of condition depends also on the time.
+[00:14:17] You can work on the paper advancements
+[00:14:19] if you have problem in the gears
+[00:14:21] and also dot shapes, the shapes of the dots
+[00:14:23] which is connected to the chemistry of the ink
+[00:14:26] and also to the nozzles that spray the ink on the paper.
+[00:14:33] Okay, so this is a short quiz about VRC
+[00:14:39] what we have seen.
+[00:15:22] Okay, we have some natural connection problems.
+[00:16:29] There is the natural connection problems.
+[00:17:06] Okay, so given all the traces of information
+[00:17:15] that we have seen today,
+[00:17:18] it's time to find the possibility
+[00:17:19] to localize and characterize the noise.
+[00:17:27] remember last time we concluded our discussions about audio and we
+[00:17:47] concluded this part related to the audio showing that it's possible to
+[00:17:52] analyze the frequency response of a microphone and this is going to be extremely peculiar to a specific
+[00:18:00] that you have, and then what you do,
+[00:18:03] you basically characterize a distributed response
+[00:18:07] using some features, typically the features
+[00:18:09] are frequency features, okay,
+[00:18:11] actually FFT on the response of the microphones,
+[00:18:14] and then this is classified using some machine learning
+[00:18:17] or compare if you don't want to do
+[00:18:19] an automatic classification, okay.
+[00:18:23] So starting from this, we focus on the second part,
+[00:18:28] okay, that second types of activity
+[00:18:29] that you do on a list. Then also the authentication, you want to perform some cleaning, cleansing of the
+[00:18:40] evidence. And the reason is that typically the evidence that you have is not basically perfect. It is
+[00:18:49] and to have lots of alterations and noise.
+[00:18:53] And you do the in-scene
+[00:18:55] because you want somehow to highlight
+[00:18:57] and get some information from your stylings.
+[00:19:01] For example, if you have an audio file,
+[00:19:03] you want to hear what the person says, okay?
+[00:19:05] So you wanted to bring back the physical stuff,
+[00:19:09] the physical art file, back to the reality,
+[00:19:12] to the scene, to the real scene where this was applied.
+[00:19:15] And this is true for images,
+[00:19:16] for videos, for audio as well.
+[00:19:19] So, this is why they talk about the analysis,
+[00:19:25] what the improvement of this evidence
+[00:19:28] and more specifically, we focus on images
+[00:19:33] at the beginning that we're going to focus on.
+[00:19:36] What questions?
+[00:19:37] Can you hear me from that?
+[00:19:39] Is it okay?
+[00:19:39] Should I use the microphone?
+[00:19:44] So, improving an image, the part of an image
+[00:19:48] is basically necessary more for the time.
+[00:19:53] And due to the fact that the image
+[00:19:56] or any kind of evidence is taken in the other side
+[00:19:59] of the conditions, for example,
+[00:20:02] a certain condition due to the fact
+[00:20:04] that the position conditions,
+[00:20:07] the environmental conditions are not collaborating.
+[00:20:12] For example, the image of the video is taken at night,
+[00:20:15] okay, you require to do some announcements
+[00:20:17] that's on the image,
+[00:20:18] or sometimes the guy has not operated.
+[00:20:23] So, basically, if you are creating a target,
+[00:20:25] you don't want to be authenticated,
+[00:20:28] you don't want to be verified.
+[00:20:30] So, we need, okay, to process such evidences
+[00:20:33] so that the quality is announced,
+[00:20:36] and we can use different types of solutions.
+[00:20:40] Property, so program, specifically designed for that.
+[00:20:44] So, company softwares.
+[00:20:45] You get also some source code, you can write your own source code, that performs the analysis and then gets it with the final results.
+[00:20:54] Among the softwares, we have Adobe Photoshop, which is a generic software for getting images.
+[00:21:03] Lightroom, which is typically done for photographers, especially because this allows you to perform a lot of editing, a lot of touch of images.
+[00:21:12] Capture One for management, Corel,
+[00:21:16] and Shop that are also with Affinity.
+[00:21:20] Okay, together with the three of these two softwares,
+[00:21:23] there is to Mesh and GIMP,
+[00:21:26] okay, which is our panel of
+[00:21:30] Macs and Linux institutions,
+[00:21:32] Darktable and Rope Therapy,
+[00:21:34] these are typically designed, okay,
+[00:21:37] to process raw files from images.
+[00:21:39] But there are many other ones.
+[00:21:42] These are softwares, you can write your own code.
+[00:21:46] For example, using Python and load using
+[00:21:48] some image processing library like OpenCD
+[00:21:52] and then having your own special script
+[00:21:56] that performs the analysis of the image.
+[00:21:59] What are the operations that you can do
+[00:22:01] on these types of images?
+[00:22:03] For example, for example, we can do sharpening.
+[00:22:07] In sharpening, when you have a blurred image
+[00:22:09] if you want to make edges clear, distinct,
+[00:22:12] basically you want to hide out
+[00:22:14] the imbalances of the glass plate.
+[00:22:17] Penis stabilization, when you reduce the amount
+[00:22:20] of normal videos, distortion correction,
+[00:22:23] perspective distortion correction,
+[00:22:25] also in this case distortion is corrected
+[00:22:28] because you have that information
+[00:22:32] that you want to hide has been taken
+[00:22:34] from a very, very, let's say side view.
+[00:22:37] For example, for this license plate here,
+[00:22:41] you have the license plate from a very sharp,
+[00:22:45] large angle with respect to the license plate.
+[00:22:47] It's not possible to read numbers,
+[00:22:51] you can correct the distortions
+[00:22:52] and then what you get,
+[00:22:54] you get basically a license plate in the red.
+[00:22:57] This is not, as you see here,
+[00:23:00] the case of license plate that you read
+[00:23:02] on the end of the highway or on the parking lot.
+[00:23:05] Because in that case, there is a control situation.
+[00:23:09] When you place the camera in the proper position,
+[00:23:11] the camera needs to basically enter in the specific
+[00:23:14] path setting and everything is controlled.
+[00:23:17] And then you have a good quality control.
+[00:23:19] In video forensics, you have that kind of image.
+[00:23:25] Noise reduction, there can be a lot of noise,
+[00:23:28] there can be a lot of mathematical news,
+[00:23:29] there can be a lot of security on the device.
+[00:23:31] You're gonna have masking, which means occlusions.
+[00:23:33] There are areas, parts of the frames, of the images,
+[00:23:38] of the videos that are basically covered.
+[00:23:42] Sometimes you have disocclusions,
+[00:23:43] but sometimes this is done on purpose,
+[00:23:45] especially when you wanted to protect,
+[00:23:47] for example, a weakness.
+[00:23:49] You want to enhance the contrast
+[00:23:51] and reduce the blurring, equalize colors,
+[00:23:53] together also to enlarge the image,
+[00:23:55] to get some finer tails, larger,
+[00:23:58] and be able to detect this.
+[00:24:00] Together also, these are standard operations
+[00:24:02] that we do every time you have to process, okay, an image
+[00:24:06] or videos for video forensics.
+[00:24:09] We're going to have some real examples also
+[00:24:11] from when we are going to host a list
+[00:24:13] and send it out by a bed.
+[00:24:17] And together also with these operations,
+[00:24:20] here I just mentioned some operations
+[00:24:22] that are due in the old video formats
+[00:24:25] that we have for, if you have some old equipment
+[00:24:28] for video recordings, which is interlacing
+[00:24:31] and demultiplexing this is due to the, how, okay,
+[00:24:35] all of the systems for these containers are enhanced
+[00:24:38] and how these are basically obtained.
+[00:24:42] These are processing located at the frames.
+[00:24:46] So let's start with the first operation,
+[00:24:48] which is complex announcements.
+[00:24:50] So if you have a really dark conditions,
+[00:24:55] so really dark image,
+[00:24:57] you will have that the image is basically
+[00:25:00] the intensity of the pixels is extremely low,
+[00:25:04] or extremely focused and localized
+[00:25:07] to a small range of possible values.
+[00:25:11] For example, this is an image where you have
+[00:25:14] that most of the, this is the histograms
+[00:25:18] of the intensity values.
+[00:25:20] You can see that these density values
+[00:25:22] are mostly concentrated on a small fraction
+[00:25:26] of the image.
+[00:25:30] Instead, this is a problem because what happens?
+[00:25:34] It happens that if you have that
+[00:25:35] mostly of the pixels are concentrated at low,
+[00:25:38] okay, visibility is low and just very, very dark,
+[00:25:41] you will not see anybody.
+[00:25:44] So by enhancing the contrast,
+[00:25:46] it is possible to make details,
+[00:25:48] make elements inside the image more visible.
+[00:25:50] For example, in this case,
+[00:25:52] you can see, okay,
+[00:25:53] in the face of the guy who's taking a phone call.
+[00:25:56] And this is, it can be done
+[00:25:59] performing some simple transformation
+[00:26:02] which is this gamma correction here
+[00:26:04] where you have a G typically some text is gamma.
+[00:26:09] And what you do, basically you stretch
+[00:26:13] and you enlarge the value, the intensity values
+[00:26:17] by reshaping by modifying the intensity value
+[00:26:21] given this exponential equation here.
+[00:26:24] This is one equation.
+[00:26:26] If you want to do this,
+[00:26:28] given that you have a minimum value,
+[00:26:31] small m, and the maximum value
+[00:26:33] for your pixel intensity, capital M,
+[00:26:35] you can also use this equation here.
+[00:26:38] And the result basically is this one that you see here.
+[00:26:42] So you are able to,
+[00:26:44] by stretching, by distinguishing
+[00:26:45] better the intensity levels,
+[00:26:47] you're able to distinguish the tilt inside the image.
+[00:26:50] For example, you have in this image here,
+[00:26:54] you have that the dog is totally dark in this part
+[00:26:57] by using gamma G equal to two,
+[00:27:00] you can have that these parts of the room
+[00:27:03] are made more visible.
+[00:27:05] And you can see that if you look at the values,
+[00:27:08] the Instagram values of the coefficients,
+[00:27:10] also the testing values are basically is enlarged.
+[00:27:14] Now you can see that the values of each pixels
+[00:27:18] are evenly distributed more or less from zero to 255.
+[00:27:25] So you can do this by in OpenCD functions in Python
+[00:27:32] by, for example, these equations here,
+[00:27:34] equalized list, this histogram equalization, okay,
+[00:27:38] which is together with the gamma corrections
+[00:27:40] is the way just to distribute, okay,
+[00:27:43] the intensity data from the ability
+[00:27:44] you get the probability of the image.
+[00:27:48] And in this case, you have that you take, okay,
+[00:27:51] the image SUS, image SRC,
+[00:27:53] you split in the three components RGB.
+[00:27:56] So you have three lattices,
+[00:27:58] one from VR, one from VFG, one from B.
+[00:28:01] And then you perform the equalization separately
+[00:28:04] on each of these image, okay,
+[00:28:07] using that function equalize this.
+[00:28:09] And then you merge back into an image.
+[00:28:11] What you will get,
+[00:28:12] you will get this histogram equalization
+[00:28:15] that you see here, okay?
+[00:28:17] So gamma correction can be done with a simple operation,
+[00:28:20] this is histogram equation.
+[00:28:23] And the complex analysis can be done with the gamma.
+[00:28:28] It's also true that if you want to have
+[00:28:31] a more complex operations, okay, you can,
+[00:28:35] instead of using, okay, the gamma correction,
+[00:28:37] you can, for example, use Glaher, okay,
+[00:28:39] which is a function that use this,
+[00:28:46] equalizations, okay?
+[00:28:47] Of course, here you don't have full invertivity.
+[00:28:50] Why?
+[00:28:51] For this gamma correction,
+[00:28:54] here this is perfectly invertible.
+[00:28:55] Okay, it's an equation that you can invert.
+[00:28:57] And go back from the original,
+[00:29:00] from I prime to the original image I, okay?
+[00:29:06] So these are anyway, are perfectly traditional methods.
+[00:29:11] So these do not involve any deep learning.
+[00:29:14] So these are methods that will be accepted,
+[00:29:17] not discussed, not questions in quotes.
+[00:29:22] Suppose now that you want to sharpen an image,
+[00:29:26] you want to make some details sharper.
+[00:29:30] For example, you would like to know
+[00:29:33] if this guy here has something in his hands
+[00:29:38] or is basically something,
+[00:29:40] it is something that he is a homeless chief.
+[00:29:45] And it is possible to do this
+[00:29:47] by applying the filtering of the image.
+[00:29:49] In this case, what we apply,
+[00:29:51] we apply a high pass, okay, or bandpass filter.
+[00:29:57] If you remember from this lecture from previous week,
+[00:30:02] we said that the high pass highlights, okay,
+[00:30:05] five details of the image.
+[00:30:07] And therefore, by performing high pass,
+[00:30:09] as you highlight the high frequencies,
+[00:30:11] you can find details, the edges inside an image.
+[00:30:17] And this is done, for example,
+[00:30:19] using these coefficients here specified by this kernel
+[00:30:22] in applying the function filter 2D, okay, in Python.
+[00:30:27] These are functions from OpenCV libraries,
+[00:30:30] very, very simple.
+[00:30:33] You can perform magnification,
+[00:30:35] and here you have different types of operations.
+[00:30:41] For example, classical ones, you can use, for example,
+[00:30:46] the resize, okay, which is the standard function, okay,
+[00:30:50] that you find in the body of the CD.
+[00:30:53] It's simple, okay, resize, in this case,
+[00:30:56] we want to specify a linear, inter-linear strategies.
+[00:31:02] strategies, you can use also the magnified functions
+[00:31:09] from Mander, okay, which is another function
+[00:31:12] that you can find in this, even if it is not standard.
+[00:31:15] It is possible to use some deep learning solutions,
+[00:31:19] some deep learning solutions, but of course,
+[00:31:23] again, you cannot use this again before,
+[00:31:24] but for investigation, you can do that.
+[00:31:27] So this is something done for
+[00:31:30] in order to focus on the attention of
+[00:31:32] some specific details.
+[00:31:34] And then you hope to find other indices that you can deploy.
+[00:31:38] So you cannot do this in code,
+[00:31:40] but before the investigations activity,
+[00:31:43] it can be done, it can be used, it can be done, it can be used.
+[00:31:47] And this is an example from
+[00:31:48] one of the similar solutions, okay,
+[00:31:50] approached by Google X,
+[00:31:52] which is Raiser, okay,
+[00:31:53] that from this image you can get into this image.
+[00:31:57] sometimes if you have video in magnification you can combine together
+[00:32:04] multiple frames multiple elements in order to get the larger people solutions
+[00:32:09] for example this is largely done in many many extreme conditions for
+[00:32:13] example astronomical photography you take multiple pictures okay of the
+[00:32:18] same subject and you combine them and then you perform an image with a
+[00:32:24] larger resolutions. If you remember, a few years ago,
+[00:32:28] the work was done at Zepo.
+[00:32:30] It was made in the U.S.
+[00:32:32] for multiple, multiple, multiple acquisitions,
+[00:32:37] not the human in that sense, in the face,
+[00:32:39] but multiple senses from different senses together
+[00:32:42] and then obtaining a high-risk motor language.
+[00:32:46] It is possible to do this also for motion.
+[00:32:49] This is an example of a paper where they do
+[00:32:53] Huelirium, okay, video magnifications.
+[00:32:55] What is this?
+[00:32:56] So here you don't function amplification
+[00:32:58] can be useful for medical.
+[00:33:01] Of the image, you want to announce the motion.
+[00:33:05] So in this case, you are announcing, okay,
+[00:33:07] in this case, the motion of the veins
+[00:33:09] by taking this video.
+[00:33:10] Here you are announcing, okay, the motions of the baby.
+[00:33:15] See, okay, baby breathing.
+[00:33:17] And you profile basically the movements.
+[00:33:19] it's not the resolution that the design itself.
+[00:33:23] It's a magnification, but in this case,
+[00:33:25] the magnifications is applied in the motion domain cells.
+[00:33:30] And this is an example, okay,
+[00:33:31] the example of magnification that you have
+[00:33:33] for a guitar string.
+[00:33:35] Okay, here, you can appreciate, okay,
+[00:33:37] the different vibrations done by the different notes
+[00:33:41] of the guitar, and this is, for example,
+[00:33:46] an example you can try this on your own,
+[00:33:48] Also, you learn a little bit about indication
+[00:33:49] by using, okay, the library by AEM.
+[00:33:55] The second types of adhesion editings you can do
+[00:33:59] is basically the blurry composition.
+[00:34:02] Sometimes, especially for videos,
+[00:34:04] you have an object passing in front of the camera.
+[00:34:07] The object is very, very quick.
+[00:34:09] Imagine that you have a pipe, which is passing by.
+[00:34:12] And what you can do, you can recombine.
+[00:34:14] So you can imagine that the blurry image
+[00:34:16] is like a low resolution.
+[00:34:18] It's like if you have taken that image with a camera which has a lower image, smaller image.
+[00:34:26] So it's possible to combine multiple of them, so you have video.
+[00:34:30] And so what you can do, you can combine multiple of them in order to get finer, more detailed information.
+[00:34:37] For example, here you can get the license plate that cannot be read from the original video footage.
+[00:34:44] And as we said, for perspective distortion, once you read, okay, the license plate, you
+[00:34:50] might perceive the license plate perfectly flat before moving your eyes.
+[00:34:54] Most of the time it's not possible, but what you can do, you know the license plate
+[00:34:59] at the certain size, which is 10 yards.
+[00:35:02] And therefore, if you know that the proportion between the long, okay, side and the 1 eighths
+[00:35:10] of the license plate must be 0.1. What you can do, you can compute, okay, a perspective transform.
+[00:35:16] Okay. So what you can do, you can take this pixel here and bring this into this coordinates here
+[00:35:21] by using the perspective transformations. Also, that is another function of a form.
+[00:35:27] In this case, you specify the coordinates of this points here, then the coordinates of the
+[00:35:34] target of the image you want to obtain.
+[00:35:37] And then you have by you
+[00:35:39] performing and working operations,
+[00:35:41] okay, just to make a transformation,
+[00:35:43] then you perform a working operation,
+[00:35:44] you can get that, okay?
+[00:35:50] And then what you can do,
+[00:35:53] you can also filter images.
+[00:35:56] You can remove noise because maybe you
+[00:35:58] want to see some details,
+[00:36:00] for example, that disappears because of noise,
+[00:36:03] you want to read some elements.
+[00:36:05] So, this can be done using neural networks. For example, this is the NCNN. From this image
+[00:36:14] to this, or you can do some standard strategies, for example, filtering that you have on.
+[00:36:24] For example, typical noise is a signal that assumes frequencies on a wide range of possible
+[00:36:31] frequencies.
+[00:36:32] While images, remember we said, are low pass signals.
+[00:36:36] So if I remove all the high elements,
+[00:36:40] high frequency elements,
+[00:36:42] I assume that I'm basically removing most of the noise
+[00:36:46] which is present in the image.
+[00:36:47] And therefore, in this way, it is possible, okay,
+[00:36:50] to remove, okay, parts of the image,
+[00:36:53] have a cleaner image.
+[00:36:56] Sometimes, for many, many images,
+[00:37:00] images or you have strong distortion of lens.
+[00:37:05] We talked about the distortion of the lens
+[00:37:07] when we introduced the acquisition features,
+[00:37:10] okay, acquisition elements that we want to use,
+[00:37:14] okay, to identify a specific camera.
+[00:37:17] It is true that sometimes
+[00:37:19] for some video surveillance cameras,
+[00:37:21] for example, 360 cameras,
+[00:37:25] you have a strong distortion
+[00:37:26] because the lens of that camera is basically
+[00:37:31] highly, has a high curvature.
+[00:37:33] And this high curvature, this strong curvature
+[00:37:36] is deliberately obtained or created for that camera
+[00:37:40] because you want to provide wide range, okay,
+[00:37:44] on the scene.
+[00:37:45] But this introduces some distortions,
+[00:37:48] stronger distortions in terms of stylistic,
+[00:37:50] or stylical distortion.
+[00:37:52] And therefore you can compensate,
+[00:37:54] So you need to compensate the distortions, okay,
+[00:37:56] in order to get the straight, okay,
+[00:37:59] elements in the straight lines.
+[00:38:03] Together also with integrations,
+[00:38:05] you can, and you have a low light,
+[00:38:06] you can integrate information from multiple frames.
+[00:38:09] For example, to see if there is somewhere, okay,
+[00:38:13] inside here in a very, very, very dark video footage.
+[00:38:18] Okay.
+[00:38:19] So all these integrations, as you can see,
+[00:38:21] as we use okay and analyze okay using some code okay so this is basically
+[00:38:29] code snippets that can be used okay to announce okay an image of course you
+[00:38:38] can use a Photoshop but these are basically code snippets that you can
+[00:38:42] use if you don't have Photoshop you see what about audio so audio and then
+[00:38:52] we're going to introduce, okay, the topics,
+[00:38:54] then we're going to move, okay, to the break.
+[00:38:57] As for audio, we have that audio announcement
+[00:39:01] and we have the same stuff.
+[00:39:03] In this case, you want to do this
+[00:39:06] because you want to improve clarity, the legibility.
+[00:39:09] So the philosophy behind audio processing is the same.
+[00:39:14] To get also the ability to recognize some events.
+[00:39:17] So we would like to, yes,
+[00:39:19] we can have speech and personal,
+[00:39:21] but you might also distinguish some noise because that noise specifically gives you information, for example, the noise of the air.
+[00:39:35] So typically you want to isolate, so select or remove the noise.
+[00:39:41] What are the noise that can remove? Background noise, for example noise which is persistent due to the environment,
+[00:39:49] from the cooling to ferns, equipments,
+[00:39:54] neon lights and so on.
+[00:39:56] Input noise like clicks and cracks,
+[00:39:58] for example, the hanging of the mick
+[00:40:01] or some, for example, if you have some old recordings
+[00:40:05] or music you want to remove the cracks
+[00:40:06] due to the scratches on the recordings.
+[00:40:09] The electrical noise, like the hum, the basses,
+[00:40:13] and reverberation.
+[00:40:14] Also the fact that the environment here
+[00:40:16] introduces some reflections that may cause the sounds to be less
+[00:40:23] intelligible or more difficult to hear. So that is why we have several
+[00:40:32] tools from Audacity to other programs to process audio. And typically what we do, we do this for noise
+[00:40:41] introductions, speaker identification, okay, and speech identification. So speaker will
+[00:40:47] detect the person's speech. He wants to understand, okay, what is the message.
+[00:40:53] The environment estimation and optimization, as well as for the reconstruction of events.
+[00:40:58] For example, from here, so all your recordings, I want to reconstruct the sequence of
+[00:41:02] connections, for example, because this is important to reconstructing dynamics of the
+[00:41:08] to that and also with the possibility of authenticate
+[00:41:12] both the audio and also whether the audio is generated
+[00:41:16] by some double synthetic generator,
+[00:41:20] just imagine the audio that fakes
+[00:41:22] while you want to identify whether the audio
+[00:41:24] is authentic or generated by some neural network.
+[00:41:28] An example, as I mentioned yesterday, last week
+[00:41:32] is what it means when you basically used okay,
+[00:41:37] we were able to identify which recorder
+[00:41:40] made the subarrangement in the recordings.
+[00:41:44] And this is one of the classical cases
+[00:41:47] about all the recordings,
+[00:41:49] even if all the recordings, all the forensics
+[00:41:52] is largely done in many, many different situations.
+[00:41:57] So, examples of all the announcements,
+[00:42:04] you can see here.
+[00:42:05] So a possible example.
+[00:42:09] So we measured the motor gate.
+[00:42:10] What are basically the steps
+[00:42:11] that we do in audio analysis?
+[00:42:13] So we can see this part, okay, after the break.
+[00:42:18] So five minutes break.
+[00:42:36] Okay, we start?
+[00:42:44] Okay.
+[00:42:45] So as we said, we want to clean the audio
+[00:42:49] and analyze the audio.
+[00:42:51] But more precisely, this, you want to do,
+[00:43:02] sometimes this is done, the cleaning is done manually.
+[00:43:06] So you have a personal operator
+[00:43:07] that applies the different filters,
+[00:43:10] and then we simply do it.
+[00:43:12] This is extremely important because we want to do,
+[00:43:18] maybe, a little flux of what is happening.
+[00:43:21] You have to be very, very, very careful, okay?
+[00:43:25] because sometimes it's not being broken with the audio,
+[00:43:29] these things can basically lead you to
+[00:43:33] drown the vibrations of the audio itself.
+[00:43:36] For example, what is changed in from environmental,
+[00:43:42] okay, these things, environmental recordings,
+[00:43:46] where the fact that a smooth part of the audio,
+[00:43:51] versus kicking, was covered by noise or a door closing,
+[00:43:56] made completely different interpretation specific file.
+[00:44:03] So, this is typically done with a large activity done
+[00:44:08] with different differences,
+[00:44:10] but we also have automatic analysis.
+[00:44:13] Automatic analysis, for example,
+[00:44:15] to perform monitoring, raise alarms, okay,
+[00:44:19] to perform surveillance, and for example,
+[00:44:23] will perform some counting with how many vehicles
+[00:44:27] goes through a specific traffic light.
+[00:44:30] So basically, the sensors can be used as a camera.
+[00:44:37] So it's a kind of audio sensor,
+[00:44:39] not like cameras in this case.
+[00:44:41] So the tasks are different, okay?
+[00:44:43] So what you need, you need to perform a critical
+[00:44:45] listen from your room, as you see in the evidence.
+[00:44:48] So I'll tell you what needs to be done,
+[00:44:50] of all the possible problems that you can have in this audio.
+[00:44:54] And then you can perform some improvisation
+[00:44:56] looking for the frequency that you want.
+[00:44:59] If you want to announce, okay, the human voice,
+[00:45:02] you select a certain types of frequency.
+[00:45:03] If you want to select some noises,
+[00:45:07] you want to do other frequencies.
+[00:45:10] And this leads you to some dynamic processing
+[00:45:13] where you want to see them
+[00:45:15] or announce, okay, some components.
+[00:45:17] and then it is often required to perform a reverberation
+[00:45:23] of these reverberations depending on the specific problems
+[00:45:26] that you have in that environment.
+[00:45:30] Sometimes we want to remove some sounds
+[00:45:32] that creates problems like a conditioning,
+[00:45:34] electric equipments, and this is easy if,
+[00:45:40] or matter, well, it is well-characterized
+[00:45:42] if you have a sound which is basically continuous,
+[00:45:47] just imagine that you have some person who very sometimes the cells is kind of
+[00:45:57] impulsive so not continuous like for example a dog barking that may cover a
+[00:46:03] part of the cells that you want to hear in and that's why it is important
+[00:46:09] to perform a spectral analysis visualize what you obtain and a measure
+[00:46:14] Okay, what's wrong with you?
+[00:46:16] Please close the door, please.
+[00:46:21] Oh, let's go see the exam.
+[00:46:24] So in this case, once again, you have some snippets.
+[00:46:28] Here, you want to remove, okay,
+[00:46:30] isolate some components with respect to the cells.
+[00:46:34] So let's hear the original cells, which is this one.
+[00:46:49] Okay, so it's a simple cells,
+[00:46:51] there's a couple of instruments, okay?
+[00:46:53] So you want to separate the box from the ground.
+[00:46:57] And, and this is how the spectrum
+[00:46:59] of some of the sounds looks like.
+[00:47:02] So suppose now that you want to isolate the bass, okay.
+[00:47:06] So you can apply a filter like this, okay.
+[00:47:14] So this one is the filter that select
+[00:47:19] on the frequency up to thousands
+[00:47:22] and then removes dampen completely,
+[00:47:26] the frequency is not higher frequencies.
+[00:47:28] And why I do this, because for the drum,
+[00:47:32] you have an impulsive noise,
+[00:47:34] and impulsive noise are typically noises
+[00:47:36] that are spread throughout a huge range of frequencies.
+[00:47:41] While for the bass,
+[00:47:44] it is more localized than low frequencies.
+[00:47:46] So by filtering out, so dampening,
+[00:47:50] all the high frequencies are basically dampening the drum, okay. So the result of the filtered bass
+[00:47:58] is this one. So I apply this filter on these sounds, what I get, I get this. So you have
+[00:48:12] basically only the bus is a big example and then you can basically select you
+[00:48:26] have basically obtained only the bus then if I take this and I subtract this
+[00:48:35] from this we get and we get what I have removed okay so if I have done
+[00:48:41] things properly I have removed basically the drums so if I take the difference
+[00:48:47] make the difference and I play the difference but I will get I will get
+[00:48:51] exactly this. So, in this case, you can see the results of the drugs. At the end, you have some bias, which is basically sneaking that in into the signal. This is because in the last part of the sequence, you have impulsive effects on the bias. But more or less, I have separated the two sources.
+[00:49:19] And this is what is done once you want to, for example,
+[00:49:23] select some noise, okay, and some specific parameters.
+[00:49:27] You can use these kind of operations.
+[00:49:30] An example, this has been done using a button called
+[00:49:32] filter that I created using the common pattern.
+[00:49:36] These are the frequencies that you want to select
+[00:49:39] when you want to cut, okay, the specific signal.
+[00:49:44] and you have a low pass.
+[00:49:46] So I want to select the low frequencies
+[00:49:49] and this result is a system
+[00:49:53] of space is the source structures
+[00:49:54] that can be used to filter
+[00:49:56] in the signals creating this filter here.
+[00:50:00] And this is the visualization you see here.
+[00:50:05] And the filtering is done by the source
+[00:50:07] when you give the source
+[00:50:09] and then you give the input as is the input signals
+[00:50:12] the ones that we have played on solution the results is why and this is what you
+[00:50:17] have okay so let's do another example so this is
+[00:50:28] how you select the simple operation how you select for example voice you want
+[00:50:35] in this case you want to extract the voice and remove the voice from other
+[00:50:40] sounds. For example, we can do some noises and so on. So we have the original one is a piece of music.
+[00:50:57] Okay, so this is basically the music and if you, in this case, we want to visualize, okay,
+[00:51:03] the signals in terms of spectrograms. So what you do, you divide, okay, the signals in frames,
+[00:51:09] you computed the FFT, and then you place the intensity,
+[00:51:13] the absolute values of the coefficients,
+[00:51:17] as the intensity of an image.
+[00:51:19] And this is the image that results.
+[00:51:21] So this is the first frame, second frame,
+[00:51:24] third frame, and so on.
+[00:51:26] And you can see here that here you have the frequencies
+[00:51:29] okay, from my FFT, and the color is the intensity.
+[00:51:34] The brighter is the color,
+[00:51:37] And the, let's say the higher, okay,
+[00:51:41] is the energy for that frequency.
+[00:51:43] The higher is the absolute value of that efficiency.
+[00:51:46] So you can see that here,
+[00:51:48] most of the information is in this case speech,
+[00:51:53] which is here,
+[00:51:53] and then here you have notes related to the music, okay?
+[00:51:58] So what you can do,
+[00:52:00] you can select, okay, the voice part,
+[00:52:03] which is this part here,
+[00:52:05] And it is possible by performing some filtering.
+[00:52:10] In this case, what you do, you use the maximum phase
+[00:52:14] by the max phase function from the liberals
+[00:52:16] and the liberals, that is a rather well-run
+[00:52:18] set of tools like OpenCL because of cells.
+[00:52:21] So what you can do, you have find out the filter,
+[00:52:24] then you find the minimum,
+[00:52:27] and then you mass locate the cells
+[00:52:29] and you start to use the cells here.
+[00:52:31] And the results.
+[00:52:38] So, in this case, you can remove the sounds as you extract basically the voice.
+[00:52:49] As you notice, like the previous example, things do not need to be perfect, but it
+[00:52:55] needs to be enough to allow you to detect what you want to detect.
+[00:53:00] Okay, so it is important to have a clean image that makes a paper.
+[00:53:05] And this is how you do this.
+[00:53:06] You basically decompose, okay, this filter is an adaptive filter.
+[00:53:11] And then you create the mask that is applied on the spectrograms.
+[00:53:15] And then by virtue of the spectrograms, you are able to basically to get into the final background of that.
+[00:53:26] So, together also, the use of spectrograms is largely done in audio analysis, typically
+[00:53:34] when you analyze audio and audio forensics, you perform visualizations of the audio using
+[00:53:39] your data spectrograms most of the times to detect noise, to see where frequency you
+[00:53:44] have information.
+[00:53:46] And this is also largely done to perform comparisons.
+[00:53:49] So you want to compare known voice samples
+[00:53:52] to unknown voice samples to see if the person is the same.
+[00:53:57] This is used to transmit messages
+[00:53:59] and spectrograms are also there
+[00:54:02] to perform identification of voice and so on.
+[00:54:17] This lies here.
+[00:54:18] So basically, I can give you the full code,
+[00:54:22] but basically what you do,
+[00:54:23] you start with X, which is an input,
+[00:54:26] you perform a short time through this form,
+[00:54:28] you generate basically the spectrograms, okay?
+[00:54:31] Then given the spectrograms, you see, okay,
+[00:54:33] here I have some voice elements here,
+[00:54:36] again, you have some noise,
+[00:54:38] it's not noise, sorry, music,
+[00:54:40] okay, so that's the second step.
+[00:54:41] So what you do, you perform some decomposition
+[00:54:44] based on these types of filters,
+[00:54:47] and then you create, okay,
+[00:54:49] the mask where you select basically the masks
+[00:54:52] of the positions that you have selected for music,
+[00:54:56] and the mask related is that for the frequency
+[00:54:58] that you have voiced.
+[00:55:00] And then by separating that,
+[00:55:02] you obtain basically mask B,
+[00:55:06] or mask E, B stands for voice,
+[00:55:08] E stands for noise, music, so how about,
+[00:55:12] and you multiply, okay,
+[00:55:13] these masks for the original spectrograms.
+[00:55:16] And then you invert, okay, the spectrograms,
+[00:55:18] and you get basically the voice.
+[00:55:20] So in this case, in the first example,
+[00:55:23] we have done the filtering into the time domain, okay.
+[00:55:30] In the second case,
+[00:55:31] we have done the filtering in the frequency domain.
+[00:55:33] So we multiply, okay, the frequencies for the frame mask,
+[00:55:39] okay, which is the maximum possible.
+[00:55:42] So this is how this has been done.
+[00:55:45] I can give you a full tutorial
+[00:55:47] of all these classical examples about this process.
+[00:55:50] And it is, there can be other techniques
+[00:55:52] in which you can choose to do more.
+[00:56:01] For the world's design and for keywords,
+[00:56:03] it is preferred to have more.
+[00:56:06] This is the first distinction.
+[00:56:08] You can also consider the frequency
+[00:56:12] in terms of how stable, okay, is the signals in time.
+[00:56:17] Because also depending on the stochasticity, okay,
+[00:56:22] of the signals, you may say that
+[00:56:24] this is a demo voice or not, okay.
+[00:56:27] It's important, of course,
+[00:56:28] It depends if you have an instrument that plays very close to a human voice, it is harder to separate.
+[00:56:34] It depends also on the level of separability that you have.
+[00:56:46] Examples of audio announcements.
+[00:56:48] So in this case, these are audios from forensic situations.
+[00:56:52] For example, this is a recording that we have in a handheld mic in a pocket.
+[00:56:59] Sometimes this is often found in the forensics because maybe there are many cases where people want to record something but they don't want to get noticed about that.
+[00:57:13] For example, lots of recordings about
+[00:57:17] the wife or husband and want to know
+[00:57:22] if when they are away from the room
+[00:57:25] and want to know if someone is entering the house,
+[00:57:27] they leave, okay, the phone inside the door.
+[00:57:32] So this is done, this is not, not this case,
+[00:57:35] this is recordings, but it's a similar condition.
+[00:57:39] This is done by also some muffled,
+[00:57:54] due to the fact that it's in the pocket.
+[00:57:56] and after some cleaning you can get something better there is lots of
+[00:58:32] traffic you can hear in the south cars passing by or doing some cleaning and
+[00:58:38] enhancing, you can get, in this case you have that the voice is very, very low. What you can do, you can enhance something, like for additional improvisation, you can enhance a few samples. The fact that at the beginning it was very low, in many cases the voice would feel a little bit packed in, okay, when you enhance it and make the voice more distinguished.
+[00:59:12] Then you have 911 call.
+[00:59:15] Just stay where you at man. I'll send the police officer out.
+[00:59:20] In this case, the woman was very far from the hospital.
+[00:59:30] Okay, so you can eventually hear what's happening.
+[00:59:34] Just stay where you at man. I'll send the police officer out.
+[00:59:45] In this case, you selected the part where the operator was not talking and it was announced on the girl's part in order to hear what the woman was saying.
+[01:00:26] Okay, so you can see that doing simple structuring,
+[01:00:35] simple operations, you can perform lots of analysis
+[01:00:40] on the emails and all the files.
+[01:00:45] And you have seen also that in the first lab,
+[01:00:48] it's possible to do lots also on the images, okay,
+[01:00:52] on the files.
+[01:00:54] on files, but how do we put this into a report, okay?
+[01:00:59] So how is proper way to write and import the data
+[01:01:03] to be handled?
+[01:01:05] So let's start with a simple case.
+[01:01:07] So let's consider that we have this image here.
+[01:01:10] Imagine that it is a foot page from the surveillance,
+[01:01:14] okay, looking at nine.
+[01:01:15] And we wanted to announce, okay,
+[01:01:18] the face of this process.
+[01:01:22] And so this is a controlling condition which is given by CCI and one upon theta. We have
+[01:01:29] to keep going, okay, for privacy reasons. So you want to make, okay, this to understand
+[01:01:36] who this person is or who this woman is. So you are looking at the image, you have
+[01:01:42] to make some hypothesis, okay, let me say, okay, this is taken up tight or given in
+[01:01:47] in hours. Why? Because you have low contrast, okay? There's noise, you have some
+[01:01:54] blurring and you have very very small resolutions. So what can we do? Denoise
+[01:02:00] the image with using some denoiser, in this case we use FastNL
+[01:02:04] non-local means denoiser from OpenCV. Gamma correction, okay? Do the
+[01:02:11] blurring with the sharpening and then select the details of the face and
+[01:02:15] enlarge. Okay so these are the operations we want to do and the result is that
+[01:02:22] start with the noise and remove the noise itself then you perform gamma correction
+[01:02:29] and still you have some cleaning of the image then you perform some sharpening
+[01:02:36] you can see that the details of the faces becomes neater okay and then you select the
+[01:02:43] and you enlarge, okay?
+[01:02:50] So this is done.
+[01:02:51] So if you have to do this from a technical point of view,
+[01:02:54] this is a simple thing, okay?
+[01:02:56] These are a set of operations I performed.
+[01:03:01] The problem is that how do I explain this?
+[01:03:04] Okay, how do I write down this into a repo?
+[01:03:07] Okay, so this is now what we are focusing on.
+[01:03:11] So this is why today, so we focus on how a repo
+[01:03:16] must be written or can be write, you should write a report. So, the report is basically
+[01:03:25] making as well specific process. So, you cannot write a mix by two management. So,
+[01:03:38] you have to specify, you have to write it in the report in the form of hypothesis
+[01:03:43] So you have an hypothesis, which must be clean,
+[01:03:49] must be verifiable, must be stated at the beginning.
+[01:03:55] We can be one of the two or three,
+[01:03:59] the hypothesis cannot be ten hypothesis.
+[01:04:02] You write C and you write A and B and C.
+[01:04:04] But two to three hypothesis you can write a report.
+[01:04:08] And this must be clearly identified.
+[01:04:11] So the report is going to be about this.
+[01:04:16] And you're going to write down, okay, all these questions.
+[01:04:22] So the question must be written clearly, okay?
+[01:04:26] You must clearly state what the analysis is done before.
+[01:04:29] So the style must be hypothesis testing.
+[01:04:32] And you have to find two or three.
+[01:04:36] This is what the report must be.
+[01:04:40] Then you must basically include in brief what you have done and then the conclusions.
+[01:04:51] And notice that this must be divided into different parts, okay, into different parts
+[01:05:01] which are basically the synthesis, the how the analysis has been taken, the analysis
+[01:05:10] So, the synthesis is the first part. The synthesis is the part of the report that needs to be
+[01:05:22] written and needs to summarize everything that you have done. It is a summary of one
+[01:05:29] page. Typically synthesis is not known in one page. And why we do the synthesis?
+[01:05:35] We do the synthesis because maybe
+[01:05:37] when the report is going to be analyzed,
+[01:05:39] then you determine that it's not your person,
+[01:05:42] your CEO, or your company, your project,
+[01:05:46] is going to simply look at the synthesis
+[01:05:47] and then maybe it feels that it does not mean,
+[01:05:52] or she feels that she does not mean
+[01:05:54] to go further into the need.
+[01:05:56] So the synthesis is there.
+[01:05:58] That is why it's important to be very, very concise
+[01:06:01] and clear, okay?
+[01:06:02] So in the synthesis you report the questions
+[01:06:05] on how we sleep before.
+[01:06:08] We report the brief.
+[01:06:10] What types of activities we have done
+[01:06:13] with a clear but short list, not clear.
+[01:06:16] And then the final conclusion.
+[01:06:19] What we can say will be about the image,
+[01:06:22] the defiles, the disk image that we have analyzed.
+[01:06:27] So this is basically the synthesis.
+[01:06:31] Example.
+[01:06:33] So, objective, this relation is intended to improve the quality of an image under analysis.
+[01:06:38] In particular, we want to verify if it is possible to improve the quality of the image
+[01:06:43] reduced to the noise of learning, increase the detectability of the face of the person
+[01:06:47] depicted in the frame.
+[01:06:49] This is an example of an objective written in the synthesis of an image.
+[01:06:55] Summary of the activities, as regards to the objective of this consulting, the tip
+[01:06:59] has been carried on as follows.
+[01:07:00] the noise in the quality improvements of the picture,
+[01:07:03] face extraction, face processing.
+[01:07:05] Proclusions, the operation that we have carried on
+[01:07:08] in the frame has allowed to move the quality of the image
+[01:07:11] more precisely we can also get image quality
+[01:07:14] is significantly improved,
+[01:07:16] it's all from the learning and the work that we do now.
+[01:07:20] We can detect the face or the conclusion we have
+[01:07:21] shown here, who's it that we could respond to.
+[01:07:27] So this is the structure that we want to have
+[01:07:30] in the summary, okay?
+[01:07:34] This is the summary on your data report.
+[01:07:38] Then you move on the relation.
+[01:07:42] Basically, in the relation, you first state
+[01:07:46] what you get.
+[01:07:48] So then you see the material.
+[01:07:50] So the summary is a simple abstract, okay?
+[01:07:53] And then you go over the details.
+[01:07:54] So the first things you must do,
+[01:07:56] name, specify the characteristics of the original files,
+[01:07:59] of the user multimedia process, the format and extension,
+[01:08:02] the frame rate, for example, for videos.
+[01:08:05] The software that you haven't seen because typically
+[01:08:09] the video formats for video software is kind of bigger.
+[01:08:13] So because it is encapsulated in the structure
+[01:08:17] which is associated with specific softwares.
+[01:08:20] So when you see the video, you also see the software
+[01:08:23] which should enable you to really do that.
+[01:08:26] And that will kind of extract the video.
+[01:08:29] So, typically, you also have two games, okay, software,
+[01:08:32] and it is important to report also hash CO2 for many issues.
+[01:08:41] Not many issues removed because, I mean,
+[01:08:43] you must report hash CO2 for many issues.
+[01:08:48] An example, many reports, highly my students,
+[01:08:55] or they do in their years, do not exceed for a full scores
+[01:09:01] because the students forgot to include the edge.
+[01:09:04] And this is the most important stuff.
+[01:09:07] You must include the edge.
+[01:09:09] And this is, hmm, you must include the next one.
+[01:09:15] And I'm sure that some of them
+[01:09:16] don't include the edge in the past.
+[01:09:18] So two files, or two edges, as we said,
+[01:09:22] and we find our chart, we use two of them,
+[01:09:25] or SHA-256, it's okay.
+[01:09:30] And then it also means, okay, to specify
+[01:09:33] how you see, okay, that materials.
+[01:09:36] Typically, it is good if you include
+[01:09:40] a previous magic sentence in the report
+[01:09:42] saying that I receive the files
+[01:09:44] using an encrypted connection.
+[01:09:48] You say that you haven't seen, okay,
+[01:09:52] the guy that sent you the material
+[01:09:53] sent you protecting a very better safety and security
+[01:10:00] flavor in all the series of the files.
+[01:10:05] Then you must specify the software that you adopt,
+[01:10:08] you choose to adopt. So all the tools that you have used in the analysis,
+[01:10:13] it is better if we have open source solutions because this means that
+[01:10:16] your analysis is reproducible by anyone
+[01:10:19] that wants to use that. It is important also to name the
+[01:10:24] operating software systems and the hardware,
+[01:10:27] because typically some of the softwares are,
+[01:10:30] for example, included in the operating system.
+[01:10:33] For example, the condition of the ash
+[01:10:35] is something that, or a new file,
+[01:10:37] is something that you find inside
+[01:10:40] the operating system, windows or that.
+[01:10:45] And then, you must also specify what you handle.
+[01:10:49] What is the produced material, okay.
+[01:10:51] So, typically your relation is going to be printed,
+[01:10:54] so it's going to be a file,
+[01:10:56] but sometimes you also produce, okay, some clean files,
+[01:11:03] some information, some source code,
+[01:11:05] the source code that you use, okay, to clean those files.
+[01:11:09] So you have a folder
+[01:11:12] that typically includes the original video,
+[01:11:14] all the frames that you have extracted,
+[01:11:15] all the things that you produce,
+[01:11:17] the software tools, if this software is not available live,
+[01:11:21] you would like it, and the software,
+[01:11:25] the hash signature for all the files,
+[01:11:30] that is good because this protects us with the reward,
+[01:11:34] since it can say that you have the hash file
+[01:11:36] and the original files,
+[01:11:37] and also you protect also what you generated.
+[01:11:41] And then also a copy of the relationship
+[01:11:43] if you want, you can include that.
+[01:11:48] Example, received materials,
+[01:11:52] I received an image named phi to be analyzed dot png.
+[01:11:55] The format was PNG, the resolution was 1024 pixels by 7868.
+[01:12:01] There are not other relevant, okay,
+[01:12:05] X6 tags removed, because the image was PNG,
+[01:12:09] a very, very, very simple image.
+[01:12:11] But you can include, you must include
+[01:12:12] any file, numbers, show one, numbers, and so on.
+[01:12:18] Adaptive softwares, we have done,
+[01:12:20] the following softwares were adopted.
+[01:12:21] A laptop Macbook Pro, 15 inches with Mac OS Monterey.
+[01:12:27] MD5, the chess Samo, Mac OS to compute MD5 and so on.
+[01:12:31] The Python version 3.1 available at,
+[01:12:34] OpenCV available at,
+[01:12:36] available Macbook lib available at,
+[01:12:40] shooting on Pi and so on.
+[01:12:43] And then we skipped creative to analyze the image.
+[01:12:47] We have the edited material.
+[01:12:49] There is a subfolders, softwares,
+[01:12:52] the subfolders from the original image,
+[01:12:54] the subfolders from the created images
+[01:12:56] and shut files on the file which will be installed in files.
+[01:13:00] If you're going to install port,
+[01:13:01] you can improve, okay, the hash sign
+[01:13:04] that is inside the repo, okay, itself.
+[01:13:07] But if you have a lot of files,
+[01:13:09] you may think that if you have
+[01:13:11] a lot of intermediate results,
+[01:13:14] you can improve these into separate files,
+[01:13:25] Then, final one, typically after this relations, okay, what you add, you also mention the
+[01:13:32] fact that the relation is made by a certain amount of pages, link it to this kind, includes
+[01:13:39] the final appendix.
+[01:13:40] Typically, final appendix is your proof of data, okay.
+[01:13:50] And at the end of this part, of this relation part,
+[01:13:54] you include also the statement of reproducibility.
+[01:13:57] And as it follows,
+[01:13:58] it's not the right additional evidence.
+[01:14:00] Also, yeah, 37 is a 37,
+[01:14:02] or as asking you to take it using the name, okay?
+[01:14:06] This is another magic sentence
+[01:14:09] that you can include in your report
+[01:14:10] so that gives, okay,
+[01:14:13] validity and authority, okay, to what you have done.
+[01:14:18] Okay, so you have made a synthesis, you also have done a relation about what you have just done, and how one is the original material that you have received, and then you perform basically, now you explain what you have done.
+[01:14:39] So the first things, you may have a part dedicated
+[01:14:43] to a position process.
+[01:14:45] So once you get the video, you may want to analyze
+[01:14:48] the specific frames from the video,
+[01:14:50] so you want to extract, okay, some frames,
+[01:14:53] some images from the video.
+[01:14:55] And therefore, you need to explain
+[01:14:57] how you extracted the material, okay.
+[01:15:00] For example, if you have some dedicated software
+[01:15:03] for that video format, you specify the commands
+[01:15:08] that you can use on that software.
+[01:15:10] And, or if you use some FFFN from a standard report,
+[01:15:15] you specify in the commands that you have used.
+[01:15:19] If you want to focus on some specific frames,
+[01:15:22] you need also to say why you focus on those frames.
+[01:15:26] Because maybe I have two hours of video footage,
+[01:15:29] but maybe I want to identify the frames of the person,
+[01:15:33] and I want basically to,
+[01:15:35] I focus only on that specific distance. I explain why you use the tools and their
+[01:15:41] configuration and therefore after this scale, in the example since we received
+[01:15:48] the standard image, we don't have much to say in the example that we have seen,
+[01:15:53] but then you specify the analysis. So you write down all the passages that
+[01:15:57] you have done, report the parameters and details of the analysis, report
+[01:16:01] to interview the results.
+[01:16:03] And B, you can have to be detailed, okay?
+[01:16:06] But be clear and simple.
+[01:16:09] You cannot, okay, be too much verbose in what you write
+[01:16:12] and also in all the details that you report.
+[01:16:15] In example, the analysis,
+[01:16:17] we performed the noise in using these commands here.
+[01:16:20] Parameter was selected, testing these values and so on.
+[01:16:24] This led to the results of this one.
+[01:16:27] We then, gamma correction is performed using mean
+[01:16:29] and max equal to 0.5,
+[01:16:32] gamma 0.1.1 uses the operations.
+[01:16:34] And then we selected these parameters
+[01:16:36] by performing exhaustive tests.
+[01:16:38] And this was the results.
+[01:16:41] Then sharpening was applied with this value here.
+[01:16:45] Parameter was selected and detailed with the window sides
+[01:16:47] 70 by 70 at coordinates 350, 290.
+[01:16:52] First coordinates vertical is selected.
+[01:16:54] Since let's say there are details but we find three times
+[01:16:58] really commands immerse size okay and you get basically the final
+[01:17:02] image conclusion here you repeat what you conclude in the first
+[01:17:09] sentence in the summary stating more clearly
+[01:17:12] what you have concluded your signature and the date
+[01:17:16] example of conclusions we have identified the subject
+[01:17:19] as it's possible to state that padova and name is similar
+[01:17:27] So, notice, remember, synthesis,
+[01:17:31] descriptions of what you have,
+[01:17:36] your files, and what you provide,
+[01:17:38] and what is indeed you write.
+[01:17:43] Then, the acquisition,
+[01:17:45] the analysis,
+[01:17:49] my analysis, you know, it's important.
+[01:17:56] So, what you need, okay,
+[01:18:02] to take care of, from all the mistakes.
+[01:18:07] Avoid personal opinions.
+[01:18:08] So in the past, we had one guy from a report
+[01:18:12] that had a map in here.
+[01:18:15] And in this case, okay, basically,
+[01:18:18] no one said that we are servant of the evidence.
+[01:18:21] So you must report what the evidence tells you.
+[01:18:25] If there's something that is not included,
+[01:18:28] cannot be derived from the evidence,
+[01:18:30] This is zero percent of people.
+[01:18:33] It's not something that the end of the stage.
+[01:18:36] This is what it's about, it's about facts.
+[01:18:39] We are substituting what the facts are really about.
+[01:18:43] So, stick to the facts, also write the prize.
+[01:18:47] So, phrases like, I believe, in my opinion, okay?
+[01:18:51] This is not like phrasing, coaching, things like that.
+[01:18:56] you need to have something objective
+[01:18:59] and sensitive ways to do it.
+[01:19:04] You must motivate on the claims, okay?
+[01:19:06] You must describe the methods clearly,
+[01:19:08] how the evidence supports your conclusions,
+[01:19:11] and use data and charts.
+[01:19:12] An example was doing the Amanda Knox case,
+[01:19:16] where basically most of the claims
+[01:19:18] were basically done in a very,
+[01:19:21] very subjective of the principles.
+[01:19:24] Which is why you must be extremely clear in this.
+[01:19:29] Again, the report must be consistent.
+[01:19:33] If you have something that may raise, okay,
+[01:19:37] doubts, do not report that.
+[01:19:43] Suppose, okay, that you are basically,
+[01:19:47] yeah, it's just a matter of coefficients.
+[01:19:50] But this is an example of J Simpson
+[01:19:52] where from the report, it was possible to serve.
+[01:19:57] There's an example that was possible to
+[01:20:01] further the chain of
+[01:20:02] custody for blobs and
+[01:20:04] was not properly kept.
+[01:20:06] We're talking about this during
+[01:20:07] the first lectures. Check the data.
+[01:20:12] So you must also
+[01:20:14] identify everything, expect review.
+[01:20:17] You must have a review
+[01:20:19] about what you have done. Double-check the data,
+[01:20:22] track the charges and versions,
+[01:20:24] and be careful about
+[01:20:25] of legal relevant details, okay?
+[01:20:29] So this is the elements do not write, okay?
+[01:20:33] Things that may lead to consistencies inside the reports.
+[01:20:41] What are legal reports, okay?
+[01:20:44] That may issues that you must take care
+[01:20:48] in writing a report.
+[01:20:50] So first of all, you have to check the validity
+[01:20:54] and notifications of all the indices.
+[01:20:56] so you must be sure that there is a clear chain of custody.
+[01:21:01] Everything must be processed and handled
+[01:21:03] by qualified experts, and using methods
+[01:21:08] that are valid for this entity part of it.
+[01:21:12] It is also possible sometimes that you need to prove
+[01:21:14] that there was no pattern in the analysis.
+[01:21:18] So most of the times, okay, the use of hash is,
+[01:21:22] In this case, you have to pay for this.
+[01:21:27] But sometimes you must be careful with that.
+[01:21:32] Privacy issues, you must be careful
+[01:21:35] when the information contains sensitive influence.
+[01:21:40] For example, you mentioned the fact
+[01:21:42] that sometimes in the surveillance community corner,
+[01:21:44] you must pass the witnesses and so on.
+[01:21:48] And in all form, this is not an easy issue.
+[01:21:52] And so I know there is no a fix the receipt, okay, for this
+[01:21:57] because sometimes you have to balance the openness
+[01:22:00] of what you've done with the privacy.
+[01:22:03] So typically, if I see reports
+[01:22:05] and you often use initials or case numbers,
+[01:22:10] you keep out people that are not strictly involved
+[01:22:17] to what you're analyzing.
+[01:22:18] And also you have to follow, okay, the loans,
+[01:22:24] GDPR, data protection and pay policies
+[01:22:27] from the United States for digital databases.
+[01:22:33] So, any questions so far?
+[01:22:39] Doubts?
+[01:22:40] So, this information should be enough
+[01:22:45] for you to perform.
+[01:22:50] Since you can use the information about the audio sounds,
+[01:22:53] You have seen here some snippets and values.
+[01:22:57] I can provide some examples from the report
+[01:23:00] from the past years.
+[01:23:03] Notice that each of you is going to have different
+[01:23:06] elements.
+[01:23:08] So every guy is going to have its own,
+[01:23:12] some files, images, and this image.
+[01:23:21] okay, be careful.
+[01:23:28] If you have issues, if you have some doubts,
+[01:23:31] both about projects, both about media reports,
+[01:23:35] contact us at the account of Mattia,
+[01:23:37] which we'll be happy to give you from there.
+[01:23:41] We, eventually, are going to schedule
+[01:23:44] some fact written announcements, sessions,
+[01:23:53] as the sessions, we are proposing.
+[01:23:55] But if you have any questions about projects,
+[01:23:59] we can have at least an extra hour, okay,
+[01:24:02] on zoonish.ccd.com.
+[01:24:06] And that we will be able to discuss.
+[01:24:08] Some questions, some complexities,
+[01:24:11] further information about projects that you may have.
+[01:24:14] So, see you on fire.
+[01:24:27] See you.
