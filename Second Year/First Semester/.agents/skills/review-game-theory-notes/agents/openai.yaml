@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Game Theory Notes"
+  short_description: "Review Game Theory notes against lesson materials"
+  default_prompt: "Use $review-game-theory-notes \"file.md\" \"presentation.pdf\" to review an existing note."

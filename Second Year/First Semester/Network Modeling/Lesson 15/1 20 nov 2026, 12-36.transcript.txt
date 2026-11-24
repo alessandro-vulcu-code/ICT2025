@@ -1,0 +1,463 @@
+[00:00:00] Then the next step is for the Source Manager to distribute resources to the users in order to support their requested data studies.
+[00:00:13] So the scenario is like this one.
+[00:00:21] A possible reference scenario is this one. In this example we have the resource to be distributed is the capacity of a link.
+[00:00:29] You have n sources, each source requires a certain bit rate to transmit its data, and the resource manager has to decide what fraction of C has to be given to the different users.
+[00:00:48] That's a simple example, it's not the only example of course.
+[00:00:50] The source can be of a different type, for example, we might have a disk to store data.
+[00:00:58] It has a certain capacity, and we need to distribute this capacity to different users that need to store data on the disk.
+[00:01:04] Or we might have a server that is capable of processing tasks just with a certain computing power,
+[00:01:13] and we need to distribute this computing power among different users that need to process their data.
+[00:01:20] So the resource can be of any kind, I mean of different kinds, it might be energy of a value, it can be of any kind.
+[00:01:28] The problem is how to distribute the resources to the users in order to satisfy the user, request as much as possible.
+[00:01:36] So some issues with the users with S1, S2 and Sn, the amount of resources of a certain type given to user i is indicated by ri.
+[00:01:47] So far, we will consider just one single type of resource.
+[00:01:55] So in that example, we have the capacity
+[00:01:56] we will use this example as a running use case
+[00:02:01] to understand the concepts.
+[00:02:04] But in principle, you might have multiple different types
+[00:02:08] of resources to be able to use simultaneously.
+[00:02:11] For example, in a transmission system,
+[00:02:14] You might have frequency and time that can be allocated to the different users,
+[00:02:20] so which frequencies a user can use and for how long.
+[00:02:25] So you have two types of resources that have to be allocated simultaneously to the different users.
+[00:02:31] In this example, we only have one type of resource, and Ri is the contribute resource assigned to the user.
+[00:02:40] We collect the allocations to all users and allocation vector that we denote by bold R.
+[00:02:50] And it basically represents how we split resources around them.
+[00:02:55] If you have questions or if you don't understand something, just stop.
+[00:03:03] So how can we allocate resources?
+[00:03:05] In principle the resource manager can do whatever he wants, so it depends on the criteria we consider when designing the resource manager.
+[00:03:16] But there are some conditions that have to be respected.
+[00:03:19] The first one is the feasibility condition. The resource manager cannot allocate more resources than what is available.
+[00:03:30] So if we need to split the capacity of this link
+[00:03:33] among the users, the bitrate in and through the whole,
+[00:03:36] the different users, cannot exceed the aggregate bitrate,
+[00:03:40] cannot exceed the update capacity.
+[00:03:42] So we cannot allocate more resources than we have.
+[00:03:46] That's pretty obvious.
+[00:03:48] We define with this set, the set
+[00:03:53] of all possible allocation vectors that are feasible.
+[00:03:57] So the source manager has to pick one solution, one point, in this segment.
+[00:04:08] By the way, you will find I don't know if I already uploaded the book chapter for this content, but I don't think so.
+[00:04:16] I revised it yesterday, so I will upload a new version of the book chapter by this night.
+[00:04:25] I will also upload the slides this time, because in the slides they put something that we don't find in the book chapter.
+[00:04:36] Nothing conceptually relevant, the book chapter is self-contained, it's efficient to cover the topic,
+[00:04:42] but in the slides we have a sequence of presentation with topic sets that might be useful for you to follow.
+[00:04:52] Actually, I cannot put everything in the bracket, it will just remind me to have a bracket.
+[00:04:59] Alright, so which criterion do we use to select our resource vector to be assigned to different users?
+[00:05:07] Well, we use the utility function of the different users.
+[00:05:12] As you know, the utility function is just a function that tells us
+[00:05:16] What's the utility for a user coming
+[00:05:19] from a certain amount of resources that they can use?
+[00:05:23] So the utility function depends
+[00:05:24] on the applications running on the user,
+[00:05:27] the amount of resources that are given to the user.
+[00:05:30] Generally speaking, the utility function for a certain user,
+[00:05:34] i, s, i, can be represented by a multivariate function
+[00:05:38] from a certain space, the bar of k, into bar.
+[00:05:44] So k, in this case, is the number of different types of resources that we need to allocate.
+[00:05:53] So in the example of the communication system where you have frequency and time,
+[00:06:01] you may know that, for example, in 5G or LTV,
+[00:06:05] these communication systems, these resources are organized in resource blocks,
+[00:06:12] and each resource block is identified
+[00:06:19] by a certain sub-channel and a certain time slot.
+[00:06:25] Communication, of course, in time frames,
+[00:06:33] each time frame is divided in a number of slots.
+[00:06:37] And each of these slots and each of these frequency bands
+[00:06:45] can be assigned to different users.
+[00:06:50] These small squares is a resource block.
+[00:06:53] In this example, the resources are on two sides.
+[00:07:05] You have time, you have frequency.
+[00:07:09] And therefore, the utility function
+[00:07:11] might be something called r squared.
+[00:07:16] It depends on the frequency channel
+[00:07:27] that you are applying to your i
+[00:07:28] and the time slot that you are applying to your i.
+[00:07:32] Depending on the frequency and the time,
+[00:07:34] the channel, the reduction rate channel
+[00:07:36] might be different, might be better, of course.
+[00:07:39] And therefore, for example, utility
+[00:07:41] is the number of bits that you can transmit
+[00:07:43] in a resource block, this number p
+[00:07:46] depends on the allocation to your time.
+[00:07:52] As I mentioned, the following will consider the simple case
+[00:07:55] where we all have one type of a source,
+[00:07:57] and therefore the intuitive function
+[00:07:58] is a standard function r equals r.
+[00:08:03] That's the case for the one.
+[00:08:07] Let's consider a simple example.
+[00:08:10] Suppose that you have a dot term in a p and r that
+[00:08:16] It takes pictures regularly, every three seconds.
+[00:08:19] This feature, in the raw version,
+[00:08:22] occupies n bytes, n star bytes.
+[00:08:30] So n star bytes is the full quality image
+[00:08:33] taken value through dash cam.
+[00:08:36] And you want to transmit these images
+[00:08:38] to a roadside unit, that is a receiver,
+[00:08:42] located along the roads.
+[00:08:46] In order to transmit the image to the roadside unit, you need a bitrate that is proportional to the image size,
+[00:08:54] and the interval times of the time between two images.
+[00:09:01] So we need a bitrate that is m star over t.
+[00:09:07] This is the maximum bitrate to transmit the image at the maximum possible quality.
+[00:09:12] If you compress the quality, so if you compress the image
+[00:09:22] to a value of, let me write it this way, a little bit better,
+[00:09:30] suppose that you can apply some compression algorithm.
+[00:09:47] It can reduce the image size from m star
+[00:09:52] to a certain value of m.
+[00:09:55] You increase the compression, and you decrease the size
+[00:09:59] and by decreasing the size of the image, you also decrease the bitrate required to translate it.
+[00:10:08] So if the image has size n less than 1, then you just need a bitrate less than R*.
+[00:10:41] So by increasing the compression you decrease the amount of resources that are needed to transmit this image flow.
+[00:10:51] Of course, this is not for free, but if you compress an image, the quality of the image will also not be affected.
+[00:11:00] So we can expect that increasing the compression of the image, the quality that you can set to 1 when the image is not compressed,
+[00:11:21] And it might be a piece in different ways, it might be something like this, it might be linear, it might be sub-linear, depending on the compression algorithm that we use.
+[00:11:32] The better the compression algorithm, the smoother the way in which the quality decreases by increasing compression.
+[00:11:45] So you have a trade-off. You use less resources, but the quality is so good.
+[00:11:51] The utility function describes how the quality changes with the amount of resources dedicated to that user.
+[00:11:59] If I locate a certain amount of resources, a certain degrade part to the user,
+[00:12:10] then with that degrade we can compute the maximum size of the image that we can support.
+[00:12:16] If the resource manager assigns the trade to the user as i, then i has to be lower.
+[00:12:45] So the user i can transmit these images given this amount of resources, only if the size of the image is less than its value.
+[00:12:54] This is the top number of bits that the user i can transmit in the interval of time.
+[00:13:00] So it needs to compress the image such that the size of the resulting image is this one.
+[00:13:20] So the compression ratio is m i over r star is less than or equal to r i over r star.
+[00:13:34] And consequently, the utility will also decrease.
+[00:13:38] To describe how the utility decreases with, actually,
+[00:13:50] how the utility depends on ri.
+[00:13:54] The amount of resources allocated in ri.
+[00:13:59] As I mentioned, the utility will
+[00:14:01] depend on the compression literature.
+[00:14:08] We can draw this utility function as a function of m.
+[00:14:14] So we have quantity as a function of m.
+[00:14:21] This is m star.
+[00:14:22] So the coordinate is maximum when we are here, right?
+[00:14:28] And decreases as we decrease the size of n.
+[00:14:31] And the decrease might be as infinite as this.
+[00:14:33] And this is depending on the compression algorithm
+[00:14:37] that we use.
+[00:14:39] And we can turn this function as a function of the rate.
+[00:14:44] Since n depends on the rate, as we mentioned,
+[00:14:48] n has to be less than or equal to ri divided by t.
+[00:14:52] then we can draw this same curve as a function of good.
+[00:15:01] And we will have something like this, right?
+[00:15:04] This is r star.
+[00:15:14] One of these parts is the utility function for our.
+[00:15:21] What does it happen to this function
+[00:15:23] if I assign to user i a bit rate that
+[00:15:27] is larger than r star?
+[00:15:34] r star is the bit rate that allows
+[00:15:37] the transmission of an image.
+[00:15:40] So for that, I assign even more than r star.
+[00:15:42] how does the quality of this application change?
+[00:15:53] It remains constant, right?
+[00:15:55] Because you are really transmitting the image
+[00:15:58] at the maximum possible quality,
+[00:15:59] so if you just increase the,
+[00:16:02] farther you increase the bit rate
+[00:16:03] that you are applying to the user,
+[00:16:05] well, the image will be sent faster,
+[00:16:08] but the quality will remain unchanged.
+[00:16:11] So you have something like that.
+[00:16:13] So the actual shape of the utility fraction
+[00:16:15] depends on the application.
+[00:16:20] In many cases, it is not really necessary to draw
+[00:16:24] the exact individual function.
+[00:16:26] You can use something that is approximate
+[00:16:28] just to find an allocation that is reasonable.
+[00:16:32] One simple approximation of an individual function like this
+[00:16:35] is a linear one.
+[00:16:37] So you assume that the quality is linear
+[00:16:39] to the size of the image
+[00:16:42] with respect to the original size.
+[00:16:46] Or, if light is proportional to the weight given to the user, normalized with respect to the rate required to transmit the image at the maximum quality, right?
+[00:16:59] M star divided by T is R star, so it's the maximum quality rate.
+[00:17:05] And, if you allocate more than that, well, the quality doesn't do this anymore.
+[00:17:09] As I mentioned, the detection should be based on the assessment of the visual quality of the compressed image.
+[00:17:34] In the literature you can find different papers dealing with the quality matrix for images and video streams.
+[00:17:42] One of these quality metrics is called SSBIN.
+[00:17:53] I don't remember the expansion on the coin.
+[00:17:57] Anyway, it's a quality matrix, objective quality matrix,
+[00:18:00] that allows you to define how the quality of an image
+[00:18:04] scales with this contraction.
+[00:18:07] And we proved that in certain scenarios,
+[00:18:11] the utility function can be expressed in this way.
+[00:18:13] So it's a cubic function of rho, where rho is a function
+[00:18:19] of the allocated bit rate.
+[00:18:21] m divided by m star is nothing else than ri divided by ri
+[00:18:27] star.
+[00:18:28] I'm saying that rho is the logarithm of this.
+[00:18:41] It's defined as the logarithm of this ratio.
+[00:18:45] The ratio is the fraction of the bit rate
+[00:18:47] that I assigned to, sorry, is the fraction at which,
+[00:18:58] let me rephrase it, this ratio here
+[00:19:02] is the fraction at which my optimal quality will
+[00:19:14] be satisfied.
+[00:19:15] So in other words, the lower this fraction,
+[00:19:18] And the farther I am from the optimal request,
+[00:19:21] from my best conditions.
+[00:19:24] If this ratio is one, I'm getting my best results.
+[00:19:31] So I'm getting all I'm requiring.
+[00:19:34] The smaller this value, the less I
+[00:19:36] have with respect to my ideal allocation.
+[00:19:40] We proved that by defining these parameter
+[00:19:44] as the logarithm of this ratio, then the quality,
+[00:19:48] the visual quality, follows this sort of cubic log,
+[00:19:56] depending on the type of video that you consider.
+[00:19:58] This was for a video.
+[00:20:00] You had different types of video,
+[00:20:02] and each type of video has its own card.
+[00:20:05] But the shape is always described
+[00:20:07] by a function like that.
+[00:20:08] So alpha depends on the video, but the shape
+[00:20:10] is the same for all of them.
+[00:20:12] So this is a more sophisticated way
+[00:20:14] to define this relation between quality and predictability.
+[00:20:22] This is just an example, right?
+[00:20:24] There's nothing to learn.
+[00:20:25] It's just to see that you can empirically
+[00:20:28] draw this type of course first.
+[00:20:32] Let's consider another example.
+[00:20:34] Suppose that you have an amount system.
+[00:20:39] It generates warning messages in case
+[00:20:45] of problems that must be delivered
+[00:20:47] within an action delay data.
+[00:20:49] Of course the delay depends on the bitrate that is assigned to this tensor.
+[00:20:57] If you assign a rate for i, you know that the time to transmit the warning message
+[00:21:02] will be proportional to the message length, l, divided by the bitrate.
+[00:21:08] So you want to have this delay lower than that.
+[00:21:14] So how do we represent the utility function of a scenario like this, or one application like this?
+[00:21:19] But a very simple case is that you represent the activity function as a step function.
+[00:21:25] So if you assign a bitrate Ri that is lower than this R star,
+[00:21:31] R star is the bitrate that is required to transmit L bits in delta seconds.
+[00:21:37] L over delta gives you the minimum bitrate that allows you to transmit your only message
+[00:21:43] at this moment within delta seconds.
+[00:21:46] If you assign less than r star, you are violating the delay
+[00:21:50] constraint.
+[00:21:51] So your utility is 0.
+[00:21:53] If you're assigned r star for more,
+[00:21:56] then the delay is less than or equal to delta.
+[00:21:59] And therefore, you are satisfying your findings.
+[00:22:02] So one possible utility function for such a system
+[00:22:06] is something like this, a step function.
+[00:22:09] That is 0 if ri is less than r star, and 1 if it is
+[00:22:13] large, right?
+[00:22:14] This is meaningful to make sense.
+[00:22:19] Having step functions is not the best whenever
+[00:22:22] you deal with resource locations,
+[00:22:25] because it's autorocky, right?
+[00:22:30] A unique function like this doesn't allow
+[00:22:32] you to modulate the applications.
+[00:22:35] In certain cases, you might be more flexible
+[00:22:38] and define a utility function that is smoother,
+[00:22:42] for example, like this.
+[00:22:44] So in this case, you still have that you must
+[00:22:47] allocate at least r star to the node.
+[00:22:53] But if you allocate a higher bit rate,
+[00:22:55] well, your utility increases more smoothly, right?
+[00:22:59] Which means that it's not sufficient to give just slightly more than r star.
+[00:23:05] It would be better to give significantly more than r star
+[00:23:09] in order to get the maximum utility
+[00:23:10] so that your delay is much lower than the volume.
+[00:23:14] This is an option that we have, and typically we prefer to work with this type of curves rather than stepwise curves.
+[00:23:30] Consider a massive file transfer case.
+[00:23:37] Again, so we want to store a massive amount of data.
+[00:23:42] Suppose that you are assigned a certain weight for i.
+[00:23:46] Usually, when you transfer a bunch of data,
+[00:23:49] the quality that is perceived is proportional to the time that
+[00:23:54] is taken to complete the transfer, right?
+[00:23:56] Assuming that, of course, we don't lose any packets
+[00:23:58] or anything like that.
+[00:24:00] The time taken to transfer your batch of data
+[00:24:06] is your quality matrix.
+[00:24:08] And the lower the time, the better the quality, right?
+[00:24:12] But the time depends on the allocated bit rate.
+[00:24:15] So you have that the higher the LKW rate, the better.
+[00:24:19] So the utility function in this case
+[00:24:21] can be very simply expressed as a linear function of the wave
+[00:24:24] multiplied by a certain coefficient alpha.
+[00:24:27] That then might depend on a number of parameters,
+[00:24:30] how much you need for the service or other parameters.
+[00:24:37] Or this is a very simple utility function.
+[00:24:41] An alternative utility function that sometimes
+[00:24:43] is more convenient is logarithmic in the assigned rate,
+[00:24:50] Ri.
+[00:24:52] Why?
+[00:24:52] Because in many situations, in many cases,
+[00:24:58] the perception of quality stays logarithmic
+[00:25:03] with the intensity of the signal.
+[00:25:08] So this is actually something that
+[00:25:10] that comes from psychological studies.
+[00:25:17] So there is this Weber-Fechner law
+[00:25:20] that says that the perception of a stimulus
+[00:25:24] scales dynamically with the intensity of the stimulus
+[00:25:30] versus the perception of the questions.
+[00:25:34] What do I mean with that?
+[00:25:36] I mean that if you are surfing the web,
+[00:25:40] and you pick on a link, then if you wait for 10 seconds
+[00:25:45] to get the page downloaded, you perceive this delay
+[00:25:49] as very important, very annoying.
+[00:25:52] If you wait for five seconds, well,
+[00:25:54] you perceive the service as much better than before,
+[00:25:57] but still not annoying.
+[00:25:58] If you wait two seconds, well, the service is good.
+[00:26:02] If you wait one second, the service is better,
+[00:26:05] but not that much, rather than two seconds, if you wait half a second or a quarter of a second, you don't feel the details.
+[00:26:12] So the way which humans perceive the quality of a service is not linear, typically, with the physical parameters of the system.
+[00:26:24] Having by half the downloading time of a webpage doesn't always double the experience of the user.
+[00:26:31] It depends on where you are with respect to the meaning of your perception expression.
+[00:26:37] In many cases, this utility function has a sub-linear shape with respect to the allocated
+[00:26:45] expression, which means that by obtaining more sources you include the utility function,
+[00:26:51] but not proportionally.
+[00:26:54] A little bit sub-linear.
+[00:26:55] It depends on the case of sub-linear.
+[00:26:57] So it returns lower and lower b.
+[00:27:01] Another law that has been found in a psychological study
+[00:27:07] is the Stevens law.
+[00:27:08] So it is a bit more general than this one.
+[00:27:11] And it describes the quality as proportional
+[00:27:15] to the intensity, so the actual performance
+[00:27:18] of the system, raised to the power of a parameter alpha.
+[00:27:22] So if alpha is less than 1, you
+[00:27:25] We have this sort of sublinear relation between performance of the system and perceived quality,
+[00:27:33] so that you think it goes less than linearly with the allocated resources.
+[00:27:38] Alpha equal to 1, you have a linear relation.
+[00:27:40] Alpha bigger than 1, you have actually sort of expansive relations,
+[00:27:46] so quality versus resource allocation curve is something like this,
+[00:27:55] so it grows more quickly than linearly.
+[00:27:58] And this is the case, for example, for the human
+[00:28:01] perception, in the case of electrical shock
+[00:28:04] or weight lifting.
+[00:28:06] So if you weight 10 kilos, you fill a certain network.
+[00:28:11] If you weight 20 kilos, you fill a network
+[00:28:13] that is not just double this, more than 20 kilos.
+[00:28:19] So this type of considerations of life or services
+[00:28:22] This is related to the transmission
+[00:28:25] of multimedia content.
+[00:28:27] Video, audio, or pressure, for example, in active systems.
+[00:28:35] Delay as well.
+[00:28:40] Now, we discussed a little bit about the utility function
+[00:28:43] of the single users.
+[00:28:46] That's when you allocate resources,
+[00:28:48] you have multiple users.
+[00:28:50] And maybe resources are not enough to satisfy
+[00:28:53] all single users at their best.
+[00:28:55] So you need to choose which user will not be fully satisfied,
+[00:29:01] and how much resources could be added to any unsatisfied user.
+[00:29:09] And how to do that?
+[00:29:10] Well, this depends on conditions and cases.
+[00:29:17] The animation here actually is not perfect.
+[00:29:20] One possibility is to define a general utility function for the whole system.
+[00:29:27] So a system-wide utility function.
+[00:29:30] And the simplest way to define a system-wide utility function is to combine the utility functions of the different users in a weighted sum.
+[00:29:43] So we define the utility of the whole system as the weighted sum of the utilities of the single users.
+[00:29:50] The weights here represent the relative importance of a user with respect to the others.
+[00:29:56] So if all users are equally important, these coefficients will be all equal.
+[00:30:03] And we can remove them, it might be set to one.
+[00:30:05] If there are some privileged users in the rest of the world,
+[00:30:09] others then their coefficient will be higher.
+[00:30:11] Because maybe there are some old users that pay more for the service,
+[00:30:15] or there are basically some nodes that are more important than others,
+[00:30:19] and therefore they need to get access to the system at a time priority.
+[00:30:25] Something important, this is just one way to map,
+[00:30:30] usually if you didn't system it, the simplest one.
+[00:30:34] we can invent or define other more complex mapping
+[00:30:39] between single utility to system utility,
+[00:30:43] also including other aspects.
+[00:30:45] But again, this is out of the scope of this course,
+[00:30:50] but just for you to know.
+[00:30:59] So our problem typically can be defined this way.
+[00:31:04] So we have a system utility that
+[00:31:06] depends on the allocation vector.
+[00:31:08] so how we distribute the resources to the users.
+[00:31:11] Our purpose is to maximize distributed function
+[00:31:15] by taking an allocation vector that
+[00:31:18] belongs to the set of feasible allocations.
+[00:31:22] r max, well, max is the maximum operator,
+[00:31:25] so we try to maximize this one within this domain.
+[00:31:30] r is the value of r that reaches this maximum.
+[00:31:34] The value of r that reaches the maximum
+[00:31:36] is called the maximizer of the utility function or the optimal point for this maximization problem.
+[00:31:46] We can formulate the same identical allocation problem by considering
+[00:31:52] in place of an identity function we might have a cost function
+[00:31:56] depending on the situation, we might either have utilities like in this case
+[00:32:01] but we might also have costs that we want to minimize.
+[00:32:04] So the same problem can be defined in terms of minimization of a cost function.
+[00:32:10] The cost function can be simply the opposite of the negative of the utility function and vice versa.
+[00:32:16] So we can walk from one definition to the other one very easily
+[00:32:21] by just changing the sign of the function that we consider.
+[00:32:26] But you have to bear in mind that the same problem can be defined as a maximization of a utility
+[00:32:32] or as the minimization of the problem is the same.
+[00:32:36] I'm remapping this because when we talk about
+[00:32:39] my grand smart multiplier and convex problems,
+[00:32:47] we will have always this duality.
+[00:32:50] Let me anticipate that we'll be using this approach
+[00:32:52] in most of the cases, but you have to be aware that
+[00:32:55] this is just an equivalent formulation.
+[00:33:06] Let me just discuss this slide, and then I'll
+[00:33:13] give you a few minutes break.
+[00:33:17] So as I said, we have a maximization system like this.
+[00:33:24] So we need to find the value of r
+[00:33:26] in the set that maximizes u of r.
+[00:33:30] Now, depending on the shape of u and the shape
+[00:33:35] of the set r where we can find our solution,
+[00:33:38] we might have local optimal point.
+[00:33:42] So R star is said to be a local optimal point.
+[00:33:44] If it's an optimal point, it is running.
+[00:33:51] What do I mean?
+[00:33:52] Well, formally, you have the definition here.
+[00:33:55] But conceptually, you have that a certain point
+[00:33:58] is locally optimal if the function evaluated
+[00:34:03] in any point that is close by the one that you consider
+[00:34:07] is smaller than the function in that model.
+[00:34:11] So you have what is the concept of local optimal
+[00:34:14] that you have seen in your first course of analysis.
+[00:34:18] So you draw a function like this,
+[00:34:20] because that is like this.
+[00:34:23] And you're going to see this function as a field like this.
+[00:34:28] Then this one is a local optimal point,
+[00:34:32] because if you move around this value, you will see that the function is always lower than the function that we did.
+[00:34:42] The global optimal point is the point at which you reach the maximum value of the function
+[00:34:51] with respect to the whole interval of physical solutions.
+[00:35:00] So it's global optimal if it is larger than or equal to any other point in the feasible set.
+[00:35:07] May I mention that in general you might have multiple local and multiple global optimal functions.
+[00:35:15] So for example, if you have a situation like this, if this is your feasible set, and your function is something like this,
+[00:35:23] Then you have 1 and 2 local points, local optimal, and 2 global optimal points.
+[00:35:34] The value of these two is the same, and they are all global optimal.
+[00:35:37] You might also have even global optimal points if you have something like this.
+[00:35:45] Something like this, as this is r, for example.
+[00:35:49] All these points are globally optimal.
+[00:35:52] Let's start with this example that you can read and digest during class.
+[00:36:03] And that's what you think that I can hear about in the C-10s.
+[00:36:09] So R25.
+[00:36:24] Is there an envelope over here?
+[00:36:28] No, there is.
+[00:36:30] What's the envelope over there?
+[00:36:34] I don't know.
+[00:36:35] I don't know what it is.
+[00:36:36] I think it's a couple.
+[00:36:38] Yes.
+[00:36:39] I think it's a couple.
+[00:36:40] Yeah.
+[00:36:41] Yeah.
+[00:36:42] Yeah.
+[00:36:42] Yeah.
+[00:36:42] Yeah.
+[00:36:42] Yeah.
+[00:36:42] Yeah.
+[00:36:42] Yeah.
+[00:36:43] Yeah.
+[00:36:47] Yeah.
+[00:36:47] Yeah.
+[00:36:50] What's the problem?
+[00:36:54] Why are you having problems?
+[00:36:57] I'm working inégicé
+[00:37:02] Okay.
+[00:37:04] It's not that...
+[00:37:05] This is happening.
+[00:37:07] I'm sorry, I'm sorry.
+[00:37:08] It's okay, I'm sorry.
+[00:37:09] Good job.
+[00:37:10] I'm sorry, I'm sorry.
+[00:37:12] I'm sorry, I'm sorry.
+[00:37:14] I'm sorry, I'm sorry.
+[00:37:16] You're gonna have a good night.
+[00:37:20] It's not that long.

@@ -1,0 +1,133 @@
+task 1
+
+make
+uname -r
+modinfo -F vermagic ./seedFilter.ko
+
+# Misura di controllo, prima di caricare il modulo
+dig -4 @8.8.8.8 www.example.com +notcp +ignore +tries=1 +time=2
+
+sudo insmod ./seedFilter.ko
+dig -4 @8.8.8.8 www.example.com +notcp +ignore +tries=1 +time=2
+sudo dmesg | tail -n 25
+sudo rmmod seedFilter
+
+
+result:
+dig -4 @8.8.8.8 www.example.com +notcp +ignore +tries=1 +time=2
+;; communications error to 8.8.8.8#53: timed out
+
+; <<>> DiG 9.20.30 <<>> -4 @8.8.8.8 www.example.com +notcp +ignore +tries=1 +time=2
+; (1 server found)
+;; global options: +cmd
+;; no servers could be reached
+
+and
+
+sudo dmesg | tail -n 25
+[26344.638778]     192.168.3.7  --> 172.64.155.209 (TCP)
+[26344.638831] *** LOCAL_OUT
+[26344.638831]     192.168.3.7  --> 172.64.155.209 (TCP)
+[26344.653017] *** LOCAL_OUT
+[26344.653020]     192.168.3.7  --> 172.64.155.209 (TCP)
+[26344.653024] *** LOCAL_OUT
+[26344.653025]     192.168.3.7  --> 172.64.155.209 (TCP)
+[26344.653064] *** LOCAL_OUT
+[26344.653066]     192.168.3.7  --> 172.64.155.209 (TCP)
+[26344.653107] *** LOCAL_OUT
+[26344.653108]     192.168.3.7  --> 172.64.155.209 (TCP)
+[26344.657989] *** LOCAL_OUT
+[26344.657991]     192.168.3.7  --> 172.64.155.209 (TCP)
+[26344.658047] *** LOCAL_OUT
+[26344.658049]     192.168.3.7  --> 172.64.155.209 (TCP)
+[26344.723287] *** LOCAL_OUT
+[26344.723288]     192.168.3.7  --> 172.64.155.209 (TCP)
+[26344.768563] *** LOCAL_OUT
+[26344.768568]     192.168.3.7  --> 172.64.155.209 (TCP)
+[26344.768710] *** LOCAL_OUT
+[26344.768711]     192.168.3.7  --> 172.64.155.209 (TCP)
+[26344.787941] *** LOCAL_OUT
+[26344.787943]     192.168.3.7  --> 172.64.155.209 (TCP)
+[26345.620645] *** LOCAL_OUT
+[26345.620648]     192.168.3.7  --> 149.154.167.222 (TCP)
+
+### Task 1.B, punto 2 — Tracciamento degli hook Netfilter
+
+HostA → host Docker
+
+[27100.950519] seedFilter: PRE_ROUTING 10.9.0.5 -> 10.9.0.1 (ICMP)
+[27100.950535] seedFilter: LOCAL_IN 10.9.0.5 -> 10.9.0.1 (ICMP)
+
+La richiesta entra in PRE_ROUTING. Poiché 10.9.0.1 è un indirizzo dell’host Docker, il pacchetto viene consegnato localmente e passa per LOCAL_IN.
+
+Host Docker → HostA
+
+[27106.506631] seedFilter: LOCAL_OUT 10.9.0.1 -> 10.9.0.5 (ICMP)
+[27106.506641] seedFilter: POST_ROUTING 10.9.0.1 -> 10.9.0.5 (ICMP)
+
+La richiesta è generata sull’host Docker, quindi passa per LOCAL_OUT e poi per POST_ROUTING prima di uscire verso HostA.
+
+HostA → Internet
+
+[27111.753191] seedFilter: PRE_ROUTING 10.9.0.5 -> 1.1.1.1 (ICMP)
+[27111.753205] seedFilter: FORWARD 10.9.0.5 -> 1.1.1.1 (ICMP)
+[27111.753210] seedFilter: POST_ROUTING 10.9.0.5 -> 1.1.1.1 (ICMP)
+
+La richiesta entra nell’host Docker tramite PRE_ROUTING. Poiché 1.1.1.1 è una destinazione esterna, l’host inoltra il pacchetto tramite FORWARD. Prima di uscire, il pacchetto passa per POST_ROUTING
+
+---
+
+punto 3
+allora senza filtro, la connessione telnet avviene, il ping pure e il listener si chiude da solo.
+docker compose exec -T HostA ping -c 2 -W 2 10.9.0.1
+PING 10.9.0.1 (10.9.0.1) 56(84) bytes of data.
+64 bytes from 10.9.0.1: icmp_seq=1 ttl=64 time=0.051 ms
+64 bytes from 10.9.0.1: icmp_seq=2 ttl=64 time=0.030 ms
+
+--- 10.9.0.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1020ms
+rtt min/avg/max/mdev = 0.030/0.040/0.051/0.010 ms
+
+    ~/Documenti/U/ICT2025/S/F/E/L/03/L/F/packet_filter    main *1 !4 ?4  docker compose exec HostA timeout 5 telnet 10.9.0.1 23
+Trying 10.9.0.1...
+Connected to 10.9.0.1.
+Escape character is '^]'.
+Lab TCP port 23
+Connection closed by foreign host.
+
+
+con filtro:
+docker compose exec -T HostA ping -c 2 -W 2 10.9.0.1
+PING 10.9.0.1 (10.9.0.1) 56(84) bytes of data.
+
+--- 10.9.0.1 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1021ms
+
+
+    ~/Documenti/U/ICT2025/S/F/E/L/03/L/F/packet_filter    main *1 !4 ?4  docker compose exec HostA timeout 5 telnet 10.9.0.1 23
+Trying 10.9.0.1...
+
+
+riprovo senza filtro
+sudo rmmod seedFilter
+[sudo] password di alessandrovulcu:
+
+    ~/Documenti/U/ICT2025/S/F/E/L/03/L/F/packet_filter    main *1 !4 ?4  docker compose exec -T HostA ping -c 2 -W 2 10.9.0.1
+PING 10.9.0.1 (10.9.0.1) 56(84) bytes of data.
+64 bytes from 10.9.0.1: icmp_seq=1 ttl=64 time=0.045 ms
+64 bytes from 10.9.0.1: icmp_seq=2 ttl=64 time=0.035 ms
+
+--- 10.9.0.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1039ms
+rtt min/avg/max/mdev = 0.035/0.040/0.045/0.005 ms
+
+    ~/Documenti/U/ICT2025/S/F/E/L/03/L/F/packet_filter    main *1 !4 ?4  docker compose exec HostA timeout 5 telnet 10.9.0.1 23
+Trying 10.9.0.1...
+Connected to 10.9.0.1.
+Escape character is '^]'.
+Lab TCP port 23
+Connection closed by foreign host.
+
+
+---
+

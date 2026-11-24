@@ -1,0 +1,398 @@
+[00:00:00] Welcome back to this lecture on game theory.
+[00:00:03] I'm Leonardo Badia, the lecturer of the course.
+[00:00:06] Now we are ready to give the formal definition of what
+[00:00:09] a Bayesian game is.
+[00:00:10] So let's say the previous part was very useful,
+[00:00:14] in my understanding, to clarify the context.
+[00:00:18] But if you want, some people prefer the formal approach
+[00:00:22] without any motivation, which is not typical of engineers,
+[00:00:25] but I mean, mathematicians do this all the time.
+[00:00:28] So, we can even say, okay, forget about why are we doing this and just learn these definitions
+[00:00:34] by heart. I would like to give you some context before blurting out some definitions,
+[00:00:40] but if you want, now we say the formal definitions of a Bayesian game. So, if we
+[00:00:47] compare a static game with a Bayesian game, in a normal form representation, we had
+[00:00:54] a set of players, a strategy space of each player and their capabilities. Remember that was set of
+[00:01:00] players, individual, they combine together the strategy and this results in an outcome which is
+[00:01:06] global, is the same for everyone, is the emerging point of all the strategies, the
+[00:01:09] combining point of all the strategy and now after we converge there we take our payoff back
+[00:01:16] again individually. So it's like saying okay we come from different parts of the world all
+[00:01:21] together to meet at a certain point.
+[00:01:24] We do our stuff, and then we treasure this in our heart.
+[00:01:27] So we go home, and we keep this individual.
+[00:01:31] This is a standard procedure.
+[00:01:32] Now, if we have a Bayesian game,
+[00:01:36] we add three more ingredients.
+[00:01:38] One ingredient is the type of each player
+[00:01:42] that belongs to a type space.
+[00:01:44] So it's not just the types, but the space of the types.
+[00:01:47] so the set from which the type can be drawn.
+[00:01:52] The second ingredient is that the utilities
+[00:01:54] now become type dependent, and we'll see how this is done.
+[00:01:58] And the third ingredient is that we need beliefs
+[00:02:00] about the other players' types, okay?
+[00:02:03] So even if we have no reason to create beliefs,
+[00:02:07] actually, we do have other reasons to create beliefs
+[00:02:09] when we compute the best responses,
+[00:02:11] but even before that,
+[00:02:12] we need beliefs about the other players' types.
+[00:02:14] And here is where I question
+[00:02:16] and how to compute the beliefs. It depends on what you know about the other players.
+[00:02:22] So if we have a static Bayesian game, and static Bayesian game is kind of a contradiction
+[00:02:28] in terms, because there is no static Bayesian game. Every Bayesian game is dynamic, because
+[00:02:34] there is first a move by nature and then other people moving. But if other people
+[00:02:40] moving are moving together, then we can claim the game to be static. Okay, that's kind
+[00:02:45] of strange. So let's consider a static game where the choice is just to pick one action.
+[00:02:52] This gives things a bit simpler in definition. We can extend this to dynamic games and
+[00:02:57] the kind of extension, I mean I don't even think I have written this in the slides,
+[00:03:00] but the extension would be kind of obvious because you know how to pass from a static
+[00:03:05] game to a dynamic game, you know how to pass from a static game to a static Bayesian
+[00:03:10] game which is still dynamic actually because of the nature modes at the beginning but
+[00:03:13] and then everything else is static.
+[00:03:15] Well, if you do combine the two things,
+[00:03:17] you get a dynamic Bayesian game, that's quite obvious.
+[00:03:20] So don't let me expand the formalism even more,
+[00:03:24] it's just useless.
+[00:03:26] You understand, I'm sure.
+[00:03:28] So let's consider a simplest formalization
+[00:03:32] for a static Bayesian game,
+[00:03:33] meaning the choice of strategy for the players
+[00:03:36] is just one action.
+[00:03:37] If this is not the case because the choice of strategy
+[00:03:40] is more complicated than just one action,
+[00:03:41] well expand this and that would be something that we already saw in a previous chapter.
+[00:03:47] Now step number one is to choose the types. So we say that, so the previous point, the previous
+[00:03:56] ingredient we need is that Ti is a value chosen inside big Ti, chosen by nature for each player
+[00:04:04] and this happens through the prior probability distribution phi. Phi is common knowledge,
+[00:04:10] Remember?
+[00:04:11] Because we said we need this.
+[00:04:14] So phi is, and by the way, I'm using
+[00:04:17] a kind of more complicated notation
+[00:04:20] of what the book is using.
+[00:04:21] And I will simplify later.
+[00:04:22] But since we are engineers, I guess
+[00:04:24] we can be happy enough with a joint distribution.
+[00:04:28] So this phi is a joint distribution of all the types.
+[00:04:31] So I'm going very extreme.
+[00:04:33] I'm assuming that we know what the joint distribution
+[00:04:36] of all t variables.
+[00:04:38] These are random variables, and they know the joint distribution. Second ingredient
+[00:04:45] we need, the type influences the payoff. So we make the assumption of private values,
+[00:04:54] meaning that UI depends on UI, the actions of all the players, this is a requirement.
+[00:05:00] So UI always depends on the action of all the players, but only on TI. This is what
+[00:05:06] usually assume, but there are other frameworks in which you assume common values instead of
+[00:05:11] private values, meaning that all the types change the utility. This is a kind of tricky to model,
+[00:05:18] I mean, can be done, and you can re-conduct this case actually. But the simplest case so
+[00:05:24] is to assume that the only type that influences your utility is your own type.
+[00:05:29] Because this is what we want to model, that your type means do you prefer orange or apples?
+[00:05:33] Do you prefer boys or girls? That's your type, and that determines your preference.
+[00:05:39] Okay, very good. So in this case, the notation goes like this. For example, assume you want
+[00:05:47] to model that you can have two different payoff functions, the orange one and the
+[00:05:51] blue one. Okay, if you want to represent this, the simple way to do that is to say,
+[00:05:58] OK, your type can be of two values.
+[00:06:02] ti, your type space, contains ta or tb,
+[00:06:05] depending on if you are of type a or of type b.
+[00:06:08] If you are of type a, you follow the orange.
+[00:06:11] If you are of type b, you follow the blue one.
+[00:06:14] This means that ui is a function of ai, a minus i,
+[00:06:18] as before, and ti.
+[00:06:21] ti, sorry, tj, tj, where j can be either a or b.
+[00:06:26] OK, so you follow UIG of AI A minus I. You see the point? So this is, I mean, very formal
+[00:06:35] if you want, but it's actually quite natural. It's like saying, OK, the crazy type prefers
+[00:06:40] to fight. The rational type prefers to accept. So the utilities are related to these
+[00:06:46] two differences. So if you have a difference in preference, you have to define a type
+[00:06:52] to characterize the difference of references.
+[00:06:56] Also, to be honest, types can be used
+[00:06:59] to limit available actions.
+[00:07:01] So you can say maybe a different type
+[00:07:04] has one more action available.
+[00:07:07] And this can be like, OK, let's say
+[00:07:09] I'm playing against a football player.
+[00:07:12] And I don't know if that football player is
+[00:07:14] a regular player or the goalkeeper.
+[00:07:16] The goalkeeper has one more option,
+[00:07:18] because the goalkeeper can use the hands.
+[00:07:20] So, the goalkeeper has one more action available. We already saw this trick, right? In reality,
+[00:07:28] we can say that you fall down to the previous case of changing the payoff. So, if you say
+[00:07:34] there are, for example, just to set the ideas, three available actions, but H is
+[00:07:40] permitted only with probability Q. So, the trick is, okay, if you want to evaluate
+[00:07:45] this, and you define two types.
+[00:07:48] You are of type A with probability Q,
+[00:07:51] and with type B with probability 1 minus Q.
+[00:07:54] And you say that in both cases,
+[00:07:56] FGH are feasible actions.
+[00:07:58] So both types have the same set of available actions,
+[00:08:01] but the payoff of move H under type B is minus infinity.
+[00:08:06] So you see the trick.
+[00:08:09] The trick of giving a very low payoff, or even minus
+[00:08:12] infinity, to an action that you cannot choose
+[00:08:15] is the trick. So it's like saying, okay, this is not really forbidden, but it's something
+[00:08:20] you really don't want to do. So it's like when my kids tell me, we want to play now.
+[00:08:27] No, you cannot play now. This is something that is forbidden to you. And they say,
+[00:08:32] well, no, I don't see it as forbidden. Okay, let's say it's not forbidden, but
+[00:08:36] you're going to regret it later. Of course, I'm not saying this stuff to my kids, but
+[00:08:40] you get the point.
+[00:08:42] If somebody tells you, oh, it's not really forbidden,
+[00:08:44] but if you really want to do that,
+[00:08:46] you pay a very heavy fine.
+[00:08:49] Or you go to jail.
+[00:08:50] OK, so I don't want to do that.
+[00:08:53] Very good.
+[00:08:55] The final ingredient is the beliefs on types.
+[00:08:58] The beliefs on types is generally computed like this,
+[00:09:01] not always computed like this.
+[00:09:03] But I'm inserting this to clarify
+[00:09:06] what many textbooks do, because many textbooks are
+[00:09:09] written by economists.
+[00:09:10] So they don't really understand the difference
+[00:09:12] between independent variables or not.
+[00:09:15] So the idea is that once I know the joint distribution
+[00:09:20] of the types, I can compute also
+[00:09:23] the conditional distribution of the other types given
+[00:09:27] my own type distribution.
+[00:09:29] So you can compute this.
+[00:09:31] This you can compute with the total probability theorem
+[00:09:34] by summing all the other cases,
+[00:09:36] and you will marginalize only this value.
+[00:09:39] And then you compute the conditional probability.
+[00:09:42] Because remember, the belief on the types
+[00:09:45] is not the total phi, because you know your own type.
+[00:09:50] It might be that knowing your type tells you
+[00:09:53] something about the others.
+[00:09:56] Now, I'm really nitpicking here.
+[00:09:59] But this is because many textbooks of game theory
+[00:10:02] say it wrong.
+[00:10:03] They say, well, this phi of t minus i, given ti,
+[00:10:10] is nothing but phi of t1, t2, and you
+[00:10:13] remove ti from this list.
+[00:10:16] This is wrong.
+[00:10:18] This is true only if the types are independent.
+[00:10:23] Because if the types are independent,
+[00:10:25] then you can split the joint distribution into the products.
+[00:10:29] So you say this phi, you see this is phi of all the t's. It's not phi of t1 times phi
+[00:10:36] of t2 times phi of t3 and so on. If that was the case, because and this is true if
+[00:10:41] they are independent, which is a common assumption by the way. If the types are independent
+[00:10:46] then you split this into the products, you simplify out phi of ti and you're left
+[00:10:52] with the product of all the phi's but phi of t i. And this is phi of t minus i. So if the types
+[00:11:01] are independent, and quite naturally, the probability of the other types you know from
+[00:11:07] the prior. You know your type, but this is not happening. But in certain situations, it can be
+[00:11:14] connected. Let's say like, and just to give an example, there are some role playing games
+[00:11:22] in which you take a card out of a deck. So there are enough 40 players in a room and
+[00:11:28] a deck of 40 cards. And like one of the card is the killer. Another card is the inspector.
+[00:11:35] Another 38 cards are common citizens. Then you pick a card. Now, the probability of
+[00:11:43] being the killer is one out of 40, right? But you can, since there is only one card
+[00:11:52] telling you are the killer, if you take that card, this immediately reveals to you that
+[00:11:56] there is no other killer. You are the killer, right? So the probability is not independent
+[00:12:00] here. It's not like everybody takes a card from the deck independently. So this is a
+[00:12:05] very different setup. In that case, the probability that somebody else is a killer
+[00:12:09] When you are a killer, it's zero,
+[00:12:11] because you are the only killer around.
+[00:12:13] So this is never, I mean, game theory textbook authors never
+[00:12:19] get this right.
+[00:12:20] They always keep telling you that the types
+[00:12:22] must be independent.
+[00:12:24] Not true.
+[00:12:25] It is true, though, that in practice, the types almost
+[00:12:29] always are independent.
+[00:12:32] But this must be explicitly mentioned.
+[00:12:33] If you have multiple types, so if you write a project,
+[00:12:37] we say i have multiple types you must tell me if your types are independent or not and prove it
+[00:12:42] maybe or justify it if you don't say your types are independent this is a mistake i mean if you
+[00:12:48] compute the probability of the type from the prior the probability of the type must be
+[00:12:54] computed from the prior through bayes theorem so through conditional probability and by the way
+[00:13:00] the mere fact that you are applying bayes rule justifies the name of bayesian game you
+[00:13:06] see the point here.
+[00:13:07] They're called Bayesian gain because you apply Bayes' rule.
+[00:13:12] So this is why I consider it very important
+[00:13:16] that we respect the nature or the essence of the Bayesian
+[00:13:19] gains.
+[00:13:20] But many textbooks, they simply say, OK,
+[00:13:22] the probability, the beliefs are formed from the prior,
+[00:13:25] so you know the probability of each type,
+[00:13:27] and you compute the types but your own, the product
+[00:13:31] of the type of your own.
+[00:13:32] This is true if the types are assigned independently
+[00:13:35] of each other, okay? And finally, so if you want, so the comment here still tells you
+[00:13:42] okay, then what happens if the types are not independent? Well, you can complicate
+[00:13:47] the game as much as you want, but the problem is it's very easy to get stuck into some
+[00:13:52] complacency, which I don't want to do. So in general, you can also include the
+[00:13:57] beliefs about the other player beliefs, like it might be that you know your type
+[00:14:04] and you are player one. You know the type of player one, of course, but you also know the
+[00:14:08] type of player two, but not the type of player three, and not the type of player four. So,
+[00:14:12] you can compute the type of player three and four, I mean the probability distribution of
+[00:14:17] types three and four, conditional to knowing the values of t1 and t2. Okay, in principle,
+[00:14:23] you can do that. In practice, it's very complicated, but ideally, you can use all of
+[00:14:28] this complicancy combined together.
+[00:14:35] And finally, some comments.
+[00:14:37] So this is what I just said.
+[00:14:39] The belief is this.
+[00:14:41] But very often, if the probabilities are independent,
+[00:14:46] you can estimate this by simply removing
+[00:14:49] TI from the tool.
+[00:14:52] This is the comparison of prior versus posterior probabilities.
+[00:14:55] The prior is the phi of everything.
+[00:14:58] The posterior, many books says,
+[00:15:00] Well, the procedure is just your probability without TI.
+[00:15:03] Not true.
+[00:15:04] This is true if you have the product.
+[00:15:07] And finally, it is strange to say,
+[00:15:11] but if I have a game like this,
+[00:15:13] that would be incomplete but perfect information,
+[00:15:18] because your prior must be fully known.
+[00:15:23] So if you have a static game,
+[00:15:26] and you know the prior perfectly,
+[00:15:27] you have incomplete but perfect information.
+[00:15:30] Because you have perfect information,
+[00:15:33] meaning you know the payoffs of all the users
+[00:15:36] and their probabilities.
+[00:15:38] You can't even have incomplete and imperfect
+[00:15:42] information.
+[00:15:43] If this is the case, it might
+[00:15:44] be that these phi beliefs might even be wrong.
+[00:15:49] So it is a very complicated case to analyze.
+[00:15:52] In principle, it can be done, but it is more complicated.
+[00:15:55] In reality, you might want to have perfect information, even though it's kind of paradoxical
+[00:16:00] because it's incomplete anyways. But it's perfect in the incompleteness, meaning that
+[00:16:05] you don't have all the information, but all that you know, and even all that you don't
+[00:16:09] know but can postulate, can make beliefs out of it, is perfectly known to you, okay?
+[00:16:19] And so to summarize, in a static Bayesian game, you need the player, the action space, the
+[00:16:25] type space, the type-dependent payoffs,
+[00:16:28] and also very important with the beliefs.
+[00:16:30] So the beliefs is not just, as many authors write down,
+[00:16:34] is not just a rule of Bayes applied
+[00:16:36] to independent probabilities.
+[00:16:38] In that case, the rule is very simple.
+[00:16:40] In general, you always apply Bayes' rule.
+[00:16:46] And the beliefs are computed according to here.
+[00:16:51] OK, very good.
+[00:16:52] So, the final remark is, what is a strategy then? A strategy is a map from the set of
+[00:16:58] types to the set of actions. And a mixed strategy is just a probability distribution
+[00:17:03] of a few strategies. So now you redefine once again, even if the game is static,
+[00:17:08] we redefine a pure strategy as a map, not just a choice of an element of AI, but we
+[00:17:16] to specify an element of AI for each of your own types. Now if the game is Bayesian and dynamic,
+[00:17:23] things get overlapping. Like you need to define a strategy like in a dynamic game,
+[00:17:28] so a handbook of actions per each of your own types. So things get very messy, you get a very
+[00:17:35] complicated strategy. But in principle it's not difficult to understand. You can split into the
+[00:17:38] a Bayesian component of the strategy,
+[00:17:40] and the dynamic type.
+[00:17:44] So once again, let's discuss this for the last time
+[00:17:47] for today.
+[00:17:49] How can we define a strategy in a Bayesian game?
+[00:17:52] Well, the trick is, the catch is,
+[00:17:56] you think of your strategy as planning before the game
+[00:18:01] is set in motion.
+[00:18:02] This would mean something very metaphysical,
+[00:18:06] like your strategy as a type agent, as a player with multiple personalities, is defined as
+[00:18:14] a set of rules to follow for each one of your personalities, which is kind of strange.
+[00:18:21] And we argue it is paradoxical, but we don't do that for our own sake. We wouldn't need
+[00:18:27] that because after all, we know our type. So why do we need to predict a strategy
+[00:18:32] to dictate a set of actions for each of our personalities.
+[00:18:36] We don't, because we only have one personality.
+[00:18:38] But the other players don't know.
+[00:18:40] The other players think like they are facing the meta
+[00:18:43] player, the type agent.
+[00:18:45] So for the other players, we are not a single being,
+[00:18:48] but we are a multi-head beast,
+[00:18:51] and they don't know what head they are facing.
+[00:18:55] And given that, they plan the best response
+[00:18:58] according to their beliefs.
+[00:19:00] And given that, to make the game consistent, we find a best response to my belief, and the other players find the best response to their beliefs.
+[00:19:10] And when this best response coincides, so the best response to my belief is also my belief, and so I best respond to that, this keeps the thing consistent, and therefore I find a Nash equilibrium.
+[00:19:21] So we need still to explore better the concept of Bayesian Nash equilibrium, but we will do that in the next lecture.
+[00:19:28] For now, let's see an example. We have this, if you remember, we have this example in
+[00:19:34] the Bayesian entry game. We have this strategy, and we said that the Nash equilibrium is EAF.
+[00:19:43] So also OFA and OFF, there were three Nash equilibria. Well, let's see EAF, for example.
+[00:19:50] This is a Nash equilibrium, meaning that nobody wants to change. Player one does
+[00:19:55] not want to change from E to O, because that's not convenient.
+[00:19:59] And when we say player 2 doesn't want to change,
+[00:20:02] we also imply that player 2 doesn't want
+[00:20:04] to change the whole strategy.
+[00:20:06] So AF is a specification of what rational player 2 does
+[00:20:10] and what crazy player 2 does.
+[00:20:12] You see, player, in short, player 1
+[00:20:15] believes player 2 is using AF.
+[00:20:17] AF is a pure strategy of the Bayesian game.
+[00:20:20] It actually has some probabilistic behavior,
+[00:20:22] still even though it is a pure strategy. Because it contains A when it's rational, F when it's
+[00:20:27] crazy. So the rational player two does A, the crazy player two does F. So player one computes
+[00:20:35] an expected payoff. And this is exactly this matrix entry. So when we say player two does
+[00:20:42] not want to change the strategy, well, we are saying still something which is kinda
+[00:20:47] are surprising because well, player two,
+[00:20:50] I mean, maybe player two is rational.
+[00:20:52] How can we be sure that the rational player two
+[00:20:54] does not want to change the strategy when it's crazy?
+[00:20:57] What player two cares?
+[00:20:58] Okay, so we will discuss this in the next lecture.
+[00:21:02] So once again, two comments, and then we can close.
+[00:21:06] The first comment is that, well,
+[00:21:09] assuming that we have a player with a type that uses,
+[00:21:14] So you can assume that a type player
+[00:21:17] uses a type-dependent pure strategy.
+[00:21:20] So the idea is the strategy is type-dependent.
+[00:21:25] Player one or player two,
+[00:21:26] the player with type here is player two,
+[00:21:29] so player two plans a strategy
+[00:21:30] about what to do when I'm rational
+[00:21:32] and what to do when I'm crazy,
+[00:21:34] which is kind of stupid in a sense
+[00:21:35] because how can this player two define this?
+[00:21:38] How can player two know player two is of either type?
+[00:21:41] Well, it's not really player two doing so, but it's the meta player two. Before knowing
+[00:21:47] what part of the split personalities will be dominant, player two plans this beforehand,
+[00:21:55] before even knowing what nature's decision for his own time. Okay, so because this
+[00:22:02] is the rule of dynamic games, you define your strategy before the game is set in motion.
+[00:22:06] then you, that's a mixed strategy,
+[00:22:08] that's a plan of action, right?
+[00:22:11] Then you define as the game unfolds,
+[00:22:13] you know what to take by looking at your hand.
+[00:22:16] Well, of course, from the point of view
+[00:22:19] of the other players,
+[00:22:22] this is like a player playing
+[00:22:24] according to a given probability.
+[00:22:26] But we know that, right?
+[00:22:27] We know what happens if a player changes action
+[00:22:31] depending on a probability distribution.
+[00:22:32] This was a player playing a mixed strategy.
+[00:22:36] So we have found a convergence between Bayesian games
+[00:22:41] and the mixed strategies in not Bayesian games.
+[00:22:44] Because if player two is playing, well, if I'm crazy,
+[00:22:47] I play this.
+[00:22:48] If I'm rational, I play that.
+[00:22:50] And I know the probability of being rational and crazy.
+[00:22:52] Everybody knows, because this is a common prior.
+[00:22:55] So player one looks at player two
+[00:22:57] and thinks, oh, player two is playing this.
+[00:23:00] I mean, he doesn't even care that player two plays this when rational and that when crazy.
+[00:23:06] Player one only considers player two to be a player that sometimes plays this, some
+[00:23:11] other times plays that.
+[00:23:12] So in short, we have found a very intuitive justification of why we have mixed strategies.
+[00:23:20] We said it is about beliefs, true, but it's about beliefs also about the type of
+[00:23:26] the opponent.
+[00:23:27] So it can be thought of an easy philosophical solution
+[00:23:31] to the dilemma of having a split behavior.
+[00:23:34] It's not really a split behavior.
+[00:23:35] It's like you have a different type
+[00:23:37] and different types might end up doing different things.
+[00:23:42] And final comment is something that we already anticipated
+[00:23:44] but let's stress again because it's very important.
+[00:23:46] Why do we need to be type dependent?
+[00:23:49] You don't because in the end,
+[00:23:51] only one of your type is gonna be real.
+[00:23:53] true, but you don't need to tell your strategy to be type dependent for your own sake. It's
+[00:24:01] important for the opponents. So it's not for play i, but for the opponents minus i. Because
+[00:24:07] player minus i, so the opponents of play i, must form the beliefs of a play i behavior.
+[00:24:14] And also, when combined with the posterior, with the belief, they can compute the expected
+[00:24:19] of. This is exactly the same thing with dynamic games with one notable similarity. In dynamic
+[00:24:25] games we said we foresee plans of actions also for the games that don't come into practice.
+[00:24:32] We don't care. We define a full strategy also for those situations that never come into practice.
+[00:24:38] We do the same thing here because we define an action also for the types that are not true.
+[00:24:43] So I say I am planning my strategy of what to do when I'm rational and what to do when I'm crazy.
+[00:24:48] then I discover I'm rational.
+[00:24:50] So the strategy part of when I'm crazy
+[00:24:52] is gonna never take place.
+[00:24:55] I don't care.
+[00:24:56] I plan this nevertheless.
+[00:24:58] It was important to define it
+[00:25:00] to have a full-fledged strategy, okay?
+[00:25:03] Just similar to what we did for dynamic games.
+[00:25:06] Very well, with this remark,
+[00:25:07] we can conclude this lecture.

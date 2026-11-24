@@ -1,0 +1,907 @@
+[00:00:01] Welcome to this lecture on game theory.
+[00:00:03] I'm Leonardo Badia, the lecturer of the course.
+[00:00:07] With today's lecture, we start the third part
+[00:00:10] of this course on game theory, the third and last part,
+[00:00:13] where we discuss Bayesian games.
+[00:00:15] We already saw static games, we saw dynamic games,
+[00:00:18] and now it's time to see Bayesian games.
+[00:00:22] Bayesian games are a very interesting application,
+[00:00:25] and they correspond to the situations
+[00:00:27] where we don't have, we lose complete information because before in static and dynamic games,
+[00:00:37] we had some uncertainty, but they were all game mechanics.
+[00:00:41] So the only uncertainty we could have was we don't know the other players move.
+[00:00:47] And that's a given.
+[00:00:49] I mean, if we know the other player move, then there is no longer a game.
+[00:00:54] it's a single player optimization, right? So there can be different ways in which we have complete
+[00:01:01] but either perfect or imperfect information, but in all these situations we have common knowledge,
+[00:01:08] we know the rules of the game, so we just don't know what our opponent is going to play.
+[00:01:13] But assuming rationality and assuming that they know everything about the game,
+[00:01:18] we can sort of infer what the other player is gonna play.
+[00:01:23] What happens if we don't have common knowledge
+[00:01:27] of everything, but we just have an idea
+[00:01:29] of what the other player might want to do.
+[00:01:33] So this is a situation that we try to capture
+[00:01:35] with Bayesian games.
+[00:01:37] Before going to the definition,
+[00:01:40] let's remember why do we model these situations as games
+[00:01:45] and how do we solve the games?
+[00:01:48] So remember the main problem here, as I just discussed,
+[00:01:52] is that there are multiple agents at play.
+[00:01:55] So it's not just a matter of finding a good thing
+[00:01:59] to play per se, but my good depends
+[00:02:03] on what the others do.
+[00:02:06] And to do so, I look for equilibria.
+[00:02:09] And the equilibrium is modeled as a situation
+[00:02:13] and where I form consistent and correct beliefs.
+[00:02:17] And by this, I mean that I want to guess
+[00:02:22] what the other players are doing, and I react to that.
+[00:02:26] And if I find a situation where my guess is sustained
+[00:02:31] by my reaction to that, so shortly put,
+[00:02:36] I am playing the best response to my beliefs.
+[00:02:39] but it happens that if my opponent believes that I'm playing the best response,
+[00:02:45] he's gonna play what I'm believing he's about to play.
+[00:02:50] If this is the case, our behavior is consistent,
+[00:02:55] because we formed a coherent pair of beliefs and best responses.
+[00:03:01] And so it's like a self-enforcing prophecy, as we discussed.
+[00:03:05] This means that we are in a situation
+[00:03:08] where nobody has regrets.
+[00:03:11] Okay, the key point for predicting that is naturally,
+[00:03:15] I must know what my opponent wants.
+[00:03:18] Because otherwise, how can I make the last closure
+[00:03:23] of the loop?
+[00:03:24] Like the loop starts by assuming,
+[00:03:26] well, let's assume some behavior on my opponent.
+[00:03:29] I best respond to that.
+[00:03:30] I know how to best respond to that, of course.
+[00:03:33] And now I realize that the best response that the other player can have to my best response
+[00:03:39] is exactly the assumed behavior. Well, to do so, I must conjecture what the best response
+[00:03:48] of my opponent is. Otherwise, I cannot make such a statement. Still, Harsany in 1960
+[00:03:57] propose a situation, to model a situation where I'm not 100%
+[00:04:03] sure of the payoff of the other players,
+[00:04:07] but I have beliefs about that.
+[00:04:09] Because you see, in this kind of look,
+[00:04:12] in this kind of reasoning, I'm already forming beliefs.
+[00:04:15] And I cannot be 100% sure about what my opponent is
+[00:04:20] doing.
+[00:04:20] It's just an educated guess.
+[00:04:22] So I believe that my opponent is playing something.
+[00:04:26] and I best react to that, I best respond to that.
+[00:04:31] Now, what would the best response to my opponent will be?
+[00:04:36] Well, I'm just conjecturing it.
+[00:04:37] So I can incorporate that into my beliefs.
+[00:04:41] So I can believe something about the other player's moves
+[00:04:47] and that is my belief.
+[00:04:49] I mean, this is something I cannot possibly know,
+[00:04:51] but I can form beliefs about that.
+[00:04:53] So, Arseny proposed, why don't you claim some beliefs also about the characteristics of
+[00:05:01] the other players, namely, what is the best response to my move?
+[00:05:07] So philosophically speaking, we are moving transition into a game of incomplete information.
+[00:05:14] Because now I must create some beliefs also on the characteristics of the other
+[00:05:20] players.
+[00:05:21] And I can conjecture that my opponent has certain characteristics and will therefore make certain moves.
+[00:05:30] This can be, as you will see, a coherent conjecture, a coherent belief about my opponent.
+[00:05:37] And this is generally captured by the type of the opponent.
+[00:05:42] So this is also can lead to some inspiration in reality like let's say a poker player, a good poker player is not only able to conjecture what kind of cards can the opponent have, but also what kind of players they are.
+[00:06:02] So, this player said this bet, maybe it's a bluff or maybe not. And that part really
+[00:06:10] relates to what usually does my opponent do when facing a certain situation. So it's
+[00:06:18] not just a matter of what will his move be, or how to interpret a certain move. I
+[00:06:24] need to put things in context based on the type of my opponent. So the general idea
+[00:06:31] of type is something that is very intuitive.
+[00:06:33] But formally speaking, we use it to model
+[00:06:35] incomplete information.
+[00:06:37] And by that, we mean that the players
+[00:06:39] can be of different types.
+[00:06:41] There is a philosophical remark here.
+[00:06:44] Since we want to keep things simple,
+[00:06:47] one better way to do this is to use discretization.
+[00:06:53] So in general, the behavior of my opponents
+[00:06:55] can be a spectrum, can be a gamma of different behaviors.
+[00:07:00] But if you want to keep things simple, one way to do it is to assume, well, two possible
+[00:07:06] types of my opponents, or three possible types, a given number of possible opponents.
+[00:07:12] And depending on what type of opponent I'm facing, I therefore infer a different behavior.
+[00:07:21] And this is, I don't know, very common in role playing games, for example, or in
+[00:07:27] fantasy games or in fighting games.
+[00:07:29] You have a style of playing.
+[00:07:31] You have a class.
+[00:07:33] And depending on that, your reactions are different.
+[00:07:36] And your available moves are different.
+[00:07:38] Your priorities might be different.
+[00:07:40] So the main point here is to develop a concept
+[00:07:45] of equilibrium that preserves the property that we saw.
+[00:07:49] That is, the equilibrium is achieved
+[00:07:51] when we have consistent and correct beliefs.
+[00:07:55] But once again, we are cheating
+[00:07:58] in that we reinterpret the definition,
+[00:08:01] because now we're gonna give, not today,
+[00:08:03] but we will reach a different definition of equilibrium
+[00:08:07] that put in context is still the same definition.
+[00:08:10] So in one sense, it is the same definition as before.
+[00:08:14] The equilibrium is when you have
+[00:08:16] correct and consistent beliefs.
+[00:08:18] That's still true.
+[00:08:20] The problem is that now we changed
+[00:08:22] what do we mean by beliefs.
+[00:08:24] And once again, it's the same old story.
+[00:08:26] we just change the definition of strategy,
+[00:08:28] which is the definition of beliefs.
+[00:08:30] And then we see is the old concepts
+[00:08:33] that we derive from them,
+[00:08:34] like the equilibrium concept still apply.
+[00:08:37] Well, spoiler alert, they will still apply.
+[00:08:40] So good for us, we can reinterpret
+[00:08:43] the classic definitions of game theory
+[00:08:45] in the light of a new concept,
+[00:08:48] that of incomplete information.
+[00:08:51] So let's formalize this with a preliminary nature's move
+[00:08:55] because the simplest way to frame this,
+[00:08:58] at least in Bayesian games,
+[00:08:59] is that we have different types of the players
+[00:09:05] and the types represent the different payoffs
+[00:09:08] that the players get.
+[00:09:10] And when I say different payoffs here,
+[00:09:12] I don't mean that, of course, if you play differently,
+[00:09:16] you get a different payoff, that's always true.
+[00:09:19] No, I mean that the same action
+[00:09:21] can lead to different payoffs.
+[00:09:23] And that is the case that happens
+[00:09:26] if I have different types, okay?
+[00:09:28] So this is, of course, I don't know,
+[00:09:32] again, one good example could be dating things.
+[00:09:37] You buy a given gift.
+[00:09:40] So depending on the type of the player
+[00:09:43] you give this gift, the opponent gives this gift,
+[00:09:46] actually it's a bot, but you give a different gift,
+[00:09:49] you get a different outcome.
+[00:09:50] The gift is always the same,
+[00:09:52] but it results in a different payoff because I don't know let's say I like paintings but I don't
+[00:10:01] like jewelry so if you give me a painting I'm happy and if you give me a jewel I'm not that
+[00:10:08] happy and another person can have a different preference so you give this person the very same
+[00:10:14] gift their payoffs are different you see the point now how to determine the types
+[00:10:20] Well, the general approach is this.
+[00:10:23] We consider, remember, the fictitious player, Nature,
+[00:10:27] who is in charge of determining the random numbers,
+[00:10:30] sort of.
+[00:10:31] So there is a type vector chosen with a given probability.
+[00:10:37] So I have a certain probability of being of type one,
+[00:10:41] a certain probability of being of type two,
+[00:10:43] and so on and so forth.
+[00:10:44] So Nature draws these random variables.
+[00:10:47] a random variable characterizing my type,
+[00:10:50] a random variable characterizing type of the other players,
+[00:10:53] this for every player in the game.
+[00:10:56] Now, this is not entirely descriptive
+[00:10:58] because we need this first step.
+[00:11:00] That is, nature must reveal me my type,
+[00:11:04] because I know my type.
+[00:11:06] I know if I prefer jewelry or paintings.
+[00:11:09] They know if I bluff very often when playing poker
+[00:11:12] or all the things I know about myself.
+[00:11:15] This is assumption.
+[00:11:16] But I don't know about the other players. That's a key point.
+[00:11:20] After that, the game goes on as usual. That is, the players choose their actions and then you compute the payoffs.
+[00:11:27] So once again, we have the same old mechanism where individual choice of actions put together, combined to get the outcomes.
+[00:11:36] And then the outcomes are once again computed individually in terms of payoffs.
+[00:11:41] So we see individual, global, individual,
+[00:11:45] as in the early stage of static games, as we discussed.
+[00:11:49] But now we have a twist.
+[00:11:51] The twist is before the individual choices are made,
+[00:11:54] we determine the types of each player
+[00:11:57] and this individual type.
+[00:11:59] And also at the end,
+[00:12:01] when the individual payoffs are computed from the outcome
+[00:12:06] this computation depends on the type
+[00:12:09] because different types have different payoffs.
+[00:12:11] to reflect that different people,
+[00:12:14] different types of people, prefer different things.
+[00:12:18] So the outcome is, I don't know,
+[00:12:20] I won a prize in this game,
+[00:12:22] and the prize is, well, a jewel.
+[00:12:24] Oh, too bad, I don't like jewels,
+[00:12:26] so my utility is gonna be very low.
+[00:12:28] Okay, this depends on me, this depends on my time.
+[00:12:31] Very well, so this is, shortly put, a dynamic game,
+[00:12:37] because there is always one player moving first in nature,
+[00:12:40] and other players moving afterwards.
+[00:12:42] It's also always with imperfect information
+[00:12:48] is that some parts of nature's move
+[00:12:51] are not known to the players.
+[00:12:53] And specifically, I know my type,
+[00:12:55] but I generally don't know the other players' types.
+[00:12:59] There can be situations where nature reveals
+[00:13:02] more than one type.
+[00:13:03] And this is actually, so to clarify this,
+[00:13:07] there is a general mathematical formalization
+[00:13:10] in which you can really assume everything.
+[00:13:11] We will discuss these examples.
+[00:13:14] But in practical context of what you see in game theory,
+[00:13:18] in game theory textbooks,
+[00:13:19] there is always this classic case.
+[00:13:21] So in principle, it can even be like,
+[00:13:24] okay, I'm teamed with player two,
+[00:13:27] so I know my type and player two type, maybe.
+[00:13:30] But I don't know player three type
+[00:13:31] and player four type.
+[00:13:32] That can be an option, okay?
+[00:13:35] This is still under the framework.
+[00:13:37] But in general,
+[00:13:38] the general mechanism is usually you know your type only
+[00:13:41] and don't know the types of the other players.
+[00:13:43] It is not forbidden to extend the game like this,
+[00:13:46] but well, it's very little useful
+[00:13:48] for practical applications.
+[00:13:50] So if you want to nitpick, you can say,
+[00:13:51] well, it's really actually not a dynamic game like this
+[00:13:54] it can be another kind of dynamic games
+[00:13:56] where everybody knows everything.
+[00:13:58] You can model things like that for certain games.
+[00:14:00] I'm not claiming that this is forbidden,
+[00:14:02] but most of the times you only know your type.
+[00:14:04] Okay, so in reality, also to nitpick, if you want to discuss the type, you can represent
+[00:14:13] more than different utilities. So the general representation of types is, well, I have
+[00:14:19] a different utility function. Let's say I have utility function u or utility function
+[00:14:22] v, and they are different numbers. So who decides if I follow preference u or preference
+[00:14:28] v? Well, nature. Nature tells me. So they tell me, well, you know what? Your type
+[00:14:33] is this and this can be okay you're going so this is i don't know the list of your favorite actors
+[00:14:40] and then i appointed you a dinner with a very famous actor but it can be a very famous actor
+[00:14:46] that you like or dislike this is your idea okay to represent this this is your type and this
+[00:14:50] is randomly chosen well in reality if you really want to nitpick you can claim well actually
+[00:14:56] instead of having types representing the choice of the specific utility you can even have a type
+[00:15:03] that represents more than that.
+[00:15:05] So the type has some meta characteristic inside it.
+[00:15:10] Like there might be a type of a player that is this player,
+[00:15:15] knows everything about the game.
+[00:15:18] Or there is another type of the player,
+[00:15:20] the player knows nothing, like the Johnson 0 type.
+[00:15:23] So that player knows, well, of course,
+[00:15:27] that player knows his own type,
+[00:15:29] but not the other types.
+[00:15:30] So, in principle, you can even play it more expansively and consider a situation where
+[00:15:38] the different types do not affect the charge of utility, but rather they affect what utilities
+[00:15:44] are known to the player, even more complicated. You can think of that even though this is
+[00:15:50] again not generally discussed. And so, this is to clarify, if you follow like Taddellis'
+[00:15:57] book. This is never discussed because the Delicis book follows a very classical approach and the
+[00:16:02] classical approach types are really different to represent that you can't follow differently
+[00:16:06] in this period. But the definition of type is more general and your type can be affecting
+[00:16:13] some meta characteristic of how you play the game. So you still have your same preferences
+[00:16:17] but the type is how much you know about the game, how much knowledge do you have
+[00:16:21] about the other players utility maybe. It's not forbidden. It's just very rare. So I don't discuss
+[00:16:27] this. I'll leave it for later stages. So leave it for extensions. It's not the mainstream results
+[00:16:33] we're going to see. But if you want to model this, if you really feel it's necessary to model
+[00:16:38] this for your project or for your applications, why not? It's not forbidden. So you might want
+[00:16:44] to consider and develop yourself a mathematical formalization of a situation where different
+[00:16:49] types do not reflect in different utilities but they actually reflect in different knowledge
+[00:16:55] about the other utilities. Okay, so it can be I'm a dumb player, I don't know your utility
+[00:17:00] or I'm a smart player or some, I don't know, I cheated, I picked your car so I know your
+[00:17:05] utility. That's another story. Okay, very well. So let's see an example because so
+[00:17:11] far we have been very well blurry and very vague but let's give a specific
+[00:17:18] example. Consider an entry game. We already saw this game. Let's give a very
+[00:17:23] simple version. Player one is a newcomer and the newcomer can enter or
+[00:17:28] stay out. We already saw something like that. And player two is the incumbent.
+[00:17:34] So if one enters, player two might decide to accept or fight. This is the
+[00:17:39] decision tree you see that well we simplify things so we just put one node where one is
+[00:17:45] to move and one node where two is to move this is made to simplify the studies of course
+[00:17:51] this would be theoretically equivalent if you remember we can add another branch here
+[00:17:55] with no difference in the moves between phi and xn so we can say well you know what
+[00:18:01] if you stay out, this is the result.
+[00:18:08] But actually, there is another choice by player two
+[00:18:11] between fighting and accepting, but if you stay out,
+[00:18:13] I mean, player two just fights the air.
+[00:18:16] So in the end, the result is always the same.
+[00:18:18] Okay, zero, two, zero, two.
+[00:18:19] That would be an equivalent game
+[00:18:21] from the result perspective,
+[00:18:22] but not from the strategy perspective.
+[00:18:25] So we want to keep things simple.
+[00:18:27] Why are three with this node expanded is not equivalent?
+[00:18:30] because now player 2 has two nodes where he is to move and therefore has a strategy of this compound
+[00:18:37] of two choices. One choice here, one choice there. Since the choice here doesn't really
+[00:18:43] matter, we avoid it and we say the game already ends here. So to be in it speaking, there are
+[00:18:48] different formalizations of an entry game. They are equivalent for what concerns the results
+[00:18:53] because, I mean, and we haven't discussed the results yet, but they're not equivalent in terms
+[00:18:58] of enumerating the strategies which is important if you want to keep a formal approach. So let's
+[00:19:03] use this formalization where if player one decides to stay out the game ends so player two doesn't
+[00:19:09] need to make a move and so the only place where player two makes a move is after player one
+[00:19:14] entered the scenario okay so player two might decide to fight or accept. Now this is a dynamic
+[00:19:21] game and by the way player two moves it's not a Bayesian game it's a standard dynamic game
+[00:19:25] after the sequential game and player two moves with full awareness of what player one did you
+[00:19:30] see there is no confusion between these two nodes so player two is aware he's here and not here also
+[00:19:35] it would be very difficult for player two to mistake and be here because this is a final node
+[00:19:40] okay so player two needs to decide only one action in his strategy or her strategy and
+[00:19:46] player one does the same so player one chooses o versus e and player two chooses f
+[00:19:52] versus A. Now we know from the theory that the subgame perfect outcome is EA. So for play one
+[00:20:01] it's convenient to enter. How to see that? Well, we apply backward induction and we see the player
+[00:20:06] two will eventually accept because fighting is bad. Why? Because fighting causes minus one,
+[00:20:12] minus one. They both lose. I mean, they start fighting, they get some bruises. So it's
+[00:20:15] better to split the resources. Still, so this is subgame perfect outcome, no doubt about that.
+[00:20:20] There is another Nash equilibrium which corresponds to this situation. The situation in question is
+[00:20:26] while player 1, this formalizes that player 1 can stay out, in this case player 2 gets this
+[00:20:33] benefit of 2. If player 1 enters, player 2 is forced to accept player 1 and split the resources.
+[00:20:40] So player 2 does not like this. So he calls out some ministry and says you know we locked
+[00:20:47] down the ports so you don't enter our country, something like that. So player two announces,
+[00:20:55] or actually player two does not announce anything because it's not an announcement, player one can
+[00:20:59] believe that player two does. So remember this is all in player one's head. Player one might
+[00:21:04] assume player two is going to fight. If player one believes player two is going to fight,
+[00:21:10] player one will better stay out, correct?
+[00:21:14] And if player one stays out, player two can claim
+[00:21:17] that his best response is to fight because, well,
+[00:21:20] fighting or accepting is equivalent
+[00:21:22] because anyways, player one stayed out.
+[00:21:24] So this eventuality is not even played.
+[00:21:27] Player two does not even decide
+[00:21:28] because they never reach this node, okay?
+[00:21:32] So in short, the selection OF is also a Nash equilibrium
+[00:21:37] because no one has regrets.
+[00:21:39] like player 1 does not want to go in, he wants to stay out, or she wants to stay out, because if player 1 goes in,
+[00:21:48] player 1 gets minus 1, which is worse than 0, which is what player 1 currently gets.
+[00:21:54] If player 2 changes from fight of set, nothing changes. This is by definition a Nash equilibrium.
+[00:21:59] This can also be interpreted like this. Player 2 is kind of threatening.
+[00:22:03] player one well you better not come here because if you do I'll fight you and
+[00:22:09] you'll get a very negative payoff now remember why is this so this is for
+[00:22:15] sure a Nash equilibrium but also inspired by the fact that we didn't find this Nash equilibrium
+[00:22:20] through subgame sorry through backward induction we know this is not subgame
+[00:22:24] perfect and can we prove it of course there is a non credible threat
+[00:22:29] here. The non-credible threat is that of player two. Player two is like saying, oh you better
+[00:22:35] know this is an empty threat, right? Well this is a threat for sure. Why is it empty? Because player
+[00:22:40] one does not believe it. Player one knows that if player one enters player two will accept
+[00:22:45] because fighting is a punishment for player one but also punishes player two as well and player
+[00:22:51] is not so stupid that he will punish himself or herself.
+[00:22:56] So this OF is actually a Nash equilibrium
+[00:23:00] because it is truly a situation where
+[00:23:02] nobody wants to deviate.
+[00:23:04] But it contains some non-credible threat.
+[00:23:06] And also, it involves an irrational decision
+[00:23:10] that is to fight in a subgame, which is this subgame.
+[00:23:13] This is actually a proper subgame.
+[00:23:15] And in this proper subgame, only player two moves.
+[00:23:18] And player two only move is to accept.
+[00:23:19] only a reasonable move is not set because, well, fighting is worse. So, shortly put, this game,
+[00:23:26] even though it is very simple, has all the characteristics we want. Because there is a
+[00:23:30] very simple choice, O versus E for player 1, F versus A for player 2, and there is only one
+[00:23:35] certain game perfect equilibrium, which is EA. There is also another equipped Nash equilibrium
+[00:23:39] that is not such a game. Very well. Now, this was not Bayesian, so now we try to make
+[00:23:46] Bayesian and let's say for example the player two can be of two types so player two can have two
+[00:23:54] different characteristics we call player two we call it it's time to be rational if it behaves
+[00:24:02] like we already discussed so a rational player two behaves like this follows these utilities
+[00:24:09] but we can't have a crazy player two and a crazy player two enjoys fighting so we say
+[00:24:16] that if we have a crazy player 2, the payoff for enter fight,
+[00:24:21] he was minus 1.
+[00:24:22] We say it is plus 2.
+[00:24:24] We replace this number with plus 2, this number.
+[00:24:28] So by the way, this crazy is a bit difficult.
+[00:24:31] Beside the fact that apparently
+[00:24:33] my colleagues in the psychology department
+[00:24:36] told me it's now politically incorrect to call it crazy,
+[00:24:40] but I'm following Fidelis's notation.
+[00:24:42] So we shouldn't say crazy to a person.
+[00:24:45] and we say, well, it's mentally challenged or whatever.
+[00:24:48] Anyways, let's call it crazy.
+[00:24:49] But here is even more crazy
+[00:24:51] because it looks like player two has a split mind.
+[00:24:55] There are two minds inside player two,
+[00:24:56] like the angel and the devil.
+[00:24:58] And one tells player one to be rational
+[00:25:01] and share the resources because that's the most thing
+[00:25:04] to do.
+[00:25:04] And the devil is telling player two to be crazy.
+[00:25:08] So, well, in reality, it's not like that.
+[00:25:10] Player two does not have two personalities.
+[00:25:12] Player two only has one personality.
+[00:25:14] The thing is, we don't know which one is it for now.
+[00:25:19] So nature decides the type of 2.
+[00:25:23] So with probability p, player 2 is decided to be rational.
+[00:25:27] And if for any 1 minus p, player 2
+[00:25:29] will turn out to be crazy.
+[00:25:31] So this is a preliminary decision made by nature.
+[00:25:34] Because remember, the first move is always made by nature.
+[00:25:38] Now, the only key point here
+[00:25:40] is that player 1 does not know the type of 2.
+[00:25:43] So now player one, earlier the game was sequential.
+[00:25:48] Every information set was a singleton.
+[00:25:49] Now player one has a non-singleton information set.
+[00:25:53] Because player one does not know player two type,
+[00:25:55] while player two knows his or her own type.
+[00:25:58] The situation of the game goes like this.
+[00:26:00] Nature moves, and now we have two different nodes
+[00:26:02] depending on the result.
+[00:26:04] Here the type of player two is decided.
+[00:26:06] So this is type of rational player two,
+[00:26:09] this is type of crazy player two,
+[00:26:11] but player one does not know.
+[00:26:12] So the simple story is, OK, then player 1
+[00:26:15] is undecided between these two.
+[00:26:17] The information set of player 1 includes both nodes.
+[00:26:21] You see?
+[00:26:21] And then the tree goes as before, the only difference
+[00:26:24] being this number.
+[00:26:25] Here is plus 2, here is minus 1.
+[00:26:27] This is the only difference, because we want to model.
+[00:26:30] And actually, what we want to do
+[00:26:31] is to model numbers that are not very relevant.
+[00:26:34] We just want to model that in this version,
+[00:26:36] player 2 is rational.
+[00:26:37] So player 2 prefers A over F,
+[00:26:39] that is accept versus fighting.
+[00:26:41] Here instead, player 2 loves fighting because player 2 is a bit crazy, so it's crazy transpopping
+[00:26:46] style. Player 2 wants to fight, prefers, loves a good fight over accepting. Actually,
+[00:26:54] player 2 loves a fight same as being left as the undisturbed ruler of the resource.
+[00:27:00] So it's clear that in this case, what we said about player 1 not entering, sorry,
+[00:27:06] being afraid of entering and this being a non-credible threat. Here in this right hand
+[00:27:12] side, this is no longer a non-credible threat, this is a concrete threat. I mean if player 1
+[00:27:18] enters, player 2 will definitely fight player 1. So it is credible here. So you see this
+[00:27:25] depends on what of the two branches is more likely. We will discuss this later. But now this
+[00:27:33] structure of the game is perfectly legit,
+[00:27:35] because we now are in a dynamic game.
+[00:27:38] So you can actually say that a Bayesian game
+[00:27:41] is nothing but a special case of dynamic games.
+[00:27:45] In a sense, this is true.
+[00:27:46] So if you have perfect understood dynamic games,
+[00:27:50] you won't have any problem in modeling everything
+[00:27:52] for the Bayesian games,
+[00:27:54] because Bayesian games are actually
+[00:27:55] just a special case of dynamic games,
+[00:27:58] where there is always a preliminary move
+[00:28:00] made by nature at the beginning,
+[00:28:01] which is assignment of types and after that we have a regular dynamic game. So every type, every
+[00:28:08] assignment of types result in a different tree but and there might be some confusion among this
+[00:28:12] but this is nothing new this is something we already saw for dynamic games. Okay, now
+[00:28:18] we need to discuss the implications of this because well you can always say this is a
+[00:28:25] dynamic game so no problem true but on the other hand there is a very imaginative interpretation
+[00:28:30] a Bayesian game that we want to capture. So another thing that we might want to say is,
+[00:28:35] okay, but what if I take Bayesian games as a special case per se, and I try to understand
+[00:28:41] what happens if I have a Bayesian game? Well, in a Bayesian game, or in any game,
+[00:28:47] you want to form a best response to your belief. Here we have a problem, because earlier
+[00:28:53] my belief was, well, I think my opponent might be playing this, then my best response would be
+[00:28:59] that.
+[00:29:00] Now, your belief, as discussed, is not only the move
+[00:29:04] that your opponent might make, but also
+[00:29:06] the type he or she can be.
+[00:29:09] So you need to create a belief.
+[00:29:11] Every player needs to create a belief
+[00:29:13] about the types of the other players,
+[00:29:16] because they form a best response according to that.
+[00:29:22] So the catch here is that in order for a player
+[00:29:26] to form, as we said, consistent and correct beliefs, we need some common ground. Because,
+[00:29:34] of course, it is easy to say, well, you know what, I don't know your type. But that's really
+[00:29:41] wrong in a sense. It is true that we don't know the type, but most often, and this is
+[00:29:46] something that puzzles some of my colleagues who are not very familiar with statistics,
+[00:29:50] One thing is to say, I don't know things for certain.
+[00:29:55] This is something that every engineer must admit.
+[00:29:57] Because in every model, you always have some margin of error.
+[00:30:00] So you cannot say you know things for sure, for certain.
+[00:30:04] This is never true in engineering.
+[00:30:07] On the other hand, it's also wrong to say,
+[00:30:10] and I also know nothing at all, something you know.
+[00:30:14] Like, let me give you an example engineering-wise.
+[00:30:17] So, you meet a person on the street. Can you be sure this person is not a serial killer
+[00:30:26] and is going to kill you? No, you cannot be 100% certain because there are some serial
+[00:30:32] killers in the population. So, maybe you're very unlucky. Still, you cannot say every
+[00:30:38] time you meet a person on the street, you run away screaming because this can
+[00:30:43] possibly be a serial killer. What you're going to do is, okay, but I estimate that the probability
+[00:30:48] of this guy being a serial killer is very low. How can you tell? Well, not only you assume this
+[00:30:55] probability is very low, you assume to know it. So you see this probability p and one minus p
+[00:31:01] of the types of the opponent should be somehow known. So the idea is we don't know the exact
+[00:31:09] type of our opponent, but we know the probability distribution. This is very subtle and confuses
+[00:31:17] most engineers, because most engineers who are not familiar with statistics, and luckily ICT
+[00:31:23] engineers are usually familiar with probabilities, but many engineers like electrical engineers or
+[00:31:28] mechanical engineers, they only know the mathematical process for certain. So whenever
+[00:31:33] there is some uncertainty, they say, I don't know, and it's like they know nothing at all,
+[00:31:38] which is wrong.
+[00:31:40] So the message here is that you don't know
+[00:31:42] the type of your opponent, but you must know
+[00:31:45] in order to be able to solve a problem, at least,
+[00:31:47] you must know the probability distribution of the types.
+[00:31:50] Even more, my assumption is
+[00:31:52] the probability distribution is common knowledge.
+[00:31:55] So you see there is a subtlety here
+[00:31:57] because one thing you say,
+[00:31:59] okay, I know the type for sure.
+[00:32:01] Another thing is, I don't know the type at all.
+[00:32:03] I don't even know.
+[00:32:04] And I didn't even have a clue.
+[00:32:06] And the intermediate assumption that we're going to make is,
+[00:32:10] I don't know the exact type,
+[00:32:12] but I know the probability distribution
+[00:32:14] from which that random variable is drawn.
+[00:32:18] So in the example before, you know the value of P.
+[00:32:21] Well, this is common knowledge,
+[00:32:24] which is not just to say, if you remember,
+[00:32:26] common knowledge does not mean only that you know it,
+[00:32:30] but it means that, well, I know that you know it,
+[00:32:33] and you know that I know it.
+[00:32:35] And I know that you know that I know it, and so on and so forth.
+[00:32:39] So you can perpetrate this ad infinitum.
+[00:32:43] So not only I don't know the type of my opponent,
+[00:32:48] but I know the probability distribution of his or her type.
+[00:32:51] But my opponent knows that I will know it.
+[00:32:54] And I know that my opponent knows, and so on and so forth.
+[00:32:57] This is called the common prior assumption.
+[00:33:00] The prior is the distribution of the types.
+[00:33:02] And this is common knowledge.
+[00:33:04] OK, so in general, whenever you want to solve a Bayesian game,
+[00:33:08] you need the common prior assumption,
+[00:33:12] which is a natural work assumption.
+[00:33:14] Because if you don't have the common prior,
+[00:33:16] well, if you don't know it, how can you solve the problem?
+[00:33:19] Of course, it can be that you are so unlucky
+[00:33:21] that you don't know it.
+[00:33:23] But you need at least an estimate.
+[00:33:24] So it is necessary to assume common prior.
+[00:33:28] OK, so once again, this is to say that the Bayesian game
+[00:33:32] is just a special case of a dynamic game
+[00:33:36] where nature makes always the first move.
+[00:33:38] And that's so by determining the types
+[00:33:40] for some of the players, not necessarily all of them.
+[00:33:42] In this case, it's only player two was type,
+[00:33:45] but player one can have a type as well.
+[00:33:46] We will see this in later examples.
+[00:33:49] To keep things simple now, player one only has one type,
+[00:33:52] player two has two types, I need to decide which one.
+[00:33:55] But player one, but all the players,
+[00:33:57] know the probit distribution
+[00:33:58] according to which nature draws the types.
+[00:34:00] this is the common prior assumption.
+[00:34:04] Very well.
+[00:34:05] Now, since player two has two types,
+[00:34:09] it naturally results in two different nodes
+[00:34:12] where player two is to move, here and here.
+[00:34:15] So player two makes a double choice.
+[00:34:18] So when planning the strategy of player two,
+[00:34:21] just because player two has types,
+[00:34:24] he has or she has a strategy
+[00:34:27] that is more complicated than just an action.
+[00:34:29] So, remember, here was the previous case. Here, player two only has to decide one action.
+[00:34:35] So, strategy equals actions. Here, instead, player two has a pair of actions, a strategy,
+[00:34:42] like that is what to do here and what to do there. This is standard derivation
+[00:34:46] from dynamic game theory. So, it's not really a novelty. You didn't expect otherwise.
+[00:34:51] If you understand how you define strategy in a dynamic context, you know this the way.
+[00:34:56] But here we have a nice interpretation
+[00:35:00] because in normal form,
+[00:35:04] player two has four pure strategies
+[00:35:06] because there are two actions
+[00:35:08] and two information sets, right?
+[00:35:10] But these four strategies are a bit strange.
+[00:35:13] So formally speaking is obvious.
+[00:35:16] It's exactly the same as it was for dynamic games.
+[00:35:20] But if you think of it for a while,
+[00:35:22] it's kind of strange
+[00:35:23] Because the strategy form is a pair of values, like x, y.
+[00:35:27] x is the action chosen in this node.
+[00:35:31] And y is the action chosen here.
+[00:35:33] This is, again, by definition, by the book.
+[00:35:36] I didn't invent anything here.
+[00:35:39] However, what does x mean?
+[00:35:41] And what does y mean?
+[00:35:42] Well, x is nothing but what a rational player 2 does.
+[00:35:46] And y is what a crazy player 2 does.
+[00:35:49] So it's not really a strategy, but it's
+[00:35:51] special, very special case of a, well,
+[00:35:55] vectorial, let's say, strategy like we had in dynamic games.
+[00:35:58] Because in dynamic games, of course,
+[00:36:00] we have to decide one action per every possible
+[00:36:04] circumstance.
+[00:36:06] Here, we only have two possible circumstances,
+[00:36:08] and they seem kind of crazy because they
+[00:36:11] are the type of player two.
+[00:36:13] So player two is basically deciding
+[00:36:16] a strategy, which is a plan of action for when player two is
+[00:36:19] rational, and a plan of action for one player two is crazy.
+[00:36:25] This seems kind of crazy, right?
+[00:36:27] So what do we set here is that since we
+[00:36:32] have incomplete information games,
+[00:36:35] we decide to define what each type of a player does.
+[00:36:39] And keep in mind that this always
+[00:36:42] leads to an exploding number of combinations.
+[00:36:44] We already saw this for dynamic games.
+[00:36:47] We said, well, if you have three times three game played twice,
+[00:36:53] you have a strategy which is, well, 2 to the power of 10.
+[00:36:57] So it's really complicated, or 3 to the power of 10.
+[00:37:00] So it's really huge in terms of how many studies
+[00:37:03] you can have already with a very simple game.
+[00:37:06] And you see already here that I kept this game very simple.
+[00:37:10] This has the simplest possibility
+[00:37:12] for the strategy, one binary value and one binary value.
+[00:37:16] But already introducing a type, this gets multiplied by two.
+[00:37:20] So I now have two strategies for player one
+[00:37:21] and four strategies for player two.
+[00:37:24] So you see we can represent this in normal form
+[00:37:27] by assuming that player one has only two strategies,
+[00:37:30] as usual.
+[00:37:31] O or E, these are the two choices
+[00:37:34] that player one can make, and only one choice
+[00:37:37] is required from player one.
+[00:37:39] But player two has four strategies,
+[00:37:40] and they are AA, AF, FA, or FF.
+[00:37:43] path. This depends on the path of play that also depends on nature choice. So there is,
+[00:37:50] I mean, even though this is still by the book, there is some strange flavor, I guess
+[00:37:54] you feel it because, well, you can wonder why do I need to define that such an elaborate
+[00:38:00] strategy? Why do I need to tell what I do when I'm rational, what I do when I'm
+[00:38:05] crazy? Well, probably I'm not both at the same time. So some part of the strategy
+[00:38:10] will be pointless, correct? Well we'll go back at this but let's see what happens.
+[00:38:16] If you have player one having these two strategies and player two having these four
+[00:38:21] strategies you can certainly derive a matrix and this matrix results in these utilities
+[00:38:26] depending on p because the values you put here are expected values. So let's see an example
+[00:38:34] eaf so what to write here here we write the probability that player one so player one
+[00:38:41] if the choice is eaf let's go back to the game eaf means player one plays e always so you see
+[00:38:51] important player one cannot make two different actions here and here so player one
+[00:38:56] only makes the same action either always or in which case the game ends with two two this is
+[00:39:01] why here you have 0, 2 always, because if play 1 goes for O,
+[00:39:05] whatever play 2 does, whatever play 2 types is, always 0, 2.
+[00:39:09] The game immediately ends.
+[00:39:11] If play 1 only decides to make play E,
+[00:39:14] because play 1 can only decide either to always play O
+[00:39:17] or to always play E, because play 1 doesn't distinguish
+[00:39:20] between these two nodes.
+[00:39:21] So this definition strategy is only 1.
+[00:39:24] So let's say play 1 decides to play E,
+[00:39:27] and player 2 decides to play A, F, meaning A when rational,
+[00:39:30] f when crazy. When player two is rational, this happens with priority p, so with priority p
+[00:39:38] the payoffs are one and one. And when player two is crazy, this happens with priority one
+[00:39:44] minus p, the payoffs are minus one, two. So let's write it. So player one gets
+[00:39:51] p times one, one with priority p, plus minus one with priority one minus p. The result is
+[00:39:57] 2p minus 1.
+[00:40:01] And instead, player 2 gets 2 minus p.
+[00:40:04] You can check with probability p gets 1,
+[00:40:07] with probability 1 minus p gets 2.
+[00:40:09] So this is the result. This is the table.
+[00:40:10] You can fill the table.
+[00:40:11] And then depending on p, you get a different matrix.
+[00:40:15] But having this normal form, we will see,
+[00:40:19] you can easily find a Nash equilibrium.
+[00:40:21] And there is an important aspect.
+[00:40:24] That is, if you want to set a Nash equilibrium here,
+[00:40:29] what you get is, well, depends on the value of P.
+[00:40:33] So one nice property of Asian game
+[00:40:35] is that depending on the value of P,
+[00:40:37] you can have different outcomes.
+[00:40:39] Because you see, if we set P equal to 2 thirds,
+[00:40:42] we can say these are the best responses.
+[00:40:45] But you see, the value is 1 third.
+[00:40:47] This depends really on the value of P.
+[00:40:50] because if p is equal to two thirds,
+[00:40:53] this value is going to be one third.
+[00:40:56] But what happens if the value is one third?
+[00:41:00] If the value is one third, this is minus one third
+[00:41:02] and the best response won't be this value anymore.
+[00:41:07] So the actual value of p can switch
+[00:41:11] what is the best response
+[00:41:12] and therefore can switch the Nash equilibria.
+[00:41:15] So the first remark to make in Bayesian games
+[00:41:17] is that they have different Nash equilibria
+[00:41:20] depending on the common prior.
+[00:41:22] So the common prior is very important.
+[00:41:24] And now, for now, we can just conclude,
+[00:41:27] we will explore this in the next lecture.
+[00:41:29] We can just conclude that if we
+[00:41:31] keep a very agnostic procedure,
+[00:41:34] so we pretend we don't know this is a Bayesian game.
+[00:41:37] This is just a very strange, special case of dynamic games
+[00:41:41] where the first move is made by nature and so on and so
+[00:41:43] forth, this can be brought down to normal form,
+[00:41:46] as we did in the previous chapter,
+[00:41:47] and we get this Nash equilibria.
+[00:41:50] Specifically, we identify there are three Nash equilibria,
+[00:41:54] where both players play a best response.
+[00:41:57] And that is the end, all that we can say for now.
+[00:42:01] We will explore this better in the next lecture.
+[00:42:05] However, we can make some discussion before going on.
+[00:42:09] This can be extended also to mixed strategy
+[00:42:13] in a very straightforward way.
+[00:42:15] Because, what happens, so this, keep in mind,
+[00:42:19] these are three Nash equilibria in pure strategies, okay.
+[00:42:24] What if we consider, or maybe this matrix
+[00:42:26] doesn't have any Nash equilibria in pure strategies,
+[00:42:29] but we know for sure there's gonna be
+[00:42:31] a Nash equilibrium in mixed strategies.
+[00:42:34] And well, I don't want to delve into this.
+[00:42:37] Let me just remind you that whenever you have a matrix,
+[00:42:40] you can easily, sort of, find the mixed
+[00:42:44] Nash equilibrium as well. Here would be easy because you only have two choices here, so you
+[00:42:50] can set indifference between O and E and that will lead you to identify. So player one, any
+[00:42:57] mixed strategy player one involves playing both O and E. You cannot avoid, otherwise you play a
+[00:43:02] push strategy. So in these cases it would be sort of easy to find by hand, but I mean
+[00:43:08] that's very boring, so I don't want to do that. On the other hand, there is another remark. How do
+[00:43:15] you compute the payoff of a mixed strategy? Well, you take expectations, remember? Well,
+[00:43:21] this is something that you do anyways because you have probabilities. So, since you have
+[00:43:27] probabilities here in the tree, you can only compute the utilities in the normal form here
+[00:43:33] as expected values.
+[00:43:35] Here is what we did.
+[00:43:37] So luckily, mixed strategies don't change that much.
+[00:43:41] And this is also another node
+[00:43:43] to von Neumann and Morgenstern that told us,
+[00:43:45] well, you have to use expectations to compute utilities.
+[00:43:48] Well, this is even more true
+[00:43:50] because this way we can merge the belief
+[00:43:54] about the other player move
+[00:43:57] and the belief about the other player's type
+[00:44:01] because we take expectations about both.
+[00:44:04] And luckily for us, the expectation of an expectation,
+[00:44:07] the compound expectation,
+[00:44:09] can be reduced to a single expectation.
+[00:44:13] So in short, we have expectations and average payoffs,
+[00:44:18] and it doesn't really matter
+[00:44:19] if they are the result of mixed strategies
+[00:44:21] or the result of the Bayesian gain,
+[00:44:23] because all in all, we take expectations anyways.
+[00:44:27] However, here we have expectations
+[00:44:30] on types, so the quantity on which we average
+[00:44:35] is a type distribution.
+[00:44:37] So it is true that, in a sense, it's nothing new,
+[00:44:40] but it adds a philosophical layer
+[00:44:42] in that we need to take an expectation
+[00:44:45] over all possible types.
+[00:44:47] And this connects to the consideration
+[00:44:48] I was making before, like if you
+[00:44:50] meet a random person on the street,
+[00:44:52] why don't you run away screaming?
+[00:44:55] That guy can be a serial killer.
+[00:44:58] Well, you don't expect this to be very likely.
+[00:45:01] So your expectation, and I'm using it
+[00:45:02] in a different non-mathematical sense,
+[00:45:04] your expectation is that the guy you meet on the street
+[00:45:07] is not a serial killer because the probability
+[00:45:09] of meeting a serial killer is very low.
+[00:45:11] And this justifies your behavior.
+[00:45:13] Your behavior is actually an expectation.
+[00:45:16] You say, well, is this serial killer?
+[00:45:17] There is a very low probability I should run away.
+[00:45:20] And there is a very high probability
+[00:45:21] I keep going on as usual.
+[00:45:23] So you do what is the result of this mixed behavior
+[00:45:27] which is what you keep going on.
+[00:45:30] Your expectation is to keep going on, okay?
+[00:45:33] Here, the catch is that computing these expectations
+[00:45:36] is always something we have to do in game theory,
+[00:45:39] but is either easier, but also difficult,
+[00:45:42] or difficult depending on the scenario.
+[00:45:44] But in general, here, we have to make expectations
+[00:45:47] on the possible types of efficiency,
+[00:45:49] not just on the possible moves that our opponent is playing,
+[00:45:53] but really on the time.
+[00:45:54] And this, again, why we need the common prior.
+[00:45:57] in order to be able to take these expectations, okay?
+[00:46:01] Now, in this example that we just showed,
+[00:46:05] player one has only one type.
+[00:46:07] So player one is a regular player, actually.
+[00:46:10] Player one wants to take the average of his utility
+[00:46:15] over his possible types, so this makes much sense.
+[00:46:19] Player one does not know if player two
+[00:46:21] is rational or crazy, so player one takes expectations
+[00:46:25] based on the probability of player two
+[00:46:27] being rational or crazy.
+[00:46:29] However, player two, if you look at it philosophically,
+[00:46:33] is behaving very bizarrely,
+[00:46:35] because player two is taking expectations as well,
+[00:46:38] but the expectations are on its own type.
+[00:46:40] So you might argue from the philosophical standpoint
+[00:46:43] that you are a player with type,
+[00:46:45] so you might be crazy or rational.
+[00:46:48] You are only one type in reality.
+[00:46:50] So you need to take an expectation on your possible types,
+[00:46:54] But you shouldn't be doing so because you
+[00:46:57] know what type you are.
+[00:47:00] So why do you need your expectations on your types?
+[00:47:06] Well, let's look at this this way.
+[00:47:09] The real players, which is the rational player
+[00:47:11] 2 or the crazy player 2, we replace them
+[00:47:14] with a single player.
+[00:47:16] Single player is a meta player called MP2.
+[00:47:19] Sometimes this is called the type agent representation.
+[00:47:22] So it's like having a single agent that
+[00:47:25] can be of different types.
+[00:47:27] So his choices also involve being on a different type.
+[00:47:32] Now we wonder, is the best response,
+[00:47:34] so this is like these characters
+[00:47:36] you see in fantasy fictions with, I don't know,
+[00:47:39] two heads, one good head and one bad head,
+[00:47:42] or two faces from background, or the angel
+[00:47:46] on the table on the shoulder.
+[00:47:47] So you have a given probability that in this moment
+[00:47:49] is the angel speaking, in other moments is devil speaking.
+[00:47:54] So the question is, if you take such a crazy character,
+[00:47:58] such a split personality character,
+[00:48:01] is the best response of this character
+[00:48:04] equal to what you do in reality?
+[00:48:06] Because the philosophical question
+[00:48:08] is you are modeling a situation where you can only
+[00:48:12] have either the good guy or the bad guy.
+[00:48:15] You cannot have both at the same time.
+[00:48:17] You are characterizing this as if you had a single guy that is sometimes crazy and sometimes
+[00:48:24] good and sometimes bad. Is this equivalent? The answer is yes. And this is thanks to
+[00:48:31] the equivalence between the normal and the sensitive form, which happens through
+[00:48:34] the expectations. So, since you take expectations in the utility, and you know the probability
+[00:48:40] of good and bad, then this is equivalent. So you can always derive this normal form
+[00:48:48] with a tight agent representation as equivalent to this extensive form, which is the true
+[00:48:54] reality. Okay, let me clarify the philosophical difference. And maybe it's very clear, because
+[00:48:59] mathematically speaking, there is nothing to understand. But this is a dynamic game.
+[00:49:03] So I said, well, dynamic game can be merged down and flattened down into a normal form
+[00:49:09] game, right? As if it was static. And the characteristic is, when you say take this
+[00:49:15] normal form, it says, well, your strategy of player two is to plan an action per each
+[00:49:21] node, or either per each information set. Okay, so this is the definition of strategy
+[00:49:27] in a dynamic context. Now, the crazy part, here is the strange part, here is, well,
+[00:49:32] Well, this requires to plan an action for each of your personalities. So you are replacing
+[00:49:39] the different characters you can face with a unique individual that has a very crazy
+[00:49:46] mind and a very polymorphic personality. Let's say sometimes behaves like this, some
+[00:49:51] other times behave like that, but you know the probability. This is very important.
+[00:49:55] You know the probability. Okay. What can you say now? You can say that these strategies
+[00:50:01] are not really like an if-then-else set of instructions
+[00:50:06] like you have in a computer program.
+[00:50:08] It's more like a manual of the crazy guy.
+[00:50:11] Like, you see these kind of movies
+[00:50:13] in which there are crazy individuals,
+[00:50:16] like Memento, for example.
+[00:50:17] There are individuals that write down instructions
+[00:50:20] for themselves because they might not
+[00:50:23] remember the instructions.
+[00:50:24] So they write down as if they
+[00:50:26] were a meta person controlling their personalities.
+[00:50:29] This is very, well, inspirational, but also very, I mean, out of mind, in a sense, because
+[00:50:35] this manual of actions, like AF, means play A if you are sane-minded. Play F if you're
+[00:50:42] crazy. What kind of manual is that? It's a manual. It's not like a manual that you
+[00:50:47] want to follow, like a manual, a handbook, sorry, a handbook that you want to follow
+[00:50:52] in a list of instructions, like we said, in dynamic games, in behavioral strategies,
+[00:50:59] which is a handbook telling you, okay, if this happens, do like this. Like, I have the set of
+[00:51:04] instructions for my boiler, for my water boiler at home. If this light turns red,
+[00:51:12] well, open this knob. If this light turns blue, well, unplug the boiler and whatever. So,
+[00:51:19] So this is a set of instructions you would like to follow,
+[00:51:22] because it tells you clearly, if this, then do that.
+[00:51:25] But here, the if then relates to the nature
+[00:51:27] of the player itself.
+[00:51:29] So the player is supposed to write down handbook
+[00:51:31] as a strategy, and the strategy actually
+[00:51:34] only depends on whether the player is of a certain type.
+[00:51:38] Why do we need that?
+[00:51:39] I mean, that's kind of crazy, if you forgive me.
+[00:51:42] Because this is really critical,
+[00:51:46] because you want to conjecture about your own type. So this also means that you need to have
+[00:51:57] common knowledge. So this can actually be unrealistic in a certain context because
+[00:52:03] if you are of a certain personality, how can you even know that there are other personalities
+[00:52:08] is out of yourself, and what is the probability?
+[00:52:12] I know, I suspect, I'm fully rational.
+[00:52:16] I'm not the crazy Leonardo.
+[00:52:18] How can I even know there is a crazy Leonardo,
+[00:52:20] and what is the probability that you are facing
+[00:52:22] the crazy Leonardo?
+[00:52:23] Who knows?
+[00:52:24] Well, in reality, this is very tricky.
+[00:52:28] So before closing the video, the key point here,
+[00:52:31] the answer, and we will discuss this later.
+[00:52:33] Why do we need this kind of strange model?
+[00:52:36] Once again, you don't need for the player itself.
+[00:52:40] So the player said it is actually true
+[00:52:43] that the player itself is taking expectations
+[00:52:46] on their own types, but this is not useful
+[00:52:49] for his or her own actions.
+[00:52:53] Because after all, player two here,
+[00:52:55] you can even say, well, player two
+[00:52:57] does not need to take expectations.
+[00:52:58] Player two knows it is crazy or not
+[00:53:00] because player two, when reaching this node,
+[00:53:02] player two perfectly knows he is in the rational tree
+[00:53:04] And here, player 2 perfectly knows being in the crazy tree.
+[00:53:08] And that's no need to take any average.
+[00:53:09] The decision is clear.
+[00:53:10] Player 2, here, plays A. Player 2, here, plays F.
+[00:53:13] There is no doubt about that.
+[00:53:16] But this is very important for player 1.
+[00:53:19] Player 1 is like he was facing one such strange
+[00:53:23] new people, this meta player, this type agent.
+[00:53:26] Player 1 considers the type agent to be the opponent.
+[00:53:30] So we will prove that the two representations
+[00:53:32] are indeed equivalent.
+[00:53:32] And, well, we don't even need to prove this because it's kind of obvious. It follows from
+[00:53:38] the law of expectation that we always use to compute iteratives. But the philosophical
+[00:53:43] perspective is very important. It's not you yourself doing expectations on your possible
+[00:53:49] types. It wouldn't even make sense. But the other players are required to do so.
+[00:53:54] This way, because they don't know your type. So they can really claim that your type can
+[00:54:00] be with different probabilities.
+[00:54:02] And the important philosophical requirements, then,
+[00:54:05] is not that you make philosophical computations
+[00:54:09] about yourself and you question your nature.
+[00:54:12] I mean, you can do that if you want, but this is out
+[00:54:14] of scope for game theory.
+[00:54:16] But on the other hand, you know the prior.
+[00:54:18] This is very important because it's actually
+[00:54:20] a quite critical assumption, even unrealistic.
+[00:54:23] But without that, you can't do any computation.
+[00:54:26] OK, so this is a good moment where
+[00:54:29] stop and then we'll take back with some formal definition.

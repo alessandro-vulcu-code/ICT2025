@@ -1,0 +1,465 @@
+[00:00:00] is just the stepwise function, so 1 is the argument is true and 0 is wise, but that's not really an accurate expression.
+[00:00:20] This is ri, this is 1 of ri larger than l over that ri, which means that ct is l divided by that i, the function is 0 here, and 1.
+[00:00:36] Okay, the mean capacity is 500 feet per second and you are required to find the optimal location.
+[00:00:42] This is very simple, so I give you three minutes.
+[00:00:46] Wait, two minutes, one minute.
+[00:01:37] Lucian, don't be shy, raise your hands and give me the solution.
+[00:01:49] Right or wrong, whatever it is.
+[00:02:14] 90 seconds for me, more than enough.
+[00:02:17] Solution, do you have it?
+[00:02:31] 3 for the second one, and 2 for the maximum.
+[00:02:36] You're reasoning?
+[00:02:36] We calculate the ratio to the length of the solution.
+[00:02:43] So if I put it in L divided by delta 1,
+[00:02:46] that is one over your second, right?
+[00:02:52] L divided by delta 2 is 2 squared.
+[00:03:01] Except that there's a feasible condition.
+[00:03:04] There is a feasible condition.
+[00:03:07] So this one is what we call r1 star.
+[00:03:10] Or let me introduce a new notation here.
+[00:03:21] We call the quantity of resources
+[00:03:25] that fully satisfy that a user with W. So W1 equals 1,
+[00:03:31] W2 equals 1.
+[00:03:33] So W1 is the resources that will make user 1 very
+[00:03:39] satisfied, W2 the same as user 2.
+[00:03:42] So you said that W1 plus W2 is less than C.
+[00:03:46] So these are both, these are both following.
+[00:03:51] And so you decided to assign.
+[00:03:53] Can we imagine the relation between this,
+[00:03:56] this choose one by W1?
+[00:03:59] Uh-huh.
+[00:04:00] And the, the, the two, the, the relation between the two
+[00:04:05] could be the relation between the one and the other.
+[00:04:09] And so you assign two, 10?
+[00:04:23] So this makes a lot of sense, because you are, I mean this makes sense, maybe not a
+[00:04:30] lot of sense, but if this makes sense, so the reasoning so far is perfect, the only
+[00:04:35] The only question that I have is that you are assigned 3 and 2, which brings the total utility to 2, because you get 1 from this 1 and 1 from this 1, right?
+[00:04:47] You achieve the maximum possible utility of the system, that's fine.
+[00:04:51] But you would achieve the same, exactly the same performance by giving 1 to user 1 and to 3, maybe per second to user 2, right?
+[00:05:01] So you're not assigned all the resources that you have, but you still achieve the maximum performance.
+[00:05:07] So typically, in general, this is preferable to the other things.
+[00:05:11] So there is a frugality principle that is not always valid, but often is considered,
+[00:05:20] that says that the resources given to one user should not exceed the maximum resources that that user needs
+[00:05:27] to satisfy its requirements.
+[00:05:31] So typically you try to stay
+[00:05:34] to satisfy this frugality principle
+[00:05:37] so to do not give more than required
+[00:05:39] because it will be happy nonetheless.
+[00:05:43] But also your solution is fine.
+[00:05:46] That was simple, right?
+[00:05:51] That's the frugality principle I mentioned.
+[00:05:54] But now let's consider this
+[00:06:01] this other form of the same problem
+[00:06:22] same problem as before, two differences
+[00:06:25] first, the utility function is not under a stepwise function
+[00:06:29] but let me introduce an intermediate problem before moving to this one
+[00:06:33] so consider the same problem as above with these utility functions
+[00:06:38] without the difference that now C is 1.5 negative percent
+[00:06:44] Which means that this is not longer true, right?
+[00:06:48] Because the sum of these two is 1.66.
+[00:06:52] So if C is 1.5, how do you allocate these resources
+[00:06:58] to the two users in this case, right,
+[00:07:00] with this stepwise continuum function?
+[00:07:13] I want to hear the reasoning more than the solution.
+[00:07:19] Please.
+[00:07:19] we will maybe weighten the two traffic.
+[00:07:29] So we don't equally split, but we split in function
+[00:07:34] of how much the error was.
+[00:07:36] All right, so that's a good reason.
+[00:07:39] So you would take this 1.5 megabits per second.
+[00:07:43] If my understanding is correct of what you're saying,
+[00:07:45] you're saying, but I allocate to user i a fraction of c that is proportional to what
+[00:07:53] user i requires with respect to the total request of the two users. Something like this?
+[00:08:00] So c multiplied by wi divided by w1 plus that's it. Sure. Is this what you want to see?
+[00:08:14] No, I'm not saying that it's wrong actually, I don't know whether. This is a proportional
+[00:08:18] I showed that this is a criterion we will see in the next lecture.
+[00:08:22] This is called proportional fairness.
+[00:08:28] So this is a sort of proportional distribution of the resources.
+[00:08:33] Each one gets something that is proportional
+[00:08:35] to what it requires to respond to what is required by the other users.
+[00:08:41] That's not how it did it.
+[00:08:42] it makes sense. In this case, it will assign a number of resources, that is, R1 equal to 1 over 1 plus 2 squared, multiplied by 1.5.
+[00:09:13] Unless I made some mistakes in the computation, we should add 0.9 negative per second to use R1.
+[00:09:21] And, of course, the user 2 gets what remains, so it's 1.5 minus 0.9, which is 0.6, right?
+[00:09:35] What's the total utility that you get?
+[00:09:41] The utility of this solution would be equal to the utility of user 1 plus the utility of user 2, right?
+[00:09:49] What's the utility of user 1?
+[00:09:50] 0.2. It requires 1 and it gets 0.9. What do you think of user 2? 0. It requires 0.66 and it gets 0.
+[00:10:04] So the total utility is 0. Can we do any better?
+[00:10:18] We might give resources to one user. Which one?
+[00:10:33] Say again. The lower one. Perfect.
+[00:10:36] So we can give 3.66 negative per second to user 2.
+[00:10:43] And what remains is that this 5 is less than 0.9.
+[00:10:47] 1.5 negative per second minus 2.3.
+[00:11:06] And we set it to 0.
+[00:11:07] Which means that user 2 gets a reward equal to 1.
+[00:11:13] User 1 gets a reward.
+[00:11:15] Look at this.
+[00:11:17] It's the top reward, this one.
+[00:11:19] Right?
+[00:11:20] Can we do any better than this?
+[00:11:28] Not from the total number, total utility perspective,
+[00:11:32] but actually this allocation is, given these conditions
+[00:11:37] and everything, this allocation is useless,
+[00:11:40] because we are all given resources that do not
+[00:11:43] bring any benefit.
+[00:11:44] So if we have a cost for all allocated resources,
+[00:11:49] then a better solution would be to give 0 to the user
+[00:11:51] 1 and 2 to the user 2.
+[00:11:54] The total utility does not change, we save some costs.
+[00:11:58] Here, so quality, I mean this principle that seems to be very natural, I mean each one gets a little bit,
+[00:12:09] might not be efficient in our design.
+[00:12:13] Okay, so bear this in mind.
+[00:12:15] And now try to solve this algebra problem.
+[00:12:17] This algebra problem is similar to this one.
+[00:12:19] So again, the total of the resources required by these computers exceeds the classical belief that it is 1.5.
+[00:12:29] But now the utility functions are different.
+[00:12:36] Now we have that the utility function is the mean between that ratio and zero.
+[00:12:43] So the right hand side part becomes zero when the utility resources are equal to L divided by delta I.
+[00:12:52] So when we allocate w i resources to the user,
+[00:12:59] the utility can still.
+[00:13:01] If we allocate less, the utility is negative.
+[00:13:04] If we allocate more, the utility is still.
+[00:13:08] So the utility function now is something like this.
+[00:13:13] It starts from minus 1 when we don't allocate anything.
+[00:13:19] Anything goes to 0.
+[00:13:23] The fact that the utility is negative is not the truth.
+[00:13:26] Because our problem is to maximize the utility.
+[00:13:29] If it is negative, we just try to stay on the less negative
+[00:13:37] value as possible.
+[00:13:41] If it is like this, what would be the optimal algorithm
+[00:13:45] you're in, considering that, once again,
+[00:13:48] that we want a pattern to be larger than 0.
+[00:13:52] So we cannot allocate enough resources for the user
+[00:13:57] to have zero utility. Some users would have a lower utility. In this problem we have another aspect that we haven't considered before.
+[00:14:08] Two users don't have the same priority. One user one is less important than user two.
+[00:14:19] utility of user two has a way to minimize the utility of user one.
+[00:14:28] So how would you allocate resources? Does it make any sense to allocate less than 1.5Mb per second in this case?
+[00:14:59] To save some big rate for some reason?
+[00:15:05] I would save numbers.
+[00:15:07] Why?
+[00:15:07] You are already limited on the ratio of the two resources that you are using.
+[00:15:16] I mean, if you've got 1.5 languages per second,
+[00:15:20] you're limiting both of the sources.
+[00:15:23] So if you go lower than that, the entire theorem
+[00:15:30] is dead, I don't know.
+[00:15:31] In front of the head.
+[00:15:32] No, that's not what you're going to do.
+[00:15:33] Correct.
+[00:15:35] Because you're pulling us correctly,
+[00:15:36] so that conversely, combining what we observed before,
+[00:15:40] we said that before, we said that if we don't allocate
+[00:15:42] some resources, then we will not change.
+[00:15:44] In this case, if we don't allocate all the resources we have, the user will change and will become worse.
+[00:15:51] Because with all the resources we get, for example, one user here and one user here,
+[00:15:57] if we don't allocate these resources, the user will become here, which is much more negative.
+[00:16:04] And this is a very important principle that is in the slide that I said before, here.
+[00:16:09] Whenever you have that, the request from the users
+[00:16:12] exceeds the capacity.
+[00:16:14] And the utility functions are not decreasing,
+[00:16:17] so they keep increasing when you allocate more resources
+[00:16:20] until they reach that value.
+[00:16:22] Of course, then they might be stable.
+[00:16:24] Then the optimal allocation asks always
+[00:16:27] to use the whole resource set that you have.
+[00:16:31] So it doesn't make sense to spare resources.
+[00:16:34] Because in this case, if a user is not satisfied by increasing its allocation, it will increase its utility.
+[00:16:43] So even if you don't reach the maximum that it can reach, still it's convenient to give it something more than
+[00:16:50] if something is less, rather than sparing some resources.
+[00:16:55] So whenever you have this condition and this condition,
+[00:16:58] so you didn't factor that normally increasing as long as W1 is not fixed,
+[00:17:05] then the allocation vector has to be equal to the total number of resources that are available.
+[00:17:13] Which means that in this case it doesn't make sense to allocate less than 1.5 negative per second.
+[00:17:21] In other words, we have to have that R1 plus R2 has to be equal to 1.5 negative per second.
+[00:17:29] So we need to find out of all possible values of R1 or R2.
+[00:17:35] So the physical set in this case is this area here.
+[00:17:49] In principle, each point in this area is feasible.
+[00:17:52] We can allocate that resources to the user
+[00:17:55] without exceeding the capacity.
+[00:17:57] But according to this consideration,
+[00:17:59] we know that our solution has to lie on this segment.
+[00:18:03] So the integral points are not optimal, for sure.
+[00:18:09] So the optimal solution has to be a point here in this part.
+[00:18:14] This line is characterized by the equation R2
+[00:18:18] is equal to C minus R1.
+[00:18:24] And therefore, we can actually derive,
+[00:18:28] if you like, the polynomial problem, if you can see it.
+[00:18:32] If we set R1, we automatically
+[00:18:35] define also R2 because of that relation.
+[00:18:39] So our initial problem was to maximize the test R1, R2
+[00:18:47] belonging to the region R of U1, 1 plus U2, 2.
+[00:18:55] And this problem is equivalent of the problem
+[00:18:58] of maximizing with respect to R1.
+[00:19:08] Here we have a1 and a2 as well, plus a2u of c minus 3.
+[00:19:20] So we solve the problem with two variables,
+[00:19:22] and we solve the problem with one variable.
+[00:19:24] The only variable is r1.
+[00:19:38] I've written it right, that's correct.
+[00:20:26] Now we can go into the functions as a function of r1.
+[00:20:33] Let's start with u1.
+[00:20:36] So when r1 is 0, e1 is minus 1.
+[00:20:42] Then it goes linearly.
+[00:20:46] The rate is 1, right?
+[00:20:47] So it goes up to this point, and then it
+[00:20:52] remains constant up to this point.
+[00:20:55] What's about the utility of the second function?
+[00:20:59] Well, if r1 is 0, the second function
+[00:21:04] r2 gets to that ec, and therefore, since we are here,
+[00:21:08] The second function starts from 0 here.
+[00:21:13] Then as we increase R1, R2 is the least, right?
+[00:21:20] But as long as C minus R1 is larger than W2,
+[00:21:26] which means that R1 is less than C minus W2,
+[00:21:34] then R2 will be larger than W2,
+[00:21:38] which means that the utility u2 will remain constant
+[00:21:44] and equal to 0.
+[00:21:47] C minus W2 is 1.5 out of here.
+[00:22:05] So up to this point, utility 2 is 0.
+[00:22:09] And then, if R1 exceeds this point, this one is 5 over 6.
+[00:22:20] Beyond this point, R2 starts at this end,
+[00:22:23] which means that the utility function u2 becomes more and more negative.
+[00:22:30] Once r1 is equal to c, r2 is 0, and the utility function becomes minus.
+[00:22:40] This is like this.
+[00:22:48] So where do you get the maximum of the sum of these two?
+[00:22:51] This is c minus r1, while this is u1 of r1.
+[00:23:02] We need to sum the two, so the sum will be equal to this part up to this point, up to this point,
+[00:23:15] and from this point we have that one will be different from the other one decreases,
+[00:23:20] but since the second one decreases more rapidly than the first one,
+[00:23:24] then you have that the sum will decrease up to this point,
+[00:23:30] and then the second one is constant.
+[00:23:35] So the maximum is reached here.
+[00:23:40] I should think that the solution in the slide is probably wrong.
+[00:23:54] Oh, it's easy to see that this solution is wrong.
+[00:24:13] So I want to compute what's the utility at this point.
+[00:24:16] The point is to give R1 the value of 5 over 6 megabits per second,
+[00:24:23] which means that R2 gets...
+[00:24:37] That's why it's actually the same solution. R2 gets exactly 2 over 3 megabits per second.
+[00:24:44] The optimal solution is R2 equals to W2, because at this point we have that R2 is actually equal to W2,
+[00:24:55] while R1 star is what we need, C minus R2 star.
+[00:25:00] So we are given to the user with highest weight, the sources that it requires, and we assign to the other user what is left.
+[00:25:12] That is exactly what we did here.
+[00:25:16] So this was more intuitive, here we prove it analytically, but of course there is no necessity.
+[00:25:23] Okay?
+[00:25:28] Well this is another version of the problem.
+[00:26:00] Yeah, that was not solved here, but we did it for you.
+[00:26:03] Same as before, with the difference
+[00:26:08] that the utility functions are defined in a different manner.
+[00:26:44] So what's the difference between class type two
+[00:26:57] and class type one?
+[00:27:00] This unit of the utility function, this is ri,
+[00:27:03] This is Wi, this is Wi, and it tells you that as long as Wi
+[00:27:13] is l divided by i, as long as you assign less than Wi,
+[00:27:19] then it will be 0, because this term is negative,
+[00:27:25] and therefore the maximum is equal to 0.
+[00:27:29] When our i exists this value, then you
+[00:27:33] If you take the rho 3 and you get pi i, it hits the value 1.
+[00:27:41] It stops.
+[00:27:42] So you have a little bit of time.
+[00:27:46] For which value does it reach the value 1?
+[00:27:52] W i star.
+[00:27:58] Touch that.
+[00:28:01] W i star.
+[00:28:02] You divide by that by i.
+[00:28:04] You divide by that by 2.
+[00:28:07] So W i star is 2 times W i.
+[00:28:14] With this other, you can find that you have total capacity
+[00:28:23] that these three megabits per second
+[00:28:25] find the optimal allocation.
+[00:28:29] That's left to you.
+[00:28:39] Right?
+[00:28:39] Questions?
+[00:28:50] Yes.
+[00:28:50] Let's move on.
+[00:28:52] Questions?
+[00:28:53] We're clear?
+[00:28:56] Please.
+[00:28:57] You also remember, I remind you to upload this.
+[00:29:01] Yeah.
+[00:29:02] I do upload this twice, just after the lecture.
+[00:29:22] After this introduction on utility functions
+[00:29:27] and their maximization, let's see
+[00:29:29] how to formalize a little bit better
+[00:29:33] So far we have played with very simple pieces, but of course not all pieces are so simple.
+[00:29:39] So what we will do in what remains of today's lecture and the next one is to find some more general approaches to solve these optimization problems that we presented before.
+[00:29:56] So let's consider the case where you have a utility function u that is a system using
+[00:30:03] functions of k unknowns that are the resources to be allocated to the k users.
+[00:30:12] In this case, k indicates another user.
+[00:30:14] I should have used n to be consistent with the previous slides, but just write
+[00:30:20] somewhere that k is another user's fear.
+[00:30:25] So first of all, we need to introduce some, or better to recall, some definitions coming from your first year study, and this one, and this first one, and this second.
+[00:30:40] So the definition of a multivariate concave function is the following one.
+[00:30:45] So u is a concave function.
+[00:30:48] If for any one point in the domain,
+[00:30:51] and any value theta is between 0 and 1,
+[00:30:54] that's a real value.
+[00:30:56] Then the function computed the point
+[00:30:58] that is the linear combination between r and v
+[00:31:01] according to the parameter theta.
+[00:31:04] So this term here indicates a point lying in the segment
+[00:31:12] connected R to V. By changing theta from 0 to 1, you move from V to R along this segment.
+[00:31:23] So when you evaluate U in one of these intermediate points in this segment, then the value of U has to be above
+[00:31:30] the linear combination of the two extremes of the value of the function at the two extremes of the segment.
+[00:31:39] You remember this division, right guys? How many of you remember this?
+[00:31:51] In a unidimensional space, a concrete function
+[00:31:58] is something like that.
+[00:32:00] For any two points, r and v, what is written there
+[00:32:05] is that if you take a point zeta,
+[00:32:08] defined as zeta r plus 1 minus zeta v, with zeta in 0,1.
+[00:32:16] So this is a point here in this segment,
+[00:32:18] somewhere in this segment, zeta.
+[00:32:22] So what is written there is that the function in beta is always above the value of the function given by the linear combination of the two extreme, u r and u b, with the same mixing parameter t that I used for the even-needed point.
+[00:32:44] So it's always above this one here.
+[00:32:47] Do you remember this?
+[00:32:56] Like a concave when any point of the curve is above the corresponding point of the segment connected to any two points on the function, and convex in the contrary case.
+[00:33:12] So a concave function as this shape is also reversed well.
+[00:33:17] And you should also remember that an equivalent formulation of this one is the following one,
+[00:33:25] so involving the gradients.
+[00:33:28] So for one of the dimensional functions of single-valued functions,
+[00:33:45] convexity means that p is always less than or equal to u of v plus u prime r multiplied by v minus r.
+[00:34:11] If the function is multivariate, the derivative has to be replaced by the gradient.
+[00:34:18] The gradient is the vector written by the partial derivatives
+[00:34:21] of the function with respect to all the variables.
+[00:34:26] This one is a vector.
+[00:34:28] Typically you represent the gradient as a
+[00:34:46] calling vector.
+[00:35:07] You represent it as a calling vector and
+[00:35:11] in context. Therefore when you write
+[00:35:19] the gradient of u transposed, you are writing it as a
+[00:35:23] rho vector that is multiplied by this common vector.
+[00:35:26] So this product gives you one value.
+[00:35:31] That is not a matrix.
+[00:35:31] It's not a vector.
+[00:35:32] Any common vector is one point.
+[00:35:34] Because this is a function from rk, a dimension,
+[00:35:37] to r, to one dimension.
+[00:35:42] All right.
+[00:35:43] So this means that the function is concave any time
+[00:35:48] or better.
+[00:35:50] The function is concave if and on if the eigenplane
+[00:35:54] that is tangent to the function at a certain point
+[00:35:59] that is defined by this equation
+[00:36:01] that is above the function on that point.
+[00:36:08] I should have somewhere an example
+[00:36:11] but these are some examples of functions
+[00:36:19] with one single variable
+[00:36:21] so this is, is this convex or convex?
+[00:36:25] linear functions. It's both convex and convex.
+[00:36:36] Linear functions, more generally, are fine functions.
+[00:36:40] A fine function is a function of x
+[00:36:53] that can be expressed as the product of a matrix vector.
+[00:37:12] It's a three-dimensional vector.
+[00:37:14] x is a three-dimensional common vector.
+[00:37:18] So a function like this is a time function.
+[00:37:21] It's basically a function that is a linear combination
+[00:37:24] of the elements of the time.
+[00:37:29] We have a time function, and a time function
+[00:37:37] is both convex and a convex function.
+[00:37:42] So this is an example of a time function
+[00:37:45] in the non-dimensional state.
+[00:37:48] What is this?
+[00:37:49] Is it a convex or a convex or whatever function?
+[00:37:52] A convex function is just the algorithm
+[00:37:54] of a convex function.
+[00:37:55] I mean, the function should be kind of included.
+[00:38:00] Is this complex, complex, or not?
+[00:38:08] You take any two points in this line,
+[00:38:10] and the second is connecting the points
+[00:38:12] slightly low to the function itself,
+[00:38:15] or at most overlapping the function itself.
+[00:38:19] This is also a complex function.
+[00:38:22] This is a complex function in two-dimensional space,
+[00:38:25] which is a quadratic function.
+[00:38:28] And if you see, for any point we take in this product function,
+[00:38:32] the data point can grow the type of plane
+[00:38:35] that is tangent to the function on that point.
+[00:38:38] And all points in the other plane
+[00:38:39] will be above the function itself.
+[00:38:42] OK?
+[00:38:47] This is an applying function on the function.
+[00:38:50] The one that they wrote.
+[00:39:01] I must show you that.
+[00:39:06] Again, if you have a concave function,
+[00:39:08] then its opposite will be complex.
+[00:39:10] Okay, so it will be a function that looks like I'm dead, I'm sorry, I'm in parabolic.
+[00:39:21] I'm just going to write up a liquid metal, if you like.
+[00:39:33] An important point is that if humans come here, then any local optimal point is also globally optimal.
+[00:39:45] This should recall some old memories in your heads.
+[00:39:54] If you remember when we drew examples of water and lava,
+[00:39:58] optimal, I had to draw functions like this.
+[00:40:03] Where you had the derivative of the function that was positive,
+[00:40:09] then negative, then positive again.
+[00:40:11] These functions are not complicated, because if you take these two points,
+[00:40:15] For example, then the points in this segment
+[00:40:19] lie above the country.
+[00:40:21] So this is not concrete.
+[00:40:23] If you take a concrete function, like this one,
+[00:40:28] so that for any two points, the segment will lie below
+[00:40:31] the country, then any locally optimal point,
+[00:40:34] like this one here, is also locally optimal.
+[00:40:37] You don't have local, or you don't have local points.
+[00:40:41] OK?
+[00:40:43] Local optimal points.
+[00:40:44] We can prove it, you find all the proof in the book chapter that I have proved, but I assume that this kind of concepts are pretty clear to everyone.
+[00:40:55] But actually here the proof is also pretty simple for this principle of log optimality, and the proof is by contradiction.
+[00:41:05] So you assume that a concrete function admits a local optimal
+[00:41:11] or deal that is not a global optimal.
+[00:41:13] This is a contradiction because we know that if the theorem is correct
+[00:41:17] this cannot happen.
+[00:41:18] So we start making this assumption by contradiction
+[00:41:22] and we prove that if this assumption were true
+[00:41:25] then we would find something that is meaningless.
+[00:41:29] So a contradiction.
+[00:41:30] Which means that our original assumption was wrong
+[00:41:33] and therefore that a local optimum point must be globally optimum.
+[00:41:38] Cool, so let's start from the contradictory assumption,
+[00:41:41] so we assume that r0 is locally optimum but not globally optimum,
+[00:41:45] so there exists another point r1 for which the utility function is larger than r0,
+[00:41:51] otherwise r0 would be globally optimum.
+[00:41:54] But since the function, the domain of the function,
+[00:41:59] the function itself has to be complex, so if we pick a point zeta, that is a complex combination of R0 and R1,
+[00:42:10] we know that this point also belongs to the domain.
+[00:42:14] And if we choose zeta, the value that we use to move from R0 to R1,
+[00:42:20] we set it to this value, 1 minus that or whatever it is.
+[00:42:24] and we compute zeta as the theta r0 plus 1 and theta r1
+[00:42:39] then the distance between this point and r0
+[00:42:46] you replace the values will be equal to delta divided by 2
+[00:42:50] so by choosing a small enough delta
+[00:42:53] will be within the boundary of r0
+[00:42:57] where it is supposed to be the maximum
+[00:42:59] because it's locally maximum.
+[00:43:01] So there must be a ball around r0,
+[00:43:04] where r0 is the optimal point, isn't it?
+[00:43:07] Then we have to add that for zeta,
+[00:43:10] u r0 has to be larger than zeta,
+[00:43:12] because we are within the neighborhood of r0,
+[00:43:18] where r0 dominates the other point.
+[00:43:20] However, because of the convexity,
+[00:43:23] we have that the function zeta has to be larger than or equal
+[00:43:26] to the linear combination of the tangents
+[00:43:29] on the two extreme points, so in r0 and in r1.
+[00:43:33] This is just another way to write the expression
+[00:43:36] that we wrote before.
+[00:43:38] If you combine this condition with this one,
+[00:43:42] then you actually develop the inequality.
+[00:43:46] You will end up with this result.
+[00:43:48] Ur0 is larger than Ur1, which
+[00:43:51] is a contradiction with respect
+[00:43:52] to our initial hypothesis, which
+[00:43:54] which means that the initial body was wrong and the optimal point is also globally optimal.
+[00:44:02] This was a quick refresh of something that you should have already studied in your first year courses,
+[00:44:09] but sometimes it's worth to refresh some of these concepts.
+[00:44:16] Very last slide and we stop.
+[00:44:18] In case 2R is differentiable and complete, then a condition for a certain point to be optimal,
+[00:44:28] which means globally optimal because we are in a complete function,
+[00:44:32] is that at every point b, this condition holds true.
+[00:44:40] Which means that from the optimal point in any direction
+[00:44:54] We'll need to add, of course, this is also pretty intuitive,
+[00:44:57] to add the phrase of the unit.
+[00:45:01] For the proof of this property,
+[00:45:04] you can check the book chapter that I'm
+[00:45:06] going to go in the Moodle website.
+[00:45:10] Don't consider the numbers.
+[00:45:12] I mean, the sub-numbers are all screwed up
+[00:45:14] because I'm changing the chapters, the order
+[00:45:16] of the chapters, and I compile the file.
+[00:45:19] But if you read the chapter, you
+[00:45:22] Okay, so next week we'll start.
