@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Q018. Considering the analysis of a storage disk, which of the following statement would you use to explain what the <u>non-indexed</u> space is (select <u>the most fitting</u> option)?",
+    "answers": [
+      "It is the space where Reallocation occurs when a sector is damaged.",
+      "It is a memory space which was occupied by a file that has been removed.",
+      "It is a write-protected space on the disk that cannot be overwritten.",
+      "It is the space within a sector between the end of the contained file and the end of the corresponding sector."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q040. Considering the analysis of a storage disk, which of the following statement would you use to explain what the <u>slack space</u> is (select <u>the most fitting</u> option)?",
+    "answers": [
+      "It is the space within a sector between the end of the contained file and the end of the corresponding sector.",
+      "It is the memory space included within a geometrical sector.",
+      "It is a non-allocated memory space that can be overwritten by a file.",
+      "It is a memory space which is not indexed anymore since the table of indexes has been lost with file removal."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-03-01. Considering file recovery on an SSD, select the <u>correct</u> statement about TRIM and garbage collection. (AI made)",
+    "answers": [
+      "TRIM informs the controller which blocks are no longer needed, and internal garbage collection can later erase them.",
+      "TRIM lets the operating system mark files as write-protected.",
+      "Garbage collection is performed only by the forensic workstation.",
+      "TRIM restores the filesystem entries of deleted files."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-03-02. Concerning basic header-and-footer file carving, which condition makes complete recovery more difficult? (AI made)",
+    "answers": [
+      "The file's header and footer remain intact.",
+      "The file can be read from a forensic disk image.",
+      "The file is fragmented and its blocks are not stored contiguously.",
+      "The file has the expected signature at its beginning."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-03-03. Which of the following pairs correctly associates a forensic tool with its main role as described in the lecture? (AI made)",
+    "answers": [
+      "PhotoRec — recovering files by carving recognizable data.",
+      "Foremost — decoding a SIM identification number.",
+      "PhotoRec — exporting server access logs from live traffic.",
+      "Autopsy and Sleuth Kit — recording audio harmonics."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-03-04. Why can recovery of a fragmented deleted file be harder after its indexing information is lost? (AI made)",
+    "answers": [
+      "The file's data necessarily become encrypted.",
+      "Every fragmented file uses the same block sequence.",
+      "The filesystem moves all deleted blocks into a contiguous area before removing the index.",
+      "The remaining blocks can be noncontiguous, and the index that linked them may no longer be available."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-03-05. Considering an encrypted drive that is currently unlocked, which forensic consideration is <u>correct</u>? (AI made)",
+    "answers": [
+      "A raw image always contains plaintext regardless of the device state.",
+      "The analyst can infer the encryption keys from the drive's serial number.",
+      "Encryption proves that the data on the drive were modified.",
+      "Shutting down can lose current access and require reauthentication to read the data again."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q099. In mobile device forensics, the ICCID code refers to ... (select the correct statement)",
+    "answers": [
+      "... the version of PC/SC support standard.",
+      "... the Subscriber Identity Module card.",
+      "... the specific mobile terminal.",
+      "... a code to unlock the phone."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-03-06. Concerning mobile identifiers, which of the following identifies the equipment rather than the SIM card? (AI made)",
+    "answers": [
+      "PUK.",
+      "IMEI.",
+      "PIN.",
+      "ICCID."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-03-07. A responder finds an unlocked mobile phone switched on. Which consideration supports isolating it while keeping it powered on, when practical and authorized? (AI made)",
+    "answers": [
+      "A shutdown always preserves all volatile state.",
+      "A shutdown disables the phone's lock on the next startup.",
+      "Isolation limits remote changes, while shutdown can trigger a lock or credential prompt on restart.",
+      "Isolation guarantees access to every encrypted file."
+    ],
+    "correct_index": 2
+  }
+]

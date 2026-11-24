@@ -1,0 +1,82 @@
+[
+  {
+    "question": "AI-09-01. Which representation is best suited to visualizing how the frequency content of a recording changes over time? (AI made)",
+    "answers": [
+      "The mean amplitude of the entire recording.",
+      "The magnitude of the Fourier transform over the entire recording without time windows.",
+      "A spectrogram.",
+      "A histogram of sample values without timestamps."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-09-02. Which ordering correctly describes filtering an image in the frequency domain? (AI made)",
+    "answers": [
+      "Take the DFT and treat the resulting coefficients directly as output pixels.",
+      "Take the DFT, multiply by the frequency response, then apply the inverse DFT.",
+      "Replace pixel values with their ranks, then compute a histogram.",
+      "Inverse DFT, apply frequency response, DFT."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q003. Concerning the Photo-Response Non-Uniformity (PRNU) equation, which among the following statements is surely <u>wrong</u>. \\(I = g^{\\lambda}[I_0(1+K)+\\Theta]^{\\lambda}+Q\\)",
+    "answers": [
+      "Theta includes compression noise.",
+      "K is a multiplicative term.",
+      "I_0 is the noise-free image.",
+      "g is a gain factor."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q039. Given two PRNU patterns (one estimate from an image and the other from a set of 20 flat field pictures taken with the suspect camera), select the <u>wrong</u> statement among the following ones.",
+    "answers": [
+      "Peak-to-Correlation Energy is less noisy than Normalized Cross-Correlation.",
+      "Flat field images need to be very dark.",
+      "Peak-to-Correlation Energy is more computationally demanding than Normalized Cross-Correlation.",
+      "If the image has not been taken with the suspected camera, PCE or NCC values are more or less the same for different analysis windows."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-09-03. Which statement about chromatic aberration is <u>correct</u>? (AI made)",
+    "answers": [
+      "It is a sensor fingerprint caused only by pixel response variation.",
+      "It describes an equal radial displacement of every color component at every point.",
+      "It is produced by using different JPEG quantization tables for luminance and chrominance.",
+      "Different wavelengths can be refracted differently by a lens, creating color-dependent misalignment."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-09-04. Considering printer and scanner forensics, which of the following is a potential trace of a laser printer's optical mechanism? (AI made)",
+    "answers": [
+      "Polygon mirror wobble.",
+      "The Bayer pattern of the source image.",
+      "The 50 Hz mains component of a recording.",
+      "The IMEI of the device."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-09-05. What is the main reason sensor noise is relevant to camera attribution? (AI made)",
+    "answers": [
+      "The sensor adds the same compression artifacts as JPEG encoding.",
+      "Noise determines the location of an image regardless of metadata.",
+      "Every noise component has an identical pattern on all cameras.",
+      "Some sensor imperfections leave a recurring, device-dependent pattern in images."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-09-06. Which of the following image sets is most suitable for estimating a reference PRNU pattern? (AI made)",
+    "answers": [
+      "A set of unrelated pictures chosen to have the same JPEG quality setting.",
+      "Bright, nearly uniform, unsaturated images from the same camera.",
+      "A single strongly saturated frame.",
+      "Dark frames from several different cameras."
+    ],
+    "correct_index": 1
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Q019. Concerning the figure of Digital Evidence First Responder in ISO IEC 27037/2012, select the <u>wrong</u> statement among the following ones:",
+    "answers": [
+      "He/She checks and seizures the area containing digital devices.",
+      "He/She presents the results of the analysis in court.",
+      "He/She avoids changing the state of device.",
+      "He/She profiles all the persons authorized to access the area."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q098. Considering all the expertes involved in the acquisition of a digital evidence, select the most appropriate statement about the Incident Response Specialist (IRS)",
+    "answers": [
+      "He/She can be someone not in charge of the investigation.",
+      "He/She documents the scene and all the components",
+      "He/She analyzes the evidence in the forensic lab",
+      "He/She has the competences to deal with a wide range of forensic and scientific issues"
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-02-01. Select the <u>correct</u> order of the four phases for handling a digital evidence item. (AI made)",
+    "answers": [
+      "Collection, preservation, identification, acquisition.",
+      "Identification, acquisition, preservation, collection.",
+      "Identification, collection, acquisition, preservation.",
+      "Acquisition, identification, collection, preservation."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-02-02. Concerning the order of volatility on a running system, which of the following should generally be collected <u>first</u> if all are relevant and accessible? (AI made)",
+    "answers": [
+      "Files stored on the hard disk.",
+      "Logs stored on a remote server.",
+      "Archived backups.",
+      "CPU registers and cache."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-02-03. A powered-on device contains relevant volatile data that would be lost if it were switched off. The investigator is authorized to access it. Which strategy is most appropriate to preserve those data? (AI made)",
+    "answers": [
+      "Collect only the external labels and serial numbers.",
+      "Document the state and acquire the volatile data while the device is running.",
+      "Use a verified copy of last week's disk backup in place of the live acquisition.",
+      "Disconnect power and acquire a disk image later."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-02-04. Considering forensic imaging, which acquisition can capture unallocated areas of the entire source disk? (AI made)",
+    "answers": [
+      "An export of the file names listed by the filesystem.",
+      "A bit-stream image of the whole disk.",
+      "A logical copy of selected folders.",
+      "A backup containing only files visible to the user."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q006. Considering a hash function that generates the digest <u>d</u> from a string <u>s</u>, <u>s -&gt; d(s)</u>, select the <u>correct</u> statement referred to the resilience to second pre-image property.",
+    "answers": [
+      "Given a d(s1)=d1, finding s2 such that d(s2)=d1 must be computationally-unfeasible.",
+      "Searching for a couple of strings s1 and s2 such that d(s2)=d(s1) is computationally-unfeasible.",
+      "Given a digest d, creating s such that d(s)=d must be computationally-unfeasible.",
+      "The length of s must be a multiple of a predefined minimum length."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q043. Considering a hash function that generates the digest <u>d</u> from a string <u>s</u>, <u>s -&gt; d(s)</u>, select the <u>correct</u> statement referred to the resilience to collision property.",
+    "answers": [
+      "Searching for a couple of strings s1 and s2 such that d(s2)=d(s1) is computationally-unfeasible.",
+      "Given a d(s1)=d1, finding s2 s.t. d(s2)=d1 must be computationally-unfeasible.",
+      "The length of s must be a multiple of a predefined minimum length.",
+      "Given a digest d, creating s s.t. d(s)=d must be computationally-unfeasible."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q044. Considering a hash function that generates the digest <u>d</u> from a string <u>s</u>, <u>s -&gt; d(s)</u>, select the <u>correct</u> statement referred to the resilience to pre-image property.",
+    "answers": [
+      "Searching for a couple of strings s1 and s2 such that d(s2)=d(s1) is computationally-unfeasible.",
+      "Given a d(s1)=d1, finding s2 s.t. d(s2)=d1 must be computationally-unfeasible.",
+      "The length of s must be a multiple of a predefined minimum length.",
+      "Given a digest d, creating s s.t. d(s)=d must be computationally-unfeasible."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-02-05. Concerning the chain of custody, select the <u>most appropriate</u> record for a transfer of a digital evidence item. (AI made)",
+    "answers": [
+      "The item's identifier, person releasing it, person receiving it, and date and time of transfer.",
+      "A list of the conclusions that the receiving analyst expects to reach.",
+      "The file extension and name without transfer details.",
+      "A screenshot of the final report."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-02-06. A forensic image was copied to a new storage medium. Which check directly tests whether the copied bytes match the previously hashed image? (AI made)",
+    "answers": [
+      "Compare the two file names.",
+      "Check whether both copies open in the same tool.",
+      "Compute the digest of the copy with the same hash algorithm and compare it with the recorded digest.",
+      "Compare the labels of the storage media."
+    ],
+    "correct_index": 2
+  }
+]

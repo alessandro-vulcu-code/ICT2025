@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Q093. In the acquisition and handling processes of a digital evidence (DE), the <u>adequateness</u> requirement implies ....",
+    "answers": [
+      "... that the evidence is authentic.",
+      "... that the evidence is useful in the legal process.",
+      "... that the evidence has been acquired using proper methods/tools/procedures.",
+      "... that operations can be repeated using the same methods and procedures."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-01-01. Considering the 5 W + H questions in a forensic investigation, which question is addressed by reconstructing the time at which an account was accessed? (AI made)",
+    "answers": [
+      "When?",
+      "How?",
+      "Who?",
+      "Where?"
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-01-02. Considering the requirements for handling digital evidence under ISO/IEC 27037, select the statement that describes <u>pertinence</u>. (AI made)",
+    "answers": [
+      "The selected method is appropriate for the available resources.",
+      "The evidence is relevant to the investigation.",
+      "A third party can check the documented actions.",
+      "The same procedures yield consistent results under the same conditions."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-01-03. Considering the requirements for handling digital evidence, which of the following describes <u>repeatability</u>? (AI made)",
+    "answers": [
+      "Obtaining consistent results using the same methods, procedures, tools and conditions.",
+      "Showing that the evidence is relevant to the case.",
+      "Choosing the least expensive way to collect evidence.",
+      "Obtaining consistent results using different tools or conditions."
+    ],
+    "correct_index": 0
+  }
+]

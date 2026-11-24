@@ -1,0 +1,92 @@
+[
+  {
+    "question": "Q007. Among the following list, select the strategies that can be employed by multimedia forensics to authenticate the origin of visual data (acquiring device).",
+    "answers": [
+      "Constrast enhancement, stabilization, interlacing detection",
+      "PRNU estimation, CFA interpolation strategy estimation, chromatic aberration estimation.",
+      "Deepfake detection, integrity verification, ghosting artifacts detection",
+      "Sharpening, distortion correction, magnification."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q014. Among the following list, select the strategies that can be employed by multimedia forensics to authenticate the origin of visual data (acquiring device).",
+    "answers": [
+      "PRNU estimation, CFA interpolation strategy estimation, chromatic aberration estimation.",
+      "Sharpening, distortion correction, magnification.",
+      "Deepfake detection, integrity verification, ghosting artifacts detection.",
+      "Contrast enhancement, stabilization, interlacing detection."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-08-01. An image has been acquired, edited, uploaded to a platform and downloaded. Which statement about its processing history is <u>correct</u>? (AI made)",
+    "answers": [
+      "All observable changes in the downloaded file prove intentional tampering.",
+      "Every trace introduced by the camera must survive every later stage.",
+      "Later editing and platform processing can introduce new traces or modify earlier ones.",
+      "Only the sensor can leave traces in an image."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-08-02. Which question is most directly addressed when a multimedia analyst reconstructs the original source of a posted image? (AI made)",
+    "answers": [
+      "Which report section lists the investigator's qualifications?",
+      "Which IDS sensor produced the largest belief mass?",
+      "Which acquisition or processing chain produced the available version of the image?",
+      "What is the mobile terminal's IMEI?"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "Q063. Given the following set of biometric scheme, select the one which is <u>not</u> processing bilevel signals.",
+    "answers": [
+      "Voice recognition.",
+      "DNA sequence matching (in Voss representation).",
+      "Vision-based gait analysis.",
+      "Fingerprint identification."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q105. In gait analysis strategy, what <u>cannot</u> be used for joint-coordinate acquisition",
+    "answers": [
+      "Pressure sensor",
+      "Gyroscopic sensor",
+      "RGB camera",
+      "Depth camera"
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-08-03. Considering quantization in a digital acquisition chain, select the <u>correct</u> statement. (AI made)",
+    "answers": [
+      "It measures only the horizontal dimensions of the signal.",
+      "It maps signal amplitudes to a finite set of representable levels.",
+      "It assigns a different time index to each sensor.",
+      "It infers the original scene directly from the final file."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-08-04. A depth image is represented by \\(D=f(x,y)\\). What does the pixel value \\(D\\) encode in the lecture's model? (AI made)",
+    "answers": [
+      "The number of quantization levels in the sensor.",
+      "The luminance of the pixel in the RGB image.",
+      "A value that parametrizes distance from the camera.",
+      "The horizontal coordinate of the pixel."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-08-05. Considering the joint model presented in the lecture, which set describes the maximum six degrees of freedom? (AI made)",
+    "answers": [
+      "Three translational coordinates and three rotation angles.",
+      "Three color components and three depth values.",
+      "Six rotation angles with a fixed translation.",
+      "Six translations along distinct Cartesian axes."
+    ],
+    "correct_index": 0
+  }
+]

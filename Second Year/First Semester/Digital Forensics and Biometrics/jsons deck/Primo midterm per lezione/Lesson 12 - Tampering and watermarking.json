@@ -1,0 +1,122 @@
+[
+  {
+    "question": "Q002. Considering a copy-move image tampering detection, select the <u>correct</u> statement among the following ones.",
+    "answers": [
+      "It requires analyzing more than one image.",
+      "It searches for blurred regions that denote the alteration.",
+      "It is based on detecting ghosting artifacts.",
+      "It uses local image descriptors"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q012. Which of the following features is <u>NOT</u> useful to detect deepfakes?",
+    "answers": [
+      "Blinking pattern",
+      "Low frequency details.",
+      "Facial hair",
+      "Glare of glasses"
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-12-01. Considering the detection of splicing between two different source images, which group consists entirely of acquisition or compression traces that can be compared across regions? (AI made)",
+    "answers": [
+      "Audio equalization, perspective correction and volume normalization.",
+      "Audio ENF, audio reverberation and audio sample rate.",
+      "ICCID, IMEI and PUK.",
+      "PRNU, CFA interpolation and JPEG compression footprints."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-12-02. Assume the image geometry and a common light source imply consistent shadow directions. What can markedly incompatible directions in different parts of the image indicate? (AI made)",
+    "answers": [
+      "The image necessarily has a valid watermark.",
+      "A possible inconsistency that warrants checking for compositing.",
+      "The camera's ICCID can be inferred.",
+      "Each shadow was definitely captured at the same time."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-12-03. In the lecture's Benford-law example for detecting synthetic imagery, which values are examined? (AI made)",
+    "answers": [
+      "Last digits of SHA digests.",
+      "First digits of the image dimensions only.",
+      "First digits of quantized DCT coefficients.",
+      "First digits of mobile equipment identifiers."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-12-04. In the lecture's example of checking ballistic motion in video, what is compared after compensating for perspective distortion? (AI made)",
+    "answers": [
+      "The JPEG quantization tables of each frame and the corresponding audio samples.",
+      "The file extension and the camera serial number.",
+      "The tracked path of the object and a parabolic motion model.",
+      "The watermark message and the microphone response."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "Q025. Given the following multimedia processing strategies, select the <u>passive</u> one.",
+    "answers": [
+      "CFA estimation",
+      "Encryption",
+      "Steganography",
+      "Watermarking"
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q109. About watermarking, which is <u>wrong</u>?",
+    "answers": [
+      "Allows free distribution of image/video content",
+      "Prevents unauthorized access to image/video",
+      "Can be applied multiple times without compromising the accessibility",
+      "Embeds a key-dependent binary message"
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q113. Which is an active forensic strategy?",
+    "answers": [
+      "PRNU estimation",
+      "Leveraging compression traces",
+      "Watermarking",
+      "CFA estimation"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-12-05. What does the perceptual mask control in the spread-spectrum embedding model? (AI made)",
+    "answers": [
+      "The order in which a judge receives the evidence.",
+      "How strongly the watermark can modify different pixels while controlling visibility.",
+      "The image's filename and extension.",
+      "The original message contents."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-12-06. In the lecture's spread-spectrum detection model, which information is used to recover the embedded bit from a tile in the blind case? (AI made)",
+    "answers": [
+      "The known tiling and the corresponding embedding pulse, used to correlate against the observed tile.",
+      "The JPEG quality factor alone.",
+      "The message supplied in advance by the detector.",
+      "The original unwatermarked image only."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-12-07. Which property is normally emphasized in steganography when sending a hidden message? (AI made)",
+    "answers": [
+      "Concealing the presence of the communication in a cover signal.",
+      "Blocking anybody from accessing the unmodified cover signal.",
+      "Recovery of an audio signal from reverberation.",
+      "The need for every reader to visibly detect the message."
+    ],
+    "correct_index": 0
+  }
+]

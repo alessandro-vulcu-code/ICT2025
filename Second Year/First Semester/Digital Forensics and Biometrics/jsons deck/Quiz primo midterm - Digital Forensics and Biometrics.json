@@ -1,0 +1,1052 @@
+[
+  {
+    "question": "Q093. In the acquisition and handling processes of a digital evidence (DE), the <u>adequateness</u> requirement implies ....",
+    "answers": [
+      "... that the evidence is authentic.",
+      "... that the evidence is useful in the legal process.",
+      "... that the evidence has been acquired using proper methods/tools/procedures.",
+      "... that operations can be repeated using the same methods and procedures."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-01-01. Considering the 5 W + H questions in a forensic investigation, which question is addressed by reconstructing the time at which an account was accessed? (AI made)",
+    "answers": [
+      "When?",
+      "How?",
+      "Who?",
+      "Where?"
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-01-02. Considering the requirements for handling digital evidence under ISO/IEC 27037, select the statement that describes <u>pertinence</u>. (AI made)",
+    "answers": [
+      "The selected method is appropriate for the available resources.",
+      "The evidence is relevant to the investigation.",
+      "A third party can check the documented actions.",
+      "The same procedures yield consistent results under the same conditions."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-01-03. Considering the requirements for handling digital evidence, which of the following describes <u>repeatability</u>? (AI made)",
+    "answers": [
+      "Obtaining consistent results using the same methods, procedures, tools and conditions.",
+      "Showing that the evidence is relevant to the case.",
+      "Choosing the least expensive way to collect evidence.",
+      "Obtaining consistent results using different tools or conditions."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q019. Concerning the figure of Digital Evidence First Responder in ISO IEC 27037/2012, select the <u>wrong</u> statement among the following ones:",
+    "answers": [
+      "He/She checks and seizures the area containing digital devices.",
+      "He/She presents the results of the analysis in court.",
+      "He/She avoids changing the state of device.",
+      "He/She profiles all the persons authorized to access the area."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q098. Considering all the expertes involved in the acquisition of a digital evidence, select the most appropriate statement about the Incident Response Specialist (IRS)",
+    "answers": [
+      "He/She can be someone not in charge of the investigation.",
+      "He/She documents the scene and all the components",
+      "He/She analyzes the evidence in the forensic lab",
+      "He/She has the competences to deal with a wide range of forensic and scientific issues"
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-02-01. Select the <u>correct</u> order of the four phases for handling a digital evidence item. (AI made)",
+    "answers": [
+      "Collection, preservation, identification, acquisition.",
+      "Identification, acquisition, preservation, collection.",
+      "Identification, collection, acquisition, preservation.",
+      "Acquisition, identification, collection, preservation."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-02-02. Concerning the order of volatility on a running system, which of the following should generally be collected <u>first</u> if all are relevant and accessible? (AI made)",
+    "answers": [
+      "Files stored on the hard disk.",
+      "Logs stored on a remote server.",
+      "Archived backups.",
+      "CPU registers and cache."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-02-03. A powered-on device contains relevant volatile data that would be lost if it were switched off. The investigator is authorized to access it. Which strategy is most appropriate to preserve those data? (AI made)",
+    "answers": [
+      "Collect only the external labels and serial numbers.",
+      "Document the state and acquire the volatile data while the device is running.",
+      "Use a verified copy of last week's disk backup in place of the live acquisition.",
+      "Disconnect power and acquire a disk image later."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-02-04. Considering forensic imaging, which acquisition can capture unallocated areas of the entire source disk? (AI made)",
+    "answers": [
+      "An export of the file names listed by the filesystem.",
+      "A bit-stream image of the whole disk.",
+      "A logical copy of selected folders.",
+      "A backup containing only files visible to the user."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q006. Considering a hash function that generates the digest <u>d</u> from a string <u>s</u>, <u>s -&gt; d(s)</u>, select the <u>correct</u> statement referred to the resilience to second pre-image property.",
+    "answers": [
+      "Given a d(s1)=d1, finding s2 such that d(s2)=d1 must be computationally-unfeasible.",
+      "Searching for a couple of strings s1 and s2 such that d(s2)=d(s1) is computationally-unfeasible.",
+      "Given a digest d, creating s such that d(s)=d must be computationally-unfeasible.",
+      "The length of s must be a multiple of a predefined minimum length."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q043. Considering a hash function that generates the digest <u>d</u> from a string <u>s</u>, <u>s -&gt; d(s)</u>, select the <u>correct</u> statement referred to the resilience to collision property.",
+    "answers": [
+      "Searching for a couple of strings s1 and s2 such that d(s2)=d(s1) is computationally-unfeasible.",
+      "Given a d(s1)=d1, finding s2 s.t. d(s2)=d1 must be computationally-unfeasible.",
+      "The length of s must be a multiple of a predefined minimum length.",
+      "Given a digest d, creating s s.t. d(s)=d must be computationally-unfeasible."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q044. Considering a hash function that generates the digest <u>d</u> from a string <u>s</u>, <u>s -&gt; d(s)</u>, select the <u>correct</u> statement referred to the resilience to pre-image property.",
+    "answers": [
+      "Searching for a couple of strings s1 and s2 such that d(s2)=d(s1) is computationally-unfeasible.",
+      "Given a d(s1)=d1, finding s2 s.t. d(s2)=d1 must be computationally-unfeasible.",
+      "The length of s must be a multiple of a predefined minimum length.",
+      "Given a digest d, creating s s.t. d(s)=d must be computationally-unfeasible."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-02-05. Concerning the chain of custody, select the <u>most appropriate</u> record for a transfer of a digital evidence item. (AI made)",
+    "answers": [
+      "The item's identifier, person releasing it, person receiving it, and date and time of transfer.",
+      "A list of the conclusions that the receiving analyst expects to reach.",
+      "The file extension and name without transfer details.",
+      "A screenshot of the final report."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-02-06. A forensic image was copied to a new storage medium. Which check directly tests whether the copied bytes match the previously hashed image? (AI made)",
+    "answers": [
+      "Compare the two file names.",
+      "Check whether both copies open in the same tool.",
+      "Compute the digest of the copy with the same hash algorithm and compare it with the recorded digest.",
+      "Compare the labels of the storage media."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "Q018. Considering the analysis of a storage disk, which of the following statement would you use to explain what the <u>non-indexed</u> space is (select <u>the most fitting</u> option)?",
+    "answers": [
+      "It is the space where Reallocation occurs when a sector is damaged.",
+      "It is a memory space which was occupied by a file that has been removed.",
+      "It is a write-protected space on the disk that cannot be overwritten.",
+      "It is the space within a sector between the end of the contained file and the end of the corresponding sector."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q040. Considering the analysis of a storage disk, which of the following statement would you use to explain what the <u>slack space</u> is (select <u>the most fitting</u> option)?",
+    "answers": [
+      "It is the space within a sector between the end of the contained file and the end of the corresponding sector.",
+      "It is the memory space included within a geometrical sector.",
+      "It is a non-allocated memory space that can be overwritten by a file.",
+      "It is a memory space which is not indexed anymore since the table of indexes has been lost with file removal."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-03-01. Considering file recovery on an SSD, select the <u>correct</u> statement about TRIM and garbage collection. (AI made)",
+    "answers": [
+      "TRIM informs the controller which blocks are no longer needed, and internal garbage collection can later erase them.",
+      "TRIM lets the operating system mark files as write-protected.",
+      "Garbage collection is performed only by the forensic workstation.",
+      "TRIM restores the filesystem entries of deleted files."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-03-02. Concerning basic header-and-footer file carving, which condition makes complete recovery more difficult? (AI made)",
+    "answers": [
+      "The file's header and footer remain intact.",
+      "The file can be read from a forensic disk image.",
+      "The file is fragmented and its blocks are not stored contiguously.",
+      "The file has the expected signature at its beginning."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-03-03. Which of the following pairs correctly associates a forensic tool with its main role as described in the lecture? (AI made)",
+    "answers": [
+      "PhotoRec — recovering files by carving recognizable data.",
+      "Foremost — decoding a SIM identification number.",
+      "PhotoRec — exporting server access logs from live traffic.",
+      "Autopsy and Sleuth Kit — recording audio harmonics."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-03-04. Why can recovery of a fragmented deleted file be harder after its indexing information is lost? (AI made)",
+    "answers": [
+      "The file's data necessarily become encrypted.",
+      "Every fragmented file uses the same block sequence.",
+      "The filesystem moves all deleted blocks into a contiguous area before removing the index.",
+      "The remaining blocks can be noncontiguous, and the index that linked them may no longer be available."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-03-05. Considering an encrypted drive that is currently unlocked, which forensic consideration is <u>correct</u>? (AI made)",
+    "answers": [
+      "A raw image always contains plaintext regardless of the device state.",
+      "The analyst can infer the encryption keys from the drive's serial number.",
+      "Encryption proves that the data on the drive were modified.",
+      "Shutting down can lose current access and require reauthentication to read the data again."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q099. In mobile device forensics, the ICCID code refers to ... (select the correct statement)",
+    "answers": [
+      "... the version of PC/SC support standard.",
+      "... the Subscriber Identity Module card.",
+      "... the specific mobile terminal.",
+      "... a code to unlock the phone."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-03-06. Concerning mobile identifiers, which of the following identifies the equipment rather than the SIM card? (AI made)",
+    "answers": [
+      "PUK.",
+      "IMEI.",
+      "PIN.",
+      "ICCID."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-03-07. A responder finds an unlocked mobile phone switched on. Which consideration supports isolating it while keeping it powered on, when practical and authorized? (AI made)",
+    "answers": [
+      "A shutdown always preserves all volatile state.",
+      "A shutdown disables the phone's lock on the next startup.",
+      "Isolation limits remote changes, while shutdown can trigger a lock or credential prompt on restart.",
+      "Isolation guarantees access to every encrypted file."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-04-01. Considering the four mobile acquisition approaches discussed in class, which result is typical of a <u>logical</u> acquisition? (AI made)",
+    "answers": [
+      "A directory-level acquisition that necessarily includes every protected app container.",
+      "A raw duplicate of the phone's entire storage.",
+      "A photo of the lock screen and no exported records.",
+      "A backup or export of records available through supported interfaces."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-04-02. An analyst documents the visible state of a phone by photographing its screen. Which acquisition approach does this exemplify? (AI made)",
+    "answers": [
+      "Logical acquisition.",
+      "Filesystem acquisition.",
+      "Manual acquisition.",
+      "Physical acquisition."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-04-03. An analyst can acquire a device backup but needs app artifacts that are absent from it. Which approach is specifically aimed at acquiring files and directories, subject to the device's access controls? (AI made)",
+    "answers": [
+      "Filesystem acquisition.",
+      "Manual screen documentation.",
+      "Logical export of the same backup.",
+      "Recording the phone's external identifiers only."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q092. Consider the following description of a sniffer detection method \"During the transmission, send a packet with the IP address of the suspect machine without or with a wrong MAC address. All machines should reject it since MAC does not match IP. Only a sniffer would answer\". The statement can be referred to:",
+    "answers": [
+      "Local host analysis",
+      "Ping method",
+      "Latency method",
+      "ARP watch"
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-04-04. Considering the two traffic collection strategies, which statement describes <u>stop, look, and listen</u>? (AI made)",
+    "answers": [
+      "Analyze incoming packets in memory and retain selected packets.",
+      "Capture all packets and postpone analysis until after storage.",
+      "Capture only application logs, independently of the network packets.",
+      "Store all packets permanently before applying any filter."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-04-05. Which pair of identifiers is used in the lecture to distinguish Ethernet addresses from network-layer addresses? (AI made)",
+    "answers": [
+      "IP address and URL.",
+      "ICCID and IMEI.",
+      "TCP port and DNS name.",
+      "MAC address and IP address."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-04-06. An analyst has a capture of encrypted application traffic and wants to compare activity patterns without reading message contents. Which observable does the lecture use for this purpose? (AI made)",
+    "answers": [
+      "Plaintext passwords.",
+      "Packet lengths.",
+      "Encryption keys recovered by reading the IP header.",
+      "The contents of encrypted messages."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-05-01. Concerning the PCAP-to-CSV example, which of the following is a field shown in the exported flow representation? (AI made)",
+    "answers": [
+      "The SHA digest of the investigator's report.",
+      "The subscriber's SIM PIN.",
+      "The plaintext of every encrypted payload.",
+      "The destination port."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-05-02. Considering the acquisition of volatile router data, which of the following helps document network state before it changes? (AI made)",
+    "answers": [
+      "A copy of the server's static HTML pages.",
+      "A printout of the router's purchase receipt.",
+      "A photo of the router's serial number alone.",
+      "A record of the current routing table and active state."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-05-03. In the Common Log Format, which field records the HTTP response code returned to the client? (AI made)",
+    "answers": [
+      "Authuser.",
+      "Request.",
+      "Bytes.",
+      "Status."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q038. Among the following, select the <u>wrong</u> statement concerning Network-based IDS.",
+    "answers": [
+      "They require storage and fast processing capabilities.",
+      "They provide a network-wide overview of the attack.",
+      "They can detect out-of-band attacks.",
+      "They are not robust to fragmentation and TTL attack"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "Q106. About HIDS, which is <u>wrong</u>?",
+    "answers": [
+      "Could detect juice jacking attacks",
+      "Robust to fragmentation and TTL attack",
+      "Can not monitor entire network segment",
+      "Multiple sensors can be easily updated and installed"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-05-04. Concerning wireless forensics, why is channel hopping a useful capability for a capture tool? (AI made)",
+    "answers": [
+      "It reveals encrypted messages without keys.",
+      "It replaces the need to record when packets were captured.",
+      "It guarantees simultaneous capture of every channel with one radio.",
+      "It allows the tool to observe traffic on multiple wireless channels over time."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-05-05. What is the purpose of a hybrid intrusion detection system? (AI made)",
+    "answers": [
+      "To monitor only the payload of encrypted network connections.",
+      "To combine evidence from host-based and network-based detection.",
+      "To monitor only local system events.",
+      "To make host logs unnecessary in every investigation."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-05-06. Which statement correctly distinguishes profile-based from signature-based intrusion detection? (AI made)",
+    "answers": [
+      "Profile-based detection makes an alert only if an entry already exists in the signature database.",
+      "Signature-based detection compares activity only with a learned profile of normal behavior.",
+      "Profile-based detection flags deviations from expected behavior. Signature-based detection looks for known patterns.",
+      "Both require a known attack signature for every alert."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-06-01. Concerning network forensics, what is the main purpose of traceback? (AI made)",
+    "answers": [
+      "To assign filesystem permissions to captured traffic.",
+      "To compress a packet capture for long-term storage.",
+      "To reconstruct the path or origin of attack traffic from network evidence.",
+      "To identify a camera from its PRNU."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-06-02. Which set of sources does the lecture propose correlating in a Tor forensic investigation? (AI made)",
+    "answers": [
+      "Only the URL printed in the final report.",
+      "Only the MAC address printed on the computer's label.",
+      "Only an image's JPEG quantization tables.",
+      "RAM artifacts, filesystem or storage artifacts, and network observations."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-06-03. Let the frame of discernment be \\(\\Theta=\\{A,S\\}\\). What does a mass assigned to \\(\\Theta\\) represent? (AI made)",
+    "answers": [
+      "The source supports \\(A\\) and \\(S\\) as simultaneously true.",
+      "The sources disagree, so this mass should be discarded as conflict.",
+      "The source supports the frame as a whole without distinguishing \\(A\\) from \\(S\\).",
+      "The source assigns the same singleton mass to \\(A\\) and \\(S\\)."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-06-04. For \\(\\Theta=\\{A,S\\}\\), suppose \\(m(\\{A\\})=0.40\\), \\(m(\\{S\\})=0.35\\) and \\(m(\\Theta)=0.25\\). Which pair gives \\(Bel(\\{A\\})\\) and \\(Pl(\\{A\\})\\), respectively? (AI made)",
+    "answers": [
+      "0.40 and 0.40.",
+      "0.40 and 0.65.",
+      "0.65 and 0.40.",
+      "0.25 and 0.65."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-06-05. In Dempster's normalized combination rule, which contribution enters the conflict term \\(K\\)? (AI made)",
+    "answers": [
+      "A pair of focal sets whose intersection is a singleton.",
+      "A pair of focal sets whose intersection is empty.",
+      "A pair of focal sets whose intersection is the whole frame.",
+      "Every pair that includes the full frame as one of the focal sets."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q007. Among the following list, select the strategies that can be employed by multimedia forensics to authenticate the origin of visual data (acquiring device).",
+    "answers": [
+      "Constrast enhancement, stabilization, interlacing detection",
+      "PRNU estimation, CFA interpolation strategy estimation, chromatic aberration estimation.",
+      "Deepfake detection, integrity verification, ghosting artifacts detection",
+      "Sharpening, distortion correction, magnification."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q014. Among the following list, select the strategies that can be employed by multimedia forensics to authenticate the origin of visual data (acquiring device).",
+    "answers": [
+      "PRNU estimation, CFA interpolation strategy estimation, chromatic aberration estimation.",
+      "Sharpening, distortion correction, magnification.",
+      "Deepfake detection, integrity verification, ghosting artifacts detection.",
+      "Contrast enhancement, stabilization, interlacing detection."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-08-01. An image has been acquired, edited, uploaded to a platform and downloaded. Which statement about its processing history is <u>correct</u>? (AI made)",
+    "answers": [
+      "All observable changes in the downloaded file prove intentional tampering.",
+      "Every trace introduced by the camera must survive every later stage.",
+      "Later editing and platform processing can introduce new traces or modify earlier ones.",
+      "Only the sensor can leave traces in an image."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-08-02. Which question is most directly addressed when a multimedia analyst reconstructs the original source of a posted image? (AI made)",
+    "answers": [
+      "Which report section lists the investigator's qualifications?",
+      "Which IDS sensor produced the largest belief mass?",
+      "Which acquisition or processing chain produced the available version of the image?",
+      "What is the mobile terminal's IMEI?"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "Q063. Given the following set of biometric scheme, select the one which is <u>not</u> processing bilevel signals.",
+    "answers": [
+      "Voice recognition.",
+      "DNA sequence matching (in Voss representation).",
+      "Vision-based gait analysis.",
+      "Fingerprint identification."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q105. In gait analysis strategy, what <u>cannot</u> be used for joint-coordinate acquisition",
+    "answers": [
+      "Pressure sensor",
+      "Gyroscopic sensor",
+      "RGB camera",
+      "Depth camera"
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-08-03. Considering quantization in a digital acquisition chain, select the <u>correct</u> statement. (AI made)",
+    "answers": [
+      "It measures only the horizontal dimensions of the signal.",
+      "It maps signal amplitudes to a finite set of representable levels.",
+      "It assigns a different time index to each sensor.",
+      "It infers the original scene directly from the final file."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-08-04. A depth image is represented by \\(D=f(x,y)\\). What does the pixel value \\(D\\) encode in the lecture's model? (AI made)",
+    "answers": [
+      "The number of quantization levels in the sensor.",
+      "The luminance of the pixel in the RGB image.",
+      "A value that parametrizes distance from the camera.",
+      "The horizontal coordinate of the pixel."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-08-05. Considering the joint model presented in the lecture, which set describes the maximum six degrees of freedom? (AI made)",
+    "answers": [
+      "Three translational coordinates and three rotation angles.",
+      "Three color components and three depth values.",
+      "Six rotation angles with a fixed translation.",
+      "Six translations along distinct Cartesian axes."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-09-01. Which representation is best suited to visualizing how the frequency content of a recording changes over time? (AI made)",
+    "answers": [
+      "The mean amplitude of the entire recording.",
+      "The magnitude of the Fourier transform over the entire recording without time windows.",
+      "A spectrogram.",
+      "A histogram of sample values without timestamps."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-09-02. Which ordering correctly describes filtering an image in the frequency domain? (AI made)",
+    "answers": [
+      "Take the DFT and treat the resulting coefficients directly as output pixels.",
+      "Take the DFT, multiply by the frequency response, then apply the inverse DFT.",
+      "Replace pixel values with their ranks, then compute a histogram.",
+      "Inverse DFT, apply frequency response, DFT."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q003. Concerning the Photo-Response Non-Uniformity (PRNU) equation, which among the following statements is surely <u>wrong</u>. \\(I = g^{\\lambda}[I_0(1+K)+\\Theta]^{\\lambda}+Q\\)",
+    "answers": [
+      "Theta includes compression noise.",
+      "K is a multiplicative term.",
+      "I_0 is the noise-free image.",
+      "g is a gain factor."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q039. Given two PRNU patterns (one estimate from an image and the other from a set of 20 flat field pictures taken with the suspect camera), select the <u>wrong</u> statement among the following ones.",
+    "answers": [
+      "Peak-to-Correlation Energy is less noisy than Normalized Cross-Correlation.",
+      "Flat field images need to be very dark.",
+      "Peak-to-Correlation Energy is more computationally demanding than Normalized Cross-Correlation.",
+      "If the image has not been taken with the suspected camera, PCE or NCC values are more or less the same for different analysis windows."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-09-03. Which statement about chromatic aberration is <u>correct</u>? (AI made)",
+    "answers": [
+      "It is a sensor fingerprint caused only by pixel response variation.",
+      "It describes an equal radial displacement of every color component at every point.",
+      "It is produced by using different JPEG quantization tables for luminance and chrominance.",
+      "Different wavelengths can be refracted differently by a lens, creating color-dependent misalignment."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-09-04. Considering printer and scanner forensics, which of the following is a potential trace of a laser printer's optical mechanism? (AI made)",
+    "answers": [
+      "Polygon mirror wobble.",
+      "The Bayer pattern of the source image.",
+      "The 50 Hz mains component of a recording.",
+      "The IMEI of the device."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-09-05. What is the main reason sensor noise is relevant to camera attribution? (AI made)",
+    "answers": [
+      "The sensor adds the same compression artifacts as JPEG encoding.",
+      "Noise determines the location of an image regardless of metadata.",
+      "Every noise component has an identical pattern on all cameras.",
+      "Some sensor imperfections leave a recurring, device-dependent pattern in images."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-09-06. Which of the following image sets is most suitable for estimating a reference PRNU pattern? (AI made)",
+    "answers": [
+      "A set of unrelated pictures chosen to have the same JPEG quality setting.",
+      "Bright, nearly uniform, unsaturated images from the same camera.",
+      "A single strongly saturated frame.",
+      "Dark frames from several different cameras."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q037. Given a digital image, estimating the CFA interpolation strategy adopted on that image allows...",
+    "answers": [
+      "...to associate the image to a specific Bayer pattern.",
+      "...to associate the image to a camera model only if it has not been compressed.",
+      "...to associate the image to a specific acquisition time.",
+      "...to associate the image to a specific camera."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q117. About JPEG process, which is <u>wrong</u>?",
+    "answers": [
+      "After quantization there is entropy coding",
+      "transform coding operation is performed on 8x8 blocks",
+      "Different quantization steps are used on coefficient form R, G and B components",
+      "DCT is used"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-10-01. Considering the Expectation–Maximization approach to demosaicing detection, which ordering describes one iteration? (AI made)",
+    "answers": [
+      "Convert RGB to grayscale and repeat without a model update.",
+      "Estimate a new model once and then only read its output.",
+      "Estimate latent assignments using the current model, then update the parameters using those estimates.",
+      "Estimate the compression bitrate, then discard all pixel relationships."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-10-02. What is the forensic purpose of looking for double JPEG compression traces? (AI made)",
+    "answers": [
+      "To test whether the image underwent an earlier JPEG compression and potentially estimate aspects of it.",
+      "To retrieve the name of the application that last opened the file.",
+      "To reconstruct the exact camera model from every image.",
+      "To guarantee that the image was maliciously edited."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-10-03. In predictive video coding, what is the role of motion-compensated prediction between adjacent frames? (AI made)",
+    "answers": [
+      "It estimates an audio source from the video soundtrack.",
+      "It applies JPEG compression independently to every frame.",
+      "It guarantees identical file sizes for equal-length videos.",
+      "It exploits temporal correlation to predict a frame region from a reference frame."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q022. Assuming that an audio forensic analyst is processing an audio sequence and, at a certain point, he starts selecting the harmonics that are multiples of 50 Hz. Which type of analysis is he/she carrying on?",
+    "answers": [
+      "Reducing noise to classify events",
+      "Reverberation analysis",
+      "Voice/speech identification",
+      "Analyzing the electrical network frequencies"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-10-04. Which pair of operations turns an analog microphone signal into a digital representation? (AI made)",
+    "answers": [
+      "Sampling in time and quantizing the amplitude.",
+      "Playback and room reverberation.",
+      "Loudspeaker amplification and image sharpening.",
+      "Source separation and voice comparison."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-10-05. Which observation can support acoustic event localization in a room? (AI made)",
+    "answers": [
+      "The Bayer filter pattern of the microphone.",
+      "The relative timing of the direct sound and its reflections.",
+      "Only the file extension assigned by the audio recorder.",
+      "The quantization table of the JPEG cover image."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-10-06. Which of the following is listed as a microphone characteristic that describes sensitivity as a function of arrival direction? (AI made)",
+    "answers": [
+      "The name of the digital audio container.",
+      "The polar pattern.",
+      "The ADC quantization depth.",
+      "The audio file's compression ratio."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q027. Among the following list, select the strategies that can be employed by multimedia forensics to enhance the quality of visual data.",
+    "answers": [
+      "Deepfake detection, integrity verification, ghosting artifacts detection",
+      "Watermarking, stabilization, image phylogeny",
+      "PRNU estimation, CFA interpolation strategy estimation, chromatic aberration estimation",
+      "Sharpening, distortion correction, magnification"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q111. For a blurred frame of a video, how can we sharpen the details?",
+    "answers": [
+      "Equalize color histogram",
+      "Filter image with High Pass Filter",
+      "Enhance contrast",
+      "Magnify image"
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-11-01. A rectangular license plate appears as a trapezoid because it was recorded from an oblique viewpoint. Which operation is most directly adapted to this distortion? (AI made)",
+    "answers": [
+      "Audio equalization.",
+      "Histogram equalization.",
+      "Magnification without a geometric transform.",
+      "Perspective correction using corresponding corners."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-11-02. Several aligned frames show the same static scene with differing random noise. Which operation can improve the estimate of the scene? (AI made)",
+    "answers": [
+      "Keep a single arbitrarily chosen frame and discard the rest.",
+      "Integrate the aligned frames, for example by averaging them.",
+      "Assign every frame a new timestamp.",
+      "Isolate frequencies around 50 Hz in the soundtrack."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-11-03. An analyst needs to extract the vocal component of a recording from overlapping background music. Which technique corresponds to this task? (AI made)",
+    "answers": [
+      "Perspective correction.",
+      "Audio source separation.",
+      "Image sharpening.",
+      "Speech comparison."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q035. Concerning a forensic technical report to be presented in court, which of the following elements should <u>not be included</u> in the initial summary?",
+    "answers": [
+      "The CV of the analyst.",
+      "The conclusions in brief.",
+      "The summary of the activities.",
+      "The objectives of the report."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-11-04. Which material belongs in the <u>analysis</u> section of a forensic image-enhancement report? (AI made)",
+    "answers": [
+      "Only a list of the attached files.",
+      "The processing steps, tools or settings used, and supporting results.",
+      "An unsupported statement of the analyst's preferred conclusion.",
+      "Only the names of people who will read the report."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q002. Considering a copy-move image tampering detection, select the <u>correct</u> statement among the following ones.",
+    "answers": [
+      "It requires analyzing more than one image.",
+      "It searches for blurred regions that denote the alteration.",
+      "It is based on detecting ghosting artifacts.",
+      "It uses local image descriptors"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q012. Which of the following features is <u>NOT</u> useful to detect deepfakes?",
+    "answers": [
+      "Blinking pattern",
+      "Low frequency details.",
+      "Facial hair",
+      "Glare of glasses"
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-12-01. Considering the detection of splicing between two different source images, which group consists entirely of acquisition or compression traces that can be compared across regions? (AI made)",
+    "answers": [
+      "Audio equalization, perspective correction and volume normalization.",
+      "Audio ENF, audio reverberation and audio sample rate.",
+      "ICCID, IMEI and PUK.",
+      "PRNU, CFA interpolation and JPEG compression footprints."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-12-02. Assume the image geometry and a common light source imply consistent shadow directions. What can markedly incompatible directions in different parts of the image indicate? (AI made)",
+    "answers": [
+      "The image necessarily has a valid watermark.",
+      "A possible inconsistency that warrants checking for compositing.",
+      "The camera's ICCID can be inferred.",
+      "Each shadow was definitely captured at the same time."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-12-03. In the lecture's Benford-law example for detecting synthetic imagery, which values are examined? (AI made)",
+    "answers": [
+      "Last digits of SHA digests.",
+      "First digits of the image dimensions only.",
+      "First digits of quantized DCT coefficients.",
+      "First digits of mobile equipment identifiers."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-12-04. In the lecture's example of checking ballistic motion in video, what is compared after compensating for perspective distortion? (AI made)",
+    "answers": [
+      "The JPEG quantization tables of each frame and the corresponding audio samples.",
+      "The file extension and the camera serial number.",
+      "The tracked path of the object and a parabolic motion model.",
+      "The watermark message and the microphone response."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "Q025. Given the following multimedia processing strategies, select the <u>passive</u> one.",
+    "answers": [
+      "CFA estimation",
+      "Encryption",
+      "Steganography",
+      "Watermarking"
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q109. About watermarking, which is <u>wrong</u>?",
+    "answers": [
+      "Allows free distribution of image/video content",
+      "Prevents unauthorized access to image/video",
+      "Can be applied multiple times without compromising the accessibility",
+      "Embeds a key-dependent binary message"
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q113. Which is an active forensic strategy?",
+    "answers": [
+      "PRNU estimation",
+      "Leveraging compression traces",
+      "Watermarking",
+      "CFA estimation"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-12-05. What does the perceptual mask control in the spread-spectrum embedding model? (AI made)",
+    "answers": [
+      "The order in which a judge receives the evidence.",
+      "How strongly the watermark can modify different pixels while controlling visibility.",
+      "The image's filename and extension.",
+      "The original message contents."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-12-06. In the lecture's spread-spectrum detection model, which information is used to recover the embedded bit from a tile in the blind case? (AI made)",
+    "answers": [
+      "The known tiling and the corresponding embedding pulse, used to correlate against the observed tile.",
+      "The JPEG quality factor alone.",
+      "The message supplied in advance by the detector.",
+      "The original unwatermarked image only."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-12-07. Which property is normally emphasized in steganography when sending a hidden message? (AI made)",
+    "answers": [
+      "Concealing the presence of the communication in a cover signal.",
+      "Blocking anybody from accessing the unmodified cover signal.",
+      "Recovery of an audio signal from reverberation.",
+      "The need for every reader to visibly detect the message."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-13-01. Concerning a social interaction graph, which statement correctly describes nodes and edges? (AI made)",
+    "answers": [
+      "A node represents one file extension, and an edge represents the hash of an unrelated file.",
+      "A node represents a single camera pixel, and every edge represents a sensor response.",
+      "A node represents a timestamp, and every edge represents a JPEG compression.",
+      "A node represents an account or user, and an edge can represent a connection, message or mention."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-13-02. Why can it be difficult to reproduce a social media timeline by repeating the same collection later? (AI made)",
+    "answers": [
+      "An image can be uploaded only once.",
+      "All posts are necessarily stored in one immutable file.",
+      "Interactions, posts and visibility can change between collections.",
+      "Edge weights in a graph can never be saved."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-13-03. In the graph-based image phylogeny method covered in the lecture, what do the edge weights represent before the tree is constructed? (AI made)",
+    "answers": [
+      "Pairwise image dissimilarities.",
+      "The cryptographic keys used to sign each file.",
+      "The number of contacts in the uploader's phone.",
+      "The absolute publication date of each image."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-13-04. Why can disconnecting an IoT device before documenting or collecting its state complicate an investigation? (AI made)",
+    "answers": [
+      "It necessarily makes its cloud records immutable.",
+      "It converts every device record into a standardized format.",
+      "Disconnecting a device guarantees that all logs are uploaded.",
+      "Volatile or short-lived evidence can be lost before it is preserved."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-13-05. Which of the following makes it harder to correlate evidence from heterogeneous IoT sources? (AI made)",
+    "answers": [
+      "Missing metadata and limited information for aligning events in a timeline.",
+      "Uniform, documented hardware and software specifications.",
+      "Full correlation records already included for every event.",
+      "All records using a shared, validated clock and common schema."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q048. Which among the following ones is <u>NOT</u> an anomaly type?",
+    "answers": [
+      "Point anomaly",
+      "Contextual anomaly",
+      "Collective anomaly",
+      "Systematic anomaly"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q049. Considering a sudden decrease of temperature in July (Northern emisphere), we can state that it is a",
+    "answers": [
+      "Point anomaly",
+      "Collective anomaly",
+      "Contextual anomaly",
+      "None of the other answers."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "Q050. Which of the following metrics is used to create a ROC (receiver operative characteristics) curve?",
+    "answers": [
+      "Accuracy",
+      "F1 score",
+      "Recall",
+      "Precision"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "Q053. In clean data learning for anomaly detection, we can <u>NOT</u> use the training set to create ...",
+    "answers": [
+      "ARMA models",
+      "A multiclass SVM classifier",
+      "Recurrent Neural Networks",
+      "A dynamical system from Partial Differential Equations"
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q095. Given the following sets of anomaly detection techniques, select the set made entirely of classical machine learning strategies (not including deep learning)",
+    "answers": [
+      "K-means, Transformer networks, Long-Short Term Memory",
+      "Transformer networks, Convolutional Neural Networks, Support Vector Machine",
+      "Spectral clustering, Decision trees, Long-Short Term Memory",
+      "Isolation forest, Spectral clustering, Support Vector Machine"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q116. Which is more suitable in anomaly detection supervised learning?",
+    "answers": [
+      "Deep autoencoder",
+      "Spectral clustering",
+      "CNN classifier",
+      "One-class SVM"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-13-06. Which statement correctly describes the WDAD assumption? (AI made)",
+    "answers": [
+      "Anomalous samples are drawn from a known distribution.",
+      "Every anomaly must be collective.",
+      "Every anomaly occurs at the same instant.",
+      "The nominal distribution contains no variability."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-13-07. Considering change-point evaluation, which quantity captures how long a detector takes to signal a real change? (AI made)",
+    "answers": [
+      "Detection delay measured relative to the true change point.",
+      "The number of training samples.",
+      "The size of the model's feature vector.",
+      "Overall accuracy over all nominal and anomalous samples."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-13-08. Why might a window-based metric be preferred when evaluating a detector of anomalous intervals? (AI made)",
+    "answers": [
+      "It makes the position in time of every detection irrelevant.",
+      "It measures only the number of features extracted per event.",
+      "It can evaluate whether detections occur within the relevant interval around the true event.",
+      "It requires the entire event to be reduced to a single binary label for the whole recording."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-13-09. Given a detector with 12 true positives, 3 false positives and 8 false negatives, which pair gives precision and recall, respectively? (AI made)",
+    "answers": [
+      "0.80 and 0.60.",
+      "0.60 and 0.75.",
+      "0.75 and 0.40.",
+      "0.60 and 0.80."
+    ],
+    "correct_index": 0
+  }
+]

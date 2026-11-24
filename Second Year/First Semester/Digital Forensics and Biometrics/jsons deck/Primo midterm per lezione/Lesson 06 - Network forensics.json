@@ -1,0 +1,52 @@
+[
+  {
+    "question": "AI-06-01. Concerning network forensics, what is the main purpose of traceback? (AI made)",
+    "answers": [
+      "To assign filesystem permissions to captured traffic.",
+      "To compress a packet capture for long-term storage.",
+      "To reconstruct the path or origin of attack traffic from network evidence.",
+      "To identify a camera from its PRNU."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-06-02. Which set of sources does the lecture propose correlating in a Tor forensic investigation? (AI made)",
+    "answers": [
+      "Only the URL printed in the final report.",
+      "Only the MAC address printed on the computer's label.",
+      "Only an image's JPEG quantization tables.",
+      "RAM artifacts, filesystem or storage artifacts, and network observations."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-06-03. Let the frame of discernment be \\(\\Theta=\\{A,S\\}\\). What does a mass assigned to \\(\\Theta\\) represent? (AI made)",
+    "answers": [
+      "The source supports \\(A\\) and \\(S\\) as simultaneously true.",
+      "The sources disagree, so this mass should be discarded as conflict.",
+      "The source supports the frame as a whole without distinguishing \\(A\\) from \\(S\\).",
+      "The source assigns the same singleton mass to \\(A\\) and \\(S\\)."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-06-04. For \\(\\Theta=\\{A,S\\}\\), suppose \\(m(\\{A\\})=0.40\\), \\(m(\\{S\\})=0.35\\) and \\(m(\\Theta)=0.25\\). Which pair gives \\(Bel(\\{A\\})\\) and \\(Pl(\\{A\\})\\), respectively? (AI made)",
+    "answers": [
+      "0.40 and 0.40.",
+      "0.40 and 0.65.",
+      "0.65 and 0.40.",
+      "0.25 and 0.65."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-06-05. In Dempster's normalized combination rule, which contribution enters the conflict term \\(K\\)? (AI made)",
+    "answers": [
+      "A pair of focal sets whose intersection is a singleton.",
+      "A pair of focal sets whose intersection is empty.",
+      "A pair of focal sets whose intersection is the whole frame.",
+      "Every pair that includes the full frame as one of the focal sets."
+    ],
+    "correct_index": 1
+  }
+]

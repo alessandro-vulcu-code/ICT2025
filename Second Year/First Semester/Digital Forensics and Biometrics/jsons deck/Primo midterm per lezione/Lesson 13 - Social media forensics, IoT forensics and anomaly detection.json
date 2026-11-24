@@ -1,0 +1,152 @@
+[
+  {
+    "question": "AI-13-01. Concerning a social interaction graph, which statement correctly describes nodes and edges? (AI made)",
+    "answers": [
+      "A node represents one file extension, and an edge represents the hash of an unrelated file.",
+      "A node represents a single camera pixel, and every edge represents a sensor response.",
+      "A node represents a timestamp, and every edge represents a JPEG compression.",
+      "A node represents an account or user, and an edge can represent a connection, message or mention."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-13-02. Why can it be difficult to reproduce a social media timeline by repeating the same collection later? (AI made)",
+    "answers": [
+      "An image can be uploaded only once.",
+      "All posts are necessarily stored in one immutable file.",
+      "Interactions, posts and visibility can change between collections.",
+      "Edge weights in a graph can never be saved."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-13-03. In the graph-based image phylogeny method covered in the lecture, what do the edge weights represent before the tree is constructed? (AI made)",
+    "answers": [
+      "Pairwise image dissimilarities.",
+      "The cryptographic keys used to sign each file.",
+      "The number of contacts in the uploader's phone.",
+      "The absolute publication date of each image."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-13-04. Why can disconnecting an IoT device before documenting or collecting its state complicate an investigation? (AI made)",
+    "answers": [
+      "It necessarily makes its cloud records immutable.",
+      "It converts every device record into a standardized format.",
+      "Disconnecting a device guarantees that all logs are uploaded.",
+      "Volatile or short-lived evidence can be lost before it is preserved."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-13-05. Which of the following makes it harder to correlate evidence from heterogeneous IoT sources? (AI made)",
+    "answers": [
+      "Missing metadata and limited information for aligning events in a timeline.",
+      "Uniform, documented hardware and software specifications.",
+      "Full correlation records already included for every event.",
+      "All records using a shared, validated clock and common schema."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q048. Which among the following ones is <u>NOT</u> an anomaly type?",
+    "answers": [
+      "Point anomaly",
+      "Contextual anomaly",
+      "Collective anomaly",
+      "Systematic anomaly"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q049. Considering a sudden decrease of temperature in July (Northern emisphere), we can state that it is a",
+    "answers": [
+      "Point anomaly",
+      "Collective anomaly",
+      "Contextual anomaly",
+      "None of the other answers."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "Q050. Which of the following metrics is used to create a ROC (receiver operative characteristics) curve?",
+    "answers": [
+      "Accuracy",
+      "F1 score",
+      "Recall",
+      "Precision"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "Q053. In clean data learning for anomaly detection, we can <u>NOT</u> use the training set to create ...",
+    "answers": [
+      "ARMA models",
+      "A multiclass SVM classifier",
+      "Recurrent Neural Networks",
+      "A dynamical system from Partial Differential Equations"
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q095. Given the following sets of anomaly detection techniques, select the set made entirely of classical machine learning strategies (not including deep learning)",
+    "answers": [
+      "K-means, Transformer networks, Long-Short Term Memory",
+      "Transformer networks, Convolutional Neural Networks, Support Vector Machine",
+      "Spectral clustering, Decision trees, Long-Short Term Memory",
+      "Isolation forest, Spectral clustering, Support Vector Machine"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q116. Which is more suitable in anomaly detection supervised learning?",
+    "answers": [
+      "Deep autoencoder",
+      "Spectral clustering",
+      "CNN classifier",
+      "One-class SVM"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-13-06. Which statement correctly describes the WDAD assumption? (AI made)",
+    "answers": [
+      "Anomalous samples are drawn from a known distribution.",
+      "Every anomaly must be collective.",
+      "Every anomaly occurs at the same instant.",
+      "The nominal distribution contains no variability."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-13-07. Considering change-point evaluation, which quantity captures how long a detector takes to signal a real change? (AI made)",
+    "answers": [
+      "Detection delay measured relative to the true change point.",
+      "The number of training samples.",
+      "The size of the model's feature vector.",
+      "Overall accuracy over all nominal and anomalous samples."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-13-08. Why might a window-based metric be preferred when evaluating a detector of anomalous intervals? (AI made)",
+    "answers": [
+      "It makes the position in time of every detection irrelevant.",
+      "It measures only the number of features extracted per event.",
+      "It can evaluate whether detections occur within the relevant interval around the true event.",
+      "It requires the entire event to be reduced to a single binary label for the whole recording."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-13-09. Given a detector with 12 true positives, 3 false positives and 8 false negatives, which pair gives precision and recall, respectively? (AI made)",
+    "answers": [
+      "0.80 and 0.60.",
+      "0.60 and 0.75.",
+      "0.75 and 0.40.",
+      "0.60 and 0.80."
+    ],
+    "correct_index": 0
+  }
+]

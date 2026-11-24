@@ -1,0 +1,82 @@
+[
+  {
+    "question": "AI-05-01. Concerning the PCAP-to-CSV example, which of the following is a field shown in the exported flow representation? (AI made)",
+    "answers": [
+      "The SHA digest of the investigator's report.",
+      "The subscriber's SIM PIN.",
+      "The plaintext of every encrypted payload.",
+      "The destination port."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-05-02. Considering the acquisition of volatile router data, which of the following helps document network state before it changes? (AI made)",
+    "answers": [
+      "A copy of the server's static HTML pages.",
+      "A printout of the router's purchase receipt.",
+      "A photo of the router's serial number alone.",
+      "A record of the current routing table and active state."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-05-03. In the Common Log Format, which field records the HTTP response code returned to the client? (AI made)",
+    "answers": [
+      "Authuser.",
+      "Request.",
+      "Bytes.",
+      "Status."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q038. Among the following, select the <u>wrong</u> statement concerning Network-based IDS.",
+    "answers": [
+      "They require storage and fast processing capabilities.",
+      "They provide a network-wide overview of the attack.",
+      "They can detect out-of-band attacks.",
+      "They are not robust to fragmentation and TTL attack"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "Q106. About HIDS, which is <u>wrong</u>?",
+    "answers": [
+      "Could detect juice jacking attacks",
+      "Robust to fragmentation and TTL attack",
+      "Can not monitor entire network segment",
+      "Multiple sensors can be easily updated and installed"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-05-04. Concerning wireless forensics, why is channel hopping a useful capability for a capture tool? (AI made)",
+    "answers": [
+      "It reveals encrypted messages without keys.",
+      "It replaces the need to record when packets were captured.",
+      "It guarantees simultaneous capture of every channel with one radio.",
+      "It allows the tool to observe traffic on multiple wireless channels over time."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-05-05. What is the purpose of a hybrid intrusion detection system? (AI made)",
+    "answers": [
+      "To monitor only the payload of encrypted network connections.",
+      "To combine evidence from host-based and network-based detection.",
+      "To monitor only local system events.",
+      "To make host logs unnecessary in every investigation."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-05-06. Which statement correctly distinguishes profile-based from signature-based intrusion detection? (AI made)",
+    "answers": [
+      "Profile-based detection makes an alert only if an entry already exists in the signature database.",
+      "Signature-based detection compares activity only with a learned profile of normal behavior.",
+      "Profile-based detection flags deviations from expected behavior. Signature-based detection looks for known patterns.",
+      "Both require a known attack signature for every alert."
+    ],
+    "correct_index": 2
+  }
+]

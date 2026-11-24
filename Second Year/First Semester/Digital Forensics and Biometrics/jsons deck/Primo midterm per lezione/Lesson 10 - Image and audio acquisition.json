@@ -1,0 +1,92 @@
+[
+  {
+    "question": "Q037. Given a digital image, estimating the CFA interpolation strategy adopted on that image allows...",
+    "answers": [
+      "...to associate the image to a specific Bayer pattern.",
+      "...to associate the image to a camera model only if it has not been compressed.",
+      "...to associate the image to a specific acquisition time.",
+      "...to associate the image to a specific camera."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q117. About JPEG process, which is <u>wrong</u>?",
+    "answers": [
+      "After quantization there is entropy coding",
+      "transform coding operation is performed on 8x8 blocks",
+      "Different quantization steps are used on coefficient form R, G and B components",
+      "DCT is used"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-10-01. Considering the Expectation–Maximization approach to demosaicing detection, which ordering describes one iteration? (AI made)",
+    "answers": [
+      "Convert RGB to grayscale and repeat without a model update.",
+      "Estimate a new model once and then only read its output.",
+      "Estimate latent assignments using the current model, then update the parameters using those estimates.",
+      "Estimate the compression bitrate, then discard all pixel relationships."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-10-02. What is the forensic purpose of looking for double JPEG compression traces? (AI made)",
+    "answers": [
+      "To test whether the image underwent an earlier JPEG compression and potentially estimate aspects of it.",
+      "To retrieve the name of the application that last opened the file.",
+      "To reconstruct the exact camera model from every image.",
+      "To guarantee that the image was maliciously edited."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-10-03. In predictive video coding, what is the role of motion-compensated prediction between adjacent frames? (AI made)",
+    "answers": [
+      "It estimates an audio source from the video soundtrack.",
+      "It applies JPEG compression independently to every frame.",
+      "It guarantees identical file sizes for equal-length videos.",
+      "It exploits temporal correlation to predict a frame region from a reference frame."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q022. Assuming that an audio forensic analyst is processing an audio sequence and, at a certain point, he starts selecting the harmonics that are multiples of 50 Hz. Which type of analysis is he/she carrying on?",
+    "answers": [
+      "Reducing noise to classify events",
+      "Reverberation analysis",
+      "Voice/speech identification",
+      "Analyzing the electrical network frequencies"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-10-04. Which pair of operations turns an analog microphone signal into a digital representation? (AI made)",
+    "answers": [
+      "Sampling in time and quantizing the amplitude.",
+      "Playback and room reverberation.",
+      "Loudspeaker amplification and image sharpening.",
+      "Source separation and voice comparison."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-10-05. Which observation can support acoustic event localization in a room? (AI made)",
+    "answers": [
+      "The Bayer filter pattern of the microphone.",
+      "The relative timing of the direct sound and its reflections.",
+      "Only the file extension assigned by the audio recorder.",
+      "The quantization table of the JPEG cover image."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-10-06. Which of the following is listed as a microphone characteristic that describes sensitivity as a function of arrival direction? (AI made)",
+    "answers": [
+      "The name of the digital audio container.",
+      "The polar pattern.",
+      "The ADC quantization depth.",
+      "The audio file's compression ratio."
+    ],
+    "correct_index": 1
+  }
+]

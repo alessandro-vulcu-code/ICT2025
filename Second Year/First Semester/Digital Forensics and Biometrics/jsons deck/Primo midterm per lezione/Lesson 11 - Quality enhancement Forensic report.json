@@ -1,0 +1,72 @@
+[
+  {
+    "question": "Q027. Among the following list, select the strategies that can be employed by multimedia forensics to enhance the quality of visual data.",
+    "answers": [
+      "Deepfake detection, integrity verification, ghosting artifacts detection",
+      "Watermarking, stabilization, image phylogeny",
+      "PRNU estimation, CFA interpolation strategy estimation, chromatic aberration estimation",
+      "Sharpening, distortion correction, magnification"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "Q111. For a blurred frame of a video, how can we sharpen the details?",
+    "answers": [
+      "Equalize color histogram",
+      "Filter image with High Pass Filter",
+      "Enhance contrast",
+      "Magnify image"
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-11-01. A rectangular license plate appears as a trapezoid because it was recorded from an oblique viewpoint. Which operation is most directly adapted to this distortion? (AI made)",
+    "answers": [
+      "Audio equalization.",
+      "Histogram equalization.",
+      "Magnification without a geometric transform.",
+      "Perspective correction using corresponding corners."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-11-02. Several aligned frames show the same static scene with differing random noise. Which operation can improve the estimate of the scene? (AI made)",
+    "answers": [
+      "Keep a single arbitrarily chosen frame and discard the rest.",
+      "Integrate the aligned frames, for example by averaging them.",
+      "Assign every frame a new timestamp.",
+      "Isolate frequencies around 50 Hz in the soundtrack."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-11-03. An analyst needs to extract the vocal component of a recording from overlapping background music. Which technique corresponds to this task? (AI made)",
+    "answers": [
+      "Perspective correction.",
+      "Audio source separation.",
+      "Image sharpening.",
+      "Speech comparison."
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Q035. Concerning a forensic technical report to be presented in court, which of the following elements should <u>not be included</u> in the initial summary?",
+    "answers": [
+      "The CV of the analyst.",
+      "The conclusions in brief.",
+      "The summary of the activities.",
+      "The objectives of the report."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-11-04. Which material belongs in the <u>analysis</u> section of a forensic image-enhancement report? (AI made)",
+    "answers": [
+      "Only a list of the attached files.",
+      "The processing steps, tools or settings used, and supporting results.",
+      "An unsupported statement of the analyst's preferred conclusion.",
+      "Only the names of people who will read the report."
+    ],
+    "correct_index": 1
+  }
+]

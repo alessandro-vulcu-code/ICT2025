@@ -1,0 +1,72 @@
+[
+  {
+    "question": "AI-04-01. Considering the four mobile acquisition approaches discussed in class, which result is typical of a <u>logical</u> acquisition? (AI made)",
+    "answers": [
+      "A directory-level acquisition that necessarily includes every protected app container.",
+      "A raw duplicate of the phone's entire storage.",
+      "A photo of the lock screen and no exported records.",
+      "A backup or export of records available through supported interfaces."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-04-02. An analyst documents the visible state of a phone by photographing its screen. Which acquisition approach does this exemplify? (AI made)",
+    "answers": [
+      "Logical acquisition.",
+      "Filesystem acquisition.",
+      "Manual acquisition.",
+      "Physical acquisition."
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "AI-04-03. An analyst can acquire a device backup but needs app artifacts that are absent from it. Which approach is specifically aimed at acquiring files and directories, subject to the device's access controls? (AI made)",
+    "answers": [
+      "Filesystem acquisition.",
+      "Manual screen documentation.",
+      "Logical export of the same backup.",
+      "Recording the phone's external identifiers only."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "Q092. Consider the following description of a sniffer detection method \"During the transmission, send a packet with the IP address of the suspect machine without or with a wrong MAC address. All machines should reject it since MAC does not match IP. Only a sniffer would answer\". The statement can be referred to:",
+    "answers": [
+      "Local host analysis",
+      "Ping method",
+      "Latency method",
+      "ARP watch"
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "AI-04-04. Considering the two traffic collection strategies, which statement describes <u>stop, look, and listen</u>? (AI made)",
+    "answers": [
+      "Analyze incoming packets in memory and retain selected packets.",
+      "Capture all packets and postpone analysis until after storage.",
+      "Capture only application logs, independently of the network packets.",
+      "Store all packets permanently before applying any filter."
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "AI-04-05. Which pair of identifiers is used in the lecture to distinguish Ethernet addresses from network-layer addresses? (AI made)",
+    "answers": [
+      "IP address and URL.",
+      "ICCID and IMEI.",
+      "TCP port and DNS name.",
+      "MAC address and IP address."
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "AI-04-06. An analyst has a capture of encrypted application traffic and wants to compare activity patterns without reading message contents. Which observable does the lecture use for this purpose? (AI made)",
+    "answers": [
+      "Plaintext passwords.",
+      "Packet lengths.",
+      "Encryption keys recovered by reading the IP header.",
+      "The contents of encrypted messages."
+    ],
+    "correct_index": 1
+  }
+]
