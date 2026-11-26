@@ -1,0 +1,436 @@
+[00:00:02] Welcome.
+[00:00:03] My name is Leonardo Badia, and I'm
+[00:00:05] the lecturer for the course of game theory.
+[00:00:08] Welcome to this lecture about dynamic Nash equilibrium.
+[00:00:13] Because so far, we have seen the extension
+[00:00:18] of every game theoretic concept,
+[00:00:21] the concept of strategy, the concept of dominance,
+[00:00:24] the concept of normal form to the dynamic setup.
+[00:00:28] But we haven't commented the Nash equilibrium yet.
+[00:00:33] And there is a very good reason for that.
+[00:00:35] Because while the other concepts translate
+[00:00:38] more or less equivalently under appropriate conditions,
+[00:00:43] well, the Nash equilibrium needs an extension.
+[00:00:46] So for the first time, we change the setup.
+[00:00:49] And so we kind of pretend that we knew all along where
+[00:00:55] we are aiming at.
+[00:00:56] But in reality, when we switch to the dynamic setup,
+[00:01:00] the concept of Nash equilibrium is insufficient, let's say,
+[00:01:05] for describing all that we want to encompass with it.
+[00:01:10] So let's see what can we say.
+[00:01:12] So the definition can be easy to extend actually,
+[00:01:17] because we saw that even for dynamic games,
+[00:01:21] we can define a normal form.
+[00:01:25] And this goes by outlining all the strategies.
+[00:01:31] And remember, that might not be easy, because especially,
+[00:01:35] well, in this example, you see Anne versus Brian,
+[00:01:38] the battle of sexes in the dynamic version.
+[00:01:41] So Anne decides first, and then Brian reacts.
+[00:01:44] So Brian has now four strategies,
+[00:01:47] because depending on what Anne does, Brian can play R or S.
+[00:01:51] So Anne can play two things.
+[00:01:53] So Brian has four strategies, because there is a binary choice for every of the two choices
+[00:02:02] of Anne.
+[00:02:03] So Anne still has two strategies, because Anne only has one choice to make without
+[00:02:08] any history.
+[00:02:09] But Brian decides, depending on the history of play, so there are two choices and two
+[00:02:15] history of plays.
+[00:02:17] So two times two makes four strategies.
+[00:02:19] Well, if we accept that and we enumerate all the strategies, nothing prevents us from identifying
+[00:02:27] the Nash equilibrium. And this is kind of interesting because we translate the equilibrium,
+[00:02:34] which is static, a static concept, to the dynamic setup. Well, there is something which
+[00:02:43] is nice and strange, well, remember
+[00:02:47] that this setup where we derive normal form looks like Brian
+[00:02:52] is actually paranoid.
+[00:02:53] So this is not really the development of the game.
+[00:02:56] Well, it is.
+[00:02:57] But you shouldn't see it as a development of the game,
+[00:03:00] which is the extensive form.
+[00:03:02] And the extensive form is very clear to see
+[00:03:03] who almost first, who almost second.
+[00:03:06] Well, the normal form of a dynamic game
+[00:03:08] would be like planning ahead of time.
+[00:03:11] So we have a very paranoid Brian that is evaluating all of his chances depending on what Ann does.
+[00:03:20] Well, generally, boys do that when they go out to the girls.
+[00:03:24] So they plan on every possible best answer to what the girl says.
+[00:03:29] Well, here Brian is planning whatever he can do depending on what Ann does.
+[00:03:36] And so Brian identifies being rational.
+[00:03:40] He has four possible strategies and plan this
+[00:03:42] along beforehand.
+[00:03:44] So Brian does not play along the way here.
+[00:03:47] Brian plans from the beginning,
+[00:03:48] and he has a plan for everything that can happen.
+[00:03:54] That's the idea.
+[00:03:54] So if we frame the game as that,
+[00:03:58] then you still have a dynamic behavior,
+[00:04:01] which is kind of flattened down, okay?
+[00:04:03] But still you can identify ARMS best responses to Brian's
+[00:04:08] and Brian's best response to ARMS move.
+[00:04:11] And so you see you have actually three Nash equilibria,
+[00:04:16] R double R, RRS and S double S.
+[00:04:21] And sure they fulfill the condition
+[00:04:23] because if we look at the game this way,
+[00:04:26] so from the beginning,
+[00:04:28] assuming that for some reason,
+[00:04:30] they converged without knowing to RRR, for example,
+[00:04:38] or to RRS, or to SSS.
+[00:04:41] No one has incentive for unilateral deviation.
+[00:04:44] So for example, if Anne decided R, well, Anne is thinking,
+[00:04:50] maybe Brian is choosing to go to the movie R no matter
+[00:04:53] what.
+[00:04:55] So Anne's choice would be to go to movie R, of course.
+[00:04:59] That's the best answer.
+[00:05:01] And the best response of Brian to R,
+[00:05:04] well, can either be RR or RS, they are equivalent,
+[00:05:07] because if R goes to C movie R, the answer to movie S
+[00:05:11] doesn't really matter, it does not happen.
+[00:05:14] So both RR and RS are best responses.
+[00:05:18] And by the way, R, double R, and R, RS
+[00:05:21] are Nash equilibria, because Brian doesn't want to deviate.
+[00:05:25] Of course, R doesn't want to deviate, either,
+[00:05:28] because if she deviates, she'll get a lower payoff.
+[00:05:32] And Brian doesn't want to deviate because, well,
+[00:05:35] between R and RS, they are equivalent,
+[00:05:37] and going to SR or SS, they actually mean even worse
+[00:05:42] that R chooses R, but Brian chooses S,
+[00:05:46] and Brian is not stupid, and does not go away from R.
+[00:05:50] And you can see, identically, that SS double S
+[00:05:53] is also a Nash equilibrium, according to the definition.
+[00:05:55] Okay, so we have these three Nash equilibria. And remember this is, once again, what Brian
+[00:06:05] plans beforehand. So if Brian plans his move beforehand, so Brian moves first, actually.
+[00:06:13] Brian moves together with Anne, but his move is actually a more complicated move
+[00:06:18] made of two possible actions. One as the response to Anne's R, and another to the
+[00:06:24] response as r's s.
+[00:06:28] So the three equilibria are easy to describe.
+[00:06:32] We can give an interpretation.
+[00:06:33] And they are all pure, by the way.
+[00:06:36] r double r means r plays r.
+[00:06:39] And Brian chooses, well, no matter what r does,
+[00:06:41] I always play r.
+[00:06:42] And this is, of course, an equilibrium, because they end
+[00:06:44] up in seeing movie r.
+[00:06:48] Well, rrs is also an ash equilibrium,
+[00:06:51] because r plays r.
+[00:06:52] And Brian plays a strategy that corresponds to, well,
+[00:06:55] I do whatever Anne does, which is a good idea.
+[00:06:59] In this specific case, the result is identical to before.
+[00:07:02] So this is also Nash equilibrium.
+[00:07:04] And SSS is instead that Anne plays S, and Brian plays,
+[00:07:09] I always choose S. So this is also Nash equilibrium.
+[00:07:13] And by the way, SRS, my look is also Nash equilibrium
+[00:07:18] because, well, they end up in seeing the same movie,
+[00:07:21] but it's not a Nash equilibrium.
+[00:07:23] Because if Anne anticipates, believes
+[00:07:26] that Brian is playing RS, so Brian will do whatever she
+[00:07:33] says, whatever she does, Brian will copy her move,
+[00:07:37] then Anne prefers to go to movie R
+[00:07:39] because R is better for her.
+[00:07:41] So RRS is a Nash equilibrium, while SRS is not.
+[00:07:47] Very well.
+[00:07:48] So let's compare R, double R, and R, RS.
+[00:07:52] Because we said they end up in the same outcome.
+[00:07:55] So are they really different equilibriums?
+[00:07:58] Well, it seems like I shaded here
+[00:08:01] the part that R does not play.
+[00:08:03] So in that part, they coincide.
+[00:08:07] Because the part of the strategy
+[00:08:09] that is relevant for the game is Brian choosing R.
+[00:08:13] Whatever Brian does here doesn't matter,
+[00:08:16] because Brian does not play that anyways, right?
+[00:08:21] Well, still, we are not fully convinced
+[00:08:24] because these two strategies, R, R, R,
+[00:08:29] sorry, double R and RS for Brian,
+[00:08:32] well, imply the same gameplay
+[00:08:37] in this side of the graph,
+[00:08:39] which is the one that is actually taking place,
+[00:08:41] they imply a different gameplay
+[00:08:44] in the part of the graph that is not actually printed.
+[00:08:49] So we can say that R,
+[00:08:55] sorry, double R for Brian,
+[00:08:58] has an irrational response.
+[00:09:01] The good thing for Brian is that
+[00:09:03] this irrational response is never played.
+[00:09:05] Why I say irrational response?
+[00:09:06] Because in R, double R,
+[00:09:09] we are kinda claiming that Brian will play R
+[00:09:13] even after knowing that Anne plays S.
+[00:09:17] So this is not very smart of Brian.
+[00:09:19] The good thing for Brian is that this part of the graph,
+[00:09:24] this part of the tree,
+[00:09:25] this part of the game does never come into play
+[00:09:30] because Anne never plays S after all.
+[00:09:34] So this is the difference, okay?
+[00:09:36] So when we are in the equilibrium condition,
+[00:09:40] the two coincides
+[00:09:41] because they imply that Brian plays R but they have a difference and the
+[00:09:47] difference is that there is a different rational choice well one is rational
+[00:09:51] the other one is not in a part of the game that is never actually coming into
+[00:09:57] practice okay well the thing is that it's not really strange that we
+[00:10:06] represent situations that do not come into play. And this justifies why we need to tell what Brian
+[00:10:13] does even when Anne plays S. And we will see better why. But remember we claim that even if we
+[00:10:22] do the two night battle of sexes, so Brian and Anne play the original game but they play it twice.
+[00:10:28] So they go to see either the romance movie or the sci-fi movie without knowing what the
+[00:10:34] that does in the first night.
+[00:10:36] And in the second night, they repeat.
+[00:10:38] So they have four possible outcome.
+[00:10:40] And in the second night, the strategies
+[00:10:43] depend on what happened in the first night.
+[00:10:45] So they have a quintuple of actions to choose.
+[00:10:49] So we said, well, one possible strategy
+[00:10:51] is RSRR, which means this is the reply to what.
+[00:10:58] So it's a strategy to plan when the first outcome is
+[00:11:03] double s. And this cannot be because if I'm playing r in the first night, the outcome can either be
+[00:11:11] well if I'm Brian, the outcome can either be double r or s r. It cannot be double s.
+[00:11:18] It will be double s only if I'm playing s. But nevertheless we say okay but it's good
+[00:11:24] to plan this strategy even though it does not come into play. And the reason why we need this
+[00:11:32] is not for our own sake, because of course, well,
+[00:11:36] what if we plan a strategy even for the cases that
+[00:11:40] never happen?
+[00:11:41] Well, in a sense, you might claim,
+[00:11:43] I mean, if you ask my wife, my wife is very paranoid
+[00:11:47] when we plan a trip.
+[00:11:48] She plans every possible situation.
+[00:11:52] Even like, OK, we go in Greece in August,
+[00:11:56] and what if it snows?
+[00:11:59] I say, well, that looks very unlikely.
+[00:12:01] okay nevertheless we take some warm clothes just in case it snows. So she really does the rational
+[00:12:10] thing in a sense. I mean she's very paranoid you can say but she's also doing what our players
+[00:12:15] are supposed to do because you are supposed to plan every possible situation even those that are
+[00:12:22] well not likely to happen or even those who are never happening because who says they're
+[00:12:29] happening. From your perspective, you know this part of the game are never happening,
+[00:12:36] but the other players don't know. So remember that your strategy is important not only
+[00:12:42] to plan what you are supposed to play, but also to see if the other players are playing
+[00:12:48] the best response. And the other players don't know what part of the game are not really
+[00:12:55] coming into practice because they don't know what they're going to play. So they can make even wild
+[00:13:01] assumptions on what you can be playing. Same as my wife doing wild assumptions about snowing
+[00:13:07] in Greece in August. It can be, I mean, you don't exclude that a priori. That would be like
+[00:13:13] mutilating the game, even though admittedly that part of the game is very unlikely. But you
+[00:13:19] need that not for your plan because of course for your own sake you don't need to plan all
+[00:13:24] these intricacies, but if you want to see if the other player is playing a best response
+[00:13:30] to their belief, and their belief can be one possible strategy of yours. And remember,
+[00:13:35] the Nash equilibrium really wants to see this. If the players are playing a best response
+[00:13:39] to all players must be playing a best response. So you must be playing a best
+[00:13:42] response to the other players, and the other players must be playing a best response
+[00:13:46] to your strategy. And to see that you also need to detail your strategy as much
+[00:13:52] as possible, even including the cases that
+[00:13:54] are not really practical.
+[00:13:58] OK, so let's see then a definition inspired by that.
+[00:14:01] So we decide to keep this part of the definition
+[00:14:06] of the strategy for this reason.
+[00:14:09] And we can say that if you have
+[00:14:10] a generic behavioral strategy that is a Nash equilibrium,
+[00:14:15] we define the equilibrium path that
+[00:14:18] contains the decision tree nodes that
+[00:14:21] are reached with probability greater than zero.
+[00:14:24] So in the previous example, we saw the equilibrium path.
+[00:14:27] The equilibrium path was like this, see, this direction
+[00:14:30] only, r and r, because the two moves that
+[00:14:34] are played with probability non-zero,
+[00:14:36] I mean, they're played with probability one,
+[00:14:37] because these are pure strategies.
+[00:14:39] So this is the equilibrium path from A to this node.
+[00:14:43] And instead, in general, if you have a mixed strategy,
+[00:14:47] a joint mixed strategy, you can have parts of the tree
+[00:14:50] that are reached with zero probability,
+[00:14:52] and other parts that are reached with non-zero probabilities.
+[00:14:55] It can be one.
+[00:14:56] It can be even an intermediate value.
+[00:14:58] So we say this is an equilibrium path.
+[00:15:00] In this specific example, this is the equilibrium path
+[00:15:03] of S double S. That's another Nash equilibrium.
+[00:15:06] And you only reach these nodes, this, this,
+[00:15:10] and the final node.
+[00:15:11] So you don't reach any of the other nodes.
+[00:15:14] That's the equilibrium path.
+[00:15:16] OK, so remember that if you have a Nash equilibrium,
+[00:15:21] you must say what happens in both on and off
+[00:15:28] the equilibrium path.
+[00:15:30] The thing is, like, S double S is a Nash equilibrium.
+[00:15:35] Since you say, OK, if you play S double S,
+[00:15:37] you have this equilibrium path.
+[00:15:39] If you get a unilateral deviation,
+[00:15:42] you get a worse payoff. So this is why you need also to specify what happens. You see,
+[00:15:51] S double S means, well, Brian decides to play R, sorry, to play S if Anne plays R
+[00:15:58] and also to play S if Anne plays S. Why do you need to define this S part? I mean,
+[00:16:04] you know that Anne plays S, right? Yeah, but you need this first letter to specify
+[00:16:11] what happens when Anne plays R just to verify this is a Nash equilibrium. If you don't include
+[00:16:18] the first S, which at first sight seems useless, you don't realize S double S is a Nash equilibrium,
+[00:16:25] because to see this is a Nash equilibrium, you must check that if Anne deviates,
+[00:16:31] she gets a lower payoff. Because you see, S double S means that if Anne changes,
+[00:16:38] she gets this, like in the dashed arrow.
+[00:16:41] So she gets zero.
+[00:16:42] This is why deviating for Anne is not convenient.
+[00:16:46] If I don't specify this S, I can even pretend,
+[00:16:50] I can even claim, I can even suppose
+[00:16:52] that Brian is playing R in this tree.
+[00:16:55] So out of the equilibrium path.
+[00:16:59] So if that's the case,
+[00:17:01] Anne's unilateral deviation would be convenient
+[00:17:04] because she improves her payoff from one to two.
+[00:17:06] The reason why she does not improve the payoff
+[00:17:08] is that the strategy of Brian is fully specified
+[00:17:12] and Brian claims he will play S if Anne plays R.
+[00:17:17] So this means that Anne doesn't want to deviate
+[00:17:20] because she would get a lower payoff.
+[00:17:23] Okay, and this can also be seen as, well,
+[00:17:27] a passive aggressive threat from Brian
+[00:17:29] because Brian is kinda claiming,
+[00:17:31] well, Brian's not claiming anything, right?
+[00:17:33] because again they don't communicate. I think you can see the game in two ways. One way is that
+[00:17:41] they decide in a static way as the regional battle of sexes, Anne's strategy and Brian's
+[00:17:47] strategy. The only difference is that Brian studies now four options and or you can say
+[00:17:53] where Anne announces what she plays and Brian decides what to do after seeing Anne's move.
+[00:17:59] In none, in either of these two cases, there is a choice made by Brian communicated to
+[00:18:06] Anne.
+[00:18:07] So when I say Brian threatens Anne or Brian claim he's going to play as no matter what
+[00:18:15] is not really a communication is like a paranoid attempt of Anne to figure out what Brian
+[00:18:22] can do.
+[00:18:22] Remember, Anne is very smart, so Anne can identify all
+[00:18:26] of possible Brian strategies.
+[00:18:29] So in this situation, Anne can imagine,
+[00:18:32] can believe in game theoretic terms
+[00:18:34] that Brian is playing double S. So Anne is assuming,
+[00:18:39] OK, let's assume, for the sake of reasoning,
+[00:18:42] Brian is playing double S. What is going to happen then?
+[00:18:46] If I play R, then I get 0.
+[00:18:48] If I play S, then I get 1, so I should play S.
+[00:18:50] And I don't want to deviate from there.
+[00:18:54] And neither does Brian.
+[00:18:57] Brian doesn't want to deviate either
+[00:18:59] because SSS leads him to getting the best
+[00:19:02] possible payoff of two.
+[00:19:05] So this is why SSS is a Nash equilibrium.
+[00:19:08] But we wonder, is this threat made by Brian credible?
+[00:19:12] We'll think of that for a while,
+[00:19:14] and we will give the answer later.
+[00:19:17] But let's see another game, which is famous
+[00:19:20] and highlight even better this concept
+[00:19:22] of different Nash equilibrium.
+[00:19:24] Let's say we have, it's called the Ultimatum game.
+[00:19:28] So in my version, it's a bit simplified
+[00:19:31] just because I wanted a tractable tree in the slide.
+[00:19:35] So let's say we have two players
+[00:19:37] and they have to share 10 candies.
+[00:19:39] Let's say they are sharing just 10 candies.
+[00:19:41] We are close to Halloween, so we have to,
+[00:19:44] well, probably these years would be hard
+[00:19:47] to go door by door and do trick and treat or trick but here I mean we assume that they have
+[00:19:55] 10 candies handy so they have to split these 10 candies okay you can think of two kids splitting
+[00:20:03] candies and the some parent tells them well you split the candies fairly come on so the big
+[00:20:14] brother comes along and says, well, let me make a proposal.
+[00:20:20] I make you a proposal with a split.
+[00:20:23] And the younger kid says, OK, then I
+[00:20:25] will respond yes or no to your proposal.
+[00:20:28] If I think it's fair, I will say yes.
+[00:20:30] If I think it's not fair, I'll say no.
+[00:20:33] OK, so the catch is that if the player two says no,
+[00:20:39] the parent who's eavesdropping that they are fighting,
+[00:20:43] and say, no, I don't like your proposal, or something
+[00:20:45] like that.
+[00:20:46] The parent intervenes and says, OK, you know what?
+[00:20:49] You cannot play fairly.
+[00:20:51] You cannot split these candies fairly.
+[00:20:54] I'll take them away from you.
+[00:20:56] This is what I usually do with my two kids,
+[00:20:58] with my two older kids now.
+[00:21:01] And if they start fighting against each other
+[00:21:05] because they want to play with the game
+[00:21:07] and they cannot share, I say, OK, let
+[00:21:09] me take the game off of you.
+[00:21:11] So now you don't fight anymore
+[00:21:14] Okay, now for simplicity. There are many ways. I mean 11 ways on which to share 10 candies
+[00:21:21] But this game can even be made like continuous in certain setups, but for simplicity
+[00:21:27] Let's consider just three ways of splitting the canvas because in reality, I mean they give the idea
+[00:21:34] one way is the dashed art way of splitting the candies, which is
+[00:21:39] Player P proposes that he keeps nine candies and only one candy to the responder.
+[00:21:48] The F way is the fair split, 50-50.
+[00:21:52] And there is even the generous way of two candies, 20%, and 80 to the responder.
+[00:21:58] So these are the only three actions available to the proposer.
+[00:22:02] And since the proposer moves first, he has three actions and three strategies because
+[00:22:08] there is no history before that. The responder instead has two actions which is simply yes or no
+[00:22:15] but the strategies of the responder are more because the strategies depend on what the
+[00:22:22] proposal did. So there is one yes no answer for each of the three proposal so you see why I
+[00:22:29] just kept it to three because the strategies of R are eight. There is a tripe of yes no values
+[00:22:36] Okay, do we agree? Hope so. So if something is clear, just stop the video and listen
+[00:22:43] to it because I think this is very important. Okay, so this is the extensive form of the
+[00:22:50] game. You see the proposer has three choices, D, F, and G, and the responder sees what
+[00:22:56] the proposer proposes. So these three nodes are distinct, they belong to different
+[00:23:01] information sets. The information sets are all singletons. And the responder can say
+[00:23:06] yes or no.
+[00:23:07] And whenever the responder says no,
+[00:23:09] the payoff is always zero, zero,
+[00:23:10] otherwise the proposal is accepted.
+[00:23:15] And you can identify some Nash equilibria in this tree.
+[00:23:21] It's easy to spot them even without the need
+[00:23:25] for drawing the normal form.
+[00:23:27] The Nash equilibria here are all the joint strategies
+[00:23:30] where the proposer proposes something
+[00:23:33] and the responder plans to say no to every proposal of the proposal where the share is
+[00:23:40] bigger than what the proposal says. So to clarify this, the proposal proposes I keep
+[00:23:47] something for myself and I give this to you. For example, the proposal proposes
+[00:23:53] F, which is 50-50. So the Nash equilibria with this kind of proposal is whenever the
+[00:24:03] responder says yes to this, of course, but says no to all the bigger proposal for P,
+[00:24:10] which is for example, D in this case. So there are actually two Nash equilibria. One
+[00:24:17] One is the proposal says F and the responder says no, yes, yes. And also no, yes, no would
+[00:24:25] be a Nash equilibrium. So the key point is that if the proposal says F and the responders
+[00:24:31] plan to say no to proposal D, then these are Nash equilibrium. Of course, you also
+[00:24:38] have a Nash equilibrium, which is G for the proposer,
+[00:24:43] and no, no, yes for the responder.
+[00:24:47] And all the strategies where the proposer proposes D
+[00:24:52] and the responder says yes to D.
+[00:24:54] These are all Nash equilibria.
+[00:24:57] They are, of course, D and triple Y.
+[00:25:01] So yes, yes, yes.
+[00:25:02] So yes to everything, this is a Nash equilibrium.
+[00:25:04] And also yes, no, no, for example,
+[00:25:07] or is it Nash equilibrium?
+[00:25:09] Okay, let's see why these are Nash equilibria.
+[00:25:14] And we can see, for example,
+[00:25:16] the case where the proposer says F.
+[00:25:18] All the others are equivalent.
+[00:25:20] Well, no player has an incentive to deviate.
+[00:25:23] Why?
+[00:25:24] Because if the proposer deviates,
+[00:25:27] either the proposer gets a no as an answer
+[00:25:30] instead of a yes.
+[00:25:31] And so for example, in case of no, yes, yes,
+[00:25:35] if the proposer deviates to D,
+[00:25:37] the proposer gets no as an answer.
+[00:25:39] So the final payoff will be zero,
+[00:25:41] lower than the current five.
+[00:25:44] And if the proposer deviates to a worse proposer
+[00:25:48] for the proposer itself,
+[00:25:51] then it's either a lower share or even zero
+[00:25:55] because the responder says no.
+[00:25:57] So in all the cases, this is a bad deviation.
+[00:26:01] So there is no incentive for unilateral deviation
+[00:26:03] of the proposer.
+[00:26:04] The responder instead already says yes.
+[00:26:09] The only deviations that they can make,
+[00:26:11] actually the deviations, I mean,
+[00:26:12] the strategy of the responder is a tri-pole
+[00:26:16] of yes, no values.
+[00:26:18] So there are deviations that make no effect.
+[00:26:22] Like if the proposer proposes F
+[00:26:26] and the responder says,
+[00:26:28] the responder strategies, no, yes, yes.
+[00:26:32] Well, also the deviation to yes, yes, yes doesn't change anything. So there is no incentive
+[00:26:38] for that deviation. So the responders change where the response to the actual plate strategy
+[00:26:49] is the same, do not change the final outcome. And the other changes will be when the responder
+[00:26:58] says no to the proposal.
+[00:27:00] And they are not making the payoff of the responder
+[00:27:04] any better.
+[00:27:05] They're actually making it worse.
+[00:27:07] So let's see.
+[00:27:08] If the proposal proposes F, there
+[00:27:11] are four strategies where the responder says yes to F.
+[00:27:16] And there are four strategies where
+[00:27:18] the responder says no to F. So the latter
+[00:27:22] have all deviations toward a lower payoff,
+[00:27:25] so they are not taken.
+[00:27:26] and the other have deviations to the same payoff, so they are not taken either.
+[00:27:31] So you see that these are Nash equilibria.
+[00:27:33] And you can enumerate all of them, there are very many.
+[00:27:36] But apparently, not all of them seem quite convincing.
+[00:27:41] We will discuss this in the next part of this lecture.
+[00:27:46] This looks like a good point where to break the video and take a pause.

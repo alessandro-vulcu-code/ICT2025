@@ -1,0 +1,339 @@
+[00:00:02] Welcome to this lecture of game theory.
+[00:00:04] My name is Leonardo Badia, and I'm
+[00:00:06] the lecturer for this course.
+[00:00:08] In today's lecture, we discuss what
+[00:00:10] happens to the concept of Nash equilibrium
+[00:00:13] when we move to a Bayesian setup.
+[00:00:16] We saw static gains, dynamic gains,
+[00:00:18] and we discussed how different can
+[00:00:22] be the meaning of the term strategy in this context.
+[00:00:25] Now we move to Bayesian gains.
+[00:00:28] In Bayesian gains, we give yet another definition
+[00:00:31] of strategies even though all in all is just like dynamic games is that if we
+[00:00:39] see if you look at the extensive form of the game we want to define an action
+[00:00:44] per each information set so just to recall this is something that we
+[00:00:50] already discussed in the previous lecture if we just limit our shelter
+[00:00:55] static vision game we will see what happens in dynamic context and in
+[00:00:59] In principle, a Bayesian game is always dynamic,
+[00:01:02] remember that, because there is always a nature,
+[00:01:05] a move by nature beforehand,
+[00:01:07] and after that, there are the players moving.
+[00:01:09] But if the players are moving simultaneously,
+[00:01:12] we can think of a static Bayesian game.
+[00:01:15] The extension with respect to the classic static game,
+[00:01:18] the static game, we have three ingredients, remember?
+[00:01:21] Players, action spaces, and the payoffs.
+[00:01:25] Now we need to add three more ingredients.
+[00:01:27] Well, first of all, we need to add the types, because now the players do not only choose
+[00:01:33] an action, but also they can be of different types. So in a sense, we define how we need
+[00:01:40] to define an action per each one of the types. This is the meta agent representation,
+[00:01:45] the type agent representation, the meta player representation, however you want to
+[00:01:50] call it. Second ingredient, we need to make the payoffs type dependent. Now we want
+[00:01:57] express that different types have different payoffs and this is the reason why they play
+[00:02:03] different actions. Right, so another ingredient, the last one, is beliefs in that remember we
+[00:02:10] need to tell how the players form beliefs on the types of the others. The general structure,
+[00:02:18] well the most usual structure let's say, is that we know the joint distribution of all the
+[00:02:24] types as a prior and then we also know our type.
+[00:02:29] So we can infer the belief on the type
+[00:02:32] of the other players through Bayes rule.
+[00:02:34] We compute the probability of the types
+[00:02:37] of the other players conditional to the type of us.
+[00:02:42] And if the types are often assumed independent,
+[00:02:46] this just means that we need to know
+[00:02:48] the probability of each type is a very simple requirement.
+[00:02:51] but we know all the probabilities, okay?
+[00:02:55] So we know the probability of player one
+[00:02:57] of being of type A, B, and C and so on,
+[00:02:59] probability of player two of being of type X, Y, Z,
+[00:03:03] and so on, and each one of the players knows this,
+[00:03:07] and they know that they know and so on and so forth.
+[00:03:09] This is common knowledge, okay?
+[00:03:12] The definition is actually a bit more complicated
+[00:03:14] than this because this is the common,
+[00:03:17] what commonly happens in practice,
+[00:03:19] That is, we know we take the types independent
+[00:03:23] for each player,
+[00:03:24] need to choose them independently of each other.
+[00:03:27] And so, and they only know their own type.
+[00:03:30] So they infer the type of the other players.
+[00:03:34] Okay, in this sense, this can work.
+[00:03:38] But in reality, it can be,
+[00:03:41] there are some interdependencies
+[00:03:43] and it's not independent.
+[00:03:45] And then we just have more complicated math.
+[00:03:47] So I don't deal with that, but actually, this is one point where if you really want to go into that, you need to recall a lot from your courses in probability and statistics, like you need to decide what happens when the two players don't have independent time.
+[00:04:07] And I made an example in the last lecture.
+[00:04:10] So ideally, if there are two players
+[00:04:12] determined at random, like, well,
+[00:04:15] let's say the odds and evens game.
+[00:04:18] In that case, you can interpret,
+[00:04:20] well, player odd is the one who winks
+[00:04:23] when the numbers are, the sum is odd,
+[00:04:26] and the other has a different type.
+[00:04:28] In fact, the utility function is different,
+[00:04:29] but the two types are not,
+[00:04:32] the two types are actually not independent
+[00:04:34] in that in the game,
+[00:04:35] There's always one player labeled even and another player labeled odd.
+[00:04:39] So you perfectly know how to play the game, because if you play odd and you know it,
+[00:04:43] you know the other player must be played even.
+[00:04:45] You don't have a 50-50 chance for the other guy.
+[00:04:48] So you see how this can become more complicated.
+[00:04:51] This is a very simple example.
+[00:04:52] And probably you don't even need to use Bayesian games for that.
+[00:04:55] Actually, we use static games for the odds and evens.
+[00:04:59] But in reality, you can consider a Bayesian version where the two players don't know
+[00:05:03] there are also events and they discover it only afterwards but they don't know about the other
+[00:05:07] so that may be interesting I don't know that's just an idea. Anyways in a Bayesian context we
+[00:05:13] showed how to reinterpret the definition of strategies and this reinterpretation is actually
+[00:05:20] analogous to what we did in the dynamic games because the Bayesian game is after
+[00:05:25] all a dynamic game you can put it in extensive form so in the extensive form you need to
+[00:05:33] sets. So you identify all the nodes and some of the nodes are joined with others so they have,
+[00:05:40] they represent the same information set and then you choose an action there, a single action there
+[00:05:45] for the entire information set. And if you do something like that, this translates in practice
+[00:05:51] in the case of a static Bayesian game to a map from T to A. That is from the set of types
+[00:05:58] to the set of actions.
+[00:05:59] In other words, your strategy is an association
+[00:06:03] to a type from a type to an action.
+[00:06:06] So each type plays a different action mutually.
+[00:06:10] They can also play, all types can play the same action.
+[00:06:13] That is also strategy.
+[00:06:14] But in general, you need to define
+[00:06:16] what action does each type play.
+[00:06:20] And a mixed strategy is nothing
+[00:06:21] but a probabilistic view of that.
+[00:06:23] So, so far a mixed strategy can be interpreted by say,
+[00:06:26] okay, if I play this, I don't know,
+[00:06:29] I play action D when I'm of type A
+[00:06:32] and action F when I'm of type B and so on,
+[00:06:36] this is your pure strategy.
+[00:06:38] If you randomize this a little bit, it's mixing, okay?
+[00:06:41] Nothing strange here.
+[00:06:43] Now, in this sense, we can make some remarks.
+[00:06:47] First of all, this is actually similar
+[00:06:50] to what we did for dynamic games.
+[00:06:52] In dynamic games, we had to define an action
+[00:06:55] per each history of play.
+[00:06:58] Here we are replacing the history of play
+[00:07:00] with the type of the player.
+[00:07:02] There's actually no past history in this game.
+[00:07:05] It's a dynamic game, but there is no past history.
+[00:07:07] The only thing that happened in the past
+[00:07:09] prior to the move of the players
+[00:07:10] is nature determined the type.
+[00:07:13] And also this is analogous to what we said
+[00:07:16] in dynamic games.
+[00:07:17] We made a difference between mixed
+[00:07:19] and behavioral strategies.
+[00:07:20] We say, well, one strategy is actually planned beforehand.
+[00:07:24] So in reality there is, you cannot define the strategy as you go. Well you can
+[00:07:29] under certain mild conditions and that would be the behavioral strategy. So you
+[00:07:34] plan some changes depending on what happens in the Institute of Play. But the main
+[00:07:40] perspective is actually to plan everything from ahead of time. So before
+[00:07:46] even playing the game you consider a strategy that keeps into account every
+[00:07:50] possible situation that happens in the game. And here the situations that can happen in the game
+[00:07:56] are your types. So before playing the game you don't know your type and then after playing the
+[00:08:02] game, well while playing the game, you are revealed by nature what is your type and so
+[00:08:06] you plan your move accordingly. According to the strategy that you have defined beforehand,
+[00:08:11] so your strategy must include all of the possibilities for all of your types.
+[00:08:17] Naturally, us again, another similarity
+[00:08:19] with dynamic games is this.
+[00:08:22] In dynamic games, we say, what's the purpose
+[00:08:24] of defining such a complicated strategy
+[00:08:26] also involving things that would never happen?
+[00:08:30] And we can make the same remark here.
+[00:08:32] If I define an action to each one of my type,
+[00:08:35] isn't it a bit redundant?
+[00:08:36] Because after all, I only have one type in the end.
+[00:08:40] So why do I need to define a strategy, an action?
+[00:08:43] In my strategy, I need to define an action
+[00:08:45] per each of my type, including the types
+[00:08:48] I will probably never be because I can only be of one type.
+[00:08:51] Well, you don't need to do so for your own sake.
+[00:08:54] That's not important.
+[00:08:56] It's important to do so for the other players,
+[00:08:58] because remember, the catch of Nash equilibrium,
+[00:09:01] which is what we want to explore now,
+[00:09:02] is that you form, you play a best response
+[00:09:05] to your beliefs.
+[00:09:06] So you form a belief.
+[00:09:07] You play a best response to that belief.
+[00:09:09] And if it happens that the other players
+[00:09:12] are also playing a best response to their beliefs
+[00:09:14] and their beliefs include what you plan to play,
+[00:09:18] this makes the entire system consistent.
+[00:09:20] So your best reaction to your beliefs
+[00:09:24] happens to be compatible
+[00:09:27] with the belief of the other player.
+[00:09:28] So you go full circle
+[00:09:30] and you get a self-enforcing prophecy
+[00:09:32] like Harry Potter, we already discussed that.
+[00:09:34] So our beliefs are consistent and correct,
+[00:09:37] which is the definition of an action player.
+[00:09:39] We can only do that if we plan the strategy
+[00:09:43] of the other players in every single detail.
+[00:09:45] This is why we need to plan everything in our studies,
+[00:09:48] because we know our type, but the other players don't.
+[00:09:52] So they can reasonably assume an action,
+[00:09:55] they reasonably believe an action from our side
+[00:09:58] for each one of our types.
+[00:10:01] Okay, very well.
+[00:10:02] So remember this, that the full definition
+[00:10:05] is very important from the formal view.
+[00:10:07] And well, one way to say it's important
+[00:10:08] is because if you get it wrong,
+[00:10:10] you don't get the points in the written exam,
+[00:10:13] which is a very important incentive.
+[00:10:15] But the mathematical reason why you need to define
+[00:10:17] to go to such lengthy details
+[00:10:19] to specify the entire strategy of a player,
+[00:10:22] including all of the types,
+[00:10:23] is because you want to plan the reactions
+[00:10:26] of the other players.
+[00:10:27] The reaction of other players might depend
+[00:10:29] on the types of the player,
+[00:10:31] the first player we consider.
+[00:10:34] Okay, this said, we are ready for the definition
+[00:10:37] of the Bayesian Nash equilibrium.
+[00:10:38] What's a Bayesian Nash equilibrium?
+[00:10:40] Well, it's actually very simple.
+[00:10:42] So far in this context, a Bayesian Nash equilibrium
+[00:10:44] is nothing but a Nash equilibrium in this Bayesian setup.
+[00:10:48] So if we simply retake the definition of strategy
+[00:10:53] and we change it to what we just said,
+[00:10:56] if our choice of strategy does not cause you any regret
+[00:10:59] then we have a Bayesian Nash equilibrium.
+[00:11:01] So the definition would be simple.
+[00:11:03] I have my utility function
+[00:11:05] and I look for a local maximum of the utility function.
+[00:11:09] So I choose my strategy as I,
+[00:11:11] so as to maximize this utility.
+[00:11:13] But importantly, in an Nash equilibrium,
+[00:11:16] I must consider that, well,
+[00:11:18] I try to maximize my utility,
+[00:11:19] the other players are trying to maximize their utility.
+[00:11:21] So what I do is I maximize the utility.
+[00:11:25] I choose SI so that the utility is maximized,
+[00:11:28] given that the other players are playing the same.
+[00:11:30] And how do I know the S star or the other players?
+[00:11:32] I don't, right?
+[00:11:33] But if I find an entropy of strategies, S1 star to S1 star,
+[00:11:38] this entropy of strategy, such that this condition is
+[00:11:41] satisfied, so my choice, Si, is the actual maximum, then,
+[00:11:46] and this is true for every player.
+[00:11:48] So you see, player i doesn't have any incentive
+[00:11:52] to change strategy, because Si is the one achieving,
+[00:11:56] well, maximum payoff, given that the other players keep
+[00:11:59] playing the strategy.
+[00:12:00] Well, some two remarks.
+[00:12:03] This of course is not the utility only.
+[00:12:06] It's the weighted sum of utilities.
+[00:12:07] Why?
+[00:12:08] Because I have some beliefs.
+[00:12:11] What belief for player?
+[00:12:12] I have some beliefs.
+[00:12:13] What beliefs?
+[00:12:14] Well, about the type of the other players.
+[00:12:16] So you see, you need to consider type minus I
+[00:12:19] of the other players, given type of I.
+[00:12:21] Well, these dependencies often omitted in many textbooks
+[00:12:24] because they say, well, if the types are independent,
+[00:12:26] you can avoid writing it, true.
+[00:12:28] but for the sake of generality I would rather keep it and then if your type is
+[00:12:33] independent from the others then you can remove it of course but in the general
+[00:12:37] formula I want to keep it and also the types are important because they
+[00:12:41] determine the payoffs of the other players well the strategy of the other
+[00:12:45] players so the strategy of the players depends on the types so I'm considering the
+[00:12:51] type for two reasons first of all because I want to know if I invest
+[00:12:54] responding to them, but I don't know
+[00:12:57] what is the actual move they do.
+[00:12:59] So the strategy S, for example, S1 star of T1
+[00:13:02] is not a single action.
+[00:13:04] It's an n-tuple of actions that
+[00:13:05] depends on the value of T1.
+[00:13:07] So S1 star includes an action for each type of layer 1.
+[00:13:13] And depending on T1, you compute it.
+[00:13:16] So this is why you need to sum over all T minus I.
+[00:13:19] So you consider a total probability theorem,
+[00:13:21] and you average on all the possibilities
+[00:13:24] of types of your opponent.
+[00:13:26] You don't average on type of play I
+[00:13:28] because play I knows it's on type.
+[00:13:30] So when maximizing UI,
+[00:13:31] you don't need to compute possibilities for TI
+[00:13:34] because TI is known,
+[00:13:35] but all the other types T minus I are not known.
+[00:13:39] And so in short, the entire thing is as usual,
+[00:13:43] there is no novelty so far.
+[00:13:45] I mean, we will see some novelty
+[00:13:47] because clearly we did a similar reasoning
+[00:13:49] for dynamic games.
+[00:13:50] We said we can extend the definition.
+[00:13:52] Now that we redefined the constant strategy,
+[00:13:55] we can redefine a Nash equilibrium in dynamic games
+[00:13:58] and say, well, Nash equilibrium is a situation
+[00:14:00] where every player has chosen a strategy
+[00:14:02] and they don't regret a choice.
+[00:14:04] And the same here.
+[00:14:05] The only thing is that we need to be clear
+[00:14:07] what's a strategy.
+[00:14:08] A strategy is a name to power of actions,
+[00:14:10] one per type.
+[00:14:13] And also what does it mean I don't regret my choice?
+[00:14:16] It means it maximizes my expected utility.
+[00:14:19] is an expectation, as usual, because I don't know the other types. So, shortly put, another way of
+[00:14:24] representing it is this. You can say, well, I want to maximize, I want to choose my s i star,
+[00:14:31] so that this is always greater than or equal to what I get for any other strategy.
+[00:14:37] Okay, given that, well, the strategy set or the strategy choice of the other players is kept
+[00:14:44] the same. And by the way, this depends on TI, because I know TI, and this influences
+[00:14:50] the utility of play I, and also influences the beliefs. This is why it's given TI. It
+[00:14:54] my influences the beliefs. Well, generally, it does not, because types are independent.
+[00:14:59] But sometimes, I can change consideration based on that.
+[00:15:02] OK. Now, in short, the reasoning is standard. It's just a bit cumbersome to move around,
+[00:15:11] but the concept is very simple.
+[00:15:13] The first extension we see about Bayesian Nash equilibrium
+[00:15:15] is nothing but a transposition of words.
+[00:15:19] We redefined the concept of strategy,
+[00:15:21] and now if you look at the original definition
+[00:15:22] of Nash equilibrium, we see that it's still applicable
+[00:15:26] because it talks about strategies
+[00:15:28] and players don't want to deviate from the strategy.
+[00:15:33] Well, here is the same.
+[00:15:34] Players chose a strategy
+[00:15:36] and they don't want to deviate from it
+[00:15:38] as long as the payoff they get,
+[00:15:40] the expected payoff they get by playing that strategy
+[00:15:41] is always greater than or equal to any other strategy.
+[00:15:45] If the other players keep playing the same strategy as that.
+[00:15:49] So this is kinda standard.
+[00:15:51] There is no real brainiac extension
+[00:15:54] is very lazy extension.
+[00:15:56] We will see something more later.
+[00:15:58] But now we redefine the constant Nash equilibrium
+[00:15:59] even in a Bayesian context.
+[00:16:01] And that by the way would be the case
+[00:16:03] even if we have a Bayesian dynamic game
+[00:16:07] because even in dynamic games
+[00:16:08] we can define a Nash equilibrium.
+[00:16:10] It's kind of simple, right?
+[00:16:11] The only catch is that if you remember,
+[00:16:14] we had to extend the definition.
+[00:16:16] So really introduce another definition.
+[00:16:18] This is the only situation where we do that
+[00:16:20] for Nash equilibrium, right?
+[00:16:21] Because we modified strategies,
+[00:16:23] while strategies at the beginning,
+[00:16:25] they are a single tone of an action.
+[00:16:26] Now they become a distribution, probably distribution.
+[00:16:29] And now they also are an integral of strategies
+[00:16:32] of actions, one per type or one per history of play.
+[00:16:36] Well, still, we call them strategies, and we redefine everything. Well, we reinterpreted
+[00:16:42] everything that they sent from the definition of strategy in this way, including the concept
+[00:16:46] Nash equilibrium. For Nash equilibrium in a dynamic setup, we also have another extension,
+[00:16:52] another concept, that of subgame perfect equilibrium, which is a Nash equilibrium
+[00:16:56] with special properties. Okay, we did that. For Bayesian games, we will do something similar.
+[00:17:01] For now, let's enjoy the concept of Nash Equilibrium.
+[00:17:06] And basically today, we're gonna see different examples
+[00:17:10] where this concept is put to try.
+[00:17:13] This concludes this video for now.
+[00:17:15] Let me be back in a while for the next videos.

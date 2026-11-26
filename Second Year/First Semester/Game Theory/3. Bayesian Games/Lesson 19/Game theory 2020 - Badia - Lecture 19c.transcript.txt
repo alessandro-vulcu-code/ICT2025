@@ -1,0 +1,352 @@
+[00:00:01] Welcome to the third and last part
+[00:00:03] of this lecture on game theory.
+[00:00:05] My name is Leonardo Badia.
+[00:00:06] I'm the lecturer for this course.
+[00:00:08] In this last part, we see another example
+[00:00:11] showing the classic interpretation of beliefs.
+[00:00:14] So we come again full circle,
+[00:00:16] because if you remember,
+[00:00:18] I mentioned in the mixed strategy analysis
+[00:00:21] that an impossible interpretation of mixed strategies
+[00:00:24] is through beliefs.
+[00:00:27] And there are two forms of beliefs actually.
+[00:00:29] So the terms beliefs is an umbrella term
+[00:00:30] that I use more or less in a smart way because I might mean I believe something about the strategy
+[00:00:38] played by my opponent in the mix of that because I don't know it. Or I can believe my opponent is
+[00:00:44] of a different type and now I'm going to show you these beliefs and it's correct to call them
+[00:00:50] the same way to call them both beliefs because they are the same thing. So I can show you
+[00:00:55] that a Bayesian game can be interpreted
+[00:00:59] as a classic static game with mixed strategies.
+[00:01:03] Okay, so this interpretation is classic.
+[00:01:05] It's made by Harshani,
+[00:01:06] which is also the inventor of Bayesian gates,
+[00:01:08] so it's actually quite consistent.
+[00:01:11] And there are several ways of formalizing it.
+[00:01:13] I'm going for the standard one,
+[00:01:15] which makes use of the battle of sexes.
+[00:01:17] So if you have the battle of sexes,
+[00:01:19] you have, again, our friends, Ann and Brian,
+[00:01:20] and you remember there is another Nash equilibrium
+[00:01:24] beyond the two Nash equilibria,
+[00:01:26] I call them zero, zero, and one, one,
+[00:01:28] meaning the probability of playing R, okay?
+[00:01:31] So the probability of playing R can be zero for both,
+[00:01:33] so they both go the same S.
+[00:01:35] It can be that they both go same R with probability one,
+[00:01:38] one, so one, one is double R.
+[00:01:41] Or it can be R goes to R with probability two-third,
+[00:01:43] and Brian goes to probability one-third.
+[00:01:46] This is another mixed Nash equilibrium.
+[00:01:48] Well, now I'm gonna show you
+[00:01:50] that this mixed Nash equilibrium
+[00:01:52] can be seen as a pure Bayesian Nash equilibrium
+[00:01:56] of a similar game, another different game.
+[00:01:58] Actually, this is not Bayesian,
+[00:01:59] so you cannot have a Bayesian Nash equilibrium.
+[00:02:00] But we can model the entire scenario as a Bayesian game
+[00:02:05] and its Bayesian Nash equilibrium
+[00:02:06] will actually be this mixed Nash equilibrium.
+[00:02:10] How to do that?
+[00:02:10] Well, let's say the classic interpretation is
+[00:02:13] Anne and Brian do not know each other very well.
+[00:02:16] So they cannot really say,
+[00:02:19] So we have some incomplete information here.
+[00:02:24] Incomplete information on their payoffs.
+[00:02:26] The incomplete information is a noise, let's say,
+[00:02:29] valued C and D for Anne and Brian.
+[00:02:31] So Anne payoff is actually 2 plus C
+[00:02:34] when they go see the romance movie.
+[00:02:36] And say for Brian, the payoff is 2 plus D
+[00:02:39] when they both go see the sci-fi movie.
+[00:02:42] So this is a way, I mean, philosophically speaking,
+[00:02:46] is exactly the connection we want
+[00:02:48] to see with Bayesian games,
+[00:02:49] because this is a Bayesian game.
+[00:02:51] A Bayesian game, remember, is like saying,
+[00:02:53] okay, Anne is a super romance movie lovers,
+[00:02:57] or just a mild romance movie lover, that's her type.
+[00:03:00] Brian does not know her.
+[00:03:02] Or similarly, this is affecting the payoff of Anne's
+[00:03:07] when choosing double R.
+[00:03:08] So you see the type is something
+[00:03:10] that affects your payoff very well.
+[00:03:13] So for the sake of reasoning, for the sake of easy math,
+[00:03:16] let's say the C and D are values between zero and X.
+[00:03:20] So X is the total value of the possible perturbation.
+[00:03:24] And we actually think that C and D
+[00:03:26] as a uniformly chosen value between zero and X.
+[00:03:29] It's a random variable.
+[00:03:31] Okay, now we also know, and by the way,
+[00:03:35] Brian knows his value of D, but not C.
+[00:03:39] And Anne knows C, but not D,
+[00:03:41] which once again, corresponds to the idea
+[00:03:43] of private types.
+[00:03:45] So Anne knows her type.
+[00:03:46] and Anne knows how much she loves romance movies,
+[00:03:48] but she doesn't know Brian well enough
+[00:03:51] because they started dating since,
+[00:03:53] they have been dating since a few times ago,
+[00:03:56] and they don't know each other so well,
+[00:03:59] so Anne, for example, doesn't know how much
+[00:04:01] does Brian love sci-fi movies.
+[00:04:04] Okay, this is exactly, even though the math
+[00:04:08] is a bit more complicated, a bit more involuted,
+[00:04:10] and more specified because it can be more general
+[00:04:12] than this, but this is actually the exact definition
+[00:04:14] of a Bayesian game.
+[00:04:16] So this is a Bayesian game with a little bit, actually,
+[00:04:18] of incomplete information.
+[00:04:20] Because it's just, I mean,
+[00:04:21] you see you have eight elements in this matrix,
+[00:04:24] Anne knows perfectly seven of them,
+[00:04:26] and just has some noise on the eighth,
+[00:04:29] and same for Brian.
+[00:04:30] So there is not much incomplete information.
+[00:04:32] It's still just a tiny bit.
+[00:04:35] Okay, now my claim is like this.
+[00:04:38] Anne's strategy is to play R
+[00:04:41] if C is bigger than a threshold.
+[00:04:42] otherwise to play S.
+[00:04:44] This is one possible strategy for Anne.
+[00:04:47] Okay, why?
+[00:04:48] Just my claim.
+[00:04:50] I claim that this is one decent,
+[00:04:54] possible, sensible strategy for Anne.
+[00:04:56] And same for Brian, a sensible strategy
+[00:04:58] could be to choose S if D is bigger than D,
+[00:05:00] otherwise to play R.
+[00:05:02] I'm not saying this is the only strategy they can play.
+[00:05:05] Let's say if they do like this, this makes sense.
+[00:05:07] Why?
+[00:05:08] Because Anne, remember, Anne knows the value of C.
+[00:05:11] But Ann plans a strategy before being told what the value C is.
+[00:05:17] So Ann is kind of thinking, well,
+[00:05:19] I know I'm going to receive a native information, which
+[00:05:24] is my type, that is the value of C. C
+[00:05:27] is a random value between 0 and x.
+[00:05:30] So you know what?
+[00:05:31] If I plan my strategy like this,
+[00:05:33] I plan to go to see the romance movie
+[00:05:36] if my love for the romance movie is really high.
+[00:05:39] So this small c is bigger than a threshold that is big C.
+[00:05:44] Otherwise, I go to see the sci-fi movie
+[00:05:45] because I prefer to make Brian happy.
+[00:05:48] If instead, same for Brian.
+[00:05:50] So Brian thinks, okay, I don't know my value of d,
+[00:05:53] but I decide my strategy will be,
+[00:05:55] I go for the sci-fi movie only if d is big enough,
+[00:05:59] bigger than a threshold, capital D.
+[00:06:02] Okay, so this is what they play.
+[00:06:05] They plan to play.
+[00:06:06] And actually, for some reason,
+[00:06:07] and they are smart enough to figure out
+[00:06:09] that the other can follow a similar strategy.
+[00:06:12] The point is, this is a Bayesian Nash equilibrium,
+[00:06:15] this joint strategy.
+[00:06:16] If Ann plays like this, and Brian plays like that,
+[00:06:20] this is a Bayesian Nash equilibrium.
+[00:06:22] Why so?
+[00:06:22] Let's prove this.
+[00:06:24] Well, to prove this is a bit complicated,
+[00:06:27] but is a bit involuted, but not complicated actually.
+[00:06:30] Because Ann does not know D, right?
+[00:06:33] So Ann can take expectations on what to play.
+[00:06:36] So remember, this is something, a reasoning we did for,
+[00:06:40] it was art and VR, so Ann can decide,
+[00:06:43] okay, what should I play?
+[00:06:45] Because once I know my choice,
+[00:06:48] I don't know what Brian will do.
+[00:06:50] So I'm comparing R versus S.
+[00:06:54] My payoff depends on what Brian does.
+[00:06:56] So I'm expecting that Brian follows the strategy
+[00:07:00] and my choice of R will be,
+[00:07:03] I compute what happens if I choose R,
+[00:07:05] what happens if I choose S,
+[00:07:07] and I go for the better payoff of the two.
+[00:07:10] So this is actually what you do in proving
+[00:07:13] that one strategy, these are Bayesian Nash equilibrium.
+[00:07:16] You basically want to prove that this strategy of Ann
+[00:07:19] is the best response to the strategy of Ryan
+[00:07:20] and vice versa.
+[00:07:22] Of course, for symmetry reasons,
+[00:07:23] we can prove only one of them.
+[00:07:24] So let me prove that this strategy of Ann
+[00:07:28] is the best response to this strategy of Ryan.
+[00:07:32] Now, this strategy of Ann is a very difficult strategy
+[00:07:35] to check that this is the best response to Brian's strategy
+[00:07:40] is very difficult for Anne, because Anne does not
+[00:07:43] know the exact value of d.
+[00:07:45] So how can Anne say, well, Brian choose this,
+[00:07:50] and so is my best response, this one or that one,
+[00:07:53] if I don't know d?
+[00:07:54] Well, simple.
+[00:07:55] Anne takes expectations on the value of d, remember?
+[00:07:59] So very well.
+[00:08:00] So Anne compares what happens if she plays R
+[00:08:03] and what happens if she plays S. What happens
+[00:08:06] depends on Brian as well.
+[00:08:08] So let's say Anne chooses R. What's her payoff?
+[00:08:12] Well, 2 plus C if Brian chooses R, and 0 if Brian
+[00:08:17] chooses S. And what's Brian's choice?
+[00:08:19] We don't know, because Brian has a complicated choice.
+[00:08:22] Brian chooses to play S if D is bigger than D.
+[00:08:26] Otherwise, Brian plays R.
+[00:08:28] So we can't take expectation.
+[00:08:30] So we only need to know what's the probability
+[00:08:32] that Brian plays R?
+[00:08:34] And what's the probability that Brian plays S?
+[00:08:36] Remember, Brian plays according to a value
+[00:08:39] d, which is between 0 and x.
+[00:08:41] So if you think of this as an interval,
+[00:08:43] and you have d in the middle, d is a threshold.
+[00:08:46] So small d is a value in between.
+[00:08:50] If this small value is right of big D, then Brian plays S.
+[00:08:55] If small d is on the left of big D, then Brian plays R.
+[00:09:03] OK, but d is uniformly distributed in 0x, right?
+[00:09:07] So what's the probability that d falls from 0 to x,
+[00:09:13] falls between 0 and d?
+[00:09:15] Well, this probability is big D over x, right?
+[00:09:19] Think of it for a while.
+[00:09:20] If this is not clear, stop the video.
+[00:09:22] But it's not very difficult to understand.
+[00:09:24] I have an interval from 0 to x, and this is threshold d.
+[00:09:31] What's the probability of ending here is d divided by x.
+[00:09:35] And the probability of ending here is 1 minus d divided by x.
+[00:09:39] Correct?
+[00:09:40] So the probability that Brian plays s is actually
+[00:09:45] 1 minus d divided by x, the right-hand side.
+[00:09:49] And the probability that Brian plays r is d over x.
+[00:09:53] So this, since this is zero, the payoff, the expected payoff of Ann is this. This is
+[00:09:59] easy to compute, right? And we did it. And similarly, we can apply the same reasoning
+[00:10:04] by remarking that if Ann chooses S, she gets zero if Brian plays R, and she gets
+[00:10:10] one if Brian plays S. So it only matters if Brian plays S, which happens with probability
+[00:10:16] one minus d over x.
+[00:10:20] So this is actually Anne's payoff is she plays S.
+[00:10:24] Now, we ended our proof,
+[00:10:26] because we have found that Anne simply compares the two
+[00:10:31] and chooses the bigger.
+[00:10:32] But what's the bigger?
+[00:10:33] Well, Anne plays R if this is bigger than this.
+[00:10:36] If you reorder the terms,
+[00:10:37] it means that C must be bigger than x over d minus three.
+[00:10:43] You see, try and see.
+[00:10:45] Here you have 2 times d divided by x plus c times d divided by x equal to 1 minus d divided
+[00:10:52] by x. So you bring this 2 divided times d divided by x on the other side, you get 3.
+[00:10:59] And you divide everything by this coefficient, which is d divided by x. As a result, you
+[00:11:04] get x over d minus 3. Check it, and the math is correct here. But now we say
+[00:11:09] that Anne plays R if C is bigger than this, okay?
+[00:11:13] So let me call this big C,
+[00:11:15] and we found out that the best response
+[00:11:17] to this strategy of Brian is exactly this strategy of Anne.
+[00:11:21] So we found our proof that Anne's strategy
+[00:11:25] to play R if C is bigger than C
+[00:11:28] is really the best response to Brian's strategy
+[00:11:30] to play S if D is bigger than D,
+[00:11:34] as long as there is this connection between C and D.
+[00:11:38] If this is true, this and best response, which is this exact strategy.
+[00:11:42] And similarly, you can prove that you can set another condition between D and C. But
+[00:11:48] so similarly, Brian, you can repeat the reasoning and derive that it must also hold
+[00:11:54] that D is equal to X divided by C minus three.
+[00:11:58] Now, we only impose these two conditions because we want things to be consistent.
+[00:12:02] And so the question is, how can it be that this condition
+[00:12:07] holds, c is equal to x divided by d minus 3,
+[00:12:09] and also d is equal to x divided by c minus 3?
+[00:12:13] You put them all together, this also
+[00:12:15] means c equals d for symmetry reasons,
+[00:12:18] and you have this equation to solve.
+[00:12:21] So now we are ready to find the value of c.
+[00:12:24] This is a second-order degree equation, not difficult
+[00:12:27] to solve.
+[00:12:27] You get that c is this value.
+[00:12:30] So the probability of playing R for N is,
+[00:12:34] remember the probability is not C,
+[00:12:35] the probability is one minus C divided by X.
+[00:12:38] So if you scale everything divided by X,
+[00:12:41] you have to get this expression.
+[00:12:43] So this is eventually the probability that N will play R.
+[00:12:48] And now we have the final step.
+[00:12:50] What happens if X goes to zero?
+[00:12:52] Well, if X goes to zero, very easy,
+[00:12:55] you can compute this result.
+[00:12:57] And this result is two thirds.
+[00:12:58] you can check, well, you have to solve
+[00:13:00] some Taylor equivalent, but you can identify
+[00:13:03] that the probability that R plays R is two-third.
+[00:13:06] And similarly, you can find that when X tends to zero,
+[00:13:10] the probability that Brian plays R is one-third.
+[00:13:14] But now we have re-found, let's say,
+[00:13:17] the Nash equilibrium that we were looking for.
+[00:13:20] So our mixed strategies Nash equilibrium
+[00:13:22] is nothing but a Bayesian Nash equilibrium
+[00:13:25] where the uncertainty tends to zero.
+[00:13:29] The noise tends to zero.
+[00:13:30] Still, we can end up, when the uncertainty tends to zero,
+[00:13:34] we can end up in an outcome that is even more certain,
+[00:13:37] that is a pure strategy is played,
+[00:13:39] and this is what happens in the two pure strategies,
+[00:13:41] zero, zero, one, one, or that is double R, double S.
+[00:13:43] But also, for some discontinuity in the functions,
+[00:13:48] we also get this middle point
+[00:13:49] in which the two strategy balance out each other.
+[00:13:54] So we get the mixed Nash equilibrium.
+[00:13:57] So the mixed Nash equilibrium can really be interpreted
+[00:14:00] as a consequence of incomplete information.
+[00:14:03] And this incomplete information can be seen also
+[00:14:05] as imperfect information,
+[00:14:07] because the two players play simultaneously.
+[00:14:10] So on the one hand, you can say, well,
+[00:14:13] they know what they would do,
+[00:14:15] but they don't know the type very well.
+[00:14:18] Or they know perfectly the type, like X tends to zero,
+[00:14:21] but they don't know what the other is going to play exactly.
+[00:14:25] And this results in a mixed Nash equilibrium.
+[00:14:28] So you see this, well, philosophical interpretation,
+[00:14:31] which probably answers some doubts you have in your mind
+[00:14:35] about the mixed Nash equilibrium
+[00:14:38] being really meaningful or not,
+[00:14:40] because the mixed Nash equilibrium always puzzles.
+[00:14:42] And to be honest, it puzzles me too,
+[00:14:44] because how can you claim that the player
+[00:14:47] don't know what to play,
+[00:14:48] they play according to a probability?
+[00:14:49] Well, this is actually not in terms of randomizing their move, but hiding their type from you.
+[00:14:57] So it's like saying, Brian is the type that wants to go see the sci-fi movie or to go
+[00:15:04] see the romance movie.
+[00:15:05] And you don't know.
+[00:15:07] So you really don't know Brian's move, but you don't know Brian's type.
+[00:15:11] And that makes more sense.
+[00:15:13] I mean, in a description way, like in the odd Steven game, are you the kind of player
+[00:15:17] that plays odd or the kind of player that plays even.
+[00:15:21] Of course, you play only one move,
+[00:15:23] and I don't know the move,
+[00:15:25] but I can rephrase this by saying I don't know your type.
+[00:15:29] And the best strategy for you is to be so random
+[00:15:31] that you don't reveal your type to me.
+[00:15:34] You play so that your type is perfect to split 50-50.
+[00:15:37] That's your best move.
+[00:15:38] So you see, the Nash equilibrium
+[00:15:40] is not to be interpreted as a randomizer of moves,
+[00:15:43] but rather as a randomizer of types,
+[00:15:45] Because in certain situations, if you fully reveal your type, you get a worse outcome.
+[00:15:51] In the battle of sexes, this makes even more sense.
+[00:15:54] Because the two choices are not in the odds-even game, they are kind of equivalent, because
+[00:15:58] the game is too much.
+[00:16:00] But in the battle of sexes, there is this compromise between, if I go to see
+[00:16:04] my favorite movie, I'm kind of forcing my partner to come with me, or I can be
+[00:16:08] generous and make my partner happy.
+[00:16:10] And in this situation, with these payoffs, they weight this two-third, one-third.
+[00:16:14] that? That's the usual answer. Well, this can be interpreted as not really something
+[00:16:20] they do two thirds of the times or one third of the times, but as a balance between what
+[00:16:24] they want to do in terms of their time. My nature, if these are the payoffs, my nature
+[00:16:28] is selfish, but in order to be selfish, I acknowledge I must make you happy too
+[00:16:33] because otherwise, I mean, we are a pair, we need to coordinate. So my balance that
+[00:16:38] want to find is two thirds of the times I make myself happy and one third of the times
+[00:16:45] I make you happy. So it's not really an action that is repeated in times and two thirds
+[00:16:49] of the times I do this and one third of the times I do that, but it's rather my
+[00:16:54] internal pull towards an action is two thirds to making myself happy and one third
+[00:17:00] towards making you happy. And that's because the payoffs are two when I get my favorite
+[00:17:06] movie and one when I get my less favorite movie. Otherwise, you can really change the balance here.
+[00:17:11] But anyways, you see this nice interpretation that doesn't need to rely on frequency of repeated
+[00:17:16] executions because there is only one. But in the single execution, you have an equilibrium,
+[00:17:21] which is a balance of forces in depending on where you want to be pulled.
+[00:17:27] Okay, and this concludes the lecture of today.

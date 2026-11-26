@@ -1,0 +1,911 @@
+[00:00:01] OK, so welcome back to this lecture of game theory.
+[00:00:05] My name is Ronaldo Badia, and I'm
+[00:00:07] the lecturer of the course.
+[00:00:08] In this second video, we just see some examples.
+[00:00:11] And these examples, in my mind, are very useful
+[00:00:13] because they give you an idea of the power
+[00:00:16] of the concept of Bayesian Nash equilibrium, which
+[00:00:19] is roughly put the same thing as a Nash equilibrium
+[00:00:21] but in a Bayesian context.
+[00:00:23] So we can identify more elaborate strategies
+[00:00:26] because all that we can do in static context
+[00:00:30] is well my strategy is I choose my best action or a combination of them if I allow for mixed
+[00:00:35] strategies. But in a Bayesian context you can plan more elaborate more sophisticated strategies
+[00:00:40] even if the game is static right the game is one shot but you can allow for more nuances
+[00:00:45] because remember your strategy is now more complicated is one action per each time.
+[00:00:51] Okay so let's see some examples. One example which I mentioned in the past and I mentioned
+[00:00:57] that we are going to see it and this the moment where you see it is the chicken game. The chicken
+[00:01:02] game is also inspired by many movies I mean it's played actually in these movies it corresponds
+[00:01:08] well there can be many variations but one way of seeing it is okay you have a very expensive
+[00:01:13] car you drive on a very narrow road and another guy is coming or another is coming in
+[00:01:19] your opposite direction so your car is going to be in collision with the other car if you don't
+[00:01:26] steer? Well, of course, if you are really bold, you keep holding steady in the direction of the car
+[00:01:34] and that would cause a collision, but you are arrogant, you are brave, you are courageous,
+[00:01:40] so you don't care. Well, the point is, you do this to gain respect. It's something that
+[00:01:45] young people do. I mean, we wise and old people understand this is kind of futile,
+[00:01:50] but young people want to earn respect.
+[00:01:53] So the idea is if you keep driving,
+[00:01:56] you gain respect from the crowd of your friends.
+[00:01:59] So you might be scared that the other car
+[00:02:02] is coming in your direction and you wanna steer.
+[00:02:04] If you do that, well, you save your life, of course,
+[00:02:07] but you don't get respect.
+[00:02:09] So your payoff is always zero.
+[00:02:12] If you're a chicken, you always get nothing.
+[00:02:16] If instead you drive, you keep driving toward the other,
+[00:02:19] then you gain some respect.
+[00:02:21] And we assign a reference value,
+[00:02:24] just because it's easy for the computations,
+[00:02:26] a reference value of eight to the respective game, okay?
+[00:02:29] Now, if both player keep driving,
+[00:02:34] well, in a sense, you can say they both gain respect.
+[00:02:36] Actually, the dynamic,
+[00:02:38] I mean, I'm taking this example from textbooks.
+[00:02:40] So one possibility you can model in several ways.
+[00:02:43] One possibility is,
+[00:02:44] first of all, you don't gain the entire respect.
+[00:02:46] you share the respect with the other and plus most importantly you cause an accident. So instead
+[00:02:53] of getting eight you get four but also you get a punishment P and the punishment P depends on
+[00:03:01] your parents because you basically destroy your car and the car was bought by your parents
+[00:03:08] and your parents are gonna be mad for it. So well nowadays in this time and age there
+[00:03:14] can be two types of parents.
+[00:03:16] Can be good, old-fashioned, strict parents
+[00:03:19] that give you a hard time for destroying the car,
+[00:03:22] so they ground you, they tell you,
+[00:03:25] well, you disappoint them,
+[00:03:27] you won't get any gift for Christmas,
+[00:03:29] and they, I don't know, they make some punishment,
+[00:03:31] like not sending you to the party
+[00:03:33] you wanted to go or the like.
+[00:03:35] And this punishment has a negative effect equal to 16.
+[00:03:39] So your eventual payoff is four minus 16.
+[00:03:44] Or your parents can be lenient and they believe in dialogue and everything. So what happens to you
+[00:03:51] if you destroy your car is your parents they will give you a very long and heartfelt speech
+[00:03:55] but then no punishment. So it's arguable if you learn your lesson or not. The punishment
+[00:04:02] like this goes four because you get respect plus four but you get a very mild punishment
+[00:04:09] minus four, so all you know your net balance is equal to zero. Okay, now the point is that
+[00:04:16] your parents can be of type hard or of type lenient with 50-50 probability and this just
+[00:04:23] serves to, I mean this because I took the example from the textbook, this 50-50 probability
+[00:04:27] is not very realistic, you might want to change it but just to keep the computation simple
+[00:04:32] So I did 50-50.
+[00:04:34] I urge you to consider a different split value.
+[00:04:37] And that will complicate the computations
+[00:04:39] right after all your engineers.
+[00:04:41] I mean, if you need to do the computations in the, well,
+[00:04:43] presentation PowerPoint, that's, I mean,
+[00:04:46] you need very simple computations.
+[00:04:48] But for your project, for example,
+[00:04:49] you might consider a more complicated probability,
+[00:04:51] or even a generic probability P, probability P
+[00:04:54] of being lenient, and probability 1
+[00:04:56] minus P of being hard, for example.
+[00:04:59] And the final ingredient for that
+[00:05:01] is, of course, this distribution, whatever it is,
+[00:05:03] 50-50 in this case, is common knowledge.
+[00:05:05] Not only that, but the kids know the type of the parents.
+[00:05:10] And of course, it is not said here,
+[00:05:12] but it makes sense to assume that, well,
+[00:05:14] the type of my parents is probably
+[00:05:16] independent of the type of your parents.
+[00:05:18] Unless you have some, I don't know, brother and sister,
+[00:05:22] then we are siblings, then we are related,
+[00:05:24] and then we have the same parents.
+[00:05:25] But if there are kids from different families,
+[00:05:27] it is reasonably safe to assume that the choice
+[00:05:30] or the type of the parents is actually independent
+[00:05:34] and related.
+[00:05:35] Now here we have this example gives
+[00:05:37] a very interesting mechanism
+[00:05:39] because when we think of a type for a player,
+[00:05:43] we usually think so, and especially for the projects,
+[00:05:45] like one puzzle that many students face is,
+[00:05:49] okay, what is my type in my patient game?
+[00:05:52] Should I characterize the nature of the player itself?
+[00:05:55] Like my, for example, I often see players modeled as,
+[00:06:01] okay, my type is I am using wifi or cellular network.
+[00:06:05] So my device is connected by a certain situation.
+[00:06:08] Okay, this can be a type indeed,
+[00:06:11] but it's not correct to limit the concept of type
+[00:06:16] to the nature of the individual.
+[00:06:19] You see the type, if you remember,
+[00:06:21] reflects the nature of the payoff you get.
+[00:06:23] So in this case, the two kids actually have the same character.
+[00:06:27] They are their devils and they want to play these hazardous games.
+[00:06:32] But it's the parent type that's different.
+[00:06:34] So by extension, philosophically speaking, don't get confused.
+[00:06:38] The type is just a reflection of what payoff the players eventually get.
+[00:06:43] So it might be they get a higher or lower payoff because they are more or less interested
+[00:06:48] in getting an item or a result and so they value it more or less but it can be that they have the
+[00:06:54] same interest in the game but there's some externality like the parents that give them
+[00:06:59] a different value so because of that they are different types. So the type of a kid here would
+[00:07:04] be a kid with hard parents or a kid with linear parents. You see the catch because it's
+[00:07:09] very delicate and but it's important to understand it not to miss it in a project.
+[00:07:15] Okay, so this is the extensive order tree,
+[00:07:17] undoubtedly is a bit complicated,
+[00:07:19] but you see, first of all, we have matrix choice,
+[00:07:22] as usual, we always have matrix choice.
+[00:07:24] And now we have four possible situations.
+[00:07:27] And remember, the probabilities are,
+[00:07:28] so that's a simple thing here,
+[00:07:31] probabilities are one quarter, one quarter,
+[00:07:32] one quarter, one quarter,
+[00:07:33] because we assume that the types are independent
+[00:07:36] and they both happen with probability one half.
+[00:07:38] But it doesn't have to be so,
+[00:07:39] so you can have different numbers in the end
+[00:07:42] if you put a probability P and one minus P.
+[00:07:44] So for example, LH would be P times one minus P
+[00:07:48] and probably an HL would be the same
+[00:07:50] while double H would be one minus P squared.
+[00:07:53] Probably the first one is H, one minus P.
+[00:07:56] Probably the second one is H one minus P again.
+[00:08:00] Now we also see that we want to model
+[00:08:03] that player one knows the type of the pattern.
+[00:08:05] So when we say LH, we say the parents of player one
+[00:08:09] are lenient, and the parents of player two are hard.
+[00:08:13] So we see that the players here have
+[00:08:16] some mixture, some confusion about the sets,
+[00:08:18] but not entire confusion.
+[00:08:20] So not all of these four nodes are joined.
+[00:08:23] These two first nodes are joined,
+[00:08:25] and these two first nodes, while player two
+[00:08:26] does not distinguish between these four nodes.
+[00:08:30] We'll get to player two in a while, but for player one,
+[00:08:32] it's rather easy, because player one knows,
+[00:08:34] in this situation, knows his parents are lenient,
+[00:08:37] or her parents are lenient.
+[00:08:38] And here, player 1 knows the parents are hard.
+[00:08:42] What player 1 does not know is player 2's parents.
+[00:08:46] So you see, the second letter is confused here.
+[00:08:50] Similarly, now, after that, player 1
+[00:08:52] decides to play C or D, so to chicken or drive.
+[00:08:56] So now, this is why we do have now eight outcomes.
+[00:09:00] We have four nodes here.
+[00:09:02] Each of the four nodes is branched into two.
+[00:09:05] So we have eight nodes.
+[00:09:06] and two is confused about these four.
+[00:09:12] He thinks they are the same or she thinks they are the same
+[00:09:14] and player two is also unable to distinguish
+[00:09:16] between these four nodes.
+[00:09:19] Why so?
+[00:09:20] Well, one part of the undistinguishability
+[00:09:23] of the nodes is this depends on what play one does
+[00:09:26] and play one moves is simultaneous to player two.
+[00:09:29] This is a trick we already saw in the battle of sexes.
+[00:09:31] If we represented in extensive form,
+[00:09:33] we arbitrarily say animals first,
+[00:09:34] but the animal doesn't move first.
+[00:09:35] It's just Brian does not distinguish
+[00:09:38] between Anne's moves, between the two nodes.
+[00:09:41] So we have the same thing here.
+[00:09:42] And also player two does not distinguish
+[00:09:46] between the parents of player one.
+[00:09:49] So player two is able to distinguish between,
+[00:09:51] for example, he's unable to distinguish
+[00:09:53] between these two nodes,
+[00:09:54] because the only difference
+[00:09:55] between these two nodes is the move of player one.
+[00:09:57] And also unable to distinguish between these two nodes,
+[00:10:00] because the difference between these two and these two
+[00:10:02] is well, the move of player one
+[00:10:03] and also the type of player one, okay?
+[00:10:06] And you can see the same here,
+[00:10:08] and you can also put all the numbers here.
+[00:10:11] These numbers are computed, well, one by one,
+[00:10:14] and it's a bit painful, but you can do it.
+[00:10:17] Okay, now, if we represent this in matrix form,
+[00:10:20] we need to compute a lot of expectations,
+[00:10:23] and it's a bit tedious, but we can do it once again.
+[00:10:27] For example, if we play CC and CC, it means, once again,
+[00:10:31] And first of all, the strategies are pairs of actions because each player has two types.
+[00:10:37] So we need to plan one move to make when the play is when the type is lenient and
+[00:10:43] one move to play when the type is hard. And of course, this means the type of my
+[00:10:48] parents. I don't know about the type of other players, so I cannot distinguish
+[00:10:52] between them. So ideally, you plan what to do if your parents are lenient and what
+[00:10:57] to do with your parents are hard.
+[00:10:58] And then you know, because it's really to you by nature,
+[00:11:01] what your parents are, and so you know what to do, okay?
+[00:11:05] Now, we see that the numbers here depend on expectation.
+[00:11:09] Some situations are easy to compute.
+[00:11:10] For example, double C, double C.
+[00:11:12] It means we always chicken, no matter what.
+[00:11:15] And in this case, we all chicken
+[00:11:17] and the payoff is naturally zero for both players.
+[00:11:20] What happens if we play, for example, CD, CD?
+[00:11:24] Well, CD is a situation where the player's chicken when the parents are lenient and the
+[00:11:32] dry when the parents are hard. This is probably not a very bright strategy, but is an available
+[00:11:37] strategy, right? So what does CD mean? Well, let's start with CD versus CC first,
+[00:11:44] this outcome. Well, this means that in 50% of the case, you are the sole driver, so
+[00:11:51] you get respect and in 50% of the case, you're chicken.
+[00:11:54] So you get zero and play one.
+[00:11:56] So this is why the result is four
+[00:11:59] and the other player always get zero instead
+[00:12:01] because the other player always chicken.
+[00:12:04] But let's see CD versus CD.
+[00:12:06] This is a bit more complicated
+[00:12:07] because we have four possible cases.
+[00:12:10] There is one case happening with probability one quarter
+[00:12:13] when both players chicken.
+[00:12:15] So in that case, the payoff is zero.
+[00:12:18] There is another case where one player chickens, so let's say the numbers are for symmetry
+[00:12:24] they are identical, so let's compute the payoff of player one. So in case of C, C is chosen
+[00:12:30] here and D is chosen here, player one is again a chicken so the payoff is again zero
+[00:12:35] for player one. If player one plays D instead, there are other two cases, again
+[00:12:43] with priority one quarter and one quarter respectively.
+[00:12:46] The first case is DC.
+[00:12:48] So player one gets full respect, which is eight.
+[00:12:53] The other guy, chickens.
+[00:12:55] So the full respect is plus eight.
+[00:12:59] But this happens only one quarter of the times.
+[00:13:01] So this counts as plus two in the weighted sum.
+[00:13:05] And finally, there is the last case, which is double D,
+[00:13:09] happening one, 25% of the cases.
+[00:13:11] So in that case, play one gets minus three
+[00:13:16] because he would have gotten plus four
+[00:13:19] by sharing respect, but also damages the car.
+[00:13:22] His parents are hard, so it's minus 16.
+[00:13:25] So plus four minus 16 equals 12.
+[00:13:27] And this happens one quarter of the times.
+[00:13:29] So the payoff is actually minus three,
+[00:13:33] the contribution to the payoff.
+[00:13:35] So there are weighted sum of zero, zero,
+[00:13:37] plus two and minus three,
+[00:13:38] thus resulting in minus one.
+[00:13:40] And you can check all the other numbers.
+[00:13:42] They're a bit cumbersome to compute,
+[00:13:44] but luckily, I mean, I put all multiples of 4
+[00:13:47] because all of the values, you just, the trick is like this.
+[00:13:51] To compute the result, you must take expectations.
+[00:13:53] And you need to consider, what
+[00:13:55] is the probability of that particular combination
+[00:13:58] happening?
+[00:13:59] Here's easy.
+[00:14:00] It's always one quarter.
+[00:14:01] So there are four combinations, each of four terms,
+[00:14:04] combined, all with probability with weight one quarter.
+[00:14:07] And the actual payoff that you get in that combination,
+[00:14:09] you solve by playing the game.
+[00:14:11] So like, for example, CD versus DC.
+[00:14:14] Let's see this one.
+[00:14:15] Well, CD versus DC means that one quarter of the time
+[00:14:18] you get CD, and player 1 gets 0,
+[00:14:21] and player 2 gets instead 8.
+[00:14:24] Another quarter of the situations where you play DD.
+[00:14:28] So there is an accident.
+[00:14:30] Player 1 has hard parent, so he gets minus 3.
+[00:14:33] Well, he gets minus 12, but weighted one quarter,
+[00:14:36] so minus 3.
+[00:14:36] and player two instead has lenient patterns,
+[00:14:40] so he gets nothing in the end.
+[00:14:43] And there is other two cases of C-C,
+[00:14:46] where they both get nothing,
+[00:14:47] and another case of D-C.
+[00:14:49] You see this one?
+[00:14:51] And this case happens with only the one quarter.
+[00:14:53] In this case, player two gets nothing,
+[00:14:55] and player one instead gets full respect, plus A.
+[00:14:59] So the balance is plus two minus three for player one,
+[00:15:03] total minus one.
+[00:15:05] And for player two, it's instead plus two, plus zero,
+[00:15:09] plus zero, so plus zero.
+[00:15:10] So it's plus two.
+[00:15:11] And you can compute all the numbers like this.
+[00:15:13] You see it will fill the table like I did here.
+[00:15:18] OK, very well.
+[00:15:19] So now that we put the game in normal form,
+[00:15:22] we're able to identify the best responses, for example.
+[00:15:25] And we see that a reasonable choice is DC.
+[00:15:29] It's actually a quite natural result.
+[00:15:31] I mean, I bet you're not surprised.
+[00:15:33] but here we proved sort of some very intuitive conclusion that is your best
+[00:15:39] strategy for both kids is to play DC so to be bold if your parents are lenient
+[00:15:45] and to be more scared and quiet if your parents are hot which might imply
+[00:15:51] some conclusions in terms of psychological education of minors but I
+[00:15:56] don't want to discuss that in the end you see there are other good
+[00:16:01] situation. By the way, DC-DC is a national equilibrium, but it's not probably the best
+[00:16:07] solution because, well, actually there are better solutions in terms of social welfare
+[00:16:13] like DD-CC, this gives 8-0. Of course, it's not liked by the one getting 0, but it's
+[00:16:19] a viable option in getting a very high total payoff. There are also very bad solutions
+[00:16:25] like DD-DD, this is very bad. So you can conclude many things from the start of the
+[00:16:30] and you can even solve and find the Nash equilibrium.
+[00:16:35] Okay, so the thing is that the Bayesian Nash equilibrium
+[00:16:38] actually depends on the numbers.
+[00:16:40] So you see, the fact that we have D, C, D, C
+[00:16:43] is a reflection of the numbers that we put.
+[00:16:45] You can probably change some numbers
+[00:16:48] in the context of the definition of the game,
+[00:16:50] like you do different punishments.
+[00:16:53] You do, for example, a very hard punishment,
+[00:16:56] even in the case the parents are lenient.
+[00:16:58] Like you say, instead of minus four and minus 16,
+[00:17:03] the punishment are, I don't know, minus 15 and minus 16.
+[00:17:06] And you probably find, you can try,
+[00:17:07] and you probably find another outcome
+[00:17:09] that is not really the CDC.
+[00:17:12] So you kind of dampen the enthusiasm
+[00:17:15] of the kids that want to get respect
+[00:17:17] because they most often get also
+[00:17:19] a very good punishment by the parents.
+[00:17:22] Okay, this is very interesting
+[00:17:25] because even the stupid game,
+[00:17:26] the game is actually very stupid,
+[00:17:27] but actually allows you to infer some conclusions,
+[00:17:32] some mathematical conclusions that are data dependent.
+[00:17:34] Depending on the model you put in,
+[00:17:36] you can get different Nash equilibria.
+[00:17:37] So it's very powerful because you don't really
+[00:17:40] change the strategies or you don't invent
+[00:17:42] different strategies, but you actually just
+[00:17:44] change the numbers.
+[00:17:45] And these results in very different outcomes.
+[00:17:48] And once again, here the utility
+[00:17:49] matters in quantitative terms.
+[00:17:52] Why?
+[00:17:52] Because we take expectations.
+[00:17:53] Every time we take expectations,
+[00:17:54] the numbers really do matter.
+[00:17:56] you cannot say well it's equivalent to say a punishment is minus 16 or the punishment is
+[00:18:00] minus 1 billion. Well that would be very different in terms of the final result.
+[00:18:06] Okay another game that is interesting is committee voting. Committee voting is
+[00:18:12] introductory to an interesting class of games that we will probably see if I have time but
+[00:18:18] for now we see the simple game of committee voting. Committee voting corresponds to an
+[00:18:24] analysis of what happens in juries.
+[00:18:28] And the problem is like this.
+[00:18:30] Let's say you have two jurors, just two,
+[00:18:32] for the sake of simplicity.
+[00:18:33] And remember, this is a good advice,
+[00:18:35] also for your project.
+[00:18:36] Just don't deal with any many players.
+[00:18:39] Maybe two is enough.
+[00:18:41] Let's take a look at this.
+[00:18:43] We have a person on trial,
+[00:18:46] and the jury is made of two jurors.
+[00:18:48] They can acquit or convict.
+[00:18:51] So just for you, for those of you
+[00:18:53] not very familiar with English terms, acquit means you declare that the guy is innocent and to
+[00:18:59] convict you declare the guy is guilty. So in this situation, let's do like this, just because you
+[00:19:05] want to use the Bayesian static framework. We assume that the jurors cast a sealed vote,
+[00:19:13] so they decide whether to vote for guilty or innocent in a sealed envelope. They don't
+[00:19:18] see each other vote okay so this again a static game clearly it's like what we already discussed
+[00:19:24] you just write down and you don't let the other see so the envelopes are open so you really don't
+[00:19:29] need to write at the same time but the moment where they know is not uh is after they already
+[00:19:34] made the move also let's say we have a very um safe approach for the defendant we say that
+[00:19:42] to have the defendant convicted, we
+[00:19:44] want to be what is called a guarantees in Italian.
+[00:19:48] We have guarantees.
+[00:19:49] We just say that only if both independent jurors find
+[00:19:55] it guilty, the guy is convicted,
+[00:19:58] which seems very good, right?
+[00:20:00] Because we expect that this gives
+[00:20:03] a very high level of certainty that the guy is really
+[00:20:07] guilty if two independent jurors decide the guy is guilty.
+[00:20:12] The catch is that it is uncertain whether the guy is really guilty or innocent but the prior
+[00:20:19] probability is called as Q is a value that is bigger than one half and this is common knowledge
+[00:20:24] whatever Q is everybody knows Q they don't actually know if the guy is actually guilty
+[00:20:29] or innocent but they know the probability he did the crime he did commit a crime
+[00:20:33] and they estimate this probability as being bigger than one half actually they estimate the
+[00:20:38] actual value. We just know the value is bigger than half. So now, what is the payoff of the
+[00:20:47] jurors? How to model the game? Of course, the jurors, if they are sincere, they want
+[00:20:52] to make the right decision. So let's say the payoff of the jurors is one, when they
+[00:20:57] send a guilty person to jail, and zero when they send an innocent person to jail.
+[00:21:03] And similarly, if a guilty guy is acquitted,
+[00:21:08] they are, I mean, they don't get any reward,
+[00:21:11] but if they acquit an innocent person, then they have.
+[00:21:15] So the payoffs depend on probability Q of course.
+[00:21:19] So this, you can say that the two jurors
+[00:21:22] have this payoff, right?
+[00:21:24] So if they acquit, the guy is acquitted
+[00:21:29] and the probability that this was correct
+[00:21:32] is one minus q and this is true even if they vote differently so in case of split decision
+[00:21:39] then the guy is acquitted so the only case where this is correct is when the guy was really
+[00:21:45] innocent which happens with probability one minus q well if they both decide c then the
+[00:21:52] best choice is sorry the payoff is double is q for both of them double c means the guy is
+[00:21:58] convicted, and if the guy was really guilty,
+[00:22:01] which happens with a low APQ, then they get paid off.
+[00:22:04] Now, in this catch, if Q is bigger than one half,
+[00:22:08] it is dominant to play C.
+[00:22:10] It's not strictly dominant,
+[00:22:11] because these two values are identical,
+[00:22:13] but it's dominant to play C.
+[00:22:14] And you can easily see that double C is a Nash equilibrium.
+[00:22:18] It's the only one.
+[00:22:19] So it is convenient for the two jurors
+[00:22:21] to expect to play double C,
+[00:22:23] which is consistent with the fact
+[00:22:25] that even though they don't know if the guy is really
+[00:22:28] guilty or not, they have a bias towards it being guilty.
+[00:22:34] OK.
+[00:22:35] Well, very well.
+[00:22:37] Now, let's introduce some signaling.
+[00:22:39] And the signaling part is very important.
+[00:22:41] We'll probably discuss the theory behind it,
+[00:22:43] but this is very connected to information theory.
+[00:22:47] So we now have a very similar situation
+[00:22:49] to what some of you might have seen
+[00:22:51] in courses of telecommunications.
+[00:22:53] And this is why the connection between telecommunications and game theory really shines.
+[00:22:59] So the idea is like this.
+[00:23:00] How to model a communication channel?
+[00:23:02] Well, you have a message from somebody and the message gets some noise, right?
+[00:23:07] So you can, you may or may not get the right message.
+[00:23:11] In this situation, we assume that the game is made by vision, by means of a signal.
+[00:23:19] And by the way, quick remark, this game, as it was, is not Bayesian, right?
+[00:23:23] You may ask, okay, but there is a type for the defendant.
+[00:23:26] The defendant might be guilty or innocent.
+[00:23:27] Yeah, but the defendant is not a player.
+[00:23:30] The two jurors only have one type.
+[00:23:32] Remember, the type is something that changes your payoff, right?
+[00:23:36] Some description of yours, of course, your nature, your inner nature,
+[00:23:39] but affecting your payoff.
+[00:23:40] Here, the two guys are sincere, honest jurors,
+[00:23:44] and they want to acquit only innocent people and to convict criminals.
+[00:23:49] So that's perfect.
+[00:23:50] In this situation, this is not Bayesian.
+[00:23:52] So now let's introduce signaling
+[00:23:54] and signaling is generally one way
+[00:23:56] to make the game Bayesian.
+[00:23:59] Why?
+[00:23:59] The idea is you form your own idea about the case.
+[00:24:04] So in this sub case or a more general class of games
+[00:24:07] that we'll probably discuss,
+[00:24:09] or you can look it up on your own,
+[00:24:11] which is signaling game.
+[00:24:12] In signaling game,
+[00:24:14] like what is signaling in telecommunications?
+[00:24:16] You get a signal from a receiver,
+[00:24:18] gets a signal from a transmitter and the transmitter sends some message. The receiver
+[00:24:24] sees the message received but the message can be generated by several original
+[00:24:32] input on the channel because the channel is noisy so whenever you see let's say you see
+[00:24:38] a sequence of zeros and ones on the channel you're not really sure if the sequence of zeros
+[00:24:43] and ones is what the transmitter sent you.
+[00:24:45] It might be there was noise on the channel
+[00:24:47] and so some of the zeros were turned into ones
+[00:24:50] and vice versa, who knows?
+[00:24:52] So the decision theory that you probably saw
+[00:24:56] in telecommunications is actually this very same thing.
+[00:24:59] You have to, and you know, remember the map criterion,
+[00:25:03] the ML criterion, the maximum likelihood.
+[00:25:05] So all you need to do is to decide symbol by symbol
+[00:25:08] or maybe making some more complicated decision.
+[00:25:10] if you read zero on the channel,
+[00:25:13] this was really a zero or it is more likely
+[00:25:15] that R1 was sent, but then noise changed it to a zero.
+[00:25:19] Who knows?
+[00:25:20] Now, in this specific case,
+[00:25:22] we just stick to our example of the jurors.
+[00:25:25] The jurors have a binary idea about the guy.
+[00:25:28] They form their own idea
+[00:25:30] based on the information they receive.
+[00:25:33] So this can be really a communication setup
+[00:25:35] in which you are sending a zero or one
+[00:25:38] and the other guy can receive zero or one on the other side.
+[00:25:42] But in this special case,
+[00:25:44] it's more figurative to think of the jurors
+[00:25:48] not voting blindly.
+[00:25:50] They don't base their decision on cue only.
+[00:25:54] Those, well, they know if the guy is on trial
+[00:25:56] is very likely is guilty.
+[00:25:58] But in a trial, you examine the evidence
+[00:26:02] and you reach a decision.
+[00:26:03] So the evidence are shown,
+[00:26:06] the lawyers made their speech and whatever,
+[00:26:10] and then the two jurors make up their mind
+[00:26:13] if the guy is guilty or not.
+[00:26:16] Now, you see that the type of the two players
+[00:26:20] might be binary.
+[00:26:22] So the type of the player is the idea
+[00:26:25] that the juror has formed the case.
+[00:26:27] So the juror one might be convinced
+[00:26:29] the guy is really guilty.
+[00:26:31] After, it doesn't depend on Q anymore.
+[00:26:33] It's not a probabilistic decision.
+[00:26:34] they think is guilty. Or after seeing the evidence or listening to the testimonies,
+[00:26:42] the juror has inside decided that the guy is innocent. So the juror might be of two
+[00:26:49] types now, type TG or type TI. This actually not the type of the juror once again. So
+[00:26:55] remember the type is not just the nature of the individual because the juror is not
+[00:27:00] guilty or innocent. The juror might have the inner conviction that the guy is guilty or
+[00:27:05] innocent. So it is a thought that they have. Now, it is more likely that you receive the
+[00:27:15] true status. Once again, this has some connection with telecommunications that I might want
+[00:27:19] to explore if I have time, but it makes sense to consider a situation where if the
+[00:27:26] guy is really guilty, it is more likely that you receive
+[00:27:30] the message TG from nature.
+[00:27:32] Meaning nature tells you that the guy is actually guilty.
+[00:27:36] Or according to your impression,
+[00:27:38] you are under the impression the guy is guilty.
+[00:27:41] This is more likely if the guy really is guilty.
+[00:27:44] And to represent this, we define a probability P
+[00:27:47] such that the probability of receiving message TG
+[00:27:50] and therefore being of type TG given G
+[00:27:52] is equal to the probability of TI given I,
+[00:27:55] which is p, and p is greater than one half.
+[00:27:59] Clearly the probability of getting the wrong message
+[00:28:01] is less than one half.
+[00:28:03] And so this might sound familiar,
+[00:28:05] because by the way, this is a binary symmetric channel.
+[00:28:08] And what we got here is a binary symmetric channel
+[00:28:10] with error probability less than one half.
+[00:28:12] And you might remember that what happens
+[00:28:14] if you have an error probability that is bigger
+[00:28:17] than one half, well you simply follow
+[00:28:18] the opposite signal, right?
+[00:28:21] If you know the, since this probability p
+[00:28:24] is common knowledge.
+[00:28:25] If you know the probability P is lower than one half,
+[00:28:29] so it's more likely that you get the wrong message,
+[00:28:31] then you simply swap the two messages and say,
+[00:28:34] well, I received the message the guy is guilty,
+[00:28:38] but I know P is very low,
+[00:28:40] so it might be the guy is actually innocent.
+[00:28:42] So you take the complimented one of this.
+[00:28:46] Okay, very well.
+[00:28:47] So the last remark is,
+[00:28:49] so the two remarks are,
+[00:28:50] this is very similar to binomial symmetric channel,
+[00:28:52] is actually 01 as innocent or guilty,
+[00:28:55] and then you get a message,
+[00:28:56] which is zero more likely when you transmit at zero,
+[00:29:00] but not necessarily, sometimes you get one.
+[00:29:02] And same for when you transmit one,
+[00:29:04] sometimes you get zero.
+[00:29:05] And this depends on an error probability P,
+[00:29:07] sorry, the error probability is one minus B,
+[00:29:09] on a probability P that is bigger than one half.
+[00:29:12] Okay, now in this binary scenario,
+[00:29:17] you have two types and two actions.
+[00:29:20] So the number of strategies is four,
+[00:29:22] is double A, A-C, C-A-C-C, okay?
+[00:29:26] I hope we are on the same page here.
+[00:29:28] Remember, this is now a Bayesian game.
+[00:29:30] Each player has two types, T-G and T-I,
+[00:29:32] and two possible actions,
+[00:29:33] so they have to play to decide a strategy
+[00:29:36] by defining two different actions,
+[00:29:39] one for the type T-G and one for the type T-I.
+[00:29:42] Okay, in general, we define a strategy as X-Y
+[00:29:44] by meaning that this,
+[00:29:46] the first element is what played under T-G,
+[00:29:48] the other one is played under T-I.
+[00:29:50] And once again, this is a coordination game,
+[00:29:53] because here both players have the same objective
+[00:29:55] and they want to coordinate.
+[00:29:58] They want to play the same thing, ideally, right?
+[00:30:01] They would like, like, if I, let's say,
+[00:30:04] I know, I believe, I am under the impression
+[00:30:06] the guy's guilty.
+[00:30:08] Not only I play G maybe, but I want you to play G,
+[00:30:11] because we declare it guilty.
+[00:30:13] Okay, now, before going to the details
+[00:30:17] of the two-person problem,
+[00:30:19] Let's see what happens if there is only one juror.
+[00:30:23] If there is only one juror, well, without getting the signal, so just based on the
+[00:30:30] triad, on the triad of the guy being guilty, the single player knows the guy is more
+[00:30:36] likely to be guilty.
+[00:30:37] So what action do you choose?
+[00:30:39] Action C, of course, you choose the action to convict the guy, because you only know,
+[00:30:44] you haven't seen any evidence.
+[00:30:45] you haven't even gone to trial but you know it's more likely him to be guilty. Okay, the question
+[00:30:51] is can the signal affect your choice? So what if you stand in the trial you sit down jury
+[00:30:58] and you see actual evidence that the guy might really be guilty or might be actually innocent?
+[00:31:05] Do you change your mind? Well if you are the single juror let's see what happens.
+[00:31:09] Let's consider the effect of the signal. The probability that the guy is really
+[00:31:15] guilty after you get the message the guy is guilty can be computed as a
+[00:31:21] conditional probability, right? So by definition this is a joint probability
+[00:31:26] divided by the marginal probability. Okay, what is the probability of G and
+[00:31:32] TG is Q times P, right? The two things are actually independent. The
+[00:31:37] the message you get and the guy really being guilty is QP.
+[00:31:42] What is the probability only of receiving TG?
+[00:31:45] So you can receive TG in two cases.
+[00:31:47] The guy is really guilty, and you got the right message.
+[00:31:51] Getting the right message is probability P, so QP once
+[00:31:54] again.
+[00:31:55] But it can also be that the guy was actually innocent,
+[00:31:58] but you got the wrong message.
+[00:32:00] So you still get the message TG.
+[00:32:03] Your type is TG.
+[00:32:04] If you make your, if you sum your numbers,
+[00:32:07] you realize this is bigger than q and this is because why this bigger than q because p is
+[00:32:14] bigger than a half so you can easily see that this is less than q p times one minus q times p
+[00:32:21] okay this is true so the denominator is lower than this and this is actually you can sum and
+[00:32:28] you can collect p and this is p this is equal to p so this is bigger than q p over p which
+[00:32:36] Q. Okay, now instead if you get the message Ti, well you replay the same reasoning, so you compute
+[00:32:45] according to the definition, the conditional probability, the probability that the guy is
+[00:32:49] guilty but you get Ti and the probability of getting Ti alone. Well this is again computed as
+[00:32:56] before and you find out with similar reasoning this is less than Q. So what happens here is
+[00:33:02] I'm not saying that if you get the message TI, you acquit the guy. It depends on the numbers.
+[00:33:11] But we have a nice effect. That is, you start with a prejudice. That is, this guy must be
+[00:33:22] more likely guilty. So you have a probability Q of being guilty that is bigger than one half.
+[00:33:28] What happens after seeing evidence of him being guilty or not, you decide accordingly.
+[00:33:34] So if the proof, the evidence says, seems to imply to you that the guy is guilty,
+[00:33:43] you reinforce your idea.
+[00:33:46] So the probability of this guy being convicted is even stronger because now your belief
+[00:33:52] about the guy being guilty is even more likely than before.
+[00:33:56] Your probability, your subjective probability
+[00:33:58] of the guy being guilty is bigger than Q.
+[00:34:02] On the other hand, if you get a message TI,
+[00:34:05] you weaken this idea.
+[00:34:08] I'm not saying you will in favor of acquittal.
+[00:34:11] It depends on the numbers.
+[00:34:12] But for sure, the probability you believe this guy is guilty
+[00:34:15] is weakened.
+[00:34:18] So it can be it is not enough to acquit the guy,
+[00:34:20] because you see some evidence.
+[00:34:22] So this shreds some doubts in your mind,
+[00:34:24] but you still think it's more likely this guy is guilty.
+[00:34:29] It depends.
+[00:34:30] It really depends on what this value you have here.
+[00:34:33] It depends on, you know, the valuation depends on Q
+[00:34:36] and depends on the probability that your information,
+[00:34:40] your remark about the evidence is actually accurate,
+[00:34:43] because it might be that P is very low,
+[00:34:45] meaning that most often you are deceived
+[00:34:48] by the lawyers in trial, maybe.
+[00:34:52] Okay, very well.
+[00:34:53] this is what we get from the single juror case.
+[00:35:00] So it might be that if I get the message DI,
+[00:35:05] we can even decide to quit if this is less than one half
+[00:35:09] or it might be this still bigger than one half.
+[00:35:11] So we still believe this is the guy that is still getting
+[00:35:16] when is this bigger than one half?
+[00:35:19] It depends on the comparison between P and Q.
+[00:35:22] You see, it's very interesting because P is the, let's say, reliability of your observation
+[00:35:29] about the evidence.
+[00:35:30] So if this is very reliable, more than the prejudice of the guy being guilty.
+[00:35:36] So if P is bigger than Q, it means if you get the information TI, this must really
+[00:35:41] be accurate.
+[00:35:42] And it must be the guy really is innocent, at least in your mind.
+[00:35:46] If instead Q is very high, so if Q is very high, it means the bias towards the guy is
+[00:35:54] very high. But if you see very solid evidence the guy is innocent, you become convinced
+[00:36:00] that the guy is innocent. In other words, you can compare this with information theory
+[00:36:06] because Q somehow represents the prior information. Actually, the prior information is log two
+[00:36:13] of one over q, right? But the bigger q, the more information you have about the guy being guilty
+[00:36:20] or not. If you have a signal, the information content of the signal, the mutual information
+[00:36:27] that is transferred to the channel, if you remember information theory, depends on p.
+[00:36:32] If p is equal to one, the information you get is perfectly reliable. So there is no way
+[00:36:36] that you can get, if p is equal to one, there is no way you can get the signal Ti
+[00:36:41] without the guy being really innocent.
+[00:36:44] If p is less than one, it might be that you're wrong.
+[00:36:47] But the bigger p, the more certain you are
+[00:36:50] about the signal, the more reliable is the signal.
+[00:36:52] So you want to prefer to follow the signal
+[00:36:54] instead of the prejudice that you had before.
+[00:36:58] And in particular, you can also notice
+[00:37:00] that if p is equal to one half,
+[00:37:02] the signal gives no information whatsoever.
+[00:37:04] There is, well, first of all,
+[00:37:06] no way to thwart the prejudice
+[00:37:08] because Q is always bigger than one half.
+[00:37:11] So if P is equal to one half,
+[00:37:12] the signal doesn't give any information whatsoever.
+[00:37:15] It cannot change the decision, it just follow Q.
+[00:37:18] And also you see that if P is equal to one half,
+[00:37:21] here, you don't have anything
+[00:37:23] because the probability G is equal to,
+[00:37:26] here you have one half, one half, one half,
+[00:37:27] you simplify out one half, you have one.
+[00:37:29] So the probability of GILTI given TI is equal to Q.
+[00:37:32] So before it was Q, after it is Q.
+[00:37:35] Well, this is not surprising once again,
+[00:37:37] because probability of 1 half is the useless channel.
+[00:37:40] You remember, I guess, the useless channel
+[00:37:43] is what you get when you have a binary symmetric channel
+[00:37:45] with probability 1 half.
+[00:37:46] It means you can get 0, 1 basically at random.
+[00:37:49] It doesn't even depend on what
+[00:37:51] you have before the channel in the first place.
+[00:37:54] There is no more any connection
+[00:37:55] between the transmitted signal and the received signal.
+[00:37:58] So if p is equal to 1 half, you
+[00:38:00] are in the most erratic case in which
+[00:38:02] the signal has no importance.
+[00:38:04] OK, so once again, we see how well this works in the single player scenario.
+[00:38:10] The single player scenario is, by the way, chapter 6 of telecommunications, then.
+[00:38:15] It is the basic information theory setup in which you associate the transmitted information
+[00:38:21] with the received information.
+[00:38:22] Is this of any use?
+[00:38:23] It depends on P. And in this simple scenario where you have to evaluate a quantity Q,
+[00:38:29] if you have zero information transferred over the channel because you have a useless channel,
+[00:38:33] then you just follow Q.
+[00:38:35] But if you have more information coming from the channel,
+[00:38:38] you might want to use this.
+[00:38:40] Okay, very well.
+[00:38:41] This is a very nice detour,
+[00:38:43] but we need to go back to our game theory program,
+[00:38:46] because in the game theory program,
+[00:38:47] we have two persons.
+[00:38:49] So what happens if we made a joint decision
+[00:38:52] with two player?
+[00:38:55] Well, now we would like to have
+[00:38:59] that the Bayesian Nash equilibrium is CA, CA.
+[00:39:02] That is, the two players decide to convict
+[00:39:06] if they get the message the guy is guilty
+[00:39:09] and to acquit if they get the message the guy is innocent.
+[00:39:14] This is also called following the signal.
+[00:39:17] So a good question could be,
+[00:39:19] is the Bayesian Nash equilibrium to follow the signal?
+[00:39:23] And to do so,
+[00:39:24] we need to draw the probability of each type pair.
+[00:39:27] So this is not a normal form once again,
+[00:39:30] is a kind of matrix that we draw even for mixed strategies
+[00:39:33] is just to compute the probability of every combination.
+[00:39:37] So this one, for example, is the probability
+[00:39:39] that both players are of type TG.
+[00:39:41] This one is the probability that player one is type TI
+[00:39:45] and player two is of type TG.
+[00:39:47] You can compute all of them, right?
+[00:39:50] So this is actually not by matrix, not a normal form.
+[00:39:54] This is just to represent what are the probabilities
+[00:39:56] of every combination.
+[00:39:58] So, similar to what we did for the chicken game, there it was easy, one quarter on quarter on quarter,
+[00:40:03] here the probabilities are a bit more complicated. But, so we have to wait whatever happens in the
+[00:40:09] TGTG case times the probability. Okay, besides that it's very easy. Now, the big question is,
+[00:40:15] is CA to play a best response to itself, and therefore CA CA is a Nash equilibrium?
+[00:40:22] system, we can show it's not. To show this, we use this mechanism, this kind of proof
+[00:40:28] that CACA is not the best response to itself. First of all, let's make this definition.
+[00:40:35] With this rule that we gave to the jury, that is, the guy is convicted only if both
+[00:40:40] jurors vote for conviction, which seems to be a very defensive rule, a very guarantees
+[00:40:47] is true. In reality, we can say in this situation, one player is decisive, and we call it in
+[00:40:54] game theory jargon, you call it a pi-votal player. A pi-votal player is a player that
+[00:41:00] has some influence on the game. So if your choice does not matter on the final result,
+[00:41:07] you are not pi-votal, okay? So for example, if player two chooses A, well, player one
+[00:41:17] can do whatever. The guy is acquitted anyway, right? So only if I am playing against a player
+[00:41:26] playing C, then I know I'm pivotal. My decision matters, right? This is like saying when
+[00:41:33] you play penalty kicks in the, in some World Cup. Well, if you are the last shooter
+[00:41:41] of the penalties, but your team is already, I don't know, four to one. Well, your last penalty,
+[00:41:48] you can even, I mean, not shoot it, because it's not, it doesn't matter. Whatever you do,
+[00:41:53] if you score, you lose. If you don't score, you lose anyways. So it's not very interesting
+[00:41:58] to play in that scenario. Now, in a similar situation, player one realizes that, okay, if
+[00:42:05] player 2 is playing C, my decision matters. I'm Pivotal. If player 2 chooses A, whatever I do
+[00:42:12] doesn't really matter. Okay, so if player 1 believes that player 2 is playing C, A
+[00:42:20] and the type of player 2 is TI, then whatever player 1 does is a best response,
+[00:42:26] right? Because player 2 is playing CA, so under type TI he will play A and when player
+[00:42:34] to place A, player 1 can do whatever he wants or she wants.
+[00:42:38] It doesn't change anything.
+[00:42:41] That is, if player 1 thinks that player 2 receives signal
+[00:42:46] TI, then everything that player 1 does
+[00:42:49] is a best response anyways.
+[00:42:51] So you need to check what happens if T2 is equal to TG.
+[00:42:57] Only in the case of TG, player 1 becomes pivotal,
+[00:43:01] and player 1 becomes concerned about his decision.
+[00:43:04] So, if you want to check whether player one is really playing a best response, you need
+[00:43:08] to check the case for t2 equal to tg, okay? I hope this is clear. If not, just stop the
+[00:43:15] video and pause because it can be a bit tense. But actually, I'm trying to make it
+[00:43:18] simple. If you need to check, I wonder if I think of playing CA and I wonder, is
+[00:43:24] this a good idea? Well, if the other guy is also playing CA and the other guy received
+[00:43:31] message DI, of course, I'm playing a message one.
+[00:43:33] So I don't even have to care.
+[00:43:34] So I need to check what happens if the other guy received
+[00:43:38] TG as a tie, and therefore, the other guy is playing C.
+[00:43:42] Now I am important.
+[00:43:43] I'm relevant.
+[00:43:45] OK, the point is, what is the signal
+[00:43:48] effect in the posterior?
+[00:43:50] So how does the signal alter the prior probability
+[00:43:53] into the posterior?
+[00:43:54] That is, what is the probability of the guy being
+[00:43:57] guilty if we both receive TG. If we both receive TG, then of course the probability of the
+[00:44:07] guy being guilty is bigger than Q. This goes without saying, but we can verify it.
+[00:44:11] We have the same computation here. It can be that we both receive TG, either because
+[00:44:17] the guy is really guilty and we got the right message, but it can also be similar
+[00:44:22] to before that the guy is actually innocent,
+[00:44:25] but we both got the wrong message, which happens
+[00:44:28] with probability 1 minus p squared.
+[00:44:30] OK, if you make your computations,
+[00:44:32] you see this is bigger than q.
+[00:44:34] Why?
+[00:44:34] Because p is bigger than 1 half.
+[00:44:36] So this expression is bigger, sorry,
+[00:44:40] slower than qp squared plus 1 minus q times p squared.
+[00:44:45] So you can simplify out this as p squared,
+[00:44:47] and this means this is bigger than q.
+[00:44:50] OK, now, interesting.
+[00:44:52] what is the probability of the guy being guilty when i player one receives message t i and
+[00:45:01] the other guy gets message t g? The probability is, if you take the computation here, the
+[00:45:07] probability of t i t g is p times one minus p and the probability the guy is really
+[00:45:12] guilty is q times p times one minus p, right? This is the probability of i getting
+[00:45:18] So the guy is guilty, and we get p1 times 1 minus p.
+[00:45:22] The denominator is p times 1 minus p.
+[00:45:24] So this is actually equal to q.
+[00:45:27] And you can argue, OK, but if we both receive type Ti,
+[00:45:30] this is lower than q.
+[00:45:31] Of course, but it doesn't matter.
+[00:45:32] When we receive type Ti, we don't
+[00:45:34] need to check when we both get type Ti.
+[00:45:37] Because if the other guy gets type Ti and he's playing CA,
+[00:45:40] he was for a quitter anyways.
+[00:45:42] So there we are good.
+[00:45:43] That's the best response.
+[00:45:44] But we wonder if this is also
+[00:45:46] best response when the other guy gets type tg and i'm reasoning my mind okay i got message
+[00:45:53] ti what should i vote two possibilities the other guy received ti in which case it's very unlikely
+[00:46:01] the guy is guilty and therefore we vote but there i know that the guy will vote for a
+[00:46:06] people so i can even vote guilty it doesn't matter voting guilty or uh sorry voting acquittal
+[00:46:13] or conviction is the same for me in this situation that t2 is equal to ti. And in the situation that
+[00:46:20] t2 is equal to tg, it's more convenient for me to vote conviction. So if I get message di,
+[00:46:27] I actually vote for conviction. So the best response to ca is not ca itself. The best response
+[00:46:35] to ca is double c. Because you see, of course, if the other guy gets the message
+[00:46:40] If I get the message, I vote for conviction.
+[00:46:42] That's for sure.
+[00:46:43] But if I get the message DI, I vote for conviction
+[00:46:47] if my belief is that the other guy is following strategy CA.
+[00:46:51] So in short, CI is not the best response to self.
+[00:46:56] But rather, CC is the best response to CA.
+[00:46:59] And you can even prove that double CC
+[00:47:02] is a Bayesian Nash equilibrium.
+[00:47:04] And this is a kind of a paradox.
+[00:47:05] Because this happens if the probability,
+[00:47:09] even if the probability p is better than 1.5.
+[00:47:12] So it's not because I have a useless signal.
+[00:47:14] Of course, if I have a useless signal, of course,
+[00:47:16] I cannot say I follow the signal.
+[00:47:18] It's kind of pointless.
+[00:47:20] But if I have a valid signal, sometimes I don't follow it.
+[00:47:24] And this is a very serious problem, actually,
+[00:47:26] in online committee, online reputation.
+[00:47:29] Most of the times, if you tell people, well,
+[00:47:32] this guy is going to write a good song
+[00:47:35] or cooking you a good meal, then
+[00:47:37] and you are influenced already by this bias.
+[00:47:39] And the bias is the problem.
+[00:47:41] Your beliefs are biased because everything started
+[00:47:44] by saying, well, Q is bigger than one half.
+[00:47:47] And this also explains why many innocent people
+[00:47:51] get convicted sometimes.
+[00:47:52] Because when people are broke to trial,
+[00:47:55] there is this inner bias, psychological bias,
+[00:47:57] is that if this guy is under trial, it must be guilty.
+[00:48:01] Like if you accuse your professor of anything,
+[00:48:04] Well, and the professor maybe is, you know, disappearing.
+[00:48:08] Some people even, I don't know, kill themselves.
+[00:48:11] And the common response is, oh, if the guy was innocent, he wouldn't have killed himself.
+[00:48:17] Not true.
+[00:48:18] I mean, not that they defend suicide is, of course, a problem to, to kill yourself
+[00:48:25] and you shouldn't do that.
+[00:48:26] So, don't, I don't want to be apologetic against suicide is a terrible act and so don't take
+[00:48:34] my word in the wrong direction, but on the other hand, if you, even if you are innocent
+[00:48:40] and you know it, it's very difficult to prove it against a cognitive bias of being
+[00:48:46] put under trial because most of the times you see people saying, well, if the guy
+[00:48:51] was really innocent and really clean cut, why the police is investigating?
+[00:48:56] maybe the police is investigating because it's their job. It doesn't mean anything.
+[00:49:00] But when people are put on trial then you have this strange effect that you start from a
+[00:49:06] cognitive bias and the belief is the prejudice is this bias the guy must be guilty with more
+[00:49:12] than 50 percent relief. Even under some very guarantees rule like this one only two jurors
+[00:49:20] must agree in condemning you, it doesn't mean a thing, even if the opinions are independent,
+[00:49:27] because they follow the signal only if there is no prejudice.
+[00:49:31] But if given that we have this prejudice of Q being bigger than one half, they don't
+[00:49:37] try and there is this lack of coordination among the two jurors.
+[00:49:40] Actually, in this situation, the two jurors voting separately harms the defendant.
+[00:49:45] Because you might think, okay, but if there's only one juror, the only juror will vote
+[00:49:49] for following the signal, yes.
+[00:49:52] If you have more than Majora,
+[00:49:53] they don't follow the signal.
+[00:49:55] Actually, they reinforce the bias and you see the result.
+[00:49:59] So in short, the belief is double C double C,
+[00:50:01] which is the national equilibrium,
+[00:50:03] meaning that it's more convenient
+[00:50:05] for the two players to convict.
+[00:50:07] Why so?
+[00:50:08] Because double C is the best response to itself.
+[00:50:10] Because if you do like that, the guy is convicted
+[00:50:12] and well, sometimes you get it wrong,
+[00:50:14] but your belief is not changed
+[00:50:17] because it is more likely
+[00:50:18] that you get, so if you get the TG signal,
+[00:50:23] you vote convinced for conviction.
+[00:50:25] If you get TI, you're a bit reluctant
+[00:50:28] of voting for conviction,
+[00:50:30] but nevertheless you vote for that
+[00:50:31] because you assume that either the guy,
+[00:50:34] I mean, the other guy can save him.
+[00:50:36] You have the chance of saving
+[00:50:38] if you are so convinced, right?
+[00:50:40] So in short, this is a strange problem that shows,
+[00:50:44] well, some connections between signaling
+[00:50:46] and telecommunications, which is what interests me the most, and make some critiques on the
+[00:50:51] judicial system, which is not relevant for us. But nevertheless, it shows that if you
+[00:50:55] start from a bias cryo, you can get very uncomfortable results. You don't follow the
+[00:51:01] signal at all. So if you have a signaling in your problem, like in a signaling expression
+[00:51:06] as a type, that is a message you want to deliver, then once again, any bias you
+[00:51:13] might have on the message you want to deliver
+[00:51:15] might harm your submission of the message.
+[00:51:18] OK, this is a good moment.
+[00:51:20] We're going to stop the second video.
