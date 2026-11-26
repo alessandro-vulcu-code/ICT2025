@@ -1,0 +1,747 @@
+[00:00:01] Welcome back to the second part of this lecture
+[00:00:03] on game theory.
+[00:00:04] I'm Leonardo Badia, the lecturer of the course.
+[00:00:07] We now discuss what happens
+[00:00:08] if we have infinitely many repetitions.
+[00:00:11] So we extend the game to infinite horizons
+[00:00:14] and we look if there is cooperation.
+[00:00:17] Well, actually we have some problems here.
+[00:00:21] First of all, well, we have infinitely repeated games.
+[00:00:26] We need a discount factor, which we denote as G.
+[00:00:30] So the discount factor is delta.
+[00:00:31] that we denote the game as G infinity delta,
+[00:00:33] we need delta to be less than one.
+[00:00:35] Delta cannot be one.
+[00:00:37] The reason is as false.
+[00:00:39] I mean, remember that previously we sound the payoffs.
+[00:00:41] So we say, well, we have two repetitions,
+[00:00:43] we get three and three, the payoff is six.
+[00:00:46] If we get four and one, the payoff is five,
+[00:00:48] which is worse than six.
+[00:00:50] We can compare that easily if the numbers are finite
+[00:00:54] and the number of repetitions is finite.
+[00:00:56] But if we have infinitely many repetitions,
+[00:00:57] We can say, well, we have four, then one, one, one,
+[00:01:00] one, always one.
+[00:01:02] Or three and three, three, three, always three.
+[00:01:04] What's better?
+[00:01:05] Well, it's really hard to say, right?
+[00:01:07] Because if you wanna compare them,
+[00:01:09] well, the infinite sum of threes
+[00:01:10] or the infinite sum of one
+[00:01:12] is actually both sum to infinity.
+[00:01:15] So it's really difficult to say,
+[00:01:16] well, the infinite sum of three
+[00:01:17] is strictly better than the infinite sum of one,
+[00:01:19] even though you have the feeling
+[00:01:20] that an infinite sum of three
+[00:01:23] is really better than an infinite sum of one.
+[00:01:25] So one trick that is usually applied
+[00:01:27] is the applied discount factor.
+[00:01:28] Because if you have a discount factor of delta,
+[00:01:30] you are not really comparing 1 plus 1 plus 1 plus 1,
+[00:01:32] but you are comparing 1 plus delta plus delta squared
+[00:01:35] plus delta cubed and so on.
+[00:01:37] And if you remember your calculus, the sum of this
+[00:01:41] is a geometric series.
+[00:01:42] It sums to 1 over 1 minus delta,
+[00:01:45] which is a finite number depending on delta.
+[00:01:48] And if you have, if delta is less than 1, of course,
+[00:01:51] and if you have instead 3 plus 3 plus 3, if you discount it,
+[00:01:55] you're really summing three plus three delta
+[00:01:56] plus three delta squared and so on.
+[00:01:58] And this sums to three over one minus delta.
+[00:02:01] And three over one minus delta is a finite number
+[00:02:03] that is clearly greater than one over one minus delta.
+[00:02:06] So you see why we need the discount factor
+[00:02:08] to be less than one.
+[00:02:10] Otherwise, we're comparing infinities
+[00:02:11] and it's not very easy.
+[00:02:13] Actually, there are ways to do so,
+[00:02:14] but we stick to the simple choice
+[00:02:16] that is generally done in economics,
+[00:02:18] which is to apply discount factor.
+[00:02:19] Very easy and no problematic at all.
+[00:02:22] Also, there is another problem.
+[00:02:24] The other problems that the analysis we made
+[00:02:26] in finitely repeated games was, okay,
+[00:02:29] let's start from the end and apply backward induction.
+[00:02:32] Well, big problem here,
+[00:02:33] there is no end in an infinite repetition.
+[00:02:36] So there is no last stage.
+[00:02:37] We cannot apply the theorem that says,
+[00:02:38] well, you know what?
+[00:02:39] In the last stage, we are sure we're gonna play
+[00:02:41] a Nash equilibrium, then let's start from there.
+[00:02:44] We cannot say that because there is no last stage
+[00:02:47] to begin with.
+[00:02:49] So, well, this is actually a good thing
+[00:02:51] because surprisingly, we can get a conclusion
+[00:02:55] in this situation of infinite repetitions
+[00:02:57] that is even more powerful
+[00:02:59] than the situation for finite repetitions,
+[00:03:02] which is we can have collaboration among the players,
+[00:03:05] even without the punishments.
+[00:03:09] Let's see what do I mean by that?
+[00:03:11] First of all, the result is,
+[00:03:14] well, I can have a sub game perfect equilibrium
+[00:03:17] of G infinite delta, in which no stage outcome
+[00:03:21] is a Nash equilibrium of G.
+[00:03:23] Which is kind of strange because in the final repetition,
+[00:03:27] this was not true for the last stage.
+[00:03:29] In the last stage, I must play a Nash equilibrium.
+[00:03:33] Here there is no last stage.
+[00:03:35] Well, the conclusion is I can find an SP,
+[00:03:37] a subgame perfect equilibrium,
+[00:03:39] where I never play a Nash equilibrium of the stage K.
+[00:03:43] Which is kind of surprising
+[00:03:44] because subgame perfect equilibria are supposed
+[00:03:46] to be made of Nash equilibria, right? So I play a Nash equilibrium in every possible subgame.
+[00:03:51] Well, the trick is if I have an infinite game, the subgame of an infinite game is also infinite.
+[00:03:57] So we will see and we will prove with a particularly clever discussion that I can avoid
+[00:04:04] playing a local Nash equilibria in every circumstance and still get a Nash equilibrium
+[00:04:09] of the ground game. Well, this can be shown by considering the prison's dilemma. The prison
+[00:04:13] is a reference example here because the prison dilemma is very powerful. It has
+[00:04:18] just two strategies, two actions actually, and one is to collaborate and the other
+[00:04:24] is not to collaborate. If we just forget for a moment that these are two
+[00:04:27] thieves, it's like okay if they collaborate they get better but they
+[00:04:30] don't want to collaborate because they're selfish and this is true if
+[00:04:33] the game is only played one shot because they know the world is gonna
+[00:04:37] end tomorrow so there is no tomorrow they don't care about collaboration.
+[00:04:40] What if instead they have to play this game
+[00:04:44] for a very long time?
+[00:04:47] Should they collaborate or not?
+[00:04:48] Well, let's see.
+[00:04:50] We define the so-called green trigger strategy.
+[00:04:53] This is a very clever idea.
+[00:04:55] The green trigger strategy, denoted as GRT,
+[00:04:57] is defined as such.
+[00:04:59] We start playing M as stage one.
+[00:05:01] So if you play GRT, it means stage one
+[00:05:03] when there is no past history,
+[00:05:05] you have to tell M or F, only that, right?
+[00:05:07] Because your choice is binary, either M or F.
+[00:05:09] you must tell what to play between M or F
+[00:05:12] in every information set of the game.
+[00:05:15] And the game is played simultaneously,
+[00:05:17] but you have to see the past outcomes.
+[00:05:19] So at the beginning, there is no past history,
+[00:05:21] you have to decide M or F.
+[00:05:22] And then depending on the outcomes, you choose M or F.
+[00:05:25] You choose that actually infinitely many times,
+[00:05:27] for infinitely many nodes.
+[00:05:29] But the green trigger strategy works,
+[00:05:31] like first node, you choose M.
+[00:05:32] And then in every subsequent stage
+[00:05:34] where you have a past history,
+[00:05:36] If the past history says all previous outcomes were double M,
+[00:05:41] you keep playing M, otherwise you play F, okay?
+[00:05:46] This means that you can prove the following theorem,
+[00:05:51] the following proposition.
+[00:05:52] If Delta is close enough to one,
+[00:05:56] the joint strategy where both users play GRT
+[00:05:58] is sub game perfect equilibrium.
+[00:06:00] So crazy, you don't need the final punishment.
+[00:06:04] Remember, when I have the prison dilemma
+[00:06:07] and I repeated it finitely many times,
+[00:06:09] I cannot force the players to play double F.
+[00:06:11] The result is the players only play double F.
+[00:06:15] That's the only sub-game perfect leap.
+[00:06:17] Now, in the infinite repetition,
+[00:06:19] without adding a punishment, without changing the game,
+[00:06:22] but just adding an infinite repetition,
+[00:06:25] I created another sub-game perfect leap,
+[00:06:28] which is the players play the green trigger.
+[00:06:32] And the green trigger actually is defined by stat,
+[00:06:34] by playing M, and they keep playing M
+[00:06:37] as long as the previous outcomes are double M.
+[00:06:40] Well, if they play this, the equilibrium path
+[00:06:42] of the double green trigger, Al playing green trigger
+[00:06:45] and Bob playing green trigger, is double M all the time
+[00:06:47] because they start with double M.
+[00:06:49] In stage two, they see that they both played M
+[00:06:52] in the first round, so the outcomes are double M,
+[00:06:54] so they keep playing M,
+[00:06:55] and they keep playing M forever.
+[00:06:57] Okay, very well.
+[00:06:58] Why is this a sub-game perfect equilibrium?
+[00:07:00] we need to show that GRT, first of all,
+[00:07:03] we need to show that GRT is a Nash equilibrium,
+[00:07:06] meaning it is a best response to itself.
+[00:07:09] Okay, well, to show that, we see that Bob, for example,
+[00:07:14] just for the sake of reasoning, let's consider Bob.
+[00:07:17] Bob believes that Al will play GRT.
+[00:07:20] And so Bob must wonder,
+[00:07:22] is my best response to play GRT too?
+[00:07:25] Well, Bob knows that if he does not play GRT, so especially he plays something that leads out to double M, I would play F forever, because that's what GRT states.
+[00:07:39] The green trigger states, I mean, it's called green trigger because it's very green. If you deviate, if you don't collaborate, I pull the trigger, which is something that, I don't know, many partners can say if you don't behave, you cheat on me or betray my trust,
+[00:07:54] it's it's done you are done it's done forever and that's very green to say right but that's
+[00:08:01] what the green trigger says if you don't collaborate if you fail to collaborate once
+[00:08:05] i won't collaborate with you ever that's a green trigger right because you start with m
+[00:08:10] and if we keep collaborating we're happy if you deviate or even i deviate but i don't
+[00:08:15] deviate because i play m but if any of us deviates we play f forever then we are
+[00:08:21] non-collaborators forever and ever.
+[00:08:24] Okay, Bob knows all of that.
+[00:08:26] So Bob knows that if some outcomes is not double M,
+[00:08:33] then he, Al will play F,
+[00:08:35] and so best response to Bob is also to play F,
+[00:08:37] because the best response to F is to play F,
+[00:08:39] which proves that the best response
+[00:08:43] to all the situations where Al plays F is to play F.
+[00:08:47] Well, this is the green trigger, right?
+[00:08:49] because Al plays F all the times
+[00:08:52] where the previous outcomes are not double M.
+[00:08:56] And Bob will also play F in all the situations
+[00:08:59] where the previous outcomes are not double M.
+[00:09:01] So this covers part of the green trigger, right?
+[00:09:05] The thing is, we need to see what happens instead
+[00:09:08] if all the previous outcomes are double M.
+[00:09:12] If all the previous outcomes are double M,
+[00:09:14] it's like saying we never pull the trigger, right?
+[00:09:18] So this is analogous to the first instance,
+[00:09:22] because if Bob, best response is not to play M,
+[00:09:27] when five of the previous outcomes are double M,
+[00:09:30] all the five previous outcomes are double M,
+[00:09:32] it's not the first best response either,
+[00:09:35] meaning they start with no past history
+[00:09:38] and they decide to play M.
+[00:09:40] But then in stage number two,
+[00:09:42] the outcome is double M now,
+[00:09:44] So, they are back to as before. Nobody pulled the trigger, right? So, Bob, if Bob didn't
+[00:09:51] deviate in the first stage, Bob won't deviate in the second stage either, because it's
+[00:09:55] not convenient. It's the same structure of the game. The game is really repeated
+[00:09:58] as it was before with the same initial conditions, the same past history. Nobody
+[00:10:03] pulled the trigger yet. So, clearly, if anybody, either Al or Bob, pulled the trigger,
+[00:10:09] Al and Bob, so Al playing GRT will play F,
+[00:10:13] and Bob best response is to play F,
+[00:10:14] thus resulting in the green trigger as well,
+[00:10:16] because it means if somebody pulled the trigger,
+[00:10:18] I play F, that's a green trigger.
+[00:10:21] And if nobody pulled the trigger,
+[00:10:22] we wonder, is M the best response of Bob?
+[00:10:26] If nobody pulled the trigger, we know,
+[00:10:28] so Bob knows as well, that Al is gonna play M.
+[00:10:32] So the question is, is Bob best response to play M or not?
+[00:10:36] And this can be seen in the first game, right?
+[00:10:38] Because if it is so in the first stage
+[00:10:40] where nothing is still to be played,
+[00:10:42] this will also be true in the second stage,
+[00:10:44] third stage as well.
+[00:10:45] So we need to check if is Bob best response
+[00:10:50] to play M in the first move,
+[00:10:53] knowing that Al will play F.
+[00:10:56] You might think, of course not.
+[00:10:57] Bob's best response is to deviate
+[00:10:59] because if Bob knows Al is gonna play M,
+[00:11:03] Bob's best response is to play F.
+[00:11:04] Well, not so fast. This is convenient in the first stage, but remember you're gonna get a short-term gain,
+[00:11:11] but you're facing a long-term loss, because after that the trigger will be pulled, because the first
+[00:11:17] stage will be M F, and Bob knows that. Bob can anticipate that, because Bob is smart, and Bob can
+[00:11:22] see that Al will play F forever, so Bob loses the opportunity to get 4 forever and ever.
+[00:11:29] Bob can either get zero or one.
+[00:11:32] Okay, what will happen exactly?
+[00:11:34] If Bob chooses F in the first stage,
+[00:11:37] Bob gets five, but knows that Al
+[00:11:40] won't be cooperating forever.
+[00:11:42] And also Bob says, okay, since I know that after that,
+[00:11:45] I mean, after that Bob is smart enough to say, okay,
+[00:11:47] I know that Bob will play F, so I play F2.
+[00:11:50] So basically, Bob thinks of changing
+[00:11:52] to playing F forever.
+[00:11:54] In the first round, this will be beneficial.
+[00:11:56] In the second round, not so much
+[00:11:57] because he loses something.
+[00:11:59] Okay, the present value, so if Bob is evaluating
+[00:12:04] the utility of that at present time,
+[00:12:06] so five is not discounted, five is present day,
+[00:12:10] but future payoffs are discounted with delta factors.
+[00:12:12] So it's five plus delta plus delta squared plus,
+[00:12:16] and you see that these results again
+[00:12:18] with the geometric sum in five plus delta
+[00:12:20] over one minus delta.
+[00:12:22] Okay, what was the payoff that Bob could expect
+[00:12:25] if Bob sticks to the original green trigger.
+[00:12:29] Well, if Bob chooses M, then gets four,
+[00:12:34] and also the game iterates,
+[00:12:35] because now nobody put the trigger
+[00:12:37] and you keep playing as before,
+[00:12:39] so Bob can really hope to keep getting four after that.
+[00:12:43] So the present value here is four,
+[00:12:46] then in the second stage, he will get again four,
+[00:12:48] so four delta because the second stage is discounted,
+[00:12:50] and then four delta squared and so on.
+[00:12:52] And this gives four over one minus delta.
+[00:12:54] What is preferable?
+[00:12:56] It depends.
+[00:12:56] It depends on delta.
+[00:12:58] So you can see that if you want to compare them,
+[00:13:00] is it V of V prime better?
+[00:13:02] You see V prime is better
+[00:13:04] if delta is greater than one quarter.
+[00:13:07] And that is a consequences of these functions.
+[00:13:10] So the specific number is one quarter,
+[00:13:12] but I rely on your intelligence
+[00:13:15] to understand that the example is really representative.
+[00:13:18] It's actually very classic
+[00:13:19] to discuss infinite repetitions
+[00:13:22] with this example of the present dilemma,
+[00:13:23] But this is just an example.
+[00:13:25] In theory, you can want to generalize this and say,
+[00:13:27] well, if you have different numbers, what happens?
+[00:13:29] Well, I trust that you can easily see
+[00:13:32] that if you change the numbers, of course,
+[00:13:35] this result will be different.
+[00:13:36] It will be delta something else.
+[00:13:38] But it will still be that if delta is close enough to 1,
+[00:13:43] meaning it will be an inequality where
+[00:13:45] delta must be bigger than some lower than 1 value.
+[00:13:48] So delta cannot be 1.
+[00:13:50] But if it's close enough to 1,
+[00:13:52] this equation, this inequality will be satisfied, whatever
+[00:13:55] the numbers you put.
+[00:13:57] Because you see that every time you have to compare,
+[00:13:59] the idea is, again, the characteristic comparison.
+[00:14:02] You have to choose between a present-day reward, which
+[00:14:06] will be met with punishment in the future,
+[00:14:09] with compliance with the strategy, which gives you
+[00:14:11] lower payoff, but you get now,
+[00:14:13] but you get a more steady payoff for the future.
+[00:14:15] So in this example, I have 5 and 1 and 4 constantly.
+[00:14:20] What's better?
+[00:14:20] It depends because if the discount factor is really low, meaning you don't care about getting
+[00:14:25] four in the future, you prefer to get five now rather than four now, you don't care about it.
+[00:14:30] So if delta goes to zero, then there is no such a subgame perfect equilibrium where the
+[00:14:35] two players collaborate. But if you have delta disclosed enough to one, meaning future
+[00:14:42] punishments or future deviations from the collaborations are really relevant because
+[00:14:51] you feel them as a threat, as a credible threat, then you don't deviate out of fear
+[00:14:57] of punishment.
+[00:14:58] So once again, we are kind of a bit cynical because we're saying, well, Al and Bob don't
+[00:15:02] collaborate because they love each other.
+[00:15:05] They collaborate because they are afraid that the mafia boss are going to punish them
+[00:15:09] or whatever.
+[00:15:10] I mean, they're going to be a punishment,
+[00:15:12] or they keep better robbing, and they commit thievres
+[00:15:16] if they keep collaborating.
+[00:15:18] They get a better payoff, a more steady payoff.
+[00:15:20] So they prefer that.
+[00:15:22] OK, anyways, the result is we showed
+[00:15:25] that the green trigger, playing the green trigger,
+[00:15:28] is really a Nash equilibrium, because you don't
+[00:15:29] want to deviate from there.
+[00:15:31] And actually, you can also conclude
+[00:15:34] that it is subgame perfect.
+[00:15:36] To be complete, you need to show that it's not only
+[00:15:39] a Nash equilibrium, but it's some game perfect.
+[00:15:40] We already hinted at that.
+[00:15:42] We need to show that the green trigger,
+[00:15:43] playing a joint green trigger,
+[00:15:45] is a Nash equilibrium in every possible game.
+[00:15:47] Well, we already said, if nobody pulls the trigger,
+[00:15:49] we showed this is the case,
+[00:15:51] because we keep repeating the same game, sort of,
+[00:15:54] the game where nobody pulled the trigger,
+[00:15:56] and we keep playing double-N.
+[00:15:59] And nobody wants to deviate from there.
+[00:16:00] Double-N is not a Nash equilibrium,
+[00:16:02] but the game does not end there, that's a trick.
+[00:16:04] So, I'm not saying double-N is a Nash equilibrium,
+[00:16:07] but playing double-M forever is a Nash plenum,
+[00:16:09] because you don't want to deviate from that.
+[00:16:12] Also, if you deviate from double-M,
+[00:16:15] you end up in a sub-game
+[00:16:16] where somebody pulled the trigger, too bad.
+[00:16:18] Now the friendship of Alan Bob is ruined forever,
+[00:16:21] and so the green trigger here
+[00:16:23] degenerates into, well, we always play F.
+[00:16:26] And they both agree this is a Nash plenum.
+[00:16:28] By the way, once again, not double-F alone
+[00:16:32] is a Nash plenum.
+[00:16:33] that always play double f is a Nash equilibrium,
+[00:16:36] because it's clearly some strategy where
+[00:16:38] nobody wants to deviate from.
+[00:16:40] If I know you are always playing double f,
+[00:16:43] my only alternative is to play f,
+[00:16:45] because if I deviate to m somewhere,
+[00:16:48] that won't change your mind.
+[00:16:49] You're going to keep playing f.
+[00:16:52] So my best response is to comply and play f, too.
+[00:16:55] OK, well, this is actually a specific result
+[00:17:00] from a more general theorem.
+[00:17:01] And this is very funny because this is probably the most quoted result of game theory and nobody knew who invented it.
+[00:17:10] It's called in this slide is called the Friedman theorem, but this guy Friedman cited in a paper and said it is a known result.
+[00:17:18] So he didn't claim it for himself very straight because nowadays all the researchers for the sake of citations and getting a full professor position will say, well, it's my result.
+[00:17:28] I am the author, so you must cite my paper. But Friedman apparently was concerned, he already had
+[00:17:34] tenure probably, so he said this result is so well known that I don't need to prove it, but
+[00:17:39] apparently so there is no citation in his paper and nobody is able still nowadays to trace who
+[00:17:46] invented it then. So some people call it the Friedman theorem because he was indeed the
+[00:17:50] first one to mention it. Some other people call it the folk theorem. Folk is not the name
+[00:17:54] of a guy, is just to mean it's a popular theorem,
+[00:17:57] so popular that everybody knows it, as Friedman stated.
+[00:18:01] Okay, we are gonna prove the Friedman theorem
+[00:18:04] again referring to the classic sample
+[00:18:07] of the prisoner's dilemma, the repeated prisoner's dilemma.
+[00:18:10] But mind you, it's not really necessary
+[00:18:13] to use this example, you can use other numbers.
+[00:18:16] It's just, this is very tricky to formalize,
+[00:18:19] well, with precise notation, so I'm gonna rely
+[00:18:22] this kind of explanation which is quite common in every book. So they use the example of the
+[00:18:26] prison dilemma and they tell students okay generalize this in your mind for yourself
+[00:18:30] because it's quite easy to understand how this can be generalized. Well first I need to give
+[00:18:35] a definition. The definition is that of feasible payoff. A feasible payoff is any
+[00:18:40] convex combination of the payoffs. Of the payoffs you can get in pure strategies because
+[00:18:47] because, well, let's see.
+[00:18:48] This is the envelope of the possible payoffs
+[00:18:53] that you play in the present dilemma
+[00:18:54] with the numbers I gave you before.
+[00:18:56] The pure strategies are the vertexes of this loss H.
+[00:18:59] It can be one, one, five, zero, four, four, zero, four.
+[00:19:02] No matter how they result,
+[00:19:04] I mean, these are possible payoffs.
+[00:19:05] I'm claiming that the entire area,
+[00:19:08] the entire blue area represent points
+[00:19:10] of possible payoffs, possible average payoffs.
+[00:19:13] Why?
+[00:19:13] Oh, let's say you want to get, for example, 2-2.
+[00:19:18] 2-2 is one point that is inside the blue loose edge.
+[00:19:21] So can I get 2-2 on average, of course.
+[00:19:23] I cannot get 2-2 in one round.
+[00:19:25] But can I get 2-2 on average in the long run?
+[00:19:28] Of course, this happens if you play like 1-1, 1-1, 4-4.
+[00:19:34] 1-1, 1-1, 4-4.
+[00:19:36] If you play like that,
+[00:19:37] if you agree on playing this sequence of moves,
+[00:19:41] Actually, you play, it means you play F, F, M, F, F, M for both plays, which results
+[00:19:47] in double F, double F, double M, double F, double F, double M. If you play that for
+[00:19:51] a very long time, you're going to get on average 2-2 as utilities. So you see
+[00:19:56] that every linear combination inside here is possible if you really play the game for
+[00:20:01] an infinite repetition, because you just have to compute. So this can sometimes be
+[00:20:07] seen as the payoffs achievable by mixed strategies
+[00:20:10] in the stage game.
+[00:20:11] But it's not really a mixed strategy.
+[00:20:13] It's an actual strategy because a mixed strategy requires
+[00:20:16] to have some probability of playing something.
+[00:20:18] So it's an expected value.
+[00:20:20] Here, I'm mentioning not an expected value, but really
+[00:20:22] an arithmetic average, which is the limit
+[00:20:25] result for the expectation by the law of large numbers.
+[00:20:28] Because you can really build the strategy
+[00:20:31] because you have infinite many repetitions.
+[00:20:33] Remember, when I said mixed strategies, sometimes
+[00:20:35] I mean, kinda not intuitive because you say,
+[00:20:39] well, if I play the game for a very long time
+[00:20:41] and a very long number of times,
+[00:20:44] I'm gonna get this on average.
+[00:20:46] Yeah, but you cannot play the game for a very long time
+[00:20:48] because the game is static.
+[00:20:49] That was true there.
+[00:20:51] But now, I'm gonna play the game infinitely many times.
+[00:20:53] So I can really get any payoff in the blue lozenge, right?
+[00:20:56] Any linear combination of the payoffs is feasible.
+[00:20:59] Very well.
+[00:21:00] So I can prove the theorem theorem as follows.
+[00:21:03] If I have a static, a finite static game
+[00:21:06] of complete information, so the game itself is finite,
+[00:21:08] but I repeat it infinitely many times.
+[00:21:11] And I know that I have an n-tuple of values,
+[00:21:16] which is in my case just two numbers
+[00:21:17] that I have two players in the example
+[00:21:18] of the present dilemma.
+[00:21:19] But in general, I have an n-tuple of values
+[00:21:22] that is a Nash equilibrium of G.
+[00:21:25] And I have an n-tuple of values of feasible payoffs
+[00:21:30] where every value is strictly greater
+[00:21:33] than the Nash equilibrium.
+[00:21:35] Well, actually can even be equal, to be honest.
+[00:21:38] So this is every individual,
+[00:21:40] I mean, this vector is strictly bigger element wise.
+[00:21:45] If this is the case,
+[00:21:46] I can establish a sub game perfect equilibrium
+[00:21:49] where the payoffs are XJ
+[00:21:51] if Delta is close enough to one.
+[00:21:55] And this is well, easy to prove.
+[00:21:57] We already proved that
+[00:21:57] because we proved that for this specific point.
+[00:22:00] We proved that double M is a point that,
+[00:22:03] so the Nash equilibrium is one one in this example.
+[00:22:05] And double M is a better payoff element wise, right?
+[00:22:10] So we proved that we can have a Nash equilibrium,
+[00:22:14] a sub game perfect equilibrium,
+[00:22:16] where all players keep getting four.
+[00:22:19] The proof is simple.
+[00:22:20] We apply, we define a proper green trigger
+[00:22:24] for establishing the strategy.
+[00:22:25] so we say okay we have this strategy if somebody deviates from there we play the Nash equilibrium
+[00:22:32] forever if nobody deviates as long as nobody deviates we keep playing that when is this
+[00:22:37] feasible of course 4-4 is a good example but even my example of 2-2-4 is a good example
+[00:22:43] why because 2-2 would be preferable over keeping playing the Nash equilibrium forever
+[00:22:48] But 2, 2 is better than 1, 1 forever.
+[00:22:51] Also, this is true as long as both players get, on average,
+[00:22:56] better than the Nash equilibrium.
+[00:22:57] So you see the orange area is a valid choice.
+[00:23:00] But these points are not a valid choice.
+[00:23:02] Because here, the utility of 1 is less than 1.
+[00:23:05] So player 1 does not like this.
+[00:23:07] So player 1 really wants to deviate.
+[00:23:08] And if you say, well, if you don't comply,
+[00:23:10] we go back to player double F. Then player 1 will say,
+[00:23:12] OK, I prefer double F, actually,
+[00:23:14] because I get 1, which is more than 1 I'm actually getting.
+[00:23:16] And the only caveat here is that if the strategy to get the intermediate point, so here the
+[00:23:22] strategy to get 4-4 is very easy, we just play M, right, and nobody else, nothing else.
+[00:23:27] Play M forever and ever.
+[00:23:29] But here I said to play 2, to get to 2, you have to play, well, M and then F-F,
+[00:23:35] M-F-F.
+[00:23:36] So if I'm playing M-F-F, it might take a while before noticing that somebody's deviating
+[00:23:45] because maybe my deviation is I don't want to play MFF I want to play MFM so
+[00:23:52] in the first stage we both play M and then the other player thinks oh he's
+[00:23:56] complying he's playing the strategy second round I'm playing F like I'm
+[00:24:01] supposed to do so I didn't deviate apparently but I already decided to
+[00:24:05] deviate because my decision to deviate is done in the beginning is made in
+[00:24:09] at the beginning.
+[00:24:10] Then in stage number three, my deviation is evident, OK?
+[00:24:13] Then no problem, because my deviation is finite in time,
+[00:24:17] and my punishment will be eternal.
+[00:24:19] So no matter what happens, the trigger is full.
+[00:24:23] And after that, I'm going to get the Nash equilibrium
+[00:24:25] payoff forever.
+[00:24:26] And since I don't like that, I
+[00:24:28] don't want to make any deviation, even
+[00:24:30] a delayed deviation.
+[00:24:31] So the theorem is really powerful,
+[00:24:33] because it tells you that you can really get
+[00:24:35] any point in the orange area.
+[00:24:37] and remember this is something that we saw even before because in the multi-stage game we saw well
+[00:24:42] ideally the prisoner revenge game was to establish uh well a collaboration in the first round
+[00:24:49] but so while playing double m in the first round but we saw that you can also establish
+[00:24:53] some different combinations well here the different combinations are not really m f you
+[00:24:59] cannot force that player to play m f because m f does not belong to the orange area but you
+[00:25:04] can come closer. Okay, so in reality the Prison Dilemma is not the best example because in
+[00:25:13] the Prison Dilemma, to be honest, you have only one Nash equilibrium and this is a security
+[00:25:19] payoff of one. If your stage game has a maximum that is less than the payoff, you
+[00:25:27] can get a better punishment because you can enforce a worse punishment. You can tell you
+[00:25:34] know what i'm gonna play against you from now on and not you didn't collaborate then i'm gonna
+[00:25:40] punish you and a better punishment can be instead of a national equilibrium can be the
+[00:25:45] maximum if you remember we showed that the maximum is in general in pure strategies less
+[00:25:51] than or equal to the Nash equilibrium.
+[00:25:53] So it can be an even worse punishment.
+[00:25:56] So this can lead to an even more effective strategy
+[00:25:59] where the punishment is more effective.
+[00:26:01] Like you have, in the prisoner dilemma, as we said,
+[00:26:04] the stick, the carrot is to play M
+[00:26:07] and the stick is to play F
+[00:26:09] because F is the punishment.
+[00:26:11] And we don't have other alternatives in prisoner dilemma.
+[00:26:13] But if the game is bigger,
+[00:26:14] you might have a further strategy
+[00:26:16] that is not a Nash equilibrium either,
+[00:26:17] but since you're gonna play forever, you don't care,
+[00:26:19] player, you keep playing the strategy that harms the opponent the most. And of course
+[00:26:26] you might be careful because this punishment must be credible. You must act so that you
+[00:26:32] don't punish yourself. But maybe, like in the previous cases, you have an unavailable
+[00:26:37] punishment for the other player and you threaten the other player to play this forever.
+[00:26:42] Not the F strategy, which is a punishment also for you, but you play another even
+[00:26:47] and worse strategy.
+[00:26:49] So if so, you can replace the security payoffs
+[00:26:52] with the values of E.
+[00:26:54] And also, what happens if delta is not close to one?
+[00:26:56] Because you might say, okay, very well,
+[00:26:58] but I need delta close to one.
+[00:26:59] And that's risky because delta cannot be one,
+[00:27:02] but must also be very close to one, so 0.99, maybe.
+[00:27:05] Okay, maybe your delta, you find out, is not 0.99,
+[00:27:08] or it's not a reasonable choice, it's not realistic.
+[00:27:10] What happens?
+[00:27:11] Well, in some games, there might be better punishments,
+[00:27:15] like before, user security payoffs.
+[00:27:16] or in general, you have lower collaboration.
+[00:27:19] So we will see.
+[00:27:22] Also, let's see another development.
+[00:27:25] So the short message here is that you should be careful
+[00:27:28] to apply the green trigger.
+[00:27:30] You must look for the punishments available
+[00:27:33] if you pull the trigger,
+[00:27:34] and also you must check that Delta is close enough to one
+[00:27:36] and we will see later on this.
+[00:27:39] Now, another extension to the green trigger,
+[00:27:43] it's a bit very engineering
+[00:27:45] Because engineering-wise, the green trigger
+[00:27:47] is a bit of a problem.
+[00:27:48] Because to define properly the strategy,
+[00:27:51] you see, you must say, where is it?
+[00:27:53] The definition of the green trigger is,
+[00:27:55] if every previous stage was double M,
+[00:27:58] then you play something, otherwise you play F.
+[00:28:00] That is a bit of a problem
+[00:28:01] if you want to program an automaton doing so.
+[00:28:04] Why?
+[00:28:05] Because let's say you are at stage 100.
+[00:28:08] To know what strategy to play,
+[00:28:10] and of course, if you are a human being,
+[00:28:11] you remember being betrayed.
+[00:28:13] but an automaton is done. So he or it must look at all of the hundred previous
+[00:28:20] interactions to see whether there was collaboration or not. So you have a
+[00:28:24] cycle for j from 1 to 100. If there was collaboration after round G, then keep
+[00:28:30] searching. If there was betrayal, then play F. This is very time-consuming
+[00:28:36] because this can be from round 1 to 100, but when you reach, I don't know,
+[00:28:40] around 1,000, you have to do 1,000 checks.
+[00:28:43] And you have to keep memory of all
+[00:28:45] that happened in the past, all the past 1,000 interactions.
+[00:28:49] This is something you might not want to do.
+[00:28:50] So somebody figured out a different version,
+[00:28:53] which is called TfD for TAT.
+[00:28:55] TfD for TAT, or TFD for short,
+[00:28:57] is a simple strategy where you just
+[00:29:01] consider the situation, again, like the prison dilemma,
+[00:29:03] you have cooperation or defections.
+[00:29:06] So you might want to collaborate or defect.
+[00:29:08] you cooperate or defect and you choose.
+[00:29:11] So the green trigger would be,
+[00:29:13] if you keep collaborating,
+[00:29:14] as long as you keep collaborating,
+[00:29:16] and if you collaborated forever,
+[00:29:18] I will reward you with collaboration.
+[00:29:20] So this is like saying,
+[00:29:22] if you proved worthy of respect, I respect you.
+[00:29:25] So if you respect me, I will respect you forever.
+[00:29:27] The moment you disrespect me,
+[00:29:29] I will disrespect you forever.
+[00:29:31] The taste for that is slightly different.
+[00:29:33] It says at stage D,
+[00:29:35] you copy the movie played by the other player,
+[00:29:38] by player minus I at stage T minus one.
+[00:29:41] And at first sight, this might seem strange,
+[00:29:45] but if you look carefully,
+[00:29:47] it looks very similar to the Grand Trigger
+[00:29:48] because Grand Trigger says, well, I started playing M.
+[00:29:52] Then if everybody played M in the first round,
+[00:29:56] I play M again, otherwise I play F.
+[00:29:59] Well, you know that you played M in the first round,
+[00:30:02] right?
+[00:30:02] so the only way that somebody deviates from double m
+[00:30:06] is the other player playing f so i'm saying i start by playing m
+[00:30:10] and then in the second round i'm playing whatever the other player
+[00:30:15] played in the first round that would be coherent right so this
+[00:30:19] still results in the same equilibrium path
+[00:30:22] because if we start the game with double m we play double m in the second
+[00:30:27] round and we play double m in the second round
+[00:30:28] the moment anybody deviates but it must be the other because i keep
+[00:30:32] playing M, I'm nice. If the other player deviates, defect from the cooperation,
+[00:30:37] well, I see that the other player played F. Then I say, then I play F. And the
+[00:30:42] second result will be M-F in the first round, and then I play F. Well, the
+[00:30:47] difference is that in the green trigger you play F forever. Here now
+[00:30:51] you play F. But if the other player says, oh, I'm sorry, let me play M in the
+[00:31:02] Well, there are a lot of debates here, philosophical as well, because you can compare the green
+[00:31:07] trigger with a non-forgiving strategy. The tit-for-tat is actually a forgiving strategy
+[00:31:13] because it only looks one step history. So if you misbehave, they're going to punish
+[00:31:19] you. But if you repent, they're going to forgive you. A tit-for-tat player will
+[00:31:24] say okay if I mean I just do what you did so this can be seen in two ways one
+[00:31:30] is the old biblical way of putting punishments so punishment shouldn't be
+[00:31:36] too excessive this actually praised I mean some historians say well the
+[00:31:40] Bible says an eye for an eye or teeth for a teeth that seems harsh
+[00:31:45] nowadays but it's actually a way to limit the revenge because generally I
+[00:31:50] know, you take me one eye out, then I kill you and I kill your family and I enact revenge
+[00:31:56] on a disproportionate scale.
+[00:31:58] No, the Bible says you have to get revenge, but in the same amount as you were hurt.
+[00:32:07] So that would be limiting the extent of the revenge.
+[00:32:10] You don't revenge forever.
+[00:32:12] So that would be in some sense a way of containing also the computational complexity
+[00:32:17] of your revenge.
+[00:32:18] But you can even say, well, actually, you know what, this is very forgiving.
+[00:32:23] So this is like the golden rule.
+[00:32:25] You treat the others like you want to be treated.
+[00:32:28] So you are treated well, then you treat the others well, and so on and so forth.
+[00:32:32] And this actually leads to mutual cooperation.
+[00:32:35] So the equilibrium path is still mutual cooperation, not bad.
+[00:32:40] So this can be seen as an eye for an eye, but also as reciprocal altruism, which
+[00:32:46] is by the way not only of certain humans but also in pack of wolves or in a swarm of bats.
+[00:32:53] They tend to help each other and if there is a member of the community that doesn't help
+[00:32:57] the others they isolate him and they leave him out as long as this individual does not bring
+[00:33:05] well to the community again. So they are generally forgiving because well they look at
+[00:33:10] emitted good and also because well animals don't have very long-term memory of course. So
+[00:33:18] this can be a very philosophical interpretation of the well-being of the society.
+[00:33:22] What's the problem for the tit for tat? I mean the tit for tat is very effective and so
+[00:33:26] there are it can be seen as a way a practical way of implementing the green trigger.
+[00:33:32] There are problems. Well one problem is that if you lack synchronization,
+[00:33:37] and synchronicity in the tit-for-tat,
+[00:33:39] you get a very bad outcome.
+[00:33:41] Because you have what you can call the death spiral.
+[00:33:44] Because remember, I start by cooperating,
+[00:33:46] and then I hope the first player cooperates too.
+[00:33:49] So second round, I copy what the first player did.
+[00:33:52] And if the other player cooperated,
+[00:33:54] then cooperate, cooperate in the first round,
+[00:33:56] then cooperate, cooperate in the second round,
+[00:33:57] if we both play the tit-for-tat.
+[00:34:00] But let's say that for some reason,
+[00:34:01] in the first round, the other player plays to defect.
+[00:34:05] effect. So first round is corporate effect. Then the second round we decide to play tit
+[00:34:09] for tat, which means I play defect and the other player plays cooperate. So we play
+[00:34:14] corporate effect, defect cooperate, and then corporate effect, defect cooperate.
+[00:34:18] This is very bad because we never have cooperation. So we have the so-called death
+[00:34:23] spiral in which we keep alternating, but we never reach cooperation. This also means
+[00:34:29] that we don't play an ash equilibrium here. And this means that even though we have
+[00:34:35] Nash equilibrium in the tit-for-tat. We don't have a subgame perfect equilibrium. This is very
+[00:34:43] subtle, so keep attention. So pay attention to this, what I'm about to say. If you play tit-for-tat
+[00:34:49] in the classic version, that is, I started playing M and then I copy what other players play,
+[00:34:55] then you keep ending up in the same equilibrium path. You keep having double M,
+[00:35:00] Nobody wants to deviate from there.
+[00:35:02] So it is certainly a Nash equilibrium.
+[00:35:04] The problem is because of the death spirals,
+[00:35:07] in some situations where somebody inadvertently deviated,
+[00:35:11] this situation never happens in practice,
+[00:35:14] but in theory they can happen.
+[00:35:16] Then the tit for tat is forgiving,
+[00:35:18] and this is kind of irrational.
+[00:35:20] So this is not a sub game perfect.
+[00:35:23] Also, in some situations,
+[00:35:24] it can end up in the death spiral.
+[00:35:27] So it's not, again, a good outcome.
+[00:35:30] If you get the same numbers before, you get 5, 0, 5, 0.
+[00:35:34] On average, you get 2.5, which is worse than getting 4, 4, 4,
+[00:35:38] which is 4 constantly.
+[00:35:39] So you want to deviate to there.
+[00:35:41] So that's not a Nash equilibrium in that outcomes.
+[00:35:44] But the point is, those outcomes never come to practice.
+[00:35:46] So you can always make the objection, well,
+[00:35:48] I never see this lack of Nash equilibrium.
+[00:35:51] But nevertheless, it doesn't make
+[00:35:53] for a fully rational solution constant.
+[00:35:55] In some situations, you are behaving irrationally,
+[00:35:57] which is, I said, well, because you are forgiving,
+[00:36:01] even when you're not supposed to do,
+[00:36:02] because the guy keep betraying you,
+[00:36:04] but you keep forgiving.
+[00:36:06] Okay, so that, you can infer also
+[00:36:07] other religious considerations from there,
+[00:36:09] but I'm not going to there.
+[00:36:11] Anyways, there is another,
+[00:36:14] there are some variations you can think of implementing,
+[00:36:16] because the problem here might be that,
+[00:36:18] well, you want to collaborate or defect
+[00:36:23] depending on what the other did in the previous round.
+[00:36:25] Well, there might be intermediate degrees,
+[00:36:26] like, in the green trigger, you keep memory of everything, you keep a grudge forever.
+[00:36:32] If the other didn't cooperate like a century ago, you keep holding him responsible for
+[00:36:36] the lack of cooperation. Or you can be very forgiving, like you just look at the past
+[00:36:40] round. Well, you can be intermediate, like you can have a ditch for two cuts.
+[00:36:44] So first round, if there is a defection, you forgive. But then second round, you
+[00:36:50] keep holding a grudge, for example. So there can be many intermediate degrees. And
+[00:36:55] you can think of a better strategy for your problem
+[00:36:57] at hand.
+[00:36:58] Of course, these, I mean, there are some tests.
+[00:37:01] And that's also some experiments
+[00:37:04] in computational intelligence, what the good forgiving
+[00:37:07] mechanism is.
+[00:37:08] How long should you forgive?
+[00:37:10] Should you forgive 70 times 7?
+[00:37:11] And we get to reach this again.
+[00:37:13] So you see, there are some really interesting remarks
+[00:37:16] you can make in terms of planning your strategy
+[00:37:19] outside equilibrium.
+[00:37:20] From the engineering perspective,
+[00:37:21] they're not so interesting because all you care about
+[00:37:23] is whether your strategy is really effective in the equilibrium and so in this sense tit-for-tat
+[00:37:29] can be a good implementation. So there's nothing wrong if you say well I want to implement
+[00:37:34] my green trigger and I use a tit-for-tat. Still you have to be aware that this
+[00:37:39] implementation is not perfect and that the result in equilibrium is not something perfect.
+[00:37:45] Okay and this is a good point where to stop and we can have the third part of this lecture.

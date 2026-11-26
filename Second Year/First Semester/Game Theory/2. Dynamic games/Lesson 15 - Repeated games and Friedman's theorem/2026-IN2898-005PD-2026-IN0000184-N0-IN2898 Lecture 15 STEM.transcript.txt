@@ -1,0 +1,533 @@
+[00:00:02] Welcome to this lecture of Game Theory.
+[00:00:05] I'm Leonardo Badia, the lecturer for the course.
+[00:00:08] In this lecture, we discuss a very important topic,
+[00:00:12] which is repeated games.
+[00:00:14] In a sense, this is a kind of a generalization
+[00:00:16] of the results we saw last time,
+[00:00:19] but repeated games are fairly common
+[00:00:21] in game theoretic analysis,
+[00:00:23] because it's a very classic subject.
+[00:00:25] We will see what happens when we play repeated games.
+[00:00:28] So in short, a repeated game is the same game, but played many times. And we already saw
+[00:00:36] an instance of that because when we mentioned that an example of dynamic game, we mentioned
+[00:00:42] the two, we called it the two nights battle of sexes, like Anne and Brian go to
+[00:00:47] the movies for two nights in a row. And if the movies are exactly the same, that
+[00:00:52] is going to be a repeat game. So we're going to discuss how to formalize them. This is
+[00:00:58] very common because, well, we can generalize what we saw last time, and this will be
+[00:01:04] fairly simple, but we can also find very interesting and surprising results from the
+[00:01:09] repetition. So first with the formal definition, a repeated game is denoted as GT Delta.
+[00:01:15] So G is a static game, but if we play multiple times
+[00:01:20] and we combine the payoffs of each stage game
+[00:01:24] with the usual rule of a discounted sum
+[00:01:27] with discount factor delta,
+[00:01:29] then we denote this as GT delta.
+[00:01:31] So this GT delta is gonna be a dynamic game.
+[00:01:34] It's actually gonna be a repeated game,
+[00:01:36] a multi-stage game, where every stage of the game
+[00:01:39] is the same static game G
+[00:01:41] and T is the number of repetitions we make
+[00:01:44] And delta is a discount factor that is considered
+[00:01:46] when combining the payoffs.
+[00:01:50] Especially here, we have this additional trick.
+[00:01:54] Because in multi-stage games, we
+[00:01:56] said, well, the number of repetitions must be finite.
+[00:01:59] But now we allow for this T to be finite.
+[00:02:03] And this is sometimes called the finitely repeated games
+[00:02:05] or finite horizon.
+[00:02:07] So the same game is played T times,
+[00:02:10] where t is a number, well, two, three, I mean, generally a low number, but can be any finite
+[00:02:15] number. But we can also have infinitely repeated games. This is a novelty because we didn't
+[00:02:22] have it for generic multistage games because it is impossible to define infinitely many
+[00:02:26] different games. But if the game is always the same, we can talk of infinite repetitions.
+[00:02:33] So we repeat the game infinitely many times. But a warning is that if the horizon is
+[00:02:39] infinite, delta must be less than one. We will see why. So, first of all, let's consider a two-stage
+[00:02:47] repeated game. So that is the simplest case. It's a finite repetition. We take a simple case,
+[00:02:53] like the prisoner's dilemma, and we assume we repeat it two times without discounting.
+[00:02:58] So that would be the simplest thing we can think of because we can immediately derive the
+[00:03:03] results. So if we have, like for simplicity, no discounting, we have Alan Bob playing not the
+[00:03:08] traditional revenge like before two different games they only play the same game so they keep
+[00:03:13] getting caught at the scene of a robbery and they well can decide whether to confess or stay silent
+[00:03:19] for both cases okay so i mean if we have these payoffs what happens in the second stage well
+[00:03:27] if we have a second stage we can think of this like that so we know in the second stage
+[00:03:33] we're gonna play no matter what happened in the first stage we're gonna play double f because
+[00:03:37] that is the only Nash equilibrium. So Al and Bob are aware of that, they are smart enough to know
+[00:03:43] that in the last stage they will play Double F. So when they look at the first stage it's like
+[00:03:50] they're seeing a simple static game. So in the first stage they're really playing a dynamic
+[00:03:54] game in which they should foresee a strategy for every possibility, right? That is what the
+[00:04:01] strategy takes. So they should decide what to play now and also what to possibly play in
+[00:04:05] every possible evolution of the game. But they know that every possible evolution of the game is
+[00:04:10] just they play Double F in the next stage. So they are faced with this kind of payoffs from
+[00:04:16] the perspective of the present time, from the perspective of the first stage. They're looking,
+[00:04:21] they're facing this game like a static game where the payoffs are simply increased by one
+[00:04:26] because they anticipate that in the last stage they're going to play Double F, giving them
+[00:04:31] one one so it's like saying that well in the first stage they're playing a static game once
+[00:04:36] again and there is a single Nash equilibrium which is to play double f again so no surprise
+[00:04:43] here they're gonna just play double f twice this is a result that we found even in multi-stage
+[00:04:50] games so nothing new in multi-stage games we said that if there is a unique Nash equilibrium
+[00:04:56] in every stage game then the players are simply gonna play that and well if the game only had
+[00:05:01] there is a repetition of the same game and that game only has a Nash equilibrium like
+[00:05:06] the Prisoner's Dilemma well the players are gonna play that and there is no surprise so
+[00:05:10] this basically means that from a repetition of a game of a finite repetition of a game
+[00:05:17] with one Nash equilibrium there is not much strategic interaction because the repetition simply
+[00:05:24] uh corresponds to telling the players once again okay so you know what you can play the same game
+[00:05:29] once again but they don't uh have any possibility of characteristic interaction right because they
+[00:05:35] anticipate in the last game they're gonna play in national equilibrium there is only one
+[00:05:39] so there is not much strategic interaction they can foresee in advance okay so this is
+[00:05:46] to formalize this we can write theorems which are well sort of corollaries of what we
+[00:05:52] mentioned in the past lecture, first of all,
+[00:05:55] well, the theorem is the outcome of the last stage
+[00:05:57] is a Nash equilibrium, that's always true
+[00:05:59] because repeated games, finite repeated games
+[00:06:01] are a special case of multi-stage games.
+[00:06:05] And also, if the stage game only has one
+[00:06:07] Nash equilibrium, then it's also obvious
+[00:06:09] that there is a unique sub-game perfect outcome.
+[00:06:12] That is to play Esther in every stage,
+[00:06:15] the Nash equilibrium of the stage game in every stage,
+[00:06:17] which means the repetitions are not very interesting.
+[00:06:20] But how to formalize that?
+[00:06:21] Well, remember that this is just a consequence of backward induction.
+[00:06:25] So anticipating the future means you apply backward induction.
+[00:06:28] If you start from the end of the game, you're in the last stage,
+[00:06:33] you're going to play a Nash equilibrium.
+[00:06:34] Then you see easily in this example that you can simply rescale the payoffs
+[00:06:39] of the previous stages and say, okay, since I know deterministically,
+[00:06:43] let's say the outcome of the last stage, I simply increase the payoffs of the previous stages
+[00:06:47] with the payoff of the last one,
+[00:06:49] and I don't consider any interaction in the last stage,
+[00:06:52] because in the last stage, the two players are gonna say,
+[00:06:54] well, we know what to play, we play double F.
+[00:06:56] But if you have this interaction in a repetition
+[00:06:59] of the same game, you can simply say,
+[00:07:01] well, if you rescale all the quantities
+[00:07:03] by the same amount, it doesn't change
+[00:07:05] that the Nash equilibrium will be only one,
+[00:07:07] and in this case, double F.
+[00:07:09] So you keep playing double F, even in the first stage.
+[00:07:12] And even if you have 10 repetitions,
+[00:07:14] in the 10th state, you play double F.
+[00:07:16] And this infers that in the ninth,
+[00:07:19] you play double F2, in the eighth, you play double F2,
+[00:07:21] and so you go backwards as in the backward induction,
+[00:07:23] and you determine this is the only outcome
+[00:07:26] of backward induction.
+[00:07:28] Therefore, is the only subgame perfect equilibrium.
+[00:07:30] Because whenever backward induction
+[00:07:32] gives you a unique result,
+[00:07:33] that is the only subgame perfect equilibrium.
+[00:07:36] In general, subgame perfect equilibria in dynamic games
+[00:07:40] are consequences of backward induction,
+[00:07:42] whenever it's possible to apply, like here.
+[00:07:45] Okay, so we saw that things get more interesting if we have multiple Nash equilibria. So let's
+[00:07:52] change the game. Instead of the prison dilemma, we consider a game like the prison dilemma,
+[00:07:58] but with a Nash equilibrium in addition to the previous step. So let's modify the
+[00:08:03] game like this. We add an action H and whose meaning I mean, I don't want to detail
+[00:08:08] what's the meaning but it can be whatever they have, they are I don't know, they decide
+[00:08:13] to collaborate with the police forever and ever i don't know so whatever happens here
+[00:08:18] now the two players have three available actions m f and h and then if i asked before and m and f
+[00:08:24] but h gives always zero zero so ends the game with no payoff no actually doesn't end the game
+[00:08:30] but it gives no payoff if played in combination with something else but when they both play h they
+[00:08:37] get a sort of good payoff, double three.
+[00:08:40] OK, so now we can play characteristic.
+[00:08:44] So it's like saying we have a good Nash equilibrium, double
+[00:08:47] H, and a bad Nash equilibrium, double F.
+[00:08:49] So they may anticipate that if they collaborate
+[00:08:52] in the first stage, and by collaborating,
+[00:08:55] I mean, they can't even decide
+[00:08:57] not to play a Nash equilibrium in the first stage.
+[00:08:59] In the first stage, they play a non-Nash equilibrium
+[00:09:02] of the stage game.
+[00:09:04] But they anticipate that this will be rewarded,
+[00:09:06] I mean not playing a Nash equilibrium in the first stage is something the players
+[00:09:09] don't want to do naturally because they incur a loss with respect to
+[00:09:14] play a Nash equilibrium because if double M in this case is not a Nash
+[00:09:17] equilibrium it means there is a unilateral deviation that
+[00:09:20] they want to pursue and specifically the unilateral deviation
+[00:09:23] is going from four to five. So they have to compensate this loss
+[00:09:27] of one they're feeling. Well that loss of one
+[00:09:30] would be compensated if the good Nash equilibrium double H has
+[00:09:35] payoff of three, as compared to the bad Nash equilibrium that has a payoff of one. So it might
+[00:09:40] be convenient to agree on such a strategy, which is to play double M in the first round,
+[00:09:45] so as to get double H in the second round. Otherwise, they sort of agree that they're
+[00:09:49] going to play double F in the second round, if the first outcome of the first round is not
+[00:09:54] double M. Remember, this is really no information exchange. So it's not like Al goes to Bob and
+[00:10:01] says, well, you know, Bob, my friend, I'm going to make you this proposal. We play double
+[00:10:05] M in the first stage and then we play double H in the second. They don't do like that.
+[00:10:09] Important. Because to model that you need another interaction. So there are, this will
+[00:10:15] be again, another multi-stage game in which in the first stage we decide who goes to
+[00:10:20] whom and what is the proposal they make. And then in the second stage they do something.
+[00:10:24] So it's not what we have here, but luckily we have very smart players and very paranoid
+[00:10:29] players. So we can say they speculate about that. That's all we can say. They kind of make a
+[00:10:35] speculation in the head about their choices being double M in the first stage and double H in the
+[00:10:41] second stage. And actually it's more complicated than that. If you remember, if you just write
+[00:10:46] the Nash equilibrium is double M and double H, you are wrong. That is not a Nash equilibrium
+[00:10:50] because they're not fully defining the strategies. So the strategy would be double M,
+[00:10:55] So M from the side of one player is M in the first stage.
+[00:11:00] And in the second stage, if the outcome is double M,
+[00:11:03] then play H, otherwise play F.
+[00:11:05] If you combine the strategy for two players,
+[00:11:07] it means double M in the first round
+[00:11:09] and double H in the second round.
+[00:11:11] And any deviation leads to double F.
+[00:11:13] This is important because you want some game perfect equilibrium.
+[00:11:16] If you don't say, I mean, if you just say double M,
+[00:11:18] double H, you're saying that in the last round
+[00:11:21] you play a Nash equilibrium, good.
+[00:11:22] But you don't say what happens in the circumstances
+[00:11:25] that don't happen.
+[00:11:27] And so you're not properly specifying the strategy,
+[00:11:30] first of all.
+[00:11:31] And you can't possibly say this is subgame perfect equilibrium
+[00:11:33] because subgame perfect equilibrium is really such
+[00:11:36] only if you tell me what happens
+[00:11:39] in every possible subgame,
+[00:11:40] even those who are not really playing.
+[00:11:43] Okay, very well.
+[00:11:44] So once again, this is to say that the solution
+[00:11:47] of this game could be one possible subgame
+[00:11:49] perfect equilibrium is M.
+[00:11:51] and then H, F, F, F, F for all the other eight possibilities.
+[00:11:56] So here the strategy is really complicated
+[00:11:58] because, I mean, I don't even write it
+[00:12:00] because there are nine possible outcomes
+[00:12:03] and all of them have a threefold choice
+[00:12:06] in the second round.
+[00:12:07] So you have to tell me the first choice
+[00:12:09] of out of three values
+[00:12:10] and the second choice has nine possibilities
+[00:12:14] and there are three values.
+[00:12:15] So it's like three to the power of 10
+[00:12:18] in this very big number of strategies.
+[00:12:21] So, I mean, it's impossible to enumerate all of them.
+[00:12:24] Anyways, you get idea.
+[00:12:25] So first stage, you play M,
+[00:12:27] second stage, you get to play H
+[00:12:30] only if the outcome of the first stage was double M,
+[00:12:33] otherwise you play F.
+[00:12:35] And okay, and let me also confirm,
+[00:12:38] I mean, this is one possible subgame perfect equilibrium
+[00:12:40] is not the only one because of course,
+[00:12:42] even just saying, well, you know what?
+[00:12:45] We only play F in this game.
+[00:12:47] That will also be a subgame perfect equilibrium,
+[00:12:49] not probably the most efficient one.
+[00:12:50] So you see, this is a task for engineers,
+[00:12:53] because from the mathematical point of view,
+[00:12:55] well, always playing F is a perfectly legitimate subgame,
+[00:12:58] perfect Nash equilibrium.
+[00:12:59] If you only play F in this game,
+[00:13:01] whether you are Bob,
+[00:13:02] you only play double F, double F, double F,
+[00:13:04] which is a repetition of a Nash equilibrium.
+[00:13:06] And this, by the theorems we saw,
+[00:13:08] it is a subgame perfect equilibrium.
+[00:13:10] You only play Nash equilibrium in every possible subgame,
+[00:13:13] but it's not very efficient one.
+[00:13:14] So you might identify something better,
+[00:13:16] which is like the one I said before,
+[00:13:17] you play M in the first round,
+[00:13:19] and then you play H if the outcome of the first round was double N.
+[00:13:23] This would lead to a better Nash equilibrium because instead of keeping getting one,
+[00:13:27] so you get one and one in the two stages, so two, you get seven, much better, right?
+[00:13:31] So how to trigger the players to play the first one instead of the second one?
+[00:13:36] Well, there is no way, it's actually an engineering way.
+[00:13:39] So you can advertise that these strategies are available and hope that the players play that.
+[00:13:45] That's the same thing, I mean, in game theory,
+[00:13:48] you cannot prefer, they're all equally Nash equilibria,
+[00:13:52] all equally valid as equilibria.
+[00:13:54] It's like saying, well, in the battle of sexes,
+[00:13:56] you have multiple Nash equilibria,
+[00:13:57] which one do you play?
+[00:13:58] You don't know, you have multiple Nash equilibria.
+[00:14:01] So you just can do that conclusion.
+[00:14:04] Okay, very well.
+[00:14:05] So now you see what happens here,
+[00:14:08] again, in the same methodology as before.
+[00:14:10] So if you have the payoffs of double M plus equal to three,
+[00:14:16] because you anticipate that if you play double M,
+[00:14:18] you're going to play double H in the second round.
+[00:14:21] So you can increase this by three.
+[00:14:22] Every other payoff is increased by one.
+[00:14:25] If you do so, you see that from the perspective
+[00:14:28] of the first stage, now double M is a Nash equilibrium.
+[00:14:33] But it's not a Nash equilibrium, a local Nash
+[00:14:35] equilibrium.
+[00:14:35] It's not a Nash equilibrium of the stage game,
+[00:14:36] because on the stage game, it's not a Nash equilibrium.
+[00:14:38] You have deviation to F for this bet.
+[00:14:39] But if you consider the economy of the entire grand game, so you start from round one, but
+[00:14:46] you anticipate that you'll get a different payoff in the second round, then M is a national
+[00:14:50] equilibrium.
+[00:14:51] So you see why playing M in the first round and playing H in the second round
+[00:14:56] is a sub-game perfect equilibrium.
+[00:14:58] And with the caveat I said before, M in the first round, H in the second, as long
+[00:15:02] as the first outcome was M, otherwise you play F, this is a sub-game perfect equilibrium.
+[00:15:07] You really need the second condition, by the way,
+[00:15:09] because you want to increase all the other outcomes by one.
+[00:15:12] If some of the other outcomes is not increased by one,
+[00:15:15] but by three or five or whatever,
+[00:15:16] then you don't have this as a Nash equilibrium anymore.
+[00:15:19] So this is the only situation where you can say
+[00:15:21] double M is good to be played in the first round.
+[00:15:24] Only if you anticipate that in the second round,
+[00:15:26] the players are gonna play double H
+[00:15:28] if they collaborated in the first round,
+[00:15:30] otherwise they're gonna play one.
+[00:15:33] Well, from the philosophical perspective,
+[00:15:35] we can discuss this a bit,
+[00:15:36] But in general, the idea is that we have found a way to have the players cooperating.
+[00:15:43] And this is very important because it has so many sociological implications and the
+[00:15:48] like.
+[00:15:48] So actually, we're going to get a bit philosophical today because this is actually
+[00:15:54] invoked by many philosophers and epistemologists and science theorists as a good reason why
+[00:16:02] human beings cooperate.
+[00:16:03] So we mentioned at the beginning of this course that if we model players or human beings are players in a game as rational,
+[00:16:13] they don't want to cooperate because they don't care about each other. They're selfish.
+[00:16:17] And we said one way to model cooperation like still a dad wants to bring food to his children.
+[00:16:24] So it's not really selfish. He doesn't need all the food for himself.
+[00:16:27] Well, this can be modeled by implying that the utility of the dad includes somehow the
+[00:16:34] well-being of his children.
+[00:16:36] But even better, we can say, well, the players being selfish does not really mean they
+[00:16:43] act selfishly all the time.
+[00:16:45] If we have repetitions in repeated games, they have some sort of cooperation.
+[00:16:51] Why some sort of cooperation?
+[00:16:53] because you act out of fear of punishment so since you know that cooperation will bring you
+[00:17:00] a better outcome in the grand scheme of things you cooperate but you see two things well first
+[00:17:08] of all this is just uh uh well technical result but once again we are not concerned to
+[00:17:14] what is in the mind of the players we just look as engineers at the results right so we
+[00:17:20] don't care. But I mean, I've seen some philosophers debating about, well, even God's existence
+[00:17:27] related to that, like human society cooperates. And if there is no God, it's better for you
+[00:17:33] to kill everybody else, which is true. So you should assume from the cooperation
+[00:17:39] that there is a God, there is a superior being that tells you to love each other.
+[00:17:46] uh well actually that's not entirely true it depends i mean you really need to understand
+[00:17:51] what's the motivation for the cooperation it might be both things so still i don't pretend
+[00:17:57] to give you an answer that's related to your religious beliefs of course but in a sense
+[00:18:02] you can assume that cooperation might be there because you innerly desire to cooperate which
+[00:18:09] is instilled by god or it can be that you simply cooperate because you see an advantage you see a
+[00:18:17] selfish advantage in cooperating as of now and this is very evident from the technical details
+[00:18:22] that i'm going to give in the next point but another way of seeing it is also questioned by
+[00:18:27] many sociologists philosophers you can say well then religion that tells you to cooperate
+[00:18:31] with others to love your neighbor, well this can be seen as a way of incentivizing
+[00:18:40] cooperation among human beings and it's actually I mean the engineering way that society has to
+[00:18:48] prefer an equilibrium over another because as I said if you if you have the game as before
+[00:18:53] like cooperating I mean even though this example is totally screwed up because you remember
+[00:18:57] Alan Bob are two things, but nevertheless this can be generally seen as F is the selfish choice.
+[00:19:04] I mean I want because remember there was a formalization where F is like I want to have
+[00:19:09] the other pay some money and M is I pay money myself but less money. So double M should be
+[00:19:16] preferred society-wise than double F because it results in everybody paying less. Nevertheless
+[00:19:21] if people are selfish they prefer double F. That's the dilemma of the prisoners right.
+[00:19:26] Well, we can say that religious imposition, like you should love each other, you should
+[00:19:33] collaborate, can be seen also, I mean, I'm not saying this is my personal view, but
+[00:19:38] can be seen as the engineering way of choosing one equilibrium over the other, because
+[00:19:43] you have two equilibria here, well, more than two actually, but two possible equilibria
+[00:19:46] are you cooperate in the first stage, so you get a good reward afterwards, or
+[00:19:53] you just keep acting selfishly.
+[00:19:55] But I mean, that's a nice equilibrium
+[00:19:57] because if everybody is selfish,
+[00:19:58] you keep being selfish, you don't care.
+[00:20:00] So why should you prefer double M in the first round
+[00:20:03] and double H in the second round?
+[00:20:05] Well, this is your engineering choice.
+[00:20:08] There is no way to say an equilibrium
+[00:20:09] is more equilibrium than another.
+[00:20:11] They're both equally valid equilibria, right?
+[00:20:13] But you can say, well,
+[00:20:15] Legion predicts you that if you behave,
+[00:20:18] you'll be rewarded in paradise, so this is good
+[00:20:21] because it promises you a reward,
+[00:20:23] and this way it makes you cooperate.
+[00:20:25] So there is nothing wrong with that actually,
+[00:20:27] even from a very materialistic perspective.
+[00:20:30] Very well, so back to the technical aspects.
+[00:20:32] There are two technical points here
+[00:20:36] that give us a bit more of clarity
+[00:20:38] about this cooperation thing,
+[00:20:39] because I said the cooperation is possible
+[00:20:42] though there is a limited extent to it.
+[00:20:44] Why?
+[00:20:45] Because you notice that the last stage
+[00:20:48] is always played with a Nash equilibrium.
+[00:20:50] no matter what.
+[00:20:51] I mean, given that the conditions are,
+[00:20:54] the players do that only because they
+[00:20:56] want to maximize their utility, in the last stage,
+[00:20:58] they just act selfishly.
+[00:21:00] So the only way to establish some collaboration
+[00:21:04] is when you have multiple Nash equilibria in the end.
+[00:21:07] So you have to give them some reward.
+[00:21:09] If you don't promise the players some reward,
+[00:21:12] or if their actions don't make any difference,
+[00:21:15] they're not going to cooperate.
+[00:21:18] And so this is like, I mean,
+[00:21:20] if you watch like all the episodes of Dr. House MD, you see like Dr. House does not believe in God
+[00:21:28] and he says well I don't like to think that my life on earth is just a test but on the other
+[00:21:32] hand Dr. House is very selfish actually right but if you don't act like in this round of
+[00:21:38] game there is a reward afterwards you don't have an incentive to collaborate you just act selfishly
+[00:21:44] so the choice between the collaborative Nash equilibrium or just to play F all the time
+[00:21:49] is possible only through some engineering mechanism which is incentivizing the good
+[00:21:55] collaboration in the society either because of religion or because of the civic duty or whatever
+[00:22:00] and if there is no reward afterwards you just play selfishly you don't have even this option
+[00:22:07] you just play double f all the time so this collaboration is possible only if you have
+[00:22:11] multiple Nash equilibria that are egoistic intrinsically because in the last round you need
+[00:22:17] get a reward if you don't get any reward for yourself it's kind of wrong so it's kind of
+[00:22:21] dumb to say when you look at philosophical debates you say well actually I don't know religious people
+[00:22:28] are not really good people because they only behave well because they know they have reward
+[00:22:34] well that's stupid to say because according to our assumptions if you act selfishly you always
+[00:22:41] want reward if there is no reward there is really no point for you in acting like you do
+[00:22:46] I mean, you just want to match. So your award would be to kill everybody else and to be
+[00:22:50] the only survivor in the world, right? So that would be a very good situation for you.
+[00:22:55] So why don't you do that? Because you believe in cooperation. So you like it or not, there
+[00:22:59] is some inner motivation that you have as a human being for cooperating. Anyways,
+[00:23:06] there is another detail. So this, from the mathematical point of view, is just
+[00:23:11] a repetition of what we saw, but it's very common because it's commonly brought
+[00:23:15] that in many modeling situations,
+[00:23:16] because it's very common that multi-stage games
+[00:23:18] are actually repetitions of the same game.
+[00:23:20] And also, there are these philosophical influences
+[00:23:24] that I wanted to add that won't be in the test,
+[00:23:27] of course, and won't be in the project,
+[00:23:28] but they make up for a nice reflection on philosophy
+[00:23:31] and something beyond the pure method of engineering.
+[00:23:34] Sometimes it's important to think
+[00:23:37] beyond the pure mathematics.
+[00:23:39] Okay, anyways, there is another remark
+[00:23:42] I'm gonna make now, because I mean,
+[00:23:43] I'm taking from some other textbooks, not from Fidelis, but a nice remark can be like this.
+[00:23:49] If you have this situation, I mean mathematically it is proven, but philosophically it's not always
+[00:23:55] that convincing, because remember I'm saying that I aggregate the payoffs like this,
+[00:24:01] but I also say that sometimes people are not so consistent over the decision over time. So
+[00:24:08] who says that if they anticipate, I mean if they anticipate they're going to play double
+[00:24:12] m in the first round and double h in the second if in the first round they play double m that is
+[00:24:17] going to be the payoff so it is convenient for them to play double m indeed and they're
+[00:24:20] going to play that but what can we say if the players i mean like alan bob are two thieves
+[00:24:27] not very faithful to their promises because here they can indeed agree let's play double m
+[00:24:33] but then in the second stage we play double h only who knows are we sure they're gonna stick
+[00:24:40] to that plan because this relies on the fact that they're rational but also they are consistent in
+[00:24:45] their evaluation. Maybe they have a discount factor that's not exactly one, maybe they don't care
+[00:24:52] about the future and they want to maximize the payoff here. So Bob might think well I'm sure
+[00:24:57] Al will comply and play M2, I play M and maybe Al says well you know what I'm gonna play F
+[00:25:03] and then I hope I can convince Al to play double H nevertheless so that will give me eight
+[00:25:09] instead of seven even better if I convince how to do so. So there is no guarantee from the
+[00:25:15] philosophical perspective that the two players don't want to renegotiate the choices. This is
+[00:25:21] very important, I mean it's very nitpicking actually but even the setup with just two Nash
+[00:25:26] equilibria might not be enough to establish cooperation if the two players are really really
+[00:25:30] nasty and by nasty I mean not only they're selfish which is kind of given but they also
+[00:25:35] want to renegotiate the agreements. This is something people do very often. Like when
+[00:25:40] I discuss with my kids, my kids are not nasty. They're just, I mean, young, inexperienced.
+[00:25:45] But when I say, well, if you behave tonight, we're going to watch cartoon. And then they
+[00:25:50] don't behave and they try to renegotiate anyways and say, I want to watch cartoons
+[00:25:54] anyway and say, well, no, the agreement was not like that. But sometimes they force
+[00:25:58] you into convincing you because they cry a lot. They look with round watery eyes and
+[00:26:03] start crying because they really want to watch cartoons. So that can happen. So how can we
+[00:26:08] tutelage ourselves against this kind of choices? Well a better example would be this even bigger
+[00:26:13] game and we see this is yet another game. So I say I'm lucky and I have this game already
+[00:26:19] or I can try to design my interactions so that the game is expanded. Well this is kind of
+[00:26:26] cheating in a sense because we said in reality we have the game that we have, we are not
+[00:26:31] allowed to add strategies.
+[00:26:33] But maybe sometimes engineers can think of that.
+[00:26:35] So you can think of a situation where
+[00:26:38] the original game with three strategies, M, F, H, also
+[00:26:41] has other two options, P and Q.
+[00:26:44] And so I said so that P and P, double P and double Q
+[00:26:47] are also Nash equilibria.
+[00:26:50] And we see they are, well, double F is a Nash equilibrium,
+[00:26:54] but it's Pareto dominated by double H. While double H,
+[00:26:58] double p and double q are all Pareto efficient. Well, actually, double m is dominating all of
+[00:27:05] them, so double m would be even better, but, well, let's say none of double h, double p,
+[00:27:12] double q dominates the others. Double m dominates everything of this, but double f is definitely
+[00:27:18] the stupid choice. Double m is very nice, but we can't get to play double m always,
+[00:27:23] because remember in the last stage we have to choose one of these four, double f, double h,
+[00:27:28] double p, double q. We cannot choose the others. So in all respects this is a mixture between
+[00:27:33] a coordination game and the prisoner dilemma in this upper corner. Why using this could be
+[00:27:39] beneficial? So we need to introduce even more coordination externally to have collaboration.
+[00:27:44] Why so? Because I can anticipate this strategy. The strategy I'm anticipating is as before,
+[00:27:49] But if I play double M, the result of the second stage
+[00:27:52] I anticipate will be double H.
+[00:27:55] That will be my anticipation.
+[00:27:56] And once again, this is something that the two players
+[00:27:58] will just figure out in their head.
+[00:28:00] Why?
+[00:28:00] Because they're very smart.
+[00:28:01] They don't communicate.
+[00:28:02] But maybe if they attended a game theory class,
+[00:28:05] they know this can be a good strategy.
+[00:28:06] So you can rely on them playing,
+[00:28:09] I mean, each one of them relies on the other
+[00:28:12] having watched the game theory lecture
+[00:28:14] so they know it's common knowledge.
+[00:28:16] Remember, they know that they know that they know
+[00:28:17] and so on and so forth, so they know everything.
+[00:28:18] and so they anticipate that they're gonna play this, maybe.
+[00:28:22] So, but the strategy is double M in the first round,
+[00:28:24] but if, and then double H,
+[00:28:27] but if the outcome is not double M, it depends.
+[00:28:29] If one player sticked to M but the other changed,
+[00:28:33] so M not M, the second stage anticipation is double P.
+[00:28:37] You see that Al played M, so Al is still rewarded.
+[00:28:41] Al gets four in the second round,
+[00:28:43] but P is Spanish, sorry, Bob is Spanish,
+[00:28:46] and double P is a punishment for Bob.
+[00:28:47] And similarly, not M, M results in double Q,
+[00:28:51] which is a punishment for Al who didn't comply.
+[00:28:53] So here is even better because instead of saying
+[00:28:56] a punishment for everyone if we don't collaborate,
+[00:29:00] then the two players inflict a punishment to the other
+[00:29:03] if the other did not collaborate, but they get a reward.
+[00:29:06] And this is very important
+[00:29:06] because in a philosophical perspective,
+[00:29:09] I mean, if they stick to the game,
+[00:29:11] that this produced game,
+[00:29:13] you can show this is a sub-game.
+[00:29:15] Play double M and double H.
+[00:29:16] second round but you might have consistency issues and say well you know your threat of playing double
+[00:29:23] h in the second round is not sorry double f in the second round is not credible because when
+[00:29:28] playing double f instead of double h you punish me but you also punish yourself and that is a
+[00:29:35] non-credible threat if you remember so a very nasty player might want to renegotiate that too
+[00:29:42] what? We play, so Al can say, you know what, dear Bob, we play FM in the first round and
+[00:29:49] I don't care. We don't play FF in the second round. You don't want to play FF. We play
+[00:29:53] double H in the second round. That's better for you. And Bob agrees because, well, if
+[00:29:58] knows that Al is going to play F, all that he can do is to play H in the second
+[00:30:03] round, so he gets three out of that. If Bob says, you know, I don't want to play
+[00:30:08] M in the first round and give you five. I play F2, so we get double one. And then I'll
+[00:30:13] say, okay, very well. Then we play double one in the second round. That is a punishment
+[00:30:17] for you, Bob. But Bob can answer, well, that's a punishment for you too, Al, so
+[00:30:21] you don't play that. Well, in this situation instead, in this scenario, you have
+[00:30:27] really the condition that we looked at. So if there is only one deviation of the
+[00:30:31] players, so the other one sticks to the regional strategy, only the deviating player
+[00:30:36] gets punished but to do so you need an even larger game. So in general this is possible
+[00:30:43] given that you are allowed to well cheat a bit the game so tweak it add more strategies add
+[00:30:49] a bigger table which is something you sometimes don't want to do because that makes it makes
+[00:30:53] it for a very complicated analysis the game is very big now so in general there is this
+[00:30:58] choice that you might want to make it depends really on the scenario at hand you see there is
+[00:31:02] It's not clear answer because it really depends
+[00:31:05] on what you think about the scenario.
+[00:31:06] So it's a modeling perspective.
+[00:31:08] It's really an engineering feeling that you must have.
+[00:31:11] Okay, so as to summarize everything,
+[00:31:16] we find out that there is no better deviation here
+[00:31:20] in this situation.
+[00:31:21] So even better, the subgame perfect will be
+[00:31:24] double M, double H as before,
+[00:31:26] but every deviation is Spanish in the right way.
+[00:31:29] So once again, the equilibrium path is double M,
+[00:31:31] double H. But remember, there are some other strategies that are punished better.
+[00:31:37] And the message here is that, in general, it's always true that if you have multiple
+[00:31:43] Nash equilibria, you can establish some collaborations in the prior rounds.
+[00:31:49] In the last round, you have to play a Nash equilibrium, so no collaboration.
+[00:31:53] But you can establish collaborations in the previous rounds.
+[00:31:56] And if you have multiple punishments, even better, you can establish better collaborations
+[00:32:01] say or more convincing collaborations and of course as a philosophical result this can be okay then
+[00:32:06] collaboration the society is simply because we have many many interactions so in the last
+[00:32:11] interaction if i if i know i'm gonna die tomorrow and i believe that's the end of it i don't believe
+[00:32:17] in well a second life after death then or any reward after death then before my life i
+[00:32:24] don't care i be really nasty because after that i mean that there is no tomorrow so there is no
+[00:32:29] punishment for me. Every discount factor is very low, so I'm not gonna feel any
+[00:32:35] punishment. I don't care. But if I am feeling my retribution because I believe
+[00:32:41] I'm gonna play this game for long, then I collaborate. I'm simply out of
+[00:32:45] myself. So it's really indistinguishable if you behave because
+[00:32:49] you are afraid of some retribution or if you are really goodwilled. It's
+[00:32:53] really not an issue actually from the mathematical perspective because the
+[00:32:57] results are the same.
+[00:32:59] Okay, very good.
+[00:33:00] So this is a good moment where to stop
+[00:33:03] for the first part of this lecture.

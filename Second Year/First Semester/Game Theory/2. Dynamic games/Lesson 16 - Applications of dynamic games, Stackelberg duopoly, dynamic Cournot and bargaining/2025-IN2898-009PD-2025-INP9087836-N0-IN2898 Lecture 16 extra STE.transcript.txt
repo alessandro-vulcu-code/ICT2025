@@ -1,0 +1,518 @@
+[00:00:02] Welcome to this lecture of game theory.
+[00:00:04] My name is Onaro Padilla
+[00:00:06] and I'm the lecturer for the course.
+[00:00:09] In this lecture, we discuss dynamic bargain,
+[00:00:12] which is an interesting application of dynamic gains,
+[00:00:16] which is both interesting for the theoretical result,
+[00:00:19] which is well, not the most relevant
+[00:00:22] compared to repeated gains, but it's also interesting.
+[00:00:26] But it's very nice in terms of applications
+[00:00:29] because it implies some interesting aspects whenever we negotiate some resources.
+[00:00:37] And especially in ICT scenarios, you must have understood by now that the main problem
+[00:00:45] is the scarce-ness of resources.
+[00:00:48] So we have a resource and we are competing for it, like multiple users want to use
+[00:00:54] the channel, for example, or computational power or energy,
+[00:00:59] and they must negotiate.
+[00:01:02] So the general setup is two players for simplicity.
+[00:01:07] They need to split a given amount of resources.
+[00:01:09] And let's say this amount of resources is one.
+[00:01:13] So player one gets X, whatever X is,
+[00:01:16] player two gets one minus X.
+[00:01:18] So this is like saying we're splitting one pie
+[00:01:21] in different shares.
+[00:01:23] Well, there are two approaches.
+[00:01:26] And if you see game theory papers with resource sharing,
+[00:01:31] the general use either of these two.
+[00:01:33] I published in both cases, for example.
+[00:01:37] One is Nash-Pargaining.
+[00:01:39] Nash-Pargaining is actually not game theoretic,
+[00:01:42] which is very strange
+[00:01:44] because it was invented by John Nash.
+[00:01:46] Yeah, but it's not related to game theory.
+[00:01:49] So whenever you see Nash-Pargaining,
+[00:01:51] it's often confused as a game theoretic approach
+[00:01:54] is actually an axiomatic approach.
+[00:01:56] It is a multi-player split,
+[00:02:00] but it is a static split in which there is no interaction.
+[00:02:04] So through, sometimes you can play smart and claim,
+[00:02:08] well, I published on game theory because,
+[00:02:11] or I did game theory in a project, what did you do?
+[00:02:14] I did Nash beginning.
+[00:02:16] Probably every layman will say,
+[00:02:18] well this is game theory because it's John Nash's but it's actually not. In reality it is a simple
+[00:02:25] mathematical approach which is related somehow to some concepts we're seeing here because of course
+[00:02:31] I mean and most of all is related to a theory invented by John Nash but it's slightly different
+[00:02:38] if there is time we will see later in the course what the Nash beginning is. Today I
+[00:02:44] discuss the dynamic version of the game. So the one I will discuss today will be a game where the
+[00:02:53] two players alternately play the proposal responder role. So we saw the ultimatum game
+[00:03:00] and the ultimatum game, it can be seen as a beginning but it's a very unfair beginning
+[00:03:06] because there is a proposer making a proposal and the responder can only say yes or no and
+[00:03:12] And if the responder says no, nothing happens.
+[00:03:15] So the resource is not split.
+[00:03:18] And this is very bad.
+[00:03:20] I mean, the responder,
+[00:03:21] you remember that the sub game perfect outcome
+[00:03:24] of that game was that the proposal,
+[00:03:26] knowing that the proposal has this advantage,
+[00:03:30] will exploit it and say, well, you know what?
+[00:03:32] I'll give you just this tiny amount.
+[00:03:34] And if you say no, you lose everything.
+[00:03:36] So you better say yes.
+[00:03:38] And that's a sub game perfect equilibrium actually.
+[00:03:41] So this is very unfair.
+[00:03:43] It's not really a nice bargaining,
+[00:03:45] but we can make it a better version
+[00:03:48] if we iterate this procedure with alternating roles.
+[00:03:52] So first of all, player one makes a proposal
+[00:03:55] and player two can say yes.
+[00:03:57] But if player two does not like the proposal,
+[00:04:00] player two is allowed to make a counter proposal.
+[00:04:03] This is what happens really in the bargaining.
+[00:04:05] So I kinda, and this is more common in certain cultures.
+[00:04:08] I remember when I was in Macau, I visited the jewelry market and I wanted to buy a gift
+[00:04:16] for my wife. So I bought a nice jade necklace because actually my wife's name is Giada.
+[00:04:24] So it's related to Giada is Italian for jade. So I wanted to buy a jade necklace
+[00:04:30] and they gave me a very high price and a reasonable price. So I say, no, well, no,
+[00:04:37] thank you, then I don't want to buy it.
+[00:04:39] But then they forced me into a bargaining
+[00:04:42] because I'm not supposed to say just no and leave.
+[00:04:46] I mean, I'm supposed to make a counterproposal in which I
+[00:04:49] say, no, no, I don't give you this money.
+[00:04:52] Instead, I give you.
+[00:04:53] And you are even supposed to start very low,
+[00:04:58] like something that could be offensive in other countries.
+[00:05:02] So you start very far apart, and then you start,
+[00:05:04] well, increasing.
+[00:05:05] then say well no I give you one tenth of what you say the price is and say no okay then I'll
+[00:05:11] cut the price in half no then I give like 10 percent more and then you start until you reach
+[00:05:17] a middle point that is the bargaining that we expect so we alternate in making proposal
+[00:05:23] the moment one of the two bargainers make the proposal that the other says yes to
+[00:05:29] Well, then the game ends with that split.
+[00:05:33] Okay, so to formalize this, we say in stage one,
+[00:05:38] player one is the proposer and the responder is player two
+[00:05:42] and player one proposes a split
+[00:05:44] and the split is proposed as X one minus X.
+[00:05:48] So player two can accept and in this case,
+[00:05:50] the game ends and we apply this or refuse.
+[00:05:53] If player two refuses, the game goes on.
+[00:05:56] So we have stage two where the roles are reversed in stage two, the proposal is two,
+[00:06:01] and the responder is one. And it's the same thing, so player two makes a proposal now,
+[00:06:08] and the player one can say yes or no. And once again, if the responder says no,
+[00:06:14] we go to stage three. So in general, we have a game with an arbitrary large number of stages
+[00:06:21] at every stage T, if T is odd, the proposal is one.
+[00:06:27] If T is even, the proposal is two.
+[00:06:30] And every time if the responder accepts, the game ends.
+[00:06:34] If the responder refuses, we go to stage T plus one.
+[00:06:38] Well, actually, we can't go on forever,
+[00:06:42] because we'll see why.
+[00:06:44] But the idea is that the general model
+[00:06:48] that is most commonly used
+[00:06:50] is that there is some deadline.
+[00:06:52] And this is often referred to the fish market working.
+[00:06:57] Because, well, we can assume that this
+[00:07:00] happens when the seller, I mean,
+[00:07:04] you have the fishermen going to the fish market
+[00:07:06] selling his fish or her fish to the seller
+[00:07:12] in the market.
+[00:07:13] So there is one guy which is the prime matter
+[00:07:16] supply and the real seller on the market.
+[00:07:20] and they bargain over the price.
+[00:07:22] So we assume that they basically,
+[00:07:26] the seller can keep some of the fish for himself.
+[00:07:32] So the thing is, if they keep bargaining,
+[00:07:37] the fish becomes of worse quality.
+[00:07:40] So they can't keep bargaining until the end of the day
+[00:07:45] because well, then the fish goes rotten.
+[00:07:47] So we can say that if they don't find an agreement by the end of the day, which is after the stages, then both players get nothing.
+[00:07:58] This is a condition that we can impose to force them to find an agreement. Otherwise, ideally, there is nothing wrong, mathematically speaking, but for the sake of realism,
+[00:08:09] they can start haggling and keep the distance
+[00:08:13] for a long time until, so they must know
+[00:08:17] that if they don't reach an agreement by a certain day,
+[00:08:20] they both get nothing.
+[00:08:21] So in this case, our ultimatum set up is like this,
+[00:08:26] but with capital T equal one.
+[00:08:29] Okay, so as I said, even if I saw,
+[00:08:33] if they reach this deadline, they get nothing.
+[00:08:35] But even if they don't reach the deadline,
+[00:08:38] but they take more time to bargain. Well, they receive discounted payoffs. And once again,
+[00:08:45] this can be because they're really haggling over fish or because time is money. So it's better to
+[00:08:51] split earlier than later because every first round we waste some resources. So this can be
+[00:08:58] both because real resource deterioration or because it's best to have things sooner than
+[00:09:05] later as we implied in defining a discount factor.
+[00:09:10] So in short, we say that if we immediately end the game,
+[00:09:14] then the resource split is U1 gets equal X
+[00:09:18] and U2 is equal to one minus X.
+[00:09:20] So we assume that the utility is,
+[00:09:23] so the share is directly mapped into the utility
+[00:09:27] and this is sensible because the more resource you get,
+[00:09:30] the higher utility.
+[00:09:32] But if you end at a later stage,
+[00:09:34] is T bigger than one, then you get U one,
+[00:09:38] that is delta to the power of T minus one X
+[00:09:43] with a delta term that is less than one.
+[00:09:45] Okay, so there is some deterioration.
+[00:09:47] And similarly U two is delta to the power of T minus one
+[00:09:50] times one minus X.
+[00:09:53] So in short, if the players agree immediately
+[00:09:58] they get X and one minus X,
+[00:10:00] and if they wait, they deteriorate.
+[00:10:02] So this is to say that if I agree on sharing
+[00:10:07] like I'm the proposer and I propose 70-30,
+[00:10:12] well, it's best to agree on 70-30 now
+[00:10:16] because this will give me 70% and 30% to the responder
+[00:10:20] rather than waste one round just to agree again
+[00:10:24] that the split is 70-30.
+[00:10:26] Of course, we both prefer to agree on the same split
+[00:10:29] earlier than later.
+[00:10:30] And this is why we another reason why to introduce
+[00:10:33] a discount.
+[00:10:35] Okay, so what happens if D equal one,
+[00:10:39] we have the ultimate gain as we remarked.
+[00:10:41] So we know that we have Nash equilibria
+[00:10:45] where the solutions are P proposing X
+[00:10:49] and the responder accepting one minus S.
+[00:10:52] So these are Nash equilibria,
+[00:10:54] but there is only one sub game perfect equilibrium,
+[00:10:57] which is X equal to one.
+[00:11:00] That is the proposal keeps everything.
+[00:11:02] So here I'm modeling X as a continuous function.
+[00:11:06] If you remember, we modeled as discrete variable earlier,
+[00:11:09] but if X is a continuous value,
+[00:11:12] well, the Nash equilibrium is really,
+[00:11:13] the proposal proposes one
+[00:11:16] and the responder says yes to getting nothing
+[00:11:20] because even saying no, won't change a thing.
+[00:11:24] So there is no meaningful unilateral deviation
+[00:11:27] in saying yes to getting nothing
+[00:11:30] because saying no will give you nothing anyways.
+[00:11:35] Okay, now we know already what happens
+[00:11:38] if T is equal to one.
+[00:11:40] So we wonder what happens if the deadline
+[00:11:44] is at an odd value of T.
+[00:11:47] So no longer one, we play let's say three rounds
+[00:11:50] or five rounds or seven rounds of back gaining.
+[00:11:53] Well, we can apply the reasonings that we did for the previous analysis games.
+[00:12:00] We know that they're going to be a last round.
+[00:12:04] So remember, the trick is, it's always good to start from the end, so to start
+[00:12:09] from the last stage.
+[00:12:11] And in the last stage, we know the proposer is one still, because the number t is odd.
+[00:12:17] And player two is the responder.
+[00:12:20] and player two is well aware that this is the last stage so we are liking the ultimatum setup
+[00:12:25] if you are playing a game with odd t player two knows that upon reaching the last stage of the
+[00:12:35] game the last round player two will say yes to everything okay because there is no point in
+[00:12:41] the two refusing anything so player two will say yes and player one can use this to his
+[00:12:46] advantage or her advantage.
+[00:12:48] So if we know the deadline is at an odd t,
+[00:12:52] one is the last proposer, so at the last round,
+[00:12:56] player one will propose one, and the utilities will be,
+[00:13:00] utility one will be delta t minus one,
+[00:13:02] delta to the power of t minus one,
+[00:13:04] and utility two will be zero.
+[00:13:06] Okay, that is given.
+[00:13:09] If we ever reach the last stage, that will be the split.
+[00:13:12] Now, player two can still exploit this to get an advantage.
+[00:13:19] Why?
+[00:13:20] Because at stage T minus one, at round T minus one,
+[00:13:26] player two can think it's best to avoid
+[00:13:29] going at stage T.
+[00:13:31] So player two is looking for an early termination
+[00:13:34] at stage T minus one, because player two knows
+[00:13:38] that if they reach stage T, the game will end
+[00:13:41] with player two getting nothing.
+[00:13:43] So player two doesn't really like that.
+[00:13:45] So player two prefers to terminate the game earlier
+[00:13:48] with something better for him or her.
+[00:13:53] So the smart idea that player two can figure out
+[00:13:56] would be, okay, you know what?
+[00:13:58] I'm offering delta, a share equal to delta to player x.
+[00:14:05] Why?
+[00:14:06] Because if player x gets delta
+[00:14:08] or something more than delta,
+[00:14:11] the value of that share is not delta because we are at stage t minus one. So this will be
+[00:14:18] discounted and the discount factor now is delta to the power of t minus two, you see. So we know
+[00:14:25] that player one will get utility that is delta times delta t to the power of t minus two which
+[00:14:32] results in delta to the power of t minus one or bigger. But since player two is offering
+[00:14:39] delta, player two is keeping one minus delta for himself.
+[00:14:45] So player two is not getting zero.
+[00:14:47] He's getting something, maybe very little,
+[00:14:49] depending on how big delta is, but something, which is better.
+[00:14:53] And also player one does not see any meaningful deviation
+[00:14:57] in saying no to this proposal.
+[00:14:59] Because if player one says no to this share of delta,
+[00:15:04] which has value delta to the power of t minus 1,
+[00:15:08] player one can only say no and think okay I will send the game to yet another
+[00:15:14] stage and at that stage I will get everything yes at the last stage
+[00:15:20] player one will get everything but everything's value will be lower or
+[00:15:25] equal to Delta to the power of T minus one so there is not really a
+[00:15:28] point for player one to deviate from there so player one will say yes
+[00:15:33] actually. Very well so if we iterate this reasoning we see that player one is now aware
+[00:15:42] that he's gonna say yes to this share so at the last stage player two will say yes to everything
+[00:15:51] but player two is also aware that at stage t minus one it's best for player one to say yes
+[00:15:58] to delta because the present value will be delta
+[00:16:02] to the power of t minus one.
+[00:16:04] And knowing that, player one can think,
+[00:16:07] okay, but what is player two getting?
+[00:16:10] Player two is getting one minus delta
+[00:16:12] times d to the power of t minus two.
+[00:16:15] So if I manage to give in the round t minus two,
+[00:16:22] something that is equivalent to what player two is getting,
+[00:16:26] player two will say yes, without sending the game
+[00:16:31] to round T minus one.
+[00:16:34] So the idea is always that at every stage,
+[00:16:37] a player has the opportunity to offer something
+[00:16:41] to the other player that is better
+[00:16:44] than what they can ever get in the entire game.
+[00:16:48] And if you iterate this reasoning,
+[00:16:50] you keep pushing the evaluation up and up,
+[00:16:54] you see that the best thing for player one
+[00:16:57] would be to start the game with this offer.
+[00:17:01] And player two will accept if player one offer
+[00:17:04] is one plus delta to the power of t over one plus delta,
+[00:17:09] and the share of player two will be delta minus delta
+[00:17:12] to the power of t over one plus delta.
+[00:17:15] You can see that by iterating the previous reasoning.
+[00:17:19] That is, at stage T minus two, player one doesn't want to send the game to stage T minus one.
+[00:17:27] But at stage T minus three, player two doesn't want to send the game to stage T minus two, and so on and so forth.
+[00:17:33] So as by induction, let's say, at stage one, the player one does not want to send the game to stage two.
+[00:17:42] so player one makes an offer that is better
+[00:17:45] than whatever player two will ever get
+[00:17:48] if going down in the tree.
+[00:17:50] So player one will simply offer this.
+[00:17:53] And you see, this is not really identical
+[00:17:57] to player one getting everything.
+[00:18:00] And the proposition that we claim
+[00:18:03] is that in this situation,
+[00:18:05] the sub game perfect equilibrium
+[00:18:08] must imply that the players
+[00:18:10] reach the agreement in the first round.
+[00:18:13] And this is just a consequence of backward induction.
+[00:18:15] The game looks very similar, if you remember,
+[00:18:17] to the trust game.
+[00:18:19] In the trust game, we say, well, I don't want
+[00:18:22] to go below because I don't trust what the player
+[00:18:25] will do, the other player will do beyond that point.
+[00:18:29] So I better stop here, even if this share
+[00:18:32] is inconvenient.
+[00:18:35] In this kind of tree, this is even better.
+[00:18:38] So player one has an even bigger incentive
+[00:18:42] in stopping the game at round one,
+[00:18:45] because the share player one can get
+[00:18:48] when stopping the game at round one
+[00:18:50] is actually better than delta to the power of T minus one.
+[00:18:54] You can see that this is in general
+[00:18:56] higher than delta to the power of T minus one.
+[00:19:01] Because, well, depending on how big delta,
+[00:19:03] on how low delta is, player one gets something more,
+[00:19:07] which is ideally, if delta is bigger,
+[00:19:11] sorry, if delta is smaller,
+[00:19:12] so the degradation of the resource is fast,
+[00:19:16] here, player one basically gets almost everything
+[00:19:19] and player two still gets nothing,
+[00:19:21] but more than delta to the power of t minus one,
+[00:19:24] which will be almost nothing for both players.
+[00:19:28] Okay, so at least they saved resource from deterioration.
+[00:19:31] And this is in general, a consequence of two principles.
+[00:19:35] If I go to one more round, I have fewer resources to share.
+[00:19:41] So it's convenient to stop earlier
+[00:19:43] and both players are aware of that.
+[00:19:46] And also if I go to one more round,
+[00:19:49] I mean, if I have this good solution
+[00:19:52] that I found as a split,
+[00:19:54] it would be better to apply it earlier.
+[00:19:57] Because if I claim that the solution
+[00:20:02] that I found is, I don't know,
+[00:20:03] starting from round three,
+[00:20:04] when I'm not to I can say well why don't I apply this share immediately and I
+[00:20:11] won't get the degradation of a delta factor so I will get more as a result
+[00:20:17] so it cannot be that my equilibrium starts by agreeing only from share five
+[00:20:24] or six because I should have reached an agreement earlier by the way you can
+[00:20:30] claim, well, this is obvious because this is a consequence of repeated games. This looks
+[00:20:36] like a repeated game because every time you don't reach an agreement, you go to another
+[00:20:40] stage. Well, not really. So if this was a repeated game, what I just discussed was
+[00:20:46] trivial. Because in a repeated game, we know that the players, like, remember the
+[00:20:51] iterated prisoner dilemma, they can discuss whether to collaborate or not. And they
+[00:20:57] decide, well, maybe I defect at a certain point.
+[00:20:59] And they realize that under certain conditions of delta
+[00:21:04] is never convenient to defect ever.
+[00:21:06] So it's not like they start by collaborating,
+[00:21:09] but then they defect after five rounds.
+[00:21:12] They never defect, right?
+[00:21:14] Well, they defect at the last round,
+[00:21:17] and the rounds prior to that, they can collaborate, right?
+[00:21:22] Well, this is not the case here,
+[00:21:24] because here there is no repetition actually.
+[00:21:27] So this doesn't look like a repeated game, to be honest.
+[00:21:30] It is similar to a repeated game
+[00:21:33] in that you play multiple stages,
+[00:21:35] but there is a termination option.
+[00:21:38] So you don't know how many stages are you gonna play.
+[00:21:42] And here there is this added twist of the degradation.
+[00:21:46] So you don't want to repeat the game too many times
+[00:21:49] because it will be identical
+[00:21:51] but with fewer resources to share.
+[00:21:53] So smart players will say, okay,
+[00:21:56] then we should reach an agreement immediately.
+[00:21:58] And well, in general,
+[00:22:00] this is not true for real bargaining in the real world
+[00:22:03] because players are not perfectly rational.
+[00:22:06] They might see an advantage
+[00:22:08] in wasting some time in haggling,
+[00:22:11] but in the mathematical scenario
+[00:22:13] where the players are perfectly rational,
+[00:22:16] first of all,
+[00:22:16] they both see there is no advantage in wasting time
+[00:22:20] because the resources go with lower value.
+[00:22:24] But they are also both aware of that.
+[00:22:26] So they both know that they know that.
+[00:22:30] As a result, there is no point in them in waiting.
+[00:22:34] Okay, so interestingly, this kind of reasoning
+[00:22:38] can be extended even if we have infinite horizon.
+[00:22:42] So this is very important because I said,
+[00:22:45] it is reasonable to assume this is a fish market.
+[00:22:48] So, at the end of the day, if you haven't sold the fish, or you haven't decided how
+[00:22:52] to split the fish, the fish is rotten, too bad, you have wasted your resources.
+[00:22:57] But what if this doesn't really happen?
+[00:22:59] So if the bargaining is a durable resource, still deteriorates a bit, but can be infinitely
+[00:23:07] deteriorated, then you cannot apply the backward induction reasoning because you don't
+[00:23:12] have a last stage to start from.
+[00:23:16] But the reasoning that I did here of resource waste is still valid. So the smart assumption
+[00:23:26] that you can exploit here that the players are rational, and they know the rational
+[00:23:30] and they know that they know the rational and so on. So you can infer at the two
+[00:23:35] rational players immediately realize that because of reason one, they should split
+[00:23:42] the resources immediately and you see that if this is the case if you have an infinite
+[00:23:48] amount of time to split the resources then for t tending to infinity then the split tends to be
+[00:23:56] equal so as a remark this is what they get in case of odd t and this as we remarked this does
+[00:24:08] not lead to an even split. If T tends to zero then player one gets everything and this is reasonable
+[00:24:18] if delta tends to zero it's like saying well the future does not matter so we are tending to the
+[00:24:24] ultimate game where player one gets everything. If T goes to one this also tends to announce
+[00:24:33] fair split for player one, because player one exploit the advantage of being the first
+[00:24:39] to move. And by the way, if the line is at an even T, I didn't mention it explicitly,
+[00:24:46] but I think it's kind of obvious. Now the advantage is for player two, because
+[00:24:50] player two knows he will be the last one to have the last say in the last offer.
+[00:24:57] So player two will make the last offer and can exploit that to his or her advantage.
+[00:25:01] And both players are aware of that.
+[00:25:04] So these rows are versed.
+[00:25:06] If the number T is even, these values will be swapped.
+[00:25:13] Okay, but now instead,
+[00:25:15] if we have an infinitely long bargaining,
+[00:25:19] we restore the equilibrium,
+[00:25:22] I mean the fairness among the players.
+[00:25:24] Because if we have an infinitely long haggling,
+[00:25:27] then we can say contrary to the finite round bargaining
+[00:25:33] that this tends to equal split.
+[00:25:35] Of course, this is true if delta tends to one.
+[00:25:37] If delta tends to zero,
+[00:25:39] it's still, I mean,
+[00:25:40] there is no point in keeping haggling over the future
+[00:25:43] because the present futures don't count.
+[00:25:46] So if delta tends to zero,
+[00:25:49] then utility one is 100% and utility two is 0%.
+[00:25:53] And this is due to the fact play one moves first.
+[00:25:55] It doesn't matter there are infinitely many rounds.
+[00:25:58] The game immediately ends after the first round
+[00:26:01] with play one saying, well, you know what?
+[00:26:02] I keep almost everything for myself.
+[00:26:05] If you say no, this is your chance to get something.
+[00:26:07] If you say no, you will never get as much as this.
+[00:26:10] So you better say yes.
+[00:26:12] But this is true if delta is very close to zero.
+[00:26:15] So this resource deteriorates quickly.
+[00:26:17] So it doesn't matter
+[00:26:18] you have a virtually infinite number of rounds,
+[00:26:20] you better decide immediately.
+[00:26:22] but if Delta is not tending to zero but actually close to one so the resource
+[00:26:29] does not deteriorate very quickly then it's like saying the two players
+[00:26:34] immediately realize they're up to a long night of bargaining so if they're
+[00:26:39] rational they will say okay let's cut to the chase why don't we split
+[00:26:44] evenly that will be the final result so why don't we get this immediately
+[00:26:49] without degrading our resources.
+[00:26:52] So you see that with a similar argument,
+[00:26:56] you can reach the nice conclusion
+[00:26:58] that in bargaining, rational players
+[00:27:02] shouldn't even really argue over price.
+[00:27:05] They should say, okay, this is a fair price
+[00:27:08] for the split or the fair split of resources
+[00:27:10] and we immediately agree on that.
+[00:27:12] How nice is that?
+[00:27:14] Well, in reality, this proves that probably
+[00:27:16] people at the Chinese market are not very rational,
+[00:27:19] or maybe they're having fun in doing a bit of bargaining.
+[00:27:23] But in reality, they should immediately say,
+[00:27:26] this is the fair price, you know this is the fair price,
+[00:27:28] so you say yes to it, then don't be stupid,
+[00:27:31] there is no point in bargaining.
+[00:27:34] Okay, this also, if Delta tends to one,
+[00:27:38] tends to unequal split of resources.
+[00:27:40] So it's also convincing from the,
+[00:27:43] well, sensibility of the thing.
+[00:27:46] Okay, however, if this reasoning
+[00:27:51] is not really working entirely,
+[00:27:53] there is one last thing we need to prove
+[00:27:55] because I just proved this is a subgame perfect equilibrium.
+[00:28:00] With backward induction, I could say,
+[00:28:02] well, this is the unique result of backward induction.
+[00:28:04] So not only this is an SPE, but it's also unique.
+[00:28:08] In this case, I just proved
+[00:28:10] this subgame perfect equilibrium.
+[00:28:12] I haven't proven it's unique.
+[00:28:13] So let me prove this with,
+[00:28:15] just for the sake of nitpicking,
+[00:28:17] we can prove that the subgame perf
+[00:28:22] in Nash equilibrium is unique,
+[00:28:23] but we can't use backward induction
+[00:28:25] because there is, I mean,
+[00:28:26] the number of rounds is infinite.
+[00:28:28] So there is another remark we can make
+[00:28:31] is again, the symmetry between the two players,
+[00:28:34] not really the symmetry,
+[00:28:35] but if you go one more round, they swap roles.
+[00:28:39] So let's put it like this,
+[00:28:41] assume for by contradiction,
+[00:28:43] That's a proof by contradiction.
+[00:28:44] If there is more than one subgame perfect equilibrium,
+[00:28:47] it means there is one pattern of bargaining
+[00:28:51] according to which player one can get a best payoff.
+[00:28:54] Let's call it V1, and also a worst payoff, W1.
+[00:28:59] So if there are two, that's the bigger
+[00:29:01] and that's the lower, but if there are five,
+[00:29:04] that's the best one and the worst one.
+[00:29:06] Okay, similarly, we remarked that whatever player one gets,
+[00:29:11] player two gets what is left by player one.
+[00:29:16] So we know that there is a bargaining
+[00:29:19] that is achieved in the first round, this was proven,
+[00:29:22] but we don't know that the number is always the same.
+[00:29:26] It might be that it is a sub game perfect equilibrium
+[00:29:29] that player one proposes B one,
+[00:29:32] or player one proposes another value W one.
+[00:29:34] They might be both sub game perfect equilibrium.
+[00:29:37] Why this doesn't work,
+[00:29:38] because this would mean that player two
+[00:29:41] gets 1 minus those, so the best value for player 2, v2, will be 1 minus w1, the worst
+[00:29:47] value for player 1. And similarly, w2 will be 1 minus v1. However, the thing is, if
+[00:29:56] you go to yet another round, so let's say player 2 says no instead, what would be
+[00:30:02] the choice that player 2 will do? I mean, player 2 doesn't say no, but let's pretend
+[00:30:07] and player two says no.
+[00:30:08] If player two says no,
+[00:30:10] the game goes to another round with reversed roles.
+[00:30:13] So player two is now the proposer
+[00:30:15] and player one is the responder.
+[00:30:16] So if we claimed that player one has these two choices
+[00:30:20] instead of only one choice in the first round to offer
+[00:30:24] player two can make the same offers.
+[00:30:26] Can make the same offers as for himself actually.
+[00:30:30] So player two can say, well now I'm the proposer.
+[00:30:32] I propose I keep v1 for myself or w1 for myself. That would be resulting in a value v2 that is the
+[00:30:42] best for player 2 that is delta v1 and w2 the worst option for player 2 will be delta w1.
+[00:30:51] They must be identical because remember the strategy is player 1 does not want player 2
+[00:30:59] goes to the next round, where player two can make exactly this proposal, remember? Okay, so this,
+[00:31:06] if you check, implies that if you set equality, it means delta w1 is equal to 1 minus v1,
+[00:31:12] and delta v1 is equal to 1 minus w1. So the only option is that v1 is equal to w1
+[00:31:20] is equal to 1 plus delta, 1 over 1 plus delta. So that is the only solution,
+[00:31:27] And actually it implies that V one and W one equal,
+[00:31:31] meaning the SP is unique,
+[00:31:33] even in the case of infinite bargaining.
+[00:31:37] In the finite bargaining,
+[00:31:38] it was a consequence of record induction.
+[00:31:40] Here we have to prove it explicitly,
+[00:31:42] but it's not hard to do so as I just showed you.
+[00:31:46] Okay, and this concludes the first part of this lecture.

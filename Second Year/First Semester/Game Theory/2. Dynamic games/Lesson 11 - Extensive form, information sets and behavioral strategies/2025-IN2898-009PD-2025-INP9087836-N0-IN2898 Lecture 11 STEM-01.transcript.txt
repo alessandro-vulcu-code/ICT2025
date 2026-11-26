@@ -1,0 +1,626 @@
+[00:00:03] Welcome to the second part of this lecture of game theory.
+[00:00:07] I'm Leonardo Badia, the lecturer of the course.
+[00:00:09] So we discussed that in dynamic games,
+[00:00:12] we need to redefine pure strategies.
+[00:00:16] And the obvious question is, what
+[00:00:18] happens when we consider mixed strategies?
+[00:00:21] Because we already saw mixed strategies
+[00:00:24] as a redefinition of pure strategies,
+[00:00:27] of the concept of strategies, anyway.
+[00:00:29] So, now, if we go by the book, the definition of a mixed strategy is, well, you define a
+[00:00:37] probability distribution over possible pure strategies, right, so that a pure strategy
+[00:00:43] can be seen as a degenerate mixed strategy where you choose one alternative with probability
+[00:00:49] one and all the others with probability zero. So, this is still valid. We want
+[00:00:53] that definition to be conserved even though we now change the underlying meaning of a
+[00:00:59] your strategy, because the underlying meaningful strategy
+[00:01:01] is now a possible plan of action.
+[00:01:03] So let's say an if-then-else program.
+[00:01:07] Now, if we do like this, we say like,
+[00:01:10] okay, I have many programs, and we saw examples.
+[00:01:14] We have 27 possible programs of your actions.
+[00:01:19] Actually, a mixed strategy would be
+[00:01:20] that you choose a probability for each one of them,
+[00:01:24] and this probability is sum to one.
+[00:01:26] Okay, that's it.
+[00:01:28] There is a problem with that.
+[00:01:30] This does not look very dynamic
+[00:01:31] because it means like you choose a probability
+[00:01:34] at the beginning of the game,
+[00:01:37] you flip a coin or you toss a die,
+[00:01:38] whatever you do to determine the probability,
+[00:01:41] and then you know, okay, I have this plan of action,
+[00:01:45] which is what is determined by the probability.
+[00:01:48] So you have, let's say you are mixing
+[00:01:49] between three possible deterministic plans of actions,
+[00:01:52] and these plans of actions
+[00:01:53] are actually if-then-else programs.
+[00:01:56] Okay, so you have one if-then-else program,
+[00:01:58] another is the next program and another is the next program, and you assign probability
+[00:02:01] 60% to the first, 30% to the second and 10% to the last one. Then you flip a coin and you
+[00:02:07] determine the random number is 0.75, meaning you chose the second program. And now you stick
+[00:02:14] to it. There is nothing dynamic. There is no reaction to what the other player does. Like
+[00:02:19] your reactions to the other players are already predetermined from the beginning.
+[00:02:24] and you cannot change the deterministic plan
+[00:02:28] that you have now.
+[00:02:29] So in reality, you would like to have
+[00:02:32] a probabilistic evolution,
+[00:02:35] like depending on what the other player does,
+[00:02:38] you play different things with different probabilities.
+[00:02:40] But that's not the definition of mixed strategy.
+[00:02:42] So that must be something different.
+[00:02:44] So in reality, you can define a behavioral strategy.
+[00:02:48] A behavioral strategy is a new concept
+[00:02:50] and just be quiet because I know you say,
+[00:02:54] Well, one more concept, no, we will see that this
+[00:02:56] is actually something that I didn't know.
+[00:02:59] But a behavioral strategy by definition instead
+[00:03:01] is an independent probability distribution
+[00:03:04] over the actions depending on the information set.
+[00:03:09] So for every information set,
+[00:03:11] you can define a behavioral strategy
+[00:03:13] by assigning a probability distribution,
+[00:03:15] not to the programs.
+[00:03:17] You don't write down all the possible programs
+[00:03:20] and you assign a probability to them,
+[00:03:21] but you write a single probabilistic program.
+[00:03:24] You write a program in which you have one single
+[00:03:27] if then else condition,
+[00:03:29] but if this if and then else conditions
+[00:03:30] are also depending on a coin tree.
+[00:03:33] That would be behavioral because in reality,
+[00:03:36] you are deciding at every node to flip a coin
+[00:03:39] or to take a random number.
+[00:03:42] Well, this means, by the way,
+[00:03:44] that the probability distribution is assigned
+[00:03:47] for every element of the information set
+[00:03:50] to the set of alternatives you have in that information set. So very important, you have
+[00:03:56] two rules to fulfill. These probabilities cannot be arbitrary. You can assign probabilities
+[00:04:01] only to the actions allowed in that information set, right? Remember, every information set
+[00:04:08] must have the nodes belonging to it that have the same allowed actions. So you assign
+[00:04:15] the same probability to the same actions.
+[00:04:18] Because when you are in an information set,
+[00:04:20] you don't know what nodes you're actually in.
+[00:04:25] You only know you are in one of them.
+[00:04:27] If it's a singleton, the information is a singleton,
+[00:04:30] you're lucky because you exactly know where you are.
+[00:04:32] Otherwise, you just know you are in one of them,
+[00:04:34] but you don't know which.
+[00:04:36] So you can denote this with symbol sigma,
+[00:04:39] which is not M, M was for the mixed strategy.
+[00:04:42] Sigma is an assignment from the information set.
+[00:04:45] Okay, so the set of the information sets,
+[00:04:48] which denote with hi, hi is often called
+[00:04:50] the history of the play, so the possible history of play
+[00:04:54] concretize in one possible element hi of xj,
+[00:04:58] meaning the information set you have
+[00:05:01] when you are playing at node xj.
+[00:05:03] Xj is one possibility, it's the only possibility
+[00:05:05] you know exactly where you are,
+[00:05:07] or you can have other nodes because you can be mistaken
+[00:05:10] and ironically think you are at xk while you are at xj.
+[00:05:15] Okay, so, but anyways, xj and xk must have
+[00:05:18] the same set of actions available
+[00:05:20] and you must predict to play the same thing
+[00:05:22] in these two cases because you cannot distinguish.
+[00:05:24] So you assign from set hi, big hi,
+[00:05:27] to delta ai, so a probability distribution
+[00:05:31] over the set of possible actions.
+[00:05:33] What ai, ai of hi, because it's the set of actions
+[00:05:36] available when you are at the information set hi.
+[00:05:40] Okay, so this is a bit cumbersome, but in short it's like saying my behavioral strategy,
+[00:05:46] for example, Brian's behavioral strategy in the battle of sexes is to define a probability
+[00:05:51] distribution to play R and S, and that would be easy because two alternatives you just
+[00:05:54] like one parameter, probability distribution to play R after R played R, and probability
+[00:05:59] distribution to play R after R played S. Okay, so the thing is it can be that
+[00:06:10] The destination set, depending on h, is a bit strange.
+[00:06:13] Well, in reality, there's a bit of a ROM notation.
+[00:06:17] You should say you always assign delta aj,
+[00:06:21] not aj of h, aj, because you cannot change
+[00:06:24] the destination set of this,
+[00:06:26] but you can impose that the probability value
+[00:06:30] is always zero if one action is not allowed.
+[00:06:33] So this is another way of saying it,
+[00:06:35] which would be more rigorous, let's say.
+[00:06:38] Even though, I mean, in the end,
+[00:06:39] I just want to know to understand the structure of the thing.
+[00:06:42] I don't want to formalize too much on the notation, okay?
+[00:06:47] Okay, now, big reveal,
+[00:06:49] mixed strategies and behavioral strategies are the same.
+[00:06:52] So we are lucky, but philosophically speaking,
+[00:06:55] they're not the same.
+[00:06:56] So I made this important distinction
+[00:06:58] because you can understand that we can claim
+[00:07:01] the behavioral strategies are actually mixed strategies.
+[00:07:04] We can show that formally in a while, next slide.
+[00:07:06] but before that, they are two different concepts.
+[00:07:10] Ideally, the plan of action,
+[00:07:12] you can think of it as a program or a handbook.
+[00:07:15] So if you are an engineer, you think of a code,
+[00:07:18] a program code in some language,
+[00:07:19] so a list of instructions,
+[00:07:21] but it can be in a human beings love
+[00:07:25] to think better of handbook,
+[00:07:27] like the instructions you follow from your IKEA
+[00:07:30] to assemble your new furniture.
+[00:07:33] okay, that's a list of instruction you have to follow. So, it's like saying that a pure
+[00:07:40] strategy is a handbook implies that a mixed strategy is like you take n different handbooks
+[00:07:48] and you pick one of them at random, depending on the probability you assign to each handbook.
+[00:07:53] A behavioral strategy instead is a single handbook, but the handbook does not give
+[00:07:59] deterministic instruction. Every page of the handbook tells you, okay, now before moving to
+[00:08:05] the next page, take a random choice. And depending on the random choice, so it's like, I mean,
+[00:08:11] when I was a kid, I used to read this Play Your Adventure book. I think nowadays you are
+[00:08:17] too young to know them because they are obsolete. You have computer games now.
+[00:08:21] But the idea is, okay, one is, so it's like a computer game, an interactive game, in which
+[00:08:27] after every step, you take a new number,
+[00:08:30] and the new random number decides where you go from there.
+[00:08:35] Okay, well, the big question mark is,
+[00:08:37] can we describe one mixed society
+[00:08:39] in terms of behavioral and vice versa?
+[00:08:41] Because if so, we can associate one to the other
+[00:08:44] and get that.
+[00:08:45] We don't consider this odd formalization anyways,
+[00:08:48] whatever we have of randomization,
+[00:08:51] we say it's a mixed society.
+[00:08:53] The answer, luckily, is yes.
+[00:08:54] For once in this course, we have a positive answer.
+[00:08:57] Well, positive answer under some mild conditions.
+[00:09:00] So if you have a well-behaved game,
+[00:09:04] you can say that mixed strategies
+[00:09:06] and behavioral strategies are equivalent.
+[00:09:08] And let's see one such example.
+[00:09:09] Once again, we have the battle of sexes.
+[00:09:12] In the battle of sexes, the pure strategies of Brian
+[00:09:15] are the dynamic battle of sexes.
+[00:09:17] The pure strategies are double R, are S, are SR, and SS.
+[00:09:20] Okay, very good.
+[00:09:21] So if you want to define a mixed strategy,
+[00:09:23] Formally, you have to give me four probability values,
+[00:09:27] PRR, PRS, PSR, and PSS.
+[00:09:30] These four values are the probability
+[00:09:32] that Brian is choosing any of these pure strategies, correct?
+[00:09:35] Remember these four strategies?
+[00:09:37] Well, double R is I go to the romance movie
+[00:09:39] no matter what.
+[00:09:40] Double S, I go to the sci-fi movie no matter what.
+[00:09:43] RS is, well, I basically follow Anne wherever she goes.
+[00:09:46] And SR, I go on the other side of Anne,
+[00:09:49] whatever she does.
+[00:09:50] OK, so you assign, these are the four strategies.
+[00:09:52] you assign four probabilities to them, they must sum to one
+[00:09:55] and they can be any number between zero.
+[00:09:57] OK, instead, a behavioral strategy is defined by a sigma.
+[00:10:02] And this sigma is a function of ai depending on hi.
+[00:10:09] So depending on the history of play,
+[00:10:11] depending on what node you are,
+[00:10:12] depending on whether you are at x1 or x2
+[00:10:14] to define two different values, you
+[00:10:16] define a probability value to play ai,
+[00:10:20] that is to play R or to play S. Of course, these two values
+[00:10:24] are one minus the other, so you just have one parameter.
+[00:10:27] So you assign one parameter given that you are in X1
+[00:10:31] or given that you are in X2.
+[00:10:32] Luckily, X1 and X2 are both separate information sets.
+[00:10:36] So H1 is X1 singleton.
+[00:10:39] H2 is X2 singleton.
+[00:10:41] OK.
+[00:10:42] Now, you have one parameter about what
+[00:10:45] to play at node, this node B, X1,
+[00:10:47] and one parameter about what to play at this node x2.
+[00:10:51] Can we say this is an equivalent representation?
+[00:10:55] Luckily, yes, because you can see that sigma b of r
+[00:11:00] is prr plus prs, correct?
+[00:11:04] Because sigma b of r given x1 is the probability
+[00:11:08] that you play r given that unplayed r.
+[00:11:14] And given that Anne played R, you play R at this node x1
+[00:11:19] if you are following the pure strategy RR or the pure
+[00:11:22] strategy RS, correct?
+[00:11:25] Because both represent situations where Brian
+[00:11:29] plays R if Anne played R. They differ for what
+[00:11:33] they do when Anne played S. But Anne didn't play S
+[00:11:36] because they are now at node x1.
+[00:11:37] So Anne played R. And so whenever
+[00:11:41] you choose RR or RS, Brian plays R anyways. So you can say that sigma b of R given x1
+[00:11:49] is the sum of these two probabilities. And similarly, sigma b of R given x2 is the sum
+[00:11:56] of PRR plus PSR. So you only look at the second one, correct? So you have two equations
+[00:12:03] connecting these values with this two. And also you can write sigma b of S. Of
+[00:12:11] which is nothing but in this case sigma b of s given x1 is psr plus pss, which is also 1 minus
+[00:12:19] prr minus prs, correct? So in short, you can write four equations in four unknowns because
+[00:12:28] you have four parameters here and four equations. So the system is uniquely determined.
+[00:12:34] In reality, the system is over-determined, but you have the additional condition that,
+[00:12:39] for example, sigma b of r plus sigma b of s,
+[00:12:42] whatever the condition is, must be equal to one.
+[00:12:44] Or the sum of these four is equal to one.
+[00:12:46] So in reality, you don't have, I mean,
+[00:12:50] at a naive look, you have four equations
+[00:12:52] and four unknowns.
+[00:12:53] But then you realize that one of the unknowns
+[00:12:56] is not really free, because it is the consequence
+[00:12:58] of this normalization condition.
+[00:13:00] The sum of roots must be one.
+[00:13:02] But you also realize that all of these four equations
+[00:13:05] are not linearly independent.
+[00:13:06] one of them is linearly dependent from the others.
+[00:13:10] So in reality, you have three equations and three unknowns,
+[00:13:13] but nevertheless, you have a correctly determined
+[00:13:18] system of equations.
+[00:13:19] So it only admits one solution,
+[00:13:21] meaning there is always one way to map
+[00:13:24] these four probabilities into these four parameters,
+[00:13:28] which are again four probabilities,
+[00:13:30] but conditional probabilities.
+[00:13:31] And this means that in this setup,
+[00:13:34] you can easily convert the probabilities
+[00:13:37] of the mixed strategies into the probabilities
+[00:13:40] of the behavioral case.
+[00:13:41] So it's a perfectly equivalent description.
+[00:13:44] And you can generalize this reasoning.
+[00:13:46] Don't let me do that because that's too boring,
+[00:13:48] but you can do that for any more complicated tree.
+[00:13:51] You can easily show that, I mean,
+[00:13:54] this basic tree with just four parameters
+[00:13:56] is equivalent because you can have the four parameters
+[00:13:59] derived from the other four and vice versa.
+[00:14:01] You can do that even if you have, I don't know,
+[00:14:04] 7,200 parameters, you can do the same
+[00:14:08] and convert the probabilities of the mixed strategies
+[00:14:11] into the probabilities of the behavioral strategies.
+[00:14:13] Therefore, the two representations are equivalent
+[00:14:15] with one notable exception.
+[00:14:17] The one notable exception is when
+[00:14:19] you don't have perfect recall.
+[00:14:21] So perfect recall looks like an Arnold Schwarzenegger movie,
+[00:14:25] but it's actually a condition you might want
+[00:14:27] to impose to your game.
+[00:14:30] And actually, it's a very sensible condition.
+[00:14:32] And, exactly, the game of Arnold Schwarzenegger is inspired by this, because perfect recall
+[00:14:39] means that you have perfect memory about the past, and therefore your decisions are not
+[00:14:47] influenced by a lack of memory about the past.
+[00:14:51] So if you can show that if you have perfect recall, so you perfectly know the
+[00:14:57] history of play, you can make behavioral strategies coincide
+[00:15:01] with mixed strategies.
+[00:15:03] And the key point here is that in these equations,
+[00:15:06] when I computed the condition, I'm
+[00:15:07] fully sure about being at node x1.
+[00:15:10] That's a key point.
+[00:15:11] It doesn't matter they are singleton.
+[00:15:13] You can generalize this to the case where not singleton
+[00:15:15] and then you have fewer probability, actually.
+[00:15:17] By the way, the case where you have bigger information
+[00:15:20] sets from the point of view of the number of strategies
+[00:15:23] you play is actually lower.
+[00:15:25] So just a remark, which is out of this discussion, but if you compare these two versions,
+[00:15:31] the dynamic battle of sexes with the original battle of sexes, which one has more strategies?
+[00:15:36] Well, this one has, because here you have four possible strategies, because you have to decide
+[00:15:41] what Brian does here and what Brian does there. Instead here, Brian only does the same
+[00:15:46] move in both nodes. So here, the strategy of Brian is just a choice between R and S,
+[00:15:51] because this game is actually static.
+[00:15:53] So the strategies coincide with the actions.
+[00:15:56] I mean, pure strategies coincide with the actions, okay?
+[00:15:58] But instead here you have to decide
+[00:16:00] double R, RS, SI, and so on.
+[00:16:02] So even if the strategies are not singletons,
+[00:16:05] this doesn't really matter.
+[00:16:07] Here you have the same set of equations
+[00:16:09] and you can solve because the system
+[00:16:11] is always properly determined.
+[00:16:14] In terms of extensive form,
+[00:16:17] what does perfect recall mean?
+[00:16:19] It means that you cannot be confused about the past.
+[00:16:24] You can be confused about the present.
+[00:16:26] You see, B is confused about his node X1
+[00:16:29] and his node X2.
+[00:16:31] These nodes happen at the same timeline.
+[00:16:34] That is, after one of Anne's move.
+[00:16:38] See, Anne moves, and then it's B turns.
+[00:16:40] So B is the second to move.
+[00:16:42] And in both X1 and X2, B is the second to move.
+[00:16:44] And he knows Anne made the move.
+[00:16:46] He can be confused about one, what move did Ann actually do?
+[00:16:52] But he's not confused about his being his turn.
+[00:16:56] So the time order is not confused.
+[00:17:00] The actual node can be confused.
+[00:17:03] This means you have perfect recall.
+[00:17:05] When you don't have perfect recall,
+[00:17:07] you have a mixture also between nodes in the present
+[00:17:10] and nodes in the past.
+[00:17:12] Well, if you don't have perfect recall,
+[00:17:15] the situation is a bit odd because this somehow violates rationality. But it's not the same thing
+[00:17:21] as rationality. Rationality just means you do the best action according to the information you have.
+[00:17:27] What if the information you have is incomplete? Well, you do a stupid decision sometimes, right?
+[00:17:32] And this imperfectness of your information can be due to a confusion that you do
+[00:17:39] between the present and the past. This seems a bit strange, but let's verify this with
+[00:17:44] example. And note that for this reason, from this point on, we will always assume we have perfect
+[00:17:50] recall, even if it's not explicitly stated. And it makes sense, most of the games are with perfect
+[00:17:55] recall. Like, the two firms are competing in a Cornutoopoly. Very good. So they have perfect
+[00:18:00] recall, of course. They know what year it is, and they know that they are competing over the
+[00:18:04] market, and so on and so forth. However, the classic example is this. It's called the
+[00:18:09] absent-minded driver. So you are a driver at your driving home on a highway. And this
+[00:18:15] goes very well in these, I don't know, Swedish highways that are so straight, so dark, and
+[00:18:21] you can't really lose your sense of positioning. You know how Andrew, this driver, knows
+[00:18:28] he's close to home, and he sees the signs of an exit from the highway. Well, he remembers
+[00:18:34] that the exits around his home,
+[00:18:38] well the first exit goes to a very bad neighborhood.
+[00:18:41] So if he goes there,
+[00:18:43] he goes through this bad neighborhood to reach home,
+[00:18:45] so it's payoff zero.
+[00:18:47] He does not really want to go there.
+[00:18:49] Second exit is his right exit,
+[00:18:52] so direct way home, payoff four, the best thing.
+[00:18:56] The third exit, well until you reach the road end,
+[00:18:59] so if you miss the second exit,
+[00:19:00] you reach the end of the road.
+[00:19:02] So you have to, well, make a u-turn, go back and go home.
+[00:19:08] So payoff is lower, but you avoid a bad neighborhood,
+[00:19:11] but you take a much longer route.
+[00:19:12] So payoff is one.
+[00:19:14] The point is that this stupid game actually
+[00:19:17] is even single player,
+[00:19:18] so there is no multiplayer decision.
+[00:19:20] The point is that we assume Andrew is very tired,
+[00:19:23] or maybe he's a bit drunk, it depends.
+[00:19:25] I mean, don't ride while drunk,
+[00:19:26] so let's just assume he's just tired.
+[00:19:28] So, he sees the signs and he's wondering, is this the first exit from the highway or
+[00:19:36] might be this is the second exit actually, but I missed the first one because I didn't
+[00:19:41] notice this. I'm sure this happens to you sometimes, even when using the navigator
+[00:19:49] on your cellular phone, sometimes it tells you, well, go at the next exit, go right,
+[00:19:55] and you are not sure if you're referring to the exit you're seeing now or the next exit because
+[00:20:00] he already assumes you are past that one. So, you are absent-minded in that you're not sure,
+[00:20:06] you are confused between these two nodes. You see, these two nodes that Andrew is confused
+[00:20:11] between is the present and the past because, well, Andrew, upon reaching the first exit from
+[00:20:18] the highway, he's confused whether this is the second or the first. And even when he goes on
+[00:20:24] and drives to the second exit, he's
+[00:20:26] not sure whether this is the first exit or the second exit.
+[00:20:29] So Andrew is really confused about that.
+[00:20:31] So you see, the only move that Andrew has is to go for E.
+[00:20:37] The information set is x1 and x2, sorry, x0 and x1.
+[00:20:40] But these two nodes belong to different layers in the tree.
+[00:20:44] So that's the catch.
+[00:20:46] If you have situations like this,
+[00:20:48] which is very standard in game theory,
+[00:20:51] where you have confusion among nodes at the same level,
+[00:20:55] you are safe.
+[00:20:57] Sometimes you can have confusion among nodes
+[00:20:59] of different levels,
+[00:21:01] and that makes for very unrealistic scenarios
+[00:21:03] where you are confused between, well,
+[00:21:05] present and the past, or present and the future,
+[00:21:07] because you are so confused,
+[00:21:09] you don't really know whether the present
+[00:21:10] is really the present, you might assume it's the past.
+[00:21:12] So you are confused between the past and the future.
+[00:21:14] So in short, if you have this kind of confusion,
+[00:21:17] the things become very complicated.
+[00:21:21] So let's see that in this case,
+[00:21:23] it does not hold that mixed set equals behavior.
+[00:21:26] Let's see why.
+[00:21:27] Well, the information set is X zero and X one,
+[00:21:29] and you have to decide a single action for this set,
+[00:21:33] because this is a unique set.
+[00:21:35] So you cannot set different actions.
+[00:21:37] You see the set of available actions
+[00:21:39] is E and S in both cases, good.
+[00:21:41] So we want to set the probability of choosing E.
+[00:21:45] Well, in a mixed strategy,
+[00:21:47] you only have two strategies, two possibilities,
+[00:21:50] E or S.
+[00:21:51] You play E or you play S.
+[00:21:53] Those are the two pure strategies you have available,
+[00:21:55] correct?
+[00:21:56] Because you only have one information set.
+[00:21:58] At that information set,
+[00:21:59] you can either play E or play S.
+[00:22:01] But if you play a mixed strategy,
+[00:22:03] you are combining between the two.
+[00:22:05] So you choose E with a given probability,
+[00:22:06] and naturally you choose S with one minus that probability.
+[00:22:09] So let's call it P.
+[00:22:10] P is the probability you choose E.
+[00:22:12] What is the optimal P?
+[00:22:13] To find the optimal P,
+[00:22:15] you set the expected utility, you compute it, and you see the expected utility is 3 minus p squared
+[00:22:21] plus 2p plus one. Why so? Well, because this is the probability, so you set the probability of
+[00:22:27] going out here, right? So with probability p, you go out immediately. That was a bad choice.
+[00:22:34] You go to the bad neighborhood, you get no payoff. With probability 1 minus p, you keep going.
+[00:22:39] Now you reach this node, and with probability 1 minus p, you keep going and you get one.
+[00:22:43] with probability p you get out and you get four. So you get four times p times one minus p plus
+[00:22:51] one minus p squared. If you do the math you get this payoff. Okay so let me say it again because
+[00:22:58] this might be very simple to understand for those of you who have seen I don't know ARQ
+[00:23:03] or multiple transmissions. So the probability that your transmission immediately ends is p.
+[00:23:10] P. The probability you keep going is one minus P.
+[00:23:14] And then with probability P, you go up here.
+[00:23:16] And with probability one minus P times one minus P,
+[00:23:18] you end up here, if you adopt this probability P, correct?
+[00:23:22] So this is the expected field you can get.
+[00:23:24] And you can see that it's optimal that P star
+[00:23:26] is equal to 1 third.
+[00:23:28] This you're simplifying by taking first order derivative
+[00:23:30] and maximizing this.
+[00:23:31] So no rocket science here.
+[00:23:33] P star is equal to 1 third.
+[00:23:35] OK, now what's a behavioral strategy?
+[00:23:37] A behavioral strategy works the opposite.
+[00:23:38] First, you compute the probability of being at node x0.
+[00:23:44] If you are at node x0, you assign the probability.
+[00:23:48] So you define probability q as the probability
+[00:23:50] of you are at node x0.
+[00:23:52] If you are at node x0, you go out with probability p.
+[00:23:58] That would be a behavioral strategy.
+[00:24:00] You assign a probability p of going out at node,
+[00:24:03] sorry, probability p of going out.
+[00:24:04] So the probability of going out when at node x0
+[00:24:08] is qp.
+[00:24:10] The probability of staying is 1 minus p times q.
+[00:24:16] And then the probability of being here
+[00:24:17] is 1 minus q, because the probability of being at x1
+[00:24:21] is actually 1 minus q.
+[00:24:23] So you can compute the expected utility as this.
+[00:24:26] This depends on p and also q, because the behavioral
+[00:24:29] strategy predicts different actions for node x1 and x0,
+[00:24:33] but the two nodes have different probabilities
+[00:24:35] being the true node.
+[00:24:36] Okay, you see that this is expected utility,
+[00:24:39] and you can actually plot it, this is my plot,
+[00:24:42] I made it with Matlab,
+[00:24:43] and you see that the best choice is p equal to 1 third,
+[00:24:48] only if q is equal to one.
+[00:24:51] So if you are sure that you are at this,
+[00:24:54] at the beginning of the game,
+[00:24:55] you are at the beginning of the game,
+[00:24:56] but still, since you are minded,
+[00:24:58] you have to sell the same action.
+[00:25:00] So p is equal to 1 third,
+[00:25:01] so you tend not to go out, actually,
+[00:25:03] because the first exit is in the bad neighborhood.
+[00:25:06] But if q is lowered, so q is lower than one,
+[00:25:11] meaning you are not really sure of being here,
+[00:25:13] it can be here with higher probability,
+[00:25:16] then you tend to go out with bigger probability.
+[00:25:18] You see that the maximum point of this curve,
+[00:25:20] this point is this block for different values of q,
+[00:25:23] moves to the right.
+[00:25:24] So you tend to go out with higher probability.
+[00:25:28] So you see that in this situation,
+[00:25:30] the two things are not the same thing.
+[00:25:32] you cannot treat mixed strategies
+[00:25:35] as behavioral strategies and vice versa.
+[00:25:37] Behavioral strategies here have more parameters
+[00:25:40] and it depends, the behavioral strategy
+[00:25:42] in this specific case is identical to the mixed strategy
+[00:25:45] only if Q is equal to one.
+[00:25:46] Otherwise, if Q has another value,
+[00:25:48] the two are not equivalent.
+[00:25:49] P especially has a different value, the optimal.
+[00:25:52] So the short message here,
+[00:25:53] because I know this is kind of a bit confusing
+[00:25:55] if you, and maybe you need to rewatch the video
+[00:25:57] and that's okay, but the short message here,
+[00:25:59] the takeaway message is not that you really need
+[00:26:01] to know when a mixed strategy equals
+[00:26:04] a behavioral strategy, because the short answer is
+[00:26:06] you have perfect recall, good, then the two things coincide.
+[00:26:11] So this is asked to be, I mean, to play the devil's advocate
+[00:26:13] what happens if you don't have perfect recall.
+[00:26:17] You can show, that's an historical example,
+[00:26:19] there are counter examples in which the equivalence does not
+[00:26:22] hold.
+[00:26:22] But luckily for us, we only want
+[00:26:24] to focus on situations where there is perfect recall
+[00:26:28] and so the two things are equivalent.
+[00:26:30] So very important.
+[00:26:31] Don't get confused, like Andrew in this example
+[00:26:34] is confused about that.
+[00:26:36] This is just a counter sample to show you that,
+[00:26:38] well, in reality, mixed and behavioral
+[00:26:40] are not always equivalent.
+[00:26:41] You have to check that you have perfect recall.
+[00:26:44] And perfect recall in graphical form means
+[00:26:46] you don't have blobs of confusion
+[00:26:49] happening between nodes at different levels in the tree.
+[00:26:53] Okay?
+[00:26:55] Very good.
+[00:26:55] And so the last thing we want to discuss is that,
+[00:26:58] well, we said we have extensive form.
+[00:27:00] This means good riddance to normal form, not really,
+[00:27:03] because we can, now that we describe the game
+[00:27:06] in extensive form, we can fall back to the normal form,
+[00:27:10] which is kind of surprising because we said
+[00:27:12] the normal form lacks the dynamic element,
+[00:27:15] doesn't show the time evolution.
+[00:27:17] Yes and no, because our players are so rational,
+[00:27:21] so intelligent, but also so paranoid,
+[00:27:23] that they plan everything in advance.
+[00:27:26] So we can also say that this game
+[00:27:28] can indeed be represented in normal form.
+[00:27:31] The key point is that now,
+[00:27:33] Brian does not have two pure strategies.
+[00:27:35] Remember, Brian has four.
+[00:27:37] But if we list all of four Brian strategies,
+[00:27:41] double R, RS, SR, and SS,
+[00:27:43] we do not need anymore the dynamic intervention
+[00:27:47] because these strategies fully describe
+[00:27:50] what Brian does for every gameplay of arms.
+[00:27:55] This is why it's important that we list all of them.
+[00:27:58] Because we want to list what happens, whatever Anne does.
+[00:28:02] So you can imagine that Anne and Brian are planning these strategies beforehand.
+[00:28:07] So even before receiving Anne's message, Brian is prepared as every good boyfriend
+[00:28:12] to react immediately to what Anne will do.
+[00:28:16] So Brian's decision is even simultaneous actually to Anne's decision, because Brian
+[00:28:21] decides not between R and S, but Brian decides among the four strategies. And then the actual
+[00:28:28] action played by Brian will be the immediate result of the program. Brian being an engineer
+[00:28:34] follows the program that he decided beforehand. So you see that in this situation you can
+[00:28:39] identify certain choices on Nash Equilibrium. We will discuss this in a while. So we fall
+[00:28:45] back to the case of the metrics and we can use some cheap tricks that we use like
+[00:28:49] underlining, overlining to identify whether there
+[00:28:51] are Nash equilibria in this kind of game.
+[00:28:53] But we haven't defined Nash equilibria
+[00:28:54] for the dynamic game yet, so we will discuss this in a while.
+[00:28:58] The key point here is that we don't abandon, actually,
+[00:29:01] the normal form.
+[00:29:02] We can use it if we do it correctly.
+[00:29:06] And by that, I mean that we need to list
+[00:29:09] all of Brian's strategies.
+[00:29:13] Well, this can be done even if the game has
+[00:29:15] imperfect information, because every time we see instead
+[00:29:18] something like that it means we are basically in a static situation so we can also derive the normal
+[00:29:24] form to that. Remember I said the strategies of Brian's in the game where he does not know
+[00:29:29] how to distinguish between these two nodes is again a meaning that Brian has the standard
+[00:29:35] strategies RNS so we are falling back to the standard battle of sexes the original one.
+[00:29:41] So once again you should be able with this remarks and I don't want to tell you all the
+[00:29:47] details because they're very boring,
+[00:29:48] but you can figure out by yourself,
+[00:29:49] I rely on your intelligence,
+[00:29:51] that you can transmute every extensive form
+[00:29:55] into a normal form.
+[00:29:56] That would be easy by these simple rules.
+[00:29:59] Just list all of the strategies,
+[00:30:00] and every time you have something like this,
+[00:30:02] it means every player with this kind of blob
+[00:30:04] of indecision, blob of equivalence between the two nodes
+[00:30:09] plays the same thing in the two.
+[00:30:10] So here Brian only has one strategy,
+[00:30:13] only one action to choose,
+[00:30:15] So as a result, two possible strategies, RMS.
+[00:30:20] OK, so the last thing I need to tell you
+[00:30:22] is that even though it is possible to transmute
+[00:30:25] an extensive form into a normal form and vice versa,
+[00:30:28] in reality, there are multiple possible equivalent
+[00:30:30] extensive form because of what I said before,
+[00:30:33] like some players can be dummy in certain situations,
+[00:30:37] or it can be that I'm hiding some events
+[00:30:41] through identical payoffs.
+[00:30:43] Let's see an example of what I'm meaning.
+[00:30:45] let's consider this game between Alex and Beth.
+[00:30:47] In this situation, in the normal form,
+[00:30:49] you have, for example, that if Alex chooses to play E,
+[00:30:54] it's like the game immediately ends
+[00:30:55] and the payoffs are determined.
+[00:30:56] So you can say, when Alex plays E,
+[00:31:00] the game ends with 2-2 as payoffs,
+[00:31:02] and if Alex chooses K, it's up to Brian
+[00:31:04] to decide what to do, to Beth decide what to do.
+[00:31:07] But you can also say, well, you know,
+[00:31:09] Beth does not know whether Alex chose K or E,
+[00:31:14] but Beth can play them in a way,
+[00:31:19] so Beth is undecided between these two nodes,
+[00:31:21] so she's confused, and her history of play
+[00:31:24] depends on what Alex did before,
+[00:31:27] but it turns out that if Beth chooses,
+[00:31:30] so if Alex chose E unbeknownst to B,
+[00:31:32] then the game is actually at extended,
+[00:31:35] so Beth's actions don't matter.
+[00:31:38] So these are two different extensive forms, actually,
+[00:31:41] but they are the same game, sort of,
+[00:31:43] And in fact, they have the same normal form of representation.
+[00:31:46] Even though by being nitpicking,
+[00:31:48] we can say these are slightly different trees,
+[00:31:49] in reality, you can see they describe the exact same game
+[00:31:52] that is whenever Alex chooses E,
+[00:31:55] that's an exit move that ends the game.
+[00:31:58] So we can keep Beth's move alive,
+[00:32:00] but we involved that this has no effect on the game.
+[00:32:04] So in reality, there is no equivalence,
+[00:32:06] but it's as a matter of fact,
+[00:32:08] the game is indeed equivalent,
+[00:32:10] at least from the physical interpretation.
+[00:32:12] Okay, very good. This concludes the lecture of today.

@@ -1,0 +1,714 @@
+[00:00:00] Welcome to the second part of this lecture on game theory.
+[00:00:04] I'm Leonardo Badia, the lecturer for this course.
+[00:00:08] Well, it's time to see dynamic duopolies
+[00:00:11] because we saw the classic applications of duopolies.
+[00:00:17] Remember we saw the Cournot duopoly,
+[00:00:19] the Bertrand duopoly too.
+[00:00:21] And we wonder what happens
+[00:00:24] if we extend those games in a dynamic setup.
+[00:00:27] And that would be a legitimate question because in the model that we had, for example, for
+[00:00:34] the Cournot duopoly, we said, well, the two firms decide their quantities and they decided
+[00:00:40] only once.
+[00:00:41] They play only once.
+[00:00:42] That's just kind of unrealistic in an enterprise set up because it's not like the companies
+[00:00:50] set whatever they set, the price, the quantity.
+[00:00:53] I mean, in Cournot set up, they set the quantity, but I mean, they don't make their
+[00:00:56] decision once for every other time and they play only once. They actually
+[00:01:02] keep iterating and they adjust depending on what's the outcome or the previous
+[00:01:08] iteration. So it would make sense to consider, for example, a Stackelberg
+[00:01:13] duopoly. A Stackelberg duopoly, which is a standard extension of the
+[00:01:19] Cournot game well in the case of firms that take turn in moving. So let's consider a setup where
+[00:01:27] there is a dominant firm, the incumbent firm which is called also the leader or number one
+[00:01:36] that moves first and then a subordinate firm that moves second. So here the dominant firm
+[00:01:43] has a bigger market share and the subordinate firm is kind of well as a bigger relevance anyways
+[00:01:51] can make decision before the others and so the subordinate must adjust to what the dominant
+[00:01:57] decided so for example just for the sake of reasoning let's assume that decision they make
+[00:02:05] is the quantity because it's like the Cournot setup it's a bit easier from the mathematical
+[00:02:12] perspective. It wouldn't change much as long as we keep the usual relationships that the higher
+[00:02:17] the price the lower the quantity and vice versa. So in Cournot's setup we recall that there is a
+[00:02:24] unit cost CQ to produce a quantity Q and C is a constant and the market price is A minus Q
+[00:02:32] where big Q is a total quantity produced where A is a constant that must be bigger than C to
+[00:02:38] have a meaningful problem.
+[00:02:40] So now the thing is, instead of having them deciding
+[00:02:44] Q1 and Q2 independently and unbeknownst to each other,
+[00:02:49] now Firm 1 says Q1 and announces it beforehand.
+[00:02:54] So Firm 2 can decide their quantity
+[00:02:58] after seeing what Firm 1 did.
+[00:03:01] On the other hand, Player 1 knows that Player 2
+[00:03:06] will move after player one. So player one is able to anticipate that because player one knows that
+[00:03:13] player two will play a best response to the move of player one. Okay, so the profit of two is
+[00:03:21] clearly Q2 times A minus Q1 minus Q2 minus C. This we already seen earlier. So the thing
+[00:03:29] to choose here is Q2, and Firm2 decides Q2
+[00:03:36] so as to maximize this U2.
+[00:03:39] This means this is the best response.
+[00:03:41] We can call that R2 of Q1, because of course,
+[00:03:46] Q1 here is the parameter, Q2 is the optimization variable.
+[00:03:51] So Firm2 can decide Q2, so as to maximize U2,
+[00:03:56] but this also depends on Q1.
+[00:03:57] So q1 is taken as an input and depending on q1, the value of q2 is different. We call it r2 of q1,
+[00:04:05] that is the response of fern2 to the choice of q1. And it's easy to see that r2 of q1
+[00:04:13] is exactly a function of q1 is a minus q1 minus c over two. How to find that? Well,
+[00:04:20] you take this function and you maximize it in q2. So you take the first or the derivative,
+[00:04:25] you set it equal to zero and you see easily
+[00:04:28] this is a solution and this depends on Q one,
+[00:04:31] not surprisingly.
+[00:04:33] Okay, we computed this.
+[00:04:36] Well, our two, sorry,
+[00:04:38] firm two can compute this
+[00:04:40] and also firm one can compute it.
+[00:04:42] So this is common knowledge
+[00:04:43] because everything in the game is known.
+[00:04:46] So note that this value of A minus Q one
+[00:04:51] minus C divided by two
+[00:04:52] is actually the, appeared already,
+[00:04:56] was the value of the monopoly, right?
+[00:04:59] So when we are in a monopoly,
+[00:05:01] we assume that the maximization value is A minus C half.
+[00:05:06] Here is like, we say, okay, whatever is left
+[00:05:09] after Q1 makes its move,
+[00:05:11] now R2 is basically the result of a monopoly.
+[00:05:15] Well, not really a good monopoly,
+[00:05:17] but after player one made his decision,
+[00:05:21] then player two has, well, freedom to choose
+[00:05:25] as a monopolist, but only with the leftovers.
+[00:05:28] So Q1 plays the role of decreasing the freedom
+[00:05:31] of player two, but actually leaving player two
+[00:05:35] as a monopolist for what is left.
+[00:05:38] Well, the difference between the monopoly
+[00:05:41] and this situation, in the monopoly case,
+[00:05:44] that was a theoretical value.
+[00:05:46] In the monopoly case, we say, if we were a monopoly,
+[00:05:49] the best thing to do would be to play a-c divided by two.
+[00:05:54] Here is not really a hypothesis,
+[00:05:57] it's actually the real scenario
+[00:05:59] because after player one makes the move,
+[00:06:03] player two will set this value no matter what.
+[00:06:07] So what depends on Q1,
+[00:06:08] but it's really the value that player two will choose.
+[00:06:12] And we know that, player two knows that,
+[00:06:14] and also player one knows that.
+[00:06:16] So player one can anticipate this
+[00:06:18] and knowing that R2 of Q1 will be A minus Q1 minus C
+[00:06:25] divided by two, this is like saying that when play one
+[00:06:28] wants to maximize U1, he can really anticipate R2 of Q1.
+[00:06:33] So now this is not a function of Q2,
+[00:06:35] like in the previous setup, this was unknown
+[00:06:37] because we don't know what player two will choose.
+[00:06:41] Now we do know, we do know it will depend on Q1 though.
+[00:06:44] So this is actually a whole function of Q1 only.
+[00:06:47] So from the perspective of player one, this is not,
+[00:06:51] I mean, it is a game, but a game where player one
+[00:06:54] is perfectly able to anticipate what player two will play.
+[00:06:57] So the maximum, the best choice is actually
+[00:06:59] the maximum of utility one.
+[00:07:01] And this only depends on Q1, there is only one variable.
+[00:07:05] So we can maximize this and we obtain
+[00:07:08] that Q1 star is A minus C divided by two
+[00:07:11] and Q2 star is A minus C divided by four.
+[00:07:14] So player one acts as a monopolist
+[00:07:18] and player two still as a monopoly of what is left
+[00:07:21] because the freedom left is A minus C divided by two.
+[00:07:25] So player two chooses half of that.
+[00:07:28] And this is different from the Cournot move
+[00:07:31] because in the Cournot setup, original setup,
+[00:07:34] we found out a symmetric outcome
+[00:07:36] that is A minus C divided by three
+[00:07:39] for both Q1 star and Q2 star.
+[00:07:41] So here clearly, the leader has an advantage,
+[00:07:45] the leader gets more.
+[00:07:47] And because of course,
+[00:07:49] the leader has the advantage of moving first.
+[00:07:52] This is something we already remarked.
+[00:07:53] I mean, being the leader is an advantage.
+[00:07:56] Okay, now let's see some remarks.
+[00:08:00] The follower actually has the freedom
+[00:08:03] being the second to move opposing a threat.
+[00:08:07] The idea would be that player two is not happy,
+[00:08:10] that the Cournot quantity is not chosen.
+[00:08:13] So ideally, that's also a possible setup.
+[00:08:16] It is possible for player one to choose
+[00:08:18] A minus C divided by three,
+[00:08:20] and you will discover that player two,
+[00:08:22] optimal choice would be to play
+[00:08:24] A minus C divided by three.
+[00:08:25] That would be a fair outcome for the two players.
+[00:08:28] So player two is a bit unhappy
+[00:08:31] that player one chose this big value,
+[00:08:35] bigger than the quantity in the Cournot case,
+[00:08:37] so player 2 is forced to choose a lower value.
+[00:08:41] Why so? Because if player 2 keeps choosing the value of the Cournot case,
+[00:08:47] well, the revenue will be lower.
+[00:08:49] Why? Because remember the price is a decreasing function of the quantity.
+[00:08:55] And this means that player 1 was able to produce a bit more
+[00:08:59] and player 2 to keep the price high has to decrease the quantity.
+[00:09:05] Well, player 2 may say, well, I don't like that.
+[00:09:08] I would like that we set the same quantity,
+[00:09:10] and so we get the price as before.
+[00:09:13] So I can threaten you.
+[00:09:15] And player 2 can basically say, you know what?
+[00:09:18] If you don't produce the Cournot quantity,
+[00:09:23] I will make you poor, very poor.
+[00:09:25] How?
+[00:09:26] I will produce a very big quantity.
+[00:09:28] So that's my threat.
+[00:09:30] I will apply a strategy, which
+[00:09:33] is because player two strategy is to look at what player one did and to react accordingly.
+[00:09:40] So actually the strategy of player two is not a single value, is a name to power value or a
+[00:09:48] generalized value where player two chooses a value in response to every value of Q1.
+[00:09:55] So we already saw what is the optimal response R2 of Q1 for every value of Q1
+[00:10:00] And in particular, this dictates that the optimal response
+[00:10:04] to a minus c divided by 3 is a minus c divided by 3.
+[00:10:08] And the optimal response to a minus c divided by 2
+[00:10:10] is a minus c divided by 4.
+[00:10:13] But player 2 can pretend to do this threat.
+[00:10:16] Player 2 will say, my strategy is actually
+[00:10:20] a minus c divided by 3 if you choose a minus c divided by 3.
+[00:10:24] So like in the Cournot case, because I like that.
+[00:10:27] We are equal.
+[00:10:28] If you don't choose this, you know, I'll choose infinite or a very big value.
+[00:10:34] So this will cause the price to drop and you will get no revenue.
+[00:10:39] So I just aren't too scared of that.
+[00:10:41] So player one might be scared of that and think, well, if player two chooses this,
+[00:10:48] my Nash equilibrium is really to play A minus C divided by three, because that's
+[00:10:53] the only case where I make a positive revenue.
+[00:10:55] In all the other cases, I make zero revenue.
+[00:10:58] The thing is, OK, this is a Nash equilibrium.
+[00:11:01] Because if player two is really doing that,
+[00:11:03] the best response of player one is
+[00:11:05] to play A minus C divided by 3.
+[00:11:07] If player one does not do so, player one
+[00:11:11] will get zero revenue.
+[00:11:12] So deviating from there is inconvenient for player one.
+[00:11:16] Nevertheless, if player two does so,
+[00:11:20] this is a non-credible threat.
+[00:11:23] Why?
+[00:11:23] because the choice of a high quantity,
+[00:11:28] so estimate the price equal to zero,
+[00:11:30] is an unrealistic punishment.
+[00:11:32] Remember, it's like Brian claiming
+[00:11:34] he will jump out of the window.
+[00:11:36] It surely hurts player one
+[00:11:38] because player one's revenue will be zero,
+[00:11:41] but also player two revenue will be zero.
+[00:11:44] So player one is aware that this strike is empty.
+[00:11:48] Player one knows that the behavior
+[00:11:51] choosing a very high price is rational the follower will get zero revenue too
+[00:11:57] so player one might really think yeah you know what I don't believe you if I
+[00:12:03] choose a very well a price different from kuno you won't choose a very high
+[00:12:09] price nevertheless you will always choose r2 of q1 because I know your
+[00:12:14] rationale and your rational choice is r2 of q1 no matter what it can never
+[00:12:19] be a very high value. And by the way, this interaction is once again all in their heads.
+[00:12:28] I'm not claiming the two players really do this kind of threatening each other. It's
+[00:12:33] all in the head because they're very paranoid. Because once again, we don't include any
+[00:12:38] exchange of communication in the model. It's like just saying, well, if player one
+[00:12:43] is afraid that player two will do such a threat but player two never even communicated with
+[00:12:50] player one. But player one can still figure out this is a possible strategy because player one
+[00:12:55] is very smart. So player one can actually think maybe player two is playing like this
+[00:13:00] and so I won't be playing a very good response if I don't choose a minus c divided by 3.
+[00:13:07] But actually, player one knows that a rational player two
+[00:13:12] will never choose such a strategy.
+[00:13:14] So this strike is non-credible, and player one
+[00:13:16] does not believe that.
+[00:13:19] Also, we already remarked, and this is even more true,
+[00:13:23] so that if you are in a dynamic setup
+[00:13:29] for a multi-person decision problem,
+[00:13:32] here knowing more can be harmful.
+[00:13:35] So, in general in optimization, the more you know, the better you can do because your solution
+[00:13:42] with more information is always more accurate.
+[00:13:45] Because remember, the only problems in single person optimization is noise or lack of
+[00:13:51] data or mistakes you can do or computational complexity.
+[00:13:55] So having more information means to have less noise or to have more data, more input.
+[00:14:02] And so you can make a more informed decision.
+[00:14:05] is always better but in this attack knowing more is harmful and why the reason is that not only
+[00:14:13] player 2 knows more which is true but also player 1 knows that player 2 will know more so the better
+[00:14:19] information player 2 has goes to his disadvantage because player 1 can exploit
+[00:14:26] this additional knowledge to anticipate what player 2 will do so this is once again remember
+[00:14:34] the first mover advantage and remember whatever your setup is if you claim if you are modeling
+[00:14:40] this in a project remember that it's always true that the first player has an advantage
+[00:14:46] because player one can exploit the advantage of knowing that player two will know
+[00:14:53] this is not necessarily bad for player two it is true only in competitive setups
+[00:15:00] This game is competitive because the better player 1, the worse off player 2 is.
+[00:15:07] So in general, this is not true, this is not meaning that player 2 must be worse off.
+[00:15:15] If the game is collaborative, maybe player 2 is favorable to having player 1 with more information about that.
+[00:15:22] So player 1 moving first and then following because player 2 will also exploit this to an advantage.
+[00:15:28] Like, let's see an example, access medium. In access medium, the problem is like an
+[00:15:36] anti coordination, right? You ideally would like I have two players and two channels.
+[00:15:42] I would like that player A choose channel one, and player B choose channel two, or
+[00:15:47] the other way around, they don't choose the same channel because they will collide.
+[00:15:51] And that is also the example very, I mean, misogynistic, very, very sexist, that is
+[00:15:56] done in A Beautiful Mind, the movie, like there are like two guys hitting on two girls.
+[00:16:03] So the best setup for them is I take, I don't know, the blonde girl and you take the dark
+[00:16:08] haired girl, because if we take the same girl, we end up empty handed.
+[00:16:12] So that is also a situation where you can have collisions.
+[00:16:17] So in this case, imposing a Stackelberg framework would help.
+[00:16:22] Like, I say, well, if I have to make a choice between two channels with another player,
+[00:16:28] maybe a good thing to do is, okay, please go ahead and choose first. I would like that.
+[00:16:34] I give you first mover advantage, but I will also benefit because the game is collaborative.
+[00:16:41] We are not playing against each other. Actually, we are better off if we choose
+[00:16:45] different channels. So knowing your choice is beneficial for me. Okay, remember this
+[00:16:50] in well in every application you might think of.
+[00:16:54] Okay now this still back to the stackable setup
+[00:16:59] since we have more knowledge maybe we don't want it because ideally for
+[00:17:06] player two a better strategy let's say a better
+[00:17:08] meta strategy so outside of the game it would be better for player two to
+[00:17:13] claim well I really don't know you know what
+[00:17:17] You think I will know your move, but I actually pretend that when you make your move, I will go like,
+[00:17:26] la, la, la, la, la, la, la, not listening to you. So this would be better for player 2.
+[00:17:31] Because player 1 won't be able to exploit this advantage of knowing that player 2 will know Q1.
+[00:17:38] So if player two plays after player one,
+[00:17:42] but does not know the value of Q one,
+[00:17:46] then player two might think, okay, you know,
+[00:17:49] I think player one thought this was a stuckover setup.
+[00:17:55] So player one must have chosen A minus C divided by two.
+[00:18:00] So still I play A minus C divided by four.
+[00:18:04] That's my best response.
+[00:18:05] Well, if this happens, and player one actually does not play in a stuck adverse attack, so
+[00:18:13] player two did choose A minus C divided by four.
+[00:18:16] If player one is able to further change this, so player one basically chose A minus
+[00:18:24] C divided by two only because he has anticipated that player two will play A minus C divided
+[00:18:31] by four.
+[00:18:32] But let's assume that player one is a super cheater,
+[00:18:35] and player one can even change them all.
+[00:18:37] So player one says, you know what?
+[00:18:39] I'm gonna play A minus C divided by two.
+[00:18:42] But player two, so player two plays the best response,
+[00:18:44] which is A minus C divided by two.
+[00:18:46] Now the thing is that player two
+[00:18:49] is playing a best response to player one,
+[00:18:51] but player one is not playing
+[00:18:52] a best response to player two.
+[00:18:54] How can we say that?
+[00:18:56] Well, because this is not a Nash equilibrium.
+[00:18:58] The only situation where they both play
+[00:19:00] a best response to each other
+[00:19:01] there is a Nash equilibrium.
+[00:19:03] And the only Nash equilibrium here
+[00:19:04] is they both play A minus C divided by three.
+[00:19:08] So player one has an incentive for unilateral deviation,
+[00:19:12] which is in this case to choose a better value
+[00:19:15] that is three eighths A minus C.
+[00:19:18] So in this attack, if A minus, sorry,
+[00:19:22] player one announces A minus C divided by two,
+[00:19:26] but it's able to change,
+[00:19:28] and that, I mean, changes the rules of the game
+[00:19:30] because player two is basing this choice on the fact that this is the real value chosen by one
+[00:19:36] but if play one is able to change this won't be the real value chosen by one it will be
+[00:19:42] something different it will be actually three eights you can check and at this point if
+[00:19:49] player two is somehow aware that player one will change his response so you see we are playing
+[00:19:56] fictitious play. We are changing the rules of the game so that
+[00:20:00] the players are able to renegotiate the value. So they
+[00:20:04] were stuck with Berg initially, and in the second
+[00:20:07] version, they want to choose us, then player two chooses
+[00:20:09] the game ends. Now we say okay, maybe one is able to
+[00:20:13] take the move back to his advantage. And basically here
+[00:20:17] we're saying, play one shows a minus c divided by two, which
+[00:20:21] It is a lot, it is more than the Kuno-Duopoli case,
+[00:20:26] because player one knows player two will be forced
+[00:20:28] to choose less than A minus C divided by three.
+[00:20:31] So this goes to player one's advantage.
+[00:20:34] Now that player one knows that player two
+[00:20:37] chose A minus C divided by four,
+[00:20:39] he might think of decreasing this a bit.
+[00:20:41] So instead of one half, he chooses three eights.
+[00:20:44] Why three eights is better?
+[00:20:46] Because the less quantity you produce,
+[00:20:49] the higher the price.
+[00:20:50] So, you can see that this new Q1 is even better for player 1, while the quantity is lower, so they will make less profit, but the price will increase, so they will make more profit.
+[00:21:03] And actually, player 2 will be benefited too, because player 2 will increase.
+[00:21:07] Nevertheless, player 2's best response is not A minus C divided by 4 anymore now.
+[00:21:15] And how can I know that?
+[00:21:17] Well, of course, because player two chose A minus C divided
+[00:21:21] by four as the best response to this, not to this.
+[00:21:25] So the best response to this must be different once again.
+[00:21:28] And you can compute that,
+[00:21:30] but you see player one decreases the quantity a bit.
+[00:21:34] And now player two can increase the quantity a bit
+[00:21:37] because this is no longer A minus C divided by two.
+[00:21:41] So there is margin for player two
+[00:21:43] to increase the quantity a bit.
+[00:21:45] Increasing the quantity a bit, of course,
+[00:21:47] will decrease the price,
+[00:21:48] but will increase the revenue of player two,
+[00:21:50] and there is margin to do that.
+[00:21:53] So in the end, we keep iterating in fictitious play,
+[00:21:57] player one decreases a bit, player two increases a bit,
+[00:22:00] player one decreases a bit, player two increases a bit.
+[00:22:03] When will this stop?
+[00:22:04] In the end, they will stop when they reach
+[00:22:07] the middle ground of A minus C divided by three,
+[00:22:10] which is the Cournot case.
+[00:22:11] So fictitious play, of course, leads to the equilibrium
+[00:22:15] of the static game.
+[00:22:17] And this is a consequence of what we already discussed
+[00:22:20] when we discussed fictitious play.
+[00:22:22] This in this specific case, the Nash equilibrium
+[00:22:24] is not only a local maximum for the utility,
+[00:22:28] but also an attraction point.
+[00:22:34] Also another very important version of the Cournot duopoly
+[00:22:39] can be when we have collusion.
+[00:22:41] And that is kinda bad conclusion in a sense
+[00:22:45] because it's bonifies the conditions found by Cournot.
+[00:22:50] If you remember, Cournot's situation was okay.
+[00:22:53] Then there is a situation which is worse
+[00:22:56] than the monopoly,
+[00:22:57] both firms producing A minus C divided by three.
+[00:23:01] This is worse than the monopoly for the firms
+[00:23:04] because they keep the price lower
+[00:23:06] than the monopoly case.
+[00:23:07] In the monopoly case,
+[00:23:09] they will be an overall production,
+[00:23:13] the aggregate production will be QM
+[00:23:15] equal to A minus C divided by two.
+[00:23:18] So indeed, this is when there is only one monopolist.
+[00:23:24] If there are two duopolists,
+[00:23:26] they can think one hypothesis that we could make is,
+[00:23:29] okay, why don't they produce a quantity
+[00:23:32] that is lower than that, for example,
+[00:23:34] A minus C divided by four,
+[00:23:36] that on aggregate would be a minus c divided by two.
+[00:23:39] So they pretend to be a monopolist.
+[00:23:42] They act like a monopolist when combined.
+[00:23:47] Well, this doesn't work.
+[00:23:49] Why?
+[00:23:49] Because a minus c divided by four is not the best response
+[00:23:52] to a minus c divided by four.
+[00:23:54] There is an incentive for unilateral deviation.
+[00:23:56] They both want to deviate.
+[00:23:57] And actually this will lead to avoid the monopoly case.
+[00:24:02] And this is a good effect of competition.
+[00:24:06] Well, free market is better than the monopolist.
+[00:24:09] That's all the conclusions that Cournot reached.
+[00:24:11] Well, actually, the point, if you remember,
+[00:24:14] we demand the point why they don't choose this.
+[00:24:18] It's because of lack of trust.
+[00:24:21] They don't trust each other.
+[00:24:22] Even if they sign a contract and they say,
+[00:24:24] well, you know what, we should act like a monopolist.
+[00:24:27] So we should establish a cartel and say,
+[00:24:30] we produce overall A minus C divided by 2 instead of 2
+[00:24:33] because that's one individual producing this one.
+[00:24:36] There are two of them producing QC.
+[00:24:38] We should produce QM half, each one of us.
+[00:24:41] That would be better because of course we produce less,
+[00:24:44] but we keep the price high.
+[00:24:46] Well, there is, since we are dealing
+[00:24:49] with very bad company,
+[00:24:52] we'll try to gain a lot of money
+[00:24:54] at the expenses of the customers.
+[00:24:56] We must expect also they would like to betray each other.
+[00:24:59] So they don't trust each other and say,
+[00:25:02] Well, even so, I signed a contract saying,
+[00:25:05] I will produce A minus C divided by four, which is QM half.
+[00:25:08] It is convenient for me to produce more than that.
+[00:25:12] To produce more than that,
+[00:25:13] because A minus C divided by four, which is QM half,
+[00:25:16] is not the best response to QM half.
+[00:25:18] So I'm not pulling my best response.
+[00:25:19] I have incentive for unilateral deviation,
+[00:25:22] meaning I would like to betray the cartel.
+[00:25:26] And this was the nice conclusion of Cournot analysis.
+[00:25:28] We say, okay, cartels shouldn't exist
+[00:25:30] in a competitive society because the two players realize it's more convenient to betray each other.
+[00:25:36] But this only acts, I mean we already saw a situation where a normal case where you have
+[00:25:42] a betrayal can become collaboration and in this case is actually a bad thing because we say that
+[00:25:49] well betrayal among the companies is good for the customers but if the company discovered
+[00:25:56] where they can trust each other,
+[00:25:57] well, it can lead to a very bad situation for the customer
+[00:26:01] where the two firms really act in a cartel.
+[00:26:04] And that would be related to building trust.
+[00:26:07] And we found a way to build trust,
+[00:26:09] which is to play the game repeatedly over time.
+[00:26:13] According to Friedman's theorem,
+[00:26:14] if you repeat the game infinitely many times,
+[00:26:17] we get a trust build up among the two players.
+[00:26:21] So in practical scenarios, we can have a collusion
+[00:26:26] and we build a cartel really.
+[00:26:29] How to do that?
+[00:26:30] Well, as we did for the Friedman theorem,
+[00:26:32] we need to predict a green trigger strategy.
+[00:26:36] What could be a green trigger strategy?
+[00:26:37] Remember the general framework
+[00:26:39] that we saw for the Prussian dilemma.
+[00:26:41] The general framework for a green trigger is,
+[00:26:44] well, we keep collaborating
+[00:26:46] as long as nobody betrays the alliance.
+[00:26:49] The moment somebody betrays the alliance, we keep defecting forever.
+[00:26:55] Okay, now we just need to know what is cooperating and what is defecting, because in the prisoner's dilemma we only have two strategies.
+[00:27:01] In the Cournot duopoly, that's a continuous game, so we have infinitely many strategies.
+[00:27:06] But we say that QM half is the collaborative action.
+[00:27:11] QM half is clearly the best you can do to increase your revenue in a cartel.
+[00:27:18] But on the other hand, if you deviate from there,
+[00:27:21] I mean, the two firms agree on producing QM half each.
+[00:27:26] So overall, they act like a monopolist.
+[00:27:29] And if there is a betrayal from any of them,
+[00:27:31] from either of them,
+[00:27:32] they'll decide to produce QC forever after.
+[00:27:35] QC is a Nash equilibrium,
+[00:27:37] so this is definitely a sub game perfect equilibrium.
+[00:27:41] And according to the Friedman theorem,
+[00:27:43] this is sustainable.
+[00:27:44] As long as the discount factor delta
+[00:27:47] is close enough to one.
+[00:27:49] So for a big enough delta, this is gonna work.
+[00:27:52] Let's see.
+[00:27:54] Well, of course the Green trigger is a Nash equilibrium
+[00:27:57] where one deviates.
+[00:27:58] So we need to make the same comparison
+[00:28:01] that we made for the prison dilemma,
+[00:28:03] just for the first stage.
+[00:28:05] If we prove that there is no meaningful deviation
+[00:28:07] at the first stage, where they start cooperating,
+[00:28:11] then we have found that the Green trigger works.
+[00:28:14] And here, the stage is in the first round,
+[00:28:18] we both play QM half.
+[00:28:20] And clearly, as I showed here,
+[00:28:23] the best response to QM half, sorry,
+[00:28:27] yeah, QM half is this, A minus C divided by four.
+[00:28:29] The best response to A minus C divided by four
+[00:28:32] is not to play A minus C divided by four,
+[00:28:34] is actually three eights A minus C.
+[00:28:37] So it's a different value.
+[00:28:38] So you might think, you might be tempted
+[00:28:40] to deviate from this QM half.
+[00:28:46] You take a better response for you.
+[00:28:49] But this will cause you to get the Q no value,
+[00:28:56] this QC value forever and ever.
+[00:28:58] So if you do so, the myopic strategy
+[00:29:02] is to maximize your utility in the first round.
+[00:29:05] You don't care about the first rounds.
+[00:29:07] And this might be true if the discount factor is zero.
+[00:29:10] So the solution, as we said, is 3 8h a minus c.
+[00:29:14] The profit you get is ud is 9 over 64 a minus c squared.
+[00:29:22] If you keep cooperating, you get
+[00:29:25] um half, which is a minus c squared divided by 8.
+[00:29:28] So you see you get a better utility
+[00:29:30] by deviating in the first round.
+[00:29:32] Instead of, well, 1 8h, you get 964, since, I mean,
+[00:29:36] one eighth would be eight over 64. This one is bigger. Okay, and this confirms intuition,
+[00:29:43] betrayal in the first round will be beneficial, but then you get an immediate reward, but
+[00:29:49] a future punishment. And the future punishment is kind of eternal. So if you do a myopic
+[00:29:55] choice, in the myopic choice, you get UD at the first stage, but after that you
+[00:30:00] get UC, the payoff you get in the Cournot duopoly. So the present value we already
+[00:30:05] So it's U D plus delta U C plus delta squared U C.
+[00:30:10] And so this is U D plus delta times U C
+[00:30:13] divided by one minus delta.
+[00:30:15] If you collaborate, you get always U M half.
+[00:30:19] So what's better?
+[00:30:20] U M half is this, A minus C squared over eight.
+[00:30:23] U C, if you remember, you can check my previous lectures,
+[00:30:26] was A minus C squared over nine.
+[00:30:29] And the better payoff you can get
+[00:30:30] is deviating betrayal of the cartel,
+[00:30:34] which will lead you to nine over 64, A minus C squared.
+[00:30:38] So you can compare and solve for delta when it's better.
+[00:30:42] And you see if delta is greater than or equal to
+[00:30:45] nine over 17, always getting the orange value
+[00:30:49] is better than getting the green immediately,
+[00:30:52] but then you get the yellow forever and ever.
+[00:30:55] So you see that this only works if delta is big enough
+[00:30:58] because you have to be afraid of future punishments.
+[00:31:02] But overall, we confirm the Friedman theorem.
+[00:31:04] And these numbers actually depend on the choices
+[00:31:07] that we made for the functions.
+[00:31:09] But still, whatever choices we put,
+[00:31:13] if we say that betrayal will give you something more now,
+[00:31:17] but you lose some reward in the future,
+[00:31:20] this will always lead to some conditions
+[00:31:22] where delta must be greater than or equal
+[00:31:25] to a given value to have collaboration
+[00:31:27] forever and ever.
+[00:31:29] Well, as a question, what happens if delta is less than that?
+[00:31:35] You can play well, then the green trigger does not work.
+[00:31:38] The green trigger is no longer as a game perfectly.
+[00:31:41] Yet, if you remember,
+[00:31:43] I claim that there might be some alternatives.
+[00:31:48] And the thing is, in this situation,
+[00:31:51] we can still do better than playing the Cournot value qc.
+[00:31:55] The value QC is something that you play
+[00:32:00] because it's you are afraid of the punishment.
+[00:32:04] And sorry, if you are getting the punishment,
+[00:32:07] but you might say, okay, then you know what?
+[00:32:10] I don't aim at QM half.
+[00:32:13] I aim at a less ambitious value
+[00:32:16] where the objective is one green Q star value,
+[00:32:19] which is between these two.
+[00:32:21] Actually it's the other way around QM is lower,
+[00:32:23] But utility is bigger than the one at QC.
+[00:32:27] And the green trigger will be now different.
+[00:32:30] We call it green trigger prime.
+[00:32:32] It's still a green trigger, but it does not
+[00:32:35] work to try setting collaboration at QM half.
+[00:32:39] Because QM half won't be an achievable payoff.
+[00:32:43] But a Q star that is lower than that could be.
+[00:32:47] So we say, OK, let's start at Q star.
+[00:32:49] And if we deviate, we stay at QC forever.
+[00:32:52] And this can work.
+[00:32:55] So you can check that this can be feasible.
+[00:33:02] So instead, of course, you cannot get QM half, which would be the best payoff, the
+[00:33:08] best solution to be a real cartel.
+[00:33:10] But to make a cartel that is less ambitious, they don't claim to act like some monopoly,
+[00:33:15] but they try to improve the outcome for themselves over the customers than to set
+[00:33:21] on the Kurno value. So you see that if you set this q star, whatever q star you set,
+[00:33:29] there is a deviation. The deviation is to maximize your utility which is qi times a
+[00:33:37] minus qi minus q star minus c. So deviation is always qd a minus q star minus c divided by two
+[00:33:45] And this yields a better payoff than U star.
+[00:33:49] So you might be tempted to betray.
+[00:33:51] But now the gain you get over the betrayal is lower.
+[00:33:57] Because of course, you can see that the green trigger
+[00:34:03] strategy is better if the betrayal strategy is better
+[00:34:07] if U star is divided by 1 minus delta
+[00:34:11] is better than the deviation in the first round
+[00:34:14] plus the playing the Cournot duopoly forever and ever.
+[00:34:20] And you can see, for example, that depending
+[00:34:24] on the value of delta, you can obtain a Q star that
+[00:34:29] is sustainable that has this expression.
+[00:34:32] Well, I just skip over this math,
+[00:34:34] but you see that if you have a delta between 0 and 9
+[00:34:40] over 17, you can still do better
+[00:34:43] than Qc, because you can sustain this Q star that is not Qm half. It goes from Qc to Qm half.
+[00:34:50] Then if delta is beyond 9 over 17, you can reach Qm half. This is good. But if you have
+[00:34:58] a lower delta value, you can still get a Q star that is not this ideal value, but lower than
+[00:35:05] that, but still bigger than Qc. So the message here is that in this continuous setup, we are
+[00:35:11] able to appreciate the full power of the treatment
+[00:35:14] theorem that states, if delta is close enough to one,
+[00:35:17] that's a simplest way to apply the theorem.
+[00:35:20] If delta is close enough to one,
+[00:35:22] you can obtain full collaboration.
+[00:35:24] So you set the best point, and you say, well,
+[00:35:27] we play the best point, which for the firms
+[00:35:29] is actually the worst point that you want to have.
+[00:35:31] That is the monopoly.
+[00:35:32] But for the firms, it's the best thing.
+[00:35:35] Again, we are not taking any moral stance.
+[00:35:37] For the players, the real selfish behavior
+[00:35:39] is to play the monopolist case.
+[00:35:41] So if you have delta close enough to 1,
+[00:35:44] and specifically with these values
+[00:35:46] is bigger than 9 over 17, which is slightly more than 50%,
+[00:35:50] so if delta is big enough, you
+[00:35:52] can get the monopoly cartel.
+[00:35:54] If you have a delta that is lower than 9 over 17,
+[00:35:58] you can still create a new green trigger
+[00:36:00] when the trigger is pulled not
+[00:36:02] when you deviate from the monopoly case,
+[00:36:05] because the monopoly case is not sustainable.
+[00:36:07] You will deviate always.
+[00:36:08] but you get a lower value,
+[00:36:11] but it's still better than the Cournot duopoly.
+[00:36:14] And this way you can get no deviation,
+[00:36:17] even with a delta lower than nine over seven.
+[00:36:23] Finally, there is another remark to make here.
+[00:36:27] I said in the Friedman theorem analysis
+[00:36:30] that well, there might be other punishments,
+[00:36:34] because the usual punishment is,
+[00:36:36] well, we copy in the infinite game
+[00:36:37] with one Nash equilibrium is okay,
+[00:36:41] we cooperate in some way.
+[00:36:43] The first moment we have a deviation,
+[00:36:44] the green trigger imposes us to punish each other forever
+[00:36:48] with the Nash equilibrium.
+[00:36:51] But in this situation, in this kind of game,
+[00:36:55] there are better punishment than to play the Nash
+[00:36:57] equilibrium.
+[00:36:58] In the prisoner's dilemma, this was not visible
+[00:36:59] because there were just two actions.
+[00:37:02] So one action is the collaboration
+[00:37:03] and the other one is defection
+[00:37:04] and defect defect is a Nash equilibrium.
+[00:37:06] equilibrium. But here there are strategies that are worse than the Nash equilibrium.
+[00:37:11] So you can build a carrot and stick strategy where you build cooperation even for some
+[00:37:17] delta lower than nine over 17. Delta nine over 17 is a requirement for the classic
+[00:37:24] green trigger, where the carrot is to cooperate and the stick, the punishment is
+[00:37:29] to play the Cournot duopoly forever and ever. But I can make another green trigger
+[00:37:34] where the reward is to keep playing the monopoly
+[00:37:38] and the punishment of the stick I play
+[00:37:41] is to produce another X, which is properly chosen.
+[00:37:45] It must be bigger than QC,
+[00:37:48] because remember in the Cournot setup,
+[00:37:50] the more you produce, the lower the price.
+[00:37:53] But of course, if I say,
+[00:37:55] well, then I choose X equal to infinity.
+[00:37:57] No, that's a non-credible threat,
+[00:37:59] but it might be credible to produce something more
+[00:38:03] than Qc, but not too high.
+[00:38:05] So let's see this strategy.
+[00:38:08] I have a stage one.
+[00:38:10] I start with this R. And this R is like the reward
+[00:38:13] is to produce QL half.
+[00:38:15] The punishment is to choose x, which is even bigger
+[00:38:19] than Qc.
+[00:38:19] So it's a stronger punishment.
+[00:38:22] At stage t, I say, if everybody collaborated,
+[00:38:25] so classic green trigger, as long
+[00:38:28] as we both keep collaborating, we keep collaborating.
+[00:38:31] we play the reward, the reward choice.
+[00:38:35] But the moment some player chose P, then I deviate.
+[00:38:41] Actually, in this strategy, you can prove
+[00:38:43] if they both choose to play P, I forgive them
+[00:38:48] and they start playing reward.
+[00:38:50] So this even worse, because even a betrayal
+[00:38:53] can be forgiven, I mean, a mutual betrayal.
+[00:38:55] But in every other situation,
+[00:38:58] And if I play a scenario where somebody deviates from there,
+[00:39:04] so somebody didn't play the punishment or the reward,
+[00:39:08] so they just play selfishly, then I play P forever.
+[00:39:13] You can check that if you set x equal to 2 fifths a minus c,
+[00:39:18] this is slightly bigger than qc.
+[00:39:20] qc was 1 third, so 0.333.
+[00:39:23] And this is 2 fifths, so 0.4.
+[00:39:26] slightly bigger than qc, this works for delta equal to one half, which is slightly less
+[00:39:34] than nine over 70. So actually, this needs to be adjusted, depending on the numbers
+[00:39:39] you have. But my message here is that you can have an effective punishment working even
+[00:39:46] below the classical condition found with the classical trigger with a better trigger.
+[00:39:52] get. When can you do that? When you have a better punishment available, a stronger
+[00:39:56] punishment available, but this punishment must be credible. So in this specific case we have
+[00:40:02] one such punishment which is worse than playing the Cournot case but still credible and we can
+[00:40:09] make this work for an even lower discount factor because this makes you more afraid of
+[00:40:14] the punishment. Okay and one last remark is then we have found a negative result because we
+[00:40:21] expected that there is no cartel whatsoever,
+[00:40:24] and you might have wondered, OK, and then why there are so
+[00:40:28] many antitrust interventions from the government
+[00:40:32] to punish software companies, wireless network operators,
+[00:40:37] or the like.
+[00:40:38] Well, the reason is that, according
+[00:40:39] to the static Cournot framework,
+[00:40:42] there shouldn't be any cartel.
+[00:40:44] But in reality, the companies play a dynamic setup
+[00:40:48] which they can build mutual trust with each other and they start agreeing on some dirty
+[00:40:53] cartels. So in reality the two companies can agree on building a cartel simply because they
+[00:41:03] keep playing together in the market over a long time so they build reputation. And ideally then
+[00:41:10] the government should say okay then if we find an agreement between I don't know two
+[00:41:15] were network operators or two software companies then we punish them and we give them a very high
+[00:41:21] fund. Well the job for the government and the antitrust agency is very difficult because
+[00:41:26] according to this result we have found something very negative that is if the company bosses
+[00:41:32] are really rational players they don't even need to hold these meetings because remember
+[00:41:38] this kind of communication what we found that is this green trigger
+[00:41:41] is something you can simply figure out by yourself.
+[00:41:45] If only you attended a game theory class.
+[00:41:48] So you don't really need to hold a meeting and say,
+[00:41:50] you know what, I can prove to you
+[00:41:51] this is a convenient strategy.
+[00:41:53] This is the reasoning that both companies
+[00:41:56] can make by themselves.
+[00:41:58] So that's a very bad situation.
+[00:42:00] This is why antitrust agencies have a difficult job
+[00:42:05] ahead of them and why, I mean,
+[00:42:07] the companies can fight back the sentence
+[00:42:09] and say, well, I don't like this fine because you can't prove it was in a cartel, it was just coincidental.
+[00:42:15] It might be, they might be right and they have well-paid lawyers to prove that
+[00:42:20] because in reality it is very difficult to have this kind of approval.
+[00:42:26] It's just one thing you can prove by, you don't need to prove it.
+[00:42:31] It's something that happens naturally.
+[00:42:33] It's just repetition. It's a quite natural outcome.
+[00:42:36] You don't need to communicate, you don't need what is called a chip talk, like an exchange
+[00:42:41] of messages between the two companies.
+[00:42:43] It's all something that takes place in the head of the CEOs.
+[00:42:48] So we just have to hope that the bosses, the CEOs of the companies are not as smart
+[00:42:52] to figure out it's convenient for them to establish a cartel, because that would
+[00:42:56] be a very good strategy for them.
+[00:42:59] And it will be also difficult to prove that it was intentional, it was just coincidental.
+[00:43:03] And actually on this bad note we end this lecture. Of course you are free to
+[00:43:10] apply this in more in different setups. While the moral implications are not so
+[00:43:15] staggering it can be better to see if there is a way to establish
+[00:43:19] cooperation quite naturally without any need for communication in network
+[00:43:24] communication or in distributed systems.

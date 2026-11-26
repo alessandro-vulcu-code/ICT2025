@@ -1,0 +1,358 @@
+[00:00:00] Welcome to this third and last part of this lecture on game theory.
+[00:00:05] My name is Leonardo Badia and I'm the lecturer for this course. We finally see this application
+[00:00:11] which is not as important as the previous parts where we saw some very nice and relevant
+[00:00:18] theoretical results but this can be useful for applications because in particular we discussed
+[00:00:25] that, well, from the application perspective,
+[00:00:29] reputation is important,
+[00:00:31] especially online reputation can be important
+[00:00:33] because the idea whether to trust an agent
+[00:00:37] in an online setup very much depends
+[00:00:40] on whether we think this is a hacker
+[00:00:42] or a collaborative agent.
+[00:00:44] At the same time,
+[00:00:45] we just saw that repetition builds cooperation.
+[00:00:49] Because if we repeat the game long enough,
+[00:00:51] we can establish some cooperation patterns.
+[00:00:53] And this can be associated to reputation because in reality, well, if you live in a society,
+[00:01:00] you probably collaborate with the society members the moment you arrive there, because
+[00:01:06] the society is long established before that.
+[00:01:08] So you collaborate with them, think of the relationship you can have with the academic
+[00:01:12] community.
+[00:01:13] Why would you consider prestigious to work with a very famous professor?
+[00:01:18] Well, because the very famous professor is long enough in the job.
+[00:01:21] and therefore he has a very good reputation.
+[00:01:25] Of course, it would be best to know
+[00:01:26] the professor is very good, not to rely on reputation,
+[00:01:28] but you know whether the professor is good or not
+[00:01:31] only after interacting.
+[00:01:33] And the same happens for the university, for example.
+[00:01:36] Many of you chose to study in Padova
+[00:01:37] because the very famous university,
+[00:01:39] because the reputation of Padova is very good.
+[00:01:42] So that is the same thing you can have
+[00:01:45] in sequential iteration in games.
+[00:01:47] So if you remember, we had a game that was a trust game,
+[00:01:52] a simple trust game where A can either trust B or not.
+[00:01:56] This is a simplified version in which A can decide
+[00:01:59] not to trust B plus ending the game or to trust N and T.
+[00:02:04] And of course, B is like crying out from below,
+[00:02:07] as we said, oh, trust me, if you trust me,
+[00:02:10] I'm gonna pick C.
+[00:02:12] And C is very good for both of you,
+[00:02:13] one and one instead of zero, zero.
+[00:02:14] but A doesn't trust B because A knows that B would better
+[00:02:19] prefer to choose D, which is to defect.
+[00:02:22] And defecting B will get two for himself
+[00:02:25] and give minus one to A.
+[00:02:26] And so this is not happening.
+[00:02:28] And therefore A is just comparing zero, zero
+[00:02:30] versus minus one and two and says, well, you know what?
+[00:02:32] I don't trust you.
+[00:02:35] Okay, so once again, we have this as backward induction.
+[00:02:39] We can estimate that A doesn't trust B.
+[00:02:42] Okay, what can we say if we repeat this game?
+[00:02:46] Not that this would be a complicated version
+[00:02:48] because this is a dynamic game
+[00:02:51] and a sequential game actually.
+[00:02:53] And we can repeat this.
+[00:02:56] I mean, there's nothing that forbids us to repeat
+[00:02:58] because when we said G is a stage game
+[00:03:01] can even be this game.
+[00:03:02] But of course we need to put this
+[00:03:04] into a normal form game.
+[00:03:07] So it is possible, we saw how to do that.
+[00:03:09] So in principle, there's nothing that prevents,
+[00:03:10] if not, well, the thing being complicated.
+[00:03:13] But there's nothing that prevents us
+[00:03:15] from transferring this to biometrics, a normal form,
+[00:03:19] and then to decide to repeat the game.
+[00:03:21] Well, if we repeat the game,
+[00:03:23] we can establish a green trigger.
+[00:03:25] Because ideally, player A can say,
+[00:03:28] well, you know what, for period one, I trust you.
+[00:03:32] I'm gonna decide to trust you.
+[00:03:34] And then I trust player B,
+[00:03:36] as long as the outcomes of the previous interactions
+[00:03:39] are T, C, meaning trust and cooperation.
+[00:03:44] Whenever there is deviation of B towards defection,
+[00:03:47] A plays B.
+[00:03:48] And of course, B chooses his best response like,
+[00:03:52] so B has only one node where he is to play.
+[00:03:55] So B strategy is once again, C versus D.
+[00:03:58] So the game is still very simple in that
+[00:04:00] in the stage game, the strategy of A is N or T
+[00:04:03] and the strategy of B is C and D.
+[00:04:05] Same as before, even though the game
+[00:04:06] is not really symmetric, this is a kind of setup
+[00:04:08] where you have a first player and a second player.
+[00:04:13] But the strategies in this simple setup are,
+[00:04:15] well, one choice and one choice.
+[00:04:17] So no particular complicated intervals.
+[00:04:20] So you can see that the best strategy
+[00:04:22] for player B is to always play C.
+[00:04:25] Because to always play C gives payoff this always one.
+[00:04:31] So of course B can take D
+[00:04:34] and it does not really matter what strategy is.
+[00:04:37] I mean, the strategy would be D because B only has one node to choose, but in the dynamic version,
+[00:04:44] in the repeated version, B can choose even to play D the first time, and then something else
+[00:04:48] in the others, right? So the strategy of B is to decide what to do in the first game,
+[00:04:53] and then what to do in the other games if he has the opportunity to play.
+[00:04:57] So the strategy of B here is D initially, or C initially. Well, if it's C initially,
+[00:05:03] then it can be played to be over C.
+[00:05:06] There is no point in deviating afterwards.
+[00:05:08] So it's either over C,
+[00:05:09] the meaning for strategies of B,
+[00:05:10] let's say always C,
+[00:05:12] so to play C the first time
+[00:05:13] and also the second one,
+[00:05:14] the third one, and so on,
+[00:05:15] or to play D the first time,
+[00:05:17] and then it really doesn't matter.
+[00:05:19] There are actually infinitely many strategies,
+[00:05:21] beginning with D,
+[00:05:22] because one strategy would be D, C, C, C, C, C,
+[00:05:24] or D, D, D, D, D, D, D.
+[00:05:26] They're all different strategies in that B can plan,
+[00:05:29] well, you know what?
+[00:05:29] The first time I'm gonna defect.
+[00:05:31] After that, I'll cooperate. Well, or B can plan instead to always defect. Well, you know,
+[00:05:37] if the first is defection, and then A plays a second trigger, it doesn't really matter
+[00:05:42] what's the B strategy, whatever it is, but if it starts with D, then A is going
+[00:05:47] to play N forever, so B won't have a second chance to play. So this means that
+[00:05:52] the only meaningful strategy for B is C, always C, because every deviation, meaning
+[00:05:57] at a certain point you start playing B,
+[00:05:59] he won't get or she won't get any payoff.
+[00:06:01] So you see that he will get or she will get zero forever.
+[00:06:05] So it is safer to say that always C is better
+[00:06:11] because one is better than zero.
+[00:06:13] But wait a moment, if B deviates to D, he gets two.
+[00:06:18] He gets two in the present,
+[00:06:19] but will get zero in the future.
+[00:06:21] So it all depends on the discount factor.
+[00:06:23] And this is why we said that either discount factor
+[00:06:26] is greater than one half,
+[00:06:28] it is more convenient for B to stick with collaborating.
+[00:06:31] Because collaborating always get one plus one delta
+[00:06:34] plus one delta square and so on.
+[00:06:36] So overall B gets one over one minus delta.
+[00:06:40] If B cooperates, he gets two in the first round,
+[00:06:42] but then he always gets zero.
+[00:06:44] So two plus zero delta plus zero delta square,
+[00:06:46] so two in short.
+[00:06:48] And as it's obvious, this is convenient
+[00:06:51] only if the discount factor is less than one half.
+[00:06:53] If the scan factor is so small,
+[00:06:55] then the present gain is more convenient
+[00:06:58] than the future reward.
+[00:06:59] So it's best to deviate to the effect.
+[00:07:02] Otherwise, B will play C forever.
+[00:07:05] Okay, now this is the game we have,
+[00:07:07] and that's easy to analyze.
+[00:07:09] There is no reputation here.
+[00:07:11] But let's say there is a first game
+[00:07:14] in which we change the rules.
+[00:07:16] We allow a third player, we call it G,
+[00:07:18] and G is a guaranto.
+[00:07:20] The guaranto G does basically nothing.
+[00:07:22] he only gives an aura of good reputation to be.
+[00:07:27] And this gives an incentive to trust be even more.
+[00:07:33] And you can think of, I don't know,
+[00:07:35] the university rankings or the prestige of a conference.
+[00:07:39] So in general, whenever you have this,
+[00:07:41] there are some activities, some businesses
+[00:07:44] where you just certify that a given player is reputable.
+[00:07:49] Okay, so how does this work?
+[00:07:52] Because G is of course a selfish player
+[00:07:54] and as everybody else in the world
+[00:07:57] does nothing for nothing.
+[00:07:59] So G is available to give this certified reputation
+[00:08:03] to B in exchange for part of the reward
+[00:08:06] because G basically claims, well,
+[00:08:08] if I give you reputation, you will get more rewards.
+[00:08:11] So you give a share of it to me.
+[00:08:14] So for example, the idea would be B gives G
+[00:08:19] an insurance of two. So B's payoff is initially down by two. Then if A trusts B, but B defects,
+[00:08:28] well G keeps the insurance. Otherwise G returns the insurance to B and keeps just a small
+[00:08:35] fraction for the service. So B is depending on whether B is to be trusted or not, if B is
+[00:08:42] honest B will pay 0.1 so one tenth of utility for the service and so his utility will be decreased
+[00:08:50] by only one tenth but if B is really not to be trusted then G will keep the entire insurance.
+[00:08:57] Okay so with G in the game we have a preliminary charge of B so the game is really changed in that
+[00:09:04] you see G doesn't have any action actually so this is a kind of game where we have three
+[00:09:08] players and the last is G's payoff,
+[00:09:10] but G does not have a say in the game,
+[00:09:13] it's just by design, a player that gets
+[00:09:15] some utility as externalities,
+[00:09:16] depending on what B does and what A does.
+[00:09:19] But now, B has two choices instead.
+[00:09:21] So we need to modify the game,
+[00:09:23] and we have this previous tree embedded in a bigger tree.
+[00:09:26] The first choice is now made by B.
+[00:09:28] B can decide whether to use G or not.
+[00:09:31] So if B decides to use G,
+[00:09:33] we have three as before,
+[00:09:35] sorry, not to use G,
+[00:09:37] we have the same tree as before.
+[00:09:38] So with a difference that the payoff of G is always zero,
+[00:09:42] so this is the previous tree.
+[00:09:44] If B decides to use G, we have some slight modification
+[00:09:47] in that if A decides not to trust B,
+[00:09:52] well, the payoffs are minus 0.1 and plus 0.1,
+[00:09:57] because, well, B was maybe to be trusted,
+[00:10:00] there is no way to say,
+[00:10:01] so G is forced to give back the insurance to B
+[00:10:04] because B didn't prove to be a bad guy.
+[00:10:08] If A trusts B and B collaborates,
+[00:10:11] the payoffs are same as before,
+[00:10:12] but now B is still down by 1 10th and G gets 0.1.
+[00:10:16] If B is not to be trusted, so B defects,
+[00:10:20] the payoffs are minus one, zero, and two.
+[00:10:24] Okay, now, this is once again a sequential game.
+[00:10:27] So what should we do?
+[00:10:29] Well, we should say that this is a subgame
+[00:10:30] perfectly even now, because, well,
+[00:10:33] the strategy is now the equilibrium path becomes B uses G, A decides to trust B, and B decides to
+[00:10:40] cooperate. Why can we say that? Well, we can find that through backward induction. Between these
+[00:10:46] two branches, C and B, we see B has an incentive to collaborate. Between these two branches
+[00:10:52] instead, B has no incentive to collaborate, so B will defect. A now doesn't trust B in this
+[00:10:58] branch while A does trust B in this branch.
+[00:11:01] And therefore, B looks that in this branch,
+[00:11:04] he will be trusted by A.
+[00:11:05] In this branch, he wants to be trusted by A.
+[00:11:08] So this will result in one, 0.9, 0.1.
+[00:11:11] Remember, B looks at his payoff, which is 0.9.
+[00:11:14] This branch of the tree will result in 0, 0, 0.
+[00:11:17] So B prefers this.
+[00:11:18] So this left, sorry, right-hand branch is discarded
+[00:11:22] and B uses G.
+[00:11:24] And this is kind of magic
+[00:11:25] because you don't need the repetition.
+[00:11:27] So this can be seen in two ways.
+[00:11:30] Well, one is that if we change the game,
+[00:11:31] we can tweak the reputation and have the certifier.
+[00:11:35] Also, we can have the same effort
+[00:11:37] of a grantor prior repetitions,
+[00:11:40] because we saw that the ultimate result
+[00:11:42] is B keeps collaborating
+[00:11:45] if there is enough room for repetition.
+[00:11:47] So there must be an infinite time horizon.
+[00:11:49] And of course the players know
+[00:11:50] there is an infinite time horizon.
+[00:11:52] So they know they're not tempted to betray
+[00:11:54] because they will face an infinite punishment.
+[00:11:57] eternal punishment. On the other hand, if there is no infinite punishment, no eternal punishment,
+[00:12:04] but there is a quaranta that gives an immediate punishment to B, then this is also working. So
+[00:12:10] you see that you can have both, and in reality you can really claim that the availability of
+[00:12:16] infinite repetitions is like B being able to use a quaranta. Well let's see, so this is
+[00:12:23] the equilibrium path, and you see well the subgame perfect equilibrium, this is the result,
+[00:12:26] But the equilibrium path is just this.
+[00:12:28] And to really say what is the subgame perfect equilibrium
+[00:12:30] playing member, you must also tell
+[00:12:32] what do the players play in the other nodes,
+[00:12:34] even those who don't come into the equilibrium path.
+[00:12:36] So for example, B here decides D. So strategy of B
+[00:12:39] is actually to use G to select C in this node
+[00:12:42] and to select D in this node.
+[00:12:43] That's the full strategy of B. If you just say CTC is not
+[00:12:48] the subgame perfect, it is not well specified
+[00:12:50] because you have to say what happens here, and so on.
+[00:12:52] Okay, now let's finally make this last remark.
+[00:12:57] Well, how are we sure that G exists in the first place?
+[00:13:02] Because one question you can have
+[00:13:03] if you are reading and speaking and say,
+[00:13:05] okay, I agree, repetition works
+[00:13:07] like the presence of a grantor,
+[00:13:09] but how can we be sure that the grantor does the job?
+[00:13:13] You actually know, you read sometimes of some broker
+[00:13:16] that flees with the money of the clients
+[00:13:19] or some institutions for, well, certifications of quality,
+[00:13:23] that are actually a big scam.
+[00:13:25] So how can we be sure that G returns the insurance to B?
+[00:13:29] Because in principle, B can, I mean,
+[00:13:32] if you remember, dynamic is G doesn't come into play
+[00:13:35] because G always automatically gives back
+[00:13:37] the review to G, to B.
+[00:13:40] Well, who says that?
+[00:13:41] Maybe we can model a strategic interaction
+[00:13:43] on behalf of G.
+[00:13:44] So we can say, well, maybe G keeps the reward.
+[00:13:48] So maybe G is keeping the reward for himself.
+[00:13:51] So there would be another move.
+[00:13:53] And well, let's see what does G do.
+[00:13:57] If we have this, this can be one,
+[00:14:00] I mean, it depends on the establishment budget.
+[00:14:03] So if we model like here,
+[00:14:05] G has the option to further keep the insurance or not.
+[00:14:11] Well, of course, since G is the last one to move,
+[00:14:13] if this is a single shot game,
+[00:14:15] Well, there is no incentive for G to be lawyer.
+[00:14:18] G can betray, I mean, B didn't betray A,
+[00:14:21] but actually B can anticipate that G will betray
+[00:14:24] the entire business because G can be better off
+[00:14:27] by keeping the reward on itself.
+[00:14:29] So how can we be sure that in this orange node,
+[00:14:33] G will give the insurance back to B
+[00:14:35] without, I mean, the small fee?
+[00:14:37] And I mean, how can we be sure that G just gives a fee
+[00:14:40] and not a bigger fee or even the entire insurance?
+[00:14:44] Well, of course, if this is static and played one shot, G has a dominant strategy, which
+[00:14:50] is to be distrustful and keep the insurance. But of course, if the game is repeated, it's
+[00:14:57] now G turn to desire to establish a reputation as a good warrantor. Because if G acts as
+[00:15:04] a warrantor and leaves and betrays his clients, probably he won't get any client
+[00:15:09] anymore. So the idea is that G says well you know what I will keep my keep be honest because this
+[00:15:17] way I will keep being business. Well you can compare the two strategies you can see that
+[00:15:22] the myopic G will keep insurance and gets no clients afterwards so he escaped with all the
+[00:15:29] money and gets two. The cooperative quaranto stays in business and keeps getting 0.1 but
+[00:15:35] I mean 0.1 is very small but he was gonna keep this forever so the payoff of in the long term
+[00:15:41] would be 0.1 divided by one minus delta. Well you can see that the guarantro can decide to cooperate
+[00:15:47] if delta is greater than 0.95 which is a very big value. I mean delta must be lower than one
+[00:15:52] but must be very close to one and this also gives another hint of how to build a very
+[00:15:59] established reputation. Of course you can establish a very good reputation over time
+[00:16:04] even if your gain in doing so is very small,
+[00:16:08] as long as you stay in operation for long.
+[00:16:10] So this can be thought as a general rule,
+[00:16:13] like in general, in business,
+[00:16:16] very established companies that operate on the market
+[00:16:19] since long are generally more reputable
+[00:16:22] than newcomers.
+[00:16:24] And the same can happen for universities, for example.
+[00:16:26] You can say, well, you can claim,
+[00:16:28] oh, my university is very good
+[00:16:29] and the reputation is very good.
+[00:16:30] Why? Because it's almost 800 years old.
+[00:16:33] So we can claim that we have a long established reputation
+[00:16:37] that you're not a university that just gave us fake diplomas.
+[00:16:40] Well, a newly established university
+[00:16:43] can be maybe very good, but you don't know for sure
+[00:16:46] because the reputation is established
+[00:16:49] since a very little time.
+[00:16:52] Of course, in general, this is not a guarantee.
+[00:16:54] I'm not saying that a long established reputation
+[00:16:57] is a guarantee in this sense,
+[00:16:59] because you can see like very well husband and wife can break up because the husband cheated
+[00:17:06] even though they were married say from I had a 50-year long marriage it can happen of course
+[00:17:13] this is not really a guarantee in any sense because of course I mean any company that is
+[00:17:18] in operation since long must have started somewhere but in reality if you see I mean a
+[00:17:24] company that's operating in the business since a long time,
+[00:17:28] it can be a good indicator it is to be trusted.
+[00:17:31] And this is especially useful for universities,
+[00:17:33] of course, because you might then defend
+[00:17:37] the reputation of the University of Padua
+[00:17:41] by saying, well, you know what is in operation
+[00:17:43] since eight centuries,
+[00:17:44] so it must be certainly a good university.
+[00:17:48] This is a good indicator of a good reputation,
+[00:17:51] because you can remember reflect the parameter delta connected to the
+[00:17:57] probability of staying in business in the next round so the closer delta to
+[00:18:02] one the closer you are to this grantor to be in operation for a long time so
+[00:18:08] of course this does not guarantee you anything if you forgive me for the
+[00:18:14] mismatch between the grantor and the guarantee here but the guarantee you
+[00:18:18] look for is that just a reassurance in that being that the grantor is not that
+[00:18:24] has been in operation since long it must be that his Delta is close to one
+[00:18:29] and therefore you can more reliably trust the grantor knowing that he want
+[00:18:35] to deviate because he will ruin business that he's keeping active for
+[00:18:40] so long and of course this is might be a nice application might be useful
+[00:18:45] for establishing the reputation of your university titles but also you can apply some similar
+[00:18:52] reasoning in network operations because in that operation users can go and so the longer they're
+[00:18:57] supposed to stay in the network the better for the reputation of course. And this is
+[00:19:02] a nice application that I wanted to show you but it's actually the last topic for today and
+[00:19:06] this concludes this lecture.

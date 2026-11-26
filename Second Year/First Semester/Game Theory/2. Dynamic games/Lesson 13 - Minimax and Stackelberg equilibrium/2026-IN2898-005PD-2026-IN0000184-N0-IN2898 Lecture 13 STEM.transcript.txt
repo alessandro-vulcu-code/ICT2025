@@ -1,0 +1,778 @@
+[00:00:01] Welcome to this lecture of Game Theory. I'm Leonardo Badia, the lecturer of this course.
+[00:00:06] In today's lecture, we deviate a bit from the main track once again, because I wanted to
+[00:00:12] include this topic of minimax, which is not normally found in game theory books, because
+[00:00:19] game theory books are generally thought for economists, and they keep a very theoretical
+[00:00:24] stance on how to solve problems and practical ways of identifying the solution. But in reality,
+[00:00:31] There is this approach called Minimax that actually predates game theory. It can be found
+[00:00:38] in many optimization problems. And it's also a connection to some branches of artificial
+[00:00:43] intelligence. So for all of you machine learning aficionados, it can be an interesting
+[00:00:48] topic.
+[00:00:50] It's actually the way it was used to develop the computer playing chess that defeated
+[00:00:57] the world champion in the 80s and Minimax in general
+[00:01:01] is something that I even studied when I was a student.
+[00:01:04] And when I was a student, machine learning was
+[00:01:06] not even a thing, but there were still
+[00:01:09] artificial intelligence concepts like this one.
+[00:01:12] So I think it is good to give you some background
+[00:01:14] on the theoretical results of Minimax
+[00:01:17] because they might find application
+[00:01:19] in many engineering problems.
+[00:01:21] And especially in certain kinds of engineering problems.
+[00:01:24] But that could be a thing that saves you
+[00:01:26] for solving a problem and finding the solution to your game is a very useful approach. And since it
+[00:01:32] is generally not included in game theory courses, I thought it would be best to have a lecture
+[00:01:38] devoted to it. So let's see what Minimax is about. And then we start with some definitions
+[00:01:43] that actually, well, they don't relate to the definitions we saw previously. So instead of
+[00:01:48] redefining strategies or Nash equilibrium once again, I will take some definitions and then
+[00:01:52] and we take another route to connect
+[00:01:55] to Nash equilibrium at the end.
+[00:01:57] So what's Maximin?
+[00:01:59] Let's consider a two-player game.
+[00:02:01] And by two-player, I mean it's I versus minus I.
+[00:02:04] So in general, this can even be a game
+[00:02:06] with more than two players.
+[00:02:07] And in that case, I abstract all the other players
+[00:02:10] but play I with a notation minus I.
+[00:02:13] So for the sake of simplicity in the following,
+[00:02:16] I will speak of two players,
+[00:02:18] but actually if you happen to have more than two players,
+[00:02:21] you can use the same definitions by considering that minus i is not a single player, it's more
+[00:02:26] than one player. Okay, nothing changes. Okay, so let's define this function f i,
+[00:02:32] not better classified for now, but it's a function from s i to the set of real numbers.
+[00:02:37] And s i is the set of strategies of player i. So it associated, it associates a strategy s i
+[00:02:42] to what? To the minimum computed over s minus i of the utility of i when playing s i. So
+[00:02:49] So basically, this Fi is the worst it can happen
+[00:02:54] if player i chooses Si.
+[00:02:56] The worst it can happen from player i's perspective.
+[00:02:59] So the minimum of ui.
+[00:03:01] Okay, this of course depends on the strategies
+[00:03:04] of the other players.
+[00:03:05] So this is like player i saying,
+[00:03:07] what's the worst it can happen?
+[00:03:08] Player i is playing very pessimistic here.
+[00:03:10] He's taking a conservative approach.
+[00:03:12] And I don't want to put again my wife as an example,
+[00:03:16] but yeah, when you plan a trip,
+[00:03:19] You might have a friend or a partner like my wife, and when you plan a trip, she's always
+[00:03:24] considering the worst that can happen. She's very pessimistic. So if you have three possible
+[00:03:29] destinations and one destination is a very adventurous trip, she says, oh no, no, no.
+[00:03:35] Because I said, it can be amazing. The best that can happen is that we have a lot
+[00:03:39] of fun. Yeah, but the worst that can happen if we go there is that we are robbed
+[00:03:44] or we get hurt or whatever.
+[00:03:46] So don't take that.
+[00:03:48] So it's better to go to a boring place
+[00:03:50] where not much can happen,
+[00:03:52] but the worst that can happen is that you are,
+[00:03:55] well, sipping drinks while sitting on the beach.
+[00:03:58] Okay, fair enough.
+[00:04:00] Let's go there.
+[00:04:01] So that is the worst that can happen.
+[00:04:04] Okay, so the strategy of my wife would be
+[00:04:06] that she chooses based on the worst that can happen,
+[00:04:10] so the minimum payoff you can get when you play Si,
+[00:04:13] she chooses the strategy S I star,
+[00:04:17] which is the one maximizing the outcome in this bad case.
+[00:04:21] So that is called the Maximinimizer
+[00:04:24] because you see, you take the maximum of the minimum,
+[00:04:30] you take the maximum of the possible minima
+[00:04:32] and of course the minima are computed
+[00:04:34] on what the other players choose
+[00:04:37] because you don't control that.
+[00:04:38] So you just take a conservative approach
+[00:04:40] and you say, what's the worst that can happen
+[00:04:41] if I play Si and then you take the one Si that gives you the maximum of that.
+[00:04:48] This is called the maximum, well the payoff you get in that case is called the maximum
+[00:04:53] or the security payoff and the strategy achieving that is called the security strategy.
+[00:04:58] So the security strategy is just a conservative approach which is okay if I'm very pessimistic
+[00:05:03] I'm afraid that everything will go bad then I choose the strategy of mine
+[00:05:10] that gives me the highest payoff in the worst case.
+[00:05:13] So that would be the maximin, okay?
+[00:05:17] And this concept of maximizing the minima
+[00:05:19] is something that you find even in other branches
+[00:05:21] of blind mathematics.
+[00:05:23] It's basically the strategy you choose
+[00:05:25] for playing chess, for example,
+[00:05:29] because you plan different actions
+[00:05:31] and then you have a given action that might be very good
+[00:05:35] if the other player does a stupid thing, like you win.
+[00:05:39] But, on the other hand, if the player does the right move, he will win or she will win
+[00:05:44] and then you lose. So you don't play that, right? You always assume that your opponent
+[00:05:48] is smart when playing chess, because chess is a game for smart people. So you do the
+[00:05:53] thing that minimizes your damage or maximizes the bad payoff you can get, assuming that
+[00:06:00] the other players will play smart in response to your move.
+[00:06:05] Okay, another entirely different concept is Minimax.
+[00:06:09] The name is similar, the procedure is also similar,
+[00:06:12] but the meaning is entirely different.
+[00:06:14] To understand what Minimax is,
+[00:06:16] first of all, we know it is defined as a function,
+[00:06:18] well, we start from a function fi
+[00:06:20] that is defined from the set s minus i to i.
+[00:06:24] And fi of this s minus i,
+[00:06:26] so you have this blue value,
+[00:06:27] which is a possible strategy of your opponents
+[00:06:29] of the other players,
+[00:06:30] you compute the maximum over your strategies.
+[00:06:34] So you basically compute what we know
+[00:06:36] to be the best response.
+[00:06:38] So fi is the payoff of the best response,
+[00:06:40] which might not be unique, but the maximum is one number.
+[00:06:44] So you can compute the minimum of fi of s minus i.
+[00:06:50] This computed over s minus i
+[00:06:51] because this is a function of s minus i.
+[00:06:53] So this would be the minimum of the maxima.
+[00:06:56] And this is called the minimax,
+[00:06:58] analogously to what we defined for the maximin.
+[00:07:00] Okay, well, what's the meaning here?
+[00:07:03] The meaning is that if player i could move after minus i,
+[00:07:07] well, observing what player i,
+[00:07:10] what player minus i did,
+[00:07:11] then the minimax would be the minimum payoff
+[00:07:14] guaranteed to player i.
+[00:07:15] So to be clear, I'm not saying player i,
+[00:07:19] well, if player i looks at what player minus i did
+[00:07:22] beforehand, before moving,
+[00:07:24] then of course play i not being stupid, being rational,
+[00:07:28] play i will choose a best response.
+[00:07:30] So maximizing play i's way off.
+[00:07:33] So now assume that we don't know, we are play i,
+[00:07:37] we don't know what our opponents play yet.
+[00:07:40] But we know that the moment they decide,
+[00:07:43] we know beforehand.
+[00:07:45] So this is like saying,
+[00:07:46] we are gonna play rock, paper, scissors,
+[00:07:49] or playing a card game,
+[00:07:50] but we pick on the cards of the opponent
+[00:07:53] And then we know we will be able what card is going to play.
+[00:07:58] So let's say I'm playing cards with you,
+[00:08:00] and you have a mirror behind you.
+[00:08:03] So you haven't picked your card yet.
+[00:08:05] So I don't know what your move will be.
+[00:08:07] So I cannot compute my best response.
+[00:08:09] But I know that the moment you choose your move,
+[00:08:14] you think I won't be able to know.
+[00:08:17] But actually, I will be knowing the card you choose.
+[00:08:22] So, I will plan ahead of time at best response to your move, whatever it is.
+[00:08:27] So, in that case, when I'm considering that, I'm thinking, okay, you know what, this means
+[00:08:32] I'm guaranteed to get at least the minimax, because if I'm super, super lucky, I know
+[00:08:39] what you play, and that's a very stupid thing for you, a very good thing for me,
+[00:08:43] and then I get a huge payoff.
+[00:08:45] Or maybe I know what you're going to play, and too bad, I know that what you're playing
+[00:08:50] is not a good thing for me,
+[00:08:51] but I will maximize my payoff anyways, given your move.
+[00:08:56] So I'm guaranteed,
+[00:08:58] but once I know that I'm gonna know your move,
+[00:09:02] I know I'm guaranteed to get at least the min max, okay?
+[00:09:07] Very well, so let's see how it can be in this game.
+[00:09:10] And notice the min max and the max min,
+[00:09:13] you see, are both functions of UI.
+[00:09:15] You don't need to know what the U minus I is.
+[00:09:20] In both definitions, all UIs are involved.
+[00:09:22] So we can define this for a game
+[00:09:23] where I don't even put the utility of player B.
+[00:09:26] I can compute the max-semin and the minimax
+[00:09:29] to play A without knowing the utilities of player B.
+[00:09:33] So how to compute, first of all, the max-semin?
+[00:09:36] Well, you compute this value F
+[00:09:39] where you take the minimum for every row.
+[00:09:43] because play A is asking, what can happen if I play T?
+[00:09:47] Well, the worst that can happen, I get three.
+[00:09:49] And what if I play D?
+[00:09:50] The worst that can happen is one.
+[00:09:52] So it's three and one for each row.
+[00:09:55] And conversely, F is the maximum for each column
+[00:09:57] because play A is anticipating that if play B plays L,
+[00:10:02] play A will be able to answer T.
+[00:10:05] I mean, if play A knows play B plays L.
+[00:10:08] So play A will play T.
+[00:10:09] If player B knows, says he will play C and play A knows it,
+[00:10:15] play A will anticipate this and play D.
+[00:10:18] And similarly, the best response to R is T giving four.
+[00:10:22] Okay, so the maximum is the maximum of these values,
+[00:10:26] which is three, because it means that play A,
+[00:10:29] if play A is really afraid to get a low payoff
+[00:10:32] because he's very pessimistic, play A can say,
+[00:10:35] well, then let's play T.
+[00:10:36] T is the least risky of my two strategies,
+[00:10:40] T and D, my pure strategies, T and D,
+[00:10:42] because I can get at least three.
+[00:10:45] I secure myself a minimum payoff of three.
+[00:10:49] Okay, and the security strategy will be T.
+[00:10:51] Instead, the minimax would be four,
+[00:10:54] because if play A instead is reassured
+[00:10:57] and say, well, don't worry.
+[00:10:58] You don't have to play your security strategy
+[00:11:00] because you know what?
+[00:11:01] Once play B decide your move, we will tell you.
+[00:11:04] So you will know what player B has chosen.
+[00:11:08] So you can play always the best response.
+[00:11:11] Then in this case, play A is certain to get at least four.
+[00:11:15] Play A does not know yet what player B is gonna choose,
+[00:11:19] but play B knows that he or she will get at least four.
+[00:11:24] And clearly is kind of obvious that for every play I,
+[00:11:28] the maximum of I is less than
+[00:11:30] or equal to the minimax of I, right?
+[00:11:33] Why so?
+[00:11:33] Well, in this example, we have strictly less than, but of course, one is the maximum of
+[00:11:39] the minima and the other one is the minimum of the maxima. So they can be the same in
+[00:11:44] certain situations and we will see they are very relevant cases. But in general,
+[00:11:49] the best thing that can happen if you are very unlucky is still worse than the worst
+[00:11:56] thing you can gain if you know your opponent's move because you always play a best response,
+[00:12:02] Okay, also you can prove,
+[00:12:04] so this is kind of obvious from, I mean,
+[00:12:06] the mathematics I just explained.
+[00:12:08] And also there is another condition
+[00:12:09] that you can easily prove
+[00:12:11] that if a joint strategy S is a Nash equilibrium,
+[00:12:14] then for every play I,
+[00:12:16] UI of S is greater than or equal to the mini max of I.
+[00:12:20] Why so?
+[00:12:21] Well, because UI of S is a best response.
+[00:12:25] I mean, the definition of the Nash equilibrium
+[00:12:26] is that every player plays a best response,
+[00:12:29] including play I.
+[00:12:30] So PlayEye plays one possible best response.
+[00:12:33] The minimax is the worst of the best responses.
+[00:12:37] I mean, they're all best responses,
+[00:12:39] but among all of them, we get as the minimax,
+[00:12:43] the one, I mean, the payoff of the one
+[00:12:45] that gives the minimum best response payoff.
+[00:12:49] This doesn't have to be the payoff of the Nash equilibrium.
+[00:12:52] The Nash equilibrium is just any one
+[00:12:54] of the best responses, not necessarily the worst one.
+[00:12:57] So for this reason, UI of S must be greater than
+[00:13:02] or equal to the minimax.
+[00:13:04] Seen otherwise, if I'm claiming that the minimax
+[00:13:08] is bigger than UI of S, which would contradict this,
+[00:13:12] I'm also finding a contradiction in this
+[00:13:15] being a Nash equilibrium, because I've just found
+[00:13:18] a deviation I would like to take.
+[00:13:21] Because if the minimax is bigger than,
+[00:13:23] strictly greater than UI of S,
+[00:13:25] then this means there is a best response you can play
+[00:13:30] and all best responses have a payoff
+[00:13:32] better than the Nash equilibrium.
+[00:13:34] And this means the Nash equilibrium
+[00:13:36] is not really a Nash equilibrium
+[00:13:37] because whatever the situation is,
+[00:13:40] there is always a deviation towards
+[00:13:42] a unilateral deviation for player I
+[00:13:44] towards a better payoff.
+[00:13:47] Okay, so let's see this as an example.
+[00:13:49] We already observed that in this game,
+[00:13:51] the maximum of A was less than the minimax of A.
+[00:13:55] There were three and four.
+[00:13:57] Now, you see what I did here, I completed the table.
+[00:14:00] Because to compute the maximum and the minimax,
+[00:14:02] you don't need the second number.
+[00:14:04] There could be any number, so I just put a dash.
+[00:14:06] But if you want to write down the Nash equilibria,
+[00:14:09] you need all of them.
+[00:14:10] For the Nash equilibria to be computable,
+[00:14:13] you need both values.
+[00:14:14] Because Nash equilibria instead is a concept
+[00:14:16] that depends on two players.
+[00:14:18] maximum and minimax only on one player utility.
+[00:14:22] So you can see that this game specifically
+[00:14:23] has two Nash equilibria,
+[00:14:25] which are TL and DC, you can check,
+[00:14:28] and a standard procedure to check
+[00:14:30] that you know how to do that.
+[00:14:32] So you see that they both have a payoff
+[00:14:35] greater than the minimax, strictly greater than the minimax.
+[00:14:38] And you can also check what happens for B,
+[00:14:40] that's a nice exercise, I leave it to you.
+[00:14:43] Let's see another example.
+[00:14:45] Here we have different numbers.
+[00:14:46] We only have one Nash equilibrium, which is DL.
+[00:14:51] Well, here you see that DL gives five and four.
+[00:14:55] If you check, the mini max and the maximin
+[00:15:00] are both five for play A.
+[00:15:03] So for play A, the payoff at the Nash equilibrium,
+[00:15:07] which is five because the Nash equilibrium
+[00:15:08] is five is this one, DL giving five, four.
+[00:15:11] The payoff is five.
+[00:15:12] And also this is equal to the maximin.
+[00:15:15] Let's check it.
+[00:15:15] the maximum is five because what's the worst that can happen?
+[00:15:20] Here you get three and here you get five.
+[00:15:22] So the best in the worst case is five.
+[00:15:26] Given that the maximum is five
+[00:15:28] and the payoff of the Nash equilibrium is also five,
+[00:15:30] it means for the theorem of the two guards,
+[00:15:36] the minimax is comprised between this,
+[00:15:38] is switched between them.
+[00:15:40] So it is five two and you can check it is five.
+[00:15:43] you can see, well, the best response when play B is playing L is to play D, giving five,
+[00:15:49] best response to C is giving six, and best response to R is giving seven. What's the
+[00:15:54] minimum of these three is five. So the minimax is also five, as was expected. As a result,
+[00:16:00] they all three are equal. And let's see yet another example, because now you have
+[00:16:06] some ideas. Okay, what if I happen to have these two that are equal, the maxi mean equal
+[00:16:12] to the minimax. They are the same. So maybe this is also the Nash equilibrium. That would
+[00:16:17] be a wrong reasoning and it's because if you do like that, that's not how the theorem
+[00:16:23] works. Theorem says that if the max C min, which is the left most side is equal to
+[00:16:28] the utility of the Nash equilibrium, which is the right most side, also the minimax
+[00:16:31] is comprised between them, must also be equal. It says nothing when the max C min
+[00:16:36] equals the minimax about the utility of the Nash equilibrium, which is outside the
+[00:16:40] the chain of inequality.
+[00:16:42] And let's see that this is the case in this kind of lemma
+[00:16:45] does not guarantee a Nash equilibrium
+[00:16:47] because even if you have a minimax equal to the maximin
+[00:16:52] and this is the case in this scenario,
+[00:16:54] you see play A has minimax and maximin equal to three.
+[00:16:57] You can check, well, the worst that can happen
+[00:17:00] for each row is three, two, zero, the biggest is three.
+[00:17:03] And what's the best that can happen for every column?
+[00:17:06] Four, four, three, so the minimum is three.
+[00:17:09] here the minimax equals the maximin. You can see it is the same for player B as well,
+[00:17:13] so you would expect a Nash equilibrium where you get 3-0. Not the case, because the cases where
+[00:17:19] you get 3-0 are not Nash equilibria, like this TR is not a Nash equilibrium because player B
+[00:17:25] has an incentive to deviate, and this ML also gets to 0, true, but player A has an incentive
+[00:17:31] to deviate and also player B has incentive to deviate, so that's not a Nash equilibrium. So in general,
+[00:17:35] Well, here max cmin equal to minimax for every player,
+[00:17:39] but there is no Nash equilibrium.
+[00:17:41] I mean, not even the Nash equilibrium has a bigger value.
+[00:17:43] There is not even a Nash equilibrium.
+[00:17:46] So that's not what we looked for.
+[00:17:50] And there is no, at least in pure strategies,
+[00:17:51] there is no Nash equilibrium, you can check.
+[00:17:55] Very well, so this,
+[00:17:57] let's leave this to Stu for a while,
+[00:18:00] but let's consider another definition,
+[00:18:02] which is a very special class of games.
+[00:18:04] which is called zero-sum games.
+[00:18:07] Very well, let's see this definition of zero-sum games.
+[00:18:12] Zero-sum games are actually very easy to understand
+[00:18:14] because a game is zero-sum if the two players,
+[00:18:18] i and minus i, always have opposite utilities,
+[00:18:21] meaning the sum of the utilities is zero,
+[00:18:23] hence the name.
+[00:18:25] And you see an example here.
+[00:18:27] Here, whenever play A gets minus nine,
+[00:18:29] play B gets plus nine.
+[00:18:30] Whenever play A gets plus eight,
+[00:18:32] play B gets minus eight.
+[00:18:33] So the utility of player B, which is player minus A,
+[00:18:37] is always minus the utility of player A, and vice versa.
+[00:18:41] And we saw some examples of zero sum games.
+[00:18:45] Well, we saw Austin Evans and Rock Paper Scissors,
+[00:18:49] we actually modeled them via zero sum concept
+[00:18:51] because we said, well, there is always one winner
+[00:18:53] and one loser, and we assume they bet,
+[00:18:55] I don't know, four euros.
+[00:18:57] So the winner gets plus four, the loser gets minus four.
+[00:19:00] Also chess can be seen as a zero sum game.
+[00:19:02] chess is actually a dynamic game and we will discuss why it can be considered to be a zero-sum
+[00:19:07] game in chess tournaments, at least, and let's see more in general this concept of adversarial
+[00:19:14] games. Adversarial games is actually a broader definition. You say that a game is adversarial
+[00:19:19] if you want to represent this concept that there is always one winner and one loser,
+[00:19:23] or at least every time one player improves his utility the other player decreases his utility.
+[00:19:29] So the utilities always go in opposite directions.
+[00:19:33] And of course, Zero Sum is a special game
+[00:19:35] because, a special case of this,
+[00:19:37] because it requires something more
+[00:19:38] than the simple monotonic relationship,
+[00:19:41] it also properly requires
+[00:19:42] that the utilities are identical and opposite.
+[00:19:45] But in general, you can think that,
+[00:19:47] well, Zero Sum can be just an engineering modeling,
+[00:19:50] which is convenient, and we will see why,
+[00:19:52] whenever you have this opposite desire of the players.
+[00:19:56] And keep in mind that this is most commonly thought when you think of games.
+[00:20:01] When you think of games in real life, you think of competition when there is one winner and one loser.
+[00:20:06] This is not always the case.
+[00:20:08] Because we saw certain games where the two players have just different objectives, but they don't play against each other.
+[00:20:16] So despite the name, for example, the Battle of Sexes is, well, it is a battle in that the two players have different objectives.
+[00:20:22] and each one of them wants to put the game towards their own objective but in
+[00:20:27] the end they are cooperative players. The two, well Anne and Brian, the two
+[00:20:32] fiancées in the battle of sexes, they would like to cooperate and go
+[00:20:36] together at the movies. They don't like to go in opposite directions. So
+[00:20:40] we also have games where there is no adversarial aspect and this is very
+[00:20:45] important. Keep this in mind because often it's also common to speak of a
+[00:20:50] and the opponents, but the opponents might not really be adversaries. They're just other
+[00:20:55] players that have a slightly different objective in the game. And because of that, you conclude
+[00:21:00] that different equilibrium than what would be better. Like similarly, the two thieves
+[00:21:06] in the prisoner's dilemma, they're not really adversaries, because it's not like if you,
+[00:21:12] every time one goes to jail, the other goes free. Actually, they don't have opposite
+[00:21:17] and they would be better in cooperating,
+[00:21:20] but they don't because they're selfish.
+[00:21:23] So that's an important aspect.
+[00:21:24] Keep this in mind.
+[00:21:26] In general games, you can have adversaries
+[00:21:28] only when it's really explicit.
+[00:21:30] Then the best way to do so is to make this explicit
+[00:21:33] by taking a zero-sum game.
+[00:21:35] And well, you can also consider this
+[00:21:38] an engineering aspect, really.
+[00:21:39] So you wonder whether the two players
+[00:21:41] or the end players having a game
+[00:21:43] really have different objectives,
+[00:21:44] are just different objectives or really opposite objectives.
+[00:21:49] They play against each other.
+[00:21:51] That makes a big difference.
+[00:21:54] And I mentioned chess.
+[00:21:55] In chess, actually, it's not really zero sum,
+[00:21:58] to be honest, because in chess,
+[00:22:00] the sum of the points you get in a chess match
+[00:22:03] is not zero.
+[00:22:04] And specifically, the rules for the tournaments
+[00:22:06] are generally that you get one point if you win,
+[00:22:09] zero points if you lose, and half a point if you tie.
+[00:22:11] So this means that if you tie,
+[00:22:14] they both get half a point.
+[00:22:15] And in reality, the sum always is one, not zero.
+[00:22:18] But well, you can easily understand
+[00:22:20] that if you subtract half a point
+[00:22:23] to each player's utility,
+[00:22:24] then you get a zero sum game.
+[00:22:26] And you obtain this by simply rescaling the utility
+[00:22:29] by a constant,
+[00:22:30] which wouldn't affect anything in the game.
+[00:22:32] It don't affect the order or priority.
+[00:22:35] It doesn't affect the probabilities of the mixture strategy.
+[00:22:37] So it's the same thing actually.
+[00:22:38] And a similar reasoning you can do
+[00:22:41] for other similar tournaments, for example,
+[00:22:44] in Serie A or any other football leagues,
+[00:22:48] you generally assign three points to the winner,
+[00:22:50] one point if you tie and zero point if you lose.
+[00:22:54] And this means the game is not exactly zero sum
+[00:22:57] because the sum is not constant either.
+[00:22:59] So actually, if you go back in time,
+[00:23:02] I remember when I was much younger,
+[00:23:06] they used to have a ranking system
+[00:23:08] where you get two points if you win. And that would have made the game zero-sum. Nowadays
+[00:23:13] they change it because they want to, well, improve the push for winning of the team,
+[00:23:18] so they reward winning more than drawing. But nevertheless, the game is not in this
+[00:23:24] way zero-sum. Well, still you can retain some of the aspects because, well, it's
+[00:23:30] adversarial anyways. So you can really say that the players are playing against
+[00:23:33] each other and there are a lot of other ranking systems scoring systems in tournaments like for
+[00:23:39] example in the volley super league i guess they give three points as in the football tournaments
+[00:23:45] but in volley you cannot tie there is always a tiebreaker so the rules are that if you win
+[00:23:51] without the tiebreaker you get three points and the loser gets nothing if you win at the
+[00:23:56] tiebreaker you get two points only and the loser at the tiebreak at the tiebreak gets one
+[00:24:01] point, nevertheless.
+[00:24:02] So the sum is always three.
+[00:24:04] And this would make this case, again, perfect to zero sum,
+[00:24:07] given that, again, all the utilities are rescaled.
+[00:24:12] Good.
+[00:24:12] So we saw a result for minimax when
+[00:24:17] we mentioned that sometimes you can have minimax
+[00:24:21] equal to the maximum.
+[00:24:22] And it seemed like a useful computation to make,
+[00:24:25] but it turned out it's not a good way
+[00:24:28] to find Nash equilibria in general.
+[00:24:30] However, for zero-sum games,
+[00:24:32] we have this beautiful theorem, which is very useful.
+[00:24:35] And the theorem states that if G is a zero-sum game
+[00:24:39] with finitely many strategies,
+[00:24:41] then if and only if the max-semin
+[00:24:44] is equal to the minimax for each player I,
+[00:24:48] then the game has a Nash equilibrium,
+[00:24:50] at least one Nash equilibrium.
+[00:24:52] Also, the Nash equilibrium implies
+[00:24:54] that the payoff is exactly this max-semin.
+[00:24:57] And therefore, if there are multiple Nash equilibria,
+[00:25:01] point number two states,
+[00:25:02] well, they all yield the same payoff.
+[00:25:05] And last corollary is,
+[00:25:07] well, if you have a Nash equilibrium,
+[00:25:09] it means that you play a security strategy,
+[00:25:12] which is kind of obvious,
+[00:25:14] but we will see why this is relevant.
+[00:25:17] And in our example before,
+[00:25:19] we see we have maxmin equal to minus one for player one
+[00:25:23] and minimaps equal to minus one.
+[00:25:24] It means there is a Nash equilibrium,
+[00:25:27] which is DL.
+[00:25:29] In fact, DL is a Nash equilibrium,
+[00:25:31] this is wrong, but it's DL,
+[00:25:34] is the utility of play A is minus one,
+[00:25:37] same as the maximin and the minimax.
+[00:25:39] And of course, the theorem states
+[00:25:42] that these are Nash equilibrium in pure strategies.
+[00:25:45] Let's leave this hanging
+[00:25:46] because we will resolve this problem
+[00:25:48] about the Nash equilibrium being pure strategies.
+[00:25:50] But the point is,
+[00:25:51] if you happen to find the maximin and the minimax
+[00:25:55] to be the same,
+[00:25:56] there must be somewhere a joint pure strategy
+[00:25:59] that is a Nash equilibrium.
+[00:26:00] And the reason is related to the version number three,
+[00:26:03] which is nothing but a corollary,
+[00:26:04] but the idea is like this.
+[00:26:05] If the game is zero sum,
+[00:26:07] whenever I increase my utility,
+[00:26:09] you decrease yours, correct?
+[00:26:12] Because the game is zero sum.
+[00:26:14] And therefore, a good way for me to play
+[00:26:17] is to maximize my payoff, but also to minimize yours.
+[00:26:21] And this is why having the maxmin equal to the minimax
+[00:26:25] implies there is a Nash equilibrium.
+[00:26:28] Let's see why in a better way.
+[00:26:30] Well, first of all, the condition,
+[00:26:32] I actually checked this in the previous slide,
+[00:26:35] only for one player.
+[00:26:36] This is correct because since the game is zero sum,
+[00:26:39] you can check whether the max min
+[00:26:41] is equal to the mini max for one player only,
+[00:26:43] because well, you don't need to be a genius
+[00:26:45] to realize that if the mini max
+[00:26:47] and the max min for player A are minus one,
+[00:26:49] the mini max and the max min for player B are plus one.
+[00:26:53] That's easy because the maximum for player I
+[00:26:56] is actually minus the minimax for player minus I.
+[00:26:59] They have this obvious relationship,
+[00:27:02] how in zero sum games,
+[00:27:04] how can you prove that this is true?
+[00:27:06] Well, the maximum remember is what can happen,
+[00:27:09] the best it can happen in the worst case.
+[00:27:12] So the worst case for you
+[00:27:14] is actually the best case for your opponent, right?
+[00:27:17] Because your opponent has opposite payoff to yours.
+[00:27:20] So whenever you minimize your payoff,
+[00:27:22] your opponent is maximizing his or her payoffs,
+[00:27:25] and therefore the max min is equal to the mini max.
+[00:27:29] Very good.
+[00:27:30] Also, this justifies why this must be a Nash equilibrium.
+[00:27:35] A Nash equilibrium is nothing
+[00:27:37] but a joint security strategy
+[00:27:38] because this can also be called
+[00:27:40] a subtle point of the game.
+[00:27:42] You probably have identified subtle points
+[00:27:44] in calculus two, this recollection
+[00:27:47] of what you must have already seen,
+[00:27:49] because when you discuss functions of two variables,
+[00:27:53] you discover that, well, in one variable,
+[00:27:56] if you have a critical point,
+[00:27:58] meaning the derivative is equal to zero,
+[00:28:00] you can have a maximum, a minimum,
+[00:28:02] or a flex point for the curve.
+[00:28:05] In two dimensions, if you have a curve,
+[00:28:08] you can have a point where the gradient is zero,
+[00:28:11] so the derivative in all the directions is zero.
+[00:28:14] This does not mean it's the local maximum
+[00:28:16] or a local minimum.
+[00:28:18] It can even be a subtle point.
+[00:28:21] What is a subtle point?
+[00:28:22] Remember, probably the professor did something like this,
+[00:28:24] says, well, this is a minimum.
+[00:28:27] The minimum of this curve is the lower point here.
+[00:28:30] The lower point of this curve is the minimum.
+[00:28:32] And you have something like this,
+[00:28:33] well, like this, you have the maximum.
+[00:28:36] This point is the maximum.
+[00:28:37] But what if you have something like this?
+[00:28:39] Let me try to see if I can mimic this with my hands.
+[00:28:43] If you have something like this,
+[00:28:45] then you have a point which is in one direction,
+[00:28:47] in a minimum and in another direction is a maximum.
+[00:28:50] It's like the saddle of a horse.
+[00:28:52] So it is called the saddle point
+[00:28:53] or a saddle between two mountains.
+[00:28:56] So a mountain pass is generally the highest point
+[00:28:59] if you go in the direction of the mountains,
+[00:29:01] but also the lowest point
+[00:29:02] in the direction of the mountain chain.
+[00:29:04] So it's a saddle point, right?
+[00:29:06] Okay, very well.
+[00:29:07] This is exactly what you want in the minimax
+[00:29:10] because you want a point that is a minimum
+[00:29:12] for one player and a maximum for the other player.
+[00:29:15] That would be a Nash equilibrium.
+[00:29:16] Why?
+[00:29:16] Because if you take, sorry, a minimum for the utility
+[00:29:21] function in one direction and the maximum
+[00:29:23] for the utility function in the other direction, okay?
+[00:29:26] Why?
+[00:29:26] Because if in one direction, if the direction of
+[00:29:30] the move of play i, play i wants to maximize
+[00:29:32] its utility, but in the direction of the choices
+[00:29:35] of play minus i, play minus i wants to minimize
+[00:29:38] the utility of play i.
+[00:29:40] Why so?
+[00:29:41] Because by minimizing the utility of play i,
+[00:29:43] it also maximizes the utility of player minus I.
+[00:29:47] So you see why playing a security strategy,
+[00:29:50] a joint security strategy must be a Nash flip
+[00:29:52] because in a zero sum game,
+[00:29:54] you do really well if you expect
+[00:29:57] that the other player wants to maximize his payoff
+[00:30:01] and by maximizing his payoff
+[00:30:03] and by maximizing it, it minimizes yours.
+[00:30:07] So in a sense, when you have a normal player,
+[00:30:11] not a zero sum game,
+[00:30:12] you, if you assume that you take a conservative stance,
+[00:30:16] you say, what's the worst that can happen?
+[00:30:18] Well, the worst that can happen is this.
+[00:30:20] And maybe you're just pessimistic
+[00:30:21] because the other player actually does not want
+[00:30:24] to minimize your payoff.
+[00:30:26] So they choose something else.
+[00:30:28] But in a zero sum game, it is a legitimate assumption
+[00:30:30] because you are playing a zero sum game
+[00:30:32] against a rational opponent,
+[00:30:34] which wants to maximize his or her own payoff.
+[00:30:38] And the way to do so is to minimize yours
+[00:30:40] because that's the same thing.
+[00:30:42] So playing a security strategy is a smart thing.
+[00:30:45] And if all the players play a consecutive strategy,
+[00:30:48] that would be a Nash equilibrium.
+[00:30:49] And this proves the theorem intuitively at least.
+[00:30:52] Also, there is this definition in the middle,
+[00:30:55] which is quite conventional,
+[00:30:56] but since we proved that all the Nash equilibria
+[00:30:59] have the same payoff equal to the max min
+[00:31:02] and also equal to the mini max,
+[00:31:03] well, you can call this the value of the game.
+[00:31:06] Be careful because conventionally,
+[00:31:08] you take the payoff of player one.
+[00:31:09] The maximum of player one or the player for player one,
+[00:31:12] they are the same value, and this is called the value.
+[00:31:15] So in this previous sample, the value would be minus one.
+[00:31:18] Okay, and that's kinda conventional
+[00:31:21] because who says player A is player number one
+[00:31:23] and player B is player number two?
+[00:31:24] Nobody, but I mean, so you must make this explicit
+[00:31:27] and say, well, the value referred to player A
+[00:31:30] is minus one.
+[00:31:31] Okay, of course, the other player has the same value
+[00:31:34] with opposite signs.
+[00:31:35] So player B would have minimax equal to the maximum
+[00:31:37] mean equal to the utility at the Nash equilibrium equal to plus
+[00:31:41] 1.
+[00:31:41] But the value here you say is minus 1.
+[00:31:43] And this is relevant because there
+[00:31:45] are games where this theorem doesn't hold.
+[00:31:47] Specifically, some games with infinitely many strategies.
+[00:31:50] So if you say that a game with infinitely many strategies
+[00:31:53] is without value, it means the theorem doesn't hold.
+[00:31:57] So you can't have a Nash equilibrium,
+[00:31:59] but the Nash equilibrium is not equal to the value.
+[00:32:01] Actually, there is not even the value.
+[00:32:04] You cannot write maxine equal to minimax.
+[00:32:06] nevertheless, in infinitely many strategies,
+[00:32:08] you can have the theorem not to be true.
+[00:32:12] But if the game is finitely many strategies,
+[00:32:14] has finitely many strategies,
+[00:32:16] every time you find that the mini max
+[00:32:18] is equal to the max min,
+[00:32:19] aha, this means there is a Nash equilibrium.
+[00:32:22] Okay, so this is a very useful instrument
+[00:32:24] to find a Nash equilibrium.
+[00:32:26] Also, one remark, I said,
+[00:32:28] well, this is working for zero-sum games.
+[00:32:32] Actually, for zero-sum games,
+[00:32:33] you need a very simple condition
+[00:32:35] and to check about the minimax and the maximin,
+[00:32:37] and this is an advantage.
+[00:32:39] Why?
+[00:32:40] Because if you remember,
+[00:32:41] I mentioned that the minimax and the maximin
+[00:32:43] do not need to know the payoff
+[00:32:45] for the other players to be computed.
+[00:32:46] You just look at your own payoff.
+[00:32:49] Well, in reality, this is kinda cheesy for zero-sum games
+[00:32:53] because in zero-sum games,
+[00:32:54] you never need to know the payoff of the other players
+[00:32:57] because knowing the payoff of one player is enough.
+[00:33:00] The payoff of the other player
+[00:33:02] would be minus that value.
+[00:33:03] So very often, if the game is zero-sum,
+[00:33:06] you don't write a bi-matrix
+[00:33:08] because it would be kind of redundant
+[00:33:09] to write like minus nine plus nine,
+[00:33:12] plus eight minus eight.
+[00:33:13] You can just write the first of the two numbers,
+[00:33:15] the second is kind of obvious.
+[00:33:16] So very often, zero-sum games
+[00:33:19] are written down in normal form with a regular matrix,
+[00:33:22] not with a bi-matrix.
+[00:33:24] And also, the proof of this theorem
+[00:33:27] is actually due to, again, von Neumann,
+[00:33:29] our friend von Neumann,
+[00:33:30] which means that this proof predates game theory properly.
+[00:33:33] It's probably the first result in game theory,
+[00:33:36] and it works only for a very specific class of games.
+[00:33:39] Of course, Von Neumann proved it
+[00:33:40] by constraint optimization, or linear programming.
+[00:33:43] And so actually, the principle of minimax
+[00:33:48] also work in other contexts,
+[00:33:49] especially operational research.
+[00:33:51] And this has been widely applied
+[00:33:54] to other branches of artificial intelligence,
+[00:33:56] especially as I mentioned the game, the programs, the computer programs who became let's say
+[00:34:04] world champion of chess so they defeated the world champion in the 80s they were based on
+[00:34:11] this reasoning because chess is just some game so you can find a solution by a minimax procedure
+[00:34:17] so you basically find what is among your moves the worst that can happen if based on
+[00:34:24] other player plays and that's generally a good measure to play in chess because you're playing
+[00:34:28] against a smart opponent so if your opponent gets a very good choice to hurt you they probably will
+[00:34:36] and so you shouldn't give them the opportunity so i say okay i have this fancy move which gives
+[00:34:41] me the opportunity to i don't know capture the queen but at the same time if the opponent
+[00:34:48] is very smart, they will defeat me. Okay, then I better not play this even though it's tempting,
+[00:34:54] but I can safely assume that my opponent is smart enough to see he or she can beat me
+[00:34:59] this way. So I don't play that and therefore it's best to play conservatively in chess.
+[00:35:05] Okay, then the theorem guarantees that if you find a joint security strategy that is
+[00:35:12] and so it's something that you should play.
+[00:35:15] At the same time, this is very hard to compute
+[00:35:18] because chess is a tremendously complicated game.
+[00:35:21] There are a lot of strategies.
+[00:35:23] So how can you be sure that you have found
+[00:35:25] a minimax and a maximi?
+[00:35:28] The entire dynamic tree of your moves
+[00:35:31] go indefinitely deep,
+[00:35:33] and you really have very, very many strategies
+[00:35:36] because you can be sure that every time you can move,
+[00:35:40] you can have, I don't know, 20 available moves.
+[00:35:43] And the number of moves you play in an entire game
+[00:35:46] can well be over 100.
+[00:35:48] So what you have, 20 to the power of 100 or more
+[00:35:52] strategies, that would be very difficult to compute, right?
+[00:35:55] So even the supercomputers cannot compute that.
+[00:35:58] Well, so on the one hand, humans
+[00:36:01] make just some cuts in the tree.
+[00:36:04] So master chess, big grandmasters of chess
+[00:36:08] are able to identify what decision tree are stupid
+[00:36:13] and they don't take it.
+[00:36:14] And they just do this on a hunch,
+[00:36:16] but most of the times they are correct.
+[00:36:18] The computer is a little bit more stupid,
+[00:36:20] but essentially does the same.
+[00:36:22] Only it has more computational power than the human brain.
+[00:36:25] So generally speaking,
+[00:36:27] when you play against a computer program playing chess,
+[00:36:29] you can often see that they have
+[00:36:31] a difficulty level one to five.
+[00:36:34] So what do they do actually is that they limit
+[00:36:36] the number of moves they consider ahead.
+[00:36:39] So they don't have full rationality,
+[00:36:41] they just have a limited rationality,
+[00:36:42] which is generally much better
+[00:36:43] than every human being does anyways.
+[00:36:46] And so a chess program with level one
+[00:36:50] of artificial intelligence just means
+[00:36:52] that they consider the strategies
+[00:36:54] over this move and the next one.
+[00:36:57] And instead, if the level is five,
+[00:36:59] they consider the next five moves.
+[00:37:00] So it's a little bit deeper,
+[00:37:02] of course, more computational expensive,
+[00:37:04] but also better in general.
+[00:37:06] Okay, very good.
+[00:37:07] But besides this theoretical remark,
+[00:37:10] we need now to stop the video
+[00:37:12] to understand what happens
+[00:37:13] if we consider mixed strategies,
+[00:37:14] because everything that I just said
+[00:37:17] is connected now with Nash equilibrium,
+[00:37:19] but only with the pure version.
+[00:37:22] And we mentioned actually when discussing Nash equilibrium,
+[00:37:24] that most Nash equilibria
+[00:37:26] are actually not in pure strategies,
+[00:37:28] but in mixed strategies.
+[00:37:29] So there must be something that is missing here,
+[00:37:31] which is a connection between minimax principles
+[00:37:35] and mixed strategies.
+[00:37:36] And this would be a good topic to cover in the next video.
+[00:37:39] For now, let me stop here
+[00:37:40] and see you soon in the next video.
