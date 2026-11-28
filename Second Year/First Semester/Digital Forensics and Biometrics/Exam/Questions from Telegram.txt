@@ -1,0 +1,4 @@
+In the first partial we had : Question A.1. What are the different phases in the acquisition and
+handling of digital evidence? Which are the main figures/actors that
+interplay within these phases? Provide a description of the process as
+exhaustive as possible and IF exercise. In partial 2 we had 1- define anomaly detection , wdad in anomaly detection , LOF. Qs 2 : FACE RECOGNITION STEPS with all details and The difficulties it faces
